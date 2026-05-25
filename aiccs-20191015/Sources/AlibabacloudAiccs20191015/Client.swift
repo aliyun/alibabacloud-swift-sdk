@@ -4898,6 +4898,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmFullDuplexCallOperateWithOptions(_ request: LlmFullDuplexCallOperateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LlmFullDuplexCallOperateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callId)) {
+            query["CallId"] = request.callId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.command)) {
+            query["Command"] = request.command ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.param)) {
+            query["Param"] = request.param ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LlmFullDuplexCallOperate",
+            "version": "2019-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LlmFullDuplexCallOperateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmFullDuplexCallOperate(_ request: LlmFullDuplexCallOperateRequest) async throws -> LlmFullDuplexCallOperateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await llmFullDuplexCallOperateWithOptions(request as! LlmFullDuplexCallOperateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func llmSmartCallWithOptions(_ tmpReq: LlmSmartCallRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LlmSmartCallResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: LlmSmartCallShrinkRequest = LlmSmartCallShrinkRequest([:])
@@ -5036,6 +5073,66 @@ open class Client : AlibabacloudOpenApi.Client {
     public func llmSmartCallEncrypt(_ request: LlmSmartCallEncryptRequest) async throws -> LlmSmartCallEncryptResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await llmSmartCallEncryptWithOptions(request as! LlmSmartCallEncryptRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmSmartCallFullDuplexWithOptions(_ tmpReq: LlmSmartCallFullDuplexRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LlmSmartCallFullDuplexResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: LlmSmartCallFullDuplexShrinkRequest = LlmSmartCallFullDuplexShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.startWordParam)) {
+            request.startWordParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.startWordParam, "StartWordParam", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationCode)) {
+            query["ApplicationCode"] = request.applicationCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.calledNumber)) {
+            query["CalledNumber"] = request.calledNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callerNumber)) {
+            query["CallerNumber"] = request.callerNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionTimeout)) {
+            query["SessionTimeout"] = request.sessionTimeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startWordParamShrink)) {
+            query["StartWordParam"] = request.startWordParamShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsSpeed)) {
+            query["TtsSpeed"] = request.ttsSpeed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsVoiceCode)) {
+            query["TtsVoiceCode"] = request.ttsVoiceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsVolume)) {
+            query["TtsVolume"] = request.ttsVolume!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LlmSmartCallFullDuplex",
+            "version": "2019-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LlmSmartCallFullDuplexResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmSmartCallFullDuplex(_ request: LlmSmartCallFullDuplexRequest) async throws -> LlmSmartCallFullDuplexResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await llmSmartCallFullDuplexWithOptions(request as! LlmSmartCallFullDuplexRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

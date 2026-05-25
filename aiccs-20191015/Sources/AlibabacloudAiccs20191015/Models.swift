@@ -30834,6 +30834,174 @@ public class ListTaskDetailResponse : Tea.TeaModel {
     }
 }
 
+public class LlmFullDuplexCallOperateRequest : Tea.TeaModel {
+    public var callId: String?
+
+    public var command: String?
+
+    public var param: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callId != nil {
+            map["CallId"] = self.callId!
+        }
+        if self.command != nil {
+            map["Command"] = self.command!
+        }
+        if self.param != nil {
+            map["Param"] = self.param!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallId"] as? String {
+            self.callId = value
+        }
+        if let value = dict["Command"] as? String {
+            self.command = value
+        }
+        if let value = dict["Param"] as? String {
+            self.param = value
+        }
+    }
+}
+
+public class LlmFullDuplexCallOperateResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class LlmFullDuplexCallOperateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LlmFullDuplexCallOperateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = LlmFullDuplexCallOperateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class LlmSmartCallRequest : Tea.TeaModel {
     public var applicationCode: String?
 
@@ -31531,6 +31699,301 @@ public class LlmSmartCallEncryptResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = LlmSmartCallEncryptResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class LlmSmartCallFullDuplexRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
+    public var calledNumber: String?
+
+    public var callerNumber: String?
+
+    public var outId: String?
+
+    public var sessionTimeout: Int32?
+
+    public var startWordParam: [String: Any]?
+
+    public var ttsSpeed: Int32?
+
+    public var ttsVoiceCode: String?
+
+    public var ttsVolume: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.calledNumber != nil {
+            map["CalledNumber"] = self.calledNumber!
+        }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.sessionTimeout != nil {
+            map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.startWordParam != nil {
+            map["StartWordParam"] = self.startWordParam!
+        }
+        if self.ttsSpeed != nil {
+            map["TtsSpeed"] = self.ttsSpeed!
+        }
+        if self.ttsVoiceCode != nil {
+            map["TtsVoiceCode"] = self.ttsVoiceCode!
+        }
+        if self.ttsVolume != nil {
+            map["TtsVolume"] = self.ttsVolume!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
+        if let value = dict["CalledNumber"] as? String {
+            self.calledNumber = value
+        }
+        if let value = dict["CallerNumber"] as? String {
+            self.callerNumber = value
+        }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
+        }
+        if let value = dict["SessionTimeout"] as? Int32 {
+            self.sessionTimeout = value
+        }
+        if let value = dict["StartWordParam"] as? [String: Any] {
+            self.startWordParam = value
+        }
+        if let value = dict["TtsSpeed"] as? Int32 {
+            self.ttsSpeed = value
+        }
+        if let value = dict["TtsVoiceCode"] as? String {
+            self.ttsVoiceCode = value
+        }
+        if let value = dict["TtsVolume"] as? Int32 {
+            self.ttsVolume = value
+        }
+    }
+}
+
+public class LlmSmartCallFullDuplexShrinkRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
+    public var calledNumber: String?
+
+    public var callerNumber: String?
+
+    public var outId: String?
+
+    public var sessionTimeout: Int32?
+
+    public var startWordParamShrink: String?
+
+    public var ttsSpeed: Int32?
+
+    public var ttsVoiceCode: String?
+
+    public var ttsVolume: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.calledNumber != nil {
+            map["CalledNumber"] = self.calledNumber!
+        }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.sessionTimeout != nil {
+            map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.startWordParamShrink != nil {
+            map["StartWordParam"] = self.startWordParamShrink!
+        }
+        if self.ttsSpeed != nil {
+            map["TtsSpeed"] = self.ttsSpeed!
+        }
+        if self.ttsVoiceCode != nil {
+            map["TtsVoiceCode"] = self.ttsVoiceCode!
+        }
+        if self.ttsVolume != nil {
+            map["TtsVolume"] = self.ttsVolume!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
+        if let value = dict["CalledNumber"] as? String {
+            self.calledNumber = value
+        }
+        if let value = dict["CallerNumber"] as? String {
+            self.callerNumber = value
+        }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
+        }
+        if let value = dict["SessionTimeout"] as? Int32 {
+            self.sessionTimeout = value
+        }
+        if let value = dict["StartWordParam"] as? String {
+            self.startWordParamShrink = value
+        }
+        if let value = dict["TtsSpeed"] as? Int32 {
+            self.ttsSpeed = value
+        }
+        if let value = dict["TtsVoiceCode"] as? String {
+            self.ttsVoiceCode = value
+        }
+        if let value = dict["TtsVolume"] as? Int32 {
+            self.ttsVolume = value
+        }
+    }
+}
+
+public class LlmSmartCallFullDuplexResponseBody : Tea.TeaModel {
+    public var callId: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callId != nil {
+            map["CallId"] = self.callId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallId"] as? String {
+            self.callId = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class LlmSmartCallFullDuplexResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LlmSmartCallFullDuplexResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = LlmSmartCallFullDuplexResponseBody()
             model.fromMap(value)
             self.body = model
         }
