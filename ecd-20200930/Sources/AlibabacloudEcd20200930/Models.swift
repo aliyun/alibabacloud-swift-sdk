@@ -46344,6 +46344,8 @@ public class DescribeRecordFileRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceType: String?
+
     public var startTime: String?
 
     public var status: Int32?
@@ -46392,6 +46394,9 @@ public class DescribeRecordFileRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -46432,6 +46437,9 @@ public class DescribeRecordFileRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
