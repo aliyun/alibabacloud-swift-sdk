@@ -5844,6 +5844,8 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
 
         public var rolesQuota: Int32?
 
+        public var serviceCredentialsPerUserPerServiceQuota: Int32?
+
         public var users: Int32?
 
         public var usersQuota: Int32?
@@ -5929,6 +5931,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             if self.rolesQuota != nil {
                 map["RolesQuota"] = self.rolesQuota!
             }
+            if self.serviceCredentialsPerUserPerServiceQuota != nil {
+                map["ServiceCredentialsPerUserPerServiceQuota"] = self.serviceCredentialsPerUserPerServiceQuota!
+            }
             if self.users != nil {
                 map["Users"] = self.users!
             }
@@ -6008,6 +6013,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             }
             if let value = dict["RolesQuota"] as? Int32 {
                 self.rolesQuota = value
+            }
+            if let value = dict["ServiceCredentialsPerUserPerServiceQuota"] as? Int32 {
+                self.serviceCredentialsPerUserPerServiceQuota = value
             }
             if let value = dict["Users"] as? Int32 {
                 self.users = value
@@ -9181,6 +9189,8 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
         public class AccessKeyPreference : Tea.TeaModel {
             public var allowUserToManageAccessKeys: Bool?
 
+            public var allowUserToManageServiceCredentials: Bool?
+
             public override init() {
                 super.init()
             }
@@ -9198,6 +9208,9 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
                 if self.allowUserToManageAccessKeys != nil {
                     map["AllowUserToManageAccessKeys"] = self.allowUserToManageAccessKeys!
                 }
+                if self.allowUserToManageServiceCredentials != nil {
+                    map["AllowUserToManageServiceCredentials"] = self.allowUserToManageServiceCredentials!
+                }
                 return map
             }
 
@@ -9205,6 +9218,9 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AllowUserToManageAccessKeys"] as? Bool {
                     self.allowUserToManageAccessKeys = value
+                }
+                if let value = dict["AllowUserToManageServiceCredentials"] as? Bool {
+                    self.allowUserToManageServiceCredentials = value
                 }
             }
         }
@@ -17990,6 +18006,8 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
 
     public var allowUserToManagePersonalDingTalk: Bool?
 
+    public var allowUserToManageServiceCredentials: Bool?
+
     public var enableSaveMFATicket: Bool?
 
     public var loginNetworkMasks: String?
@@ -18035,6 +18053,9 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
         if self.allowUserToManagePersonalDingTalk != nil {
             map["AllowUserToManagePersonalDingTalk"] = self.allowUserToManagePersonalDingTalk!
         }
+        if self.allowUserToManageServiceCredentials != nil {
+            map["AllowUserToManageServiceCredentials"] = self.allowUserToManageServiceCredentials!
+        }
         if self.enableSaveMFATicket != nil {
             map["EnableSaveMFATicket"] = self.enableSaveMFATicket!
         }
@@ -18079,6 +18100,9 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
         if let value = dict["AllowUserToManagePersonalDingTalk"] as? Bool {
             self.allowUserToManagePersonalDingTalk = value
         }
+        if let value = dict["AllowUserToManageServiceCredentials"] as? Bool {
+            self.allowUserToManageServiceCredentials = value
+        }
         if let value = dict["EnableSaveMFATicket"] as? Bool {
             self.enableSaveMFATicket = value
         }
@@ -18116,6 +18140,8 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
     public var allowUserToManageMFADevices: Bool?
 
     public var allowUserToManagePersonalDingTalk: Bool?
+
+    public var allowUserToManageServiceCredentials: Bool?
 
     public var enableSaveMFATicket: Bool?
 
@@ -18162,6 +18188,9 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
         if self.allowUserToManagePersonalDingTalk != nil {
             map["AllowUserToManagePersonalDingTalk"] = self.allowUserToManagePersonalDingTalk!
         }
+        if self.allowUserToManageServiceCredentials != nil {
+            map["AllowUserToManageServiceCredentials"] = self.allowUserToManageServiceCredentials!
+        }
         if self.enableSaveMFATicket != nil {
             map["EnableSaveMFATicket"] = self.enableSaveMFATicket!
         }
@@ -18206,6 +18235,9 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
         if let value = dict["AllowUserToManagePersonalDingTalk"] as? Bool {
             self.allowUserToManagePersonalDingTalk = value
         }
+        if let value = dict["AllowUserToManageServiceCredentials"] as? Bool {
+            self.allowUserToManageServiceCredentials = value
+        }
         if let value = dict["EnableSaveMFATicket"] as? Bool {
             self.enableSaveMFATicket = value
         }
@@ -18238,6 +18270,8 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
         public class AccessKeyPreference : Tea.TeaModel {
             public var allowUserToManageAccessKeys: Bool?
 
+            public var allowUserToManageServiceCredentials: Bool?
+
             public override init() {
                 super.init()
             }
@@ -18255,6 +18289,9 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
                 if self.allowUserToManageAccessKeys != nil {
                     map["AllowUserToManageAccessKeys"] = self.allowUserToManageAccessKeys!
                 }
+                if self.allowUserToManageServiceCredentials != nil {
+                    map["AllowUserToManageServiceCredentials"] = self.allowUserToManageServiceCredentials!
+                }
                 return map
             }
 
@@ -18262,6 +18299,9 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AllowUserToManageAccessKeys"] as? Bool {
                     self.allowUserToManageAccessKeys = value
+                }
+                if let value = dict["AllowUserToManageServiceCredentials"] as? Bool {
+                    self.allowUserToManageServiceCredentials = value
                 }
             }
         }

@@ -2787,6 +2787,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.allowUserToManagePersonalDingTalk)) {
             query["AllowUserToManagePersonalDingTalk"] = request.allowUserToManagePersonalDingTalk!;
         }
+        if (!TeaUtils.Client.isUnset(request.allowUserToManageServiceCredentials)) {
+            query["AllowUserToManageServiceCredentials"] = request.allowUserToManageServiceCredentials!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableSaveMFATicket)) {
             query["EnableSaveMFATicket"] = request.enableSaveMFATicket!;
         }
