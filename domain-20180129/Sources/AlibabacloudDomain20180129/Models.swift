@@ -20570,6 +20570,8 @@ public class SaveBatchTaskForCreatingOrderRenewRequest : Tea.TeaModel {
 
         public var domainName: String?
 
+        public var permitPremiumRenew: Bool?
+
         public var subscriptionDuration: Int32?
 
         public override init() {
@@ -20592,6 +20594,9 @@ public class SaveBatchTaskForCreatingOrderRenewRequest : Tea.TeaModel {
             if self.domainName != nil {
                 map["DomainName"] = self.domainName!
             }
+            if self.permitPremiumRenew != nil {
+                map["PermitPremiumRenew"] = self.permitPremiumRenew!
+            }
             if self.subscriptionDuration != nil {
                 map["SubscriptionDuration"] = self.subscriptionDuration!
             }
@@ -20605,6 +20610,9 @@ public class SaveBatchTaskForCreatingOrderRenewRequest : Tea.TeaModel {
             }
             if let value = dict["DomainName"] as? String {
                 self.domainName = value
+            }
+            if let value = dict["PermitPremiumRenew"] as? Bool {
+                self.permitPremiumRenew = value
             }
             if let value = dict["SubscriptionDuration"] as? Int32 {
                 self.subscriptionDuration = value
@@ -24956,6 +24964,8 @@ public class SaveSingleTaskForCreatingOrderRenewRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var permitPremiumRenew: Bool?
+
     public var promotionNo: String?
 
     public var subscriptionDuration: Int32?
@@ -24992,6 +25002,9 @@ public class SaveSingleTaskForCreatingOrderRenewRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.permitPremiumRenew != nil {
+            map["PermitPremiumRenew"] = self.permitPremiumRenew!
+        }
         if self.promotionNo != nil {
             map["PromotionNo"] = self.promotionNo!
         }
@@ -25023,6 +25036,9 @@ public class SaveSingleTaskForCreatingOrderRenewRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["PermitPremiumRenew"] as? Bool {
+            self.permitPremiumRenew = value
         }
         if let value = dict["PromotionNo"] as? String {
             self.promotionNo = value

@@ -4283,6 +4283,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.permitPremiumRenew)) {
+            query["PermitPremiumRenew"] = request.permitPremiumRenew!;
+        }
         if (!TeaUtils.Client.isUnset(request.promotionNo)) {
             query["PromotionNo"] = request.promotionNo ?? "";
         }
