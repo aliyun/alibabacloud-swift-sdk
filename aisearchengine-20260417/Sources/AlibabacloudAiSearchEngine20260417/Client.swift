@@ -78,6 +78,78 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDatasetResourceUrlWithOptions(_ request: GetDatasetResourceUrlRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetResourceUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            body["datasetId"] = request.datasetId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.primaryKey)) {
+            body["primaryKey"] = request.primaryKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDatasetResourceUrl",
+            "version": "2026-04-17",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/dataset/open/resources",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDatasetResourceUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDatasetResourceUrl(_ request: GetDatasetResourceUrlRequest) async throws -> GetDatasetResourceUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getDatasetResourceUrlWithOptions(request as! GetDatasetResourceUrlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importDatasetDataWithOptions(_ request: ImportDatasetDataRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportDatasetDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            body["datasetId"] = request.datasetId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.records)) {
+            body["records"] = request.records ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportDatasetData",
+            "version": "2026-04-17",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/dataset/open/upsert",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportDatasetDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importDatasetData(_ request: ImportDatasetDataRequest) async throws -> ImportDatasetDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await importDatasetDataWithOptions(request as! ImportDatasetDataRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func qaChatWithOptions(_ request: QaChatRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QaChatResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
