@@ -30,6 +30,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            query["Env"] = request.env ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderColumn)) {
             query["OrderColumn"] = request.orderColumn ?? "";
         }
@@ -2019,6 +2022,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            query["Env"] = request.env ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.executeSql)) {
             query["ExecuteSql"] = request.executeSql ?? "";
         }
@@ -2566,6 +2572,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            query["Env"] = request.env ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderColumn)) {
             query["OrderColumn"] = request.orderColumn ?? "";
         }
@@ -2611,6 +2620,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            query["Env"] = request.env ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.orderColumn)) {
             query["OrderColumn"] = request.orderColumn ?? "";

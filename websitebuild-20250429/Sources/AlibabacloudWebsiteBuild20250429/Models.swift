@@ -3045,6 +3045,8 @@ public class ModuleNextComponentsValuePropertiesValue : Tea.TeaModel {
 public class AllocateSupabaseForAdminRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var env: String?
+
     public var orderColumn: String?
 
     public var orderType: String?
@@ -3072,6 +3074,9 @@ public class AllocateSupabaseForAdminRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
         if self.orderColumn != nil {
             map["OrderColumn"] = self.orderColumn!
         }
@@ -3094,6 +3099,9 @@ public class AllocateSupabaseForAdminRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["Env"] as? String {
+            self.env = value
         }
         if let value = dict["OrderColumn"] as? String {
             self.orderColumn = value
@@ -20644,6 +20652,8 @@ public class OperateAppServiceForPartnerResponse : Tea.TeaModel {
 public class OperateSupabaseForAdminRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var env: String?
+
     public var executeSql: String?
 
     public var operateType: String?
@@ -20680,6 +20690,9 @@ public class OperateSupabaseForAdminRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizId != nil {
             map["BizId"] = self.bizId!
+        }
+        if self.env != nil {
+            map["Env"] = self.env!
         }
         if self.executeSql != nil {
             map["ExecuteSql"] = self.executeSql!
@@ -20718,6 +20731,9 @@ public class OperateSupabaseForAdminRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["Env"] as? String {
+            self.env = value
         }
         if let value = dict["ExecuteSql"] as? String {
             self.executeSql = value
@@ -24533,6 +24549,8 @@ public class QuerySupabaseAuthConfigsForAdminRequest : Tea.TeaModel {
 
     public var bizId: String?
 
+    public var env: String?
+
     public var orderColumn: String?
 
     public var orderType: String?
@@ -24563,6 +24581,9 @@ public class QuerySupabaseAuthConfigsForAdminRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
         if self.orderColumn != nil {
             map["OrderColumn"] = self.orderColumn!
         }
@@ -24588,6 +24609,9 @@ public class QuerySupabaseAuthConfigsForAdminRequest : Tea.TeaModel {
         }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["Env"] as? String {
+            self.env = value
         }
         if let value = dict["OrderColumn"] as? String {
             self.orderColumn = value
@@ -24804,6 +24828,8 @@ public class QuerySupabaseAuthConfigsForAdminResponse : Tea.TeaModel {
 public class QuerySupabaseConfigsForAdminRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var env: String?
+
     public var orderColumn: String?
 
     public var orderType: String?
@@ -24831,6 +24857,9 @@ public class QuerySupabaseConfigsForAdminRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
         if self.orderColumn != nil {
             map["OrderColumn"] = self.orderColumn!
         }
@@ -24853,6 +24882,9 @@ public class QuerySupabaseConfigsForAdminRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["Env"] as? String {
+            self.env = value
         }
         if let value = dict["OrderColumn"] as? String {
             self.orderColumn = value
