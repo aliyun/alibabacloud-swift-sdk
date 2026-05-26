@@ -38676,6 +38676,8 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public var privateConnectUrl: String?
 
+    public var projectDescription: String?
+
     public var projectId: String?
 
     public var projectName: String?
@@ -38751,6 +38753,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if self.privateConnectUrl != nil {
             map["PrivateConnectUrl"] = self.privateConnectUrl!
+        }
+        if self.projectDescription != nil {
+            map["ProjectDescription"] = self.projectDescription!
         }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
@@ -38831,6 +38836,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if let value = dict["PrivateConnectUrl"] as? String {
             self.privateConnectUrl = value
+        }
+        if let value = dict["ProjectDescription"] as? String {
+            self.projectDescription = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
@@ -47025,6 +47033,8 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
 
         public var privateConnectUrl: String?
 
+        public var projectDescription: String?
+
         public var projectId: String?
 
         public var projectName: String?
@@ -47090,6 +47100,9 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
             }
             if self.privateConnectUrl != nil {
                 map["PrivateConnectUrl"] = self.privateConnectUrl!
+            }
+            if self.projectDescription != nil {
+                map["ProjectDescription"] = self.projectDescription!
             }
             if self.projectId != nil {
                 map["ProjectId"] = self.projectId!
@@ -47158,6 +47171,9 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
             }
             if let value = dict["PrivateConnectUrl"] as? String {
                 self.privateConnectUrl = value
+            }
+            if let value = dict["ProjectDescription"] as? String {
+                self.projectDescription = value
             }
             if let value = dict["ProjectId"] as? String {
                 self.projectId = value
