@@ -4219,6 +4219,60 @@ public class GetYikeStoryboardJobRequest : Tea.TeaModel {
 }
 
 public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
+    public class JobCredit : Tea.TeaModel {
+        public var elementImageGeneration: String?
+
+        public var totalCreditCost: String?
+
+        public var videoComposition: String?
+
+        public var videoGeneration: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.elementImageGeneration != nil {
+                map["ElementImageGeneration"] = self.elementImageGeneration!
+            }
+            if self.totalCreditCost != nil {
+                map["TotalCreditCost"] = self.totalCreditCost!
+            }
+            if self.videoComposition != nil {
+                map["VideoComposition"] = self.videoComposition!
+            }
+            if self.videoGeneration != nil {
+                map["VideoGeneration"] = self.videoGeneration!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ElementImageGeneration"] as? String {
+                self.elementImageGeneration = value
+            }
+            if let value = dict["TotalCreditCost"] as? String {
+                self.totalCreditCost = value
+            }
+            if let value = dict["VideoComposition"] as? String {
+                self.videoComposition = value
+            }
+            if let value = dict["VideoGeneration"] as? String {
+                self.videoGeneration = value
+            }
+        }
+    }
     public class JobParams : Tea.TeaModel {
         public var aspectRatio: String?
 
@@ -4407,6 +4461,8 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var jobCredit: GetYikeStoryboardJobResponseBody.JobCredit?
+
     public var jobId: String?
 
     public var jobParams: GetYikeStoryboardJobResponseBody.JobParams?
@@ -4427,12 +4483,16 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.jobCredit?.validate()
         try self.jobParams?.validate()
         try self.jobResult?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.jobCredit != nil {
+            map["JobCredit"] = self.jobCredit?.toMap()
+        }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
@@ -4453,6 +4513,11 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["JobCredit"] as? [String: Any?] {
+            var model = GetYikeStoryboardJobResponseBody.JobCredit()
+            model.fromMap(value)
+            self.jobCredit = model
+        }
         if let value = dict["JobId"] as? String {
             self.jobId = value
         }
