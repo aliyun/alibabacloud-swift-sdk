@@ -2886,7 +2886,13 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
 
         public var bytes: Double?
 
+        public var bytesIncrease: Double?
+
+        public var bytesIncreaseRatio: Double?
+
         public var bytesRate: Double?
+
+        public var cenId: String?
 
         public var clientAsn: String?
 
@@ -2991,8 +2997,17 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
             if self.bytes != nil {
                 map["Bytes"] = self.bytes!
             }
+            if self.bytesIncrease != nil {
+                map["BytesIncrease"] = self.bytesIncrease!
+            }
+            if self.bytesIncreaseRatio != nil {
+                map["BytesIncreaseRatio"] = self.bytesIncreaseRatio!
+            }
             if self.bytesRate != nil {
                 map["BytesRate"] = self.bytesRate!
+            }
+            if self.cenId != nil {
+                map["CenId"] = self.cenId!
             }
             if self.clientAsn != nil {
                 map["ClientAsn"] = self.clientAsn!
@@ -3128,8 +3143,17 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
             if let value = dict["Bytes"] as? Double {
                 self.bytes = value
             }
+            if let value = dict["BytesIncrease"] as? Double {
+                self.bytesIncrease = value
+            }
+            if let value = dict["BytesIncreaseRatio"] as? Double {
+                self.bytesIncreaseRatio = value
+            }
             if let value = dict["BytesRate"] as? Double {
                 self.bytesRate = value
+            }
+            if let value = dict["CenId"] as? String {
+                self.cenId = value
             }
             if let value = dict["ClientAsn"] as? String {
                 self.clientAsn = value
