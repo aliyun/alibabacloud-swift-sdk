@@ -3152,14 +3152,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceName)) {
             query["WorkspaceName"] = request.workspaceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceRegion)) {
+            query["WorkspaceRegion"] = request.workspaceRegion ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
@@ -9076,6 +9076,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listInventoryJobsWithOptions(_ request: ListInventoryJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInventoryJobsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["SortOrder"] = request.sortOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListInventoryJobs",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListInventoryJobsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listInventoryJobs(_ request: ListInventoryJobsRequest) async throws -> ListInventoryJobsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listInventoryJobsWithOptions(request as! ListInventoryJobsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listLhTaskFlowAndScenarioWithOptions(_ request: ListLhTaskFlowAndScenarioRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListLhTaskFlowAndScenarioResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -12054,6 +12100,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchDatabase(_ request: SearchDatabaseRequest) async throws -> SearchDatabaseResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await searchDatabaseWithOptions(request as! SearchDatabaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchInventoryAssetWithOptions(_ request: SearchInventoryAssetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchInventoryAssetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["SortOrder"] = request.sortOrder ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchInventoryAsset",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchInventoryAssetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchInventoryAsset(_ request: SearchInventoryAssetRequest) async throws -> SearchInventoryAssetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchInventoryAssetWithOptions(request as! SearchInventoryAssetRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
