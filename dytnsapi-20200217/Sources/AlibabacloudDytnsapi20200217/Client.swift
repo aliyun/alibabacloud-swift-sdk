@@ -1032,6 +1032,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func historyThreeElementsVerificationWithOptions(_ request: HistoryThreeElementsVerificationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> HistoryThreeElementsVerificationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authCode)) {
+            query["AuthCode"] = request.authCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.carrier)) {
+            query["Carrier"] = request.carrier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certCode)) {
+            query["CertCode"] = request.certCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputNumber)) {
+            query["InputNumber"] = request.inputNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mask)) {
+            query["Mask"] = request.mask ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verificationTime)) {
+            query["VerificationTime"] = request.verificationTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "HistoryThreeElementsVerification",
+            "version": "2020-02-17",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(HistoryThreeElementsVerificationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func historyThreeElementsVerification(_ request: HistoryThreeElementsVerificationRequest) async throws -> HistoryThreeElementsVerificationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await historyThreeElementsVerificationWithOptions(request as! HistoryThreeElementsVerificationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func invalidPhoneNumberFilterWithOptions(_ request: InvalidPhoneNumberFilterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InvalidPhoneNumberFilterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

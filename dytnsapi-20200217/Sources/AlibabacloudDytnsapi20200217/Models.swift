@@ -5119,6 +5119,239 @@ public class GetUAIDConversionSignResponse : Tea.TeaModel {
     }
 }
 
+public class HistoryThreeElementsVerificationRequest : Tea.TeaModel {
+    public var authCode: String?
+
+    public var carrier: String?
+
+    public var certCode: String?
+
+    public var inputNumber: String?
+
+    public var mask: String?
+
+    public var name: String?
+
+    public var verificationTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authCode != nil {
+            map["AuthCode"] = self.authCode!
+        }
+        if self.carrier != nil {
+            map["Carrier"] = self.carrier!
+        }
+        if self.certCode != nil {
+            map["CertCode"] = self.certCode!
+        }
+        if self.inputNumber != nil {
+            map["InputNumber"] = self.inputNumber!
+        }
+        if self.mask != nil {
+            map["Mask"] = self.mask!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.verificationTime != nil {
+            map["VerificationTime"] = self.verificationTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthCode"] as? String {
+            self.authCode = value
+        }
+        if let value = dict["Carrier"] as? String {
+            self.carrier = value
+        }
+        if let value = dict["CertCode"] as? String {
+            self.certCode = value
+        }
+        if let value = dict["InputNumber"] as? String {
+            self.inputNumber = value
+        }
+        if let value = dict["Mask"] as? String {
+            self.mask = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["VerificationTime"] as? String {
+            self.verificationTime = value
+        }
+    }
+}
+
+public class HistoryThreeElementsVerificationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var isConsistent: Int64?
+
+        public var requestCarrier: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isConsistent != nil {
+                map["IsConsistent"] = self.isConsistent!
+            }
+            if self.requestCarrier != nil {
+                map["RequestCarrier"] = self.requestCarrier!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["IsConsistent"] as? Int64 {
+                self.isConsistent = value
+            }
+            if let value = dict["RequestCarrier"] as? String {
+                self.requestCarrier = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: HistoryThreeElementsVerificationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = HistoryThreeElementsVerificationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class HistoryThreeElementsVerificationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: HistoryThreeElementsVerificationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = HistoryThreeElementsVerificationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class InvalidPhoneNumberFilterRequest : Tea.TeaModel {
     public var authCode: String?
 
