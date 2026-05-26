@@ -2691,12 +2691,18 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.credentialConfig)) {
             request.credentialConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.credentialConfig, "CredentialConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.inclusionHints)) {
+            request.inclusionHintsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.inclusionHints, "InclusionHints", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.aspectRatios)) {
             query["AspectRatios"] = request.aspectRatios ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.credentialConfigShrink)) {
             query["CredentialConfig"] = request.credentialConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inclusionHintsShrink)) {
+            query["InclusionHints"] = request.inclusionHintsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.projectName)) {
             query["ProjectName"] = request.projectName ?? "";

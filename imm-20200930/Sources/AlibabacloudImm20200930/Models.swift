@@ -2070,6 +2070,8 @@ public class Dataset : Tea.TeaModel {
 public class DatasetConfig : Tea.TeaModel {
     public var insights: InsightsConfig?
 
+    public var smartCluster: SmartClusterConfig?
+
     public override init() {
         super.init()
     }
@@ -2081,12 +2083,16 @@ public class DatasetConfig : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.insights?.validate()
+        try self.smartCluster?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.insights != nil {
             map["Insights"] = self.insights?.toMap()
+        }
+        if self.smartCluster != nil {
+            map["SmartCluster"] = self.smartCluster?.toMap()
         }
         return map
     }
@@ -2097,6 +2103,11 @@ public class DatasetConfig : Tea.TeaModel {
             var model = InsightsConfig()
             model.fromMap(value)
             self.insights = model
+        }
+        if let value = dict["SmartCluster"] as? [String: Any?] {
+            var model = SmartClusterConfig()
+            model.fromMap(value)
+            self.smartCluster = model
         }
     }
 }
@@ -2990,6 +3001,61 @@ public class FigureCluster : Tea.TeaModel {
         }
         if let value = dict["VideoCount"] as? Int64 {
             self.videoCount = value
+        }
+    }
+}
+
+public class FigureClusterConfig : Tea.TeaModel {
+    public var autoClustering: Bool?
+
+    public var autoGenerate: Bool?
+
+    public var enabledFeatures: [String]?
+
+    public var minEntityCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoClustering != nil {
+            map["AutoClustering"] = self.autoClustering!
+        }
+        if self.autoGenerate != nil {
+            map["AutoGenerate"] = self.autoGenerate!
+        }
+        if self.enabledFeatures != nil {
+            map["EnabledFeatures"] = self.enabledFeatures!
+        }
+        if self.minEntityCount != nil {
+            map["MinEntityCount"] = self.minEntityCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoClustering"] as? Bool {
+            self.autoClustering = value
+        }
+        if let value = dict["AutoGenerate"] as? Bool {
+            self.autoGenerate = value
+        }
+        if let value = dict["EnabledFeatures"] as? [String] {
+            self.enabledFeatures = value
+        }
+        if let value = dict["MinEntityCount"] as? Int64 {
+            self.minEntityCount = value
         }
     }
 }
@@ -4813,6 +4879,8 @@ public class Insights : Tea.TeaModel {
 public class InsightsConfig : Tea.TeaModel {
     public var language: String?
 
+    public var video: VideoInsightsConfig?
+
     public override init() {
         super.init()
     }
@@ -4823,12 +4891,16 @@ public class InsightsConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.video?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.language != nil {
             map["Language"] = self.language!
+        }
+        if self.video != nil {
+            map["Video"] = self.video?.toMap()
         }
         return map
     }
@@ -4837,6 +4909,11 @@ public class InsightsConfig : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Language"] as? String {
             self.language = value
+        }
+        if let value = dict["Video"] as? [String: Any?] {
+            var model = VideoInsightsConfig()
+            model.fromMap(value)
+            self.video = model
         }
     }
 }
@@ -5638,6 +5715,37 @@ public class Optimization : Tea.TeaModel {
         }
         if let value = dict["Optimizer"] as? String {
             self.optimizer = value
+        }
+    }
+}
+
+public class PersonReferenceConfig : Tea.TeaModel {
+    public var enable: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? Bool {
+            self.enable = value
         }
     }
 }
@@ -6559,6 +6667,8 @@ public class SimpleQuery : Tea.TeaModel {
 }
 
 public class SmartCluster : Tea.TeaModel {
+    public var clusterType: String?
+
     public var createTime: String?
 
     public var datasetName: String?
@@ -6577,7 +6687,11 @@ public class SmartCluster : Tea.TeaModel {
 
     public var projectName: String?
 
+    public var reason: String?
+
     public var rule: SmartClusterRule?
+
+    public var rules: [SmartClusterRule]?
 
     public var updateTime: String?
 
@@ -6596,6 +6710,9 @@ public class SmartCluster : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -6623,8 +6740,18 @@ public class SmartCluster : Tea.TeaModel {
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
         }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
         if self.rule != nil {
             map["Rule"] = self.rule?.toMap()
+        }
+        if self.rules != nil {
+            var tmp : [Any] = []
+            for k in self.rules! {
+                tmp.append(k.toMap())
+            }
+            map["Rules"] = tmp
         }
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
@@ -6634,6 +6761,9 @@ public class SmartCluster : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
@@ -6661,10 +6791,26 @@ public class SmartCluster : Tea.TeaModel {
         if let value = dict["ProjectName"] as? String {
             self.projectName = value
         }
+        if let value = dict["Reason"] as? String {
+            self.reason = value
+        }
         if let value = dict["Rule"] as? [String: Any?] {
             var model = SmartClusterRule()
             model.fromMap(value)
             self.rule = model
+        }
+        if let value = dict["Rules"] as? [Any?] {
+            var tmp : [SmartClusterRule] = []
+            for v in value {
+                if v != nil {
+                    var model = SmartClusterRule()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.rules = tmp
         }
         if let value = dict["UpdateTime"] as? String {
             self.updateTime = value
@@ -6672,8 +6818,46 @@ public class SmartCluster : Tea.TeaModel {
     }
 }
 
+public class SmartClusterConfig : Tea.TeaModel {
+    public var figure: FigureClusterConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.figure?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.figure != nil {
+            map["Figure"] = self.figure?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Figure"] as? [String: Any?] {
+            var model = FigureClusterConfig()
+            model.fromMap(value)
+            self.figure = model
+        }
+    }
+}
+
 public class SmartClusterRule : Tea.TeaModel {
+    public var baseURIs: [String]?
+
     public var keywords: [String]?
+
+    public var ruleType: String?
 
     public var sensitivity: Double?
 
@@ -6691,8 +6875,14 @@ public class SmartClusterRule : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.baseURIs != nil {
+            map["BaseURIs"] = self.baseURIs!
+        }
         if self.keywords != nil {
             map["Keywords"] = self.keywords!
+        }
+        if self.ruleType != nil {
+            map["RuleType"] = self.ruleType!
         }
         if self.sensitivity != nil {
             map["Sensitivity"] = self.sensitivity!
@@ -6702,8 +6892,14 @@ public class SmartClusterRule : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BaseURIs"] as? [String] {
+            self.baseURIs = value
+        }
         if let value = dict["Keywords"] as? [String] {
             self.keywords = value
+        }
+        if let value = dict["RuleType"] as? String {
+            self.ruleType = value
         }
         if let value = dict["Sensitivity"] as? Double {
             self.sensitivity = value
@@ -8915,6 +9111,74 @@ public class VideoInsight : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+    }
+}
+
+public class VideoInsightsCaptionConfig : Tea.TeaModel {
+    public var personReference: PersonReferenceConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.personReference?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.personReference != nil {
+            map["PersonReference"] = self.personReference?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PersonReference"] as? [String: Any?] {
+            var model = PersonReferenceConfig()
+            model.fromMap(value)
+            self.personReference = model
+        }
+    }
+}
+
+public class VideoInsightsConfig : Tea.TeaModel {
+    public var caption: VideoInsightsCaptionConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.caption?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caption != nil {
+            map["Caption"] = self.caption?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Caption"] as? [String: Any?] {
+            var model = VideoInsightsCaptionConfig()
+            model.fromMap(value)
+            self.caption = model
         }
     }
 }
@@ -22840,6 +23104,8 @@ public class DetectImageCroppingRequest : Tea.TeaModel {
 
     public var credentialConfig: CredentialConfig?
 
+    public var inclusionHints: [String]?
+
     public var projectName: String?
 
     public var sourceURI: String?
@@ -22865,6 +23131,9 @@ public class DetectImageCroppingRequest : Tea.TeaModel {
         if self.credentialConfig != nil {
             map["CredentialConfig"] = self.credentialConfig?.toMap()
         }
+        if self.inclusionHints != nil {
+            map["InclusionHints"] = self.inclusionHints!
+        }
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
         }
@@ -22884,6 +23153,9 @@ public class DetectImageCroppingRequest : Tea.TeaModel {
             model.fromMap(value)
             self.credentialConfig = model
         }
+        if let value = dict["InclusionHints"] as? [String] {
+            self.inclusionHints = value
+        }
         if let value = dict["ProjectName"] as? String {
             self.projectName = value
         }
@@ -22897,6 +23169,8 @@ public class DetectImageCroppingShrinkRequest : Tea.TeaModel {
     public var aspectRatios: String?
 
     public var credentialConfigShrink: String?
+
+    public var inclusionHintsShrink: String?
 
     public var projectName: String?
 
@@ -22922,6 +23196,9 @@ public class DetectImageCroppingShrinkRequest : Tea.TeaModel {
         if self.credentialConfigShrink != nil {
             map["CredentialConfig"] = self.credentialConfigShrink!
         }
+        if self.inclusionHintsShrink != nil {
+            map["InclusionHints"] = self.inclusionHintsShrink!
+        }
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
         }
@@ -22939,6 +23216,9 @@ public class DetectImageCroppingShrinkRequest : Tea.TeaModel {
         if let value = dict["CredentialConfig"] as? String {
             self.credentialConfigShrink = value
         }
+        if let value = dict["InclusionHints"] as? String {
+            self.inclusionHintsShrink = value
+        }
         if let value = dict["ProjectName"] as? String {
             self.projectName = value
         }
@@ -22950,6 +23230,8 @@ public class DetectImageCroppingShrinkRequest : Tea.TeaModel {
 
 public class DetectImageCroppingResponseBody : Tea.TeaModel {
     public var croppings: [CroppingSuggestion]?
+
+    public var matchedInclusionHints: [String]?
 
     public var requestId: String?
 
@@ -22974,6 +23256,9 @@ public class DetectImageCroppingResponseBody : Tea.TeaModel {
             }
             map["Croppings"] = tmp
         }
+        if self.matchedInclusionHints != nil {
+            map["MatchedInclusionHints"] = self.matchedInclusionHints!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -22994,6 +23279,9 @@ public class DetectImageCroppingResponseBody : Tea.TeaModel {
                 }
             }
             self.croppings = tmp
+        }
+        if let value = dict["MatchedInclusionHints"] as? [String] {
+            self.matchedInclusionHints = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
