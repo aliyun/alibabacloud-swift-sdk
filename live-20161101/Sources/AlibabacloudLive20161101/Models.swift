@@ -5575,8 +5575,6 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
 
     public var domainName: String?
 
-    public var formatConfig: Bool?
-
     public var onDemand: Int32?
 
     public var ownerId: Int64?
@@ -5628,9 +5626,6 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
         }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
-        }
-        if self.formatConfig != nil {
-            map["FormatConfig"] = self.formatConfig!
         }
         if self.onDemand != nil {
             map["OnDemand"] = self.onDemand!
@@ -5688,9 +5683,6 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
         }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
-        }
-        if let value = dict["FormatConfig"] as? Bool {
-            self.formatConfig = value
         }
         if let value = dict["OnDemand"] as? Int32 {
             self.onDemand = value
@@ -103552,8 +103544,6 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
 
     public var domainName: String?
 
-    public var formatConfig: Bool?
-
     public var onDemand: Int32?
 
     public var ownerId: Int64?
@@ -103599,9 +103589,6 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
         }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
-        }
-        if self.formatConfig != nil {
-            map["FormatConfig"] = self.formatConfig!
         }
         if self.onDemand != nil {
             map["OnDemand"] = self.onDemand!
@@ -103650,9 +103637,6 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
         }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
-        }
-        if let value = dict["FormatConfig"] as? Bool {
-            self.formatConfig = value
         }
         if let value = dict["OnDemand"] as? Int32 {
             self.onDemand = value
