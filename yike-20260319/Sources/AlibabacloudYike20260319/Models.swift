@@ -2573,7 +2573,11 @@ public class GetYikeAgentJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var createTime: String?
+
     public var errorCode: String?
+
+    public var finishTime: String?
 
     public var jobId: String?
 
@@ -2603,8 +2607,14 @@ public class GetYikeAgentJobResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
         if self.errorCode != nil {
             map["ErrorCode"] = self.errorCode!
+        }
+        if self.finishTime != nil {
+            map["FinishTime"] = self.finishTime!
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
@@ -2636,8 +2646,14 @@ public class GetYikeAgentJobResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
         if let value = dict["ErrorCode"] as? String {
             self.errorCode = value
+        }
+        if let value = dict["FinishTime"] as? String {
+            self.finishTime = value
         }
         if let value = dict["JobId"] as? String {
             self.jobId = value
