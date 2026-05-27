@@ -1811,9 +1811,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.projectNames)) {
             body["projectNames"] = request.projectNames ?? [];
         }
-        if (!TeaUtils.Client.isUnset(request.region)) {
-            body["region"] = request.region ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.signature)) {
             body["signature"] = request.signature ?? "";
         }
@@ -1850,6 +1847,63 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listComputeMetricsByInstanceWithOptions(request as! ListComputeMetricsByInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listComputeMetricsBySignatureWithOptions(_ request: ListComputeMetricsBySignatureRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListComputeMetricsBySignatureResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["instanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobOwner)) {
+            body["jobOwner"] = request.jobOwner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.signature)) {
+            body["signature"] = request.signature ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.types)) {
+            body["types"] = request.types ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListComputeMetricsBySignature",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/computeMetrics/listBySignature",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListComputeMetricsBySignatureResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listComputeMetricsBySignature(_ request: ListComputeMetricsBySignatureRequest) async throws -> ListComputeMetricsBySignatureResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listComputeMetricsBySignatureWithOptions(request as! ListComputeMetricsBySignatureRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1919,6 +1973,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listFunctionsWithOptions(projectName as! String, request as! ListFunctionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listInstancesWithOptions(_ request: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            query["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            query["startDate"] = request.startDate!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListInstances",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/bills/instances",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListInstancesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listInstances(_ request: ListInstancesRequest) async throws -> ListInstancesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listInstancesWithOptions(request as! ListInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2636,6 +2726,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMmsTimersWithOptions(_ sourceId: String, _ request: ListMmsTimersRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMmsTimersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["pageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.srcDbName)) {
+            query["srcDbName"] = request.srcDbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcTableName)) {
+            query["srcTableName"] = request.srcTableName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stopped)) {
+            query["stopped"] = request.stopped!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMmsTimers",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/mms/datasources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sourceId)) + "/timers",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMmsTimersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMmsTimers(_ sourceId: String, _ request: ListMmsTimersRequest) async throws -> ListMmsTimersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMmsTimersWithOptions(sourceId as! String, request as! ListMmsTimersRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPackagesWithOptions(_ projectName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPackagesResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -2911,7 +3049,7 @@ open class Client : AlibabacloudOpenApi.Client {
         var request: ListStoragePartitionsInfoShrinkRequest = ListStoragePartitionsInfoShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
         if (!TeaUtils.Client.isUnset(tmpReq.types)) {
-            request.typesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.types, "types", "json")
+            request.typesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.types, "types", "simple")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ascOrder)) {
@@ -3445,6 +3583,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ascOrder)) {
             body["ascOrder"] = request.ascOrder!;
         }
+        if (!TeaUtils.Client.isUnset(request.codeList)) {
+            body["codeList"] = request.codeList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.groupList)) {
             body["groupList"] = request.groupList ?? [];
         }
@@ -3521,6 +3662,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryMmsTaskWithOptions(_ sourceId: String, _ taskId: String, _ request: RetryMmsTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RetryMmsTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RetryMmsTask",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/mms/datasources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sourceId)) + "/tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)) + "/retry",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RetryMmsTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryMmsTask(_ sourceId: String, _ taskId: String, _ request: RetryMmsTaskRequest) async throws -> RetryMmsTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await retryMmsTaskWithOptions(sourceId as! String, taskId as! String, request as! RetryMmsTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startMmsJobWithOptions(_ sourceId: String, _ jobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartMmsJobResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -3575,6 +3744,228 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumBillsWithOptions(_ request: SumBillsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumBillsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statsType)) {
+            body["statsType"] = request.statsType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topN)) {
+            body["topN"] = request.topN!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SumBills",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/bills/sum",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SumBillsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumBills(_ request: SumBillsRequest) async throws -> SumBillsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await sumBillsWithOptions(request as! SumBillsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumBillsByDateWithOptions(_ request: SumBillsByDateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumBillsByDateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statsType)) {
+            body["statsType"] = request.statsType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topN)) {
+            body["topN"] = request.topN!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SumBillsByDate",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/bills/sumByDate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SumBillsByDateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumBillsByDate(_ request: SumBillsByDateRequest) async throws -> SumBillsByDateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await sumBillsByDateWithOptions(request as! SumBillsByDateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumComputeMetricsByRecordWithOptions(_ request: SumComputeMetricsByRecordRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumComputeMetricsByRecordResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SumComputeMetricsByRecord",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/computeMetrics/sumByRecord",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SumComputeMetricsByRecordResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumComputeMetricsByRecord(_ request: SumComputeMetricsByRecordRequest) async throws -> SumComputeMetricsByRecordResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await sumComputeMetricsByRecordWithOptions(request as! SumComputeMetricsByRecordRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumComputeMetricsByUsageWithOptions(_ request: SumComputeMetricsByUsageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumComputeMetricsByUsageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.usageType)) {
+            body["usageType"] = request.usageType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SumComputeMetricsByUsage",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/computeMetrics/sumByUsage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SumComputeMetricsByUsageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumComputeMetricsByUsage(_ request: SumComputeMetricsByUsageRequest) async throws -> SumComputeMetricsByUsageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await sumComputeMetricsByUsageWithOptions(request as! SumComputeMetricsByUsageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumDailyBillsByItemWithOptions(_ request: SumDailyBillsByItemRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumDailyBillsByItemResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statsType)) {
+            body["statsType"] = request.statsType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.types)) {
+            body["types"] = request.types ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SumDailyBillsByItem",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/dailyBills/sumByItem",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SumDailyBillsByItemResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumDailyBillsByItem(_ request: SumDailyBillsByItemRequest) async throws -> SumDailyBillsByItemResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await sumDailyBillsByItemWithOptions(request as! SumDailyBillsByItemRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func sumStorageMetricsByDateWithOptions(_ request: SumStorageMetricsByDateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumStorageMetricsByDateResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3584,17 +3975,11 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.projectNames)) {
             body["projectNames"] = request.projectNames ?? [];
         }
-        if (!TeaUtils.Client.isUnset(request.region)) {
-            body["region"] = request.region ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.startDate)) {
             body["startDate"] = request.startDate!;
         }
         if (!TeaUtils.Client.isUnset(request.statsType)) {
             body["statsType"] = request.statsType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userId)) {
-            body["userId"] = request.userId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -3620,6 +4005,76 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await sumStorageMetricsByDateWithOptions(request as! SumStorageMetricsByDateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumStorageMetricsByTypeWithOptions(_ request: SumStorageMetricsByTypeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumStorageMetricsByTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statsType)) {
+            body["statsType"] = request.statsType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SumStorageMetricsByType",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/storageMetrics/sumByType",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SumStorageMetricsByTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumStorageMetricsByType(_ request: SumStorageMetricsByTypeRequest) async throws -> SumStorageMetricsByTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await sumStorageMetricsByTypeWithOptions(request as! SumStorageMetricsByTypeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerMmsTimerWithOptions(_ sourceId: String, _ timerId: String, _ request: TriggerMmsTimerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TriggerMmsTimerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TriggerMmsTimer",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/mms/datasources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sourceId)) + "/timers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(timerId)) + "/trigger",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TriggerMmsTimerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerMmsTimer(_ sourceId: String, _ timerId: String, _ request: TriggerMmsTimerRequest) async throws -> TriggerMmsTimerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await triggerMmsTimerWithOptions(sourceId as! String, timerId as! String, request as! TriggerMmsTimerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3765,6 +4220,174 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateMmsDataSourceWithOptions(sourceId as! String, request as! UpdateMmsDataSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsDbWithOptions(_ sourceId: String, _ dbId: String, _ request: UpdateMmsDbRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMmsDbResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dstName)) {
+            body["dstName"] = request.dstName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstProjectName)) {
+            body["dstProjectName"] = request.dstProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMmsDb",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/mms/datasources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sourceId)) + "/dbs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(dbId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMmsDbResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsDb(_ sourceId: String, _ dbId: String, _ request: UpdateMmsDbRequest) async throws -> UpdateMmsDbResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMmsDbWithOptions(sourceId as! String, dbId as! String, request as! UpdateMmsDbRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsTableWithOptions(_ sourceId: String, _ tableId: String, _ request: UpdateMmsTableRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMmsTableResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dstName)) {
+            body["dstName"] = request.dstName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstProjectName)) {
+            body["dstProjectName"] = request.dstProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstSchemaName)) {
+            body["dstSchemaName"] = request.dstSchemaName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMmsTable",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/mms/datasources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sourceId)) + "/tables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tableId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMmsTableResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsTable(_ sourceId: String, _ tableId: String, _ request: UpdateMmsTableRequest) async throws -> UpdateMmsTableResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMmsTableWithOptions(sourceId as! String, tableId as! String, request as! UpdateMmsTableRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsTablesWithOptions(_ sourceId: String, _ request: UpdateMmsTablesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMmsTablesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dbName)) {
+            body["dbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstProjectName)) {
+            body["dstProjectName"] = request.dstProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstSchemaName)) {
+            body["dstSchemaName"] = request.dstSchemaName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableNames)) {
+            body["tableNames"] = request.tableNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tables)) {
+            body["tables"] = request.tables ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMmsTables",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/mms/datasources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sourceId)) + "/tables",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMmsTablesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsTables(_ sourceId: String, _ request: UpdateMmsTablesRequest) async throws -> UpdateMmsTablesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMmsTablesWithOptions(sourceId as! String, request as! UpdateMmsTablesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsTimerWithOptions(_ sourceId: String, _ timerId: String, _ request: UpdateMmsTimerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMmsTimerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scheduleType)) {
+            body["scheduleType"] = request.scheduleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stopped)) {
+            body["stopped"] = request.stopped!;
+        }
+        if (!TeaUtils.Client.isUnset(request.value)) {
+            body["value"] = request.value ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMmsTimer",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/mms/datasources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sourceId)) + "/timers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(timerId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMmsTimerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmsTimer(_ sourceId: String, _ timerId: String, _ request: UpdateMmsTimerRequest) async throws -> UpdateMmsTimerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMmsTimerWithOptions(sourceId as! String, timerId as! String, request as! UpdateMmsTimerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
