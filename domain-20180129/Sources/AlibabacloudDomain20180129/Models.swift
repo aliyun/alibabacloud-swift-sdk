@@ -2440,6 +2440,8 @@ public class CreateIntlFixedPriceDomainOrderRequest : Tea.TeaModel {
 
     public var expectedPrice: Int64?
 
+    public var productType: Int32?
+
     public override init() {
         super.init()
     }
@@ -2466,6 +2468,9 @@ public class CreateIntlFixedPriceDomainOrderRequest : Tea.TeaModel {
         if self.expectedPrice != nil {
             map["ExpectedPrice"] = self.expectedPrice!
         }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
         return map
     }
 
@@ -2482,6 +2487,9 @@ public class CreateIntlFixedPriceDomainOrderRequest : Tea.TeaModel {
         }
         if let value = dict["ExpectedPrice"] as? Int64 {
             self.expectedPrice = value
+        }
+        if let value = dict["ProductType"] as? Int32 {
+            self.productType = value
         }
     }
 }
@@ -8762,6 +8770,8 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var cnnicPrivacyServiceStatus: String?
+
     public var dnsList: QueryDomainByDomainNameResponseBody.DnsList?
 
     public var domainGroupId: Int64?
@@ -8795,6 +8805,8 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
     public var instanceId: String?
 
     public var premium: Bool?
+
+    public var privacyServiceStatus: String?
 
     public var realNameStatus: String?
 
@@ -8848,6 +8860,9 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cnnicPrivacyServiceStatus != nil {
+            map["CnnicPrivacyServiceStatus"] = self.cnnicPrivacyServiceStatus!
+        }
         if self.dnsList != nil {
             map["DnsList"] = self.dnsList?.toMap()
         }
@@ -8898,6 +8913,9 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
         }
         if self.premium != nil {
             map["Premium"] = self.premium!
+        }
+        if self.privacyServiceStatus != nil {
+            map["PrivacyServiceStatus"] = self.privacyServiceStatus!
         }
         if self.realNameStatus != nil {
             map["RealNameStatus"] = self.realNameStatus!
@@ -8958,6 +8976,9 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CnnicPrivacyServiceStatus"] as? String {
+            self.cnnicPrivacyServiceStatus = value
+        }
         if let value = dict["DnsList"] as? [String: Any?] {
             var model = QueryDomainByDomainNameResponseBody.DnsList()
             model.fromMap(value)
@@ -9010,6 +9031,9 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
         }
         if let value = dict["Premium"] as? Bool {
             self.premium = value
+        }
+        if let value = dict["PrivacyServiceStatus"] as? String {
+            self.privacyServiceStatus = value
         }
         if let value = dict["RealNameStatus"] as? String {
             self.realNameStatus = value
@@ -9280,6 +9304,8 @@ public class QueryDomainByInstanceIdResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var cnnicPrivacyServiceStatus: String?
+
     public var dnsList: QueryDomainByInstanceIdResponseBody.DnsList?
 
     public var domainGroupId: Int64?
@@ -9368,6 +9394,9 @@ public class QueryDomainByInstanceIdResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cnnicPrivacyServiceStatus != nil {
+            map["CnnicPrivacyServiceStatus"] = self.cnnicPrivacyServiceStatus!
+        }
         if self.dnsList != nil {
             map["DnsList"] = self.dnsList?.toMap()
         }
@@ -9481,6 +9510,9 @@ public class QueryDomainByInstanceIdResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CnnicPrivacyServiceStatus"] as? String {
+            self.cnnicPrivacyServiceStatus = value
+        }
         if let value = dict["DnsList"] as? [String: Any?] {
             var model = QueryDomainByInstanceIdResponseBody.DnsList()
             model.fromMap(value)
@@ -21041,6 +21073,8 @@ public class SaveBatchTaskForDomainNameProxyServiceRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var serviceType: String?
+
     public var status: Bool?
 
     public var userClientIp: String?
@@ -21065,6 +21099,9 @@ public class SaveBatchTaskForDomainNameProxyServiceRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.serviceType != nil {
+            map["ServiceType"] = self.serviceType!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -21081,6 +21118,9 @@ public class SaveBatchTaskForDomainNameProxyServiceRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["ServiceType"] as? String {
+            self.serviceType = value
         }
         if let value = dict["Status"] as? Bool {
             self.status = value
