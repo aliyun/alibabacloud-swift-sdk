@@ -1046,6 +1046,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeWuyingServerWithOptions(_ request: DescribeWuyingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeWuyingServerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.wuyingServerId)) {
+            body["WuyingServerId"] = request.wuyingServerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeWuyingServer",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeWuyingServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeWuyingServer(_ request: DescribeWuyingServerRequest) async throws -> DescribeWuyingServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeWuyingServerWithOptions(request as! DescribeWuyingServerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeWuyingServerEipInfoWithOptions(_ request: DescribeWuyingServerEipInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeWuyingServerEipInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

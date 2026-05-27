@@ -5239,6 +5239,355 @@ public class DeliverToUserSlsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeWuyingServerRequest : Tea.TeaModel {
+    public var wuyingServerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.wuyingServerId != nil {
+            map["WuyingServerId"] = self.wuyingServerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["WuyingServerId"] as? String {
+            self.wuyingServerId = value
+        }
+    }
+}
+
+public class DescribeWuyingServerResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class PrivateIpSets : Tea.TeaModel {
+            public var primary: Bool?
+
+            public var privateIpAddress: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.primary != nil {
+                    map["Primary"] = self.primary!
+                }
+                if self.privateIpAddress != nil {
+                    map["PrivateIpAddress"] = self.privateIpAddress!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Primary"] as? Bool {
+                    self.primary = value
+                }
+                if let value = dict["PrivateIpAddress"] as? String {
+                    self.privateIpAddress = value
+                }
+            }
+        }
+        public var bandwidth: Int32?
+
+        public var bizRegionId: String?
+
+        public var chargeType: String?
+
+        public var createTime: String?
+
+        public var eniPrivateIpAddressQuantity: Int32?
+
+        public var expiredTime: String?
+
+        public var imageId: String?
+
+        public var imageName: String?
+
+        public var networkInterfaceIp: String?
+
+        public var officeSiteId: String?
+
+        public var officeSiteName: String?
+
+        public var officeSiteType: String?
+
+        public var osType: String?
+
+        public var privateIpSets: [DescribeWuyingServerResponseBody.Data.PrivateIpSets]?
+
+        public var status: String?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskSize: Int32?
+
+        public var wuyingServerId: String?
+
+        public var wuyingServerName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
+            if self.bizRegionId != nil {
+                map["BizRegionId"] = self.bizRegionId!
+            }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.eniPrivateIpAddressQuantity != nil {
+                map["EniPrivateIpAddressQuantity"] = self.eniPrivateIpAddressQuantity!
+            }
+            if self.expiredTime != nil {
+                map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.imageName != nil {
+                map["ImageName"] = self.imageName!
+            }
+            if self.networkInterfaceIp != nil {
+                map["NetworkInterfaceIp"] = self.networkInterfaceIp!
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.officeSiteName != nil {
+                map["OfficeSiteName"] = self.officeSiteName!
+            }
+            if self.officeSiteType != nil {
+                map["OfficeSiteType"] = self.officeSiteType!
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.privateIpSets != nil {
+                var tmp : [Any] = []
+                for k in self.privateIpSets! {
+                    tmp.append(k.toMap())
+                }
+                map["PrivateIpSets"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.systemDiskCategory != nil {
+                map["SystemDiskCategory"] = self.systemDiskCategory!
+            }
+            if self.systemDiskSize != nil {
+                map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            if self.wuyingServerId != nil {
+                map["WuyingServerId"] = self.wuyingServerId!
+            }
+            if self.wuyingServerName != nil {
+                map["WuyingServerName"] = self.wuyingServerName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bandwidth"] as? Int32 {
+                self.bandwidth = value
+            }
+            if let value = dict["BizRegionId"] as? String {
+                self.bizRegionId = value
+            }
+            if let value = dict["ChargeType"] as? String {
+                self.chargeType = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["EniPrivateIpAddressQuantity"] as? Int32 {
+                self.eniPrivateIpAddressQuantity = value
+            }
+            if let value = dict["ExpiredTime"] as? String {
+                self.expiredTime = value
+            }
+            if let value = dict["ImageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["ImageName"] as? String {
+                self.imageName = value
+            }
+            if let value = dict["NetworkInterfaceIp"] as? String {
+                self.networkInterfaceIp = value
+            }
+            if let value = dict["OfficeSiteId"] as? String {
+                self.officeSiteId = value
+            }
+            if let value = dict["OfficeSiteName"] as? String {
+                self.officeSiteName = value
+            }
+            if let value = dict["OfficeSiteType"] as? String {
+                self.officeSiteType = value
+            }
+            if let value = dict["OsType"] as? String {
+                self.osType = value
+            }
+            if let value = dict["PrivateIpSets"] as? [Any?] {
+                var tmp : [DescribeWuyingServerResponseBody.Data.PrivateIpSets] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeWuyingServerResponseBody.Data.PrivateIpSets()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.privateIpSets = tmp
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SystemDiskCategory"] as? String {
+                self.systemDiskCategory = value
+            }
+            if let value = dict["SystemDiskSize"] as? Int32 {
+                self.systemDiskSize = value
+            }
+            if let value = dict["WuyingServerId"] as? String {
+                self.wuyingServerId = value
+            }
+            if let value = dict["WuyingServerName"] as? String {
+                self.wuyingServerName = value
+            }
+        }
+    }
+    public var data: DescribeWuyingServerResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeWuyingServerResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeWuyingServerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeWuyingServerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeWuyingServerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeWuyingServerEipInfoRequest : Tea.TeaModel {
     public var isp: String?
 
