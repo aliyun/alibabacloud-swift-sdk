@@ -502,7 +502,7 @@ public class EngineSearchResponse : Tea.TeaModel {
 }
 
 public class GetDatasetResourceUrlRequest : Tea.TeaModel {
-    public var datasetId: Int64?
+    public var datasetId: String?
 
     public var primaryKey: String?
 
@@ -531,7 +531,7 @@ public class GetDatasetResourceUrlRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["datasetId"] as? Int64 {
+        if let value = dict["datasetId"] as? String {
             self.datasetId = value
         }
         if let value = dict["primaryKey"] as? String {
@@ -679,7 +679,7 @@ public class GetDatasetResourceUrlResponse : Tea.TeaModel {
 }
 
 public class ImportDatasetDataRequest : Tea.TeaModel {
-    public var datasetId: Int64?
+    public var datasetId: String?
 
     public var records: [[String: Any]]?
 
@@ -708,7 +708,7 @@ public class ImportDatasetDataRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["datasetId"] as? Int64 {
+        if let value = dict["datasetId"] as? String {
             self.datasetId = value
         }
         if let value = dict["records"] as? [[String: Any]] {

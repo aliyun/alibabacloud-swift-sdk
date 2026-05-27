@@ -82,7 +82,7 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.datasetId)) {
-            body["datasetId"] = request.datasetId!;
+            body["datasetId"] = request.datasetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.primaryKey)) {
             body["primaryKey"] = request.primaryKey ?? "";
@@ -118,7 +118,7 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.datasetId)) {
-            body["datasetId"] = request.datasetId!;
+            body["datasetId"] = request.datasetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.records)) {
             body["records"] = request.records ?? [];
