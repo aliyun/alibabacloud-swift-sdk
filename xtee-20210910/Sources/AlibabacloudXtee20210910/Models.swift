@@ -1,6 +1,9 @@
 import Foundation
 import Tea
 import TeaUtils
+import DarabonbaXML
+import AlibabaCloudCredentials
+import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -4817,6 +4820,326 @@ public class CreateFieldResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateFieldResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateForeignPocSampleRequest : Tea.TeaModel {
+    public var file: String?
+
+    public var lang: String?
+
+    public var regId: String?
+
+    public var remark: String?
+
+    public var sampleName: String?
+
+    public var tab: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.file != nil {
+            map["File"] = self.file!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regId != nil {
+            map["RegId"] = self.regId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.sampleName != nil {
+            map["SampleName"] = self.sampleName!
+        }
+        if self.tab != nil {
+            map["Tab"] = self.tab!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["File"] as? String {
+            self.file = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegId"] as? String {
+            self.regId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["SampleName"] as? String {
+            self.sampleName = value
+        }
+        if let value = dict["Tab"] as? String {
+            self.tab = value
+        }
+    }
+}
+
+public class CreateForeignPocSampleAdvanceRequest : Tea.TeaModel {
+    public var fileObject: InputStream?
+
+    public var lang: String?
+
+    public var regId: String?
+
+    public var remark: String?
+
+    public var sampleName: String?
+
+    public var tab: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileObject != nil {
+            map["File"] = self.fileObject!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regId != nil {
+            map["RegId"] = self.regId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.sampleName != nil {
+            map["SampleName"] = self.sampleName!
+        }
+        if self.tab != nil {
+            map["Tab"] = self.tab!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["File"] as? InputStream {
+            self.fileObject = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegId"] as? String {
+            self.regId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["SampleName"] as? String {
+            self.sampleName = value
+        }
+        if let value = dict["Tab"] as? String {
+            self.tab = value
+        }
+    }
+}
+
+public class CreateForeignPocSampleResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var hasWarnings: Bool?
+
+        public var sampleId: Int32?
+
+        public var sampleName: String?
+
+        public var tab: String?
+
+        public var warningMessage: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hasWarnings != nil {
+                map["HasWarnings"] = self.hasWarnings!
+            }
+            if self.sampleId != nil {
+                map["SampleId"] = self.sampleId!
+            }
+            if self.sampleName != nil {
+                map["SampleName"] = self.sampleName!
+            }
+            if self.tab != nil {
+                map["Tab"] = self.tab!
+            }
+            if self.warningMessage != nil {
+                map["WarningMessage"] = self.warningMessage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["HasWarnings"] as? Bool {
+                self.hasWarnings = value
+            }
+            if let value = dict["SampleId"] as? Int32 {
+                self.sampleId = value
+            }
+            if let value = dict["SampleName"] as? String {
+                self.sampleName = value
+            }
+            if let value = dict["Tab"] as? String {
+                self.tab = value
+            }
+            if let value = dict["WarningMessage"] as? String {
+                self.warningMessage = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var httpStatusCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: CreateForeignPocSampleResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["HttpStatusCode"] as? String {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResultObject"] as? [String: Any?] {
+            var model = CreateForeignPocSampleResponseBody.ResultObject()
+            model.fromMap(value)
+            self.resultObject = model
+        }
+    }
+}
+
+public class CreateForeignPocSampleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateForeignPocSampleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateForeignPocSampleResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -70155,6 +70478,459 @@ public class UploadFileCheckResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UploadFileCheckResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UploadForeignSampleFileRequest : Tea.TeaModel {
+    public var file: String?
+
+    public var lang: String?
+
+    public var regId: String?
+
+    public var tab: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.file != nil {
+            map["File"] = self.file!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regId != nil {
+            map["RegId"] = self.regId!
+        }
+        if self.tab != nil {
+            map["Tab"] = self.tab!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["File"] as? String {
+            self.file = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegId"] as? String {
+            self.regId = value
+        }
+        if let value = dict["Tab"] as? String {
+            self.tab = value
+        }
+    }
+}
+
+public class UploadForeignSampleFileAdvanceRequest : Tea.TeaModel {
+    public var fileObject: InputStream?
+
+    public var lang: String?
+
+    public var regId: String?
+
+    public var tab: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileObject != nil {
+            map["File"] = self.fileObject!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regId != nil {
+            map["RegId"] = self.regId!
+        }
+        if self.tab != nil {
+            map["Tab"] = self.tab!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["File"] as? InputStream {
+            self.fileObject = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegId"] as? String {
+            self.regId = value
+        }
+        if let value = dict["Tab"] as? String {
+            self.tab = value
+        }
+    }
+}
+
+public class UploadForeignSampleFileResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public class ColumnStats : Tea.TeaModel {
+            public var distinctNumber: Int32?
+
+            public var distinctRate: String?
+
+            public var fieldName: String?
+
+            public var missNumber: Int32?
+
+            public var missRate: String?
+
+            public var rowNumber: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.distinctNumber != nil {
+                    map["DistinctNumber"] = self.distinctNumber!
+                }
+                if self.distinctRate != nil {
+                    map["DistinctRate"] = self.distinctRate!
+                }
+                if self.fieldName != nil {
+                    map["FieldName"] = self.fieldName!
+                }
+                if self.missNumber != nil {
+                    map["MissNumber"] = self.missNumber!
+                }
+                if self.missRate != nil {
+                    map["MissRate"] = self.missRate!
+                }
+                if self.rowNumber != nil {
+                    map["RowNumber"] = self.rowNumber!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DistinctNumber"] as? Int32 {
+                    self.distinctNumber = value
+                }
+                if let value = dict["DistinctRate"] as? String {
+                    self.distinctRate = value
+                }
+                if let value = dict["FieldName"] as? String {
+                    self.fieldName = value
+                }
+                if let value = dict["MissNumber"] as? Int32 {
+                    self.missNumber = value
+                }
+                if let value = dict["MissRate"] as? String {
+                    self.missRate = value
+                }
+                if let value = dict["RowNumber"] as? Int32 {
+                    self.rowNumber = value
+                }
+            }
+        }
+        public class PreviewData : Tea.TeaModel {
+            public var headers: [String]?
+
+            public var rows: [[String]]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.headers != nil {
+                    map["Headers"] = self.headers!
+                }
+                if self.rows != nil {
+                    map["Rows"] = self.rows!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Headers"] as? [String] {
+                    self.headers = value
+                }
+                if let value = dict["Rows"] as? [[String]] {
+                    self.rows = value
+                }
+            }
+        }
+        public var beyondBacktrackingPeriodNum: Int32?
+
+        public var columnStats: [UploadForeignSampleFileResponseBody.ResultObject.ColumnStats]?
+
+        public var dateType: String?
+
+        public var fileName: String?
+
+        public var fileSize: Int32?
+
+        public var fileUrl: String?
+
+        public var notExistScenes: [String]?
+
+        public var phoneInvalidList: [String]?
+
+        public var previewData: UploadForeignSampleFileResponseBody.ResultObject.PreviewData?
+
+        public var rowCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.previewData?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.beyondBacktrackingPeriodNum != nil {
+                map["BeyondBacktrackingPeriodNum"] = self.beyondBacktrackingPeriodNum!
+            }
+            if self.columnStats != nil {
+                var tmp : [Any] = []
+                for k in self.columnStats! {
+                    tmp.append(k.toMap())
+                }
+                map["ColumnStats"] = tmp
+            }
+            if self.dateType != nil {
+                map["DateType"] = self.dateType!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.fileSize != nil {
+                map["FileSize"] = self.fileSize!
+            }
+            if self.fileUrl != nil {
+                map["FileUrl"] = self.fileUrl!
+            }
+            if self.notExistScenes != nil {
+                map["NotExistScenes"] = self.notExistScenes!
+            }
+            if self.phoneInvalidList != nil {
+                map["PhoneInvalidList"] = self.phoneInvalidList!
+            }
+            if self.previewData != nil {
+                map["PreviewData"] = self.previewData?.toMap()
+            }
+            if self.rowCount != nil {
+                map["RowCount"] = self.rowCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BeyondBacktrackingPeriodNum"] as? Int32 {
+                self.beyondBacktrackingPeriodNum = value
+            }
+            if let value = dict["ColumnStats"] as? [Any?] {
+                var tmp : [UploadForeignSampleFileResponseBody.ResultObject.ColumnStats] = []
+                for v in value {
+                    if v != nil {
+                        var model = UploadForeignSampleFileResponseBody.ResultObject.ColumnStats()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.columnStats = tmp
+            }
+            if let value = dict["DateType"] as? String {
+                self.dateType = value
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["FileSize"] as? Int32 {
+                self.fileSize = value
+            }
+            if let value = dict["FileUrl"] as? String {
+                self.fileUrl = value
+            }
+            if let value = dict["NotExistScenes"] as? [String] {
+                self.notExistScenes = value
+            }
+            if let value = dict["PhoneInvalidList"] as? [String] {
+                self.phoneInvalidList = value
+            }
+            if let value = dict["PreviewData"] as? [String: Any?] {
+                var model = UploadForeignSampleFileResponseBody.ResultObject.PreviewData()
+                model.fromMap(value)
+                self.previewData = model
+            }
+            if let value = dict["RowCount"] as? Int32 {
+                self.rowCount = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var httpStatusCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: UploadForeignSampleFileResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["HttpStatusCode"] as? String {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResultObject"] as? [String: Any?] {
+            var model = UploadForeignSampleFileResponseBody.ResultObject()
+            model.fromMap(value)
+            self.resultObject = model
+        }
+    }
+}
+
+public class UploadForeignSampleFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UploadForeignSampleFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UploadForeignSampleFileResponseBody()
             model.fromMap(value)
             self.body = model
         }
