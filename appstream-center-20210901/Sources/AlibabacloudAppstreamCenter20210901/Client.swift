@@ -67,6 +67,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func assignWuyingServerPrivateAddressesWithOptions(_ request: AssignWuyingServerPrivateAddressesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssignWuyingServerPrivateAddressesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.secondaryPrivateIpAddressCount)) {
+            body["SecondaryPrivateIpAddressCount"] = request.secondaryPrivateIpAddressCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wuyingServerId)) {
+            body["WuyingServerId"] = request.wuyingServerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AssignWuyingServerPrivateAddresses",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AssignWuyingServerPrivateAddressesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func assignWuyingServerPrivateAddresses(_ request: AssignWuyingServerPrivateAddressesRequest) async throws -> AssignWuyingServerPrivateAddressesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await assignWuyingServerPrivateAddressesWithOptions(request as! AssignWuyingServerPrivateAddressesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func authorizeInstanceGroupWithOptions(_ tmpReq: AuthorizeInstanceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AuthorizeInstanceGroupResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AuthorizeInstanceGroupShrinkRequest = AuthorizeInstanceGroupShrinkRequest([:])
@@ -3233,6 +3267,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func tagCloudResources(_ request: TagCloudResourcesRequest) async throws -> TagCloudResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await tagCloudResourcesWithOptions(request as! TagCloudResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unassignWuyingServerPrivateAddressesWithOptions(_ request: UnassignWuyingServerPrivateAddressesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnassignWuyingServerPrivateAddressesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.privateIpAddresses)) {
+            body["PrivateIpAddresses"] = request.privateIpAddresses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.wuyingServerId)) {
+            body["WuyingServerId"] = request.wuyingServerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnassignWuyingServerPrivateAddresses",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnassignWuyingServerPrivateAddressesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unassignWuyingServerPrivateAddresses(_ request: UnassignWuyingServerPrivateAddressesRequest) async throws -> UnassignWuyingServerPrivateAddressesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await unassignWuyingServerPrivateAddressesWithOptions(request as! UnassignWuyingServerPrivateAddressesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

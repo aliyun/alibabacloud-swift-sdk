@@ -165,6 +165,134 @@ public class ApproveOtaTaskResponse : Tea.TeaModel {
     }
 }
 
+public class AssignWuyingServerPrivateAddressesRequest : Tea.TeaModel {
+    public var secondaryPrivateIpAddressCount: Int32?
+
+    public var wuyingServerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.secondaryPrivateIpAddressCount != nil {
+            map["SecondaryPrivateIpAddressCount"] = self.secondaryPrivateIpAddressCount!
+        }
+        if self.wuyingServerId != nil {
+            map["WuyingServerId"] = self.wuyingServerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SecondaryPrivateIpAddressCount"] as? Int32 {
+            self.secondaryPrivateIpAddressCount = value
+        }
+        if let value = dict["WuyingServerId"] as? String {
+            self.wuyingServerId = value
+        }
+    }
+}
+
+public class AssignWuyingServerPrivateAddressesResponseBody : Tea.TeaModel {
+    public var assignedPrivateIpAddresses: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.assignedPrivateIpAddresses != nil {
+            map["AssignedPrivateIpAddresses"] = self.assignedPrivateIpAddresses!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssignedPrivateIpAddresses"] as? [String] {
+            self.assignedPrivateIpAddresses = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AssignWuyingServerPrivateAddressesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AssignWuyingServerPrivateAddressesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AssignWuyingServerPrivateAddressesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
     public class UserMeta : Tea.TeaModel {
         public var adDomain: String?
@@ -15871,6 +15999,44 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PrivateIpSets : Tea.TeaModel {
+            public var primary: Bool?
+
+            public var privateIpAddress: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.primary != nil {
+                    map["Primary"] = self.primary!
+                }
+                if self.privateIpAddress != nil {
+                    map["PrivateIpAddress"] = self.privateIpAddress!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Primary"] as? Bool {
+                    self.primary = value
+                }
+                if let value = dict["PrivateIpAddress"] as? String {
+                    self.privateIpAddress = value
+                }
+            }
+        }
         public class ServerInstanceTypeInfo : Tea.TeaModel {
             public var cpu: String?
 
@@ -15993,6 +16159,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var dataDisk: [ListWuyingServerResponseBody.WuyingServerList.DataDisk]?
 
+        public var eniPrivateIpAddressQuantity: Int32?
+
         public var expiredTime: String?
 
         public var fotaVersion: String?
@@ -16016,6 +16184,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
         public var osType: String?
 
         public var policyGroupIdList: [String]?
+
+        public var privateIpSets: [ListWuyingServerResponseBody.WuyingServerList.PrivateIpSets]?
 
         public var resourceSessionStatus: String?
 
@@ -16044,6 +16214,10 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
         public var virtualKubeletIp: String?
 
         public var virtualNodePoolId: String?
+
+        public var vkUpgradeNeeded: Bool?
+
+        public var vkVersion: String?
 
         public var wuyingServerId: String?
 
@@ -16089,6 +16263,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 }
                 map["DataDisk"] = tmp
             }
+            if self.eniPrivateIpAddressQuantity != nil {
+                map["EniPrivateIpAddressQuantity"] = self.eniPrivateIpAddressQuantity!
+            }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
             }
@@ -16128,6 +16305,13 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if self.policyGroupIdList != nil {
                 map["PolicyGroupIdList"] = self.policyGroupIdList!
+            }
+            if self.privateIpSets != nil {
+                var tmp : [Any] = []
+                for k in self.privateIpSets! {
+                    tmp.append(k.toMap())
+                }
+                map["PrivateIpSets"] = tmp
             }
             if self.resourceSessionStatus != nil {
                 map["ResourceSessionStatus"] = self.resourceSessionStatus!
@@ -16175,6 +16359,12 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if self.virtualNodePoolId != nil {
                 map["VirtualNodePoolId"] = self.virtualNodePoolId!
             }
+            if self.vkUpgradeNeeded != nil {
+                map["VkUpgradeNeeded"] = self.vkUpgradeNeeded!
+            }
+            if self.vkVersion != nil {
+                map["VkVersion"] = self.vkVersion!
+            }
             if self.wuyingServerId != nil {
                 map["WuyingServerId"] = self.wuyingServerId!
             }
@@ -16216,6 +16406,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                     }
                 }
                 self.dataDisk = tmp
+            }
+            if let value = dict["EniPrivateIpAddressQuantity"] as? Int32 {
+                self.eniPrivateIpAddressQuantity = value
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
@@ -16262,6 +16455,19 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["PolicyGroupIdList"] as? [String] {
                 self.policyGroupIdList = value
+            }
+            if let value = dict["PrivateIpSets"] as? [Any?] {
+                var tmp : [ListWuyingServerResponseBody.WuyingServerList.PrivateIpSets] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListWuyingServerResponseBody.WuyingServerList.PrivateIpSets()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.privateIpSets = tmp
             }
             if let value = dict["ResourceSessionStatus"] as? String {
                 self.resourceSessionStatus = value
@@ -16316,6 +16522,12 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["VirtualNodePoolId"] as? String {
                 self.virtualNodePoolId = value
+            }
+            if let value = dict["VkUpgradeNeeded"] as? Bool {
+                self.vkUpgradeNeeded = value
+            }
+            if let value = dict["VkVersion"] as? String {
+                self.vkVersion = value
             }
             if let value = dict["WuyingServerId"] as? String {
                 self.wuyingServerId = value
@@ -21437,6 +21649,126 @@ public class TagCloudResourcesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = TagCloudResourcesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UnassignWuyingServerPrivateAddressesRequest : Tea.TeaModel {
+    public var privateIpAddresses: [String]?
+
+    public var wuyingServerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.privateIpAddresses != nil {
+            map["PrivateIpAddresses"] = self.privateIpAddresses!
+        }
+        if self.wuyingServerId != nil {
+            map["WuyingServerId"] = self.wuyingServerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PrivateIpAddresses"] as? [String] {
+            self.privateIpAddresses = value
+        }
+        if let value = dict["WuyingServerId"] as? String {
+            self.wuyingServerId = value
+        }
+    }
+}
+
+public class UnassignWuyingServerPrivateAddressesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UnassignWuyingServerPrivateAddressesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnassignWuyingServerPrivateAddressesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UnassignWuyingServerPrivateAddressesResponseBody()
             model.fromMap(value)
             self.body = model
         }
