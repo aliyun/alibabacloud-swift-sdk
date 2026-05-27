@@ -928,6 +928,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetUserIdByOpenDingtalkIdWithOptions(_ tmpReq: BatchGetUserIdByOpenDingtalkIdRequest, _ tmpHeader: BatchGetUserIdByOpenDingtalkIdHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchGetUserIdByOpenDingtalkIdResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchGetUserIdByOpenDingtalkIdShrinkRequest = BatchGetUserIdByOpenDingtalkIdShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: BatchGetUserIdByOpenDingtalkIdShrinkHeaders = BatchGetUserIdByOpenDingtalkIdShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.openDingtalkIds)) {
+            request.openDingtalkIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.openDingtalkIds, "openDingtalkIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.openDingtalkIdsShrink)) {
+            body["openDingtalkIds"] = request.openDingtalkIdsShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchGetUserIdByOpenDingtalkId",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/im/batchGetUserIdByOpenDingtalkId",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchGetUserIdByOpenDingtalkIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetUserIdByOpenDingtalkId(_ request: BatchGetUserIdByOpenDingtalkIdRequest) async throws -> BatchGetUserIdByOpenDingtalkIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: BatchGetUserIdByOpenDingtalkIdHeaders = BatchGetUserIdByOpenDingtalkIdHeaders([:])
+        return try await batchGetUserIdByOpenDingtalkIdWithOptions(request as! BatchGetUserIdByOpenDingtalkIdRequest, headers as! BatchGetUserIdByOpenDingtalkIdHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchQueryGroupMemberWithOptions(_ tmpReq: BatchQueryGroupMemberRequest, _ tmpHeader: BatchQueryGroupMemberHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchQueryGroupMemberResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: BatchQueryGroupMemberShrinkRequest = BatchQueryGroupMemberShrinkRequest([:])
