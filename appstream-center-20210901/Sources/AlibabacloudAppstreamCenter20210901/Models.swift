@@ -12105,6 +12105,8 @@ public class ListImageRequest : Tea.TeaModel {
 
     public var bizTypeList: [Int32]?
 
+    public var distro: String?
+
     public var featureList: [String]?
 
     public var fotaVersion: String?
@@ -12163,6 +12165,9 @@ public class ListImageRequest : Tea.TeaModel {
         }
         if self.bizTypeList != nil {
             map["BizTypeList"] = self.bizTypeList!
+        }
+        if self.distro != nil {
+            map["Distro"] = self.distro!
         }
         if self.featureList != nil {
             map["FeatureList"] = self.featureList!
@@ -12235,6 +12240,9 @@ public class ListImageRequest : Tea.TeaModel {
         }
         if let value = dict["BizTypeList"] as? [Int32] {
             self.bizTypeList = value
+        }
+        if let value = dict["Distro"] as? String {
+            self.distro = value
         }
         if let value = dict["FeatureList"] as? [String] {
             self.featureList = value

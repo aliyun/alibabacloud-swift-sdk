@@ -1798,6 +1798,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listImageWithOptions(_ request: ListImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListImageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.distro)) {
+            query["Distro"] = request.distro ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tagList)) {
             query["TagList"] = request.tagList ?? [];
         }
