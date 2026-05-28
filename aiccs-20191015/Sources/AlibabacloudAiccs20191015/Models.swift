@@ -1058,6 +1058,662 @@ public class AddLargeModelResponse : Tea.TeaModel {
     }
 }
 
+public class AddModelApplicationRequest : Tea.TeaModel {
+    public class TtsConfig : Tea.TeaModel {
+        public var backgroundEnabled: Bool?
+
+        public var backgroundSound: Int64?
+
+        public var backgroundVolume: Int64?
+
+        public var customerAccountId: Int64?
+
+        public var mixingEnabled: Bool?
+
+        public var mixingTemplate: Int64?
+
+        public var resourceId: String?
+
+        public var ttsSpeed: Int64?
+
+        public var ttsStyle: String?
+
+        public var ttsVolume: Int64?
+
+        public var voiceCode: String?
+
+        public var voiceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backgroundEnabled != nil {
+                map["BackgroundEnabled"] = self.backgroundEnabled!
+            }
+            if self.backgroundSound != nil {
+                map["BackgroundSound"] = self.backgroundSound!
+            }
+            if self.backgroundVolume != nil {
+                map["BackgroundVolume"] = self.backgroundVolume!
+            }
+            if self.customerAccountId != nil {
+                map["CustomerAccountId"] = self.customerAccountId!
+            }
+            if self.mixingEnabled != nil {
+                map["MixingEnabled"] = self.mixingEnabled!
+            }
+            if self.mixingTemplate != nil {
+                map["MixingTemplate"] = self.mixingTemplate!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.ttsSpeed != nil {
+                map["TtsSpeed"] = self.ttsSpeed!
+            }
+            if self.ttsStyle != nil {
+                map["TtsStyle"] = self.ttsStyle!
+            }
+            if self.ttsVolume != nil {
+                map["TtsVolume"] = self.ttsVolume!
+            }
+            if self.voiceCode != nil {
+                map["VoiceCode"] = self.voiceCode!
+            }
+            if self.voiceType != nil {
+                map["VoiceType"] = self.voiceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BackgroundEnabled"] as? Bool {
+                self.backgroundEnabled = value
+            }
+            if let value = dict["BackgroundSound"] as? Int64 {
+                self.backgroundSound = value
+            }
+            if let value = dict["BackgroundVolume"] as? Int64 {
+                self.backgroundVolume = value
+            }
+            if let value = dict["CustomerAccountId"] as? Int64 {
+                self.customerAccountId = value
+            }
+            if let value = dict["MixingEnabled"] as? Bool {
+                self.mixingEnabled = value
+            }
+            if let value = dict["MixingTemplate"] as? Int64 {
+                self.mixingTemplate = value
+            }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["TtsSpeed"] as? Int64 {
+                self.ttsSpeed = value
+            }
+            if let value = dict["TtsStyle"] as? String {
+                self.ttsStyle = value
+            }
+            if let value = dict["TtsVolume"] as? Int64 {
+                self.ttsVolume = value
+            }
+            if let value = dict["VoiceCode"] as? String {
+                self.voiceCode = value
+            }
+            if let value = dict["VoiceType"] as? String {
+                self.voiceType = value
+            }
+        }
+    }
+    public var applicationCps: Int64?
+
+    public var applicationName: String?
+
+    public var callConnectedTriggerModel: Bool?
+
+    public var dyvmsSceneName: String?
+
+    public var modelCode: String?
+
+    public var modelVersion: String?
+
+    public var muteActive: Bool?
+
+    public var muteDuration: Int64?
+
+    public var muteHangupNum: Int64?
+
+    public var ownerId: Int64?
+
+    public var prompt: String?
+
+    public var qualificationId: Int64?
+
+    public var qualificationName: String?
+
+    public var recordingFile: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var source: String?
+
+    public var speechContent: String?
+
+    public var speechId: Int64?
+
+    public var startWord: String?
+
+    public var startWordType: Int64?
+
+    public var ttsConfig: AddModelApplicationRequest.TtsConfig?
+
+    public var usageDesc: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.ttsConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCps != nil {
+            map["ApplicationCps"] = self.applicationCps!
+        }
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
+        if self.callConnectedTriggerModel != nil {
+            map["CallConnectedTriggerModel"] = self.callConnectedTriggerModel!
+        }
+        if self.dyvmsSceneName != nil {
+            map["DyvmsSceneName"] = self.dyvmsSceneName!
+        }
+        if self.modelCode != nil {
+            map["ModelCode"] = self.modelCode!
+        }
+        if self.modelVersion != nil {
+            map["ModelVersion"] = self.modelVersion!
+        }
+        if self.muteActive != nil {
+            map["MuteActive"] = self.muteActive!
+        }
+        if self.muteDuration != nil {
+            map["MuteDuration"] = self.muteDuration!
+        }
+        if self.muteHangupNum != nil {
+            map["MuteHangupNum"] = self.muteHangupNum!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.qualificationId != nil {
+            map["QualificationId"] = self.qualificationId!
+        }
+        if self.qualificationName != nil {
+            map["QualificationName"] = self.qualificationName!
+        }
+        if self.recordingFile != nil {
+            map["RecordingFile"] = self.recordingFile!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.speechContent != nil {
+            map["SpeechContent"] = self.speechContent!
+        }
+        if self.speechId != nil {
+            map["SpeechId"] = self.speechId!
+        }
+        if self.startWord != nil {
+            map["StartWord"] = self.startWord!
+        }
+        if self.startWordType != nil {
+            map["StartWordType"] = self.startWordType!
+        }
+        if self.ttsConfig != nil {
+            map["TtsConfig"] = self.ttsConfig?.toMap()
+        }
+        if self.usageDesc != nil {
+            map["UsageDesc"] = self.usageDesc!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationCps"] as? Int64 {
+            self.applicationCps = value
+        }
+        if let value = dict["ApplicationName"] as? String {
+            self.applicationName = value
+        }
+        if let value = dict["CallConnectedTriggerModel"] as? Bool {
+            self.callConnectedTriggerModel = value
+        }
+        if let value = dict["DyvmsSceneName"] as? String {
+            self.dyvmsSceneName = value
+        }
+        if let value = dict["ModelCode"] as? String {
+            self.modelCode = value
+        }
+        if let value = dict["ModelVersion"] as? String {
+            self.modelVersion = value
+        }
+        if let value = dict["MuteActive"] as? Bool {
+            self.muteActive = value
+        }
+        if let value = dict["MuteDuration"] as? Int64 {
+            self.muteDuration = value
+        }
+        if let value = dict["MuteHangupNum"] as? Int64 {
+            self.muteHangupNum = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["QualificationId"] as? Int64 {
+            self.qualificationId = value
+        }
+        if let value = dict["QualificationName"] as? String {
+            self.qualificationName = value
+        }
+        if let value = dict["RecordingFile"] as? String {
+            self.recordingFile = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+        if let value = dict["SpeechContent"] as? String {
+            self.speechContent = value
+        }
+        if let value = dict["SpeechId"] as? Int64 {
+            self.speechId = value
+        }
+        if let value = dict["StartWord"] as? String {
+            self.startWord = value
+        }
+        if let value = dict["StartWordType"] as? Int64 {
+            self.startWordType = value
+        }
+        if let value = dict["TtsConfig"] as? [String: Any?] {
+            var model = AddModelApplicationRequest.TtsConfig()
+            model.fromMap(value)
+            self.ttsConfig = model
+        }
+        if let value = dict["UsageDesc"] as? String {
+            self.usageDesc = value
+        }
+    }
+}
+
+public class AddModelApplicationShrinkRequest : Tea.TeaModel {
+    public var applicationCps: Int64?
+
+    public var applicationName: String?
+
+    public var callConnectedTriggerModel: Bool?
+
+    public var dyvmsSceneName: String?
+
+    public var modelCode: String?
+
+    public var modelVersion: String?
+
+    public var muteActive: Bool?
+
+    public var muteDuration: Int64?
+
+    public var muteHangupNum: Int64?
+
+    public var ownerId: Int64?
+
+    public var prompt: String?
+
+    public var qualificationId: Int64?
+
+    public var qualificationName: String?
+
+    public var recordingFile: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var source: String?
+
+    public var speechContent: String?
+
+    public var speechId: Int64?
+
+    public var startWord: String?
+
+    public var startWordType: Int64?
+
+    public var ttsConfigShrink: String?
+
+    public var usageDesc: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCps != nil {
+            map["ApplicationCps"] = self.applicationCps!
+        }
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
+        if self.callConnectedTriggerModel != nil {
+            map["CallConnectedTriggerModel"] = self.callConnectedTriggerModel!
+        }
+        if self.dyvmsSceneName != nil {
+            map["DyvmsSceneName"] = self.dyvmsSceneName!
+        }
+        if self.modelCode != nil {
+            map["ModelCode"] = self.modelCode!
+        }
+        if self.modelVersion != nil {
+            map["ModelVersion"] = self.modelVersion!
+        }
+        if self.muteActive != nil {
+            map["MuteActive"] = self.muteActive!
+        }
+        if self.muteDuration != nil {
+            map["MuteDuration"] = self.muteDuration!
+        }
+        if self.muteHangupNum != nil {
+            map["MuteHangupNum"] = self.muteHangupNum!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.qualificationId != nil {
+            map["QualificationId"] = self.qualificationId!
+        }
+        if self.qualificationName != nil {
+            map["QualificationName"] = self.qualificationName!
+        }
+        if self.recordingFile != nil {
+            map["RecordingFile"] = self.recordingFile!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.speechContent != nil {
+            map["SpeechContent"] = self.speechContent!
+        }
+        if self.speechId != nil {
+            map["SpeechId"] = self.speechId!
+        }
+        if self.startWord != nil {
+            map["StartWord"] = self.startWord!
+        }
+        if self.startWordType != nil {
+            map["StartWordType"] = self.startWordType!
+        }
+        if self.ttsConfigShrink != nil {
+            map["TtsConfig"] = self.ttsConfigShrink!
+        }
+        if self.usageDesc != nil {
+            map["UsageDesc"] = self.usageDesc!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationCps"] as? Int64 {
+            self.applicationCps = value
+        }
+        if let value = dict["ApplicationName"] as? String {
+            self.applicationName = value
+        }
+        if let value = dict["CallConnectedTriggerModel"] as? Bool {
+            self.callConnectedTriggerModel = value
+        }
+        if let value = dict["DyvmsSceneName"] as? String {
+            self.dyvmsSceneName = value
+        }
+        if let value = dict["ModelCode"] as? String {
+            self.modelCode = value
+        }
+        if let value = dict["ModelVersion"] as? String {
+            self.modelVersion = value
+        }
+        if let value = dict["MuteActive"] as? Bool {
+            self.muteActive = value
+        }
+        if let value = dict["MuteDuration"] as? Int64 {
+            self.muteDuration = value
+        }
+        if let value = dict["MuteHangupNum"] as? Int64 {
+            self.muteHangupNum = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["QualificationId"] as? Int64 {
+            self.qualificationId = value
+        }
+        if let value = dict["QualificationName"] as? String {
+            self.qualificationName = value
+        }
+        if let value = dict["RecordingFile"] as? String {
+            self.recordingFile = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+        if let value = dict["SpeechContent"] as? String {
+            self.speechContent = value
+        }
+        if let value = dict["SpeechId"] as? Int64 {
+            self.speechId = value
+        }
+        if let value = dict["StartWord"] as? String {
+            self.startWord = value
+        }
+        if let value = dict["StartWordType"] as? Int64 {
+            self.startWordType = value
+        }
+        if let value = dict["TtsConfig"] as? String {
+            self.ttsConfigShrink = value
+        }
+        if let value = dict["UsageDesc"] as? String {
+            self.usageDesc = value
+        }
+    }
+}
+
+public class AddModelApplicationResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddModelApplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddModelApplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddModelApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddOuterAccountRequest : Tea.TeaModel {
     public var avatar: String?
 
@@ -48992,6 +49648,1000 @@ public class UpdateLargeModelResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateLargeModelResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateModelApplicationRequest : Tea.TeaModel {
+    public class InterruptConfig : Tea.TeaModel {
+        public class AvoidInterruptDTO : Tea.TeaModel {
+            public var interruptNum: Int64?
+
+            public var interruptProtectDuration: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.interruptNum != nil {
+                    map["InterruptNum"] = self.interruptNum!
+                }
+                if self.interruptProtectDuration != nil {
+                    map["InterruptProtectDuration"] = self.interruptProtectDuration!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InterruptNum"] as? Int64 {
+                    self.interruptNum = value
+                }
+                if let value = dict["InterruptProtectDuration"] as? Double {
+                    self.interruptProtectDuration = value
+                }
+            }
+        }
+        public var avoidInterruptDTO: UpdateModelApplicationRequest.InterruptConfig.AvoidInterruptDTO?
+
+        public var enableAvoidInterrupt: Bool?
+
+        public var enableInterruptBackchannel: Bool?
+
+        public var enableStartwordEntireNotInterrupt: Bool?
+
+        public var enableStartwordNotInterrupt: Bool?
+
+        public var startwordProtectDuration: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.avoidInterruptDTO?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.avoidInterruptDTO != nil {
+                map["AvoidInterruptDTO"] = self.avoidInterruptDTO?.toMap()
+            }
+            if self.enableAvoidInterrupt != nil {
+                map["EnableAvoidInterrupt"] = self.enableAvoidInterrupt!
+            }
+            if self.enableInterruptBackchannel != nil {
+                map["EnableInterruptBackchannel"] = self.enableInterruptBackchannel!
+            }
+            if self.enableStartwordEntireNotInterrupt != nil {
+                map["EnableStartwordEntireNotInterrupt"] = self.enableStartwordEntireNotInterrupt!
+            }
+            if self.enableStartwordNotInterrupt != nil {
+                map["EnableStartwordNotInterrupt"] = self.enableStartwordNotInterrupt!
+            }
+            if self.startwordProtectDuration != nil {
+                map["StartwordProtectDuration"] = self.startwordProtectDuration!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AvoidInterruptDTO"] as? [String: Any?] {
+                var model = UpdateModelApplicationRequest.InterruptConfig.AvoidInterruptDTO()
+                model.fromMap(value)
+                self.avoidInterruptDTO = model
+            }
+            if let value = dict["EnableAvoidInterrupt"] as? Bool {
+                self.enableAvoidInterrupt = value
+            }
+            if let value = dict["EnableInterruptBackchannel"] as? Bool {
+                self.enableInterruptBackchannel = value
+            }
+            if let value = dict["EnableStartwordEntireNotInterrupt"] as? Bool {
+                self.enableStartwordEntireNotInterrupt = value
+            }
+            if let value = dict["EnableStartwordNotInterrupt"] as? Bool {
+                self.enableStartwordNotInterrupt = value
+            }
+            if let value = dict["StartwordProtectDuration"] as? Double {
+                self.startwordProtectDuration = value
+            }
+        }
+    }
+    public class TtsConfig : Tea.TeaModel {
+        public var backgroundEnabled: Bool?
+
+        public var backgroundSound: Int64?
+
+        public var backgroundVolume: Int64?
+
+        public var customerAccountId: Int64?
+
+        public var mixingEnabled: Bool?
+
+        public var mixingTemplate: Int64?
+
+        public var resourceId: String?
+
+        public var ttsSpeed: Int64?
+
+        public var ttsStyle: String?
+
+        public var ttsVolume: Int64?
+
+        public var voiceCode: String?
+
+        public var voiceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backgroundEnabled != nil {
+                map["BackgroundEnabled"] = self.backgroundEnabled!
+            }
+            if self.backgroundSound != nil {
+                map["BackgroundSound"] = self.backgroundSound!
+            }
+            if self.backgroundVolume != nil {
+                map["BackgroundVolume"] = self.backgroundVolume!
+            }
+            if self.customerAccountId != nil {
+                map["CustomerAccountId"] = self.customerAccountId!
+            }
+            if self.mixingEnabled != nil {
+                map["MixingEnabled"] = self.mixingEnabled!
+            }
+            if self.mixingTemplate != nil {
+                map["MixingTemplate"] = self.mixingTemplate!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.ttsSpeed != nil {
+                map["TtsSpeed"] = self.ttsSpeed!
+            }
+            if self.ttsStyle != nil {
+                map["TtsStyle"] = self.ttsStyle!
+            }
+            if self.ttsVolume != nil {
+                map["TtsVolume"] = self.ttsVolume!
+            }
+            if self.voiceCode != nil {
+                map["VoiceCode"] = self.voiceCode!
+            }
+            if self.voiceType != nil {
+                map["VoiceType"] = self.voiceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BackgroundEnabled"] as? Bool {
+                self.backgroundEnabled = value
+            }
+            if let value = dict["BackgroundSound"] as? Int64 {
+                self.backgroundSound = value
+            }
+            if let value = dict["BackgroundVolume"] as? Int64 {
+                self.backgroundVolume = value
+            }
+            if let value = dict["CustomerAccountId"] as? Int64 {
+                self.customerAccountId = value
+            }
+            if let value = dict["MixingEnabled"] as? Bool {
+                self.mixingEnabled = value
+            }
+            if let value = dict["MixingTemplate"] as? Int64 {
+                self.mixingTemplate = value
+            }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["TtsSpeed"] as? Int64 {
+                self.ttsSpeed = value
+            }
+            if let value = dict["TtsStyle"] as? String {
+                self.ttsStyle = value
+            }
+            if let value = dict["TtsVolume"] as? Int64 {
+                self.ttsVolume = value
+            }
+            if let value = dict["VoiceCode"] as? String {
+                self.voiceCode = value
+            }
+            if let value = dict["VoiceType"] as? String {
+                self.voiceType = value
+            }
+        }
+    }
+    public var applicationCode: String?
+
+    public var applicationCps: Int64?
+
+    public var applicationName: String?
+
+    public var callAssistantHangup: Bool?
+
+    public var callAssistantRecognize: Bool?
+
+    public var callConnectedTriggerModel: Bool?
+
+    public var dtmfAllowedDigits: String?
+
+    public var dtmfAutoValidateEnable: Bool?
+
+    public var dtmfDigitCount: Int64?
+
+    public var dtmfInputTimeout: Int64?
+
+    public var dtmfOutOfRangeAction: String?
+
+    public var dtmfRetryPlayTimes: Int64?
+
+    public var dtmfRetryPromptText: String?
+
+    public var dyvmsSceneName: String?
+
+    public var enableDtmfReceive: Bool?
+
+    public var enableMorse: Bool?
+
+    public var interruptConfig: UpdateModelApplicationRequest.InterruptConfig?
+
+    public var modelCode: String?
+
+    public var modelVersion: String?
+
+    public var muteActive: Bool?
+
+    public var muteDuration: Int64?
+
+    public var muteHangupNum: Int64?
+
+    public var ownerId: Int64?
+
+    public var prompt: String?
+
+    public var qualificationId: Int64?
+
+    public var qualificationName: String?
+
+    public var recordingFile: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var sessionTimeout: Int64?
+
+    public var source: String?
+
+    public var speechContent: String?
+
+    public var speechId: Int64?
+
+    public var startWord: String?
+
+    public var startWordType: Int64?
+
+    public var ttsConfig: UpdateModelApplicationRequest.TtsConfig?
+
+    public var usageDesc: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.interruptConfig?.validate()
+        try self.ttsConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.applicationCps != nil {
+            map["ApplicationCps"] = self.applicationCps!
+        }
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
+        if self.callAssistantHangup != nil {
+            map["CallAssistantHangup"] = self.callAssistantHangup!
+        }
+        if self.callAssistantRecognize != nil {
+            map["CallAssistantRecognize"] = self.callAssistantRecognize!
+        }
+        if self.callConnectedTriggerModel != nil {
+            map["CallConnectedTriggerModel"] = self.callConnectedTriggerModel!
+        }
+        if self.dtmfAllowedDigits != nil {
+            map["DtmfAllowedDigits"] = self.dtmfAllowedDigits!
+        }
+        if self.dtmfAutoValidateEnable != nil {
+            map["DtmfAutoValidateEnable"] = self.dtmfAutoValidateEnable!
+        }
+        if self.dtmfDigitCount != nil {
+            map["DtmfDigitCount"] = self.dtmfDigitCount!
+        }
+        if self.dtmfInputTimeout != nil {
+            map["DtmfInputTimeout"] = self.dtmfInputTimeout!
+        }
+        if self.dtmfOutOfRangeAction != nil {
+            map["DtmfOutOfRangeAction"] = self.dtmfOutOfRangeAction!
+        }
+        if self.dtmfRetryPlayTimes != nil {
+            map["DtmfRetryPlayTimes"] = self.dtmfRetryPlayTimes!
+        }
+        if self.dtmfRetryPromptText != nil {
+            map["DtmfRetryPromptText"] = self.dtmfRetryPromptText!
+        }
+        if self.dyvmsSceneName != nil {
+            map["DyvmsSceneName"] = self.dyvmsSceneName!
+        }
+        if self.enableDtmfReceive != nil {
+            map["EnableDtmfReceive"] = self.enableDtmfReceive!
+        }
+        if self.enableMorse != nil {
+            map["EnableMorse"] = self.enableMorse!
+        }
+        if self.interruptConfig != nil {
+            map["InterruptConfig"] = self.interruptConfig?.toMap()
+        }
+        if self.modelCode != nil {
+            map["ModelCode"] = self.modelCode!
+        }
+        if self.modelVersion != nil {
+            map["ModelVersion"] = self.modelVersion!
+        }
+        if self.muteActive != nil {
+            map["MuteActive"] = self.muteActive!
+        }
+        if self.muteDuration != nil {
+            map["MuteDuration"] = self.muteDuration!
+        }
+        if self.muteHangupNum != nil {
+            map["MuteHangupNum"] = self.muteHangupNum!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.qualificationId != nil {
+            map["QualificationId"] = self.qualificationId!
+        }
+        if self.qualificationName != nil {
+            map["QualificationName"] = self.qualificationName!
+        }
+        if self.recordingFile != nil {
+            map["RecordingFile"] = self.recordingFile!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sessionTimeout != nil {
+            map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.speechContent != nil {
+            map["SpeechContent"] = self.speechContent!
+        }
+        if self.speechId != nil {
+            map["SpeechId"] = self.speechId!
+        }
+        if self.startWord != nil {
+            map["StartWord"] = self.startWord!
+        }
+        if self.startWordType != nil {
+            map["StartWordType"] = self.startWordType!
+        }
+        if self.ttsConfig != nil {
+            map["TtsConfig"] = self.ttsConfig?.toMap()
+        }
+        if self.usageDesc != nil {
+            map["UsageDesc"] = self.usageDesc!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
+        if let value = dict["ApplicationCps"] as? Int64 {
+            self.applicationCps = value
+        }
+        if let value = dict["ApplicationName"] as? String {
+            self.applicationName = value
+        }
+        if let value = dict["CallAssistantHangup"] as? Bool {
+            self.callAssistantHangup = value
+        }
+        if let value = dict["CallAssistantRecognize"] as? Bool {
+            self.callAssistantRecognize = value
+        }
+        if let value = dict["CallConnectedTriggerModel"] as? Bool {
+            self.callConnectedTriggerModel = value
+        }
+        if let value = dict["DtmfAllowedDigits"] as? String {
+            self.dtmfAllowedDigits = value
+        }
+        if let value = dict["DtmfAutoValidateEnable"] as? Bool {
+            self.dtmfAutoValidateEnable = value
+        }
+        if let value = dict["DtmfDigitCount"] as? Int64 {
+            self.dtmfDigitCount = value
+        }
+        if let value = dict["DtmfInputTimeout"] as? Int64 {
+            self.dtmfInputTimeout = value
+        }
+        if let value = dict["DtmfOutOfRangeAction"] as? String {
+            self.dtmfOutOfRangeAction = value
+        }
+        if let value = dict["DtmfRetryPlayTimes"] as? Int64 {
+            self.dtmfRetryPlayTimes = value
+        }
+        if let value = dict["DtmfRetryPromptText"] as? String {
+            self.dtmfRetryPromptText = value
+        }
+        if let value = dict["DyvmsSceneName"] as? String {
+            self.dyvmsSceneName = value
+        }
+        if let value = dict["EnableDtmfReceive"] as? Bool {
+            self.enableDtmfReceive = value
+        }
+        if let value = dict["EnableMorse"] as? Bool {
+            self.enableMorse = value
+        }
+        if let value = dict["InterruptConfig"] as? [String: Any?] {
+            var model = UpdateModelApplicationRequest.InterruptConfig()
+            model.fromMap(value)
+            self.interruptConfig = model
+        }
+        if let value = dict["ModelCode"] as? String {
+            self.modelCode = value
+        }
+        if let value = dict["ModelVersion"] as? String {
+            self.modelVersion = value
+        }
+        if let value = dict["MuteActive"] as? Bool {
+            self.muteActive = value
+        }
+        if let value = dict["MuteDuration"] as? Int64 {
+            self.muteDuration = value
+        }
+        if let value = dict["MuteHangupNum"] as? Int64 {
+            self.muteHangupNum = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["QualificationId"] as? Int64 {
+            self.qualificationId = value
+        }
+        if let value = dict["QualificationName"] as? String {
+            self.qualificationName = value
+        }
+        if let value = dict["RecordingFile"] as? String {
+            self.recordingFile = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SessionTimeout"] as? Int64 {
+            self.sessionTimeout = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+        if let value = dict["SpeechContent"] as? String {
+            self.speechContent = value
+        }
+        if let value = dict["SpeechId"] as? Int64 {
+            self.speechId = value
+        }
+        if let value = dict["StartWord"] as? String {
+            self.startWord = value
+        }
+        if let value = dict["StartWordType"] as? Int64 {
+            self.startWordType = value
+        }
+        if let value = dict["TtsConfig"] as? [String: Any?] {
+            var model = UpdateModelApplicationRequest.TtsConfig()
+            model.fromMap(value)
+            self.ttsConfig = model
+        }
+        if let value = dict["UsageDesc"] as? String {
+            self.usageDesc = value
+        }
+    }
+}
+
+public class UpdateModelApplicationShrinkRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
+    public var applicationCps: Int64?
+
+    public var applicationName: String?
+
+    public var callAssistantHangup: Bool?
+
+    public var callAssistantRecognize: Bool?
+
+    public var callConnectedTriggerModel: Bool?
+
+    public var dtmfAllowedDigits: String?
+
+    public var dtmfAutoValidateEnable: Bool?
+
+    public var dtmfDigitCount: Int64?
+
+    public var dtmfInputTimeout: Int64?
+
+    public var dtmfOutOfRangeAction: String?
+
+    public var dtmfRetryPlayTimes: Int64?
+
+    public var dtmfRetryPromptText: String?
+
+    public var dyvmsSceneName: String?
+
+    public var enableDtmfReceive: Bool?
+
+    public var enableMorse: Bool?
+
+    public var interruptConfigShrink: String?
+
+    public var modelCode: String?
+
+    public var modelVersion: String?
+
+    public var muteActive: Bool?
+
+    public var muteDuration: Int64?
+
+    public var muteHangupNum: Int64?
+
+    public var ownerId: Int64?
+
+    public var prompt: String?
+
+    public var qualificationId: Int64?
+
+    public var qualificationName: String?
+
+    public var recordingFile: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var sessionTimeout: Int64?
+
+    public var source: String?
+
+    public var speechContent: String?
+
+    public var speechId: Int64?
+
+    public var startWord: String?
+
+    public var startWordType: Int64?
+
+    public var ttsConfigShrink: String?
+
+    public var usageDesc: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.applicationCps != nil {
+            map["ApplicationCps"] = self.applicationCps!
+        }
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
+        if self.callAssistantHangup != nil {
+            map["CallAssistantHangup"] = self.callAssistantHangup!
+        }
+        if self.callAssistantRecognize != nil {
+            map["CallAssistantRecognize"] = self.callAssistantRecognize!
+        }
+        if self.callConnectedTriggerModel != nil {
+            map["CallConnectedTriggerModel"] = self.callConnectedTriggerModel!
+        }
+        if self.dtmfAllowedDigits != nil {
+            map["DtmfAllowedDigits"] = self.dtmfAllowedDigits!
+        }
+        if self.dtmfAutoValidateEnable != nil {
+            map["DtmfAutoValidateEnable"] = self.dtmfAutoValidateEnable!
+        }
+        if self.dtmfDigitCount != nil {
+            map["DtmfDigitCount"] = self.dtmfDigitCount!
+        }
+        if self.dtmfInputTimeout != nil {
+            map["DtmfInputTimeout"] = self.dtmfInputTimeout!
+        }
+        if self.dtmfOutOfRangeAction != nil {
+            map["DtmfOutOfRangeAction"] = self.dtmfOutOfRangeAction!
+        }
+        if self.dtmfRetryPlayTimes != nil {
+            map["DtmfRetryPlayTimes"] = self.dtmfRetryPlayTimes!
+        }
+        if self.dtmfRetryPromptText != nil {
+            map["DtmfRetryPromptText"] = self.dtmfRetryPromptText!
+        }
+        if self.dyvmsSceneName != nil {
+            map["DyvmsSceneName"] = self.dyvmsSceneName!
+        }
+        if self.enableDtmfReceive != nil {
+            map["EnableDtmfReceive"] = self.enableDtmfReceive!
+        }
+        if self.enableMorse != nil {
+            map["EnableMorse"] = self.enableMorse!
+        }
+        if self.interruptConfigShrink != nil {
+            map["InterruptConfig"] = self.interruptConfigShrink!
+        }
+        if self.modelCode != nil {
+            map["ModelCode"] = self.modelCode!
+        }
+        if self.modelVersion != nil {
+            map["ModelVersion"] = self.modelVersion!
+        }
+        if self.muteActive != nil {
+            map["MuteActive"] = self.muteActive!
+        }
+        if self.muteDuration != nil {
+            map["MuteDuration"] = self.muteDuration!
+        }
+        if self.muteHangupNum != nil {
+            map["MuteHangupNum"] = self.muteHangupNum!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.qualificationId != nil {
+            map["QualificationId"] = self.qualificationId!
+        }
+        if self.qualificationName != nil {
+            map["QualificationName"] = self.qualificationName!
+        }
+        if self.recordingFile != nil {
+            map["RecordingFile"] = self.recordingFile!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sessionTimeout != nil {
+            map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.speechContent != nil {
+            map["SpeechContent"] = self.speechContent!
+        }
+        if self.speechId != nil {
+            map["SpeechId"] = self.speechId!
+        }
+        if self.startWord != nil {
+            map["StartWord"] = self.startWord!
+        }
+        if self.startWordType != nil {
+            map["StartWordType"] = self.startWordType!
+        }
+        if self.ttsConfigShrink != nil {
+            map["TtsConfig"] = self.ttsConfigShrink!
+        }
+        if self.usageDesc != nil {
+            map["UsageDesc"] = self.usageDesc!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
+        if let value = dict["ApplicationCps"] as? Int64 {
+            self.applicationCps = value
+        }
+        if let value = dict["ApplicationName"] as? String {
+            self.applicationName = value
+        }
+        if let value = dict["CallAssistantHangup"] as? Bool {
+            self.callAssistantHangup = value
+        }
+        if let value = dict["CallAssistantRecognize"] as? Bool {
+            self.callAssistantRecognize = value
+        }
+        if let value = dict["CallConnectedTriggerModel"] as? Bool {
+            self.callConnectedTriggerModel = value
+        }
+        if let value = dict["DtmfAllowedDigits"] as? String {
+            self.dtmfAllowedDigits = value
+        }
+        if let value = dict["DtmfAutoValidateEnable"] as? Bool {
+            self.dtmfAutoValidateEnable = value
+        }
+        if let value = dict["DtmfDigitCount"] as? Int64 {
+            self.dtmfDigitCount = value
+        }
+        if let value = dict["DtmfInputTimeout"] as? Int64 {
+            self.dtmfInputTimeout = value
+        }
+        if let value = dict["DtmfOutOfRangeAction"] as? String {
+            self.dtmfOutOfRangeAction = value
+        }
+        if let value = dict["DtmfRetryPlayTimes"] as? Int64 {
+            self.dtmfRetryPlayTimes = value
+        }
+        if let value = dict["DtmfRetryPromptText"] as? String {
+            self.dtmfRetryPromptText = value
+        }
+        if let value = dict["DyvmsSceneName"] as? String {
+            self.dyvmsSceneName = value
+        }
+        if let value = dict["EnableDtmfReceive"] as? Bool {
+            self.enableDtmfReceive = value
+        }
+        if let value = dict["EnableMorse"] as? Bool {
+            self.enableMorse = value
+        }
+        if let value = dict["InterruptConfig"] as? String {
+            self.interruptConfigShrink = value
+        }
+        if let value = dict["ModelCode"] as? String {
+            self.modelCode = value
+        }
+        if let value = dict["ModelVersion"] as? String {
+            self.modelVersion = value
+        }
+        if let value = dict["MuteActive"] as? Bool {
+            self.muteActive = value
+        }
+        if let value = dict["MuteDuration"] as? Int64 {
+            self.muteDuration = value
+        }
+        if let value = dict["MuteHangupNum"] as? Int64 {
+            self.muteHangupNum = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["QualificationId"] as? Int64 {
+            self.qualificationId = value
+        }
+        if let value = dict["QualificationName"] as? String {
+            self.qualificationName = value
+        }
+        if let value = dict["RecordingFile"] as? String {
+            self.recordingFile = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SessionTimeout"] as? Int64 {
+            self.sessionTimeout = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+        if let value = dict["SpeechContent"] as? String {
+            self.speechContent = value
+        }
+        if let value = dict["SpeechId"] as? Int64 {
+            self.speechId = value
+        }
+        if let value = dict["StartWord"] as? String {
+            self.startWord = value
+        }
+        if let value = dict["StartWordType"] as? Int64 {
+            self.startWordType = value
+        }
+        if let value = dict["TtsConfig"] as? String {
+            self.ttsConfigShrink = value
+        }
+        if let value = dict["UsageDesc"] as? String {
+            self.usageDesc = value
+        }
+    }
+}
+
+public class UpdateModelApplicationResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateModelApplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateModelApplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateModelApplicationResponseBody()
             model.fromMap(value)
             self.body = model
         }
