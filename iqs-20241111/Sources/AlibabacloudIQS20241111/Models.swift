@@ -2401,7 +2401,7 @@ public class ScanFileInfo : Tea.TeaModel {
 
     public var height: Int32?
 
-    public var imageBase64: [UInt8]?
+    public var imageBase64: String?
 
     public var width: Int32?
 
@@ -2442,7 +2442,7 @@ public class ScanFileInfo : Tea.TeaModel {
         if let value = dict["height"] as? Int32 {
             self.height = value
         }
-        if let value = dict["imageBase64"] as? [UInt8] {
+        if let value = dict["imageBase64"] as? String {
             self.imageBase64 = value
         }
         if let value = dict["width"] as? Int32 {
