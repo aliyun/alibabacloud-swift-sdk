@@ -2396,6 +2396,214 @@ public class RequestContents : Tea.TeaModel {
     }
 }
 
+public class ScanFileInfo : Tea.TeaModel {
+    public var angle: Int32?
+
+    public var height: Int32?
+
+    public var imageBase64: [UInt8]?
+
+    public var width: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.angle != nil {
+            map["angle"] = self.angle!
+        }
+        if self.height != nil {
+            map["height"] = self.height!
+        }
+        if self.imageBase64 != nil {
+            map["imageBase64"] = self.imageBase64!
+        }
+        if self.width != nil {
+            map["width"] = self.width!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["angle"] as? Int32 {
+            self.angle = value
+        }
+        if let value = dict["height"] as? Int32 {
+            self.height = value
+        }
+        if let value = dict["imageBase64"] as? [UInt8] {
+            self.imageBase64 = value
+        }
+        if let value = dict["width"] as? Int32 {
+            self.width = value
+        }
+    }
+}
+
+public class ScanFileInput : Tea.TeaModel {
+    public var imageBase64: String?
+
+    public var imageUrl: String?
+
+    public var scanFileInputConfig: ScanFileInputConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.scanFileInputConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageBase64 != nil {
+            map["imageBase64"] = self.imageBase64!
+        }
+        if self.imageUrl != nil {
+            map["imageUrl"] = self.imageUrl!
+        }
+        if self.scanFileInputConfig != nil {
+            map["scanFileInputConfig"] = self.scanFileInputConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["imageBase64"] as? String {
+            self.imageBase64 = value
+        }
+        if let value = dict["imageUrl"] as? String {
+            self.imageUrl = value
+        }
+        if let value = dict["scanFileInputConfig"] as? [String: Any?] {
+            var model = ScanFileInputConfig()
+            model.fromMap(value)
+            self.scanFileInputConfig = model
+        }
+    }
+}
+
+public class ScanFileInputConfig : Tea.TeaModel {
+    public var autoCrop: String?
+
+    public var autoRotate: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoCrop != nil {
+            map["autoCrop"] = self.autoCrop!
+        }
+        if self.autoRotate != nil {
+            map["autoRotate"] = self.autoRotate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["autoCrop"] as? String {
+            self.autoCrop = value
+        }
+        if let value = dict["autoRotate"] as? String {
+            self.autoRotate = value
+        }
+    }
+}
+
+public class ScanFileOutput : Tea.TeaModel {
+    public var requestId: String?
+
+    public var scanFileInfoList: [ScanFileInfo]?
+
+    public var searchInformation: UnifiedSearchInformation?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.searchInformation?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.scanFileInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.scanFileInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["scanFileInfoList"] = tmp
+        }
+        if self.searchInformation != nil {
+            map["searchInformation"] = self.searchInformation?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["scanFileInfoList"] as? [Any?] {
+            var tmp : [ScanFileInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = ScanFileInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scanFileInfoList = tmp
+        }
+        if let value = dict["searchInformation"] as? [String: Any?] {
+            var model = UnifiedSearchInformation()
+            model.fromMap(value)
+            self.searchInformation = model
+        }
+    }
+}
+
 public class SceneItem : Tea.TeaModel {
     public var detail: String?
 
@@ -5143,6 +5351,90 @@ public class ReadPageScrapeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ReadPageScrapeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ScanFileRequest : Tea.TeaModel {
+    public var body: ScanFileInput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ScanFileInput()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ScanFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ScanFileOutput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ScanFileOutput()
             model.fromMap(value)
             self.body = model
         }
