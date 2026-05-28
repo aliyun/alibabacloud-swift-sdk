@@ -36805,6 +36805,8 @@ public class DescribeFotaTasksResponse : Tea.TeaModel {
 }
 
 public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var desktopId: [String]?
 
     public var desktopName: String?
@@ -36853,6 +36855,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
@@ -36909,6 +36914,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["DesktopId"] as? [String] {
             self.desktopId = value
         }
@@ -65225,6 +65233,8 @@ public class ModifyDesktopGroupResponse : Tea.TeaModel {
 public class ModifyDesktopHostNameRequest : Tea.TeaModel {
     public var desktopId: String?
 
+    public var desktopIds: [String]?
+
     public var newHostName: String?
 
     public var regionId: String?
@@ -65246,6 +65256,9 @@ public class ModifyDesktopHostNameRequest : Tea.TeaModel {
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
+        if self.desktopIds != nil {
+            map["DesktopIds"] = self.desktopIds!
+        }
         if self.newHostName != nil {
             map["NewHostName"] = self.newHostName!
         }
@@ -65259,6 +65272,9 @@ public class ModifyDesktopHostNameRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DesktopId"] as? String {
             self.desktopId = value
+        }
+        if let value = dict["DesktopIds"] as? [String] {
+            self.desktopIds = value
         }
         if let value = dict["NewHostName"] as? String {
             self.newHostName = value
@@ -65353,9 +65369,13 @@ public class ModifyDesktopHostNameResponse : Tea.TeaModel {
 public class ModifyDesktopNameRequest : Tea.TeaModel {
     public var desktopId: String?
 
+    public var desktopIds: [String]?
+
     public var newDesktopName: String?
 
     public var regionId: String?
+
+    public var userAssignMode: String?
 
     public override init() {
         super.init()
@@ -65374,11 +65394,17 @@ public class ModifyDesktopNameRequest : Tea.TeaModel {
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
+        if self.desktopIds != nil {
+            map["DesktopIds"] = self.desktopIds!
+        }
         if self.newDesktopName != nil {
             map["NewDesktopName"] = self.newDesktopName!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.userAssignMode != nil {
+            map["UserAssignMode"] = self.userAssignMode!
         }
         return map
     }
@@ -65388,11 +65414,17 @@ public class ModifyDesktopNameRequest : Tea.TeaModel {
         if let value = dict["DesktopId"] as? String {
             self.desktopId = value
         }
+        if let value = dict["DesktopIds"] as? [String] {
+            self.desktopIds = value
+        }
         if let value = dict["NewDesktopName"] as? String {
             self.newDesktopName = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["UserAssignMode"] as? String {
+            self.userAssignMode = value
         }
     }
 }
