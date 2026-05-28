@@ -1160,9 +1160,15 @@ public class CreateExecutorGroupRequest : Tea.TeaModel {
 
     public var authType: String?
 
+    public var autoScale: Bool?
+
     public var clusterId: String?
 
+    public var cmsWorkspaceId: String?
+
     public var description_: String?
+
+    public var integrationType: String?
 
     public var name: String?
 
@@ -1173,6 +1179,8 @@ public class CreateExecutorGroupRequest : Tea.TeaModel {
     public var workerType: String?
 
     public var workers: String?
+
+    public var XAttrs: String?
 
     public override init() {
         super.init()
@@ -1194,11 +1202,20 @@ public class CreateExecutorGroupRequest : Tea.TeaModel {
         if self.authType != nil {
             map["AuthType"] = self.authType!
         }
+        if self.autoScale != nil {
+            map["AutoScale"] = self.autoScale!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.cmsWorkspaceId != nil {
+            map["CmsWorkspaceId"] = self.cmsWorkspaceId!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.integrationType != nil {
+            map["IntegrationType"] = self.integrationType!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -1215,6 +1232,9 @@ public class CreateExecutorGroupRequest : Tea.TeaModel {
         if self.workers != nil {
             map["Workers"] = self.workers!
         }
+        if self.XAttrs != nil {
+            map["XAttrs"] = self.XAttrs!
+        }
         return map
     }
 
@@ -1226,11 +1246,20 @@ public class CreateExecutorGroupRequest : Tea.TeaModel {
         if let value = dict["AuthType"] as? String {
             self.authType = value
         }
+        if let value = dict["AutoScale"] as? Bool {
+            self.autoScale = value
+        }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
         }
+        if let value = dict["CmsWorkspaceId"] as? String {
+            self.cmsWorkspaceId = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["IntegrationType"] as? String {
+            self.integrationType = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -1246,6 +1275,9 @@ public class CreateExecutorGroupRequest : Tea.TeaModel {
         }
         if let value = dict["Workers"] as? String {
             self.workers = value
+        }
+        if let value = dict["XAttrs"] as? String {
+            self.XAttrs = value
         }
     }
 }
@@ -3393,6 +3425,8 @@ public class DeleteExecutorGroupRequest : Tea.TeaModel {
 
     public var id: Int32?
 
+    public var name: String?
+
     public override init() {
         super.init()
     }
@@ -3413,6 +3447,9 @@ public class DeleteExecutorGroupRequest : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         return map
     }
 
@@ -3423,6 +3460,9 @@ public class DeleteExecutorGroupRequest : Tea.TeaModel {
         }
         if let value = dict["Id"] as? Int32 {
             self.id = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
     }
 }
@@ -12425,9 +12465,15 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
 
             public var authType: String?
 
+            public var autoScale: Bool?
+
             public var citeList: [ListExecutorGroupResponseBody.Data.Records.CiteList]?
 
+            public var cmsWorkspaceId: String?
+
             public var description_: String?
+
+            public var integrationType: String?
 
             public var name: String?
 
@@ -12435,11 +12481,15 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
 
             public var protocol_: String?
 
+            public var resolvedWorkers: String?
+
             public var workerId: Int64?
 
             public var workerType: String?
 
             public var workers: String?
+
+            public var XAttrs: String?
 
             public override init() {
                 super.init()
@@ -12461,6 +12511,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 if self.authType != nil {
                     map["AuthType"] = self.authType!
                 }
+                if self.autoScale != nil {
+                    map["AutoScale"] = self.autoScale!
+                }
                 if self.citeList != nil {
                     var tmp : [Any] = []
                     for k in self.citeList! {
@@ -12468,8 +12521,14 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                     }
                     map["CiteList"] = tmp
                 }
+                if self.cmsWorkspaceId != nil {
+                    map["CmsWorkspaceId"] = self.cmsWorkspaceId!
+                }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
+                }
+                if self.integrationType != nil {
+                    map["IntegrationType"] = self.integrationType!
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
@@ -12480,6 +12539,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 if self.protocol_ != nil {
                     map["Protocol"] = self.protocol_!
                 }
+                if self.resolvedWorkers != nil {
+                    map["ResolvedWorkers"] = self.resolvedWorkers!
+                }
                 if self.workerId != nil {
                     map["WorkerId"] = self.workerId!
                 }
@@ -12488,6 +12550,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 }
                 if self.workers != nil {
                     map["Workers"] = self.workers!
+                }
+                if self.XAttrs != nil {
+                    map["XAttrs"] = self.XAttrs!
                 }
                 return map
             }
@@ -12499,6 +12564,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AuthType"] as? String {
                     self.authType = value
+                }
+                if let value = dict["AutoScale"] as? Bool {
+                    self.autoScale = value
                 }
                 if let value = dict["CiteList"] as? [Any?] {
                     var tmp : [ListExecutorGroupResponseBody.Data.Records.CiteList] = []
@@ -12513,8 +12581,14 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                     }
                     self.citeList = tmp
                 }
+                if let value = dict["CmsWorkspaceId"] as? String {
+                    self.cmsWorkspaceId = value
+                }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["IntegrationType"] as? String {
+                    self.integrationType = value
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
@@ -12525,6 +12599,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 if let value = dict["Protocol"] as? String {
                     self.protocol_ = value
                 }
+                if let value = dict["ResolvedWorkers"] as? String {
+                    self.resolvedWorkers = value
+                }
                 if let value = dict["WorkerId"] as? Int64 {
                     self.workerId = value
                 }
@@ -12533,6 +12610,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Workers"] as? String {
                     self.workers = value
+                }
+                if let value = dict["XAttrs"] as? String {
+                    self.XAttrs = value
                 }
             }
         }
@@ -12803,6 +12883,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public var port: Int32?
 
+        public var status: String?
+
         public var version: String?
 
         public var weight: Int32?
@@ -12839,6 +12921,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.port != nil {
                 map["Port"] = self.port!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.version != nil {
                 map["Version"] = self.version!
             }
@@ -12867,6 +12952,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Port"] as? Int32 {
                 self.port = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
             if let value = dict["Version"] as? String {
                 self.version = value
@@ -21813,11 +21901,17 @@ public class UpdateExecutorGroupRequest : Tea.TeaModel {
 
     public var authType: String?
 
+    public var autoScale: Bool?
+
     public var clusterId: String?
+
+    public var cmsWorkspaceId: String?
 
     public var description_: String?
 
     public var id: String?
+
+    public var name: String?
 
     public var network: String?
 
@@ -21826,6 +21920,8 @@ public class UpdateExecutorGroupRequest : Tea.TeaModel {
     public var workerType: String?
 
     public var workers: String?
+
+    public var XAttrs: String?
 
     public override init() {
         super.init()
@@ -21847,14 +21943,23 @@ public class UpdateExecutorGroupRequest : Tea.TeaModel {
         if self.authType != nil {
             map["AuthType"] = self.authType!
         }
+        if self.autoScale != nil {
+            map["AutoScale"] = self.autoScale!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
+        }
+        if self.cmsWorkspaceId != nil {
+            map["CmsWorkspaceId"] = self.cmsWorkspaceId!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
         if self.id != nil {
             map["Id"] = self.id!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.network != nil {
             map["Network"] = self.network!
@@ -21868,6 +21973,9 @@ public class UpdateExecutorGroupRequest : Tea.TeaModel {
         if self.workers != nil {
             map["Workers"] = self.workers!
         }
+        if self.XAttrs != nil {
+            map["XAttrs"] = self.XAttrs!
+        }
         return map
     }
 
@@ -21879,14 +21987,23 @@ public class UpdateExecutorGroupRequest : Tea.TeaModel {
         if let value = dict["AuthType"] as? String {
             self.authType = value
         }
+        if let value = dict["AutoScale"] as? Bool {
+            self.autoScale = value
+        }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
+        }
+        if let value = dict["CmsWorkspaceId"] as? String {
+            self.cmsWorkspaceId = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
         if let value = dict["Id"] as? String {
             self.id = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["Network"] as? String {
             self.network = value
@@ -21899,6 +22016,9 @@ public class UpdateExecutorGroupRequest : Tea.TeaModel {
         }
         if let value = dict["Workers"] as? String {
             self.workers = value
+        }
+        if let value = dict["XAttrs"] as? String {
+            self.XAttrs = value
         }
     }
 }
