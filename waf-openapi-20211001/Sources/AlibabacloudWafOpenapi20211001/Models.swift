@@ -1075,6 +1075,8 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
 
         public var customCiphers: [String]?
 
+        public var domain: String?
+
         public var enableTLSv3: Bool?
 
         public var http2Enabled: Bool?
@@ -1117,6 +1119,9 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
             }
             if self.customCiphers != nil {
                 map["CustomCiphers"] = self.customCiphers!
+            }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
             }
             if self.enableTLSv3 != nil {
                 map["EnableTLSv3"] = self.enableTLSv3!
@@ -1165,6 +1170,9 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
             }
             if let value = dict["CustomCiphers"] as? [String] {
                 self.customCiphers = value
+            }
+            if let value = dict["Domain"] as? String {
+                self.domain = value
             }
             if let value = dict["EnableTLSv3"] as? Bool {
                 self.enableTLSv3 = value
@@ -17389,6 +17397,8 @@ public class DescribeCloudResourceListRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceDomain: String?
+
     public var resourceInstanceId: String?
 
     public var resourceManagerResourceGroupId: String?
@@ -17430,6 +17440,9 @@ public class DescribeCloudResourceListRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceDomain != nil {
+            map["ResourceDomain"] = self.resourceDomain!
+        }
         if self.resourceInstanceId != nil {
             map["ResourceInstanceId"] = self.resourceInstanceId!
         }
@@ -17465,6 +17478,9 @@ public class DescribeCloudResourceListRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["ResourceDomain"] as? String {
+            self.resourceDomain = value
+        }
         if let value = dict["ResourceInstanceId"] as? String {
             self.resourceInstanceId = value
         }
@@ -17484,6 +17500,8 @@ public class DescribeCloudResourceListResponseBody : Tea.TeaModel {
         public var port: Int32?
 
         public var protocol_: String?
+
+        public var resourceDomain: String?
 
         public var resourceInstanceId: String?
 
@@ -17516,6 +17534,9 @@ public class DescribeCloudResourceListResponseBody : Tea.TeaModel {
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
             }
+            if self.resourceDomain != nil {
+                map["ResourceDomain"] = self.resourceDomain!
+            }
             if self.resourceInstanceId != nil {
                 map["ResourceInstanceId"] = self.resourceInstanceId!
             }
@@ -17541,6 +17562,9 @@ public class DescribeCloudResourceListResponseBody : Tea.TeaModel {
             }
             if let value = dict["Protocol"] as? String {
                 self.protocol_ = value
+            }
+            if let value = dict["ResourceDomain"] as? String {
+                self.resourceDomain = value
             }
             if let value = dict["ResourceInstanceId"] as? String {
                 self.resourceInstanceId = value
@@ -29188,6 +29212,52 @@ public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
             }
         }
         public class Redirect : Tea.TeaModel {
+            public class BackendPorts : Tea.TeaModel {
+                public var backendPort: Int32?
+
+                public var listenPort: Int32?
+
+                public var protocol_: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.backendPort != nil {
+                        map["BackendPort"] = self.backendPort!
+                    }
+                    if self.listenPort != nil {
+                        map["ListenPort"] = self.listenPort!
+                    }
+                    if self.protocol_ != nil {
+                        map["Protocol"] = self.protocol_!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["BackendPort"] as? Int32 {
+                        self.backendPort = value
+                    }
+                    if let value = dict["ListenPort"] as? Int32 {
+                        self.listenPort = value
+                    }
+                    if let value = dict["Protocol"] as? String {
+                        self.protocol_ = value
+                    }
+                }
+            }
             public class RequestHeaders : Tea.TeaModel {
                 public var key: String?
 
@@ -29226,6 +29296,8 @@ public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var backendPorts: [DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect.BackendPorts]?
+
             public var backends: [String]?
 
             public var cnameEnabled: Bool?
@@ -29241,6 +29313,8 @@ public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
             public var keepaliveTimeout: Int64?
 
             public var loadbalance: String?
+
+            public var proxyProtocol: Bool?
 
             public var readTimeout: Int64?
 
@@ -29270,6 +29344,13 @@ public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.backendPorts != nil {
+                    var tmp : [Any] = []
+                    for k in self.backendPorts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["BackendPorts"] = tmp
+                }
                 if self.backends != nil {
                     map["Backends"] = self.backends!
                 }
@@ -29293,6 +29374,9 @@ public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
                 }
                 if self.loadbalance != nil {
                     map["Loadbalance"] = self.loadbalance!
+                }
+                if self.proxyProtocol != nil {
+                    map["ProxyProtocol"] = self.proxyProtocol!
                 }
                 if self.readTimeout != nil {
                     map["ReadTimeout"] = self.readTimeout!
@@ -29324,6 +29408,19 @@ public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BackendPorts"] as? [Any?] {
+                    var tmp : [DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect.BackendPorts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect.BackendPorts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.backendPorts = tmp
+                }
                 if let value = dict["Backends"] as? [String] {
                     self.backends = value
                 }
@@ -29347,6 +29444,9 @@ public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Loadbalance"] as? String {
                     self.loadbalance = value
+                }
+                if let value = dict["ProxyProtocol"] as? Bool {
+                    self.proxyProtocol = value
                 }
                 if let value = dict["ReadTimeout"] as? Int64 {
                     self.readTimeout = value
@@ -35545,6 +35645,8 @@ public class DescribeProductInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceDomain: String?
+
     public var resourceInstanceAccessStatus: String?
 
     public var resourceInstanceId: String?
@@ -35592,6 +35694,9 @@ public class DescribeProductInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceDomain != nil {
+            map["ResourceDomain"] = self.resourceDomain!
+        }
         if self.resourceInstanceAccessStatus != nil {
             map["ResourceInstanceAccessStatus"] = self.resourceInstanceAccessStatus!
         }
@@ -35638,6 +35743,9 @@ public class DescribeProductInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceDomain"] as? String {
+            self.resourceDomain = value
         }
         if let value = dict["ResourceInstanceAccessStatus"] as? String {
             self.resourceInstanceAccessStatus = value
@@ -35839,6 +35947,8 @@ public class DescribeProductInstancesResponseBody : Tea.TeaModel {
 
         public var ownerUserId: String?
 
+        public var resourceDomain: String?
+
         public var resourceInstanceAccessStatus: String?
 
         public var resourceInstanceEdition: String?
@@ -35888,6 +35998,9 @@ public class DescribeProductInstancesResponseBody : Tea.TeaModel {
             }
             if self.ownerUserId != nil {
                 map["OwnerUserId"] = self.ownerUserId!
+            }
+            if self.resourceDomain != nil {
+                map["ResourceDomain"] = self.resourceDomain!
             }
             if self.resourceInstanceAccessStatus != nil {
                 map["ResourceInstanceAccessStatus"] = self.resourceInstanceAccessStatus!
@@ -35949,6 +36062,9 @@ public class DescribeProductInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["OwnerUserId"] as? String {
                 self.ownerUserId = value
+            }
+            if let value = dict["ResourceDomain"] as? String {
+                self.resourceDomain = value
             }
             if let value = dict["ResourceInstanceAccessStatus"] as? String {
                 self.resourceInstanceAccessStatus = value
