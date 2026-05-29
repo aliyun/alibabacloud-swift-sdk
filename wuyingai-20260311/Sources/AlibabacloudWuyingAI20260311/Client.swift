@@ -24,6 +24,71 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithOptions(_ tmpReq: ChatRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ChatShrinkRequest = ChatShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.input)) {
+            request.inputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.input, "Input", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.settings)) {
+            request.settingsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.settings, "Settings", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.streamOptions)) {
+            request.streamOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.streamOptions, "StreamOptions", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorization)) {
+            query["Authorization"] = request.authorization ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputShrink)) {
+            body["Input"] = request.inputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routingKey)) {
+            body["RoutingKey"] = request.routingKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.settingsShrink)) {
+            body["Settings"] = request.settingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamOptionsShrink)) {
+            body["StreamOptions"] = request.streamOptionsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Chat",
+            "version": "2026-03-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "Anonymous",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await doRPCRequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChatResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chat(_ request: ChatRequest) async throws -> ChatResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await chatWithOptions(request as! ChatRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAccessTokenWithOptions(_ request: GetAccessTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAccessTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
