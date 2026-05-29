@@ -82,6 +82,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func automaticWriteOffWithOptions(_ request: AutomaticWriteOffRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AutomaticWriteOffResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.automaticWriteOffAmount)) {
+            query["AutomaticWriteOffAmount"] = request.automaticWriteOffAmount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.automaticWriteOffEnabled)) {
+            query["AutomaticWriteOffEnabled"] = request.automaticWriteOffEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.customerUid)) {
+            query["CustomerUid"] = request.customerUid!;
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AutomaticWriteOff",
+            "version": "2022-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AutomaticWriteOffResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func automaticWriteOff(_ request: AutomaticWriteOffRequest) async throws -> AutomaticWriteOffResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await automaticWriteOffWithOptions(request as! AutomaticWriteOffRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelCouponWithOptions(_ request: CancelCouponRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelCouponResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1322,6 +1362,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func processApproval(_ request: ProcessApprovalRequest) async throws -> ProcessApprovalResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await processApprovalWithOptions(request as! ProcessApprovalRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAutomaticWriteOffChangeRecordsWithOptions(_ request: QueryAutomaticWriteOffChangeRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAutomaticWriteOffChangeRecordsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customerUid)) {
+            query["CustomerUid"] = request.customerUid!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            query["EndDate"] = request.endDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            query["StartDate"] = request.startDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryAutomaticWriteOffChangeRecords",
+            "version": "2022-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryAutomaticWriteOffChangeRecordsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAutomaticWriteOffChangeRecords(_ request: QueryAutomaticWriteOffChangeRecordsRequest) async throws -> QueryAutomaticWriteOffChangeRecordsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryAutomaticWriteOffChangeRecordsWithOptions(request as! QueryAutomaticWriteOffChangeRecordsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

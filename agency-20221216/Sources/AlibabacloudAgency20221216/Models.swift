@@ -5,6 +5,166 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AutomaticWriteOffRequest : Tea.TeaModel {
+    public var automaticWriteOffAmount: Int64?
+
+    public var automaticWriteOffEnabled: Bool?
+
+    public var customerUid: Int64?
+
+    public var language: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.automaticWriteOffAmount != nil {
+            map["AutomaticWriteOffAmount"] = self.automaticWriteOffAmount!
+        }
+        if self.automaticWriteOffEnabled != nil {
+            map["AutomaticWriteOffEnabled"] = self.automaticWriteOffEnabled!
+        }
+        if self.customerUid != nil {
+            map["CustomerUid"] = self.customerUid!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutomaticWriteOffAmount"] as? Int64 {
+            self.automaticWriteOffAmount = value
+        }
+        if let value = dict["AutomaticWriteOffEnabled"] as? Bool {
+            self.automaticWriteOffEnabled = value
+        }
+        if let value = dict["CustomerUid"] as? Int64 {
+            self.customerUid = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+    }
+}
+
+public class AutomaticWriteOffResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AutomaticWriteOffResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AutomaticWriteOffResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AutomaticWriteOffResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CancelCouponRequest : Tea.TeaModel {
     public var couponId: Int64?
 
@@ -8894,6 +9054,250 @@ public class ProcessApprovalResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ProcessApprovalResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryAutomaticWriteOffChangeRecordsRequest : Tea.TeaModel {
+    public var customerUid: Int64?
+
+    public var endDate: String?
+
+    public var language: String?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var startDate: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customerUid != nil {
+            map["CustomerUid"] = self.customerUid!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomerUid"] as? Int64 {
+            self.customerUid = value
+        }
+        if let value = dict["EndDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+        if let value = dict["PageNo"] as? Int32 {
+            self.pageNo = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["StartDate"] as? String {
+            self.startDate = value
+        }
+    }
+}
+
+public class QueryAutomaticWriteOffChangeRecordsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var changeContent: String?
+
+        public var operateId: String?
+
+        public var operateSource: String?
+
+        public var operationTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.changeContent != nil {
+                map["ChangeContent"] = self.changeContent!
+            }
+            if self.operateId != nil {
+                map["OperateId"] = self.operateId!
+            }
+            if self.operateSource != nil {
+                map["OperateSource"] = self.operateSource!
+            }
+            if self.operationTime != nil {
+                map["OperationTime"] = self.operationTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChangeContent"] as? String {
+                self.changeContent = value
+            }
+            if let value = dict["OperateId"] as? String {
+                self.operateId = value
+            }
+            if let value = dict["OperateSource"] as? String {
+                self.operateSource = value
+            }
+            if let value = dict["OperationTime"] as? String {
+                self.operationTime = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [QueryAutomaticWriteOffChangeRecordsResponseBody.Data]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [QueryAutomaticWriteOffChangeRecordsResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryAutomaticWriteOffChangeRecordsResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class QueryAutomaticWriteOffChangeRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryAutomaticWriteOffChangeRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryAutomaticWriteOffChangeRecordsResponseBody()
             model.fromMap(value)
             self.body = model
         }
