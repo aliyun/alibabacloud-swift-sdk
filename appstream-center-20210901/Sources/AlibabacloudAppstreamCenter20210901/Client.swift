@@ -1942,6 +1942,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listModelProviderEndpointsWithOptions(_ request: ListModelProviderEndpointsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListModelProviderEndpointsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentPlatform)) {
+            query["AgentPlatform"] = request.agentPlatform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentProvider)) {
+            query["AgentProvider"] = request.agentProvider ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.providerName)) {
+            query["ProviderName"] = request.providerName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListModelProviderEndpoints",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListModelProviderEndpointsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listModelProviderEndpoints(_ request: ListModelProviderEndpointsRequest) async throws -> ListModelProviderEndpointsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listModelProviderEndpointsWithOptions(request as! ListModelProviderEndpointsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listModelProviderTemplatesWithOptions(_ tmpReq: ListModelProviderTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListModelProviderTemplatesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListModelProviderTemplatesShrinkRequest = ListModelProviderTemplatesShrinkRequest([:])
