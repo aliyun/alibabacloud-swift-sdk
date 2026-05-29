@@ -8297,6 +8297,10 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
 
         public var requireRequestSigned: Bool?
 
+        public var wantAssertionsSigned: Bool?
+
+        public var wantResponseSigned: Bool?
+
         public override init() {
             super.init()
         }
@@ -8333,6 +8337,12 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             if self.requireRequestSigned != nil {
                 map["RequireRequestSigned"] = self.requireRequestSigned!
             }
+            if self.wantAssertionsSigned != nil {
+                map["WantAssertionsSigned"] = self.wantAssertionsSigned!
+            }
+            if self.wantResponseSigned != nil {
+                map["WantResponseSigned"] = self.wantResponseSigned!
+            }
             return map
         }
 
@@ -8365,6 +8375,12 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             }
             if let value = dict["RequireRequestSigned"] as? Bool {
                 self.requireRequestSigned = value
+            }
+            if let value = dict["WantAssertionsSigned"] as? Bool {
+                self.wantAssertionsSigned = value
+            }
+            if let value = dict["WantResponseSigned"] as? Bool {
+                self.wantResponseSigned = value
             }
         }
     }
@@ -30975,6 +30991,10 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
 
             public var requireRequestSigned: Bool?
 
+            public var wantAssertionsSigned: Bool?
+
+            public var wantResponseSigned: Bool?
+
             public override init() {
                 super.init()
             }
@@ -31011,6 +31031,12 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 if self.requireRequestSigned != nil {
                     map["RequireRequestSigned"] = self.requireRequestSigned!
                 }
+                if self.wantAssertionsSigned != nil {
+                    map["WantAssertionsSigned"] = self.wantAssertionsSigned!
+                }
+                if self.wantResponseSigned != nil {
+                    map["WantResponseSigned"] = self.wantResponseSigned!
+                }
                 return map
             }
 
@@ -31043,6 +31069,12 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RequireRequestSigned"] as? Bool {
                     self.requireRequestSigned = value
+                }
+                if let value = dict["WantAssertionsSigned"] as? Bool {
+                    self.wantAssertionsSigned = value
+                }
+                if let value = dict["WantResponseSigned"] as? Bool {
+                    self.wantResponseSigned = value
                 }
             }
         }
@@ -75846,6 +75878,10 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
 
         public var requireRequestSigned: Bool?
 
+        public var wantAssertionsSigned: Bool?
+
+        public var wantResponseSigned: Bool?
+
         public override init() {
             super.init()
         }
@@ -75882,6 +75918,12 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             if self.requireRequestSigned != nil {
                 map["RequireRequestSigned"] = self.requireRequestSigned!
             }
+            if self.wantAssertionsSigned != nil {
+                map["WantAssertionsSigned"] = self.wantAssertionsSigned!
+            }
+            if self.wantResponseSigned != nil {
+                map["WantResponseSigned"] = self.wantResponseSigned!
+            }
             return map
         }
 
@@ -75914,6 +75956,12 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             }
             if let value = dict["RequireRequestSigned"] as? Bool {
                 self.requireRequestSigned = value
+            }
+            if let value = dict["WantAssertionsSigned"] as? Bool {
+                self.wantAssertionsSigned = value
+            }
+            if let value = dict["WantResponseSigned"] as? Bool {
+                self.wantResponseSigned = value
             }
         }
     }
