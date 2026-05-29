@@ -2909,6 +2909,36 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityGroupIds : Tea.TeaModel {
+        public var securityGroupId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SecurityGroupId"] as? String {
+                self.securityGroupId = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -3031,6 +3061,8 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var securityGroupIds: [CreateLoadBalancerRequest.SecurityGroupIds]?
+
     public var tag: [CreateLoadBalancerRequest.Tag]?
 
     public var vpcId: String?
@@ -3085,6 +3117,13 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.securityGroupIds != nil {
+            var tmp : [Any] = []
+            for k in self.securityGroupIds! {
+                tmp.append(k.toMap())
+            }
+            map["SecurityGroupIds"] = tmp
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -3144,6 +3183,19 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SecurityGroupIds"] as? [Any?] {
+            var tmp : [CreateLoadBalancerRequest.SecurityGroupIds] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateLoadBalancerRequest.SecurityGroupIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.securityGroupIds = tmp
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateLoadBalancerRequest.Tag] = []
@@ -6957,6 +7009,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
     public var healthCheckConfig: CreateServerGroupRequest.HealthCheckConfig?
 
+    public var ipVersionAffinityMode: String?
+
     public var ipv6Enabled: Bool?
 
     public var protocol_: String?
@@ -7016,6 +7070,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         }
         if self.healthCheckConfig != nil {
             map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+        }
+        if self.ipVersionAffinityMode != nil {
+            map["IpVersionAffinityMode"] = self.ipVersionAffinityMode!
         }
         if self.ipv6Enabled != nil {
             map["Ipv6Enabled"] = self.ipv6Enabled!
@@ -7083,6 +7140,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             var model = CreateServerGroupRequest.HealthCheckConfig()
             model.fromMap(value)
             self.healthCheckConfig = model
+        }
+        if let value = dict["IpVersionAffinityMode"] as? String {
+            self.ipVersionAffinityMode = value
         }
         if let value = dict["Ipv6Enabled"] as? Bool {
             self.ipv6Enabled = value
@@ -7782,6 +7842,8 @@ public class DeleteLoadBalancerRequest : Tea.TeaModel {
 
     public var loadBalancerId: String?
 
+    public var retainResourceType: [String]?
+
     public override init() {
         super.init()
     }
@@ -7805,6 +7867,9 @@ public class DeleteLoadBalancerRequest : Tea.TeaModel {
         if self.loadBalancerId != nil {
             map["LoadBalancerId"] = self.loadBalancerId!
         }
+        if self.retainResourceType != nil {
+            map["RetainResourceType"] = self.retainResourceType!
+        }
         return map
     }
 
@@ -7818,6 +7883,9 @@ public class DeleteLoadBalancerRequest : Tea.TeaModel {
         }
         if let value = dict["LoadBalancerId"] as? String {
             self.loadBalancerId = value
+        }
+        if let value = dict["RetainResourceType"] as? [String] {
+            self.retainResourceType = value
         }
     }
 }
@@ -19868,6 +19936,8 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
 
         public var healthCheckConfig: ListServerGroupsResponseBody.ServerGroups.HealthCheckConfig?
 
+        public var ipVersionAffinityMode: String?
+
         public var ipv6Enabled: Bool?
 
         public var protocol_: String?
@@ -19935,6 +20005,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if self.healthCheckConfig != nil {
                 map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+            }
+            if self.ipVersionAffinityMode != nil {
+                map["IpVersionAffinityMode"] = self.ipVersionAffinityMode!
             }
             if self.ipv6Enabled != nil {
                 map["Ipv6Enabled"] = self.ipv6Enabled!
@@ -20014,6 +20087,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 var model = ListServerGroupsResponseBody.ServerGroups.HealthCheckConfig()
                 model.fromMap(value)
                 self.healthCheckConfig = model
+            }
+            if let value = dict["IpVersionAffinityMode"] as? String {
+                self.ipVersionAffinityMode = value
             }
             if let value = dict["Ipv6Enabled"] as? Bool {
                 self.ipv6Enabled = value
@@ -24687,6 +24763,8 @@ public class UpdateLoadBalancerAddressTypeConfigRequest : Tea.TeaModel {
 
     public var loadBalancerId: String?
 
+    public var retainResourceType: [String]?
+
     public var zoneMappings: [UpdateLoadBalancerAddressTypeConfigRequest.ZoneMappings]?
 
     public override init() {
@@ -24715,6 +24793,9 @@ public class UpdateLoadBalancerAddressTypeConfigRequest : Tea.TeaModel {
         if self.loadBalancerId != nil {
             map["LoadBalancerId"] = self.loadBalancerId!
         }
+        if self.retainResourceType != nil {
+            map["RetainResourceType"] = self.retainResourceType!
+        }
         if self.zoneMappings != nil {
             var tmp : [Any] = []
             for k in self.zoneMappings! {
@@ -24738,6 +24819,9 @@ public class UpdateLoadBalancerAddressTypeConfigRequest : Tea.TeaModel {
         }
         if let value = dict["LoadBalancerId"] as? String {
             self.loadBalancerId = value
+        }
+        if let value = dict["RetainResourceType"] as? [String] {
+            self.retainResourceType = value
         }
         if let value = dict["ZoneMappings"] as? [Any?] {
             var tmp : [UpdateLoadBalancerAddressTypeConfigRequest.ZoneMappings] = []
@@ -25234,6 +25318,8 @@ public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
 
     public var loadBalancerId: String?
 
+    public var retainResourceType: [String]?
+
     public var zoneMappings: [UpdateLoadBalancerZonesRequest.ZoneMappings]?
 
     public override init() {
@@ -25259,6 +25345,9 @@ public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
         if self.loadBalancerId != nil {
             map["LoadBalancerId"] = self.loadBalancerId!
         }
+        if self.retainResourceType != nil {
+            map["RetainResourceType"] = self.retainResourceType!
+        }
         if self.zoneMappings != nil {
             var tmp : [Any] = []
             for k in self.zoneMappings! {
@@ -25279,6 +25368,9 @@ public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
         }
         if let value = dict["LoadBalancerId"] as? String {
             self.loadBalancerId = value
+        }
+        if let value = dict["RetainResourceType"] as? [String] {
+            self.retainResourceType = value
         }
         if let value = dict["ZoneMappings"] as? [Any?] {
             var tmp : [UpdateLoadBalancerZonesRequest.ZoneMappings] = []
@@ -28790,6 +28882,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public var healthCheckConfig: UpdateServerGroupAttributeRequest.HealthCheckConfig?
 
+    public var ipVersionAffinityMode: String?
+
     public var scheduler: String?
 
     public var serverGroupId: String?
@@ -28840,6 +28934,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         if self.healthCheckConfig != nil {
             map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
         }
+        if self.ipVersionAffinityMode != nil {
+            map["IpVersionAffinityMode"] = self.ipVersionAffinityMode!
+        }
         if self.scheduler != nil {
             map["Scheduler"] = self.scheduler!
         }
@@ -28887,6 +28984,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             var model = UpdateServerGroupAttributeRequest.HealthCheckConfig()
             model.fromMap(value)
             self.healthCheckConfig = model
+        }
+        if let value = dict["IpVersionAffinityMode"] as? String {
+            self.ipVersionAffinityMode = value
         }
         if let value = dict["Scheduler"] as? String {
             self.scheduler = value
