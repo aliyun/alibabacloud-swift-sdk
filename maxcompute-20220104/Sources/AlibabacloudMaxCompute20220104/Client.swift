@@ -743,6 +743,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRoleWithOptions(_ projectName: String, _ roleName: String, _ request: DeleteRoleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRole",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectName)) + "/roles/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(roleName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRole(_ projectName: String, _ roleName: String, _ request: DeleteRoleRequest) async throws -> DeleteRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteRoleWithOptions(projectName as! String, roleName as! String, request as! DeleteRoleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getComputeEffectivePlanWithOptions(_ nickname: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetComputeEffectivePlanResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
