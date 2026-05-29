@@ -28533,6 +28533,8 @@ public class ListAvailableTtsRequest : Tea.TeaModel {
 
     public var ttsVoiceCode: String?
 
+    public var voiceType: String?
+
     public override init() {
         super.init()
     }
@@ -28559,6 +28561,9 @@ public class ListAvailableTtsRequest : Tea.TeaModel {
         if self.ttsVoiceCode != nil {
             map["TtsVoiceCode"] = self.ttsVoiceCode!
         }
+        if self.voiceType != nil {
+            map["VoiceType"] = self.voiceType!
+        }
         return map
     }
 
@@ -28576,6 +28581,9 @@ public class ListAvailableTtsRequest : Tea.TeaModel {
         if let value = dict["TtsVoiceCode"] as? String {
             self.ttsVoiceCode = value
         }
+        if let value = dict["VoiceType"] as? String {
+            self.voiceType = value
+        }
     }
 }
 
@@ -28590,6 +28598,8 @@ public class ListAvailableTtsResponseBody : Tea.TeaModel {
         public var ttsVoiceCode: String?
 
         public var ttsVoiceName: String?
+
+        public var voiceType: String?
 
         public override init() {
             super.init()
@@ -28620,6 +28630,9 @@ public class ListAvailableTtsResponseBody : Tea.TeaModel {
             if self.ttsVoiceName != nil {
                 map["TtsVoiceName"] = self.ttsVoiceName!
             }
+            if self.voiceType != nil {
+                map["VoiceType"] = self.voiceType!
+            }
             return map
         }
 
@@ -28639,6 +28652,9 @@ public class ListAvailableTtsResponseBody : Tea.TeaModel {
             }
             if let value = dict["TtsVoiceName"] as? String {
                 self.ttsVoiceName = value
+            }
+            if let value = dict["VoiceType"] as? String {
+                self.voiceType = value
             }
         }
     }

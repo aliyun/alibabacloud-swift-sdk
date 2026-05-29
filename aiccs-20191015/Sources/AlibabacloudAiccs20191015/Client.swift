@@ -4645,6 +4645,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ttsVoiceCode)) {
             query["TtsVoiceCode"] = request.ttsVoiceCode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.voiceType)) {
+            query["VoiceType"] = request.voiceType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
