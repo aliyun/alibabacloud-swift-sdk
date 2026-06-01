@@ -11871,6 +11871,8 @@ public class CreateDedicatedHostClusterResponse : Tea.TeaModel {
 }
 
 public class CreateDeploymentSetRequest : Tea.TeaModel {
+    public var affinity: Int64?
+
     public var clientToken: String?
 
     public var deploymentSetName: String?
@@ -11913,6 +11915,9 @@ public class CreateDeploymentSetRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.affinity != nil {
+            map["Affinity"] = self.affinity!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -11960,6 +11965,9 @@ public class CreateDeploymentSetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Affinity"] as? Int64 {
+            self.affinity = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -44226,6 +44234,8 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
             }
             public var accountId: Int64?
 
+            public var affinity: Int64?
+
             public var capacities: DescribeDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Capacities?
 
             public var creationTime: String?
@@ -44270,6 +44280,9 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.accountId != nil {
                     map["AccountId"] = self.accountId!
+                }
+                if self.affinity != nil {
+                    map["Affinity"] = self.affinity!
                 }
                 if self.capacities != nil {
                     map["Capacities"] = self.capacities?.toMap()
@@ -44317,6 +44330,9 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AccountId"] as? Int64 {
                     self.accountId = value
+                }
+                if let value = dict["Affinity"] as? Int64 {
+                    self.affinity = value
                 }
                 if let value = dict["Capacities"] as? [String: Any?] {
                     var model = DescribeDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Capacities()
@@ -107820,6 +107836,8 @@ public class ModifyDedicatedHostsChargeTypeResponse : Tea.TeaModel {
 }
 
 public class ModifyDeploymentSetAttributeRequest : Tea.TeaModel {
+    public var affinity: Int64?
+
     public var deploymentSetId: String?
 
     public var deploymentSetName: String?
@@ -107850,6 +107868,9 @@ public class ModifyDeploymentSetAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.affinity != nil {
+            map["Affinity"] = self.affinity!
+        }
         if self.deploymentSetId != nil {
             map["DeploymentSetId"] = self.deploymentSetId!
         }
@@ -107879,6 +107900,9 @@ public class ModifyDeploymentSetAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Affinity"] as? Int64 {
+            self.affinity = value
+        }
         if let value = dict["DeploymentSetId"] as? String {
             self.deploymentSetId = value
         }

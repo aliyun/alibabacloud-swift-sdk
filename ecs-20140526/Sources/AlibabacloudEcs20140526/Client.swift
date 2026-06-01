@@ -2349,6 +2349,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDeploymentSetWithOptions(_ request: CreateDeploymentSetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeploymentSetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.affinity)) {
+            query["Affinity"] = request.affinity!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -17037,6 +17040,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDeploymentSetAttributeWithOptions(_ request: ModifyDeploymentSetAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDeploymentSetAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.affinity)) {
+            query["Affinity"] = request.affinity!;
+        }
         if (!TeaUtils.Client.isUnset(request.deploymentSetId)) {
             query["DeploymentSetId"] = request.deploymentSetId ?? "";
         }
