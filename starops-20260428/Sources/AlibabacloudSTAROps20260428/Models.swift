@@ -571,6 +571,145 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
             }
         }
     }
+    public class ToolPolicy : Tea.TeaModel {
+        public class Aliyun : Tea.TeaModel {
+            public class Statements : Tea.TeaModel {
+                public var actions: [String]?
+
+                public var apiVersion: String?
+
+                public var decision: String?
+
+                public var product: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actions != nil {
+                        map["actions"] = self.actions!
+                    }
+                    if self.apiVersion != nil {
+                        map["apiVersion"] = self.apiVersion!
+                    }
+                    if self.decision != nil {
+                        map["decision"] = self.decision!
+                    }
+                    if self.product != nil {
+                        map["product"] = self.product!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["actions"] as? [String] {
+                        self.actions = value
+                    }
+                    if let value = dict["apiVersion"] as? String {
+                        self.apiVersion = value
+                    }
+                    if let value = dict["decision"] as? String {
+                        self.decision = value
+                    }
+                    if let value = dict["product"] as? String {
+                        self.product = value
+                    }
+                }
+            }
+            public var enable: Bool?
+
+            public var statements: [CreateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.statements != nil {
+                    var tmp : [Any] = []
+                    for k in self.statements! {
+                        tmp.append(k.toMap())
+                    }
+                    map["statements"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["statements"] as? [Any?] {
+                    var tmp : [CreateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.statements = tmp
+                }
+            }
+        }
+        public var aliyun: CreateDigitalEmployeeRequest.ToolPolicy.Aliyun?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.aliyun?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliyun != nil {
+                map["aliyun"] = self.aliyun?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["aliyun"] as? [String: Any?] {
+                var model = CreateDigitalEmployeeRequest.ToolPolicy.Aliyun()
+                model.fromMap(value)
+                self.aliyun = model
+            }
+        }
+    }
     public var attributes: [String: String]?
 
     public var defaultRule: String?
@@ -589,6 +728,8 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
     public var tags: [Tag]?
 
+    public var toolPolicy: CreateDigitalEmployeeRequest.ToolPolicy?
+
     public override init() {
         super.init()
     }
@@ -600,6 +741,7 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.knowledges?.validate()
+        try self.toolPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -634,6 +776,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["tags"] = tmp
+        }
+        if self.toolPolicy != nil {
+            map["toolPolicy"] = self.toolPolicy?.toMap()
         }
         return map
     }
@@ -678,6 +823,11 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["toolPolicy"] as? [String: Any?] {
+            var model = CreateDigitalEmployeeRequest.ToolPolicy()
+            model.fromMap(value)
+            self.toolPolicy = model
         }
     }
 }
@@ -2735,6 +2885,145 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ToolPolicy : Tea.TeaModel {
+        public class Aliyun : Tea.TeaModel {
+            public class Statements : Tea.TeaModel {
+                public var actions: [String]?
+
+                public var apiVersion: String?
+
+                public var decision: String?
+
+                public var product: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actions != nil {
+                        map["actions"] = self.actions!
+                    }
+                    if self.apiVersion != nil {
+                        map["apiVersion"] = self.apiVersion!
+                    }
+                    if self.decision != nil {
+                        map["decision"] = self.decision!
+                    }
+                    if self.product != nil {
+                        map["product"] = self.product!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["actions"] as? [String] {
+                        self.actions = value
+                    }
+                    if let value = dict["apiVersion"] as? String {
+                        self.apiVersion = value
+                    }
+                    if let value = dict["decision"] as? String {
+                        self.decision = value
+                    }
+                    if let value = dict["product"] as? String {
+                        self.product = value
+                    }
+                }
+            }
+            public var enable: Bool?
+
+            public var statements: [GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun.Statements]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.statements != nil {
+                    var tmp : [Any] = []
+                    for k in self.statements! {
+                        tmp.append(k.toMap())
+                    }
+                    map["statements"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["statements"] as? [Any?] {
+                    var tmp : [GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun.Statements] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun.Statements()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.statements = tmp
+                }
+            }
+        }
+        public var aliyun: GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.aliyun?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliyun != nil {
+                map["aliyun"] = self.aliyun?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["aliyun"] as? [String: Any?] {
+                var model = GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun()
+                model.fromMap(value)
+                self.aliyun = model
+            }
+        }
+    }
     public var attributes: [String: String]?
 
     public var createTime: String?
@@ -2761,6 +3050,8 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public var tags: [Tag]?
 
+    public var toolPolicy: GetDigitalEmployeeResponseBody.ToolPolicy?
+
     public var updateTime: String?
 
     public override init() {
@@ -2774,6 +3065,7 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.knowledges?.validate()
+        try self.toolPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2820,6 +3112,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["tags"] = tmp
+        }
+        if self.toolPolicy != nil {
+            map["toolPolicy"] = self.toolPolicy?.toMap()
         }
         if self.updateTime != nil {
             map["updateTime"] = self.updateTime!
@@ -2879,6 +3174,11 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["toolPolicy"] as? [String: Any?] {
+            var model = GetDigitalEmployeeResponseBody.ToolPolicy()
+            model.fromMap(value)
+            self.toolPolicy = model
         }
         if let value = dict["updateTime"] as? String {
             self.updateTime = value
@@ -6671,6 +6971,145 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
             }
         }
     }
+    public class ToolPolicy : Tea.TeaModel {
+        public class Aliyun : Tea.TeaModel {
+            public class Statements : Tea.TeaModel {
+                public var actions: [String]?
+
+                public var apiVersion: String?
+
+                public var decision: String?
+
+                public var product: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actions != nil {
+                        map["actions"] = self.actions!
+                    }
+                    if self.apiVersion != nil {
+                        map["apiVersion"] = self.apiVersion!
+                    }
+                    if self.decision != nil {
+                        map["decision"] = self.decision!
+                    }
+                    if self.product != nil {
+                        map["product"] = self.product!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["actions"] as? [String] {
+                        self.actions = value
+                    }
+                    if let value = dict["apiVersion"] as? String {
+                        self.apiVersion = value
+                    }
+                    if let value = dict["decision"] as? String {
+                        self.decision = value
+                    }
+                    if let value = dict["product"] as? String {
+                        self.product = value
+                    }
+                }
+            }
+            public var enable: Bool?
+
+            public var statements: [UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.statements != nil {
+                    var tmp : [Any] = []
+                    for k in self.statements! {
+                        tmp.append(k.toMap())
+                    }
+                    map["statements"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["statements"] as? [Any?] {
+                    var tmp : [UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.statements = tmp
+                }
+            }
+        }
+        public var aliyun: UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.aliyun?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliyun != nil {
+                map["aliyun"] = self.aliyun?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["aliyun"] as? [String: Any?] {
+                var model = UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun()
+                model.fromMap(value)
+                self.aliyun = model
+            }
+        }
+    }
     public var attributes: [String: String]?
 
     public var defaultRule: String?
@@ -6683,6 +7122,8 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
     public var roleArn: String?
 
+    public var toolPolicy: UpdateDigitalEmployeeRequest.ToolPolicy?
+
     public override init() {
         super.init()
     }
@@ -6694,6 +7135,7 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.knowledges?.validate()
+        try self.toolPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6715,6 +7157,9 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
         }
         if self.roleArn != nil {
             map["roleArn"] = self.roleArn!
+        }
+        if self.toolPolicy != nil {
+            map["toolPolicy"] = self.toolPolicy?.toMap()
         }
         return map
     }
@@ -6740,6 +7185,11 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
         }
         if let value = dict["roleArn"] as? String {
             self.roleArn = value
+        }
+        if let value = dict["toolPolicy"] as? [String: Any?] {
+            var model = UpdateDigitalEmployeeRequest.ToolPolicy()
+            model.fromMap(value)
+            self.toolPolicy = model
         }
     }
 }
