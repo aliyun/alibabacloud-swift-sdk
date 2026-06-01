@@ -6426,6 +6426,8 @@ public class CreateTemplateInput : Tea.TeaModel {
 
     public var enableAgent: Bool?
 
+    public var enablePreStop: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -6439,6 +6441,8 @@ public class CreateTemplateInput : Tea.TeaModel {
     public var networkConfiguration: NetworkConfiguration?
 
     public var ossConfiguration: [OssConfiguration]?
+
+    public var preStopTimeoutInSeconds: Int32?
 
     public var sandboxIdleTimeoutInSeconds: Int32?
 
@@ -6499,6 +6503,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         if self.enableAgent != nil {
             map["enableAgent"] = self.enableAgent!
         }
+        if self.enablePreStop != nil {
+            map["enablePreStop"] = self.enablePreStop!
+        }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
         }
@@ -6523,6 +6530,9 @@ public class CreateTemplateInput : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ossConfiguration"] = tmp
+        }
+        if self.preStopTimeoutInSeconds != nil {
+            map["preStopTimeoutInSeconds"] = self.preStopTimeoutInSeconds!
         }
         if self.sandboxIdleTimeoutInSeconds != nil {
             map["sandboxIdleTimeoutInSeconds"] = self.sandboxIdleTimeoutInSeconds!
@@ -6580,6 +6590,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         if let value = dict["enableAgent"] as? Bool {
             self.enableAgent = value
         }
+        if let value = dict["enablePreStop"] as? Bool {
+            self.enablePreStop = value
+        }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
         }
@@ -6616,6 +6629,9 @@ public class CreateTemplateInput : Tea.TeaModel {
                 }
             }
             self.ossConfiguration = tmp
+        }
+        if let value = dict["preStopTimeoutInSeconds"] as? Int32 {
+            self.preStopTimeoutInSeconds = value
         }
         if let value = dict["sandboxIdleTimeoutInSeconds"] as? Int32 {
             self.sandboxIdleTimeoutInSeconds = value
@@ -19542,6 +19558,8 @@ public class Template : Tea.TeaModel {
 
     public var enableAgent: Bool?
 
+    public var enablePreStop: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -19561,6 +19579,8 @@ public class Template : Tea.TeaModel {
     public var networkConfiguration: NetworkConfiguration?
 
     public var ossConfiguration: [OssConfiguration]?
+
+    public var preStopTimeoutInSeconds: Int32?
 
     public var resourceName: String?
 
@@ -19634,6 +19654,9 @@ public class Template : Tea.TeaModel {
         if self.enableAgent != nil {
             map["enableAgent"] = self.enableAgent!
         }
+        if self.enablePreStop != nil {
+            map["enablePreStop"] = self.enablePreStop!
+        }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
         }
@@ -19667,6 +19690,9 @@ public class Template : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ossConfiguration"] = tmp
+        }
+        if self.preStopTimeoutInSeconds != nil {
+            map["preStopTimeoutInSeconds"] = self.preStopTimeoutInSeconds!
         }
         if self.resourceName != nil {
             map["resourceName"] = self.resourceName!
@@ -19740,6 +19766,9 @@ public class Template : Tea.TeaModel {
         if let value = dict["enableAgent"] as? Bool {
             self.enableAgent = value
         }
+        if let value = dict["enablePreStop"] as? Bool {
+            self.enablePreStop = value
+        }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
         }
@@ -19789,6 +19818,9 @@ public class Template : Tea.TeaModel {
                 }
             }
             self.ossConfiguration = tmp
+        }
+        if let value = dict["preStopTimeoutInSeconds"] as? Int32 {
+            self.preStopTimeoutInSeconds = value
         }
         if let value = dict["resourceName"] as? String {
             self.resourceName = value
@@ -22469,6 +22501,8 @@ public class UpdateTemplateInput : Tea.TeaModel {
 
     public var enableAgent: Bool?
 
+    public var enablePreStop: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -22482,6 +22516,8 @@ public class UpdateTemplateInput : Tea.TeaModel {
     public var networkConfiguration: NetworkConfiguration?
 
     public var ossConfiguration: [OssConfiguration]?
+
+    public var preStopTimeoutInSeconds: Int32?
 
     public var sandboxIdleTimeoutInSeconds: Int32?
 
@@ -22535,6 +22571,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         if self.enableAgent != nil {
             map["enableAgent"] = self.enableAgent!
         }
+        if self.enablePreStop != nil {
+            map["enablePreStop"] = self.enablePreStop!
+        }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
         }
@@ -22559,6 +22598,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ossConfiguration"] = tmp
+        }
+        if self.preStopTimeoutInSeconds != nil {
+            map["preStopTimeoutInSeconds"] = self.preStopTimeoutInSeconds!
         }
         if self.sandboxIdleTimeoutInSeconds != nil {
             map["sandboxIdleTimeoutInSeconds"] = self.sandboxIdleTimeoutInSeconds!
@@ -22607,6 +22649,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         if let value = dict["enableAgent"] as? Bool {
             self.enableAgent = value
         }
+        if let value = dict["enablePreStop"] as? Bool {
+            self.enablePreStop = value
+        }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
         }
@@ -22643,6 +22688,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
                 }
             }
             self.ossConfiguration = tmp
+        }
+        if let value = dict["preStopTimeoutInSeconds"] as? Int32 {
+            self.preStopTimeoutInSeconds = value
         }
         if let value = dict["sandboxIdleTimeoutInSeconds"] as? Int32 {
             self.sandboxIdleTimeoutInSeconds = value
