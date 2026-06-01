@@ -285,6 +285,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.registryKey)) {
             query["RegistryKey"] = request.registryKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetDefault)) {
+            query["TargetDefault"] = request.targetDefault ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type!;
         }
@@ -29215,11 +29218,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listUnknownThreatDetectEventWithOptions(_ request: ListUnknownThreatDetectEventRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUnknownThreatDetectEventResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.analyzeResult)) {
+            query["AnalyzeResult"] = request.analyzeResult ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
         }
         if (!TeaUtils.Client.isUnset(request.hashKey)) {
             query["HashKey"] = request.hashKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
