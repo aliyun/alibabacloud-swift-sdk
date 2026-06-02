@@ -1040,6 +1040,8 @@ public class DebugBeginDialogueRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var shouldUseSandBox: Bool?
+
     public override init() {
         super.init()
     }
@@ -1069,6 +1071,9 @@ public class DebugBeginDialogueRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.shouldUseSandBox != nil {
+            map["ShouldUseSandBox"] = self.shouldUseSandBox!
+        }
         return map
     }
 
@@ -1088,6 +1093,9 @@ public class DebugBeginDialogueRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ShouldUseSandBox"] as? Bool {
+            self.shouldUseSandBox = value
         }
     }
 }
