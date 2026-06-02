@@ -2092,7 +2092,7 @@ public class RuleInfo : Tea.TeaModel {
 
     public var scoreName: String?
 
-    public var scoreNum: Int32?
+    public var scoreNum: Double?
 
     public var scoreNumType: Int32?
 
@@ -2452,7 +2452,7 @@ public class RuleInfo : Tea.TeaModel {
         if let value = dict["ScoreName"] as? String {
             self.scoreName = value
         }
-        if let value = dict["ScoreNum"] as? Int32 {
+        if let value = dict["ScoreNum"] as? Double {
             self.scoreNum = value
         }
         if let value = dict["ScoreNumType"] as? Int32 {
