@@ -183,49 +183,161 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeDeviceSeatsWithOptions(_ request: DescribeDeviceSeatsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDeviceSeatsResponse {
+    public func deleteClientsWithOptions(_ request: DeleteClientsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteClientsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callerAliUid)) {
+            query["CallerAliUid"] = request.callerAliUid ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.inManage)) {
+            body["InManage"] = request.inManage!;
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.uuids)) {
+            bodyFlat["Uuids"] = request.uuids ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteClients",
+            "version": "2021-04-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteClientsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteClients(_ request: DeleteClientsRequest) async throws -> DeleteClientsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteClientsWithOptions(request as! DeleteClientsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeClientsWithOptions(_ request: DescribeClientsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClientsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callerAliUid)) {
+            query["CallerAliUid"] = request.callerAliUid ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientType)) {
+            body["ClientType"] = request.clientType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.customResourceId)) {
+            body["CustomResourceId"] = request.customResourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customResourceStatus)) {
+            body["CustomResourceStatus"] = request.customResourceStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.inManage)) {
+            body["InManage"] = request.inManage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.includeSubGroups)) {
+            body["IncludeSubGroups"] = request.includeSubGroups!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            body["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.onlineStatus)) {
+            body["OnlineStatus"] = request.onlineStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            body["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchKeyword)) {
+            body["SearchKeyword"] = request.searchKeyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.terminalGroupId)) {
+            body["TerminalGroupId"] = request.terminalGroupId ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.uuids)) {
+            bodyFlat["Uuids"] = request.uuids ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.withBindUser)) {
+            body["WithBindUser"] = request.withBindUser!;
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeClients",
+            "version": "2021-04-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClientsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeClients(_ request: DescribeClientsRequest) async throws -> DescribeClientsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeClientsWithOptions(request as! DescribeClientsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getOrCreateInvitationCodeWithOptions(_ request: GetOrCreateInvitationCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOrCreateInvitationCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
+        if (!TeaUtils.Client.isUnset(request.expireDays)) {
+            body["ExpireDays"] = request.expireDays!;
         }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
+        if (!TeaUtils.Client.isUnset(request.expireMinutes)) {
+            body["ExpireMinutes"] = request.expireMinutes!;
         }
-        if (!TeaUtils.Client.isUnset(request.serialNo)) {
-            body["SerialNo"] = request.serialNo ?? "";
+        if (!TeaUtils.Client.isUnset(request.terminalGroupId)) {
+            body["TerminalGroupId"] = request.terminalGroupId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.serialNoList)) {
-            body["SerialNoList"] = request.serialNoList ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.siteId)) {
-            body["SiteId"] = request.siteId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.tenantId)) {
-            body["TenantId"] = request.tenantId ?? "";
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeDeviceSeats",
+            "action": "GetOrCreateInvitationCode",
             "version": "2021-04-20",
             "protocol": "HTTPS",
             "pathname": "/",
             "method": "POST",
-            "authType": "Anonymous",
+            "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
             "bodyType": "json"
         ])
-        var tmp: [String: Any] = try await doRPCRequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeDeviceSeatsResponse(), tmp)
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetOrCreateInvitationCodeResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeDeviceSeats(_ request: DescribeDeviceSeatsRequest) async throws -> DescribeDeviceSeatsResponse {
+    public func getOrCreateInvitationCode(_ request: GetOrCreateInvitationCodeRequest) async throws -> GetOrCreateInvitationCodeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await describeDeviceSeatsWithOptions(request as! DescribeDeviceSeatsRequest, runtime as! TeaUtils.RuntimeOptions)
+        return try await getOrCreateInvitationCodeWithOptions(request as! GetOrCreateInvitationCodeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -374,42 +486,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func unbindAccountLessLoginUser(_ request: UnbindAccountLessLoginUserRequest) async throws -> UnbindAccountLessLoginUserResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await unbindAccountLessLoginUserWithOptions(request as! UnbindAccountLessLoginUserRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func unbindDeviceSeatsWithOptions(_ tmpReq: UnbindDeviceSeatsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnbindDeviceSeatsResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: UnbindDeviceSeatsShrinkRequest = UnbindDeviceSeatsShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.serialNoList)) {
-            request.serialNoListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serialNoList, "SerialNoList", "json")
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.serialNoListShrink)) {
-            body["SerialNoList"] = request.serialNoListShrink ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UnbindDeviceSeats",
-            "version": "2021-04-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UnbindDeviceSeatsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func unbindDeviceSeats(_ request: UnbindDeviceSeatsRequest) async throws -> UnbindDeviceSeatsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await unbindDeviceSeatsWithOptions(request as! UnbindDeviceSeatsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
