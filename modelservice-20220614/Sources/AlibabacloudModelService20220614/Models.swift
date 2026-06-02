@@ -150,7 +150,9 @@ public class GetMonthAmountResponse : Tea.TeaModel {
 }
 
 public class GetUserRequest : Tea.TeaModel {
-    public var sceneType: String?
+    public var channel: String?
+
+    public var region: String?
 
     public override init() {
         super.init()
@@ -166,16 +168,22 @@ public class GetUserRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.sceneType != nil {
-            map["scene_type"] = self.sceneType!
+        if self.channel != nil {
+            map["channel"] = self.channel!
+        }
+        if self.region != nil {
+            map["region"] = self.region!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["scene_type"] as? String {
-            self.sceneType = value
+        if let value = dict["channel"] as? String {
+            self.channel = value
+        }
+        if let value = dict["region"] as? String {
+            self.region = value
         }
     }
 }
@@ -186,6 +194,8 @@ public class GetUserResponseBody : Tea.TeaModel {
     public var code: String?
 
     public var host: String?
+
+    public var innerToken: String?
 
     public var message: String?
 
@@ -216,6 +226,9 @@ public class GetUserResponseBody : Tea.TeaModel {
         if self.host != nil {
             map["Host"] = self.host!
         }
+        if self.innerToken != nil {
+            map["InnerToken"] = self.innerToken!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -238,6 +251,9 @@ public class GetUserResponseBody : Tea.TeaModel {
         }
         if let value = dict["Host"] as? String {
             self.host = value
+        }
+        if let value = dict["InnerToken"] as? String {
+            self.innerToken = value
         }
         if let value = dict["Message"] as? String {
             self.message = value

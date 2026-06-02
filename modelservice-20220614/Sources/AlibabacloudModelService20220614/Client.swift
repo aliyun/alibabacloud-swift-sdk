@@ -60,8 +60,11 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getUserWithOptions(_ request: GetUserRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.sceneType)) {
-            query["scene_type"] = request.sceneType ?? "";
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["region"] = request.region ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
