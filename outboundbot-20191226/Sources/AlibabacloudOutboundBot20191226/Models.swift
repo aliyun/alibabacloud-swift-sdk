@@ -12425,6 +12425,8 @@ public class DescribeJobResponseBody : Tea.TeaModel {
 
             public var taskId: String?
 
+            public var totalDuration: Int64?
+
             public override init() {
                 super.init()
             }
@@ -12507,6 +12509,9 @@ public class DescribeJobResponseBody : Tea.TeaModel {
                 if self.taskId != nil {
                     map["TaskId"] = self.taskId!
                 }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
                 return map
             }
 
@@ -12586,6 +12591,9 @@ public class DescribeJobResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TaskId"] as? String {
                     self.taskId = value
+                }
+                if let value = dict["TotalDuration"] as? Int64 {
+                    self.totalDuration = value
                 }
             }
         }
@@ -41741,6 +41749,8 @@ public class QueryJobsWithResultResponseBody : Tea.TeaModel {
 
                 public var extras: [QueryJobsWithResultResponseBody.Jobs.List.LatestTask.Extras]?
 
+                public var hangUpDirection: String?
+
                 public var hasAnswered: Bool?
 
                 public var hasHangUpByRejection: Bool?
@@ -41797,6 +41807,9 @@ public class QueryJobsWithResultResponseBody : Tea.TeaModel {
                             tmp.append(k.toMap())
                         }
                         map["Extras"] = tmp
+                    }
+                    if self.hangUpDirection != nil {
+                        map["HangUpDirection"] = self.hangUpDirection!
                     }
                     if self.hasAnswered != nil {
                         map["HasAnswered"] = self.hasAnswered!
@@ -41870,6 +41883,9 @@ public class QueryJobsWithResultResponseBody : Tea.TeaModel {
                             }
                         }
                         self.extras = tmp
+                    }
+                    if let value = dict["HangUpDirection"] as? String {
+                        self.hangUpDirection = value
                     }
                     if let value = dict["HasAnswered"] as? Bool {
                         self.hasAnswered = value
