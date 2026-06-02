@@ -96956,6 +96956,642 @@ public class MeetingFlashMinutesResponse : Tea.TeaModel {
     }
 }
 
+public class MeetingFlashMinutesTextHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: MeetingFlashMinutesTextHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? [String: Any?] {
+            var model = MeetingFlashMinutesTextHeaders.AccountContext()
+            model.fromMap(value)
+            self.accountContext = model
+        }
+    }
+}
+
+public class MeetingFlashMinutesTextShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? String {
+            self.accountContextShrink = value
+        }
+    }
+}
+
+public class MeetingFlashMinutesTextRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
+    public var tenantContext: MeetingFlashMinutesTextRequest.TenantContext?
+
+    public var conferenceId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        if self.conferenceId != nil {
+            map["conferenceId"] = self.conferenceId!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TenantContext"] as? [String: Any?] {
+            var model = MeetingFlashMinutesTextRequest.TenantContext()
+            model.fromMap(value)
+            self.tenantContext = model
+        }
+        if let value = dict["conferenceId"] as? String {
+            self.conferenceId = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class MeetingFlashMinutesTextShrinkRequest : Tea.TeaModel {
+    public var tenantContextShrink: String?
+
+    public var conferenceId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        if self.conferenceId != nil {
+            map["conferenceId"] = self.conferenceId!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TenantContext"] as? String {
+            self.tenantContextShrink = value
+        }
+        if let value = dict["conferenceId"] as? String {
+            self.conferenceId = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class MeetingFlashMinutesTextResponseBody : Tea.TeaModel {
+    public class ParagraphList : Tea.TeaModel {
+        public class SentenceList : Tea.TeaModel {
+            public class WordList : Tea.TeaModel {
+                public var endTime: Int64?
+
+                public var startTime: Int64?
+
+                public var word: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["endTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["startTime"] = self.startTime!
+                    }
+                    if self.word != nil {
+                        map["word"] = self.word!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["endTime"] as? Int64 {
+                        self.endTime = value
+                    }
+                    if let value = dict["startTime"] as? Int64 {
+                        self.startTime = value
+                    }
+                    if let value = dict["word"] as? String {
+                        self.word = value
+                    }
+                }
+            }
+            public var endTime: Int64?
+
+            public var sentence: String?
+
+            public var startTime: Int64?
+
+            public var wordList: [MeetingFlashMinutesTextResponseBody.ParagraphList.SentenceList.WordList]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["endTime"] = self.endTime!
+                }
+                if self.sentence != nil {
+                    map["sentence"] = self.sentence!
+                }
+                if self.startTime != nil {
+                    map["startTime"] = self.startTime!
+                }
+                if self.wordList != nil {
+                    var tmp : [Any] = []
+                    for k in self.wordList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["wordList"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["endTime"] as? Int64 {
+                    self.endTime = value
+                }
+                if let value = dict["sentence"] as? String {
+                    self.sentence = value
+                }
+                if let value = dict["startTime"] as? Int64 {
+                    self.startTime = value
+                }
+                if let value = dict["wordList"] as? [Any?] {
+                    var tmp : [MeetingFlashMinutesTextResponseBody.ParagraphList.SentenceList.WordList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = MeetingFlashMinutesTextResponseBody.ParagraphList.SentenceList.WordList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.wordList = tmp
+                }
+            }
+        }
+        public class SpeakerDisplay : Tea.TeaModel {
+            public var avatarUrl: String?
+
+            public var nickName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.avatarUrl != nil {
+                    map["avatarUrl"] = self.avatarUrl!
+                }
+                if self.nickName != nil {
+                    map["nickName"] = self.nickName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["avatarUrl"] as? String {
+                    self.avatarUrl = value
+                }
+                if let value = dict["nickName"] as? String {
+                    self.nickName = value
+                }
+            }
+        }
+        public var endTime: Int64?
+
+        public var nickName: String?
+
+        public var paragraph: String?
+
+        public var sentenceList: [MeetingFlashMinutesTextResponseBody.ParagraphList.SentenceList]?
+
+        public var speakerDisplay: MeetingFlashMinutesTextResponseBody.ParagraphList.SpeakerDisplay?
+
+        public var startTime: Int64?
+
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.speakerDisplay?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.nickName != nil {
+                map["nickName"] = self.nickName!
+            }
+            if self.paragraph != nil {
+                map["paragraph"] = self.paragraph!
+            }
+            if self.sentenceList != nil {
+                var tmp : [Any] = []
+                for k in self.sentenceList! {
+                    tmp.append(k.toMap())
+                }
+                map["sentenceList"] = tmp
+            }
+            if self.speakerDisplay != nil {
+                map["speakerDisplay"] = self.speakerDisplay?.toMap()
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.userId != nil {
+                map["userId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["nickName"] as? String {
+                self.nickName = value
+            }
+            if let value = dict["paragraph"] as? String {
+                self.paragraph = value
+            }
+            if let value = dict["sentenceList"] as? [Any?] {
+                var tmp : [MeetingFlashMinutesTextResponseBody.ParagraphList.SentenceList] = []
+                for v in value {
+                    if v != nil {
+                        var model = MeetingFlashMinutesTextResponseBody.ParagraphList.SentenceList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sentenceList = tmp
+            }
+            if let value = dict["speakerDisplay"] as? [String: Any?] {
+                var model = MeetingFlashMinutesTextResponseBody.ParagraphList.SpeakerDisplay()
+                model.fromMap(value)
+                self.speakerDisplay = model
+            }
+            if let value = dict["startTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["userId"] as? String {
+                self.userId = value
+            }
+        }
+    }
+    public var hasNext: Bool?
+
+    public var nextToken: String?
+
+    public var paragraphList: [MeetingFlashMinutesTextResponseBody.ParagraphList]?
+
+    public var requestId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.hasNext != nil {
+            map["hasNext"] = self.hasNext!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.paragraphList != nil {
+            var tmp : [Any] = []
+            for k in self.paragraphList! {
+                tmp.append(k.toMap())
+            }
+            map["paragraphList"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["hasNext"] as? Bool {
+            self.hasNext = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["paragraphList"] as? [Any?] {
+            var tmp : [MeetingFlashMinutesTextResponseBody.ParagraphList] = []
+            for v in value {
+                if v != nil {
+                    var model = MeetingFlashMinutesTextResponseBody.ParagraphList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.paragraphList = tmp
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["vendorRequestId"] as? String {
+            self.vendorRequestId = value
+        }
+        if let value = dict["vendorType"] as? String {
+            self.vendorType = value
+        }
+    }
+}
+
+public class MeetingFlashMinutesTextResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MeetingFlashMinutesTextResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MeetingFlashMinutesTextResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class MuteAllHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
