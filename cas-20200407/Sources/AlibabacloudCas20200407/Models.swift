@@ -5287,6 +5287,8 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
 
     public var contactId: Int64?
 
+    public var csr: String?
+
     public var domain: String?
 
     public var existPrivateKey: Bool?
@@ -5360,6 +5362,9 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.contactId != nil {
             map["ContactId"] = self.contactId!
+        }
+        if self.csr != nil {
+            map["Csr"] = self.csr!
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -5448,6 +5453,9 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["ContactId"] as? Int64 {
             self.contactId = value
+        }
+        if let value = dict["Csr"] as? String {
+            self.csr = value
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
@@ -5768,6 +5776,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
     public class DomainValidationList : Tea.TeaModel {
         public var cname: String?
 
+        public var cnameKey: String?
+
         public var domain: String?
 
         public var rootDomain: String?
@@ -5795,6 +5805,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             if self.cname != nil {
                 map["Cname"] = self.cname!
             }
+            if self.cnameKey != nil {
+                map["CnameKey"] = self.cnameKey!
+            }
             if self.domain != nil {
                 map["Domain"] = self.domain!
             }
@@ -5817,6 +5830,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Cname"] as? String {
                 self.cname = value
+            }
+            if let value = dict["CnameKey"] as? String {
+                self.cnameKey = value
             }
             if let value = dict["Domain"] as? String {
                 self.domain = value
@@ -5940,6 +5956,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
     public var status: String?
 
     public var tags: [GetInstanceDetailResponseBody.Tags]?
+
+    public var upgradeStatus: String?
 
     public var validationMethod: String?
 
@@ -6072,6 +6090,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.upgradeStatus != nil {
+            map["UpgradeStatus"] = self.upgradeStatus!
         }
         if self.validationMethod != nil {
             map["ValidationMethod"] = self.validationMethod!
@@ -6215,6 +6236,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["UpgradeStatus"] as? String {
+            self.upgradeStatus = value
         }
         if let value = dict["ValidationMethod"] as? String {
             self.validationMethod = value
@@ -11022,6 +11046,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var certIdentifier: String?
 
+        public var certificateDomain: String?
+
         public var certificateId: Int64?
 
         public var certificateName: String?
@@ -11054,9 +11080,13 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var pendingResult: String?
 
+        public var resourceGroupId: String?
+
         public var spec: String?
 
         public var status: String?
+
+        public var usingProductList: [String]?
 
         public var wildcardDomainCount: Int32?
 
@@ -11082,6 +11112,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.certIdentifier != nil {
                 map["CertIdentifier"] = self.certIdentifier!
+            }
+            if self.certificateDomain != nil {
+                map["CertificateDomain"] = self.certificateDomain!
             }
             if self.certificateId != nil {
                 map["CertificateId"] = self.certificateId!
@@ -11131,11 +11164,17 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if self.pendingResult != nil {
                 map["PendingResult"] = self.pendingResult!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.spec != nil {
                 map["Spec"] = self.spec!
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.usingProductList != nil {
+                map["UsingProductList"] = self.usingProductList!
             }
             if self.wildcardDomainCount != nil {
                 map["WildcardDomainCount"] = self.wildcardDomainCount!
@@ -11153,6 +11192,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CertIdentifier"] as? String {
                 self.certIdentifier = value
+            }
+            if let value = dict["CertificateDomain"] as? String {
+                self.certificateDomain = value
             }
             if let value = dict["CertificateId"] as? Int64 {
                 self.certificateId = value
@@ -11202,11 +11244,17 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if let value = dict["PendingResult"] as? String {
                 self.pendingResult = value
             }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
             if let value = dict["Spec"] as? String {
                 self.spec = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["UsingProductList"] as? [String] {
+                self.usingProductList = value
             }
             if let value = dict["WildcardDomainCount"] as? Int32 {
                 self.wildcardDomainCount = value
