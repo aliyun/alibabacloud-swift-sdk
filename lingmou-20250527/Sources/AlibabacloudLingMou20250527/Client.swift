@@ -512,6 +512,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteBroadcastStickerWithOptions(_ stickerId: String, _ request: DeleteBroadcastStickerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteBroadcastStickerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteBroadcastSticker",
+            "version": "2025-05-27",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/broadcast/materials/stickers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(stickerId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteBroadcastStickerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteBroadcastSticker(_ stickerId: String, _ request: DeleteBroadcastStickerRequest) async throws -> DeleteBroadcastStickerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteBroadcastStickerWithOptions(stickerId as! String, request as! DeleteBroadcastStickerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getBroadcastTemplateWithOptions(_ request: GetBroadcastTemplateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBroadcastTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
