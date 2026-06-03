@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudOutboundBot20191226"
-  spec.version      = "2.1.0"
+  spec.version      = "2.1.1"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud OutboundBot (20191226) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/outboundbot-20191226" 
