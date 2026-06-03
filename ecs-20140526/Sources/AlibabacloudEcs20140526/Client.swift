@@ -2142,6 +2142,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceAmount)) {
             query["InstanceAmount"] = request.instanceAmount!;
         }
+        if (!TeaUtils.Client.isUnset(request.instanceChargeType)) {
+            query["InstanceChargeType"] = request.instanceChargeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceType)) {
             query["InstanceType"] = request.instanceType ?? "";
         }

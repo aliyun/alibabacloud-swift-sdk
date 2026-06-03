@@ -11066,6 +11066,8 @@ public class CreateCapacityReservationRequest : Tea.TeaModel {
 
     public var instanceAmount: Int32?
 
+    public var instanceChargeType: String?
+
     public var instanceType: String?
 
     public var ownerAccount: String?
@@ -11120,6 +11122,9 @@ public class CreateCapacityReservationRequest : Tea.TeaModel {
         }
         if self.instanceAmount != nil {
             map["InstanceAmount"] = self.instanceAmount!
+        }
+        if self.instanceChargeType != nil {
+            map["InstanceChargeType"] = self.instanceChargeType!
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
@@ -11182,6 +11187,9 @@ public class CreateCapacityReservationRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceAmount"] as? Int32 {
             self.instanceAmount = value
+        }
+        if let value = dict["InstanceChargeType"] as? String {
+            self.instanceChargeType = value
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
@@ -38168,6 +38176,8 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
 
             public var capacityReservationOwnerId: String?
 
+            public var deliveryTime: String?
+
             public var description_: String?
 
             public var endTime: String?
@@ -38202,6 +38212,8 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
 
             public var timeSlot: String?
 
+            public var unlockedTime: String?
+
             public override init() {
                 super.init()
             }
@@ -38223,6 +38235,9 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
                 }
                 if self.capacityReservationOwnerId != nil {
                     map["CapacityReservationOwnerId"] = self.capacityReservationOwnerId!
+                }
+                if self.deliveryTime != nil {
+                    map["DeliveryTime"] = self.deliveryTime!
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
@@ -38275,6 +38290,9 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
                 if self.timeSlot != nil {
                     map["TimeSlot"] = self.timeSlot!
                 }
+                if self.unlockedTime != nil {
+                    map["UnlockedTime"] = self.unlockedTime!
+                }
                 return map
             }
 
@@ -38287,6 +38305,9 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CapacityReservationOwnerId"] as? String {
                     self.capacityReservationOwnerId = value
+                }
+                if let value = dict["DeliveryTime"] as? String {
+                    self.deliveryTime = value
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
@@ -38340,6 +38361,9 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TimeSlot"] as? String {
                     self.timeSlot = value
+                }
+                if let value = dict["UnlockedTime"] as? String {
+                    self.unlockedTime = value
                 }
             }
         }
@@ -65230,6 +65254,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
                 public var httpTokens: String?
 
+                public var instanceMetadataTags: String?
+
                 public override init() {
                     super.init()
                 }
@@ -65253,6 +65279,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     if self.httpTokens != nil {
                         map["HttpTokens"] = self.httpTokens!
                     }
+                    if self.instanceMetadataTags != nil {
+                        map["InstanceMetadataTags"] = self.instanceMetadataTags!
+                    }
                     return map
                 }
 
@@ -65266,6 +65295,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["HttpTokens"] as? String {
                         self.httpTokens = value
+                    }
+                    if let value = dict["InstanceMetadataTags"] as? String {
+                        self.instanceMetadataTags = value
                     }
                 }
             }
