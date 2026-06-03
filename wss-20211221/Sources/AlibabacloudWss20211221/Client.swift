@@ -32,6 +32,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.propertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.properties, "Properties", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelCookie)) {
+            query["ChannelCookie"] = request.channelCookie ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderItems)) {
             query["OrderItems"] = request.orderItems ?? [];
         }

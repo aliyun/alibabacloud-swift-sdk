@@ -168,6 +168,8 @@ public class CreateMultiOrderRequest : Tea.TeaModel {
             }
         }
     }
+    public var channelCookie: String?
+
     public var orderItems: [CreateMultiOrderRequest.OrderItems]?
 
     public var orderType: String?
@@ -190,6 +192,9 @@ public class CreateMultiOrderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
+        }
         if self.orderItems != nil {
             var tmp : [Any] = []
             for k in self.orderItems! {
@@ -211,6 +216,9 @@ public class CreateMultiOrderRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
+        }
         if let value = dict["OrderItems"] as? [Any?] {
             var tmp : [CreateMultiOrderRequest.OrderItems] = []
             for v in value {
@@ -399,6 +407,8 @@ public class CreateMultiOrderShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var channelCookie: String?
+
     public var orderItems: [CreateMultiOrderShrinkRequest.OrderItems]?
 
     public var orderType: String?
@@ -421,6 +431,9 @@ public class CreateMultiOrderShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
+        }
         if self.orderItems != nil {
             var tmp : [Any] = []
             for k in self.orderItems! {
@@ -442,6 +455,9 @@ public class CreateMultiOrderShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
+        }
         if let value = dict["OrderItems"] as? [Any?] {
             var tmp : [CreateMultiOrderShrinkRequest.OrderItems] = []
             for v in value {
