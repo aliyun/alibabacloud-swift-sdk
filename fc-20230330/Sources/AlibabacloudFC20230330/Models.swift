@@ -904,6 +904,8 @@ public class CreateCustomDomainInput : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var isE2B: Bool?
+
     public var protocol_: String?
 
     public var routeConfig: RouteConfig?
@@ -944,6 +946,9 @@ public class CreateCustomDomainInput : Tea.TeaModel {
         if self.domainName != nil {
             map["domainName"] = self.domainName!
         }
+        if self.isE2B != nil {
+            map["isE2B"] = self.isE2B!
+        }
         if self.protocol_ != nil {
             map["protocol"] = self.protocol_!
         }
@@ -978,6 +983,9 @@ public class CreateCustomDomainInput : Tea.TeaModel {
         }
         if let value = dict["domainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["isE2B"] as? Bool {
+            self.isE2B = value
         }
         if let value = dict["protocol"] as? String {
             self.protocol_ = value
@@ -1811,6 +1819,8 @@ public class CustomDomain : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var isE2B: Bool?
+
     public var lastModifiedTime: String?
 
     public var protocol_: String?
@@ -1864,6 +1874,9 @@ public class CustomDomain : Tea.TeaModel {
         if self.domainName != nil {
             map["domainName"] = self.domainName!
         }
+        if self.isE2B != nil {
+            map["isE2B"] = self.isE2B!
+        }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
         }
@@ -1913,6 +1926,9 @@ public class CustomDomain : Tea.TeaModel {
         }
         if let value = dict["domainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["isE2B"] as? Bool {
+            self.isE2B = value
         }
         if let value = dict["lastModifiedTime"] as? String {
             self.lastModifiedTime = value
