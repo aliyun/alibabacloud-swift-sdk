@@ -29198,6 +29198,8 @@ public class DescribeDesktopMetadataRequest : Tea.TeaModel {
 
     public var desktopIds: [String]?
 
+    public var endUserId: String?
+
     public var groupId: String?
 
     public var hostName: String?
@@ -29239,6 +29241,9 @@ public class DescribeDesktopMetadataRequest : Tea.TeaModel {
         }
         if self.desktopIds != nil {
             map["DesktopIds"] = self.desktopIds!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
         }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
@@ -29283,6 +29288,9 @@ public class DescribeDesktopMetadataRequest : Tea.TeaModel {
         }
         if let value = dict["DesktopIds"] as? [String] {
             self.desktopIds = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
         }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
