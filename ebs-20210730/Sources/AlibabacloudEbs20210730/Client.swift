@@ -1016,58 +1016,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeDiskEventsWithOptions(_ request: DescribeDiskEventsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskEventsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.diskCategory)) {
-            query["DiskCategory"] = request.diskCategory ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.diskId)) {
-            query["DiskId"] = request.diskId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.endTime)) {
-            query["EndTime"] = request.endTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.maxResults)) {
-            query["MaxResults"] = request.maxResults!;
-        }
-        if (!TeaUtils.Client.isUnset(request.nextToken)) {
-            query["NextToken"] = request.nextToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.startTime)) {
-            query["StartTime"] = request.startTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.type)) {
-            query["Type"] = request.type ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeDiskEvents",
-            "version": "2021-07-30",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeDiskEventsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeDiskEvents(_ request: DescribeDiskEventsRequest) async throws -> DescribeDiskEventsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await describeDiskEventsWithOptions(request as! DescribeDiskEventsRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDiskMonitorDataWithOptions(_ request: DescribeDiskMonitorDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskMonitorDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1111,55 +1059,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDiskMonitorData(_ request: DescribeDiskMonitorDataRequest) async throws -> DescribeDiskMonitorDataResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeDiskMonitorDataWithOptions(request as! DescribeDiskMonitorDataRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeDiskMonitorDataListWithOptions(_ request: DescribeDiskMonitorDataListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskMonitorDataListResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.diskIds)) {
-            query["DiskIds"] = request.diskIds ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.endTime)) {
-            query["EndTime"] = request.endTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.maxResults)) {
-            query["MaxResults"] = request.maxResults ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.nextToken)) {
-            query["NextToken"] = request.nextToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.startTime)) {
-            query["StartTime"] = request.startTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.type)) {
-            query["Type"] = request.type ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeDiskMonitorDataList",
-            "version": "2021-07-30",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeDiskMonitorDataListResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeDiskMonitorDataList(_ request: DescribeDiskMonitorDataListRequest) async throws -> DescribeDiskMonitorDataListResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await describeDiskMonitorDataListWithOptions(request as! DescribeDiskMonitorDataListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
