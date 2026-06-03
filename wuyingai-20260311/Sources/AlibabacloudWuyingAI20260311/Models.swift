@@ -8,6 +8,8 @@ import AlibabacloudEndpointUtil
 public class ChatRequest : Tea.TeaModel {
     public class Input : Tea.TeaModel {
         public class Content : Tea.TeaModel {
+            public var fileName: String?
+
             public var fileUrl: String?
 
             public var imageUrl: String?
@@ -30,6 +32,9 @@ public class ChatRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
                 if self.fileUrl != nil {
                     map["FileUrl"] = self.fileUrl!
                 }
@@ -47,6 +52,9 @@ public class ChatRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["FileName"] as? String {
+                    self.fileName = value
+                }
                 if let value = dict["FileUrl"] as? String {
                     self.fileUrl = value
                 }
