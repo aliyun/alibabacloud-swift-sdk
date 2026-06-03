@@ -3073,6 +3073,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveSingleTaskForReserveDropListDomainWithOptions(_ request: SaveSingleTaskForReserveDropListDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveSingleTaskForReserveDropListDomainResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactTemplateId)) {
+            query["ContactTemplateId"] = request.contactTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dns1)) {
+            query["Dns1"] = request.dns1 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dns2)) {
+            query["Dns2"] = request.dns2 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveSingleTaskForReserveDropListDomain",
+            "version": "2017-12-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveSingleTaskForReserveDropListDomainResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveSingleTaskForReserveDropListDomain(_ request: SaveSingleTaskForReserveDropListDomainRequest) async throws -> SaveSingleTaskForReserveDropListDomainResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await saveSingleTaskForReserveDropListDomainWithOptions(request as! SaveSingleTaskForReserveDropListDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func saveSingleTaskForSaveArtExtensionWithOptions(_ request: SaveSingleTaskForSaveArtExtensionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveSingleTaskForSaveArtExtensionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
