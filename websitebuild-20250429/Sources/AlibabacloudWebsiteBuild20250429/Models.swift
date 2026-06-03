@@ -818,6 +818,8 @@ public class AppInstanceProfile : Tea.TeaModel {
 
     public var payTime: String?
 
+    public var previewUrl: String?
+
     public var seoSite: String?
 
     public var siteVersion: String?
@@ -874,6 +876,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         if self.payTime != nil {
             map["PayTime"] = self.payTime!
         }
+        if self.previewUrl != nil {
+            map["PreviewUrl"] = self.previewUrl!
+        }
         if self.seoSite != nil {
             map["SeoSite"] = self.seoSite!
         }
@@ -926,6 +931,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["PayTime"] as? String {
             self.payTime = value
+        }
+        if let value = dict["PreviewUrl"] as? String {
+            self.previewUrl = value
         }
         if let value = dict["SeoSite"] as? String {
             self.seoSite = value
@@ -1329,6 +1337,24 @@ public class AppOperateAction : Tea.TeaModel {
 public class AppOperationAddress : Tea.TeaModel {
     public var actions: [AppOperateAction]?
 
+    public var aiCustomerConfigUrl: String?
+
+    public var aiDesignUrl: String?
+
+    public var appPublishUrl: String?
+
+    public var dashboardActions: [AppOperateAction]?
+
+    public var designUrl: String?
+
+    public var instanceLoginUrl: String?
+
+    public var renewBuyUrl: String?
+
+    public var serverDeliveryUrl: String?
+
+    public var upgradeBuyUrl: String?
+
     public override init() {
         super.init()
     }
@@ -1350,6 +1376,37 @@ public class AppOperationAddress : Tea.TeaModel {
             }
             map["Actions"] = tmp
         }
+        if self.aiCustomerConfigUrl != nil {
+            map["AiCustomerConfigUrl"] = self.aiCustomerConfigUrl!
+        }
+        if self.aiDesignUrl != nil {
+            map["AiDesignUrl"] = self.aiDesignUrl!
+        }
+        if self.appPublishUrl != nil {
+            map["AppPublishUrl"] = self.appPublishUrl!
+        }
+        if self.dashboardActions != nil {
+            var tmp : [Any] = []
+            for k in self.dashboardActions! {
+                tmp.append(k.toMap())
+            }
+            map["DashboardActions"] = tmp
+        }
+        if self.designUrl != nil {
+            map["DesignUrl"] = self.designUrl!
+        }
+        if self.instanceLoginUrl != nil {
+            map["InstanceLoginUrl"] = self.instanceLoginUrl!
+        }
+        if self.renewBuyUrl != nil {
+            map["RenewBuyUrl"] = self.renewBuyUrl!
+        }
+        if self.serverDeliveryUrl != nil {
+            map["ServerDeliveryUrl"] = self.serverDeliveryUrl!
+        }
+        if self.upgradeBuyUrl != nil {
+            map["UpgradeBuyUrl"] = self.upgradeBuyUrl!
+        }
         return map
     }
 
@@ -1367,6 +1424,43 @@ public class AppOperationAddress : Tea.TeaModel {
                 }
             }
             self.actions = tmp
+        }
+        if let value = dict["AiCustomerConfigUrl"] as? String {
+            self.aiCustomerConfigUrl = value
+        }
+        if let value = dict["AiDesignUrl"] as? String {
+            self.aiDesignUrl = value
+        }
+        if let value = dict["AppPublishUrl"] as? String {
+            self.appPublishUrl = value
+        }
+        if let value = dict["DashboardActions"] as? [Any?] {
+            var tmp : [AppOperateAction] = []
+            for v in value {
+                if v != nil {
+                    var model = AppOperateAction()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dashboardActions = tmp
+        }
+        if let value = dict["DesignUrl"] as? String {
+            self.designUrl = value
+        }
+        if let value = dict["InstanceLoginUrl"] as? String {
+            self.instanceLoginUrl = value
+        }
+        if let value = dict["RenewBuyUrl"] as? String {
+            self.renewBuyUrl = value
+        }
+        if let value = dict["ServerDeliveryUrl"] as? String {
+            self.serverDeliveryUrl = value
+        }
+        if let value = dict["UpgradeBuyUrl"] as? String {
+            self.upgradeBuyUrl = value
         }
     }
 }
@@ -5905,11 +5999,17 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var createAction: String?
+
     public var deployArea: String?
+
+    public var description_: String?
 
     public var duration: Int32?
 
     public var extend: String?
+
+    public var name: String?
 
     public var paymentType: String?
 
@@ -5922,6 +6022,8 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
     public var siteVersion: String?
 
     public var tags: [CreateAppInstanceRequest.Tags]?
+
+    public var version: String?
 
     public override init() {
         super.init()
@@ -5946,14 +6048,23 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.createAction != nil {
+            map["CreateAction"] = self.createAction!
+        }
         if self.deployArea != nil {
             map["DeployArea"] = self.deployArea!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
         }
         if self.extend != nil {
             map["Extend"] = self.extend!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
@@ -5977,6 +6088,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
             }
             map["Tags"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -5991,14 +6105,23 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["CreateAction"] as? String {
+            self.createAction = value
+        }
         if let value = dict["DeployArea"] as? String {
             self.deployArea = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
         }
         if let value = dict["Extend"] as? String {
             self.extend = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PaymentType"] as? String {
             self.paymentType = value
@@ -6028,6 +6151,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
             }
             self.tags = tmp
         }
+        if let value = dict["Version"] as? String {
+            self.version = value
+        }
     }
 }
 
@@ -6038,11 +6164,17 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var createAction: String?
+
     public var deployArea: String?
+
+    public var description_: String?
 
     public var duration: Int32?
 
     public var extend: String?
+
+    public var name: String?
 
     public var paymentType: String?
 
@@ -6055,6 +6187,8 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
     public var siteVersion: String?
 
     public var tagsShrink: String?
+
+    public var version: String?
 
     public override init() {
         super.init()
@@ -6079,14 +6213,23 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.createAction != nil {
+            map["CreateAction"] = self.createAction!
+        }
         if self.deployArea != nil {
             map["DeployArea"] = self.deployArea!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
         }
         if self.extend != nil {
             map["Extend"] = self.extend!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
@@ -6106,6 +6249,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -6120,14 +6266,23 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["CreateAction"] as? String {
+            self.createAction = value
+        }
         if let value = dict["DeployArea"] as? String {
             self.deployArea = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
         }
         if let value = dict["Extend"] as? String {
             self.extend = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PaymentType"] as? String {
             self.paymentType = value
@@ -6146,6 +6301,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Tags"] as? String {
             self.tagsShrink = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -18863,6 +19021,8 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
 
     public var rootErrorMsg: String?
 
+    public var startPosition: String?
+
     public var synchro: Bool?
 
     public var totalPageNum: Int32?
@@ -18936,6 +19096,9 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
         if self.rootErrorMsg != nil {
             map["RootErrorMsg"] = self.rootErrorMsg!
         }
+        if self.startPosition != nil {
+            map["StartPosition"] = self.startPosition!
+        }
         if self.synchro != nil {
             map["Synchro"] = self.synchro!
         }
@@ -19007,6 +19170,9 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
         }
         if let value = dict["RootErrorMsg"] as? String {
             self.rootErrorMsg = value
+        }
+        if let value = dict["StartPosition"] as? String {
+            self.startPosition = value
         }
         if let value = dict["Synchro"] as? Bool {
             self.synchro = value
