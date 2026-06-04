@@ -832,6 +832,10 @@ public class AppInstanceProfile : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var chatbiTaskId: String?
+
+    public var chatbiTaskStatus: String?
+
     public override init() {
         super.init()
     }
@@ -897,6 +901,12 @@ public class AppInstanceProfile : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.chatbiTaskId != nil {
+            map["chatbiTaskId"] = self.chatbiTaskId!
+        }
+        if self.chatbiTaskStatus != nil {
+            map["chatbiTaskStatus"] = self.chatbiTaskStatus!
+        }
         return map
     }
 
@@ -952,6 +962,12 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
+        }
+        if let value = dict["chatbiTaskId"] as? String {
+            self.chatbiTaskId = value
+        }
+        if let value = dict["chatbiTaskStatus"] as? String {
+            self.chatbiTaskStatus = value
         }
     }
 }
