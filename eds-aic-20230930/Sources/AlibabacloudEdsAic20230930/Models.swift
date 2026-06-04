@@ -5026,9 +5026,13 @@ public class CreateMobileAgentPackageRequest : Tea.TeaModel {
 
     public var creditConfig: String?
 
+    public var imageId: String?
+
     public var instanceName: String?
 
     public var mobileAgentPackageSpec: String?
+
+    public var packageSpecId: Int64?
 
     public var paidCallbackUrl: String?
 
@@ -5070,11 +5074,17 @@ public class CreateMobileAgentPackageRequest : Tea.TeaModel {
         if self.creditConfig != nil {
             map["CreditConfig"] = self.creditConfig!
         }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
         if self.mobileAgentPackageSpec != nil {
             map["MobileAgentPackageSpec"] = self.mobileAgentPackageSpec!
+        }
+        if self.packageSpecId != nil {
+            map["PackageSpecId"] = self.packageSpecId!
         }
         if self.paidCallbackUrl != nil {
             map["PaidCallbackUrl"] = self.paidCallbackUrl!
@@ -5111,11 +5121,17 @@ public class CreateMobileAgentPackageRequest : Tea.TeaModel {
         if let value = dict["CreditConfig"] as? String {
             self.creditConfig = value
         }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
         }
         if let value = dict["MobileAgentPackageSpec"] as? String {
             self.mobileAgentPackageSpec = value
+        }
+        if let value = dict["PackageSpecId"] as? Int64 {
+            self.packageSpecId = value
         }
         if let value = dict["PaidCallbackUrl"] as? String {
             self.paidCallbackUrl = value
@@ -14603,6 +14619,8 @@ public class DescribeMobileAgentPackageResponseBody : Tea.TeaModel {
 
         public var packageSpec: String?
 
+        public var packageSpecName: String?
+
         public var packageStatus: String?
 
         public var usedCredit: String?
@@ -14636,6 +14654,9 @@ public class DescribeMobileAgentPackageResponseBody : Tea.TeaModel {
             if self.packageSpec != nil {
                 map["PackageSpec"] = self.packageSpec!
             }
+            if self.packageSpecName != nil {
+                map["PackageSpecName"] = self.packageSpecName!
+            }
             if self.packageStatus != nil {
                 map["PackageStatus"] = self.packageStatus!
             }
@@ -14661,6 +14682,9 @@ public class DescribeMobileAgentPackageResponseBody : Tea.TeaModel {
             }
             if let value = dict["PackageSpec"] as? String {
                 self.packageSpec = value
+            }
+            if let value = dict["PackageSpecName"] as? String {
+                self.packageSpecName = value
             }
             if let value = dict["PackageStatus"] as? String {
                 self.packageStatus = value
@@ -24835,6 +24859,8 @@ public class SendFileRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var fileMd5: String?
+
     public var sourceFilePath: String?
 
     public var targetFileName: String?
@@ -24868,6 +24894,9 @@ public class SendFileRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.fileMd5 != nil {
+            map["FileMd5"] = self.fileMd5!
+        }
         if self.sourceFilePath != nil {
             map["SourceFilePath"] = self.sourceFilePath!
         }
@@ -24896,6 +24925,9 @@ public class SendFileRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["FileMd5"] as? String {
+            self.fileMd5 = value
         }
         if let value = dict["SourceFilePath"] as? String {
             self.sourceFilePath = value
