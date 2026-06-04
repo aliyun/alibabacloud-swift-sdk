@@ -36114,6 +36114,8 @@ public class QueryMdsUpgradeTaskDetailResponseBody : Tea.TeaModel {
 
                 public var releaseType: String?
 
+                public var reminderPeriod: String?
+
                 public var ruleJsonList: [QueryMdsUpgradeTaskDetailResponseBody.ResultContent.Data.Content.RuleJsonList]?
 
                 public var silentType: Int64?
@@ -36270,6 +36272,9 @@ public class QueryMdsUpgradeTaskDetailResponseBody : Tea.TeaModel {
                     }
                     if self.releaseType != nil {
                         map["ReleaseType"] = self.releaseType!
+                    }
+                    if self.reminderPeriod != nil {
+                        map["ReminderPeriod"] = self.reminderPeriod!
                     }
                     if self.ruleJsonList != nil {
                         var tmp : [Any] = []
@@ -36436,6 +36441,9 @@ public class QueryMdsUpgradeTaskDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["ReleaseType"] as? String {
                         self.releaseType = value
+                    }
+                    if let value = dict["ReminderPeriod"] as? String {
+                        self.reminderPeriod = value
                     }
                     if let value = dict["RuleJsonList"] as? [Any?] {
                         var tmp : [QueryMdsUpgradeTaskDetailResponseBody.ResultContent.Data.Content.RuleJsonList] = []
@@ -40161,6 +40169,8 @@ public class QueryPayOrderToMsenceRequest : Tea.TeaModel {
 
 public class QueryPayOrderToMsenceResponseBody : Tea.TeaModel {
     public class MpaasUserGamecenterPaymentQuerystatusResponse : Tea.TeaModel {
+        public var cpExtra: String?
+
         public var orderStatus: String?
 
         public override init() {
@@ -40177,6 +40187,9 @@ public class QueryPayOrderToMsenceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cpExtra != nil {
+                map["CpExtra"] = self.cpExtra!
+            }
             if self.orderStatus != nil {
                 map["OrderStatus"] = self.orderStatus!
             }
@@ -40185,6 +40198,9 @@ public class QueryPayOrderToMsenceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CpExtra"] as? String {
+                self.cpExtra = value
+            }
             if let value = dict["OrderStatus"] as? String {
                 self.orderStatus = value
             }
