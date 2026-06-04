@@ -50317,6 +50317,8 @@ public class TagResourcesResponse : Tea.TeaModel {
 }
 
 public class TransferInstanceClassRequest : Tea.TeaModel {
+    public var databaseCount: Int32?
+
     public var dtsJobId: String?
 
     public var instanceClass: String?
@@ -50341,6 +50343,9 @@ public class TransferInstanceClassRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.databaseCount != nil {
+            map["DatabaseCount"] = self.databaseCount!
+        }
         if self.dtsJobId != nil {
             map["DtsJobId"] = self.dtsJobId!
         }
@@ -50361,6 +50366,9 @@ public class TransferInstanceClassRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DatabaseCount"] as? Int32 {
+            self.databaseCount = value
+        }
         if let value = dict["DtsJobId"] as? String {
             self.dtsJobId = value
         }

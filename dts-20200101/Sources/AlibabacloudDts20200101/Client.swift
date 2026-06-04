@@ -6897,6 +6897,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func transferInstanceClassWithOptions(_ request: TransferInstanceClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TransferInstanceClassResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.databaseCount)) {
+            query["DatabaseCount"] = request.databaseCount!;
+        }
         if (!TeaUtils.Client.isUnset(request.dtsJobId)) {
             query["DtsJobId"] = request.dtsJobId ?? "";
         }
