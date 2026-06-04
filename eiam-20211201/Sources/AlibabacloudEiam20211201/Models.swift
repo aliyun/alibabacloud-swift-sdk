@@ -54227,6 +54227,8 @@ public class ListIdentityProvidersForNetworkAccessEndpointResponse : Tea.TeaMode
 }
 
 public class ListInstancesRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var instanceIds: [String]?
 
     public var pageNumber: Int64?
@@ -54249,6 +54251,9 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -54266,6 +54271,9 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
         }
