@@ -601,6 +601,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAppLlmApiKeyForPartnerWithOptions(_ request: CreateAppLlmApiKeyForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppLlmApiKeyForPartnerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            body["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipWhiteList)) {
+            body["IpWhiteList"] = request.ipWhiteList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAppLlmApiKeyForPartner",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAppLlmApiKeyForPartnerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAppLlmApiKeyForPartner(_ request: CreateAppLlmApiKeyForPartnerRequest) async throws -> CreateAppLlmApiKeyForPartnerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAppLlmApiKeyForPartnerWithOptions(request as! CreateAppLlmApiKeyForPartnerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAppTokenServiceWithOptions(_ request: CreateAppTokenServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppTokenServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
