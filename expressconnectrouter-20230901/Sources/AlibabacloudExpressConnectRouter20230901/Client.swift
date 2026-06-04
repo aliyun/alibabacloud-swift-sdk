@@ -228,6 +228,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createExpressConnectRouterAssociationWithOptions(_ request: CreateExpressConnectRouterAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateExpressConnectRouterAssociationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.version)) {
             query["Version"] = request.version ?? "";
         }
@@ -711,6 +714,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeExpressConnectRouterAssociationWithOptions(_ request: DescribeExpressConnectRouterAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterAssociationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.version)) {
             query["Version"] = request.version ?? "";
         }

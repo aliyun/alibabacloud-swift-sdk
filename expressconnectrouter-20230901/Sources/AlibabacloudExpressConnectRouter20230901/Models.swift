@@ -962,6 +962,44 @@ public class CreateExpressConnectRouterResponse : Tea.TeaModel {
 }
 
 public class CreateExpressConnectRouterAssociationRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var allowedPrefixes: [String]?
 
     public var allowedPrefixesMode: String?
@@ -979,6 +1017,8 @@ public class CreateExpressConnectRouterAssociationRequest : Tea.TeaModel {
     public var dryRun: Bool?
 
     public var ecrId: String?
+
+    public var tag: [CreateExpressConnectRouterAssociationRequest.Tag]?
 
     public var transitRouterId: String?
 
@@ -1031,6 +1071,13 @@ public class CreateExpressConnectRouterAssociationRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
         }
@@ -1077,6 +1124,19 @@ public class CreateExpressConnectRouterAssociationRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateExpressConnectRouterAssociationRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateExpressConnectRouterAssociationRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
         }
         if let value = dict["TransitRouterId"] as? String {
             self.transitRouterId = value
@@ -3466,6 +3526,44 @@ public class DescribeExpressConnectRouterAllowedPrefixHistoryResponse : Tea.TeaM
 }
 
 public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var associationId: String?
 
     public var associationNodeType: String?
@@ -3483,6 +3581,8 @@ public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
     public var nextToken: String?
+
+    public var tag: [DescribeExpressConnectRouterAssociationRequest.Tag]?
 
     public var transitRouterId: String?
 
@@ -3531,6 +3631,13 @@ public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
         }
@@ -3572,6 +3679,19 @@ public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [DescribeExpressConnectRouterAssociationRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeExpressConnectRouterAssociationRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
         if let value = dict["TransitRouterId"] as? String {
             self.transitRouterId = value
         }
@@ -3586,6 +3706,44 @@ public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
 
 public class DescribeExpressConnectRouterAssociationResponseBody : Tea.TeaModel {
     public class AssociationList : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var allowedPrefixes: [String]?
 
         public var allowedPrefixesMode: String?
@@ -3610,11 +3768,17 @@ public class DescribeExpressConnectRouterAssociationResponseBody : Tea.TeaModel 
 
         public var status: String?
 
+        public var tags: [DescribeExpressConnectRouterAssociationResponseBody.AssociationList.Tags]?
+
         public var transitRouterId: String?
+
+        public var transitRouterName: String?
 
         public var transitRouterOwnerId: Int64?
 
         public var vpcId: String?
+
+        public var vpcName: String?
 
         public var vpcOwnerId: Int64?
 
@@ -3668,14 +3832,27 @@ public class DescribeExpressConnectRouterAssociationResponseBody : Tea.TeaModel 
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.transitRouterId != nil {
                 map["TransitRouterId"] = self.transitRouterId!
+            }
+            if self.transitRouterName != nil {
+                map["TransitRouterName"] = self.transitRouterName!
             }
             if self.transitRouterOwnerId != nil {
                 map["TransitRouterOwnerId"] = self.transitRouterOwnerId!
             }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
+            }
+            if self.vpcName != nil {
+                map["VpcName"] = self.vpcName!
             }
             if self.vpcOwnerId != nil {
                 map["VpcOwnerId"] = self.vpcOwnerId!
@@ -3721,14 +3898,33 @@ public class DescribeExpressConnectRouterAssociationResponseBody : Tea.TeaModel 
             if let value = dict["Status"] as? String {
                 self.status = value
             }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeExpressConnectRouterAssociationResponseBody.AssociationList.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeExpressConnectRouterAssociationResponseBody.AssociationList.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
             if let value = dict["TransitRouterId"] as? String {
                 self.transitRouterId = value
+            }
+            if let value = dict["TransitRouterName"] as? String {
+                self.transitRouterName = value
             }
             if let value = dict["TransitRouterOwnerId"] as? Int64 {
                 self.transitRouterOwnerId = value
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value
+            }
+            if let value = dict["VpcName"] as? String {
+                self.vpcName = value
             }
             if let value = dict["VpcOwnerId"] as? Int64 {
                 self.vpcOwnerId = value
@@ -4026,6 +4222,8 @@ public class DescribeExpressConnectRouterChildInstanceResponseBody : Tea.TeaMode
 
         public var childInstanceId: String?
 
+        public var childInstanceName: String?
+
         public var childInstanceOwnerId: Int64?
 
         public var childInstanceRegionId: String?
@@ -4065,6 +4263,9 @@ public class DescribeExpressConnectRouterChildInstanceResponseBody : Tea.TeaMode
             }
             if self.childInstanceId != nil {
                 map["ChildInstanceId"] = self.childInstanceId!
+            }
+            if self.childInstanceName != nil {
+                map["ChildInstanceName"] = self.childInstanceName!
             }
             if self.childInstanceOwnerId != nil {
                 map["ChildInstanceOwnerId"] = self.childInstanceOwnerId!
@@ -4106,6 +4307,9 @@ public class DescribeExpressConnectRouterChildInstanceResponseBody : Tea.TeaMode
             }
             if let value = dict["ChildInstanceId"] as? String {
                 self.childInstanceId = value
+            }
+            if let value = dict["ChildInstanceName"] as? String {
+                self.childInstanceName = value
             }
             if let value = dict["ChildInstanceOwnerId"] as? Int64 {
                 self.childInstanceOwnerId = value
