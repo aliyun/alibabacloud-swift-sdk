@@ -443,24 +443,24 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAppChatWithOptions(_ request: CreateAppChatRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppChatResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.botId)) {
-            query["BotId"] = request.botId ?? "";
+            body["BotId"] = request.botId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.chatId)) {
-            query["ChatId"] = request.chatId ?? "";
+            body["ChatId"] = request.chatId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.conversationId)) {
-            query["ConversationId"] = request.conversationId ?? "";
+            body["ConversationId"] = request.conversationId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.messages)) {
-            query["Messages"] = request.messages ?? "";
+            body["Messages"] = request.messages ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.siteId)) {
-            query["SiteId"] = request.siteId ?? "";
+            body["SiteId"] = request.siteId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateAppChat",
