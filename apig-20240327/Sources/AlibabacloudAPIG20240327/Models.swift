@@ -23737,6 +23737,8 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var apiId: String?
+
         public var assembledSources: [GetMcpServerResponseBody.Data.AssembledSources]?
 
         public var backend: Backend?
@@ -23798,6 +23800,9 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.apiId != nil {
+                map["apiId"] = self.apiId!
+            }
             if self.assembledSources != nil {
                 var tmp : [Any] = []
                 for k in self.assembledSources! {
@@ -23881,6 +23886,9 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["apiId"] as? String {
+                self.apiId = value
+            }
             if let value = dict["assembledSources"] as? [Any?] {
                 var tmp : [GetMcpServerResponseBody.Data.AssembledSources] = []
                 for v in value {
