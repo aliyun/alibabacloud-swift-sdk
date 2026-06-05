@@ -189,6 +189,10 @@ public class GetUserRequest : Tea.TeaModel {
 }
 
 public class GetUserResponseBody : Tea.TeaModel {
+    public var anthropicHost: String?
+
+    public var apiKeys: Any?
+
     public var appId: String?
 
     public var code: String?
@@ -217,6 +221,12 @@ public class GetUserResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.anthropicHost != nil {
+            map["AnthropicHost"] = self.anthropicHost!
+        }
+        if self.apiKeys != nil {
+            map["ApiKeys"] = self.apiKeys!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -243,6 +253,12 @@ public class GetUserResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AnthropicHost"] as? String {
+            self.anthropicHost = value
+        }
+        if let value = dict["ApiKeys"] as? Any {
+            self.apiKeys = value
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
