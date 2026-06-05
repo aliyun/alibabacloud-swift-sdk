@@ -2087,6 +2087,122 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiniAppAuthUrlWithOptions(_ request: GetMiniAppAuthUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMiniAppAuthUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["Channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.redirectUri)) {
+            query["RedirectUri"] = request.redirectUri ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMiniAppAuthUrl",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMiniAppAuthUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiniAppAuthUrl(_ request: GetMiniAppAuthUrlRequest) async throws -> GetMiniAppAuthUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getMiniAppAuthUrlWithOptions(request as! GetMiniAppAuthUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiniAppBindingWithOptions(_ tmpReq: GetMiniAppBindingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMiniAppBindingResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetMiniAppBindingShrinkRequest = GetMiniAppBindingShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.settingKeys)) {
+            request.settingKeysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.settingKeys, "SettingKeys", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["Channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.settingKeysShrink)) {
+            query["SettingKeys"] = request.settingKeysShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMiniAppBinding",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMiniAppBindingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiniAppBinding(_ request: GetMiniAppBindingRequest) async throws -> GetMiniAppBindingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getMiniAppBindingWithOptions(request as! GetMiniAppBindingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiniAppBindingForAdminWithOptions(_ request: GetMiniAppBindingForAdminRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMiniAppBindingForAdminResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["Channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platformAppid)) {
+            query["PlatformAppid"] = request.platformAppid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMiniAppBindingForAdmin",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMiniAppBindingForAdminResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiniAppBindingForAdmin(_ request: GetMiniAppBindingForAdminRequest) async throws -> GetMiniAppBindingForAdminResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getMiniAppBindingForAdminWithOptions(request as! GetMiniAppBindingForAdminRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getUserAccessTokenForPartnerWithOptions(_ request: GetUserAccessTokenForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserAccessTokenForPartnerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4986,6 +5102,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateAppSupabaseSecret(_ request: UpdateAppSupabaseSecretRequest) async throws -> UpdateAppSupabaseSecretResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateAppSupabaseSecretWithOptions(request as! UpdateAppSupabaseSecretRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMiniAppBindingWithOptions(_ request: UpdateMiniAppBindingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMiniAppBindingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["Channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.settingKey)) {
+            query["SettingKey"] = request.settingKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.settingValue)) {
+            query["SettingValue"] = request.settingValue ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMiniAppBinding",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMiniAppBindingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMiniAppBinding(_ request: UpdateMiniAppBindingRequest) async throws -> UpdateMiniAppBindingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateMiniAppBindingWithOptions(request as! UpdateMiniAppBindingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
