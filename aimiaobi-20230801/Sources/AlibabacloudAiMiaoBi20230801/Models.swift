@@ -42487,6 +42487,12 @@ public class ListHotSourcesResponse : Tea.TeaModel {
 public class ListHotTopicsRequest : Tea.TeaModel {
     public var agentKey: String?
 
+    public var createTimeEnd: String?
+
+    public var createTimeStart: String?
+
+    public var customField: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -42520,6 +42526,15 @@ public class ListHotTopicsRequest : Tea.TeaModel {
         if self.agentKey != nil {
             map["AgentKey"] = self.agentKey!
         }
+        if self.createTimeEnd != nil {
+            map["CreateTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["CreateTimeStart"] = self.createTimeStart!
+        }
+        if self.customField != nil {
+            map["CustomField"] = self.customField!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -42552,6 +42567,15 @@ public class ListHotTopicsRequest : Tea.TeaModel {
         if let value = dict["AgentKey"] as? String {
             self.agentKey = value
         }
+        if let value = dict["CreateTimeEnd"] as? String {
+            self.createTimeEnd = value
+        }
+        if let value = dict["CreateTimeStart"] as? String {
+            self.createTimeStart = value
+        }
+        if let value = dict["CustomField"] as? String {
+            self.customField = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -42581,6 +42605,12 @@ public class ListHotTopicsRequest : Tea.TeaModel {
 
 public class ListHotTopicsShrinkRequest : Tea.TeaModel {
     public var agentKey: String?
+
+    public var createTimeEnd: String?
+
+    public var createTimeStart: String?
+
+    public var customField: String?
 
     public var maxResults: Int32?
 
@@ -42615,6 +42645,15 @@ public class ListHotTopicsShrinkRequest : Tea.TeaModel {
         if self.agentKey != nil {
             map["AgentKey"] = self.agentKey!
         }
+        if self.createTimeEnd != nil {
+            map["CreateTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["CreateTimeStart"] = self.createTimeStart!
+        }
+        if self.customField != nil {
+            map["CustomField"] = self.customField!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -42646,6 +42685,15 @@ public class ListHotTopicsShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AgentKey"] as? String {
             self.agentKey = value
+        }
+        if let value = dict["CreateTimeEnd"] as? String {
+            self.createTimeEnd = value
+        }
+        if let value = dict["CreateTimeStart"] as? String {
+            self.createTimeStart = value
+        }
+        if let value = dict["CustomField"] as? String {
+            self.customField = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
@@ -42784,7 +42832,11 @@ public class ListHotTopicsResponseBody : Tea.TeaModel {
         }
         public var asyncTaskId: String?
 
+        public var createTime: String?
+
         public var createUser: String?
+
+        public var customField: String?
 
         public var hotValue: Int64?
 
@@ -42803,6 +42855,8 @@ public class ListHotTopicsResponseBody : Tea.TeaModel {
         public var topic: String?
 
         public var topicSource: String?
+
+        public var topicUrl: String?
 
         public var version: String?
 
@@ -42823,8 +42877,14 @@ public class ListHotTopicsResponseBody : Tea.TeaModel {
             if self.asyncTaskId != nil {
                 map["AsyncTaskId"] = self.asyncTaskId!
             }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
             if self.createUser != nil {
                 map["CreateUser"] = self.createUser!
+            }
+            if self.customField != nil {
+                map["CustomField"] = self.customField!
             }
             if self.hotValue != nil {
                 map["HotValue"] = self.hotValue!
@@ -42857,6 +42917,9 @@ public class ListHotTopicsResponseBody : Tea.TeaModel {
             if self.topicSource != nil {
                 map["TopicSource"] = self.topicSource!
             }
+            if self.topicUrl != nil {
+                map["TopicUrl"] = self.topicUrl!
+            }
             if self.version != nil {
                 map["Version"] = self.version!
             }
@@ -42868,8 +42931,14 @@ public class ListHotTopicsResponseBody : Tea.TeaModel {
             if let value = dict["AsyncTaskId"] as? String {
                 self.asyncTaskId = value
             }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
             if let value = dict["CreateUser"] as? String {
                 self.createUser = value
+            }
+            if let value = dict["CustomField"] as? String {
+                self.customField = value
             }
             if let value = dict["HotValue"] as? Int64 {
                 self.hotValue = value
@@ -42907,6 +42976,9 @@ public class ListHotTopicsResponseBody : Tea.TeaModel {
             }
             if let value = dict["TopicSource"] as? String {
                 self.topicSource = value
+            }
+            if let value = dict["TopicUrl"] as? String {
+                self.topicUrl = value
             }
             if let value = dict["Version"] as? String {
                 self.version = value
@@ -80863,9 +80935,13 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
         }
     }
     public class Topics : Tea.TeaModel {
+        public var customField: String?
+
         public var news: [HottopicNews]?
 
         public var topic: String?
+
+        public var topicUrl: String?
 
         public override init() {
             super.init()
@@ -80881,6 +80957,9 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.customField != nil {
+                map["CustomField"] = self.customField!
+            }
             if self.news != nil {
                 var tmp : [Any] = []
                 for k in self.news! {
@@ -80891,11 +80970,17 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             if self.topic != nil {
                 map["Topic"] = self.topic!
             }
+            if self.topicUrl != nil {
+                map["TopicUrl"] = self.topicUrl!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CustomField"] as? String {
+                self.customField = value
+            }
             if let value = dict["News"] as? [Any?] {
                 var tmp : [HottopicNews] = []
                 for v in value {
@@ -80911,6 +80996,9 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             }
             if let value = dict["Topic"] as? String {
                 self.topic = value
+            }
+            if let value = dict["TopicUrl"] as? String {
+                self.topicUrl = value
             }
         }
     }
