@@ -12616,6 +12616,278 @@ public class ListTempFilesResponse : Tea.TeaModel {
     }
 }
 
+public class QueryAutoShutdownPoliciesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var token: String?
+
+    public var instanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Token"] as? String {
+            self.token = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+    }
+}
+
+public class QueryAutoShutdownPoliciesResponseBody : Tea.TeaModel {
+    public class AutoShutdownPolicies : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var context: [String: Any]?
+
+            public var expression: String?
+
+            public var sourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.context != nil {
+                    map["Context"] = self.context!
+                }
+                if self.expression != nil {
+                    map["Expression"] = self.expression!
+                }
+                if self.sourceType != nil {
+                    map["SourceType"] = self.sourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Context"] as? [String: Any] {
+                    self.context = value
+                }
+                if let value = dict["Expression"] as? String {
+                    self.expression = value
+                }
+                if let value = dict["SourceType"] as? String {
+                    self.sourceType = value
+                }
+            }
+        }
+        public var conditions: [QueryAutoShutdownPoliciesResponseBody.AutoShutdownPolicies.Conditions]?
+
+        public var context: [String: Any]?
+
+        public var expression: String?
+
+        public var instanceId: String?
+
+        public var sourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["Conditions"] = tmp
+            }
+            if self.context != nil {
+                map["Context"] = self.context!
+            }
+            if self.expression != nil {
+                map["Expression"] = self.expression!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.sourceType != nil {
+                map["SourceType"] = self.sourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Conditions"] as? [Any?] {
+                var tmp : [QueryAutoShutdownPoliciesResponseBody.AutoShutdownPolicies.Conditions] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryAutoShutdownPoliciesResponseBody.AutoShutdownPolicies.Conditions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.conditions = tmp
+            }
+            if let value = dict["Context"] as? [String: Any] {
+                self.context = value
+            }
+            if let value = dict["Expression"] as? String {
+                self.expression = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["SourceType"] as? String {
+                self.sourceType = value
+            }
+        }
+    }
+    public var autoShutdownPolicies: [QueryAutoShutdownPoliciesResponseBody.AutoShutdownPolicies]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoShutdownPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.autoShutdownPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["AutoShutdownPolicies"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoShutdownPolicies"] as? [Any?] {
+            var tmp : [QueryAutoShutdownPoliciesResponseBody.AutoShutdownPolicies] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryAutoShutdownPoliciesResponseBody.AutoShutdownPolicies()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.autoShutdownPolicies = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class QueryAutoShutdownPoliciesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryAutoShutdownPoliciesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryAutoShutdownPoliciesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class StartInstanceResponseBody : Tea.TeaModel {
     public var code: String?
 
