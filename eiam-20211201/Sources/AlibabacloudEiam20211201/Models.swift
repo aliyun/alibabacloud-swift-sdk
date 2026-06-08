@@ -56893,6 +56893,322 @@ public class ListRegionsResponse : Tea.TeaModel {
     }
 }
 
+public class ListResourceServerScopesRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var authorizationType: String?
+
+    public var instanceId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public var resourceServerScopeIds: [String]?
+
+    public var resourceServerScopeName: String?
+
+    public var resourceServerScopeType: String?
+
+    public var resourceServerScopeValue: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.authorizationType != nil {
+            map["AuthorizationType"] = self.authorizationType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        if self.resourceServerScopeIds != nil {
+            map["ResourceServerScopeIds"] = self.resourceServerScopeIds!
+        }
+        if self.resourceServerScopeName != nil {
+            map["ResourceServerScopeName"] = self.resourceServerScopeName!
+        }
+        if self.resourceServerScopeType != nil {
+            map["ResourceServerScopeType"] = self.resourceServerScopeType!
+        }
+        if self.resourceServerScopeValue != nil {
+            map["ResourceServerScopeValue"] = self.resourceServerScopeValue!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["AuthorizationType"] as? String {
+            self.authorizationType = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PreviousToken"] as? String {
+            self.previousToken = value
+        }
+        if let value = dict["ResourceServerScopeIds"] as? [String] {
+            self.resourceServerScopeIds = value
+        }
+        if let value = dict["ResourceServerScopeName"] as? String {
+            self.resourceServerScopeName = value
+        }
+        if let value = dict["ResourceServerScopeType"] as? String {
+            self.resourceServerScopeType = value
+        }
+        if let value = dict["ResourceServerScopeValue"] as? String {
+            self.resourceServerScopeValue = value
+        }
+    }
+}
+
+public class ListResourceServerScopesResponseBody : Tea.TeaModel {
+    public class ResourceServerScopes : Tea.TeaModel {
+        public var applicationId: String?
+
+        public var authorizationType: String?
+
+        public var instanceId: String?
+
+        public var resourceServerScopeId: String?
+
+        public var resourceServerScopeName: String?
+
+        public var resourceServerScopeType: String?
+
+        public var resourceServerScopeValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationId != nil {
+                map["ApplicationId"] = self.applicationId!
+            }
+            if self.authorizationType != nil {
+                map["AuthorizationType"] = self.authorizationType!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.resourceServerScopeId != nil {
+                map["ResourceServerScopeId"] = self.resourceServerScopeId!
+            }
+            if self.resourceServerScopeName != nil {
+                map["ResourceServerScopeName"] = self.resourceServerScopeName!
+            }
+            if self.resourceServerScopeType != nil {
+                map["ResourceServerScopeType"] = self.resourceServerScopeType!
+            }
+            if self.resourceServerScopeValue != nil {
+                map["ResourceServerScopeValue"] = self.resourceServerScopeValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplicationId"] as? String {
+                self.applicationId = value
+            }
+            if let value = dict["AuthorizationType"] as? String {
+                self.authorizationType = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["ResourceServerScopeId"] as? String {
+                self.resourceServerScopeId = value
+            }
+            if let value = dict["ResourceServerScopeName"] as? String {
+                self.resourceServerScopeName = value
+            }
+            if let value = dict["ResourceServerScopeType"] as? String {
+                self.resourceServerScopeType = value
+            }
+            if let value = dict["ResourceServerScopeValue"] as? String {
+                self.resourceServerScopeValue = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public var requestId: String?
+
+    public var resourceServerScopes: [ListResourceServerScopesResponseBody.ResourceServerScopes]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceServerScopes != nil {
+            var tmp : [Any] = []
+            for k in self.resourceServerScopes! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceServerScopes"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PreviousToken"] as? String {
+            self.previousToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResourceServerScopes"] as? [Any?] {
+            var tmp : [ListResourceServerScopesResponseBody.ResourceServerScopes] = []
+            for v in value {
+                if v != nil {
+                    var model = ListResourceServerScopesResponseBody.ResourceServerScopes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceServerScopes = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListResourceServerScopesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListResourceServerScopesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListResourceServerScopesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListResourceServersForUserRequest : Tea.TeaModel {
     public class Filter : Tea.TeaModel {
         public var name: String?

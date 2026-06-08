@@ -9383,6 +9383,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listResourceServerScopesWithOptions(_ request: ListResourceServerScopesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListResourceServerScopesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authorizationType)) {
+            query["AuthorizationType"] = request.authorizationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.previousToken)) {
+            query["PreviousToken"] = request.previousToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceServerScopeIds)) {
+            query["ResourceServerScopeIds"] = request.resourceServerScopeIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceServerScopeName)) {
+            query["ResourceServerScopeName"] = request.resourceServerScopeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceServerScopeType)) {
+            query["ResourceServerScopeType"] = request.resourceServerScopeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceServerScopeValue)) {
+            query["ResourceServerScopeValue"] = request.resourceServerScopeValue ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListResourceServerScopes",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListResourceServerScopesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listResourceServerScopes(_ request: ListResourceServerScopesRequest) async throws -> ListResourceServerScopesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listResourceServerScopesWithOptions(request as! ListResourceServerScopesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listResourceServersForUserWithOptions(_ request: ListResourceServersForUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListResourceServersForUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
