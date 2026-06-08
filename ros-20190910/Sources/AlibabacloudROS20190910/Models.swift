@@ -6540,7 +6540,49 @@ public class GenerateTemplateByScratchResponse : Tea.TeaModel {
 }
 
 public class GenerateTemplatePolicyRequest : Tea.TeaModel {
+    public class Parameters : Tea.TeaModel {
+        public var parameterKey: String?
+
+        public var parameterValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.parameterKey != nil {
+                map["ParameterKey"] = self.parameterKey!
+            }
+            if self.parameterValue != nil {
+                map["ParameterValue"] = self.parameterValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ParameterKey"] as? String {
+                self.parameterKey = value
+            }
+            if let value = dict["ParameterValue"] as? String {
+                self.parameterValue = value
+            }
+        }
+    }
+    public var generateOptions: [String]?
+
     public var operationTypes: [String]?
+
+    public var parameters: [GenerateTemplatePolicyRequest.Parameters]?
 
     public var templateBody: String?
 
@@ -6564,8 +6606,18 @@ public class GenerateTemplatePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.generateOptions != nil {
+            map["GenerateOptions"] = self.generateOptions!
+        }
         if self.operationTypes != nil {
             map["OperationTypes"] = self.operationTypes!
+        }
+        if self.parameters != nil {
+            var tmp : [Any] = []
+            for k in self.parameters! {
+                tmp.append(k.toMap())
+            }
+            map["Parameters"] = tmp
         }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
@@ -6584,8 +6636,24 @@ public class GenerateTemplatePolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["GenerateOptions"] as? [String] {
+            self.generateOptions = value
+        }
         if let value = dict["OperationTypes"] as? [String] {
             self.operationTypes = value
+        }
+        if let value = dict["Parameters"] as? [Any?] {
+            var tmp : [GenerateTemplatePolicyRequest.Parameters] = []
+            for v in value {
+                if v != nil {
+                    var model = GenerateTemplatePolicyRequest.Parameters()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.parameters = tmp
         }
         if let value = dict["TemplateBody"] as? String {
             self.templateBody = value
@@ -6709,7 +6777,183 @@ public class GenerateTemplatePolicyResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class PolicyFunctions : Tea.TeaModel {
+        public class ActionPolicyFunctions : Tea.TeaModel {
+            public class Functions : Tea.TeaModel {
+                public var function: String?
+
+                public var operationType: String?
+
+                public var relatedProperties: [String]?
+
+                public var requirementLevel: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.function != nil {
+                        map["Function"] = self.function!
+                    }
+                    if self.operationType != nil {
+                        map["OperationType"] = self.operationType!
+                    }
+                    if self.relatedProperties != nil {
+                        map["RelatedProperties"] = self.relatedProperties!
+                    }
+                    if self.requirementLevel != nil {
+                        map["RequirementLevel"] = self.requirementLevel!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Function"] as? String {
+                        self.function = value
+                    }
+                    if let value = dict["OperationType"] as? String {
+                        self.operationType = value
+                    }
+                    if let value = dict["RelatedProperties"] as? [String] {
+                        self.relatedProperties = value
+                    }
+                    if let value = dict["RequirementLevel"] as? String {
+                        self.requirementLevel = value
+                    }
+                }
+            }
+            public var functions: [GenerateTemplatePolicyResponseBody.PolicyFunctions.ActionPolicyFunctions.Functions]?
+
+            public var logicalResourceId: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.functions != nil {
+                    var tmp : [Any] = []
+                    for k in self.functions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Functions"] = tmp
+                }
+                if self.logicalResourceId != nil {
+                    map["LogicalResourceId"] = self.logicalResourceId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Functions"] as? [Any?] {
+                    var tmp : [GenerateTemplatePolicyResponseBody.PolicyFunctions.ActionPolicyFunctions.Functions] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GenerateTemplatePolicyResponseBody.PolicyFunctions.ActionPolicyFunctions.Functions()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.functions = tmp
+                }
+                if let value = dict["LogicalResourceId"] as? String {
+                    self.logicalResourceId = value
+                }
+                if let value = dict["ResourceType"] as? String {
+                    self.resourceType = value
+                }
+            }
+        }
+        public var action: String?
+
+        public var actionPolicyFunctions: [GenerateTemplatePolicyResponseBody.PolicyFunctions.ActionPolicyFunctions]?
+
+        public var requirementLevel: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.actionPolicyFunctions != nil {
+                var tmp : [Any] = []
+                for k in self.actionPolicyFunctions! {
+                    tmp.append(k.toMap())
+                }
+                map["ActionPolicyFunctions"] = tmp
+            }
+            if self.requirementLevel != nil {
+                map["RequirementLevel"] = self.requirementLevel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Action"] as? String {
+                self.action = value
+            }
+            if let value = dict["ActionPolicyFunctions"] as? [Any?] {
+                var tmp : [GenerateTemplatePolicyResponseBody.PolicyFunctions.ActionPolicyFunctions] = []
+                for v in value {
+                    if v != nil {
+                        var model = GenerateTemplatePolicyResponseBody.PolicyFunctions.ActionPolicyFunctions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.actionPolicyFunctions = tmp
+            }
+            if let value = dict["RequirementLevel"] as? String {
+                self.requirementLevel = value
+            }
+        }
+    }
     public var policy: GenerateTemplatePolicyResponseBody.Policy?
+
+    public var policyFunctions: [GenerateTemplatePolicyResponseBody.PolicyFunctions]?
 
     public var requestId: String?
 
@@ -6731,6 +6975,13 @@ public class GenerateTemplatePolicyResponseBody : Tea.TeaModel {
         if self.policy != nil {
             map["Policy"] = self.policy?.toMap()
         }
+        if self.policyFunctions != nil {
+            var tmp : [Any] = []
+            for k in self.policyFunctions! {
+                tmp.append(k.toMap())
+            }
+            map["PolicyFunctions"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -6743,6 +6994,19 @@ public class GenerateTemplatePolicyResponseBody : Tea.TeaModel {
             var model = GenerateTemplatePolicyResponseBody.Policy()
             model.fromMap(value)
             self.policy = model
+        }
+        if let value = dict["PolicyFunctions"] as? [Any?] {
+            var tmp : [GenerateTemplatePolicyResponseBody.PolicyFunctions] = []
+            for v in value {
+                if v != nil {
+                    var model = GenerateTemplatePolicyResponseBody.PolicyFunctions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.policyFunctions = tmp
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value

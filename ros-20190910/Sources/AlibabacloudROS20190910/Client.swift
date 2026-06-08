@@ -1368,8 +1368,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func generateTemplatePolicyWithOptions(_ request: GenerateTemplatePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateTemplatePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.generateOptions)) {
+            query["GenerateOptions"] = request.generateOptions ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.operationTypes)) {
             query["OperationTypes"] = request.operationTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            query["Parameters"] = request.parameters ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.templateBody)) {
             query["TemplateBody"] = request.templateBody ?? "";
