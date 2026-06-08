@@ -16438,6 +16438,8 @@ public class Id3MetaVerifyRequest : Tea.TeaModel {
 
     public var faceFile: String?
 
+    public var facePicture: String?
+
     public var faceUrl: String?
 
     public var identifyNum: String?
@@ -16466,6 +16468,9 @@ public class Id3MetaVerifyRequest : Tea.TeaModel {
         if self.faceFile != nil {
             map["FaceFile"] = self.faceFile!
         }
+        if self.facePicture != nil {
+            map["FacePicture"] = self.facePicture!
+        }
         if self.faceUrl != nil {
             map["FaceUrl"] = self.faceUrl!
         }
@@ -16489,6 +16494,9 @@ public class Id3MetaVerifyRequest : Tea.TeaModel {
         if let value = dict["FaceFile"] as? String {
             self.faceFile = value
         }
+        if let value = dict["FacePicture"] as? String {
+            self.facePicture = value
+        }
         if let value = dict["FaceUrl"] as? String {
             self.faceUrl = value
         }
@@ -16508,6 +16516,8 @@ public class Id3MetaVerifyAdvanceRequest : Tea.TeaModel {
     public var crop: String?
 
     public var faceFileObject: InputStream?
+
+    public var facePicture: String?
 
     public var faceUrl: String?
 
@@ -16537,6 +16547,9 @@ public class Id3MetaVerifyAdvanceRequest : Tea.TeaModel {
         if self.faceFileObject != nil {
             map["FaceFile"] = self.faceFileObject!
         }
+        if self.facePicture != nil {
+            map["FacePicture"] = self.facePicture!
+        }
         if self.faceUrl != nil {
             map["FaceUrl"] = self.faceUrl!
         }
@@ -16559,6 +16572,9 @@ public class Id3MetaVerifyAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["FaceFile"] as? InputStream {
             self.faceFileObject = value
+        }
+        if let value = dict["FacePicture"] as? String {
+            self.facePicture = value
         }
         if let value = dict["FaceUrl"] as? String {
             self.faceUrl = value
@@ -17494,6 +17510,8 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
 
     public var crop: String?
 
+    public var enableBeauty: String?
+
     public var encryptType: String?
 
     public var faceContrastPicture: String?
@@ -17598,6 +17616,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if self.crop != nil {
             map["Crop"] = self.crop!
+        }
+        if self.enableBeauty != nil {
+            map["EnableBeauty"] = self.enableBeauty!
         }
         if self.encryptType != nil {
             map["EncryptType"] = self.encryptType!
@@ -17720,6 +17741,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if let value = dict["Crop"] as? String {
             self.crop = value
+        }
+        if let value = dict["EnableBeauty"] as? String {
+            self.enableBeauty = value
         }
         if let value = dict["EncryptType"] as? String {
             self.encryptType = value
