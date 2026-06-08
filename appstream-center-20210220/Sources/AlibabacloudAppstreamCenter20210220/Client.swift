@@ -149,6 +149,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.channel)) {
             query["Channel"] = request.channel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.cipherEndUserId)) {
+            query["CipherEndUserId"] = request.cipherEndUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cipherPassword)) {
+            query["CipherPassword"] = request.cipherPassword ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["ClientId"] = request.clientId ?? "";
         }

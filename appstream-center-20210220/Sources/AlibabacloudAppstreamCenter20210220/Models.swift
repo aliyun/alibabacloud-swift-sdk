@@ -515,6 +515,8 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
     public class TenantAliasInfo : Tea.TeaModel {
         public var accessType: String?
 
+        public var isLoginByCipherParam: String?
+
         public var preferVpcAccess: Bool?
 
         public var tenantAlias: String?
@@ -538,6 +540,9 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             if self.accessType != nil {
                 map["AccessType"] = self.accessType!
             }
+            if self.isLoginByCipherParam != nil {
+                map["IsLoginByCipherParam"] = self.isLoginByCipherParam!
+            }
             if self.preferVpcAccess != nil {
                 map["PreferVpcAccess"] = self.preferVpcAccess!
             }
@@ -554,6 +559,9 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccessType"] as? String {
                 self.accessType = value
+            }
+            if let value = dict["IsLoginByCipherParam"] as? String {
+                self.isLoginByCipherParam = value
             }
             if let value = dict["PreferVpcAccess"] as? Bool {
                 self.preferVpcAccess = value
@@ -715,6 +723,10 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 
     public var channel: String?
 
+    public var cipherEndUserId: String?
+
+    public var cipherPassword: String?
+
     public var clientId: String?
 
     public var clientName: String?
@@ -808,6 +820,12 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         }
         if self.channel != nil {
             map["Channel"] = self.channel!
+        }
+        if self.cipherEndUserId != nil {
+            map["CipherEndUserId"] = self.cipherEndUserId!
+        }
+        if self.cipherPassword != nil {
+            map["CipherPassword"] = self.cipherPassword!
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
@@ -928,6 +946,12 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         if let value = dict["Channel"] as? String {
             self.channel = value
         }
+        if let value = dict["CipherEndUserId"] as? String {
+            self.cipherEndUserId = value
+        }
+        if let value = dict["CipherPassword"] as? String {
+            self.cipherPassword = value
+        }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
         }
@@ -1042,6 +1066,10 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
 
     public var channel: String?
 
+    public var cipherEndUserId: String?
+
+    public var cipherPassword: String?
+
     public var clientId: String?
 
     public var clientName: String?
@@ -1135,6 +1163,12 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         }
         if self.channel != nil {
             map["Channel"] = self.channel!
+        }
+        if self.cipherEndUserId != nil {
+            map["CipherEndUserId"] = self.cipherEndUserId!
+        }
+        if self.cipherPassword != nil {
+            map["CipherPassword"] = self.cipherPassword!
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
@@ -1254,6 +1288,12 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Channel"] as? String {
             self.channel = value
+        }
+        if let value = dict["CipherEndUserId"] as? String {
+            self.cipherEndUserId = value
+        }
+        if let value = dict["CipherPassword"] as? String {
+            self.cipherPassword = value
         }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
