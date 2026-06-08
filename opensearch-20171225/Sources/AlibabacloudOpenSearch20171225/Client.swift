@@ -4027,6 +4027,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAppGroupDeleteProtectionWithOptions(_ appGroupIdentity: String, _ request: UpdateAppGroupDeleteProtectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAppGroupDeleteProtectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.body)) {
+            body["body"] = request.body ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAppGroupDeleteProtection",
+            "version": "2017-12-25",
+            "protocol": "HTTPS",
+            "pathname": "/v4/openapi/app-groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appGroupIdentity)) + "/delete-protection",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAppGroupDeleteProtectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAppGroupDeleteProtection(_ appGroupIdentity: String, _ request: UpdateAppGroupDeleteProtectionRequest) async throws -> UpdateAppGroupDeleteProtectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateAppGroupDeleteProtectionWithOptions(appGroupIdentity as! String, request as! UpdateAppGroupDeleteProtectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateFetchFieldsWithOptions(_ appGroupIdentity: String, _ appId: String, _ request: UpdateFetchFieldsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFetchFieldsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

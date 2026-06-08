@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudOpenSearch20171225"
-  spec.version      = "5.0.0"
+  spec.version      = "5.1.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Open Search (20171225) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/opensearch-20171225" 
@@ -18,9 +18,9 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = '13.0'
 
   spec.dependency 'Tea',  '~> 1.0.3'
-  spec.dependency 'TeaUtils',  '~> 1.0.6'
+  spec.dependency 'TeaUtils',  '~> 1.0.8'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
-  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
+  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.2'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
   spec.swift_version='5.6'
