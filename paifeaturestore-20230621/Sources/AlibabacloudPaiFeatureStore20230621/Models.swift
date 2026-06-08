@@ -68,6 +68,8 @@ public class FeatureViewConfigValue : Tea.TeaModel {
 
     public var secondJoinKey: String?
 
+    public var joinWithLabel: Bool?
+
     public override init() {
         super.init()
     }
@@ -105,6 +107,9 @@ public class FeatureViewConfigValue : Tea.TeaModel {
         if self.secondJoinKey != nil {
             map["SecondJoinKey"] = self.secondJoinKey!
         }
+        if self.joinWithLabel != nil {
+            map["JoinWithLabel"] = self.joinWithLabel!
+        }
         return map
     }
 
@@ -137,6 +142,9 @@ public class FeatureViewConfigValue : Tea.TeaModel {
         }
         if let value = dict["SecondJoinKey"] as? String {
             self.secondJoinKey = value
+        }
+        if let value = dict["JoinWithLabel"] as? Bool {
+            self.joinWithLabel = value
         }
     }
 }
@@ -1566,6 +1574,8 @@ public class CreateLLMConfigResponse : Tea.TeaModel {
 
 public class CreateLabelTableRequest : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
+        public var alignedEntityName: String?
+
         public var attributes: [String]?
 
         public var name: String?
@@ -1586,6 +1596,9 @@ public class CreateLabelTableRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alignedEntityName != nil {
+                map["AlignedEntityName"] = self.alignedEntityName!
+            }
             if self.attributes != nil {
                 map["Attributes"] = self.attributes!
             }
@@ -1600,6 +1613,9 @@ public class CreateLabelTableRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AlignedEntityName"] as? String {
+                self.alignedEntityName = value
+            }
             if let value = dict["Attributes"] as? [String] {
                 self.attributes = value
             }
@@ -4419,6 +4435,8 @@ public class GetLLMConfigResponse : Tea.TeaModel {
 
 public class GetLabelTableResponseBody : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
+        public var alignedEntityName: String?
+
         public var attributes: [String]?
 
         public var name: String?
@@ -4439,6 +4457,9 @@ public class GetLabelTableResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alignedEntityName != nil {
+                map["AlignedEntityName"] = self.alignedEntityName!
+            }
             if self.attributes != nil {
                 map["Attributes"] = self.attributes!
             }
@@ -4453,6 +4474,9 @@ public class GetLabelTableResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AlignedEntityName"] as? String {
+                self.alignedEntityName = value
+            }
             if let value = dict["Attributes"] as? [String] {
                 self.attributes = value
             }
@@ -12593,6 +12617,8 @@ public class UpdateLLMConfigResponse : Tea.TeaModel {
 
 public class UpdateLabelTableRequest : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
+        public var alignedEntityName: String?
+
         public var attributes: [String]?
 
         public var name: String?
@@ -12613,6 +12639,9 @@ public class UpdateLabelTableRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alignedEntityName != nil {
+                map["AlignedEntityName"] = self.alignedEntityName!
+            }
             if self.attributes != nil {
                 map["Attributes"] = self.attributes!
             }
@@ -12627,6 +12656,9 @@ public class UpdateLabelTableRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AlignedEntityName"] as? String {
+                self.alignedEntityName = value
+            }
             if let value = dict["Attributes"] as? [String] {
                 self.attributes = value
             }
