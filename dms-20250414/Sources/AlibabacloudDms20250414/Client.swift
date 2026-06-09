@@ -3394,6 +3394,73 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retrieveKnowledgeBaseWithOptions(_ request: RetrieveKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RetrieveKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            body["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hybridSearch)) {
+            body["HybridSearch"] = request.hybridSearch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hybridSearchArgs)) {
+            body["HybridSearchArgs"] = request.hybridSearchArgs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeMetadataFields)) {
+            body["IncludeMetadataFields"] = request.includeMetadataFields ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeVector)) {
+            body["IncludeVector"] = request.includeVector!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kbUuid)) {
+            body["KbUuid"] = request.kbUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metrics)) {
+            body["Metrics"] = request.metrics ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            body["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            body["OrderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recallWindow)) {
+            body["RecallWindow"] = request.recallWindow ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rerankFactor)) {
+            body["RerankFactor"] = request.rerankFactor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topK)) {
+            body["TopK"] = request.topK!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RetrieveKnowledgeBase",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RetrieveKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retrieveKnowledgeBase(_ request: RetrieveKnowledgeBaseRequest) async throws -> RetrieveKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await retrieveKnowledgeBaseWithOptions(request as! RetrieveKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func saveWorkspaceCodeWithOptions(_ request: SaveWorkspaceCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveWorkspaceCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
