@@ -37433,6 +37433,8 @@ public class DescribeGlobalTimerBatchesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceTypes: [String]?
+
     public var searchRegionId: String?
 
     public var timerType: String?
@@ -37463,6 +37465,9 @@ public class DescribeGlobalTimerBatchesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceTypes != nil {
+            map["ResourceTypes"] = self.resourceTypes!
+        }
         if self.searchRegionId != nil {
             map["SearchRegionId"] = self.searchRegionId!
         }
@@ -37485,6 +37490,9 @@ public class DescribeGlobalTimerBatchesRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceTypes"] as? [String] {
+            self.resourceTypes = value
         }
         if let value = dict["SearchRegionId"] as? String {
             self.searchRegionId = value
@@ -37707,6 +37715,8 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceTypes: [String]?
+
     public var resultCategory: String?
 
     public var retryable: Bool?
@@ -37716,6 +37726,8 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
     public var timerResult: String?
 
     public var timerTypes: [String]?
+
+    public var wuyingServerIds: [String]?
 
     public override init() {
         super.init()
@@ -37752,6 +37764,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceTypes != nil {
+            map["ResourceTypes"] = self.resourceTypes!
+        }
         if self.resultCategory != nil {
             map["ResultCategory"] = self.resultCategory!
         }
@@ -37766,6 +37781,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         }
         if self.timerTypes != nil {
             map["TimerTypes"] = self.timerTypes!
+        }
+        if self.wuyingServerIds != nil {
+            map["WuyingServerIds"] = self.wuyingServerIds!
         }
         return map
     }
@@ -37793,6 +37811,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["ResourceTypes"] as? [String] {
+            self.resourceTypes = value
+        }
         if let value = dict["ResultCategory"] as? String {
             self.resultCategory = value
         }
@@ -37807,6 +37828,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["TimerTypes"] as? [String] {
             self.timerTypes = value
+        }
+        if let value = dict["WuyingServerIds"] as? [String] {
+            self.wuyingServerIds = value
         }
     }
 }
@@ -37830,6 +37854,8 @@ public class DescribeGlobalTimerRecordsResponseBody : Tea.TeaModel {
         public var finishTime: String?
 
         public var regionId: String?
+
+        public var resourceParentId: String?
 
         public var retryable: Bool?
 
@@ -37882,6 +37908,9 @@ public class DescribeGlobalTimerRecordsResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceParentId != nil {
+                map["ResourceParentId"] = self.resourceParentId!
+            }
             if self.retryable != nil {
                 map["Retryable"] = self.retryable!
             }
@@ -37928,6 +37957,9 @@ public class DescribeGlobalTimerRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
+            }
+            if let value = dict["ResourceParentId"] as? String {
+                self.resourceParentId = value
             }
             if let value = dict["Retryable"] as? Bool {
                 self.retryable = value

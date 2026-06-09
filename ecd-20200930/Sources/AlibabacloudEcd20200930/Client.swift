@@ -7001,6 +7001,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
+            query["ResourceTypes"] = request.resourceTypes ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.searchRegionId)) {
             query["SearchRegionId"] = request.searchRegionId ?? "";
         }
@@ -7056,6 +7059,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
+            query["ResourceTypes"] = request.resourceTypes ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.resultCategory)) {
             query["ResultCategory"] = request.resultCategory ?? "";
         }
@@ -7070,6 +7076,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.timerTypes)) {
             query["TimerTypes"] = request.timerTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.wuyingServerIds)) {
+            query["WuyingServerIds"] = request.wuyingServerIds ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
