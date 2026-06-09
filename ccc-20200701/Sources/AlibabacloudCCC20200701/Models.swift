@@ -36591,6 +36591,8 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
 
             public var offsiteAgentReleaseReason: String?
 
+            public var outsideNumberDestinationNumber: String?
+
             public var outsideNumberReleaseReason: String?
 
             public var queueTime: Int64?
@@ -36765,6 +36767,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if self.offsiteAgentReleaseReason != nil {
                     map["OffsiteAgentReleaseReason"] = self.offsiteAgentReleaseReason!
+                }
+                if self.outsideNumberDestinationNumber != nil {
+                    map["OutsideNumberDestinationNumber"] = self.outsideNumberDestinationNumber!
                 }
                 if self.outsideNumberReleaseReason != nil {
                     map["OutsideNumberReleaseReason"] = self.outsideNumberReleaseReason!
@@ -36952,6 +36957,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["OffsiteAgentReleaseReason"] as? String {
                     self.offsiteAgentReleaseReason = value
+                }
+                if let value = dict["OutsideNumberDestinationNumber"] as? String {
+                    self.outsideNumberDestinationNumber = value
                 }
                 if let value = dict["OutsideNumberReleaseReason"] as? String {
                     self.outsideNumberReleaseReason = value
