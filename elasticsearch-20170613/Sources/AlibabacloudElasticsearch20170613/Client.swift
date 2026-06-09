@@ -5546,6 +5546,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func turnOffZoneWithOptions(_ instanceId: String, _ request: TurnOffZoneRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TurnOffZoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hpAlbZoneDrained)) {
+            query["hpAlbZoneDrained"] = request.hpAlbZoneDrained!;
+        }
         if (!TeaUtils.Client.isUnset(request.zone)) {
             query["zone"] = request.zone ?? "";
         }
@@ -5579,6 +5582,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func turnOnZoneWithOptions(_ instanceId: String, _ request: TurnOnZoneRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TurnOnZoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hpAlbZoneDrained)) {
+            query["hpAlbZoneDrained"] = request.hpAlbZoneDrained!;
+        }
         if (!TeaUtils.Client.isUnset(request.zone)) {
             query["zone"] = request.zone ?? "";
         }

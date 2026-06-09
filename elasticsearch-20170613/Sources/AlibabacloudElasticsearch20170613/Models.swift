@@ -38975,6 +38975,8 @@ public class TriggerNetworkResponse : Tea.TeaModel {
 }
 
 public class TurnOffZoneRequest : Tea.TeaModel {
+    public var hpAlbZoneDrained: Bool?
+
     public var zone: String?
 
     public override init() {
@@ -38991,6 +38993,9 @@ public class TurnOffZoneRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.hpAlbZoneDrained != nil {
+            map["hpAlbZoneDrained"] = self.hpAlbZoneDrained!
+        }
         if self.zone != nil {
             map["zone"] = self.zone!
         }
@@ -38999,6 +39004,9 @@ public class TurnOffZoneRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["hpAlbZoneDrained"] as? Bool {
+            self.hpAlbZoneDrained = value
+        }
         if let value = dict["zone"] as? String {
             self.zone = value
         }
@@ -39087,6 +39095,8 @@ public class TurnOffZoneResponse : Tea.TeaModel {
 }
 
 public class TurnOnZoneRequest : Tea.TeaModel {
+    public var hpAlbZoneDrained: Bool?
+
     public var zone: String?
 
     public override init() {
@@ -39103,6 +39113,9 @@ public class TurnOnZoneRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.hpAlbZoneDrained != nil {
+            map["hpAlbZoneDrained"] = self.hpAlbZoneDrained!
+        }
         if self.zone != nil {
             map["zone"] = self.zone!
         }
@@ -39111,6 +39124,9 @@ public class TurnOnZoneRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["hpAlbZoneDrained"] as? Bool {
+            self.hpAlbZoneDrained = value
+        }
         if let value = dict["zone"] as? String {
             self.zone = value
         }
