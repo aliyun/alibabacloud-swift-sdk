@@ -390,6 +390,10 @@ public class PushTask : Tea.TeaModel {
                 public class Xiaomi : Tea.TeaModel {
                     public var channel: String?
 
+                    public var focusParam: String?
+
+                    public var focusPics: String?
+
                     public override init() {
                         super.init()
                     }
@@ -407,6 +411,12 @@ public class PushTask : Tea.TeaModel {
                         if self.channel != nil {
                             map["Channel"] = self.channel!
                         }
+                        if self.focusParam != nil {
+                            map["FocusParam"] = self.focusParam!
+                        }
+                        if self.focusPics != nil {
+                            map["FocusPics"] = self.focusPics!
+                        }
                         return map
                     }
 
@@ -414,6 +424,12 @@ public class PushTask : Tea.TeaModel {
                         guard let dict else { return }
                         if let value = dict["Channel"] as? String {
                             self.channel = value
+                        }
+                        if let value = dict["FocusParam"] as? String {
+                            self.focusParam = value
+                        }
+                        if let value = dict["FocusPics"] as? String {
+                            self.focusPics = value
                         }
                     }
                 }
@@ -3205,6 +3221,10 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidXiaomiBigPictureUrl: String?
 
+        public var androidXiaomiFocusParam: String?
+
+        public var androidXiaomiFocusPics: String?
+
         public var androidXiaomiImageUrl: String?
 
         public var body: String?
@@ -3492,6 +3512,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidXiaomiBigPictureUrl != nil {
                 map["AndroidXiaomiBigPictureUrl"] = self.androidXiaomiBigPictureUrl!
+            }
+            if self.androidXiaomiFocusParam != nil {
+                map["AndroidXiaomiFocusParam"] = self.androidXiaomiFocusParam!
+            }
+            if self.androidXiaomiFocusPics != nil {
+                map["AndroidXiaomiFocusPics"] = self.androidXiaomiFocusPics!
             }
             if self.androidXiaomiImageUrl != nil {
                 map["AndroidXiaomiImageUrl"] = self.androidXiaomiImageUrl!
@@ -3827,6 +3853,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["AndroidXiaomiBigPictureUrl"] as? String {
                 self.androidXiaomiBigPictureUrl = value
+            }
+            if let value = dict["AndroidXiaomiFocusParam"] as? String {
+                self.androidXiaomiFocusParam = value
+            }
+            if let value = dict["AndroidXiaomiFocusPics"] as? String {
+                self.androidXiaomiFocusPics = value
             }
             if let value = dict["AndroidXiaomiImageUrl"] as? String {
                 self.androidXiaomiImageUrl = value
@@ -4486,6 +4518,10 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidXiaomiBigPictureUrl: String?
 
+    public var androidXiaomiFocusParam: String?
+
+    public var androidXiaomiFocusPics: String?
+
     public var androidXiaomiImageUrl: String?
 
     public var appKey: Int64?
@@ -4787,6 +4823,12 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidXiaomiBigPictureUrl != nil {
             map["AndroidXiaomiBigPictureUrl"] = self.androidXiaomiBigPictureUrl!
+        }
+        if self.androidXiaomiFocusParam != nil {
+            map["AndroidXiaomiFocusParam"] = self.androidXiaomiFocusParam!
+        }
+        if self.androidXiaomiFocusPics != nil {
+            map["AndroidXiaomiFocusPics"] = self.androidXiaomiFocusPics!
         }
         if self.androidXiaomiImageUrl != nil {
             map["AndroidXiaomiImageUrl"] = self.androidXiaomiImageUrl!
@@ -5144,6 +5186,12 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidXiaomiBigPictureUrl"] as? String {
             self.androidXiaomiBigPictureUrl = value
         }
+        if let value = dict["AndroidXiaomiFocusParam"] as? String {
+            self.androidXiaomiFocusParam = value
+        }
+        if let value = dict["AndroidXiaomiFocusPics"] as? String {
+            self.androidXiaomiFocusPics = value
+        }
         if let value = dict["AndroidXiaomiImageUrl"] as? String {
             self.androidXiaomiImageUrl = value
         }
@@ -5444,6 +5492,10 @@ public class PushShrinkRequest : Tea.TeaModel {
     public var androidXiaoMiNotifyTitle: String?
 
     public var androidXiaomiBigPictureUrl: String?
+
+    public var androidXiaomiFocusParam: String?
+
+    public var androidXiaomiFocusPics: String?
 
     public var androidXiaomiImageUrl: String?
 
@@ -5746,6 +5798,12 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.androidXiaomiBigPictureUrl != nil {
             map["AndroidXiaomiBigPictureUrl"] = self.androidXiaomiBigPictureUrl!
+        }
+        if self.androidXiaomiFocusParam != nil {
+            map["AndroidXiaomiFocusParam"] = self.androidXiaomiFocusParam!
+        }
+        if self.androidXiaomiFocusPics != nil {
+            map["AndroidXiaomiFocusPics"] = self.androidXiaomiFocusPics!
         }
         if self.androidXiaomiImageUrl != nil {
             map["AndroidXiaomiImageUrl"] = self.androidXiaomiImageUrl!
@@ -6102,6 +6160,12 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AndroidXiaomiBigPictureUrl"] as? String {
             self.androidXiaomiBigPictureUrl = value
+        }
+        if let value = dict["AndroidXiaomiFocusParam"] as? String {
+            self.androidXiaomiFocusParam = value
+        }
+        if let value = dict["AndroidXiaomiFocusPics"] as? String {
+            self.androidXiaomiFocusPics = value
         }
         if let value = dict["AndroidXiaomiImageUrl"] as? String {
             self.androidXiaomiImageUrl = value
