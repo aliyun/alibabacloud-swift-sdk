@@ -82183,6 +82183,93 @@ public class DescribeRenewalPriceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RelatedPrice : Tea.TeaModel {
+            public class MarketplaceImagePrice : Tea.TeaModel {
+                public var currency: String?
+
+                public var discountPrice: Double?
+
+                public var originalPrice: Double?
+
+                public var tradePrice: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.currency != nil {
+                        map["Currency"] = self.currency!
+                    }
+                    if self.discountPrice != nil {
+                        map["DiscountPrice"] = self.discountPrice!
+                    }
+                    if self.originalPrice != nil {
+                        map["OriginalPrice"] = self.originalPrice!
+                    }
+                    if self.tradePrice != nil {
+                        map["TradePrice"] = self.tradePrice!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Currency"] as? String {
+                        self.currency = value
+                    }
+                    if let value = dict["DiscountPrice"] as? Double {
+                        self.discountPrice = value
+                    }
+                    if let value = dict["OriginalPrice"] as? Double {
+                        self.originalPrice = value
+                    }
+                    if let value = dict["TradePrice"] as? Double {
+                        self.tradePrice = value
+                    }
+                }
+            }
+            public var marketplaceImagePrice: DescribeRenewalPriceResponseBody.PriceInfo.RelatedPrice.MarketplaceImagePrice?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.marketplaceImagePrice?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.marketplaceImagePrice != nil {
+                    map["MarketplaceImagePrice"] = self.marketplaceImagePrice?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MarketplaceImagePrice"] as? [String: Any?] {
+                    var model = DescribeRenewalPriceResponseBody.PriceInfo.RelatedPrice.MarketplaceImagePrice()
+                    model.fromMap(value)
+                    self.marketplaceImagePrice = model
+                }
+            }
+        }
         public class Rules : Tea.TeaModel {
             public class Rule : Tea.TeaModel {
                 public var description_: String?
@@ -82267,6 +82354,8 @@ public class DescribeRenewalPriceResponseBody : Tea.TeaModel {
         }
         public var price: DescribeRenewalPriceResponseBody.PriceInfo.Price?
 
+        public var relatedPrice: DescribeRenewalPriceResponseBody.PriceInfo.RelatedPrice?
+
         public var rules: DescribeRenewalPriceResponseBody.PriceInfo.Rules?
 
         public override init() {
@@ -82280,6 +82369,7 @@ public class DescribeRenewalPriceResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.price?.validate()
+            try self.relatedPrice?.validate()
             try self.rules?.validate()
         }
 
@@ -82287,6 +82377,9 @@ public class DescribeRenewalPriceResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.price != nil {
                 map["Price"] = self.price?.toMap()
+            }
+            if self.relatedPrice != nil {
+                map["RelatedPrice"] = self.relatedPrice?.toMap()
             }
             if self.rules != nil {
                 map["Rules"] = self.rules?.toMap()
@@ -82300,6 +82393,11 @@ public class DescribeRenewalPriceResponseBody : Tea.TeaModel {
                 var model = DescribeRenewalPriceResponseBody.PriceInfo.Price()
                 model.fromMap(value)
                 self.price = model
+            }
+            if let value = dict["RelatedPrice"] as? [String: Any?] {
+                var model = DescribeRenewalPriceResponseBody.PriceInfo.RelatedPrice()
+                model.fromMap(value)
+                self.relatedPrice = model
             }
             if let value = dict["Rules"] as? [String: Any?] {
                 var model = DescribeRenewalPriceResponseBody.PriceInfo.Rules()
