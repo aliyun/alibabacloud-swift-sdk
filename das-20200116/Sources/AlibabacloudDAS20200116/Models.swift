@@ -12407,6 +12407,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var docsExamined: String?
 
+            public var extText: String?
+
             public var fail: String?
 
             public var frows: Int64?
@@ -12542,6 +12544,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.docsExamined != nil {
                     map["DocsExamined"] = self.docsExamined!
+                }
+                if self.extText != nil {
+                    map["ExtText"] = self.extText!
                 }
                 if self.fail != nil {
                     map["Fail"] = self.fail!
@@ -12712,6 +12717,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DocsExamined"] as? String {
                     self.docsExamined = value
+                }
+                if let value = dict["ExtText"] as? String {
+                    self.extText = value
                 }
                 if let value = dict["Fail"] as? String {
                     self.fail = value
