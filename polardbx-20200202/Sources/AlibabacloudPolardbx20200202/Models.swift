@@ -9959,6 +9959,8 @@ public class DescribeCdcInfoResponse : Tea.TeaModel {
 public class DescribeCdcVersionListRequest : Tea.TeaModel {
     public var DBInstanceName: String?
 
+    public var instanceName: String?
+
     public var regionId: String?
 
     public override init() {
@@ -9978,6 +9980,9 @@ public class DescribeCdcVersionListRequest : Tea.TeaModel {
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -9988,6 +9993,9 @@ public class DescribeCdcVersionListRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBInstanceName"] as? String {
             self.DBInstanceName = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
