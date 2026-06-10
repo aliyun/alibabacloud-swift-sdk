@@ -1457,6 +1457,8 @@ public class Nodepool : Tea.TeaModel {
                 }
             }
         }
+        public var autoFaultDiagnosis: Bool?
+
         public var autoRepair: Bool?
 
         public var autoRepairPolicy: Nodepool.Management.AutoRepairPolicy?
@@ -1491,6 +1493,9 @@ public class Nodepool : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoFaultDiagnosis != nil {
+                map["auto_fault_diagnosis"] = self.autoFaultDiagnosis!
+            }
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
             }
@@ -1520,6 +1525,9 @@ public class Nodepool : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["auto_fault_diagnosis"] as? Bool {
+                self.autoFaultDiagnosis = value
+            }
             if let value = dict["auto_repair"] as? Bool {
                 self.autoRepair = value
             }
@@ -6965,6 +6973,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 }
             }
         }
+        public var autoFaultDiagnosis: Bool?
+
         public var autoRepair: Bool?
 
         public var autoRepairPolicy: CreateClusterNodePoolRequest.Management.AutoRepairPolicy?
@@ -6999,6 +7009,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoFaultDiagnosis != nil {
+                map["auto_fault_diagnosis"] = self.autoFaultDiagnosis!
+            }
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
             }
@@ -7028,6 +7041,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["auto_fault_diagnosis"] as? Bool {
+                self.autoFaultDiagnosis = value
+            }
             if let value = dict["auto_repair"] as? Bool {
                 self.autoRepair = value
             }
@@ -13546,6 +13562,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var autoFaultDiagnosis: Bool?
+
         public var autoRepair: Bool?
 
         public var autoRepairPolicy: DescribeClusterNodePoolDetailResponseBody.Management.AutoRepairPolicy?
@@ -13580,6 +13598,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoFaultDiagnosis != nil {
+                map["auto_fault_diagnosis"] = self.autoFaultDiagnosis!
+            }
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
             }
@@ -13609,6 +13630,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["auto_fault_diagnosis"] as? Bool {
+                self.autoFaultDiagnosis = value
+            }
             if let value = dict["auto_repair"] as? Bool {
                 self.autoRepair = value
             }
@@ -15511,6 +15535,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var autoFaultDiagnosis: Bool?
+
             public var autoRepair: Bool?
 
             public var autoRepairPolicy: DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoRepairPolicy?
@@ -15545,6 +15571,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoFaultDiagnosis != nil {
+                    map["auto_fault_diagnosis"] = self.autoFaultDiagnosis!
+                }
                 if self.autoRepair != nil {
                     map["auto_repair"] = self.autoRepair!
                 }
@@ -15574,6 +15603,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["auto_fault_diagnosis"] as? Bool {
+                    self.autoFaultDiagnosis = value
+                }
                 if let value = dict["auto_repair"] as? Bool {
                     self.autoRepair = value
                 }
@@ -31984,6 +32016,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 }
             }
         }
+        public var autoFaultDiagnosis: Bool?
+
         public var autoRepair: Bool?
 
         public var autoRepairPolicy: ModifyClusterNodePoolRequest.Management.AutoRepairPolicy?
@@ -32018,6 +32052,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoFaultDiagnosis != nil {
+                map["auto_fault_diagnosis"] = self.autoFaultDiagnosis!
+            }
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
             }
@@ -32047,6 +32084,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["auto_fault_diagnosis"] as? Bool {
+                self.autoFaultDiagnosis = value
+            }
             if let value = dict["auto_repair"] as? Bool {
                 self.autoRepair = value
             }
