@@ -1695,6 +1695,10 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var deletionProtection: Bool?
 
+    public var growInterval: Int32?
+
+    public var idleInterval: Int32?
+
     public var isEnterpriseSecurityGroup: Bool?
 
     public var manager: CreateClusterRequest.Manager?
@@ -1773,6 +1777,12 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.deletionProtection != nil {
             map["DeletionProtection"] = self.deletionProtection!
+        }
+        if self.growInterval != nil {
+            map["GrowInterval"] = self.growInterval!
+        }
+        if self.idleInterval != nil {
+            map["IdleInterval"] = self.idleInterval!
         }
         if self.isEnterpriseSecurityGroup != nil {
             map["IsEnterpriseSecurityGroup"] = self.isEnterpriseSecurityGroup!
@@ -1878,6 +1888,12 @@ public class CreateClusterRequest : Tea.TeaModel {
         if let value = dict["DeletionProtection"] as? Bool {
             self.deletionProtection = value
         }
+        if let value = dict["GrowInterval"] as? Int32 {
+            self.growInterval = value
+        }
+        if let value = dict["IdleInterval"] as? Int32 {
+            self.idleInterval = value
+        }
         if let value = dict["IsEnterpriseSecurityGroup"] as? Bool {
             self.isEnterpriseSecurityGroup = value
         }
@@ -1965,6 +1981,10 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
 
     public var deletionProtection: Bool?
 
+    public var growInterval: Int32?
+
+    public var idleInterval: Int32?
+
     public var isEnterpriseSecurityGroup: Bool?
 
     public var managerShrink: String?
@@ -2033,6 +2053,12 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         if self.deletionProtection != nil {
             map["DeletionProtection"] = self.deletionProtection!
         }
+        if self.growInterval != nil {
+            map["GrowInterval"] = self.growInterval!
+        }
+        if self.idleInterval != nil {
+            map["IdleInterval"] = self.idleInterval!
+        }
         if self.isEnterpriseSecurityGroup != nil {
             map["IsEnterpriseSecurityGroup"] = self.isEnterpriseSecurityGroup!
         }
@@ -2100,6 +2126,12 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DeletionProtection"] as? Bool {
             self.deletionProtection = value
+        }
+        if let value = dict["GrowInterval"] as? Int32 {
+            self.growInterval = value
+        }
+        if let value = dict["IdleInterval"] as? Int32 {
+            self.idleInterval = value
         }
         if let value = dict["IsEnterpriseSecurityGroup"] as? Bool {
             self.isEnterpriseSecurityGroup = value

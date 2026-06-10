@@ -170,6 +170,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
             query["DeletionProtection"] = request.deletionProtection!;
         }
+        if (!TeaUtils.Client.isUnset(request.growInterval)) {
+            query["GrowInterval"] = request.growInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.idleInterval)) {
+            query["IdleInterval"] = request.idleInterval!;
+        }
         if (!TeaUtils.Client.isUnset(request.isEnterpriseSecurityGroup)) {
             query["IsEnterpriseSecurityGroup"] = request.isEnterpriseSecurityGroup!;
         }
