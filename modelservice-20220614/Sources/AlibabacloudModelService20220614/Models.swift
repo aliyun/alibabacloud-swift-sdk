@@ -189,9 +189,47 @@ public class GetUserRequest : Tea.TeaModel {
 }
 
 public class GetUserResponseBody : Tea.TeaModel {
+    public class ApiKeys : Tea.TeaModel {
+        public var apiKey: String?
+
+        public var innerApiKey: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apiKey != nil {
+                map["ApiKey"] = self.apiKey!
+            }
+            if self.innerApiKey != nil {
+                map["InnerApiKey"] = self.innerApiKey!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApiKey"] as? String {
+                self.apiKey = value
+            }
+            if let value = dict["InnerApiKey"] as? String {
+                self.innerApiKey = value
+            }
+        }
+    }
     public var anthropicHost: String?
 
-    public var apiKeys: Any?
+    public var apiKeys: [GetUserResponseBody.ApiKeys]?
 
     public var appId: String?
 
@@ -225,7 +263,11 @@ public class GetUserResponseBody : Tea.TeaModel {
             map["AnthropicHost"] = self.anthropicHost!
         }
         if self.apiKeys != nil {
-            map["ApiKeys"] = self.apiKeys!
+            var tmp : [Any] = []
+            for k in self.apiKeys! {
+                tmp.append(k.toMap())
+            }
+            map["ApiKeys"] = tmp
         }
         if self.appId != nil {
             map["AppId"] = self.appId!
@@ -256,8 +298,18 @@ public class GetUserResponseBody : Tea.TeaModel {
         if let value = dict["AnthropicHost"] as? String {
             self.anthropicHost = value
         }
-        if let value = dict["ApiKeys"] as? Any {
-            self.apiKeys = value
+        if let value = dict["ApiKeys"] as? [Any?] {
+            var tmp : [GetUserResponseBody.ApiKeys] = []
+            for v in value {
+                if v != nil {
+                    var model = GetUserResponseBody.ApiKeys()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.apiKeys = tmp
         }
         if let value = dict["AppId"] as? String {
             self.appId = value
