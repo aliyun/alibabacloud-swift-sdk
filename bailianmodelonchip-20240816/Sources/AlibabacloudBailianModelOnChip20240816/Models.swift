@@ -416,6 +416,8 @@ public class DeviceRegisterRequest : Tea.TeaModel {
 
     public var signature: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -442,6 +444,9 @@ public class DeviceRegisterRequest : Tea.TeaModel {
         if self.signature != nil {
             map["signature"] = self.signature!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -459,6 +464,9 @@ public class DeviceRegisterRequest : Tea.TeaModel {
         if let value = dict["signature"] as? String {
             self.signature = value
         }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
     }
 }
 
@@ -473,6 +481,8 @@ public class DeviceRegisterResponseBody : Tea.TeaModel {
         public var responseTime: String?
 
         public var signature: String?
+
+        public var workspaceId: String?
 
         public override init() {
             super.init()
@@ -503,6 +513,9 @@ public class DeviceRegisterResponseBody : Tea.TeaModel {
             if self.signature != nil {
                 map["signature"] = self.signature!
             }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
             return map
         }
 
@@ -522,6 +535,9 @@ public class DeviceRegisterResponseBody : Tea.TeaModel {
             }
             if let value = dict["signature"] as? String {
                 self.signature = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
             }
         }
     }
