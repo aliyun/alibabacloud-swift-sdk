@@ -350,6 +350,8 @@ public class AutoscalingMetricSpec : Tea.TeaModel {
 
     public var targetValue: Int32?
 
+    public var tolerance: String?
+
     public override init() {
         super.init()
     }
@@ -373,6 +375,9 @@ public class AutoscalingMetricSpec : Tea.TeaModel {
         if self.targetValue != nil {
             map["TargetValue"] = self.targetValue!
         }
+        if self.tolerance != nil {
+            map["Tolerance"] = self.tolerance!
+        }
         return map
     }
 
@@ -386,6 +391,9 @@ public class AutoscalingMetricSpec : Tea.TeaModel {
         }
         if let value = dict["TargetValue"] as? Int32 {
             self.targetValue = value
+        }
+        if let value = dict["Tolerance"] as? String {
+            self.tolerance = value
         }
     }
 }
@@ -1624,6 +1632,61 @@ public class EcsSpec : Tea.TeaModel {
         }
         if let value = dict["SupportedGPUDrivers"] as? [String] {
             self.supportedGPUDrivers = value
+        }
+    }
+}
+
+public class ElasticSpotSpec : Tea.TeaModel {
+    public var instanceType: String?
+
+    public var spotDiscountLimit: Double?
+
+    public var spotPriceLimit: Double?
+
+    public var spotStrategy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.spotDiscountLimit != nil {
+            map["SpotDiscountLimit"] = self.spotDiscountLimit!
+        }
+        if self.spotPriceLimit != nil {
+            map["SpotPriceLimit"] = self.spotPriceLimit!
+        }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["SpotDiscountLimit"] as? Double {
+            self.spotDiscountLimit = value
+        }
+        if let value = dict["SpotPriceLimit"] as? Double {
+            self.spotPriceLimit = value
+        }
+        if let value = dict["SpotStrategy"] as? String {
+            self.spotStrategy = value
         }
     }
 }
@@ -3219,6 +3282,8 @@ public class JobItem : Tea.TeaModel {
 public class JobReplicaStatus : Tea.TeaModel {
     public var active: Int32?
 
+    public var currentSpotInstanceType: String?
+
     public var dequeued: Int32?
 
     public var estimatedAutoScalingSpec: AutoScalingSpec?
@@ -3250,6 +3315,9 @@ public class JobReplicaStatus : Tea.TeaModel {
         if self.active != nil {
             map["Active"] = self.active!
         }
+        if self.currentSpotInstanceType != nil {
+            map["CurrentSpotInstanceType"] = self.currentSpotInstanceType!
+        }
         if self.dequeued != nil {
             map["Dequeued"] = self.dequeued!
         }
@@ -3275,6 +3343,9 @@ public class JobReplicaStatus : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Active"] as? Int32 {
             self.active = value
+        }
+        if let value = dict["CurrentSpotInstanceType"] as? String {
+            self.currentSpotInstanceType = value
         }
         if let value = dict["Dequeued"] as? Int32 {
             self.dequeued = value
@@ -3523,6 +3594,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var ecsSpec: String?
 
+    public var elasticSpotSpecs: [ElasticSpotSpec]?
+
     public var extraPodSpec: ExtraPodSpec?
 
     public var image: String?
@@ -3588,6 +3661,13 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
+        }
+        if self.elasticSpotSpecs != nil {
+            var tmp : [Any] = []
+            for k in self.elasticSpotSpecs! {
+                tmp.append(k.toMap())
+            }
+            map["ElasticSpotSpecs"] = tmp
         }
         if self.extraPodSpec != nil {
             map["ExtraPodSpec"] = self.extraPodSpec?.toMap()
@@ -3665,6 +3745,19 @@ public class JobSpec : Tea.TeaModel {
         }
         if let value = dict["EcsSpec"] as? String {
             self.ecsSpec = value
+        }
+        if let value = dict["ElasticSpotSpecs"] as? [Any?] {
+            var tmp : [ElasticSpotSpec] = []
+            for v in value {
+                if v != nil {
+                    var model = ElasticSpotSpec()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.elasticSpotSpecs = tmp
         }
         if let value = dict["ExtraPodSpec"] as? [String: Any?] {
             var model = ExtraPodSpec()
