@@ -8998,6 +8998,8 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
 
         public var questionDescription: String?
 
+        public var questionSample: String?
+
         public var scriptPointId: String?
 
         public var sortNo: Int32?
@@ -9037,6 +9039,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             if self.questionDescription != nil {
                 map["questionDescription"] = self.questionDescription!
             }
+            if self.questionSample != nil {
+                map["questionSample"] = self.questionSample!
+            }
             if self.scriptPointId != nil {
                 map["scriptPointId"] = self.scriptPointId!
             }
@@ -9075,6 +9080,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             }
             if let value = dict["questionDescription"] as? String {
                 self.questionDescription = value
+            }
+            if let value = dict["questionSample"] as? String {
+                self.questionSample = value
             }
             if let value = dict["scriptPointId"] as? String {
                 self.scriptPointId = value
@@ -12786,11 +12794,17 @@ public class ListAgentsRequest : Tea.TeaModel {
 
 public class ListAgentsResponseBody : Tea.TeaModel {
     public class List : Tea.TeaModel {
+        public var agentIconUrl: String?
+
         public var agentId: String?
 
         public var agentName: String?
 
         public var agentScene: String?
+
+        public var characterAgeStage: String?
+
+        public var characterName: String?
 
         public var charactersDescription: String?
 
@@ -12824,6 +12838,9 @@ public class ListAgentsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentIconUrl != nil {
+                map["agentIconUrl"] = self.agentIconUrl!
+            }
             if self.agentId != nil {
                 map["agentId"] = self.agentId!
             }
@@ -12832,6 +12849,12 @@ public class ListAgentsResponseBody : Tea.TeaModel {
             }
             if self.agentScene != nil {
                 map["agentScene"] = self.agentScene!
+            }
+            if self.characterAgeStage != nil {
+                map["characterAgeStage"] = self.characterAgeStage!
+            }
+            if self.characterName != nil {
+                map["characterName"] = self.characterName!
             }
             if self.charactersDescription != nil {
                 map["charactersDescription"] = self.charactersDescription!
@@ -12865,6 +12888,9 @@ public class ListAgentsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["agentIconUrl"] as? String {
+                self.agentIconUrl = value
+            }
             if let value = dict["agentId"] as? String {
                 self.agentId = value
             }
@@ -12873,6 +12899,12 @@ public class ListAgentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["agentScene"] as? String {
                 self.agentScene = value
+            }
+            if let value = dict["characterAgeStage"] as? String {
+                self.characterAgeStage = value
+            }
+            if let value = dict["characterName"] as? String {
+                self.characterName = value
             }
             if let value = dict["charactersDescription"] as? String {
                 self.charactersDescription = value
