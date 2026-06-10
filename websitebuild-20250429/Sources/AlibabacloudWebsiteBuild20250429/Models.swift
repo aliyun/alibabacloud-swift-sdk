@@ -1506,6 +1506,8 @@ public class AppService : Tea.TeaModel {
 
     public var name: String?
 
+    public var nodeList: [TreeNode]?
+
     public var profile: AppServiceProfile?
 
     public var serviceType: String?
@@ -1559,6 +1561,13 @@ public class AppService : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.nodeList != nil {
+            var tmp : [Any] = []
+            for k in self.nodeList! {
+                tmp.append(k.toMap())
+            }
+            map["NodeList"] = tmp
+        }
         if self.profile != nil {
             map["Profile"] = self.profile?.toMap()
         }
@@ -1609,6 +1618,19 @@ public class AppService : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["NodeList"] as? [Any?] {
+            var tmp : [TreeNode] = []
+            for v in value {
+                if v != nil {
+                    var model = TreeNode()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nodeList = tmp
+        }
         if let value = dict["Profile"] as? [String: Any?] {
             var model = AppServiceProfile()
             model.fromMap(value)
@@ -1648,9 +1670,13 @@ public class AppServiceAggregate : Tea.TeaModel {
 
     public var gmtModified: String?
 
+    public var group: AppServiceGroup?
+
     public var instanceBizId: String?
 
     public var name: String?
+
+    public var nodeList: [TreeNode]?
 
     public var operationAddress: AppOperationAddress?
 
@@ -1678,6 +1704,7 @@ public class AppServiceAggregate : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.group?.validate()
         try self.operationAddress?.validate()
         try self.profile?.validate()
     }
@@ -1702,11 +1729,21 @@ public class AppServiceAggregate : Tea.TeaModel {
         if self.gmtModified != nil {
             map["GmtModified"] = self.gmtModified!
         }
+        if self.group != nil {
+            map["Group"] = self.group?.toMap()
+        }
         if self.instanceBizId != nil {
             map["InstanceBizId"] = self.instanceBizId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.nodeList != nil {
+            var tmp : [Any] = []
+            for k in self.nodeList! {
+                tmp.append(k.toMap())
+            }
+            map["NodeList"] = tmp
         }
         if self.operationAddress != nil {
             map["OperationAddress"] = self.operationAddress?.toMap()
@@ -1755,11 +1792,29 @@ public class AppServiceAggregate : Tea.TeaModel {
         if let value = dict["GmtModified"] as? String {
             self.gmtModified = value
         }
+        if let value = dict["Group"] as? [String: Any?] {
+            var model = AppServiceGroup()
+            model.fromMap(value)
+            self.group = model
+        }
         if let value = dict["InstanceBizId"] as? String {
             self.instanceBizId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NodeList"] as? [Any?] {
+            var tmp : [TreeNode] = []
+            for v in value {
+                if v != nil {
+                    var model = TreeNode()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nodeList = tmp
         }
         if let value = dict["OperationAddress"] as? [String: Any?] {
             var model = AppOperationAddress()
@@ -1922,6 +1977,123 @@ public class AppServiceProfile : Tea.TeaModel {
         }
         if let value = dict["ServiceSpecText"] as? String {
             self.serviceSpecText = value
+        }
+    }
+}
+
+public class TreeNode : Tea.TeaModel {
+    public var children: [TreeNode]?
+
+    public var finalStepNo: Int32?
+
+    public var finishTime: Int64?
+
+    public var isContainerNode: Bool?
+
+    public var nodeId: String?
+
+    public var nodeName: String?
+
+    public var nodeStatus: String?
+
+    public var operatorRole: String?
+
+    public var parentNodeId: String?
+
+    public var stepNo: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.children != nil {
+            var tmp : [Any] = []
+            for k in self.children! {
+                tmp.append(k.toMap())
+            }
+            map["Children"] = tmp
+        }
+        if self.finalStepNo != nil {
+            map["FinalStepNo"] = self.finalStepNo!
+        }
+        if self.finishTime != nil {
+            map["FinishTime"] = self.finishTime!
+        }
+        if self.isContainerNode != nil {
+            map["IsContainerNode"] = self.isContainerNode!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.nodeName != nil {
+            map["NodeName"] = self.nodeName!
+        }
+        if self.nodeStatus != nil {
+            map["NodeStatus"] = self.nodeStatus!
+        }
+        if self.operatorRole != nil {
+            map["OperatorRole"] = self.operatorRole!
+        }
+        if self.parentNodeId != nil {
+            map["ParentNodeId"] = self.parentNodeId!
+        }
+        if self.stepNo != nil {
+            map["StepNo"] = self.stepNo!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Children"] as? [Any?] {
+            var tmp : [TreeNode] = []
+            for v in value {
+                if v != nil {
+                    var model = TreeNode()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.children = tmp
+        }
+        if let value = dict["FinalStepNo"] as? Int32 {
+            self.finalStepNo = value
+        }
+        if let value = dict["FinishTime"] as? Int64 {
+            self.finishTime = value
+        }
+        if let value = dict["IsContainerNode"] as? Bool {
+            self.isContainerNode = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+        if let value = dict["NodeName"] as? String {
+            self.nodeName = value
+        }
+        if let value = dict["NodeStatus"] as? String {
+            self.nodeStatus = value
+        }
+        if let value = dict["OperatorRole"] as? String {
+            self.operatorRole = value
+        }
+        if let value = dict["ParentNodeId"] as? String {
+            self.parentNodeId = value
+        }
+        if let value = dict["StepNo"] as? Int32 {
+            self.stepNo = value
         }
     }
 }
@@ -34577,6 +34749,8 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
 
             public var metaData: String?
 
+            public var recordKey: String?
+
             public var sceneName: String?
 
             public override init() {
@@ -34608,6 +34782,9 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
                 if self.metaData != nil {
                     map["MetaData"] = self.metaData!
                 }
+                if self.recordKey != nil {
+                    map["RecordKey"] = self.recordKey!
+                }
                 if self.sceneName != nil {
                     map["SceneName"] = self.sceneName!
                 }
@@ -34630,6 +34807,9 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MetaData"] as? String {
                     self.metaData = value
+                }
+                if let value = dict["RecordKey"] as? String {
+                    self.recordKey = value
                 }
                 if let value = dict["SceneName"] as? String {
                     self.sceneName = value
