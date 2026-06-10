@@ -11222,6 +11222,8 @@ public class GetAppCodeWorkspaceDetailResponseBody : Tea.TeaModel {
         }
         public var activeLogicalNumber: Int32?
 
+        public var commitHash: String?
+
         public var isDirty: Bool?
 
         public var maxLogicalNumber: Int32?
@@ -11247,6 +11249,9 @@ public class GetAppCodeWorkspaceDetailResponseBody : Tea.TeaModel {
             if self.activeLogicalNumber != nil {
                 map["ActiveLogicalNumber"] = self.activeLogicalNumber!
             }
+            if self.commitHash != nil {
+                map["CommitHash"] = self.commitHash!
+            }
             if self.isDirty != nil {
                 map["IsDirty"] = self.isDirty!
             }
@@ -11270,6 +11275,9 @@ public class GetAppCodeWorkspaceDetailResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ActiveLogicalNumber"] as? Int32 {
                 self.activeLogicalNumber = value
+            }
+            if let value = dict["CommitHash"] as? String {
+                self.commitHash = value
             }
             if let value = dict["IsDirty"] as? Bool {
                 self.isDirty = value
@@ -16442,6 +16450,8 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
 
         public var steps: [String]?
 
+        public var subchannel: String?
+
         public override init() {
             super.init()
         }
@@ -16501,6 +16511,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             if self.steps != nil {
                 map["Steps"] = self.steps!
             }
+            if self.subchannel != nil {
+                map["Subchannel"] = self.subchannel!
+            }
             return map
         }
 
@@ -16550,6 +16563,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["Steps"] as? [String] {
                 self.steps = value
+            }
+            if let value = dict["Subchannel"] as? String {
+                self.subchannel = value
             }
         }
     }
@@ -28865,9 +28881,13 @@ public class ListAppPublishHistoryRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var publishEnv: String?
+
     public var sort: String?
 
     public var status: String?
+
+    public var subchannel: String?
 
     public var websiteDomain: String?
 
@@ -28906,11 +28926,17 @@ public class ListAppPublishHistoryRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.publishEnv != nil {
+            map["PublishEnv"] = self.publishEnv!
+        }
         if self.sort != nil {
             map["Sort"] = self.sort!
         }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.subchannel != nil {
+            map["Subchannel"] = self.subchannel!
         }
         if self.websiteDomain != nil {
             map["WebsiteDomain"] = self.websiteDomain!
@@ -28941,11 +28967,17 @@ public class ListAppPublishHistoryRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["PublishEnv"] as? String {
+            self.publishEnv = value
+        }
         if let value = dict["Sort"] as? String {
             self.sort = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Subchannel"] as? String {
+            self.subchannel = value
         }
         if let value = dict["WebsiteDomain"] as? String {
             self.websiteDomain = value
@@ -28957,6 +28989,8 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
         public class History : Tea.TeaModel {
             public var canQuickRevert: String?
+
+            public var commitHash: String?
 
             public var currentStep: String?
 
@@ -28984,6 +29018,8 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
 
             public var steps: [String]?
 
+            public var subchannel: String?
+
             public override init() {
                 super.init()
             }
@@ -29000,6 +29036,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.canQuickRevert != nil {
                     map["CanQuickRevert"] = self.canQuickRevert!
+                }
+                if self.commitHash != nil {
+                    map["CommitHash"] = self.commitHash!
                 }
                 if self.currentStep != nil {
                     map["CurrentStep"] = self.currentStep!
@@ -29040,6 +29079,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if self.steps != nil {
                     map["Steps"] = self.steps!
                 }
+                if self.subchannel != nil {
+                    map["Subchannel"] = self.subchannel!
+                }
                 return map
             }
 
@@ -29047,6 +29089,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["CanQuickRevert"] as? String {
                     self.canQuickRevert = value
+                }
+                if let value = dict["CommitHash"] as? String {
+                    self.commitHash = value
                 }
                 if let value = dict["CurrentStep"] as? String {
                     self.currentStep = value
@@ -29086,6 +29131,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Steps"] as? [String] {
                     self.steps = value
+                }
+                if let value = dict["Subchannel"] as? String {
+                    self.subchannel = value
                 }
             }
         }
@@ -33739,11 +33787,15 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
 
             public var balance: Int64?
 
+            public var balanceStr: String?
+
             public var endDate: String?
 
             public var expired: Bool?
 
             public var initQuota: Int64?
+
+            public var initQuotaStr: String?
 
             public var sourceType: String?
 
@@ -33771,6 +33823,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 if self.balance != nil {
                     map["Balance"] = self.balance!
                 }
+                if self.balanceStr != nil {
+                    map["BalanceStr"] = self.balanceStr!
+                }
                 if self.endDate != nil {
                     map["EndDate"] = self.endDate!
                 }
@@ -33779,6 +33834,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 }
                 if self.initQuota != nil {
                     map["InitQuota"] = self.initQuota!
+                }
+                if self.initQuotaStr != nil {
+                    map["InitQuotaStr"] = self.initQuotaStr!
                 }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
@@ -33800,6 +33858,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 if let value = dict["Balance"] as? Int64 {
                     self.balance = value
                 }
+                if let value = dict["BalanceStr"] as? String {
+                    self.balanceStr = value
+                }
                 if let value = dict["EndDate"] as? String {
                     self.endDate = value
                 }
@@ -33808,6 +33869,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InitQuota"] as? Int64 {
                     self.initQuota = value
+                }
+                if let value = dict["InitQuotaStr"] as? String {
+                    self.initQuotaStr = value
                 }
                 if let value = dict["SourceType"] as? String {
                     self.sourceType = value
@@ -33825,11 +33889,15 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
 
             public var balance: Int64?
 
+            public var balanceStr: String?
+
             public var endDate: String?
 
             public var expired: Bool?
 
             public var initQuota: Int64?
+
+            public var initQuotaStr: String?
 
             public var sourceType: String?
 
@@ -33855,6 +33923,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 if self.balance != nil {
                     map["Balance"] = self.balance!
                 }
+                if self.balanceStr != nil {
+                    map["BalanceStr"] = self.balanceStr!
+                }
                 if self.endDate != nil {
                     map["EndDate"] = self.endDate!
                 }
@@ -33863,6 +33934,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 }
                 if self.initQuota != nil {
                     map["InitQuota"] = self.initQuota!
+                }
+                if self.initQuotaStr != nil {
+                    map["InitQuotaStr"] = self.initQuotaStr!
                 }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
@@ -33881,6 +33955,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 if let value = dict["Balance"] as? Int64 {
                     self.balance = value
                 }
+                if let value = dict["BalanceStr"] as? String {
+                    self.balanceStr = value
+                }
                 if let value = dict["EndDate"] as? String {
                     self.endDate = value
                 }
@@ -33889,6 +33966,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InitQuota"] as? Int64 {
                     self.initQuota = value
+                }
+                if let value = dict["InitQuotaStr"] as? String {
+                    self.initQuotaStr = value
                 }
                 if let value = dict["SourceType"] as? String {
                     self.sourceType = value
@@ -34175,9 +34255,15 @@ public class QueryInspirationBalanceResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
         public var remaining: Int64?
 
+        public var remainingStr: String?
+
         public var totalQuota: Int64?
 
+        public var totalQuotaStr: String?
+
         public var totalUsed: Int64?
+
+        public var totalUsedStr: String?
 
         public override init() {
             super.init()
@@ -34196,11 +34282,20 @@ public class QueryInspirationBalanceResponseBody : Tea.TeaModel {
             if self.remaining != nil {
                 map["Remaining"] = self.remaining!
             }
+            if self.remainingStr != nil {
+                map["RemainingStr"] = self.remainingStr!
+            }
             if self.totalQuota != nil {
                 map["TotalQuota"] = self.totalQuota!
             }
+            if self.totalQuotaStr != nil {
+                map["TotalQuotaStr"] = self.totalQuotaStr!
+            }
             if self.totalUsed != nil {
                 map["TotalUsed"] = self.totalUsed!
+            }
+            if self.totalUsedStr != nil {
+                map["TotalUsedStr"] = self.totalUsedStr!
             }
             return map
         }
@@ -34210,11 +34305,20 @@ public class QueryInspirationBalanceResponseBody : Tea.TeaModel {
             if let value = dict["Remaining"] as? Int64 {
                 self.remaining = value
             }
+            if let value = dict["RemainingStr"] as? String {
+                self.remainingStr = value
+            }
             if let value = dict["TotalQuota"] as? Int64 {
                 self.totalQuota = value
             }
+            if let value = dict["TotalQuotaStr"] as? String {
+                self.totalQuotaStr = value
+            }
             if let value = dict["TotalUsed"] as? Int64 {
                 self.totalUsed = value
+            }
+            if let value = dict["TotalUsedStr"] as? String {
+                self.totalUsedStr = value
             }
         }
     }
@@ -34465,7 +34569,11 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
         public class Data : Tea.TeaModel {
             public var amount: Int64?
 
+            public var amountStr: String?
+
             public var consumeTime: String?
+
+            public var consumeType: String?
 
             public var metaData: String?
 
@@ -34488,8 +34596,14 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
                 if self.amount != nil {
                     map["Amount"] = self.amount!
                 }
+                if self.amountStr != nil {
+                    map["AmountStr"] = self.amountStr!
+                }
                 if self.consumeTime != nil {
                     map["ConsumeTime"] = self.consumeTime!
+                }
+                if self.consumeType != nil {
+                    map["ConsumeType"] = self.consumeType!
                 }
                 if self.metaData != nil {
                     map["MetaData"] = self.metaData!
@@ -34505,8 +34619,14 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
                 if let value = dict["Amount"] as? Int64 {
                     self.amount = value
                 }
+                if let value = dict["AmountStr"] as? String {
+                    self.amountStr = value
+                }
                 if let value = dict["ConsumeTime"] as? String {
                     self.consumeTime = value
+                }
+                if let value = dict["ConsumeType"] as? String {
+                    self.consumeType = value
                 }
                 if let value = dict["MetaData"] as? String {
                     self.metaData = value
@@ -34519,7 +34639,11 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
         public class Next : Tea.TeaModel {
             public var amount: Int64?
 
+            public var amountStr: String?
+
             public var consumeTime: String?
+
+            public var consumeType: String?
 
             public var metaData: String?
 
@@ -34542,8 +34666,14 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
                 if self.amount != nil {
                     map["Amount"] = self.amount!
                 }
+                if self.amountStr != nil {
+                    map["AmountStr"] = self.amountStr!
+                }
                 if self.consumeTime != nil {
                     map["ConsumeTime"] = self.consumeTime!
+                }
+                if self.consumeType != nil {
+                    map["ConsumeType"] = self.consumeType!
                 }
                 if self.metaData != nil {
                     map["MetaData"] = self.metaData!
@@ -34559,8 +34689,14 @@ public class QueryInspirationConsumeRecordsResponseBody : Tea.TeaModel {
                 if let value = dict["Amount"] as? Int64 {
                     self.amount = value
                 }
+                if let value = dict["AmountStr"] as? String {
+                    self.amountStr = value
+                }
                 if let value = dict["ConsumeTime"] as? String {
                     self.consumeTime = value
+                }
+                if let value = dict["ConsumeType"] as? String {
+                    self.consumeType = value
                 }
                 if let value = dict["MetaData"] as? String {
                     self.metaData = value

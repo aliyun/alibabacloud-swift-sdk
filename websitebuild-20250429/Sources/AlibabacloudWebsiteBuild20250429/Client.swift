@@ -3053,11 +3053,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.publishEnv)) {
+            query["PublishEnv"] = request.publishEnv ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sort)) {
             query["Sort"] = request.sort ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subchannel)) {
+            query["Subchannel"] = request.subchannel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.websiteDomain)) {
             query["WebsiteDomain"] = request.websiteDomain ?? "";
