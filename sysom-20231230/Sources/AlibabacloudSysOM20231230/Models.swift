@@ -1311,6 +1311,8 @@ public class CreateInstanceInspectionRequest : Tea.TeaModel {
 
     public var items: [String]?
 
+    public var metricSource: String?
+
     public var region: String?
 
     public var source: String?
@@ -1335,6 +1337,9 @@ public class CreateInstanceInspectionRequest : Tea.TeaModel {
         if self.items != nil {
             map["items"] = self.items!
         }
+        if self.metricSource != nil {
+            map["metricSource"] = self.metricSource!
+        }
         if self.region != nil {
             map["region"] = self.region!
         }
@@ -1351,6 +1356,9 @@ public class CreateInstanceInspectionRequest : Tea.TeaModel {
         }
         if let value = dict["items"] as? [String] {
             self.items = value
+        }
+        if let value = dict["metricSource"] as? String {
+            self.metricSource = value
         }
         if let value = dict["region"] as? String {
             self.region = value

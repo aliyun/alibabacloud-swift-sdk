@@ -264,6 +264,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.items)) {
             body["items"] = request.items ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.metricSource)) {
+            body["metricSource"] = request.metricSource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             body["region"] = request.region ?? "";
         }
