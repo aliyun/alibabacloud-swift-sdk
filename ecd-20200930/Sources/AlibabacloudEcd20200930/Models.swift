@@ -1269,6 +1269,8 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
 
     public var endUserIds: [String]?
 
+    public var orgId: String?
+
     public var regionId: String?
 
     public var simpleUserGroupId: String?
@@ -1303,6 +1305,9 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
+        if self.orgId != nil {
+            map["OrgId"] = self.orgId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1331,6 +1336,9 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
+        }
+        if let value = dict["OrgId"] as? String {
+            self.orgId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -9734,6 +9742,8 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
 
             public var interval: Int32?
 
+            public var ipSegments: [String]?
+
             public var lockScreenTime: Int32?
 
             public var notificationTime: Int32?
@@ -9789,6 +9799,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 }
                 if self.interval != nil {
                     map["Interval"] = self.interval!
+                }
+                if self.ipSegments != nil {
+                    map["IpSegments"] = self.ipSegments!
                 }
                 if self.lockScreenTime != nil {
                     map["LockScreenTime"] = self.lockScreenTime!
@@ -9848,6 +9861,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["Interval"] as? Int32 {
                     self.interval = value
+                }
+                if let value = dict["IpSegments"] as? [String] {
+                    self.ipSegments = value
                 }
                 if let value = dict["LockScreenTime"] as? Int32 {
                     self.lockScreenTime = value
@@ -28364,6 +28380,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var officeSiteType: String?
 
+        public var orgId: String?
+
         public var osType: String?
 
         public var ownBundleId: String?
@@ -28536,6 +28554,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.officeSiteType != nil {
                 map["OfficeSiteType"] = self.officeSiteType!
+            }
+            if self.orgId != nil {
+                map["OrgId"] = self.orgId!
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
@@ -28735,6 +28756,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["OfficeSiteType"] as? String {
                 self.officeSiteType = value
+            }
+            if let value = dict["OrgId"] as? String {
+                self.orgId = value
             }
             if let value = dict["OsType"] as? String {
                 self.osType = value
@@ -51137,6 +51161,8 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
 
                 public var interval: Int32?
 
+                public var ipSegments: [String]?
+
                 public var lockScreenTime: Int32?
 
                 public var notificationTime: Int32?
@@ -51192,6 +51218,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     }
                     if self.interval != nil {
                         map["Interval"] = self.interval!
+                    }
+                    if self.ipSegments != nil {
+                        map["IpSegments"] = self.ipSegments!
                     }
                     if self.lockScreenTime != nil {
                         map["LockScreenTime"] = self.lockScreenTime!
@@ -51251,6 +51280,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Interval"] as? Int32 {
                         self.interval = value
+                    }
+                    if let value = dict["IpSegments"] as? [String] {
+                        self.ipSegments = value
                     }
                     if let value = dict["LockScreenTime"] as? Int32 {
                         self.lockScreenTime = value
@@ -71662,6 +71694,8 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
 
             public var interval: Int32?
 
+            public var ipSegments: [String]?
+
             public var lockScreenTime: Int32?
 
             public var notificationTime: Int32?
@@ -71712,6 +71746,9 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
                 }
                 if self.interval != nil {
                     map["Interval"] = self.interval!
+                }
+                if self.ipSegments != nil {
+                    map["IpSegments"] = self.ipSegments!
                 }
                 if self.lockScreenTime != nil {
                     map["LockScreenTime"] = self.lockScreenTime!
@@ -71765,6 +71802,9 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["Interval"] as? Int32 {
                     self.interval = value
+                }
+                if let value = dict["IpSegments"] as? [String] {
+                    self.ipSegments = value
                 }
                 if let value = dict["LockScreenTime"] as? Int32 {
                     self.lockScreenTime = value
@@ -74694,6 +74734,8 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
 
     public var endUserIds: [String]?
 
+    public var orgId: String?
+
     public var regionId: String?
 
     public var simpleUserGroupId: String?
@@ -74725,6 +74767,9 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
+        if self.orgId != nil {
+            map["OrgId"] = self.orgId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -74750,6 +74795,9 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
+        }
+        if let value = dict["OrgId"] as? String {
+            self.orgId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
