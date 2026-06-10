@@ -16548,6 +16548,8 @@ public class DownloadRecordingRequest : Tea.TeaModel {
 
     public var needVoiceSliceRecording: Bool?
 
+    public var swapChannels: Bool?
+
     public var taskId: String?
 
     public override init() {
@@ -16570,6 +16572,9 @@ public class DownloadRecordingRequest : Tea.TeaModel {
         if self.needVoiceSliceRecording != nil {
             map["NeedVoiceSliceRecording"] = self.needVoiceSliceRecording!
         }
+        if self.swapChannels != nil {
+            map["SwapChannels"] = self.swapChannels!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -16583,6 +16588,9 @@ public class DownloadRecordingRequest : Tea.TeaModel {
         }
         if let value = dict["NeedVoiceSliceRecording"] as? Bool {
             self.needVoiceSliceRecording = value
+        }
+        if let value = dict["SwapChannels"] as? Bool {
+            self.swapChannels = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value

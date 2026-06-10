@@ -2522,6 +2522,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.needVoiceSliceRecording)) {
             query["NeedVoiceSliceRecording"] = request.needVoiceSliceRecording!;
         }
+        if (!TeaUtils.Client.isUnset(request.swapChannels)) {
+            query["SwapChannels"] = request.swapChannels!;
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
         }
