@@ -18573,6 +18573,311 @@ public class TongyiChatDebugInfoRequest : Tea.TeaModel {
 }
 
 public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
+    public class AnswerInfo : Tea.TeaModel {
+        public class AnswerReferenceInfo : Tea.TeaModel {
+            public class ItemList : Tea.TeaModel {
+                public var contentType: String?
+
+                public var dataSource: String?
+
+                public var id: String?
+
+                public var number: Int32?
+
+                public var referenceExt: Any?
+
+                public var title: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.contentType != nil {
+                        map["ContentType"] = self.contentType!
+                    }
+                    if self.dataSource != nil {
+                        map["DataSource"] = self.dataSource!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.number != nil {
+                        map["Number"] = self.number!
+                    }
+                    if self.referenceExt != nil {
+                        map["ReferenceExt"] = self.referenceExt!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ContentType"] as? String {
+                        self.contentType = value
+                    }
+                    if let value = dict["DataSource"] as? String {
+                        self.dataSource = value
+                    }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["Number"] as? Int32 {
+                        self.number = value
+                    }
+                    if let value = dict["ReferenceExt"] as? Any {
+                        self.referenceExt = value
+                    }
+                    if let value = dict["Title"] as? String {
+                        self.title = value
+                    }
+                }
+            }
+            public var itemList: [TongyiChatDebugInfoResponseBody.AnswerInfo.AnswerReferenceInfo.ItemList]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.itemList != nil {
+                    var tmp : [Any] = []
+                    for k in self.itemList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ItemList"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ItemList"] as? [Any?] {
+                    var tmp : [TongyiChatDebugInfoResponseBody.AnswerInfo.AnswerReferenceInfo.ItemList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = TongyiChatDebugInfoResponseBody.AnswerInfo.AnswerReferenceInfo.ItemList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.itemList = tmp
+                }
+            }
+        }
+        public class MessageBody : Tea.TeaModel {
+            public class DirectMessageBody : Tea.TeaModel {
+                public class SentenceList : Tea.TeaModel {
+                    public var content: String?
+
+                    public var referNumber: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.content != nil {
+                            map["Content"] = self.content!
+                        }
+                        if self.referNumber != nil {
+                            map["ReferNumber"] = self.referNumber!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Content"] as? String {
+                            self.content = value
+                        }
+                        if let value = dict["ReferNumber"] as? Int32 {
+                            self.referNumber = value
+                        }
+                    }
+                }
+                public var contentType: String?
+
+                public var transitionList: [String]?
+
+                public var relatedQuestionList: [String]?
+
+                public var sentenceList: [TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody.DirectMessageBody.SentenceList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.contentType != nil {
+                        map["ContentType"] = self.contentType!
+                    }
+                    if self.transitionList != nil {
+                        map["TransitionList"] = self.transitionList!
+                    }
+                    if self.relatedQuestionList != nil {
+                        map["relatedQuestionList"] = self.relatedQuestionList!
+                    }
+                    if self.sentenceList != nil {
+                        var tmp : [Any] = []
+                        for k in self.sentenceList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["sentenceList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ContentType"] as? String {
+                        self.contentType = value
+                    }
+                    if let value = dict["TransitionList"] as? [String] {
+                        self.transitionList = value
+                    }
+                    if let value = dict["relatedQuestionList"] as? [String] {
+                        self.relatedQuestionList = value
+                    }
+                    if let value = dict["sentenceList"] as? [Any?] {
+                        var tmp : [TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody.DirectMessageBody.SentenceList] = []
+                        for v in value {
+                            if v != nil {
+                                var model = TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody.DirectMessageBody.SentenceList()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.sentenceList = tmp
+                    }
+                }
+            }
+            public var commands: Any?
+
+            public var directMessageBody: TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody.DirectMessageBody?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.directMessageBody?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.commands != nil {
+                    map["Commands"] = self.commands!
+                }
+                if self.directMessageBody != nil {
+                    map["DirectMessageBody"] = self.directMessageBody?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Commands"] as? Any {
+                    self.commands = value
+                }
+                if let value = dict["DirectMessageBody"] as? [String: Any?] {
+                    var model = TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody.DirectMessageBody()
+                    model.fromMap(value)
+                    self.directMessageBody = model
+                }
+            }
+        }
+        public var answerReferenceInfo: TongyiChatDebugInfoResponseBody.AnswerInfo.AnswerReferenceInfo?
+
+        public var messageBody: TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.answerReferenceInfo?.validate()
+            try self.messageBody?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.answerReferenceInfo != nil {
+                map["AnswerReferenceInfo"] = self.answerReferenceInfo?.toMap()
+            }
+            if self.messageBody != nil {
+                map["MessageBody"] = self.messageBody?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AnswerReferenceInfo"] as? [String: Any?] {
+                var model = TongyiChatDebugInfoResponseBody.AnswerInfo.AnswerReferenceInfo()
+                model.fromMap(value)
+                self.answerReferenceInfo = model
+            }
+            if let value = dict["MessageBody"] as? [String: Any?] {
+                var model = TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody()
+                model.fromMap(value)
+                self.messageBody = model
+            }
+        }
+    }
     public class Pipeline : Tea.TeaModel {
         public var input: Any?
 
@@ -18627,6 +18932,8 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var answerInfo: TongyiChatDebugInfoResponseBody.AnswerInfo?
+
     public var messageId: String?
 
     public var pipeline: [TongyiChatDebugInfoResponseBody.Pipeline]?
@@ -18643,10 +18950,14 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.answerInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.answerInfo != nil {
+            map["AnswerInfo"] = self.answerInfo?.toMap()
+        }
         if self.messageId != nil {
             map["MessageId"] = self.messageId!
         }
@@ -18665,6 +18976,11 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AnswerInfo"] as? [String: Any?] {
+            var model = TongyiChatDebugInfoResponseBody.AnswerInfo()
+            model.fromMap(value)
+            self.answerInfo = model
+        }
         if let value = dict["MessageId"] as? String {
             self.messageId = value
         }
