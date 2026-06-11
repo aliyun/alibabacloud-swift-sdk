@@ -24,6 +24,69 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addGatewayQuotaRuleWithOptions(_ gatewayId: String, _ request: AddGatewayQuotaRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddGatewayQuotaRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conflictHash)) {
+            body["conflictHash"] = request.conflictHash ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.consumerGroupIds)) {
+            body["consumerGroupIds"] = request.consumerGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.consumerIds)) {
+            body["consumerIds"] = request.consumerIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["dryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.overwrite)) {
+            body["overwrite"] = request.overwrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.periodType)) {
+            body["periodType"] = request.periodType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaDimension)) {
+            body["quotaDimension"] = request.quotaDimension ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaLimit)) {
+            body["quotaLimit"] = request.quotaLimit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            body["ruleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timezone)) {
+            body["timezone"] = request.timezone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.windowAlignment)) {
+            body["windowAlignment"] = request.windowAlignment ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddGatewayQuotaRule",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddGatewayQuotaRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addGatewayQuotaRule(_ gatewayId: String, _ request: AddGatewayQuotaRuleRequest) async throws -> AddGatewayQuotaRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addGatewayQuotaRuleWithOptions(gatewayId as! String, request as! AddGatewayQuotaRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addGatewaySecurityGroupRuleWithOptions(_ gatewayId: String, _ request: AddGatewaySecurityGroupRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddGatewaySecurityGroupRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1196,6 +1259,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayQuotaRuleWithOptions(_ gatewayId: String, _ ruleId: String, _ request: DeleteGatewayQuotaRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayQuotaRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGatewayQuotaRule",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGatewayQuotaRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayQuotaRule(_ gatewayId: String, _ ruleId: String, _ request: DeleteGatewayQuotaRuleRequest) async throws -> DeleteGatewayQuotaRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteGatewayQuotaRuleWithOptions(gatewayId as! String, ruleId as! String, request as! DeleteGatewayQuotaRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteGatewaySecurityGroupRuleWithOptions(_ gatewayId: String, _ securityGroupRuleId: String, _ request: DeleteGatewaySecurityGroupRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewaySecurityGroupRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1840,6 +1931,81 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getGatewayWithOptions(gatewayId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayQuotaRuleWithOptions(_ gatewayId: String, _ ruleId: String, _ request: GetGatewayQuotaRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayQuotaRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.consumerPageNumber)) {
+            query["consumerPageNumber"] = request.consumerPageNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.consumerPageSize)) {
+            query["consumerPageSize"] = request.consumerPageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withConsumers)) {
+            query["withConsumers"] = request.withConsumers!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGatewayQuotaRule",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGatewayQuotaRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayQuotaRule(_ gatewayId: String, _ ruleId: String, _ request: GetGatewayQuotaRuleRequest) async throws -> GetGatewayQuotaRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getGatewayQuotaRuleWithOptions(gatewayId as! String, ruleId as! String, request as! GetGatewayQuotaRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayQuotaRuleSubjectUsageWithOptions(_ gatewayId: String, _ ruleId: String, _ subjectId: String, _ request: GetGatewayQuotaRuleSubjectUsageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayQuotaRuleSubjectUsageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGatewayQuotaRuleSubjectUsage",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)) + "/subjects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(subjectId)) + "/usage",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGatewayQuotaRuleSubjectUsageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayQuotaRuleSubjectUsage(_ gatewayId: String, _ ruleId: String, _ subjectId: String, _ request: GetGatewayQuotaRuleSubjectUsageRequest) async throws -> GetGatewayQuotaRuleSubjectUsageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getGatewayQuotaRuleSubjectUsageWithOptions(gatewayId as! String, ruleId as! String, subjectId as! String, request as! GetGatewayQuotaRuleSubjectUsageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2563,6 +2729,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listGatewayFeaturesWithOptions(gatewayId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayQuotaRulesWithOptions(_ gatewayId: String, _ request: ListGatewayQuotaRulesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayQuotaRulesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGatewayQuotaRules",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGatewayQuotaRulesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayQuotaRules(_ gatewayId: String, _ request: ListGatewayQuotaRulesRequest) async throws -> ListGatewayQuotaRulesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listGatewayQuotaRulesWithOptions(gatewayId as! String, request as! ListGatewayQuotaRulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3468,6 +3679,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetGatewayQuotaRuleWithOptions(_ gatewayId: String, _ ruleId: String, _ request: ResetGatewayQuotaRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetGatewayQuotaRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conflictHash)) {
+            body["conflictHash"] = request.conflictHash ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["dryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.overwrite)) {
+            body["overwrite"] = request.overwrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.periodType)) {
+            body["periodType"] = request.periodType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaLimit)) {
+            body["quotaLimit"] = request.quotaLimit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.timezone)) {
+            body["timezone"] = request.timezone ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ResetGatewayQuotaRule",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)) + "/reset",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResetGatewayQuotaRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetGatewayQuotaRule(_ gatewayId: String, _ ruleId: String, _ request: ResetGatewayQuotaRuleRequest) async throws -> ResetGatewayQuotaRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await resetGatewayQuotaRuleWithOptions(gatewayId as! String, ruleId as! String, request as! ResetGatewayQuotaRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func restartGatewayWithOptions(_ gatewayId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RestartGatewayResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -3930,6 +4189,96 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateGatewayNameWithOptions(gatewayId as! String, request as! UpdateGatewayNameRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayQuotaRuleWithOptions(_ gatewayId: String, _ ruleId: String, _ request: UpdateGatewayQuotaRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayQuotaRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addIds)) {
+            body["addIds"] = request.addIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.conflictHash)) {
+            body["conflictHash"] = request.conflictHash ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.consumerGroupIds)) {
+            body["consumerGroupIds"] = request.consumerGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["dryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.overwrite)) {
+            body["overwrite"] = request.overwrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaLimit)) {
+            body["quotaLimit"] = request.quotaLimit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.removeIds)) {
+            body["removeIds"] = request.removeIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            body["ruleName"] = request.ruleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGatewayQuotaRule",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGatewayQuotaRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayQuotaRule(_ gatewayId: String, _ ruleId: String, _ request: UpdateGatewayQuotaRuleRequest) async throws -> UpdateGatewayQuotaRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateGatewayQuotaRuleWithOptions(gatewayId as! String, ruleId as! String, request as! UpdateGatewayQuotaRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayQuotaRuleStatusWithOptions(_ gatewayId: String, _ ruleId: String, _ request: UpdateGatewayQuotaRuleStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayQuotaRuleStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clearHistory)) {
+            body["clearHistory"] = request.clearHistory!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            body["enable"] = request.enable!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGatewayQuotaRuleStatus",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/quota-rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ruleId)) + "/status",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGatewayQuotaRuleStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayQuotaRuleStatus(_ gatewayId: String, _ ruleId: String, _ request: UpdateGatewayQuotaRuleStatusRequest) async throws -> UpdateGatewayQuotaRuleStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateGatewayQuotaRuleStatusWithOptions(gatewayId as! String, ruleId as! String, request as! UpdateGatewayQuotaRuleStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
