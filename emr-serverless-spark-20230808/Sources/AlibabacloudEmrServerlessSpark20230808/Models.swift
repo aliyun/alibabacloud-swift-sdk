@@ -199,6 +199,8 @@ public class CacheCluster : Tea.TeaModel {
     public class ResourceSpec : Tea.TeaModel {
         public var bandWidth: Int64?
 
+        public var ha: Bool?
+
         public var storage: Int64?
 
         public override init() {
@@ -218,6 +220,9 @@ public class CacheCluster : Tea.TeaModel {
             if self.bandWidth != nil {
                 map["bandWidth"] = self.bandWidth!
             }
+            if self.ha != nil {
+                map["ha"] = self.ha!
+            }
             if self.storage != nil {
                 map["storage"] = self.storage!
             }
@@ -229,8 +234,111 @@ public class CacheCluster : Tea.TeaModel {
             if let value = dict["bandWidth"] as? Int64 {
                 self.bandWidth = value
             }
+            if let value = dict["ha"] as? Bool {
+                self.ha = value
+            }
             if let value = dict["storage"] as? Int64 {
                 self.storage = value
+            }
+        }
+    }
+    public class Tables : Tea.TeaModel {
+        public var catalogId: String?
+
+        public var catalogProvider: String?
+
+        public var database: String?
+
+        public var table: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.catalogId != nil {
+                map["catalogId"] = self.catalogId!
+            }
+            if self.catalogProvider != nil {
+                map["catalogProvider"] = self.catalogProvider!
+            }
+            if self.database != nil {
+                map["database"] = self.database!
+            }
+            if self.table != nil {
+                map["table"] = self.table!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["catalogId"] as? String {
+                self.catalogId = value
+            }
+            if let value = dict["catalogProvider"] as? String {
+                self.catalogProvider = value
+            }
+            if let value = dict["database"] as? String {
+                self.database = value
+            }
+            if let value = dict["table"] as? String {
+                self.table = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+        }
+    }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
             }
         }
     }
@@ -274,6 +382,10 @@ public class CacheCluster : Tea.TeaModel {
     }
     public var bindedWorkspaces: [String]?
 
+    public var cacheClusterId: String?
+
+    public var cacheClusterName: String?
+
     public var cachesets: [CacheCluster.Cachesets]?
 
     public var clusterId: String?
@@ -281,6 +393,8 @@ public class CacheCluster : Tea.TeaModel {
     public var configuration: String?
 
     public var configurations: [CacheCluster.Configurations]?
+
+    public var createTime: String?
 
     public var creator: String?
 
@@ -296,11 +410,19 @@ public class CacheCluster : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceSpec: CacheCluster.ResourceSpec?
 
     public var state: String?
 
+    public var tables: [CacheCluster.Tables]?
+
+    public var tags: [CacheCluster.Tags]?
+
     public var usedResourceSpec: CacheCluster.UsedResourceSpec?
+
+    public var version: String?
 
     public override init() {
         super.init()
@@ -321,6 +443,12 @@ public class CacheCluster : Tea.TeaModel {
         if self.bindedWorkspaces != nil {
             map["bindedWorkspaces"] = self.bindedWorkspaces!
         }
+        if self.cacheClusterId != nil {
+            map["cacheClusterId"] = self.cacheClusterId!
+        }
+        if self.cacheClusterName != nil {
+            map["cacheClusterName"] = self.cacheClusterName!
+        }
         if self.cachesets != nil {
             var tmp : [Any] = []
             for k in self.cachesets! {
@@ -340,6 +468,9 @@ public class CacheCluster : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["configurations"] = tmp
+        }
+        if self.createTime != nil {
+            map["createTime"] = self.createTime!
         }
         if self.creator != nil {
             map["creator"] = self.creator!
@@ -362,14 +493,34 @@ public class CacheCluster : Tea.TeaModel {
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceSpec != nil {
             map["resourceSpec"] = self.resourceSpec?.toMap()
         }
         if self.state != nil {
             map["state"] = self.state!
         }
+        if self.tables != nil {
+            var tmp : [Any] = []
+            for k in self.tables! {
+                tmp.append(k.toMap())
+            }
+            map["tables"] = tmp
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
         if self.usedResourceSpec != nil {
             map["usedResourceSpec"] = self.usedResourceSpec?.toMap()
+        }
+        if self.version != nil {
+            map["version"] = self.version!
         }
         return map
     }
@@ -378,6 +529,12 @@ public class CacheCluster : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["bindedWorkspaces"] as? [String] {
             self.bindedWorkspaces = value
+        }
+        if let value = dict["cacheClusterId"] as? String {
+            self.cacheClusterId = value
+        }
+        if let value = dict["cacheClusterName"] as? String {
+            self.cacheClusterName = value
         }
         if let value = dict["cachesets"] as? [Any?] {
             var tmp : [CacheCluster.Cachesets] = []
@@ -411,6 +568,9 @@ public class CacheCluster : Tea.TeaModel {
             }
             self.configurations = tmp
         }
+        if let value = dict["createTime"] as? String {
+            self.createTime = value
+        }
         if let value = dict["creator"] as? String {
             self.creator = value
         }
@@ -432,6 +592,9 @@ public class CacheCluster : Tea.TeaModel {
         if let value = dict["regionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["resourceSpec"] as? [String: Any?] {
             var model = CacheCluster.ResourceSpec()
             model.fromMap(value)
@@ -440,10 +603,39 @@ public class CacheCluster : Tea.TeaModel {
         if let value = dict["state"] as? String {
             self.state = value
         }
+        if let value = dict["tables"] as? [Any?] {
+            var tmp : [CacheCluster.Tables] = []
+            for v in value {
+                if v != nil {
+                    var model = CacheCluster.Tables()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tables = tmp
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [CacheCluster.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CacheCluster.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
         if let value = dict["usedResourceSpec"] as? [String: Any?] {
             var model = CacheCluster.UsedResourceSpec()
             model.fromMap(value)
             self.usedResourceSpec = model
+        }
+        if let value = dict["version"] as? String {
+            self.version = value
         }
     }
 }
@@ -1417,6 +1609,170 @@ public class Task : Tea.TeaModel {
             }
         }
     }
+    public class RayHeadSpec : Tea.TeaModel {
+        public var cpu: String?
+
+        public var enableAutoScaling: Bool?
+
+        public var gpuSpec: String?
+
+        public var idleTimeoutSeconds: Int64?
+
+        public var memory: String?
+
+        public var queueName: String?
+
+        public var replica: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["cpu"] = self.cpu!
+            }
+            if self.enableAutoScaling != nil {
+                map["enableAutoScaling"] = self.enableAutoScaling!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.idleTimeoutSeconds != nil {
+                map["idleTimeoutSeconds"] = self.idleTimeoutSeconds!
+            }
+            if self.memory != nil {
+                map["memory"] = self.memory!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.replica != nil {
+                map["replica"] = self.replica!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cpu"] as? String {
+                self.cpu = value
+            }
+            if let value = dict["enableAutoScaling"] as? Bool {
+                self.enableAutoScaling = value
+            }
+            if let value = dict["gpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+            if let value = dict["idleTimeoutSeconds"] as? Int64 {
+                self.idleTimeoutSeconds = value
+            }
+            if let value = dict["memory"] as? String {
+                self.memory = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+            if let value = dict["replica"] as? Int32 {
+                self.replica = value
+            }
+        }
+    }
+    public class RayWorkerSpec : Tea.TeaModel {
+        public var cpu: String?
+
+        public var gpuSpec: String?
+
+        public var groupName: String?
+
+        public var maxReplica: Int32?
+
+        public var memory: String?
+
+        public var minReplica: Int32?
+
+        public var queueName: String?
+
+        public var replica: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["cpu"] = self.cpu!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.groupName != nil {
+                map["groupName"] = self.groupName!
+            }
+            if self.maxReplica != nil {
+                map["maxReplica"] = self.maxReplica!
+            }
+            if self.memory != nil {
+                map["memory"] = self.memory!
+            }
+            if self.minReplica != nil {
+                map["minReplica"] = self.minReplica!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.replica != nil {
+                map["replica"] = self.replica!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cpu"] as? String {
+                self.cpu = value
+            }
+            if let value = dict["gpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+            if let value = dict["groupName"] as? String {
+                self.groupName = value
+            }
+            if let value = dict["maxReplica"] as? Int32 {
+                self.maxReplica = value
+            }
+            if let value = dict["memory"] as? String {
+                self.memory = value
+            }
+            if let value = dict["minReplica"] as? Int32 {
+                self.minReplica = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+            if let value = dict["replica"] as? Int32 {
+                self.replica = value
+            }
+        }
+    }
     public var archives: [String]?
 
     public var artifactUrl: String?
@@ -1475,6 +1831,44 @@ public class Task : Tea.TeaModel {
 
     public var pyFiles: [String]?
 
+    public var rayActiveDeadlineSeconds: Int64?
+
+    public var rayBackoffLimit: Int32?
+
+    public var rayEntrypoint: String?
+
+    public var rayEntrypointMemory: String?
+
+    public var rayEntrypointNumCpus: String?
+
+    public var rayEntrypointNumGpus: String?
+
+    public var rayEntrypointResources: String?
+
+    public var rayExtraParam: String?
+
+    public var rayHeadSpec: Task.RayHeadSpec?
+
+    public var rayMetadataJson: String?
+
+    public var rayNetworkServiceName: String?
+
+    public var rayRuntimeEnvJson: String?
+
+    public var rayShutdownAfterJobFinishes: Bool?
+
+    public var raySubmissionMode: String?
+
+    public var rayTtlSecondsAfterFinished: Int64?
+
+    public var rayVersion: String?
+
+    public var rayVolumeIds: [String]?
+
+    public var rayWorkerSpec: [Task.RayWorkerSpec]?
+
+    public var rayWorkingDir: String?
+
     public var sessionClusterId: String?
 
     public var sparkArgs: String?
@@ -1516,6 +1910,7 @@ public class Task : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.credential?.validate()
+        try self.rayHeadSpec?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1606,6 +2001,67 @@ public class Task : Tea.TeaModel {
         }
         if self.pyFiles != nil {
             map["pyFiles"] = self.pyFiles!
+        }
+        if self.rayActiveDeadlineSeconds != nil {
+            map["rayActiveDeadlineSeconds"] = self.rayActiveDeadlineSeconds!
+        }
+        if self.rayBackoffLimit != nil {
+            map["rayBackoffLimit"] = self.rayBackoffLimit!
+        }
+        if self.rayEntrypoint != nil {
+            map["rayEntrypoint"] = self.rayEntrypoint!
+        }
+        if self.rayEntrypointMemory != nil {
+            map["rayEntrypointMemory"] = self.rayEntrypointMemory!
+        }
+        if self.rayEntrypointNumCpus != nil {
+            map["rayEntrypointNumCpus"] = self.rayEntrypointNumCpus!
+        }
+        if self.rayEntrypointNumGpus != nil {
+            map["rayEntrypointNumGpus"] = self.rayEntrypointNumGpus!
+        }
+        if self.rayEntrypointResources != nil {
+            map["rayEntrypointResources"] = self.rayEntrypointResources!
+        }
+        if self.rayExtraParam != nil {
+            map["rayExtraParam"] = self.rayExtraParam!
+        }
+        if self.rayHeadSpec != nil {
+            map["rayHeadSpec"] = self.rayHeadSpec?.toMap()
+        }
+        if self.rayMetadataJson != nil {
+            map["rayMetadataJson"] = self.rayMetadataJson!
+        }
+        if self.rayNetworkServiceName != nil {
+            map["rayNetworkServiceName"] = self.rayNetworkServiceName!
+        }
+        if self.rayRuntimeEnvJson != nil {
+            map["rayRuntimeEnvJson"] = self.rayRuntimeEnvJson!
+        }
+        if self.rayShutdownAfterJobFinishes != nil {
+            map["rayShutdownAfterJobFinishes"] = self.rayShutdownAfterJobFinishes!
+        }
+        if self.raySubmissionMode != nil {
+            map["raySubmissionMode"] = self.raySubmissionMode!
+        }
+        if self.rayTtlSecondsAfterFinished != nil {
+            map["rayTtlSecondsAfterFinished"] = self.rayTtlSecondsAfterFinished!
+        }
+        if self.rayVersion != nil {
+            map["rayVersion"] = self.rayVersion!
+        }
+        if self.rayVolumeIds != nil {
+            map["rayVolumeIds"] = self.rayVolumeIds!
+        }
+        if self.rayWorkerSpec != nil {
+            var tmp : [Any] = []
+            for k in self.rayWorkerSpec! {
+                tmp.append(k.toMap())
+            }
+            map["rayWorkerSpec"] = tmp
+        }
+        if self.rayWorkingDir != nil {
+            map["rayWorkingDir"] = self.rayWorkingDir!
         }
         if self.sessionClusterId != nil {
             map["sessionClusterId"] = self.sessionClusterId!
@@ -1749,6 +2205,75 @@ public class Task : Tea.TeaModel {
         }
         if let value = dict["pyFiles"] as? [String] {
             self.pyFiles = value
+        }
+        if let value = dict["rayActiveDeadlineSeconds"] as? Int64 {
+            self.rayActiveDeadlineSeconds = value
+        }
+        if let value = dict["rayBackoffLimit"] as? Int32 {
+            self.rayBackoffLimit = value
+        }
+        if let value = dict["rayEntrypoint"] as? String {
+            self.rayEntrypoint = value
+        }
+        if let value = dict["rayEntrypointMemory"] as? String {
+            self.rayEntrypointMemory = value
+        }
+        if let value = dict["rayEntrypointNumCpus"] as? String {
+            self.rayEntrypointNumCpus = value
+        }
+        if let value = dict["rayEntrypointNumGpus"] as? String {
+            self.rayEntrypointNumGpus = value
+        }
+        if let value = dict["rayEntrypointResources"] as? String {
+            self.rayEntrypointResources = value
+        }
+        if let value = dict["rayExtraParam"] as? String {
+            self.rayExtraParam = value
+        }
+        if let value = dict["rayHeadSpec"] as? [String: Any?] {
+            var model = Task.RayHeadSpec()
+            model.fromMap(value)
+            self.rayHeadSpec = model
+        }
+        if let value = dict["rayMetadataJson"] as? String {
+            self.rayMetadataJson = value
+        }
+        if let value = dict["rayNetworkServiceName"] as? String {
+            self.rayNetworkServiceName = value
+        }
+        if let value = dict["rayRuntimeEnvJson"] as? String {
+            self.rayRuntimeEnvJson = value
+        }
+        if let value = dict["rayShutdownAfterJobFinishes"] as? Bool {
+            self.rayShutdownAfterJobFinishes = value
+        }
+        if let value = dict["raySubmissionMode"] as? String {
+            self.raySubmissionMode = value
+        }
+        if let value = dict["rayTtlSecondsAfterFinished"] as? Int64 {
+            self.rayTtlSecondsAfterFinished = value
+        }
+        if let value = dict["rayVersion"] as? String {
+            self.rayVersion = value
+        }
+        if let value = dict["rayVolumeIds"] as? [String] {
+            self.rayVolumeIds = value
+        }
+        if let value = dict["rayWorkerSpec"] as? [Any?] {
+            var tmp : [Task.RayWorkerSpec] = []
+            for v in value {
+                if v != nil {
+                    var model = Task.RayWorkerSpec()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.rayWorkerSpec = tmp
+        }
+        if let value = dict["rayWorkingDir"] as? String {
+            self.rayWorkingDir = value
         }
         if let value = dict["sessionClusterId"] as? String {
             self.sessionClusterId = value
@@ -2708,6 +3233,119 @@ public class CancelKyuubiSparkApplicationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CancelKyuubiSparkApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CancelRayJobRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class CancelRayJobResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CancelRayJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelRayJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CancelRayJobResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -9966,6 +10604,643 @@ public class GetRayClusterResponse : Tea.TeaModel {
     }
 }
 
+public class GetRayJobRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetRayJobResponseBody : Tea.TeaModel {
+    public class GuHours : Tea.TeaModel {
+        public var gpuHours: Double?
+
+        public var gpuSpec: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gpuHours != nil {
+                map["gpuHours"] = self.gpuHours!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["gpuHours"] as? Double {
+                self.gpuHours = value
+            }
+            if let value = dict["gpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+        }
+    }
+    public class HeadSpec : Tea.TeaModel {
+        public var cpu: String?
+
+        public var enableAutoScaling: Bool?
+
+        public var gpuSpec: String?
+
+        public var idleTimeoutSeconds: Int32?
+
+        public var memory: String?
+
+        public var queueName: String?
+
+        public var replica: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["cpu"] = self.cpu!
+            }
+            if self.enableAutoScaling != nil {
+                map["enableAutoScaling"] = self.enableAutoScaling!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.idleTimeoutSeconds != nil {
+                map["idleTimeoutSeconds"] = self.idleTimeoutSeconds!
+            }
+            if self.memory != nil {
+                map["memory"] = self.memory!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.replica != nil {
+                map["replica"] = self.replica!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cpu"] as? String {
+                self.cpu = value
+            }
+            if let value = dict["enableAutoScaling"] as? Bool {
+                self.enableAutoScaling = value
+            }
+            if let value = dict["gpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+            if let value = dict["idleTimeoutSeconds"] as? Int32 {
+                self.idleTimeoutSeconds = value
+            }
+            if let value = dict["memory"] as? String {
+                self.memory = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+            if let value = dict["replica"] as? Int32 {
+                self.replica = value
+            }
+        }
+    }
+    public class WorkerSpecs : Tea.TeaModel {
+        public var cpu: String?
+
+        public var gpuSpec: String?
+
+        public var groupName: String?
+
+        public var maxReplica: Int32?
+
+        public var memory: String?
+
+        public var minReplica: Int32?
+
+        public var queueName: String?
+
+        public var replica: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["cpu"] = self.cpu!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.groupName != nil {
+                map["groupName"] = self.groupName!
+            }
+            if self.maxReplica != nil {
+                map["maxReplica"] = self.maxReplica!
+            }
+            if self.memory != nil {
+                map["memory"] = self.memory!
+            }
+            if self.minReplica != nil {
+                map["minReplica"] = self.minReplica!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.replica != nil {
+                map["replica"] = self.replica!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cpu"] as? String {
+                self.cpu = value
+            }
+            if let value = dict["gpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+            if let value = dict["groupName"] as? String {
+                self.groupName = value
+            }
+            if let value = dict["maxReplica"] as? Int32 {
+                self.maxReplica = value
+            }
+            if let value = dict["memory"] as? String {
+                self.memory = value
+            }
+            if let value = dict["minReplica"] as? Int32 {
+                self.minReplica = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+            if let value = dict["replica"] as? Int32 {
+                self.replica = value
+            }
+        }
+    }
+    public var activeDeadlineSeconds: Int32?
+
+    public var backoffLimit: Int32?
+
+    public var clusterState: String?
+
+    public var creatorName: String?
+
+    public var cuHours: Double?
+
+    public var dashboardUrl: String?
+
+    public var dashboardUrlExtra: [String]?
+
+    public var displayReleaseVersion: String?
+
+    public var duration: Int64?
+
+    public var endTime: Int64?
+
+    public var entrypoint: String?
+
+    public var entrypointMemory: String?
+
+    public var entrypointNumCpus: String?
+
+    public var entrypointNumGpus: String?
+
+    public var entrypointResources: String?
+
+    public var extraParam: String?
+
+    public var guHours: GetRayJobResponseBody.GuHours?
+
+    public var headSpec: GetRayJobResponseBody.HeadSpec?
+
+    public var logBucketName: String?
+
+    public var logPath: String?
+
+    public var message: String?
+
+    public var metadataJson: String?
+
+    public var name: String?
+
+    public var networkServiceName: String?
+
+    public var requestId: String?
+
+    public var runtimeEnvJson: String?
+
+    public var shutdownAfterJobFinishes: Bool?
+
+    public var startTime: Int64?
+
+    public var status: String?
+
+    public var submissionId: String?
+
+    public var submissionMode: String?
+
+    public var submitTime: Int64?
+
+    public var tags: [Tag]?
+
+    public var taskBizId: String?
+
+    public var ttlSecondsAfterFinished: Int32?
+
+    public var volumeIds: [String]?
+
+    public var workerSpecs: [GetRayJobResponseBody.WorkerSpecs]?
+
+    public var workingDir: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.guHours?.validate()
+        try self.headSpec?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.activeDeadlineSeconds != nil {
+            map["activeDeadlineSeconds"] = self.activeDeadlineSeconds!
+        }
+        if self.backoffLimit != nil {
+            map["backoffLimit"] = self.backoffLimit!
+        }
+        if self.clusterState != nil {
+            map["clusterState"] = self.clusterState!
+        }
+        if self.creatorName != nil {
+            map["creatorName"] = self.creatorName!
+        }
+        if self.cuHours != nil {
+            map["cuHours"] = self.cuHours!
+        }
+        if self.dashboardUrl != nil {
+            map["dashboardUrl"] = self.dashboardUrl!
+        }
+        if self.dashboardUrlExtra != nil {
+            map["dashboardUrlExtra"] = self.dashboardUrlExtra!
+        }
+        if self.displayReleaseVersion != nil {
+            map["displayReleaseVersion"] = self.displayReleaseVersion!
+        }
+        if self.duration != nil {
+            map["duration"] = self.duration!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.entrypoint != nil {
+            map["entrypoint"] = self.entrypoint!
+        }
+        if self.entrypointMemory != nil {
+            map["entrypointMemory"] = self.entrypointMemory!
+        }
+        if self.entrypointNumCpus != nil {
+            map["entrypointNumCpus"] = self.entrypointNumCpus!
+        }
+        if self.entrypointNumGpus != nil {
+            map["entrypointNumGpus"] = self.entrypointNumGpus!
+        }
+        if self.entrypointResources != nil {
+            map["entrypointResources"] = self.entrypointResources!
+        }
+        if self.extraParam != nil {
+            map["extraParam"] = self.extraParam!
+        }
+        if self.guHours != nil {
+            map["guHours"] = self.guHours?.toMap()
+        }
+        if self.headSpec != nil {
+            map["headSpec"] = self.headSpec?.toMap()
+        }
+        if self.logBucketName != nil {
+            map["logBucketName"] = self.logBucketName!
+        }
+        if self.logPath != nil {
+            map["logPath"] = self.logPath!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.metadataJson != nil {
+            map["metadataJson"] = self.metadataJson!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.networkServiceName != nil {
+            map["networkServiceName"] = self.networkServiceName!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.runtimeEnvJson != nil {
+            map["runtimeEnvJson"] = self.runtimeEnvJson!
+        }
+        if self.shutdownAfterJobFinishes != nil {
+            map["shutdownAfterJobFinishes"] = self.shutdownAfterJobFinishes!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.submissionId != nil {
+            map["submissionId"] = self.submissionId!
+        }
+        if self.submissionMode != nil {
+            map["submissionMode"] = self.submissionMode!
+        }
+        if self.submitTime != nil {
+            map["submitTime"] = self.submitTime!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
+        if self.taskBizId != nil {
+            map["taskBizId"] = self.taskBizId!
+        }
+        if self.ttlSecondsAfterFinished != nil {
+            map["ttlSecondsAfterFinished"] = self.ttlSecondsAfterFinished!
+        }
+        if self.volumeIds != nil {
+            map["volumeIds"] = self.volumeIds!
+        }
+        if self.workerSpecs != nil {
+            var tmp : [Any] = []
+            for k in self.workerSpecs! {
+                tmp.append(k.toMap())
+            }
+            map["workerSpecs"] = tmp
+        }
+        if self.workingDir != nil {
+            map["workingDir"] = self.workingDir!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["activeDeadlineSeconds"] as? Int32 {
+            self.activeDeadlineSeconds = value
+        }
+        if let value = dict["backoffLimit"] as? Int32 {
+            self.backoffLimit = value
+        }
+        if let value = dict["clusterState"] as? String {
+            self.clusterState = value
+        }
+        if let value = dict["creatorName"] as? String {
+            self.creatorName = value
+        }
+        if let value = dict["cuHours"] as? Double {
+            self.cuHours = value
+        }
+        if let value = dict["dashboardUrl"] as? String {
+            self.dashboardUrl = value
+        }
+        if let value = dict["dashboardUrlExtra"] as? [String] {
+            self.dashboardUrlExtra = value
+        }
+        if let value = dict["displayReleaseVersion"] as? String {
+            self.displayReleaseVersion = value
+        }
+        if let value = dict["duration"] as? Int64 {
+            self.duration = value
+        }
+        if let value = dict["endTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["entrypoint"] as? String {
+            self.entrypoint = value
+        }
+        if let value = dict["entrypointMemory"] as? String {
+            self.entrypointMemory = value
+        }
+        if let value = dict["entrypointNumCpus"] as? String {
+            self.entrypointNumCpus = value
+        }
+        if let value = dict["entrypointNumGpus"] as? String {
+            self.entrypointNumGpus = value
+        }
+        if let value = dict["entrypointResources"] as? String {
+            self.entrypointResources = value
+        }
+        if let value = dict["extraParam"] as? String {
+            self.extraParam = value
+        }
+        if let value = dict["guHours"] as? [String: Any?] {
+            var model = GetRayJobResponseBody.GuHours()
+            model.fromMap(value)
+            self.guHours = model
+        }
+        if let value = dict["headSpec"] as? [String: Any?] {
+            var model = GetRayJobResponseBody.HeadSpec()
+            model.fromMap(value)
+            self.headSpec = model
+        }
+        if let value = dict["logBucketName"] as? String {
+            self.logBucketName = value
+        }
+        if let value = dict["logPath"] as? String {
+            self.logPath = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["metadataJson"] as? String {
+            self.metadataJson = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["networkServiceName"] as? String {
+            self.networkServiceName = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["runtimeEnvJson"] as? String {
+            self.runtimeEnvJson = value
+        }
+        if let value = dict["shutdownAfterJobFinishes"] as? Bool {
+            self.shutdownAfterJobFinishes = value
+        }
+        if let value = dict["startTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["submissionId"] as? String {
+            self.submissionId = value
+        }
+        if let value = dict["submissionMode"] as? String {
+            self.submissionMode = value
+        }
+        if let value = dict["submitTime"] as? Int64 {
+            self.submitTime = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+        if let value = dict["taskBizId"] as? String {
+            self.taskBizId = value
+        }
+        if let value = dict["ttlSecondsAfterFinished"] as? Int32 {
+            self.ttlSecondsAfterFinished = value
+        }
+        if let value = dict["volumeIds"] as? [String] {
+            self.volumeIds = value
+        }
+        if let value = dict["workerSpecs"] as? [Any?] {
+            var tmp : [GetRayJobResponseBody.WorkerSpecs] = []
+            for v in value {
+                if v != nil {
+                    var model = GetRayJobResponseBody.WorkerSpecs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.workerSpecs = tmp
+        }
+        if let value = dict["workingDir"] as? String {
+            self.workingDir = value
+        }
+    }
+}
+
+public class GetRayJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRayJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRayJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetRunConfigurationRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -16754,6 +18029,418 @@ public class ListRayClusterResponse : Tea.TeaModel {
     }
 }
 
+public class ListRayJobRequest : Tea.TeaModel {
+    public class SubmitTime : Tea.TeaModel {
+        public var endTime: Int64?
+
+        public var startTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["startTime"] as? Int64 {
+                self.startTime = value
+            }
+        }
+    }
+    public var name: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var submissionId: String?
+
+    public var submitTime: ListRayJobRequest.SubmitTime?
+
+    public var taskBizId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.submitTime?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.pageNum != nil {
+            map["pageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.submissionId != nil {
+            map["submissionId"] = self.submissionId!
+        }
+        if self.submitTime != nil {
+            map["submitTime"] = self.submitTime?.toMap()
+        }
+        if self.taskBizId != nil {
+            map["taskBizId"] = self.taskBizId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["pageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["submissionId"] as? String {
+            self.submissionId = value
+        }
+        if let value = dict["submitTime"] as? [String: Any?] {
+            var model = ListRayJobRequest.SubmitTime()
+            model.fromMap(value)
+            self.submitTime = model
+        }
+        if let value = dict["taskBizId"] as? String {
+            self.taskBizId = value
+        }
+    }
+}
+
+public class ListRayJobShrinkRequest : Tea.TeaModel {
+    public var name: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var submissionId: String?
+
+    public var submitTimeShrink: String?
+
+    public var taskBizId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.pageNum != nil {
+            map["pageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.submissionId != nil {
+            map["submissionId"] = self.submissionId!
+        }
+        if self.submitTimeShrink != nil {
+            map["submitTime"] = self.submitTimeShrink!
+        }
+        if self.taskBizId != nil {
+            map["taskBizId"] = self.taskBizId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["pageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["submissionId"] as? String {
+            self.submissionId = value
+        }
+        if let value = dict["submitTime"] as? String {
+            self.submitTimeShrink = value
+        }
+        if let value = dict["taskBizId"] as? String {
+            self.taskBizId = value
+        }
+    }
+}
+
+public class ListRayJobResponseBody : Tea.TeaModel {
+    public class RayJobs : Tea.TeaModel {
+        public var clusterState: String?
+
+        public var creatorName: String?
+
+        public var cuHours: Double?
+
+        public var dashboardUrl: String?
+
+        public var duration: Int64?
+
+        public var endTime: Int64?
+
+        public var name: String?
+
+        public var resourceQueue: String?
+
+        public var startTime: Int64?
+
+        public var status: String?
+
+        public var submissionId: String?
+
+        public var submitTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterState != nil {
+                map["clusterState"] = self.clusterState!
+            }
+            if self.creatorName != nil {
+                map["creatorName"] = self.creatorName!
+            }
+            if self.cuHours != nil {
+                map["cuHours"] = self.cuHours!
+            }
+            if self.dashboardUrl != nil {
+                map["dashboardUrl"] = self.dashboardUrl!
+            }
+            if self.duration != nil {
+                map["duration"] = self.duration!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.resourceQueue != nil {
+                map["resourceQueue"] = self.resourceQueue!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.submissionId != nil {
+                map["submissionId"] = self.submissionId!
+            }
+            if self.submitTime != nil {
+                map["submitTime"] = self.submitTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["clusterState"] as? String {
+                self.clusterState = value
+            }
+            if let value = dict["creatorName"] as? String {
+                self.creatorName = value
+            }
+            if let value = dict["cuHours"] as? Double {
+                self.cuHours = value
+            }
+            if let value = dict["dashboardUrl"] as? String {
+                self.dashboardUrl = value
+            }
+            if let value = dict["duration"] as? Int64 {
+                self.duration = value
+            }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["resourceQueue"] as? String {
+                self.resourceQueue = value
+            }
+            if let value = dict["startTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["submissionId"] as? String {
+                self.submissionId = value
+            }
+            if let value = dict["submitTime"] as? Int64 {
+                self.submitTime = value
+            }
+        }
+    }
+    public var rayJobs: [ListRayJobResponseBody.RayJobs]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.rayJobs != nil {
+            var tmp : [Any] = []
+            for k in self.rayJobs! {
+                tmp.append(k.toMap())
+            }
+            map["rayJobs"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["rayJobs"] as? [Any?] {
+            var tmp : [ListRayJobResponseBody.RayJobs] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRayJobResponseBody.RayJobs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.rayJobs = tmp
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRayJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRayJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRayJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListReleaseVersionsRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -18810,6 +20497,8 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
         public var gpuSpec: [String]?
 
+        public var ipWhiteList: [String]?
+
         public var paymentDurationUnit: String?
 
         public var paymentStatus: String?
@@ -18883,6 +20572,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.ipWhiteList != nil {
+                map["ipWhiteList"] = self.ipWhiteList!
             }
             if self.paymentDurationUnit != nil {
                 map["paymentDurationUnit"] = self.paymentDurationUnit!
@@ -18964,6 +20656,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if let value = dict["gpuSpec"] as? [String] {
                 self.gpuSpec = value
+            }
+            if let value = dict["ipWhiteList"] as? [String] {
+                self.ipWhiteList = value
             }
             if let value = dict["paymentDurationUnit"] as? String {
                 self.paymentDurationUnit = value
@@ -20832,6 +22527,511 @@ public class StopSessionClusterResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = StopSessionClusterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SubmitRayJobRequest : Tea.TeaModel {
+    public class HeadSpec : Tea.TeaModel {
+        public var cpu: String?
+
+        public var enableAutoScaling: Bool?
+
+        public var gpuSpec: String?
+
+        public var idleTimeoutSeconds: Int32?
+
+        public var memory: String?
+
+        public var queueName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["cpu"] = self.cpu!
+            }
+            if self.enableAutoScaling != nil {
+                map["enableAutoScaling"] = self.enableAutoScaling!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.idleTimeoutSeconds != nil {
+                map["idleTimeoutSeconds"] = self.idleTimeoutSeconds!
+            }
+            if self.memory != nil {
+                map["memory"] = self.memory!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cpu"] as? String {
+                self.cpu = value
+            }
+            if let value = dict["enableAutoScaling"] as? Bool {
+                self.enableAutoScaling = value
+            }
+            if let value = dict["gpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+            if let value = dict["idleTimeoutSeconds"] as? Int32 {
+                self.idleTimeoutSeconds = value
+            }
+            if let value = dict["memory"] as? String {
+                self.memory = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+        }
+    }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class WorkerSpec : Tea.TeaModel {
+        public var cpu: String?
+
+        public var gpuSpec: String?
+
+        public var groupName: String?
+
+        public var maxReplica: Int32?
+
+        public var memory: String?
+
+        public var minReplica: Int32?
+
+        public var queueName: String?
+
+        public var replica: Int32?
+
+        public var workerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["cpu"] = self.cpu!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.groupName != nil {
+                map["groupName"] = self.groupName!
+            }
+            if self.maxReplica != nil {
+                map["maxReplica"] = self.maxReplica!
+            }
+            if self.memory != nil {
+                map["memory"] = self.memory!
+            }
+            if self.minReplica != nil {
+                map["minReplica"] = self.minReplica!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.replica != nil {
+                map["replica"] = self.replica!
+            }
+            if self.workerType != nil {
+                map["workerType"] = self.workerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cpu"] as? String {
+                self.cpu = value
+            }
+            if let value = dict["gpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+            if let value = dict["groupName"] as? String {
+                self.groupName = value
+            }
+            if let value = dict["maxReplica"] as? Int32 {
+                self.maxReplica = value
+            }
+            if let value = dict["memory"] as? String {
+                self.memory = value
+            }
+            if let value = dict["minReplica"] as? Int32 {
+                self.minReplica = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+            if let value = dict["replica"] as? Int32 {
+                self.replica = value
+            }
+            if let value = dict["workerType"] as? String {
+                self.workerType = value
+            }
+        }
+    }
+    public var activeDeadlineSeconds: Int32?
+
+    public var displayReleaseVersion: String?
+
+    public var entrypoint: String?
+
+    public var entrypointMemory: String?
+
+    public var entrypointNumCpus: String?
+
+    public var entrypointNumGpus: String?
+
+    public var entrypointResources: String?
+
+    public var extraParam: String?
+
+    public var headSpec: SubmitRayJobRequest.HeadSpec?
+
+    public var metadataJson: String?
+
+    public var name: String?
+
+    public var networkServiceName: String?
+
+    public var runtimeEnvJson: String?
+
+    public var shutdownAfterJobFinishes: Bool?
+
+    public var submissionMode: String?
+
+    public var tags: [SubmitRayJobRequest.Tags]?
+
+    public var ttlSecondsAfterFinished: Int32?
+
+    public var volumeIds: [String]?
+
+    public var workerSpec: [SubmitRayJobRequest.WorkerSpec]?
+
+    public var workingDir: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.headSpec?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.activeDeadlineSeconds != nil {
+            map["activeDeadlineSeconds"] = self.activeDeadlineSeconds!
+        }
+        if self.displayReleaseVersion != nil {
+            map["displayReleaseVersion"] = self.displayReleaseVersion!
+        }
+        if self.entrypoint != nil {
+            map["entrypoint"] = self.entrypoint!
+        }
+        if self.entrypointMemory != nil {
+            map["entrypointMemory"] = self.entrypointMemory!
+        }
+        if self.entrypointNumCpus != nil {
+            map["entrypointNumCpus"] = self.entrypointNumCpus!
+        }
+        if self.entrypointNumGpus != nil {
+            map["entrypointNumGpus"] = self.entrypointNumGpus!
+        }
+        if self.entrypointResources != nil {
+            map["entrypointResources"] = self.entrypointResources!
+        }
+        if self.extraParam != nil {
+            map["extraParam"] = self.extraParam!
+        }
+        if self.headSpec != nil {
+            map["headSpec"] = self.headSpec?.toMap()
+        }
+        if self.metadataJson != nil {
+            map["metadataJson"] = self.metadataJson!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.networkServiceName != nil {
+            map["networkServiceName"] = self.networkServiceName!
+        }
+        if self.runtimeEnvJson != nil {
+            map["runtimeEnvJson"] = self.runtimeEnvJson!
+        }
+        if self.shutdownAfterJobFinishes != nil {
+            map["shutdownAfterJobFinishes"] = self.shutdownAfterJobFinishes!
+        }
+        if self.submissionMode != nil {
+            map["submissionMode"] = self.submissionMode!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
+        if self.ttlSecondsAfterFinished != nil {
+            map["ttlSecondsAfterFinished"] = self.ttlSecondsAfterFinished!
+        }
+        if self.volumeIds != nil {
+            map["volumeIds"] = self.volumeIds!
+        }
+        if self.workerSpec != nil {
+            var tmp : [Any] = []
+            for k in self.workerSpec! {
+                tmp.append(k.toMap())
+            }
+            map["workerSpec"] = tmp
+        }
+        if self.workingDir != nil {
+            map["workingDir"] = self.workingDir!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["activeDeadlineSeconds"] as? Int32 {
+            self.activeDeadlineSeconds = value
+        }
+        if let value = dict["displayReleaseVersion"] as? String {
+            self.displayReleaseVersion = value
+        }
+        if let value = dict["entrypoint"] as? String {
+            self.entrypoint = value
+        }
+        if let value = dict["entrypointMemory"] as? String {
+            self.entrypointMemory = value
+        }
+        if let value = dict["entrypointNumCpus"] as? String {
+            self.entrypointNumCpus = value
+        }
+        if let value = dict["entrypointNumGpus"] as? String {
+            self.entrypointNumGpus = value
+        }
+        if let value = dict["entrypointResources"] as? String {
+            self.entrypointResources = value
+        }
+        if let value = dict["extraParam"] as? String {
+            self.extraParam = value
+        }
+        if let value = dict["headSpec"] as? [String: Any?] {
+            var model = SubmitRayJobRequest.HeadSpec()
+            model.fromMap(value)
+            self.headSpec = model
+        }
+        if let value = dict["metadataJson"] as? String {
+            self.metadataJson = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["networkServiceName"] as? String {
+            self.networkServiceName = value
+        }
+        if let value = dict["runtimeEnvJson"] as? String {
+            self.runtimeEnvJson = value
+        }
+        if let value = dict["shutdownAfterJobFinishes"] as? Bool {
+            self.shutdownAfterJobFinishes = value
+        }
+        if let value = dict["submissionMode"] as? String {
+            self.submissionMode = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [SubmitRayJobRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = SubmitRayJobRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+        if let value = dict["ttlSecondsAfterFinished"] as? Int32 {
+            self.ttlSecondsAfterFinished = value
+        }
+        if let value = dict["volumeIds"] as? [String] {
+            self.volumeIds = value
+        }
+        if let value = dict["workerSpec"] as? [Any?] {
+            var tmp : [SubmitRayJobRequest.WorkerSpec] = []
+            for v in value {
+                if v != nil {
+                    var model = SubmitRayJobRequest.WorkerSpec()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.workerSpec = tmp
+        }
+        if let value = dict["workingDir"] as? String {
+            self.workingDir = value
+        }
+    }
+}
+
+public class SubmitRayJobResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var submissionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.submissionId != nil {
+            map["submissionId"] = self.submissionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["submissionId"] as? String {
+            self.submissionId = value
+        }
+    }
+}
+
+public class SubmitRayJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitRayJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SubmitRayJobResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -23337,6 +25537,8 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
 
     public var gpuSpec: [String]?
 
+    public var ipWhiteList: [String]?
+
     public var resourceGroupId: String?
 
     public var subscription: UpdateWorkspaceRequest.Subscription?
@@ -23371,6 +25573,9 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
         if self.gpuSpec != nil {
             map["gpuSpec"] = self.gpuSpec!
         }
+        if self.ipWhiteList != nil {
+            map["ipWhiteList"] = self.ipWhiteList!
+        }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
         }
@@ -23399,6 +25604,9 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
         }
         if let value = dict["gpuSpec"] as? [String] {
             self.gpuSpec = value
+        }
+        if let value = dict["ipWhiteList"] as? [String] {
+            self.ipWhiteList = value
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value

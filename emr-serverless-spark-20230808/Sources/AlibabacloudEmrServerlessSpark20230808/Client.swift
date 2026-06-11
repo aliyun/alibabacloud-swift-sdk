@@ -159,6 +159,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelRayJobWithOptions(_ workspaceId: String, _ submissionId: String, _ request: CancelRayJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelRayJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CancelRayJob",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/rayJob/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(submissionId)) + "/cancel",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelRayJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelRayJob(_ workspaceId: String, _ submissionId: String, _ request: CancelRayJobRequest) async throws -> CancelRayJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await cancelRayJobWithOptions(workspaceId as! String, submissionId as! String, request as! CancelRayJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func changeResourceGroupWithOptions(_ request: ChangeResourceGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1381,6 +1409,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRayJobWithOptions(_ workspaceId: String, _ submissionId: String, _ request: GetRayJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRayJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRayJob",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/rayJob/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(submissionId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRayJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRayJob(_ workspaceId: String, _ submissionId: String, _ request: GetRayJobRequest) async throws -> GetRayJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getRayJobWithOptions(workspaceId as! String, submissionId as! String, request as! GetRayJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRunConfigurationWithOptions(_ workspaceId: String, _ runId: String, _ request: GetRunConfigurationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRunConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2170,6 +2226,59 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRayJobWithOptions(_ workspaceId: String, _ tmpReq: ListRayJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRayJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListRayJobShrinkRequest = ListRayJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.submitTime)) {
+            request.submitTimeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.submitTime, "submitTime", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["pageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.submissionId)) {
+            query["submissionId"] = request.submissionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.submitTimeShrink)) {
+            query["submitTime"] = request.submitTimeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskBizId)) {
+            query["taskBizId"] = request.taskBizId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRayJob",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/rayJob",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRayJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRayJob(_ workspaceId: String, _ request: ListRayJobRequest) async throws -> ListRayJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listRayJobWithOptions(workspaceId as! String, request as! ListRayJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listReleaseVersionsWithOptions(_ request: ListReleaseVersionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListReleaseVersionsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2876,6 +2985,96 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitRayJobWithOptions(_ workspaceId: String, _ request: SubmitRayJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitRayJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activeDeadlineSeconds)) {
+            body["activeDeadlineSeconds"] = request.activeDeadlineSeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.displayReleaseVersion)) {
+            body["displayReleaseVersion"] = request.displayReleaseVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entrypoint)) {
+            body["entrypoint"] = request.entrypoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entrypointMemory)) {
+            body["entrypointMemory"] = request.entrypointMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entrypointNumCpus)) {
+            body["entrypointNumCpus"] = request.entrypointNumCpus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entrypointNumGpus)) {
+            body["entrypointNumGpus"] = request.entrypointNumGpus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entrypointResources)) {
+            body["entrypointResources"] = request.entrypointResources ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extraParam)) {
+            body["extraParam"] = request.extraParam ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.headSpec)) {
+            body["headSpec"] = request.headSpec!;
+        }
+        if (!TeaUtils.Client.isUnset(request.metadataJson)) {
+            body["metadataJson"] = request.metadataJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkServiceName)) {
+            body["networkServiceName"] = request.networkServiceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runtimeEnvJson)) {
+            body["runtimeEnvJson"] = request.runtimeEnvJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shutdownAfterJobFinishes)) {
+            body["shutdownAfterJobFinishes"] = request.shutdownAfterJobFinishes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.submissionMode)) {
+            body["submissionMode"] = request.submissionMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            body["tags"] = request.tags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ttlSecondsAfterFinished)) {
+            body["ttlSecondsAfterFinished"] = request.ttlSecondsAfterFinished!;
+        }
+        if (!TeaUtils.Client.isUnset(request.volumeIds)) {
+            body["volumeIds"] = request.volumeIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.workerSpec)) {
+            body["workerSpec"] = request.workerSpec ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.workingDir)) {
+            body["workingDir"] = request.workingDir ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitRayJob",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/rayJob",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitRayJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitRayJob(_ workspaceId: String, _ request: SubmitRayJobRequest) async throws -> SubmitRayJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await submitRayJobWithOptions(workspaceId as! String, request as! SubmitRayJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func terminateSqlStatementWithOptions(_ workspaceId: String, _ statementId: String, _ request: TerminateSqlStatementRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TerminateSqlStatementResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3269,6 +3468,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.gpuSpec)) {
             body["gpuSpec"] = request.gpuSpec ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ipWhiteList)) {
+            body["ipWhiteList"] = request.ipWhiteList ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             body["resourceGroupId"] = request.resourceGroupId ?? "";
