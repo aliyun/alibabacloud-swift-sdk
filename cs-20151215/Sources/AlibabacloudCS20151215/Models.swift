@@ -34590,6 +34590,142 @@ public class RunClusterInspectResponse : Tea.TeaModel {
     }
 }
 
+public class RunNodeOperationRequest : Tea.TeaModel {
+    public var operationAction: String?
+
+    public var operationArgs: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationAction != nil {
+            map["operationAction"] = self.operationAction!
+        }
+        if self.operationArgs != nil {
+            map["operationArgs"] = self.operationArgs!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["operationAction"] as? String {
+            self.operationAction = value
+        }
+        if let value = dict["operationArgs"] as? [String] {
+            self.operationArgs = value
+        }
+    }
+}
+
+public class RunNodeOperationResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["clusterId"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class RunNodeOperationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunNodeOperationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RunNodeOperationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ScaleClusterNodePoolRequest : Tea.TeaModel {
     public var count: Int64?
 
