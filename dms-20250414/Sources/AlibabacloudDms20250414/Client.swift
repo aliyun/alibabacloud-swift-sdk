@@ -3464,27 +3464,27 @@ open class Client : AlibabacloudOpenApi.Client {
     public func saveWorkspaceCodeWithOptions(_ request: SaveWorkspaceCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveWorkspaceCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            query["Content"] = request.content ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.force)) {
-            query["Force"] = request.force!;
-        }
-        if (!TeaUtils.Client.isUnset(request.iac)) {
-            query["Iac"] = request.iac!;
-        }
-        if (!TeaUtils.Client.isUnset(request.mtime)) {
-            query["Mtime"] = request.mtime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.repo)) {
-            query["Repo"] = request.repo ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            body["Force"] = request.force!;
+        }
+        if (!TeaUtils.Client.isUnset(request.iac)) {
+            body["Iac"] = request.iac!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mtime)) {
+            body["Mtime"] = request.mtime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.path)) {
             body["Path"] = request.path ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repo)) {
+            body["Repo"] = request.repo ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query),
