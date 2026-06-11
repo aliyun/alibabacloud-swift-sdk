@@ -577,6 +577,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeZonesWithOptions(_ request: DescribeZonesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeZonesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.crossRegion)) {
+            query["CrossRegion"] = request.crossRegion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.crossRegionSide)) {
+            query["CrossRegionSide"] = request.crossRegionSide ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }

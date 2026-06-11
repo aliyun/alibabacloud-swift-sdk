@@ -2393,6 +2393,10 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 }
 
 public class DescribeZonesRequest : Tea.TeaModel {
+    public var crossRegion: Bool?
+
+    public var crossRegionSide: String?
+
     public var regionId: String?
 
     public var serviceResourceType: String?
@@ -2411,6 +2415,12 @@ public class DescribeZonesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.crossRegion != nil {
+            map["CrossRegion"] = self.crossRegion!
+        }
+        if self.crossRegionSide != nil {
+            map["CrossRegionSide"] = self.crossRegionSide!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -2422,6 +2432,12 @@ public class DescribeZonesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CrossRegion"] as? Bool {
+            self.crossRegion = value
+        }
+        if let value = dict["CrossRegionSide"] as? String {
+            self.crossRegionSide = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
