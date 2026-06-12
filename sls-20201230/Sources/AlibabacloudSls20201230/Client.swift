@@ -363,6 +363,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAzureBlobIngestionWithOptions(_ project: String, _ request: CreateAzureBlobIngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAzureBlobIngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schedule)) {
+            body["schedule"] = request.schedule!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAzureBlobIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/azureblobingestions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAzureBlobIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAzureBlobIngestion(_ project: String, _ request: CreateAzureBlobIngestionRequest) async throws -> CreateAzureBlobIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createAzureBlobIngestionWithOptions(project as! String, request as! CreateAzureBlobIngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createConfigWithOptions(_ project: String, _ request: CreateConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -595,6 +643,99 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createElasticsearchIngestionWithOptions(_ project: String, _ request: CreateElasticsearchIngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateElasticsearchIngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schedule)) {
+            body["schedule"] = request.schedule!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateElasticsearchIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/elasticsearchingestions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateElasticsearchIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createElasticsearchIngestion(_ project: String, _ request: CreateElasticsearchIngestionRequest) async throws -> CreateElasticsearchIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createElasticsearchIngestionWithOptions(project as! String, request as! CreateElasticsearchIngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGCSIngestionWithOptions(_ project: String, _ request: CreateGCSIngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGCSIngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGCSIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/gcsingestions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "any"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGCSIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGCSIngestion(_ project: String, _ request: CreateGCSIngestionRequest) async throws -> CreateGCSIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createGCSIngestionWithOptions(project as! String, request as! CreateGCSIngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createIndexWithOptions(_ project: String, _ logstore: String, _ request: CreateIndexRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIndexResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -638,6 +779,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoSplit)) {
             body["autoSplit"] = request.autoSplit!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableModify)) {
+            body["enableModify"] = request.enableModify!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableTracking)) {
             body["enable_tracking"] = request.enableTracking!;
         }
@@ -662,8 +806,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.processorId)) {
             body["processorId"] = request.processorId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.shardCount)) {
             body["shardCount"] = request.shardCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.shardingPolicy)) {
+            body["shardingPolicy"] = request.shardingPolicy!;
         }
         if (!TeaUtils.Client.isUnset(request.telemetryType)) {
             body["telemetryType"] = request.telemetryType ?? "";
@@ -843,6 +993,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMaterializedViewWithOptions(_ project: String, _ request: CreateMaterializedViewRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMaterializedViewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggIntervalMins)) {
+            body["aggIntervalMins"] = request.aggIntervalMins!;
+        }
+        if (!TeaUtils.Client.isUnset(request.logstore)) {
+            body["logstore"] = request.logstore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originalSql)) {
+            body["originalSql"] = request.originalSql ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["startTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ttl)) {
+            body["ttl"] = request.ttl!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMaterializedView",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/materializedviews",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMaterializedViewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMaterializedView(_ project: String, _ request: CreateMaterializedViewRequest) async throws -> CreateMaterializedViewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createMaterializedViewWithOptions(project as! String, request as! CreateMaterializedViewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createMaxComputeExportWithOptions(_ project: String, _ request: CreateMaxComputeExportRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMaxComputeExportResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -893,6 +1094,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appendMeta)) {
+            body["appendMeta"] = request.appendMeta!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoSplit)) {
             body["autoSplit"] = request.autoSplit!;
         }
@@ -916,6 +1120,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.shardCount)) {
             body["shardCount"] = request.shardCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.shardingPolicy)) {
+            body["shardingPolicy"] = request.shardingPolicy!;
         }
         if (!TeaUtils.Client.isUnset(request.ttl)) {
             body["ttl"] = request.ttl!;
@@ -1541,6 +1748,36 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAzureBlobIngestionWithOptions(_ project: String, _ azureBlobIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAzureBlobIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAzureBlobIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/azureblobingestions/" + (azureBlobIngestionName as! String),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAzureBlobIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAzureBlobIngestion(_ project: String, _ azureBlobIngestionName: String) async throws -> DeleteAzureBlobIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteAzureBlobIngestionWithOptions(project as! String, azureBlobIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteCollectionPolicyWithOptions(_ policyName: String, _ request: DeleteCollectionPolicyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCollectionPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1787,6 +2024,36 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteElasticsearchIngestionWithOptions(_ project: String, _ esIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteElasticsearchIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteElasticsearchIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/elasticsearchingestions/" + (esIngestionName as! String),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteElasticsearchIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteElasticsearchIngestion(_ project: String, _ esIngestionName: String) async throws -> DeleteElasticsearchIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteElasticsearchIngestionWithOptions(project as! String, esIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteIndexWithOptions(_ project: String, _ logstore: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteIndexResponse {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
@@ -1964,6 +2231,36 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteMachineGroupWithOptions(project as! String, machineGroup as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMaterializedViewWithOptions(_ project: String, _ name: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMaterializedViewResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMaterializedView",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/materializedviews/" + (name as! String),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMaterializedViewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMaterializedView(_ project: String, _ name: String) async throws -> DeleteMaterializedViewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteMaterializedViewWithOptions(project as! String, name as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2665,6 +2962,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAsyncSqlWithOptions(_ project: String, _ queryId: String, _ request: GetAsyncSqlRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAsyncSqlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.line)) {
+            query["line"] = request.line!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAsyncSql",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/asyncsql/" + (queryId as! String),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "none",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAsyncSqlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAsyncSql(_ project: String, _ queryId: String, _ request: GetAsyncSqlRequest) async throws -> GetAsyncSqlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getAsyncSqlWithOptions(project as! String, queryId as! String, request as! GetAsyncSqlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAzureBlobIngestionWithOptions(_ project: String, _ azureBlobIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAzureBlobIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAzureBlobIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/azureblobingestions/" + (azureBlobIngestionName as! String),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAzureBlobIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAzureBlobIngestion(_ project: String, _ azureBlobIngestionName: String) async throws -> GetAzureBlobIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getAzureBlobIngestionWithOptions(project as! String, azureBlobIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCheckPointWithOptions(_ project: String, _ logstore: String, _ consumerGroup: String, _ request: GetCheckPointRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCheckPointResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -3004,6 +3370,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getElasticsearchIngestionWithOptions(_ project: String, _ esIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetElasticsearchIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetElasticsearchIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/elasticsearchingestions/" + (esIngestionName as! String),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetElasticsearchIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getElasticsearchIngestion(_ project: String, _ esIngestionName: String) async throws -> GetElasticsearchIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getElasticsearchIngestionWithOptions(project as! String, esIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGCSIngestionWithOptions(_ project: String, _ gcsIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGCSIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGCSIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/gcsingestions/" + (gcsIngestionName as! String),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGCSIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGCSIngestion(_ project: String, _ gcsIngestionName: String) async throws -> GetGCSIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getGCSIngestionWithOptions(project as! String, gcsIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getHistogramsWithOptions(_ project: String, _ logstore: String, _ request: GetHistogramsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHistogramsResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -3139,6 +3565,36 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLogStoreConfigWithOptions(_ project: String, _ logstore: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLogStoreConfigResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLogStoreConfig",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/logstores/" + (logstore as! String) + "/config",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "none",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLogStoreConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLogStoreConfig(_ project: String, _ logstore: String) async throws -> GetLogStoreConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getLogStoreConfigWithOptions(project as! String, logstore as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getLogStoreMeteringModeWithOptions(_ project: String, _ logstore: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLogStoreMeteringModeResponse {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
@@ -3269,6 +3725,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.highlight)) {
             body["highlight"] = request.highlight!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isAccurate)) {
+            body["isAccurate"] = request.isAccurate!;
         }
         if (!TeaUtils.Client.isUnset(request.line)) {
             body["line"] = request.line!;
@@ -3423,6 +3882,49 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getMachineGroupWithOptions(project as! String, machineGroup as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMaterializedViewWithOptions(_ project: String, _ name: String, _ request: GetMaterializedViewRequest, _ headers: GetMaterializedViewHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMaterializedViewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.returnStatus)) {
+            query["returnStatus"] = request.returnStatus!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.contentType)) {
+            realHeaders["Content-Type"] = TeaUtils.Client.toJSONString(headers.contentType);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMaterializedView",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/materializedviews/" + (name as! String),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMaterializedViewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMaterializedView(_ project: String, _ name: String, _ request: GetMaterializedViewRequest) async throws -> GetMaterializedViewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetMaterializedViewHeaders = GetMaterializedViewHeaders([:])
+        return try await getMaterializedViewWithOptions(project as! String, name as! String, request as! GetMaterializedViewRequest, headers as! GetMaterializedViewHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4128,6 +4630,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAzureBlobIngestionWithOptions(_ project: String, _ request: ListAzureBlobIngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAzureBlobIngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.logstore)) {
+            query["logstore"] = request.logstore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAzureBlobIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/azureblobingestions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAzureBlobIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAzureBlobIngestion(_ project: String, _ request: ListAzureBlobIngestionRequest) async throws -> ListAzureBlobIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listAzureBlobIngestionWithOptions(project as! String, request as! ListAzureBlobIngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listCollectionPoliciesWithOptions(_ request: ListCollectionPoliciesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCollectionPoliciesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4478,6 +5022,90 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listElasticsearchIngestionsWithOptions(_ project: String, _ request: ListElasticsearchIngestionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListElasticsearchIngestionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.logstore)) {
+            query["logstore"] = request.logstore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListElasticsearchIngestions",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/elasticsearchingestions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListElasticsearchIngestionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listElasticsearchIngestions(_ project: String, _ request: ListElasticsearchIngestionsRequest) async throws -> ListElasticsearchIngestionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listElasticsearchIngestionsWithOptions(project as! String, request as! ListElasticsearchIngestionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGCSIngestionsWithOptions(_ project: String, _ request: ListGCSIngestionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGCSIngestionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.logstore)) {
+            query["logstore"] = request.logstore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGCSIngestions",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/gcsingestions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGCSIngestionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGCSIngestions(_ project: String, _ request: ListGCSIngestionsRequest) async throws -> ListGCSIngestionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listGCSIngestionsWithOptions(project as! String, request as! ListGCSIngestionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listIngestProcessorsWithOptions(_ project: String, _ request: ListIngestProcessorsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIngestProcessorsResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -4700,6 +5328,90 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMaterializedViewWithOptions(_ project: String, _ request: ListMaterializedViewRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMaterializedViewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMaterializedView",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/materializedviews",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMaterializedViewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMaterializedView(_ project: String, _ request: ListMaterializedViewRequest) async throws -> ListMaterializedViewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMaterializedViewWithOptions(project as! String, request as! ListMaterializedViewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMaterializedViewsWithOptions(_ project: String, _ request: ListMaterializedViewsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMaterializedViewsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMaterializedViews",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/materializedviews",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMaterializedViewsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMaterializedViews(_ project: String, _ request: ListMaterializedViewsRequest) async throws -> ListMaterializedViewsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMaterializedViewsWithOptions(project as! String, request as! ListMaterializedViewsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listMaxComputeExportsWithOptions(_ project: String, _ request: ListMaxComputeExportsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMaxComputeExportsResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -4916,6 +5628,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listProjectWithOptions(_ request: ListProjectRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fetchQuota)) {
             query["fetchQuota"] = request.fetchQuota!;
         }
@@ -4967,10 +5682,10 @@ open class Client : AlibabacloudOpenApi.Client {
             query["logstore"] = request.logstore ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.offset)) {
-            query["offset"] = request.offset ?? "";
+            query["offset"] = request.offset!;
         }
         if (!TeaUtils.Client.isUnset(request.size)) {
-            query["size"] = request.size ?? "";
+            query["size"] = request.size!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "hostMap": hostMap as! [String: String],
@@ -5262,6 +5977,8 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func pullLogsWithOptions(_ project: String, _ logStore: String, _ shardId: String, _ request: PullLogsRequest, _ headers: PullLogsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> PullLogsResponse {
         try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.count)) {
             query["count"] = request.count!;
@@ -5283,6 +6000,7 @@ open class Client : AlibabacloudOpenApi.Client {
             realHeaders["Accept-Encoding"] = TeaUtils.Client.toJSONString(headers.acceptEncoding);
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
             "headers": realHeaders as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -5431,6 +6149,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await putIngestProcessorWithOptions(project as! String, processorName as! String, request as! PutIngestProcessorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putLogStoreConfigWithOptions(_ project: String, _ logstore: String, _ request: PutLogStoreConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PutLogStoreConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientIpHeaders)) {
+            body["clientIpHeaders"] = request.clientIpHeaders ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PutLogStoreConfig",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/logstores/" + (logstore as! String) + "/config",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PutLogStoreConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putLogStoreConfig(_ project: String, _ logstore: String, _ request: PutLogStoreConfigRequest) async throws -> PutLogStoreConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await putLogStoreConfigWithOptions(project as! String, logstore as! String, request as! PutLogStoreConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5691,6 +6445,36 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startAzureBlobIngestionWithOptions(_ project: String, _ azureBlobIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartAzureBlobIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartAzureBlobIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/azureblobingestions/" + (azureBlobIngestionName as! String) + "?action=START",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartAzureBlobIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startAzureBlobIngestion(_ project: String, _ azureBlobIngestionName: String) async throws -> StartAzureBlobIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startAzureBlobIngestionWithOptions(project as! String, azureBlobIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startETLWithOptions(_ project: String, _ etlName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartETLResponse {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
@@ -5718,6 +6502,66 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await startETLWithOptions(project as! String, etlName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startElasticsearchIngestionWithOptions(_ project: String, _ elasticsearchIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartElasticsearchIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartElasticsearchIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/elasticsearchingestions/" + (elasticsearchIngestionName as! String) + "?action=START",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartElasticsearchIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startElasticsearchIngestion(_ project: String, _ elasticsearchIngestionName: String) async throws -> StartElasticsearchIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startElasticsearchIngestionWithOptions(project as! String, elasticsearchIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startGCSIngestionWithOptions(_ project: String, _ gcsIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartGCSIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartGCSIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/gcsingestions/" + (gcsIngestionName as! String) + "?action=START",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "any"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartGCSIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startGCSIngestion(_ project: String, _ gcsIngestionName: String) async throws -> StartGCSIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startGCSIngestionWithOptions(project as! String, gcsIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5841,6 +6685,36 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopAzureBlobIngestionWithOptions(_ project: String, _ azureBlobIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopAzureBlobIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopAzureBlobIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/azureblobingestions/" + (azureBlobIngestionName as! String) + "?action=STOP",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopAzureBlobIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopAzureBlobIngestion(_ project: String, _ azureBlobIngestionName: String) async throws -> StopAzureBlobIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopAzureBlobIngestionWithOptions(project as! String, azureBlobIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopETLWithOptions(_ project: String, _ etlName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopETLResponse {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
@@ -5868,6 +6742,66 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await stopETLWithOptions(project as! String, etlName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopElasticsearchIngestionWithOptions(_ project: String, _ elasticsearchIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopElasticsearchIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopElasticsearchIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/elasticsearchingestions/" + (elasticsearchIngestionName as! String) + "?action=STOP",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopElasticsearchIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopElasticsearchIngestion(_ project: String, _ elasticsearchIngestionName: String) async throws -> StopElasticsearchIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopElasticsearchIngestionWithOptions(project as! String, elasticsearchIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopGCSIngestionWithOptions(_ project: String, _ gcsIngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopGCSIngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopGCSIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/gcsingestions/" + (gcsIngestionName as! String) + "?action=STOP",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "any"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopGCSIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopGCSIngestion(_ project: String, _ gcsIngestionName: String) async throws -> StopGCSIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopGCSIngestionWithOptions(project as! String, gcsIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5988,6 +6922,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await stopOSSIngestionWithOptions(project as! String, ossIngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAsyncSqlWithOptions(_ project: String, _ request: SubmitAsyncSqlRequest, _ headers: SubmitAsyncSqlHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAsyncSqlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accept)) {
+            realHeaders["Accept"] = TeaUtils.Client.toJSONString(headers.accept);
+        }
+        if (!TeaUtils.Client.isUnset(headers.acceptEncoding)) {
+            realHeaders["Accept-Encoding"] = TeaUtils.Client.toJSONString(headers.acceptEncoding);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitAsyncSql",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/asyncsql",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "none",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitAsyncSqlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAsyncSql(_ project: String, _ request: SubmitAsyncSqlRequest) async throws -> SubmitAsyncSqlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SubmitAsyncSqlHeaders = SubmitAsyncSqlHeaders([:])
+        return try await submitAsyncSqlWithOptions(project as! String, request as! SubmitAsyncSqlRequest, headers as! SubmitAsyncSqlHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6221,6 +7197,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAzureBlobIngestionWithOptions(_ project: String, _ azureBlobIngestionName: String, _ request: UpdateAzureBlobIngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAzureBlobIngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schedule)) {
+            body["schedule"] = request.schedule!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAzureBlobIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/azureblobingestions/" + (azureBlobIngestionName as! String),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAzureBlobIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAzureBlobIngestion(_ project: String, _ azureBlobIngestionName: String, _ request: UpdateAzureBlobIngestionRequest) async throws -> UpdateAzureBlobIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateAzureBlobIngestionWithOptions(project as! String, azureBlobIngestionName as! String, request as! UpdateAzureBlobIngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateConfigWithOptions(_ project: String, _ configName: String, _ request: UpdateConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -6382,6 +7403,93 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateElasticsearchIngestionWithOptions(_ project: String, _ elasticsearchIngestionName: String, _ request: UpdateElasticsearchIngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateElasticsearchIngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schedule)) {
+            body["schedule"] = request.schedule!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateElasticsearchIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/elasticsearchingestions/" + (elasticsearchIngestionName as! String),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateElasticsearchIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateElasticsearchIngestion(_ project: String, _ elasticsearchIngestionName: String, _ request: UpdateElasticsearchIngestionRequest) async throws -> UpdateElasticsearchIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateElasticsearchIngestionWithOptions(project as! String, elasticsearchIngestionName as! String, request as! UpdateElasticsearchIngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGCSIngestionWithOptions(_ project: String, _ gcsIngestionName: String, _ request: UpdateGCSIngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGCSIngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGCSIngestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/gcsingestions/" + (gcsIngestionName as! String),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "any"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGCSIngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGCSIngestion(_ project: String, _ gcsIngestionName: String, _ request: UpdateGCSIngestionRequest) async throws -> UpdateGCSIngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateGCSIngestionWithOptions(project as! String, gcsIngestionName as! String, request as! UpdateGCSIngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateIndexWithOptions(_ project: String, _ logstore: String, _ request: UpdateIndexRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateIndexResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -6448,6 +7556,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.shardCount)) {
             body["shardCount"] = request.shardCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.shardingPolicy)) {
+            body["shardingPolicy"] = request.shardingPolicy!;
         }
         if (!TeaUtils.Client.isUnset(request.telemetryType)) {
             body["telemetryType"] = request.telemetryType ?? "";
@@ -6778,6 +7889,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMaterializedViewWithOptions(_ project: String, _ name: String, _ request: UpdateMaterializedViewRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMaterializedViewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggIntervalMins)) {
+            body["aggIntervalMins"] = request.aggIntervalMins!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            body["enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.originalSql)) {
+            body["originalSql"] = request.originalSql ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttl)) {
+            body["ttl"] = request.ttl!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMaterializedView",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/materializedviews/" + (name as! String),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMaterializedViewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMaterializedView(_ project: String, _ name: String, _ request: UpdateMaterializedViewRequest) async throws -> UpdateMaterializedViewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMaterializedViewWithOptions(project as! String, name as! String, request as! UpdateMaterializedViewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateMaxComputeExportWithOptions(_ project: String, _ mcExportName: String, _ request: UpdateMaxComputeExportRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMaxComputeExportResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -6825,6 +7981,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appendMeta)) {
+            body["appendMeta"] = request.appendMeta!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoSplit)) {
             body["autoSplit"] = request.autoSplit!;
         }
@@ -6839,6 +7998,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.mode)) {
             body["mode"] = request.mode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shardingPolicy)) {
+            body["shardingPolicy"] = request.shardingPolicy!;
         }
         if (!TeaUtils.Client.isUnset(request.ttl)) {
             body["ttl"] = request.ttl!;
