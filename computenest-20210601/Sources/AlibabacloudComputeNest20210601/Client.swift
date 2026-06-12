@@ -784,11 +784,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func generateServicePolicyWithOptions(_ request: GenerateServicePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateServicePolicyResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func generateServicePolicyWithOptions(_ tmpReq: GenerateServicePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateServicePolicyResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GenerateServicePolicyShrinkRequest = GenerateServicePolicyShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
+            request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.operationTypes)) {
             query["OperationTypes"] = request.operationTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.parametersShrink)) {
+            query["Parameters"] = request.parametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";

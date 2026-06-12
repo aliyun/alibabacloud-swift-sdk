@@ -3933,6 +3933,8 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 public class GenerateServicePolicyRequest : Tea.TeaModel {
     public var operationTypes: [String]?
 
+    public var parameters: [String: Any]?
+
     public var regionId: String?
 
     public var serviceId: String?
@@ -3960,6 +3962,9 @@ public class GenerateServicePolicyRequest : Tea.TeaModel {
         if self.operationTypes != nil {
             map["OperationTypes"] = self.operationTypes!
         }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -3982,6 +3987,88 @@ public class GenerateServicePolicyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["OperationTypes"] as? [String] {
             self.operationTypes = value
+        }
+        if let value = dict["Parameters"] as? [String: Any] {
+            self.parameters = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ServiceId"] as? String {
+            self.serviceId = value
+        }
+        if let value = dict["ServiceVersion"] as? String {
+            self.serviceVersion = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+        if let value = dict["TrialType"] as? String {
+            self.trialType = value
+        }
+    }
+}
+
+public class GenerateServicePolicyShrinkRequest : Tea.TeaModel {
+    public var operationTypes: [String]?
+
+    public var parametersShrink: String?
+
+    public var regionId: String?
+
+    public var serviceId: String?
+
+    public var serviceVersion: String?
+
+    public var templateName: String?
+
+    public var trialType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationTypes != nil {
+            map["OperationTypes"] = self.operationTypes!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceVersion != nil {
+            map["ServiceVersion"] = self.serviceVersion!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        if self.trialType != nil {
+            map["TrialType"] = self.trialType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OperationTypes"] as? [String] {
+            self.operationTypes = value
+        }
+        if let value = dict["Parameters"] as? String {
+            self.parametersShrink = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
