@@ -194,8 +194,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func batchSendMailWithOptions(_ request: BatchSendMailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSendMailResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func batchSendMailWithOptions(_ tmpReq: BatchSendMailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSendMailResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchSendMailShrinkRequest = BatchSendMailShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.receivers)) {
+            request.receiversShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.receivers, "Receivers", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.templateContent)) {
+            request.templateContentShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.templateContent, "TemplateContent", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
@@ -245,8 +253,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.unSubscribeLinkType)) {
             query["UnSubscribeLinkType"] = request.unSubscribeLinkType ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.receiversShrink)) {
+            body["Receivers"] = request.receiversShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateContentShrink)) {
+            body["TemplateContent"] = request.templateContentShrink ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "BatchSendMail",

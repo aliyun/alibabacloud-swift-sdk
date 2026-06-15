@@ -290,6 +290,98 @@ public class ApproveReplyMailAddressResponse : Tea.TeaModel {
 }
 
 public class BatchSendMailRequest : Tea.TeaModel {
+    public class Receivers : Tea.TeaModel {
+        public var templateData: [String: String]?
+
+        public var to: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.templateData != nil {
+                map["TemplateData"] = self.templateData!
+            }
+            if self.to != nil {
+                map["To"] = self.to!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TemplateData"] as? [String: String] {
+                self.templateData = value
+            }
+            if let value = dict["To"] as? [String] {
+                self.to = value
+            }
+        }
+    }
+    public class TemplateContent : Tea.TeaModel {
+        public var alias: String?
+
+        public var htmlBody: String?
+
+        public var subject: String?
+
+        public var textBody: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alias != nil {
+                map["Alias"] = self.alias!
+            }
+            if self.htmlBody != nil {
+                map["HtmlBody"] = self.htmlBody!
+            }
+            if self.subject != nil {
+                map["Subject"] = self.subject!
+            }
+            if self.textBody != nil {
+                map["TextBody"] = self.textBody!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Alias"] as? String {
+                self.alias = value
+            }
+            if let value = dict["HtmlBody"] as? String {
+                self.htmlBody = value
+            }
+            if let value = dict["Subject"] as? String {
+                self.subject = value
+            }
+            if let value = dict["TextBody"] as? String {
+                self.textBody = value
+            }
+        }
+    }
     public var accountName: String?
 
     public var addressType: Int32?
@@ -304,6 +396,8 @@ public class BatchSendMailRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var receivers: [BatchSendMailRequest.Receivers]?
+
     public var receiversName: String?
 
     public var replyAddress: String?
@@ -315,6 +409,192 @@ public class BatchSendMailRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var tagName: String?
+
+    public var templateContent: BatchSendMailRequest.TemplateContent?
+
+    public var templateName: String?
+
+    public var unSubscribeFilterLevel: String?
+
+    public var unSubscribeLinkType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.templateContent?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
+        }
+        if self.clickTrace != nil {
+            map["ClickTrace"] = self.clickTrace!
+        }
+        if self.domainAuth != nil {
+            map["DomainAuth"] = self.domainAuth!
+        }
+        if self.headers != nil {
+            map["Headers"] = self.headers!
+        }
+        if self.ipPoolId != nil {
+            map["IpPoolId"] = self.ipPoolId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.receivers != nil {
+            var tmp : [Any] = []
+            for k in self.receivers! {
+                tmp.append(k.toMap())
+            }
+            map["Receivers"] = tmp
+        }
+        if self.receiversName != nil {
+            map["ReceiversName"] = self.receiversName!
+        }
+        if self.replyAddress != nil {
+            map["ReplyAddress"] = self.replyAddress!
+        }
+        if self.replyAddressAlias != nil {
+            map["ReplyAddressAlias"] = self.replyAddressAlias!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tagName != nil {
+            map["TagName"] = self.tagName!
+        }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent?.toMap()
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        if self.unSubscribeFilterLevel != nil {
+            map["UnSubscribeFilterLevel"] = self.unSubscribeFilterLevel!
+        }
+        if self.unSubscribeLinkType != nil {
+            map["UnSubscribeLinkType"] = self.unSubscribeLinkType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccountName"] as? String {
+            self.accountName = value
+        }
+        if let value = dict["AddressType"] as? Int32 {
+            self.addressType = value
+        }
+        if let value = dict["ClickTrace"] as? String {
+            self.clickTrace = value
+        }
+        if let value = dict["DomainAuth"] as? Bool {
+            self.domainAuth = value
+        }
+        if let value = dict["Headers"] as? String {
+            self.headers = value
+        }
+        if let value = dict["IpPoolId"] as? String {
+            self.ipPoolId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Receivers"] as? [Any?] {
+            var tmp : [BatchSendMailRequest.Receivers] = []
+            for v in value {
+                if v != nil {
+                    var model = BatchSendMailRequest.Receivers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.receivers = tmp
+        }
+        if let value = dict["ReceiversName"] as? String {
+            self.receiversName = value
+        }
+        if let value = dict["ReplyAddress"] as? String {
+            self.replyAddress = value
+        }
+        if let value = dict["ReplyAddressAlias"] as? String {
+            self.replyAddressAlias = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TagName"] as? String {
+            self.tagName = value
+        }
+        if let value = dict["TemplateContent"] as? [String: Any?] {
+            var model = BatchSendMailRequest.TemplateContent()
+            model.fromMap(value)
+            self.templateContent = model
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+        if let value = dict["UnSubscribeFilterLevel"] as? String {
+            self.unSubscribeFilterLevel = value
+        }
+        if let value = dict["UnSubscribeLinkType"] as? String {
+            self.unSubscribeLinkType = value
+        }
+    }
+}
+
+public class BatchSendMailShrinkRequest : Tea.TeaModel {
+    public var accountName: String?
+
+    public var addressType: Int32?
+
+    public var clickTrace: String?
+
+    public var domainAuth: Bool?
+
+    public var headers: String?
+
+    public var ipPoolId: String?
+
+    public var ownerId: Int64?
+
+    public var receiversShrink: String?
+
+    public var receiversName: String?
+
+    public var replyAddress: String?
+
+    public var replyAddressAlias: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var tagName: String?
+
+    public var templateContentShrink: String?
 
     public var templateName: String?
 
@@ -357,6 +637,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.receiversShrink != nil {
+            map["Receivers"] = self.receiversShrink!
+        }
         if self.receiversName != nil {
             map["ReceiversName"] = self.receiversName!
         }
@@ -374,6 +657,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         }
         if self.tagName != nil {
             map["TagName"] = self.tagName!
+        }
+        if self.templateContentShrink != nil {
+            map["TemplateContent"] = self.templateContentShrink!
         }
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
@@ -410,6 +696,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["Receivers"] as? String {
+            self.receiversShrink = value
+        }
         if let value = dict["ReceiversName"] as? String {
             self.receiversName = value
         }
@@ -427,6 +716,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         }
         if let value = dict["TagName"] as? String {
             self.tagName = value
+        }
+        if let value = dict["TemplateContent"] as? String {
+            self.templateContentShrink = value
         }
         if let value = dict["TemplateName"] as? String {
             self.templateName = value
