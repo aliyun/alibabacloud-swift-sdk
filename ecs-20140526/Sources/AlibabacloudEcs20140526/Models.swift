@@ -21148,6 +21148,8 @@ public class CreatePlanMaintenanceWindowRequest : Tea.TeaModel {
     }
     public var enable: Bool?
 
+    public var minMaintenanceInterval: Int32?
+
     public var planWindowName: String?
 
     public var regionId: String?
@@ -21177,6 +21179,9 @@ public class CreatePlanMaintenanceWindowRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.minMaintenanceInterval != nil {
+            map["MinMaintenanceInterval"] = self.minMaintenanceInterval!
+        }
         if self.planWindowName != nil {
             map["PlanWindowName"] = self.planWindowName!
         }
@@ -21199,6 +21204,9 @@ public class CreatePlanMaintenanceWindowRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["MinMaintenanceInterval"] as? Int32 {
+            self.minMaintenanceInterval = value
         }
         if let value = dict["PlanWindowName"] as? String {
             self.planWindowName = value
@@ -21224,6 +21232,8 @@ public class CreatePlanMaintenanceWindowRequest : Tea.TeaModel {
 
 public class CreatePlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
     public var enable: Bool?
+
+    public var minMaintenanceInterval: Int32?
 
     public var planWindowName: String?
 
@@ -21252,6 +21262,9 @@ public class CreatePlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.minMaintenanceInterval != nil {
+            map["MinMaintenanceInterval"] = self.minMaintenanceInterval!
+        }
         if self.planWindowName != nil {
             map["PlanWindowName"] = self.planWindowName!
         }
@@ -21274,6 +21287,9 @@ public class CreatePlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["MinMaintenanceInterval"] as? Int32 {
+            self.minMaintenanceInterval = value
         }
         if let value = dict["PlanWindowName"] as? String {
             self.planWindowName = value
@@ -77719,6 +77735,8 @@ public class DescribePlanMaintenanceWindowsResponseBody : Tea.TeaModel {
 
         public var enable: Bool?
 
+        public var minMaintenanceInterval: Int32?
+
         public var modifiedTime: String?
 
         public var planWindowId: String?
@@ -77753,6 +77771,9 @@ public class DescribePlanMaintenanceWindowsResponseBody : Tea.TeaModel {
             if self.enable != nil {
                 map["Enable"] = self.enable!
             }
+            if self.minMaintenanceInterval != nil {
+                map["MinMaintenanceInterval"] = self.minMaintenanceInterval!
+            }
             if self.modifiedTime != nil {
                 map["ModifiedTime"] = self.modifiedTime!
             }
@@ -77781,6 +77802,9 @@ public class DescribePlanMaintenanceWindowsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Enable"] as? Bool {
                 self.enable = value
+            }
+            if let value = dict["MinMaintenanceInterval"] as? Int32 {
+                self.minMaintenanceInterval = value
             }
             if let value = dict["ModifiedTime"] as? String {
                 self.modifiedTime = value
@@ -115858,6 +115882,8 @@ public class ModifyPlanMaintenanceWindowRequest : Tea.TeaModel {
     }
     public var enable: Bool?
 
+    public var minMaintenanceInterval: Int32?
+
     public var planWindowId: String?
 
     public var planWindowName: String?
@@ -115889,6 +115915,9 @@ public class ModifyPlanMaintenanceWindowRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.minMaintenanceInterval != nil {
+            map["MinMaintenanceInterval"] = self.minMaintenanceInterval!
+        }
         if self.planWindowId != nil {
             map["PlanWindowId"] = self.planWindowId!
         }
@@ -115914,6 +115943,9 @@ public class ModifyPlanMaintenanceWindowRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["MinMaintenanceInterval"] as? Int32 {
+            self.minMaintenanceInterval = value
         }
         if let value = dict["PlanWindowId"] as? String {
             self.planWindowId = value
@@ -115942,6 +115974,8 @@ public class ModifyPlanMaintenanceWindowRequest : Tea.TeaModel {
 
 public class ModifyPlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
     public var enable: Bool?
+
+    public var minMaintenanceInterval: Int32?
 
     public var planWindowId: String?
 
@@ -115972,6 +116006,9 @@ public class ModifyPlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.minMaintenanceInterval != nil {
+            map["MinMaintenanceInterval"] = self.minMaintenanceInterval!
+        }
         if self.planWindowId != nil {
             map["PlanWindowId"] = self.planWindowId!
         }
@@ -115997,6 +116034,9 @@ public class ModifyPlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["MinMaintenanceInterval"] as? Int32 {
+            self.minMaintenanceInterval = value
         }
         if let value = dict["PlanWindowId"] as? String {
             self.planWindowId = value
