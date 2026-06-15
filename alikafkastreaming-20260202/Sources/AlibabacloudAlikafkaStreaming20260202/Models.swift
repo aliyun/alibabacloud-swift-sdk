@@ -10,6 +10,10 @@ public class CreateComputeInstanceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -30,6 +34,12 @@ public class CreateComputeInstanceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -40,6 +50,12 @@ public class CreateComputeInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
