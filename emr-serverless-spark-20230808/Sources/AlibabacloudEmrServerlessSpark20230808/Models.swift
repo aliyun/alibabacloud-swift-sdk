@@ -398,6 +398,8 @@ public class CacheCluster : Tea.TeaModel {
 
     public var creator: String?
 
+    public var extra: String?
+
     public var gmtCreated: Int64?
 
     public var gmtModified: Int64?
@@ -474,6 +476,9 @@ public class CacheCluster : Tea.TeaModel {
         }
         if self.creator != nil {
             map["creator"] = self.creator!
+        }
+        if self.extra != nil {
+            map["extra"] = self.extra!
         }
         if self.gmtCreated != nil {
             map["gmtCreated"] = self.gmtCreated!
@@ -573,6 +578,9 @@ public class CacheCluster : Tea.TeaModel {
         }
         if let value = dict["creator"] as? String {
             self.creator = value
+        }
+        if let value = dict["extra"] as? String {
+            self.extra = value
         }
         if let value = dict["gmtCreated"] as? Int64 {
             self.gmtCreated = value
@@ -8085,6 +8093,129 @@ public class GetAICenterStateResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetAICenterStateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetCacheClusterRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetCacheClusterResponseBody : Tea.TeaModel {
+    public var cacheClusters: CacheCluster?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.cacheClusters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cacheClusters != nil {
+            map["cacheClusters"] = self.cacheClusters?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cacheClusters"] as? [String: Any?] {
+            var model = CacheCluster()
+            model.fromMap(value)
+            self.cacheClusters = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetCacheClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetCacheClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetCacheClusterResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -21037,6 +21168,118 @@ public class RefreshLivyComputeTokenResponse : Tea.TeaModel {
     }
 }
 
+public class StartCacheClusterRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class StartCacheClusterResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StartCacheClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartCacheClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StartCacheClusterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class StartJobRunRequest : Tea.TeaModel {
     public class ConfigurationOverrides : Tea.TeaModel {
         public class Configurations : Tea.TeaModel {
@@ -22062,6 +22305,118 @@ public class StartSessionClusterResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = StartSessionClusterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class StopCacheClusterRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class StopCacheClusterResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StopCacheClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StopCacheClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StopCacheClusterResponseBody()
             model.fromMap(value)
             self.body = model
         }

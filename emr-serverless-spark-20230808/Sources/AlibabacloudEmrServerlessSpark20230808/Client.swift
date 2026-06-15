@@ -1148,6 +1148,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCacheClusterWithOptions(_ cacheClusterId: String, _ request: GetCacheClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCacheClusterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCacheCluster",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/cache/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(cacheClusterId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCacheClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCacheCluster(_ cacheClusterId: String, _ request: GetCacheClusterRequest) async throws -> GetCacheClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getCacheClusterWithOptions(cacheClusterId as! String, request as! GetCacheClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCuHoursWithOptions(_ workspaceId: String, _ queue: String, _ request: GetCuHoursRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCuHoursResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2583,6 +2616,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startCacheClusterWithOptions(_ cacheClusterId: String, _ request: StartCacheClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartCacheClusterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartCacheCluster",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/cache/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(cacheClusterId)) + "/start",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartCacheClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startCacheCluster(_ cacheClusterId: String, _ request: StartCacheClusterRequest) async throws -> StartCacheClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startCacheClusterWithOptions(cacheClusterId as! String, request as! StartCacheClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startJobRunWithOptions(_ workspaceId: String, _ request: StartJobRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartJobRunResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2848,6 +2914,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await startSessionClusterWithOptions(workspaceId as! String, request as! StartSessionClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopCacheClusterWithOptions(_ cacheClusterId: String, _ request: StopCacheClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopCacheClusterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopCacheCluster",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/cache/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(cacheClusterId)) + "/stop",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopCacheClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopCacheCluster(_ cacheClusterId: String, _ request: StopCacheClusterRequest) async throws -> StopCacheClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopCacheClusterWithOptions(cacheClusterId as! String, request as! StopCacheClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
