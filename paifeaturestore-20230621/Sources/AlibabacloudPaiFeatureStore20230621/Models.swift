@@ -1792,6 +1792,8 @@ public class CreateModelFeatureRequest : Tea.TeaModel {
 
         public var name: String?
 
+        public var prefixName: String?
+
         public var type: String?
 
         public override init() {
@@ -1817,6 +1819,9 @@ public class CreateModelFeatureRequest : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.prefixName != nil {
+                map["PrefixName"] = self.prefixName!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -1833,6 +1838,9 @@ public class CreateModelFeatureRequest : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["PrefixName"] as? String {
+                self.prefixName = value
             }
             if let value = dict["Type"] as? String {
                 self.type = value
@@ -4672,6 +4680,8 @@ public class GetModelFeatureResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var prefixName: String?
+
         public var type: String?
 
         public override init() {
@@ -4700,6 +4710,9 @@ public class GetModelFeatureResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.prefixName != nil {
+                map["PrefixName"] = self.prefixName!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -4719,6 +4732,9 @@ public class GetModelFeatureResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["PrefixName"] as? String {
+                self.prefixName = value
             }
             if let value = dict["Type"] as? String {
                 self.type = value
@@ -12819,6 +12835,8 @@ public class UpdateModelFeatureRequest : Tea.TeaModel {
 
         public var name: String?
 
+        public var prefixName: String?
+
         public var type: String?
 
         public override init() {
@@ -12844,6 +12862,9 @@ public class UpdateModelFeatureRequest : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.prefixName != nil {
+                map["PrefixName"] = self.prefixName!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -12860,6 +12881,9 @@ public class UpdateModelFeatureRequest : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["PrefixName"] as? String {
+                self.prefixName = value
             }
             if let value = dict["Type"] as? String {
                 self.type = value
