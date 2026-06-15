@@ -190,6 +190,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceIds)) {
             query["ResourceIds"] = request.resourceIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.roleChain)) {
+            query["RoleChain"] = request.roleChain ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2730,6 +2733,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceIds)) {
             query["ResourceIds"] = request.resourceIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.roleChain)) {
+            query["RoleChain"] = request.roleChain ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3280,6 +3286,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceIds)) {
             query["ResourceIds"] = request.resourceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.roleChain)) {
+            query["RoleChain"] = request.roleChain ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

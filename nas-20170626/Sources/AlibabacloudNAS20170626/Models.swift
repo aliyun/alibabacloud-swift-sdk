@@ -504,9 +504,57 @@ public class AttachVscToFilesystemsRequest : Tea.TeaModel {
             }
         }
     }
+    public class RoleChain : Tea.TeaModel {
+        public var assumeRoleFor: String?
+
+        public var roleArn: String?
+
+        public var roleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assumeRoleFor != nil {
+                map["AssumeRoleFor"] = self.assumeRoleFor!
+            }
+            if self.roleArn != nil {
+                map["RoleArn"] = self.roleArn!
+            }
+            if self.roleType != nil {
+                map["RoleType"] = self.roleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssumeRoleFor"] as? String {
+                self.assumeRoleFor = value
+            }
+            if let value = dict["RoleArn"] as? String {
+                self.roleArn = value
+            }
+            if let value = dict["RoleType"] as? String {
+                self.roleType = value
+            }
+        }
+    }
     public var clientToken: String?
 
     public var resourceIds: [AttachVscToFilesystemsRequest.ResourceIds]?
+
+    public var roleChain: [AttachVscToFilesystemsRequest.RoleChain]?
 
     public override init() {
         super.init()
@@ -532,6 +580,13 @@ public class AttachVscToFilesystemsRequest : Tea.TeaModel {
             }
             map["ResourceIds"] = tmp
         }
+        if self.roleChain != nil {
+            var tmp : [Any] = []
+            for k in self.roleChain! {
+                tmp.append(k.toMap())
+            }
+            map["RoleChain"] = tmp
+        }
         return map
     }
 
@@ -552,6 +607,19 @@ public class AttachVscToFilesystemsRequest : Tea.TeaModel {
                 }
             }
             self.resourceIds = tmp
+        }
+        if let value = dict["RoleChain"] as? [Any?] {
+            var tmp : [AttachVscToFilesystemsRequest.RoleChain] = []
+            for v in value {
+                if v != nil {
+                    var model = AttachVscToFilesystemsRequest.RoleChain()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.roleChain = tmp
         }
     }
 }
@@ -14476,11 +14544,59 @@ public class DescribeFilesystemsVscAttachInfoRequest : Tea.TeaModel {
             }
         }
     }
+    public class RoleChain : Tea.TeaModel {
+        public var assumeRoleFor: String?
+
+        public var roleArn: String?
+
+        public var roleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assumeRoleFor != nil {
+                map["AssumeRoleFor"] = self.assumeRoleFor!
+            }
+            if self.roleArn != nil {
+                map["RoleArn"] = self.roleArn!
+            }
+            if self.roleType != nil {
+                map["RoleType"] = self.roleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssumeRoleFor"] as? String {
+                self.assumeRoleFor = value
+            }
+            if let value = dict["RoleArn"] as? String {
+                self.roleArn = value
+            }
+            if let value = dict["RoleType"] as? String {
+                self.roleType = value
+            }
+        }
+    }
     public var maxResults: Int32?
 
     public var nextToken: String?
 
     public var resourceIds: [DescribeFilesystemsVscAttachInfoRequest.ResourceIds]?
+
+    public var roleChain: [DescribeFilesystemsVscAttachInfoRequest.RoleChain]?
 
     public override init() {
         super.init()
@@ -14509,6 +14625,13 @@ public class DescribeFilesystemsVscAttachInfoRequest : Tea.TeaModel {
             }
             map["ResourceIds"] = tmp
         }
+        if self.roleChain != nil {
+            var tmp : [Any] = []
+            for k in self.roleChain! {
+                tmp.append(k.toMap())
+            }
+            map["RoleChain"] = tmp
+        }
         return map
     }
 
@@ -14532,6 +14655,19 @@ public class DescribeFilesystemsVscAttachInfoRequest : Tea.TeaModel {
                 }
             }
             self.resourceIds = tmp
+        }
+        if let value = dict["RoleChain"] as? [Any?] {
+            var tmp : [DescribeFilesystemsVscAttachInfoRequest.RoleChain] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeFilesystemsVscAttachInfoRequest.RoleChain()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.roleChain = tmp
         }
     }
 }
@@ -19040,9 +19176,57 @@ public class DetachVscFromFilesystemsRequest : Tea.TeaModel {
             }
         }
     }
+    public class RoleChain : Tea.TeaModel {
+        public var assumeRoleFor: String?
+
+        public var roleArn: String?
+
+        public var roleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assumeRoleFor != nil {
+                map["AssumeRoleFor"] = self.assumeRoleFor!
+            }
+            if self.roleArn != nil {
+                map["RoleArn"] = self.roleArn!
+            }
+            if self.roleType != nil {
+                map["RoleType"] = self.roleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssumeRoleFor"] as? String {
+                self.assumeRoleFor = value
+            }
+            if let value = dict["RoleArn"] as? String {
+                self.roleArn = value
+            }
+            if let value = dict["RoleType"] as? String {
+                self.roleType = value
+            }
+        }
+    }
     public var clientToken: String?
 
     public var resourceIds: [DetachVscFromFilesystemsRequest.ResourceIds]?
+
+    public var roleChain: [DetachVscFromFilesystemsRequest.RoleChain]?
 
     public override init() {
         super.init()
@@ -19068,6 +19252,13 @@ public class DetachVscFromFilesystemsRequest : Tea.TeaModel {
             }
             map["ResourceIds"] = tmp
         }
+        if self.roleChain != nil {
+            var tmp : [Any] = []
+            for k in self.roleChain! {
+                tmp.append(k.toMap())
+            }
+            map["RoleChain"] = tmp
+        }
         return map
     }
 
@@ -19088,6 +19279,19 @@ public class DetachVscFromFilesystemsRequest : Tea.TeaModel {
                 }
             }
             self.resourceIds = tmp
+        }
+        if let value = dict["RoleChain"] as? [Any?] {
+            var tmp : [DetachVscFromFilesystemsRequest.RoleChain] = []
+            for v in value {
+                if v != nil {
+                    var model = DetachVscFromFilesystemsRequest.RoleChain()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.roleChain = tmp
         }
     }
 }
