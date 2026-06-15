@@ -20952,6 +20952,88 @@ public class DescribeRegionsRequest : Tea.TeaModel {
 }
 
 public class DescribeRegionsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Regions : Tea.TeaModel {
+            public var localName: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.localName != nil {
+                    map["localName"] = self.localName!
+                }
+                if self.regionId != nil {
+                    map["regionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["localName"] as? String {
+                    self.localName = value
+                }
+                if let value = dict["regionId"] as? String {
+                    self.regionId = value
+                }
+            }
+        }
+        public var regions: [DescribeRegionsResponseBody.Data.Regions]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regions != nil {
+                var tmp : [Any] = []
+                for k in self.regions! {
+                    tmp.append(k.toMap())
+                }
+                map["regions"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["regions"] as? [Any?] {
+                var tmp : [DescribeRegionsResponseBody.Data.Regions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRegionsResponseBody.Data.Regions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.regions = tmp
+            }
+        }
+    }
     public class Regions : Tea.TeaModel {
         public class Region : Tea.TeaModel {
             public var localName: String?
@@ -21036,6 +21118,8 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
     }
     public var code: String?
 
+    public var data: DescribeRegionsResponseBody.Data?
+
     public var message: String?
 
     public var regions: DescribeRegionsResponseBody.Regions?
@@ -21052,6 +21136,7 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
         try self.regions?.validate()
     }
 
@@ -21059,6 +21144,9 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.code != nil {
             map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
         }
         if self.message != nil {
             map["message"] = self.message!
@@ -21076,6 +21164,11 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = DescribeRegionsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
         }
         if let value = dict["message"] as? String {
             self.message = value
