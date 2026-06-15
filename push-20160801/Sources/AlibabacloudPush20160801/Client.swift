@@ -719,6 +719,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidXiaomiImageUrl)) {
             query["AndroidXiaomiImageUrl"] = request.androidXiaomiImageUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.androidXiaomiTemplateId)) {
+            query["AndroidXiaomiTemplateId"] = request.androidXiaomiTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidXiaomiTemplateParams)) {
+            query["AndroidXiaomiTemplateParams"] = request.androidXiaomiTemplateParams ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appKey)) {
             query["AppKey"] = request.appKey!;
         }

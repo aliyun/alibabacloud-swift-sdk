@@ -394,6 +394,10 @@ public class PushTask : Tea.TeaModel {
 
                     public var focusPics: String?
 
+                    public var templateId: String?
+
+                    public var templateParams: String?
+
                     public override init() {
                         super.init()
                     }
@@ -417,6 +421,12 @@ public class PushTask : Tea.TeaModel {
                         if self.focusPics != nil {
                             map["FocusPics"] = self.focusPics!
                         }
+                        if self.templateId != nil {
+                            map["TemplateId"] = self.templateId!
+                        }
+                        if self.templateParams != nil {
+                            map["TemplateParams"] = self.templateParams!
+                        }
                         return map
                     }
 
@@ -430,6 +440,12 @@ public class PushTask : Tea.TeaModel {
                         }
                         if let value = dict["FocusPics"] as? String {
                             self.focusPics = value
+                        }
+                        if let value = dict["TemplateId"] as? String {
+                            self.templateId = value
+                        }
+                        if let value = dict["TemplateParams"] as? String {
+                            self.templateParams = value
                         }
                     }
                 }
@@ -3227,6 +3243,10 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidXiaomiImageUrl: String?
 
+        public var androidXiaomiTemplateId: String?
+
+        public var androidXiaomiTemplateParams: String?
+
         public var body: String?
 
         public var deviceType: String?
@@ -3521,6 +3541,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidXiaomiImageUrl != nil {
                 map["AndroidXiaomiImageUrl"] = self.androidXiaomiImageUrl!
+            }
+            if self.androidXiaomiTemplateId != nil {
+                map["AndroidXiaomiTemplateId"] = self.androidXiaomiTemplateId!
+            }
+            if self.androidXiaomiTemplateParams != nil {
+                map["AndroidXiaomiTemplateParams"] = self.androidXiaomiTemplateParams!
             }
             if self.body != nil {
                 map["Body"] = self.body!
@@ -3862,6 +3888,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["AndroidXiaomiImageUrl"] as? String {
                 self.androidXiaomiImageUrl = value
+            }
+            if let value = dict["AndroidXiaomiTemplateId"] as? String {
+                self.androidXiaomiTemplateId = value
+            }
+            if let value = dict["AndroidXiaomiTemplateParams"] as? String {
+                self.androidXiaomiTemplateParams = value
             }
             if let value = dict["Body"] as? String {
                 self.body = value
@@ -4524,6 +4556,10 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidXiaomiImageUrl: String?
 
+    public var androidXiaomiTemplateId: String?
+
+    public var androidXiaomiTemplateParams: String?
+
     public var appKey: Int64?
 
     public var body: String?
@@ -4832,6 +4868,12 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidXiaomiImageUrl != nil {
             map["AndroidXiaomiImageUrl"] = self.androidXiaomiImageUrl!
+        }
+        if self.androidXiaomiTemplateId != nil {
+            map["AndroidXiaomiTemplateId"] = self.androidXiaomiTemplateId!
+        }
+        if self.androidXiaomiTemplateParams != nil {
+            map["AndroidXiaomiTemplateParams"] = self.androidXiaomiTemplateParams!
         }
         if self.appKey != nil {
             map["AppKey"] = self.appKey!
@@ -5195,6 +5237,12 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidXiaomiImageUrl"] as? String {
             self.androidXiaomiImageUrl = value
         }
+        if let value = dict["AndroidXiaomiTemplateId"] as? String {
+            self.androidXiaomiTemplateId = value
+        }
+        if let value = dict["AndroidXiaomiTemplateParams"] as? String {
+            self.androidXiaomiTemplateParams = value
+        }
         if let value = dict["AppKey"] as? Int64 {
             self.appKey = value
         }
@@ -5498,6 +5546,10 @@ public class PushShrinkRequest : Tea.TeaModel {
     public var androidXiaomiFocusPics: String?
 
     public var androidXiaomiImageUrl: String?
+
+    public var androidXiaomiTemplateId: String?
+
+    public var androidXiaomiTemplateParams: String?
 
     public var appKey: Int64?
 
@@ -5807,6 +5859,12 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.androidXiaomiImageUrl != nil {
             map["AndroidXiaomiImageUrl"] = self.androidXiaomiImageUrl!
+        }
+        if self.androidXiaomiTemplateId != nil {
+            map["AndroidXiaomiTemplateId"] = self.androidXiaomiTemplateId!
+        }
+        if self.androidXiaomiTemplateParams != nil {
+            map["AndroidXiaomiTemplateParams"] = self.androidXiaomiTemplateParams!
         }
         if self.appKey != nil {
             map["AppKey"] = self.appKey!
@@ -6169,6 +6227,12 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AndroidXiaomiImageUrl"] as? String {
             self.androidXiaomiImageUrl = value
+        }
+        if let value = dict["AndroidXiaomiTemplateId"] as? String {
+            self.androidXiaomiTemplateId = value
+        }
+        if let value = dict["AndroidXiaomiTemplateParams"] as? String {
+            self.androidXiaomiTemplateParams = value
         }
         if let value = dict["AppKey"] as? Int64 {
             self.appKey = value
