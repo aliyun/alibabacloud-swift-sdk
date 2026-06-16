@@ -68,44 +68,6 @@ public class EngineSearchRequest : Tea.TeaModel {
             }
         }
     }
-    public class Recall : Tea.TeaModel {
-        public var closeRecallAsr: Bool?
-
-        public var needMergeSegments: Bool?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.closeRecallAsr != nil {
-                map["closeRecallAsr"] = self.closeRecallAsr!
-            }
-            if self.needMergeSegments != nil {
-                map["needMergeSegments"] = self.needMergeSegments!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["closeRecallAsr"] as? Bool {
-                self.closeRecallAsr = value
-            }
-            if let value = dict["needMergeSegments"] as? Bool {
-                self.needMergeSegments = value
-            }
-        }
-    }
     public class User : Tea.TeaModel {
         public var userId: String?
 
@@ -142,15 +104,9 @@ public class EngineSearchRequest : Tea.TeaModel {
 
     public var query: EngineSearchRequest.Query?
 
-    public var recall: EngineSearchRequest.Recall?
-
     public var sessionId: String?
 
-    public var strategyId: String?
-
     public var user: EngineSearchRequest.User?
-
-    public var version: String?
 
     public override init() {
         super.init()
@@ -163,7 +119,6 @@ public class EngineSearchRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.query?.validate()
-        try self.recall?.validate()
         try self.user?.validate()
     }
 
@@ -178,20 +133,11 @@ public class EngineSearchRequest : Tea.TeaModel {
         if self.query != nil {
             map["query"] = self.query?.toMap()
         }
-        if self.recall != nil {
-            map["recall"] = self.recall?.toMap()
-        }
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
         }
-        if self.strategyId != nil {
-            map["strategyId"] = self.strategyId!
-        }
         if self.user != nil {
             map["user"] = self.user?.toMap()
-        }
-        if self.version != nil {
-            map["version"] = self.version!
         }
         return map
     }
@@ -209,24 +155,13 @@ public class EngineSearchRequest : Tea.TeaModel {
             model.fromMap(value)
             self.query = model
         }
-        if let value = dict["recall"] as? [String: Any?] {
-            var model = EngineSearchRequest.Recall()
-            model.fromMap(value)
-            self.recall = model
-        }
         if let value = dict["sessionId"] as? String {
             self.sessionId = value
-        }
-        if let value = dict["strategyId"] as? String {
-            self.strategyId = value
         }
         if let value = dict["user"] as? [String: Any?] {
             var model = EngineSearchRequest.User()
             model.fromMap(value)
             self.user = model
-        }
-        if let value = dict["version"] as? String {
-            self.version = value
         }
     }
 }
