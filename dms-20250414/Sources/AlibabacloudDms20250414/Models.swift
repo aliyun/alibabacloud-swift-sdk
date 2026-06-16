@@ -2565,6 +2565,109 @@ public class DataMountInfo : Tea.TeaModel {
     }
 }
 
+public class DmsGatewayOrder : Tea.TeaModel {
+    public var bizType: String?
+
+    public var chargeType: String?
+
+    public var commodityCode: String?
+
+    public var expireTime: String?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var orderId: Int64?
+
+    public var payNum: Int32?
+
+    public var region: String?
+
+    public var state: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.payNum != nil {
+            map["PayNum"] = self.payNum!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizType"] as? String {
+            self.bizType = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
+        if let value = dict["CommodityCode"] as? String {
+            self.commodityCode = value
+        }
+        if let value = dict["ExpireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["OrderId"] as? Int64 {
+            self.orderId = value
+        }
+        if let value = dict["PayNum"] as? Int32 {
+            self.payNum = value
+        }
+        if let value = dict["Region"] as? String {
+            self.region = value
+        }
+        if let value = dict["State"] as? String {
+            self.state = value
+        }
+    }
+}
+
 public class DmsKnowledgeSearchOrderInfoDO : Tea.TeaModel {
     public var aliyunAccountUid: String?
 
@@ -8597,6 +8700,8 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
         public var totalMember: Int64?
 
+        public var type: String?
+
         public var workspaceDesc: String?
 
         public var workspaceId: String?
@@ -8637,6 +8742,9 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
             if self.totalMember != nil {
                 map["TotalMember"] = self.totalMember!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.workspaceDesc != nil {
                 map["WorkspaceDesc"] = self.workspaceDesc!
             }
@@ -8671,6 +8779,9 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
             }
             if let value = dict["TotalMember"] as? Int64 {
                 self.totalMember = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
             if let value = dict["WorkspaceDesc"] as? String {
                 self.workspaceDesc = value
@@ -12822,6 +12933,92 @@ public class DescribeDataAgentSessionRequest : Tea.TeaModel {
 
 public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Artifacts : Tea.TeaModel {
+            public var description_: String?
+
+            public var finishTime: String?
+
+            public var id: String?
+
+            public var name: String?
+
+            public var receiveTime: String?
+
+            public var startTime: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.finishTime != nil {
+                    map["FinishTime"] = self.finishTime!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.receiveTime != nil {
+                    map["ReceiveTime"] = self.receiveTime!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["FinishTime"] as? String {
+                    self.finishTime = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["ReceiveTime"] as? String {
+                    self.receiveTime = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class ChatHistoryLocations : Tea.TeaModel {
             public var key: String?
 
@@ -12857,6 +13054,90 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Url"] as? String {
                     self.url = value
+                }
+            }
+        }
+        public class DataSources : Tea.TeaModel {
+            public var category: String?
+
+            public var detail: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
+                if self.detail != nil {
+                    map["Detail"] = self.detail!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Category"] as? String {
+                    self.category = value
+                }
+                if let value = dict["Detail"] as? String {
+                    self.detail = value
+                }
+            }
+        }
+        public class RecallResults : Tea.TeaModel {
+            public var content: String?
+
+            public var score: Double?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                if self.score != nil {
+                    map["Score"] = self.score!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["Score"] as? Double {
+                    self.score = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
                 }
             }
         }
@@ -12982,13 +13263,19 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
 
         public var agentStatus: String?
 
+        public var artifacts: [DescribeDataAgentSessionResponseBody.Data.Artifacts]?
+
         public var chatHistoryLocations: [DescribeDataAgentSessionResponseBody.Data.ChatHistoryLocations]?
 
         public var createTime: Int64?
 
+        public var dataSources: [DescribeDataAgentSessionResponseBody.Data.DataSources]?
+
         public var favoriteInWorkspace: String?
 
         public var file: String?
+
+        public var recallResults: [DescribeDataAgentSessionResponseBody.Data.RecallResults]?
 
         public var saved: Bool?
 
@@ -13023,6 +13310,13 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
             if self.agentStatus != nil {
                 map["AgentStatus"] = self.agentStatus!
             }
+            if self.artifacts != nil {
+                var tmp : [Any] = []
+                for k in self.artifacts! {
+                    tmp.append(k.toMap())
+                }
+                map["Artifacts"] = tmp
+            }
             if self.chatHistoryLocations != nil {
                 var tmp : [Any] = []
                 for k in self.chatHistoryLocations! {
@@ -13033,11 +13327,25 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.dataSources != nil {
+                var tmp : [Any] = []
+                for k in self.dataSources! {
+                    tmp.append(k.toMap())
+                }
+                map["DataSources"] = tmp
+            }
             if self.favoriteInWorkspace != nil {
                 map["FavoriteInWorkspace"] = self.favoriteInWorkspace!
             }
             if self.file != nil {
                 map["File"] = self.file!
+            }
+            if self.recallResults != nil {
+                var tmp : [Any] = []
+                for k in self.recallResults! {
+                    tmp.append(k.toMap())
+                }
+                map["RecallResults"] = tmp
             }
             if self.saved != nil {
                 map["Saved"] = self.saved!
@@ -13068,6 +13376,19 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
             if let value = dict["AgentStatus"] as? String {
                 self.agentStatus = value
             }
+            if let value = dict["Artifacts"] as? [Any?] {
+                var tmp : [DescribeDataAgentSessionResponseBody.Data.Artifacts] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDataAgentSessionResponseBody.Data.Artifacts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.artifacts = tmp
+            }
             if let value = dict["ChatHistoryLocations"] as? [Any?] {
                 var tmp : [DescribeDataAgentSessionResponseBody.Data.ChatHistoryLocations] = []
                 for v in value {
@@ -13084,11 +13405,37 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
+            if let value = dict["DataSources"] as? [Any?] {
+                var tmp : [DescribeDataAgentSessionResponseBody.Data.DataSources] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDataAgentSessionResponseBody.Data.DataSources()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dataSources = tmp
+            }
             if let value = dict["FavoriteInWorkspace"] as? String {
                 self.favoriteInWorkspace = value
             }
             if let value = dict["File"] as? String {
                 self.file = value
+            }
+            if let value = dict["RecallResults"] as? [Any?] {
+                var tmp : [DescribeDataAgentSessionResponseBody.Data.RecallResults] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDataAgentSessionResponseBody.Data.RecallResults()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.recallResults = tmp
             }
             if let value = dict["Saved"] as? Bool {
                 self.saved = value
@@ -15231,6 +15578,8 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
 
         public var totalMember: String?
 
+        public var type: String?
+
         public var workspaceDesc: String?
 
         public var workspaceId: String?
@@ -15271,6 +15620,9 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
             if self.totalMember != nil {
                 map["TotalMember"] = self.totalMember!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.workspaceDesc != nil {
                 map["WorkspaceDesc"] = self.workspaceDesc!
             }
@@ -15305,6 +15657,9 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["TotalMember"] as? String {
                 self.totalMember = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
             if let value = dict["WorkspaceDesc"] as? String {
                 self.workspaceDesc = value
@@ -19406,6 +19761,8 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
             public var totalMember: Int64?
 
+            public var type: String?
+
             public var workspaceId: String?
 
             public var workspaceName: String?
@@ -19447,6 +19804,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
                 if self.totalMember != nil {
                     map["TotalMember"] = self.totalMember!
                 }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
                 if self.workspaceId != nil {
                     map["WorkspaceId"] = self.workspaceId!
                 }
@@ -19481,6 +19841,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TotalMember"] as? Int64 {
                     self.totalMember = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
                 }
                 if let value = dict["WorkspaceId"] as? String {
                     self.workspaceId = value
@@ -26901,6 +27264,14 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var reportWaterMark: String?
 
+        public var skipAskHuman: Bool?
+
+        public var skipPlan: Bool?
+
+        public var skipSqlConfirm: Bool?
+
+        public var skipWebReportConfirm: Bool?
+
         public override init() {
             super.init()
         }
@@ -26930,6 +27301,18 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if self.reportWaterMark != nil {
                 map["ReportWaterMark"] = self.reportWaterMark!
             }
+            if self.skipAskHuman != nil {
+                map["SkipAskHuman"] = self.skipAskHuman!
+            }
+            if self.skipPlan != nil {
+                map["SkipPlan"] = self.skipPlan!
+            }
+            if self.skipSqlConfirm != nil {
+                map["SkipSqlConfirm"] = self.skipSqlConfirm!
+            }
+            if self.skipWebReportConfirm != nil {
+                map["SkipWebReportConfirm"] = self.skipWebReportConfirm!
+            }
             return map
         }
 
@@ -26949,6 +27332,97 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["ReportWaterMark"] as? String {
                 self.reportWaterMark = value
+            }
+            if let value = dict["SkipAskHuman"] as? Bool {
+                self.skipAskHuman = value
+            }
+            if let value = dict["SkipPlan"] as? Bool {
+                self.skipPlan = value
+            }
+            if let value = dict["SkipSqlConfirm"] as? Bool {
+                self.skipSqlConfirm = value
+            }
+            if let value = dict["SkipWebReportConfirm"] as? Bool {
+                self.skipWebReportConfirm = value
+            }
+        }
+    }
+    public class TaskConfig : Tea.TeaModel {
+        public class ReportConfig : Tea.TeaModel {
+            public var reportPrompt: String?
+
+            public var reportTheme: String?
+
+            public var reportType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.reportPrompt != nil {
+                    map["ReportPrompt"] = self.reportPrompt!
+                }
+                if self.reportTheme != nil {
+                    map["ReportTheme"] = self.reportTheme!
+                }
+                if self.reportType != nil {
+                    map["ReportType"] = self.reportType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ReportPrompt"] as? String {
+                    self.reportPrompt = value
+                }
+                if let value = dict["ReportTheme"] as? String {
+                    self.reportTheme = value
+                }
+                if let value = dict["ReportType"] as? String {
+                    self.reportType = value
+                }
+            }
+        }
+        public var reportConfig: SendChatMessageRequest.TaskConfig.ReportConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.reportConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.reportConfig != nil {
+                map["ReportConfig"] = self.reportConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ReportConfig"] as? [String: Any?] {
+                var model = SendChatMessageRequest.TaskConfig.ReportConfig()
+                model.fromMap(value)
+                self.reportConfig = model
             }
         }
     }
@@ -26976,6 +27450,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var taskConfig: SendChatMessageRequest.TaskConfig?
+
     public override init() {
         super.init()
     }
@@ -26988,6 +27464,7 @@ public class SendChatMessageRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.dataSource?.validate()
         try self.sessionConfig?.validate()
+        try self.taskConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -27031,6 +27508,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
         }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.taskConfig != nil {
+            map["TaskConfig"] = self.taskConfig?.toMap()
         }
         return map
     }
@@ -27087,6 +27567,11 @@ public class SendChatMessageRequest : Tea.TeaModel {
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
         }
+        if let value = dict["TaskConfig"] as? [String: Any?] {
+            var model = SendChatMessageRequest.TaskConfig()
+            model.fromMap(value)
+            self.taskConfig = model
+        }
     }
 }
 
@@ -27114,6 +27599,8 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
     public var sessionConfigShrink: String?
 
     public var sessionId: String?
+
+    public var taskConfigShrink: String?
 
     public override init() {
         super.init()
@@ -27165,6 +27652,9 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.taskConfigShrink != nil {
+            map["TaskConfig"] = self.taskConfigShrink!
+        }
         return map
     }
 
@@ -27206,6 +27696,9 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
         }
+        if let value = dict["TaskConfig"] as? String {
+            self.taskConfigShrink = value
+        }
     }
 }
 
@@ -27214,6 +27707,8 @@ public class SendChatMessageResponseBody : Tea.TeaModel {
         public var agentId: String?
 
         public var message: String?
+
+        public var messageId: String?
 
         public var sessionId: String?
 
@@ -27237,6 +27732,9 @@ public class SendChatMessageResponseBody : Tea.TeaModel {
             if self.message != nil {
                 map["Message"] = self.message!
             }
+            if self.messageId != nil {
+                map["MessageId"] = self.messageId!
+            }
             if self.sessionId != nil {
                 map["SessionId"] = self.sessionId!
             }
@@ -27250,6 +27748,9 @@ public class SendChatMessageResponseBody : Tea.TeaModel {
             }
             if let value = dict["Message"] as? String {
                 self.message = value
+            }
+            if let value = dict["MessageId"] as? String {
+                self.messageId = value
             }
             if let value = dict["SessionId"] as? String {
                 self.sessionId = value
