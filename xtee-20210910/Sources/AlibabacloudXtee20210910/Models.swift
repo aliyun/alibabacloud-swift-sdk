@@ -7559,6 +7559,8 @@ public class CreateTaskGroupRequest : Tea.TeaModel {
 
     public var serviceCodes: String?
 
+    public var serviceList: String?
+
     public var serviceNames: String?
 
     public var tab: String?
@@ -7596,6 +7598,9 @@ public class CreateTaskGroupRequest : Tea.TeaModel {
         if self.serviceCodes != nil {
             map["ServiceCodes"] = self.serviceCodes!
         }
+        if self.serviceList != nil {
+            map["ServiceList"] = self.serviceList!
+        }
         if self.serviceNames != nil {
             map["ServiceNames"] = self.serviceNames!
         }
@@ -7628,6 +7633,9 @@ public class CreateTaskGroupRequest : Tea.TeaModel {
         if let value = dict["ServiceCodes"] as? String {
             self.serviceCodes = value
         }
+        if let value = dict["ServiceList"] as? String {
+            self.serviceList = value
+        }
         if let value = dict["ServiceNames"] as? String {
             self.serviceNames = value
         }
@@ -7645,6 +7653,156 @@ public class CreateTaskGroupRequest : Tea.TeaModel {
 
 public class CreateTaskGroupResponseBody : Tea.TeaModel {
     public class ResultObject : Tea.TeaModel {
+        public class SubTaskList : Tea.TeaModel {
+            public var checker: String?
+
+            public var fileName: String?
+
+            public var fileRows: String?
+
+            public var finishTime: String?
+
+            public var groupName: String?
+
+            public var isCharge: String?
+
+            public var modelScene: String?
+
+            public var sampleId: String?
+
+            public var sampleName: String?
+
+            public var serviceCode: String?
+
+            public var serviceName: String?
+
+            public var subTaskId: Int64?
+
+            public var tab: String?
+
+            public var taskGroupId: String?
+
+            public var taskName: String?
+
+            public var taskStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.checker != nil {
+                    map["Checker"] = self.checker!
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                if self.fileRows != nil {
+                    map["FileRows"] = self.fileRows!
+                }
+                if self.finishTime != nil {
+                    map["FinishTime"] = self.finishTime!
+                }
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                if self.isCharge != nil {
+                    map["IsCharge"] = self.isCharge!
+                }
+                if self.modelScene != nil {
+                    map["ModelScene"] = self.modelScene!
+                }
+                if self.sampleId != nil {
+                    map["SampleId"] = self.sampleId!
+                }
+                if self.sampleName != nil {
+                    map["SampleName"] = self.sampleName!
+                }
+                if self.serviceCode != nil {
+                    map["ServiceCode"] = self.serviceCode!
+                }
+                if self.serviceName != nil {
+                    map["ServiceName"] = self.serviceName!
+                }
+                if self.subTaskId != nil {
+                    map["SubTaskId"] = self.subTaskId!
+                }
+                if self.tab != nil {
+                    map["Tab"] = self.tab!
+                }
+                if self.taskGroupId != nil {
+                    map["TaskGroupId"] = self.taskGroupId!
+                }
+                if self.taskName != nil {
+                    map["TaskName"] = self.taskName!
+                }
+                if self.taskStatus != nil {
+                    map["TaskStatus"] = self.taskStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Checker"] as? String {
+                    self.checker = value
+                }
+                if let value = dict["FileName"] as? String {
+                    self.fileName = value
+                }
+                if let value = dict["FileRows"] as? String {
+                    self.fileRows = value
+                }
+                if let value = dict["FinishTime"] as? String {
+                    self.finishTime = value
+                }
+                if let value = dict["GroupName"] as? String {
+                    self.groupName = value
+                }
+                if let value = dict["IsCharge"] as? String {
+                    self.isCharge = value
+                }
+                if let value = dict["ModelScene"] as? String {
+                    self.modelScene = value
+                }
+                if let value = dict["SampleId"] as? String {
+                    self.sampleId = value
+                }
+                if let value = dict["SampleName"] as? String {
+                    self.sampleName = value
+                }
+                if let value = dict["ServiceCode"] as? String {
+                    self.serviceCode = value
+                }
+                if let value = dict["ServiceName"] as? String {
+                    self.serviceName = value
+                }
+                if let value = dict["SubTaskId"] as? Int64 {
+                    self.subTaskId = value
+                }
+                if let value = dict["Tab"] as? String {
+                    self.tab = value
+                }
+                if let value = dict["TaskGroupId"] as? String {
+                    self.taskGroupId = value
+                }
+                if let value = dict["TaskName"] as? String {
+                    self.taskName = value
+                }
+                if let value = dict["TaskStatus"] as? String {
+                    self.taskStatus = value
+                }
+            }
+        }
         public var createTime: Int64?
 
         public var creatorUserId: Int32?
@@ -7654,6 +7812,8 @@ public class CreateTaskGroupResponseBody : Tea.TeaModel {
         public var sampleNames: [String]?
 
         public var subTaskCount: Int32?
+
+        public var subTaskList: [CreateTaskGroupResponseBody.ResultObject.SubTaskList]?
 
         public var tab: String?
 
@@ -7690,6 +7850,13 @@ public class CreateTaskGroupResponseBody : Tea.TeaModel {
             if self.subTaskCount != nil {
                 map["SubTaskCount"] = self.subTaskCount!
             }
+            if self.subTaskList != nil {
+                var tmp : [Any] = []
+                for k in self.subTaskList! {
+                    tmp.append(k.toMap())
+                }
+                map["SubTaskList"] = tmp
+            }
             if self.tab != nil {
                 map["Tab"] = self.tab!
             }
@@ -7718,6 +7885,19 @@ public class CreateTaskGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubTaskCount"] as? Int32 {
                 self.subTaskCount = value
+            }
+            if let value = dict["SubTaskList"] as? [Any?] {
+                var tmp : [CreateTaskGroupResponseBody.ResultObject.SubTaskList] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateTaskGroupResponseBody.ResultObject.SubTaskList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.subTaskList = tmp
             }
             if let value = dict["Tab"] as? String {
                 self.tab = value

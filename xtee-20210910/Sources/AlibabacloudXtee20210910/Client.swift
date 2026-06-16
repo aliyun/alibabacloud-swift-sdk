@@ -1954,6 +1954,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serviceCodes)) {
             query["ServiceCodes"] = request.serviceCodes ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serviceList)) {
+            query["ServiceList"] = request.serviceList ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceNames)) {
             query["ServiceNames"] = request.serviceNames ?? "";
         }
