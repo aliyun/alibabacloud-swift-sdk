@@ -685,7 +685,11 @@ public class AddKeywordLibRequest : Tea.TeaModel {
 
     public var libName: String?
 
+    public var properties: String?
+
     public var regionId: String?
+
+    public var tenantCode: String?
 
     public override init() {
         super.init()
@@ -710,8 +714,14 @@ public class AddKeywordLibRequest : Tea.TeaModel {
         if self.libName != nil {
             map["LibName"] = self.libName!
         }
+        if self.properties != nil {
+            map["Properties"] = self.properties!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
         }
         return map
     }
@@ -727,8 +737,14 @@ public class AddKeywordLibRequest : Tea.TeaModel {
         if let value = dict["LibName"] as? String {
             self.libName = value
         }
+        if let value = dict["Properties"] as? String {
+            self.properties = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -1009,6 +1025,8 @@ public class AddKeywordsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantCode: String?
+
     public override init() {
         super.init()
     }
@@ -1035,6 +1053,9 @@ public class AddKeywordsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         return map
     }
 
@@ -1051,6 +1072,9 @@ public class AddKeywordsRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -1337,7 +1361,11 @@ public class AddKeywordsToLibRequest : Tea.TeaModel {
 
     public var libId: String?
 
+    public var properties: String?
+
     public var regionId: String?
+
+    public var tenantCode: String?
 
     public override init() {
         super.init()
@@ -1362,8 +1390,14 @@ public class AddKeywordsToLibRequest : Tea.TeaModel {
         if self.libId != nil {
             map["LibId"] = self.libId!
         }
+        if self.properties != nil {
+            map["Properties"] = self.properties!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
         }
         return map
     }
@@ -1379,8 +1413,14 @@ public class AddKeywordsToLibRequest : Tea.TeaModel {
         if let value = dict["LibId"] as? String {
             self.libId = value
         }
+        if let value = dict["Properties"] as? String {
+            self.properties = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -4031,6 +4071,8 @@ public class DeleteKeywordRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantCode: String?
+
     public override init() {
         super.init()
     }
@@ -4057,6 +4099,9 @@ public class DeleteKeywordRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         return map
     }
 
@@ -4073,6 +4118,9 @@ public class DeleteKeywordRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -4195,6 +4243,8 @@ public class DeleteKeywordLibRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantCode: String?
+
     public override init() {
         super.init()
     }
@@ -4215,6 +4265,9 @@ public class DeleteKeywordLibRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         return map
     }
 
@@ -4225,6 +4278,9 @@ public class DeleteKeywordLibRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -5709,6 +5765,8 @@ public class ExportKeywordRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantCode: String?
+
     public override init() {
         super.init()
     }
@@ -5729,6 +5787,9 @@ public class ExportKeywordRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         return map
     }
 
@@ -5739,6 +5800,9 @@ public class ExportKeywordRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -9644,6 +9708,8 @@ public class GetKeywordLibRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantCode: String?
+
     public override init() {
         super.init()
     }
@@ -9664,6 +9730,9 @@ public class GetKeywordLibRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         return map
     }
 
@@ -9674,6 +9743,9 @@ public class GetKeywordLibRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -16644,6 +16716,8 @@ public class ListCallbackResponse : Tea.TeaModel {
 public class ListImageLibRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var serviceCode: String?
+
     public override init() {
         super.init()
     }
@@ -16661,6 +16735,9 @@ public class ListImageLibRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceCode != nil {
+            map["ServiceCode"] = self.serviceCode!
+        }
         return map
     }
 
@@ -16668,6 +16745,9 @@ public class ListImageLibRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ServiceCode"] as? String {
+            self.serviceCode = value
         }
     }
 }
@@ -16757,6 +16837,8 @@ public class ListImageLibResponseBody : Tea.TeaModel {
 
     public var libList: [ListImageLibResponseBody.LibList]?
 
+    public var maxLibCount: Int32?
+
     public var msg: String?
 
     public var requestId: String?
@@ -16790,6 +16872,9 @@ public class ListImageLibResponseBody : Tea.TeaModel {
             }
             map["LibList"] = tmp
         }
+        if self.maxLibCount != nil {
+            map["MaxLibCount"] = self.maxLibCount!
+        }
         if self.msg != nil {
             map["Msg"] = self.msg!
         }
@@ -16822,6 +16907,9 @@ public class ListImageLibResponseBody : Tea.TeaModel {
                 }
             }
             self.libList = tmp
+        }
+        if let value = dict["MaxLibCount"] as? Int32 {
+            self.maxLibCount = value
         }
         if let value = dict["Msg"] as? String {
             self.msg = value
@@ -17275,6 +17363,8 @@ public class ListImagesFromLibResponse : Tea.TeaModel {
 public class ListKeywordLibsRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var tenantCode: String?
+
     public override init() {
         super.init()
     }
@@ -17292,6 +17382,9 @@ public class ListKeywordLibsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         return map
     }
 
@@ -17299,6 +17392,9 @@ public class ListKeywordLibsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
@@ -17511,6 +17607,8 @@ public class ListKeywordsRequest : Tea.TeaModel {
 
     public var sort: [String: String]?
 
+    public var tenantCode: String?
+
     public var word: String?
 
     public override init() {
@@ -17542,6 +17640,9 @@ public class ListKeywordsRequest : Tea.TeaModel {
         if self.sort != nil {
             map["Sort"] = self.sort!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         if self.word != nil {
             map["Word"] = self.word!
         }
@@ -17565,6 +17666,9 @@ public class ListKeywordsRequest : Tea.TeaModel {
         if let value = dict["Sort"] as? [String: String] {
             self.sort = value
         }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
+        }
         if let value = dict["Word"] as? String {
             self.word = value
         }
@@ -17581,6 +17685,8 @@ public class ListKeywordsShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var sortShrink: String?
+
+    public var tenantCode: String?
 
     public var word: String?
 
@@ -17613,6 +17719,9 @@ public class ListKeywordsShrinkRequest : Tea.TeaModel {
         if self.sortShrink != nil {
             map["Sort"] = self.sortShrink!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         if self.word != nil {
             map["Word"] = self.word!
         }
@@ -17636,6 +17745,9 @@ public class ListKeywordsShrinkRequest : Tea.TeaModel {
         if let value = dict["Sort"] as? String {
             self.sortShrink = value
         }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
+        }
         if let value = dict["Word"] as? String {
             self.word = value
         }
@@ -17645,6 +17757,36 @@ public class ListKeywordsShrinkRequest : Tea.TeaModel {
 public class ListKeywordsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public class Properties : Tea.TeaModel {
+                public var attribute: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.attribute != nil {
+                        map["Attribute"] = self.attribute!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Attribute"] as? String {
+                        self.attribute = value
+                    }
+                }
+            }
             public var gmtCreate: String?
 
             public var gmtModified: String?
@@ -17654,6 +17796,8 @@ public class ListKeywordsResponseBody : Tea.TeaModel {
             public var keywordLibId: String?
 
             public var keywordMd5Id: Int64?
+
+            public var properties: ListKeywordsResponseBody.Data.Items.Properties?
 
             public var word: String?
 
@@ -17667,6 +17811,7 @@ public class ListKeywordsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.properties?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -17685,6 +17830,9 @@ public class ListKeywordsResponseBody : Tea.TeaModel {
                 }
                 if self.keywordMd5Id != nil {
                     map["KeywordMd5Id"] = self.keywordMd5Id!
+                }
+                if self.properties != nil {
+                    map["Properties"] = self.properties?.toMap()
                 }
                 if self.word != nil {
                     map["Word"] = self.word!
@@ -17708,6 +17856,11 @@ public class ListKeywordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["KeywordMd5Id"] as? Int64 {
                     self.keywordMd5Id = value
+                }
+                if let value = dict["Properties"] as? [String: Any?] {
+                    var model = ListKeywordsResponseBody.Data.Items.Properties()
+                    model.fromMap(value)
+                    self.properties = model
                 }
                 if let value = dict["Word"] as? String {
                     self.word = value
@@ -21899,6 +22052,8 @@ public class UpdateImageLibFreeInspectionRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var serviceCode: String?
+
     public override init() {
         super.init()
     }
@@ -21919,6 +22074,9 @@ public class UpdateImageLibFreeInspectionRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceCode != nil {
+            map["ServiceCode"] = self.serviceCode!
+        }
         return map
     }
 
@@ -21930,6 +22088,9 @@ public class UpdateImageLibFreeInspectionRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["ServiceCode"] as? String {
+            self.serviceCode = value
+        }
     }
 }
 
@@ -21937,6 +22098,8 @@ public class UpdateImageLibFreeInspectionShrinkRequest : Tea.TeaModel {
     public var configShrink: String?
 
     public var regionId: String?
+
+    public var serviceCode: String?
 
     public override init() {
         super.init()
@@ -21958,6 +22121,9 @@ public class UpdateImageLibFreeInspectionShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceCode != nil {
+            map["ServiceCode"] = self.serviceCode!
+        }
         return map
     }
 
@@ -21968,6 +22134,9 @@ public class UpdateImageLibFreeInspectionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ServiceCode"] as? String {
+            self.serviceCode = value
         }
     }
 }
@@ -22100,6 +22269,8 @@ public class UpdateKeywordLibRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantCode: String?
+
     public override init() {
         super.init()
     }
@@ -22123,6 +22294,9 @@ public class UpdateKeywordLibRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
         return map
     }
 
@@ -22136,6 +22310,9 @@ public class UpdateKeywordLibRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
         }
     }
 }
