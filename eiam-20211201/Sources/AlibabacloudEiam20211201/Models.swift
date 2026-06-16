@@ -33172,7 +33172,73 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ReplicationConfiguration : Tea.TeaModel {
+            public var backupInstanceId: String?
+
+            public var backupInstanceRegionId: String?
+
+            public var primaryInstanceId: String?
+
+            public var primaryInstanceRegionId: String?
+
+            public var replicationCreateTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backupInstanceId != nil {
+                    map["BackupInstanceId"] = self.backupInstanceId!
+                }
+                if self.backupInstanceRegionId != nil {
+                    map["BackupInstanceRegionId"] = self.backupInstanceRegionId!
+                }
+                if self.primaryInstanceId != nil {
+                    map["PrimaryInstanceId"] = self.primaryInstanceId!
+                }
+                if self.primaryInstanceRegionId != nil {
+                    map["PrimaryInstanceRegionId"] = self.primaryInstanceRegionId!
+                }
+                if self.replicationCreateTime != nil {
+                    map["ReplicationCreateTime"] = self.replicationCreateTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackupInstanceId"] as? String {
+                    self.backupInstanceId = value
+                }
+                if let value = dict["BackupInstanceRegionId"] as? String {
+                    self.backupInstanceRegionId = value
+                }
+                if let value = dict["PrimaryInstanceId"] as? String {
+                    self.primaryInstanceId = value
+                }
+                if let value = dict["PrimaryInstanceRegionId"] as? String {
+                    self.primaryInstanceRegionId = value
+                }
+                if let value = dict["ReplicationCreateTime"] as? Int64 {
+                    self.replicationCreateTime = value
+                }
+            }
+        }
         public var createTime: Int64?
+
+        public var crossRegionReplication: String?
+
+        public var crossRegionReplicationRole: String?
 
         public var defaultEndpoint: GetInstanceResponseBody.Instance.DefaultEndpoint?
 
@@ -33182,9 +33248,13 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var egressAddresses: [String]?
 
+        public var instanceFailoverStatus: String?
+
         public var instanceId: String?
 
         public var managedServiceCode: String?
+
+        public var replicationConfiguration: GetInstanceResponseBody.Instance.ReplicationConfiguration?
 
         public var serviceManaged: Bool?
 
@@ -33202,12 +33272,19 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.defaultEndpoint?.validate()
             try self.domainConfig?.validate()
+            try self.replicationConfiguration?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.crossRegionReplication != nil {
+                map["CrossRegionReplication"] = self.crossRegionReplication!
+            }
+            if self.crossRegionReplicationRole != nil {
+                map["CrossRegionReplicationRole"] = self.crossRegionReplicationRole!
             }
             if self.defaultEndpoint != nil {
                 map["DefaultEndpoint"] = self.defaultEndpoint?.toMap()
@@ -33221,11 +33298,17 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.egressAddresses != nil {
                 map["EgressAddresses"] = self.egressAddresses!
             }
+            if self.instanceFailoverStatus != nil {
+                map["InstanceFailoverStatus"] = self.instanceFailoverStatus!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
             if self.managedServiceCode != nil {
                 map["ManagedServiceCode"] = self.managedServiceCode!
+            }
+            if self.replicationConfiguration != nil {
+                map["ReplicationConfiguration"] = self.replicationConfiguration?.toMap()
             }
             if self.serviceManaged != nil {
                 map["ServiceManaged"] = self.serviceManaged!
@@ -33240,6 +33323,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
+            }
+            if let value = dict["CrossRegionReplication"] as? String {
+                self.crossRegionReplication = value
+            }
+            if let value = dict["CrossRegionReplicationRole"] as? String {
+                self.crossRegionReplicationRole = value
             }
             if let value = dict["DefaultEndpoint"] as? [String: Any?] {
                 var model = GetInstanceResponseBody.Instance.DefaultEndpoint()
@@ -33257,11 +33346,19 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if let value = dict["EgressAddresses"] as? [String] {
                 self.egressAddresses = value
             }
+            if let value = dict["InstanceFailoverStatus"] as? String {
+                self.instanceFailoverStatus = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
             if let value = dict["ManagedServiceCode"] as? String {
                 self.managedServiceCode = value
+            }
+            if let value = dict["ReplicationConfiguration"] as? [String: Any?] {
+                var model = GetInstanceResponseBody.Instance.ReplicationConfiguration()
+                model.fromMap(value)
+                self.replicationConfiguration = model
             }
             if let value = dict["ServiceManaged"] as? Bool {
                 self.serviceManaged = value
@@ -54227,6 +54324,8 @@ public class ListIdentityProvidersForNetworkAccessEndpointResponse : Tea.TeaMode
 }
 
 public class ListInstancesRequest : Tea.TeaModel {
+    public var crossRegionReplication: String?
+
     public var edition: String?
 
     public var instanceIds: [String]?
@@ -54251,6 +54350,9 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.crossRegionReplication != nil {
+            map["CrossRegionReplication"] = self.crossRegionReplication!
+        }
         if self.edition != nil {
             map["Edition"] = self.edition!
         }
@@ -54271,6 +54373,9 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CrossRegionReplication"] as? String {
+            self.crossRegionReplication = value
+        }
         if let value = dict["Edition"] as? String {
             self.edition = value
         }
@@ -54329,15 +54434,85 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ReplicationConfiguration : Tea.TeaModel {
+            public var backupInstanceId: String?
+
+            public var backupInstanceRegionId: String?
+
+            public var primaryInstanceId: String?
+
+            public var primaryInstanceRegionId: String?
+
+            public var replicationCreateTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backupInstanceId != nil {
+                    map["BackupInstanceId"] = self.backupInstanceId!
+                }
+                if self.backupInstanceRegionId != nil {
+                    map["BackupInstanceRegionId"] = self.backupInstanceRegionId!
+                }
+                if self.primaryInstanceId != nil {
+                    map["PrimaryInstanceId"] = self.primaryInstanceId!
+                }
+                if self.primaryInstanceRegionId != nil {
+                    map["PrimaryInstanceRegionId"] = self.primaryInstanceRegionId!
+                }
+                if self.replicationCreateTime != nil {
+                    map["ReplicationCreateTime"] = self.replicationCreateTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackupInstanceId"] as? String {
+                    self.backupInstanceId = value
+                }
+                if let value = dict["BackupInstanceRegionId"] as? String {
+                    self.backupInstanceRegionId = value
+                }
+                if let value = dict["PrimaryInstanceId"] as? String {
+                    self.primaryInstanceId = value
+                }
+                if let value = dict["PrimaryInstanceRegionId"] as? String {
+                    self.primaryInstanceRegionId = value
+                }
+                if let value = dict["ReplicationCreateTime"] as? Int64 {
+                    self.replicationCreateTime = value
+                }
+            }
+        }
         public var createTime: Int64?
+
+        public var crossRegionReplication: String?
+
+        public var crossRegionReplicationRole: String?
 
         public var defaultEndpoint: ListInstancesResponseBody.Instances.DefaultEndpoint?
 
         public var description_: String?
 
+        public var instanceFailoverStatus: String?
+
         public var instanceId: String?
 
         public var managedServiceCode: String?
+
+        public var replicationConfiguration: ListInstancesResponseBody.Instances.ReplicationConfiguration?
 
         public var serviceManaged: Bool?
 
@@ -54354,6 +54529,7 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.defaultEndpoint?.validate()
+            try self.replicationConfiguration?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -54361,17 +54537,29 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.crossRegionReplication != nil {
+                map["CrossRegionReplication"] = self.crossRegionReplication!
+            }
+            if self.crossRegionReplicationRole != nil {
+                map["CrossRegionReplicationRole"] = self.crossRegionReplicationRole!
+            }
             if self.defaultEndpoint != nil {
                 map["DefaultEndpoint"] = self.defaultEndpoint?.toMap()
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.instanceFailoverStatus != nil {
+                map["InstanceFailoverStatus"] = self.instanceFailoverStatus!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
             if self.managedServiceCode != nil {
                 map["ManagedServiceCode"] = self.managedServiceCode!
+            }
+            if self.replicationConfiguration != nil {
+                map["ReplicationConfiguration"] = self.replicationConfiguration?.toMap()
             }
             if self.serviceManaged != nil {
                 map["ServiceManaged"] = self.serviceManaged!
@@ -54387,6 +54575,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
+            if let value = dict["CrossRegionReplication"] as? String {
+                self.crossRegionReplication = value
+            }
+            if let value = dict["CrossRegionReplicationRole"] as? String {
+                self.crossRegionReplicationRole = value
+            }
             if let value = dict["DefaultEndpoint"] as? [String: Any?] {
                 var model = ListInstancesResponseBody.Instances.DefaultEndpoint()
                 model.fromMap(value)
@@ -54395,11 +54589,19 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["InstanceFailoverStatus"] as? String {
+                self.instanceFailoverStatus = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
             if let value = dict["ManagedServiceCode"] as? String {
                 self.managedServiceCode = value
+            }
+            if let value = dict["ReplicationConfiguration"] as? [String: Any?] {
+                var model = ListInstancesResponseBody.Instances.ReplicationConfiguration()
+                model.fromMap(value)
+                self.replicationConfiguration = model
             }
             if let value = dict["ServiceManaged"] as? Bool {
                 self.serviceManaged = value
