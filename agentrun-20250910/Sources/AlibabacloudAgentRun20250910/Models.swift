@@ -280,6 +280,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableOndemand: Bool?
+
     public var disableSessionAffinity: Bool?
 
     public var diskSize: Int?
@@ -293,6 +295,8 @@ public class AgentRuntime : Tea.TeaModel {
     public var executionRoleArn: String?
 
     public var externalAgentEndpointUrl: String?
+
+    public var headerFieldName: String?
 
     public var healthCheckConfiguration: HealthCheckConfiguration?
 
@@ -313,6 +317,8 @@ public class AgentRuntime : Tea.TeaModel {
     public var protocolConfiguration: ProtocolConfiguration?
 
     public var resourceGroupId: String?
+
+    public var sessionAffinityType: String?
 
     public var sessionConcurrencyLimitPerInstance: Int?
 
@@ -381,6 +387,9 @@ public class AgentRuntime : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disableOndemand != nil {
+            map["disableOndemand"] = self.disableOndemand!
+        }
         if self.disableSessionAffinity != nil {
             map["disableSessionAffinity"] = self.disableSessionAffinity!
         }
@@ -401,6 +410,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if self.externalAgentEndpointUrl != nil {
             map["externalAgentEndpointUrl"] = self.externalAgentEndpointUrl!
+        }
+        if self.headerFieldName != nil {
+            map["headerFieldName"] = self.headerFieldName!
         }
         if self.healthCheckConfiguration != nil {
             map["healthCheckConfiguration"] = self.healthCheckConfiguration?.toMap()
@@ -431,6 +443,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.sessionAffinityType != nil {
+            map["sessionAffinityType"] = self.sessionAffinityType!
         }
         if self.sessionConcurrencyLimitPerInstance != nil {
             map["sessionConcurrencyLimitPerInstance"] = self.sessionConcurrencyLimitPerInstance!
@@ -492,6 +507,9 @@ public class AgentRuntime : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["disableOndemand"] as? Bool {
+            self.disableOndemand = value
+        }
         if let value = dict["disableSessionAffinity"] as? Bool {
             self.disableSessionAffinity = value
         }
@@ -512,6 +530,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if let value = dict["externalAgentEndpointUrl"] as? String {
             self.externalAgentEndpointUrl = value
+        }
+        if let value = dict["headerFieldName"] as? String {
+            self.headerFieldName = value
         }
         if let value = dict["healthCheckConfiguration"] as? [String: Any?] {
             var model = HealthCheckConfiguration()
@@ -554,6 +575,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["sessionAffinityType"] as? String {
+            self.sessionAffinityType = value
         }
         if let value = dict["sessionConcurrencyLimitPerInstance"] as? Int {
             self.sessionConcurrencyLimitPerInstance = value
@@ -3896,6 +3920,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableOndemand: Bool?
+
     public var disableSessionAffinity: Bool?
 
     public var diskSize: Int32?
@@ -3909,6 +3935,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
     public var executionRoleArn: String?
 
     public var externalAgentEndpointUrl: String?
+
+    public var headerFieldName: String?
 
     public var healthCheckConfiguration: HealthCheckConfiguration?
 
@@ -3927,6 +3955,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
     public var protocolConfiguration: ProtocolConfiguration?
 
     public var resourceGroupId: String?
+
+    public var sessionAffinityType: String?
 
     public var sessionConcurrencyLimitPerInstance: Int32?
 
@@ -3986,6 +4016,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disableOndemand != nil {
+            map["disableOndemand"] = self.disableOndemand!
+        }
         if self.disableSessionAffinity != nil {
             map["disableSessionAffinity"] = self.disableSessionAffinity!
         }
@@ -4006,6 +4039,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.externalAgentEndpointUrl != nil {
             map["externalAgentEndpointUrl"] = self.externalAgentEndpointUrl!
+        }
+        if self.headerFieldName != nil {
+            map["headerFieldName"] = self.headerFieldName!
         }
         if self.healthCheckConfiguration != nil {
             map["healthCheckConfiguration"] = self.healthCheckConfiguration?.toMap()
@@ -4033,6 +4069,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.sessionAffinityType != nil {
+            map["sessionAffinityType"] = self.sessionAffinityType!
         }
         if self.sessionConcurrencyLimitPerInstance != nil {
             map["sessionConcurrencyLimitPerInstance"] = self.sessionConcurrencyLimitPerInstance!
@@ -4084,6 +4123,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["disableOndemand"] as? Bool {
+            self.disableOndemand = value
+        }
         if let value = dict["disableSessionAffinity"] as? Bool {
             self.disableSessionAffinity = value
         }
@@ -4104,6 +4146,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["externalAgentEndpointUrl"] as? String {
             self.externalAgentEndpointUrl = value
+        }
+        if let value = dict["headerFieldName"] as? String {
+            self.headerFieldName = value
         }
         if let value = dict["healthCheckConfiguration"] as? [String: Any?] {
             var model = HealthCheckConfiguration()
@@ -4143,6 +4188,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["sessionAffinityType"] as? String {
+            self.sessionAffinityType = value
         }
         if let value = dict["sessionConcurrencyLimitPerInstance"] as? Int32 {
             self.sessionConcurrencyLimitPerInstance = value
@@ -16739,6 +16787,8 @@ public class OSSMountPoint : Tea.TeaModel {
 public class OssConfiguration : Tea.TeaModel {
     public var bucketName: String?
 
+    public var endpoint: String?
+
     public var mountPoint: String?
 
     public var permission: String?
@@ -16764,6 +16814,9 @@ public class OssConfiguration : Tea.TeaModel {
         if self.bucketName != nil {
             map["bucketName"] = self.bucketName!
         }
+        if self.endpoint != nil {
+            map["endpoint"] = self.endpoint!
+        }
         if self.mountPoint != nil {
             map["mountPoint"] = self.mountPoint!
         }
@@ -16783,6 +16836,9 @@ public class OssConfiguration : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["bucketName"] as? String {
             self.bucketName = value
+        }
+        if let value = dict["endpoint"] as? String {
+            self.endpoint = value
         }
         if let value = dict["mountPoint"] as? String {
             self.mountPoint = value
@@ -20586,6 +20642,8 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableOndemand: Bool?
+
     public var disableSessionAffinity: Bool?
 
     public var diskSize: Int32?
@@ -20599,6 +20657,10 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
     public var executionRoleArn: String?
 
     public var externalAgentEndpointUrl: String?
+
+    public var forceEvictInstances: Bool?
+
+    public var headerFieldName: String?
 
     public var healthCheckConfiguration: HealthCheckConfiguration?
 
@@ -20615,6 +20677,8 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
     public var port: Int32?
 
     public var protocolConfiguration: ProtocolConfiguration?
+
+    public var sessionAffinityType: String?
 
     public var sessionConcurrencyLimitPerInstance: Int32?
 
@@ -20671,6 +20735,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disableOndemand != nil {
+            map["disableOndemand"] = self.disableOndemand!
+        }
         if self.disableSessionAffinity != nil {
             map["disableSessionAffinity"] = self.disableSessionAffinity!
         }
@@ -20691,6 +20758,12 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.externalAgentEndpointUrl != nil {
             map["externalAgentEndpointUrl"] = self.externalAgentEndpointUrl!
+        }
+        if self.forceEvictInstances != nil {
+            map["forceEvictInstances"] = self.forceEvictInstances!
+        }
+        if self.headerFieldName != nil {
+            map["headerFieldName"] = self.headerFieldName!
         }
         if self.healthCheckConfiguration != nil {
             map["healthCheckConfiguration"] = self.healthCheckConfiguration?.toMap()
@@ -20715,6 +20788,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.protocolConfiguration != nil {
             map["protocolConfiguration"] = self.protocolConfiguration?.toMap()
+        }
+        if self.sessionAffinityType != nil {
+            map["sessionAffinityType"] = self.sessionAffinityType!
         }
         if self.sessionConcurrencyLimitPerInstance != nil {
             map["sessionConcurrencyLimitPerInstance"] = self.sessionConcurrencyLimitPerInstance!
@@ -20763,6 +20839,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["disableOndemand"] as? Bool {
+            self.disableOndemand = value
+        }
         if let value = dict["disableSessionAffinity"] as? Bool {
             self.disableSessionAffinity = value
         }
@@ -20783,6 +20862,12 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["externalAgentEndpointUrl"] as? String {
             self.externalAgentEndpointUrl = value
+        }
+        if let value = dict["forceEvictInstances"] as? Bool {
+            self.forceEvictInstances = value
+        }
+        if let value = dict["headerFieldName"] as? String {
+            self.headerFieldName = value
         }
         if let value = dict["healthCheckConfiguration"] as? [String: Any?] {
             var model = HealthCheckConfiguration()
@@ -20819,6 +20904,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
             var model = ProtocolConfiguration()
             model.fromMap(value)
             self.protocolConfiguration = model
+        }
+        if let value = dict["sessionAffinityType"] as? String {
+            self.sessionAffinityType = value
         }
         if let value = dict["sessionConcurrencyLimitPerInstance"] as? Int32 {
             self.sessionConcurrencyLimitPerInstance = value
