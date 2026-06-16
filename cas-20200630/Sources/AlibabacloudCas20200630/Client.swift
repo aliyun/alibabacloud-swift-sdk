@@ -1126,6 +1126,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCaInstanceCrlAddressWithOptions(_ request: GetCaInstanceCrlAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCaInstanceCrlAddressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.caIdentifier)) {
+            query["CaIdentifier"] = request.caIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            query["Uuid"] = request.uuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCaInstanceCrlAddress",
+            "version": "2020-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCaInstanceCrlAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCaInstanceCrlAddress(_ request: GetCaInstanceCrlAddressRequest) async throws -> GetCaInstanceCrlAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCaInstanceCrlAddressWithOptions(request as! GetCaInstanceCrlAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAllEndEntityInstanceWithOptions(_ request: ListAllEndEntityInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAllEndEntityInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

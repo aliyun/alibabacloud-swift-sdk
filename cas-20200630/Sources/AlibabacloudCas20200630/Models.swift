@@ -3616,6 +3616,8 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
 
         public var certIssuedCount: Int64?
 
+        public var certMaxTime: Int32?
+
         public var certRemainingCount: Int64?
 
         public var certTotalCount: Int64?
@@ -3704,6 +3706,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if self.certIssuedCount != nil {
                 map["CertIssuedCount"] = self.certIssuedCount!
+            }
+            if self.certMaxTime != nil {
+                map["CertMaxTime"] = self.certMaxTime!
             }
             if self.certRemainingCount != nil {
                 map["CertRemainingCount"] = self.certRemainingCount!
@@ -3818,6 +3823,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["CertIssuedCount"] as? Int64 {
                 self.certIssuedCount = value
+            }
+            if let value = dict["CertMaxTime"] as? Int32 {
+                self.certMaxTime = value
             }
             if let value = dict["CertRemainingCount"] as? Int64 {
                 self.certRemainingCount = value
@@ -6444,6 +6452,158 @@ public class GetCAInstanceStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetCAInstanceStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetCaInstanceCrlAddressRequest : Tea.TeaModel {
+    public var caIdentifier: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caIdentifier != nil {
+            map["CaIdentifier"] = self.caIdentifier!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CaIdentifier"] as? String {
+            self.caIdentifier = value
+        }
+        if let value = dict["Uuid"] as? String {
+            self.uuid = value
+        }
+    }
+}
+
+public class GetCaInstanceCrlAddressResponseBody : Tea.TeaModel {
+    public var caInstanceStatus: String?
+
+    public var crlUrl: String?
+
+    public var hashCode: String?
+
+    public var nextUpdateTime: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caInstanceStatus != nil {
+            map["CaInstanceStatus"] = self.caInstanceStatus!
+        }
+        if self.crlUrl != nil {
+            map["CrlUrl"] = self.crlUrl!
+        }
+        if self.hashCode != nil {
+            map["HashCode"] = self.hashCode!
+        }
+        if self.nextUpdateTime != nil {
+            map["NextUpdateTime"] = self.nextUpdateTime!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CaInstanceStatus"] as? String {
+            self.caInstanceStatus = value
+        }
+        if let value = dict["CrlUrl"] as? String {
+            self.crlUrl = value
+        }
+        if let value = dict["HashCode"] as? String {
+            self.hashCode = value
+        }
+        if let value = dict["NextUpdateTime"] as? String {
+            self.nextUpdateTime = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetCaInstanceCrlAddressResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetCaInstanceCrlAddressResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetCaInstanceCrlAddressResponseBody()
             model.fromMap(value)
             self.body = model
         }
