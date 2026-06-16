@@ -4550,6 +4550,438 @@ public class DocOcrMaxResponse : Tea.TeaModel {
     }
 }
 
+public class DocOcrMaxV2Request : Tea.TeaModel {
+    public var authorize: String?
+
+    public var docPage: String?
+
+    public var docType: String?
+
+    public var idOcrPictureBase64: String?
+
+    public var idOcrPictureFile: String?
+
+    public var idOcrPictureUrl: String?
+
+    public var idSpoof: String?
+
+    public var idThreshold: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var ocrModel: String?
+
+    public var ocrValueStandard: String?
+
+    public var productCode: String?
+
+    public var sceneCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorize != nil {
+            map["Authorize"] = self.authorize!
+        }
+        if self.docPage != nil {
+            map["DocPage"] = self.docPage!
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.idOcrPictureBase64 != nil {
+            map["IdOcrPictureBase64"] = self.idOcrPictureBase64!
+        }
+        if self.idOcrPictureFile != nil {
+            map["IdOcrPictureFile"] = self.idOcrPictureFile!
+        }
+        if self.idOcrPictureUrl != nil {
+            map["IdOcrPictureUrl"] = self.idOcrPictureUrl!
+        }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
+        if self.idThreshold != nil {
+            map["IdThreshold"] = self.idThreshold!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.ocrModel != nil {
+            map["OcrModel"] = self.ocrModel!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Authorize"] as? String {
+            self.authorize = value
+        }
+        if let value = dict["DocPage"] as? String {
+            self.docPage = value
+        }
+        if let value = dict["DocType"] as? String {
+            self.docType = value
+        }
+        if let value = dict["IdOcrPictureBase64"] as? String {
+            self.idOcrPictureBase64 = value
+        }
+        if let value = dict["IdOcrPictureFile"] as? String {
+            self.idOcrPictureFile = value
+        }
+        if let value = dict["IdOcrPictureUrl"] as? String {
+            self.idOcrPictureUrl = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
+        }
+        if let value = dict["IdThreshold"] as? String {
+            self.idThreshold = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["OcrModel"] as? String {
+            self.ocrModel = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+    }
+}
+
+public class DocOcrMaxV2AdvanceRequest : Tea.TeaModel {
+    public var authorize: String?
+
+    public var docPage: String?
+
+    public var docType: String?
+
+    public var idOcrPictureBase64: String?
+
+    public var idOcrPictureFileObject: InputStream?
+
+    public var idOcrPictureUrl: String?
+
+    public var idSpoof: String?
+
+    public var idThreshold: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var ocrModel: String?
+
+    public var ocrValueStandard: String?
+
+    public var productCode: String?
+
+    public var sceneCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorize != nil {
+            map["Authorize"] = self.authorize!
+        }
+        if self.docPage != nil {
+            map["DocPage"] = self.docPage!
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.idOcrPictureBase64 != nil {
+            map["IdOcrPictureBase64"] = self.idOcrPictureBase64!
+        }
+        if self.idOcrPictureFileObject != nil {
+            map["IdOcrPictureFile"] = self.idOcrPictureFileObject!
+        }
+        if self.idOcrPictureUrl != nil {
+            map["IdOcrPictureUrl"] = self.idOcrPictureUrl!
+        }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
+        if self.idThreshold != nil {
+            map["IdThreshold"] = self.idThreshold!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.ocrModel != nil {
+            map["OcrModel"] = self.ocrModel!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Authorize"] as? String {
+            self.authorize = value
+        }
+        if let value = dict["DocPage"] as? String {
+            self.docPage = value
+        }
+        if let value = dict["DocType"] as? String {
+            self.docType = value
+        }
+        if let value = dict["IdOcrPictureBase64"] as? String {
+            self.idOcrPictureBase64 = value
+        }
+        if let value = dict["IdOcrPictureFile"] as? InputStream {
+            self.idOcrPictureFileObject = value
+        }
+        if let value = dict["IdOcrPictureUrl"] as? String {
+            self.idOcrPictureUrl = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
+        }
+        if let value = dict["IdThreshold"] as? String {
+            self.idThreshold = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["OcrModel"] as? String {
+            self.ocrModel = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+    }
+}
+
+public class DocOcrMaxV2ResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var extIdInfo: String?
+
+        public var passed: String?
+
+        public var subCode: String?
+
+        public var transactionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extIdInfo != nil {
+                map["ExtIdInfo"] = self.extIdInfo!
+            }
+            if self.passed != nil {
+                map["Passed"] = self.passed!
+            }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExtIdInfo"] as? String {
+                self.extIdInfo = value
+            }
+            if let value = dict["Passed"] as? String {
+                self.passed = value
+            }
+            if let value = dict["SubCode"] as? String {
+                self.subCode = value
+            }
+            if let value = dict["TransactionId"] as? String {
+                self.transactionId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var result: DocOcrMaxV2ResponseBody.Result?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? [String: Any?] {
+            var model = DocOcrMaxV2ResponseBody.Result()
+            model.fromMap(value)
+            self.result = model
+        }
+    }
+}
+
+public class DocOcrMaxV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DocOcrMaxV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DocOcrMaxV2ResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DocOcrV2Request : Tea.TeaModel {
     public var cardSide: String?
 
@@ -10631,6 +11063,1629 @@ public class InitializeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = InitializeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class InitializeV2Request : Tea.TeaModel {
+    public var appQualityCheck: String?
+
+    public var authorize: String?
+
+    public var autoRegistration: String?
+
+    public var callbackToken: String?
+
+    public var callbackUrl: String?
+
+    public var chameleonFrameEnable: String?
+
+    public var crop: String?
+
+    public var dateOfBirth: String?
+
+    public var dateOfExpiry: String?
+
+    public var docName: String?
+
+    public var docNo: String?
+
+    public var docPageConfig: [String]?
+
+    public var docScanMode: String?
+
+    public var docType: String?
+
+    public var docVideo: String?
+
+    public var documentNumber: String?
+
+    public var editOcrResult: String?
+
+    public var email: String?
+
+    public var experienceCode: String?
+
+    public var faceGroupCodes: String?
+
+    public var facePictureBase64: String?
+
+    public var facePictureFile: String?
+
+    public var facePictureUrl: String?
+
+    public var faceRegisterGroupCode: String?
+
+    public var faceVerifyThreshold: String?
+
+    public var idFaceQuality: String?
+
+    public var idSpoof: String?
+
+    public var idThreshold: String?
+
+    public var languageConfig: String?
+
+    public var MRTDInput: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var metaInfo: String?
+
+    public var mobile: String?
+
+    public var model: String?
+
+    public var ocr: String?
+
+    public var ocrValueStandard: String?
+
+    public var pages: String?
+
+    public var procedurePriority: String?
+
+    public var productCode: String?
+
+    public var productFlow: String?
+
+    public var returnFaces: String?
+
+    public var returnUrl: String?
+
+    public var saveFacePicture: String?
+
+    public var sceneCode: String?
+
+    public var securityLevel: String?
+
+    public var showAlbumIcon: String?
+
+    public var showGuidePage: String?
+
+    public var showOcrResult: String?
+
+    public var styleConfig: String?
+
+    public var targetFacePicture: String?
+
+    public var targetFacePictureFile: String?
+
+    public var targetFacePictureUrl: String?
+
+    public var templateConfig: String?
+
+    public var templateRanCount: String?
+
+    public var templateType: String?
+
+    public var useNFC: String?
+
+    public var verifyModel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appQualityCheck != nil {
+            map["AppQualityCheck"] = self.appQualityCheck!
+        }
+        if self.authorize != nil {
+            map["Authorize"] = self.authorize!
+        }
+        if self.autoRegistration != nil {
+            map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.callbackToken != nil {
+            map["CallbackToken"] = self.callbackToken!
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.chameleonFrameEnable != nil {
+            map["ChameleonFrameEnable"] = self.chameleonFrameEnable!
+        }
+        if self.crop != nil {
+            map["Crop"] = self.crop!
+        }
+        if self.dateOfBirth != nil {
+            map["DateOfBirth"] = self.dateOfBirth!
+        }
+        if self.dateOfExpiry != nil {
+            map["DateOfExpiry"] = self.dateOfExpiry!
+        }
+        if self.docName != nil {
+            map["DocName"] = self.docName!
+        }
+        if self.docNo != nil {
+            map["DocNo"] = self.docNo!
+        }
+        if self.docPageConfig != nil {
+            map["DocPageConfig"] = self.docPageConfig!
+        }
+        if self.docScanMode != nil {
+            map["DocScanMode"] = self.docScanMode!
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.docVideo != nil {
+            map["DocVideo"] = self.docVideo!
+        }
+        if self.documentNumber != nil {
+            map["DocumentNumber"] = self.documentNumber!
+        }
+        if self.editOcrResult != nil {
+            map["EditOcrResult"] = self.editOcrResult!
+        }
+        if self.email != nil {
+            map["Email"] = self.email!
+        }
+        if self.experienceCode != nil {
+            map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceGroupCodes != nil {
+            map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
+        if self.facePictureBase64 != nil {
+            map["FacePictureBase64"] = self.facePictureBase64!
+        }
+        if self.facePictureFile != nil {
+            map["FacePictureFile"] = self.facePictureFile!
+        }
+        if self.facePictureUrl != nil {
+            map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.faceRegisterGroupCode != nil {
+            map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
+        }
+        if self.faceVerifyThreshold != nil {
+            map["FaceVerifyThreshold"] = self.faceVerifyThreshold!
+        }
+        if self.idFaceQuality != nil {
+            map["IdFaceQuality"] = self.idFaceQuality!
+        }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
+        if self.idThreshold != nil {
+            map["IdThreshold"] = self.idThreshold!
+        }
+        if self.languageConfig != nil {
+            map["LanguageConfig"] = self.languageConfig!
+        }
+        if self.MRTDInput != nil {
+            map["MRTDInput"] = self.MRTDInput!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.metaInfo != nil {
+            map["MetaInfo"] = self.metaInfo!
+        }
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.ocr != nil {
+            map["Ocr"] = self.ocr!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
+        }
+        if self.pages != nil {
+            map["Pages"] = self.pages!
+        }
+        if self.procedurePriority != nil {
+            map["ProcedurePriority"] = self.procedurePriority!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productFlow != nil {
+            map["ProductFlow"] = self.productFlow!
+        }
+        if self.returnFaces != nil {
+            map["ReturnFaces"] = self.returnFaces!
+        }
+        if self.returnUrl != nil {
+            map["ReturnUrl"] = self.returnUrl!
+        }
+        if self.saveFacePicture != nil {
+            map["SaveFacePicture"] = self.saveFacePicture!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        if self.securityLevel != nil {
+            map["SecurityLevel"] = self.securityLevel!
+        }
+        if self.showAlbumIcon != nil {
+            map["ShowAlbumIcon"] = self.showAlbumIcon!
+        }
+        if self.showGuidePage != nil {
+            map["ShowGuidePage"] = self.showGuidePage!
+        }
+        if self.showOcrResult != nil {
+            map["ShowOcrResult"] = self.showOcrResult!
+        }
+        if self.styleConfig != nil {
+            map["StyleConfig"] = self.styleConfig!
+        }
+        if self.targetFacePicture != nil {
+            map["TargetFacePicture"] = self.targetFacePicture!
+        }
+        if self.targetFacePictureFile != nil {
+            map["TargetFacePictureFile"] = self.targetFacePictureFile!
+        }
+        if self.targetFacePictureUrl != nil {
+            map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
+        }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
+        if self.templateRanCount != nil {
+            map["TemplateRanCount"] = self.templateRanCount!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        if self.useNFC != nil {
+            map["UseNFC"] = self.useNFC!
+        }
+        if self.verifyModel != nil {
+            map["VerifyModel"] = self.verifyModel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppQualityCheck"] as? String {
+            self.appQualityCheck = value
+        }
+        if let value = dict["Authorize"] as? String {
+            self.authorize = value
+        }
+        if let value = dict["AutoRegistration"] as? String {
+            self.autoRegistration = value
+        }
+        if let value = dict["CallbackToken"] as? String {
+            self.callbackToken = value
+        }
+        if let value = dict["CallbackUrl"] as? String {
+            self.callbackUrl = value
+        }
+        if let value = dict["ChameleonFrameEnable"] as? String {
+            self.chameleonFrameEnable = value
+        }
+        if let value = dict["Crop"] as? String {
+            self.crop = value
+        }
+        if let value = dict["DateOfBirth"] as? String {
+            self.dateOfBirth = value
+        }
+        if let value = dict["DateOfExpiry"] as? String {
+            self.dateOfExpiry = value
+        }
+        if let value = dict["DocName"] as? String {
+            self.docName = value
+        }
+        if let value = dict["DocNo"] as? String {
+            self.docNo = value
+        }
+        if let value = dict["DocPageConfig"] as? [String] {
+            self.docPageConfig = value
+        }
+        if let value = dict["DocScanMode"] as? String {
+            self.docScanMode = value
+        }
+        if let value = dict["DocType"] as? String {
+            self.docType = value
+        }
+        if let value = dict["DocVideo"] as? String {
+            self.docVideo = value
+        }
+        if let value = dict["DocumentNumber"] as? String {
+            self.documentNumber = value
+        }
+        if let value = dict["EditOcrResult"] as? String {
+            self.editOcrResult = value
+        }
+        if let value = dict["Email"] as? String {
+            self.email = value
+        }
+        if let value = dict["ExperienceCode"] as? String {
+            self.experienceCode = value
+        }
+        if let value = dict["FaceGroupCodes"] as? String {
+            self.faceGroupCodes = value
+        }
+        if let value = dict["FacePictureBase64"] as? String {
+            self.facePictureBase64 = value
+        }
+        if let value = dict["FacePictureFile"] as? String {
+            self.facePictureFile = value
+        }
+        if let value = dict["FacePictureUrl"] as? String {
+            self.facePictureUrl = value
+        }
+        if let value = dict["FaceRegisterGroupCode"] as? String {
+            self.faceRegisterGroupCode = value
+        }
+        if let value = dict["FaceVerifyThreshold"] as? String {
+            self.faceVerifyThreshold = value
+        }
+        if let value = dict["IdFaceQuality"] as? String {
+            self.idFaceQuality = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
+        }
+        if let value = dict["IdThreshold"] as? String {
+            self.idThreshold = value
+        }
+        if let value = dict["LanguageConfig"] as? String {
+            self.languageConfig = value
+        }
+        if let value = dict["MRTDInput"] as? String {
+            self.MRTDInput = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["MetaInfo"] as? String {
+            self.metaInfo = value
+        }
+        if let value = dict["Mobile"] as? String {
+            self.mobile = value
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["Ocr"] as? String {
+            self.ocr = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
+        }
+        if let value = dict["Pages"] as? String {
+            self.pages = value
+        }
+        if let value = dict["ProcedurePriority"] as? String {
+            self.procedurePriority = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ProductFlow"] as? String {
+            self.productFlow = value
+        }
+        if let value = dict["ReturnFaces"] as? String {
+            self.returnFaces = value
+        }
+        if let value = dict["ReturnUrl"] as? String {
+            self.returnUrl = value
+        }
+        if let value = dict["SaveFacePicture"] as? String {
+            self.saveFacePicture = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+        if let value = dict["SecurityLevel"] as? String {
+            self.securityLevel = value
+        }
+        if let value = dict["ShowAlbumIcon"] as? String {
+            self.showAlbumIcon = value
+        }
+        if let value = dict["ShowGuidePage"] as? String {
+            self.showGuidePage = value
+        }
+        if let value = dict["ShowOcrResult"] as? String {
+            self.showOcrResult = value
+        }
+        if let value = dict["StyleConfig"] as? String {
+            self.styleConfig = value
+        }
+        if let value = dict["TargetFacePicture"] as? String {
+            self.targetFacePicture = value
+        }
+        if let value = dict["TargetFacePictureFile"] as? String {
+            self.targetFacePictureFile = value
+        }
+        if let value = dict["TargetFacePictureUrl"] as? String {
+            self.targetFacePictureUrl = value
+        }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
+        }
+        if let value = dict["TemplateRanCount"] as? String {
+            self.templateRanCount = value
+        }
+        if let value = dict["TemplateType"] as? String {
+            self.templateType = value
+        }
+        if let value = dict["UseNFC"] as? String {
+            self.useNFC = value
+        }
+        if let value = dict["VerifyModel"] as? String {
+            self.verifyModel = value
+        }
+    }
+}
+
+public class InitializeV2AdvanceRequest : Tea.TeaModel {
+    public var appQualityCheck: String?
+
+    public var authorize: String?
+
+    public var autoRegistration: String?
+
+    public var callbackToken: String?
+
+    public var callbackUrl: String?
+
+    public var chameleonFrameEnable: String?
+
+    public var crop: String?
+
+    public var dateOfBirth: String?
+
+    public var dateOfExpiry: String?
+
+    public var docName: String?
+
+    public var docNo: String?
+
+    public var docPageConfig: [String]?
+
+    public var docScanMode: String?
+
+    public var docType: String?
+
+    public var docVideo: String?
+
+    public var documentNumber: String?
+
+    public var editOcrResult: String?
+
+    public var email: String?
+
+    public var experienceCode: String?
+
+    public var faceGroupCodes: String?
+
+    public var facePictureBase64: String?
+
+    public var facePictureFileObject: InputStream?
+
+    public var facePictureUrl: String?
+
+    public var faceRegisterGroupCode: String?
+
+    public var faceVerifyThreshold: String?
+
+    public var idFaceQuality: String?
+
+    public var idSpoof: String?
+
+    public var idThreshold: String?
+
+    public var languageConfig: String?
+
+    public var MRTDInput: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var metaInfo: String?
+
+    public var mobile: String?
+
+    public var model: String?
+
+    public var ocr: String?
+
+    public var ocrValueStandard: String?
+
+    public var pages: String?
+
+    public var procedurePriority: String?
+
+    public var productCode: String?
+
+    public var productFlow: String?
+
+    public var returnFaces: String?
+
+    public var returnUrl: String?
+
+    public var saveFacePicture: String?
+
+    public var sceneCode: String?
+
+    public var securityLevel: String?
+
+    public var showAlbumIcon: String?
+
+    public var showGuidePage: String?
+
+    public var showOcrResult: String?
+
+    public var styleConfig: String?
+
+    public var targetFacePicture: String?
+
+    public var targetFacePictureFileObject: InputStream?
+
+    public var targetFacePictureUrl: String?
+
+    public var templateConfig: String?
+
+    public var templateRanCount: String?
+
+    public var templateType: String?
+
+    public var useNFC: String?
+
+    public var verifyModel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appQualityCheck != nil {
+            map["AppQualityCheck"] = self.appQualityCheck!
+        }
+        if self.authorize != nil {
+            map["Authorize"] = self.authorize!
+        }
+        if self.autoRegistration != nil {
+            map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.callbackToken != nil {
+            map["CallbackToken"] = self.callbackToken!
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.chameleonFrameEnable != nil {
+            map["ChameleonFrameEnable"] = self.chameleonFrameEnable!
+        }
+        if self.crop != nil {
+            map["Crop"] = self.crop!
+        }
+        if self.dateOfBirth != nil {
+            map["DateOfBirth"] = self.dateOfBirth!
+        }
+        if self.dateOfExpiry != nil {
+            map["DateOfExpiry"] = self.dateOfExpiry!
+        }
+        if self.docName != nil {
+            map["DocName"] = self.docName!
+        }
+        if self.docNo != nil {
+            map["DocNo"] = self.docNo!
+        }
+        if self.docPageConfig != nil {
+            map["DocPageConfig"] = self.docPageConfig!
+        }
+        if self.docScanMode != nil {
+            map["DocScanMode"] = self.docScanMode!
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.docVideo != nil {
+            map["DocVideo"] = self.docVideo!
+        }
+        if self.documentNumber != nil {
+            map["DocumentNumber"] = self.documentNumber!
+        }
+        if self.editOcrResult != nil {
+            map["EditOcrResult"] = self.editOcrResult!
+        }
+        if self.email != nil {
+            map["Email"] = self.email!
+        }
+        if self.experienceCode != nil {
+            map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceGroupCodes != nil {
+            map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
+        if self.facePictureBase64 != nil {
+            map["FacePictureBase64"] = self.facePictureBase64!
+        }
+        if self.facePictureFileObject != nil {
+            map["FacePictureFile"] = self.facePictureFileObject!
+        }
+        if self.facePictureUrl != nil {
+            map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.faceRegisterGroupCode != nil {
+            map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
+        }
+        if self.faceVerifyThreshold != nil {
+            map["FaceVerifyThreshold"] = self.faceVerifyThreshold!
+        }
+        if self.idFaceQuality != nil {
+            map["IdFaceQuality"] = self.idFaceQuality!
+        }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
+        if self.idThreshold != nil {
+            map["IdThreshold"] = self.idThreshold!
+        }
+        if self.languageConfig != nil {
+            map["LanguageConfig"] = self.languageConfig!
+        }
+        if self.MRTDInput != nil {
+            map["MRTDInput"] = self.MRTDInput!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.metaInfo != nil {
+            map["MetaInfo"] = self.metaInfo!
+        }
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.ocr != nil {
+            map["Ocr"] = self.ocr!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
+        }
+        if self.pages != nil {
+            map["Pages"] = self.pages!
+        }
+        if self.procedurePriority != nil {
+            map["ProcedurePriority"] = self.procedurePriority!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productFlow != nil {
+            map["ProductFlow"] = self.productFlow!
+        }
+        if self.returnFaces != nil {
+            map["ReturnFaces"] = self.returnFaces!
+        }
+        if self.returnUrl != nil {
+            map["ReturnUrl"] = self.returnUrl!
+        }
+        if self.saveFacePicture != nil {
+            map["SaveFacePicture"] = self.saveFacePicture!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        if self.securityLevel != nil {
+            map["SecurityLevel"] = self.securityLevel!
+        }
+        if self.showAlbumIcon != nil {
+            map["ShowAlbumIcon"] = self.showAlbumIcon!
+        }
+        if self.showGuidePage != nil {
+            map["ShowGuidePage"] = self.showGuidePage!
+        }
+        if self.showOcrResult != nil {
+            map["ShowOcrResult"] = self.showOcrResult!
+        }
+        if self.styleConfig != nil {
+            map["StyleConfig"] = self.styleConfig!
+        }
+        if self.targetFacePicture != nil {
+            map["TargetFacePicture"] = self.targetFacePicture!
+        }
+        if self.targetFacePictureFileObject != nil {
+            map["TargetFacePictureFile"] = self.targetFacePictureFileObject!
+        }
+        if self.targetFacePictureUrl != nil {
+            map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
+        }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
+        if self.templateRanCount != nil {
+            map["TemplateRanCount"] = self.templateRanCount!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        if self.useNFC != nil {
+            map["UseNFC"] = self.useNFC!
+        }
+        if self.verifyModel != nil {
+            map["VerifyModel"] = self.verifyModel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppQualityCheck"] as? String {
+            self.appQualityCheck = value
+        }
+        if let value = dict["Authorize"] as? String {
+            self.authorize = value
+        }
+        if let value = dict["AutoRegistration"] as? String {
+            self.autoRegistration = value
+        }
+        if let value = dict["CallbackToken"] as? String {
+            self.callbackToken = value
+        }
+        if let value = dict["CallbackUrl"] as? String {
+            self.callbackUrl = value
+        }
+        if let value = dict["ChameleonFrameEnable"] as? String {
+            self.chameleonFrameEnable = value
+        }
+        if let value = dict["Crop"] as? String {
+            self.crop = value
+        }
+        if let value = dict["DateOfBirth"] as? String {
+            self.dateOfBirth = value
+        }
+        if let value = dict["DateOfExpiry"] as? String {
+            self.dateOfExpiry = value
+        }
+        if let value = dict["DocName"] as? String {
+            self.docName = value
+        }
+        if let value = dict["DocNo"] as? String {
+            self.docNo = value
+        }
+        if let value = dict["DocPageConfig"] as? [String] {
+            self.docPageConfig = value
+        }
+        if let value = dict["DocScanMode"] as? String {
+            self.docScanMode = value
+        }
+        if let value = dict["DocType"] as? String {
+            self.docType = value
+        }
+        if let value = dict["DocVideo"] as? String {
+            self.docVideo = value
+        }
+        if let value = dict["DocumentNumber"] as? String {
+            self.documentNumber = value
+        }
+        if let value = dict["EditOcrResult"] as? String {
+            self.editOcrResult = value
+        }
+        if let value = dict["Email"] as? String {
+            self.email = value
+        }
+        if let value = dict["ExperienceCode"] as? String {
+            self.experienceCode = value
+        }
+        if let value = dict["FaceGroupCodes"] as? String {
+            self.faceGroupCodes = value
+        }
+        if let value = dict["FacePictureBase64"] as? String {
+            self.facePictureBase64 = value
+        }
+        if let value = dict["FacePictureFile"] as? InputStream {
+            self.facePictureFileObject = value
+        }
+        if let value = dict["FacePictureUrl"] as? String {
+            self.facePictureUrl = value
+        }
+        if let value = dict["FaceRegisterGroupCode"] as? String {
+            self.faceRegisterGroupCode = value
+        }
+        if let value = dict["FaceVerifyThreshold"] as? String {
+            self.faceVerifyThreshold = value
+        }
+        if let value = dict["IdFaceQuality"] as? String {
+            self.idFaceQuality = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
+        }
+        if let value = dict["IdThreshold"] as? String {
+            self.idThreshold = value
+        }
+        if let value = dict["LanguageConfig"] as? String {
+            self.languageConfig = value
+        }
+        if let value = dict["MRTDInput"] as? String {
+            self.MRTDInput = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["MetaInfo"] as? String {
+            self.metaInfo = value
+        }
+        if let value = dict["Mobile"] as? String {
+            self.mobile = value
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["Ocr"] as? String {
+            self.ocr = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
+        }
+        if let value = dict["Pages"] as? String {
+            self.pages = value
+        }
+        if let value = dict["ProcedurePriority"] as? String {
+            self.procedurePriority = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ProductFlow"] as? String {
+            self.productFlow = value
+        }
+        if let value = dict["ReturnFaces"] as? String {
+            self.returnFaces = value
+        }
+        if let value = dict["ReturnUrl"] as? String {
+            self.returnUrl = value
+        }
+        if let value = dict["SaveFacePicture"] as? String {
+            self.saveFacePicture = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+        if let value = dict["SecurityLevel"] as? String {
+            self.securityLevel = value
+        }
+        if let value = dict["ShowAlbumIcon"] as? String {
+            self.showAlbumIcon = value
+        }
+        if let value = dict["ShowGuidePage"] as? String {
+            self.showGuidePage = value
+        }
+        if let value = dict["ShowOcrResult"] as? String {
+            self.showOcrResult = value
+        }
+        if let value = dict["StyleConfig"] as? String {
+            self.styleConfig = value
+        }
+        if let value = dict["TargetFacePicture"] as? String {
+            self.targetFacePicture = value
+        }
+        if let value = dict["TargetFacePictureFile"] as? InputStream {
+            self.targetFacePictureFileObject = value
+        }
+        if let value = dict["TargetFacePictureUrl"] as? String {
+            self.targetFacePictureUrl = value
+        }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
+        }
+        if let value = dict["TemplateRanCount"] as? String {
+            self.templateRanCount = value
+        }
+        if let value = dict["TemplateType"] as? String {
+            self.templateType = value
+        }
+        if let value = dict["UseNFC"] as? String {
+            self.useNFC = value
+        }
+        if let value = dict["VerifyModel"] as? String {
+            self.verifyModel = value
+        }
+    }
+}
+
+public class InitializeV2ShrinkRequest : Tea.TeaModel {
+    public var appQualityCheck: String?
+
+    public var authorize: String?
+
+    public var autoRegistration: String?
+
+    public var callbackToken: String?
+
+    public var callbackUrl: String?
+
+    public var chameleonFrameEnable: String?
+
+    public var crop: String?
+
+    public var dateOfBirth: String?
+
+    public var dateOfExpiry: String?
+
+    public var docName: String?
+
+    public var docNo: String?
+
+    public var docPageConfigShrink: String?
+
+    public var docScanMode: String?
+
+    public var docType: String?
+
+    public var docVideo: String?
+
+    public var documentNumber: String?
+
+    public var editOcrResult: String?
+
+    public var email: String?
+
+    public var experienceCode: String?
+
+    public var faceGroupCodes: String?
+
+    public var facePictureBase64: String?
+
+    public var facePictureFile: String?
+
+    public var facePictureUrl: String?
+
+    public var faceRegisterGroupCode: String?
+
+    public var faceVerifyThreshold: String?
+
+    public var idFaceQuality: String?
+
+    public var idSpoof: String?
+
+    public var idThreshold: String?
+
+    public var languageConfig: String?
+
+    public var MRTDInput: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var metaInfo: String?
+
+    public var mobile: String?
+
+    public var model: String?
+
+    public var ocr: String?
+
+    public var ocrValueStandard: String?
+
+    public var pages: String?
+
+    public var procedurePriority: String?
+
+    public var productCode: String?
+
+    public var productFlow: String?
+
+    public var returnFaces: String?
+
+    public var returnUrl: String?
+
+    public var saveFacePicture: String?
+
+    public var sceneCode: String?
+
+    public var securityLevel: String?
+
+    public var showAlbumIcon: String?
+
+    public var showGuidePage: String?
+
+    public var showOcrResult: String?
+
+    public var styleConfig: String?
+
+    public var targetFacePicture: String?
+
+    public var targetFacePictureFile: String?
+
+    public var targetFacePictureUrl: String?
+
+    public var templateConfig: String?
+
+    public var templateRanCount: String?
+
+    public var templateType: String?
+
+    public var useNFC: String?
+
+    public var verifyModel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appQualityCheck != nil {
+            map["AppQualityCheck"] = self.appQualityCheck!
+        }
+        if self.authorize != nil {
+            map["Authorize"] = self.authorize!
+        }
+        if self.autoRegistration != nil {
+            map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.callbackToken != nil {
+            map["CallbackToken"] = self.callbackToken!
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.chameleonFrameEnable != nil {
+            map["ChameleonFrameEnable"] = self.chameleonFrameEnable!
+        }
+        if self.crop != nil {
+            map["Crop"] = self.crop!
+        }
+        if self.dateOfBirth != nil {
+            map["DateOfBirth"] = self.dateOfBirth!
+        }
+        if self.dateOfExpiry != nil {
+            map["DateOfExpiry"] = self.dateOfExpiry!
+        }
+        if self.docName != nil {
+            map["DocName"] = self.docName!
+        }
+        if self.docNo != nil {
+            map["DocNo"] = self.docNo!
+        }
+        if self.docPageConfigShrink != nil {
+            map["DocPageConfig"] = self.docPageConfigShrink!
+        }
+        if self.docScanMode != nil {
+            map["DocScanMode"] = self.docScanMode!
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.docVideo != nil {
+            map["DocVideo"] = self.docVideo!
+        }
+        if self.documentNumber != nil {
+            map["DocumentNumber"] = self.documentNumber!
+        }
+        if self.editOcrResult != nil {
+            map["EditOcrResult"] = self.editOcrResult!
+        }
+        if self.email != nil {
+            map["Email"] = self.email!
+        }
+        if self.experienceCode != nil {
+            map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceGroupCodes != nil {
+            map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
+        if self.facePictureBase64 != nil {
+            map["FacePictureBase64"] = self.facePictureBase64!
+        }
+        if self.facePictureFile != nil {
+            map["FacePictureFile"] = self.facePictureFile!
+        }
+        if self.facePictureUrl != nil {
+            map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.faceRegisterGroupCode != nil {
+            map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
+        }
+        if self.faceVerifyThreshold != nil {
+            map["FaceVerifyThreshold"] = self.faceVerifyThreshold!
+        }
+        if self.idFaceQuality != nil {
+            map["IdFaceQuality"] = self.idFaceQuality!
+        }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
+        if self.idThreshold != nil {
+            map["IdThreshold"] = self.idThreshold!
+        }
+        if self.languageConfig != nil {
+            map["LanguageConfig"] = self.languageConfig!
+        }
+        if self.MRTDInput != nil {
+            map["MRTDInput"] = self.MRTDInput!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.metaInfo != nil {
+            map["MetaInfo"] = self.metaInfo!
+        }
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.ocr != nil {
+            map["Ocr"] = self.ocr!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
+        }
+        if self.pages != nil {
+            map["Pages"] = self.pages!
+        }
+        if self.procedurePriority != nil {
+            map["ProcedurePriority"] = self.procedurePriority!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productFlow != nil {
+            map["ProductFlow"] = self.productFlow!
+        }
+        if self.returnFaces != nil {
+            map["ReturnFaces"] = self.returnFaces!
+        }
+        if self.returnUrl != nil {
+            map["ReturnUrl"] = self.returnUrl!
+        }
+        if self.saveFacePicture != nil {
+            map["SaveFacePicture"] = self.saveFacePicture!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        if self.securityLevel != nil {
+            map["SecurityLevel"] = self.securityLevel!
+        }
+        if self.showAlbumIcon != nil {
+            map["ShowAlbumIcon"] = self.showAlbumIcon!
+        }
+        if self.showGuidePage != nil {
+            map["ShowGuidePage"] = self.showGuidePage!
+        }
+        if self.showOcrResult != nil {
+            map["ShowOcrResult"] = self.showOcrResult!
+        }
+        if self.styleConfig != nil {
+            map["StyleConfig"] = self.styleConfig!
+        }
+        if self.targetFacePicture != nil {
+            map["TargetFacePicture"] = self.targetFacePicture!
+        }
+        if self.targetFacePictureFile != nil {
+            map["TargetFacePictureFile"] = self.targetFacePictureFile!
+        }
+        if self.targetFacePictureUrl != nil {
+            map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
+        }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
+        if self.templateRanCount != nil {
+            map["TemplateRanCount"] = self.templateRanCount!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        if self.useNFC != nil {
+            map["UseNFC"] = self.useNFC!
+        }
+        if self.verifyModel != nil {
+            map["VerifyModel"] = self.verifyModel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppQualityCheck"] as? String {
+            self.appQualityCheck = value
+        }
+        if let value = dict["Authorize"] as? String {
+            self.authorize = value
+        }
+        if let value = dict["AutoRegistration"] as? String {
+            self.autoRegistration = value
+        }
+        if let value = dict["CallbackToken"] as? String {
+            self.callbackToken = value
+        }
+        if let value = dict["CallbackUrl"] as? String {
+            self.callbackUrl = value
+        }
+        if let value = dict["ChameleonFrameEnable"] as? String {
+            self.chameleonFrameEnable = value
+        }
+        if let value = dict["Crop"] as? String {
+            self.crop = value
+        }
+        if let value = dict["DateOfBirth"] as? String {
+            self.dateOfBirth = value
+        }
+        if let value = dict["DateOfExpiry"] as? String {
+            self.dateOfExpiry = value
+        }
+        if let value = dict["DocName"] as? String {
+            self.docName = value
+        }
+        if let value = dict["DocNo"] as? String {
+            self.docNo = value
+        }
+        if let value = dict["DocPageConfig"] as? String {
+            self.docPageConfigShrink = value
+        }
+        if let value = dict["DocScanMode"] as? String {
+            self.docScanMode = value
+        }
+        if let value = dict["DocType"] as? String {
+            self.docType = value
+        }
+        if let value = dict["DocVideo"] as? String {
+            self.docVideo = value
+        }
+        if let value = dict["DocumentNumber"] as? String {
+            self.documentNumber = value
+        }
+        if let value = dict["EditOcrResult"] as? String {
+            self.editOcrResult = value
+        }
+        if let value = dict["Email"] as? String {
+            self.email = value
+        }
+        if let value = dict["ExperienceCode"] as? String {
+            self.experienceCode = value
+        }
+        if let value = dict["FaceGroupCodes"] as? String {
+            self.faceGroupCodes = value
+        }
+        if let value = dict["FacePictureBase64"] as? String {
+            self.facePictureBase64 = value
+        }
+        if let value = dict["FacePictureFile"] as? String {
+            self.facePictureFile = value
+        }
+        if let value = dict["FacePictureUrl"] as? String {
+            self.facePictureUrl = value
+        }
+        if let value = dict["FaceRegisterGroupCode"] as? String {
+            self.faceRegisterGroupCode = value
+        }
+        if let value = dict["FaceVerifyThreshold"] as? String {
+            self.faceVerifyThreshold = value
+        }
+        if let value = dict["IdFaceQuality"] as? String {
+            self.idFaceQuality = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
+        }
+        if let value = dict["IdThreshold"] as? String {
+            self.idThreshold = value
+        }
+        if let value = dict["LanguageConfig"] as? String {
+            self.languageConfig = value
+        }
+        if let value = dict["MRTDInput"] as? String {
+            self.MRTDInput = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["MetaInfo"] as? String {
+            self.metaInfo = value
+        }
+        if let value = dict["Mobile"] as? String {
+            self.mobile = value
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["Ocr"] as? String {
+            self.ocr = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
+        }
+        if let value = dict["Pages"] as? String {
+            self.pages = value
+        }
+        if let value = dict["ProcedurePriority"] as? String {
+            self.procedurePriority = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ProductFlow"] as? String {
+            self.productFlow = value
+        }
+        if let value = dict["ReturnFaces"] as? String {
+            self.returnFaces = value
+        }
+        if let value = dict["ReturnUrl"] as? String {
+            self.returnUrl = value
+        }
+        if let value = dict["SaveFacePicture"] as? String {
+            self.saveFacePicture = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+        if let value = dict["SecurityLevel"] as? String {
+            self.securityLevel = value
+        }
+        if let value = dict["ShowAlbumIcon"] as? String {
+            self.showAlbumIcon = value
+        }
+        if let value = dict["ShowGuidePage"] as? String {
+            self.showGuidePage = value
+        }
+        if let value = dict["ShowOcrResult"] as? String {
+            self.showOcrResult = value
+        }
+        if let value = dict["StyleConfig"] as? String {
+            self.styleConfig = value
+        }
+        if let value = dict["TargetFacePicture"] as? String {
+            self.targetFacePicture = value
+        }
+        if let value = dict["TargetFacePictureFile"] as? String {
+            self.targetFacePictureFile = value
+        }
+        if let value = dict["TargetFacePictureUrl"] as? String {
+            self.targetFacePictureUrl = value
+        }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
+        }
+        if let value = dict["TemplateRanCount"] as? String {
+            self.templateRanCount = value
+        }
+        if let value = dict["TemplateType"] as? String {
+            self.templateType = value
+        }
+        if let value = dict["UseNFC"] as? String {
+            self.useNFC = value
+        }
+        if let value = dict["VerifyModel"] as? String {
+            self.verifyModel = value
+        }
+    }
+}
+
+public class InitializeV2ResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var clientCfg: String?
+
+        public var protocol_: String?
+
+        public var transactionId: String?
+
+        public var transactionUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientCfg != nil {
+                map["ClientCfg"] = self.clientCfg!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
+            if self.transactionUrl != nil {
+                map["TransactionUrl"] = self.transactionUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClientCfg"] as? String {
+                self.clientCfg = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
+            }
+            if let value = dict["TransactionId"] as? String {
+                self.transactionId = value
+            }
+            if let value = dict["TransactionUrl"] as? String {
+                self.transactionUrl = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var result: InitializeV2ResponseBody.Result?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? [String: Any?] {
+            var model = InitializeV2ResponseBody.Result()
+            model.fromMap(value)
+            self.result = model
+        }
+    }
+}
+
+public class InitializeV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InitializeV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InitializeV2ResponseBody()
             model.fromMap(value)
             self.body = model
         }

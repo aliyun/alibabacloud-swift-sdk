@@ -11,7 +11,13 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-hongkong": "cloudauth-intl.cn-hongkong.aliyuncs.com",
+            "ap-southeast-5": "cloudauth-intl.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "cloudauth-intl.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "cloudauth-intl.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudauth-intl", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1259,6 +1265,162 @@ open class Client : AlibabacloudOpenApi.Client {
     public func docOcrMax(_ request: DocOcrMaxRequest) async throws -> DocOcrMaxResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await docOcrMaxWithOptions(request as! DocOcrMaxRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func docOcrMaxV2WithOptions(_ request: DocOcrMaxV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocOcrMaxV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorize)) {
+            body["Authorize"] = request.authorize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docPage)) {
+            body["DocPage"] = request.docPage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            body["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
+            body["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureFile)) {
+            body["IdOcrPictureFile"] = request.idOcrPictureFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
+            body["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idSpoof)) {
+            body["IdSpoof"] = request.idSpoof ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idThreshold)) {
+            body["IdThreshold"] = request.idThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            body["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantUserId)) {
+            body["MerchantUserId"] = request.merchantUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrModel)) {
+            body["OcrModel"] = request.ocrModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            body["SceneCode"] = request.sceneCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DocOcrMaxV2",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DocOcrMaxV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func docOcrMaxV2(_ request: DocOcrMaxV2Request) async throws -> DocOcrMaxV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await docOcrMaxV2WithOptions(request as! DocOcrMaxV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func docOcrMaxV2Advance(_ request: DocOcrMaxV2AdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocOcrMaxV2Response {
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "Cloudauth-intl",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
+        ])
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var authResponse: [String: Any] = [:]
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
+        var docOcrMaxV2Req: DocOcrMaxV2Request = DocOcrMaxV2Request([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, docOcrMaxV2Req)
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureFileObject)) {
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.idOcrPictureFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            docOcrMaxV2Req.idOcrPictureFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        var docOcrMaxV2Resp: DocOcrMaxV2Response = try await docOcrMaxV2WithOptions(docOcrMaxV2Req as! DocOcrMaxV2Request, runtime as! TeaUtils.RuntimeOptions)
+        return docOcrMaxV2Resp as! DocOcrMaxV2Response
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2817,6 +2979,322 @@ open class Client : AlibabacloudOpenApi.Client {
     public func initialize(_ request: InitializeRequest) async throws -> InitializeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await initializeWithOptions(request as! InitializeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initializeV2WithOptions(_ tmpReq: InitializeV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitializeV2Response {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: InitializeV2ShrinkRequest = InitializeV2ShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.docPageConfig)) {
+            request.docPageConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docPageConfig, "DocPageConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appQualityCheck)) {
+            query["AppQualityCheck"] = request.appQualityCheck ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authorize)) {
+            query["Authorize"] = request.authorize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRegistration)) {
+            query["AutoRegistration"] = request.autoRegistration ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackToken)) {
+            query["CallbackToken"] = request.callbackToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
+            query["CallbackUrl"] = request.callbackUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chameleonFrameEnable)) {
+            query["ChameleonFrameEnable"] = request.chameleonFrameEnable ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.crop)) {
+            query["Crop"] = request.crop ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dateOfBirth)) {
+            query["DateOfBirth"] = request.dateOfBirth ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dateOfExpiry)) {
+            query["DateOfExpiry"] = request.dateOfExpiry ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docName)) {
+            query["DocName"] = request.docName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docNo)) {
+            query["DocNo"] = request.docNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docPageConfigShrink)) {
+            query["DocPageConfig"] = request.docPageConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docScanMode)) {
+            query["DocScanMode"] = request.docScanMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            query["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docVideo)) {
+            query["DocVideo"] = request.docVideo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.documentNumber)) {
+            query["DocumentNumber"] = request.documentNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.editOcrResult)) {
+            query["EditOcrResult"] = request.editOcrResult ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            query["Email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.experienceCode)) {
+            query["ExperienceCode"] = request.experienceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceGroupCodes)) {
+            query["FaceGroupCodes"] = request.faceGroupCodes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.facePictureFile)) {
+            query["FacePictureFile"] = request.facePictureFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
+            query["FacePictureUrl"] = request.facePictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceRegisterGroupCode)) {
+            query["FaceRegisterGroupCode"] = request.faceRegisterGroupCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceVerifyThreshold)) {
+            query["FaceVerifyThreshold"] = request.faceVerifyThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idFaceQuality)) {
+            query["IdFaceQuality"] = request.idFaceQuality ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idSpoof)) {
+            query["IdSpoof"] = request.idSpoof ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idThreshold)) {
+            query["IdThreshold"] = request.idThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.languageConfig)) {
+            query["LanguageConfig"] = request.languageConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.MRTDInput)) {
+            query["MRTDInput"] = request.MRTDInput ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            query["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantUserId)) {
+            query["MerchantUserId"] = request.merchantUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metaInfo)) {
+            query["MetaInfo"] = request.metaInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            query["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            query["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocr)) {
+            query["Ocr"] = request.ocr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pages)) {
+            query["Pages"] = request.pages ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.procedurePriority)) {
+            query["ProcedurePriority"] = request.procedurePriority ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productFlow)) {
+            query["ProductFlow"] = request.productFlow ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnFaces)) {
+            query["ReturnFaces"] = request.returnFaces ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnUrl)) {
+            query["ReturnUrl"] = request.returnUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.saveFacePicture)) {
+            query["SaveFacePicture"] = request.saveFacePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            query["SceneCode"] = request.sceneCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityLevel)) {
+            query["SecurityLevel"] = request.securityLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showAlbumIcon)) {
+            query["ShowAlbumIcon"] = request.showAlbumIcon ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showGuidePage)) {
+            query["ShowGuidePage"] = request.showGuidePage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showOcrResult)) {
+            query["ShowOcrResult"] = request.showOcrResult ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.styleConfig)) {
+            query["StyleConfig"] = request.styleConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetFacePictureFile)) {
+            query["TargetFacePictureFile"] = request.targetFacePictureFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetFacePictureUrl)) {
+            query["TargetFacePictureUrl"] = request.targetFacePictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateConfig)) {
+            query["TemplateConfig"] = request.templateConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateRanCount)) {
+            query["TemplateRanCount"] = request.templateRanCount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateType)) {
+            query["TemplateType"] = request.templateType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useNFC)) {
+            query["UseNFC"] = request.useNFC ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verifyModel)) {
+            query["VerifyModel"] = request.verifyModel ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
+            body["FacePictureBase64"] = request.facePictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetFacePicture)) {
+            body["TargetFacePicture"] = request.targetFacePicture ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InitializeV2",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InitializeV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initializeV2(_ request: InitializeV2Request) async throws -> InitializeV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await initializeV2WithOptions(request as! InitializeV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initializeV2Advance(_ request: InitializeV2AdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitializeV2Response {
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "Cloudauth-intl",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
+        ])
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var authResponse: [String: Any] = [:]
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
+        var initializeV2Req: InitializeV2Request = InitializeV2Request([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, initializeV2Req)
+        if (!TeaUtils.Client.isUnset(request.facePictureFileObject)) {
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.facePictureFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            initializeV2Req.facePictureFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        if (!TeaUtils.Client.isUnset(request.targetFacePictureFileObject)) {
+            var tmpResp1: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp1)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.targetFacePictureFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            initializeV2Req.targetFacePictureFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        var initializeV2Resp: InitializeV2Response = try await initializeV2WithOptions(initializeV2Req as! InitializeV2Request, runtime as! TeaUtils.RuntimeOptions)
+        return initializeV2Resp as! InitializeV2Response
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
