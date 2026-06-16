@@ -235,6 +235,8 @@ public class GetUserResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var dashscopeHost: String?
+
     public var host: String?
 
     public var innerToken: String?
@@ -274,6 +276,9 @@ public class GetUserResponseBody : Tea.TeaModel {
         }
         if self.code != nil {
             map["Code"] = self.code!
+        }
+        if self.dashscopeHost != nil {
+            map["DashscopeHost"] = self.dashscopeHost!
         }
         if self.host != nil {
             map["Host"] = self.host!
@@ -316,6 +321,9 @@ public class GetUserResponseBody : Tea.TeaModel {
         }
         if let value = dict["Code"] as? String {
             self.code = value
+        }
+        if let value = dict["DashscopeHost"] as? String {
+            self.dashscopeHost = value
         }
         if let value = dict["Host"] as? String {
             self.host = value
