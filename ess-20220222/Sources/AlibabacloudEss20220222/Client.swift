@@ -53,7 +53,35 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhangjiakou-na62-a01": "ess.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "ess.aliyuncs.com",
             "eu-west-1-oxs": "ess.aliyuncs.com",
-            "rus-west-1-pop": "ess.aliyuncs.com"
+            "rus-west-1-pop": "ess.aliyuncs.com",
+            "us-southeast-1": "ess.us-southeast-1.aliyuncs.com",
+            "na-south-1": "ess.na-south-1.aliyuncs.com",
+            "me-east-1": "ess.me-east-1.aliyuncs.com",
+            "me-central-1": "ess.me-central-1.aliyuncs.com",
+            "eu-west-1": "ess.eu-west-1.aliyuncs.com",
+            "eu-central-1": "ess.eu-central-1.aliyuncs.com",
+            "cn-zhongwei": "ess.cn-zhongwei.aliyuncs.com",
+            "cn-zhengzhou-jva": "ess.cn-zhengzhou-jva.aliyuncs.com",
+            "cn-zhangjiakou": "ess.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "ess.cn-wulanchabu-gic-1.aliyuncs.com",
+            "cn-wulanchabu": "ess.cn-wulanchabu.aliyuncs.com",
+            "cn-wuhan-lr": "ess.cn-wuhan-lr.aliyuncs.com",
+            "cn-nanjing": "ess.aliyuncs.com",
+            "cn-huhehaote": "ess.cn-huhehaote.aliyuncs.com",
+            "cn-heyuan-acdr-1": "ess.cn-heyuan-acdr-1.aliyuncs.com",
+            "cn-heyuan": "ess.cn-heyuan.aliyuncs.com",
+            "cn-guangzhou": "ess.cn-guangzhou.aliyuncs.com",
+            "cn-fuzhou": "ess.cn-fuzhou.aliyuncs.com",
+            "cn-chengdu": "ess.cn-chengdu.aliyuncs.com",
+            "cn-beijing-finance-1": "ess.aliyuncs.com",
+            "ap-southeast-7": "ess.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "ess.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "ess.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "ess.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-2": "ess.ap-southeast-2.aliyuncs.com",
+            "ap-south-1": "ess.ap-south-1.aliyuncs.com",
+            "ap-northeast-2": "ess.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "ess.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ess", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -5846,6 +5874,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.skipMatching)) {
             query["SkipMatching"] = request.skipMatching!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            query["Strategy"] = request.strategy ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

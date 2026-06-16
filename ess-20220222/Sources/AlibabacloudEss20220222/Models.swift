@@ -19252,6 +19252,8 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var strategy: String?
+
         public var totalNeedUpdateCapacity: Int32?
 
         public override init() {
@@ -19315,6 +19317,9 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.strategy != nil {
+                map["Strategy"] = self.strategy!
+            }
             if self.totalNeedUpdateCapacity != nil {
                 map["TotalNeedUpdateCapacity"] = self.totalNeedUpdateCapacity!
             }
@@ -19376,6 +19381,9 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Strategy"] as? String {
+                self.strategy = value
             }
             if let value = dict["TotalNeedUpdateCapacity"] as? Int32 {
                 self.totalNeedUpdateCapacity = value
@@ -26993,6 +27001,8 @@ public class DescribeScalingInstancesResponseBody : Tea.TeaModel {
 
         public var privateIpAddress: String?
 
+        public var replaceStatus: String?
+
         public var scalingActivityId: String?
 
         public var scalingConfigurationId: String?
@@ -27056,6 +27066,9 @@ public class DescribeScalingInstancesResponseBody : Tea.TeaModel {
             if self.privateIpAddress != nil {
                 map["PrivateIpAddress"] = self.privateIpAddress!
             }
+            if self.replaceStatus != nil {
+                map["ReplaceStatus"] = self.replaceStatus!
+            }
             if self.scalingActivityId != nil {
                 map["ScalingActivityId"] = self.scalingActivityId!
             }
@@ -27117,6 +27130,9 @@ public class DescribeScalingInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["PrivateIpAddress"] as? String {
                 self.privateIpAddress = value
+            }
+            if let value = dict["ReplaceStatus"] as? String {
+                self.replaceStatus = value
             }
             if let value = dict["ScalingActivityId"] as? String {
                 self.scalingActivityId = value
@@ -43595,6 +43611,8 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
 
     public var skipMatching: Bool?
 
+    public var strategy: String?
+
     public override init() {
         super.init()
     }
@@ -43647,6 +43665,9 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
         if self.skipMatching != nil {
             map["SkipMatching"] = self.skipMatching!
         }
+        if self.strategy != nil {
+            map["Strategy"] = self.strategy!
+        }
         return map
     }
 
@@ -43696,6 +43717,9 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
         }
         if let value = dict["SkipMatching"] as? Bool {
             self.skipMatching = value
+        }
+        if let value = dict["Strategy"] as? String {
+            self.strategy = value
         }
     }
 }
