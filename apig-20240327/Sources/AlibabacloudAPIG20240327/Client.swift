@@ -8,7 +8,34 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "apig.us-west-1.aliyuncs.com",
+            "us-east-1": "apig.us-east-1.aliyuncs.com",
+            "me-east-1": "apig.me-east-1.aliyuncs.com",
+            "me-central-1": "apig.me-central-1.aliyuncs.com",
+            "eu-west-1": "apig.eu-west-1.aliyuncs.com",
+            "eu-central-1": "apig.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "apig.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "apig.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "apig.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "apig.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "apig.cn-qingdao.aliyuncs.com",
+            "cn-hongkong": "apig.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "apig.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou": "apig.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "apig.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "apig.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "apig.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "apig.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "apig.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "apig.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "apig.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-2": "apig.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-1": "apig.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "apig.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "apig.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("apig", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -395,6 +422,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientCACert)) {
             body["clientCACert"] = request.clientCACert ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainScope)) {
+            body["domainScope"] = request.domainScope ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.forceHttps)) {
             body["forceHttps"] = request.forceHttps!;
@@ -2597,6 +2627,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDomainsWithOptions(_ request: ListDomainsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDomainsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainScope)) {
+            query["domainScope"] = request.domainScope ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gatewayId)) {
             query["gatewayId"] = request.gatewayId ?? "";
         }
@@ -4077,6 +4110,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientCACert)) {
             body["clientCACert"] = request.clientCACert ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainScope)) {
+            body["domainScope"] = request.domainScope ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.forceHttps)) {
             body["forceHttps"] = request.forceHttps!;

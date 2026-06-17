@@ -3713,6 +3713,8 @@ public class DomainInfo : Tea.TeaModel {
 
     public var domainId: String?
 
+    public var domainScope: String?
+
     public var forceHttps: Bool?
 
     public var mTLSEnabled: Bool?
@@ -3756,6 +3758,9 @@ public class DomainInfo : Tea.TeaModel {
         if self.domainId != nil {
             map["domainId"] = self.domainId!
         }
+        if self.domainScope != nil {
+            map["domainScope"] = self.domainScope!
+        }
         if self.forceHttps != nil {
             map["forceHttps"] = self.forceHttps!
         }
@@ -3796,6 +3801,9 @@ public class DomainInfo : Tea.TeaModel {
         }
         if let value = dict["domainId"] as? String {
             self.domainId = value
+        }
+        if let value = dict["domainScope"] as? String {
+            self.domainScope = value
         }
         if let value = dict["forceHttps"] as? Bool {
             self.forceHttps = value
@@ -3982,6 +3990,8 @@ public class GatewayInfo : Tea.TeaModel {
     }
     public var engineVersion: String?
 
+    public var gatewayEdition: String?
+
     public var gatewayId: String?
 
     public var name: String?
@@ -4006,6 +4016,9 @@ public class GatewayInfo : Tea.TeaModel {
         if self.engineVersion != nil {
             map["engineVersion"] = self.engineVersion!
         }
+        if self.gatewayEdition != nil {
+            map["gatewayEdition"] = self.gatewayEdition!
+        }
         if self.gatewayId != nil {
             map["gatewayId"] = self.gatewayId!
         }
@@ -4022,6 +4035,9 @@ public class GatewayInfo : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["engineVersion"] as? String {
             self.engineVersion = value
+        }
+        if let value = dict["gatewayEdition"] as? String {
+            self.gatewayEdition = value
         }
         if let value = dict["gatewayId"] as? String {
             self.gatewayId = value
@@ -6128,6 +6144,8 @@ public class HiMarketProductRefConfig : Tea.TeaModel {
 public class HttpApiApiInfo : Tea.TeaModel {
     public class Environments : Tea.TeaModel {
         public class GatewayInfo : Tea.TeaModel {
+            public var gatewayEdition: String?
+
             public var gatewayId: String?
 
             public var name: String?
@@ -6146,6 +6164,9 @@ public class HttpApiApiInfo : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.gatewayEdition != nil {
+                    map["gatewayEdition"] = self.gatewayEdition!
+                }
                 if self.gatewayId != nil {
                     map["gatewayId"] = self.gatewayId!
                 }
@@ -6157,6 +6178,9 @@ public class HttpApiApiInfo : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["gatewayEdition"] as? String {
+                    self.gatewayEdition = value
+                }
                 if let value = dict["gatewayId"] as? String {
                     self.gatewayId = value
                 }
@@ -9581,6 +9605,8 @@ public class HttpRoute : Tea.TeaModel {
     }
     public class EnvironmentInfo : Tea.TeaModel {
         public class GatewayInfo : Tea.TeaModel {
+            public var gatewayEdition: String?
+
             public var gatewayId: String?
 
             public var name: String?
@@ -9599,6 +9625,9 @@ public class HttpRoute : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.gatewayEdition != nil {
+                    map["gatewayEdition"] = self.gatewayEdition!
+                }
                 if self.gatewayId != nil {
                     map["gatewayId"] = self.gatewayId!
                 }
@@ -9610,6 +9639,9 @@ public class HttpRoute : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["gatewayEdition"] as? String {
+                    self.gatewayEdition = value
+                }
                 if let value = dict["gatewayId"] as? String {
                     self.gatewayId = value
                 }
@@ -12259,6 +12291,194 @@ public class TlsCipherSuitesConfig : Tea.TeaModel {
     }
 }
 
+public class TransportCertificateInfo : Tea.TeaModel {
+    public var algorithm: String?
+
+    public var certIdentifier: String?
+
+    public var certName: String?
+
+    public var certificateMatchStatus: String?
+
+    public var commonName: String?
+
+    public var coveredDomains: [String]?
+
+    public var issuer: String?
+
+    public var matchedDomains: [String]?
+
+    public var notAfterTimestamp: Int64?
+
+    public var notBeforeTimestamp: Int64?
+
+    public var sans: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.algorithm != nil {
+            map["algorithm"] = self.algorithm!
+        }
+        if self.certIdentifier != nil {
+            map["certIdentifier"] = self.certIdentifier!
+        }
+        if self.certName != nil {
+            map["certName"] = self.certName!
+        }
+        if self.certificateMatchStatus != nil {
+            map["certificateMatchStatus"] = self.certificateMatchStatus!
+        }
+        if self.commonName != nil {
+            map["commonName"] = self.commonName!
+        }
+        if self.coveredDomains != nil {
+            map["coveredDomains"] = self.coveredDomains!
+        }
+        if self.issuer != nil {
+            map["issuer"] = self.issuer!
+        }
+        if self.matchedDomains != nil {
+            map["matchedDomains"] = self.matchedDomains!
+        }
+        if self.notAfterTimestamp != nil {
+            map["notAfterTimestamp"] = self.notAfterTimestamp!
+        }
+        if self.notBeforeTimestamp != nil {
+            map["notBeforeTimestamp"] = self.notBeforeTimestamp!
+        }
+        if self.sans != nil {
+            map["sans"] = self.sans!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["algorithm"] as? String {
+            self.algorithm = value
+        }
+        if let value = dict["certIdentifier"] as? String {
+            self.certIdentifier = value
+        }
+        if let value = dict["certName"] as? String {
+            self.certName = value
+        }
+        if let value = dict["certificateMatchStatus"] as? String {
+            self.certificateMatchStatus = value
+        }
+        if let value = dict["commonName"] as? String {
+            self.commonName = value
+        }
+        if let value = dict["coveredDomains"] as? [String] {
+            self.coveredDomains = value
+        }
+        if let value = dict["issuer"] as? String {
+            self.issuer = value
+        }
+        if let value = dict["matchedDomains"] as? [String] {
+            self.matchedDomains = value
+        }
+        if let value = dict["notAfterTimestamp"] as? Int64 {
+            self.notAfterTimestamp = value
+        }
+        if let value = dict["notBeforeTimestamp"] as? Int64 {
+            self.notBeforeTimestamp = value
+        }
+        if let value = dict["sans"] as? String {
+            self.sans = value
+        }
+    }
+}
+
+public class TransportEncryptionInfo : Tea.TeaModel {
+    public var certificates: [TransportCertificateInfo]?
+
+    public var deployError: String?
+
+    public var deployStatus: String?
+
+    public var http2Enabled: Bool?
+
+    public var tlsPolicy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certificates != nil {
+            var tmp : [Any] = []
+            for k in self.certificates! {
+                tmp.append(k.toMap())
+            }
+            map["certificates"] = tmp
+        }
+        if self.deployError != nil {
+            map["deployError"] = self.deployError!
+        }
+        if self.deployStatus != nil {
+            map["deployStatus"] = self.deployStatus!
+        }
+        if self.http2Enabled != nil {
+            map["http2Enabled"] = self.http2Enabled!
+        }
+        if self.tlsPolicy != nil {
+            map["tlsPolicy"] = self.tlsPolicy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["certificates"] as? [Any?] {
+            var tmp : [TransportCertificateInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = TransportCertificateInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.certificates = tmp
+        }
+        if let value = dict["deployError"] as? String {
+            self.deployError = value
+        }
+        if let value = dict["deployStatus"] as? String {
+            self.deployStatus = value
+        }
+        if let value = dict["http2Enabled"] as? Bool {
+            self.http2Enabled = value
+        }
+        if let value = dict["tlsPolicy"] as? String {
+            self.tlsPolicy = value
+        }
+    }
+}
+
 public class ValidationOptions : Tea.TeaModel {
 
     public override init() {
@@ -14101,6 +14321,8 @@ public class CreateDomainRequest : Tea.TeaModel {
 
     public var clientCACert: String?
 
+    public var domainScope: String?
+
     public var forceHttps: Bool?
 
     public var gatewayType: String?
@@ -14145,6 +14367,9 @@ public class CreateDomainRequest : Tea.TeaModel {
         if self.clientCACert != nil {
             map["clientCACert"] = self.clientCACert!
         }
+        if self.domainScope != nil {
+            map["domainScope"] = self.domainScope!
+        }
         if self.forceHttps != nil {
             map["forceHttps"] = self.forceHttps!
         }
@@ -14188,6 +14413,9 @@ public class CreateDomainRequest : Tea.TeaModel {
         }
         if let value = dict["clientCACert"] as? String {
             self.clientCACert = value
+        }
+        if let value = dict["domainScope"] as? String {
+            self.domainScope = value
         }
         if let value = dict["forceHttps"] as? Bool {
             self.forceHttps = value
@@ -22404,6 +22632,8 @@ public class GetDomainResponseBody : Tea.TeaModel {
 
         public var domainId: String?
 
+        public var domainScope: String?
+
         public var forceHttps: Bool?
 
         public var http2Option: String?
@@ -22476,6 +22706,9 @@ public class GetDomainResponseBody : Tea.TeaModel {
             }
             if self.domainId != nil {
                 map["domainId"] = self.domainId!
+            }
+            if self.domainScope != nil {
+                map["domainScope"] = self.domainScope!
             }
             if self.forceHttps != nil {
                 map["forceHttps"] = self.forceHttps!
@@ -22553,6 +22786,9 @@ public class GetDomainResponseBody : Tea.TeaModel {
             }
             if let value = dict["domainId"] as? String {
                 self.domainId = value
+            }
+            if let value = dict["domainScope"] as? String {
+                self.domainScope = value
             }
             if let value = dict["forceHttps"] as? Bool {
                 self.forceHttps = value
@@ -26986,6 +27222,10 @@ public class GetSourceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var associationReason: String?
+
+        public var associationStatus: String?
+
         public var createTimestamp: Int64?
 
         public var gatewayId: String?
@@ -27020,6 +27260,12 @@ public class GetSourceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.associationReason != nil {
+                map["associationReason"] = self.associationReason!
+            }
+            if self.associationStatus != nil {
+                map["associationStatus"] = self.associationStatus!
+            }
             if self.createTimestamp != nil {
                 map["createTimestamp"] = self.createTimestamp!
             }
@@ -27052,6 +27298,12 @@ public class GetSourceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["associationReason"] as? String {
+                self.associationReason = value
+            }
+            if let value = dict["associationStatus"] as? String {
+                self.associationStatus = value
+            }
             if let value = dict["createTimestamp"] as? Int64 {
                 self.createTimestamp = value
             }
@@ -29097,6 +29349,8 @@ public class ListConsumersResponse : Tea.TeaModel {
 }
 
 public class ListDomainsRequest : Tea.TeaModel {
+    public var domainScope: String?
+
     public var gatewayId: String?
 
     public var gatewayType: String?
@@ -29123,6 +29377,9 @@ public class ListDomainsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.domainScope != nil {
+            map["domainScope"] = self.domainScope!
+        }
         if self.gatewayId != nil {
             map["gatewayId"] = self.gatewayId!
         }
@@ -29146,6 +29403,9 @@ public class ListDomainsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["domainScope"] as? String {
+            self.domainScope = value
+        }
         if let value = dict["gatewayId"] as? String {
             self.gatewayId = value
         }
@@ -38744,6 +39004,8 @@ public class UpdateDomainRequest : Tea.TeaModel {
 
     public var clientCACert: String?
 
+    public var domainScope: String?
+
     public var forceHttps: Bool?
 
     public var http2Option: String?
@@ -38782,6 +39044,9 @@ public class UpdateDomainRequest : Tea.TeaModel {
         if self.clientCACert != nil {
             map["clientCACert"] = self.clientCACert!
         }
+        if self.domainScope != nil {
+            map["domainScope"] = self.domainScope!
+        }
         if self.forceHttps != nil {
             map["forceHttps"] = self.forceHttps!
         }
@@ -38816,6 +39081,9 @@ public class UpdateDomainRequest : Tea.TeaModel {
         }
         if let value = dict["clientCACert"] as? String {
             self.clientCACert = value
+        }
+        if let value = dict["domainScope"] as? String {
+            self.domainScope = value
         }
         if let value = dict["forceHttps"] as? Bool {
             self.forceHttps = value
