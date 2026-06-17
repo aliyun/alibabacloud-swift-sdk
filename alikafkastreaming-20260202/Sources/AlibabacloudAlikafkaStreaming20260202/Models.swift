@@ -211,6 +211,8 @@ public class DeleteComputeInstanceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -231,6 +233,9 @@ public class DeleteComputeInstanceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -241,6 +246,9 @@ public class DeleteComputeInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
