@@ -30600,6 +30600,8 @@ public class DescribeMetricRuleListResponseBody : Tea.TeaModel {
 
             public var ruleName: String?
 
+            public var sendOK: Bool?
+
             public var silenceTime: Int32?
 
             public var sourceType: String?
@@ -30693,6 +30695,9 @@ public class DescribeMetricRuleListResponseBody : Tea.TeaModel {
                 if self.ruleName != nil {
                     map["RuleName"] = self.ruleName!
                 }
+                if self.sendOK != nil {
+                    map["SendOK"] = self.sendOK!
+                }
                 if self.silenceTime != nil {
                     map["SilenceTime"] = self.silenceTime!
                 }
@@ -30783,6 +30788,9 @@ public class DescribeMetricRuleListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RuleName"] as? String {
                     self.ruleName = value
+                }
+                if let value = dict["SendOK"] as? Bool {
+                    self.sendOK = value
                 }
                 if let value = dict["SilenceTime"] as? Int32 {
                     self.silenceTime = value
