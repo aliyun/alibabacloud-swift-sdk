@@ -812,6 +812,10 @@ public class AppInstanceProfile : Tea.TeaModel {
 
     public var bizId: String?
 
+    public var chatbiTaskId: String?
+
+    public var chatbiTaskStatus: String?
+
     public var commodityCode: String?
 
     public var customerService: String?
@@ -819,6 +823,8 @@ public class AppInstanceProfile : Tea.TeaModel {
     public var deployArea: String?
 
     public var instanceId: String?
+
+    public var openChatBi: Bool?
 
     public var ordTime: String?
 
@@ -839,10 +845,6 @@ public class AppInstanceProfile : Tea.TeaModel {
     public var templateEtag: String?
 
     public var templateId: String?
-
-    public var chatbiTaskId: String?
-
-    public var chatbiTaskStatus: String?
 
     public override init() {
         super.init()
@@ -867,6 +869,12 @@ public class AppInstanceProfile : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.chatbiTaskId != nil {
+            map["ChatbiTaskId"] = self.chatbiTaskId!
+        }
+        if self.chatbiTaskStatus != nil {
+            map["ChatbiTaskStatus"] = self.chatbiTaskStatus!
+        }
         if self.commodityCode != nil {
             map["CommodityCode"] = self.commodityCode!
         }
@@ -878,6 +886,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.openChatBi != nil {
+            map["OpenChatBi"] = self.openChatBi!
         }
         if self.ordTime != nil {
             map["OrdTime"] = self.ordTime!
@@ -909,12 +920,6 @@ public class AppInstanceProfile : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
-        if self.chatbiTaskId != nil {
-            map["chatbiTaskId"] = self.chatbiTaskId!
-        }
-        if self.chatbiTaskStatus != nil {
-            map["chatbiTaskStatus"] = self.chatbiTaskStatus!
-        }
         return map
     }
 
@@ -929,6 +934,12 @@ public class AppInstanceProfile : Tea.TeaModel {
         if let value = dict["BizId"] as? String {
             self.bizId = value
         }
+        if let value = dict["ChatbiTaskId"] as? String {
+            self.chatbiTaskId = value
+        }
+        if let value = dict["ChatbiTaskStatus"] as? String {
+            self.chatbiTaskStatus = value
+        }
         if let value = dict["CommodityCode"] as? String {
             self.commodityCode = value
         }
@@ -940,6 +951,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["OpenChatBi"] as? Bool {
+            self.openChatBi = value
         }
         if let value = dict["OrdTime"] as? String {
             self.ordTime = value
@@ -970,12 +984,6 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
-        }
-        if let value = dict["chatbiTaskId"] as? String {
-            self.chatbiTaskId = value
-        }
-        if let value = dict["chatbiTaskStatus"] as? String {
-            self.chatbiTaskStatus = value
         }
     }
 }
@@ -33343,6 +33351,8 @@ public class NotifyAppNotificationForAdminRequest : Tea.TeaModel {
 
     public var env: String?
 
+    public var payload: String?
+
     public var sceneId: String?
 
     public override init() {
@@ -33365,6 +33375,9 @@ public class NotifyAppNotificationForAdminRequest : Tea.TeaModel {
         if self.env != nil {
             map["Env"] = self.env!
         }
+        if self.payload != nil {
+            map["Payload"] = self.payload!
+        }
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
         }
@@ -33378,6 +33391,9 @@ public class NotifyAppNotificationForAdminRequest : Tea.TeaModel {
         }
         if let value = dict["Env"] as? String {
             self.env = value
+        }
+        if let value = dict["Payload"] as? String {
+            self.payload = value
         }
         if let value = dict["SceneId"] as? String {
             self.sceneId = value

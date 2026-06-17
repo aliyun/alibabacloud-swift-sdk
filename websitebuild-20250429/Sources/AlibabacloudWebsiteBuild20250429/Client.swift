@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "public": "websitebuild.aliyuncs.com",
+            "cn-zhangjiakou": "websitebuild.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("websitebuild", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -3618,6 +3622,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.env)) {
             query["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.payload)) {
+            query["Payload"] = request.payload ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sceneId)) {
             query["SceneId"] = request.sceneId ?? "";
