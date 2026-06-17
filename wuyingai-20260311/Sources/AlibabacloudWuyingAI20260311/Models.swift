@@ -194,6 +194,10 @@ public class ChatRequest : Tea.TeaModel {
 
     public var input: [ChatRequest.Input]?
 
+    public var model: String?
+
+    public var resume: Bool?
+
     public var routingKey: String?
 
     public var sessionId: String?
@@ -232,6 +236,12 @@ public class ChatRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Input"] = tmp
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.resume != nil {
+            map["Resume"] = self.resume!
         }
         if self.routingKey != nil {
             map["RoutingKey"] = self.routingKey!
@@ -272,6 +282,12 @@ public class ChatRequest : Tea.TeaModel {
             }
             self.input = tmp
         }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["Resume"] as? Bool {
+            self.resume = value
+        }
         if let value = dict["RoutingKey"] as? String {
             self.routingKey = value
         }
@@ -300,6 +316,10 @@ public class ChatShrinkRequest : Tea.TeaModel {
     public var externalUserId: String?
 
     public var inputShrink: String?
+
+    public var model: String?
+
+    public var resume: Bool?
 
     public var routingKey: String?
 
@@ -334,6 +354,12 @@ public class ChatShrinkRequest : Tea.TeaModel {
         if self.inputShrink != nil {
             map["Input"] = self.inputShrink!
         }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.resume != nil {
+            map["Resume"] = self.resume!
+        }
         if self.routingKey != nil {
             map["RoutingKey"] = self.routingKey!
         }
@@ -362,6 +388,12 @@ public class ChatShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Input"] as? String {
             self.inputShrink = value
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["Resume"] as? Bool {
+            self.resume = value
         }
         if let value = dict["RoutingKey"] as? String {
             self.routingKey = value
@@ -466,6 +498,8 @@ public class ChatResponseBody : Tea.TeaModel {
 
     public var text: String?
 
+    public var traceId: String?
+
     public var type: String?
 
     public override init() {
@@ -531,6 +565,9 @@ public class ChatResponseBody : Tea.TeaModel {
         if self.text != nil {
             map["Text"] = self.text!
         }
+        if self.traceId != nil {
+            map["TraceId"] = self.traceId!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -593,6 +630,9 @@ public class ChatResponseBody : Tea.TeaModel {
         }
         if let value = dict["Text"] as? String {
             self.text = value
+        }
+        if let value = dict["TraceId"] as? String {
+            self.traceId = value
         }
         if let value = dict["Type"] as? String {
             self.type = value

@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("wuyingai", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -50,6 +50,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.inputShrink)) {
             body["Input"] = request.inputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            body["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resume)) {
+            body["Resume"] = request.resume!;
         }
         if (!TeaUtils.Client.isUnset(request.routingKey)) {
             body["RoutingKey"] = request.routingKey ?? "";
