@@ -4835,7 +4835,7 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
 
     public var managementMode: String?
 
-    public var modeName: String?
+    public var modelName: String?
 
     public var ownerAccount: String?
 
@@ -4930,8 +4930,8 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         if self.managementMode != nil {
             map["ManagementMode"] = self.managementMode!
         }
-        if self.modeName != nil {
-            map["ModeName"] = self.modeName!
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -5038,8 +5038,8 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         if let value = dict["ManagementMode"] as? String {
             self.managementMode = value
         }
-        if let value = dict["ModeName"] as? String {
-            self.modeName = value
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -8352,6 +8352,8 @@ public class CreateBackupResponse : Tea.TeaModel {
 }
 
 public class CreateBatchTaskRequest : Tea.TeaModel {
+    public var applicationType: String?
+
     public var instanceIds: [String]?
 
     public var param: String?
@@ -8376,6 +8378,9 @@ public class CreateBatchTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -8396,6 +8401,9 @@ public class CreateBatchTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApplicationType"] as? String {
+            self.applicationType = value
+        }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
         }
@@ -8415,6 +8423,8 @@ public class CreateBatchTaskRequest : Tea.TeaModel {
 }
 
 public class CreateBatchTaskShrinkRequest : Tea.TeaModel {
+    public var applicationType: String?
+
     public var instanceIdsShrink: String?
 
     public var param: String?
@@ -8439,6 +8449,9 @@ public class CreateBatchTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
         if self.instanceIdsShrink != nil {
             map["InstanceIds"] = self.instanceIdsShrink!
         }
@@ -8459,6 +8472,9 @@ public class CreateBatchTaskShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApplicationType"] as? String {
+            self.applicationType = value
+        }
         if let value = dict["InstanceIds"] as? String {
             self.instanceIdsShrink = value
         }
@@ -29847,6 +29863,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
         public var embedderModelName: String?
 
+        public var graphLlmModelName: String?
+
         public var llmModelName: String?
 
         public var projectName: String?
@@ -29875,6 +29893,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             if self.embedderModelName != nil {
                 map["EmbedderModelName"] = self.embedderModelName!
             }
+            if self.graphLlmModelName != nil {
+                map["GraphLlmModelName"] = self.graphLlmModelName!
+            }
             if self.llmModelName != nil {
                 map["LlmModelName"] = self.llmModelName!
             }
@@ -29897,6 +29918,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["EmbedderModelName"] as? String {
                 self.embedderModelName = value
+            }
+            if let value = dict["GraphLlmModelName"] as? String {
+                self.graphLlmModelName = value
             }
             if let value = dict["LlmModelName"] as? String {
                 self.llmModelName = value
@@ -35177,6 +35201,8 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
             public var isAvail: String?
 
+            public var tableRestoreMetaStatus: String?
+
             public override init() {
                 super.init()
             }
@@ -35233,6 +35259,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                 if self.isAvail != nil {
                     map["IsAvail"] = self.isAvail!
                 }
+                if self.tableRestoreMetaStatus != nil {
+                    map["TableRestoreMetaStatus"] = self.tableRestoreMetaStatus!
+                }
                 return map
             }
 
@@ -35279,6 +35308,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IsAvail"] as? String {
                     self.isAvail = value
+                }
+                if let value = dict["TableRestoreMetaStatus"] as? String {
+                    self.tableRestoreMetaStatus = value
                 }
             }
         }
@@ -35550,6 +35582,8 @@ public class DescribeBatchTaskResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var applicationType: String?
+
     public var batchId: String?
 
     public var requestId: String?
@@ -35584,6 +35618,9 @@ public class DescribeBatchTaskResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
         if self.batchId != nil {
             map["BatchId"] = self.batchId!
         }
@@ -35623,6 +35660,9 @@ public class DescribeBatchTaskResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApplicationType"] as? String {
+            self.applicationType = value
+        }
         if let value = dict["BatchId"] as? String {
             self.batchId = value
         }
@@ -46196,6 +46236,8 @@ public class DescribeDBClusterVersionResponseBody : Tea.TeaModel {
     }
     public var DBClusterId: String?
 
+    public var DBLatestStableVersion: String?
+
     public var DBLatestVersion: String?
 
     public var DBMinorVersion: String?
@@ -46207,6 +46249,8 @@ public class DescribeDBClusterVersionResponseBody : Tea.TeaModel {
     public var DBVersion: String?
 
     public var DBVersionStatus: String?
+
+    public var isLatestStableVersion: String?
 
     public var isLatestVersion: String?
 
@@ -46239,6 +46283,9 @@ public class DescribeDBClusterVersionResponseBody : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.DBLatestStableVersion != nil {
+            map["DBLatestStableVersion"] = self.DBLatestStableVersion!
+        }
         if self.DBLatestVersion != nil {
             map["DBLatestVersion"] = self.DBLatestVersion!
         }
@@ -46260,6 +46307,9 @@ public class DescribeDBClusterVersionResponseBody : Tea.TeaModel {
         }
         if self.DBVersionStatus != nil {
             map["DBVersionStatus"] = self.DBVersionStatus!
+        }
+        if self.isLatestStableVersion != nil {
+            map["IsLatestStableVersion"] = self.isLatestStableVersion!
         }
         if self.isLatestVersion != nil {
             map["IsLatestVersion"] = self.isLatestVersion!
@@ -46294,6 +46344,9 @@ public class DescribeDBClusterVersionResponseBody : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["DBLatestStableVersion"] as? String {
+            self.DBLatestStableVersion = value
+        }
         if let value = dict["DBLatestVersion"] as? String {
             self.DBLatestVersion = value
         }
@@ -46321,6 +46374,9 @@ public class DescribeDBClusterVersionResponseBody : Tea.TeaModel {
         }
         if let value = dict["DBVersionStatus"] as? String {
             self.DBVersionStatus = value
+        }
+        if let value = dict["IsLatestStableVersion"] as? String {
+            self.isLatestStableVersion = value
         }
         if let value = dict["IsLatestVersion"] as? String {
             self.isLatestVersion = value
@@ -75481,9 +75537,15 @@ public class DisableDBClusterOrcaResponse : Tea.TeaModel {
 public class DisableDBClusterServerlessRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fromTimeService: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var plannedEndTime: String?
+
+    public var plannedStartTime: String?
 
     public var resourceOwnerAccount: String?
 
@@ -75506,11 +75568,20 @@ public class DisableDBClusterServerlessRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fromTimeService != nil {
+            map["FromTimeService"] = self.fromTimeService!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.plannedEndTime != nil {
+            map["PlannedEndTime"] = self.plannedEndTime!
+        }
+        if self.plannedStartTime != nil {
+            map["PlannedStartTime"] = self.plannedStartTime!
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
@@ -75526,11 +75597,20 @@ public class DisableDBClusterServerlessRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["FromTimeService"] as? Bool {
+            self.fromTimeService = value
+        }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["PlannedEndTime"] as? String {
+            self.plannedEndTime = value
+        }
+        if let value = dict["PlannedStartTime"] as? String {
+            self.plannedStartTime = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -76417,9 +76497,15 @@ public class EnableDBClusterOrcaResponse : Tea.TeaModel {
 public class EnableDBClusterServerlessRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fromTimeService: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var plannedEndTime: String?
+
+    public var plannedStartTime: String?
 
     public var resourceOwnerAccount: String?
 
@@ -76454,11 +76540,20 @@ public class EnableDBClusterServerlessRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fromTimeService != nil {
+            map["FromTimeService"] = self.fromTimeService!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.plannedEndTime != nil {
+            map["PlannedEndTime"] = self.plannedEndTime!
+        }
+        if self.plannedStartTime != nil {
+            map["PlannedStartTime"] = self.plannedStartTime!
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
@@ -76492,11 +76587,20 @@ public class EnableDBClusterServerlessRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["FromTimeService"] as? Bool {
+            self.fromTimeService = value
+        }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["PlannedEndTime"] as? String {
+            self.plannedEndTime = value
+        }
+        if let value = dict["PlannedStartTime"] as? String {
+            self.plannedStartTime = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -95238,6 +95342,126 @@ public class OpenAITaskResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = OpenAITaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class OperateApplicationRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var operation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
+    }
+}
+
+public class OperateApplicationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class OperateApplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: OperateApplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = OperateApplicationResponseBody()
             model.fromMap(value)
             self.body = model
         }
