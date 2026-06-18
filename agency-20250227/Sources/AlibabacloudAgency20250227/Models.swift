@@ -1265,6 +1265,307 @@ public class GetCustomerOrderListResponse : Tea.TeaModel {
     }
 }
 
+public class GetIntlCommissionDetailFileListRequest : Tea.TeaModel {
+    public var billMonth: String?
+
+    public var ossAccessKeyId: String?
+
+    public var ossAccessKeySecret: String?
+
+    public var ossBucketName: String?
+
+    public var ossEndpoint: String?
+
+    public var ossRegion: String?
+
+    public var ossSecurityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billMonth != nil {
+            map["BillMonth"] = self.billMonth!
+        }
+        if self.ossAccessKeyId != nil {
+            map["OssAccessKeyId"] = self.ossAccessKeyId!
+        }
+        if self.ossAccessKeySecret != nil {
+            map["OssAccessKeySecret"] = self.ossAccessKeySecret!
+        }
+        if self.ossBucketName != nil {
+            map["OssBucketName"] = self.ossBucketName!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
+        if self.ossRegion != nil {
+            map["OssRegion"] = self.ossRegion!
+        }
+        if self.ossSecurityToken != nil {
+            map["OssSecurityToken"] = self.ossSecurityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillMonth"] as? String {
+            self.billMonth = value
+        }
+        if let value = dict["OssAccessKeyId"] as? String {
+            self.ossAccessKeyId = value
+        }
+        if let value = dict["OssAccessKeySecret"] as? String {
+            self.ossAccessKeySecret = value
+        }
+        if let value = dict["OssBucketName"] as? String {
+            self.ossBucketName = value
+        }
+        if let value = dict["OssEndpoint"] as? String {
+            self.ossEndpoint = value
+        }
+        if let value = dict["OssRegion"] as? String {
+            self.ossRegion = value
+        }
+        if let value = dict["OssSecurityToken"] as? String {
+            self.ossSecurityToken = value
+        }
+    }
+}
+
+public class GetIntlCommissionDetailFileListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class FileList : Tea.TeaModel {
+            public var bucketSyncStatus: String?
+
+            public var commissionPolicyName: String?
+
+            public var fileName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bucketSyncStatus != nil {
+                    map["BucketSyncStatus"] = self.bucketSyncStatus!
+                }
+                if self.commissionPolicyName != nil {
+                    map["CommissionPolicyName"] = self.commissionPolicyName!
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BucketSyncStatus"] as? String {
+                    self.bucketSyncStatus = value
+                }
+                if let value = dict["CommissionPolicyName"] as? String {
+                    self.commissionPolicyName = value
+                }
+                if let value = dict["FileName"] as? String {
+                    self.fileName = value
+                }
+            }
+        }
+        public var billMonth: String?
+
+        public var fileList: [GetIntlCommissionDetailFileListResponseBody.Data.FileList]?
+
+        public var partnerUid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.billMonth != nil {
+                map["BillMonth"] = self.billMonth!
+            }
+            if self.fileList != nil {
+                var tmp : [Any] = []
+                for k in self.fileList! {
+                    tmp.append(k.toMap())
+                }
+                map["FileList"] = tmp
+            }
+            if self.partnerUid != nil {
+                map["PartnerUid"] = self.partnerUid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BillMonth"] as? String {
+                self.billMonth = value
+            }
+            if let value = dict["FileList"] as? [Any?] {
+                var tmp : [GetIntlCommissionDetailFileListResponseBody.Data.FileList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetIntlCommissionDetailFileListResponseBody.Data.FileList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.fileList = tmp
+            }
+            if let value = dict["PartnerUid"] as? String {
+                self.partnerUid = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetIntlCommissionDetailFileListResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetIntlCommissionDetailFileListResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetIntlCommissionDetailFileListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetIntlCommissionDetailFileListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetIntlCommissionDetailFileListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetRenewalRateListRequest : Tea.TeaModel {
     public var fiscalYearAndQuarter: String?
 

@@ -65,7 +65,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "me-east-1": "agency.aliyuncs.com",
             "rus-west-1-pop": "agency.aliyuncs.com",
             "us-east-1": "agency.aliyuncs.com",
-            "us-west-1": "agency.aliyuncs.com"
+            "us-west-1": "agency.aliyuncs.com",
+            "ap-southeast-1": "agency.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("agency", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -264,6 +265,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCustomerOrderList(_ request: GetCustomerOrderListRequest) async throws -> GetCustomerOrderListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getCustomerOrderListWithOptions(request as! GetCustomerOrderListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIntlCommissionDetailFileListWithOptions(_ request: GetIntlCommissionDetailFileListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIntlCommissionDetailFileListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billMonth)) {
+            query["BillMonth"] = request.billMonth ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossAccessKeyId)) {
+            query["OssAccessKeyId"] = request.ossAccessKeyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossAccessKeySecret)) {
+            query["OssAccessKeySecret"] = request.ossAccessKeySecret ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
+            query["OssBucketName"] = request.ossBucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossEndpoint)) {
+            query["OssEndpoint"] = request.ossEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossRegion)) {
+            query["OssRegion"] = request.ossRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossSecurityToken)) {
+            query["OssSecurityToken"] = request.ossSecurityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetIntlCommissionDetailFileList",
+            "version": "2025-02-27",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetIntlCommissionDetailFileListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIntlCommissionDetailFileList(_ request: GetIntlCommissionDetailFileListRequest) async throws -> GetIntlCommissionDetailFileListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getIntlCommissionDetailFileListWithOptions(request as! GetIntlCommissionDetailFileListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
