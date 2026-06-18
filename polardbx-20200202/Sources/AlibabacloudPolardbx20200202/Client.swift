@@ -54,7 +54,19 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "polardbx.aliyuncs.com",
             "eu-west-1-oxs": "polardbx.aliyuncs.com",
             "me-east-1": "polardbx.aliyuncs.com",
-            "rus-west-1-pop": "polardbx.aliyuncs.com"
+            "rus-west-1-pop": "polardbx.aliyuncs.com",
+            "us-west-1": "polardbx.us-west-1.aliyuncs.com",
+            "us-east-1": "polardbx.us-east-1.aliyuncs.com",
+            "cn-zhangjiakou": "polardbx.cn-zhangjiakou.aliyuncs.com",
+            "cn-shenzhen": "polardbx.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "polardbx.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "polardbx.cn-qingdao.aliyuncs.com",
+            "cn-huhehaote": "polardbx.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "polardbx.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "polardbx.cn-hangzhou.aliyuncs.com",
+            "cn-chengdu": "polardbx.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "polardbx.cn-beijing.aliyuncs.com",
+            "ap-southeast-1": "polardbx.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("polardbx", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -3088,6 +3100,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeMem0SecurityIpsWithOptions(_ request: DescribeMem0SecurityIpsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeMem0SecurityIpsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeMem0SecurityIps",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeMem0SecurityIpsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeMem0SecurityIps(_ request: DescribeMem0SecurityIpsRequest) async throws -> DescribeMem0SecurityIpsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeMem0SecurityIpsWithOptions(request as! DescribeMem0SecurityIpsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeOpenBackupSetWithOptions(_ request: DescribeOpenBackupSetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOpenBackupSetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4861,6 +4907,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyMem0SecurityIpsWithOptions(_ request: ModifyMem0SecurityIpsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyMem0SecurityIpsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupName)) {
+            query["GroupName"] = request.groupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifyMode)) {
+            query["ModifyMode"] = request.modifyMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityIPList)) {
+            query["SecurityIPList"] = request.securityIPList ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyMem0SecurityIps",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyMem0SecurityIpsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyMem0SecurityIps(_ request: ModifyMem0SecurityIpsRequest) async throws -> ModifyMem0SecurityIpsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyMem0SecurityIpsWithOptions(request as! ModifyMem0SecurityIpsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyParameterWithOptions(_ request: ModifyParameterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyParameterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5190,6 +5279,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resetAccountPasswordRestrict(_ request: ResetAccountPasswordRestrictRequest) async throws -> ResetAccountPasswordRestrictResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await resetAccountPasswordRestrictWithOptions(request as! ResetAccountPasswordRestrictRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetMem0AccountPasswordWithOptions(_ request: ResetMem0AccountPasswordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetMem0AccountPasswordResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mem0ApiKey)) {
+            query["Mem0ApiKey"] = request.mem0ApiKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ResetMem0AccountPassword",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResetMem0AccountPasswordResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetMem0AccountPassword(_ request: ResetMem0AccountPasswordRequest) async throws -> ResetMem0AccountPasswordResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await resetMem0AccountPasswordWithOptions(request as! ResetMem0AccountPasswordRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
