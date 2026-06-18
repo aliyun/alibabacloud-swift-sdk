@@ -3026,12 +3026,18 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListAppInstancesShrinkRequest = ListAppInstancesShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.bizIds)) {
+            request.bizIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.bizIds, "BizIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.statusList)) {
             request.statusListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statusList, "StatusList", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizIdsShrink)) {
+            query["BizIds"] = request.bizIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endTimeBegin)) {
             query["EndTimeBegin"] = request.endTimeBegin ?? "";

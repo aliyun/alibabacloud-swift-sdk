@@ -28574,6 +28574,8 @@ public class ListAppInstanceDomainsResponse : Tea.TeaModel {
 public class ListAppInstancesRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var bizIds: [String]?
+
     public var endTimeBegin: String?
 
     public var endTimeEnd: String?
@@ -28612,6 +28614,9 @@ public class ListAppInstancesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizId != nil {
             map["BizId"] = self.bizId!
+        }
+        if self.bizIds != nil {
+            map["BizIds"] = self.bizIds!
         }
         if self.endTimeBegin != nil {
             map["EndTimeBegin"] = self.endTimeBegin!
@@ -28654,6 +28659,9 @@ public class ListAppInstancesRequest : Tea.TeaModel {
         if let value = dict["BizId"] as? String {
             self.bizId = value
         }
+        if let value = dict["BizIds"] as? [String] {
+            self.bizIds = value
+        }
         if let value = dict["EndTimeBegin"] as? String {
             self.endTimeBegin = value
         }
@@ -28693,6 +28701,8 @@ public class ListAppInstancesRequest : Tea.TeaModel {
 public class ListAppInstancesShrinkRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var bizIdsShrink: String?
+
     public var endTimeBegin: String?
 
     public var endTimeEnd: String?
@@ -28731,6 +28741,9 @@ public class ListAppInstancesShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizId != nil {
             map["BizId"] = self.bizId!
+        }
+        if self.bizIdsShrink != nil {
+            map["BizIds"] = self.bizIdsShrink!
         }
         if self.endTimeBegin != nil {
             map["EndTimeBegin"] = self.endTimeBegin!
@@ -28772,6 +28785,9 @@ public class ListAppInstancesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["BizIds"] as? String {
+            self.bizIdsShrink = value
         }
         if let value = dict["EndTimeBegin"] as? String {
             self.endTimeBegin = value
