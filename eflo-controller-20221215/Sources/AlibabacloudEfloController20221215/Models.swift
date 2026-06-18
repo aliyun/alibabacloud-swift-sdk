@@ -7270,6 +7270,8 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var savingsPlanId: String?
+
     public var sn: String?
 
     public var userData: String?
@@ -7357,6 +7359,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.savingsPlanId != nil {
+            map["SavingsPlanId"] = self.savingsPlanId!
         }
         if self.sn != nil {
             map["Sn"] = self.sn!
@@ -7451,6 +7456,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SavingsPlanId"] as? String {
+            self.savingsPlanId = value
         }
         if let value = dict["Sn"] as? String {
             self.sn = value
@@ -10032,6 +10040,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
         public var period: Int64?
 
+        public var savingsPlanId: String?
+
         public var userData: String?
 
         public var vSwitchId: String?
@@ -10095,6 +10105,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
             if self.period != nil {
                 map["Period"] = self.period!
+            }
+            if self.savingsPlanId != nil {
+                map["SavingsPlanId"] = self.savingsPlanId!
             }
             if self.userData != nil {
                 map["UserData"] = self.userData!
@@ -10172,6 +10185,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
             if let value = dict["Period"] as? Int64 {
                 self.period = value
+            }
+            if let value = dict["SavingsPlanId"] as? String {
+                self.savingsPlanId = value
             }
             if let value = dict["UserData"] as? String {
                 self.userData = value

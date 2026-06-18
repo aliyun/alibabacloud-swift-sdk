@@ -9,6 +9,26 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "me-east-1": "eflo-controller.me-east-1.aliyuncs.com",
+            "eu-central-1": "eflo-controller.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "eflo-controller.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "eflo-controller.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "eflo-controller.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "eflo-controller.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "eflo-controller.cn-shanghai.aliyuncs.com",
+            "cn-huhehaote": "eflo-controller.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "eflo-controller.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "eflo-controller.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou": "eflo-controller.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "eflo-controller.cn-guangzhou.aliyuncs.com",
+            "cn-beijing": "eflo-controller.cn-beijing.aliyuncs.com",
+            "ap-southeast-8": "eflo-controller.ap-sourtheast-8.aliyuncs.com",
+            "ap-southeast-7": "eflo-controller.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-3": "eflo-controller.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "eflo-controller.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "eflo-controller.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eflo-controller", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
