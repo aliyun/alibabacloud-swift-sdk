@@ -1436,6 +1436,8 @@ public class AddTableRequest : Tea.TeaModel {
 
     public var tableColumns: [AddTableRequest.TableColumns]?
 
+    public var tableDesc: String?
+
     public var tableName: String?
 
     public override init() {
@@ -1462,6 +1464,9 @@ public class AddTableRequest : Tea.TeaModel {
             }
             map["TableColumns"] = tmp
         }
+        if self.tableDesc != nil {
+            map["TableDesc"] = self.tableDesc!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -1486,6 +1491,9 @@ public class AddTableRequest : Tea.TeaModel {
             }
             self.tableColumns = tmp
         }
+        if let value = dict["TableDesc"] as? String {
+            self.tableDesc = value
+        }
         if let value = dict["TableName"] as? String {
             self.tableName = value
         }
@@ -1496,6 +1504,8 @@ public class AddTableShrinkRequest : Tea.TeaModel {
     public var connectorId: String?
 
     public var tableColumnsShrink: String?
+
+    public var tableDesc: String?
 
     public var tableName: String?
 
@@ -1519,6 +1529,9 @@ public class AddTableShrinkRequest : Tea.TeaModel {
         if self.tableColumnsShrink != nil {
             map["TableColumns"] = self.tableColumnsShrink!
         }
+        if self.tableDesc != nil {
+            map["TableDesc"] = self.tableDesc!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -1532,6 +1545,9 @@ public class AddTableShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TableColumns"] as? String {
             self.tableColumnsShrink = value
+        }
+        if let value = dict["TableDesc"] as? String {
+            self.tableDesc = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -6801,6 +6817,8 @@ public class DescribeFileResponseBody : Tea.TeaModel {
 
         public var fileType: String?
 
+        public var parseErrorMessage: String?
+
         public var parseResultDownloadUrl: String?
 
         public var parser: String?
@@ -6840,6 +6858,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             if self.fileType != nil {
                 map["FileType"] = self.fileType!
             }
+            if self.parseErrorMessage != nil {
+                map["ParseErrorMessage"] = self.parseErrorMessage!
+            }
             if self.parseResultDownloadUrl != nil {
                 map["ParseResultDownloadUrl"] = self.parseResultDownloadUrl!
             }
@@ -6874,6 +6895,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileType"] as? String {
                 self.fileType = value
+            }
+            if let value = dict["ParseErrorMessage"] as? String {
+                self.parseErrorMessage = value
             }
             if let value = dict["ParseResultDownloadUrl"] as? String {
                 self.parseResultDownloadUrl = value
@@ -10609,6 +10633,8 @@ public class ListFileResponseBody : Tea.TeaModel {
 
             public var fileType: String?
 
+            public var parseErrorMessage: String?
+
             public var parser: String?
 
             public var sizeInBytes: Int64?
@@ -10646,6 +10672,9 @@ public class ListFileResponseBody : Tea.TeaModel {
                 if self.fileType != nil {
                     map["FileType"] = self.fileType!
                 }
+                if self.parseErrorMessage != nil {
+                    map["ParseErrorMessage"] = self.parseErrorMessage!
+                }
                 if self.parser != nil {
                     map["Parser"] = self.parser!
                 }
@@ -10677,6 +10706,9 @@ public class ListFileResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["FileType"] as? String {
                     self.fileType = value
+                }
+                if let value = dict["ParseErrorMessage"] as? String {
+                    self.parseErrorMessage = value
                 }
                 if let value = dict["Parser"] as? String {
                     self.parser = value
