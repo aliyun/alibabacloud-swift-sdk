@@ -14077,6 +14077,279 @@ public class GetAllDepartmentResponse : Tea.TeaModel {
     }
 }
 
+public class GetAudioNoteUploadUrlRequest : Tea.TeaModel {
+    public var fileName: String?
+
+    public var fileType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.fileType != nil {
+            map["FileType"] = self.fileType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["FileType"] as? String {
+            self.fileType = value
+        }
+    }
+}
+
+public class GetAudioNoteUploadUrlResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var accessKeyId: String?
+
+        public var expire: String?
+
+        public var filePath: String?
+
+        public var host: String?
+
+        public var key: String?
+
+        public var maxFileSize: Int64?
+
+        public var method: String?
+
+        public var policy: String?
+
+        public var securityToken: String?
+
+        public var signature: String?
+
+        public var uploadUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessKeyId != nil {
+                map["AccessKeyId"] = self.accessKeyId!
+            }
+            if self.expire != nil {
+                map["Expire"] = self.expire!
+            }
+            if self.filePath != nil {
+                map["FilePath"] = self.filePath!
+            }
+            if self.host != nil {
+                map["Host"] = self.host!
+            }
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.maxFileSize != nil {
+                map["MaxFileSize"] = self.maxFileSize!
+            }
+            if self.method != nil {
+                map["Method"] = self.method!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.securityToken != nil {
+                map["SecurityToken"] = self.securityToken!
+            }
+            if self.signature != nil {
+                map["Signature"] = self.signature!
+            }
+            if self.uploadUrl != nil {
+                map["UploadUrl"] = self.uploadUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessKeyId"] as? String {
+                self.accessKeyId = value
+            }
+            if let value = dict["Expire"] as? String {
+                self.expire = value
+            }
+            if let value = dict["FilePath"] as? String {
+                self.filePath = value
+            }
+            if let value = dict["Host"] as? String {
+                self.host = value
+            }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["MaxFileSize"] as? Int64 {
+                self.maxFileSize = value
+            }
+            if let value = dict["Method"] as? String {
+                self.method = value
+            }
+            if let value = dict["Policy"] as? String {
+                self.policy = value
+            }
+            if let value = dict["SecurityToken"] as? String {
+                self.securityToken = value
+            }
+            if let value = dict["Signature"] as? String {
+                self.signature = value
+            }
+            if let value = dict["UploadUrl"] as? String {
+                self.uploadUrl = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: GetAudioNoteUploadUrlResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetAudioNoteUploadUrlResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetAudioNoteUploadUrlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAudioNoteUploadUrlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAudioNoteUploadUrlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetCallDialogContentRequest : Tea.TeaModel {
     public var callDate: String?
 
@@ -47141,6 +47414,182 @@ public class StopTaskResponse : Tea.TeaModel {
     }
 }
 
+public class SubmitAudioNoteRequest : Tea.TeaModel {
+    public var agentId: String?
+
+    public var bizId: String?
+
+    public var filePath: String?
+
+    public var llmModelId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.llmModelId != nil {
+            map["LlmModelId"] = self.llmModelId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["FilePath"] as? String {
+            self.filePath = value
+        }
+        if let value = dict["LlmModelId"] as? Int64 {
+            self.llmModelId = value
+        }
+    }
+}
+
+public class SubmitAudioNoteResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SubmitAudioNoteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitAudioNoteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SubmitAudioNoteResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SuspendHotlineServiceRequest : Tea.TeaModel {
     public var accountName: String?
 
@@ -49926,9 +50375,15 @@ public class UpdateModelApplicationRequest : Tea.TeaModel {
 
     public var dtmfRetryPromptText: String?
 
+    public var dtmfSendMaxCount: Int64?
+
+    public var dtmfSendWaitTimeout: Int64?
+
     public var dyvmsSceneName: String?
 
     public var enableDtmfReceive: Bool?
+
+    public var enableDtmfSend: Bool?
 
     public var enableMorse: Bool?
 
@@ -49943,6 +50398,8 @@ public class UpdateModelApplicationRequest : Tea.TeaModel {
     public var muteDuration: Int64?
 
     public var muteHangupNum: Int64?
+
+    public var mutePushMode: String?
 
     public var ownerId: Int64?
 
@@ -50029,11 +50486,20 @@ public class UpdateModelApplicationRequest : Tea.TeaModel {
         if self.dtmfRetryPromptText != nil {
             map["DtmfRetryPromptText"] = self.dtmfRetryPromptText!
         }
+        if self.dtmfSendMaxCount != nil {
+            map["DtmfSendMaxCount"] = self.dtmfSendMaxCount!
+        }
+        if self.dtmfSendWaitTimeout != nil {
+            map["DtmfSendWaitTimeout"] = self.dtmfSendWaitTimeout!
+        }
         if self.dyvmsSceneName != nil {
             map["DyvmsSceneName"] = self.dyvmsSceneName!
         }
         if self.enableDtmfReceive != nil {
             map["EnableDtmfReceive"] = self.enableDtmfReceive!
+        }
+        if self.enableDtmfSend != nil {
+            map["EnableDtmfSend"] = self.enableDtmfSend!
         }
         if self.enableMorse != nil {
             map["EnableMorse"] = self.enableMorse!
@@ -50055,6 +50521,9 @@ public class UpdateModelApplicationRequest : Tea.TeaModel {
         }
         if self.muteHangupNum != nil {
             map["MuteHangupNum"] = self.muteHangupNum!
+        }
+        if self.mutePushMode != nil {
+            map["MutePushMode"] = self.mutePushMode!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -50145,11 +50614,20 @@ public class UpdateModelApplicationRequest : Tea.TeaModel {
         if let value = dict["DtmfRetryPromptText"] as? String {
             self.dtmfRetryPromptText = value
         }
+        if let value = dict["DtmfSendMaxCount"] as? Int64 {
+            self.dtmfSendMaxCount = value
+        }
+        if let value = dict["DtmfSendWaitTimeout"] as? Int64 {
+            self.dtmfSendWaitTimeout = value
+        }
         if let value = dict["DyvmsSceneName"] as? String {
             self.dyvmsSceneName = value
         }
         if let value = dict["EnableDtmfReceive"] as? Bool {
             self.enableDtmfReceive = value
+        }
+        if let value = dict["EnableDtmfSend"] as? Bool {
+            self.enableDtmfSend = value
         }
         if let value = dict["EnableMorse"] as? Bool {
             self.enableMorse = value
@@ -50173,6 +50651,9 @@ public class UpdateModelApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["MuteHangupNum"] as? Int64 {
             self.muteHangupNum = value
+        }
+        if let value = dict["MutePushMode"] as? String {
+            self.mutePushMode = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -50251,9 +50732,15 @@ public class UpdateModelApplicationShrinkRequest : Tea.TeaModel {
 
     public var dtmfRetryPromptText: String?
 
+    public var dtmfSendMaxCount: Int64?
+
+    public var dtmfSendWaitTimeout: Int64?
+
     public var dyvmsSceneName: String?
 
     public var enableDtmfReceive: Bool?
+
+    public var enableDtmfSend: Bool?
 
     public var enableMorse: Bool?
 
@@ -50268,6 +50755,8 @@ public class UpdateModelApplicationShrinkRequest : Tea.TeaModel {
     public var muteDuration: Int64?
 
     public var muteHangupNum: Int64?
+
+    public var mutePushMode: String?
 
     public var ownerId: Int64?
 
@@ -50352,11 +50841,20 @@ public class UpdateModelApplicationShrinkRequest : Tea.TeaModel {
         if self.dtmfRetryPromptText != nil {
             map["DtmfRetryPromptText"] = self.dtmfRetryPromptText!
         }
+        if self.dtmfSendMaxCount != nil {
+            map["DtmfSendMaxCount"] = self.dtmfSendMaxCount!
+        }
+        if self.dtmfSendWaitTimeout != nil {
+            map["DtmfSendWaitTimeout"] = self.dtmfSendWaitTimeout!
+        }
         if self.dyvmsSceneName != nil {
             map["DyvmsSceneName"] = self.dyvmsSceneName!
         }
         if self.enableDtmfReceive != nil {
             map["EnableDtmfReceive"] = self.enableDtmfReceive!
+        }
+        if self.enableDtmfSend != nil {
+            map["EnableDtmfSend"] = self.enableDtmfSend!
         }
         if self.enableMorse != nil {
             map["EnableMorse"] = self.enableMorse!
@@ -50378,6 +50876,9 @@ public class UpdateModelApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.muteHangupNum != nil {
             map["MuteHangupNum"] = self.muteHangupNum!
+        }
+        if self.mutePushMode != nil {
+            map["MutePushMode"] = self.mutePushMode!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -50468,11 +50969,20 @@ public class UpdateModelApplicationShrinkRequest : Tea.TeaModel {
         if let value = dict["DtmfRetryPromptText"] as? String {
             self.dtmfRetryPromptText = value
         }
+        if let value = dict["DtmfSendMaxCount"] as? Int64 {
+            self.dtmfSendMaxCount = value
+        }
+        if let value = dict["DtmfSendWaitTimeout"] as? Int64 {
+            self.dtmfSendWaitTimeout = value
+        }
         if let value = dict["DyvmsSceneName"] as? String {
             self.dyvmsSceneName = value
         }
         if let value = dict["EnableDtmfReceive"] as? Bool {
             self.enableDtmfReceive = value
+        }
+        if let value = dict["EnableDtmfSend"] as? Bool {
+            self.enableDtmfSend = value
         }
         if let value = dict["EnableMorse"] as? Bool {
             self.enableMorse = value
@@ -50494,6 +51004,9 @@ public class UpdateModelApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MuteHangupNum"] as? Int64 {
             self.muteHangupNum = value
+        }
+        if let value = dict["MutePushMode"] as? String {
+            self.mutePushMode = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value

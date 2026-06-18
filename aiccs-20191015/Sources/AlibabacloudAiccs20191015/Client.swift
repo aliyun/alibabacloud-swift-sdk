@@ -8,7 +8,33 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "central"
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "aiccs.aliyuncs.com",
+            "us-east-1": "aiccs.aliyuncs.com",
+            "me-east-1": "aiccs.aliyuncs.com",
+            "eu-west-1": "aiccs.aliyuncs.com",
+            "eu-central-1": "aiccs.aliyuncs.com",
+            "cn-zhangjiakou": "aiccs.aliyuncs.com",
+            "cn-wulanchabu": "aiccs.aliyuncs.com",
+            "cn-shenzhen-finance-1": "aiccs.aliyuncs.com",
+            "cn-shenzhen": "aiccs.aliyuncs.com",
+            "cn-shanghai-finance-1": "aiccs.aliyuncs.com",
+            "cn-shanghai": "aiccs.aliyuncs.com",
+            "cn-qingdao": "aiccs.aliyuncs.com",
+            "cn-north-2-gov-1": "aiccs.aliyuncs.com",
+            "cn-huhehaote": "aiccs.aliyuncs.com",
+            "cn-hongkong": "aiccs.aliyuncs.com",
+            "cn-hangzhou-finance": "aiccs.aliyuncs.com",
+            "cn-hangzhou": "aiccs.aliyuncs.com",
+            "cn-chengdu": "aiccs.aliyuncs.com",
+            "cn-beijing-finance-1": "aiccs.aliyuncs.com",
+            "cn-beijing": "aiccs.aliyuncs.com",
+            "ap-southeast-5": "aiccs.aliyuncs.com",
+            "ap-southeast-3": "aiccs.aliyuncs.com",
+            "ap-southeast-1": "aiccs.aliyuncs.com",
+            "ap-northeast-1": "aiccs.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aiccs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -2562,6 +2588,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAllDepartment(_ request: GetAllDepartmentRequest) async throws -> GetAllDepartmentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getAllDepartmentWithOptions(request as! GetAllDepartmentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAudioNoteUploadUrlWithOptions(_ request: GetAudioNoteUploadUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAudioNoteUploadUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["FileName"] = request.fileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileType)) {
+            query["FileType"] = request.fileType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAudioNoteUploadUrl",
+            "version": "2019-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAudioNoteUploadUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAudioNoteUploadUrl(_ request: GetAudioNoteUploadUrlRequest) async throws -> GetAudioNoteUploadUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAudioNoteUploadUrlWithOptions(request as! GetAudioNoteUploadUrlRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7269,6 +7329,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAudioNoteWithOptions(_ request: SubmitAudioNoteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAudioNoteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            query["FilePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.llmModelId)) {
+            query["LlmModelId"] = request.llmModelId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitAudioNote",
+            "version": "2019-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitAudioNoteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAudioNote(_ request: SubmitAudioNoteRequest) async throws -> SubmitAudioNoteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitAudioNoteWithOptions(request as! SubmitAudioNoteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func suspendHotlineServiceWithOptions(_ request: SuspendHotlineServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SuspendHotlineServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -7850,11 +7950,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dtmfRetryPromptText)) {
             query["DtmfRetryPromptText"] = request.dtmfRetryPromptText ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dtmfSendMaxCount)) {
+            query["DtmfSendMaxCount"] = request.dtmfSendMaxCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dtmfSendWaitTimeout)) {
+            query["DtmfSendWaitTimeout"] = request.dtmfSendWaitTimeout!;
+        }
         if (!TeaUtils.Client.isUnset(request.dyvmsSceneName)) {
             query["DyvmsSceneName"] = request.dyvmsSceneName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.enableDtmfReceive)) {
             query["EnableDtmfReceive"] = request.enableDtmfReceive!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableDtmfSend)) {
+            query["EnableDtmfSend"] = request.enableDtmfSend!;
         }
         if (!TeaUtils.Client.isUnset(request.enableMorse)) {
             query["EnableMorse"] = request.enableMorse!;
@@ -7876,6 +7985,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.muteHangupNum)) {
             query["MuteHangupNum"] = request.muteHangupNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mutePushMode)) {
+            query["MutePushMode"] = request.mutePushMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
