@@ -47062,6 +47062,44 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class DataSource : Tea.TeaModel {
+                public var id: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
             public class MountInstances : Tea.TeaModel {
                 public class MountInstance : Tea.TeaModel {
                     public var attachedTime: String?
@@ -47352,6 +47390,8 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
 
             public var creationTime: String?
 
+            public var dataSource: DescribeDisksResponseBody.Disks.Disk.DataSource?
+
             public var deleteAutoSnapshot: Bool?
 
             public var deleteWithInstance: Bool?
@@ -47449,6 +47489,7 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.attachments?.validate()
+                try self.dataSource?.validate()
                 try self.mountInstances?.validate()
                 try self.operationLocks?.validate()
                 try self.placement?.validate()
@@ -47477,6 +47518,9 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
+                }
+                if self.dataSource != nil {
+                    map["DataSource"] = self.dataSource?.toMap()
                 }
                 if self.deleteAutoSnapshot != nil {
                     map["DeleteAutoSnapshot"] = self.deleteAutoSnapshot!
@@ -47634,6 +47678,11 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreationTime"] as? String {
                     self.creationTime = value
+                }
+                if let value = dict["DataSource"] as? [String: Any?] {
+                    var model = DescribeDisksResponseBody.Disks.Disk.DataSource()
+                    model.fromMap(value)
+                    self.dataSource = model
                 }
                 if let value = dict["DeleteAutoSnapshot"] as? Bool {
                     self.deleteAutoSnapshot = value
