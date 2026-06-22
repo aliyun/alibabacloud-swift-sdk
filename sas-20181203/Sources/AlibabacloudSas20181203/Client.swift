@@ -1313,6 +1313,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.preBindOrderId)) {
             query["PreBindOrderId"] = request.preBindOrderId!;
         }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
+        }
         if (!TeaUtils.Client.isUnset(request.unBind)) {
             query["UnBind"] = request.unBind ?? [];
         }
@@ -21216,6 +21219,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cloudAssetTypes)) {
             query["CloudAssetTypes"] = request.cloudAssetTypes ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.isSaleData)) {
+            query["IsSaleData"] = request.isSaleData!;
+        }
         if (!TeaUtils.Client.isUnset(request.vendors)) {
             query["Vendors"] = request.vendors ?? [];
         }
@@ -26293,6 +26299,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isSaleData)) {
+            query["IsSaleData"] = request.isSaleData!;
         }
         if (!TeaUtils.Client.isUnset(request.logicalExp)) {
             query["LogicalExp"] = request.logicalExp ?? "";
