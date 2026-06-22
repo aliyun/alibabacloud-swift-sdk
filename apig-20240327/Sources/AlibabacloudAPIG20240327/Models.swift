@@ -21181,45 +21181,9 @@ public class DescribeRegionsRequest : Tea.TeaModel {
 
 public class DescribeRegionsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public class Regions : Tea.TeaModel {
-            public var localName: String?
+        public var localName: String?
 
-            public var regionId: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.localName != nil {
-                    map["localName"] = self.localName!
-                }
-                if self.regionId != nil {
-                    map["regionId"] = self.regionId!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["localName"] as? String {
-                    self.localName = value
-                }
-                if let value = dict["regionId"] as? String {
-                    self.regionId = value
-                }
-            }
-        }
-        public var regions: [DescribeRegionsResponseBody.Data.Regions]?
+        public var regionId: String?
 
         public override init() {
             super.init()
@@ -21235,122 +21199,30 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.regions != nil {
-                var tmp : [Any] = []
-                for k in self.regions! {
-                    tmp.append(k.toMap())
-                }
-                map["regions"] = tmp
+            if self.localName != nil {
+                map["localName"] = self.localName!
+            }
+            if self.regionId != nil {
+                map["regionId"] = self.regionId!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["regions"] as? [Any?] {
-                var tmp : [DescribeRegionsResponseBody.Data.Regions] = []
-                for v in value {
-                    if v != nil {
-                        var model = DescribeRegionsResponseBody.Data.Regions()
-                        if v != nil {
-                            model.fromMap(v as? [String: Any?])
-                        }
-                        tmp.append(model)
-                    }
-                }
-                self.regions = tmp
+            if let value = dict["localName"] as? String {
+                self.localName = value
             }
-        }
-    }
-    public class Regions : Tea.TeaModel {
-        public class Region : Tea.TeaModel {
-            public var localName: String?
-
-            public var regionId: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.localName != nil {
-                    map["localName"] = self.localName!
-                }
-                if self.regionId != nil {
-                    map["regionId"] = self.regionId!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["localName"] as? String {
-                    self.localName = value
-                }
-                if let value = dict["regionId"] as? String {
-                    self.regionId = value
-                }
-            }
-        }
-        public var region: [DescribeRegionsResponseBody.Regions.Region]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.region != nil {
-                var tmp : [Any] = []
-                for k in self.region! {
-                    tmp.append(k.toMap())
-                }
-                map["Region"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["Region"] as? [Any?] {
-                var tmp : [DescribeRegionsResponseBody.Regions.Region] = []
-                for v in value {
-                    if v != nil {
-                        var model = DescribeRegionsResponseBody.Regions.Region()
-                        if v != nil {
-                            model.fromMap(v as? [String: Any?])
-                        }
-                        tmp.append(model)
-                    }
-                }
-                self.region = tmp
+            if let value = dict["regionId"] as? String {
+                self.regionId = value
             }
         }
     }
     public var code: String?
 
-    public var data: DescribeRegionsResponseBody.Data?
+    public var data: [DescribeRegionsResponseBody.Data]?
 
     public var message: String?
-
-    public var regions: DescribeRegionsResponseBody.Regions?
 
     public var requestId: String?
 
@@ -21364,8 +21236,6 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.data?.validate()
-        try self.regions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -21374,13 +21244,14 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
             map["code"] = self.code!
         }
         if self.data != nil {
-            map["data"] = self.data?.toMap()
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
         }
         if self.message != nil {
             map["message"] = self.message!
-        }
-        if self.regions != nil {
-            map["regions"] = self.regions?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -21393,18 +21264,21 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
         if let value = dict["code"] as? String {
             self.code = value
         }
-        if let value = dict["data"] as? [String: Any?] {
-            var model = DescribeRegionsResponseBody.Data()
-            model.fromMap(value)
-            self.data = model
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [DescribeRegionsResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeRegionsResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
         }
         if let value = dict["message"] as? String {
             self.message = value
-        }
-        if let value = dict["regions"] as? [String: Any?] {
-            var model = DescribeRegionsResponseBody.Regions()
-            model.fromMap(value)
-            self.regions = model
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
