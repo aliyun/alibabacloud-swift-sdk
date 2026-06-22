@@ -3531,6 +3531,8 @@ public class CreateSecurityProxyRequest : Tea.TeaModel {
     }
     public var firewallSwitch: String?
 
+    public var fwVswitchZoneId: String?
+
     public var lang: String?
 
     public var natGatewayId: String?
@@ -3567,6 +3569,9 @@ public class CreateSecurityProxyRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.firewallSwitch != nil {
             map["FirewallSwitch"] = self.firewallSwitch!
+        }
+        if self.fwVswitchZoneId != nil {
+            map["FwVswitchZoneId"] = self.fwVswitchZoneId!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -3609,6 +3614,9 @@ public class CreateSecurityProxyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["FirewallSwitch"] as? String {
             self.firewallSwitch = value
+        }
+        if let value = dict["FwVswitchZoneId"] as? String {
+            self.fwVswitchZoneId = value
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
@@ -36423,6 +36431,354 @@ public class DescribePolicyPriorUsedResponse : Tea.TeaModel {
     }
 }
 
+public class DescribePostpayBillRequest : Tea.TeaModel {
+    public var currentPage: Int64?
+
+    public var endTime: String?
+
+    public var interval: Int32?
+
+    public var lang: String?
+
+    public var pageSize: Int64?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int64 {
+            self.currentPage = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Interval"] as? Int32 {
+            self.interval = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribePostpayBillResponseBody : Tea.TeaModel {
+    public class BillList : Tea.TeaModel {
+        public var endTime: Int64?
+
+        public var internetInstanceCnt: Int64?
+
+        public var internetTraffic: Double?
+
+        public var isDerated: Int32?
+
+        public var logStorage: Int64?
+
+        public var natInstanceCnt: Int64?
+
+        public var natTraffic: Double?
+
+        public var sdl: Int64?
+
+        public var sdlTraffic: Double?
+
+        public var startTime: Int64?
+
+        public var threatIntelligence: Int64?
+
+        public var vpcInstanceCnt: Int64?
+
+        public var vpcTraffic: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.internetInstanceCnt != nil {
+                map["InternetInstanceCnt"] = self.internetInstanceCnt!
+            }
+            if self.internetTraffic != nil {
+                map["InternetTraffic"] = self.internetTraffic!
+            }
+            if self.isDerated != nil {
+                map["IsDerated"] = self.isDerated!
+            }
+            if self.logStorage != nil {
+                map["LogStorage"] = self.logStorage!
+            }
+            if self.natInstanceCnt != nil {
+                map["NatInstanceCnt"] = self.natInstanceCnt!
+            }
+            if self.natTraffic != nil {
+                map["NatTraffic"] = self.natTraffic!
+            }
+            if self.sdl != nil {
+                map["Sdl"] = self.sdl!
+            }
+            if self.sdlTraffic != nil {
+                map["SdlTraffic"] = self.sdlTraffic!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.threatIntelligence != nil {
+                map["ThreatIntelligence"] = self.threatIntelligence!
+            }
+            if self.vpcInstanceCnt != nil {
+                map["VpcInstanceCnt"] = self.vpcInstanceCnt!
+            }
+            if self.vpcTraffic != nil {
+                map["VpcTraffic"] = self.vpcTraffic!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["InternetInstanceCnt"] as? Int64 {
+                self.internetInstanceCnt = value
+            }
+            if let value = dict["InternetTraffic"] as? Double {
+                self.internetTraffic = value
+            }
+            if let value = dict["IsDerated"] as? Int32 {
+                self.isDerated = value
+            }
+            if let value = dict["LogStorage"] as? Int64 {
+                self.logStorage = value
+            }
+            if let value = dict["NatInstanceCnt"] as? Int64 {
+                self.natInstanceCnt = value
+            }
+            if let value = dict["NatTraffic"] as? Double {
+                self.natTraffic = value
+            }
+            if let value = dict["Sdl"] as? Int64 {
+                self.sdl = value
+            }
+            if let value = dict["SdlTraffic"] as? Double {
+                self.sdlTraffic = value
+            }
+            if let value = dict["StartTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["ThreatIntelligence"] as? Int64 {
+                self.threatIntelligence = value
+            }
+            if let value = dict["VpcInstanceCnt"] as? Int64 {
+                self.vpcInstanceCnt = value
+            }
+            if let value = dict["VpcTraffic"] as? Double {
+                self.vpcTraffic = value
+            }
+        }
+    }
+    public var aggregateInternetTraffic: Double?
+
+    public var aggregateNatTraffic: Double?
+
+    public var aggregateSdlTraffic: Double?
+
+    public var aggregateTotalTraffic: Double?
+
+    public var aggregateVpcTraffic: Double?
+
+    public var billList: [DescribePostpayBillResponseBody.BillList]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aggregateInternetTraffic != nil {
+            map["AggregateInternetTraffic"] = self.aggregateInternetTraffic!
+        }
+        if self.aggregateNatTraffic != nil {
+            map["AggregateNatTraffic"] = self.aggregateNatTraffic!
+        }
+        if self.aggregateSdlTraffic != nil {
+            map["AggregateSdlTraffic"] = self.aggregateSdlTraffic!
+        }
+        if self.aggregateTotalTraffic != nil {
+            map["AggregateTotalTraffic"] = self.aggregateTotalTraffic!
+        }
+        if self.aggregateVpcTraffic != nil {
+            map["AggregateVpcTraffic"] = self.aggregateVpcTraffic!
+        }
+        if self.billList != nil {
+            var tmp : [Any] = []
+            for k in self.billList! {
+                tmp.append(k.toMap())
+            }
+            map["BillList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AggregateInternetTraffic"] as? Double {
+            self.aggregateInternetTraffic = value
+        }
+        if let value = dict["AggregateNatTraffic"] as? Double {
+            self.aggregateNatTraffic = value
+        }
+        if let value = dict["AggregateSdlTraffic"] as? Double {
+            self.aggregateSdlTraffic = value
+        }
+        if let value = dict["AggregateTotalTraffic"] as? Double {
+            self.aggregateTotalTraffic = value
+        }
+        if let value = dict["AggregateVpcTraffic"] as? Double {
+            self.aggregateVpcTraffic = value
+        }
+        if let value = dict["BillList"] as? [Any?] {
+            var tmp : [DescribePostpayBillResponseBody.BillList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribePostpayBillResponseBody.BillList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.billList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribePostpayBillResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePostpayBillResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribePostpayBillResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribePostpayEnabledProtectionRequest : Tea.TeaModel {
     public var lang: String?
 
@@ -37697,6 +38053,322 @@ public class DescribePrefixListsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribePrefixListsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribePrepayBillTotalRequest : Tea.TeaModel {
+    public var billType: String?
+
+    public var currentPage: Int64?
+
+    public var endTime: String?
+
+    public var lang: String?
+
+    public var pageSize: Int64?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billType != nil {
+            map["BillType"] = self.billType!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillType"] as? String {
+            self.billType = value
+        }
+        if let value = dict["CurrentPage"] as? Int64 {
+            self.currentPage = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribePrepayBillTotalResponseBody : Tea.TeaModel {
+    public class BillList : Tea.TeaModel {
+        public var billedDetectionTraffic: Double?
+
+        public var dailyDetectionTraffic: Double?
+
+        public var dailyOverflowTraffic: Double?
+
+        public var defaultBandwidth: Int64?
+
+        public var elasticBandwidth: Int64?
+
+        public var endTime: Int64?
+
+        public var extensionBandwidth: Int64?
+
+        public var internetTrafficBandwidth: Double?
+
+        public var monthlyRemainingFreeTraffic: Double?
+
+        public var natTrafficBandwidth: Double?
+
+        public var overflowTime: Int64?
+
+        public var startTime: Int64?
+
+        public var temporaryBandwidth: Int64?
+
+        public var vpcTrafficBandwidth: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.billedDetectionTraffic != nil {
+                map["BilledDetectionTraffic"] = self.billedDetectionTraffic!
+            }
+            if self.dailyDetectionTraffic != nil {
+                map["DailyDetectionTraffic"] = self.dailyDetectionTraffic!
+            }
+            if self.dailyOverflowTraffic != nil {
+                map["DailyOverflowTraffic"] = self.dailyOverflowTraffic!
+            }
+            if self.defaultBandwidth != nil {
+                map["DefaultBandwidth"] = self.defaultBandwidth!
+            }
+            if self.elasticBandwidth != nil {
+                map["ElasticBandwidth"] = self.elasticBandwidth!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.extensionBandwidth != nil {
+                map["ExtensionBandwidth"] = self.extensionBandwidth!
+            }
+            if self.internetTrafficBandwidth != nil {
+                map["InternetTrafficBandwidth"] = self.internetTrafficBandwidth!
+            }
+            if self.monthlyRemainingFreeTraffic != nil {
+                map["MonthlyRemainingFreeTraffic"] = self.monthlyRemainingFreeTraffic!
+            }
+            if self.natTrafficBandwidth != nil {
+                map["NatTrafficBandwidth"] = self.natTrafficBandwidth!
+            }
+            if self.overflowTime != nil {
+                map["OverflowTime"] = self.overflowTime!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.temporaryBandwidth != nil {
+                map["TemporaryBandwidth"] = self.temporaryBandwidth!
+            }
+            if self.vpcTrafficBandwidth != nil {
+                map["VpcTrafficBandwidth"] = self.vpcTrafficBandwidth!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BilledDetectionTraffic"] as? Double {
+                self.billedDetectionTraffic = value
+            }
+            if let value = dict["DailyDetectionTraffic"] as? Double {
+                self.dailyDetectionTraffic = value
+            }
+            if let value = dict["DailyOverflowTraffic"] as? Double {
+                self.dailyOverflowTraffic = value
+            }
+            if let value = dict["DefaultBandwidth"] as? Int64 {
+                self.defaultBandwidth = value
+            }
+            if let value = dict["ElasticBandwidth"] as? Int64 {
+                self.elasticBandwidth = value
+            }
+            if let value = dict["EndTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["ExtensionBandwidth"] as? Int64 {
+                self.extensionBandwidth = value
+            }
+            if let value = dict["InternetTrafficBandwidth"] as? Double {
+                self.internetTrafficBandwidth = value
+            }
+            if let value = dict["MonthlyRemainingFreeTraffic"] as? Double {
+                self.monthlyRemainingFreeTraffic = value
+            }
+            if let value = dict["NatTrafficBandwidth"] as? Double {
+                self.natTrafficBandwidth = value
+            }
+            if let value = dict["OverflowTime"] as? Int64 {
+                self.overflowTime = value
+            }
+            if let value = dict["StartTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["TemporaryBandwidth"] as? Int64 {
+                self.temporaryBandwidth = value
+            }
+            if let value = dict["VpcTrafficBandwidth"] as? Double {
+                self.vpcTrafficBandwidth = value
+            }
+        }
+    }
+    public var billList: [DescribePrepayBillTotalResponseBody.BillList]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billList != nil {
+            var tmp : [Any] = []
+            for k in self.billList! {
+                tmp.append(k.toMap())
+            }
+            map["BillList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillList"] as? [Any?] {
+            var tmp : [DescribePrepayBillTotalResponseBody.BillList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribePrepayBillTotalResponseBody.BillList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.billList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribePrepayBillTotalResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePrepayBillTotalResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribePrepayBillTotalResponseBody()
             model.fromMap(value)
             self.body = model
         }
