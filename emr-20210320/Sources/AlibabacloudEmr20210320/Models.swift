@@ -6822,6 +6822,8 @@ public class Operation : Tea.TeaModel {
 public class OperationData : Tea.TeaModel {
     public var actualDeliveredAmounts: Int32?
 
+    public var failedRefundInstanceIds: [String]?
+
     public var toBeDeliveredAmounts: Int32?
 
     public override init() {
@@ -6841,6 +6843,9 @@ public class OperationData : Tea.TeaModel {
         if self.actualDeliveredAmounts != nil {
             map["actualDeliveredAmounts"] = self.actualDeliveredAmounts!
         }
+        if self.failedRefundInstanceIds != nil {
+            map["failedRefundInstanceIds"] = self.failedRefundInstanceIds!
+        }
         if self.toBeDeliveredAmounts != nil {
             map["toBeDeliveredAmounts"] = self.toBeDeliveredAmounts!
         }
@@ -6851,6 +6856,9 @@ public class OperationData : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["actualDeliveredAmounts"] as? Int32 {
             self.actualDeliveredAmounts = value
+        }
+        if let value = dict["failedRefundInstanceIds"] as? [String] {
+            self.failedRefundInstanceIds = value
         }
         if let value = dict["toBeDeliveredAmounts"] as? Int32 {
             self.toBeDeliveredAmounts = value
@@ -11583,6 +11591,150 @@ public class DeleteClusterResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteClusterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteNodeGroupRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var description_: String?
+
+    public var nodeGroupId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeleteNodeGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteNodeGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteNodeGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteNodeGroupResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -57928,6 +58080,290 @@ public class UpdateClusterAutoRenewResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateClusterAutoRenewResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateNodeGroupAttributesRequest : Tea.TeaModel {
+    public var ackConfig: AckConfig?
+
+    public var additionalSecurityGroupIds: [String]?
+
+    public var autoCompensateState: Bool?
+
+    public var clusterId: String?
+
+    public var costOptimizedConfig: CostOptimizedConfig?
+
+    public var description_: String?
+
+    public var ecsSpotStrategy: String?
+
+    public var enableGracefulDecommission: Bool?
+
+    public var instanceTypeList: [String]?
+
+    public var keyPairName: String?
+
+    public var maxSize: Int32?
+
+    public var minSize: Int32?
+
+    public var nodeCount: Int32?
+
+    public var nodeGroupId: String?
+
+    public var nodeGroupName: String?
+
+    public var nodeResizeStrategy: String?
+
+    public var regionId: String?
+
+    public var spotBidPrices: [SpotBidPrice]?
+
+    public var spotInstanceRemedy: Bool?
+
+    public var vSwitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.ackConfig?.validate()
+        try self.costOptimizedConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ackConfig != nil {
+            map["AckConfig"] = self.ackConfig?.toMap()
+        }
+        if self.additionalSecurityGroupIds != nil {
+            map["AdditionalSecurityGroupIds"] = self.additionalSecurityGroupIds!
+        }
+        if self.autoCompensateState != nil {
+            map["AutoCompensateState"] = self.autoCompensateState!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.costOptimizedConfig != nil {
+            map["CostOptimizedConfig"] = self.costOptimizedConfig?.toMap()
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.ecsSpotStrategy != nil {
+            map["EcsSpotStrategy"] = self.ecsSpotStrategy!
+        }
+        if self.enableGracefulDecommission != nil {
+            map["EnableGracefulDecommission"] = self.enableGracefulDecommission!
+        }
+        if self.instanceTypeList != nil {
+            map["InstanceTypeList"] = self.instanceTypeList!
+        }
+        if self.keyPairName != nil {
+            map["KeyPairName"] = self.keyPairName!
+        }
+        if self.maxSize != nil {
+            map["MaxSize"] = self.maxSize!
+        }
+        if self.minSize != nil {
+            map["MinSize"] = self.minSize!
+        }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.nodeGroupName != nil {
+            map["NodeGroupName"] = self.nodeGroupName!
+        }
+        if self.nodeResizeStrategy != nil {
+            map["NodeResizeStrategy"] = self.nodeResizeStrategy!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.spotBidPrices != nil {
+            var tmp : [Any] = []
+            for k in self.spotBidPrices! {
+                tmp.append(k.toMap())
+            }
+            map["SpotBidPrices"] = tmp
+        }
+        if self.spotInstanceRemedy != nil {
+            map["SpotInstanceRemedy"] = self.spotInstanceRemedy!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AckConfig"] as? [String: Any?] {
+            var model = AckConfig()
+            model.fromMap(value)
+            self.ackConfig = model
+        }
+        if let value = dict["AdditionalSecurityGroupIds"] as? [String] {
+            self.additionalSecurityGroupIds = value
+        }
+        if let value = dict["AutoCompensateState"] as? Bool {
+            self.autoCompensateState = value
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["CostOptimizedConfig"] as? [String: Any?] {
+            var model = CostOptimizedConfig()
+            model.fromMap(value)
+            self.costOptimizedConfig = model
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EcsSpotStrategy"] as? String {
+            self.ecsSpotStrategy = value
+        }
+        if let value = dict["EnableGracefulDecommission"] as? Bool {
+            self.enableGracefulDecommission = value
+        }
+        if let value = dict["InstanceTypeList"] as? [String] {
+            self.instanceTypeList = value
+        }
+        if let value = dict["KeyPairName"] as? String {
+            self.keyPairName = value
+        }
+        if let value = dict["MaxSize"] as? Int32 {
+            self.maxSize = value
+        }
+        if let value = dict["MinSize"] as? Int32 {
+            self.minSize = value
+        }
+        if let value = dict["NodeCount"] as? Int32 {
+            self.nodeCount = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["NodeGroupName"] as? String {
+            self.nodeGroupName = value
+        }
+        if let value = dict["NodeResizeStrategy"] as? String {
+            self.nodeResizeStrategy = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SpotBidPrices"] as? [Any?] {
+            var tmp : [SpotBidPrice] = []
+            for v in value {
+                if v != nil {
+                    var model = SpotBidPrice()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.spotBidPrices = tmp
+        }
+        if let value = dict["SpotInstanceRemedy"] as? Bool {
+            self.spotInstanceRemedy = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+    }
+}
+
+public class UpdateNodeGroupAttributesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateNodeGroupAttributesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateNodeGroupAttributesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateNodeGroupAttributesResponseBody()
             model.fromMap(value)
             self.body = model
         }
