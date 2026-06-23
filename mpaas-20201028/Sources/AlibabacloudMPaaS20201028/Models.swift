@@ -42816,6 +42816,10 @@ public class SaveOrderRelationInfoToMsenceRequest : Tea.TeaModel {
 
     public var customId: String?
 
+    public var itemId: String?
+
+    public var itemTitle: String?
+
     public var miniProgramId: String?
 
     public var openUid: String?
@@ -42861,6 +42865,12 @@ public class SaveOrderRelationInfoToMsenceRequest : Tea.TeaModel {
         if self.customId != nil {
             map["CustomId"] = self.customId!
         }
+        if self.itemId != nil {
+            map["ItemId"] = self.itemId!
+        }
+        if self.itemTitle != nil {
+            map["ItemTitle"] = self.itemTitle!
+        }
         if self.miniProgramId != nil {
             map["MiniProgramId"] = self.miniProgramId!
         }
@@ -42901,6 +42911,12 @@ public class SaveOrderRelationInfoToMsenceRequest : Tea.TeaModel {
         }
         if let value = dict["CustomId"] as? String {
             self.customId = value
+        }
+        if let value = dict["ItemId"] as? String {
+            self.itemId = value
+        }
+        if let value = dict["ItemTitle"] as? String {
+            self.itemTitle = value
         }
         if let value = dict["MiniProgramId"] as? String {
             self.miniProgramId = value

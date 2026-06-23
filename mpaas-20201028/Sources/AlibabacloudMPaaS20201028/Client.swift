@@ -5974,6 +5974,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.customId)) {
             body["CustomId"] = request.customId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.itemId)) {
+            body["ItemId"] = request.itemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemTitle)) {
+            body["ItemTitle"] = request.itemTitle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.miniProgramId)) {
             body["MiniProgramId"] = request.miniProgramId ?? "";
         }
