@@ -69,6 +69,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.overwrite)) {
             body["overwrite"] = request.overwrite!;
         }
+        if (!TeaUtils.Client.isUnset(request.periodMultiplier)) {
+            body["periodMultiplier"] = request.periodMultiplier!;
+        }
         if (!TeaUtils.Client.isUnset(request.periodType)) {
             body["periodType"] = request.periodType ?? "";
         }
@@ -3760,6 +3763,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.overwrite)) {
             body["overwrite"] = request.overwrite!;
         }
+        if (!TeaUtils.Client.isUnset(request.periodMultiplier)) {
+            body["periodMultiplier"] = request.periodMultiplier!;
+        }
         if (!TeaUtils.Client.isUnset(request.periodType)) {
             body["periodType"] = request.periodType ?? "";
         }
@@ -3768,6 +3774,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.timezone)) {
             body["timezone"] = request.timezone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.windowAlignment)) {
+            body["windowAlignment"] = request.windowAlignment ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

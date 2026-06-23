@@ -12553,6 +12553,8 @@ public class AddGatewayQuotaRuleRequest : Tea.TeaModel {
 
     public var overwrite: Bool?
 
+    public var periodMultiplier: Int64?
+
     public var periodType: String?
 
     public var quotaDimension: String?
@@ -12594,6 +12596,9 @@ public class AddGatewayQuotaRuleRequest : Tea.TeaModel {
         if self.overwrite != nil {
             map["overwrite"] = self.overwrite!
         }
+        if self.periodMultiplier != nil {
+            map["periodMultiplier"] = self.periodMultiplier!
+        }
         if self.periodType != nil {
             map["periodType"] = self.periodType!
         }
@@ -12632,6 +12637,9 @@ public class AddGatewayQuotaRuleRequest : Tea.TeaModel {
         if let value = dict["overwrite"] as? Bool {
             self.overwrite = value
         }
+        if let value = dict["periodMultiplier"] as? Int64 {
+            self.periodMultiplier = value
+        }
         if let value = dict["periodType"] as? String {
             self.periodType = value
         }
@@ -12657,6 +12665,10 @@ public class AddGatewayQuotaRuleResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ConflictPreview : Tea.TeaModel {
             public class Items : Tea.TeaModel {
+                public var conflictPeriodType: String?
+
+                public var conflictType: String?
+
                 public var consumerId: String?
 
                 public var consumerName: String?
@@ -12675,6 +12687,12 @@ public class AddGatewayQuotaRuleResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.conflictPeriodType != nil {
+                        map["conflictPeriodType"] = self.conflictPeriodType!
+                    }
+                    if self.conflictType != nil {
+                        map["conflictType"] = self.conflictType!
+                    }
                     if self.consumerId != nil {
                         map["consumerId"] = self.consumerId!
                     }
@@ -12686,6 +12704,12 @@ public class AddGatewayQuotaRuleResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["conflictPeriodType"] as? String {
+                        self.conflictPeriodType = value
+                    }
+                    if let value = dict["conflictType"] as? String {
+                        self.conflictType = value
+                    }
                     if let value = dict["consumerId"] as? String {
                         self.consumerId = value
                     }
@@ -12753,7 +12777,7 @@ public class AddGatewayQuotaRuleResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var accepted: String?
+        public var accepted: Bool?
 
         public var conflictPreview: AddGatewayQuotaRuleResponseBody.Data.ConflictPreview?
 
@@ -12793,7 +12817,7 @@ public class AddGatewayQuotaRuleResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["accepted"] as? String {
+            if let value = dict["accepted"] as? Bool {
                 self.accepted = value
             }
             if let value = dict["conflictPreview"] as? [String: Any?] {
@@ -24075,9 +24099,49 @@ public class GetGatewayQuotaRuleRequest : Tea.TeaModel {
 
 public class GetGatewayQuotaRuleResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Consumers : Tea.TeaModel {
+            public var id: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+            }
+        }
         public var baseTimestamp: Int64?
 
         public var consumerCount: Int64?
+
+        public var consumers: [GetGatewayQuotaRuleResponseBody.Data.Consumers]?
 
         public var periodType: String?
 
@@ -24115,6 +24179,13 @@ public class GetGatewayQuotaRuleResponseBody : Tea.TeaModel {
             if self.consumerCount != nil {
                 map["consumerCount"] = self.consumerCount!
             }
+            if self.consumers != nil {
+                var tmp : [Any] = []
+                for k in self.consumers! {
+                    tmp.append(k.toMap())
+                }
+                map["consumers"] = tmp
+            }
             if self.periodType != nil {
                 map["periodType"] = self.periodType!
             }
@@ -24149,6 +24220,19 @@ public class GetGatewayQuotaRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["consumerCount"] as? Int64 {
                 self.consumerCount = value
+            }
+            if let value = dict["consumers"] as? [Any?] {
+                var tmp : [GetGatewayQuotaRuleResponseBody.Data.Consumers] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetGatewayQuotaRuleResponseBody.Data.Consumers()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.consumers = tmp
             }
             if let value = dict["periodType"] as? String {
                 self.periodType = value
@@ -37198,11 +37282,15 @@ public class ResetGatewayQuotaRuleRequest : Tea.TeaModel {
 
     public var overwrite: Bool?
 
+    public var periodMultiplier: Int64?
+
     public var periodType: String?
 
     public var quotaLimit: Int64?
 
     public var timezone: String?
+
+    public var windowAlignment: String?
 
     public override init() {
         super.init()
@@ -37227,6 +37315,9 @@ public class ResetGatewayQuotaRuleRequest : Tea.TeaModel {
         if self.overwrite != nil {
             map["overwrite"] = self.overwrite!
         }
+        if self.periodMultiplier != nil {
+            map["periodMultiplier"] = self.periodMultiplier!
+        }
         if self.periodType != nil {
             map["periodType"] = self.periodType!
         }
@@ -37235,6 +37326,9 @@ public class ResetGatewayQuotaRuleRequest : Tea.TeaModel {
         }
         if self.timezone != nil {
             map["timezone"] = self.timezone!
+        }
+        if self.windowAlignment != nil {
+            map["windowAlignment"] = self.windowAlignment!
         }
         return map
     }
@@ -37250,6 +37344,9 @@ public class ResetGatewayQuotaRuleRequest : Tea.TeaModel {
         if let value = dict["overwrite"] as? Bool {
             self.overwrite = value
         }
+        if let value = dict["periodMultiplier"] as? Int64 {
+            self.periodMultiplier = value
+        }
         if let value = dict["periodType"] as? String {
             self.periodType = value
         }
@@ -37259,6 +37356,9 @@ public class ResetGatewayQuotaRuleRequest : Tea.TeaModel {
         if let value = dict["timezone"] as? String {
             self.timezone = value
         }
+        if let value = dict["windowAlignment"] as? String {
+            self.windowAlignment = value
+        }
     }
 }
 
@@ -37266,6 +37366,10 @@ public class ResetGatewayQuotaRuleResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ConflictPreview : Tea.TeaModel {
             public class Items : Tea.TeaModel {
+                public var conflictPeriodType: String?
+
+                public var conflictType: String?
+
                 public var consumerId: String?
 
                 public var consumerName: String?
@@ -37284,6 +37388,12 @@ public class ResetGatewayQuotaRuleResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.conflictPeriodType != nil {
+                        map["conflictPeriodType"] = self.conflictPeriodType!
+                    }
+                    if self.conflictType != nil {
+                        map["conflictType"] = self.conflictType!
+                    }
                     if self.consumerId != nil {
                         map["consumerId"] = self.consumerId!
                     }
@@ -37295,6 +37405,12 @@ public class ResetGatewayQuotaRuleResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["conflictPeriodType"] as? String {
+                        self.conflictPeriodType = value
+                    }
+                    if let value = dict["conflictType"] as? String {
+                        self.conflictType = value
+                    }
                     if let value = dict["consumerId"] as? String {
                         self.consumerId = value
                     }
@@ -39606,6 +39722,10 @@ public class UpdateGatewayQuotaRuleResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ConflictPreview : Tea.TeaModel {
             public class Items : Tea.TeaModel {
+                public var conflictPeriodType: String?
+
+                public var conflictType: String?
+
                 public var consumerId: String?
 
                 public var consumerName: String?
@@ -39624,6 +39744,12 @@ public class UpdateGatewayQuotaRuleResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.conflictPeriodType != nil {
+                        map["conflictPeriodType"] = self.conflictPeriodType!
+                    }
+                    if self.conflictType != nil {
+                        map["conflictType"] = self.conflictType!
+                    }
                     if self.consumerId != nil {
                         map["consumerId"] = self.consumerId!
                     }
@@ -39635,6 +39761,12 @@ public class UpdateGatewayQuotaRuleResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["conflictPeriodType"] as? String {
+                        self.conflictPeriodType = value
+                    }
+                    if let value = dict["conflictType"] as? String {
+                        self.conflictType = value
+                    }
                     if let value = dict["consumerId"] as? String {
                         self.consumerId = value
                     }
