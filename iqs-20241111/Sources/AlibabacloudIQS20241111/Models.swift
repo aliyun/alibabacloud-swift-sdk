@@ -1304,6 +1304,8 @@ public class MultimodalQueryContext : Tea.TeaModel {
 public class MultimodalSearchBody : Tea.TeaModel {
     public var advancedParams: [String: Any]?
 
+    public var engineType: String?
+
     public var query: String?
 
     public override init() {
@@ -1323,6 +1325,9 @@ public class MultimodalSearchBody : Tea.TeaModel {
         if self.advancedParams != nil {
             map["advancedParams"] = self.advancedParams!
         }
+        if self.engineType != nil {
+            map["engineType"] = self.engineType!
+        }
         if self.query != nil {
             map["query"] = self.query!
         }
@@ -1333,6 +1338,9 @@ public class MultimodalSearchBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["advancedParams"] as? [String: Any] {
             self.advancedParams = value
+        }
+        if let value = dict["engineType"] as? String {
+            self.engineType = value
         }
         if let value = dict["query"] as? String {
             self.query = value
