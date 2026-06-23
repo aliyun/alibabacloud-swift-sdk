@@ -851,6 +851,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayConsumerForPolarDBXWithOptions(_ request: CreateGatewayConsumerForPolarDBXRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayConsumerForPolarDBXResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGatewayConsumerForPolarDBX",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGatewayConsumerForPolarDBXResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayConsumerForPolarDBX(_ request: CreateGatewayConsumerForPolarDBXRequest) async throws -> CreateGatewayConsumerForPolarDBXResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGatewayConsumerForPolarDBXWithOptions(request as! CreateGatewayConsumerForPolarDBXRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createGdnInstanceWithOptions(_ request: CreateGdnInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGdnInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

@@ -3242,6 +3242,142 @@ public class CreateDataImportTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateGatewayConsumerForPolarDBXRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateGatewayConsumerForPolarDBXResponseBody : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var requestId: String?
+
+    public var taskId: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TaskId"] as? Int32 {
+            self.taskId = value
+        }
+    }
+}
+
+public class CreateGatewayConsumerForPolarDBXResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateGatewayConsumerForPolarDBXResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateGatewayConsumerForPolarDBXResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateGdnInstanceRequest : Tea.TeaModel {
     public var DBInstanceName: String?
 
@@ -12282,6 +12418,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aiGatewayEnabled: String?
+
         public var canNotCreateColumnar: Bool?
 
         public var cnNodeClassCode: String?
@@ -12414,6 +12552,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiGatewayEnabled != nil {
+                map["AiGatewayEnabled"] = self.aiGatewayEnabled!
+            }
             if self.canNotCreateColumnar != nil {
                 map["CanNotCreateColumnar"] = self.canNotCreateColumnar!
             }
@@ -12612,6 +12753,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiGatewayEnabled"] as? String {
+                self.aiGatewayEnabled = value
+            }
             if let value = dict["CanNotCreateColumnar"] as? Bool {
                 self.canNotCreateColumnar = value
             }
