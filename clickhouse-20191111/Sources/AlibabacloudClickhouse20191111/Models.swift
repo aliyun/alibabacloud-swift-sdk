@@ -1502,6 +1502,8 @@ public class CheckScaleOutBalancedRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var scalingType: String?
+
     public override init() {
         super.init()
     }
@@ -1540,6 +1542,9 @@ public class CheckScaleOutBalancedRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.scalingType != nil {
+            map["ScalingType"] = self.scalingType!
+        }
         return map
     }
 
@@ -1568,6 +1573,9 @@ public class CheckScaleOutBalancedRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["ScalingType"] as? String {
+            self.scalingType = value
         }
     }
 }

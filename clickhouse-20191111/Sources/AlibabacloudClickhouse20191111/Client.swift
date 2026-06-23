@@ -53,7 +53,19 @@ open class Client : AlibabacloudOpenApi.Client {
             "me-east-1": "clickhouse.aliyuncs.com",
             "rus-west-1-pop": "clickhouse.aliyuncs.com",
             "us-east-1": "clickhouse.aliyuncs.com",
-            "us-west-1": "clickhouse.aliyuncs.com"
+            "us-west-1": "clickhouse.aliyuncs.com",
+            "me-central-1": "clickhouse.me-central-1.aliyuncs.com",
+            "eu-west-1": "clickhouse.eu-west-1.aliyuncs.com",
+            "eu-central-1": "clickhouse.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "clickhouse.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "clickhouse.aliyuncs.com",
+            "cn-huhehaote": "clickhouse.cn-huhehaote.aliyuncs.com",
+            "cn-guangzhou": "clickhouse.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "clickhouse.cn-chengdu.aliyuncs.com",
+            "ap-southeast-6": "clickhouse.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "clickhouse.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "clickhouse.aliyuncs.com",
+            "ap-northeast-1": "clickhouse.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("clickhouse", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -534,6 +546,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scalingType)) {
+            query["ScalingType"] = request.scalingType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
