@@ -11,7 +11,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-beijing": "dianjin.cn-beijing.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dianjin", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -110,6 +113,54 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func commercializeFetchWithOptions(_ workspaceId: String, _ cjfCode: String, _ zjfCode: String, _ request: CommercializeFetchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CommercializeFetchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            body["channelId"] = request.channelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.data)) {
+            body["data"] = request.data ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productId)) {
+            body["productId"] = request.productId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secretKey)) {
+            body["secretKey"] = request.secretKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sign)) {
+            body["sign"] = request.sign ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CommercializeFetch",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/spi/path/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(cjfCode)) + "/api/support/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(zjfCode)) + "/firefly/commercializeFetch",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CommercializeFetchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func commercializeFetch(_ workspaceId: String, _ cjfCode: String, _ zjfCode: String, _ request: CommercializeFetchRequest) async throws -> CommercializeFetchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await commercializeFetchWithOptions(workspaceId as! String, cjfCode as! String, zjfCode as! String, request as! CommercializeFetchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1505,6 +1556,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getReportResponseWithOptions(_ workspaceId: String, _ sceneCode: String, _ fundProduct: String, _ outRequestNo: String, _ request: GetReportResponseRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetReportResponseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetReportResponse",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/firefly/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sceneCode)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(fundProduct)) + "/tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(outRequestNo)) + "/report",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetReportResponseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getReportResponse(_ workspaceId: String, _ sceneCode: String, _ fundProduct: String, _ outRequestNo: String, _ request: GetReportResponseRequest) async throws -> GetReportResponseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getReportResponseWithOptions(workspaceId as! String, sceneCode as! String, fundProduct as! String, outRequestNo as! String, request as! GetReportResponseRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getReportTaskStatusWithOptions(_ workspaceId: String, _ sceneCode: String, _ fundProduct: String, _ outRequestNo: String, _ request: GetReportTaskStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetReportTaskStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetReportTaskStatus",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/firefly/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sceneCode)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(fundProduct)) + "/tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(outRequestNo)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetReportTaskStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getReportTaskStatus(_ workspaceId: String, _ sceneCode: String, _ fundProduct: String, _ outRequestNo: String, _ request: GetReportTaskStatusRequest) async throws -> GetReportTaskStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getReportTaskStatusWithOptions(workspaceId as! String, sceneCode as! String, fundProduct as! String, outRequestNo as! String, request as! GetReportTaskStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getSummaryTaskResultWithOptions(_ workspaceId: String, _ request: GetSummaryTaskResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSummaryTaskResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2133,6 +2240,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await recognizeIntentionWithOptions(workspaceId as! String, request as! RecognizeIntentionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryReportTaskWithOptions(_ workspaceId: String, _ sceneCode: String, _ fundProduct: String, _ outRequestNo: String, _ request: RetryReportTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RetryReportTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RetryReportTask",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/firefly/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sceneCode)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(fundProduct)) + "/tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(outRequestNo)) + "/retry",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RetryReportTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryReportTask(_ workspaceId: String, _ sceneCode: String, _ fundProduct: String, _ outRequestNo: String, _ request: RetryReportTaskRequest) async throws -> RetryReportTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await retryReportTaskWithOptions(workspaceId as! String, sceneCode as! String, fundProduct as! String, outRequestNo as! String, request as! RetryReportTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
