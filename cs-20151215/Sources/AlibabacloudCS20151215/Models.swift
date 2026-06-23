@@ -16895,6 +16895,12 @@ public class DescribeClusterNodePoolsResponse : Tea.TeaModel {
 public class DescribeClusterNodesRequest : Tea.TeaModel {
     public var instanceIds: String?
 
+    public var nodeIps: String?
+
+    public var nodeLabels: String?
+
+    public var nodeNames: String?
+
     public var nodepoolId: String?
 
     public var pageNumber: String?
@@ -16920,6 +16926,15 @@ public class DescribeClusterNodesRequest : Tea.TeaModel {
         if self.instanceIds != nil {
             map["instanceIds"] = self.instanceIds!
         }
+        if self.nodeIps != nil {
+            map["nodeIps"] = self.nodeIps!
+        }
+        if self.nodeLabels != nil {
+            map["nodeLabels"] = self.nodeLabels!
+        }
+        if self.nodeNames != nil {
+            map["nodeNames"] = self.nodeNames!
+        }
         if self.nodepoolId != nil {
             map["nodepool_id"] = self.nodepoolId!
         }
@@ -16939,6 +16954,15 @@ public class DescribeClusterNodesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["instanceIds"] as? String {
             self.instanceIds = value
+        }
+        if let value = dict["nodeIps"] as? String {
+            self.nodeIps = value
+        }
+        if let value = dict["nodeLabels"] as? String {
+            self.nodeLabels = value
+        }
+        if let value = dict["nodeNames"] as? String {
+            self.nodeNames = value
         }
         if let value = dict["nodepool_id"] as? String {
             self.nodepoolId = value
