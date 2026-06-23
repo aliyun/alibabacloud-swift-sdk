@@ -5133,6 +5133,8 @@ public class ApproveProcessInstanceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var newExpiration: Int64?
+
     public var processInstanceId: String?
 
     public override init() {
@@ -5158,6 +5160,9 @@ public class ApproveProcessInstanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.newExpiration != nil {
+            map["NewExpiration"] = self.newExpiration!
+        }
         if self.processInstanceId != nil {
             map["ProcessInstanceId"] = self.processInstanceId!
         }
@@ -5174,6 +5179,9 @@ public class ApproveProcessInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["NewExpiration"] as? Int64 {
+            self.newExpiration = value
         }
         if let value = dict["ProcessInstanceId"] as? String {
             self.processInstanceId = value
@@ -7591,9 +7599,49 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class InitialConfigOptions : Tea.TeaModel {
+                public var executionLane: String?
+
+                public var mode: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.executionLane != nil {
+                        map["ExecutionLane"] = self.executionLane!
+                    }
+                    if self.mode != nil {
+                        map["Mode"] = self.mode!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ExecutionLane"] as? String {
+                        self.executionLane = value
+                    }
+                    if let value = dict["Mode"] as? String {
+                        self.mode = value
+                    }
+                }
+            }
             public var agent: CreateAgentSessionRequest.Params.Meta.Agent?
 
             public var config: CreateAgentSessionRequest.Params.Meta.Config?
+
+            public var initialConfigOptions: CreateAgentSessionRequest.Params.Meta.InitialConfigOptions?
 
             public override init() {
                 super.init()
@@ -7607,6 +7655,7 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.agent?.validate()
                 try self.config?.validate()
+                try self.initialConfigOptions?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -7616,6 +7665,9 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
                 }
                 if self.config != nil {
                     map["Config"] = self.config?.toMap()
+                }
+                if self.initialConfigOptions != nil {
+                    map["InitialConfigOptions"] = self.initialConfigOptions?.toMap()
                 }
                 return map
             }
@@ -7631,6 +7683,11 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
                     var model = CreateAgentSessionRequest.Params.Meta.Config()
                     model.fromMap(value)
                     self.config = model
+                }
+                if let value = dict["InitialConfigOptions"] as? [String: Any?] {
+                    var model = CreateAgentSessionRequest.Params.Meta.InitialConfigOptions()
+                    model.fromMap(value)
+                    self.initialConfigOptions = model
                 }
             }
         }

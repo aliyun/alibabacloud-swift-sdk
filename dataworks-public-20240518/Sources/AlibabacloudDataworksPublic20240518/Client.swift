@@ -69,7 +69,9 @@ open class Client : AlibabacloudOpenApi.Client {
             "me-east-1": "dataworks.me-east-1.aliyuncs.com",
             "rus-west-1-pop": "dataworks.aliyuncs.com",
             "us-east-1": "dataworks.us-east-1.aliyuncs.com",
-            "us-west-1": "dataworks.us-west-1.aliyuncs.com"
+            "us-west-1": "dataworks.us-west-1.aliyuncs.com",
+            "me-central-1": "dataworks.me-central-1.aliyuncs.com",
+            "ap-northeast-2": "dataworks.ap-northeast-2.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dataworks-public", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -296,6 +298,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.newExpiration)) {
+            body["NewExpiration"] = request.newExpiration!;
         }
         if (!TeaUtils.Client.isUnset(request.processInstanceId)) {
             body["ProcessInstanceId"] = request.processInstanceId ?? "";
