@@ -31966,6 +31966,8 @@ public class DeleteRouteTargetGroupRequest : Tea.TeaModel {
     }
     public var clientToken: String?
 
+    public var forceDelete: Bool?
+
     public var regionId: String?
 
     public var routeTargetGroupId: String?
@@ -31989,6 +31991,9 @@ public class DeleteRouteTargetGroupRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.forceDelete != nil {
+            map["ForceDelete"] = self.forceDelete!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -32009,6 +32014,9 @@ public class DeleteRouteTargetGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["ForceDelete"] as? Bool {
+            self.forceDelete = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
