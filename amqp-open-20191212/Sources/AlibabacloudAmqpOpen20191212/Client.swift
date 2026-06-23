@@ -9,6 +9,32 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "amqp-open.us-west-1.aliyuncs.com",
+            "us-east-1": "amqp-open.us-east-1.aliyuncs.com",
+            "me-central-1": "amqp-open.me-central-1.aliyuncs.com",
+            "eu-central-1": "amqp-open.eu-central-1.aliyuncs.com",
+            "cn-zhengzhou-jva": "amqp-open.cn-zhengzhou-jva.aliyuncs.com",
+            "cn-zhangjiakou": "amqp-open.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "amqp-open.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "amqp-open.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "amqp-open.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "amqp-open.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "amqp-open.cn-qingdao.aliyuncs.com",
+            "cn-huhehaote": "amqp-open.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "amqp-open.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "amqp-open.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "amqp-open.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "amqp-open.cn-chengdu.aliyuncs.com",
+            "cn-beijing-finance-1": "amqp-open.cn-beijing-finance-1.aliyuncs.com",
+            "cn-beijing": "amqp-open.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "amqp-open.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "amqp-open.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "amqp-open.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "amqp-open.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "amqp-open.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "amqp-open.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("amqp-open", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1148,5 +1174,42 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateInstanceName(_ request: UpdateInstanceNameRequest) async throws -> UpdateInstanceNameResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateInstanceNameWithOptions(request as! UpdateInstanceNameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceServerlessSwitchWithOptions(_ request: UpdateInstanceServerlessSwitchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstanceServerlessSwitchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessSwitch)) {
+            query["ServerlessSwitch"] = request.serverlessSwitch!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateInstanceServerlessSwitch",
+            "version": "2019-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateInstanceServerlessSwitchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceServerlessSwitch(_ request: UpdateInstanceServerlessSwitchRequest) async throws -> UpdateInstanceServerlessSwitchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateInstanceServerlessSwitchWithOptions(request as! UpdateInstanceServerlessSwitchRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
