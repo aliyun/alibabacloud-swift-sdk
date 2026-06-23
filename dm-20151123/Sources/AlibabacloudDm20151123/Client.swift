@@ -12,7 +12,13 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-east-1": "dm.us-east-1.aliyuncs.com",
+            "eu-central-1": "dm.eu-central-1.aliyuncs.com",
+            "cn-hangzhou": "dm.aliyuncs.com",
+            "ap-southeast-1": "dm.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dm", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -3664,6 +3670,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.email)) {
             query["Email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.probeType)) {
+            query["ProbeType"] = request.probeType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.timeout)) {
             query["Timeout"] = request.timeout!;

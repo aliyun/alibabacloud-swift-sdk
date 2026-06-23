@@ -16807,6 +16807,8 @@ public class ValidateEmailRequest : Tea.TeaModel {
 
     public var email: String?
 
+    public var probeType: String?
+
     public var timeout: Int64?
 
     public override init() {
@@ -16829,6 +16831,9 @@ public class ValidateEmailRequest : Tea.TeaModel {
         if self.email != nil {
             map["Email"] = self.email!
         }
+        if self.probeType != nil {
+            map["ProbeType"] = self.probeType!
+        }
         if self.timeout != nil {
             map["Timeout"] = self.timeout!
         }
@@ -16842,6 +16847,9 @@ public class ValidateEmailRequest : Tea.TeaModel {
         }
         if let value = dict["Email"] as? String {
             self.email = value
+        }
+        if let value = dict["ProbeType"] as? String {
+            self.probeType = value
         }
         if let value = dict["Timeout"] as? Int64 {
             self.timeout = value
