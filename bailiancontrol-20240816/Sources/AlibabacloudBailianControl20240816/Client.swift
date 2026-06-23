@@ -72,6 +72,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["order"] = request.order ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            query["orderBy"] = request.orderBy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.skip)) {
             query["skip"] = request.skip!;
         }

@@ -458,6 +458,10 @@ public class ListApiKeysRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var order: String?
+
+    public var orderBy: String?
+
     public var skip: Int32?
 
     public var uid: String?
@@ -490,6 +494,12 @@ public class ListApiKeysRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.order != nil {
+            map["order"] = self.order!
+        }
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
         if self.skip != nil {
             map["skip"] = self.skip!
         }
@@ -515,6 +525,12 @@ public class ListApiKeysRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["order"] as? String {
+            self.order = value
+        }
+        if let value = dict["orderBy"] as? String {
+            self.orderBy = value
         }
         if let value = dict["skip"] as? Int32 {
             self.skip = value
