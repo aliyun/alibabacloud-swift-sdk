@@ -9,6 +9,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "eu-central-1": "governance.eu-central-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "governance.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-hangzhou": "governance.cn-hangzhou.aliyuncs.com",
+            "ap-southeast-1": "governance.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("governance", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -214,6 +220,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.accountIdsShrink)) {
             query["AccountIds"] = request.accountIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationDomain)) {
+            query["EvaluationDomain"] = request.evaluationDomain ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -437,6 +446,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listEvaluationMetadataWithOptions(_ request: ListEvaluationMetadataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEvaluationMetadataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.evaluationDomain)) {
+            query["EvaluationDomain"] = request.evaluationDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.language)) {
             query["Language"] = request.language ?? "";
         }
@@ -482,6 +494,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.date)) {
             query["Date"] = request.date ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationDomain)) {
+            query["EvaluationDomain"] = request.evaluationDomain ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id ?? "";
@@ -531,6 +546,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountId)) {
             query["AccountId"] = request.accountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationDomain)) {
+            query["EvaluationDomain"] = request.evaluationDomain ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.filters)) {
             query["Filters"] = request.filters ?? [];
@@ -584,6 +602,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endDate)) {
             query["EndDate"] = request.endDate ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.evaluationDomain)) {
+            query["EvaluationDomain"] = request.evaluationDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -625,6 +646,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountId)) {
             query["AccountId"] = request.accountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationDomain)) {
+            query["EvaluationDomain"] = request.evaluationDomain ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.metricIdsShrink)) {
             query["MetricIds"] = request.metricIdsShrink ?? "";

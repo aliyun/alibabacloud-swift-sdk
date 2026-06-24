@@ -1065,6 +1065,8 @@ public class GenerateEvaluationReportRequest : Tea.TeaModel {
 
     public var accountIds: [Int64]?
 
+    public var evaluationDomain: String?
+
     public var regionId: String?
 
     public var reportType: String?
@@ -1089,6 +1091,9 @@ public class GenerateEvaluationReportRequest : Tea.TeaModel {
         if self.accountIds != nil {
             map["AccountIds"] = self.accountIds!
         }
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1106,6 +1111,9 @@ public class GenerateEvaluationReportRequest : Tea.TeaModel {
         if let value = dict["AccountIds"] as? [Int64] {
             self.accountIds = value
         }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -1119,6 +1127,8 @@ public class GenerateEvaluationReportShrinkRequest : Tea.TeaModel {
     public var accountId: Int64?
 
     public var accountIdsShrink: String?
+
+    public var evaluationDomain: String?
 
     public var regionId: String?
 
@@ -1144,6 +1154,9 @@ public class GenerateEvaluationReportShrinkRequest : Tea.TeaModel {
         if self.accountIdsShrink != nil {
             map["AccountIds"] = self.accountIdsShrink!
         }
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1160,6 +1173,9 @@ public class GenerateEvaluationReportShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AccountIds"] as? String {
             self.accountIdsShrink = value
+        }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -2922,6 +2938,8 @@ public class ListEnrolledAccountsResponse : Tea.TeaModel {
 }
 
 public class ListEvaluationMetadataRequest : Tea.TeaModel {
+    public var evaluationDomain: String?
+
     public var language: String?
 
     public var lensCode: String?
@@ -2944,6 +2962,9 @@ public class ListEvaluationMetadataRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -2961,6 +2982,9 @@ public class ListEvaluationMetadataRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
+        }
         if let value = dict["Language"] as? String {
             self.language = value
         }
@@ -3568,6 +3592,8 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
 
     public var date: String?
 
+    public var evaluationDomain: String?
+
     public var id: String?
 
     public var maxResults: Int32?
@@ -3600,6 +3626,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         if self.date != nil {
             map["Date"] = self.date!
         }
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
+        }
         if self.id != nil {
             map["Id"] = self.id!
         }
@@ -3628,6 +3657,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         }
         if let value = dict["Date"] as? String {
             self.date = value
+        }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
         }
         if let value = dict["Id"] as? String {
             self.id = value
@@ -3948,6 +3980,8 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
     }
     public var accountId: Int64?
 
+    public var evaluationDomain: String?
+
     public var filters: [ListEvaluationResultsRequest.Filters]?
 
     public var lensCode: String?
@@ -3976,6 +4010,9 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accountId != nil {
             map["AccountId"] = self.accountId!
+        }
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
         }
         if self.filters != nil {
             var tmp : [Any] = []
@@ -4006,6 +4043,9 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountId"] as? Int64 {
             self.accountId = value
+        }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
         }
         if let value = dict["Filters"] as? [Any?] {
             var tmp : [ListEvaluationResultsRequest.Filters] = []
@@ -4464,6 +4504,8 @@ public class ListEvaluationScoreHistoryRequest : Tea.TeaModel {
 
     public var endDate: String?
 
+    public var evaluationDomain: String?
+
     public var regionId: String?
 
     public var startDate: String?
@@ -4488,6 +4530,9 @@ public class ListEvaluationScoreHistoryRequest : Tea.TeaModel {
         if self.endDate != nil {
             map["EndDate"] = self.endDate!
         }
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4504,6 +4549,9 @@ public class ListEvaluationScoreHistoryRequest : Tea.TeaModel {
         }
         if let value = dict["EndDate"] as? String {
             self.endDate = value
+        }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -4691,6 +4739,8 @@ public class ListEvaluationScoreHistoryResponse : Tea.TeaModel {
 public class RunEvaluationRequest : Tea.TeaModel {
     public var accountId: Int64?
 
+    public var evaluationDomain: String?
+
     public var metricIds: [String]?
 
     public var regionId: String?
@@ -4714,6 +4764,9 @@ public class RunEvaluationRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["AccountId"] = self.accountId!
         }
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
+        }
         if self.metricIds != nil {
             map["MetricIds"] = self.metricIds!
         }
@@ -4731,6 +4784,9 @@ public class RunEvaluationRequest : Tea.TeaModel {
         if let value = dict["AccountId"] as? Int64 {
             self.accountId = value
         }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
+        }
         if let value = dict["MetricIds"] as? [String] {
             self.metricIds = value
         }
@@ -4745,6 +4801,8 @@ public class RunEvaluationRequest : Tea.TeaModel {
 
 public class RunEvaluationShrinkRequest : Tea.TeaModel {
     public var accountId: Int64?
+
+    public var evaluationDomain: String?
 
     public var metricIdsShrink: String?
 
@@ -4769,6 +4827,9 @@ public class RunEvaluationShrinkRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["AccountId"] = self.accountId!
         }
+        if self.evaluationDomain != nil {
+            map["EvaluationDomain"] = self.evaluationDomain!
+        }
         if self.metricIdsShrink != nil {
             map["MetricIds"] = self.metricIdsShrink!
         }
@@ -4785,6 +4846,9 @@ public class RunEvaluationShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountId"] as? Int64 {
             self.accountId = value
+        }
+        if let value = dict["EvaluationDomain"] as? String {
+            self.evaluationDomain = value
         }
         if let value = dict["MetricIds"] as? String {
             self.metricIdsShrink = value
