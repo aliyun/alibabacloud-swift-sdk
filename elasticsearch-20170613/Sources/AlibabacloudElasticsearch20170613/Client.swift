@@ -9,6 +9,31 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "elasticsearch.us-west-1.aliyuncs.com",
+            "us-east-1": "elasticsearch.us-east-1.aliyuncs.com",
+            "eu-west-1": "elasticsearch.eu-west-1.aliyuncs.com",
+            "eu-central-1": "elasticsearch.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "elasticsearch.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "elasticsearch.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "elasticsearch.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "elasticsearch.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "elasticsearch.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "elasticsearch.cn-qingdao.aliyuncs.com",
+            "cn-north-2-gov-1": "elasticsearch.cn-north-2-gov-1.aliyuncs.com",
+            "cn-hongkong": "elasticsearch.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou-finance": "elasticsearch.cn-hangzhou-finance.aliyuncs.com",
+            "cn-hangzhou": "elasticsearch.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "elasticsearch.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "elasticsearch.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "elasticsearch.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "elasticsearch.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "elasticsearch.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-2": "elasticsearch.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-1": "elasticsearch.ap-southeast-1.aliyuncs.com",
+            "ap-south-1": "elasticsearch.ap-south-1.aliyuncs.com",
+            "ap-northeast-1": "elasticsearch.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("elasticsearch", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -3313,6 +3338,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDiagnosisItemsWithOptions(_ request: ListDiagnosisItemsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDiagnosisItemsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["instanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["lang"] = request.lang ?? "";
         }

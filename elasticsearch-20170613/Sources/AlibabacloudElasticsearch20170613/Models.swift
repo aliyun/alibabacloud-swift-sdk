@@ -8937,13 +8937,87 @@ public class DescribeDiagnoseReportResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Items : Tea.TeaModel {
+            public var desc: String?
+
+            public var detail: [String: Any]?
+
+            public var item: String?
+
+            public var name: String?
+
+            public var state: String?
+
+            public var suggest: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desc != nil {
+                    map["desc"] = self.desc!
+                }
+                if self.detail != nil {
+                    map["detail"] = self.detail!
+                }
+                if self.item != nil {
+                    map["item"] = self.item!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.suggest != nil {
+                    map["suggest"] = self.suggest!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["desc"] as? String {
+                    self.desc = value
+                }
+                if let value = dict["detail"] as? [String: Any] {
+                    self.detail = value
+                }
+                if let value = dict["item"] as? String {
+                    self.item = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["state"] as? String {
+                    self.state = value
+                }
+                if let value = dict["suggest"] as? String {
+                    self.suggest = value
+                }
+            }
+        }
         public var createTime: Int64?
 
         public var diagnoseItems: [DescribeDiagnoseReportResponseBody.Result.DiagnoseItems]?
 
+        public var diagnosisMode: String?
+
         public var health: String?
 
         public var instanceId: String?
+
+        public var items: [DescribeDiagnoseReportResponseBody.Result.Items]?
 
         public var reportId: String?
 
@@ -8975,11 +9049,21 @@ public class DescribeDiagnoseReportResponseBody : Tea.TeaModel {
                 }
                 map["diagnoseItems"] = tmp
             }
+            if self.diagnosisMode != nil {
+                map["diagnosisMode"] = self.diagnosisMode!
+            }
             if self.health != nil {
                 map["health"] = self.health!
             }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["items"] = tmp
             }
             if self.reportId != nil {
                 map["reportId"] = self.reportId!
@@ -9011,11 +9095,27 @@ public class DescribeDiagnoseReportResponseBody : Tea.TeaModel {
                 }
                 self.diagnoseItems = tmp
             }
+            if let value = dict["diagnosisMode"] as? String {
+                self.diagnosisMode = value
+            }
             if let value = dict["health"] as? String {
                 self.health = value
             }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["items"] as? [Any?] {
+                var tmp : [DescribeDiagnoseReportResponseBody.Result.Items] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDiagnoseReportResponseBody.Result.Items()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.items = tmp
             }
             if let value = dict["reportId"] as? String {
                 self.reportId = value
@@ -9152,7 +9252,17 @@ public class DescribeDiagnosisSettingsRequest : Tea.TeaModel {
 
 public class DescribeDiagnosisSettingsResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public var authorizationStatus: Bool?
+
+        public var dailyLimit: Int32?
+
+        public var dailyScheduleEnabled: Bool?
+
+        public var diagnosisMode: String?
+
         public var scene: String?
+
+        public var selectedItems: [String]?
 
         public var updateTime: Int64?
 
@@ -9170,8 +9280,23 @@ public class DescribeDiagnosisSettingsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authorizationStatus != nil {
+                map["authorizationStatus"] = self.authorizationStatus!
+            }
+            if self.dailyLimit != nil {
+                map["dailyLimit"] = self.dailyLimit!
+            }
+            if self.dailyScheduleEnabled != nil {
+                map["dailyScheduleEnabled"] = self.dailyScheduleEnabled!
+            }
+            if self.diagnosisMode != nil {
+                map["diagnosisMode"] = self.diagnosisMode!
+            }
             if self.scene != nil {
                 map["scene"] = self.scene!
+            }
+            if self.selectedItems != nil {
+                map["selectedItems"] = self.selectedItems!
             }
             if self.updateTime != nil {
                 map["updateTime"] = self.updateTime!
@@ -9181,8 +9306,23 @@ public class DescribeDiagnosisSettingsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["authorizationStatus"] as? Bool {
+                self.authorizationStatus = value
+            }
+            if let value = dict["dailyLimit"] as? Int32 {
+                self.dailyLimit = value
+            }
+            if let value = dict["dailyScheduleEnabled"] as? Bool {
+                self.dailyScheduleEnabled = value
+            }
+            if let value = dict["diagnosisMode"] as? String {
+                self.diagnosisMode = value
+            }
             if let value = dict["scene"] as? String {
                 self.scene = value
+            }
+            if let value = dict["selectedItems"] as? [String] {
+                self.selectedItems = value
             }
             if let value = dict["updateTime"] as? Int64 {
                 self.updateTime = value
@@ -13068,9 +13208,83 @@ public class DiagnoseInstanceRequest : Tea.TeaModel {
 
 public class DiagnoseInstanceResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var desc: String?
+
+            public var detail: [String: Any]?
+
+            public var item: String?
+
+            public var name: String?
+
+            public var state: String?
+
+            public var suggest: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desc != nil {
+                    map["desc"] = self.desc!
+                }
+                if self.detail != nil {
+                    map["detail"] = self.detail!
+                }
+                if self.item != nil {
+                    map["item"] = self.item!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.suggest != nil {
+                    map["suggest"] = self.suggest!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["desc"] as? String {
+                    self.desc = value
+                }
+                if let value = dict["detail"] as? [String: Any] {
+                    self.detail = value
+                }
+                if let value = dict["item"] as? String {
+                    self.item = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["state"] as? String {
+                    self.state = value
+                }
+                if let value = dict["suggest"] as? String {
+                    self.suggest = value
+                }
+            }
+        }
         public var createTime: Int64?
 
+        public var diagnosisMode: String?
+
         public var instanceId: String?
+
+        public var items: [DiagnoseInstanceResponseBody.Result.Items]?
 
         public var reportId: String?
 
@@ -13093,8 +13307,18 @@ public class DiagnoseInstanceResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["createTime"] = self.createTime!
             }
+            if self.diagnosisMode != nil {
+                map["diagnosisMode"] = self.diagnosisMode!
+            }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["items"] = tmp
             }
             if self.reportId != nil {
                 map["reportId"] = self.reportId!
@@ -13110,8 +13334,24 @@ public class DiagnoseInstanceResponseBody : Tea.TeaModel {
             if let value = dict["createTime"] as? Int64 {
                 self.createTime = value
             }
+            if let value = dict["diagnosisMode"] as? String {
+                self.diagnosisMode = value
+            }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["items"] as? [Any?] {
+                var tmp : [DiagnoseInstanceResponseBody.Result.Items] = []
+                for v in value {
+                    if v != nil {
+                        var model = DiagnoseInstanceResponseBody.Result.Items()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.items = tmp
             }
             if let value = dict["reportId"] as? String {
                 self.reportId = value
@@ -23990,13 +24230,87 @@ public class ListDiagnoseReportResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Items : Tea.TeaModel {
+            public var desc: String?
+
+            public var detail: [String: Any]?
+
+            public var item: String?
+
+            public var name: String?
+
+            public var state: String?
+
+            public var suggest: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desc != nil {
+                    map["desc"] = self.desc!
+                }
+                if self.detail != nil {
+                    map["detail"] = self.detail!
+                }
+                if self.item != nil {
+                    map["item"] = self.item!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.suggest != nil {
+                    map["suggest"] = self.suggest!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["desc"] as? String {
+                    self.desc = value
+                }
+                if let value = dict["detail"] as? [String: Any] {
+                    self.detail = value
+                }
+                if let value = dict["item"] as? String {
+                    self.item = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["state"] as? String {
+                    self.state = value
+                }
+                if let value = dict["suggest"] as? String {
+                    self.suggest = value
+                }
+            }
+        }
         public var createTime: Int64?
 
         public var diagnoseItems: [ListDiagnoseReportResponseBody.Result.DiagnoseItems]?
 
+        public var diagnosisMode: String?
+
         public var health: String?
 
         public var instanceId: String?
+
+        public var items: [ListDiagnoseReportResponseBody.Result.Items]?
 
         public var reportId: String?
 
@@ -24028,11 +24342,21 @@ public class ListDiagnoseReportResponseBody : Tea.TeaModel {
                 }
                 map["diagnoseItems"] = tmp
             }
+            if self.diagnosisMode != nil {
+                map["diagnosisMode"] = self.diagnosisMode!
+            }
             if self.health != nil {
                 map["health"] = self.health!
             }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["items"] = tmp
             }
             if self.reportId != nil {
                 map["reportId"] = self.reportId!
@@ -24064,11 +24388,27 @@ public class ListDiagnoseReportResponseBody : Tea.TeaModel {
                 }
                 self.diagnoseItems = tmp
             }
+            if let value = dict["diagnosisMode"] as? String {
+                self.diagnosisMode = value
+            }
             if let value = dict["health"] as? String {
                 self.health = value
             }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["items"] as? [Any?] {
+                var tmp : [ListDiagnoseReportResponseBody.Result.Items] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListDiagnoseReportResponseBody.Result.Items()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.items = tmp
             }
             if let value = dict["reportId"] as? String {
                 self.reportId = value
@@ -24396,6 +24736,8 @@ public class ListDiagnoseReportIdsResponse : Tea.TeaModel {
 }
 
 public class ListDiagnosisItemsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
     public var lang: String?
 
     public override init() {
@@ -24412,6 +24754,9 @@ public class ListDiagnosisItemsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
         if self.lang != nil {
             map["lang"] = self.lang!
         }
@@ -24420,6 +24765,9 @@ public class ListDiagnosisItemsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["lang"] as? String {
             self.lang = value
         }
@@ -24429,6 +24777,8 @@ public class ListDiagnosisItemsRequest : Tea.TeaModel {
 public class ListDiagnosisItemsResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var description_: String?
+
+        public var esApiRequired: Bool?
 
         public var key: String?
 
@@ -24451,6 +24801,9 @@ public class ListDiagnosisItemsResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["description"] = self.description_!
             }
+            if self.esApiRequired != nil {
+                map["esApiRequired"] = self.esApiRequired!
+            }
             if self.key != nil {
                 map["key"] = self.key!
             }
@@ -24464,6 +24817,9 @@ public class ListDiagnosisItemsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["esApiRequired"] as? Bool {
+                self.esApiRequired = value
             }
             if let value = dict["key"] as? String {
                 self.key = value
