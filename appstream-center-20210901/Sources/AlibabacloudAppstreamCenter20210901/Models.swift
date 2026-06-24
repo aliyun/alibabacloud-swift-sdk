@@ -11430,6 +11430,8 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
 
     public var includeRiskInfo: Bool?
 
+    public var managementStatus: String?
+
     public var modelConfigure: Bool?
 
     public var modelTemplateId: String?
@@ -11498,6 +11500,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         if self.includeRiskInfo != nil {
             map["IncludeRiskInfo"] = self.includeRiskInfo!
         }
+        if self.managementStatus != nil {
+            map["ManagementStatus"] = self.managementStatus!
+        }
         if self.modelConfigure != nil {
             map["ModelConfigure"] = self.modelConfigure!
         }
@@ -11562,6 +11567,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         }
         if let value = dict["IncludeRiskInfo"] as? Bool {
             self.includeRiskInfo = value
+        }
+        if let value = dict["ManagementStatus"] as? String {
+            self.managementStatus = value
         }
         if let value = dict["ModelConfigure"] as? Bool {
             self.modelConfigure = value
@@ -11629,6 +11637,10 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
 
             public var agentInstanceVersion: String?
 
+            public var agentPlatform: String?
+
+            public var agentProvider: String?
+
             public var channelConfigure: Bool?
 
             public var channelConfiguredList: [String]?
@@ -11659,6 +11671,12 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
                 if self.agentInstanceVersion != nil {
                     map["AgentInstanceVersion"] = self.agentInstanceVersion!
                 }
+                if self.agentPlatform != nil {
+                    map["AgentPlatform"] = self.agentPlatform!
+                }
+                if self.agentProvider != nil {
+                    map["AgentProvider"] = self.agentProvider!
+                }
                 if self.channelConfigure != nil {
                     map["ChannelConfigure"] = self.channelConfigure!
                 }
@@ -11684,6 +11702,12 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AgentInstanceVersion"] as? String {
                     self.agentInstanceVersion = value
+                }
+                if let value = dict["AgentPlatform"] as? String {
+                    self.agentPlatform = value
+                }
+                if let value = dict["AgentProvider"] as? String {
+                    self.agentProvider = value
                 }
                 if let value = dict["ChannelConfigure"] as? Bool {
                     self.channelConfigure = value
@@ -11804,6 +11828,8 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
 
         public var hasAuthUser: Bool?
 
+        public var managementStatuses: [String]?
+
         public var modelConfigure: Bool?
 
         public var modelTemplateId: String?
@@ -11871,6 +11897,9 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
             }
             if self.hasAuthUser != nil {
                 map["HasAuthUser"] = self.hasAuthUser!
+            }
+            if self.managementStatuses != nil {
+                map["ManagementStatuses"] = self.managementStatuses!
             }
             if self.modelConfigure != nil {
                 map["ModelConfigure"] = self.modelConfigure!
@@ -11945,6 +11974,9 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
             }
             if let value = dict["HasAuthUser"] as? Bool {
                 self.hasAuthUser = value
+            }
+            if let value = dict["ManagementStatuses"] as? [String] {
+                self.managementStatuses = value
             }
             if let value = dict["ModelConfigure"] as? Bool {
                 self.modelConfigure = value

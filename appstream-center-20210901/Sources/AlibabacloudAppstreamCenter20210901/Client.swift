@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shanghai": "appstream-center.cn-shanghai.aliyuncs.com",
+            "ap-southeast-1": "appstream-center.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("appstream-center", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1751,6 +1755,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.includeRiskInfo)) {
             query["IncludeRiskInfo"] = request.includeRiskInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.managementStatus)) {
+            query["ManagementStatus"] = request.managementStatus ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.modelConfigure)) {
             query["ModelConfigure"] = request.modelConfigure!;
