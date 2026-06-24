@@ -1634,6 +1634,8 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
 
         public var productId: Int64?
 
+        public var ramConsoleLink: String?
+
         public var ruleCategory: String?
 
         public var ruleId: String?
@@ -1744,6 +1746,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             if self.productId != nil {
                 map["ProductId"] = self.productId!
             }
+            if self.ramConsoleLink != nil {
+                map["RamConsoleLink"] = self.ramConsoleLink!
+            }
             if self.ruleCategory != nil {
                 map["RuleCategory"] = self.ruleCategory!
             }
@@ -1853,6 +1858,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProductId"] as? Int64 {
                 self.productId = value
+            }
+            if let value = dict["RamConsoleLink"] as? String {
+                self.ramConsoleLink = value
             }
             if let value = dict["RuleCategory"] as? String {
                 self.ruleCategory = value
@@ -7594,6 +7602,8 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
         }
         public var categories: [String]?
 
+        public var clusterType: String?
+
         public var comment: String?
 
         public var dataType: String?
@@ -7680,6 +7690,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.categories != nil {
                 map["Categories"] = self.categories!
+            }
+            if self.clusterType != nil {
+                map["ClusterType"] = self.clusterType!
             }
             if self.comment != nil {
                 map["Comment"] = self.comment!
@@ -7801,6 +7814,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Categories"] as? [String] {
                 self.categories = value
+            }
+            if let value = dict["ClusterType"] as? String {
+                self.clusterType = value
             }
             if let value = dict["Comment"] as? String {
                 self.comment = value
@@ -9347,7 +9363,7 @@ public class DescribeEventsRequest : Tea.TeaModel {
 
     public var dealUserId: String?
 
-    public var endTime: String?
+    public var endTime: Int64?
 
     public var id: Int64?
 
@@ -9359,7 +9375,7 @@ public class DescribeEventsRequest : Tea.TeaModel {
 
     public var productCode: String?
 
-    public var startTime: String?
+    public var startTime: Int64?
 
     public var status: String?
 
@@ -9448,7 +9464,7 @@ public class DescribeEventsRequest : Tea.TeaModel {
         if let value = dict["DealUserId"] as? String {
             self.dealUserId = value
         }
-        if let value = dict["EndTime"] as? String {
+        if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
         }
         if let value = dict["Id"] as? Int64 {
@@ -9466,7 +9482,7 @@ public class DescribeEventsRequest : Tea.TeaModel {
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
         }
-        if let value = dict["StartTime"] as? String {
+        if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
         }
         if let value = dict["Status"] as? String {
@@ -15051,6 +15067,8 @@ public class MaskOssImageRequest : Tea.TeaModel {
 
     public var isAlwaysUpload: Bool?
 
+    public var isCoverObject: Bool?
+
     public var isSupportRestore: Bool?
 
     public var lang: String?
@@ -15081,6 +15099,9 @@ public class MaskOssImageRequest : Tea.TeaModel {
         if self.isAlwaysUpload != nil {
             map["IsAlwaysUpload"] = self.isAlwaysUpload!
         }
+        if self.isCoverObject != nil {
+            map["IsCoverObject"] = self.isCoverObject!
+        }
         if self.isSupportRestore != nil {
             map["IsSupportRestore"] = self.isSupportRestore!
         }
@@ -15106,6 +15127,9 @@ public class MaskOssImageRequest : Tea.TeaModel {
         }
         if let value = dict["IsAlwaysUpload"] as? Bool {
             self.isAlwaysUpload = value
+        }
+        if let value = dict["IsCoverObject"] as? Bool {
+            self.isCoverObject = value
         }
         if let value = dict["IsSupportRestore"] as? Bool {
             self.isSupportRestore = value

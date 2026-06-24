@@ -10,7 +10,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "cn-hongkong": "sddp-api.cn-hongkong.aliyuncs.com"
+            "cn-hongkong": "sddp-api.cn-hongkong.aliyuncs.com",
+            "cn-zhangjiakou": "sddp.cn-zhangjiakou.aliyuncs.com",
+            "ap-southeast-1": "sddp.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("sddp", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1469,7 +1471,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["DealUserId"] = request.dealUserId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
-            query["EndTime"] = request.endTime ?? "";
+            query["EndTime"] = request.endTime!;
         }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id!;
@@ -1487,7 +1489,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["ProductCode"] = request.productCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
-            query["StartTime"] = request.startTime ?? "";
+            query["StartTime"] = request.startTime!;
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
@@ -2330,6 +2332,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.isAlwaysUpload)) {
             query["IsAlwaysUpload"] = request.isAlwaysUpload!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isCoverObject)) {
+            query["IsCoverObject"] = request.isCoverObject!;
         }
         if (!TeaUtils.Client.isUnset(request.isSupportRestore)) {
             query["IsSupportRestore"] = request.isSupportRestore!;
