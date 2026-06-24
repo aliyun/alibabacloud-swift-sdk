@@ -7245,6 +7245,8 @@ public class QueryCloseoutDomainListResponseBody : Tea.TeaModel {
 
         public var icpStatus: Bool?
 
+        public var id: Int64?
+
         public var introduction: String?
 
         public var isPremium: Bool?
@@ -7358,6 +7360,9 @@ public class QueryCloseoutDomainListResponseBody : Tea.TeaModel {
             }
             if self.icpStatus != nil {
                 map["IcpStatus"] = self.icpStatus!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
             }
             if self.introduction != nil {
                 map["Introduction"] = self.introduction!
@@ -7483,6 +7488,9 @@ public class QueryCloseoutDomainListResponseBody : Tea.TeaModel {
             }
             if let value = dict["IcpStatus"] as? Bool {
                 self.icpStatus = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
             }
             if let value = dict["Introduction"] as? String {
                 self.introduction = value
