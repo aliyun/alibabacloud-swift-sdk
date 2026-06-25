@@ -7130,6 +7130,134 @@ public class DeleteKeyPairsResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteMobileAgentPackageRequest : Tea.TeaModel {
+    public var packageIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.packageIds != nil {
+            map["PackageIds"] = self.packageIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PackageIds"] as? [String] {
+            self.packageIds = value
+        }
+    }
+}
+
+public class DeleteMobileAgentPackageResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteMobileAgentPackageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteMobileAgentPackageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteMobileAgentPackageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeletePolicyGroupRequest : Tea.TeaModel {
     public var policyGroupIds: [String]?
 
@@ -7967,6 +8095,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
 
         public var bindQosRules: DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.BindQosRules?
 
+        public var channel: String?
+
         public var chargeType: String?
 
         public var cpu: String?
@@ -8008,6 +8138,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
         public var numberOfInstances: String?
 
         public var officeSiteId: String?
+
+        public var packageId: String?
 
         public var policyGroupId: String?
 
@@ -8064,6 +8196,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if self.bindQosRules != nil {
                 map["BindQosRules"] = self.bindQosRules?.toMap()
+            }
+            if self.channel != nil {
+                map["Channel"] = self.channel!
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
@@ -8132,6 +8267,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             if self.officeSiteId != nil {
                 map["OfficeSiteId"] = self.officeSiteId!
             }
+            if self.packageId != nil {
+                map["PackageId"] = self.packageId!
+            }
             if self.policyGroupId != nil {
                 map["PolicyGroupId"] = self.policyGroupId!
             }
@@ -8193,6 +8331,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
                 var model = DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.BindQosRules()
                 model.fromMap(value)
                 self.bindQosRules = model
+            }
+            if let value = dict["Channel"] as? String {
+                self.channel = value
             }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
@@ -8266,6 +8407,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["OfficeSiteId"] as? String {
                 self.officeSiteId = value
+            }
+            if let value = dict["PackageId"] as? String {
+                self.packageId = value
             }
             if let value = dict["PolicyGroupId"] as? String {
                 self.policyGroupId = value
@@ -8968,6 +9112,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var bizTags: [DescribeAndroidInstancesResponseBody.InstanceModel.BizTags]?
 
+        public var channel: String?
+
         public var chargeType: String?
 
         public var cpu: String?
@@ -9005,6 +9151,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
         public var networkType: String?
 
         public var officeSiteId: String?
+
+        public var packageId: String?
 
         public var persistentAppInstanceId: String?
 
@@ -9105,6 +9253,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                 }
                 map["BizTags"] = tmp
             }
+            if self.channel != nil {
+                map["Channel"] = self.channel!
+            }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
@@ -9165,6 +9316,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.officeSiteId != nil {
                 map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.packageId != nil {
+                map["PackageId"] = self.packageId!
             }
             if self.persistentAppInstanceId != nil {
                 map["PersistentAppInstanceId"] = self.persistentAppInstanceId!
@@ -9283,6 +9437,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                 }
                 self.bizTags = tmp
             }
+            if let value = dict["Channel"] as? String {
+                self.channel = value
+            }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
             }
@@ -9351,6 +9508,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["OfficeSiteId"] as? String {
                 self.officeSiteId = value
+            }
+            if let value = dict["PackageId"] as? String {
+                self.packageId = value
             }
             if let value = dict["PersistentAppInstanceId"] as? String {
                 self.persistentAppInstanceId = value
@@ -10043,6 +10203,8 @@ public class DescribeBackupFilesResponseBody : Tea.TeaModel {
 
         public var backupFilePath: String?
 
+        public var channel: String?
+
         public var description_: String?
 
         public var endUserId: String?
@@ -10102,6 +10264,9 @@ public class DescribeBackupFilesResponseBody : Tea.TeaModel {
             }
             if self.backupFilePath != nil {
                 map["BackupFilePath"] = self.backupFilePath!
+            }
+            if self.channel != nil {
+                map["Channel"] = self.channel!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -10167,6 +10332,9 @@ public class DescribeBackupFilesResponseBody : Tea.TeaModel {
             }
             if let value = dict["BackupFilePath"] as? String {
                 self.backupFilePath = value
+            }
+            if let value = dict["Channel"] as? String {
+                self.channel = value
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
