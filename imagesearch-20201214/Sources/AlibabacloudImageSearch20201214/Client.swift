@@ -11,7 +11,19 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "eu-central-1": "imagesearch.eu-central-1.aliyuncs.com",
+            "cn-shenzhen": "imagesearch.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "imagesearch.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "imagesearch.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "imagesearch.cn-hangzhou.aliyuncs.com",
+            "cn-beijing": "imagesearch.cn-beijing.aliyuncs.com",
+            "ap-southeast-2": "imagesearch.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-1": "imagesearch.ap-southeast-1.aliyuncs.com",
+            "ap-south-1": "imagesearch.ap-south-1.aliyuncs.com",
+            "ap-northeast-1": "imagesearch.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("imagesearch", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -59,7 +71,8 @@ open class Client : AlibabacloudOpenApi.Client {
                 var _request: Tea.TeaRequest = Tea.TeaRequest()
                 var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
                 var boundary: String = TeaFileForm.Client.getBoundary()
-                var host: String = try TeaUtils.Client.assertAsString(form["host"])
+                var tmp: String = try TeaUtils.Client.assertAsString(form["host"])
+                var host: String = (bucketName as! String) + "." + (tmp as! String)
                 _request.protocol_ = "HTTPS"
                 _request.method = "POST"
                 _request.pathname = "/"
@@ -256,7 +269,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "contentType": ""
             ])
             ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
                 "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
                 "policy": authResponseBody["EncodedPolicy"] ?? "",
                 "Signature": authResponseBody["Signature"] ?? "",
@@ -414,7 +427,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "contentType": ""
             ])
             ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
                 "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
                 "policy": authResponseBody["EncodedPolicy"] ?? "",
                 "Signature": authResponseBody["Signature"] ?? "",
@@ -437,7 +450,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "contentType": ""
             ])
             ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
                 "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
                 "policy": authResponseBody["EncodedPolicy"] ?? "",
                 "Signature": authResponseBody["Signature"] ?? "",
@@ -684,6 +697,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchImageByFilterWithOptions(_ request: SearchImageByFilterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchImageByFilterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            body["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.num)) {
+            body["Num"] = request.num!;
+        }
+        if (!TeaUtils.Client.isUnset(request.start)) {
+            body["Start"] = request.start!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchImageByFilter",
+            "version": "2020-12-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchImageByFilterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchImageByFilter(_ request: SearchImageByFilterRequest) async throws -> SearchImageByFilterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchImageByFilterWithOptions(request as! SearchImageByFilterRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func searchImageByNameWithOptions(_ request: SearchImageByNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchImageByNameResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -869,7 +922,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "contentType": ""
             ])
             ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
                 "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
                 "policy": authResponseBody["EncodedPolicy"] ?? "",
                 "Signature": authResponseBody["Signature"] ?? "",
