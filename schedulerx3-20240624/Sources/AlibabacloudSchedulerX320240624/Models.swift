@@ -505,6 +505,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var pricingCycle: String?
 
+    public var source: String?
+
     public var tag: [CreateClusterRequest.Tag]?
 
     public var vSwitches: [CreateClusterRequest.VSwitches]?
@@ -545,6 +547,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.pricingCycle != nil {
             map["PricingCycle"] = self.pricingCycle!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -588,6 +593,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if let value = dict["PricingCycle"] as? String {
             self.pricingCycle = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateClusterRequest.Tag] = []
@@ -674,6 +682,8 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
 
     public var pricingCycle: String?
 
+    public var source: String?
+
     public var tag: [CreateClusterShrinkRequest.Tag]?
 
     public var vSwitchesShrink: String?
@@ -715,6 +725,9 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         if self.pricingCycle != nil {
             map["PricingCycle"] = self.pricingCycle!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -753,6 +766,9 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PricingCycle"] as? String {
             self.pricingCycle = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateClusterShrinkRequest.Tag] = []
@@ -5047,6 +5063,8 @@ public class GetClusterResponseBody : Tea.TeaModel {
 
         public var productType: Int32?
 
+        public var source: String?
+
         public var spm: Int32?
 
         public var status: Int32?
@@ -5129,6 +5147,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
             }
             if self.productType != nil {
                 map["ProductType"] = self.productType!
+            }
+            if self.source != nil {
+                map["Source"] = self.source!
             }
             if self.spm != nil {
                 map["Spm"] = self.spm!
@@ -5216,6 +5237,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProductType"] as? Int32 {
                 self.productType = value
+            }
+            if let value = dict["Source"] as? String {
+                self.source = value
             }
             if let value = dict["Spm"] as? Int32 {
                 self.spm = value
@@ -11655,6 +11679,8 @@ public class ListClustersResponseBody : Tea.TeaModel {
 
             public var productType: Int32?
 
+            public var source: String?
+
             public var spInstanceId: String?
 
             public var status: Int32?
@@ -11716,6 +11742,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
                 }
                 if self.productType != nil {
                     map["ProductType"] = self.productType!
+                }
+                if self.source != nil {
+                    map["Source"] = self.source!
                 }
                 if self.spInstanceId != nil {
                     map["SpInstanceId"] = self.spInstanceId!
@@ -11779,6 +11808,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ProductType"] as? Int32 {
                     self.productType = value
+                }
+                if let value = dict["Source"] as? String {
+                    self.source = value
                 }
                 if let value = dict["SpInstanceId"] as? String {
                     self.spInstanceId = value
