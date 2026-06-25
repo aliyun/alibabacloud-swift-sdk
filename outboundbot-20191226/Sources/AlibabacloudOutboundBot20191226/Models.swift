@@ -15466,6 +15466,8 @@ public class DescribeTTSDemoRequest : Tea.TeaModel {
 
     public var engine: String?
 
+    public var extParams: String?
+
     public var instanceId: String?
 
     public var nlsServiceType: String?
@@ -15510,6 +15512,9 @@ public class DescribeTTSDemoRequest : Tea.TeaModel {
         if self.engine != nil {
             map["Engine"] = self.engine!
         }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -15553,6 +15558,9 @@ public class DescribeTTSDemoRequest : Tea.TeaModel {
         }
         if let value = dict["Engine"] as? String {
             self.engine = value
+        }
+        if let value = dict["ExtParams"] as? String {
+            self.extParams = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
