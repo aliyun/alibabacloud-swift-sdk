@@ -28070,6 +28070,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
     public var taskConfig: SendChatMessageRequest.TaskConfig?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -28129,6 +28131,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
         }
         if self.taskConfig != nil {
             map["TaskConfig"] = self.taskConfig?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -28190,6 +28195,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             model.fromMap(value)
             self.taskConfig = model
         }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
     }
 }
 
@@ -28219,6 +28227,8 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
     public var sessionId: String?
 
     public var taskConfigShrink: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -28273,6 +28283,9 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
         if self.taskConfigShrink != nil {
             map["TaskConfig"] = self.taskConfigShrink!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -28316,6 +28329,9 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TaskConfig"] as? String {
             self.taskConfigShrink = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
