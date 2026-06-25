@@ -38054,6 +38054,8 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
             }
         }
     }
+    public var ignoreWarningCheck: Bool?
+
     public var imageId: String?
 
     public var kubernetesVersion: String?
@@ -38083,6 +38085,9 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ignoreWarningCheck != nil {
+            map["ignore_warning_check"] = self.ignoreWarningCheck!
+        }
         if self.imageId != nil {
             map["image_id"] = self.imageId!
         }
@@ -38109,6 +38114,9 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ignore_warning_check"] as? Bool {
+            self.ignoreWarningCheck = value
+        }
         if let value = dict["image_id"] as? String {
             self.imageId = value
         }

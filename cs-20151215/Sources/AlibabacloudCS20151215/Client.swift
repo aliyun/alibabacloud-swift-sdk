@@ -5659,6 +5659,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func upgradeClusterNodepoolWithOptions(_ ClusterId: String, _ NodepoolId: String, _ request: UpgradeClusterNodepoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradeClusterNodepoolResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ignoreWarningCheck)) {
+            body["ignore_warning_check"] = request.ignoreWarningCheck!;
+        }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             body["image_id"] = request.imageId ?? "";
         }
