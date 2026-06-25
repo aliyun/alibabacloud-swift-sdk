@@ -24,7 +24,20 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-south-1": "pai-eas.ap-south-1.aliyuncs.com",
             "cn-shanghai-finance-1": "pai-eas.cn-shanghai-finance-1.aliyuncs.com",
             "cn-north-2-gov-1": "pai-eas.cn-north-2-gov-1.aliyuncs.com",
-            "cn-chengdu": "pai-eas.cn-chengdu.aliyuncs.com"
+            "cn-chengdu": "pai-eas.cn-chengdu.aliyuncs.com",
+            "us-southeast-1": "pai-eas.us-southeast-1.aliyuncs.com",
+            "na-south-1": "pai-eas.na-south-1.aliyuncs.com",
+            "me-east-1": "pai-eas.me-east-1.aliyuncs.com",
+            "me-central-1": "pai-eas.me-central-1.aliyuncs.com",
+            "cn-zhongwei": "pai-eas.cn-zhongwei.aliyuncs.com",
+            "cn-wulanchabu": "pai-eas.cn-wulanchabu.aliyuncs.com",
+            "cn-heyuan": "pai-eas.cn-heyuan.aliyuncs.com",
+            "cn-guangzhou": "pai-eas.cn-guangzhou.aliyuncs.com",
+            "ap-southeast-8": "pai-eas.ap-southeast-8.aliyuncs.com",
+            "ap-southeast-7": "pai-eas.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-3": "pai-eas.ap-southeast-3.aliyuncs.com",
+            "ap-northeast-2": "pai-eas.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "pai-eas.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eas", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -480,6 +493,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createGatewayIntranetLinkedVpcPeerWithOptions(ClusterId as! String, GatewayId as! String, request as! CreateGatewayIntranetLinkedVpcPeerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGroupWithOptions(_ request: CreateGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.network)) {
+            body["Network"] = request.network!;
+        }
+        if (!TeaUtils.Client.isUnset(request.workSpaceId)) {
+            body["WorkSpaceId"] = request.workSpaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGroup",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/groups",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGroup(_ request: CreateGroupRequest) async throws -> CreateGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createGroupWithOptions(request as! CreateGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1174,6 +1229,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteGatewayLabelWithOptions(ClusterId as! String, GatewayId as! String, request as! DeleteGatewayLabelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGroupWithOptions(_ ClusterId: String, _ GroupName: String, _ request: DeleteGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cascadeDelete)) {
+            query["CascadeDelete"] = request.cascadeDelete ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGroup",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(GroupName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGroup(_ ClusterId: String, _ GroupName: String, _ request: DeleteGroupRequest) async throws -> DeleteGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteGroupWithOptions(ClusterId as! String, GroupName as! String, request as! DeleteGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2721,11 +2809,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGroupsWithOptions(_ request: ListGroupsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGroupsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listGroupsWithOptions(_ tmpReq: ListGroupsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGroupsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListGroupsShrinkRequest = ListGroupsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
+            request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
+            query["Labels"] = request.labelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";
@@ -3844,6 +3940,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateGroupWithOptions(_ ClusterId: String, _ GroupName: String, _ request: UpdateGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.network)) {
+            body["Network"] = request.network!;
+        }
         if (!TeaUtils.Client.isUnset(request.trafficMode)) {
             body["TrafficMode"] = request.trafficMode ?? "";
         }
