@@ -49,7 +49,28 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "aiworkspace.aliyuncs.com",
             "eu-west-1-oxs": "aiworkspace.aliyuncs.com",
             "me-east-1": "aiworkspace.aliyuncs.com",
-            "rus-west-1-pop": "aiworkspace.aliyuncs.com"
+            "rus-west-1-pop": "aiworkspace.aliyuncs.com",
+            "us-west-1": "aiworkspace.us-west-1.aliyuncs.com",
+            "us-southeast-1": "aiworkspace.us-southeast-1.aliyuncs.com",
+            "us-east-1": "aiworkspace.us-east-1.aliyuncs.com",
+            "na-south-1": "aiworkspace.na-south-1.aliyuncs.com",
+            "eu-central-1": "aiworkspace.eu-central-1.aliyuncs.com",
+            "cn-wulanchabu": "aiworkspace.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "aiworkspace.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "aiworkspace.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "aiworkspace.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "aiworkspace.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "aiworkspace.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou": "aiworkspace.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "aiworkspace.cn-guangzhou.aliyuncs.com	",
+            "cn-beijing": "aiworkspace.cn-beijing.aliyuncs.com",
+            "ap-southeast-8": "aiworkspace.ap-southeast-8.aliyuncs.com",
+            "ap-southeast-7": "aiworkspace.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-3": "aiworkspace.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "aiworkspace.ap-southeast-1.aliyuncs.com",
+            "ap-south-1": "aiworkspace.ap-south-1.aliyuncs.com",
+            "ap-northeast-2": "aiworkspace.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "aiworkspace.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aiworkspace", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1272,6 +1293,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWorkspaceRoleWithOptions(_ WorkspaceId: String, _ request: CreateWorkspaceRoleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWorkspaceRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.modulePermissions)) {
+            body["ModulePermissions"] = request.modulePermissions ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            body["RoleName"] = request.roleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWorkspaceRole",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/roles",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWorkspaceRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWorkspaceRole(_ WorkspaceId: String, _ request: CreateWorkspaceRoleRequest) async throws -> CreateWorkspaceRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createWorkspaceRoleWithOptions(WorkspaceId as! String, request as! CreateWorkspaceRoleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteCodeSourceWithOptions(_ CodeSourceId: String, _ request: DeleteCodeSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCodeSourceResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -1965,6 +2025,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWorkspaceRolesWithOptions(_ WorkspaceId: String, _ request: DeleteWorkspaceRolesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWorkspaceRolesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleIds)) {
+            body["RoleIds"] = request.roleIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWorkspaceRoles",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/roles/action/delete",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWorkspaceRolesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWorkspaceRoles(_ WorkspaceId: String, _ request: DeleteWorkspaceRolesRequest) async throws -> DeleteWorkspaceRolesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteWorkspaceRolesWithOptions(WorkspaceId as! String, request as! DeleteWorkspaceRolesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCodeSourceWithOptions(_ CodeSourceId: String, _ request: GetCodeSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCodeSourceResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -2367,6 +2460,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getInstanceJobWithOptions(_ InstanceJobId: String, _ request: GetInstanceJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetInstanceJob",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instancejobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceJobId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetInstanceJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getInstanceJob(_ InstanceJobId: String, _ request: GetInstanceJobRequest) async throws -> GetInstanceJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getInstanceJobWithOptions(InstanceJobId as! String, request as! GetInstanceJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getMemberWithOptions(_ WorkspaceId: String, _ request: GetMemberRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMemberResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2581,6 +2702,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getWorkspaceWithOptions(WorkspaceId as! String, request as! GetWorkspaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkspaceRoleWithOptions(_ WorkspaceId: String, _ RoleId: String, _ request: GetWorkspaceRoleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkspaceRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWorkspaceRole",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/roles/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(RoleId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWorkspaceRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkspaceRole(_ WorkspaceId: String, _ RoleId: String, _ request: GetWorkspaceRoleRequest) async throws -> GetWorkspaceRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getWorkspaceRoleWithOptions(WorkspaceId as! String, RoleId as! String, request as! GetWorkspaceRoleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3856,6 +4005,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWorkspaceRolesWithOptions(_ WorkspaceId: String, _ request: ListWorkspaceRolesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWorkspaceRolesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleIds)) {
+            query["RoleIds"] = request.roleIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            query["RoleName"] = request.roleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            query["RoleType"] = request.roleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verboseFields)) {
+            query["VerboseFields"] = request.verboseFields ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListWorkspaceRoles",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/roles",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListWorkspaceRolesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWorkspaceRoles(_ WorkspaceId: String, _ request: ListWorkspaceRolesRequest) async throws -> ListWorkspaceRolesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listWorkspaceRolesWithOptions(WorkspaceId as! String, request as! ListWorkspaceRolesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listWorkspaceUsersWithOptions(_ WorkspaceId: String, _ request: ListWorkspaceUsersRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWorkspaceUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4975,6 +5181,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateWorkspaceResourceWithOptions(WorkspaceId as! String, request as! UpdateWorkspaceResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWorkspaceRoleWithOptions(_ WorkspaceId: String, _ RoleId: String, _ request: UpdateWorkspaceRoleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWorkspaceRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.modulePermissions)) {
+            body["ModulePermissions"] = request.modulePermissions ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            body["RoleName"] = request.roleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateWorkspaceRole",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/roles/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(RoleId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateWorkspaceRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWorkspaceRole(_ WorkspaceId: String, _ RoleId: String, _ request: UpdateWorkspaceRoleRequest) async throws -> UpdateWorkspaceRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateWorkspaceRoleWithOptions(WorkspaceId as! String, RoleId as! String, request as! UpdateWorkspaceRoleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
