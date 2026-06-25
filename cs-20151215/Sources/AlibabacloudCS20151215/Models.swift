@@ -1564,7 +1564,7 @@ public class Nodepool : Tea.TeaModel {
     }
     public class NodeComponents : Tea.TeaModel {
         public class Config : Tea.TeaModel {
-            public var customConfig: [String: String]?
+            public var customConfig: [String: Any]?
 
             public override init() {
                 super.init()
@@ -1588,7 +1588,7 @@ public class Nodepool : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["custom_config"] as? [String: String] {
+                if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
                 }
             }
@@ -7080,7 +7080,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
     }
     public class NodeComponents : Tea.TeaModel {
         public class Config : Tea.TeaModel {
-            public var customConfig: [String: String]?
+            public var customConfig: [String: Any]?
 
             public override init() {
                 super.init()
@@ -7104,7 +7104,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["custom_config"] as? [String: String] {
+                if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
                 }
             }
@@ -13669,7 +13669,7 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
     }
     public class NodeComponents : Tea.TeaModel {
         public class Config : Tea.TeaModel {
-            public var customConfig: [String: String]?
+            public var customConfig: [String: Any]?
 
             public override init() {
                 super.init()
@@ -13693,7 +13693,7 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["custom_config"] as? [String: String] {
+                if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
                 }
             }
@@ -15642,7 +15642,7 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
         }
         public class NodeComponents : Tea.TeaModel {
             public class Config : Tea.TeaModel {
-                public var customConfig: [String: String]?
+                public var customConfig: [String: Any]?
 
                 public override init() {
                     super.init()
@@ -15666,7 +15666,7 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["custom_config"] as? [String: String] {
+                    if let value = dict["custom_config"] as? [String: Any] {
                         self.customConfig = value
                     }
                 }
@@ -26943,7 +26943,7 @@ public class InstallClusterAddonsResponse : Tea.TeaModel {
 public class InstallNodePoolComponentsRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class Config : Tea.TeaModel {
-            public var customConfig: [String: String]?
+            public var customConfig: [String: Any]?
 
             public override init() {
                 super.init()
@@ -26967,7 +26967,7 @@ public class InstallNodePoolComponentsRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["customConfig"] as? [String: String] {
+                if let value = dict["customConfig"] as? [String: Any] {
                     self.customConfig = value
                 }
             }
@@ -36930,7 +36930,7 @@ public class UpdateKMSEncryptionResponse : Tea.TeaModel {
 
 public class UpdateNodePoolComponentRequest : Tea.TeaModel {
     public class Config : Tea.TeaModel {
-        public var customConfig: [String: String]?
+        public var customConfig: [String: Any]?
 
         public override init() {
             super.init()
@@ -36954,7 +36954,7 @@ public class UpdateNodePoolComponentRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["customConfig"] as? [String: String] {
+            if let value = dict["customConfig"] as? [String: Any] {
                 self.customConfig = value
             }
         }
