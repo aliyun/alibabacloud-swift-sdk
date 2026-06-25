@@ -9,6 +9,23 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "sae.us-west-1.aliyuncs.com",
+            "us-east-1": "sae.us-east-1.aliyuncs.com",
+            "eu-central-1": "sae.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "sae.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "sae.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "sae.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "sae.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "sae.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "sae.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou": "sae.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "sae.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "sae.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "sae.cn-beijing.aliyuncs.com",
+            "ap-southeast-1": "sae.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "sae.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("sae", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
