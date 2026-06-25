@@ -19060,6 +19060,8 @@ public class CreateSslVpnServerRequest : Tea.TeaModel {
 
     public var compress: Bool?
 
+    public var dnsServers: String?
+
     public var dryRun: Bool?
 
     public var enableMultiFactorAuth: Bool?
@@ -19115,6 +19117,9 @@ public class CreateSslVpnServerRequest : Tea.TeaModel {
         }
         if self.compress != nil {
             map["Compress"] = self.compress!
+        }
+        if self.dnsServers != nil {
+            map["DnsServers"] = self.dnsServers!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -19177,6 +19182,9 @@ public class CreateSslVpnServerRequest : Tea.TeaModel {
         }
         if let value = dict["Compress"] as? Bool {
             self.compress = value
+        }
+        if let value = dict["DnsServers"] as? String {
+            self.dnsServers = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
@@ -60567,6 +60575,8 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
 
             public var createTime: Int64?
 
+            public var dnsServers: String?
+
             public var enableMultiFactorAuth: Bool?
 
             public var IDaaSApplicationId: String?
@@ -60625,6 +60635,9 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.dnsServers != nil {
+                    map["DnsServers"] = self.dnsServers!
                 }
                 if self.enableMultiFactorAuth != nil {
                     map["EnableMultiFactorAuth"] = self.enableMultiFactorAuth!
@@ -60690,6 +60703,9 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
+                }
+                if let value = dict["DnsServers"] as? String {
+                    self.dnsServers = value
                 }
                 if let value = dict["EnableMultiFactorAuth"] as? Bool {
                     self.enableMultiFactorAuth = value
@@ -99737,6 +99753,8 @@ public class ModifySslVpnServerRequest : Tea.TeaModel {
 
     public var compress: Bool?
 
+    public var dnsServers: String?
+
     public var dryRun: Bool?
 
     public var enableMultiFactorAuth: Bool?
@@ -99792,6 +99810,9 @@ public class ModifySslVpnServerRequest : Tea.TeaModel {
         }
         if self.compress != nil {
             map["Compress"] = self.compress!
+        }
+        if self.dnsServers != nil {
+            map["DnsServers"] = self.dnsServers!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -99854,6 +99875,9 @@ public class ModifySslVpnServerRequest : Tea.TeaModel {
         }
         if let value = dict["Compress"] as? Bool {
             self.compress = value
+        }
+        if let value = dict["DnsServers"] as? String {
+            self.dnsServers = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
