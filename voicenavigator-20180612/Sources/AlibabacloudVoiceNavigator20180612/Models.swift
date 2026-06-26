@@ -164,6 +164,8 @@ public class AuditTTSVoiceRequest : Tea.TeaModel {
 
     public var engine: String?
 
+    public var extParams: String?
+
     public var instanceId: String?
 
     public var pitchRate: String?
@@ -201,6 +203,9 @@ public class AuditTTSVoiceRequest : Tea.TeaModel {
         if self.engine != nil {
             map["Engine"] = self.engine!
         }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -235,6 +240,9 @@ public class AuditTTSVoiceRequest : Tea.TeaModel {
         }
         if let value = dict["Engine"] as? String {
             self.engine = value
+        }
+        if let value = dict["ExtParams"] as? String {
+            self.extParams = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -3132,6 +3140,8 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
 
     public var engineXunfei: String?
 
+    public var extParams: String?
+
     public var nlsServiceType: String?
 
     public var pitchRate: Int32?
@@ -3172,6 +3182,9 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
         if self.engineXunfei != nil {
             map["EngineXunfei"] = self.engineXunfei!
         }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.nlsServiceType != nil {
             map["NlsServiceType"] = self.nlsServiceType!
         }
@@ -3209,6 +3222,9 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["EngineXunfei"] as? String {
             self.engineXunfei = value
+        }
+        if let value = dict["ExtParams"] as? String {
+            self.extParams = value
         }
         if let value = dict["NlsServiceType"] as? String {
             self.nlsServiceType = value
@@ -6880,6 +6896,8 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
 
     public var engineXunfei: String?
 
+    public var extParams: String?
+
     public var instanceId: String?
 
     public var nlsServiceType: String?
@@ -6920,6 +6938,9 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
         if self.engineXunfei != nil {
             map["EngineXunfei"] = self.engineXunfei!
         }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6957,6 +6978,9 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
         }
         if let value = dict["EngineXunfei"] as? String {
             self.engineXunfei = value
+        }
+        if let value = dict["ExtParams"] as? String {
+            self.extParams = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
