@@ -296,6 +296,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createResourceGroupWithOptions(_ request: CreateResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentType)) {
+            query["AgentType"] = request.agentType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.businessChannel)) {
             query["BusinessChannel"] = request.businessChannel ?? "";
         }
@@ -717,6 +720,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeResourceGroupsWithOptions(_ request: DescribeResourceGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeResourceGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentType)) {
+            query["AgentType"] = request.agentType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.aliyunResourceGroupIds)) {
             query["AliyunResourceGroupIds"] = request.aliyunResourceGroupIds ?? [];
         }

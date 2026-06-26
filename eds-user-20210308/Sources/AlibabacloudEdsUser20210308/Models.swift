@@ -1601,6 +1601,8 @@ public class CreatePropertyResponse : Tea.TeaModel {
 }
 
 public class CreateResourceGroupRequest : Tea.TeaModel {
+    public var agentType: String?
+
     public var businessChannel: String?
 
     public var enableAliyunResourceGroup: Bool?
@@ -1627,6 +1629,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentType != nil {
+            map["AgentType"] = self.agentType!
+        }
         if self.businessChannel != nil {
             map["BusinessChannel"] = self.businessChannel!
         }
@@ -1650,6 +1655,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentType"] as? String {
+            self.agentType = value
+        }
         if let value = dict["BusinessChannel"] as? String {
             self.businessChannel = value
         }
@@ -4131,6 +4139,8 @@ public class DescribeOrgsResponse : Tea.TeaModel {
 }
 
 public class DescribeResourceGroupsRequest : Tea.TeaModel {
+    public var agentType: String?
+
     public var aliyunResourceGroupIds: [String]?
 
     public var businessChannel: String?
@@ -4163,6 +4173,9 @@ public class DescribeResourceGroupsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentType != nil {
+            map["AgentType"] = self.agentType!
+        }
         if self.aliyunResourceGroupIds != nil {
             map["AliyunResourceGroupIds"] = self.aliyunResourceGroupIds!
         }
@@ -4195,6 +4208,9 @@ public class DescribeResourceGroupsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentType"] as? String {
+            self.agentType = value
+        }
         if let value = dict["AliyunResourceGroupIds"] as? [String] {
             self.aliyunResourceGroupIds = value
         }
@@ -4373,6 +4389,8 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var agentType: String?
+
         public var aliyunResourceGroupId: String?
 
         public var appRules: [DescribeResourceGroupsResponseBody.ResourceGroup.AppRules]?
@@ -4405,6 +4423,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentType != nil {
+                map["AgentType"] = self.agentType!
+            }
             if self.aliyunResourceGroupId != nil {
                 map["AliyunResourceGroupId"] = self.aliyunResourceGroupId!
             }
@@ -4449,6 +4470,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentType"] as? String {
+                self.agentType = value
+            }
             if let value = dict["AliyunResourceGroupId"] as? String {
                 self.aliyunResourceGroupId = value
             }
