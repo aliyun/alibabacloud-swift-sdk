@@ -24311,6 +24311,10 @@ public class RunAgentTaskRequest : Tea.TeaModel {
 
     public var maxSteps: Int32?
 
+    public var scheduleId: String?
+
+    public var taskConfigId: String?
+
     public var timeoutSeconds: Int32?
 
     public var userPrompt: String?
@@ -24338,6 +24342,12 @@ public class RunAgentTaskRequest : Tea.TeaModel {
         if self.maxSteps != nil {
             map["MaxSteps"] = self.maxSteps!
         }
+        if self.scheduleId != nil {
+            map["ScheduleId"] = self.scheduleId!
+        }
+        if self.taskConfigId != nil {
+            map["TaskConfigId"] = self.taskConfigId!
+        }
         if self.timeoutSeconds != nil {
             map["TimeoutSeconds"] = self.timeoutSeconds!
         }
@@ -24357,6 +24367,12 @@ public class RunAgentTaskRequest : Tea.TeaModel {
         }
         if let value = dict["MaxSteps"] as? Int32 {
             self.maxSteps = value
+        }
+        if let value = dict["ScheduleId"] as? String {
+            self.scheduleId = value
+        }
+        if let value = dict["TaskConfigId"] as? String {
+            self.taskConfigId = value
         }
         if let value = dict["TimeoutSeconds"] as? Int32 {
             self.timeoutSeconds = value

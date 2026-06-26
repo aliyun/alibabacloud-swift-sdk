@@ -4058,6 +4058,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxSteps)) {
             query["MaxSteps"] = request.maxSteps!;
         }
+        if (!TeaUtils.Client.isUnset(request.scheduleId)) {
+            query["ScheduleId"] = request.scheduleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskConfigId)) {
+            query["TaskConfigId"] = request.taskConfigId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.timeoutSeconds)) {
             query["TimeoutSeconds"] = request.timeoutSeconds!;
         }
