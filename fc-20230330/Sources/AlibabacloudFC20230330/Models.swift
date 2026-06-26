@@ -1055,6 +1055,8 @@ public class CreateFunctionInput : Tea.TeaModel {
 
     public var memorySize: Int32?
 
+    public var microSandboxConfig: MicroSandboxConfig?
+
     public var nasConfig: NASConfig?
 
     public var ossMountConfig: OSSMountConfig?
@@ -1097,6 +1099,7 @@ public class CreateFunctionInput : Tea.TeaModel {
         try self.instanceLifecycleConfig?.validate()
         try self.juiceFsConfig?.validate()
         try self.logConfig?.validate()
+        try self.microSandboxConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
@@ -1174,6 +1177,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.memorySize != nil {
             map["memorySize"] = self.memorySize!
+        }
+        if self.microSandboxConfig != nil {
+            map["microSandboxConfig"] = self.microSandboxConfig?.toMap()
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
@@ -1304,6 +1310,11 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if let value = dict["memorySize"] as? Int32 {
             self.memorySize = value
+        }
+        if let value = dict["microSandboxConfig"] as? [String: Any?] {
+            var model = MicroSandboxConfig()
+            model.fromMap(value)
+            self.microSandboxConfig = model
         }
         if let value = dict["nasConfig"] as? [String: Any?] {
             var model = NASConfig()
@@ -1517,6 +1528,159 @@ public class CreateSessionInput : Tea.TeaModel {
         }
         if let value = dict["sessionTTLInSeconds"] as? Int64 {
             self.sessionTTLInSeconds = value
+        }
+    }
+}
+
+public class CreateTimedResidentResourcePoolApplicationInput : Tea.TeaModel {
+    public var associatedPoolId: String?
+
+    public var diskSizeInGB: Int64?
+
+    public var gpuType: String?
+
+    public var memorySizeInGB: Int64?
+
+    public var operationType: String?
+
+    public var poolName: String?
+
+    public var reason: String?
+
+    public var timedConfig: TimedPoolConfig?
+
+    public var timedPoolId: String?
+
+    public var totalGPUCards: Int64?
+
+    public var vCpuCores: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.timedConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.associatedPoolId != nil {
+            map["associatedPoolId"] = self.associatedPoolId!
+        }
+        if self.diskSizeInGB != nil {
+            map["diskSizeInGB"] = self.diskSizeInGB!
+        }
+        if self.gpuType != nil {
+            map["gpuType"] = self.gpuType!
+        }
+        if self.memorySizeInGB != nil {
+            map["memorySizeInGB"] = self.memorySizeInGB!
+        }
+        if self.operationType != nil {
+            map["operationType"] = self.operationType!
+        }
+        if self.poolName != nil {
+            map["poolName"] = self.poolName!
+        }
+        if self.reason != nil {
+            map["reason"] = self.reason!
+        }
+        if self.timedConfig != nil {
+            map["timedConfig"] = self.timedConfig?.toMap()
+        }
+        if self.timedPoolId != nil {
+            map["timedPoolId"] = self.timedPoolId!
+        }
+        if self.totalGPUCards != nil {
+            map["totalGPUCards"] = self.totalGPUCards!
+        }
+        if self.vCpuCores != nil {
+            map["vCpuCores"] = self.vCpuCores!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["associatedPoolId"] as? String {
+            self.associatedPoolId = value
+        }
+        if let value = dict["diskSizeInGB"] as? Int64 {
+            self.diskSizeInGB = value
+        }
+        if let value = dict["gpuType"] as? String {
+            self.gpuType = value
+        }
+        if let value = dict["memorySizeInGB"] as? Int64 {
+            self.memorySizeInGB = value
+        }
+        if let value = dict["operationType"] as? String {
+            self.operationType = value
+        }
+        if let value = dict["poolName"] as? String {
+            self.poolName = value
+        }
+        if let value = dict["reason"] as? String {
+            self.reason = value
+        }
+        if let value = dict["timedConfig"] as? [String: Any?] {
+            var model = TimedPoolConfig()
+            model.fromMap(value)
+            self.timedConfig = model
+        }
+        if let value = dict["timedPoolId"] as? String {
+            self.timedPoolId = value
+        }
+        if let value = dict["totalGPUCards"] as? Int64 {
+            self.totalGPUCards = value
+        }
+        if let value = dict["vCpuCores"] as? Int64 {
+            self.vCpuCores = value
+        }
+    }
+}
+
+public class CreateTimedResidentResourcePoolApplicationOutput : Tea.TeaModel {
+    public var applicationStatus: String?
+
+    public var timedPoolId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationStatus != nil {
+            map["applicationStatus"] = self.applicationStatus!
+        }
+        if self.timedPoolId != nil {
+            map["timedPoolId"] = self.timedPoolId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["applicationStatus"] as? String {
+            self.applicationStatus = value
+        }
+        if let value = dict["timedPoolId"] as? String {
+            self.timedPoolId = value
         }
     }
 }
@@ -2502,6 +2666,45 @@ public class ElasticConfigStatus : Tea.TeaModel {
     }
 }
 
+public class ElasticInterval : Tea.TeaModel {
+    public var endTime: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["endTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["startTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
 public class EqualRule : Tea.TeaModel {
     public var match: String?
 
@@ -2934,6 +3137,8 @@ public class Function : Tea.TeaModel {
 
     public var memorySize: Int32?
 
+    public var microSandboxConfig: MicroSandboxConfig?
+
     public var nasConfig: NASConfig?
 
     public var ossMountConfig: OSSMountConfig?
@@ -2983,6 +3188,7 @@ public class Function : Tea.TeaModel {
         try self.juiceFsConfig?.validate()
         try self.lockInfo?.validate()
         try self.logConfig?.validate()
+        try self.microSandboxConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
@@ -3094,6 +3300,9 @@ public class Function : Tea.TeaModel {
         }
         if self.memorySize != nil {
             map["memorySize"] = self.memorySize!
+        }
+        if self.microSandboxConfig != nil {
+            map["microSandboxConfig"] = self.microSandboxConfig?.toMap()
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
@@ -3275,6 +3484,11 @@ public class Function : Tea.TeaModel {
         }
         if let value = dict["memorySize"] as? Int32 {
             self.memorySize = value
+        }
+        if let value = dict["microSandboxConfig"] as? [String: Any?] {
+            var model = MicroSandboxConfig()
+            model.fromMap(value)
+            self.microSandboxConfig = model
         }
         if let value = dict["nasConfig"] as? [String: Any?] {
             var model = NASConfig()
@@ -5299,6 +5513,59 @@ public class ListTaggedResourcesOutput : Tea.TeaModel {
     }
 }
 
+public class ListTimedResidentResourcePoolApplicationsOutput : Tea.TeaModel {
+    public var applications: [TimedResidentResourcePoolApplication]?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applications != nil {
+            var tmp : [Any] = []
+            for k in self.applications! {
+                tmp.append(k.toMap())
+            }
+            map["applications"] = tmp
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["applications"] as? [Any?] {
+            var tmp : [TimedResidentResourcePoolApplication] = []
+            for v in value {
+                if v != nil {
+                    var model = TimedResidentResourcePoolApplication()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.applications = tmp
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
 public class ListTriggersOutput : Tea.TeaModel {
     public var nextToken: String?
 
@@ -5644,6 +5911,53 @@ public class MNSTopicTriggerConfig : Tea.TeaModel {
         }
         if let value = dict["notifyStrategy"] as? String {
             self.notifyStrategy = value
+        }
+    }
+}
+
+public class MicroSandboxConfig : Tea.TeaModel {
+    public var osType: String?
+
+    public var readyCommand: String?
+
+    public var startCommand: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.osType != nil {
+            map["osType"] = self.osType!
+        }
+        if self.readyCommand != nil {
+            map["readyCommand"] = self.readyCommand!
+        }
+        if self.startCommand != nil {
+            map["startCommand"] = self.startCommand!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["osType"] as? String {
+            self.osType = value
+        }
+        if let value = dict["readyCommand"] as? String {
+            self.readyCommand = value
+        }
+        if let value = dict["startCommand"] as? String {
+            self.startCommand = value
         }
     }
 }
@@ -7195,11 +7509,15 @@ public class ResidentResourceCapacity : Tea.TeaModel {
 public class ResidentResourcePool : Tea.TeaModel {
     public var allocationStatus: ResidentResourceAllocationStatus?
 
+    public var associatedPoolId: String?
+
     public var createdTime: String?
 
     public var expireTime: String?
 
     public var lastModifiedTime: String?
+
+    public var poolType: String?
 
     public var residentResourcePoolId: String?
 
@@ -7208,6 +7526,8 @@ public class ResidentResourcePool : Tea.TeaModel {
     public var resourcePoolCapacity: ResidentResourceCapacity?
 
     public var resourcePoolConfig: ResidentResourceCapacity?
+
+    public var timedConfig: TimedPoolConfig?
 
     public override init() {
         super.init()
@@ -7222,12 +7542,16 @@ public class ResidentResourcePool : Tea.TeaModel {
         try self.allocationStatus?.validate()
         try self.resourcePoolCapacity?.validate()
         try self.resourcePoolConfig?.validate()
+        try self.timedConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.allocationStatus != nil {
             map["allocationStatus"] = self.allocationStatus?.toMap()
+        }
+        if self.associatedPoolId != nil {
+            map["associatedPoolId"] = self.associatedPoolId!
         }
         if self.createdTime != nil {
             map["createdTime"] = self.createdTime!
@@ -7237,6 +7561,9 @@ public class ResidentResourcePool : Tea.TeaModel {
         }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.poolType != nil {
+            map["poolType"] = self.poolType!
         }
         if self.residentResourcePoolId != nil {
             map["residentResourcePoolId"] = self.residentResourcePoolId!
@@ -7250,6 +7577,9 @@ public class ResidentResourcePool : Tea.TeaModel {
         if self.resourcePoolConfig != nil {
             map["resourcePoolConfig"] = self.resourcePoolConfig?.toMap()
         }
+        if self.timedConfig != nil {
+            map["timedConfig"] = self.timedConfig?.toMap()
+        }
         return map
     }
 
@@ -7260,6 +7590,9 @@ public class ResidentResourcePool : Tea.TeaModel {
             model.fromMap(value)
             self.allocationStatus = model
         }
+        if let value = dict["associatedPoolId"] as? String {
+            self.associatedPoolId = value
+        }
         if let value = dict["createdTime"] as? String {
             self.createdTime = value
         }
@@ -7268,6 +7601,9 @@ public class ResidentResourcePool : Tea.TeaModel {
         }
         if let value = dict["lastModifiedTime"] as? String {
             self.lastModifiedTime = value
+        }
+        if let value = dict["poolType"] as? String {
+            self.poolType = value
         }
         if let value = dict["residentResourcePoolId"] as? String {
             self.residentResourcePoolId = value
@@ -7284,6 +7620,11 @@ public class ResidentResourcePool : Tea.TeaModel {
             var model = ResidentResourceCapacity()
             model.fromMap(value)
             self.resourcePoolConfig = model
+        }
+        if let value = dict["timedConfig"] as? [String: Any?] {
+            var model = TimedPoolConfig()
+            model.fromMap(value)
+            self.timedConfig = model
         }
     }
 }
@@ -9102,6 +9443,154 @@ public class TargetTrackingPolicy : Tea.TeaModel {
     }
 }
 
+public class TimedPoolConfig : Tea.TeaModel {
+    public var effectiveEndDate: String?
+
+    public var effectiveStartDate: String?
+
+    public var elasticIntervals: [ElasticInterval]?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.effectiveEndDate != nil {
+            map["effectiveEndDate"] = self.effectiveEndDate!
+        }
+        if self.effectiveStartDate != nil {
+            map["effectiveStartDate"] = self.effectiveStartDate!
+        }
+        if self.elasticIntervals != nil {
+            var tmp : [Any] = []
+            for k in self.elasticIntervals! {
+                tmp.append(k.toMap())
+            }
+            map["elasticIntervals"] = tmp
+        }
+        if self.timeZone != nil {
+            map["timeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["effectiveEndDate"] as? String {
+            self.effectiveEndDate = value
+        }
+        if let value = dict["effectiveStartDate"] as? String {
+            self.effectiveStartDate = value
+        }
+        if let value = dict["elasticIntervals"] as? [Any?] {
+            var tmp : [ElasticInterval] = []
+            for v in value {
+                if v != nil {
+                    var model = ElasticInterval()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.elasticIntervals = tmp
+        }
+        if let value = dict["timeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
+public class TimedResidentResourcePoolApplication : Tea.TeaModel {
+    public var accountId: String?
+
+    public var content: String?
+
+    public var createdTime: String?
+
+    public var lastModifiedTime: String?
+
+    public var operationType: String?
+
+    public var status: String?
+
+    public var timedPoolId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountId != nil {
+            map["accountId"] = self.accountId!
+        }
+        if self.content != nil {
+            map["content"] = self.content!
+        }
+        if self.createdTime != nil {
+            map["createdTime"] = self.createdTime!
+        }
+        if self.lastModifiedTime != nil {
+            map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.operationType != nil {
+            map["operationType"] = self.operationType!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.timedPoolId != nil {
+            map["timedPoolId"] = self.timedPoolId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["accountId"] as? String {
+            self.accountId = value
+        }
+        if let value = dict["content"] as? String {
+            self.content = value
+        }
+        if let value = dict["createdTime"] as? String {
+            self.createdTime = value
+        }
+        if let value = dict["lastModifiedTime"] as? String {
+            self.lastModifiedTime = value
+        }
+        if let value = dict["operationType"] as? String {
+            self.operationType = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["timedPoolId"] as? String {
+            self.timedPoolId = value
+        }
+    }
+}
+
 public class TimerTriggerConfig : Tea.TeaModel {
     public var cronExpression: String?
 
@@ -9507,6 +9996,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 
     public var memorySize: Int32?
 
+    public var microSandboxConfig: MicroSandboxConfig?
+
     public var nasConfig: NASConfig?
 
     public var ossMountConfig: OSSMountConfig?
@@ -9545,6 +10036,7 @@ public class UpdateFunctionInput : Tea.TeaModel {
         try self.instanceLifecycleConfig?.validate()
         try self.juiceFsConfig?.validate()
         try self.logConfig?.validate()
+        try self.microSandboxConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
@@ -9619,6 +10111,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if self.memorySize != nil {
             map["memorySize"] = self.memorySize!
+        }
+        if self.microSandboxConfig != nil {
+            map["microSandboxConfig"] = self.microSandboxConfig?.toMap()
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
@@ -9736,6 +10231,11 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if let value = dict["memorySize"] as? Int32 {
             self.memorySize = value
+        }
+        if let value = dict["microSandboxConfig"] as? [String: Any?] {
+            var model = MicroSandboxConfig()
+            model.fromMap(value)
+            self.microSandboxConfig = model
         }
         if let value = dict["nasConfig"] as? [String: Any?] {
             var model = NASConfig()
