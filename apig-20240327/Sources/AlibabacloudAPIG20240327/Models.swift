@@ -6628,7 +6628,7 @@ public class HttpApiApiInfo : Tea.TeaModel {
 
     public var description_: String?
 
-    public var enabelAuth: Bool?
+    public var enableAuth: Bool?
 
     public var environments: [HttpApiApiInfo.Environments]?
 
@@ -6696,8 +6696,8 @@ public class HttpApiApiInfo : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
-        if self.enabelAuth != nil {
-            map["enabelAuth"] = self.enabelAuth!
+        if self.enableAuth != nil {
+            map["enableAuth"] = self.enableAuth!
         }
         if self.environments != nil {
             var tmp : [Any] = []
@@ -6779,8 +6779,8 @@ public class HttpApiApiInfo : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
-        if let value = dict["enabelAuth"] as? Bool {
-            self.enabelAuth = value
+        if let value = dict["enableAuth"] as? Bool {
+            self.enableAuth = value
         }
         if let value = dict["environments"] as? [Any?] {
             var tmp : [HttpApiApiInfo.Environments] = []
@@ -12602,7 +12602,7 @@ public class HttpApiApiInfoDeployCntMapValue : Tea.TeaModel {
             map["deployedCnt"] = self.deployedCnt!
         }
         if self.cnt != nil {
-            map["Cnt"] = self.cnt!
+            map["cnt"] = self.cnt!
         }
         return map
     }
@@ -12612,7 +12612,7 @@ public class HttpApiApiInfoDeployCntMapValue : Tea.TeaModel {
         if let value = dict["deployedCnt"] as? Int64 {
             self.deployedCnt = value
         }
-        if let value = dict["Cnt"] as? Int64 {
+        if let value = dict["cnt"] as? Int64 {
             self.cnt = value
         }
     }
