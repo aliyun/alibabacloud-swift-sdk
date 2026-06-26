@@ -99963,6 +99963,8 @@ public class RerunTaskInstancesRequest : Tea.TeaModel {
 
     public var ids: [Int64]?
 
+    public var useLatestConfig: Bool?
+
     public override init() {
         super.init()
     }
@@ -99983,6 +99985,9 @@ public class RerunTaskInstancesRequest : Tea.TeaModel {
         if self.ids != nil {
             map["Ids"] = self.ids!
         }
+        if self.useLatestConfig != nil {
+            map["UseLatestConfig"] = self.useLatestConfig!
+        }
         return map
     }
 
@@ -99994,6 +99999,9 @@ public class RerunTaskInstancesRequest : Tea.TeaModel {
         if let value = dict["Ids"] as? [Int64] {
             self.ids = value
         }
+        if let value = dict["UseLatestConfig"] as? Bool {
+            self.useLatestConfig = value
+        }
     }
 }
 
@@ -100001,6 +100009,8 @@ public class RerunTaskInstancesShrinkRequest : Tea.TeaModel {
     public var comment: String?
 
     public var idsShrink: String?
+
+    public var useLatestConfig: Bool?
 
     public override init() {
         super.init()
@@ -100022,6 +100032,9 @@ public class RerunTaskInstancesShrinkRequest : Tea.TeaModel {
         if self.idsShrink != nil {
             map["Ids"] = self.idsShrink!
         }
+        if self.useLatestConfig != nil {
+            map["UseLatestConfig"] = self.useLatestConfig!
+        }
         return map
     }
 
@@ -100032,6 +100045,9 @@ public class RerunTaskInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Ids"] as? String {
             self.idsShrink = value
+        }
+        if let value = dict["UseLatestConfig"] as? Bool {
+            self.useLatestConfig = value
         }
     }
 }

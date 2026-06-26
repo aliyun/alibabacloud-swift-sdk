@@ -11315,6 +11315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.idsShrink)) {
             body["Ids"] = request.idsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useLatestConfig)) {
+            body["UseLatestConfig"] = request.useLatestConfig!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
