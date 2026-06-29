@@ -8,7 +8,35 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "tablestore.us-west-1.aliyuncs.com",
+            "us-east-1": "tablestore.us-east-1.aliyuncs.com",
+            "me-east-1": "tablestore.me-east-1.aliyuncs.com",
+            "me-central-1": "tablestore.me-central-1.aliyuncs.com",
+            "eu-west-1": "tablestore.eu-west-1.aliyuncs.com",
+            "eu-central-1": "tablestore.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "tablestore.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "tablestore.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "tablestore.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "tablestore.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "tablestore.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "tablestore.cn-qingdao.aliyuncs.com",
+            "cn-huhehaote": "tablestore.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "tablestore.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "tablestore.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "tablestore.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "tablestore.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "tablestore.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "tablestore.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "tablestore.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "tablestore.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "tablestore.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-2": "tablestore.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-1": "tablestore.ap-southeast-1.aliyuncs.com",
+            "ap-south-1": "tablestore.ap-south-1.aliyuncs.com",
+            "ap-northeast-1": "tablestore.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("tablestore", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -138,6 +166,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAgentStorageWithOptions(_ request: CreateAgentStorageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAgentStorageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentStorageDescription)) {
+            body["AgentStorageDescription"] = request.agentStorageDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentStorageName)) {
+            body["AgentStorageName"] = request.agentStorageName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.network)) {
+            body["Network"] = request.network ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkSourceACL)) {
+            body["NetworkSourceACL"] = request.networkSourceACL ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.networkTypeACL)) {
+            body["NetworkTypeACL"] = request.networkTypeACL ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            body["Policy"] = request.policy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            body["Tags"] = request.tags ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAgentStorage",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/createagentstorage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAgentStorageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAgentStorage(_ request: CreateAgentStorageRequest) async throws -> CreateAgentStorageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createAgentStorageWithOptions(request as! CreateAgentStorageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createInstanceWithOptions(_ request: CreateInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -258,6 +340,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createVCUInstanceWithOptions(request as! CreateVCUInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAgentStorageWithOptions(_ request: DeleteAgentStorageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAgentStorageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentStorageName)) {
+            body["AgentStorageName"] = request.agentStorageName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAgentStorage",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/deleteagentstorage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAgentStorageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAgentStorage(_ request: DeleteAgentStorageRequest) async throws -> DeleteAgentStorageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteAgentStorageWithOptions(request as! DeleteAgentStorageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -396,6 +511,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentStorageWithOptions(_ request: GetAgentStorageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentStorageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentStorageName)) {
+            query["AgentStorageName"] = request.agentStorageName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAgentStorage",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/getagentstorage",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAgentStorageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentStorage(_ request: GetAgentStorageRequest) async throws -> GetAgentStorageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getAgentStorageWithOptions(request as! GetAgentStorageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getInstanceWithOptions(_ request: GetInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -426,6 +574,65 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getInstanceWithOptions(request as! GetInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgentStoragesWithOptions(_ tmpReq: ListAgentStoragesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgentStoragesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListAgentStoragesShrinkRequest = ListAgentStoragesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.agentStorageNameList)) {
+            request.agentStorageNameListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.agentStorageNameList, "AgentStorageNameList", "simple")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentStorageName)) {
+            query["AgentStorageName"] = request.agentStorageName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentStorageNameListShrink)) {
+            query["AgentStorageNameList"] = request.agentStorageNameListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAgentStorages",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/listagentstorages",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAgentStoragesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgentStorages(_ request: ListAgentStoragesRequest) async throws -> ListAgentStoragesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listAgentStoragesWithOptions(request as! ListAgentStoragesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -760,6 +967,54 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await untagResourcesWithOptions(request as! UntagResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAgentStorageWithOptions(_ request: UpdateAgentStorageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAgentStorageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentStorageDescription)) {
+            body["AgentStorageDescription"] = request.agentStorageDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentStorageName)) {
+            body["AgentStorageName"] = request.agentStorageName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aliasName)) {
+            body["AliasName"] = request.aliasName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.network)) {
+            body["Network"] = request.network ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkSourceACL)) {
+            body["NetworkSourceACL"] = request.networkSourceACL ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.networkTypeACL)) {
+            body["NetworkTypeACL"] = request.networkTypeACL ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAgentStorage",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/updateagentstorage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAgentStorageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAgentStorage(_ request: UpdateAgentStorageRequest) async throws -> UpdateAgentStorageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateAgentStorageWithOptions(request as! UpdateAgentStorageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
