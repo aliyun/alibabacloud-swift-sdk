@@ -103281,6 +103281,60 @@ public class SubmitBatchTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public class OfflineCodeTemplateParams : Tea.TeaModel {
+            public var description_: String?
+
+            public var encryptEnabled: Bool?
+
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.encryptEnabled != nil {
+                    map["EncryptEnabled"] = self.encryptEnabled!
+                }
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["EncryptEnabled"] as? Bool {
+                    self.encryptEnabled = value
+                }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public class ParamList : Tea.TeaModel {
             public var key: String?
 
@@ -103486,6 +103540,8 @@ public class SubmitBatchTaskRequest : Tea.TeaModel {
         }
         public var code: String?
 
+        public var codeTemplateVersion: Int32?
+
         public var comment: String?
 
         public var cronExpression: String?
@@ -103503,6 +103559,10 @@ public class SubmitBatchTaskRequest : Tea.TeaModel {
         public var nodeOutputNameList: [String]?
 
         public var nodeStatus: Int32?
+
+        public var offlineCodeTemplateId: String?
+
+        public var offlineCodeTemplateParams: [SubmitBatchTaskRequest.SubmitCommand.OfflineCodeTemplateParams]?
 
         public var paramList: [SubmitBatchTaskRequest.SubmitCommand.ParamList]?
 
@@ -103537,6 +103597,9 @@ public class SubmitBatchTaskRequest : Tea.TeaModel {
             if self.code != nil {
                 map["Code"] = self.code!
             }
+            if self.codeTemplateVersion != nil {
+                map["CodeTemplateVersion"] = self.codeTemplateVersion!
+            }
             if self.comment != nil {
                 map["Comment"] = self.comment!
             }
@@ -103563,6 +103626,16 @@ public class SubmitBatchTaskRequest : Tea.TeaModel {
             }
             if self.nodeStatus != nil {
                 map["NodeStatus"] = self.nodeStatus!
+            }
+            if self.offlineCodeTemplateId != nil {
+                map["OfflineCodeTemplateId"] = self.offlineCodeTemplateId!
+            }
+            if self.offlineCodeTemplateParams != nil {
+                var tmp : [Any] = []
+                for k in self.offlineCodeTemplateParams! {
+                    tmp.append(k.toMap())
+                }
+                map["OfflineCodeTemplateParams"] = tmp
             }
             if self.paramList != nil {
                 var tmp : [Any] = []
@@ -103601,6 +103674,9 @@ public class SubmitBatchTaskRequest : Tea.TeaModel {
             if let value = dict["Code"] as? String {
                 self.code = value
             }
+            if let value = dict["CodeTemplateVersion"] as? Int32 {
+                self.codeTemplateVersion = value
+            }
             if let value = dict["Comment"] as? String {
                 self.comment = value
             }
@@ -103629,6 +103705,22 @@ public class SubmitBatchTaskRequest : Tea.TeaModel {
             }
             if let value = dict["NodeStatus"] as? Int32 {
                 self.nodeStatus = value
+            }
+            if let value = dict["OfflineCodeTemplateId"] as? String {
+                self.offlineCodeTemplateId = value
+            }
+            if let value = dict["OfflineCodeTemplateParams"] as? [Any?] {
+                var tmp : [SubmitBatchTaskRequest.SubmitCommand.OfflineCodeTemplateParams] = []
+                for v in value {
+                    if v != nil {
+                        var model = SubmitBatchTaskRequest.SubmitCommand.OfflineCodeTemplateParams()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.offlineCodeTemplateParams = tmp
             }
             if let value = dict["ParamList"] as? [Any?] {
                 var tmp : [SubmitBatchTaskRequest.SubmitCommand.ParamList] = []
