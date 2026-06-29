@@ -8,7 +8,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-beijing": "aidge.cn-beijing.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aidge", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -482,7 +485,7 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func imageTranslationProWithOptions(_ request: ImageTranslationProRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationProResponse {
+    public func imageTranslationPlusWithOptions(_ request: ImageTranslationPlusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationPlusResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.glossary)) {
@@ -506,8 +509,57 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
             body["UseImageEditor"] = request.useImageEditor!;
         }
-        if (!TeaUtils.Client.isUnset(request.callType)) {
-            body["callType"] = request.callType ?? "";
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageTranslationPlus",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageTranslationPlusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationPlus(_ request: ImageTranslationPlusRequest) async throws -> ImageTranslationPlusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageTranslationPlusWithOptions(request as! ImageTranslationPlusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationProWithOptions(_ request: ImageTranslationProRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationProResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.async)) {
+            body["Async"] = request.async!;
+        }
+        if (!TeaUtils.Client.isUnset(request.glossary)) {
+            body["Glossary"] = request.glossary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            body["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includingProductArea)) {
+            body["IncludingProductArea"] = request.includingProductArea!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            body["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translatingBrandInTheProduct)) {
+            body["TranslatingBrandInTheProduct"] = request.translatingBrandInTheProduct!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
+            body["UseImageEditor"] = request.useImageEditor!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -608,6 +660,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func languageDetect(_ request: LanguageDetectRequest) async throws -> LanguageDetectResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await languageDetectWithOptions(request as! LanguageDetectRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func materialInspectionWithOptions(_ request: MaterialInspectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MaterialInspectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiId)) {
+            query["ApiId"] = request.apiId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageRefer)) {
+            query["ImageRefer"] = request.imageRefer ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reqId)) {
+            query["ReqId"] = request.reqId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rules)) {
+            query["Rules"] = request.rules ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MaterialInspection",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MaterialInspectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func materialInspection(_ request: MaterialInspectionRequest) async throws -> MaterialInspectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await materialInspectionWithOptions(request as! MaterialInspectionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
