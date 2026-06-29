@@ -41,7 +41,37 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhangjiakou-na62-a01": "nas.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "nas.aliyuncs.com",
             "eu-west-1-oxs": "nas.aliyuncs.com",
-            "rus-west-1-pop": "nas.aliyuncs.com"
+            "rus-west-1-pop": "nas.aliyuncs.com",
+            "us-west-1": "nas.us-west-1.aliyuncs.com",
+            "us-east-1": "nas.us-east-1.aliyuncs.com",
+            "me-east-1": "nas.me-east-1.aliyuncs.com",
+            "me-central-1": "nas.me-central-1.aliyuncs.com",
+            "eu-west-1": "nas.eu-west-1.aliyuncs.com",
+            "eu-central-1": "nas.eu-central-1.aliyuncs.com",
+            "cn-zhengzhou-jva": "nas.cn-zhengzhou-jva.aliyuncs.com",
+            "cn-zhangjiakou": "nas.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "nas.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen-finance-1": "nas.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-shenzhen": "nas.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "nas.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "nas.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "nas.cn-qingdao.aliyuncs.com",
+            "cn-huhehaote": "nas.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "nas.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "nas.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou": "nas.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "nas.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "nas.cn-chengdu.aliyuncs.com",
+            "cn-beijing-finance-1": "nas.cn-beijing-finance-1.aliyuncs.com",
+            "cn-beijing": "nas.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "nas.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "nas.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "nas.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "nas.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "nas.ap-southeast-1.aliyuncs.com",
+            "ap-south-1": "nas.ap-south-1.aliyuncs.com",
+            "ap-northeast-2": "nas.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "nas.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("nas", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -609,6 +639,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessPointName)) {
             query["AccessPointName"] = request.accessPointName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agenticSpaceId)) {
+            query["AgenticSpaceId"] = request.agenticSpaceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enabledRam)) {
             query["EnabledRam"] = request.enabledRam!;
         }
@@ -716,6 +749,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAccessRule(_ request: CreateAccessRuleRequest) async throws -> CreateAccessRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createAccessRuleWithOptions(request as! CreateAccessRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAgenticSpaceWithOptions(_ request: CreateAgenticSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAgenticSpaceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.azone)) {
+            query["Azone"] = request.azone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemPath)) {
+            query["FileSystemPath"] = request.fileSystemPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quota)) {
+            query["Quota"] = request.quota!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAgenticSpace",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAgenticSpaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAgenticSpace(_ request: CreateAgenticSpaceRequest) async throws -> CreateAgenticSpaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAgenticSpaceWithOptions(request as! CreateAgenticSpaceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1715,6 +1797,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAgenticSpaceWithOptions(_ request: DeleteAgenticSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAgenticSpaceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agenticSpaceId)) {
+            query["AgenticSpaceId"] = request.agenticSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAgenticSpace",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAgenticSpaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAgenticSpace(_ request: DeleteAgenticSpaceRequest) async throws -> DeleteAgenticSpaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteAgenticSpaceWithOptions(request as! DeleteAgenticSpaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAutoSnapshotPolicyWithOptions(_ request: DeleteAutoSnapshotPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAutoSnapshotPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2267,6 +2389,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAccessRules(_ request: DescribeAccessRulesRequest) async throws -> DescribeAccessRulesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeAccessRulesWithOptions(request as! DescribeAccessRulesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAgenticSpacesWithOptions(_ request: DescribeAgenticSpacesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAgenticSpacesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filters)) {
+            query["Filters"] = request.filters ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeAgenticSpaces",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAgenticSpacesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAgenticSpaces(_ request: DescribeAgenticSpacesRequest) async throws -> DescribeAgenticSpacesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeAgenticSpacesWithOptions(request as! DescribeAgenticSpacesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3507,6 +3669,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgenticSpaceWithOptions(_ request: GetAgenticSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgenticSpaceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agenticSpaceId)) {
+            query["AgenticSpaceId"] = request.agenticSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAgenticSpace",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAgenticSpaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgenticSpace(_ request: GetAgenticSpaceRequest) async throws -> GetAgenticSpaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAgenticSpaceWithOptions(request as! GetAgenticSpaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDirectoryOrFilePropertiesWithOptions(_ request: GetDirectoryOrFilePropertiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDirectoryOrFilePropertiesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3646,6 +3842,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getRecycleBinAttribute(_ request: GetRecycleBinAttributeRequest) async throws -> GetRecycleBinAttributeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getRecycleBinAttributeWithOptions(request as! GetRecycleBinAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAccessPointsWithOptions(_ request: ListAccessPointsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAccessPointsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filters)) {
+            query["Filters"] = request.filters ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAccessPoints",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAccessPointsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAccessPoints(_ request: ListAccessPointsRequest) async throws -> ListAccessPointsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAccessPointsWithOptions(request as! ListAccessPointsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3991,6 +4227,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyAccessRule(_ request: ModifyAccessRuleRequest) async throws -> ModifyAccessRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyAccessRuleWithOptions(request as! ModifyAccessRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAgenticSpaceWithOptions(_ request: ModifyAgenticSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAgenticSpaceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agenticSpaceId)) {
+            query["AgenticSpaceId"] = request.agenticSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyAgenticSpace",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyAgenticSpaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAgenticSpace(_ request: ModifyAgenticSpaceRequest) async throws -> ModifyAgenticSpaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyAgenticSpaceWithOptions(request as! ModifyAgenticSpaceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4616,6 +4895,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func retryLifecycleRetrieveJob(_ request: RetryLifecycleRetrieveJobRequest) async throws -> RetryLifecycleRetrieveJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await retryLifecycleRetrieveJobWithOptions(request as! RetryLifecycleRetrieveJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAgenticSpaceQuotaWithOptions(_ request: SetAgenticSpaceQuotaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetAgenticSpaceQuotaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agenticSpaceId)) {
+            query["AgenticSpaceId"] = request.agenticSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileCountLimit)) {
+            query["FileCountLimit"] = request.fileCountLimit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sizeLimit)) {
+            query["SizeLimit"] = request.sizeLimit!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetAgenticSpaceQuota",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetAgenticSpaceQuotaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAgenticSpaceQuota(_ request: SetAgenticSpaceQuotaRequest) async throws -> SetAgenticSpaceQuotaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setAgenticSpaceQuotaWithOptions(request as! SetAgenticSpaceQuotaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
