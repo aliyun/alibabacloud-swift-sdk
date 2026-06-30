@@ -11606,6 +11606,80 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePolarClawAgentFileWithOptions(_ request: DescribePolarClawAgentFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePolarClawAgentFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["FileName"] = request.fileName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePolarClawAgentFile",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePolarClawAgentFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePolarClawAgentFile(_ request: DescribePolarClawAgentFileRequest) async throws -> DescribePolarClawAgentFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePolarClawAgentFileWithOptions(request as! DescribePolarClawAgentFileRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePolarClawAgentToolsWithOptions(_ request: DescribePolarClawAgentToolsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePolarClawAgentToolsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includePlugins)) {
+            query["IncludePlugins"] = request.includePlugins!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePolarClawAgentTools",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePolarClawAgentToolsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePolarClawAgentTools(_ request: DescribePolarClawAgentToolsRequest) async throws -> DescribePolarClawAgentToolsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePolarClawAgentToolsWithOptions(request as! DescribePolarClawAgentToolsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describePolarClawAgentsWithOptions(_ tmpReq: DescribePolarClawAgentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePolarClawAgentsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DescribePolarClawAgentsShrinkRequest = DescribePolarClawAgentsShrinkRequest([:])
@@ -11797,6 +11871,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describePolarClawPlugins(_ request: DescribePolarClawPluginsRequest) async throws -> DescribePolarClawPluginsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describePolarClawPluginsWithOptions(request as! DescribePolarClawPluginsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePolarClawSkillDetailWithOptions(_ request: DescribePolarClawSkillDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePolarClawSkillDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slug)) {
+            query["Slug"] = request.slug ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePolarClawSkillDetail",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePolarClawSkillDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePolarClawSkillDetail(_ request: DescribePolarClawSkillDetailRequest) async throws -> DescribePolarClawSkillDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePolarClawSkillDetailWithOptions(request as! DescribePolarClawSkillDetailRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -14054,6 +14162,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func installPolarClawPlugin(_ request: InstallPolarClawPluginRequest) async throws -> InstallPolarClawPluginResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await installPolarClawPluginWithOptions(request as! InstallPolarClawPluginRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func installPolarClawSkillWithOptions(_ request: InstallPolarClawSkillRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InstallPolarClawSkillResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            query["Force"] = request.force!;
+        }
+        if (!TeaUtils.Client.isUnset(request.skillVersion)) {
+            query["SkillVersion"] = request.skillVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slug)) {
+            query["Slug"] = request.slug ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            query["Url"] = request.url ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InstallPolarClawSkill",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InstallPolarClawSkillResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func installPolarClawSkill(_ request: InstallPolarClawSkillRequest) async throws -> InstallPolarClawSkillResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await installPolarClawSkillWithOptions(request as! InstallPolarClawSkillRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -19245,6 +19399,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchPolarClawSkillsWithOptions(_ request: SearchPolarClawSkillsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchPolarClawSkillsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchPolarClawSkills",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchPolarClawSkillsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchPolarClawSkills(_ request: SearchPolarClawSkillsRequest) async throws -> SearchPolarClawSkillsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchPolarClawSkillsWithOptions(request as! SearchPolarClawSkillsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setPolarFsFileQuotaWithOptions(_ request: SetPolarFsFileQuotaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetPolarFsFileQuotaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -19824,6 +20015,105 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePolarClawAgentSkillsWithOptions(_ tmpReq: UpdatePolarClawAgentSkillsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePolarClawAgentSkillsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdatePolarClawAgentSkillsShrinkRequest = UpdatePolarClawAgentSkillsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.skills)) {
+            request.skillsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.skills, "Skills", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillsShrink)) {
+            query["Skills"] = request.skillsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdatePolarClawAgentSkills",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdatePolarClawAgentSkillsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePolarClawAgentSkills(_ request: UpdatePolarClawAgentSkillsRequest) async throws -> UpdatePolarClawAgentSkillsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updatePolarClawAgentSkillsWithOptions(request as! UpdatePolarClawAgentSkillsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePolarClawAgentToolsWithOptions(_ tmpReq: UpdatePolarClawAgentToolsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePolarClawAgentToolsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdatePolarClawAgentToolsShrinkRequest = UpdatePolarClawAgentToolsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.allow)) {
+            request.allowShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.allow, "Allow", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.alsoAllow)) {
+            request.alsoAllowShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alsoAllow, "AlsoAllow", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.deny)) {
+            request.denyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.deny, "Deny", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.allowShrink)) {
+            query["Allow"] = request.allowShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alsoAllowShrink)) {
+            query["AlsoAllow"] = request.alsoAllowShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.denyShrink)) {
+            query["Deny"] = request.denyShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.profile)) {
+            query["Profile"] = request.profile ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdatePolarClawAgentTools",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdatePolarClawAgentToolsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePolarClawAgentTools(_ request: UpdatePolarClawAgentToolsRequest) async throws -> UpdatePolarClawAgentToolsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updatePolarClawAgentToolsWithOptions(request as! UpdatePolarClawAgentToolsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updatePolarClawCronJobWithOptions(_ tmpReq: UpdatePolarClawCronJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePolarClawCronJobResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdatePolarClawCronJobShrinkRequest = UpdatePolarClawCronJobShrinkRequest([:])
@@ -19908,6 +20198,54 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updatePolarClawCronJob(_ request: UpdatePolarClawCronJobRequest) async throws -> UpdatePolarClawCronJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updatePolarClawCronJobWithOptions(request as! UpdatePolarClawCronJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePolarClawSkillWithOptions(_ tmpReq: UpdatePolarClawSkillRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePolarClawSkillResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdatePolarClawSkillShrinkRequest = UpdatePolarClawSkillShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.env)) {
+            request.envShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.env, "Env", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            query["ApiKey"] = request.apiKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            query["Enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.envShrink)) {
+            query["Env"] = request.envShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillKey)) {
+            query["SkillKey"] = request.skillKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdatePolarClawSkill",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdatePolarClawSkillResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePolarClawSkill(_ request: UpdatePolarClawSkillRequest) async throws -> UpdatePolarClawSkillResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updatePolarClawSkillWithOptions(request as! UpdatePolarClawSkillRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
