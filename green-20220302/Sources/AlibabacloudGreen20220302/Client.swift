@@ -27,7 +27,12 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-finance": "green.aliyuncs.com",
             "cn-shenzhen-finance-1": "green.aliyuncs.com",
             "cn-shanghai-finance-1": "green.aliyuncs.com",
-            "cn-north-2-gov-1": "green.aliyuncs.com"
+            "cn-north-2-gov-1": "green.aliyuncs.com",
+            "cn-shenzhen": "green-cip.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "green-cip.cn-shanghai.aliyuncs.com",
+            "cn-hangzhou": "green-cip.cn-hangzhou.aliyuncs.com",
+            "cn-beijing": "green-cip.cn-beijing.aliyuncs.com",
+            "ap-southeast-1": "green-cip.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("green", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -682,6 +687,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func multiModalGuardForBase64(_ request: MultiModalGuardForBase64Request) async throws -> MultiModalGuardForBase64Response {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await multiModalGuardForBase64WithOptions(request as! MultiModalGuardForBase64Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardWsWithOptions(_ request: MultiModalGuardWsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MultiModalGuardWsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MultiModalGuardWs",
+            "version": "2022-03-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MultiModalGuardWsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardWs(_ request: MultiModalGuardWsRequest) async throws -> MultiModalGuardWsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await multiModalGuardWsWithOptions(request as! MultiModalGuardWsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
