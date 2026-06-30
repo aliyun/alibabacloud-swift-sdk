@@ -8,7 +8,23 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "rdsai.us-west-1.aliyuncs.com",
+            "eu-central-1": "rdsai.eu-central-1.aliyuncs.com",
+            "cn-wulanchabu": "rdsai.aliyuncs.com",
+            "cn-shenzhen": "rdsai.aliyuncs.com",
+            "cn-shanghai": "rdsai.aliyuncs.com",
+            "cn-hongkong": "rdsai.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "rdsai.aliyuncs.com",
+            "cn-guangzhou": "rdsai.aliyuncs.com",
+            "cn-chengdu": "rdsai.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "rdsai.aliyuncs.com",
+            "ap-southeast-5": "rdsai.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "rdsai.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "rdsai.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "rdsai.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("rdsai", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -106,6 +122,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createApiKeyWithOptions(_ request: CreateApiKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateApiKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dailyTokenQuota)) {
+            query["DailyTokenQuota"] = request.dailyTokenQuota!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -183,6 +202,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dashboardUsername)) {
             query["DashboardUsername"] = request.dashboardUsername ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.database)) {
+            query["Database"] = request.database ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.databasePassword)) {
             query["DatabasePassword"] = request.databasePassword ?? "";
@@ -333,6 +355,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createInspectionTask(_ request: CreateInspectionTaskRequest) async throws -> CreateInspectionTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createInspectionTaskWithOptions(request as! CreateInspectionTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSandboxTemplateWithOptions(_ request: CreateSandboxTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSandboxTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.defaultCpu)) {
+            query["DefaultCpu"] = request.defaultCpu ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultMemory)) {
+            query["DefaultMemory"] = request.defaultMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replicas)) {
+            query["Replicas"] = request.replicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["TemplateName"] = request.templateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSandboxTemplate",
+            "version": "2025-05-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSandboxTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSandboxTemplate(_ request: CreateSandboxTemplateRequest) async throws -> CreateSandboxTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSandboxTemplateWithOptions(request as! CreateSandboxTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -547,6 +618,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSandboxTemplateWithOptions(_ request: DeleteSandboxTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSandboxTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSandboxTemplate",
+            "version": "2025-05-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSandboxTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSandboxTemplate(_ request: DeleteSandboxTemplateRequest) async throws -> DeleteSandboxTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteSandboxTemplateWithOptions(request as! DeleteSandboxTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteScheduledTaskWithOptions(_ request: DeleteScheduledTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteScheduledTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -683,6 +791,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAppInstances(_ request: DescribeAppInstancesRequest) async throws -> DescribeAppInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeAppInstancesWithOptions(request as! DescribeAppInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCommonSandboxTemplatesWithOptions(_ request: DescribeCommonSandboxTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCommonSandboxTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCommonSandboxTemplates",
+            "version": "2025-05-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCommonSandboxTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCommonSandboxTemplates(_ request: DescribeCommonSandboxTemplatesRequest) async throws -> DescribeCommonSandboxTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCommonSandboxTemplatesWithOptions(request as! DescribeCommonSandboxTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -971,6 +1116,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usageType)) {
+            query["UsageType"] = request.usageType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2218,6 +2366,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyMessagesFeedbacks(_ request: ModifyMessagesFeedbacksRequest) async throws -> ModifyMessagesFeedbacksResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyMessagesFeedbacksWithOptions(request as! ModifyMessagesFeedbacksRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySandboxTemplateWithOptions(_ request: ModifySandboxTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySandboxTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.defaultCpu)) {
+            query["DefaultCpu"] = request.defaultCpu ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultMemory)) {
+            query["DefaultMemory"] = request.defaultMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replicas)) {
+            query["Replicas"] = request.replicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySandboxTemplate",
+            "version": "2025-05-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySandboxTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySandboxTemplate(_ request: ModifySandboxTemplateRequest) async throws -> ModifySandboxTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySandboxTemplateWithOptions(request as! ModifySandboxTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
