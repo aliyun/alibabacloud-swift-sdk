@@ -2634,6 +2634,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func grantPromotionOfferForPartnerWithOptions(_ request: GrantPromotionOfferForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantPromotionOfferForPartnerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activityCode)) {
+            query["ActivityCode"] = request.activityCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.activityId)) {
             query["ActivityId"] = request.activityId ?? "";
         }

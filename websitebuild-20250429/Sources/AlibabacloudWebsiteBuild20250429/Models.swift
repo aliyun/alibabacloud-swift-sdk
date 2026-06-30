@@ -23936,6 +23936,8 @@ public class GetUserTmpIdentityForPartnerResponse : Tea.TeaModel {
 }
 
 public class GrantPromotionOfferForPartnerRequest : Tea.TeaModel {
+    public var activityCode: String?
+
     public var activityId: String?
 
     public var belongId: String?
@@ -23960,6 +23962,9 @@ public class GrantPromotionOfferForPartnerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityCode != nil {
+            map["ActivityCode"] = self.activityCode!
+        }
         if self.activityId != nil {
             map["ActivityId"] = self.activityId!
         }
@@ -23980,6 +23985,9 @@ public class GrantPromotionOfferForPartnerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ActivityCode"] as? String {
+            self.activityCode = value
+        }
         if let value = dict["ActivityId"] as? String {
             self.activityId = value
         }
