@@ -9,6 +9,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-hangzhou": "ga.cn-hangzhou.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ga", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -5010,6 +5013,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endpointGroupId)) {
             query["EndpointGroupId"] = request.endpointGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endpointGroupRegion)) {
+            query["EndpointGroupRegion"] = request.endpointGroupRegion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endpointGroupType)) {
             query["EndpointGroupType"] = request.endpointGroupType ?? "";

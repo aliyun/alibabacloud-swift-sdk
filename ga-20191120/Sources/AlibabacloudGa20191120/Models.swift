@@ -30324,6 +30324,8 @@ public class ListEndpointGroupsRequest : Tea.TeaModel {
 
     public var endpointGroupId: String?
 
+    public var endpointGroupRegion: String?
+
     public var endpointGroupType: String?
 
     public var listenerId: String?
@@ -30358,6 +30360,9 @@ public class ListEndpointGroupsRequest : Tea.TeaModel {
         }
         if self.endpointGroupId != nil {
             map["EndpointGroupId"] = self.endpointGroupId!
+        }
+        if self.endpointGroupRegion != nil {
+            map["EndpointGroupRegion"] = self.endpointGroupRegion!
         }
         if self.endpointGroupType != nil {
             map["EndpointGroupType"] = self.endpointGroupType!
@@ -30394,6 +30399,9 @@ public class ListEndpointGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["EndpointGroupId"] as? String {
             self.endpointGroupId = value
+        }
+        if let value = dict["EndpointGroupRegion"] as? String {
+            self.endpointGroupRegion = value
         }
         if let value = dict["EndpointGroupType"] as? String {
             self.endpointGroupType = value
