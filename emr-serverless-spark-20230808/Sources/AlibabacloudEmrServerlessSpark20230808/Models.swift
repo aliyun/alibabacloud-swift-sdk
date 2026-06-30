@@ -11372,6 +11372,183 @@ public class GetRayJobResponse : Tea.TeaModel {
     }
 }
 
+public class GetRayLogRequest : Tea.TeaModel {
+    public var bucketName: String?
+
+    public var path: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucketName != nil {
+            map["bucketName"] = self.bucketName!
+        }
+        if self.path != nil {
+            map["path"] = self.path!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["bucketName"] as? String {
+            self.bucketName = value
+        }
+        if let value = dict["path"] as? String {
+            self.path = value
+        }
+    }
+}
+
+public class GetRayLogResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var accessUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessUrl != nil {
+                map["accessUrl"] = self.accessUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accessUrl"] as? String {
+                self.accessUrl = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetRayLogResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetRayLogResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetRayLogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRayLogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRayLogResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetRunConfigurationRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -18566,6 +18743,339 @@ public class ListRayJobResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListRayJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRayLogsRequest : Tea.TeaModel {
+    public var bucketName: String?
+
+    public var delimiter: String?
+
+    public var marker: String?
+
+    public var maxKeys: Int64?
+
+    public var prefix_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucketName != nil {
+            map["bucketName"] = self.bucketName!
+        }
+        if self.delimiter != nil {
+            map["delimiter"] = self.delimiter!
+        }
+        if self.marker != nil {
+            map["marker"] = self.marker!
+        }
+        if self.maxKeys != nil {
+            map["maxKeys"] = self.maxKeys!
+        }
+        if self.prefix_ != nil {
+            map["prefix"] = self.prefix_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["bucketName"] as? String {
+            self.bucketName = value
+        }
+        if let value = dict["delimiter"] as? String {
+            self.delimiter = value
+        }
+        if let value = dict["marker"] as? String {
+            self.marker = value
+        }
+        if let value = dict["maxKeys"] as? Int64 {
+            self.maxKeys = value
+        }
+        if let value = dict["prefix"] as? String {
+            self.prefix_ = value
+        }
+    }
+}
+
+public class ListRayLogsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class ObjectList : Tea.TeaModel {
+            public var isDir: Bool?
+
+            public var name: String?
+
+            public var path: String?
+
+            public var size: Int64?
+
+            public var timeModified: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.isDir != nil {
+                    map["isDir"] = self.isDir!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.path != nil {
+                    map["path"] = self.path!
+                }
+                if self.size != nil {
+                    map["size"] = self.size!
+                }
+                if self.timeModified != nil {
+                    map["timeModified"] = self.timeModified!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["isDir"] as? Bool {
+                    self.isDir = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["path"] as? String {
+                    self.path = value
+                }
+                if let value = dict["size"] as? Int64 {
+                    self.size = value
+                }
+                if let value = dict["timeModified"] as? Int64 {
+                    self.timeModified = value
+                }
+            }
+        }
+        public var bucketName: String?
+
+        public var delimiter: String?
+
+        public var isTruncated: Bool?
+
+        public var marker: String?
+
+        public var maxKeys: Int64?
+
+        public var nextMarker: String?
+
+        public var objectList: [ListRayLogsResponseBody.Data.ObjectList]?
+
+        public var prefix_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bucketName != nil {
+                map["bucketName"] = self.bucketName!
+            }
+            if self.delimiter != nil {
+                map["delimiter"] = self.delimiter!
+            }
+            if self.isTruncated != nil {
+                map["isTruncated"] = self.isTruncated!
+            }
+            if self.marker != nil {
+                map["marker"] = self.marker!
+            }
+            if self.maxKeys != nil {
+                map["maxKeys"] = self.maxKeys!
+            }
+            if self.nextMarker != nil {
+                map["nextMarker"] = self.nextMarker!
+            }
+            if self.objectList != nil {
+                var tmp : [Any] = []
+                for k in self.objectList! {
+                    tmp.append(k.toMap())
+                }
+                map["objectList"] = tmp
+            }
+            if self.prefix_ != nil {
+                map["prefix"] = self.prefix_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["bucketName"] as? String {
+                self.bucketName = value
+            }
+            if let value = dict["delimiter"] as? String {
+                self.delimiter = value
+            }
+            if let value = dict["isTruncated"] as? Bool {
+                self.isTruncated = value
+            }
+            if let value = dict["marker"] as? String {
+                self.marker = value
+            }
+            if let value = dict["maxKeys"] as? Int64 {
+                self.maxKeys = value
+            }
+            if let value = dict["nextMarker"] as? String {
+                self.nextMarker = value
+            }
+            if let value = dict["objectList"] as? [Any?] {
+                var tmp : [ListRayLogsResponseBody.Data.ObjectList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListRayLogsResponseBody.Data.ObjectList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.objectList = tmp
+            }
+            if let value = dict["prefix"] as? String {
+                self.prefix_ = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListRayLogsResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListRayLogsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListRayLogsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRayLogsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRayLogsResponseBody()
             model.fromMap(value)
             self.body = model
         }

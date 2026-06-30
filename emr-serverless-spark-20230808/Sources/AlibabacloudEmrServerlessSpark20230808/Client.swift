@@ -8,7 +8,24 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "emr-serverless-spark.us-west-1.aliyuncs.com",
+            "us-east-1": "emr-serverless-spark.us-east-1.aliyuncs.com",
+            "na-south-1": "emr-serverless-spark.na-south-1.aliyuncs.com",
+            "eu-central-1": "emr-serverless-spark.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "emr-serverless-spark.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "emr-serverless-spark.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "emr-serverless-spark.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "emr-serverless-spark.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "emr-serverless-spark.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "emr-serverless-spark.cn-hangzhou.aliyuncs.com",
+            "cn-chengdu": "emr-serverless-spark.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "emr-serverless-spark.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "emr-serverless-spark.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-1": "emr-serverless-spark.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "emr-serverless-spark.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("emr-serverless-spark", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1470,6 +1487,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRayLogWithOptions(_ workspaceId: String, _ instanceId: String, _ request: GetRayLogRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRayLogResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketName)) {
+            query["bucketName"] = request.bucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            query["path"] = request.path ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRayLog",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/ray/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/log",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRayLogResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRayLog(_ workspaceId: String, _ instanceId: String, _ request: GetRayLogRequest) async throws -> GetRayLogResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getRayLogWithOptions(workspaceId as! String, instanceId as! String, request as! GetRayLogRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRunConfigurationWithOptions(_ workspaceId: String, _ runId: String, _ request: GetRunConfigurationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRunConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2309,6 +2362,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listRayJobWithOptions(workspaceId as! String, request as! ListRayJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRayLogsWithOptions(_ workspaceId: String, _ instanceId: String, _ request: ListRayLogsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRayLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketName)) {
+            query["bucketName"] = request.bucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.delimiter)) {
+            query["delimiter"] = request.delimiter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.marker)) {
+            query["marker"] = request.marker ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxKeys)) {
+            query["maxKeys"] = request.maxKeys!;
+        }
+        if (!TeaUtils.Client.isUnset(request.prefix_)) {
+            query["prefix"] = request.prefix_ ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRayLogs",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/ray/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/logs",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRayLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRayLogs(_ workspaceId: String, _ instanceId: String, _ request: ListRayLogsRequest) async throws -> ListRayLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listRayLogsWithOptions(workspaceId as! String, instanceId as! String, request as! ListRayLogsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
