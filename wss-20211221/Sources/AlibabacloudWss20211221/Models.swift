@@ -946,7 +946,11 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
 
             public var remainCredit: Int64?
 
+            public var todayUsed: String?
+
             public var totalCredit: Int64?
+
+            public var totalUsed: String?
 
             public var totalUsedCredit: Int64?
 
@@ -999,8 +1003,14 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                 if self.remainCredit != nil {
                     map["RemainCredit"] = self.remainCredit!
                 }
+                if self.todayUsed != nil {
+                    map["TodayUsed"] = self.todayUsed!
+                }
                 if self.totalCredit != nil {
                     map["TotalCredit"] = self.totalCredit!
+                }
+                if self.totalUsed != nil {
+                    map["TotalUsed"] = self.totalUsed!
                 }
                 if self.totalUsedCredit != nil {
                     map["TotalUsedCredit"] = self.totalUsedCredit!
@@ -1053,8 +1063,14 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                 if let value = dict["RemainCredit"] as? Int64 {
                     self.remainCredit = value
                 }
+                if let value = dict["TodayUsed"] as? String {
+                    self.todayUsed = value
+                }
                 if let value = dict["TotalCredit"] as? Int64 {
                     self.totalCredit = value
+                }
+                if let value = dict["TotalUsed"] as? String {
+                    self.totalUsed = value
                 }
                 if let value = dict["TotalUsedCredit"] as? Int64 {
                     self.totalUsedCredit = value
