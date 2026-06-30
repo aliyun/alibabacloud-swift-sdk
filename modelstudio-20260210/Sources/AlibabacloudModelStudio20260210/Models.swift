@@ -579,7 +579,47 @@ public class BatchRevokeSeatsResponse : Tea.TeaModel {
 
 public class CreateApiKeyRequest : Tea.TeaModel {
     public class Auth : Tea.TeaModel {
+        public class ModelAccessScope : Tea.TeaModel {
+            public var accessibleModels: [String]?
+
+            public var allowAllModels: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessibleModels != nil {
+                    map["accessibleModels"] = self.accessibleModels!
+                }
+                if self.allowAllModels != nil {
+                    map["allowAllModels"] = self.allowAllModels!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["accessibleModels"] as? [String] {
+                    self.accessibleModels = value
+                }
+                if let value = dict["allowAllModels"] as? Bool {
+                    self.allowAllModels = value
+                }
+            }
+        }
         public var accessIps: [String]?
+
+        public var modelAccessScope: CreateApiKeyRequest.Auth.ModelAccessScope?
 
         public var type: String?
 
@@ -593,12 +633,16 @@ public class CreateApiKeyRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.modelAccessScope?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.accessIps != nil {
                 map["accessIps"] = self.accessIps!
+            }
+            if self.modelAccessScope != nil {
+                map["modelAccessScope"] = self.modelAccessScope?.toMap()
             }
             if self.type != nil {
                 map["type"] = self.type!
@@ -610,6 +654,11 @@ public class CreateApiKeyRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["accessIps"] as? [String] {
                 self.accessIps = value
+            }
+            if let value = dict["modelAccessScope"] as? [String: Any?] {
+                var model = CreateApiKeyRequest.Auth.ModelAccessScope()
+                model.fromMap(value)
+                self.modelAccessScope = model
             }
             if let value = dict["type"] as? String {
                 self.type = value
@@ -2081,7 +2130,47 @@ public class EnableApiKeyResponse : Tea.TeaModel {
 public class GetApiKeyResponseBody : Tea.TeaModel {
     public class ApiKey : Tea.TeaModel {
         public class Auth : Tea.TeaModel {
+            public class ModelAccessScope : Tea.TeaModel {
+                public var accessibleModels: [String]?
+
+                public var allowAllModels: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessibleModels != nil {
+                        map["accessibleModels"] = self.accessibleModels!
+                    }
+                    if self.allowAllModels != nil {
+                        map["allowAllModels"] = self.allowAllModels!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["accessibleModels"] as? [String] {
+                        self.accessibleModels = value
+                    }
+                    if let value = dict["allowAllModels"] as? Bool {
+                        self.allowAllModels = value
+                    }
+                }
+            }
             public var accessIps: [String]?
+
+            public var modelAccessScope: GetApiKeyResponseBody.ApiKey.Auth.ModelAccessScope?
 
             public var type: String?
 
@@ -2095,12 +2184,16 @@ public class GetApiKeyResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.modelAccessScope?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.accessIps != nil {
                     map["accessIps"] = self.accessIps!
+                }
+                if self.modelAccessScope != nil {
+                    map["modelAccessScope"] = self.modelAccessScope?.toMap()
                 }
                 if self.type != nil {
                     map["type"] = self.type!
@@ -2112,6 +2205,11 @@ public class GetApiKeyResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["accessIps"] as? [String] {
                     self.accessIps = value
+                }
+                if let value = dict["modelAccessScope"] as? [String: Any?] {
+                    var model = GetApiKeyResponseBody.ApiKey.Auth.ModelAccessScope()
+                    model.fromMap(value)
+                    self.modelAccessScope = model
                 }
                 if let value = dict["type"] as? String {
                     self.type = value
@@ -4243,7 +4341,47 @@ public class ListApiKeysRequest : Tea.TeaModel {
 public class ListApiKeysResponseBody : Tea.TeaModel {
     public class ApiKeys : Tea.TeaModel {
         public class Auth : Tea.TeaModel {
+            public class ModelAccessScope : Tea.TeaModel {
+                public var accessibleModels: [String]?
+
+                public var allowAllModels: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessibleModels != nil {
+                        map["accessibleModels"] = self.accessibleModels!
+                    }
+                    if self.allowAllModels != nil {
+                        map["allowAllModels"] = self.allowAllModels!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["accessibleModels"] as? [String] {
+                        self.accessibleModels = value
+                    }
+                    if let value = dict["allowAllModels"] as? Bool {
+                        self.allowAllModels = value
+                    }
+                }
+            }
             public var accessIps: [String]?
+
+            public var modelAccessScope: ListApiKeysResponseBody.ApiKeys.Auth.ModelAccessScope?
 
             public var type: String?
 
@@ -4257,12 +4395,16 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.modelAccessScope?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.accessIps != nil {
                     map["accessIps"] = self.accessIps!
+                }
+                if self.modelAccessScope != nil {
+                    map["modelAccessScope"] = self.modelAccessScope?.toMap()
                 }
                 if self.type != nil {
                     map["type"] = self.type!
@@ -4274,6 +4416,11 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["accessIps"] as? [String] {
                     self.accessIps = value
+                }
+                if let value = dict["modelAccessScope"] as? [String: Any?] {
+                    var model = ListApiKeysResponseBody.ApiKeys.Auth.ModelAccessScope()
+                    model.fromMap(value)
+                    self.modelAccessScope = model
                 }
                 if let value = dict["type"] as? String {
                     self.type = value
@@ -6285,7 +6432,47 @@ public class SetTokenPlanOrgInviteConfigResponse : Tea.TeaModel {
 
 public class UpdateApiKeyRequest : Tea.TeaModel {
     public class Auth : Tea.TeaModel {
+        public class ModelAccessScope : Tea.TeaModel {
+            public var accessibleModels: [String]?
+
+            public var allowAllModels: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessibleModels != nil {
+                    map["accessibleModels"] = self.accessibleModels!
+                }
+                if self.allowAllModels != nil {
+                    map["allowAllModels"] = self.allowAllModels!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["accessibleModels"] as? [String] {
+                    self.accessibleModels = value
+                }
+                if let value = dict["allowAllModels"] as? Bool {
+                    self.allowAllModels = value
+                }
+            }
+        }
         public var accessIps: [String]?
+
+        public var modelAccessScope: UpdateApiKeyRequest.Auth.ModelAccessScope?
 
         public var type: String?
 
@@ -6299,12 +6486,16 @@ public class UpdateApiKeyRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.modelAccessScope?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.accessIps != nil {
                 map["accessIps"] = self.accessIps!
+            }
+            if self.modelAccessScope != nil {
+                map["modelAccessScope"] = self.modelAccessScope?.toMap()
             }
             if self.type != nil {
                 map["type"] = self.type!
@@ -6316,6 +6507,11 @@ public class UpdateApiKeyRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["accessIps"] as? [String] {
                 self.accessIps = value
+            }
+            if let value = dict["modelAccessScope"] as? [String: Any?] {
+                var model = UpdateApiKeyRequest.Auth.ModelAccessScope()
+                model.fromMap(value)
+                self.modelAccessScope = model
             }
             if let value = dict["type"] as? String {
                 self.type = value
