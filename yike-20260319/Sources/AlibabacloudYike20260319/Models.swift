@@ -5,6 +5,93 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class EntityMediaBasicInfo : Tea.TeaModel {
+    public var appId: String?
+
+    public var biz: String?
+
+    public var createTime: String?
+
+    public var entityId: String?
+
+    public var entityMediaId: String?
+
+    public var modifiedTime: String?
+
+    public var status: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.biz != nil {
+            map["Biz"] = self.biz!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.entityId != nil {
+            map["EntityId"] = self.entityId!
+        }
+        if self.entityMediaId != nil {
+            map["EntityMediaId"] = self.entityMediaId!
+        }
+        if self.modifiedTime != nil {
+            map["ModifiedTime"] = self.modifiedTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["Biz"] as? String {
+            self.biz = value
+        }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["EntityId"] as? String {
+            self.entityId = value
+        }
+        if let value = dict["EntityMediaId"] as? String {
+            self.entityMediaId = value
+        }
+        if let value = dict["ModifiedTime"] as? String {
+            self.modifiedTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["UserData"] as? String {
+            self.userData = value
+        }
+    }
+}
+
 public class AddYikeProductionMembersRequest : Tea.TeaModel {
     public var productionId: String?
 
@@ -3975,6 +4062,324 @@ public class GetYikeAssetMediaInfoResponse : Tea.TeaModel {
     }
 }
 
+public class GetYikeProjectExportJobRequest : Tea.TeaModel {
+    public var jobId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+    }
+}
+
+public class GetYikeProjectExportJobResponseBody : Tea.TeaModel {
+    public class ProjectExportJob : Tea.TeaModel {
+        public class ExportResult : Tea.TeaModel {
+            public class SrtList : Tea.TeaModel {
+                public var srtUrl: String?
+
+                public var tag: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.srtUrl != nil {
+                        map["SrtUrl"] = self.srtUrl!
+                    }
+                    if self.tag != nil {
+                        map["Tag"] = self.tag!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SrtUrl"] as? String {
+                        self.srtUrl = value
+                    }
+                    if let value = dict["Tag"] as? String {
+                        self.tag = value
+                    }
+                }
+            }
+            public var audioUrl: String?
+
+            public var projectUrl: String?
+
+            public var srtList: [GetYikeProjectExportJobResponseBody.ProjectExportJob.ExportResult.SrtList]?
+
+            public var timeline: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.audioUrl != nil {
+                    map["AudioUrl"] = self.audioUrl!
+                }
+                if self.projectUrl != nil {
+                    map["ProjectUrl"] = self.projectUrl!
+                }
+                if self.srtList != nil {
+                    var tmp : [Any] = []
+                    for k in self.srtList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SrtList"] = tmp
+                }
+                if self.timeline != nil {
+                    map["Timeline"] = self.timeline!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AudioUrl"] as? String {
+                    self.audioUrl = value
+                }
+                if let value = dict["ProjectUrl"] as? String {
+                    self.projectUrl = value
+                }
+                if let value = dict["SrtList"] as? [Any?] {
+                    var tmp : [GetYikeProjectExportJobResponseBody.ProjectExportJob.ExportResult.SrtList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetYikeProjectExportJobResponseBody.ProjectExportJob.ExportResult.SrtList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.srtList = tmp
+                }
+                if let value = dict["Timeline"] as? String {
+                    self.timeline = value
+                }
+            }
+        }
+        public var code: String?
+
+        public var exportResult: GetYikeProjectExportJobResponseBody.ProjectExportJob.ExportResult?
+
+        public var exportType: String?
+
+        public var jobId: String?
+
+        public var message: String?
+
+        public var projectId: String?
+
+        public var status: String?
+
+        public var userData: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.exportResult?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.exportResult != nil {
+                map["ExportResult"] = self.exportResult?.toMap()
+            }
+            if self.exportType != nil {
+                map["ExportType"] = self.exportType!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["ExportResult"] as? [String: Any?] {
+                var model = GetYikeProjectExportJobResponseBody.ProjectExportJob.ExportResult()
+                model.fromMap(value)
+                self.exportResult = model
+            }
+            if let value = dict["ExportType"] as? String {
+                self.exportType = value
+            }
+            if let value = dict["JobId"] as? String {
+                self.jobId = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["ProjectId"] as? String {
+                self.projectId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UserData"] as? String {
+                self.userData = value
+            }
+        }
+    }
+    public var projectExportJob: GetYikeProjectExportJobResponseBody.ProjectExportJob?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.projectExportJob?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.projectExportJob != nil {
+            map["ProjectExportJob"] = self.projectExportJob?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ProjectExportJob"] as? [String: Any?] {
+            var model = GetYikeProjectExportJobResponseBody.ProjectExportJob()
+            model.fromMap(value)
+            self.projectExportJob = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetYikeProjectExportJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetYikeProjectExportJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetYikeProjectExportJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetYikePromptExpansionVoiceFixJobRequest : Tea.TeaModel {
     public var jobId: String?
 
@@ -6981,6 +7386,142 @@ public class SubmitYikeAvatarNarratorJobResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SubmitYikeAvatarNarratorJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SubmitYikeProjectExportJobRequest : Tea.TeaModel {
+    public var exportType: String?
+
+    public var projectId: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.exportType != nil {
+            map["ExportType"] = self.exportType!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ExportType"] as? String {
+            self.exportType = value
+        }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
+        }
+        if let value = dict["UserData"] as? String {
+            self.userData = value
+        }
+    }
+}
+
+public class SubmitYikeProjectExportJobResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class SubmitYikeProjectExportJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitYikeProjectExportJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SubmitYikeProjectExportJobResponseBody()
             model.fromMap(value)
             self.body = model
         }
