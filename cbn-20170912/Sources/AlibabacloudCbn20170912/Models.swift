@@ -5291,6 +5291,8 @@ public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
     public class Options : Tea.TeaModel {
         public var igmpv2Support: String?
 
+        public var strictSourceControl: String?
+
         public override init() {
             super.init()
         }
@@ -5308,6 +5310,9 @@ public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
             if self.igmpv2Support != nil {
                 map["Igmpv2Support"] = self.igmpv2Support!
             }
+            if self.strictSourceControl != nil {
+                map["StrictSourceControl"] = self.strictSourceControl!
+            }
             return map
         }
 
@@ -5315,6 +5320,9 @@ public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Igmpv2Support"] as? String {
                 self.igmpv2Support = value
+            }
+            if let value = dict["StrictSourceControl"] as? String {
+                self.strictSourceControl = value
             }
         }
     }
@@ -27573,6 +27581,8 @@ public class ListTransitRouterMulticastDomainsResponseBody : Tea.TeaModel {
         public class Options : Tea.TeaModel {
             public var igmpv2Support: String?
 
+            public var strictSourceControl: String?
+
             public override init() {
                 super.init()
             }
@@ -27590,6 +27600,9 @@ public class ListTransitRouterMulticastDomainsResponseBody : Tea.TeaModel {
                 if self.igmpv2Support != nil {
                     map["Igmpv2Support"] = self.igmpv2Support!
                 }
+                if self.strictSourceControl != nil {
+                    map["StrictSourceControl"] = self.strictSourceControl!
+                }
                 return map
             }
 
@@ -27597,6 +27610,9 @@ public class ListTransitRouterMulticastDomainsResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["Igmpv2Support"] as? String {
                     self.igmpv2Support = value
+                }
+                if let value = dict["StrictSourceControl"] as? String {
+                    self.strictSourceControl = value
                 }
             }
         }
@@ -35089,6 +35105,8 @@ public class ModifyTransitRouterMulticastDomainRequest : Tea.TeaModel {
     public class Options : Tea.TeaModel {
         public var igmpv2Support: String?
 
+        public var strictSourceControl: String?
+
         public override init() {
             super.init()
         }
@@ -35106,6 +35124,9 @@ public class ModifyTransitRouterMulticastDomainRequest : Tea.TeaModel {
             if self.igmpv2Support != nil {
                 map["Igmpv2Support"] = self.igmpv2Support!
             }
+            if self.strictSourceControl != nil {
+                map["StrictSourceControl"] = self.strictSourceControl!
+            }
             return map
         }
 
@@ -35113,6 +35134,9 @@ public class ModifyTransitRouterMulticastDomainRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Igmpv2Support"] as? String {
                 self.igmpv2Support = value
+            }
+            if let value = dict["StrictSourceControl"] as? String {
+                self.strictSourceControl = value
             }
         }
     }
