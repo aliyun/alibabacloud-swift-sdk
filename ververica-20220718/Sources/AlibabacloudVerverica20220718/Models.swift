@@ -3184,6 +3184,8 @@ public class JobDiagnosis : Tea.TeaModel {
 
     public var diagnoseTime: Int64?
 
+    public var healthScore: Int32?
+
     public var namespace: String?
 
     public var riskLevel: String?
@@ -3213,6 +3215,9 @@ public class JobDiagnosis : Tea.TeaModel {
         if self.diagnoseTime != nil {
             map["diagnoseTime"] = self.diagnoseTime!
         }
+        if self.healthScore != nil {
+            map["healthScore"] = self.healthScore!
+        }
         if self.namespace != nil {
             map["namespace"] = self.namespace!
         }
@@ -3235,6 +3240,9 @@ public class JobDiagnosis : Tea.TeaModel {
         }
         if let value = dict["diagnoseTime"] as? Int64 {
             self.diagnoseTime = value
+        }
+        if let value = dict["healthScore"] as? Int32 {
+            self.healthScore = value
         }
         if let value = dict["namespace"] as? String {
             self.namespace = value

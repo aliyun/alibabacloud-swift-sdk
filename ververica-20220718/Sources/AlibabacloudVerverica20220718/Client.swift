@@ -9,6 +9,26 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "ververica.us-west-1.aliyuncs.com",
+            "us-east-1": "ververica.us-east-1.aliyuncs.com",
+            "eu-west-1": "ververica.eu-west-1.aliyuncs.com",
+            "eu-central-1": "ververica.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "ververica.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "ververica.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "ververica.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "ververica.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "ververica.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "ververica.cn-qingdao.aliyuncs.com",
+            "cn-hongkong": "ververica.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "ververica.cn-hangzhou.aliyuncs.com",
+            "cn-chengdu": "ververica.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "ververica.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "ververica.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "ververica.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "ververica.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "ververica.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ververica", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
