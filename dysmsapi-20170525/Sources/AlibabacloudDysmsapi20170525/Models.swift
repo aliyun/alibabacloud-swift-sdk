@@ -189,6 +189,166 @@ public class AddExtCodeSignResponse : Tea.TeaModel {
     }
 }
 
+public class AddRcsSignMenuRequest : Tea.TeaModel {
+    public var menuContent: String?
+
+    public var signName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.menuContent != nil {
+            map["MenuContent"] = self.menuContent!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MenuContent"] as? String {
+            self.menuContent = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+    }
+}
+
+public class AddRcsSignMenuResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddRcsSignMenuResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddRcsSignMenuResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddRcsSignMenuResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddShortUrlRequest : Tea.TeaModel {
     public var effectiveDays: String?
 
@@ -2355,6 +2515,374 @@ public class CreateDigitalSmsTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class CreateRCSMobileCapableTaskRequest : Tea.TeaModel {
+    public var phoneNumbersFile: String?
+
+    public var signName: String?
+
+    public var templateCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.phoneNumbersFile != nil {
+            map["PhoneNumbersFile"] = self.phoneNumbersFile!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PhoneNumbersFile"] as? String {
+            self.phoneNumbersFile = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+        if let value = dict["TemplateCode"] as? String {
+            self.templateCode = value
+        }
+    }
+}
+
+public class CreateRCSMobileCapableTaskResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CreateRCSMobileCapableTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRCSMobileCapableTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRCSMobileCapableTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateRCSTemplateRequest : Tea.TeaModel {
+    public var relatedSignNames: String?
+
+    public var templateContent: String?
+
+    public var templateFormat: String?
+
+    public var templateMenu: String?
+
+    public var templateName: String?
+
+    public var templateRule: String?
+
+    public var templateType: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.relatedSignNames != nil {
+            map["RelatedSignNames"] = self.relatedSignNames!
+        }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent!
+        }
+        if self.templateFormat != nil {
+            map["TemplateFormat"] = self.templateFormat!
+        }
+        if self.templateMenu != nil {
+            map["TemplateMenu"] = self.templateMenu!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        if self.templateRule != nil {
+            map["TemplateRule"] = self.templateRule!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RelatedSignNames"] as? String {
+            self.relatedSignNames = value
+        }
+        if let value = dict["TemplateContent"] as? String {
+            self.templateContent = value
+        }
+        if let value = dict["TemplateFormat"] as? String {
+            self.templateFormat = value
+        }
+        if let value = dict["TemplateMenu"] as? String {
+            self.templateMenu = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+        if let value = dict["TemplateRule"] as? String {
+            self.templateRule = value
+        }
+        if let value = dict["TemplateType"] as? Int64 {
+            self.templateType = value
+        }
+    }
+}
+
+public class CreateRCSTemplateResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CreateRCSTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRCSTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRCSTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateSmartShortUrlRequest : Tea.TeaModel {
     public var outId: String?
 
@@ -2616,7 +3144,11 @@ public class CreateSmsAppIcpRecordRequest : Tea.TeaModel {
 
     public var appPrincipalUnitName: String?
 
+    public var appRuntimePic: String?
+
     public var appServiceName: String?
+
+    public var appStoreDownloadPic: String?
 
     public var domain: String?
 
@@ -2652,8 +3184,14 @@ public class CreateSmsAppIcpRecordRequest : Tea.TeaModel {
         if self.appPrincipalUnitName != nil {
             map["AppPrincipalUnitName"] = self.appPrincipalUnitName!
         }
+        if self.appRuntimePic != nil {
+            map["AppRuntimePic"] = self.appRuntimePic!
+        }
         if self.appServiceName != nil {
             map["AppServiceName"] = self.appServiceName!
+        }
+        if self.appStoreDownloadPic != nil {
+            map["AppStoreDownloadPic"] = self.appStoreDownloadPic!
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -2684,8 +3222,14 @@ public class CreateSmsAppIcpRecordRequest : Tea.TeaModel {
         if let value = dict["AppPrincipalUnitName"] as? String {
             self.appPrincipalUnitName = value
         }
+        if let value = dict["AppRuntimePic"] as? String {
+            self.appRuntimePic = value
+        }
         if let value = dict["AppServiceName"] as? String {
             self.appServiceName = value
+        }
+        if let value = dict["AppStoreDownloadPic"] as? String {
+            self.appStoreDownloadPic = value
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
@@ -6505,6 +7049,575 @@ public class GetQualificationOssInfoResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetQualificationOssInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRCSSignatureRequest : Tea.TeaModel {
+    public var signName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+    }
+}
+
+public class GetRCSSignatureResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class RegisterResultList : Tea.TeaModel {
+            public class RegisterStatusReasons : Tea.TeaModel {
+                public var reasonCode: String?
+
+                public var reasonDescList: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.reasonCode != nil {
+                        map["ReasonCode"] = self.reasonCode!
+                    }
+                    if self.reasonDescList != nil {
+                        map["ReasonDescList"] = self.reasonDescList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ReasonCode"] as? String {
+                        self.reasonCode = value
+                    }
+                    if let value = dict["ReasonDescList"] as? [String] {
+                        self.reasonDescList = value
+                    }
+                }
+            }
+            public var operatorCode: String?
+
+            public var productType: Int64?
+
+            public var registerCompleteTime: String?
+
+            public var registerStatus: Int64?
+
+            public var registerStatusReasons: [GetRCSSignatureResponseBody.Data.RegisterResultList.RegisterStatusReasons]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.operatorCode != nil {
+                    map["OperatorCode"] = self.operatorCode!
+                }
+                if self.productType != nil {
+                    map["ProductType"] = self.productType!
+                }
+                if self.registerCompleteTime != nil {
+                    map["RegisterCompleteTime"] = self.registerCompleteTime!
+                }
+                if self.registerStatus != nil {
+                    map["RegisterStatus"] = self.registerStatus!
+                }
+                if self.registerStatusReasons != nil {
+                    var tmp : [Any] = []
+                    for k in self.registerStatusReasons! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RegisterStatusReasons"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["OperatorCode"] as? String {
+                    self.operatorCode = value
+                }
+                if let value = dict["ProductType"] as? Int64 {
+                    self.productType = value
+                }
+                if let value = dict["RegisterCompleteTime"] as? String {
+                    self.registerCompleteTime = value
+                }
+                if let value = dict["RegisterStatus"] as? Int64 {
+                    self.registerStatus = value
+                }
+                if let value = dict["RegisterStatusReasons"] as? [Any?] {
+                    var tmp : [GetRCSSignatureResponseBody.Data.RegisterResultList.RegisterStatusReasons] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetRCSSignatureResponseBody.Data.RegisterResultList.RegisterStatusReasons()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.registerStatusReasons = tmp
+                }
+            }
+        }
+        public class ShelfResultList : Tea.TeaModel {
+            public class ShelfStatusReasons : Tea.TeaModel {
+                public var reasonCode: String?
+
+                public var reasonDescList: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.reasonCode != nil {
+                        map["ReasonCode"] = self.reasonCode!
+                    }
+                    if self.reasonDescList != nil {
+                        map["ReasonDescList"] = self.reasonDescList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ReasonCode"] as? String {
+                        self.reasonCode = value
+                    }
+                    if let value = dict["ReasonDescList"] as? [String] {
+                        self.reasonDescList = value
+                    }
+                }
+            }
+            public var operatorCode: String?
+
+            public var productType: Int64?
+
+            public var shelfStatus: Int64?
+
+            public var shelfStatusReasons: [GetRCSSignatureResponseBody.Data.ShelfResultList.ShelfStatusReasons]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.operatorCode != nil {
+                    map["OperatorCode"] = self.operatorCode!
+                }
+                if self.productType != nil {
+                    map["ProductType"] = self.productType!
+                }
+                if self.shelfStatus != nil {
+                    map["ShelfStatus"] = self.shelfStatus!
+                }
+                if self.shelfStatusReasons != nil {
+                    var tmp : [Any] = []
+                    for k in self.shelfStatusReasons! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ShelfStatusReasons"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["OperatorCode"] as? String {
+                    self.operatorCode = value
+                }
+                if let value = dict["ProductType"] as? Int64 {
+                    self.productType = value
+                }
+                if let value = dict["ShelfStatus"] as? Int64 {
+                    self.shelfStatus = value
+                }
+                if let value = dict["ShelfStatusReasons"] as? [Any?] {
+                    var tmp : [GetRCSSignatureResponseBody.Data.ShelfResultList.ShelfStatusReasons] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetRCSSignatureResponseBody.Data.ShelfResultList.ShelfStatusReasons()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.shelfStatusReasons = tmp
+                }
+            }
+        }
+        public var backgroundImage: String?
+
+        public var bubbleColor: String?
+
+        public var category: Int64?
+
+        public var chatbotCode: String?
+
+        public var chatbotName: String?
+
+        public var description_: String?
+
+        public var latitude: String?
+
+        public var logo: String?
+
+        public var longitude: String?
+
+        public var officeAddress: String?
+
+        public var registerResultList: [GetRCSSignatureResponseBody.Data.RegisterResultList]?
+
+        public var serviceEmail: String?
+
+        public var servicePhone: String?
+
+        public var serviceTerms: String?
+
+        public var serviceWebsite: String?
+
+        public var shelfResultList: [GetRCSSignatureResponseBody.Data.ShelfResultList]?
+
+        public var signId: Int64?
+
+        public var signName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backgroundImage != nil {
+                map["BackgroundImage"] = self.backgroundImage!
+            }
+            if self.bubbleColor != nil {
+                map["BubbleColor"] = self.bubbleColor!
+            }
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
+            if self.chatbotCode != nil {
+                map["ChatbotCode"] = self.chatbotCode!
+            }
+            if self.chatbotName != nil {
+                map["ChatbotName"] = self.chatbotName!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.latitude != nil {
+                map["Latitude"] = self.latitude!
+            }
+            if self.logo != nil {
+                map["Logo"] = self.logo!
+            }
+            if self.longitude != nil {
+                map["Longitude"] = self.longitude!
+            }
+            if self.officeAddress != nil {
+                map["OfficeAddress"] = self.officeAddress!
+            }
+            if self.registerResultList != nil {
+                var tmp : [Any] = []
+                for k in self.registerResultList! {
+                    tmp.append(k.toMap())
+                }
+                map["RegisterResultList"] = tmp
+            }
+            if self.serviceEmail != nil {
+                map["ServiceEmail"] = self.serviceEmail!
+            }
+            if self.servicePhone != nil {
+                map["ServicePhone"] = self.servicePhone!
+            }
+            if self.serviceTerms != nil {
+                map["ServiceTerms"] = self.serviceTerms!
+            }
+            if self.serviceWebsite != nil {
+                map["ServiceWebsite"] = self.serviceWebsite!
+            }
+            if self.shelfResultList != nil {
+                var tmp : [Any] = []
+                for k in self.shelfResultList! {
+                    tmp.append(k.toMap())
+                }
+                map["ShelfResultList"] = tmp
+            }
+            if self.signId != nil {
+                map["SignId"] = self.signId!
+            }
+            if self.signName != nil {
+                map["SignName"] = self.signName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BackgroundImage"] as? String {
+                self.backgroundImage = value
+            }
+            if let value = dict["BubbleColor"] as? String {
+                self.bubbleColor = value
+            }
+            if let value = dict["Category"] as? Int64 {
+                self.category = value
+            }
+            if let value = dict["ChatbotCode"] as? String {
+                self.chatbotCode = value
+            }
+            if let value = dict["ChatbotName"] as? String {
+                self.chatbotName = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Latitude"] as? String {
+                self.latitude = value
+            }
+            if let value = dict["Logo"] as? String {
+                self.logo = value
+            }
+            if let value = dict["Longitude"] as? String {
+                self.longitude = value
+            }
+            if let value = dict["OfficeAddress"] as? String {
+                self.officeAddress = value
+            }
+            if let value = dict["RegisterResultList"] as? [Any?] {
+                var tmp : [GetRCSSignatureResponseBody.Data.RegisterResultList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetRCSSignatureResponseBody.Data.RegisterResultList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.registerResultList = tmp
+            }
+            if let value = dict["ServiceEmail"] as? String {
+                self.serviceEmail = value
+            }
+            if let value = dict["ServicePhone"] as? String {
+                self.servicePhone = value
+            }
+            if let value = dict["ServiceTerms"] as? String {
+                self.serviceTerms = value
+            }
+            if let value = dict["ServiceWebsite"] as? String {
+                self.serviceWebsite = value
+            }
+            if let value = dict["ShelfResultList"] as? [Any?] {
+                var tmp : [GetRCSSignatureResponseBody.Data.ShelfResultList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetRCSSignatureResponseBody.Data.ShelfResultList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.shelfResultList = tmp
+            }
+            if let value = dict["SignId"] as? Int64 {
+                self.signId = value
+            }
+            if let value = dict["SignName"] as? String {
+                self.signName = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: GetRCSSignatureResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetRCSSignatureResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetRCSSignatureResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRCSSignatureResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRCSSignatureResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -10554,6 +11667,638 @@ public class QueryPageSmartShortUrlLogResponse : Tea.TeaModel {
     }
 }
 
+public class QueryRCSMobileCapableRequest : Tea.TeaModel {
+    public var phoneNumbers: String?
+
+    public var signName: String?
+
+    public var templateCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.phoneNumbers != nil {
+            map["PhoneNumbers"] = self.phoneNumbers!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PhoneNumbers"] as? String {
+            self.phoneNumbers = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+        if let value = dict["TemplateCode"] as? String {
+            self.templateCode = value
+        }
+    }
+}
+
+public class QueryRCSMobileCapableResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryRCSMobileCapableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryRCSMobileCapableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryRCSMobileCapableResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryRCSMobileCapableTaskResultRequest : Tea.TeaModel {
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class QueryRCSMobileCapableTaskResultResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryRCSMobileCapableTaskResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryRCSMobileCapableTaskResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryRCSMobileCapableTaskResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryRCSTemplateRequest : Tea.TeaModel {
+    public var templateCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TemplateCode"] as? String {
+            self.templateCode = value
+        }
+    }
+}
+
+public class QueryRCSTemplateResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryRCSTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryRCSTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryRCSTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryRcsSignMenuByVersionRequest : Tea.TeaModel {
+    public var rcsMenuVersion: String?
+
+    public var signName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.rcsMenuVersion != nil {
+            map["RcsMenuVersion"] = self.rcsMenuVersion!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RcsMenuVersion"] as? String {
+            self.rcsMenuVersion = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+    }
+}
+
+public class QueryRcsSignMenuByVersionResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryRcsSignMenuByVersionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryRcsSignMenuByVersionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryRcsSignMenuByVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QuerySendDetailsRequest : Tea.TeaModel {
     public var bizId: String?
 
@@ -12106,7 +13851,15 @@ public class QuerySmsAppIcpRecordResponseBody : Tea.TeaModel {
 
         public var appPrincipalUnitName: String?
 
+        public var appRuntimePic: String?
+
+        public var appRuntimePicUrl: String?
+
         public var appServiceName: String?
+
+        public var appStoreDownloadPic: String?
+
+        public var appStoreDownloadPicUrl: String?
 
         public var domain: String?
 
@@ -12142,8 +13895,20 @@ public class QuerySmsAppIcpRecordResponseBody : Tea.TeaModel {
             if self.appPrincipalUnitName != nil {
                 map["AppPrincipalUnitName"] = self.appPrincipalUnitName!
             }
+            if self.appRuntimePic != nil {
+                map["AppRuntimePic"] = self.appRuntimePic!
+            }
+            if self.appRuntimePicUrl != nil {
+                map["AppRuntimePicUrl"] = self.appRuntimePicUrl!
+            }
             if self.appServiceName != nil {
                 map["AppServiceName"] = self.appServiceName!
+            }
+            if self.appStoreDownloadPic != nil {
+                map["AppStoreDownloadPic"] = self.appStoreDownloadPic!
+            }
+            if self.appStoreDownloadPicUrl != nil {
+                map["AppStoreDownloadPicUrl"] = self.appStoreDownloadPicUrl!
             }
             if self.domain != nil {
                 map["Domain"] = self.domain!
@@ -12171,8 +13936,20 @@ public class QuerySmsAppIcpRecordResponseBody : Tea.TeaModel {
             if let value = dict["AppPrincipalUnitName"] as? String {
                 self.appPrincipalUnitName = value
             }
+            if let value = dict["AppRuntimePic"] as? String {
+                self.appRuntimePic = value
+            }
+            if let value = dict["AppRuntimePicUrl"] as? String {
+                self.appRuntimePicUrl = value
+            }
             if let value = dict["AppServiceName"] as? String {
                 self.appServiceName = value
+            }
+            if let value = dict["AppStoreDownloadPic"] as? String {
+                self.appStoreDownloadPic = value
+            }
+            if let value = dict["AppStoreDownloadPicUrl"] as? String {
+                self.appStoreDownloadPicUrl = value
             }
             if let value = dict["Domain"] as? String {
                 self.domain = value
@@ -15861,6 +17638,640 @@ public class SendLogisticsSmsResponse : Tea.TeaModel {
     }
 }
 
+public class SendRCSRequest : Tea.TeaModel {
+    public var outId: String?
+
+    public var phoneNumbers: String?
+
+    public var signName: String?
+
+    public var templateCode: String?
+
+    public var templateParam: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.phoneNumbers != nil {
+            map["PhoneNumbers"] = self.phoneNumbers!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        if self.templateParam != nil {
+            map["TemplateParam"] = self.templateParam!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
+        }
+        if let value = dict["PhoneNumbers"] as? String {
+            self.phoneNumbers = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+        if let value = dict["TemplateCode"] as? String {
+            self.templateCode = value
+        }
+        if let value = dict["TemplateParam"] as? String {
+            self.templateParam = value
+        }
+    }
+}
+
+public class SendRCSResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var accessDeniedDetail: String?
+
+        public var bdcust: String?
+
+        public var code: String?
+
+        public var debug: [String: Any]?
+
+        public var e: String?
+
+        public var extendMap: [String: Any]?
+
+        public var gateFailMsg: String?
+
+        public var keyString: String?
+
+        public var message: String?
+
+        public var module: [String: Any]?
+
+        public var partnerId: String?
+
+        public var requestId: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessDeniedDetail != nil {
+                map["AccessDeniedDetail"] = self.accessDeniedDetail!
+            }
+            if self.bdcust != nil {
+                map["Bdcust"] = self.bdcust!
+            }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.debug != nil {
+                map["Debug"] = self.debug!
+            }
+            if self.e != nil {
+                map["E"] = self.e!
+            }
+            if self.extendMap != nil {
+                map["ExtendMap"] = self.extendMap!
+            }
+            if self.gateFailMsg != nil {
+                map["GateFailMsg"] = self.gateFailMsg!
+            }
+            if self.keyString != nil {
+                map["KeyString"] = self.keyString!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.module != nil {
+                map["Module"] = self.module!
+            }
+            if self.partnerId != nil {
+                map["PartnerId"] = self.partnerId!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessDeniedDetail"] as? String {
+                self.accessDeniedDetail = value
+            }
+            if let value = dict["Bdcust"] as? String {
+                self.bdcust = value
+            }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["Debug"] as? [String: Any] {
+                self.debug = value
+            }
+            if let value = dict["E"] as? String {
+                self.e = value
+            }
+            if let value = dict["ExtendMap"] as? [String: Any] {
+                self.extendMap = value
+            }
+            if let value = dict["GateFailMsg"] as? String {
+                self.gateFailMsg = value
+            }
+            if let value = dict["KeyString"] as? String {
+                self.keyString = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["Module"] as? [String: Any] {
+                self.module = value
+            }
+            if let value = dict["PartnerId"] as? String {
+                self.partnerId = value
+            }
+            if let value = dict["RequestId"] as? String {
+                self.requestId = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: SendRCSResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = SendRCSResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SendRCSResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SendRCSResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SendRCSResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SendRCSReplyRequest : Tea.TeaModel {
+    public var inReplyToRcsID: String?
+
+    public var outId: String?
+
+    public var phoneNumbers: String?
+
+    public var signName: String?
+
+    public var templateCode: String?
+
+    public var templateParam: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inReplyToRcsID != nil {
+            map["InReplyToRcsID"] = self.inReplyToRcsID!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.phoneNumbers != nil {
+            map["PhoneNumbers"] = self.phoneNumbers!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        if self.templateParam != nil {
+            map["TemplateParam"] = self.templateParam!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InReplyToRcsID"] as? String {
+            self.inReplyToRcsID = value
+        }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
+        }
+        if let value = dict["PhoneNumbers"] as? String {
+            self.phoneNumbers = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+        if let value = dict["TemplateCode"] as? String {
+            self.templateCode = value
+        }
+        if let value = dict["TemplateParam"] as? String {
+            self.templateParam = value
+        }
+    }
+}
+
+public class SendRCSReplyResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var accessDeniedDetail: String?
+
+        public var bdcust: String?
+
+        public var code: String?
+
+        public var debug: [String: Any]?
+
+        public var e: String?
+
+        public var extendMap: [String: Any]?
+
+        public var gateFailMsg: String?
+
+        public var keyString: String?
+
+        public var message: String?
+
+        public var module: [String: Any]?
+
+        public var partnerId: String?
+
+        public var requestId: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessDeniedDetail != nil {
+                map["AccessDeniedDetail"] = self.accessDeniedDetail!
+            }
+            if self.bdcust != nil {
+                map["Bdcust"] = self.bdcust!
+            }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.debug != nil {
+                map["Debug"] = self.debug!
+            }
+            if self.e != nil {
+                map["E"] = self.e!
+            }
+            if self.extendMap != nil {
+                map["ExtendMap"] = self.extendMap!
+            }
+            if self.gateFailMsg != nil {
+                map["GateFailMsg"] = self.gateFailMsg!
+            }
+            if self.keyString != nil {
+                map["KeyString"] = self.keyString!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.module != nil {
+                map["Module"] = self.module!
+            }
+            if self.partnerId != nil {
+                map["PartnerId"] = self.partnerId!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessDeniedDetail"] as? String {
+                self.accessDeniedDetail = value
+            }
+            if let value = dict["Bdcust"] as? String {
+                self.bdcust = value
+            }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["Debug"] as? [String: Any] {
+                self.debug = value
+            }
+            if let value = dict["E"] as? String {
+                self.e = value
+            }
+            if let value = dict["ExtendMap"] as? [String: Any] {
+                self.extendMap = value
+            }
+            if let value = dict["GateFailMsg"] as? String {
+                self.gateFailMsg = value
+            }
+            if let value = dict["KeyString"] as? String {
+                self.keyString = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["Module"] as? [String: Any] {
+                self.module = value
+            }
+            if let value = dict["PartnerId"] as? String {
+                self.partnerId = value
+            }
+            if let value = dict["RequestId"] as? String {
+                self.requestId = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: SendRCSReplyResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = SendRCSReplyResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SendRCSReplyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SendRCSReplyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SendRCSReplyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SendSmsRequest : Tea.TeaModel {
     public var outId: String?
 
@@ -17544,6 +19955,254 @@ public class UpdateExtCodeSignResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateRCSSignatureRequest : Tea.TeaModel {
+    public var backgroundImage: String?
+
+    public var bubbleColor: String?
+
+    public var category: Int64?
+
+    public var description_: String?
+
+    public var latitude: String?
+
+    public var logo: String?
+
+    public var longitude: String?
+
+    public var officeAddress: String?
+
+    public var serviceEmail: String?
+
+    public var servicePhone: String?
+
+    public var serviceTerms: String?
+
+    public var serviceWebsite: String?
+
+    public var signName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backgroundImage != nil {
+            map["BackgroundImage"] = self.backgroundImage!
+        }
+        if self.bubbleColor != nil {
+            map["BubbleColor"] = self.bubbleColor!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.latitude != nil {
+            map["Latitude"] = self.latitude!
+        }
+        if self.logo != nil {
+            map["Logo"] = self.logo!
+        }
+        if self.longitude != nil {
+            map["Longitude"] = self.longitude!
+        }
+        if self.officeAddress != nil {
+            map["OfficeAddress"] = self.officeAddress!
+        }
+        if self.serviceEmail != nil {
+            map["ServiceEmail"] = self.serviceEmail!
+        }
+        if self.servicePhone != nil {
+            map["ServicePhone"] = self.servicePhone!
+        }
+        if self.serviceTerms != nil {
+            map["ServiceTerms"] = self.serviceTerms!
+        }
+        if self.serviceWebsite != nil {
+            map["ServiceWebsite"] = self.serviceWebsite!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BackgroundImage"] as? String {
+            self.backgroundImage = value
+        }
+        if let value = dict["BubbleColor"] as? String {
+            self.bubbleColor = value
+        }
+        if let value = dict["Category"] as? Int64 {
+            self.category = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Latitude"] as? String {
+            self.latitude = value
+        }
+        if let value = dict["Logo"] as? String {
+            self.logo = value
+        }
+        if let value = dict["Longitude"] as? String {
+            self.longitude = value
+        }
+        if let value = dict["OfficeAddress"] as? String {
+            self.officeAddress = value
+        }
+        if let value = dict["ServiceEmail"] as? String {
+            self.serviceEmail = value
+        }
+        if let value = dict["ServicePhone"] as? String {
+            self.servicePhone = value
+        }
+        if let value = dict["ServiceTerms"] as? String {
+            self.serviceTerms = value
+        }
+        if let value = dict["ServiceWebsite"] as? String {
+            self.serviceWebsite = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+    }
+}
+
+public class UpdateRCSSignatureResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateRCSSignatureResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRCSSignatureResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRCSSignatureResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateSmsQualificationRequest : Tea.TeaModel {
     public class BusinessLicensePics : Tea.TeaModel {
         public var licensePic: String?
@@ -18943,6 +21602,295 @@ public class UpdateSmsTemplateResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateSmsTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpgradeToRCSSignatureRequest : Tea.TeaModel {
+    public var backgroundImage: String?
+
+    public var bubbleColor: String?
+
+    public var category: Int64?
+
+    public var description_: String?
+
+    public var latitude: String?
+
+    public var logo: String?
+
+    public var longitude: String?
+
+    public var officeAddress: String?
+
+    public var serviceEmail: String?
+
+    public var servicePhone: String?
+
+    public var serviceTerms: String?
+
+    public var serviceWebsite: String?
+
+    public var signName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backgroundImage != nil {
+            map["BackgroundImage"] = self.backgroundImage!
+        }
+        if self.bubbleColor != nil {
+            map["BubbleColor"] = self.bubbleColor!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.latitude != nil {
+            map["Latitude"] = self.latitude!
+        }
+        if self.logo != nil {
+            map["Logo"] = self.logo!
+        }
+        if self.longitude != nil {
+            map["Longitude"] = self.longitude!
+        }
+        if self.officeAddress != nil {
+            map["OfficeAddress"] = self.officeAddress!
+        }
+        if self.serviceEmail != nil {
+            map["ServiceEmail"] = self.serviceEmail!
+        }
+        if self.servicePhone != nil {
+            map["ServicePhone"] = self.servicePhone!
+        }
+        if self.serviceTerms != nil {
+            map["ServiceTerms"] = self.serviceTerms!
+        }
+        if self.serviceWebsite != nil {
+            map["ServiceWebsite"] = self.serviceWebsite!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BackgroundImage"] as? String {
+            self.backgroundImage = value
+        }
+        if let value = dict["BubbleColor"] as? String {
+            self.bubbleColor = value
+        }
+        if let value = dict["Category"] as? Int64 {
+            self.category = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Latitude"] as? String {
+            self.latitude = value
+        }
+        if let value = dict["Logo"] as? String {
+            self.logo = value
+        }
+        if let value = dict["Longitude"] as? String {
+            self.longitude = value
+        }
+        if let value = dict["OfficeAddress"] as? String {
+            self.officeAddress = value
+        }
+        if let value = dict["ServiceEmail"] as? String {
+            self.serviceEmail = value
+        }
+        if let value = dict["ServicePhone"] as? String {
+            self.servicePhone = value
+        }
+        if let value = dict["ServiceTerms"] as? String {
+            self.serviceTerms = value
+        }
+        if let value = dict["ServiceWebsite"] as? String {
+            self.serviceWebsite = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+    }
+}
+
+public class UpgradeToRCSSignatureResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var chatbotCode: String?
+
+        public var signId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chatbotCode != nil {
+                map["ChatbotCode"] = self.chatbotCode!
+            }
+            if self.signId != nil {
+                map["SignId"] = self.signId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChatbotCode"] as? String {
+                self.chatbotCode = value
+            }
+            if let value = dict["SignId"] as? Int64 {
+                self.signId = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: UpgradeToRCSSignatureResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = UpgradeToRCSSignatureResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpgradeToRCSSignatureResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpgradeToRCSSignatureResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpgradeToRCSSignatureResponseBody()
             model.fromMap(value)
             self.body = model
         }
