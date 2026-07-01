@@ -4170,6 +4170,8 @@ public class ListIpamDiscoveredResourceResponseBody : Tea.TeaModel {
 
         public var resourceId: String?
 
+        public var resourceName: String?
+
         public var resourceOwnerId: Int64?
 
         public var resourceRegionId: String?
@@ -4216,6 +4218,9 @@ public class ListIpamDiscoveredResourceResponseBody : Tea.TeaModel {
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
             }
+            if self.resourceName != nil {
+                map["ResourceName"] = self.resourceName!
+            }
             if self.resourceOwnerId != nil {
                 map["ResourceOwnerId"] = self.resourceOwnerId!
             }
@@ -4258,6 +4263,9 @@ public class ListIpamDiscoveredResourceResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceId"] as? String {
                 self.resourceId = value
+            }
+            if let value = dict["ResourceName"] as? String {
+                self.resourceName = value
             }
             if let value = dict["ResourceOwnerId"] as? Int64 {
                 self.resourceOwnerId = value
@@ -6105,6 +6113,8 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
 
         public var resourceId: String?
 
+        public var resourceName: String?
+
         public var resourceOwnerId: Int64?
 
         public var resourceRegionId: String?
@@ -6174,6 +6184,9 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
             }
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceName != nil {
+                map["ResourceName"] = self.resourceName!
             }
             if self.resourceOwnerId != nil {
                 map["ResourceOwnerId"] = self.resourceOwnerId!
@@ -6248,6 +6261,9 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceId"] as? String {
                 self.resourceId = value
+            }
+            if let value = dict["ResourceName"] as? String {
+                self.resourceName = value
             }
             if let value = dict["ResourceOwnerId"] as? Int64 {
                 self.resourceOwnerId = value
