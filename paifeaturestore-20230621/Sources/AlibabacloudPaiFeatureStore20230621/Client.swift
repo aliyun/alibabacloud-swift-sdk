@@ -8,7 +8,19 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "paifeaturestore.us-west-1.aliyuncs.com",
+            "us-east-1": "paifeaturestore.us-east-1.aliyuncs.com",
+            "eu-central-1": "paifeaturestore.eu-central-1.aliyuncs.com",
+            "cn-shenzhen": "paifeaturestore.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "paifeaturestore.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "paifeaturestore.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "paifeaturestore.cn-hangzhou.aliyuncs.com",
+            "cn-beijing": "paifeaturestore.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "paifeaturestore.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-1": "paifeaturestore.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("paifeaturestore", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }

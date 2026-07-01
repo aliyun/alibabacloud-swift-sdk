@@ -950,6 +950,8 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
         }
         public var attributes: [String]?
 
+        public var dimension: Int32?
+
         public var name: String?
 
         public var transform: [CreateFeatureViewRequest.Fields.Transform]?
@@ -973,6 +975,9 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
             if self.attributes != nil {
                 map["Attributes"] = self.attributes!
             }
+            if self.dimension != nil {
+                map["Dimension"] = self.dimension!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -993,6 +998,9 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Attributes"] as? [String] {
                 self.attributes = value
+            }
+            if let value = dict["Dimension"] as? Int32 {
+                self.dimension = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -3678,6 +3686,8 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
         }
         public var attributes: [String]?
 
+        public var dimension: Int32?
+
         public var name: String?
 
         public var transform: [GetFeatureViewResponseBody.Fields.Transform]?
@@ -3701,6 +3711,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
             if self.attributes != nil {
                 map["Attributes"] = self.attributes!
             }
+            if self.dimension != nil {
+                map["Dimension"] = self.dimension!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -3721,6 +3734,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Attributes"] as? [String] {
                 self.attributes = value
+            }
+            if let value = dict["Dimension"] as? Int32 {
+                self.dimension = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
