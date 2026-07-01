@@ -1436,6 +1436,10 @@ public class CreateLayerVersionInput : Tea.TeaModel {
 public class CreateSessionInput : Tea.TeaModel {
     public var disableSessionIdReuse: Bool?
 
+    public var enableAutoPause: Bool?
+
+    public var enableAutoResume: Bool?
+
     public var juiceFsConfig: JuiceFsConfig?
 
     public var nasConfig: NASConfig?
@@ -1471,6 +1475,12 @@ public class CreateSessionInput : Tea.TeaModel {
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
         }
+        if self.enableAutoPause != nil {
+            map["enableAutoPause"] = self.enableAutoPause!
+        }
+        if self.enableAutoResume != nil {
+            map["enableAutoResume"] = self.enableAutoResume!
+        }
         if self.juiceFsConfig != nil {
             map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
@@ -1499,6 +1509,12 @@ public class CreateSessionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
+        }
+        if let value = dict["enableAutoPause"] as? Bool {
+            self.enableAutoPause = value
+        }
+        if let value = dict["enableAutoResume"] as? Bool {
+            self.enableAutoResume = value
         }
         if let value = dict["juiceFsConfig"] as? [String: Any?] {
             var model = JuiceFsConfig()
@@ -8438,6 +8454,10 @@ public class Session : Tea.TeaModel {
 
     public var disableSessionIdReuse: Bool?
 
+    public var enableAutoPause: Bool?
+
+    public var enableAutoResume: Bool?
+
     public var functionName: String?
 
     public var juiceFsConfig: JuiceFsConfig?
@@ -8489,6 +8509,12 @@ public class Session : Tea.TeaModel {
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
         }
+        if self.enableAutoPause != nil {
+            map["enableAutoPause"] = self.enableAutoPause!
+        }
+        if self.enableAutoResume != nil {
+            map["enableAutoResume"] = self.enableAutoResume!
+        }
         if self.functionName != nil {
             map["functionName"] = self.functionName!
         }
@@ -8538,6 +8564,12 @@ public class Session : Tea.TeaModel {
         }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
+        }
+        if let value = dict["enableAutoPause"] as? Bool {
+            self.enableAutoPause = value
+        }
+        if let value = dict["enableAutoResume"] as? Bool {
+            self.enableAutoResume = value
         }
         if let value = dict["functionName"] as? String {
             self.functionName = value
@@ -10322,6 +10354,10 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
 public class UpdateSessionInput : Tea.TeaModel {
     public var disableSessionIdReuse: Bool?
 
+    public var enableAutoPause: Bool?
+
+    public var enableAutoResume: Bool?
+
     public var juiceFsConfig: JuiceFsConfig?
 
     public var nasConfig: NASConfig?
@@ -10355,6 +10391,12 @@ public class UpdateSessionInput : Tea.TeaModel {
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
         }
+        if self.enableAutoPause != nil {
+            map["enableAutoPause"] = self.enableAutoPause!
+        }
+        if self.enableAutoResume != nil {
+            map["enableAutoResume"] = self.enableAutoResume!
+        }
         if self.juiceFsConfig != nil {
             map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
@@ -10380,6 +10422,12 @@ public class UpdateSessionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
+        }
+        if let value = dict["enableAutoPause"] as? Bool {
+            self.enableAutoPause = value
+        }
+        if let value = dict["enableAutoResume"] as? Bool {
+            self.enableAutoResume = value
         }
         if let value = dict["juiceFsConfig"] as? [String: Any?] {
             var model = JuiceFsConfig()
