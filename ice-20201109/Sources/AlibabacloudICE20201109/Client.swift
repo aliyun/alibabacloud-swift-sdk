@@ -65,7 +65,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "me-east-1": "ice.aliyuncs.com",
             "rus-west-1-pop": "ice.aliyuncs.com",
             "us-east-1": "ice.aliyuncs.com",
-            "us-west-1": "ice.aliyuncs.com"
+            "us-west-1": "ice.aliyuncs.com",
+            "cn-shanghai": "ice.cn-shanghai.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ice", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")

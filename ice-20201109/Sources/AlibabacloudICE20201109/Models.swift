@@ -51419,7 +51419,49 @@ public class GetProjectExportJobRequest : Tea.TeaModel {
 public class GetProjectExportJobResponseBody : Tea.TeaModel {
     public class ProjectExportJob : Tea.TeaModel {
         public class ExportResult : Tea.TeaModel {
+            public class SrtList : Tea.TeaModel {
+                public var srtUrl: String?
+
+                public var tag: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.srtUrl != nil {
+                        map["SrtUrl"] = self.srtUrl!
+                    }
+                    if self.tag != nil {
+                        map["Tag"] = self.tag!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SrtUrl"] as? String {
+                        self.srtUrl = value
+                    }
+                    if let value = dict["Tag"] as? String {
+                        self.tag = value
+                    }
+                }
+            }
+            public var audioUrl: String?
+
             public var projectUrl: String?
+
+            public var srtList: [GetProjectExportJobResponseBody.ProjectExportJob.ExportResult.SrtList]?
 
             public var timeline: String?
 
@@ -51437,8 +51479,18 @@ public class GetProjectExportJobResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.audioUrl != nil {
+                    map["AudioUrl"] = self.audioUrl!
+                }
                 if self.projectUrl != nil {
                     map["ProjectUrl"] = self.projectUrl!
+                }
+                if self.srtList != nil {
+                    var tmp : [Any] = []
+                    for k in self.srtList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SrtList"] = tmp
                 }
                 if self.timeline != nil {
                     map["Timeline"] = self.timeline!
@@ -51448,8 +51500,24 @@ public class GetProjectExportJobResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AudioUrl"] as? String {
+                    self.audioUrl = value
+                }
                 if let value = dict["ProjectUrl"] as? String {
                     self.projectUrl = value
+                }
+                if let value = dict["SrtList"] as? [Any?] {
+                    var tmp : [GetProjectExportJobResponseBody.ProjectExportJob.ExportResult.SrtList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetProjectExportJobResponseBody.ProjectExportJob.ExportResult.SrtList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.srtList = tmp
                 }
                 if let value = dict["Timeline"] as? String {
                     self.timeline = value
