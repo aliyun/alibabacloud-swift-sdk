@@ -7109,6 +7109,8 @@ public class CreateToolOutput : Tea.TeaModel {
 public class CreateWorkspaceInput : Tea.TeaModel {
     public var description_: String?
 
+    public var enablePresetModel: Bool?
+
     public var name: String?
 
     public var resourceGroupId: String?
@@ -7130,6 +7132,9 @@ public class CreateWorkspaceInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.enablePresetModel != nil {
+            map["enablePresetModel"] = self.enablePresetModel!
+        }
         if self.name != nil {
             map["name"] = self.name!
         }
@@ -7143,6 +7148,9 @@ public class CreateWorkspaceInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["enablePresetModel"] as? Bool {
+            self.enablePresetModel = value
         }
         if let value = dict["name"] as? String {
             self.name = value
