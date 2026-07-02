@@ -24614,6 +24614,44 @@ public class ResumeAgentTaskResponse : Tea.TeaModel {
 }
 
 public class RunAgentTaskRequest : Tea.TeaModel {
+    public class Targets : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var sessionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["SessionId"] as? String {
+                self.sessionId = value
+            }
+        }
+    }
     public var bizRegionId: String?
 
     public var instanceIds: [String]?
@@ -24621,6 +24659,8 @@ public class RunAgentTaskRequest : Tea.TeaModel {
     public var maxSteps: Int32?
 
     public var scheduleId: String?
+
+    public var targets: [RunAgentTaskRequest.Targets]?
 
     public var taskConfigId: String?
 
@@ -24654,6 +24694,13 @@ public class RunAgentTaskRequest : Tea.TeaModel {
         if self.scheduleId != nil {
             map["ScheduleId"] = self.scheduleId!
         }
+        if self.targets != nil {
+            var tmp : [Any] = []
+            for k in self.targets! {
+                tmp.append(k.toMap())
+            }
+            map["Targets"] = tmp
+        }
         if self.taskConfigId != nil {
             map["TaskConfigId"] = self.taskConfigId!
         }
@@ -24680,6 +24727,19 @@ public class RunAgentTaskRequest : Tea.TeaModel {
         if let value = dict["ScheduleId"] as? String {
             self.scheduleId = value
         }
+        if let value = dict["Targets"] as? [Any?] {
+            var tmp : [RunAgentTaskRequest.Targets] = []
+            for v in value {
+                if v != nil {
+                    var model = RunAgentTaskRequest.Targets()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.targets = tmp
+        }
         if let value = dict["TaskConfigId"] as? String {
             self.taskConfigId = value
         }
@@ -24699,6 +24759,8 @@ public class RunAgentTaskResponseBody : Tea.TeaModel {
         public var instanceId: String?
 
         public var runningAt: String?
+
+        public var sessionId: String?
 
         public var taskId: String?
 
@@ -24727,6 +24789,9 @@ public class RunAgentTaskResponseBody : Tea.TeaModel {
             if self.runningAt != nil {
                 map["RunningAt"] = self.runningAt!
             }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -24746,6 +24811,9 @@ public class RunAgentTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["RunningAt"] as? String {
                 self.runningAt = value
+            }
+            if let value = dict["SessionId"] as? String {
+                self.sessionId = value
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value

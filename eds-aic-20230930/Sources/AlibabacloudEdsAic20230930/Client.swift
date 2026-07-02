@@ -4107,6 +4107,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scheduleId)) {
             query["ScheduleId"] = request.scheduleId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targets)) {
+            query["Targets"] = request.targets ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.taskConfigId)) {
             query["TaskConfigId"] = request.taskConfigId ?? "";
         }
