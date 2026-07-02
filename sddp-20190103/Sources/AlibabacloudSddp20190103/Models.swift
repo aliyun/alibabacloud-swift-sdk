@@ -1372,8 +1372,6 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
 
     public var ruleCategory: String?
 
-    public var ruleID: String?
-
     public var ruleId: String?
 
     public var ruleName: String?
@@ -1467,9 +1465,6 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         if self.ruleCategory != nil {
             map["RuleCategory"] = self.ruleCategory!
         }
-        if self.ruleID != nil {
-            map["RuleID"] = self.ruleID!
-        }
         if self.ruleId != nil {
             map["RuleId"] = self.ruleId!
         }
@@ -1558,9 +1553,6 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if let value = dict["RuleCategory"] as? String {
             self.ruleCategory = value
-        }
-        if let value = dict["RuleID"] as? String {
-            self.ruleID = value
         }
         if let value = dict["RuleId"] as? String {
             self.ruleId = value

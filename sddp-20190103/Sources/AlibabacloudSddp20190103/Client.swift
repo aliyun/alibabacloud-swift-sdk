@@ -504,9 +504,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ruleCategory)) {
             query["RuleCategory"] = request.ruleCategory ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.ruleID)) {
-            query["RuleID"] = request.ruleID ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             query["RuleId"] = request.ruleId ?? "";
         }
