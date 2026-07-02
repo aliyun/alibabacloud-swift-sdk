@@ -857,16 +857,10 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateDatasetShrinkRequest = CreateDatasetShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.datasetConfig)) {
-            request.datasetConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetConfig, "DatasetConfig", "json")
-        }
         if (!TeaUtils.Client.isUnset(tmpReq.workflowParameters)) {
             request.workflowParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.workflowParameters, "WorkflowParameters", "json")
         }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.datasetConfigShrink)) {
-            query["DatasetConfig"] = request.datasetConfigShrink ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.datasetMaxBindCount)) {
             query["DatasetMaxBindCount"] = request.datasetMaxBindCount!;
         }
@@ -1866,16 +1860,10 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateProjectShrinkRequest = CreateProjectShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.datasetConfig)) {
-            request.datasetConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetConfig, "DatasetConfig", "json")
-        }
         if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
             request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
         }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.datasetConfigShrink)) {
-            query["DatasetConfig"] = request.datasetConfigShrink ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.datasetMaxBindCount)) {
             query["DatasetMaxBindCount"] = request.datasetMaxBindCount!;
         }
@@ -5059,16 +5047,10 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateDatasetShrinkRequest = UpdateDatasetShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.datasetConfig)) {
-            request.datasetConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetConfig, "DatasetConfig", "json")
-        }
         if (!TeaUtils.Client.isUnset(tmpReq.workflowParameters)) {
             request.workflowParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.workflowParameters, "WorkflowParameters", "json")
         }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.datasetConfigShrink)) {
-            query["DatasetConfig"] = request.datasetConfigShrink ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.datasetMaxBindCount)) {
             query["DatasetMaxBindCount"] = request.datasetMaxBindCount!;
         }
@@ -5263,16 +5245,10 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateProjectShrinkRequest = UpdateProjectShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.datasetConfig)) {
-            request.datasetConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetConfig, "DatasetConfig", "json")
-        }
         if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
             request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
         }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.datasetConfigShrink)) {
-            query["DatasetConfig"] = request.datasetConfigShrink ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.datasetMaxBindCount)) {
             query["DatasetMaxBindCount"] = request.datasetMaxBindCount!;
         }

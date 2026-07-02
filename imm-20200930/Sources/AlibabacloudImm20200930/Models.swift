@@ -1981,8 +1981,6 @@ public class Dataset : Tea.TeaModel {
 
     public var createTime: String?
 
-    public var datasetConfig: DatasetConfig?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -2019,7 +2017,6 @@ public class Dataset : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2029,9 +2026,6 @@ public class Dataset : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
-        }
-        if self.datasetConfig != nil {
-            map["DatasetConfig"] = self.datasetConfig?.toMap()
         }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
@@ -2086,11 +2080,6 @@ public class Dataset : Tea.TeaModel {
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
-        }
-        if let value = dict["DatasetConfig"] as? [String: Any?] {
-            var model = DatasetConfig()
-            model.fromMap(value)
-            self.datasetConfig = model
         }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
@@ -6793,8 +6782,6 @@ public class Project : Tea.TeaModel {
     }
     public var createTime: String?
 
-    public var datasetConfig: DatasetConfig?
-
     public var datasetCount: Int64?
 
     public var datasetMaxBindCount: Int64?
@@ -6839,16 +6826,12 @@ public class Project : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
-        }
-        if self.datasetConfig != nil {
-            map["DatasetConfig"] = self.datasetConfig?.toMap()
         }
         if self.datasetCount != nil {
             map["DatasetCount"] = self.datasetCount!
@@ -6912,11 +6895,6 @@ public class Project : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
-        }
-        if let value = dict["DatasetConfig"] as? [String: Any?] {
-            var model = DatasetConfig()
-            model.fromMap(value)
-            self.datasetConfig = model
         }
         if let value = dict["DatasetCount"] as? Int64 {
             self.datasetCount = value
@@ -15291,8 +15269,6 @@ public class CreateCustomizedStoryResponse : Tea.TeaModel {
 }
 
 public class CreateDatasetRequest : Tea.TeaModel {
-    public var datasetConfig: DatasetConfig?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -15323,14 +15299,10 @@ public class CreateDatasetRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfig != nil {
-            map["DatasetConfig"] = self.datasetConfig?.toMap()
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -15370,11 +15342,6 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? [String: Any?] {
-            var model = DatasetConfig()
-            model.fromMap(value)
-            self.datasetConfig = model
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -15419,8 +15386,6 @@ public class CreateDatasetRequest : Tea.TeaModel {
 }
 
 public class CreateDatasetShrinkRequest : Tea.TeaModel {
-    public var datasetConfigShrink: String?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -15455,9 +15420,6 @@ public class CreateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfigShrink != nil {
-            map["DatasetConfig"] = self.datasetConfigShrink!
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -15493,9 +15455,6 @@ public class CreateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? String {
-            self.datasetConfigShrink = value
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -21166,8 +21125,6 @@ public class CreateProjectRequest : Tea.TeaModel {
             }
         }
     }
-    public var datasetConfig: DatasetConfig?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -21200,14 +21157,10 @@ public class CreateProjectRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfig != nil {
-            map["DatasetConfig"] = self.datasetConfig?.toMap()
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -21250,11 +21203,6 @@ public class CreateProjectRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? [String: Any?] {
-            var model = DatasetConfig()
-            model.fromMap(value)
-            self.datasetConfig = model
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -21302,8 +21250,6 @@ public class CreateProjectRequest : Tea.TeaModel {
 }
 
 public class CreateProjectShrinkRequest : Tea.TeaModel {
-    public var datasetConfigShrink: String?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -21340,9 +21286,6 @@ public class CreateProjectShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfigShrink != nil {
-            map["DatasetConfig"] = self.datasetConfigShrink!
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -21381,9 +21324,6 @@ public class CreateProjectShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? String {
-            self.datasetConfigShrink = value
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -36642,8 +36582,6 @@ public class UpdateBatchResponse : Tea.TeaModel {
 }
 
 public class UpdateDatasetRequest : Tea.TeaModel {
-    public var datasetConfig: DatasetConfig?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -36674,14 +36612,10 @@ public class UpdateDatasetRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfig != nil {
-            map["DatasetConfig"] = self.datasetConfig?.toMap()
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -36721,11 +36655,6 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? [String: Any?] {
-            var model = DatasetConfig()
-            model.fromMap(value)
-            self.datasetConfig = model
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -36770,8 +36699,6 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 }
 
 public class UpdateDatasetShrinkRequest : Tea.TeaModel {
-    public var datasetConfigShrink: String?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -36806,9 +36733,6 @@ public class UpdateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfigShrink != nil {
-            map["DatasetConfig"] = self.datasetConfigShrink!
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -36844,9 +36768,6 @@ public class UpdateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? String {
-            self.datasetConfigShrink = value
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -37590,8 +37511,6 @@ public class UpdateProjectRequest : Tea.TeaModel {
             }
         }
     }
-    public var datasetConfig: DatasetConfig?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -37624,14 +37543,10 @@ public class UpdateProjectRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfig != nil {
-            map["DatasetConfig"] = self.datasetConfig?.toMap()
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -37674,11 +37589,6 @@ public class UpdateProjectRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? [String: Any?] {
-            var model = DatasetConfig()
-            model.fromMap(value)
-            self.datasetConfig = model
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -37726,8 +37636,6 @@ public class UpdateProjectRequest : Tea.TeaModel {
 }
 
 public class UpdateProjectShrinkRequest : Tea.TeaModel {
-    public var datasetConfigShrink: String?
-
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -37764,9 +37672,6 @@ public class UpdateProjectShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.datasetConfigShrink != nil {
-            map["DatasetConfig"] = self.datasetConfigShrink!
-        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -37805,9 +37710,6 @@ public class UpdateProjectShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DatasetConfig"] as? String {
-            self.datasetConfigShrink = value
-        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
