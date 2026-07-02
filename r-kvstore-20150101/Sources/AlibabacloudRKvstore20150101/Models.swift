@@ -1954,6 +1954,10 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var maintainEndTime: String?
+
+    public var maintainStartTime: String?
+
     public var networkType: String?
 
     public var nodeType: String?
@@ -2086,6 +2090,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.maintainEndTime != nil {
+            map["MaintainEndTime"] = self.maintainEndTime!
+        }
+        if self.maintainStartTime != nil {
+            map["MaintainStartTime"] = self.maintainStartTime!
         }
         if self.networkType != nil {
             map["NetworkType"] = self.networkType!
@@ -2242,6 +2252,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["MaintainEndTime"] as? String {
+            self.maintainEndTime = value
+        }
+        if let value = dict["MaintainStartTime"] as? String {
+            self.maintainStartTime = value
         }
         if let value = dict["NetworkType"] as? String {
             self.networkType = value
@@ -2583,6 +2599,158 @@ public class CreateInstanceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateInstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateInstanceMultiVIPRequest : Tea.TeaModel {
+    public var addCount: String?
+
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addCount != nil {
+            map["AddCount"] = self.addCount!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AddCount"] as? String {
+            self.addCount = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class CreateInstanceMultiVIPResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateInstanceMultiVIPResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateInstanceMultiVIPResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateInstanceMultiVIPResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -3587,6 +3755,10 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var maintainEndTime: String?
+
+    public var maintainStartTime: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -3713,6 +3885,12 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.maintainEndTime != nil {
+            map["MaintainEndTime"] = self.maintainEndTime!
+        }
+        if self.maintainStartTime != nil {
+            map["MaintainStartTime"] = self.maintainStartTime!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -3863,6 +4041,12 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["MaintainEndTime"] as? String {
+            self.maintainEndTime = value
+        }
+        if let value = dict["MaintainStartTime"] as? String {
+            self.maintainStartTime = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -18839,6 +19023,226 @@ public class DescribeInstanceConfigResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInstanceMultiVIPRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class DescribeInstanceMultiVIPResponseBody : Tea.TeaModel {
+    public class MultiVIPList : Tea.TeaModel {
+        public var connectionString: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectionString != nil {
+                map["ConnectionString"] = self.connectionString!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConnectionString"] as? String {
+                self.connectionString = value
+            }
+        }
+    }
+    public var masterDns: String?
+
+    public var masterDnsRecord: [String]?
+
+    public var maxQuota: Int64?
+
+    public var multiVIPList: [DescribeInstanceMultiVIPResponseBody.MultiVIPList]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.masterDns != nil {
+            map["MasterDns"] = self.masterDns!
+        }
+        if self.masterDnsRecord != nil {
+            map["MasterDnsRecord"] = self.masterDnsRecord!
+        }
+        if self.maxQuota != nil {
+            map["MaxQuota"] = self.maxQuota!
+        }
+        if self.multiVIPList != nil {
+            var tmp : [Any] = []
+            for k in self.multiVIPList! {
+                tmp.append(k.toMap())
+            }
+            map["MultiVIPList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MasterDns"] as? String {
+            self.masterDns = value
+        }
+        if let value = dict["MasterDnsRecord"] as? [String] {
+            self.masterDnsRecord = value
+        }
+        if let value = dict["MaxQuota"] as? Int64 {
+            self.maxQuota = value
+        }
+        if let value = dict["MultiVIPList"] as? [Any?] {
+            var tmp : [DescribeInstanceMultiVIPResponseBody.MultiVIPList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeInstanceMultiVIPResponseBody.MultiVIPList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.multiVIPList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeInstanceMultiVIPResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInstanceMultiVIPResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeInstanceMultiVIPResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInstanceSSLRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -19625,6 +20029,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var QPS: Int64?
 
+            public var quotaCount: Int64?
+
             public var readOnlyCount: String?
 
             public var regionId: String?
@@ -19646,6 +20052,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             public var slaveReplicaCount: Int32?
 
             public var tags: DescribeInstancesResponseBody.Instances.KVStoreInstance.Tags?
+
+            public var usedCount: Int64?
 
             public var userName: String?
 
@@ -19759,6 +20167,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 if self.QPS != nil {
                     map["QPS"] = self.QPS!
                 }
+                if self.quotaCount != nil {
+                    map["QuotaCount"] = self.quotaCount!
+                }
                 if self.readOnlyCount != nil {
                     map["ReadOnlyCount"] = self.readOnlyCount!
                 }
@@ -19791,6 +20202,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
+                }
+                if self.usedCount != nil {
+                    map["UsedCount"] = self.usedCount!
                 }
                 if self.userName != nil {
                     map["UserName"] = self.userName!
@@ -19899,6 +20313,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 if let value = dict["QPS"] as? Int64 {
                     self.QPS = value
                 }
+                if let value = dict["QuotaCount"] as? Int64 {
+                    self.quotaCount = value
+                }
                 if let value = dict["ReadOnlyCount"] as? String {
                     self.readOnlyCount = value
                 }
@@ -19933,6 +20350,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.KVStoreInstance.Tags()
                     model.fromMap(value)
                     self.tags = model
+                }
+                if let value = dict["UsedCount"] as? Int64 {
+                    self.usedCount = value
                 }
                 if let value = dict["UserName"] as? String {
                     self.userName = value
@@ -42620,9 +43040,15 @@ public class SwitchInstanceHARequest : Tea.TeaModel {
 
     public var securityToken: String?
 
+    public var sourceNodeId: String?
+
     public var switchMode: Int32?
 
     public var switchType: String?
+
+    public var targetNodeId: String?
+
+    public var targetShardName: String?
 
     public override init() {
         super.init()
@@ -42659,11 +43085,20 @@ public class SwitchInstanceHARequest : Tea.TeaModel {
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
+        if self.sourceNodeId != nil {
+            map["SourceNodeId"] = self.sourceNodeId!
+        }
         if self.switchMode != nil {
             map["SwitchMode"] = self.switchMode!
         }
         if self.switchType != nil {
             map["SwitchType"] = self.switchType!
+        }
+        if self.targetNodeId != nil {
+            map["TargetNodeId"] = self.targetNodeId!
+        }
+        if self.targetShardName != nil {
+            map["TargetShardName"] = self.targetShardName!
         }
         return map
     }
@@ -42691,11 +43126,20 @@ public class SwitchInstanceHARequest : Tea.TeaModel {
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
         }
+        if let value = dict["SourceNodeId"] as? String {
+            self.sourceNodeId = value
+        }
         if let value = dict["SwitchMode"] as? Int32 {
             self.switchMode = value
         }
         if let value = dict["SwitchType"] as? String {
             self.switchType = value
+        }
+        if let value = dict["TargetNodeId"] as? String {
+            self.targetNodeId = value
+        }
+        if let value = dict["TargetShardName"] as? String {
+            self.targetShardName = value
         }
     }
 }
@@ -43898,6 +44342,10 @@ public class TransformToEcsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var isAcrossZone: Bool?
+
+    public var izNo: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -43908,7 +44356,11 @@ public class TransformToEcsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var secondaryIzNo: String?
+
     public var shardCount: Int64?
+
+    public var vSwitchId: String?
 
     public override init() {
         super.init()
@@ -43948,6 +44400,12 @@ public class TransformToEcsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.isAcrossZone != nil {
+            map["IsAcrossZone"] = self.isAcrossZone!
+        }
+        if self.izNo != nil {
+            map["IzNo"] = self.izNo!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -43963,8 +44421,14 @@ public class TransformToEcsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.secondaryIzNo != nil {
+            map["SecondaryIzNo"] = self.secondaryIzNo!
+        }
         if self.shardCount != nil {
             map["ShardCount"] = self.shardCount!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
         }
         return map
     }
@@ -43995,6 +44459,12 @@ public class TransformToEcsRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["IsAcrossZone"] as? Bool {
+            self.isAcrossZone = value
+        }
+        if let value = dict["IzNo"] as? String {
+            self.izNo = value
+        }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
         }
@@ -44010,8 +44480,14 @@ public class TransformToEcsRequest : Tea.TeaModel {
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
         }
+        if let value = dict["SecondaryIzNo"] as? String {
+            self.secondaryIzNo = value
+        }
         if let value = dict["ShardCount"] as? Int64 {
             self.shardCount = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
         }
     }
 }
