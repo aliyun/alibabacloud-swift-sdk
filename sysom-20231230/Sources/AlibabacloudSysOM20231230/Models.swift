@@ -6617,7 +6617,11 @@ public class GetInstantScoreResponse : Tea.TeaModel {
 }
 
 public class GetListRecordRequest : Tea.TeaModel {
+    public var analysisId: String?
+
     public var current: Int64?
+
+    public var customId: Int64?
 
     public var pageSize: Int64?
 
@@ -6637,8 +6641,14 @@ public class GetListRecordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.analysisId != nil {
+            map["analysisId"] = self.analysisId!
+        }
         if self.current != nil {
             map["current"] = self.current!
+        }
+        if self.customId != nil {
+            map["customId"] = self.customId!
         }
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
@@ -6651,8 +6661,14 @@ public class GetListRecordRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["analysisId"] as? String {
+            self.analysisId = value
+        }
         if let value = dict["current"] as? Int64 {
             self.current = value
+        }
+        if let value = dict["customId"] as? Int64 {
+            self.customId = value
         }
         if let value = dict["pageSize"] as? Int64 {
             self.pageSize = value
