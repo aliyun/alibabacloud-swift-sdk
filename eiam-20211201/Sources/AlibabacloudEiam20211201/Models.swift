@@ -26427,6 +26427,8 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
 
         public var cloudAccountProviderName: String?
 
+        public var cloudAccountSite: String?
+
         public var cloudAccountVendorType: String?
 
         public var createTime: Int64?
@@ -26474,6 +26476,9 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             if self.cloudAccountProviderName != nil {
                 map["CloudAccountProviderName"] = self.cloudAccountProviderName!
             }
+            if self.cloudAccountSite != nil {
+                map["CloudAccountSite"] = self.cloudAccountSite!
+            }
             if self.cloudAccountVendorType != nil {
                 map["CloudAccountVendorType"] = self.cloudAccountVendorType!
             }
@@ -26518,6 +26523,9 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["CloudAccountProviderName"] as? String {
                 self.cloudAccountProviderName = value
+            }
+            if let value = dict["CloudAccountSite"] as? String {
+                self.cloudAccountSite = value
             }
             if let value = dict["CloudAccountVendorType"] as? String {
                 self.cloudAccountVendorType = value
@@ -47089,6 +47097,8 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
 
         public var cloudAccountProviderName: String?
 
+        public var cloudAccountSite: String?
+
         public var cloudAccountVendorType: String?
 
         public var createTime: Int64?
@@ -47132,6 +47142,9 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
             if self.cloudAccountProviderName != nil {
                 map["CloudAccountProviderName"] = self.cloudAccountProviderName!
             }
+            if self.cloudAccountSite != nil {
+                map["CloudAccountSite"] = self.cloudAccountSite!
+            }
             if self.cloudAccountVendorType != nil {
                 map["CloudAccountVendorType"] = self.cloudAccountVendorType!
             }
@@ -47171,6 +47184,9 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CloudAccountProviderName"] as? String {
                 self.cloudAccountProviderName = value
+            }
+            if let value = dict["CloudAccountSite"] as? String {
+                self.cloudAccountSite = value
             }
             if let value = dict["CloudAccountVendorType"] as? String {
                 self.cloudAccountVendorType = value
