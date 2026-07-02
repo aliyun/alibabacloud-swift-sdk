@@ -2581,6 +2581,8 @@ public class CreateSkillRequest : Tea.TeaModel {
 
     public var skillDescription: String?
 
+    public var skillDisplayName: String?
+
     public var skillLabels: [String]?
 
     public var skillName: String?
@@ -2614,6 +2616,9 @@ public class CreateSkillRequest : Tea.TeaModel {
         if self.skillDescription != nil {
             map["SkillDescription"] = self.skillDescription!
         }
+        if self.skillDisplayName != nil {
+            map["SkillDisplayName"] = self.skillDisplayName!
+        }
         if self.skillLabels != nil {
             map["SkillLabels"] = self.skillLabels!
         }
@@ -2642,6 +2647,9 @@ public class CreateSkillRequest : Tea.TeaModel {
         }
         if let value = dict["SkillDescription"] as? String {
             self.skillDescription = value
+        }
+        if let value = dict["SkillDisplayName"] as? String {
+            self.skillDisplayName = value
         }
         if let value = dict["SkillLabels"] as? [String] {
             self.skillLabels = value
@@ -8930,11 +8938,61 @@ public class GetSkillRequest : Tea.TeaModel {
 }
 
 public class GetSkillResponseBody : Tea.TeaModel {
+    public class Locales : Tea.TeaModel {
+        public var enValue: String?
+
+        public var originalValue: String?
+
+        public var zhValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enValue != nil {
+                map["EnValue"] = self.enValue!
+            }
+            if self.originalValue != nil {
+                map["OriginalValue"] = self.originalValue!
+            }
+            if self.zhValue != nil {
+                map["ZhValue"] = self.zhValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnValue"] as? String {
+                self.enValue = value
+            }
+            if let value = dict["OriginalValue"] as? String {
+                self.originalValue = value
+            }
+            if let value = dict["ZhValue"] as? String {
+                self.zhValue = value
+            }
+        }
+    }
     public var createTime: String?
+
+    public var locales: [GetSkillResponseBody.Locales]?
 
     public var requestId: String?
 
     public var skillDescription: String?
+
+    public var skillDisplayName: String?
 
     public var skillId: String?
 
@@ -8963,11 +9021,21 @@ public class GetSkillResponseBody : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.locales != nil {
+            var tmp : [Any] = []
+            for k in self.locales! {
+                tmp.append(k.toMap())
+            }
+            map["Locales"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
         if self.skillDescription != nil {
             map["SkillDescription"] = self.skillDescription!
+        }
+        if self.skillDisplayName != nil {
+            map["SkillDisplayName"] = self.skillDisplayName!
         }
         if self.skillId != nil {
             map["SkillId"] = self.skillId!
@@ -8992,11 +9060,27 @@ public class GetSkillResponseBody : Tea.TeaModel {
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
+        if let value = dict["Locales"] as? [Any?] {
+            var tmp : [GetSkillResponseBody.Locales] = []
+            for v in value {
+                if v != nil {
+                    var model = GetSkillResponseBody.Locales()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.locales = tmp
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
         if let value = dict["SkillDescription"] as? String {
             self.skillDescription = value
+        }
+        if let value = dict["SkillDisplayName"] as? String {
+            self.skillDisplayName = value
         }
         if let value = dict["SkillId"] as? String {
             self.skillId = value
@@ -10365,11 +10449,61 @@ public class ListPublicSkillsRequest : Tea.TeaModel {
 
 public class ListPublicSkillsResponseBody : Tea.TeaModel {
     public class Skills : Tea.TeaModel {
+        public class Locales : Tea.TeaModel {
+            public var enValue: String?
+
+            public var originalValue: String?
+
+            public var zhValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enValue != nil {
+                    map["EnValue"] = self.enValue!
+                }
+                if self.originalValue != nil {
+                    map["OriginalValue"] = self.originalValue!
+                }
+                if self.zhValue != nil {
+                    map["ZhValue"] = self.zhValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EnValue"] as? String {
+                    self.enValue = value
+                }
+                if let value = dict["OriginalValue"] as? String {
+                    self.originalValue = value
+                }
+                if let value = dict["ZhValue"] as? String {
+                    self.zhValue = value
+                }
+            }
+        }
         public var createTime: String?
 
         public var downloadUrl: String?
 
+        public var locales: [ListPublicSkillsResponseBody.Skills.Locales]?
+
         public var skillDescription: String?
+
+        public var skillDisplayName: String?
 
         public var skillId: String?
 
@@ -10401,8 +10535,18 @@ public class ListPublicSkillsResponseBody : Tea.TeaModel {
             if self.downloadUrl != nil {
                 map["DownloadUrl"] = self.downloadUrl!
             }
+            if self.locales != nil {
+                var tmp : [Any] = []
+                for k in self.locales! {
+                    tmp.append(k.toMap())
+                }
+                map["Locales"] = tmp
+            }
             if self.skillDescription != nil {
                 map["SkillDescription"] = self.skillDescription!
+            }
+            if self.skillDisplayName != nil {
+                map["SkillDisplayName"] = self.skillDisplayName!
             }
             if self.skillId != nil {
                 map["SkillId"] = self.skillId!
@@ -10430,8 +10574,24 @@ public class ListPublicSkillsResponseBody : Tea.TeaModel {
             if let value = dict["DownloadUrl"] as? String {
                 self.downloadUrl = value
             }
+            if let value = dict["Locales"] as? [Any?] {
+                var tmp : [ListPublicSkillsResponseBody.Skills.Locales] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListPublicSkillsResponseBody.Skills.Locales()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.locales = tmp
+            }
             if let value = dict["SkillDescription"] as? String {
                 self.skillDescription = value
+            }
+            if let value = dict["SkillDisplayName"] as? String {
+                self.skillDisplayName = value
             }
             if let value = dict["SkillId"] as? String {
                 self.skillId = value
@@ -15062,11 +15222,61 @@ public class ListSkillsRequest : Tea.TeaModel {
 
 public class ListSkillsResponseBody : Tea.TeaModel {
     public class Skills : Tea.TeaModel {
+        public class Locales : Tea.TeaModel {
+            public var enValue: String?
+
+            public var originalValue: String?
+
+            public var zhValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enValue != nil {
+                    map["EnValue"] = self.enValue!
+                }
+                if self.originalValue != nil {
+                    map["OriginalValue"] = self.originalValue!
+                }
+                if self.zhValue != nil {
+                    map["ZhValue"] = self.zhValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EnValue"] as? String {
+                    self.enValue = value
+                }
+                if let value = dict["OriginalValue"] as? String {
+                    self.originalValue = value
+                }
+                if let value = dict["ZhValue"] as? String {
+                    self.zhValue = value
+                }
+            }
+        }
         public var createTime: String?
 
         public var downloadUrl: String?
 
+        public var locales: [ListSkillsResponseBody.Skills.Locales]?
+
         public var skillDescription: String?
+
+        public var skillDisplayName: String?
 
         public var skillId: String?
 
@@ -15098,8 +15308,18 @@ public class ListSkillsResponseBody : Tea.TeaModel {
             if self.downloadUrl != nil {
                 map["DownloadUrl"] = self.downloadUrl!
             }
+            if self.locales != nil {
+                var tmp : [Any] = []
+                for k in self.locales! {
+                    tmp.append(k.toMap())
+                }
+                map["Locales"] = tmp
+            }
             if self.skillDescription != nil {
                 map["SkillDescription"] = self.skillDescription!
+            }
+            if self.skillDisplayName != nil {
+                map["SkillDisplayName"] = self.skillDisplayName!
             }
             if self.skillId != nil {
                 map["SkillId"] = self.skillId!
@@ -15127,8 +15347,24 @@ public class ListSkillsResponseBody : Tea.TeaModel {
             if let value = dict["DownloadUrl"] as? String {
                 self.downloadUrl = value
             }
+            if let value = dict["Locales"] as? [Any?] {
+                var tmp : [ListSkillsResponseBody.Skills.Locales] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListSkillsResponseBody.Skills.Locales()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.locales = tmp
+            }
             if let value = dict["SkillDescription"] as? String {
                 self.skillDescription = value
+            }
+            if let value = dict["SkillDisplayName"] as? String {
+                self.skillDisplayName = value
             }
             if let value = dict["SkillId"] as? String {
                 self.skillId = value
@@ -17854,6 +18090,8 @@ public class UpdateSkillRequest : Tea.TeaModel {
 
     public var skillDescription: String?
 
+    public var skillDisplayName: String?
+
     public var skillId: String?
 
     public var skillLabels: [String]?
@@ -17887,6 +18125,9 @@ public class UpdateSkillRequest : Tea.TeaModel {
         if self.skillDescription != nil {
             map["SkillDescription"] = self.skillDescription!
         }
+        if self.skillDisplayName != nil {
+            map["SkillDisplayName"] = self.skillDisplayName!
+        }
         if self.skillId != nil {
             map["SkillId"] = self.skillId!
         }
@@ -17915,6 +18156,9 @@ public class UpdateSkillRequest : Tea.TeaModel {
         }
         if let value = dict["SkillDescription"] as? String {
             self.skillDescription = value
+        }
+        if let value = dict["SkillDisplayName"] as? String {
+            self.skillDisplayName = value
         }
         if let value = dict["SkillId"] as? String {
             self.skillId = value
