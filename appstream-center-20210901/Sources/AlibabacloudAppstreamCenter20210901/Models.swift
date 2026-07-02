@@ -16369,6 +16369,10 @@ public class ListTenantConfigResponseBody : Tea.TeaModel {
     public class TenantConfigModel : Tea.TeaModel {
         public var appInstanceGroupExpireRemind: Bool?
 
+        public var multiSessionSupportType: String?
+
+        public var multiSessionSupportedRegions: [String]?
+
         public override init() {
             super.init()
         }
@@ -16386,6 +16390,12 @@ public class ListTenantConfigResponseBody : Tea.TeaModel {
             if self.appInstanceGroupExpireRemind != nil {
                 map["AppInstanceGroupExpireRemind"] = self.appInstanceGroupExpireRemind!
             }
+            if self.multiSessionSupportType != nil {
+                map["MultiSessionSupportType"] = self.multiSessionSupportType!
+            }
+            if self.multiSessionSupportedRegions != nil {
+                map["MultiSessionSupportedRegions"] = self.multiSessionSupportedRegions!
+            }
             return map
         }
 
@@ -16393,6 +16403,12 @@ public class ListTenantConfigResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AppInstanceGroupExpireRemind"] as? Bool {
                 self.appInstanceGroupExpireRemind = value
+            }
+            if let value = dict["MultiSessionSupportType"] as? String {
+                self.multiSessionSupportType = value
+            }
+            if let value = dict["MultiSessionSupportedRegions"] as? [String] {
+                self.multiSessionSupportedRegions = value
             }
         }
     }
