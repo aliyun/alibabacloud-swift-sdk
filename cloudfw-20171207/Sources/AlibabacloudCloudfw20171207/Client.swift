@@ -34,7 +34,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-beijing-finance-1": "cloudfw.aliyuncs.com",
             "cn-beijing": "cloudfw.aliyuncs.com",
             "ap-southeast-5": "cloudfw.aliyuncs.com",
-            "ap-southeast-3": "cloudfw.aliyuncs.com",
+            "ap-southeast-3": "cloudfw.ap-southeast-1.aliyuncs.com",
             "ap-northeast-1": "cloudfw.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
@@ -3749,6 +3749,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFirewallDropTrendWithOptions(_ request: DescribeFirewallDropTrendRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFirewallDropTrendResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeFirewallDropTrend",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeFirewallDropTrendResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFirewallDropTrend(_ request: DescribeFirewallDropTrendRequest) async throws -> DescribeFirewallDropTrendResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeFirewallDropTrendWithOptions(request as! DescribeFirewallDropTrendRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeFirewallTaskWithOptions(_ request: DescribeFirewallTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFirewallTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3789,6 +3826,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeFirewallTask(_ request: DescribeFirewallTaskRequest) async throws -> DescribeFirewallTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeFirewallTaskWithOptions(request as! DescribeFirewallTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFirewallTrafficTrendWithOptions(_ request: DescribeFirewallTrafficTrendRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFirewallTrafficTrendResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeFirewallTrafficTrend",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeFirewallTrafficTrendResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFirewallTrafficTrend(_ request: DescribeFirewallTrafficTrendRequest) async throws -> DescribeFirewallTrafficTrendResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeFirewallTrafficTrendWithOptions(request as! DescribeFirewallTrafficTrendRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7752,6 +7826,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSdlEventStatistic(_ request: DescribeSdlEventStatisticRequest) async throws -> DescribeSdlEventStatisticResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeSdlEventStatisticWithOptions(request as! DescribeSdlEventStatisticRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSdlLastPayloadWithOptions(_ request: DescribeSdlLastPayloadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSdlLastPayloadResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dstIp)) {
+            query["DstIp"] = request.dstIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sensitiveCategory)) {
+            query["SensitiveCategory"] = request.sensitiveCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcIp)) {
+            query["SrcIp"] = request.srcIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSdlLastPayload",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSdlLastPayloadResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSdlLastPayload(_ request: DescribeSdlLastPayloadRequest) async throws -> DescribeSdlLastPayloadResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSdlLastPayloadWithOptions(request as! DescribeSdlLastPayloadRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
