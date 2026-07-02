@@ -336,6 +336,71 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getImageGenerationJobWithOptions(_ request: GetImageGenerationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetImageGenerationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetImageGenerationJob",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetImageGenerationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getImageGenerationJob(_ request: GetImageGenerationJobRequest) async throws -> GetImageGenerationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getImageGenerationJobWithOptions(request as! GetImageGenerationJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoGenerationJobWithOptions(_ request: GetVideoGenerationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoGenerationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVideoGenerationJob",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVideoGenerationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoGenerationJob(_ request: GetVideoGenerationJobRequest) async throws -> GetVideoGenerationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVideoGenerationJobWithOptions(request as! GetVideoGenerationJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getYikeAIAppJobWithOptions(_ request: GetYikeAIAppJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeAIAppJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -933,6 +998,125 @@ open class Client : AlibabacloudOpenApi.Client {
     public func subYikeUserCredit(_ request: SubYikeUserCreditRequest) async throws -> SubYikeUserCreditResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await subYikeUserCreditWithOptions(request as! SubYikeUserCreditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitImageGenerationJobWithOptions(_ request: SubmitImageGenerationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitImageGenerationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aspectRatio)) {
+            query["AspectRatio"] = request.aspectRatio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            query["Input"] = request.input ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobParameters)) {
+            query["JobParameters"] = request.jobParameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            query["JobType"] = request.jobType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            query["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.n)) {
+            query["N"] = request.n ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["Resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            query["Scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitImageGenerationJob",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitImageGenerationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitImageGenerationJob(_ request: SubmitImageGenerationJobRequest) async throws -> SubmitImageGenerationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitImageGenerationJobWithOptions(request as! SubmitImageGenerationJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoGenerationJobWithOptions(_ request: SubmitVideoGenerationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVideoGenerationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aspectRatio)) {
+            query["AspectRatio"] = request.aspectRatio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.duration)) {
+            query["Duration"] = request.duration ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            query["Input"] = request.input ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobParameters)) {
+            query["JobParameters"] = request.jobParameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            query["JobType"] = request.jobType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            query["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.n)) {
+            query["N"] = request.n!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["Resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            query["Scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitVideoGenerationJob",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitVideoGenerationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoGenerationJob(_ request: SubmitVideoGenerationJobRequest) async throws -> SubmitVideoGenerationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitVideoGenerationJobWithOptions(request as! SubmitVideoGenerationJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
