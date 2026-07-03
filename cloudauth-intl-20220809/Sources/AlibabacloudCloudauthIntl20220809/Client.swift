@@ -1638,6 +1638,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
             query["FacePictureUrl"] = request.facePictureUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.faceQualityCheck)) {
+            query["FaceQualityCheck"] = request.faceQualityCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
             query["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
         }
@@ -1706,6 +1709,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
             query["FacePictureUrl"] = request.facePictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceQualityCheck)) {
+            query["FaceQualityCheck"] = request.faceQualityCheck ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
             query["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
@@ -2776,6 +2782,159 @@ open class Client : AlibabacloudOpenApi.Client {
     public func id2MetaVerifyIntl(_ request: Id2MetaVerifyIntlRequest) async throws -> Id2MetaVerifyIntlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await id2MetaVerifyIntlWithOptions(request as! Id2MetaVerifyIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func idnAuthorityVerifyIntlWithOptions(_ request: IdnAuthorityVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> IdnAuthorityVerifyIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.birthDate)) {
+            query["BirthDate"] = request.birthDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            query["Email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fullName)) {
+            query["FullName"] = request.fullName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idNumber)) {
+            query["IdNumber"] = request.idNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            query["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantUserId)) {
+            query["MerchantUserId"] = request.merchantUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            query["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            query["SceneCode"] = request.sceneCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceFacePictureFile)) {
+            query["SourceFacePictureFile"] = request.sourceFacePictureFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceFacePictureUrl)) {
+            query["SourceFacePictureUrl"] = request.sourceFacePictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timestamp)) {
+            query["Timestamp"] = request.timestamp ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.sourceFacePicture)) {
+            body["SourceFacePicture"] = request.sourceFacePicture ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IdnAuthorityVerifyIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IdnAuthorityVerifyIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func idnAuthorityVerifyIntl(_ request: IdnAuthorityVerifyIntlRequest) async throws -> IdnAuthorityVerifyIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await idnAuthorityVerifyIntlWithOptions(request as! IdnAuthorityVerifyIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func idnAuthorityVerifyIntlAdvance(_ request: IdnAuthorityVerifyIntlAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> IdnAuthorityVerifyIntlResponse {
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "Cloudauth-intl",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
+        ])
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var authResponse: [String: Any] = [:]
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
+        var idnAuthorityVerifyIntlReq: IdnAuthorityVerifyIntlRequest = IdnAuthorityVerifyIntlRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, idnAuthorityVerifyIntlReq)
+        if (!TeaUtils.Client.isUnset(request.sourceFacePictureFileObject)) {
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.sourceFacePictureFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            idnAuthorityVerifyIntlReq.sourceFacePictureFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        var idnAuthorityVerifyIntlResp: IdnAuthorityVerifyIntlResponse = try await idnAuthorityVerifyIntlWithOptions(idnAuthorityVerifyIntlReq as! IdnAuthorityVerifyIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+        return idnAuthorityVerifyIntlResp as! IdnAuthorityVerifyIntlResponse
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
