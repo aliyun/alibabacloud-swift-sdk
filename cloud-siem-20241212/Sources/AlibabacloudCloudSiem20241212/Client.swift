@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shanghai": "cloud-siem.cn-shanghai.aliyuncs.com",
+            "ap-southeast-1": "cloud-siem.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloud-siem", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -601,6 +605,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.normalizationSchemaId)) {
             body["NormalizationSchemaId"] = request.normalizationSchemaId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.normalizationSecurityDomainId)) {
+            body["NormalizationSecurityDomainId"] = request.normalizationSecurityDomainId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderField)) {
             body["OrderField"] = request.orderField ?? "";
         }
@@ -650,6 +657,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.normalizationCategoryId)) {
             body["NormalizationCategoryId"] = request.normalizationCategoryId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.normalizationFieldSource)) {
+            body["NormalizationFieldSource"] = request.normalizationFieldSource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.normalizationFields)) {
             body["NormalizationFields"] = request.normalizationFields ?? [];
         }
@@ -665,6 +675,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.normalizationSchemaType)) {
             body["NormalizationSchemaType"] = request.normalizationSchemaType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.normalizationSecurityDomainId)) {
+            body["NormalizationSecurityDomainId"] = request.normalizationSecurityDomainId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productId)) {
+            body["ProductId"] = request.productId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
         }
@@ -673,6 +689,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.targetLogStore)) {
             body["TargetLogStore"] = request.targetLogStore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vendorId)) {
+            body["VendorId"] = request.vendorId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -1441,6 +1460,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lang)) {
             body["Lang"] = request.lang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.logCondition)) {
+            body["LogCondition"] = request.logCondition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.logProjectName)) {
             body["LogProjectName"] = request.logProjectName ?? "";
         }
@@ -1527,6 +1549,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func executeUpgrade(_ request: ExecuteUpgradeRequest) async throws -> ExecuteUpgradeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await executeUpgradeWithOptions(request as! ExecuteUpgradeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAlertWithOptions(_ request: GetAlertRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAlertResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertUuid)) {
+            body["AlertUuid"] = request.alertUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAlert",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAlertResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAlert(_ request: GetAlertRequest) async throws -> GetAlertResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAlertWithOptions(request as! GetAlertRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1804,6 +1869,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.normalizationRuleId)) {
             body["NormalizationRuleId"] = request.normalizationRuleId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.normalizationSecurityDomainId)) {
+            body["NormalizationSecurityDomainId"] = request.normalizationSecurityDomainId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
         }
@@ -1921,6 +1989,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getResponseRuleStatisticWithOptions(_ request: GetResponseRuleStatisticRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetResponseRuleStatisticResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetResponseRuleStatistic",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetResponseRuleStatisticResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getResponseRuleStatistic(_ request: GetResponseRuleStatisticRequest) async throws -> GetResponseRuleStatisticResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getResponseRuleStatisticWithOptions(request as! GetResponseRuleStatisticRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getUserConfigWithOptions(_ request: GetUserConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1955,6 +2063,82 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getUserConfig(_ request: GetUserConfigRequest) async throws -> GetUserConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getUserConfigWithOptions(request as! GetUserConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAlertsWithOptions(_ request: ListAlertsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAlertsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertLevel)) {
+            body["AlertLevel"] = request.alertLevel ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.alertUuid)) {
+            body["AlertUuid"] = request.alertUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderDirection)) {
+            body["OrderDirection"] = request.orderDirection ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderFieldName)) {
+            body["OrderFieldName"] = request.orderFieldName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryCondition)) {
+            body["QueryCondition"] = request.queryCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryViewId)) {
+            body["QueryViewId"] = request.queryViewId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAlerts",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAlertsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAlerts(_ request: ListAlertsRequest) async throws -> ListAlertsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAlertsWithOptions(request as! ListAlertsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2809,6 +2993,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             body["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.normalizationFieldSource)) {
+            body["NormalizationFieldSource"] = request.normalizationFieldSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.normalizationSchemaType)) {
+            body["NormalizationSchemaType"] = request.normalizationSchemaType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
         }
@@ -2972,6 +3162,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.normalizationSchemaId)) {
             body["NormalizationSchemaId"] = request.normalizationSchemaId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.normalizationSecurityDomainId)) {
+            body["NormalizationSecurityDomainId"] = request.normalizationSecurityDomainId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderField)) {
             body["OrderField"] = request.orderField ?? "";
         }
@@ -3036,8 +3229,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.normalizationCategoryId)) {
             body["NormalizationCategoryId"] = request.normalizationCategoryId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.normalizationFieldSource)) {
+            body["NormalizationFieldSource"] = request.normalizationFieldSource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.normalizationSchemaType)) {
             body["NormalizationSchemaType"] = request.normalizationSchemaType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.normalizationSecurityDomainId)) {
+            body["NormalizationSecurityDomainId"] = request.normalizationSecurityDomainId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
@@ -3067,6 +3266,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listNormalizationSchemas(_ request: ListNormalizationSchemasRequest) async throws -> ListNormalizationSchemasResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listNormalizationSchemasWithOptions(request as! ListNormalizationSchemasRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNormalizationSecurityDomainsWithOptions(_ request: ListNormalizationSecurityDomainsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNormalizationSecurityDomainsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListNormalizationSecurityDomains",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListNormalizationSecurityDomainsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNormalizationSecurityDomains(_ request: ListNormalizationSecurityDomainsRequest) async throws -> ListNormalizationSecurityDomainsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listNormalizationSecurityDomainsWithOptions(request as! ListNormalizationSecurityDomainsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3127,6 +3369,106 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listProducts(_ request: ListProductsRequest) async throws -> ListProductsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listProductsWithOptions(request as! ListProductsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQueryViewsWithOptions(_ request: ListQueryViewsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQueryViewsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryViewScene)) {
+            body["QueryViewScene"] = request.queryViewScene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryViewType)) {
+            body["QueryViewType"] = request.queryViewType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListQueryViews",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListQueryViewsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQueryViews(_ request: ListQueryViewsRequest) async throws -> ListQueryViewsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listQueryViewsWithOptions(request as! ListQueryViewsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listResponseRuleFieldsWithOptions(_ request: ListResponseRuleFieldsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListResponseRuleFieldsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListResponseRuleFields",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListResponseRuleFieldsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listResponseRuleFields(_ request: ListResponseRuleFieldsRequest) async throws -> ListResponseRuleFieldsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listResponseRuleFieldsWithOptions(request as! ListResponseRuleFieldsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3194,6 +3536,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listResponseRules(_ request: ListResponseRulesRequest) async throws -> ListResponseRulesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listResponseRulesWithOptions(request as! ListResponseRulesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTagsWithOptions(_ request: ListTagsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.targetRelation)) {
+            body["TargetRelation"] = request.targetRelation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            body["TargetType"] = request.targetType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetUuid)) {
+            body["TargetUuid"] = request.targetUuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTags",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTagsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTags(_ request: ListTagsRequest) async throws -> ListTagsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listTagsWithOptions(request as! ListTagsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4272,6 +4669,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.normalizationSchemaId)) {
             body["NormalizationSchemaId"] = request.normalizationSchemaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.normalizationSecurityDomainId)) {
+            body["NormalizationSecurityDomainId"] = request.normalizationSecurityDomainId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.orderField)) {
             body["OrderField"] = request.orderField ?? "";

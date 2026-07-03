@@ -2181,6 +2181,8 @@ public class CreateNormalizationRuleRequest : Tea.TeaModel {
 
     public var normalizationSchemaId: String?
 
+    public var normalizationSecurityDomainId: String?
+
     public var orderField: String?
 
     public var productId: String?
@@ -2244,6 +2246,9 @@ public class CreateNormalizationRuleRequest : Tea.TeaModel {
         if self.normalizationSchemaId != nil {
             map["NormalizationSchemaId"] = self.normalizationSchemaId!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
         }
@@ -2303,6 +2308,9 @@ public class CreateNormalizationRuleRequest : Tea.TeaModel {
         if let value = dict["NormalizationSchemaId"] as? String {
             self.normalizationSchemaId = value
         }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
+        }
         if let value = dict["OrderField"] as? String {
             self.orderField = value
         }
@@ -2347,6 +2355,8 @@ public class CreateNormalizationRuleShrinkRequest : Tea.TeaModel {
     public var normalizationRuleVersion: Int32?
 
     public var normalizationSchemaId: String?
+
+    public var normalizationSecurityDomainId: String?
 
     public var orderField: String?
 
@@ -2411,6 +2421,9 @@ public class CreateNormalizationRuleShrinkRequest : Tea.TeaModel {
         if self.normalizationSchemaId != nil {
             map["NormalizationSchemaId"] = self.normalizationSchemaId!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
         }
@@ -2469,6 +2482,9 @@ public class CreateNormalizationRuleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NormalizationSchemaId"] as? String {
             self.normalizationSchemaId = value
+        }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
         }
         if let value = dict["OrderField"] as? String {
             self.orderField = value
@@ -2784,6 +2800,8 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
 
     public var normalizationCategoryId: String?
 
+    public var normalizationFieldSource: String?
+
     public var normalizationFields: [CreateNormalizationSchemaRequest.NormalizationFields]?
 
     public var normalizationSchemaDescription: String?
@@ -2794,11 +2812,17 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
 
     public var normalizationSchemaType: String?
 
+    public var normalizationSecurityDomainId: String?
+
+    public var productId: String?
+
     public var regionId: String?
 
     public var roleFor: Int64?
 
     public var targetLogStore: String?
+
+    public var vendorId: String?
 
     public override init() {
         super.init()
@@ -2820,6 +2844,9 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
         if self.normalizationCategoryId != nil {
             map["NormalizationCategoryId"] = self.normalizationCategoryId!
         }
+        if self.normalizationFieldSource != nil {
+            map["NormalizationFieldSource"] = self.normalizationFieldSource!
+        }
         if self.normalizationFields != nil {
             var tmp : [Any] = []
             for k in self.normalizationFields! {
@@ -2839,6 +2866,12 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
         if self.normalizationSchemaType != nil {
             map["NormalizationSchemaType"] = self.normalizationSchemaType!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
+        if self.productId != nil {
+            map["ProductId"] = self.productId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -2847,6 +2880,9 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
         }
         if self.targetLogStore != nil {
             map["TargetLogStore"] = self.targetLogStore!
+        }
+        if self.vendorId != nil {
+            map["VendorId"] = self.vendorId!
         }
         return map
     }
@@ -2858,6 +2894,9 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
         }
         if let value = dict["NormalizationCategoryId"] as? String {
             self.normalizationCategoryId = value
+        }
+        if let value = dict["NormalizationFieldSource"] as? String {
+            self.normalizationFieldSource = value
         }
         if let value = dict["NormalizationFields"] as? [Any?] {
             var tmp : [CreateNormalizationSchemaRequest.NormalizationFields] = []
@@ -2884,6 +2923,12 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
         if let value = dict["NormalizationSchemaType"] as? String {
             self.normalizationSchemaType = value
         }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
+        }
+        if let value = dict["ProductId"] as? String {
+            self.productId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -2892,6 +2937,9 @@ public class CreateNormalizationSchemaRequest : Tea.TeaModel {
         }
         if let value = dict["TargetLogStore"] as? String {
             self.targetLogStore = value
+        }
+        if let value = dict["VendorId"] as? String {
+            self.vendorId = value
         }
     }
 }
@@ -5552,6 +5600,8 @@ public class ExecuteLogQueryRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var logCondition: String?
+
     public var logProjectName: String?
 
     public var logQuery: String?
@@ -5593,6 +5643,9 @@ public class ExecuteLogQueryRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.logCondition != nil {
+            map["LogCondition"] = self.logCondition!
+        }
         if self.logProjectName != nil {
             map["LogProjectName"] = self.logProjectName!
         }
@@ -5633,6 +5686,9 @@ public class ExecuteLogQueryRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["LogCondition"] as? String {
+            self.logCondition = value
         }
         if let value = dict["LogProjectName"] as? String {
             self.logProjectName = value
@@ -5875,6 +5931,199 @@ public class ExecuteUpgradeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ExecuteUpgradeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetAlertRequest : Tea.TeaModel {
+    public var alertUuid: String?
+
+    public var lang: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertUuid != nil {
+            map["AlertUuid"] = self.alertUuid!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AlertUuid"] as? String {
+            self.alertUuid = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int64 {
+            self.roleType = value
+        }
+    }
+}
+
+public class GetAlertResponseBody : Tea.TeaModel {
+    public class Alert : Tea.TeaModel {
+        public var alertRecord: String?
+
+        public var alertUuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alertRecord != nil {
+                map["AlertRecord"] = self.alertRecord!
+            }
+            if self.alertUuid != nil {
+                map["AlertUuid"] = self.alertUuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AlertRecord"] as? String {
+                self.alertRecord = value
+            }
+            if let value = dict["AlertUuid"] as? String {
+                self.alertUuid = value
+            }
+        }
+    }
+    public var alert: GetAlertResponseBody.Alert?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.alert?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alert != nil {
+            map["Alert"] = self.alert?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Alert"] as? [String: Any?] {
+            var model = GetAlertResponseBody.Alert()
+            model.fromMap(value)
+            self.alert = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetAlertResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAlertResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAlertResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -6548,6 +6797,52 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RecordLogStores : Tea.TeaModel {
+            public var logStoreName: String?
+
+            public var logStoreTtl: Int32?
+
+            public var usedCapacity: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logStoreName != nil {
+                    map["LogStoreName"] = self.logStoreName!
+                }
+                if self.logStoreTtl != nil {
+                    map["LogStoreTtl"] = self.logStoreTtl!
+                }
+                if self.usedCapacity != nil {
+                    map["UsedCapacity"] = self.usedCapacity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LogStoreName"] as? String {
+                    self.logStoreName = value
+                }
+                if let value = dict["LogStoreTtl"] as? Int32 {
+                    self.logStoreTtl = value
+                }
+                if let value = dict["UsedCapacity"] as? Double {
+                    self.usedCapacity = value
+                }
+            }
+        }
         public class SasLogStores : Tea.TeaModel {
             public var logCode: String?
 
@@ -6722,6 +7017,8 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
 
         public var normalizationLogViews: [GetDataStorageResponseBody.Data.NormalizationLogViews]?
 
+        public var recordLogStores: [GetDataStorageResponseBody.Data.RecordLogStores]?
+
         public var sasLogStores: [GetDataStorageResponseBody.Data.SasLogStores]?
 
         public var unusedLogStores: [GetDataStorageResponseBody.Data.UnusedLogStores]?
@@ -6774,6 +7071,13 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["NormalizationLogViews"] = tmp
+            }
+            if self.recordLogStores != nil {
+                var tmp : [Any] = []
+                for k in self.recordLogStores! {
+                    tmp.append(k.toMap())
+                }
+                map["RecordLogStores"] = tmp
             }
             if self.sasLogStores != nil {
                 var tmp : [Any] = []
@@ -6840,6 +7144,19 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                     }
                 }
                 self.normalizationLogViews = tmp
+            }
+            if let value = dict["RecordLogStores"] as? [Any?] {
+                var tmp : [GetDataStorageResponseBody.Data.RecordLogStores] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetDataStorageResponseBody.Data.RecordLogStores()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.recordLogStores = tmp
             }
             if let value = dict["SasLogStores"] as? [Any?] {
                 var tmp : [GetDataStorageResponseBody.Data.SasLogStores] = []
@@ -7009,6 +7326,8 @@ public class GetDetectionStatisticRequest : Tea.TeaModel {
 
 public class GetDetectionStatisticResponseBody : Tea.TeaModel {
     public class DetectionStatistic : Tea.TeaModel {
+        public var aiPoweredAggregationRuleCount: Int32?
+
         public var detectionRuleOnlineCount: Int32?
 
         public var detectionRuleTemplateCount: Int32?
@@ -7035,6 +7354,9 @@ public class GetDetectionStatisticResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiPoweredAggregationRuleCount != nil {
+                map["AiPoweredAggregationRuleCount"] = self.aiPoweredAggregationRuleCount!
+            }
             if self.detectionRuleOnlineCount != nil {
                 map["DetectionRuleOnlineCount"] = self.detectionRuleOnlineCount!
             }
@@ -7058,6 +7380,9 @@ public class GetDetectionStatisticResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiPoweredAggregationRuleCount"] as? Int32 {
+                self.aiPoweredAggregationRuleCount = value
+            }
             if let value = dict["DetectionRuleOnlineCount"] as? Int32 {
                 self.detectionRuleOnlineCount = value
             }
@@ -7448,6 +7773,8 @@ public class GetIncidentResponseBody : Tea.TeaModel {
 
         public var relateUserIds: Any?
 
+        public var responseTime: Int64?
+
         public var threatLevel: String?
 
         public var threatScore: String?
@@ -7513,6 +7840,9 @@ public class GetIncidentResponseBody : Tea.TeaModel {
             if self.relateUserIds != nil {
                 map["RelateUserIds"] = self.relateUserIds!
             }
+            if self.responseTime != nil {
+                map["ResponseTime"] = self.responseTime!
+            }
             if self.threatLevel != nil {
                 map["ThreatLevel"] = self.threatLevel!
             }
@@ -7571,6 +7901,9 @@ public class GetIncidentResponseBody : Tea.TeaModel {
             }
             if let value = dict["RelateUserIds"] as? Any {
                 self.relateUserIds = value
+            }
+            if let value = dict["ResponseTime"] as? Int64 {
+                self.responseTime = value
             }
             if let value = dict["ThreatLevel"] as? String {
                 self.threatLevel = value
@@ -7823,6 +8156,8 @@ public class GetNormalizationRuleRequest : Tea.TeaModel {
 
     public var normalizationRuleId: String?
 
+    public var normalizationSecurityDomainId: String?
+
     public var regionId: String?
 
     public var roleFor: Int64?
@@ -7847,6 +8182,9 @@ public class GetNormalizationRuleRequest : Tea.TeaModel {
         if self.normalizationRuleId != nil {
             map["NormalizationRuleId"] = self.normalizationRuleId!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7863,6 +8201,9 @@ public class GetNormalizationRuleRequest : Tea.TeaModel {
         }
         if let value = dict["NormalizationRuleId"] as? String {
             self.normalizationRuleId = value
+        }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7882,6 +8223,8 @@ public class GetNormalizationRuleResponseBody : Tea.TeaModel {
         public var extendFieldStoreMode: String?
 
         public var normalizationCategoryId: String?
+
+        public var normalizationFieldSource: String?
 
         public var normalizationRuleDescription: String?
 
@@ -7904,6 +8247,8 @@ public class GetNormalizationRuleResponseBody : Tea.TeaModel {
         public var normalizationRuleVersion: Int32?
 
         public var normalizationSchemaId: String?
+
+        public var normalizationSecurityDomainId: String?
 
         public var orderField: String?
 
@@ -7939,6 +8284,9 @@ public class GetNormalizationRuleResponseBody : Tea.TeaModel {
             if self.normalizationCategoryId != nil {
                 map["NormalizationCategoryId"] = self.normalizationCategoryId!
             }
+            if self.normalizationFieldSource != nil {
+                map["NormalizationFieldSource"] = self.normalizationFieldSource!
+            }
             if self.normalizationRuleDescription != nil {
                 map["NormalizationRuleDescription"] = self.normalizationRuleDescription!
             }
@@ -7972,6 +8320,9 @@ public class GetNormalizationRuleResponseBody : Tea.TeaModel {
             if self.normalizationSchemaId != nil {
                 map["NormalizationSchemaId"] = self.normalizationSchemaId!
             }
+            if self.normalizationSecurityDomainId != nil {
+                map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+            }
             if self.orderField != nil {
                 map["OrderField"] = self.orderField!
             }
@@ -8000,6 +8351,9 @@ public class GetNormalizationRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationCategoryId"] as? String {
                 self.normalizationCategoryId = value
+            }
+            if let value = dict["NormalizationFieldSource"] as? String {
+                self.normalizationFieldSource = value
             }
             if let value = dict["NormalizationRuleDescription"] as? String {
                 self.normalizationRuleDescription = value
@@ -8033,6 +8387,9 @@ public class GetNormalizationRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationSchemaId"] as? String {
                 self.normalizationSchemaId = value
+            }
+            if let value = dict["NormalizationSecurityDomainId"] as? String {
+                self.normalizationSecurityDomainId = value
             }
             if let value = dict["OrderField"] as? String {
                 self.orderField = value
@@ -8785,6 +9142,8 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
 
         public var normalizationCategoryId: String?
 
+        public var normalizationFieldSource: String?
+
         public var normalizationFields: [GetNormalizationSchemaResponseBody.NormalizationSchema.NormalizationFields]?
 
         public var normalizationSchemaDescription: String?
@@ -8799,11 +9158,19 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
 
         public var normalizationSchemaType: String?
 
+        public var normalizationSecurityDomainId: String?
+
+        public var productId: String?
+
+        public var recommendEntities: [String]?
+
         public var targetLogStore: String?
 
         public var targetStoreView: String?
 
         public var updateTime: Int64?
+
+        public var vendorId: String?
 
         public override init() {
             super.init()
@@ -8824,6 +9191,9 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
             }
             if self.normalizationCategoryId != nil {
                 map["NormalizationCategoryId"] = self.normalizationCategoryId!
+            }
+            if self.normalizationFieldSource != nil {
+                map["NormalizationFieldSource"] = self.normalizationFieldSource!
             }
             if self.normalizationFields != nil {
                 var tmp : [Any] = []
@@ -8854,6 +9224,15 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
             if self.normalizationSchemaType != nil {
                 map["NormalizationSchemaType"] = self.normalizationSchemaType!
             }
+            if self.normalizationSecurityDomainId != nil {
+                map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.recommendEntities != nil {
+                map["RecommendEntities"] = self.recommendEntities!
+            }
             if self.targetLogStore != nil {
                 map["TargetLogStore"] = self.targetLogStore!
             }
@@ -8862,6 +9241,9 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
+            }
+            if self.vendorId != nil {
+                map["VendorId"] = self.vendorId!
             }
             return map
         }
@@ -8873,6 +9255,9 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationCategoryId"] as? String {
                 self.normalizationCategoryId = value
+            }
+            if let value = dict["NormalizationFieldSource"] as? String {
+                self.normalizationFieldSource = value
             }
             if let value = dict["NormalizationFields"] as? [Any?] {
                 var tmp : [GetNormalizationSchemaResponseBody.NormalizationSchema.NormalizationFields] = []
@@ -8915,6 +9300,15 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
             if let value = dict["NormalizationSchemaType"] as? String {
                 self.normalizationSchemaType = value
             }
+            if let value = dict["NormalizationSecurityDomainId"] as? String {
+                self.normalizationSecurityDomainId = value
+            }
+            if let value = dict["ProductId"] as? String {
+                self.productId = value
+            }
+            if let value = dict["RecommendEntities"] as? [String] {
+                self.recommendEntities = value
+            }
             if let value = dict["TargetLogStore"] as? String {
                 self.targetLogStore = value
             }
@@ -8923,6 +9317,9 @@ public class GetNormalizationSchemaResponseBody : Tea.TeaModel {
             }
             if let value = dict["UpdateTime"] as? Int64 {
                 self.updateTime = value
+            }
+            if let value = dict["VendorId"] as? String {
+                self.vendorId = value
             }
         }
     }
@@ -9011,6 +9408,191 @@ public class GetNormalizationSchemaResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetNormalizationSchemaResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetResponseRuleStatisticRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+    }
+}
+
+public class GetResponseRuleStatisticResponseBody : Tea.TeaModel {
+    public class ResponseStatistic : Tea.TeaModel {
+        public var responseRuleAllCount: Int32?
+
+        public var responseRuleOnlineCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.responseRuleAllCount != nil {
+                map["ResponseRuleAllCount"] = self.responseRuleAllCount!
+            }
+            if self.responseRuleOnlineCount != nil {
+                map["ResponseRuleOnlineCount"] = self.responseRuleOnlineCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResponseRuleAllCount"] as? Int32 {
+                self.responseRuleAllCount = value
+            }
+            if let value = dict["ResponseRuleOnlineCount"] as? Int32 {
+                self.responseRuleOnlineCount = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var responseStatistic: GetResponseRuleStatisticResponseBody.ResponseStatistic?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.responseStatistic?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.responseStatistic != nil {
+            map["ResponseStatistic"] = self.responseStatistic?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResponseStatistic"] as? [String: Any?] {
+            var model = GetResponseRuleStatisticResponseBody.ResponseStatistic()
+            model.fromMap(value)
+            self.responseStatistic = model
+        }
+    }
+}
+
+public class GetResponseRuleStatisticResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetResponseRuleStatisticResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetResponseRuleStatisticResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -9204,6 +9786,338 @@ public class GetUserConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetUserConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListAlertsRequest : Tea.TeaModel {
+    public var alertLevel: [String]?
+
+    public var alertUuid: String?
+
+    public var endTime: Int64?
+
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderDirection: String?
+
+    public var orderFieldName: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryCondition: String?
+
+    public var queryViewId: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertLevel != nil {
+            map["AlertLevel"] = self.alertLevel!
+        }
+        if self.alertUuid != nil {
+            map["AlertUuid"] = self.alertUuid!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderDirection != nil {
+            map["OrderDirection"] = self.orderDirection!
+        }
+        if self.orderFieldName != nil {
+            map["OrderFieldName"] = self.orderFieldName!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryCondition != nil {
+            map["QueryCondition"] = self.queryCondition!
+        }
+        if self.queryViewId != nil {
+            map["QueryViewId"] = self.queryViewId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AlertLevel"] as? [String] {
+            self.alertLevel = value
+        }
+        if let value = dict["AlertUuid"] as? String {
+            self.alertUuid = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderDirection"] as? String {
+            self.orderDirection = value
+        }
+        if let value = dict["OrderFieldName"] as? String {
+            self.orderFieldName = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["QueryCondition"] as? String {
+            self.queryCondition = value
+        }
+        if let value = dict["QueryViewId"] as? String {
+            self.queryViewId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+    }
+}
+
+public class ListAlertsResponseBody : Tea.TeaModel {
+    public class Alerts : Tea.TeaModel {
+        public var alertRecord: String?
+
+        public var alertUuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alertRecord != nil {
+                map["AlertRecord"] = self.alertRecord!
+            }
+            if self.alertUuid != nil {
+                map["AlertUuid"] = self.alertUuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AlertRecord"] as? String {
+                self.alertRecord = value
+            }
+            if let value = dict["AlertUuid"] as? String {
+                self.alertUuid = value
+            }
+        }
+    }
+    public var alerts: [ListAlertsResponseBody.Alerts]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alerts != nil {
+            var tmp : [Any] = []
+            for k in self.alerts! {
+                tmp.append(k.toMap())
+            }
+            map["Alerts"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Alerts"] as? [Any?] {
+            var tmp : [ListAlertsResponseBody.Alerts] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAlertsResponseBody.Alerts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.alerts = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAlertsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAlertsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAlertsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -13985,6 +14899,8 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
 
         public var relateAssetCount: Int32?
 
+        public var responseTime: Int64?
+
         public var threatLevel: String?
 
         public var updateTime: Int64?
@@ -14033,6 +14949,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             if self.relateAssetCount != nil {
                 map["RelateAssetCount"] = self.relateAssetCount!
             }
+            if self.responseTime != nil {
+                map["ResponseTime"] = self.responseTime!
+            }
             if self.threatLevel != nil {
                 map["ThreatLevel"] = self.threatLevel!
             }
@@ -14073,6 +14992,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["RelateAssetCount"] as? Int32 {
                 self.relateAssetCount = value
+            }
+            if let value = dict["ResponseTime"] as? Int64 {
+                self.responseTime = value
             }
             if let value = dict["ThreatLevel"] as? String {
                 self.threatLevel = value
@@ -14989,6 +15911,10 @@ public class ListNormalizationFieldsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var normalizationFieldSource: String?
+
+    public var normalizationSchemaType: String?
+
     public var regionId: String?
 
     public var roleFor: Int64?
@@ -15019,6 +15945,12 @@ public class ListNormalizationFieldsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.normalizationFieldSource != nil {
+            map["NormalizationFieldSource"] = self.normalizationFieldSource!
+        }
+        if self.normalizationSchemaType != nil {
+            map["NormalizationSchemaType"] = self.normalizationSchemaType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -15041,6 +15973,12 @@ public class ListNormalizationFieldsRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["NormalizationFieldSource"] as? String {
+            self.normalizationFieldSource = value
+        }
+        if let value = dict["NormalizationSchemaType"] as? String {
+            self.normalizationSchemaType = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -15183,6 +16121,8 @@ public class ListNormalizationFieldsResponseBody : Tea.TeaModel {
 
         public var normalizationSchemaId: String?
 
+        public var normalizationSecurityDomainId: String?
+
         public var updateTime: Int64?
 
         public override init() {
@@ -15245,6 +16185,9 @@ public class ListNormalizationFieldsResponseBody : Tea.TeaModel {
             if self.normalizationSchemaId != nil {
                 map["NormalizationSchemaId"] = self.normalizationSchemaId!
             }
+            if self.normalizationSecurityDomainId != nil {
+                map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -15304,6 +16247,9 @@ public class ListNormalizationFieldsResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationSchemaId"] as? String {
                 self.normalizationSchemaId = value
+            }
+            if let value = dict["NormalizationSecurityDomainId"] as? String {
+                self.normalizationSecurityDomainId = value
             }
             if let value = dict["UpdateTime"] as? Int64 {
                 self.updateTime = value
@@ -16068,6 +17014,8 @@ public class ListNormalizationRulesRequest : Tea.TeaModel {
 
     public var normalizationSchemaId: String?
 
+    public var normalizationSecurityDomainId: String?
+
     public var orderField: String?
 
     public var orderType: String?
@@ -16122,6 +17070,9 @@ public class ListNormalizationRulesRequest : Tea.TeaModel {
         if self.normalizationSchemaId != nil {
             map["NormalizationSchemaId"] = self.normalizationSchemaId!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
         }
@@ -16175,6 +17126,9 @@ public class ListNormalizationRulesRequest : Tea.TeaModel {
         if let value = dict["NormalizationSchemaId"] as? String {
             self.normalizationSchemaId = value
         }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
+        }
         if let value = dict["OrderField"] as? String {
             self.orderField = value
         }
@@ -16218,6 +17172,8 @@ public class ListNormalizationRulesShrinkRequest : Tea.TeaModel {
     public var normalizationRuleType: String?
 
     public var normalizationSchemaId: String?
+
+    public var normalizationSecurityDomainId: String?
 
     public var orderField: String?
 
@@ -16273,6 +17229,9 @@ public class ListNormalizationRulesShrinkRequest : Tea.TeaModel {
         if self.normalizationSchemaId != nil {
             map["NormalizationSchemaId"] = self.normalizationSchemaId!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
         }
@@ -16325,6 +17284,9 @@ public class ListNormalizationRulesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NormalizationSchemaId"] as? String {
             self.normalizationSchemaId = value
+        }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
         }
         if let value = dict["OrderField"] as? String {
             self.orderField = value
@@ -16393,6 +17355,8 @@ public class ListNormalizationRulesResponseBody : Tea.TeaModel {
 
         public var normalizationCategoryId: String?
 
+        public var normalizationFieldSource: String?
+
         public var normalizationRuleDescription: String?
 
         public var normalizationRuleExpression: String?
@@ -16414,6 +17378,8 @@ public class ListNormalizationRulesResponseBody : Tea.TeaModel {
         public var normalizationRuleVersion: String?
 
         public var normalizationSchemaId: String?
+
+        public var normalizationSecurityDomainId: String?
 
         public var productId: String?
 
@@ -16446,6 +17412,9 @@ public class ListNormalizationRulesResponseBody : Tea.TeaModel {
             }
             if self.normalizationCategoryId != nil {
                 map["NormalizationCategoryId"] = self.normalizationCategoryId!
+            }
+            if self.normalizationFieldSource != nil {
+                map["NormalizationFieldSource"] = self.normalizationFieldSource!
             }
             if self.normalizationRuleDescription != nil {
                 map["NormalizationRuleDescription"] = self.normalizationRuleDescription!
@@ -16484,6 +17453,9 @@ public class ListNormalizationRulesResponseBody : Tea.TeaModel {
             if self.normalizationSchemaId != nil {
                 map["NormalizationSchemaId"] = self.normalizationSchemaId!
             }
+            if self.normalizationSecurityDomainId != nil {
+                map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+            }
             if self.productId != nil {
                 map["ProductId"] = self.productId!
             }
@@ -16509,6 +17481,9 @@ public class ListNormalizationRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationCategoryId"] as? String {
                 self.normalizationCategoryId = value
+            }
+            if let value = dict["NormalizationFieldSource"] as? String {
+                self.normalizationFieldSource = value
             }
             if let value = dict["NormalizationRuleDescription"] as? String {
                 self.normalizationRuleDescription = value
@@ -16552,6 +17527,9 @@ public class ListNormalizationRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationSchemaId"] as? String {
                 self.normalizationSchemaId = value
+            }
+            if let value = dict["NormalizationSecurityDomainId"] as? String {
+                self.normalizationSecurityDomainId = value
             }
             if let value = dict["ProductId"] as? String {
                 self.productId = value
@@ -16723,7 +17701,11 @@ public class ListNormalizationSchemasRequest : Tea.TeaModel {
 
     public var normalizationCategoryId: String?
 
+    public var normalizationFieldSource: String?
+
     public var normalizationSchemaType: String?
+
+    public var normalizationSecurityDomainId: String?
 
     public var regionId: String?
 
@@ -16755,8 +17737,14 @@ public class ListNormalizationSchemasRequest : Tea.TeaModel {
         if self.normalizationCategoryId != nil {
             map["NormalizationCategoryId"] = self.normalizationCategoryId!
         }
+        if self.normalizationFieldSource != nil {
+            map["NormalizationFieldSource"] = self.normalizationFieldSource!
+        }
         if self.normalizationSchemaType != nil {
             map["NormalizationSchemaType"] = self.normalizationSchemaType!
+        }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -16781,8 +17769,14 @@ public class ListNormalizationSchemasRequest : Tea.TeaModel {
         if let value = dict["NormalizationCategoryId"] as? String {
             self.normalizationCategoryId = value
         }
+        if let value = dict["NormalizationFieldSource"] as? String {
+            self.normalizationFieldSource = value
+        }
         if let value = dict["NormalizationSchemaType"] as? String {
             self.normalizationSchemaType = value
+        }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -16799,6 +17793,8 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
 
         public var normalizationCategoryId: String?
 
+        public var normalizationFieldSource: String?
+
         public var normalizationSchemaDescription: String?
 
         public var normalizationSchemaFrom: String?
@@ -16809,11 +17805,21 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
 
         public var normalizationSchemaTargetLogStore: String?
 
+        public var normalizationSchemaType: String?
+
+        public var normalizationSecurityDomainId: String?
+
+        public var productId: String?
+
+        public var recommendEntities: [String]?
+
         public var targetLogStore: String?
 
         public var targetStoreView: String?
 
         public var updateTime: Int64?
+
+        public var vendorId: String?
 
         public override init() {
             super.init()
@@ -16835,6 +17841,9 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
             if self.normalizationCategoryId != nil {
                 map["NormalizationCategoryId"] = self.normalizationCategoryId!
             }
+            if self.normalizationFieldSource != nil {
+                map["NormalizationFieldSource"] = self.normalizationFieldSource!
+            }
             if self.normalizationSchemaDescription != nil {
                 map["NormalizationSchemaDescription"] = self.normalizationSchemaDescription!
             }
@@ -16850,6 +17859,18 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
             if self.normalizationSchemaTargetLogStore != nil {
                 map["NormalizationSchemaTargetLogStore"] = self.normalizationSchemaTargetLogStore!
             }
+            if self.normalizationSchemaType != nil {
+                map["NormalizationSchemaType"] = self.normalizationSchemaType!
+            }
+            if self.normalizationSecurityDomainId != nil {
+                map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.recommendEntities != nil {
+                map["RecommendEntities"] = self.recommendEntities!
+            }
             if self.targetLogStore != nil {
                 map["TargetLogStore"] = self.targetLogStore!
             }
@@ -16858,6 +17879,9 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
+            }
+            if self.vendorId != nil {
+                map["VendorId"] = self.vendorId!
             }
             return map
         }
@@ -16869,6 +17893,9 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationCategoryId"] as? String {
                 self.normalizationCategoryId = value
+            }
+            if let value = dict["NormalizationFieldSource"] as? String {
+                self.normalizationFieldSource = value
             }
             if let value = dict["NormalizationSchemaDescription"] as? String {
                 self.normalizationSchemaDescription = value
@@ -16885,6 +17912,18 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
             if let value = dict["NormalizationSchemaTargetLogStore"] as? String {
                 self.normalizationSchemaTargetLogStore = value
             }
+            if let value = dict["NormalizationSchemaType"] as? String {
+                self.normalizationSchemaType = value
+            }
+            if let value = dict["NormalizationSecurityDomainId"] as? String {
+                self.normalizationSecurityDomainId = value
+            }
+            if let value = dict["ProductId"] as? String {
+                self.productId = value
+            }
+            if let value = dict["RecommendEntities"] as? [String] {
+                self.recommendEntities = value
+            }
             if let value = dict["TargetLogStore"] as? String {
                 self.targetLogStore = value
             }
@@ -16893,6 +17932,9 @@ public class ListNormalizationSchemasResponseBody : Tea.TeaModel {
             }
             if let value = dict["UpdateTime"] as? Int64 {
                 self.updateTime = value
+            }
+            if let value = dict["VendorId"] as? String {
+                self.vendorId = value
             }
         }
     }
@@ -17016,6 +18058,234 @@ public class ListNormalizationSchemasResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListNormalizationSchemasResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListNormalizationSecurityDomainsRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+    }
+}
+
+public class ListNormalizationSecurityDomainsResponseBody : Tea.TeaModel {
+    public class NormalizationSecurityDomains : Tea.TeaModel {
+        public var normalizationSecurityDomainId: String?
+
+        public var normalizationSecurityDomainName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.normalizationSecurityDomainId != nil {
+                map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+            }
+            if self.normalizationSecurityDomainName != nil {
+                map["NormalizationSecurityDomainName"] = self.normalizationSecurityDomainName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NormalizationSecurityDomainId"] as? String {
+                self.normalizationSecurityDomainId = value
+            }
+            if let value = dict["NormalizationSecurityDomainName"] as? String {
+                self.normalizationSecurityDomainName = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var normalizationSecurityDomains: [ListNormalizationSecurityDomainsResponseBody.NormalizationSecurityDomains]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.normalizationSecurityDomains != nil {
+            var tmp : [Any] = []
+            for k in self.normalizationSecurityDomains! {
+                tmp.append(k.toMap())
+            }
+            map["NormalizationSecurityDomains"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NormalizationSecurityDomains"] as? [Any?] {
+            var tmp : [ListNormalizationSecurityDomainsResponseBody.NormalizationSecurityDomains] = []
+            for v in value {
+                if v != nil {
+                    var model = ListNormalizationSecurityDomainsResponseBody.NormalizationSecurityDomains()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.normalizationSecurityDomains = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListNormalizationSecurityDomainsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListNormalizationSecurityDomainsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListNormalizationSecurityDomainsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -17473,6 +18743,694 @@ public class ListProductsResponse : Tea.TeaModel {
     }
 }
 
+public class ListQueryViewsRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var queryViewScene: String?
+
+    public var queryViewType: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.queryViewScene != nil {
+            map["QueryViewScene"] = self.queryViewScene!
+        }
+        if self.queryViewType != nil {
+            map["QueryViewType"] = self.queryViewType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["QueryViewScene"] as? String {
+            self.queryViewScene = value
+        }
+        if let value = dict["QueryViewType"] as? String {
+            self.queryViewType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+    }
+}
+
+public class ListQueryViewsResponseBody : Tea.TeaModel {
+    public class QueryViews : Tea.TeaModel {
+        public var queryViewCondition: String?
+
+        public var queryViewCriteria: String?
+
+        public var queryViewFields: String?
+
+        public var queryViewId: String?
+
+        public var queryViewName: String?
+
+        public var queryViewOrder: String?
+
+        public var queryViewScene: String?
+
+        public var queryViewStatus: String?
+
+        public var queryViewType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.queryViewCondition != nil {
+                map["QueryViewCondition"] = self.queryViewCondition!
+            }
+            if self.queryViewCriteria != nil {
+                map["QueryViewCriteria"] = self.queryViewCriteria!
+            }
+            if self.queryViewFields != nil {
+                map["QueryViewFields"] = self.queryViewFields!
+            }
+            if self.queryViewId != nil {
+                map["QueryViewId"] = self.queryViewId!
+            }
+            if self.queryViewName != nil {
+                map["QueryViewName"] = self.queryViewName!
+            }
+            if self.queryViewOrder != nil {
+                map["QueryViewOrder"] = self.queryViewOrder!
+            }
+            if self.queryViewScene != nil {
+                map["QueryViewScene"] = self.queryViewScene!
+            }
+            if self.queryViewStatus != nil {
+                map["QueryViewStatus"] = self.queryViewStatus!
+            }
+            if self.queryViewType != nil {
+                map["QueryViewType"] = self.queryViewType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["QueryViewCondition"] as? String {
+                self.queryViewCondition = value
+            }
+            if let value = dict["QueryViewCriteria"] as? String {
+                self.queryViewCriteria = value
+            }
+            if let value = dict["QueryViewFields"] as? String {
+                self.queryViewFields = value
+            }
+            if let value = dict["QueryViewId"] as? String {
+                self.queryViewId = value
+            }
+            if let value = dict["QueryViewName"] as? String {
+                self.queryViewName = value
+            }
+            if let value = dict["QueryViewOrder"] as? String {
+                self.queryViewOrder = value
+            }
+            if let value = dict["QueryViewScene"] as? String {
+                self.queryViewScene = value
+            }
+            if let value = dict["QueryViewStatus"] as? String {
+                self.queryViewStatus = value
+            }
+            if let value = dict["QueryViewType"] as? String {
+                self.queryViewType = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var queryViews: [ListQueryViewsResponseBody.QueryViews]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.queryViews != nil {
+            var tmp : [Any] = []
+            for k in self.queryViews! {
+                tmp.append(k.toMap())
+            }
+            map["QueryViews"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["QueryViews"] as? [Any?] {
+            var tmp : [ListQueryViewsResponseBody.QueryViews] = []
+            for v in value {
+                if v != nil {
+                    var model = ListQueryViewsResponseBody.QueryViews()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.queryViews = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListQueryViewsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListQueryViewsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListQueryViewsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListResponseRuleFieldsRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+    }
+}
+
+public class ListResponseRuleFieldsResponseBody : Tea.TeaModel {
+    public class ListResponseRuleFields : Tea.TeaModel {
+        public class RightValue : Tea.TeaModel {
+            public var value: String?
+
+            public var valueName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                if self.valueName != nil {
+                    map["ValueName"] = self.valueName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+                if let value = dict["ValueName"] as? String {
+                    self.valueName = value
+                }
+            }
+        }
+        public class SupportOperators : Tea.TeaModel {
+            public var hasRightValue: String?
+
+            public var index: Int32?
+
+            public var operator_: String?
+
+            public var operatorName: String?
+
+            public var supportDataType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hasRightValue != nil {
+                    map["HasRightValue"] = self.hasRightValue!
+                }
+                if self.index != nil {
+                    map["Index"] = self.index!
+                }
+                if self.operator_ != nil {
+                    map["Operator"] = self.operator_!
+                }
+                if self.operatorName != nil {
+                    map["OperatorName"] = self.operatorName!
+                }
+                if self.supportDataType != nil {
+                    map["SupportDataType"] = self.supportDataType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["HasRightValue"] as? String {
+                    self.hasRightValue = value
+                }
+                if let value = dict["Index"] as? Int32 {
+                    self.index = value
+                }
+                if let value = dict["Operator"] as? String {
+                    self.operator_ = value
+                }
+                if let value = dict["OperatorName"] as? String {
+                    self.operatorName = value
+                }
+                if let value = dict["SupportDataType"] as? String {
+                    self.supportDataType = value
+                }
+            }
+        }
+        public var dataType: String?
+
+        public var field: String?
+
+        public var fieldName: String?
+
+        public var fieldNormalization: String?
+
+        public var rightValue: [ListResponseRuleFieldsResponseBody.ListResponseRuleFields.RightValue]?
+
+        public var supportOperators: [ListResponseRuleFieldsResponseBody.ListResponseRuleFields.SupportOperators]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataType != nil {
+                map["DataType"] = self.dataType!
+            }
+            if self.field != nil {
+                map["Field"] = self.field!
+            }
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            if self.fieldNormalization != nil {
+                map["FieldNormalization"] = self.fieldNormalization!
+            }
+            if self.rightValue != nil {
+                var tmp : [Any] = []
+                for k in self.rightValue! {
+                    tmp.append(k.toMap())
+                }
+                map["RightValue"] = tmp
+            }
+            if self.supportOperators != nil {
+                var tmp : [Any] = []
+                for k in self.supportOperators! {
+                    tmp.append(k.toMap())
+                }
+                map["SupportOperators"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DataType"] as? String {
+                self.dataType = value
+            }
+            if let value = dict["Field"] as? String {
+                self.field = value
+            }
+            if let value = dict["FieldName"] as? String {
+                self.fieldName = value
+            }
+            if let value = dict["FieldNormalization"] as? String {
+                self.fieldNormalization = value
+            }
+            if let value = dict["RightValue"] as? [Any?] {
+                var tmp : [ListResponseRuleFieldsResponseBody.ListResponseRuleFields.RightValue] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListResponseRuleFieldsResponseBody.ListResponseRuleFields.RightValue()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.rightValue = tmp
+            }
+            if let value = dict["SupportOperators"] as? [Any?] {
+                var tmp : [ListResponseRuleFieldsResponseBody.ListResponseRuleFields.SupportOperators] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListResponseRuleFieldsResponseBody.ListResponseRuleFields.SupportOperators()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.supportOperators = tmp
+            }
+        }
+    }
+    public var listResponseRuleFields: [ListResponseRuleFieldsResponseBody.ListResponseRuleFields]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.listResponseRuleFields != nil {
+            var tmp : [Any] = []
+            for k in self.listResponseRuleFields! {
+                tmp.append(k.toMap())
+            }
+            map["ListResponseRuleFields"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ListResponseRuleFields"] as? [Any?] {
+            var tmp : [ListResponseRuleFieldsResponseBody.ListResponseRuleFields] = []
+            for v in value {
+                if v != nil {
+                    var model = ListResponseRuleFieldsResponseBody.ListResponseRuleFields()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.listResponseRuleFields = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListResponseRuleFieldsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListResponseRuleFieldsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListResponseRuleFieldsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListResponseRulesRequest : Tea.TeaModel {
     public var lang: String?
 
@@ -17847,6 +19805,258 @@ public class ListResponseRulesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListResponseRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListTagsRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public var targetRelation: String?
+
+    public var targetType: String?
+
+    public var targetUuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        if self.targetRelation != nil {
+            map["TargetRelation"] = self.targetRelation!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        if self.targetUuid != nil {
+            map["TargetUuid"] = self.targetUuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+        if let value = dict["TargetRelation"] as? String {
+            self.targetRelation = value
+        }
+        if let value = dict["TargetType"] as? String {
+            self.targetType = value
+        }
+        if let value = dict["TargetUuid"] as? String {
+            self.targetUuid = value
+        }
+    }
+}
+
+public class ListTagsResponseBody : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var count: Int64?
+
+        public var tag: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.tag != nil {
+                map["Tag"] = self.tag!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Count"] as? Int64 {
+                self.count = value
+            }
+            if let value = dict["Tag"] as? String {
+                self.tag = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var tags: [ListTagsResponseBody.Tags]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [ListTagsResponseBody.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = ListTagsResponseBody.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class ListTagsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListTagsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListTagsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -19186,6 +21396,8 @@ public class SetDefaultNormalizationRuleVersionResponseBody : Tea.TeaModel {
 
         public var normalizationSchemaId: String?
 
+        public var normalizationSecurityDomainId: String?
+
         public var productId: String?
 
         public var updateTime: Int64?
@@ -19239,6 +21451,9 @@ public class SetDefaultNormalizationRuleVersionResponseBody : Tea.TeaModel {
             if self.normalizationSchemaId != nil {
                 map["NormalizationSchemaId"] = self.normalizationSchemaId!
             }
+            if self.normalizationSecurityDomainId != nil {
+                map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+            }
             if self.productId != nil {
                 map["ProductId"] = self.productId!
             }
@@ -19285,6 +21500,9 @@ public class SetDefaultNormalizationRuleVersionResponseBody : Tea.TeaModel {
             }
             if let value = dict["NormalizationSchemaId"] as? String {
                 self.normalizationSchemaId = value
+            }
+            if let value = dict["NormalizationSecurityDomainId"] as? String {
+                self.normalizationSecurityDomainId = value
             }
             if let value = dict["ProductId"] as? String {
                 self.productId = value
@@ -22118,6 +24336,8 @@ public class UpdateNormalizationRuleRequest : Tea.TeaModel {
 
     public var normalizationSchemaId: String?
 
+    public var normalizationSecurityDomainId: String?
+
     public var orderField: String?
 
     public var productId: String?
@@ -22181,6 +24401,9 @@ public class UpdateNormalizationRuleRequest : Tea.TeaModel {
         if self.normalizationSchemaId != nil {
             map["NormalizationSchemaId"] = self.normalizationSchemaId!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
         }
@@ -22240,6 +24463,9 @@ public class UpdateNormalizationRuleRequest : Tea.TeaModel {
         if let value = dict["NormalizationSchemaId"] as? String {
             self.normalizationSchemaId = value
         }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
+        }
         if let value = dict["OrderField"] as? String {
             self.orderField = value
         }
@@ -22284,6 +24510,8 @@ public class UpdateNormalizationRuleShrinkRequest : Tea.TeaModel {
     public var normalizationRuleType: String?
 
     public var normalizationSchemaId: String?
+
+    public var normalizationSecurityDomainId: String?
 
     public var orderField: String?
 
@@ -22348,6 +24576,9 @@ public class UpdateNormalizationRuleShrinkRequest : Tea.TeaModel {
         if self.normalizationSchemaId != nil {
             map["NormalizationSchemaId"] = self.normalizationSchemaId!
         }
+        if self.normalizationSecurityDomainId != nil {
+            map["NormalizationSecurityDomainId"] = self.normalizationSecurityDomainId!
+        }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
         }
@@ -22406,6 +24637,9 @@ public class UpdateNormalizationRuleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NormalizationSchemaId"] as? String {
             self.normalizationSchemaId = value
+        }
+        if let value = dict["NormalizationSecurityDomainId"] as? String {
+            self.normalizationSecurityDomainId = value
         }
         if let value = dict["OrderField"] as? String {
             self.orderField = value
