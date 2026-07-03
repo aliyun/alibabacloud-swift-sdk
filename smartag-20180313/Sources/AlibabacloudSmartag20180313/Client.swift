@@ -9,6 +9,18 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "eu-central-1": "smartag.eu-central-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "smartag.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "smartag.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "smartag.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "smartag.cn-hangzhou.aliyuncs.com",
+            "ap-southeast-5": "smartag.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "smartag.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-2": "smartag.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-1": "smartag.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "smartag.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("smartag", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -562,6 +574,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func associateSmartAGWithApplicationBandwidthPackage(_ request: AssociateSmartAGWithApplicationBandwidthPackageRequest) async throws -> AssociateSmartAGWithApplicationBandwidthPackageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await associateSmartAGWithApplicationBandwidthPackageWithOptions(request as! AssociateSmartAGWithApplicationBandwidthPackageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func attachCcnInstanceToCenWithOptions(_ request: AttachCcnInstanceToCenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachCcnInstanceToCenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ccnId)) {
+            query["CcnId"] = request.ccnId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cenId)) {
+            query["CenId"] = request.cenId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subnet)) {
+            query["Subnet"] = request.subnet ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AttachCcnInstanceToCen",
+            "version": "2018-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AttachCcnInstanceToCenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func attachCcnInstanceToCen(_ request: AttachCcnInstanceToCenRequest) async throws -> AttachCcnInstanceToCenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await attachCcnInstanceToCenWithOptions(request as! AttachCcnInstanceToCenRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5421,6 +5473,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeUserOnlineClients(_ request: DescribeUserOnlineClientsRequest) async throws -> DescribeUserOnlineClientsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeUserOnlineClientsWithOptions(request as! DescribeUserOnlineClientsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detachCcnInstanceFromCenWithOptions(_ request: DetachCcnInstanceFromCenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachCcnInstanceFromCenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ccnId)) {
+            query["CcnId"] = request.ccnId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cenId)) {
+            query["CenId"] = request.cenId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DetachCcnInstanceFromCen",
+            "version": "2018-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DetachCcnInstanceFromCenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detachCcnInstanceFromCen(_ request: DetachCcnInstanceFromCenRequest) async throws -> DetachCcnInstanceFromCenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await detachCcnInstanceFromCenWithOptions(request as! DetachCcnInstanceFromCenRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
