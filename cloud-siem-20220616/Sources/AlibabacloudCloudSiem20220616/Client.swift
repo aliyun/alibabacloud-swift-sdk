@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shanghai": "cloud-siem.cn-shanghai.aliyuncs.com",
+            "ap-southeast-1": "cloud-siem.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloud-siem", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -2348,6 +2352,70 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCapacity(_ request: GetCapacityRequest) async throws -> GetCapacityResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getCapacityWithOptions(request as! GetCapacityRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEntitiyStatWithOptions(_ request: GetEntitiyStatRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEntitiyStatResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assetName)) {
+            body["AssetName"] = request.assetName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assetUuid)) {
+            body["AssetUuid"] = request.assetUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entityName)) {
+            body["EntityName"] = request.entityName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entityType)) {
+            body["EntityType"] = request.entityType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entityUuid)) {
+            body["EntityUuid"] = request.entityUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.incidentUuid)) {
+            body["IncidentUuid"] = request.incidentUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isAsset)) {
+            body["IsAsset"] = request.isAsset ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isMalwareEntity)) {
+            body["IsMalwareEntity"] = request.isMalwareEntity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            body["Tags"] = request.tags ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetEntitiyStat",
+            "version": "2022-06-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetEntitiyStatResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEntitiyStat(_ request: GetEntitiyStatRequest) async throws -> GetEntitiyStatResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getEntitiyStatWithOptions(request as! GetEntitiyStatRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
