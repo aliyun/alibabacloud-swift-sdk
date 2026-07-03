@@ -485,6 +485,73 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataAgentAccuracyTestWithOptions(_ request: CreateDataAgentAccuracyTestRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataAgentAccuracyTestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customAgentId)) {
+            query["CustomAgentId"] = request.customAgentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataset)) {
+            query["Dataset"] = request.dataset ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.desc)) {
+            query["Desc"] = request.desc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationPrompt)) {
+            query["EvaluationPrompt"] = request.evaluationPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileId)) {
+            query["FileId"] = request.fileId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxConcurrent)) {
+            query["MaxConcurrent"] = request.maxConcurrent!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mode)) {
+            query["Mode"] = request.mode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needDelete)) {
+            query["NeedDelete"] = request.needDelete!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDataAgentAccuracyTest",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDataAgentAccuracyTestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataAgentAccuracyTest(_ request: CreateDataAgentAccuracyTestRequest) async throws -> CreateDataAgentAccuracyTestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createDataAgentAccuracyTestWithOptions(request as! CreateDataAgentAccuracyTestRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDataAgentKnowledgeBaseWithOptions(_ request: CreateDataAgentKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataAgentKnowledgeBaseResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -897,6 +964,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCustomAgent(_ request: DeleteCustomAgentRequest) async throws -> DeleteCustomAgentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteCustomAgentWithOptions(request as! DeleteCustomAgentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataAgentAccuracyTestWithOptions(_ request: DeleteDataAgentAccuracyTestRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDataAgentAccuracyTestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accuracyTestInsId)) {
+            query["AccuracyTestInsId"] = request.accuracyTestInsId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDataAgentAccuracyTest",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDataAgentAccuracyTestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataAgentAccuracyTest(_ request: DeleteDataAgentAccuracyTestRequest) async throws -> DeleteDataAgentAccuracyTestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDataAgentAccuracyTestWithOptions(request as! DeleteDataAgentAccuracyTestRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2257,6 +2364,159 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCustomAgent(_ request: ListCustomAgentRequest) async throws -> ListCustomAgentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listCustomAgentWithOptions(request as! ListCustomAgentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentAccuracyTestInstancesWithOptions(_ request: ListDataAgentAccuracyTestInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataAgentAccuracyTestInstancesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accuracyTestInsId)) {
+            query["AccuracyTestInsId"] = request.accuracyTestInsId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDataAgentAccuracyTestInstances",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDataAgentAccuracyTestInstancesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentAccuracyTestInstances(_ request: ListDataAgentAccuracyTestInstancesRequest) async throws -> ListDataAgentAccuracyTestInstancesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDataAgentAccuracyTestInstancesWithOptions(request as! ListDataAgentAccuracyTestInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentAccuracyTestResultsWithOptions(_ request: ListDataAgentAccuracyTestResultsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataAgentAccuracyTestResultsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accuracyTestInsId)) {
+            query["AccuracyTestInsId"] = request.accuracyTestInsId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accuracyTestResultId)) {
+            query["AccuracyTestResultId"] = request.accuracyTestResultId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accuracyTestSubtaskId)) {
+            query["AccuracyTestSubtaskId"] = request.accuracyTestSubtaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accuracyTestTaskId)) {
+            query["AccuracyTestTaskId"] = request.accuracyTestTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDataAgentAccuracyTestResults",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDataAgentAccuracyTestResultsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentAccuracyTestResults(_ request: ListDataAgentAccuracyTestResultsRequest) async throws -> ListDataAgentAccuracyTestResultsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDataAgentAccuracyTestResultsWithOptions(request as! ListDataAgentAccuracyTestResultsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentAccuracyTestTasksWithOptions(_ request: ListDataAgentAccuracyTestTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataAgentAccuracyTestTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accuracyTestInsId)) {
+            query["AccuracyTestInsId"] = request.accuracyTestInsId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accuracyTestTaskId)) {
+            query["AccuracyTestTaskId"] = request.accuracyTestTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDataAgentAccuracyTestTasks",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDataAgentAccuracyTestTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentAccuracyTestTasks(_ request: ListDataAgentAccuracyTestTasksRequest) async throws -> ListDataAgentAccuracyTestTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDataAgentAccuracyTestTasksWithOptions(request as! ListDataAgentAccuracyTestTasksRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3633,6 +3893,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.taskConfigShrink)) {
             query["TaskConfig"] = request.taskConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.userOssBucket)) {
+            query["UserOssBucket"] = request.userOssBucket ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -3740,6 +4003,86 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startDataAgentAccuracyTestTaskWithOptions(_ request: StartDataAgentAccuracyTestTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartDataAgentAccuracyTestTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accuracyTestInsId)) {
+            query["AccuracyTestInsId"] = request.accuracyTestInsId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.csvFile)) {
+            query["CsvFile"] = request.csvFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartDataAgentAccuracyTestTask",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartDataAgentAccuracyTestTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startDataAgentAccuracyTestTask(_ request: StartDataAgentAccuracyTestTaskRequest) async throws -> StartDataAgentAccuracyTestTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await startDataAgentAccuracyTestTaskWithOptions(request as! StartDataAgentAccuracyTestTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopDataAgentAccuracyTestTaskWithOptions(_ request: StopDataAgentAccuracyTestTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopDataAgentAccuracyTestTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accuracyTestTaskId)) {
+            query["AccuracyTestTaskId"] = request.accuracyTestTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopDataAgentAccuracyTestTask",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopDataAgentAccuracyTestTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopDataAgentAccuracyTestTask(_ request: StopDataAgentAccuracyTestTaskRequest) async throws -> StopDataAgentAccuracyTestTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await stopDataAgentAccuracyTestTaskWithOptions(request as! StopDataAgentAccuracyTestTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAirflowWithOptions(_ tmpReq: UpdateAirflowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAirflowResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateAirflowShrinkRequest = UpdateAirflowShrinkRequest([:])
@@ -3812,6 +4155,73 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateAirflow(_ request: UpdateAirflowRequest) async throws -> UpdateAirflowResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateAirflowWithOptions(request as! UpdateAirflowRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDataAgentAccuracyTestWithOptions(_ request: UpdateDataAgentAccuracyTestRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDataAgentAccuracyTestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accuracyTestInsId)) {
+            query["AccuracyTestInsId"] = request.accuracyTestInsId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerAgentId)) {
+            query["CustomerAgentId"] = request.customerAgentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataset)) {
+            query["Dataset"] = request.dataset ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.desc)) {
+            query["Desc"] = request.desc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationPrompt)) {
+            query["EvaluationPrompt"] = request.evaluationPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileId)) {
+            query["FileId"] = request.fileId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxConcurrent)) {
+            query["MaxConcurrent"] = request.maxConcurrent!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mode)) {
+            query["Mode"] = request.mode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needDelete)) {
+            query["NeedDelete"] = request.needDelete!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDataAgentAccuracyTest",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDataAgentAccuracyTestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDataAgentAccuracyTest(_ request: UpdateDataAgentAccuracyTestRequest) async throws -> UpdateDataAgentAccuracyTestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateDataAgentAccuracyTestWithOptions(request as! UpdateDataAgentAccuracyTestRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
