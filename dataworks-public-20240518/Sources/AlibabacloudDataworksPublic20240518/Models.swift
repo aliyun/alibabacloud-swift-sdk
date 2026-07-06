@@ -142,6 +142,8 @@ public class Column : Tea.TeaModel {
 
     public var primaryKey: Bool?
 
+    public var statisticsInfos: [String: String]?
+
     public var tableId: String?
 
     public var type: String?
@@ -185,6 +187,9 @@ public class Column : Tea.TeaModel {
         if self.primaryKey != nil {
             map["PrimaryKey"] = self.primaryKey!
         }
+        if self.statisticsInfos != nil {
+            map["StatisticsInfos"] = self.statisticsInfos!
+        }
         if self.tableId != nil {
             map["TableId"] = self.tableId!
         }
@@ -221,6 +226,9 @@ public class Column : Tea.TeaModel {
         }
         if let value = dict["PrimaryKey"] as? Bool {
             self.primaryKey = value
+        }
+        if let value = dict["StatisticsInfos"] as? [String: String] {
+            self.statisticsInfos = value
         }
         if let value = dict["TableId"] as? String {
             self.tableId = value
@@ -4390,6 +4398,8 @@ public class Table : Tea.TeaModel {
 
     public var partitionKeys: [String]?
 
+    public var statisticsInfos: [String: String]?
+
     public var tableType: String?
 
     public var technicalMetadata: Table.TechnicalMetadata?
@@ -4434,6 +4444,9 @@ public class Table : Tea.TeaModel {
         if self.partitionKeys != nil {
             map["PartitionKeys"] = self.partitionKeys!
         }
+        if self.statisticsInfos != nil {
+            map["StatisticsInfos"] = self.statisticsInfos!
+        }
         if self.tableType != nil {
             map["TableType"] = self.tableType!
         }
@@ -4470,6 +4483,9 @@ public class Table : Tea.TeaModel {
         }
         if let value = dict["PartitionKeys"] as? [String] {
             self.partitionKeys = value
+        }
+        if let value = dict["StatisticsInfos"] as? [String: String] {
+            self.statisticsInfos = value
         }
         if let value = dict["TableType"] as? String {
             self.tableType = value
@@ -18520,11 +18536,15 @@ public class CreateParameterResponse : Tea.TeaModel {
 }
 
 public class CreatePipelineRunRequest : Tea.TeaModel {
+    public var autoRunUntilStage: String?
+
     public var description_: String?
 
     public var objectIds: [String]?
 
     public var projectId: Int64?
+
+    public var runMode: String?
 
     public var type: String?
 
@@ -18542,6 +18562,9 @@ public class CreatePipelineRunRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRunUntilStage != nil {
+            map["AutoRunUntilStage"] = self.autoRunUntilStage!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -18551,6 +18574,9 @@ public class CreatePipelineRunRequest : Tea.TeaModel {
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
+        if self.runMode != nil {
+            map["RunMode"] = self.runMode!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -18559,6 +18585,9 @@ public class CreatePipelineRunRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoRunUntilStage"] as? String {
+            self.autoRunUntilStage = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -18568,6 +18597,9 @@ public class CreatePipelineRunRequest : Tea.TeaModel {
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
         }
+        if let value = dict["RunMode"] as? String {
+            self.runMode = value
+        }
         if let value = dict["Type"] as? String {
             self.type = value
         }
@@ -18575,11 +18607,15 @@ public class CreatePipelineRunRequest : Tea.TeaModel {
 }
 
 public class CreatePipelineRunShrinkRequest : Tea.TeaModel {
+    public var autoRunUntilStage: String?
+
     public var description_: String?
 
     public var objectIdsShrink: String?
 
     public var projectId: Int64?
+
+    public var runMode: String?
 
     public var type: String?
 
@@ -18597,6 +18633,9 @@ public class CreatePipelineRunShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRunUntilStage != nil {
+            map["AutoRunUntilStage"] = self.autoRunUntilStage!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -18606,6 +18645,9 @@ public class CreatePipelineRunShrinkRequest : Tea.TeaModel {
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
+        if self.runMode != nil {
+            map["RunMode"] = self.runMode!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -18614,6 +18656,9 @@ public class CreatePipelineRunShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoRunUntilStage"] as? String {
+            self.autoRunUntilStage = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -18622,6 +18667,9 @@ public class CreatePipelineRunShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
+        }
+        if let value = dict["RunMode"] as? String {
+            self.runMode = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
@@ -51252,6 +51300,8 @@ public class GetTableRequest : Tea.TeaModel {
 
     public var includeBusinessMetadata: Bool?
 
+    public var includeExtendedProperties: Bool?
+
     public override init() {
         super.init()
     }
@@ -51272,6 +51322,9 @@ public class GetTableRequest : Tea.TeaModel {
         if self.includeBusinessMetadata != nil {
             map["IncludeBusinessMetadata"] = self.includeBusinessMetadata!
         }
+        if self.includeExtendedProperties != nil {
+            map["IncludeExtendedProperties"] = self.includeExtendedProperties!
+        }
         return map
     }
 
@@ -51282,6 +51335,9 @@ public class GetTableRequest : Tea.TeaModel {
         }
         if let value = dict["IncludeBusinessMetadata"] as? Bool {
             self.includeBusinessMetadata = value
+        }
+        if let value = dict["IncludeExtendedProperties"] as? Bool {
+            self.includeExtendedProperties = value
         }
     }
 }
@@ -55534,6 +55590,8 @@ public class ImportCertificateResponse : Tea.TeaModel {
 }
 
 public class ImportWorkflowDefinitionRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var projectId: Int64?
 
     public var spec: String?
@@ -55552,6 +55610,9 @@ public class ImportWorkflowDefinitionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -55563,6 +55624,9 @@ public class ImportWorkflowDefinitionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
         }
@@ -58930,6 +58994,8 @@ public class ListCertificatesResponse : Tea.TeaModel {
 public class ListColumnsRequest : Tea.TeaModel {
     public var comment: String?
 
+    public var includeExtendedProperties: Bool?
+
     public var name: String?
 
     public var order: String?
@@ -58959,6 +59025,9 @@ public class ListColumnsRequest : Tea.TeaModel {
         if self.comment != nil {
             map["Comment"] = self.comment!
         }
+        if self.includeExtendedProperties != nil {
+            map["IncludeExtendedProperties"] = self.includeExtendedProperties!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -58984,6 +59053,9 @@ public class ListColumnsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Comment"] as? String {
             self.comment = value
+        }
+        if let value = dict["IncludeExtendedProperties"] as? Bool {
+            self.includeExtendedProperties = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -91188,6 +91260,8 @@ public class ListSkillsResponse : Tea.TeaModel {
 public class ListTablesRequest : Tea.TeaModel {
     public var comment: String?
 
+    public var includeExtendedProperties: Bool?
+
     public var name: String?
 
     public var order: String?
@@ -91219,6 +91293,9 @@ public class ListTablesRequest : Tea.TeaModel {
         if self.comment != nil {
             map["Comment"] = self.comment!
         }
+        if self.includeExtendedProperties != nil {
+            map["IncludeExtendedProperties"] = self.includeExtendedProperties!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -91248,6 +91325,9 @@ public class ListTablesRequest : Tea.TeaModel {
         if let value = dict["Comment"] as? String {
             self.comment = value
         }
+        if let value = dict["IncludeExtendedProperties"] as? Bool {
+            self.includeExtendedProperties = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
@@ -91274,6 +91354,8 @@ public class ListTablesRequest : Tea.TeaModel {
 
 public class ListTablesShrinkRequest : Tea.TeaModel {
     public var comment: String?
+
+    public var includeExtendedProperties: Bool?
 
     public var name: String?
 
@@ -91306,6 +91388,9 @@ public class ListTablesShrinkRequest : Tea.TeaModel {
         if self.comment != nil {
             map["Comment"] = self.comment!
         }
+        if self.includeExtendedProperties != nil {
+            map["IncludeExtendedProperties"] = self.includeExtendedProperties!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -91334,6 +91419,9 @@ public class ListTablesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Comment"] as? String {
             self.comment = value
+        }
+        if let value = dict["IncludeExtendedProperties"] as? Bool {
+            self.includeExtendedProperties = value
         }
         if let value = dict["Name"] as? String {
             self.name = value

@@ -2383,6 +2383,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.objectIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.objectIds, "ObjectIds", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRunUntilStage)) {
+            body["AutoRunUntilStage"] = request.autoRunUntilStage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
         }
@@ -2391,6 +2394,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             body["ProjectId"] = request.projectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runMode)) {
+            body["RunMode"] = request.runMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["Type"] = request.type ?? "";
@@ -7239,6 +7245,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func importWorkflowDefinitionWithOptions(_ request: ImportWorkflowDefinitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportWorkflowDefinitionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             body["ProjectId"] = request.projectId!;
         }
