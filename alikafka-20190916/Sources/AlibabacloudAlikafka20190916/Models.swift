@@ -2854,6 +2854,8 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
                 }
             }
         }
+        public var confluentVersion: String?
+
         public var connectCU: Int32?
 
         public var connectReplica: Int32?
@@ -2873,6 +2875,12 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
         public var kafkaRestProxyReplica: Int32?
 
         public var kafkaStorage: Int32?
+
+        public var kraftControllerCU: Int32?
+
+        public var kraftControllerReplica: Int32?
+
+        public var kraftControllerStorage: Int32?
 
         public var ksqlCU: Int32?
 
@@ -2906,6 +2914,9 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.confluentVersion != nil {
+                map["ConfluentVersion"] = self.confluentVersion!
+            }
             if self.connectCU != nil {
                 map["ConnectCU"] = self.connectCU!
             }
@@ -2935,6 +2946,15 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
             }
             if self.kafkaStorage != nil {
                 map["KafkaStorage"] = self.kafkaStorage!
+            }
+            if self.kraftControllerCU != nil {
+                map["KraftControllerCU"] = self.kraftControllerCU!
+            }
+            if self.kraftControllerReplica != nil {
+                map["KraftControllerReplica"] = self.kraftControllerReplica!
+            }
+            if self.kraftControllerStorage != nil {
+                map["KraftControllerStorage"] = self.kraftControllerStorage!
             }
             if self.ksqlCU != nil {
                 map["KsqlCU"] = self.ksqlCU!
@@ -2972,6 +2992,9 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ConfluentVersion"] as? String {
+                self.confluentVersion = value
+            }
             if let value = dict["ConnectCU"] as? Int32 {
                 self.connectCU = value
             }
@@ -3001,6 +3024,15 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
             }
             if let value = dict["KafkaStorage"] as? Int32 {
                 self.kafkaStorage = value
+            }
+            if let value = dict["KraftControllerCU"] as? Int32 {
+                self.kraftControllerCU = value
+            }
+            if let value = dict["KraftControllerReplica"] as? Int32 {
+                self.kraftControllerReplica = value
+            }
+            if let value = dict["KraftControllerStorage"] as? Int32 {
+                self.kraftControllerStorage = value
             }
             if let value = dict["KsqlCU"] as? Int32 {
                 self.ksqlCU = value
@@ -17194,6 +17226,12 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
 
         public var kafkaStorage: Int32?
 
+        public var kraftControllerCU: Int32?
+
+        public var kraftControllerReplica: Int32?
+
+        public var kraftControllerStorage: Int32?
+
         public var ksqlCU: Int32?
 
         public var ksqlList: [UpgradePrePayOrderRequest.ConfluentConfig.KsqlList]?
@@ -17255,6 +17293,15 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
             }
             if self.kafkaStorage != nil {
                 map["KafkaStorage"] = self.kafkaStorage!
+            }
+            if self.kraftControllerCU != nil {
+                map["KraftControllerCU"] = self.kraftControllerCU!
+            }
+            if self.kraftControllerReplica != nil {
+                map["KraftControllerReplica"] = self.kraftControllerReplica!
+            }
+            if self.kraftControllerStorage != nil {
+                map["KraftControllerStorage"] = self.kraftControllerStorage!
             }
             if self.ksqlCU != nil {
                 map["KsqlCU"] = self.ksqlCU!
@@ -17321,6 +17368,15 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
             }
             if let value = dict["KafkaStorage"] as? Int32 {
                 self.kafkaStorage = value
+            }
+            if let value = dict["KraftControllerCU"] as? Int32 {
+                self.kraftControllerCU = value
+            }
+            if let value = dict["KraftControllerReplica"] as? Int32 {
+                self.kraftControllerReplica = value
+            }
+            if let value = dict["KraftControllerStorage"] as? Int32 {
+                self.kraftControllerStorage = value
             }
             if let value = dict["KsqlCU"] as? Int32 {
                 self.ksqlCU = value
