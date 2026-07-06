@@ -5,6 +5,45 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AccessControlEntry : Tea.TeaModel {
+    public var comment: String?
+
+    public var entry: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.entry != nil {
+            map["Entry"] = self.entry!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["Entry"] as? String {
+            self.entry = value
+        }
+    }
+}
+
 public class ArtifactLifecyclePolicy : Tea.TeaModel {
     public class Condition : Tea.TeaModel {
         public var lastPullOlderThanDays: Int32?
@@ -130,6 +169,164 @@ public class ArtifactLifecyclePolicy : Tea.TeaModel {
         }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+    }
+}
+
+public class DiagnosisIssue : Tea.TeaModel {
+    public var code: String?
+
+    public var extra: [String: String]?
+
+    public var firstOccurrence: String?
+
+    public var lastOccurrence: String?
+
+    public var level: String?
+
+    public var occurrenceCount: Int64?
+
+    public var solution: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
+        if self.firstOccurrence != nil {
+            map["FirstOccurrence"] = self.firstOccurrence!
+        }
+        if self.lastOccurrence != nil {
+            map["LastOccurrence"] = self.lastOccurrence!
+        }
+        if self.level != nil {
+            map["Level"] = self.level!
+        }
+        if self.occurrenceCount != nil {
+            map["OccurrenceCount"] = self.occurrenceCount!
+        }
+        if self.solution != nil {
+            map["Solution"] = self.solution!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Extra"] as? [String: String] {
+            self.extra = value
+        }
+        if let value = dict["FirstOccurrence"] as? String {
+            self.firstOccurrence = value
+        }
+        if let value = dict["LastOccurrence"] as? String {
+            self.lastOccurrence = value
+        }
+        if let value = dict["Level"] as? String {
+            self.level = value
+        }
+        if let value = dict["OccurrenceCount"] as? Int64 {
+            self.occurrenceCount = value
+        }
+        if let value = dict["Solution"] as? String {
+            self.solution = value
+        }
+    }
+}
+
+public class DiagnosisTarget : Tea.TeaModel {
+    public var endTime: String?
+
+    public var extra: [String: String]?
+
+    public var namespace: String?
+
+    public var relatedId: String?
+
+    public var repository: String?
+
+    public var startTime: String?
+
+    public var tag: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.relatedId != nil {
+            map["RelatedId"] = self.relatedId!
+        }
+        if self.repository != nil {
+            map["Repository"] = self.repository!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Extra"] as? [String: String] {
+            self.extra = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["RelatedId"] as? String {
+            self.relatedId = value
+        }
+        if let value = dict["Repository"] as? String {
+            self.repository = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
         }
     }
 }
@@ -2409,6 +2606,8 @@ public class CreateInstanceEndpointAclPolicyRequest : Tea.TeaModel {
 
     public var endpointType: String?
 
+    public var entries: [AccessControlEntry]?
+
     public var entry: String?
 
     public var instanceId: String?
@@ -2435,6 +2634,13 @@ public class CreateInstanceEndpointAclPolicyRequest : Tea.TeaModel {
         if self.endpointType != nil {
             map["EndpointType"] = self.endpointType!
         }
+        if self.entries != nil {
+            var tmp : [Any] = []
+            for k in self.entries! {
+                tmp.append(k.toMap())
+            }
+            map["Entries"] = tmp
+        }
         if self.entry != nil {
             map["Entry"] = self.entry!
         }
@@ -2454,6 +2660,90 @@ public class CreateInstanceEndpointAclPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["EndpointType"] as? String {
             self.endpointType = value
+        }
+        if let value = dict["Entries"] as? [Any?] {
+            var tmp : [AccessControlEntry] = []
+            for v in value {
+                if v != nil {
+                    var model = AccessControlEntry()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.entries = tmp
+        }
+        if let value = dict["Entry"] as? String {
+            self.entry = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["ModuleName"] as? String {
+            self.moduleName = value
+        }
+    }
+}
+
+public class CreateInstanceEndpointAclPolicyShrinkRequest : Tea.TeaModel {
+    public var comment: String?
+
+    public var endpointType: String?
+
+    public var entriesShrink: String?
+
+    public var entry: String?
+
+    public var instanceId: String?
+
+    public var moduleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.endpointType != nil {
+            map["EndpointType"] = self.endpointType!
+        }
+        if self.entriesShrink != nil {
+            map["Entries"] = self.entriesShrink!
+        }
+        if self.entry != nil {
+            map["Entry"] = self.entry!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.moduleName != nil {
+            map["ModuleName"] = self.moduleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["EndpointType"] as? String {
+            self.endpointType = value
+        }
+        if let value = dict["Entries"] as? String {
+            self.entriesShrink = value
         }
         if let value = dict["Entry"] as? String {
             self.entry = value
@@ -6077,6 +6367,8 @@ public class DeleteEventCenterRuleResponse : Tea.TeaModel {
 public class DeleteInstanceEndpointAclPolicyRequest : Tea.TeaModel {
     public var endpointType: String?
 
+    public var entries: [AccessControlEntry]?
+
     public var entry: String?
 
     public var instanceId: String?
@@ -6100,6 +6392,13 @@ public class DeleteInstanceEndpointAclPolicyRequest : Tea.TeaModel {
         if self.endpointType != nil {
             map["EndpointType"] = self.endpointType!
         }
+        if self.entries != nil {
+            var tmp : [Any] = []
+            for k in self.entries! {
+                tmp.append(k.toMap())
+            }
+            map["Entries"] = tmp
+        }
         if self.entry != nil {
             map["Entry"] = self.entry!
         }
@@ -6116,6 +6415,82 @@ public class DeleteInstanceEndpointAclPolicyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["EndpointType"] as? String {
             self.endpointType = value
+        }
+        if let value = dict["Entries"] as? [Any?] {
+            var tmp : [AccessControlEntry] = []
+            for v in value {
+                if v != nil {
+                    var model = AccessControlEntry()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.entries = tmp
+        }
+        if let value = dict["Entry"] as? String {
+            self.entry = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["ModuleName"] as? String {
+            self.moduleName = value
+        }
+    }
+}
+
+public class DeleteInstanceEndpointAclPolicyShrinkRequest : Tea.TeaModel {
+    public var endpointType: String?
+
+    public var entriesShrink: String?
+
+    public var entry: String?
+
+    public var instanceId: String?
+
+    public var moduleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpointType != nil {
+            map["EndpointType"] = self.endpointType!
+        }
+        if self.entriesShrink != nil {
+            map["Entries"] = self.entriesShrink!
+        }
+        if self.entry != nil {
+            map["Entry"] = self.entry!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.moduleName != nil {
+            map["ModuleName"] = self.moduleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndpointType"] as? String {
+            self.endpointType = value
+        }
+        if let value = dict["Entries"] as? String {
+            self.entriesShrink = value
         }
         if let value = dict["Entry"] as? String {
             self.entry = value
