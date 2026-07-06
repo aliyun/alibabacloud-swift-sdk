@@ -2809,6 +2809,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uninstallAgentWithTypeWithOptions(_ request: UninstallAgentWithTypeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UninstallAgentWithTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            body["agentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentVersion)) {
+            body["agentVersion"] = request.agentVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            body["instanceType"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instances)) {
+            body["instances"] = request.instances ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UninstallAgentWithType",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/am/agent/uninstallAgent",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UninstallAgentWithTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uninstallAgentWithType(_ request: UninstallAgentWithTypeRequest) async throws -> UninstallAgentWithTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await uninstallAgentWithTypeWithOptions(request as! UninstallAgentWithTypeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAlertDestinationWithOptions(_ request: UpdateAlertDestinationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAlertDestinationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3093,5 +3135,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await upgradeAgentForClusterWithOptions(request as! UpgradeAgentForClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradeAgentWithTypeWithOptions(_ request: UpgradeAgentWithTypeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradeAgentWithTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            body["agentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentVersion)) {
+            body["agentVersion"] = request.agentVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            body["instanceType"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instances)) {
+            body["instances"] = request.instances ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpgradeAgentWithType",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/am/agent/upgradeAgent",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpgradeAgentWithTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradeAgentWithType(_ request: UpgradeAgentWithTypeRequest) async throws -> UpgradeAgentWithTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await upgradeAgentWithTypeWithOptions(request as! UpgradeAgentWithTypeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
