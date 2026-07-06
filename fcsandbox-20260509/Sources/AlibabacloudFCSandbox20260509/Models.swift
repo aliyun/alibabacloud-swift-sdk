@@ -100,6 +100,53 @@ public class ApiKey : Tea.TeaModel {
     }
 }
 
+public class CertConfig : Tea.TeaModel {
+    public var certName: String?
+
+    public var certificate: String?
+
+    public var privateKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certName != nil {
+            map["certName"] = self.certName!
+        }
+        if self.certificate != nil {
+            map["certificate"] = self.certificate!
+        }
+        if self.privateKey != nil {
+            map["privateKey"] = self.privateKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["certName"] as? String {
+            self.certName = value
+        }
+        if let value = dict["certificate"] as? String {
+            self.certificate = value
+        }
+        if let value = dict["privateKey"] as? String {
+            self.privateKey = value
+        }
+    }
+}
+
 public class CreateApiKeyInput : Tea.TeaModel {
     public var apiKeyName: String?
 
@@ -135,6 +182,144 @@ public class CreateApiKeyInput : Tea.TeaModel {
         }
         if let value = dict["expireTime"] as? String {
             self.expireTime = value
+        }
+    }
+}
+
+public class CreateCustomDomainInput : Tea.TeaModel {
+    public var certConfig: CertConfig?
+
+    public var description_: String?
+
+    public var domainName: String?
+
+    public var tlsConfig: TLSConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.certConfig?.validate()
+        try self.tlsConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certConfig != nil {
+            map["certConfig"] = self.certConfig?.toMap()
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.domainName != nil {
+            map["domainName"] = self.domainName!
+        }
+        if self.tlsConfig != nil {
+            map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["certConfig"] as? [String: Any?] {
+            var model = CertConfig()
+            model.fromMap(value)
+            self.certConfig = model
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["domainName"] as? String {
+            self.domainName = value
+        }
+        if let value = dict["tlsConfig"] as? [String: Any?] {
+            var model = TLSConfig()
+            model.fromMap(value)
+            self.tlsConfig = model
+        }
+    }
+}
+
+public class CustomDomainResp : Tea.TeaModel {
+    public var certConfig: CertConfig?
+
+    public var createdAt: Int64?
+
+    public var description_: String?
+
+    public var domainName: String?
+
+    public var tlsConfig: TLSConfig?
+
+    public var updatedAt: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.certConfig?.validate()
+        try self.tlsConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certConfig != nil {
+            map["certConfig"] = self.certConfig?.toMap()
+        }
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.domainName != nil {
+            map["domainName"] = self.domainName!
+        }
+        if self.tlsConfig != nil {
+            map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        if self.updatedAt != nil {
+            map["updatedAt"] = self.updatedAt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["certConfig"] as? [String: Any?] {
+            var model = CertConfig()
+            model.fromMap(value)
+            self.certConfig = model
+        }
+        if let value = dict["createdAt"] as? Int64 {
+            self.createdAt = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["domainName"] as? String {
+            self.domainName = value
+        }
+        if let value = dict["tlsConfig"] as? [String: Any?] {
+            var model = TLSConfig()
+            model.fromMap(value)
+            self.tlsConfig = model
+        }
+        if let value = dict["updatedAt"] as? Int64 {
+            self.updatedAt = value
         }
     }
 }
@@ -1191,6 +1376,53 @@ public class Quota : Tea.TeaModel {
     }
 }
 
+public class TLSConfig : Tea.TeaModel {
+    public var cipherSuites: [String]?
+
+    public var maxVersion: String?
+
+    public var minVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cipherSuites != nil {
+            map["cipherSuites"] = self.cipherSuites!
+        }
+        if self.maxVersion != nil {
+            map["maxVersion"] = self.maxVersion!
+        }
+        if self.minVersion != nil {
+            map["minVersion"] = self.minVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cipherSuites"] as? [String] {
+            self.cipherSuites = value
+        }
+        if let value = dict["maxVersion"] as? String {
+            self.maxVersion = value
+        }
+        if let value = dict["minVersion"] as? String {
+            self.minVersion = value
+        }
+    }
+}
+
 public class UpdateApiKeyInput : Tea.TeaModel {
     public var apiKeyName: String?
 
@@ -1234,6 +1466,59 @@ public class UpdateApiKeyInput : Tea.TeaModel {
         }
         if let value = dict["status"] as? String {
             self.status = value
+        }
+    }
+}
+
+public class UpdateCustomDomainInput : Tea.TeaModel {
+    public var certConfig: CertConfig?
+
+    public var description_: String?
+
+    public var tlsConfig: TLSConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.certConfig?.validate()
+        try self.tlsConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certConfig != nil {
+            map["certConfig"] = self.certConfig?.toMap()
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.tlsConfig != nil {
+            map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["certConfig"] as? [String: Any?] {
+            var model = CertConfig()
+            model.fromMap(value)
+            self.certConfig = model
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["tlsConfig"] as? [String: Any?] {
+            var model = TLSConfig()
+            model.fromMap(value)
+            self.tlsConfig = model
         }
     }
 }
