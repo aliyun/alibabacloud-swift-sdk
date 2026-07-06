@@ -15164,6 +15164,65 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func signOutOrgAccountWithOptions(_ tmpReq: SignOutOrgAccountRequest, _ tmpHeader: SignOutOrgAccountHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SignOutOrgAccountResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SignOutOrgAccountShrinkRequest = SignOutOrgAccountShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: SignOutOrgAccountShrinkHeaders = SignOutOrgAccountShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.reasonI18nForEmployee)) {
+            request.reasonI18nForEmployeeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.reasonI18nForEmployee, "ReasonI18nForEmployee", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            body["Reason"] = request.reason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reasonI18nForEmployeeShrink)) {
+            body["ReasonI18nForEmployee"] = request.reasonI18nForEmployeeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SignOutOrgAccount",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/contact/signOutOrgAccount",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SignOutOrgAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func signOutOrgAccount(_ request: SignOutOrgAccountRequest) async throws -> SignOutOrgAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SignOutOrgAccountHeaders = SignOutOrgAccountHeaders([:])
+        return try await signOutOrgAccountWithOptions(request as! SignOutOrgAccountRequest, headers as! SignOutOrgAccountHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func simpleListReportWithOptions(_ tmpReq: SimpleListReportRequest, _ tmpHeader: SimpleListReportHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SimpleListReportResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SimpleListReportShrinkRequest = SimpleListReportShrinkRequest([:])
