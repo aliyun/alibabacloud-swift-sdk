@@ -10527,6 +10527,609 @@ public class ListAutoDisposeEntitiesResponse : Tea.TeaModel {
     }
 }
 
+public class ListDataConnectorsRequest : Tea.TeaModel {
+    public var dataConnectorIds: [String]?
+
+    public var dataConnectorName: String?
+
+    public var dataConnectorStatus: String?
+
+    public var dataConnectorType: String?
+
+    public var destDataSourceId: String?
+
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderField: String?
+
+    public var orderType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var slsIngestionJobName: String?
+
+    public var srcDataType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataConnectorIds != nil {
+            map["DataConnectorIds"] = self.dataConnectorIds!
+        }
+        if self.dataConnectorName != nil {
+            map["DataConnectorName"] = self.dataConnectorName!
+        }
+        if self.dataConnectorStatus != nil {
+            map["DataConnectorStatus"] = self.dataConnectorStatus!
+        }
+        if self.dataConnectorType != nil {
+            map["DataConnectorType"] = self.dataConnectorType!
+        }
+        if self.destDataSourceId != nil {
+            map["DestDataSourceId"] = self.destDataSourceId!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderField != nil {
+            map["OrderField"] = self.orderField!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.slsIngestionJobName != nil {
+            map["SlsIngestionJobName"] = self.slsIngestionJobName!
+        }
+        if self.srcDataType != nil {
+            map["SrcDataType"] = self.srcDataType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataConnectorIds"] as? [String] {
+            self.dataConnectorIds = value
+        }
+        if let value = dict["DataConnectorName"] as? String {
+            self.dataConnectorName = value
+        }
+        if let value = dict["DataConnectorStatus"] as? String {
+            self.dataConnectorStatus = value
+        }
+        if let value = dict["DataConnectorType"] as? String {
+            self.dataConnectorType = value
+        }
+        if let value = dict["DestDataSourceId"] as? String {
+            self.destDataSourceId = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderField"] as? String {
+            self.orderField = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["SlsIngestionJobName"] as? String {
+            self.slsIngestionJobName = value
+        }
+        if let value = dict["SrcDataType"] as? String {
+            self.srcDataType = value
+        }
+    }
+}
+
+public class ListDataConnectorsShrinkRequest : Tea.TeaModel {
+    public var dataConnectorIdsShrink: String?
+
+    public var dataConnectorName: String?
+
+    public var dataConnectorStatus: String?
+
+    public var dataConnectorType: String?
+
+    public var destDataSourceId: String?
+
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderField: String?
+
+    public var orderType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var slsIngestionJobName: String?
+
+    public var srcDataType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataConnectorIdsShrink != nil {
+            map["DataConnectorIds"] = self.dataConnectorIdsShrink!
+        }
+        if self.dataConnectorName != nil {
+            map["DataConnectorName"] = self.dataConnectorName!
+        }
+        if self.dataConnectorStatus != nil {
+            map["DataConnectorStatus"] = self.dataConnectorStatus!
+        }
+        if self.dataConnectorType != nil {
+            map["DataConnectorType"] = self.dataConnectorType!
+        }
+        if self.destDataSourceId != nil {
+            map["DestDataSourceId"] = self.destDataSourceId!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderField != nil {
+            map["OrderField"] = self.orderField!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.slsIngestionJobName != nil {
+            map["SlsIngestionJobName"] = self.slsIngestionJobName!
+        }
+        if self.srcDataType != nil {
+            map["SrcDataType"] = self.srcDataType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataConnectorIds"] as? String {
+            self.dataConnectorIdsShrink = value
+        }
+        if let value = dict["DataConnectorName"] as? String {
+            self.dataConnectorName = value
+        }
+        if let value = dict["DataConnectorStatus"] as? String {
+            self.dataConnectorStatus = value
+        }
+        if let value = dict["DataConnectorType"] as? String {
+            self.dataConnectorType = value
+        }
+        if let value = dict["DestDataSourceId"] as? String {
+            self.destDataSourceId = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderField"] as? String {
+            self.orderField = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["SlsIngestionJobName"] as? String {
+            self.slsIngestionJobName = value
+        }
+        if let value = dict["SrcDataType"] as? String {
+            self.srcDataType = value
+        }
+    }
+}
+
+public class ListDataConnectorsResponseBody : Tea.TeaModel {
+    public class DataConnector : Tea.TeaModel {
+        public var authConfigId: String?
+
+        public var authConfigProduct: String?
+
+        public var authConfigVendor: String?
+
+        public var creationTime: Int64?
+
+        public var dataConnectorConfig: String?
+
+        public var dataConnectorId: String?
+
+        public var dataConnectorName: String?
+
+        public var dataConnectorStatus: String?
+
+        public var dataConnectorType: String?
+
+        public var destDataSourceId: String?
+
+        public var logProjectName: String?
+
+        public var logRegionId: String?
+
+        public var logStoreName: String?
+
+        public var slsIngestionJobName: String?
+
+        public var slsIngestionJobState: String?
+
+        public var srcDataType: String?
+
+        public var updateTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authConfigId != nil {
+                map["AuthConfigId"] = self.authConfigId!
+            }
+            if self.authConfigProduct != nil {
+                map["AuthConfigProduct"] = self.authConfigProduct!
+            }
+            if self.authConfigVendor != nil {
+                map["AuthConfigVendor"] = self.authConfigVendor!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.dataConnectorConfig != nil {
+                map["DataConnectorConfig"] = self.dataConnectorConfig!
+            }
+            if self.dataConnectorId != nil {
+                map["DataConnectorId"] = self.dataConnectorId!
+            }
+            if self.dataConnectorName != nil {
+                map["DataConnectorName"] = self.dataConnectorName!
+            }
+            if self.dataConnectorStatus != nil {
+                map["DataConnectorStatus"] = self.dataConnectorStatus!
+            }
+            if self.dataConnectorType != nil {
+                map["DataConnectorType"] = self.dataConnectorType!
+            }
+            if self.destDataSourceId != nil {
+                map["DestDataSourceId"] = self.destDataSourceId!
+            }
+            if self.logProjectName != nil {
+                map["LogProjectName"] = self.logProjectName!
+            }
+            if self.logRegionId != nil {
+                map["LogRegionId"] = self.logRegionId!
+            }
+            if self.logStoreName != nil {
+                map["LogStoreName"] = self.logStoreName!
+            }
+            if self.slsIngestionJobName != nil {
+                map["SlsIngestionJobName"] = self.slsIngestionJobName!
+            }
+            if self.slsIngestionJobState != nil {
+                map["SlsIngestionJobState"] = self.slsIngestionJobState!
+            }
+            if self.srcDataType != nil {
+                map["SrcDataType"] = self.srcDataType!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthConfigId"] as? String {
+                self.authConfigId = value
+            }
+            if let value = dict["AuthConfigProduct"] as? String {
+                self.authConfigProduct = value
+            }
+            if let value = dict["AuthConfigVendor"] as? String {
+                self.authConfigVendor = value
+            }
+            if let value = dict["CreationTime"] as? Int64 {
+                self.creationTime = value
+            }
+            if let value = dict["DataConnectorConfig"] as? String {
+                self.dataConnectorConfig = value
+            }
+            if let value = dict["DataConnectorId"] as? String {
+                self.dataConnectorId = value
+            }
+            if let value = dict["DataConnectorName"] as? String {
+                self.dataConnectorName = value
+            }
+            if let value = dict["DataConnectorStatus"] as? String {
+                self.dataConnectorStatus = value
+            }
+            if let value = dict["DataConnectorType"] as? String {
+                self.dataConnectorType = value
+            }
+            if let value = dict["DestDataSourceId"] as? String {
+                self.destDataSourceId = value
+            }
+            if let value = dict["LogProjectName"] as? String {
+                self.logProjectName = value
+            }
+            if let value = dict["LogRegionId"] as? String {
+                self.logRegionId = value
+            }
+            if let value = dict["LogStoreName"] as? String {
+                self.logStoreName = value
+            }
+            if let value = dict["SlsIngestionJobName"] as? String {
+                self.slsIngestionJobName = value
+            }
+            if let value = dict["SlsIngestionJobState"] as? String {
+                self.slsIngestionJobState = value
+            }
+            if let value = dict["SrcDataType"] as? String {
+                self.srcDataType = value
+            }
+            if let value = dict["UpdateTime"] as? Int64 {
+                self.updateTime = value
+            }
+        }
+    }
+    public var dataConnector: [ListDataConnectorsResponseBody.DataConnector]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataConnector != nil {
+            var tmp : [Any] = []
+            for k in self.dataConnector! {
+                tmp.append(k.toMap())
+            }
+            map["DataConnector"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataConnector"] as? [Any?] {
+            var tmp : [ListDataConnectorsResponseBody.DataConnector] = []
+            for v in value {
+                if v != nil {
+                    var model = ListDataConnectorsResponseBody.DataConnector()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataConnector = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListDataConnectorsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataConnectorsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListDataConnectorsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListDataIngestionTemplatesRequest : Tea.TeaModel {
     public var dataIngestionTemplateStatus: String?
 
@@ -21600,6 +22203,158 @@ public class SetDefaultNormalizationRuleVersionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SetDefaultNormalizationRuleVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateAlertRequest : Tea.TeaModel {
+    public var alertStatus: String?
+
+    public var alertUuid: String?
+
+    public var lang: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertStatus != nil {
+            map["AlertStatus"] = self.alertStatus!
+        }
+        if self.alertUuid != nil {
+            map["AlertUuid"] = self.alertUuid!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AlertStatus"] as? String {
+            self.alertStatus = value
+        }
+        if let value = dict["AlertUuid"] as? String {
+            self.alertUuid = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int64 {
+            self.roleType = value
+        }
+    }
+}
+
+public class UpdateAlertResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateAlertResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateAlertResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateAlertResponseBody()
             model.fromMap(value)
             self.body = model
         }
