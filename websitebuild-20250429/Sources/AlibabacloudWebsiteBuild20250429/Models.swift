@@ -4298,6 +4298,130 @@ public class BindAppDomainRequest : Tea.TeaModel {
 
 public class BindAppDomainResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
+        public class DnsConflict : Tea.TeaModel {
+            public class Records : Tea.TeaModel {
+                public var host: String?
+
+                public var recordType: String?
+
+                public var status: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.host != nil {
+                        map["Host"] = self.host!
+                    }
+                    if self.recordType != nil {
+                        map["RecordType"] = self.recordType!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Host"] as? String {
+                        self.host = value
+                    }
+                    if let value = dict["RecordType"] as? String {
+                        self.recordType = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var canAutoResolve: Bool?
+
+            public var hasConflict: Bool?
+
+            public var message: String?
+
+            public var records: [BindAppDomainResponseBody.Module.DnsConflict.Records]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.canAutoResolve != nil {
+                    map["CanAutoResolve"] = self.canAutoResolve!
+                }
+                if self.hasConflict != nil {
+                    map["HasConflict"] = self.hasConflict!
+                }
+                if self.message != nil {
+                    map["Message"] = self.message!
+                }
+                if self.records != nil {
+                    var tmp : [Any] = []
+                    for k in self.records! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Records"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CanAutoResolve"] as? Bool {
+                    self.canAutoResolve = value
+                }
+                if let value = dict["HasConflict"] as? Bool {
+                    self.hasConflict = value
+                }
+                if let value = dict["Message"] as? String {
+                    self.message = value
+                }
+                if let value = dict["Records"] as? [Any?] {
+                    var tmp : [BindAppDomainResponseBody.Module.DnsConflict.Records] = []
+                    for v in value {
+                        if v != nil {
+                            var model = BindAppDomainResponseBody.Module.DnsConflict.Records()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.records = tmp
+                }
+            }
+        }
+        public var dnsConflict: BindAppDomainResponseBody.Module.DnsConflict?
+
         public var success: Bool?
 
         public override init() {
@@ -4310,10 +4434,14 @@ public class BindAppDomainResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dnsConflict?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dnsConflict != nil {
+                map["DnsConflict"] = self.dnsConflict?.toMap()
+            }
             if self.success != nil {
                 map["Success"] = self.success!
             }
@@ -4322,6 +4450,11 @@ public class BindAppDomainResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["DnsConflict"] as? [String: Any?] {
+                var model = BindAppDomainResponseBody.Module.DnsConflict()
+                model.fromMap(value)
+                self.dnsConflict = model
+            }
             if let value = dict["Success"] as? Bool {
                 self.success = value
             }
@@ -28224,6 +28357,166 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class DnsConflict : Tea.TeaModel {
+                public class Records : Tea.TeaModel {
+                    public var host: String?
+
+                    public var recordType: String?
+
+                    public var status: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.host != nil {
+                            map["Host"] = self.host!
+                        }
+                        if self.recordType != nil {
+                            map["RecordType"] = self.recordType!
+                        }
+                        if self.status != nil {
+                            map["Status"] = self.status!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Host"] as? String {
+                            self.host = value
+                        }
+                        if let value = dict["RecordType"] as? String {
+                            self.recordType = value
+                        }
+                        if let value = dict["Status"] as? String {
+                            self.status = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var canAutoResolve: Bool?
+
+                public var hasConflict: Bool?
+
+                public var message: String?
+
+                public var records: [ListAppInstanceDomainsResponseBody.Module.Data.DnsConflict.Records]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.canAutoResolve != nil {
+                        map["CanAutoResolve"] = self.canAutoResolve!
+                    }
+                    if self.hasConflict != nil {
+                        map["HasConflict"] = self.hasConflict!
+                    }
+                    if self.message != nil {
+                        map["Message"] = self.message!
+                    }
+                    if self.records != nil {
+                        var tmp : [Any] = []
+                        for k in self.records! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Records"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CanAutoResolve"] as? Bool {
+                        self.canAutoResolve = value
+                    }
+                    if let value = dict["HasConflict"] as? Bool {
+                        self.hasConflict = value
+                    }
+                    if let value = dict["Message"] as? String {
+                        self.message = value
+                    }
+                    if let value = dict["Records"] as? [Any?] {
+                        var tmp : [ListAppInstanceDomainsResponseBody.Module.Data.DnsConflict.Records] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ListAppInstanceDomainsResponseBody.Module.Data.DnsConflict.Records()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.records = tmp
+                    }
+                }
+            }
+            public class Migration : Tea.TeaModel {
+                public var migrationStatus: String?
+
+                public var previousDomain: Any?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.migrationStatus != nil {
+                        map["MigrationStatus"] = self.migrationStatus!
+                    }
+                    if self.previousDomain != nil {
+                        map["PreviousDomain"] = self.previousDomain!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MigrationStatus"] as? String {
+                        self.migrationStatus = value
+                    }
+                    if let value = dict["PreviousDomain"] as? Any {
+                        self.previousDomain = value
+                    }
+                }
+            }
             public class Ownership : Tea.TeaModel {
                 public var account: String?
 
@@ -28518,7 +28811,11 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public var createTime: String?
 
+            public var dnsConflict: ListAppInstanceDomainsResponseBody.Module.Data.DnsConflict?
+
             public var domainName: String?
+
+            public var migration: ListAppInstanceDomainsResponseBody.Module.Data.Migration?
 
             public var overallStatus: String?
 
@@ -28541,6 +28838,8 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.certificate?.validate()
+                try self.dnsConflict?.validate()
+                try self.migration?.validate()
                 try self.ownership?.validate()
                 try self.qualification?.validate()
                 try self.resolution?.validate()
@@ -28555,8 +28854,14 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.dnsConflict != nil {
+                    map["DnsConflict"] = self.dnsConflict?.toMap()
+                }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
+                }
+                if self.migration != nil {
+                    map["Migration"] = self.migration?.toMap()
                 }
                 if self.overallStatus != nil {
                     map["OverallStatus"] = self.overallStatus!
@@ -28586,8 +28891,18 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
                 }
+                if let value = dict["DnsConflict"] as? [String: Any?] {
+                    var model = ListAppInstanceDomainsResponseBody.Module.Data.DnsConflict()
+                    model.fromMap(value)
+                    self.dnsConflict = model
+                }
                 if let value = dict["DomainName"] as? String {
                     self.domainName = value
+                }
+                if let value = dict["Migration"] as? [String: Any?] {
+                    var model = ListAppInstanceDomainsResponseBody.Module.Data.Migration()
+                    model.fromMap(value)
+                    self.migration = model
                 }
                 if let value = dict["OverallStatus"] as? String {
                     self.overallStatus = value
@@ -28669,10 +28984,164 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class DnsConflict : Tea.TeaModel {
+                public class Records : Tea.TeaModel {
+                    public var host: String?
+
+                    public var recordType: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.host != nil {
+                            map["Host"] = self.host!
+                        }
+                        if self.recordType != nil {
+                            map["RecordType"] = self.recordType!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Host"] as? String {
+                            self.host = value
+                        }
+                        if let value = dict["RecordType"] as? String {
+                            self.recordType = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var canAutoResolve: Bool?
+
+                public var hasConflict: Bool?
+
+                public var message: String?
+
+                public var records: [ListAppInstanceDomainsResponseBody.Module.Next.DnsConflict.Records]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.canAutoResolve != nil {
+                        map["CanAutoResolve"] = self.canAutoResolve!
+                    }
+                    if self.hasConflict != nil {
+                        map["HasConflict"] = self.hasConflict!
+                    }
+                    if self.message != nil {
+                        map["Message"] = self.message!
+                    }
+                    if self.records != nil {
+                        var tmp : [Any] = []
+                        for k in self.records! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Records"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CanAutoResolve"] as? Bool {
+                        self.canAutoResolve = value
+                    }
+                    if let value = dict["HasConflict"] as? Bool {
+                        self.hasConflict = value
+                    }
+                    if let value = dict["Message"] as? String {
+                        self.message = value
+                    }
+                    if let value = dict["Records"] as? [Any?] {
+                        var tmp : [ListAppInstanceDomainsResponseBody.Module.Next.DnsConflict.Records] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ListAppInstanceDomainsResponseBody.Module.Next.DnsConflict.Records()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.records = tmp
+                    }
+                }
+            }
+            public class Migration : Tea.TeaModel {
+                public var migrationStatus: String?
+
+                public var previousDomain: Any?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.migrationStatus != nil {
+                        map["MigrationStatus"] = self.migrationStatus!
+                    }
+                    if self.previousDomain != nil {
+                        map["PreviousDomain"] = self.previousDomain!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MigrationStatus"] as? String {
+                        self.migrationStatus = value
+                    }
+                    if let value = dict["PreviousDomain"] as? Any {
+                        self.previousDomain = value
+                    }
+                }
+            }
             public class Ownership : Tea.TeaModel {
                 public var account: String?
 
                 public var provider: String?
+
+                public var rootDomain: String?
 
                 public override init() {
                     super.init()
@@ -28694,6 +29163,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     if self.provider != nil {
                         map["Provider"] = self.provider!
                     }
+                    if self.rootDomain != nil {
+                        map["RootDomain"] = self.rootDomain!
+                    }
                     return map
                 }
 
@@ -28704,6 +29176,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Provider"] as? String {
                         self.provider = value
+                    }
+                    if let value = dict["RootDomain"] as? String {
+                        self.rootDomain = value
                     }
                 }
             }
@@ -28901,6 +29376,8 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
                 public var verificationStatus: String?
 
+                public var verificationStatusCode: String?
+
                 public override init() {
                     super.init()
                 }
@@ -28925,6 +29402,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     if self.verificationStatus != nil {
                         map["VerificationStatus"] = self.verificationStatus!
                     }
+                    if self.verificationStatusCode != nil {
+                        map["VerificationStatusCode"] = self.verificationStatusCode!
+                    }
                     return map
                 }
 
@@ -28941,13 +29421,20 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     if let value = dict["VerificationStatus"] as? String {
                         self.verificationStatus = value
                     }
+                    if let value = dict["VerificationStatusCode"] as? String {
+                        self.verificationStatusCode = value
+                    }
                 }
             }
             public var certificate: ListAppInstanceDomainsResponseBody.Module.Next.Certificate?
 
             public var createTime: String?
 
+            public var dnsConflict: ListAppInstanceDomainsResponseBody.Module.Next.DnsConflict?
+
             public var domainName: String?
+
+            public var migration: ListAppInstanceDomainsResponseBody.Module.Next.Migration?
 
             public var overallStatus: String?
 
@@ -28970,6 +29457,8 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.certificate?.validate()
+                try self.dnsConflict?.validate()
+                try self.migration?.validate()
                 try self.ownership?.validate()
                 try self.qualification?.validate()
                 try self.resolution?.validate()
@@ -28984,8 +29473,14 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.dnsConflict != nil {
+                    map["DnsConflict"] = self.dnsConflict?.toMap()
+                }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
+                }
+                if self.migration != nil {
+                    map["Migration"] = self.migration?.toMap()
                 }
                 if self.overallStatus != nil {
                     map["OverallStatus"] = self.overallStatus!
@@ -29015,8 +29510,18 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
                 }
+                if let value = dict["DnsConflict"] as? [String: Any?] {
+                    var model = ListAppInstanceDomainsResponseBody.Module.Next.DnsConflict()
+                    model.fromMap(value)
+                    self.dnsConflict = model
+                }
                 if let value = dict["DomainName"] as? String {
                     self.domainName = value
+                }
+                if let value = dict["Migration"] as? [String: Any?] {
+                    var model = ListAppInstanceDomainsResponseBody.Module.Next.Migration()
+                    model.fromMap(value)
+                    self.migration = model
                 }
                 if let value = dict["OverallStatus"] as? String {
                     self.overallStatus = value
