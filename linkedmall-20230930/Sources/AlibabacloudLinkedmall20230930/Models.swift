@@ -271,6 +271,8 @@ public class CategoryListResult : Tea.TeaModel {
 }
 
 public class ConfirmDisburseCmd : Tea.TeaModel {
+    public var disputeId: String?
+
     public var orderId: String?
 
     public var purchaseOrderId: String?
@@ -289,6 +291,9 @@ public class ConfirmDisburseCmd : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disputeId != nil {
+            map["disputeId"] = self.disputeId!
+        }
         if self.orderId != nil {
             map["orderId"] = self.orderId!
         }
@@ -300,6 +305,9 @@ public class ConfirmDisburseCmd : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["disputeId"] as? String {
+            self.disputeId = value
+        }
         if let value = dict["orderId"] as? String {
             self.orderId = value
         }
