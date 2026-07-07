@@ -10529,7 +10529,47 @@ public class ListClustersResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class EhpcVersionStatistics : Tea.TeaModel {
+        public var v1Count: Int32?
+
+        public var v2Count: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.v1Count != nil {
+                map["V1Count"] = self.v1Count!
+            }
+            if self.v2Count != nil {
+                map["V2Count"] = self.v2Count!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["V1Count"] as? Int32 {
+                self.v1Count = value
+            }
+            if let value = dict["V2Count"] as? Int32 {
+                self.v2Count = value
+            }
+        }
+    }
     public var clusters: [ListClustersResponseBody.Clusters]?
+
+    public var ehpcVersionStatistics: ListClustersResponseBody.EhpcVersionStatistics?
 
     public var pageNumber: String?
 
@@ -10549,6 +10589,7 @@ public class ListClustersResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.ehpcVersionStatistics?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -10559,6 +10600,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Clusters"] = tmp
+        }
+        if self.ehpcVersionStatistics != nil {
+            map["EhpcVersionStatistics"] = self.ehpcVersionStatistics?.toMap()
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -10589,6 +10633,11 @@ public class ListClustersResponseBody : Tea.TeaModel {
                 }
             }
             self.clusters = tmp
+        }
+        if let value = dict["EhpcVersionStatistics"] as? [String: Any?] {
+            var model = ListClustersResponseBody.EhpcVersionStatistics()
+            model.fromMap(value)
+            self.ehpcVersionStatistics = model
         }
         if let value = dict["PageNumber"] as? String {
             self.pageNumber = value
