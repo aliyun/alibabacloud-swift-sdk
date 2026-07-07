@@ -1422,6 +1422,8 @@ public class CreateOAuth2CredentialProviderRequest : Tea.TeaModel {
 
     public var OAuth2ProviderConfig: OAuth2ProviderConfig?
 
+    public var OAuthType: String?
+
     public var tokenVaultName: String?
 
     public override init() {
@@ -1454,6 +1456,9 @@ public class CreateOAuth2CredentialProviderRequest : Tea.TeaModel {
         if self.OAuth2ProviderConfig != nil {
             map["OAuth2ProviderConfig"] = self.OAuth2ProviderConfig?.toMap()
         }
+        if self.OAuthType != nil {
+            map["OAuthType"] = self.OAuthType!
+        }
         if self.tokenVaultName != nil {
             map["TokenVaultName"] = self.tokenVaultName!
         }
@@ -1479,6 +1484,9 @@ public class CreateOAuth2CredentialProviderRequest : Tea.TeaModel {
             model.fromMap(value)
             self.OAuth2ProviderConfig = model
         }
+        if let value = dict["OAuthType"] as? String {
+            self.OAuthType = value
+        }
         if let value = dict["TokenVaultName"] as? String {
             self.tokenVaultName = value
         }
@@ -1495,6 +1503,8 @@ public class CreateOAuth2CredentialProviderShrinkRequest : Tea.TeaModel {
     public var OAuth2CredentialProviderName: String?
 
     public var OAuth2ProviderConfigShrink: String?
+
+    public var OAuthType: String?
 
     public var tokenVaultName: String?
 
@@ -1527,6 +1537,9 @@ public class CreateOAuth2CredentialProviderShrinkRequest : Tea.TeaModel {
         if self.OAuth2ProviderConfigShrink != nil {
             map["OAuth2ProviderConfig"] = self.OAuth2ProviderConfigShrink!
         }
+        if self.OAuthType != nil {
+            map["OAuthType"] = self.OAuthType!
+        }
         if self.tokenVaultName != nil {
             map["TokenVaultName"] = self.tokenVaultName!
         }
@@ -1550,6 +1563,9 @@ public class CreateOAuth2CredentialProviderShrinkRequest : Tea.TeaModel {
         if let value = dict["OAuth2ProviderConfig"] as? String {
             self.OAuth2ProviderConfigShrink = value
         }
+        if let value = dict["OAuthType"] as? String {
+            self.OAuthType = value
+        }
         if let value = dict["TokenVaultName"] as? String {
             self.tokenVaultName = value
         }
@@ -1571,6 +1587,8 @@ public class CreateOAuth2CredentialProviderResponseBody : Tea.TeaModel {
         public var OAuth2CredentialProviderName: String?
 
         public var OAuth2ProviderConfig: OAuth2ProviderConfig?
+
+        public var OAuthType: String?
 
         public var tokenVaultName: String?
 
@@ -1612,6 +1630,9 @@ public class CreateOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             if self.OAuth2ProviderConfig != nil {
                 map["OAuth2ProviderConfig"] = self.OAuth2ProviderConfig?.toMap()
             }
+            if self.OAuthType != nil {
+                map["OAuthType"] = self.OAuthType!
+            }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
             }
@@ -1645,6 +1666,9 @@ public class CreateOAuth2CredentialProviderResponseBody : Tea.TeaModel {
                 var model = OAuth2ProviderConfig()
                 model.fromMap(value)
                 self.OAuth2ProviderConfig = model
+            }
+            if let value = dict["OAuthType"] as? String {
+                self.OAuthType = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -6904,6 +6928,8 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
 
         public var OAuth2ProviderConfig: OAuth2ProviderConfig?
 
+        public var OAuthType: String?
+
         public var tokenVaultName: String?
 
         public var updateTime: String?
@@ -6944,6 +6970,9 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             if self.OAuth2ProviderConfig != nil {
                 map["OAuth2ProviderConfig"] = self.OAuth2ProviderConfig?.toMap()
             }
+            if self.OAuthType != nil {
+                map["OAuthType"] = self.OAuthType!
+            }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
             }
@@ -6977,6 +7006,9 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
                 var model = OAuth2ProviderConfig()
                 model.fromMap(value)
                 self.OAuth2ProviderConfig = model
+            }
+            if let value = dict["OAuthType"] as? String {
+                self.OAuthType = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -8525,7 +8557,11 @@ public class GetTokenVaultResponse : Tea.TeaModel {
 }
 
 public class GetUserRequest : Tea.TeaModel {
+    public var userId: String?
+
     public var userName: String?
+
+    public var userPoolId: String?
 
     public var userPoolName: String?
 
@@ -8543,8 +8579,14 @@ public class GetUserRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
         if self.userName != nil {
             map["UserName"] = self.userName!
+        }
+        if self.userPoolId != nil {
+            map["UserPoolId"] = self.userPoolId!
         }
         if self.userPoolName != nil {
             map["UserPoolName"] = self.userPoolName!
@@ -8554,8 +8596,14 @@ public class GetUserRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
         if let value = dict["UserName"] as? String {
             self.userName = value
+        }
+        if let value = dict["UserPoolId"] as? String {
+            self.userPoolId = value
         }
         if let value = dict["UserPoolName"] as? String {
             self.userPoolName = value
@@ -10505,6 +10553,8 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
 
         public var OAuth2ProviderConfig: OAuth2ProviderConfig?
 
+        public var OAuthType: String?
+
         public var tokenVaultName: String?
 
         public var updateTime: String?
@@ -10545,6 +10595,9 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
             if self.OAuth2ProviderConfig != nil {
                 map["OAuth2ProviderConfig"] = self.OAuth2ProviderConfig?.toMap()
             }
+            if self.OAuthType != nil {
+                map["OAuthType"] = self.OAuthType!
+            }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
             }
@@ -10578,6 +10631,9 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
                 var model = OAuth2ProviderConfig()
                 model.fromMap(value)
                 self.OAuth2ProviderConfig = model
+            }
+            if let value = dict["OAuthType"] as? String {
+                self.OAuthType = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value

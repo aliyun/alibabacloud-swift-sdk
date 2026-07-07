@@ -243,6 +243,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.OAuth2ProviderConfigShrink)) {
             body["OAuth2ProviderConfig"] = request.OAuth2ProviderConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.OAuthType)) {
+            body["OAuthType"] = request.OAuthType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tokenVaultName)) {
             body["TokenVaultName"] = request.tokenVaultName ?? "";
         }
@@ -1569,8 +1572,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getUserWithOptions(_ request: GetUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["UserId"] = request.userId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.userName)) {
             body["UserName"] = request.userName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userPoolId)) {
+            body["UserPoolId"] = request.userPoolId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userPoolName)) {
             body["UserPoolName"] = request.userPoolName ?? "";
