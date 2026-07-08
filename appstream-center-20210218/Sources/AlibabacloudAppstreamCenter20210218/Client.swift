@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shanghai": "appstream-center.cn-shanghai.aliyuncs.com",
+            "ap-southeast-1": "appstream-center.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("appstream-center", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -71,6 +75,12 @@ open class Client : AlibabacloudOpenApi.Client {
             query["TokenType"] = request.tokenType ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountType)) {
+            body["AccountType"] = request.accountType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.adDomain)) {
+            body["AdDomain"] = request.adDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoCreateUser)) {
             body["AutoCreateUser"] = request.autoCreateUser!;
         }

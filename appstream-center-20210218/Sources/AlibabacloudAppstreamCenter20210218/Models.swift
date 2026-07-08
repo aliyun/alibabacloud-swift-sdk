@@ -142,6 +142,10 @@ public class ExpireLoginTokenResponse : Tea.TeaModel {
 }
 
 public class GetAuthCodeRequest : Tea.TeaModel {
+    public var accountType: String?
+
+    public var adDomain: String?
+
     public var autoCreateUser: Bool?
 
     public var endUserId: String?
@@ -166,6 +170,12 @@ public class GetAuthCodeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountType != nil {
+            map["AccountType"] = self.accountType!
+        }
+        if self.adDomain != nil {
+            map["AdDomain"] = self.adDomain!
+        }
         if self.autoCreateUser != nil {
             map["AutoCreateUser"] = self.autoCreateUser!
         }
@@ -186,6 +196,12 @@ public class GetAuthCodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccountType"] as? String {
+            self.accountType = value
+        }
+        if let value = dict["AdDomain"] as? String {
+            self.adDomain = value
+        }
         if let value = dict["AutoCreateUser"] as? Bool {
             self.autoCreateUser = value
         }
