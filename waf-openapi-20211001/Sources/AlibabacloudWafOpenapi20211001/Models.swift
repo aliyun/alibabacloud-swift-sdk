@@ -19406,6 +19406,8 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
 
         public var resourceOrigin: String?
 
+        public var resourceStatus: String?
+
         public var responseHeaders: [DescribeDefenseResourceResponseBody.Resource.ResponseHeaders]?
 
         public var xffStatus: Int32?
@@ -19472,6 +19474,9 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             if self.resourceOrigin != nil {
                 map["ResourceOrigin"] = self.resourceOrigin!
             }
+            if self.resourceStatus != nil {
+                map["ResourceStatus"] = self.resourceStatus!
+            }
             if self.responseHeaders != nil {
                 var tmp : [Any] = []
                 for k in self.responseHeaders! {
@@ -19534,6 +19539,9 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceOrigin"] as? String {
                 self.resourceOrigin = value
+            }
+            if let value = dict["ResourceStatus"] as? String {
+                self.resourceStatus = value
             }
             if let value = dict["ResponseHeaders"] as? [Any?] {
                 var tmp : [DescribeDefenseResourceResponseBody.Resource.ResponseHeaders] = []
@@ -21132,6 +21140,8 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
 
         public var resourceOrigin: String?
 
+        public var resourceStatus: String?
+
         public var responseHeaders: [DescribeDefenseResourcesResponseBody.Resources.ResponseHeaders]?
 
         public var xffStatus: Int32?
@@ -21198,6 +21208,9 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             if self.resourceOrigin != nil {
                 map["ResourceOrigin"] = self.resourceOrigin!
             }
+            if self.resourceStatus != nil {
+                map["ResourceStatus"] = self.resourceStatus!
+            }
             if self.responseHeaders != nil {
                 var tmp : [Any] = []
                 for k in self.responseHeaders! {
@@ -21260,6 +21273,9 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceOrigin"] as? String {
                 self.resourceOrigin = value
+            }
+            if let value = dict["ResourceStatus"] as? String {
+                self.resourceStatus = value
             }
             if let value = dict["ResponseHeaders"] as? [Any?] {
                 var tmp : [DescribeDefenseResourcesResponseBody.Resources.ResponseHeaders] = []
@@ -35413,6 +35429,10 @@ public class DescribePrepayDailyBillsResponseBody : Tea.TeaModel {
 
         public var exceedStatus: Int32?
 
+        public var extensionPlugin: Bool?
+
+        public var extensionPluginRequest: Int64?
+
         public var maxQps: Int64?
 
         public var price: Double?
@@ -35454,6 +35474,12 @@ public class DescribePrepayDailyBillsResponseBody : Tea.TeaModel {
             if self.exceedStatus != nil {
                 map["ExceedStatus"] = self.exceedStatus!
             }
+            if self.extensionPlugin != nil {
+                map["ExtensionPlugin"] = self.extensionPlugin!
+            }
+            if self.extensionPluginRequest != nil {
+                map["ExtensionPluginRequest"] = self.extensionPluginRequest!
+            }
             if self.maxQps != nil {
                 map["MaxQps"] = self.maxQps!
             }
@@ -35494,6 +35520,12 @@ public class DescribePrepayDailyBillsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExceedStatus"] as? Int32 {
                 self.exceedStatus = value
+            }
+            if let value = dict["ExtensionPlugin"] as? Bool {
+                self.extensionPlugin = value
+            }
+            if let value = dict["ExtensionPluginRequest"] as? Int64 {
+                self.extensionPluginRequest = value
             }
             if let value = dict["MaxQps"] as? Int64 {
                 self.maxQps = value
