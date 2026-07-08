@@ -109,21 +109,31 @@ public class Skill : Tea.TeaModel {
 
     public var categoryName: String?
 
+    public var categoryNameEn: String?
+
     public var createdAt: String?
 
     public var description_: String?
 
+    public var descriptionEn: String?
+
     public var displayName: String?
+
+    public var githubPath: String?
 
     public var installCount: Int32?
 
     public var likeCount: Int32?
+
+    public var nameEn: String?
 
     public var skillName: String?
 
     public var subCategoryCode: String?
 
     public var subCategoryName: String?
+
+    public var subCategoryNameEn: String?
 
     public var updatedAt: String?
 
@@ -147,20 +157,32 @@ public class Skill : Tea.TeaModel {
         if self.categoryName != nil {
             map["categoryName"] = self.categoryName!
         }
+        if self.categoryNameEn != nil {
+            map["categoryNameEn"] = self.categoryNameEn!
+        }
         if self.createdAt != nil {
             map["createdAt"] = self.createdAt!
         }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.descriptionEn != nil {
+            map["descriptionEn"] = self.descriptionEn!
+        }
         if self.displayName != nil {
             map["displayName"] = self.displayName!
+        }
+        if self.githubPath != nil {
+            map["githubPath"] = self.githubPath!
         }
         if self.installCount != nil {
             map["installCount"] = self.installCount!
         }
         if self.likeCount != nil {
             map["likeCount"] = self.likeCount!
+        }
+        if self.nameEn != nil {
+            map["nameEn"] = self.nameEn!
         }
         if self.skillName != nil {
             map["skillName"] = self.skillName!
@@ -170,6 +192,9 @@ public class Skill : Tea.TeaModel {
         }
         if self.subCategoryName != nil {
             map["subCategoryName"] = self.subCategoryName!
+        }
+        if self.subCategoryNameEn != nil {
+            map["subCategoryNameEn"] = self.subCategoryNameEn!
         }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
@@ -185,20 +210,32 @@ public class Skill : Tea.TeaModel {
         if let value = dict["categoryName"] as? String {
             self.categoryName = value
         }
+        if let value = dict["categoryNameEn"] as? String {
+            self.categoryNameEn = value
+        }
         if let value = dict["createdAt"] as? String {
             self.createdAt = value
         }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["descriptionEn"] as? String {
+            self.descriptionEn = value
+        }
         if let value = dict["displayName"] as? String {
             self.displayName = value
+        }
+        if let value = dict["githubPath"] as? String {
+            self.githubPath = value
         }
         if let value = dict["installCount"] as? Int32 {
             self.installCount = value
         }
         if let value = dict["likeCount"] as? Int32 {
             self.likeCount = value
+        }
+        if let value = dict["nameEn"] as? String {
+            self.nameEn = value
         }
         if let value = dict["skillName"] as? String {
             self.skillName = value
@@ -208,6 +245,9 @@ public class Skill : Tea.TeaModel {
         }
         if let value = dict["subCategoryName"] as? String {
             self.subCategoryName = value
+        }
+        if let value = dict["subCategoryNameEn"] as? String {
+            self.subCategoryNameEn = value
         }
         if let value = dict["updatedAt"] as? String {
             self.updatedAt = value
@@ -472,6 +512,8 @@ public class SearchSkillsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var searchMode: String?
+
     public var skip: Int32?
 
     public override init() {
@@ -500,6 +542,9 @@ public class SearchSkillsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.searchMode != nil {
+            map["searchMode"] = self.searchMode!
+        }
         if self.skip != nil {
             map["skip"] = self.skip!
         }
@@ -519,6 +564,9 @@ public class SearchSkillsRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["searchMode"] as? String {
+            self.searchMode = value
         }
         if let value = dict["skip"] as? Int32 {
             self.skip = value
