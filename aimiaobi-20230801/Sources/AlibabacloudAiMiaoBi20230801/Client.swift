@@ -8,7 +8,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-beijing": "aimiaobi.cn-beijing.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aimiaobi", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -134,6 +137,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.stickersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stickers, "Stickers", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adaptMode)) {
+            body["AdaptMode"] = request.adaptMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alignment)) {
+            body["Alignment"] = request.alignment ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.closeMusic)) {
             body["CloseMusic"] = request.closeMusic!;
         }
@@ -190,6 +199,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textWidth)) {
+            body["TextWidth"] = request.textWidth ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.voiceStyle)) {
             body["VoiceStyle"] = request.voiceStyle ?? "";

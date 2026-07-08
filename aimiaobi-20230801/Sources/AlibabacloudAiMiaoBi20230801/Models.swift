@@ -2253,6 +2253,10 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var adaptMode: String?
+
+    public var alignment: String?
+
     public var closeMusic: Bool?
 
     public var closeSubtitle: Bool?
@@ -2291,6 +2295,8 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
 
     public var taskId: String?
 
+    public var textWidth: String?
+
     public var voiceStyle: String?
 
     public var voiceVolume: Int32?
@@ -2313,6 +2319,12 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adaptMode != nil {
+            map["AdaptMode"] = self.adaptMode!
+        }
+        if self.alignment != nil {
+            map["Alignment"] = self.alignment!
+        }
         if self.closeMusic != nil {
             map["CloseMusic"] = self.closeMusic!
         }
@@ -2382,6 +2394,9 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
+        if self.textWidth != nil {
+            map["TextWidth"] = self.textWidth!
+        }
         if self.voiceStyle != nil {
             map["VoiceStyle"] = self.voiceStyle!
         }
@@ -2399,6 +2414,12 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdaptMode"] as? String {
+            self.adaptMode = value
+        }
+        if let value = dict["Alignment"] as? String {
+            self.alignment = value
+        }
         if let value = dict["CloseMusic"] as? Bool {
             self.closeMusic = value
         }
@@ -2486,6 +2507,9 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
+        if let value = dict["TextWidth"] as? String {
+            self.textWidth = value
+        }
         if let value = dict["VoiceStyle"] as? String {
             self.voiceStyle = value
         }
@@ -2502,6 +2526,10 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
 }
 
 public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
+    public var adaptMode: String?
+
+    public var alignment: String?
+
     public var closeMusic: Bool?
 
     public var closeSubtitle: Bool?
@@ -2540,6 +2568,8 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
 
     public var taskId: String?
 
+    public var textWidth: String?
+
     public var voiceStyle: String?
 
     public var voiceVolume: Int32?
@@ -2562,6 +2592,12 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adaptMode != nil {
+            map["AdaptMode"] = self.adaptMode!
+        }
+        if self.alignment != nil {
+            map["Alignment"] = self.alignment!
+        }
         if self.closeMusic != nil {
             map["CloseMusic"] = self.closeMusic!
         }
@@ -2619,6 +2655,9 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
+        if self.textWidth != nil {
+            map["TextWidth"] = self.textWidth!
+        }
         if self.voiceStyle != nil {
             map["VoiceStyle"] = self.voiceStyle!
         }
@@ -2636,6 +2675,12 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdaptMode"] as? String {
+            self.adaptMode = value
+        }
+        if let value = dict["Alignment"] as? String {
+            self.alignment = value
+        }
         if let value = dict["CloseMusic"] as? Bool {
             self.closeMusic = value
         }
@@ -2692,6 +2737,9 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
+        }
+        if let value = dict["TextWidth"] as? String {
+            self.textWidth = value
         }
         if let value = dict["VoiceStyle"] as? String {
             self.voiceStyle = value
