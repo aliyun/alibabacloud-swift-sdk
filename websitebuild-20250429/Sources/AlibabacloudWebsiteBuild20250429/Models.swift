@@ -528,6 +528,8 @@ public class AppInstanceAggregate : Tea.TeaModel {
 
     public var tags: [AppInstanceAggregate.Tags]?
 
+    public var templateRecord: TemplateRecord?
+
     public var thumbnailUrl: String?
 
     public var userId: String?
@@ -547,6 +549,7 @@ public class AppInstanceAggregate : Tea.TeaModel {
         try self.appOperationAddress?.validate()
         try self.partnerDetail?.validate()
         try self.profile?.validate()
+        try self.templateRecord?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -652,6 +655,9 @@ public class AppInstanceAggregate : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.templateRecord != nil {
+            map["TemplateRecord"] = self.templateRecord?.toMap()
         }
         if self.thumbnailUrl != nil {
             map["ThumbnailUrl"] = self.thumbnailUrl!
@@ -792,6 +798,11 @@ public class AppInstanceAggregate : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["TemplateRecord"] as? [String: Any?] {
+            var model = TemplateRecord()
+            model.fromMap(value)
+            self.templateRecord = model
         }
         if let value = dict["ThumbnailUrl"] as? String {
             self.thumbnailUrl = value
@@ -2152,6 +2163,85 @@ public class PromotionActivity : Tea.TeaModel {
         }
         if let value = dict["WarningThreshold"] as? Int32 {
             self.warningThreshold = value
+        }
+    }
+}
+
+public class TemplateRecord : Tea.TeaModel {
+    public var bizId: String?
+
+    public var copyStatus: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var id: Int64?
+
+    public var templateId: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.copyStatus != nil {
+            map["CopyStatus"] = self.copyStatus!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["CopyStatus"] as? String {
+            self.copyStatus = value
+        }
+        if let value = dict["GmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
         }
     }
 }
