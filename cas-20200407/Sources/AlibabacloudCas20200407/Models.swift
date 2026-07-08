@@ -5903,6 +5903,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
     public var certificateNotAfter: Int64?
 
+    public var certificateNotBefore: Int64?
+
     public var certificateRevokeTime: Int64?
 
     public var certificateStatus: String?
@@ -5997,6 +5999,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         }
         if self.certificateNotAfter != nil {
             map["CertificateNotAfter"] = self.certificateNotAfter!
+        }
+        if self.certificateNotBefore != nil {
+            map["CertificateNotBefore"] = self.certificateNotBefore!
         }
         if self.certificateRevokeTime != nil {
             map["CertificateRevokeTime"] = self.certificateRevokeTime!
@@ -6125,6 +6130,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["CertificateNotAfter"] as? Int64 {
             self.certificateNotAfter = value
+        }
+        if let value = dict["CertificateNotBefore"] as? Int64 {
+            self.certificateNotBefore = value
         }
         if let value = dict["CertificateRevokeTime"] as? Int64 {
             self.certificateRevokeTime = value
@@ -11054,6 +11062,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var certificateNotAfter: Int64?
 
+        public var certificateNotBefore: Int64?
+
         public var certificateRevokeTime: Int64?
 
         public var certificateStatus: String?
@@ -11124,6 +11134,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.certificateNotAfter != nil {
                 map["CertificateNotAfter"] = self.certificateNotAfter!
+            }
+            if self.certificateNotBefore != nil {
+                map["CertificateNotBefore"] = self.certificateNotBefore!
             }
             if self.certificateRevokeTime != nil {
                 map["CertificateRevokeTime"] = self.certificateRevokeTime!
@@ -11204,6 +11217,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CertificateNotAfter"] as? Int64 {
                 self.certificateNotAfter = value
+            }
+            if let value = dict["CertificateNotBefore"] as? Int64 {
+                self.certificateNotBefore = value
             }
             if let value = dict["CertificateRevokeTime"] as? Int64 {
                 self.certificateRevokeTime = value
@@ -13011,6 +13027,8 @@ public class RenewCertificateOrderForPackageRequestResponse : Tea.TeaModel {
 }
 
 public class RevokeCertificateRequest : Tea.TeaModel {
+    public var certificateId: Int64?
+
     public var instanceId: String?
 
     public override init() {
@@ -13027,6 +13045,9 @@ public class RevokeCertificateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.certificateId != nil {
+            map["CertificateId"] = self.certificateId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -13035,6 +13056,9 @@ public class RevokeCertificateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CertificateId"] as? Int64 {
+            self.certificateId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
