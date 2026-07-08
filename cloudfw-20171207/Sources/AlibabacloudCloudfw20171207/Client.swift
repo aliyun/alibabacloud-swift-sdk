@@ -9929,6 +9929,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcFirewallTrafficTrendWithOptions(_ request: DescribeVpcFirewallTrafficTrendRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpcFirewallTrafficTrendResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.peerVpcId)) {
+            query["PeerVpcId"] = request.peerVpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privateIP)) {
+            query["PrivateIP"] = request.privateIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVpcFirewallTrafficTrend",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVpcFirewallTrafficTrendResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcFirewallTrafficTrend(_ request: DescribeVpcFirewallTrafficTrendRequest) async throws -> DescribeVpcFirewallTrafficTrendResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVpcFirewallTrafficTrendWithOptions(request as! DescribeVpcFirewallTrafficTrendRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeVpcFirewallZoneWithOptions(_ request: DescribeVpcFirewallZoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpcFirewallZoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

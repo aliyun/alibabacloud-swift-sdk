@@ -59818,6 +59818,378 @@ public class DescribeVpcFirewallTrafficAssetListResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeVpcFirewallTrafficTrendRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var lang: String?
+
+    public var peerVpcId: String?
+
+    public var privateIP: String?
+
+    public var startTime: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.peerVpcId != nil {
+            map["PeerVpcId"] = self.peerVpcId!
+        }
+        if self.privateIP != nil {
+            map["PrivateIP"] = self.privateIP!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["PeerVpcId"] as? String {
+            self.peerVpcId = value
+        }
+        if let value = dict["PrivateIP"] as? String {
+            self.privateIP = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class DescribeVpcFirewallTrafficTrendResponseBody : Tea.TeaModel {
+    public class DataList : Tea.TeaModel {
+        public var inBps: Int64?
+
+        public var inBytes: Int64?
+
+        public var inPps: Int64?
+
+        public var newConn: Int64?
+
+        public var outBps: Int64?
+
+        public var outBytes: Int64?
+
+        public var outPps: Int64?
+
+        public var sessionCount: Int64?
+
+        public var time: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.inBps != nil {
+                map["InBps"] = self.inBps!
+            }
+            if self.inBytes != nil {
+                map["InBytes"] = self.inBytes!
+            }
+            if self.inPps != nil {
+                map["InPps"] = self.inPps!
+            }
+            if self.newConn != nil {
+                map["NewConn"] = self.newConn!
+            }
+            if self.outBps != nil {
+                map["OutBps"] = self.outBps!
+            }
+            if self.outBytes != nil {
+                map["OutBytes"] = self.outBytes!
+            }
+            if self.outPps != nil {
+                map["OutPps"] = self.outPps!
+            }
+            if self.sessionCount != nil {
+                map["SessionCount"] = self.sessionCount!
+            }
+            if self.time != nil {
+                map["Time"] = self.time!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InBps"] as? Int64 {
+                self.inBps = value
+            }
+            if let value = dict["InBytes"] as? Int64 {
+                self.inBytes = value
+            }
+            if let value = dict["InPps"] as? Int64 {
+                self.inPps = value
+            }
+            if let value = dict["NewConn"] as? Int64 {
+                self.newConn = value
+            }
+            if let value = dict["OutBps"] as? Int64 {
+                self.outBps = value
+            }
+            if let value = dict["OutBytes"] as? Int64 {
+                self.outBytes = value
+            }
+            if let value = dict["OutPps"] as? Int64 {
+                self.outPps = value
+            }
+            if let value = dict["SessionCount"] as? Int64 {
+                self.sessionCount = value
+            }
+            if let value = dict["Time"] as? Int32 {
+                self.time = value
+            }
+        }
+    }
+    public var avgInBps: Int64?
+
+    public var avgOutBps: Int64?
+
+    public var avgSession: Int64?
+
+    public var avgTotalBps: Int64?
+
+    public var dataList: [DescribeVpcFirewallTrafficTrendResponseBody.DataList]?
+
+    public var maxBandwidthTime: Int64?
+
+    public var maxInBps: Int64?
+
+    public var maxOutBps: Int64?
+
+    public var maxSession: Int64?
+
+    public var maxTotalBps: Int64?
+
+    public var requestId: String?
+
+    public var totalBytes: Int64?
+
+    public var totalInBytes: Int64?
+
+    public var totalOutBytes: Int64?
+
+    public var totalSession: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.avgInBps != nil {
+            map["AvgInBps"] = self.avgInBps!
+        }
+        if self.avgOutBps != nil {
+            map["AvgOutBps"] = self.avgOutBps!
+        }
+        if self.avgSession != nil {
+            map["AvgSession"] = self.avgSession!
+        }
+        if self.avgTotalBps != nil {
+            map["AvgTotalBps"] = self.avgTotalBps!
+        }
+        if self.dataList != nil {
+            var tmp : [Any] = []
+            for k in self.dataList! {
+                tmp.append(k.toMap())
+            }
+            map["DataList"] = tmp
+        }
+        if self.maxBandwidthTime != nil {
+            map["MaxBandwidthTime"] = self.maxBandwidthTime!
+        }
+        if self.maxInBps != nil {
+            map["MaxInBps"] = self.maxInBps!
+        }
+        if self.maxOutBps != nil {
+            map["MaxOutBps"] = self.maxOutBps!
+        }
+        if self.maxSession != nil {
+            map["MaxSession"] = self.maxSession!
+        }
+        if self.maxTotalBps != nil {
+            map["MaxTotalBps"] = self.maxTotalBps!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalBytes != nil {
+            map["TotalBytes"] = self.totalBytes!
+        }
+        if self.totalInBytes != nil {
+            map["TotalInBytes"] = self.totalInBytes!
+        }
+        if self.totalOutBytes != nil {
+            map["TotalOutBytes"] = self.totalOutBytes!
+        }
+        if self.totalSession != nil {
+            map["TotalSession"] = self.totalSession!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AvgInBps"] as? Int64 {
+            self.avgInBps = value
+        }
+        if let value = dict["AvgOutBps"] as? Int64 {
+            self.avgOutBps = value
+        }
+        if let value = dict["AvgSession"] as? Int64 {
+            self.avgSession = value
+        }
+        if let value = dict["AvgTotalBps"] as? Int64 {
+            self.avgTotalBps = value
+        }
+        if let value = dict["DataList"] as? [Any?] {
+            var tmp : [DescribeVpcFirewallTrafficTrendResponseBody.DataList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeVpcFirewallTrafficTrendResponseBody.DataList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataList = tmp
+        }
+        if let value = dict["MaxBandwidthTime"] as? Int64 {
+            self.maxBandwidthTime = value
+        }
+        if let value = dict["MaxInBps"] as? Int64 {
+            self.maxInBps = value
+        }
+        if let value = dict["MaxOutBps"] as? Int64 {
+            self.maxOutBps = value
+        }
+        if let value = dict["MaxSession"] as? Int64 {
+            self.maxSession = value
+        }
+        if let value = dict["MaxTotalBps"] as? Int64 {
+            self.maxTotalBps = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalBytes"] as? Int64 {
+            self.totalBytes = value
+        }
+        if let value = dict["TotalInBytes"] as? Int64 {
+            self.totalInBytes = value
+        }
+        if let value = dict["TotalOutBytes"] as? Int64 {
+            self.totalOutBytes = value
+        }
+        if let value = dict["TotalSession"] as? Int64 {
+            self.totalSession = value
+        }
+    }
+}
+
+public class DescribeVpcFirewallTrafficTrendResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeVpcFirewallTrafficTrendResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeVpcFirewallTrafficTrendResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeVpcFirewallZoneRequest : Tea.TeaModel {
     public var cenId: String?
 
