@@ -9,6 +9,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shenzhen": "vs.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "vs.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "vs.cn-qingdao.aliyuncs.com",
+            "cn-beijing": "vs.cn-beijing.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("vs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -360,6 +366,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchBindTemplates(_ request: BatchBindTemplatesRequest) async throws -> BatchBindTemplatesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await batchBindTemplatesWithOptions(request as! BatchBindTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchCaptureRenderingInstanceScreenshotWithOptions(_ tmpReq: BatchCaptureRenderingInstanceScreenshotRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCaptureRenderingInstanceScreenshotResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchCaptureRenderingInstanceScreenshotShrinkRequest = BatchCaptureRenderingInstanceScreenshotShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.renderingInstanceIds)) {
+            request.renderingInstanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.renderingInstanceIds, "RenderingInstanceIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.quality)) {
+            query["Quality"] = request.quality!;
+        }
+        if (!TeaUtils.Client.isUnset(request.renderingInstanceIdsShrink)) {
+            query["RenderingInstanceIds"] = request.renderingInstanceIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchCaptureRenderingInstanceScreenshot",
+            "version": "2018-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchCaptureRenderingInstanceScreenshotResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchCaptureRenderingInstanceScreenshot(_ request: BatchCaptureRenderingInstanceScreenshotRequest) async throws -> BatchCaptureRenderingInstanceScreenshotResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchCaptureRenderingInstanceScreenshotWithOptions(request as! BatchCaptureRenderingInstanceScreenshotRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
