@@ -8,7 +8,32 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "central"
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "dytnsapi.aliyuncs.com",
+            "us-east-1": "dytnsapi.aliyuncs.com",
+            "me-east-1": "dytnsapi.aliyuncs.com",
+            "eu-west-1": "dytnsapi.aliyuncs.com",
+            "eu-central-1": "dytnsapi.aliyuncs.com",
+            "cn-zhangjiakou": "dytnsapi.aliyuncs.com",
+            "cn-wulanchabu": "dytnsapi.aliyuncs.com",
+            "cn-shenzhen-finance-1": "dytnsapi.aliyuncs.com",
+            "cn-shenzhen": "dytnsapi.aliyuncs.com",
+            "cn-shanghai-finance-1": "dytnsapi.aliyuncs.com",
+            "cn-shanghai": "dytnsapi.aliyuncs.com",
+            "cn-qingdao": "dytnsapi.aliyuncs.com",
+            "cn-huhehaote": "dytnsapi.aliyuncs.com",
+            "cn-hongkong": "dytnsapi.aliyuncs.com",
+            "cn-hangzhou-finance": "dytnsapi.aliyuncs.com",
+            "cn-hangzhou": "dytnsapi.aliyuncs.com",
+            "cn-chengdu": "dytnsapi.aliyuncs.com",
+            "cn-beijing-finance-1": "dytnsapi.aliyuncs.com",
+            "cn-beijing": "dytnsapi.aliyuncs.com",
+            "ap-southeast-5": "dytnsapi.aliyuncs.com",
+            "ap-southeast-3": "dytnsapi.aliyuncs.com",
+            "ap-southeast-1": "dytnsapi.aliyuncs.com",
+            "ap-northeast-1": "dytnsapi.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dytnsapi", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -2302,5 +2327,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateContacts(_ request: UpdateContactsRequest) async throws -> UpdateContactsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateContactsWithOptions(request as! UpdateContactsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func virtualThreeElementsVerificationWithOptions(_ request: VirtualThreeElementsVerificationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VirtualThreeElementsVerificationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authCode)) {
+            query["AuthCode"] = request.authCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certCode)) {
+            query["CertCode"] = request.certCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certName)) {
+            query["CertName"] = request.certName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputNumber)) {
+            query["InputNumber"] = request.inputNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mask)) {
+            query["Mask"] = request.mask ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VirtualThreeElementsVerification",
+            "version": "2020-02-17",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VirtualThreeElementsVerificationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func virtualThreeElementsVerification(_ request: VirtualThreeElementsVerificationRequest) async throws -> VirtualThreeElementsVerificationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await virtualThreeElementsVerificationWithOptions(request as! VirtualThreeElementsVerificationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
