@@ -1283,8 +1283,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.narrationVoiceId)) {
             query["NarrationVoiceId"] = request.narrationVoiceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.needCaption)) {
+            query["NeedCaption"] = request.needCaption!;
+        }
         if (!TeaUtils.Client.isUnset(request.resolution)) {
             query["Resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shotPromptLang)) {
+            query["ShotPromptLang"] = request.shotPromptLang ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.shotPromptMode)) {
             query["ShotPromptMode"] = request.shotPromptMode ?? "";

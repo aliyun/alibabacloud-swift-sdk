@@ -8575,7 +8575,11 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
 
     public var narrationVoiceId: String?
 
+    public var needCaption: Bool?
+
     public var resolution: String?
+
+    public var shotPromptLang: String?
 
     public var shotPromptMode: String?
 
@@ -8625,8 +8629,14 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         if self.narrationVoiceId != nil {
             map["NarrationVoiceId"] = self.narrationVoiceId!
         }
+        if self.needCaption != nil {
+            map["NeedCaption"] = self.needCaption!
+        }
         if self.resolution != nil {
             map["Resolution"] = self.resolution!
+        }
+        if self.shotPromptLang != nil {
+            map["ShotPromptLang"] = self.shotPromptLang!
         }
         if self.shotPromptMode != nil {
             map["ShotPromptMode"] = self.shotPromptMode!
@@ -8675,8 +8685,14 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         if let value = dict["NarrationVoiceId"] as? String {
             self.narrationVoiceId = value
         }
+        if let value = dict["NeedCaption"] as? Bool {
+            self.needCaption = value
+        }
         if let value = dict["Resolution"] as? String {
             self.resolution = value
+        }
+        if let value = dict["ShotPromptLang"] as? String {
+            self.shotPromptLang = value
         }
         if let value = dict["ShotPromptMode"] as? String {
             self.shotPromptMode = value
