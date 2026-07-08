@@ -180,6 +180,335 @@ public class AddAddressBookRequest : Tea.TeaModel {
             }
         }
     }
+    public class AssetRegionResourceTypes : Tea.TeaModel {
+        public class ResourceType : Tea.TeaModel {
+            public class Ipv4 : Tea.TeaModel {
+                public var aiGatewayEIP: Bool?
+
+                public var albEIP: Bool?
+
+                public var apiGatewayEIP: Bool?
+
+                public var bastionHostEgressIP: Bool?
+
+                public var bastionHostIP: Bool?
+
+                public var bastionHostIngressIP: Bool?
+
+                public var EIP: Bool?
+
+                public var ecsEIP: Bool?
+
+                public var ecsPublicIP: Bool?
+
+                public var eniEIP: Bool?
+
+                public var gaEIP: Bool?
+
+                public var HAVIP: Bool?
+
+                public var natEIP: Bool?
+
+                public var natPublicIP: Bool?
+
+                public var nlbEIP: Bool?
+
+                public var slbEIP: Bool?
+
+                public var slbPublicIP: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.aiGatewayEIP != nil {
+                        map["AiGatewayEIP"] = self.aiGatewayEIP!
+                    }
+                    if self.albEIP != nil {
+                        map["AlbEIP"] = self.albEIP!
+                    }
+                    if self.apiGatewayEIP != nil {
+                        map["ApiGatewayEIP"] = self.apiGatewayEIP!
+                    }
+                    if self.bastionHostEgressIP != nil {
+                        map["BastionHostEgressIP"] = self.bastionHostEgressIP!
+                    }
+                    if self.bastionHostIP != nil {
+                        map["BastionHostIP"] = self.bastionHostIP!
+                    }
+                    if self.bastionHostIngressIP != nil {
+                        map["BastionHostIngressIP"] = self.bastionHostIngressIP!
+                    }
+                    if self.EIP != nil {
+                        map["EIP"] = self.EIP!
+                    }
+                    if self.ecsEIP != nil {
+                        map["EcsEIP"] = self.ecsEIP!
+                    }
+                    if self.ecsPublicIP != nil {
+                        map["EcsPublicIP"] = self.ecsPublicIP!
+                    }
+                    if self.eniEIP != nil {
+                        map["EniEIP"] = self.eniEIP!
+                    }
+                    if self.gaEIP != nil {
+                        map["GaEIP"] = self.gaEIP!
+                    }
+                    if self.HAVIP != nil {
+                        map["HAVIP"] = self.HAVIP!
+                    }
+                    if self.natEIP != nil {
+                        map["NatEIP"] = self.natEIP!
+                    }
+                    if self.natPublicIP != nil {
+                        map["NatPublicIP"] = self.natPublicIP!
+                    }
+                    if self.nlbEIP != nil {
+                        map["NlbEIP"] = self.nlbEIP!
+                    }
+                    if self.slbEIP != nil {
+                        map["SlbEIP"] = self.slbEIP!
+                    }
+                    if self.slbPublicIP != nil {
+                        map["SlbPublicIP"] = self.slbPublicIP!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AiGatewayEIP"] as? Bool {
+                        self.aiGatewayEIP = value
+                    }
+                    if let value = dict["AlbEIP"] as? Bool {
+                        self.albEIP = value
+                    }
+                    if let value = dict["ApiGatewayEIP"] as? Bool {
+                        self.apiGatewayEIP = value
+                    }
+                    if let value = dict["BastionHostEgressIP"] as? Bool {
+                        self.bastionHostEgressIP = value
+                    }
+                    if let value = dict["BastionHostIP"] as? Bool {
+                        self.bastionHostIP = value
+                    }
+                    if let value = dict["BastionHostIngressIP"] as? Bool {
+                        self.bastionHostIngressIP = value
+                    }
+                    if let value = dict["EIP"] as? Bool {
+                        self.EIP = value
+                    }
+                    if let value = dict["EcsEIP"] as? Bool {
+                        self.ecsEIP = value
+                    }
+                    if let value = dict["EcsPublicIP"] as? Bool {
+                        self.ecsPublicIP = value
+                    }
+                    if let value = dict["EniEIP"] as? Bool {
+                        self.eniEIP = value
+                    }
+                    if let value = dict["GaEIP"] as? Bool {
+                        self.gaEIP = value
+                    }
+                    if let value = dict["HAVIP"] as? Bool {
+                        self.HAVIP = value
+                    }
+                    if let value = dict["NatEIP"] as? Bool {
+                        self.natEIP = value
+                    }
+                    if let value = dict["NatPublicIP"] as? Bool {
+                        self.natPublicIP = value
+                    }
+                    if let value = dict["NlbEIP"] as? Bool {
+                        self.nlbEIP = value
+                    }
+                    if let value = dict["SlbEIP"] as? Bool {
+                        self.slbEIP = value
+                    }
+                    if let value = dict["SlbPublicIP"] as? Bool {
+                        self.slbPublicIP = value
+                    }
+                }
+            }
+            public class Ipv6 : Tea.TeaModel {
+                public var aiGatewayEIPv6: Bool?
+
+                public var albIPv6: Bool?
+
+                public var apiGatewayEIPv6: Bool?
+
+                public var ecsIPv6: Bool?
+
+                public var eniEIPv6: Bool?
+
+                public var gaEIPv6: Bool?
+
+                public var nlbIPv6: Bool?
+
+                public var slbIPv6: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.aiGatewayEIPv6 != nil {
+                        map["AiGatewayEIPv6"] = self.aiGatewayEIPv6!
+                    }
+                    if self.albIPv6 != nil {
+                        map["AlbIPv6"] = self.albIPv6!
+                    }
+                    if self.apiGatewayEIPv6 != nil {
+                        map["ApiGatewayEIPv6"] = self.apiGatewayEIPv6!
+                    }
+                    if self.ecsIPv6 != nil {
+                        map["EcsIPv6"] = self.ecsIPv6!
+                    }
+                    if self.eniEIPv6 != nil {
+                        map["EniEIPv6"] = self.eniEIPv6!
+                    }
+                    if self.gaEIPv6 != nil {
+                        map["GaEIPv6"] = self.gaEIPv6!
+                    }
+                    if self.nlbIPv6 != nil {
+                        map["NlbIPv6"] = self.nlbIPv6!
+                    }
+                    if self.slbIPv6 != nil {
+                        map["SlbIPv6"] = self.slbIPv6!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AiGatewayEIPv6"] as? Bool {
+                        self.aiGatewayEIPv6 = value
+                    }
+                    if let value = dict["AlbIPv6"] as? Bool {
+                        self.albIPv6 = value
+                    }
+                    if let value = dict["ApiGatewayEIPv6"] as? Bool {
+                        self.apiGatewayEIPv6 = value
+                    }
+                    if let value = dict["EcsIPv6"] as? Bool {
+                        self.ecsIPv6 = value
+                    }
+                    if let value = dict["EniEIPv6"] as? Bool {
+                        self.eniEIPv6 = value
+                    }
+                    if let value = dict["GaEIPv6"] as? Bool {
+                        self.gaEIPv6 = value
+                    }
+                    if let value = dict["NlbIPv6"] as? Bool {
+                        self.nlbIPv6 = value
+                    }
+                    if let value = dict["SlbIPv6"] as? Bool {
+                        self.slbIPv6 = value
+                    }
+                }
+            }
+            public var ipv4: AddAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv4?
+
+            public var ipv6: AddAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv6?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.ipv4?.validate()
+                try self.ipv6?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ipv4 != nil {
+                    map["Ipv4"] = self.ipv4?.toMap()
+                }
+                if self.ipv6 != nil {
+                    map["Ipv6"] = self.ipv6?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Ipv4"] as? [String: Any?] {
+                    var model = AddAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv4()
+                    model.fromMap(value)
+                    self.ipv4 = model
+                }
+                if let value = dict["Ipv6"] as? [String: Any?] {
+                    var model = AddAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv6()
+                    model.fromMap(value)
+                    self.ipv6 = model
+                }
+            }
+        }
+        public var assetRegionId: String?
+
+        public var resourceType: AddAddressBookRequest.AssetRegionResourceTypes.ResourceType?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.resourceType?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assetRegionId != nil {
+                map["AssetRegionId"] = self.assetRegionId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssetRegionId"] as? String {
+                self.assetRegionId = value
+            }
+            if let value = dict["ResourceType"] as? [String: Any?] {
+                var model = AddAddressBookRequest.AssetRegionResourceTypes.ResourceType()
+                model.fromMap(value)
+                self.resourceType = model
+            }
+        }
+    }
     public class TagList : Tea.TeaModel {
         public var tagKey: String?
 
@@ -226,6 +555,10 @@ public class AddAddressBookRequest : Tea.TeaModel {
 
     public var addressList: String?
 
+    public var assetMemberUids: [Int64]?
+
+    public var assetRegionResourceTypes: [AddAddressBookRequest.AssetRegionResourceTypes]?
+
     public var autoAddTagEcs: String?
 
     public var description_: String?
@@ -271,6 +604,16 @@ public class AddAddressBookRequest : Tea.TeaModel {
         }
         if self.addressList != nil {
             map["AddressList"] = self.addressList!
+        }
+        if self.assetMemberUids != nil {
+            map["AssetMemberUids"] = self.assetMemberUids!
+        }
+        if self.assetRegionResourceTypes != nil {
+            var tmp : [Any] = []
+            for k in self.assetRegionResourceTypes! {
+                tmp.append(k.toMap())
+            }
+            map["AssetRegionResourceTypes"] = tmp
         }
         if self.autoAddTagEcs != nil {
             map["AutoAddTagEcs"] = self.autoAddTagEcs!
@@ -327,6 +670,22 @@ public class AddAddressBookRequest : Tea.TeaModel {
         if let value = dict["AddressList"] as? String {
             self.addressList = value
         }
+        if let value = dict["AssetMemberUids"] as? [Int64] {
+            self.assetMemberUids = value
+        }
+        if let value = dict["AssetRegionResourceTypes"] as? [Any?] {
+            var tmp : [AddAddressBookRequest.AssetRegionResourceTypes] = []
+            for v in value {
+                if v != nil {
+                    var model = AddAddressBookRequest.AssetRegionResourceTypes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.assetRegionResourceTypes = tmp
+        }
         if let value = dict["AutoAddTagEcs"] as? String {
             self.autoAddTagEcs = value
         }
@@ -350,6 +709,245 @@ public class AddAddressBookRequest : Tea.TeaModel {
             for v in value {
                 if v != nil {
                     var model = AddAddressBookRequest.TagList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tagList = tmp
+        }
+        if let value = dict["TagRelation"] as? String {
+            self.tagRelation = value
+        }
+    }
+}
+
+public class AddAddressBookShrinkRequest : Tea.TeaModel {
+    public class AckLabels : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class TagList : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["TagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
+    public var ackClusterConnectorId: String?
+
+    public var ackLabels: [AddAddressBookShrinkRequest.AckLabels]?
+
+    public var ackNamespaces: [String]?
+
+    public var addressList: String?
+
+    public var assetMemberUidsShrink: String?
+
+    public var assetRegionResourceTypesShrink: String?
+
+    public var autoAddTagEcs: String?
+
+    public var description_: String?
+
+    public var groupName: String?
+
+    public var groupType: String?
+
+    public var lang: String?
+
+    public var sourceIp: String?
+
+    public var tagList: [AddAddressBookShrinkRequest.TagList]?
+
+    public var tagRelation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ackClusterConnectorId != nil {
+            map["AckClusterConnectorId"] = self.ackClusterConnectorId!
+        }
+        if self.ackLabels != nil {
+            var tmp : [Any] = []
+            for k in self.ackLabels! {
+                tmp.append(k.toMap())
+            }
+            map["AckLabels"] = tmp
+        }
+        if self.ackNamespaces != nil {
+            map["AckNamespaces"] = self.ackNamespaces!
+        }
+        if self.addressList != nil {
+            map["AddressList"] = self.addressList!
+        }
+        if self.assetMemberUidsShrink != nil {
+            map["AssetMemberUids"] = self.assetMemberUidsShrink!
+        }
+        if self.assetRegionResourceTypesShrink != nil {
+            map["AssetRegionResourceTypes"] = self.assetRegionResourceTypesShrink!
+        }
+        if self.autoAddTagEcs != nil {
+            map["AutoAddTagEcs"] = self.autoAddTagEcs!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.groupName != nil {
+            map["GroupName"] = self.groupName!
+        }
+        if self.groupType != nil {
+            map["GroupType"] = self.groupType!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        if self.tagList != nil {
+            var tmp : [Any] = []
+            for k in self.tagList! {
+                tmp.append(k.toMap())
+            }
+            map["TagList"] = tmp
+        }
+        if self.tagRelation != nil {
+            map["TagRelation"] = self.tagRelation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AckClusterConnectorId"] as? String {
+            self.ackClusterConnectorId = value
+        }
+        if let value = dict["AckLabels"] as? [Any?] {
+            var tmp : [AddAddressBookShrinkRequest.AckLabels] = []
+            for v in value {
+                if v != nil {
+                    var model = AddAddressBookShrinkRequest.AckLabels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ackLabels = tmp
+        }
+        if let value = dict["AckNamespaces"] as? [String] {
+            self.ackNamespaces = value
+        }
+        if let value = dict["AddressList"] as? String {
+            self.addressList = value
+        }
+        if let value = dict["AssetMemberUids"] as? String {
+            self.assetMemberUidsShrink = value
+        }
+        if let value = dict["AssetRegionResourceTypes"] as? String {
+            self.assetRegionResourceTypesShrink = value
+        }
+        if let value = dict["AutoAddTagEcs"] as? String {
+            self.autoAddTagEcs = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["GroupName"] as? String {
+            self.groupName = value
+        }
+        if let value = dict["GroupType"] as? String {
+            self.groupType = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["SourceIp"] as? String {
+            self.sourceIp = value
+        }
+        if let value = dict["TagList"] as? [Any?] {
+            var tmp : [AddAddressBookShrinkRequest.TagList] = []
+            for v in value {
+                if v != nil {
+                    var model = AddAddressBookShrinkRequest.TagList()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
@@ -12992,6 +13590,8 @@ public class DescribeAclWhitelistResponse : Tea.TeaModel {
 }
 
 public class DescribeAddressBookRequest : Tea.TeaModel {
+    public var assetMemberUids: [Int64]?
+
     public var containPort: String?
 
     public var currentPage: String?
@@ -13020,6 +13620,9 @@ public class DescribeAddressBookRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assetMemberUids != nil {
+            map["AssetMemberUids"] = self.assetMemberUids!
+        }
         if self.containPort != nil {
             map["ContainPort"] = self.containPort!
         }
@@ -13046,6 +13649,96 @@ public class DescribeAddressBookRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AssetMemberUids"] as? [Int64] {
+            self.assetMemberUids = value
+        }
+        if let value = dict["ContainPort"] as? String {
+            self.containPort = value
+        }
+        if let value = dict["CurrentPage"] as? String {
+            self.currentPage = value
+        }
+        if let value = dict["GroupType"] as? String {
+            self.groupType = value
+        }
+        if let value = dict["GroupUuid"] as? String {
+            self.groupUuid = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["Query"] as? String {
+            self.query = value
+        }
+    }
+}
+
+public class DescribeAddressBookShrinkRequest : Tea.TeaModel {
+    public var assetMemberUidsShrink: String?
+
+    public var containPort: String?
+
+    public var currentPage: String?
+
+    public var groupType: String?
+
+    public var groupUuid: String?
+
+    public var lang: String?
+
+    public var pageSize: String?
+
+    public var query: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.assetMemberUidsShrink != nil {
+            map["AssetMemberUids"] = self.assetMemberUidsShrink!
+        }
+        if self.containPort != nil {
+            map["ContainPort"] = self.containPort!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.groupType != nil {
+            map["GroupType"] = self.groupType!
+        }
+        if self.groupUuid != nil {
+            map["GroupUuid"] = self.groupUuid!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetMemberUids"] as? String {
+            self.assetMemberUidsShrink = value
+        }
         if let value = dict["ContainPort"] as? String {
             self.containPort = value
         }
@@ -13148,6 +13841,335 @@ public class DescribeAddressBookResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class AssetRegionResourceTypes : Tea.TeaModel {
+            public class ResourceType : Tea.TeaModel {
+                public class Ipv4 : Tea.TeaModel {
+                    public var aiGatewayEIP: Bool?
+
+                    public var albEIP: Bool?
+
+                    public var apiGatewayEIP: Bool?
+
+                    public var bastionHostEgressIP: Bool?
+
+                    public var bastionHostIP: Bool?
+
+                    public var bastionHostIngressIP: Bool?
+
+                    public var EIP: Bool?
+
+                    public var ecsEIP: Bool?
+
+                    public var ecsPublicIP: Bool?
+
+                    public var eniEIP: Bool?
+
+                    public var gaEIP: Bool?
+
+                    public var HAVIP: Bool?
+
+                    public var natEIP: Bool?
+
+                    public var natPublicIP: Bool?
+
+                    public var nlbEIP: Bool?
+
+                    public var slbEIP: Bool?
+
+                    public var slbPublicIP: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.aiGatewayEIP != nil {
+                            map["AiGatewayEIP"] = self.aiGatewayEIP!
+                        }
+                        if self.albEIP != nil {
+                            map["AlbEIP"] = self.albEIP!
+                        }
+                        if self.apiGatewayEIP != nil {
+                            map["ApiGatewayEIP"] = self.apiGatewayEIP!
+                        }
+                        if self.bastionHostEgressIP != nil {
+                            map["BastionHostEgressIP"] = self.bastionHostEgressIP!
+                        }
+                        if self.bastionHostIP != nil {
+                            map["BastionHostIP"] = self.bastionHostIP!
+                        }
+                        if self.bastionHostIngressIP != nil {
+                            map["BastionHostIngressIP"] = self.bastionHostIngressIP!
+                        }
+                        if self.EIP != nil {
+                            map["EIP"] = self.EIP!
+                        }
+                        if self.ecsEIP != nil {
+                            map["EcsEIP"] = self.ecsEIP!
+                        }
+                        if self.ecsPublicIP != nil {
+                            map["EcsPublicIP"] = self.ecsPublicIP!
+                        }
+                        if self.eniEIP != nil {
+                            map["EniEIP"] = self.eniEIP!
+                        }
+                        if self.gaEIP != nil {
+                            map["GaEIP"] = self.gaEIP!
+                        }
+                        if self.HAVIP != nil {
+                            map["HAVIP"] = self.HAVIP!
+                        }
+                        if self.natEIP != nil {
+                            map["NatEIP"] = self.natEIP!
+                        }
+                        if self.natPublicIP != nil {
+                            map["NatPublicIP"] = self.natPublicIP!
+                        }
+                        if self.nlbEIP != nil {
+                            map["NlbEIP"] = self.nlbEIP!
+                        }
+                        if self.slbEIP != nil {
+                            map["SlbEIP"] = self.slbEIP!
+                        }
+                        if self.slbPublicIP != nil {
+                            map["SlbPublicIP"] = self.slbPublicIP!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AiGatewayEIP"] as? Bool {
+                            self.aiGatewayEIP = value
+                        }
+                        if let value = dict["AlbEIP"] as? Bool {
+                            self.albEIP = value
+                        }
+                        if let value = dict["ApiGatewayEIP"] as? Bool {
+                            self.apiGatewayEIP = value
+                        }
+                        if let value = dict["BastionHostEgressIP"] as? Bool {
+                            self.bastionHostEgressIP = value
+                        }
+                        if let value = dict["BastionHostIP"] as? Bool {
+                            self.bastionHostIP = value
+                        }
+                        if let value = dict["BastionHostIngressIP"] as? Bool {
+                            self.bastionHostIngressIP = value
+                        }
+                        if let value = dict["EIP"] as? Bool {
+                            self.EIP = value
+                        }
+                        if let value = dict["EcsEIP"] as? Bool {
+                            self.ecsEIP = value
+                        }
+                        if let value = dict["EcsPublicIP"] as? Bool {
+                            self.ecsPublicIP = value
+                        }
+                        if let value = dict["EniEIP"] as? Bool {
+                            self.eniEIP = value
+                        }
+                        if let value = dict["GaEIP"] as? Bool {
+                            self.gaEIP = value
+                        }
+                        if let value = dict["HAVIP"] as? Bool {
+                            self.HAVIP = value
+                        }
+                        if let value = dict["NatEIP"] as? Bool {
+                            self.natEIP = value
+                        }
+                        if let value = dict["NatPublicIP"] as? Bool {
+                            self.natPublicIP = value
+                        }
+                        if let value = dict["NlbEIP"] as? Bool {
+                            self.nlbEIP = value
+                        }
+                        if let value = dict["SlbEIP"] as? Bool {
+                            self.slbEIP = value
+                        }
+                        if let value = dict["SlbPublicIP"] as? Bool {
+                            self.slbPublicIP = value
+                        }
+                    }
+                }
+                public class Ipv6 : Tea.TeaModel {
+                    public var aiGatewayEIPv6: Bool?
+
+                    public var albIPv6: Bool?
+
+                    public var apiGatewayEIPv6: Bool?
+
+                    public var ecsIPv6: Bool?
+
+                    public var eniEIPv6: Bool?
+
+                    public var gaEIPv6: Bool?
+
+                    public var nlbIPv6: Bool?
+
+                    public var slbIPv6: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.aiGatewayEIPv6 != nil {
+                            map["AiGatewayEIPv6"] = self.aiGatewayEIPv6!
+                        }
+                        if self.albIPv6 != nil {
+                            map["AlbIPv6"] = self.albIPv6!
+                        }
+                        if self.apiGatewayEIPv6 != nil {
+                            map["ApiGatewayEIPv6"] = self.apiGatewayEIPv6!
+                        }
+                        if self.ecsIPv6 != nil {
+                            map["EcsIPv6"] = self.ecsIPv6!
+                        }
+                        if self.eniEIPv6 != nil {
+                            map["EniEIPv6"] = self.eniEIPv6!
+                        }
+                        if self.gaEIPv6 != nil {
+                            map["GaEIPv6"] = self.gaEIPv6!
+                        }
+                        if self.nlbIPv6 != nil {
+                            map["NlbIPv6"] = self.nlbIPv6!
+                        }
+                        if self.slbIPv6 != nil {
+                            map["SlbIPv6"] = self.slbIPv6!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AiGatewayEIPv6"] as? Bool {
+                            self.aiGatewayEIPv6 = value
+                        }
+                        if let value = dict["AlbIPv6"] as? Bool {
+                            self.albIPv6 = value
+                        }
+                        if let value = dict["ApiGatewayEIPv6"] as? Bool {
+                            self.apiGatewayEIPv6 = value
+                        }
+                        if let value = dict["EcsIPv6"] as? Bool {
+                            self.ecsIPv6 = value
+                        }
+                        if let value = dict["EniEIPv6"] as? Bool {
+                            self.eniEIPv6 = value
+                        }
+                        if let value = dict["GaEIPv6"] as? Bool {
+                            self.gaEIPv6 = value
+                        }
+                        if let value = dict["NlbIPv6"] as? Bool {
+                            self.nlbIPv6 = value
+                        }
+                        if let value = dict["SlbIPv6"] as? Bool {
+                            self.slbIPv6 = value
+                        }
+                    }
+                }
+                public var ipv4: DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes.ResourceType.Ipv4?
+
+                public var ipv6: DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes.ResourceType.Ipv6?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.ipv4?.validate()
+                    try self.ipv6?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ipv4 != nil {
+                        map["Ipv4"] = self.ipv4?.toMap()
+                    }
+                    if self.ipv6 != nil {
+                        map["Ipv6"] = self.ipv6?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Ipv4"] as? [String: Any?] {
+                        var model = DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes.ResourceType.Ipv4()
+                        model.fromMap(value)
+                        self.ipv4 = model
+                    }
+                    if let value = dict["Ipv6"] as? [String: Any?] {
+                        var model = DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes.ResourceType.Ipv6()
+                        model.fromMap(value)
+                        self.ipv6 = model
+                    }
+                }
+            }
+            public var assetRegionId: String?
+
+            public var resourceType: DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes.ResourceType?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.resourceType?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.assetRegionId != nil {
+                    map["AssetRegionId"] = self.assetRegionId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AssetRegionId"] as? String {
+                    self.assetRegionId = value
+                }
+                if let value = dict["ResourceType"] as? [String: Any?] {
+                    var model = DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes.ResourceType()
+                    model.fromMap(value)
+                    self.resourceType = model
+                }
+            }
+        }
         public class TagList : Tea.TeaModel {
             public var tagKey: String?
 
@@ -13199,6 +14221,10 @@ public class DescribeAddressBookResponseBody : Tea.TeaModel {
         public var addressListCount: Int32?
 
         public var addresses: [DescribeAddressBookResponseBody.Acls.Addresses]?
+
+        public var assetMemberUids: [Int64]?
+
+        public var assetRegionResourceTypes: [DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes]?
 
         public var autoAddTagEcs: Int32?
 
@@ -13260,6 +14286,16 @@ public class DescribeAddressBookResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Addresses"] = tmp
+            }
+            if self.assetMemberUids != nil {
+                map["AssetMemberUids"] = self.assetMemberUids!
+            }
+            if self.assetRegionResourceTypes != nil {
+                var tmp : [Any] = []
+                for k in self.assetRegionResourceTypes! {
+                    tmp.append(k.toMap())
+                }
+                map["AssetRegionResourceTypes"] = tmp
             }
             if self.autoAddTagEcs != nil {
                 map["AutoAddTagEcs"] = self.autoAddTagEcs!
@@ -13337,6 +14373,22 @@ public class DescribeAddressBookResponseBody : Tea.TeaModel {
                     }
                 }
                 self.addresses = tmp
+            }
+            if let value = dict["AssetMemberUids"] as? [Int64] {
+                self.assetMemberUids = value
+            }
+            if let value = dict["AssetRegionResourceTypes"] as? [Any?] {
+                var tmp : [DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAddressBookResponseBody.Acls.AssetRegionResourceTypes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.assetRegionResourceTypes = tmp
             }
             if let value = dict["AutoAddTagEcs"] as? Int32 {
                 self.autoAddTagEcs = value
@@ -60663,6 +61715,335 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
             }
         }
     }
+    public class AssetRegionResourceTypes : Tea.TeaModel {
+        public class ResourceType : Tea.TeaModel {
+            public class Ipv4 : Tea.TeaModel {
+                public var aiGatewayEIP: Bool?
+
+                public var albEIP: Bool?
+
+                public var apiGatewayEIP: Bool?
+
+                public var bastionHostEgressIP: Bool?
+
+                public var bastionHostIP: Bool?
+
+                public var bastionHostIngressIP: Bool?
+
+                public var EIP: Bool?
+
+                public var ecsEIP: Bool?
+
+                public var ecsPublicIP: Bool?
+
+                public var eniEIP: Bool?
+
+                public var gaEIP: Bool?
+
+                public var HAVIP: Bool?
+
+                public var natEIP: Bool?
+
+                public var natPublicIP: Bool?
+
+                public var nlbEIP: Bool?
+
+                public var slbEIP: Bool?
+
+                public var slbPublicIP: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.aiGatewayEIP != nil {
+                        map["AiGatewayEIP"] = self.aiGatewayEIP!
+                    }
+                    if self.albEIP != nil {
+                        map["AlbEIP"] = self.albEIP!
+                    }
+                    if self.apiGatewayEIP != nil {
+                        map["ApiGatewayEIP"] = self.apiGatewayEIP!
+                    }
+                    if self.bastionHostEgressIP != nil {
+                        map["BastionHostEgressIP"] = self.bastionHostEgressIP!
+                    }
+                    if self.bastionHostIP != nil {
+                        map["BastionHostIP"] = self.bastionHostIP!
+                    }
+                    if self.bastionHostIngressIP != nil {
+                        map["BastionHostIngressIP"] = self.bastionHostIngressIP!
+                    }
+                    if self.EIP != nil {
+                        map["EIP"] = self.EIP!
+                    }
+                    if self.ecsEIP != nil {
+                        map["EcsEIP"] = self.ecsEIP!
+                    }
+                    if self.ecsPublicIP != nil {
+                        map["EcsPublicIP"] = self.ecsPublicIP!
+                    }
+                    if self.eniEIP != nil {
+                        map["EniEIP"] = self.eniEIP!
+                    }
+                    if self.gaEIP != nil {
+                        map["GaEIP"] = self.gaEIP!
+                    }
+                    if self.HAVIP != nil {
+                        map["HAVIP"] = self.HAVIP!
+                    }
+                    if self.natEIP != nil {
+                        map["NatEIP"] = self.natEIP!
+                    }
+                    if self.natPublicIP != nil {
+                        map["NatPublicIP"] = self.natPublicIP!
+                    }
+                    if self.nlbEIP != nil {
+                        map["NlbEIP"] = self.nlbEIP!
+                    }
+                    if self.slbEIP != nil {
+                        map["SlbEIP"] = self.slbEIP!
+                    }
+                    if self.slbPublicIP != nil {
+                        map["SlbPublicIP"] = self.slbPublicIP!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AiGatewayEIP"] as? Bool {
+                        self.aiGatewayEIP = value
+                    }
+                    if let value = dict["AlbEIP"] as? Bool {
+                        self.albEIP = value
+                    }
+                    if let value = dict["ApiGatewayEIP"] as? Bool {
+                        self.apiGatewayEIP = value
+                    }
+                    if let value = dict["BastionHostEgressIP"] as? Bool {
+                        self.bastionHostEgressIP = value
+                    }
+                    if let value = dict["BastionHostIP"] as? Bool {
+                        self.bastionHostIP = value
+                    }
+                    if let value = dict["BastionHostIngressIP"] as? Bool {
+                        self.bastionHostIngressIP = value
+                    }
+                    if let value = dict["EIP"] as? Bool {
+                        self.EIP = value
+                    }
+                    if let value = dict["EcsEIP"] as? Bool {
+                        self.ecsEIP = value
+                    }
+                    if let value = dict["EcsPublicIP"] as? Bool {
+                        self.ecsPublicIP = value
+                    }
+                    if let value = dict["EniEIP"] as? Bool {
+                        self.eniEIP = value
+                    }
+                    if let value = dict["GaEIP"] as? Bool {
+                        self.gaEIP = value
+                    }
+                    if let value = dict["HAVIP"] as? Bool {
+                        self.HAVIP = value
+                    }
+                    if let value = dict["NatEIP"] as? Bool {
+                        self.natEIP = value
+                    }
+                    if let value = dict["NatPublicIP"] as? Bool {
+                        self.natPublicIP = value
+                    }
+                    if let value = dict["NlbEIP"] as? Bool {
+                        self.nlbEIP = value
+                    }
+                    if let value = dict["SlbEIP"] as? Bool {
+                        self.slbEIP = value
+                    }
+                    if let value = dict["SlbPublicIP"] as? Bool {
+                        self.slbPublicIP = value
+                    }
+                }
+            }
+            public class Ipv6 : Tea.TeaModel {
+                public var aiGatewayEIPv6: Bool?
+
+                public var albIPv6: Bool?
+
+                public var apiGatewayEIPv6: Bool?
+
+                public var ecsIPv6: Bool?
+
+                public var eniEIPv6: Bool?
+
+                public var gaEIPv6: Bool?
+
+                public var nlbIPv6: Bool?
+
+                public var slbIPv6: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.aiGatewayEIPv6 != nil {
+                        map["AiGatewayEIPv6"] = self.aiGatewayEIPv6!
+                    }
+                    if self.albIPv6 != nil {
+                        map["AlbIPv6"] = self.albIPv6!
+                    }
+                    if self.apiGatewayEIPv6 != nil {
+                        map["ApiGatewayEIPv6"] = self.apiGatewayEIPv6!
+                    }
+                    if self.ecsIPv6 != nil {
+                        map["EcsIPv6"] = self.ecsIPv6!
+                    }
+                    if self.eniEIPv6 != nil {
+                        map["EniEIPv6"] = self.eniEIPv6!
+                    }
+                    if self.gaEIPv6 != nil {
+                        map["GaEIPv6"] = self.gaEIPv6!
+                    }
+                    if self.nlbIPv6 != nil {
+                        map["NlbIPv6"] = self.nlbIPv6!
+                    }
+                    if self.slbIPv6 != nil {
+                        map["SlbIPv6"] = self.slbIPv6!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AiGatewayEIPv6"] as? Bool {
+                        self.aiGatewayEIPv6 = value
+                    }
+                    if let value = dict["AlbIPv6"] as? Bool {
+                        self.albIPv6 = value
+                    }
+                    if let value = dict["ApiGatewayEIPv6"] as? Bool {
+                        self.apiGatewayEIPv6 = value
+                    }
+                    if let value = dict["EcsIPv6"] as? Bool {
+                        self.ecsIPv6 = value
+                    }
+                    if let value = dict["EniEIPv6"] as? Bool {
+                        self.eniEIPv6 = value
+                    }
+                    if let value = dict["GaEIPv6"] as? Bool {
+                        self.gaEIPv6 = value
+                    }
+                    if let value = dict["NlbIPv6"] as? Bool {
+                        self.nlbIPv6 = value
+                    }
+                    if let value = dict["SlbIPv6"] as? Bool {
+                        self.slbIPv6 = value
+                    }
+                }
+            }
+            public var ipv4: ModifyAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv4?
+
+            public var ipv6: ModifyAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv6?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.ipv4?.validate()
+                try self.ipv6?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ipv4 != nil {
+                    map["Ipv4"] = self.ipv4?.toMap()
+                }
+                if self.ipv6 != nil {
+                    map["Ipv6"] = self.ipv6?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Ipv4"] as? [String: Any?] {
+                    var model = ModifyAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv4()
+                    model.fromMap(value)
+                    self.ipv4 = model
+                }
+                if let value = dict["Ipv6"] as? [String: Any?] {
+                    var model = ModifyAddressBookRequest.AssetRegionResourceTypes.ResourceType.Ipv6()
+                    model.fromMap(value)
+                    self.ipv6 = model
+                }
+            }
+        }
+        public var assetRegionId: String?
+
+        public var resourceType: ModifyAddressBookRequest.AssetRegionResourceTypes.ResourceType?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.resourceType?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assetRegionId != nil {
+                map["AssetRegionId"] = self.assetRegionId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssetRegionId"] as? String {
+                self.assetRegionId = value
+            }
+            if let value = dict["ResourceType"] as? [String: Any?] {
+                var model = ModifyAddressBookRequest.AssetRegionResourceTypes.ResourceType()
+                model.fromMap(value)
+                self.resourceType = model
+            }
+        }
+    }
     public class TagList : Tea.TeaModel {
         public var tagKey: String?
 
@@ -60706,6 +62087,10 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
     public var ackNamespaces: [String]?
 
     public var addressList: String?
+
+    public var assetMemberUids: [Int64]?
+
+    public var assetRegionResourceTypes: [ModifyAddressBookRequest.AssetRegionResourceTypes]?
 
     public var autoAddTagEcs: String?
 
@@ -60751,6 +62136,16 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
         }
         if self.addressList != nil {
             map["AddressList"] = self.addressList!
+        }
+        if self.assetMemberUids != nil {
+            map["AssetMemberUids"] = self.assetMemberUids!
+        }
+        if self.assetRegionResourceTypes != nil {
+            var tmp : [Any] = []
+            for k in self.assetRegionResourceTypes! {
+                tmp.append(k.toMap())
+            }
+            map["AssetRegionResourceTypes"] = tmp
         }
         if self.autoAddTagEcs != nil {
             map["AutoAddTagEcs"] = self.autoAddTagEcs!
@@ -60807,6 +62202,22 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
         if let value = dict["AddressList"] as? String {
             self.addressList = value
         }
+        if let value = dict["AssetMemberUids"] as? [Int64] {
+            self.assetMemberUids = value
+        }
+        if let value = dict["AssetRegionResourceTypes"] as? [Any?] {
+            var tmp : [ModifyAddressBookRequest.AssetRegionResourceTypes] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyAddressBookRequest.AssetRegionResourceTypes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.assetRegionResourceTypes = tmp
+        }
         if let value = dict["AutoAddTagEcs"] as? String {
             self.autoAddTagEcs = value
         }
@@ -60833,6 +62244,245 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
             for v in value {
                 if v != nil {
                     var model = ModifyAddressBookRequest.TagList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tagList = tmp
+        }
+        if let value = dict["TagRelation"] as? String {
+            self.tagRelation = value
+        }
+    }
+}
+
+public class ModifyAddressBookShrinkRequest : Tea.TeaModel {
+    public class AckLabels : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class TagList : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["TagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
+    public var ackLabels: [ModifyAddressBookShrinkRequest.AckLabels]?
+
+    public var ackNamespaces: [String]?
+
+    public var addressList: String?
+
+    public var assetMemberUidsShrink: String?
+
+    public var assetRegionResourceTypesShrink: String?
+
+    public var autoAddTagEcs: String?
+
+    public var description_: String?
+
+    public var groupName: String?
+
+    public var groupUuid: String?
+
+    public var lang: String?
+
+    public var modifyMode: String?
+
+    public var sourceIp: String?
+
+    public var tagList: [ModifyAddressBookShrinkRequest.TagList]?
+
+    public var tagRelation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ackLabels != nil {
+            var tmp : [Any] = []
+            for k in self.ackLabels! {
+                tmp.append(k.toMap())
+            }
+            map["AckLabels"] = tmp
+        }
+        if self.ackNamespaces != nil {
+            map["AckNamespaces"] = self.ackNamespaces!
+        }
+        if self.addressList != nil {
+            map["AddressList"] = self.addressList!
+        }
+        if self.assetMemberUidsShrink != nil {
+            map["AssetMemberUids"] = self.assetMemberUidsShrink!
+        }
+        if self.assetRegionResourceTypesShrink != nil {
+            map["AssetRegionResourceTypes"] = self.assetRegionResourceTypesShrink!
+        }
+        if self.autoAddTagEcs != nil {
+            map["AutoAddTagEcs"] = self.autoAddTagEcs!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.groupName != nil {
+            map["GroupName"] = self.groupName!
+        }
+        if self.groupUuid != nil {
+            map["GroupUuid"] = self.groupUuid!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.modifyMode != nil {
+            map["ModifyMode"] = self.modifyMode!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        if self.tagList != nil {
+            var tmp : [Any] = []
+            for k in self.tagList! {
+                tmp.append(k.toMap())
+            }
+            map["TagList"] = tmp
+        }
+        if self.tagRelation != nil {
+            map["TagRelation"] = self.tagRelation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AckLabels"] as? [Any?] {
+            var tmp : [ModifyAddressBookShrinkRequest.AckLabels] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyAddressBookShrinkRequest.AckLabels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ackLabels = tmp
+        }
+        if let value = dict["AckNamespaces"] as? [String] {
+            self.ackNamespaces = value
+        }
+        if let value = dict["AddressList"] as? String {
+            self.addressList = value
+        }
+        if let value = dict["AssetMemberUids"] as? String {
+            self.assetMemberUidsShrink = value
+        }
+        if let value = dict["AssetRegionResourceTypes"] as? String {
+            self.assetRegionResourceTypesShrink = value
+        }
+        if let value = dict["AutoAddTagEcs"] as? String {
+            self.autoAddTagEcs = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["GroupName"] as? String {
+            self.groupName = value
+        }
+        if let value = dict["GroupUuid"] as? String {
+            self.groupUuid = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["ModifyMode"] as? String {
+            self.modifyMode = value
+        }
+        if let value = dict["SourceIp"] as? String {
+            self.sourceIp = value
+        }
+        if let value = dict["TagList"] as? [Any?] {
+            var tmp : [ModifyAddressBookShrinkRequest.TagList] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyAddressBookShrinkRequest.TagList()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }

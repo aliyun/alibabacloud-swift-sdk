@@ -92,8 +92,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addAddressBookWithOptions(_ request: AddAddressBookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddAddressBookResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func addAddressBookWithOptions(_ tmpReq: AddAddressBookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddAddressBookResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddAddressBookShrinkRequest = AddAddressBookShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.assetMemberUids)) {
+            request.assetMemberUidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.assetMemberUids, "AssetMemberUids", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.assetRegionResourceTypes)) {
+            request.assetRegionResourceTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.assetRegionResourceTypes, "AssetRegionResourceTypes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ackClusterConnectorId)) {
             query["AckClusterConnectorId"] = request.ackClusterConnectorId ?? "";
@@ -106,6 +114,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.addressList)) {
             query["AddressList"] = request.addressList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assetMemberUidsShrink)) {
+            query["AssetMemberUids"] = request.assetMemberUidsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assetRegionResourceTypesShrink)) {
+            query["AssetRegionResourceTypes"] = request.assetRegionResourceTypesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.autoAddTagEcs)) {
             query["AutoAddTagEcs"] = request.autoAddTagEcs ?? "";
@@ -2916,9 +2930,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeAddressBookWithOptions(_ request: DescribeAddressBookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAddressBookResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeAddressBookWithOptions(_ tmpReq: DescribeAddressBookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAddressBookResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeAddressBookShrinkRequest = DescribeAddressBookShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.assetMemberUids)) {
+            request.assetMemberUidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.assetMemberUids, "AssetMemberUids", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assetMemberUidsShrink)) {
+            query["AssetMemberUids"] = request.assetMemberUidsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.containPort)) {
             query["ContainPort"] = request.containPort ?? "";
         }
@@ -10260,8 +10282,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyAddressBookWithOptions(_ request: ModifyAddressBookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAddressBookResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyAddressBookWithOptions(_ tmpReq: ModifyAddressBookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAddressBookResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyAddressBookShrinkRequest = ModifyAddressBookShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.assetMemberUids)) {
+            request.assetMemberUidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.assetMemberUids, "AssetMemberUids", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.assetRegionResourceTypes)) {
+            request.assetRegionResourceTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.assetRegionResourceTypes, "AssetRegionResourceTypes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ackLabels)) {
             query["AckLabels"] = request.ackLabels ?? [];
@@ -10271,6 +10301,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.addressList)) {
             query["AddressList"] = request.addressList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assetMemberUidsShrink)) {
+            query["AssetMemberUids"] = request.assetMemberUidsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assetRegionResourceTypesShrink)) {
+            query["AssetRegionResourceTypes"] = request.assetRegionResourceTypesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.autoAddTagEcs)) {
             query["AutoAddTagEcs"] = request.autoAddTagEcs ?? "";
