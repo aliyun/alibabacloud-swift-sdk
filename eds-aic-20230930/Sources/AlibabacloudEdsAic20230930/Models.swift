@@ -20085,6 +20085,68 @@ public class ListPolicyGroupsRequest : Tea.TeaModel {
 
 public class ListPolicyGroupsResponseBody : Tea.TeaModel {
     public class PolicyGroupModel : Tea.TeaModel {
+        public class AccessPolicies : Tea.TeaModel {
+            public var accessPolicyRuleId: Int64?
+
+            public var cidrIp: String?
+
+            public var description_: String?
+
+            public var policy: String?
+
+            public var priority: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessPolicyRuleId != nil {
+                    map["AccessPolicyRuleId"] = self.accessPolicyRuleId!
+                }
+                if self.cidrIp != nil {
+                    map["CidrIp"] = self.cidrIp!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessPolicyRuleId"] as? Int64 {
+                    self.accessPolicyRuleId = value
+                }
+                if let value = dict["CidrIp"] as? String {
+                    self.cidrIp = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["Policy"] as? String {
+                    self.policy = value
+                }
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
+                }
+            }
+        }
         public class NetRedirectPolicy : Tea.TeaModel {
             public class Rules : Tea.TeaModel {
                 public var ruleType: String?
@@ -20331,6 +20393,8 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var accessPolicies: [ListPolicyGroupsResponseBody.PolicyGroupModel.AccessPolicies]?
+
         public var cameraRedirect: String?
 
         public var clipboard: String?
@@ -20374,6 +20438,13 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accessPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.accessPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["AccessPolicies"] = tmp
+            }
             if self.cameraRedirect != nil {
                 map["CameraRedirect"] = self.cameraRedirect!
             }
@@ -20418,6 +20489,19 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccessPolicies"] as? [Any?] {
+                var tmp : [ListPolicyGroupsResponseBody.PolicyGroupModel.AccessPolicies] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListPolicyGroupsResponseBody.PolicyGroupModel.AccessPolicies()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.accessPolicies = tmp
+            }
             if let value = dict["CameraRedirect"] as? String {
                 self.cameraRedirect = value
             }
