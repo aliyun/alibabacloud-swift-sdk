@@ -81,6 +81,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adDomain)) {
             body["AdDomain"] = request.adDomain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.adPassword)) {
+            body["AdPassword"] = request.adPassword ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoCreateUser)) {
             body["AutoCreateUser"] = request.autoCreateUser!;
         }

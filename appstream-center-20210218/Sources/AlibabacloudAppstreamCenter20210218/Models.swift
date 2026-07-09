@@ -146,6 +146,8 @@ public class GetAuthCodeRequest : Tea.TeaModel {
 
     public var adDomain: String?
 
+    public var adPassword: String?
+
     public var autoCreateUser: Bool?
 
     public var endUserId: String?
@@ -176,6 +178,9 @@ public class GetAuthCodeRequest : Tea.TeaModel {
         if self.adDomain != nil {
             map["AdDomain"] = self.adDomain!
         }
+        if self.adPassword != nil {
+            map["AdPassword"] = self.adPassword!
+        }
         if self.autoCreateUser != nil {
             map["AutoCreateUser"] = self.autoCreateUser!
         }
@@ -201,6 +206,9 @@ public class GetAuthCodeRequest : Tea.TeaModel {
         }
         if let value = dict["AdDomain"] as? String {
             self.adDomain = value
+        }
+        if let value = dict["AdPassword"] as? String {
+            self.adPassword = value
         }
         if let value = dict["AutoCreateUser"] as? Bool {
             self.autoCreateUser = value
