@@ -615,6 +615,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInstanceCustomizedDomainWithOptions(_ request: CreateInstanceCustomizedDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceCustomizedDomainResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certId)) {
+            query["CertId"] = request.certId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certRegionId)) {
+            query["CertRegionId"] = request.certRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.moduleName)) {
+            query["ModuleName"] = request.moduleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateInstanceCustomizedDomain",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateInstanceCustomizedDomainResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInstanceCustomizedDomain(_ request: CreateInstanceCustomizedDomainRequest) async throws -> CreateInstanceCustomizedDomainResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createInstanceCustomizedDomainWithOptions(request as! CreateInstanceCustomizedDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createInstanceEndpointAclPolicyWithOptions(_ tmpReq: CreateInstanceEndpointAclPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceEndpointAclPolicyResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateInstanceEndpointAclPolicyShrinkRequest = CreateInstanceEndpointAclPolicyShrinkRequest([:])
@@ -1565,6 +1608,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteInstanceCustomizedDomainWithOptions(_ request: DeleteInstanceCustomizedDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteInstanceCustomizedDomainResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.moduleName)) {
+            query["ModuleName"] = request.moduleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteInstanceCustomizedDomain",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteInstanceCustomizedDomainResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteInstanceCustomizedDomain(_ request: DeleteInstanceCustomizedDomainRequest) async throws -> DeleteInstanceCustomizedDomainResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteInstanceCustomizedDomainWithOptions(request as! DeleteInstanceCustomizedDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteInstanceEndpointAclPolicyWithOptions(_ tmpReq: DeleteInstanceEndpointAclPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteInstanceEndpointAclPolicyResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DeleteInstanceEndpointAclPolicyShrinkRequest = DeleteInstanceEndpointAclPolicyShrinkRequest([:])
@@ -2296,6 +2376,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getInstanceCount() async throws -> GetInstanceCountResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getInstanceCountWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getInstanceCustomizedDomainWithOptions(_ request: GetInstanceCustomizedDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceCustomizedDomainResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.moduleName)) {
+            query["ModuleName"] = request.moduleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetInstanceCustomizedDomain",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetInstanceCustomizedDomainResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getInstanceCustomizedDomain(_ request: GetInstanceCustomizedDomainRequest) async throws -> GetInstanceCustomizedDomainResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getInstanceCustomizedDomainWithOptions(request as! GetInstanceCustomizedDomainRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4302,6 +4419,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateEventCenterRule(_ request: UpdateEventCenterRuleRequest) async throws -> UpdateEventCenterRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateEventCenterRuleWithOptions(request as! UpdateEventCenterRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceCustomizedDomainWithOptions(_ request: UpdateInstanceCustomizedDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstanceCustomizedDomainResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certId)) {
+            query["CertId"] = request.certId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certRegionId)) {
+            query["CertRegionId"] = request.certRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.moduleName)) {
+            query["ModuleName"] = request.moduleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateInstanceCustomizedDomain",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateInstanceCustomizedDomainResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceCustomizedDomain(_ request: UpdateInstanceCustomizedDomainRequest) async throws -> UpdateInstanceCustomizedDomainResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateInstanceCustomizedDomainWithOptions(request as! UpdateInstanceCustomizedDomainRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
