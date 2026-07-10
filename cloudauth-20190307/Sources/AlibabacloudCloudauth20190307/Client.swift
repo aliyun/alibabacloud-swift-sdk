@@ -11,7 +11,33 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "central"
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "cloudauth.aliyuncs.com",
+            "us-east-1": "cloudauth.aliyuncs.com",
+            "me-east-1": "cloudauth.aliyuncs.com",
+            "eu-west-1": "cloudauth.aliyuncs.com",
+            "eu-central-1": "cloudauth.aliyuncs.com",
+            "cn-zhangjiakou": "cloudauth.aliyuncs.com",
+            "cn-shenzhen-finance-1": "cloudauth.aliyuncs.com",
+            "cn-shenzhen": "cloudauth.aliyuncs.com",
+            "cn-shanghai-finance-1": "cloudauth.aliyuncs.com",
+            "cn-shanghai": "cloudauth.aliyuncs.com",
+            "cn-qingdao": "cloudauth.cn-qingdao.aliyuncs.com",
+            "cn-north-2-gov-1": "cloudauth.aliyuncs.com",
+            "cn-huhehaote": "cloudauth.aliyuncs.com",
+            "cn-hongkong": "cloudauth.aliyuncs.com",
+            "cn-hangzhou-finance": "cloudauth.aliyuncs.com",
+            "cn-hangzhou": "cloudauth.aliyuncs.com",
+            "cn-chengdu": "cloudauth.aliyuncs.com",
+            "cn-beijing": "cloudauth.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "cloudauth.aliyuncs.com",
+            "ap-southeast-3": "cloudauth.aliyuncs.com",
+            "ap-southeast-2": "cloudauth.aliyuncs.com",
+            "ap-southeast-1": "cloudauth.aliyuncs.com",
+            "ap-south-1": "cloudauth.aliyuncs.com",
+            "ap-northeast-1": "cloudauth.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudauth", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -741,6 +767,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.validDay)) {
             query["ValidDay"] = request.validDay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelistType)) {
+            query["WhitelistType"] = request.whitelistType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2853,6 +2882,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.validStartDate)) {
             query["ValidStartDate"] = request.validStartDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelistType)) {
+            query["WhitelistType"] = request.whitelistType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

@@ -2293,6 +2293,8 @@ public class CreateWhitelistSettingRequest : Tea.TeaModel {
 
     public var validDay: Int32?
 
+    public var whitelistType: String?
+
     public override init() {
         super.init()
     }
@@ -2331,6 +2333,9 @@ public class CreateWhitelistSettingRequest : Tea.TeaModel {
         if self.validDay != nil {
             map["ValidDay"] = self.validDay!
         }
+        if self.whitelistType != nil {
+            map["WhitelistType"] = self.whitelistType!
+        }
         return map
     }
 
@@ -2359,6 +2364,9 @@ public class CreateWhitelistSettingRequest : Tea.TeaModel {
         }
         if let value = dict["ValidDay"] as? Int32 {
             self.validDay = value
+        }
+        if let value = dict["WhitelistType"] as? String {
+            self.whitelistType = value
         }
     }
 }
@@ -14639,6 +14647,8 @@ public class DescribeWhitelistSettingRequest : Tea.TeaModel {
 
     public var validStartDate: Int64?
 
+    public var whitelistType: String?
+
     public override init() {
         super.init()
     }
@@ -14686,6 +14696,9 @@ public class DescribeWhitelistSettingRequest : Tea.TeaModel {
         if self.validStartDate != nil {
             map["ValidStartDate"] = self.validStartDate!
         }
+        if self.whitelistType != nil {
+            map["WhitelistType"] = self.whitelistType!
+        }
         return map
     }
 
@@ -14724,6 +14737,9 @@ public class DescribeWhitelistSettingRequest : Tea.TeaModel {
         if let value = dict["ValidStartDate"] as? Int64 {
             self.validStartDate = value
         }
+        if let value = dict["WhitelistType"] as? String {
+            self.whitelistType = value
+        }
     }
 }
 
@@ -14748,6 +14764,8 @@ public class DescribeWhitelistSettingResponseBody : Tea.TeaModel {
         public var validEndDate: String?
 
         public var validStartDate: String?
+
+        public var whitelistType: String?
 
         public override init() {
             super.init()
@@ -14793,6 +14811,9 @@ public class DescribeWhitelistSettingResponseBody : Tea.TeaModel {
             if self.validStartDate != nil {
                 map["ValidStartDate"] = self.validStartDate!
             }
+            if self.whitelistType != nil {
+                map["WhitelistType"] = self.whitelistType!
+            }
             return map
         }
 
@@ -14827,6 +14848,9 @@ public class DescribeWhitelistSettingResponseBody : Tea.TeaModel {
             }
             if let value = dict["ValidStartDate"] as? String {
                 self.validStartDate = value
+            }
+            if let value = dict["WhitelistType"] as? String {
+                self.whitelistType = value
             }
         }
     }
@@ -16597,6 +16621,8 @@ public class Id3MetaVerifyResponseBody : Tea.TeaModel {
 
         public var faceDetail: String?
 
+        public var subCode: String?
+
         public override init() {
             super.init()
         }
@@ -16617,6 +16643,9 @@ public class Id3MetaVerifyResponseBody : Tea.TeaModel {
             if self.faceDetail != nil {
                 map["FaceDetail"] = self.faceDetail!
             }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
             return map
         }
 
@@ -16627,6 +16656,9 @@ public class Id3MetaVerifyResponseBody : Tea.TeaModel {
             }
             if let value = dict["FaceDetail"] as? String {
                 self.faceDetail = value
+            }
+            if let value = dict["SubCode"] as? String {
+                self.subCode = value
             }
         }
     }
