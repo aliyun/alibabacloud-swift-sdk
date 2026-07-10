@@ -3444,6 +3444,286 @@ public class CreateApplicationFederatedCredentialRequest : Tea.TeaModel {
             }
         }
     }
+    public class OidcVerificationConfig : Tea.TeaModel {
+        public class AzureVmConfig : Tea.TeaModel {
+            public var principalId: String?
+
+            public var resourceGroupName: String?
+
+            public var subscriptionId: String?
+
+            public var vmNames: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.principalId != nil {
+                    map["PrincipalId"] = self.principalId!
+                }
+                if self.resourceGroupName != nil {
+                    map["ResourceGroupName"] = self.resourceGroupName!
+                }
+                if self.subscriptionId != nil {
+                    map["SubscriptionId"] = self.subscriptionId!
+                }
+                if self.vmNames != nil {
+                    map["VmNames"] = self.vmNames!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PrincipalId"] as? String {
+                    self.principalId = value
+                }
+                if let value = dict["ResourceGroupName"] as? String {
+                    self.resourceGroupName = value
+                }
+                if let value = dict["SubscriptionId"] as? String {
+                    self.subscriptionId = value
+                }
+                if let value = dict["VmNames"] as? [String] {
+                    self.vmNames = value
+                }
+            }
+        }
+        public class GcpVmConfig : Tea.TeaModel {
+            public var instanceIds: [String]?
+
+            public var projectId: String?
+
+            public var serviceAccountId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceIds != nil {
+                    map["InstanceIds"] = self.instanceIds!
+                }
+                if self.projectId != nil {
+                    map["ProjectId"] = self.projectId!
+                }
+                if self.serviceAccountId != nil {
+                    map["ServiceAccountId"] = self.serviceAccountId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceIds"] as? [String] {
+                    self.instanceIds = value
+                }
+                if let value = dict["ProjectId"] as? String {
+                    self.projectId = value
+                }
+                if let value = dict["ServiceAccountId"] as? String {
+                    self.serviceAccountId = value
+                }
+            }
+        }
+        public class GenericConfig : Tea.TeaModel {
+            public var subject: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.subject != nil {
+                    map["Subject"] = self.subject!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Subject"] as? String {
+                    self.subject = value
+                }
+            }
+        }
+        public class KubernetesConfig : Tea.TeaModel {
+            public var namespace: String?
+
+            public var podNamePrefix: String?
+
+            public var serviceAccountName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.namespace != nil {
+                    map["Namespace"] = self.namespace!
+                }
+                if self.podNamePrefix != nil {
+                    map["PodNamePrefix"] = self.podNamePrefix!
+                }
+                if self.serviceAccountName != nil {
+                    map["ServiceAccountName"] = self.serviceAccountName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Namespace"] as? String {
+                    self.namespace = value
+                }
+                if let value = dict["PodNamePrefix"] as? String {
+                    self.podNamePrefix = value
+                }
+                if let value = dict["ServiceAccountName"] as? String {
+                    self.serviceAccountName = value
+                }
+            }
+        }
+        public var azureVmConfig: CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.AzureVmConfig?
+
+        public var gcpVmConfig: CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.GcpVmConfig?
+
+        public var genericConfig: CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.GenericConfig?
+
+        public var kubernetesConfig: CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.KubernetesConfig?
+
+        public var profile: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.azureVmConfig?.validate()
+            try self.gcpVmConfig?.validate()
+            try self.genericConfig?.validate()
+            try self.kubernetesConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.azureVmConfig != nil {
+                map["AzureVmConfig"] = self.azureVmConfig?.toMap()
+            }
+            if self.gcpVmConfig != nil {
+                map["GcpVmConfig"] = self.gcpVmConfig?.toMap()
+            }
+            if self.genericConfig != nil {
+                map["GenericConfig"] = self.genericConfig?.toMap()
+            }
+            if self.kubernetesConfig != nil {
+                map["KubernetesConfig"] = self.kubernetesConfig?.toMap()
+            }
+            if self.profile != nil {
+                map["Profile"] = self.profile!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AzureVmConfig"] as? [String: Any?] {
+                var model = CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.AzureVmConfig()
+                model.fromMap(value)
+                self.azureVmConfig = model
+            }
+            if let value = dict["GcpVmConfig"] as? [String: Any?] {
+                var model = CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.GcpVmConfig()
+                model.fromMap(value)
+                self.gcpVmConfig = model
+            }
+            if let value = dict["GenericConfig"] as? [String: Any?] {
+                var model = CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.GenericConfig()
+                model.fromMap(value)
+                self.genericConfig = model
+            }
+            if let value = dict["KubernetesConfig"] as? [String: Any?] {
+                var model = CreateApplicationFederatedCredentialRequest.OidcVerificationConfig.KubernetesConfig()
+                model.fromMap(value)
+                self.kubernetesConfig = model
+            }
+            if let value = dict["Profile"] as? String {
+                self.profile = value
+            }
+        }
+    }
+    public class Pkcs7VerificationConfig : Tea.TeaModel {
+        public var instanceIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceIds != nil {
+                map["InstanceIds"] = self.instanceIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceIds"] as? [String] {
+                self.instanceIds = value
+            }
+        }
+    }
     public var applicationFederatedCredentialName: String?
 
     public var applicationFederatedCredentialType: String?
@@ -3458,7 +3738,13 @@ public class CreateApplicationFederatedCredentialRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var oidcVerificationConfig: CreateApplicationFederatedCredentialRequest.OidcVerificationConfig?
+
+    public var pkcs7VerificationConfig: CreateApplicationFederatedCredentialRequest.Pkcs7VerificationConfig?
+
     public var verificationCondition: String?
+
+    public var verificationMode: String?
 
     public override init() {
         super.init()
@@ -3470,6 +3756,8 @@ public class CreateApplicationFederatedCredentialRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.oidcVerificationConfig?.validate()
+        try self.pkcs7VerificationConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3499,8 +3787,17 @@ public class CreateApplicationFederatedCredentialRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.oidcVerificationConfig != nil {
+            map["OidcVerificationConfig"] = self.oidcVerificationConfig?.toMap()
+        }
+        if self.pkcs7VerificationConfig != nil {
+            map["Pkcs7VerificationConfig"] = self.pkcs7VerificationConfig?.toMap()
+        }
         if self.verificationCondition != nil {
             map["VerificationCondition"] = self.verificationCondition!
+        }
+        if self.verificationMode != nil {
+            map["VerificationMode"] = self.verificationMode!
         }
         return map
     }
@@ -3538,8 +3835,21 @@ public class CreateApplicationFederatedCredentialRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["OidcVerificationConfig"] as? [String: Any?] {
+            var model = CreateApplicationFederatedCredentialRequest.OidcVerificationConfig()
+            model.fromMap(value)
+            self.oidcVerificationConfig = model
+        }
+        if let value = dict["Pkcs7VerificationConfig"] as? [String: Any?] {
+            var model = CreateApplicationFederatedCredentialRequest.Pkcs7VerificationConfig()
+            model.fromMap(value)
+            self.pkcs7VerificationConfig = model
+        }
         if let value = dict["VerificationCondition"] as? String {
             self.verificationCondition = value
+        }
+        if let value = dict["VerificationMode"] as? String {
+            self.verificationMode = value
         }
     }
 }
@@ -22673,6 +22983,286 @@ public class GetApplicationFederatedCredentialResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class OidcVerificationConfig : Tea.TeaModel {
+            public class AzureVmConfig : Tea.TeaModel {
+                public var principalId: String?
+
+                public var resourceGroupName: String?
+
+                public var subscriptionId: String?
+
+                public var vmNames: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.principalId != nil {
+                        map["PrincipalId"] = self.principalId!
+                    }
+                    if self.resourceGroupName != nil {
+                        map["ResourceGroupName"] = self.resourceGroupName!
+                    }
+                    if self.subscriptionId != nil {
+                        map["SubscriptionId"] = self.subscriptionId!
+                    }
+                    if self.vmNames != nil {
+                        map["VmNames"] = self.vmNames!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["PrincipalId"] as? String {
+                        self.principalId = value
+                    }
+                    if let value = dict["ResourceGroupName"] as? String {
+                        self.resourceGroupName = value
+                    }
+                    if let value = dict["SubscriptionId"] as? String {
+                        self.subscriptionId = value
+                    }
+                    if let value = dict["VmNames"] as? [String] {
+                        self.vmNames = value
+                    }
+                }
+            }
+            public class GcpVmConfig : Tea.TeaModel {
+                public var instanceIds: [String]?
+
+                public var projectId: String?
+
+                public var serviceAccountId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceIds != nil {
+                        map["InstanceIds"] = self.instanceIds!
+                    }
+                    if self.projectId != nil {
+                        map["ProjectId"] = self.projectId!
+                    }
+                    if self.serviceAccountId != nil {
+                        map["ServiceAccountId"] = self.serviceAccountId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["InstanceIds"] as? [String] {
+                        self.instanceIds = value
+                    }
+                    if let value = dict["ProjectId"] as? String {
+                        self.projectId = value
+                    }
+                    if let value = dict["ServiceAccountId"] as? String {
+                        self.serviceAccountId = value
+                    }
+                }
+            }
+            public class GenericConfig : Tea.TeaModel {
+                public var subject: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.subject != nil {
+                        map["Subject"] = self.subject!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Subject"] as? String {
+                        self.subject = value
+                    }
+                }
+            }
+            public class KubernetesConfig : Tea.TeaModel {
+                public var namespace: String?
+
+                public var podNamePrefix: String?
+
+                public var serviceAccountName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.namespace != nil {
+                        map["Namespace"] = self.namespace!
+                    }
+                    if self.podNamePrefix != nil {
+                        map["PodNamePrefix"] = self.podNamePrefix!
+                    }
+                    if self.serviceAccountName != nil {
+                        map["ServiceAccountName"] = self.serviceAccountName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Namespace"] as? String {
+                        self.namespace = value
+                    }
+                    if let value = dict["PodNamePrefix"] as? String {
+                        self.podNamePrefix = value
+                    }
+                    if let value = dict["ServiceAccountName"] as? String {
+                        self.serviceAccountName = value
+                    }
+                }
+            }
+            public var azureVmConfig: GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.AzureVmConfig?
+
+            public var gcpVmConfig: GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.GcpVmConfig?
+
+            public var genericConfig: GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.GenericConfig?
+
+            public var kubernetesConfig: GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.KubernetesConfig?
+
+            public var profile: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.azureVmConfig?.validate()
+                try self.gcpVmConfig?.validate()
+                try self.genericConfig?.validate()
+                try self.kubernetesConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.azureVmConfig != nil {
+                    map["AzureVmConfig"] = self.azureVmConfig?.toMap()
+                }
+                if self.gcpVmConfig != nil {
+                    map["GcpVmConfig"] = self.gcpVmConfig?.toMap()
+                }
+                if self.genericConfig != nil {
+                    map["GenericConfig"] = self.genericConfig?.toMap()
+                }
+                if self.kubernetesConfig != nil {
+                    map["KubernetesConfig"] = self.kubernetesConfig?.toMap()
+                }
+                if self.profile != nil {
+                    map["Profile"] = self.profile!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AzureVmConfig"] as? [String: Any?] {
+                    var model = GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.AzureVmConfig()
+                    model.fromMap(value)
+                    self.azureVmConfig = model
+                }
+                if let value = dict["GcpVmConfig"] as? [String: Any?] {
+                    var model = GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.GcpVmConfig()
+                    model.fromMap(value)
+                    self.gcpVmConfig = model
+                }
+                if let value = dict["GenericConfig"] as? [String: Any?] {
+                    var model = GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.GenericConfig()
+                    model.fromMap(value)
+                    self.genericConfig = model
+                }
+                if let value = dict["KubernetesConfig"] as? [String: Any?] {
+                    var model = GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig.KubernetesConfig()
+                    model.fromMap(value)
+                    self.kubernetesConfig = model
+                }
+                if let value = dict["Profile"] as? String {
+                    self.profile = value
+                }
+            }
+        }
+        public class Pkcs7VerificationConfig : Tea.TeaModel {
+            public var instanceIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceIds != nil {
+                    map["InstanceIds"] = self.instanceIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceIds"] as? [String] {
+                    self.instanceIds = value
+                }
+            }
+        }
         public var applicationFederatedCredentialId: String?
 
         public var applicationFederatedCredentialName: String?
@@ -22693,11 +23283,17 @@ public class GetApplicationFederatedCredentialResponseBody : Tea.TeaModel {
 
         public var lastUsedTime: Int64?
 
+        public var oidcVerificationConfig: GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig?
+
+        public var pkcs7VerificationConfig: GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.Pkcs7VerificationConfig?
+
         public var status: String?
 
         public var updateTime: Int64?
 
         public var verificationCondition: String?
+
+        public var verificationMode: String?
 
         public override init() {
             super.init()
@@ -22709,6 +23305,8 @@ public class GetApplicationFederatedCredentialResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.oidcVerificationConfig?.validate()
+            try self.pkcs7VerificationConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -22747,6 +23345,12 @@ public class GetApplicationFederatedCredentialResponseBody : Tea.TeaModel {
             if self.lastUsedTime != nil {
                 map["LastUsedTime"] = self.lastUsedTime!
             }
+            if self.oidcVerificationConfig != nil {
+                map["OidcVerificationConfig"] = self.oidcVerificationConfig?.toMap()
+            }
+            if self.pkcs7VerificationConfig != nil {
+                map["Pkcs7VerificationConfig"] = self.pkcs7VerificationConfig?.toMap()
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -22755,6 +23359,9 @@ public class GetApplicationFederatedCredentialResponseBody : Tea.TeaModel {
             }
             if self.verificationCondition != nil {
                 map["VerificationCondition"] = self.verificationCondition!
+            }
+            if self.verificationMode != nil {
+                map["VerificationMode"] = self.verificationMode!
             }
             return map
         }
@@ -22801,6 +23408,16 @@ public class GetApplicationFederatedCredentialResponseBody : Tea.TeaModel {
             if let value = dict["LastUsedTime"] as? Int64 {
                 self.lastUsedTime = value
             }
+            if let value = dict["OidcVerificationConfig"] as? [String: Any?] {
+                var model = GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.OidcVerificationConfig()
+                model.fromMap(value)
+                self.oidcVerificationConfig = model
+            }
+            if let value = dict["Pkcs7VerificationConfig"] as? [String: Any?] {
+                var model = GetApplicationFederatedCredentialResponseBody.ApplicationFederatedCredential.Pkcs7VerificationConfig()
+                model.fromMap(value)
+                self.pkcs7VerificationConfig = model
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
             }
@@ -22809,6 +23426,9 @@ public class GetApplicationFederatedCredentialResponseBody : Tea.TeaModel {
             }
             if let value = dict["VerificationCondition"] as? String {
                 self.verificationCondition = value
+            }
+            if let value = dict["VerificationMode"] as? String {
+                self.verificationMode = value
             }
         }
     }
@@ -40735,6 +41355,286 @@ public class ListApplicationFederatedCredentialsRequest : Tea.TeaModel {
 
 public class ListApplicationFederatedCredentialsResponseBody : Tea.TeaModel {
     public class ApplicationFederatedCredentials : Tea.TeaModel {
+        public class OidcVerificationConfig : Tea.TeaModel {
+            public class AzureVmConfig : Tea.TeaModel {
+                public var principalId: String?
+
+                public var resourceGroupName: String?
+
+                public var subscriptionId: String?
+
+                public var vmNames: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.principalId != nil {
+                        map["PrincipalId"] = self.principalId!
+                    }
+                    if self.resourceGroupName != nil {
+                        map["ResourceGroupName"] = self.resourceGroupName!
+                    }
+                    if self.subscriptionId != nil {
+                        map["SubscriptionId"] = self.subscriptionId!
+                    }
+                    if self.vmNames != nil {
+                        map["VmNames"] = self.vmNames!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["PrincipalId"] as? String {
+                        self.principalId = value
+                    }
+                    if let value = dict["ResourceGroupName"] as? String {
+                        self.resourceGroupName = value
+                    }
+                    if let value = dict["SubscriptionId"] as? String {
+                        self.subscriptionId = value
+                    }
+                    if let value = dict["VmNames"] as? [String] {
+                        self.vmNames = value
+                    }
+                }
+            }
+            public class GcpVmConfig : Tea.TeaModel {
+                public var instanceIds: [String]?
+
+                public var projectId: String?
+
+                public var serviceAccountId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceIds != nil {
+                        map["InstanceIds"] = self.instanceIds!
+                    }
+                    if self.projectId != nil {
+                        map["ProjectId"] = self.projectId!
+                    }
+                    if self.serviceAccountId != nil {
+                        map["ServiceAccountId"] = self.serviceAccountId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["InstanceIds"] as? [String] {
+                        self.instanceIds = value
+                    }
+                    if let value = dict["ProjectId"] as? String {
+                        self.projectId = value
+                    }
+                    if let value = dict["ServiceAccountId"] as? String {
+                        self.serviceAccountId = value
+                    }
+                }
+            }
+            public class GenericConfig : Tea.TeaModel {
+                public var subject: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.subject != nil {
+                        map["Subject"] = self.subject!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Subject"] as? String {
+                        self.subject = value
+                    }
+                }
+            }
+            public class KubernetesConfig : Tea.TeaModel {
+                public var namespace: String?
+
+                public var podNamePrefix: String?
+
+                public var serviceAccountName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.namespace != nil {
+                        map["Namespace"] = self.namespace!
+                    }
+                    if self.podNamePrefix != nil {
+                        map["PodNamePrefix"] = self.podNamePrefix!
+                    }
+                    if self.serviceAccountName != nil {
+                        map["ServiceAccountName"] = self.serviceAccountName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Namespace"] as? String {
+                        self.namespace = value
+                    }
+                    if let value = dict["PodNamePrefix"] as? String {
+                        self.podNamePrefix = value
+                    }
+                    if let value = dict["ServiceAccountName"] as? String {
+                        self.serviceAccountName = value
+                    }
+                }
+            }
+            public var azureVmConfig: ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.AzureVmConfig?
+
+            public var gcpVmConfig: ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GcpVmConfig?
+
+            public var genericConfig: ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GenericConfig?
+
+            public var kubernetesConfig: ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.KubernetesConfig?
+
+            public var profile: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.azureVmConfig?.validate()
+                try self.gcpVmConfig?.validate()
+                try self.genericConfig?.validate()
+                try self.kubernetesConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.azureVmConfig != nil {
+                    map["AzureVmConfig"] = self.azureVmConfig?.toMap()
+                }
+                if self.gcpVmConfig != nil {
+                    map["GcpVmConfig"] = self.gcpVmConfig?.toMap()
+                }
+                if self.genericConfig != nil {
+                    map["GenericConfig"] = self.genericConfig?.toMap()
+                }
+                if self.kubernetesConfig != nil {
+                    map["KubernetesConfig"] = self.kubernetesConfig?.toMap()
+                }
+                if self.profile != nil {
+                    map["Profile"] = self.profile!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AzureVmConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.AzureVmConfig()
+                    model.fromMap(value)
+                    self.azureVmConfig = model
+                }
+                if let value = dict["GcpVmConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GcpVmConfig()
+                    model.fromMap(value)
+                    self.gcpVmConfig = model
+                }
+                if let value = dict["GenericConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GenericConfig()
+                    model.fromMap(value)
+                    self.genericConfig = model
+                }
+                if let value = dict["KubernetesConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.KubernetesConfig()
+                    model.fromMap(value)
+                    self.kubernetesConfig = model
+                }
+                if let value = dict["Profile"] as? String {
+                    self.profile = value
+                }
+            }
+        }
+        public class Pkcs7VerificationConfig : Tea.TeaModel {
+            public var instanceIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceIds != nil {
+                    map["InstanceIds"] = self.instanceIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceIds"] as? [String] {
+                    self.instanceIds = value
+                }
+            }
+        }
         public var applicationFederatedCredentialId: String?
 
         public var applicationFederatedCredentialName: String?
@@ -40753,9 +41653,17 @@ public class ListApplicationFederatedCredentialsResponseBody : Tea.TeaModel {
 
         public var lastUsedTime: Int64?
 
+        public var oidcVerificationConfig: ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig?
+
+        public var pkcs7VerificationConfig: ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.Pkcs7VerificationConfig?
+
         public var status: String?
 
         public var updateTime: Int64?
+
+        public var verificationCondition: String?
+
+        public var verificationMode: String?
 
         public override init() {
             super.init()
@@ -40767,6 +41675,8 @@ public class ListApplicationFederatedCredentialsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.oidcVerificationConfig?.validate()
+            try self.pkcs7VerificationConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -40798,11 +41708,23 @@ public class ListApplicationFederatedCredentialsResponseBody : Tea.TeaModel {
             if self.lastUsedTime != nil {
                 map["LastUsedTime"] = self.lastUsedTime!
             }
+            if self.oidcVerificationConfig != nil {
+                map["OidcVerificationConfig"] = self.oidcVerificationConfig?.toMap()
+            }
+            if self.pkcs7VerificationConfig != nil {
+                map["Pkcs7VerificationConfig"] = self.pkcs7VerificationConfig?.toMap()
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
+            }
+            if self.verificationCondition != nil {
+                map["VerificationCondition"] = self.verificationCondition!
+            }
+            if self.verificationMode != nil {
+                map["VerificationMode"] = self.verificationMode!
             }
             return map
         }
@@ -40836,11 +41758,27 @@ public class ListApplicationFederatedCredentialsResponseBody : Tea.TeaModel {
             if let value = dict["LastUsedTime"] as? Int64 {
                 self.lastUsedTime = value
             }
+            if let value = dict["OidcVerificationConfig"] as? [String: Any?] {
+                var model = ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig()
+                model.fromMap(value)
+                self.oidcVerificationConfig = model
+            }
+            if let value = dict["Pkcs7VerificationConfig"] as? [String: Any?] {
+                var model = ListApplicationFederatedCredentialsResponseBody.ApplicationFederatedCredentials.Pkcs7VerificationConfig()
+                model.fromMap(value)
+                self.pkcs7VerificationConfig = model
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
             }
             if let value = dict["UpdateTime"] as? Int64 {
                 self.updateTime = value
+            }
+            if let value = dict["VerificationCondition"] as? String {
+                self.verificationCondition = value
+            }
+            if let value = dict["VerificationMode"] as? String {
+                self.verificationMode = value
             }
         }
     }
@@ -41043,6 +41981,286 @@ public class ListApplicationFederatedCredentialsForProviderRequest : Tea.TeaMode
 
 public class ListApplicationFederatedCredentialsForProviderResponseBody : Tea.TeaModel {
     public class ApplicationFederatedCredentials : Tea.TeaModel {
+        public class OidcVerificationConfig : Tea.TeaModel {
+            public class AzureVmConfig : Tea.TeaModel {
+                public var principalId: String?
+
+                public var resourceGroupName: String?
+
+                public var subscriptionId: String?
+
+                public var vmNames: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.principalId != nil {
+                        map["PrincipalId"] = self.principalId!
+                    }
+                    if self.resourceGroupName != nil {
+                        map["ResourceGroupName"] = self.resourceGroupName!
+                    }
+                    if self.subscriptionId != nil {
+                        map["SubscriptionId"] = self.subscriptionId!
+                    }
+                    if self.vmNames != nil {
+                        map["VmNames"] = self.vmNames!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["PrincipalId"] as? String {
+                        self.principalId = value
+                    }
+                    if let value = dict["ResourceGroupName"] as? String {
+                        self.resourceGroupName = value
+                    }
+                    if let value = dict["SubscriptionId"] as? String {
+                        self.subscriptionId = value
+                    }
+                    if let value = dict["VmNames"] as? [String] {
+                        self.vmNames = value
+                    }
+                }
+            }
+            public class GcpVmConfig : Tea.TeaModel {
+                public var instanceIds: [String]?
+
+                public var projectId: String?
+
+                public var serviceAccountId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceIds != nil {
+                        map["InstanceIds"] = self.instanceIds!
+                    }
+                    if self.projectId != nil {
+                        map["ProjectId"] = self.projectId!
+                    }
+                    if self.serviceAccountId != nil {
+                        map["ServiceAccountId"] = self.serviceAccountId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["InstanceIds"] as? [String] {
+                        self.instanceIds = value
+                    }
+                    if let value = dict["ProjectId"] as? String {
+                        self.projectId = value
+                    }
+                    if let value = dict["ServiceAccountId"] as? String {
+                        self.serviceAccountId = value
+                    }
+                }
+            }
+            public class GenericConfig : Tea.TeaModel {
+                public var subject: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.subject != nil {
+                        map["Subject"] = self.subject!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Subject"] as? String {
+                        self.subject = value
+                    }
+                }
+            }
+            public class KubernetesConfig : Tea.TeaModel {
+                public var namespace: String?
+
+                public var podNamePrefix: String?
+
+                public var serviceAccountName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.namespace != nil {
+                        map["Namespace"] = self.namespace!
+                    }
+                    if self.podNamePrefix != nil {
+                        map["PodNamePrefix"] = self.podNamePrefix!
+                    }
+                    if self.serviceAccountName != nil {
+                        map["ServiceAccountName"] = self.serviceAccountName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Namespace"] as? String {
+                        self.namespace = value
+                    }
+                    if let value = dict["PodNamePrefix"] as? String {
+                        self.podNamePrefix = value
+                    }
+                    if let value = dict["ServiceAccountName"] as? String {
+                        self.serviceAccountName = value
+                    }
+                }
+            }
+            public var azureVmConfig: ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.AzureVmConfig?
+
+            public var gcpVmConfig: ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GcpVmConfig?
+
+            public var genericConfig: ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GenericConfig?
+
+            public var kubernetesConfig: ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.KubernetesConfig?
+
+            public var profile: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.azureVmConfig?.validate()
+                try self.gcpVmConfig?.validate()
+                try self.genericConfig?.validate()
+                try self.kubernetesConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.azureVmConfig != nil {
+                    map["AzureVmConfig"] = self.azureVmConfig?.toMap()
+                }
+                if self.gcpVmConfig != nil {
+                    map["GcpVmConfig"] = self.gcpVmConfig?.toMap()
+                }
+                if self.genericConfig != nil {
+                    map["GenericConfig"] = self.genericConfig?.toMap()
+                }
+                if self.kubernetesConfig != nil {
+                    map["KubernetesConfig"] = self.kubernetesConfig?.toMap()
+                }
+                if self.profile != nil {
+                    map["Profile"] = self.profile!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AzureVmConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.AzureVmConfig()
+                    model.fromMap(value)
+                    self.azureVmConfig = model
+                }
+                if let value = dict["GcpVmConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GcpVmConfig()
+                    model.fromMap(value)
+                    self.gcpVmConfig = model
+                }
+                if let value = dict["GenericConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.GenericConfig()
+                    model.fromMap(value)
+                    self.genericConfig = model
+                }
+                if let value = dict["KubernetesConfig"] as? [String: Any?] {
+                    var model = ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig.KubernetesConfig()
+                    model.fromMap(value)
+                    self.kubernetesConfig = model
+                }
+                if let value = dict["Profile"] as? String {
+                    self.profile = value
+                }
+            }
+        }
+        public class Pkcs7VerificationConfig : Tea.TeaModel {
+            public var instanceIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceIds != nil {
+                    map["InstanceIds"] = self.instanceIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceIds"] as? [String] {
+                    self.instanceIds = value
+                }
+            }
+        }
         public var applicationFederatedCredentialId: String?
 
         public var applicationFederatedCredentialName: String?
@@ -41061,9 +42279,17 @@ public class ListApplicationFederatedCredentialsForProviderResponseBody : Tea.Te
 
         public var lastUsedTime: Int64?
 
+        public var oidcVerificationConfig: ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig?
+
+        public var pkcs7VerificationConfig: ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.Pkcs7VerificationConfig?
+
         public var status: String?
 
         public var updateTime: Int64?
+
+        public var verificationCondition: String?
+
+        public var verificationMode: String?
 
         public override init() {
             super.init()
@@ -41075,6 +42301,8 @@ public class ListApplicationFederatedCredentialsForProviderResponseBody : Tea.Te
         }
 
         public override func validate() throws -> Void {
+            try self.oidcVerificationConfig?.validate()
+            try self.pkcs7VerificationConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -41106,11 +42334,23 @@ public class ListApplicationFederatedCredentialsForProviderResponseBody : Tea.Te
             if self.lastUsedTime != nil {
                 map["LastUsedTime"] = self.lastUsedTime!
             }
+            if self.oidcVerificationConfig != nil {
+                map["OidcVerificationConfig"] = self.oidcVerificationConfig?.toMap()
+            }
+            if self.pkcs7VerificationConfig != nil {
+                map["Pkcs7VerificationConfig"] = self.pkcs7VerificationConfig?.toMap()
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
+            }
+            if self.verificationCondition != nil {
+                map["VerificationCondition"] = self.verificationCondition!
+            }
+            if self.verificationMode != nil {
+                map["VerificationMode"] = self.verificationMode!
             }
             return map
         }
@@ -41144,11 +42384,27 @@ public class ListApplicationFederatedCredentialsForProviderResponseBody : Tea.Te
             if let value = dict["LastUsedTime"] as? Int64 {
                 self.lastUsedTime = value
             }
+            if let value = dict["OidcVerificationConfig"] as? [String: Any?] {
+                var model = ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.OidcVerificationConfig()
+                model.fromMap(value)
+                self.oidcVerificationConfig = model
+            }
+            if let value = dict["Pkcs7VerificationConfig"] as? [String: Any?] {
+                var model = ListApplicationFederatedCredentialsForProviderResponseBody.ApplicationFederatedCredentials.Pkcs7VerificationConfig()
+                model.fromMap(value)
+                self.pkcs7VerificationConfig = model
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
             }
             if let value = dict["UpdateTime"] as? Int64 {
                 self.updateTime = value
+            }
+            if let value = dict["VerificationCondition"] as? String {
+                self.verificationCondition = value
+            }
+            if let value = dict["VerificationMode"] as? String {
+                self.verificationMode = value
             }
         }
     }
@@ -42074,11 +43330,15 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public var m2MClientStatus: String?
 
+    public var managedServiceCode: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
 
     public var resourceServerStatus: String?
+
+    public var serviceManaged: Bool?
 
     public var ssoType: String?
 
@@ -42126,6 +43386,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if self.m2MClientStatus != nil {
             map["M2MClientStatus"] = self.m2MClientStatus!
         }
+        if self.managedServiceCode != nil {
+            map["ManagedServiceCode"] = self.managedServiceCode!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -42134,6 +43397,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if self.resourceServerStatus != nil {
             map["ResourceServerStatus"] = self.resourceServerStatus!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
         }
         if self.ssoType != nil {
             map["SsoType"] = self.ssoType!
@@ -42180,6 +43446,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if let value = dict["M2MClientStatus"] as? String {
             self.m2MClientStatus = value
         }
+        if let value = dict["ManagedServiceCode"] as? String {
+            self.managedServiceCode = value
+        }
         if let value = dict["PageNumber"] as? Int64 {
             self.pageNumber = value
         }
@@ -42188,6 +43457,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceServerStatus"] as? String {
             self.resourceServerStatus = value
+        }
+        if let value = dict["ServiceManaged"] as? Bool {
+            self.serviceManaged = value
         }
         if let value = dict["SsoType"] as? String {
             self.ssoType = value
@@ -71277,6 +72549,286 @@ public class UpdateApplicationFederatedCredentialRequest : Tea.TeaModel {
             }
         }
     }
+    public class OidcVerificationConfig : Tea.TeaModel {
+        public class AzureVmConfig : Tea.TeaModel {
+            public var principalId: String?
+
+            public var resourceGroupName: String?
+
+            public var subscriptionId: String?
+
+            public var vmNames: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.principalId != nil {
+                    map["PrincipalId"] = self.principalId!
+                }
+                if self.resourceGroupName != nil {
+                    map["ResourceGroupName"] = self.resourceGroupName!
+                }
+                if self.subscriptionId != nil {
+                    map["SubscriptionId"] = self.subscriptionId!
+                }
+                if self.vmNames != nil {
+                    map["VmNames"] = self.vmNames!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PrincipalId"] as? String {
+                    self.principalId = value
+                }
+                if let value = dict["ResourceGroupName"] as? String {
+                    self.resourceGroupName = value
+                }
+                if let value = dict["SubscriptionId"] as? String {
+                    self.subscriptionId = value
+                }
+                if let value = dict["VmNames"] as? [String] {
+                    self.vmNames = value
+                }
+            }
+        }
+        public class GcpVmConfig : Tea.TeaModel {
+            public var instanceIds: [String]?
+
+            public var projectId: String?
+
+            public var serviceAccountId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceIds != nil {
+                    map["InstanceIds"] = self.instanceIds!
+                }
+                if self.projectId != nil {
+                    map["ProjectId"] = self.projectId!
+                }
+                if self.serviceAccountId != nil {
+                    map["ServiceAccountId"] = self.serviceAccountId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceIds"] as? [String] {
+                    self.instanceIds = value
+                }
+                if let value = dict["ProjectId"] as? String {
+                    self.projectId = value
+                }
+                if let value = dict["ServiceAccountId"] as? String {
+                    self.serviceAccountId = value
+                }
+            }
+        }
+        public class GenericConfig : Tea.TeaModel {
+            public var subject: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.subject != nil {
+                    map["Subject"] = self.subject!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Subject"] as? String {
+                    self.subject = value
+                }
+            }
+        }
+        public class KubernetesConfig : Tea.TeaModel {
+            public var namespace: String?
+
+            public var podNamePrefix: String?
+
+            public var serviceAccountName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.namespace != nil {
+                    map["Namespace"] = self.namespace!
+                }
+                if self.podNamePrefix != nil {
+                    map["PodNamePrefix"] = self.podNamePrefix!
+                }
+                if self.serviceAccountName != nil {
+                    map["ServiceAccountName"] = self.serviceAccountName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Namespace"] as? String {
+                    self.namespace = value
+                }
+                if let value = dict["PodNamePrefix"] as? String {
+                    self.podNamePrefix = value
+                }
+                if let value = dict["ServiceAccountName"] as? String {
+                    self.serviceAccountName = value
+                }
+            }
+        }
+        public var azureVmConfig: UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.AzureVmConfig?
+
+        public var gcpVmConfig: UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.GcpVmConfig?
+
+        public var genericConfig: UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.GenericConfig?
+
+        public var kubernetesConfig: UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.KubernetesConfig?
+
+        public var profile: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.azureVmConfig?.validate()
+            try self.gcpVmConfig?.validate()
+            try self.genericConfig?.validate()
+            try self.kubernetesConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.azureVmConfig != nil {
+                map["AzureVmConfig"] = self.azureVmConfig?.toMap()
+            }
+            if self.gcpVmConfig != nil {
+                map["GcpVmConfig"] = self.gcpVmConfig?.toMap()
+            }
+            if self.genericConfig != nil {
+                map["GenericConfig"] = self.genericConfig?.toMap()
+            }
+            if self.kubernetesConfig != nil {
+                map["KubernetesConfig"] = self.kubernetesConfig?.toMap()
+            }
+            if self.profile != nil {
+                map["Profile"] = self.profile!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AzureVmConfig"] as? [String: Any?] {
+                var model = UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.AzureVmConfig()
+                model.fromMap(value)
+                self.azureVmConfig = model
+            }
+            if let value = dict["GcpVmConfig"] as? [String: Any?] {
+                var model = UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.GcpVmConfig()
+                model.fromMap(value)
+                self.gcpVmConfig = model
+            }
+            if let value = dict["GenericConfig"] as? [String: Any?] {
+                var model = UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.GenericConfig()
+                model.fromMap(value)
+                self.genericConfig = model
+            }
+            if let value = dict["KubernetesConfig"] as? [String: Any?] {
+                var model = UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig.KubernetesConfig()
+                model.fromMap(value)
+                self.kubernetesConfig = model
+            }
+            if let value = dict["Profile"] as? String {
+                self.profile = value
+            }
+        }
+    }
+    public class Pkcs7VerificationConfig : Tea.TeaModel {
+        public var instanceIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceIds != nil {
+                map["InstanceIds"] = self.instanceIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceIds"] as? [String] {
+                self.instanceIds = value
+            }
+        }
+    }
     public var applicationFederatedCredentialId: String?
 
     public var applicationId: String?
@@ -71284,6 +72836,10 @@ public class UpdateApplicationFederatedCredentialRequest : Tea.TeaModel {
     public var attributeMappings: [UpdateApplicationFederatedCredentialRequest.AttributeMappings]?
 
     public var instanceId: String?
+
+    public var oidcVerificationConfig: UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig?
+
+    public var pkcs7VerificationConfig: UpdateApplicationFederatedCredentialRequest.Pkcs7VerificationConfig?
 
     public var verificationCondition: String?
 
@@ -71297,6 +72853,8 @@ public class UpdateApplicationFederatedCredentialRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.oidcVerificationConfig?.validate()
+        try self.pkcs7VerificationConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -71316,6 +72874,12 @@ public class UpdateApplicationFederatedCredentialRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.oidcVerificationConfig != nil {
+            map["OidcVerificationConfig"] = self.oidcVerificationConfig?.toMap()
+        }
+        if self.pkcs7VerificationConfig != nil {
+            map["Pkcs7VerificationConfig"] = self.pkcs7VerificationConfig?.toMap()
         }
         if self.verificationCondition != nil {
             map["VerificationCondition"] = self.verificationCondition!
@@ -71346,6 +72910,16 @@ public class UpdateApplicationFederatedCredentialRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["OidcVerificationConfig"] as? [String: Any?] {
+            var model = UpdateApplicationFederatedCredentialRequest.OidcVerificationConfig()
+            model.fromMap(value)
+            self.oidcVerificationConfig = model
+        }
+        if let value = dict["Pkcs7VerificationConfig"] as? [String: Any?] {
+            var model = UpdateApplicationFederatedCredentialRequest.Pkcs7VerificationConfig()
+            model.fromMap(value)
+            self.pkcs7VerificationConfig = model
         }
         if let value = dict["VerificationCondition"] as? String {
             self.verificationCondition = value

@@ -920,8 +920,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.oidcVerificationConfig)) {
+            query["OidcVerificationConfig"] = request.oidcVerificationConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pkcs7VerificationConfig)) {
+            query["Pkcs7VerificationConfig"] = request.pkcs7VerificationConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.verificationCondition)) {
             query["VerificationCondition"] = request.verificationCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verificationMode)) {
+            query["VerificationMode"] = request.verificationMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -7496,6 +7505,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.m2MClientStatus)) {
             query["M2MClientStatus"] = request.m2MClientStatus ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.managedServiceCode)) {
+            query["ManagedServiceCode"] = request.managedServiceCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
@@ -7504,6 +7516,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceServerStatus)) {
             query["ResourceServerStatus"] = request.resourceServerStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceManaged)) {
+            query["ServiceManaged"] = request.serviceManaged!;
         }
         if (!TeaUtils.Client.isUnset(request.ssoType)) {
             query["SsoType"] = request.ssoType ?? "";
@@ -11886,6 +11901,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.oidcVerificationConfig)) {
+            query["OidcVerificationConfig"] = request.oidcVerificationConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pkcs7VerificationConfig)) {
+            query["Pkcs7VerificationConfig"] = request.pkcs7VerificationConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.verificationCondition)) {
             query["VerificationCondition"] = request.verificationCondition ?? "";
