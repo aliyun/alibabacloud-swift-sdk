@@ -4184,6 +4184,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.concurrency)) {
             body["concurrency"] = request.concurrency!;
         }
+        if (!TeaUtils.Client.isUnset(request.efloNodeGroup)) {
+            body["eflo_node_group"] = request.efloNodeGroup!;
+        }
         if (!TeaUtils.Client.isUnset(request.kubernetesConfig)) {
             body["kubernetes_config"] = request.kubernetesConfig!;
         }

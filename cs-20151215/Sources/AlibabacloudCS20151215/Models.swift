@@ -6559,9 +6559,13 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
     }
     public class EfloNodeGroup : Tea.TeaModel {
+        public var autoAttachEnabled: Bool?
+
         public var clusterId: String?
 
         public var groupId: String?
+
+        public var workerRamRoleName: String?
 
         public override init() {
             super.init()
@@ -6577,22 +6581,34 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoAttachEnabled != nil {
+                map["auto_attach_enabled"] = self.autoAttachEnabled!
+            }
             if self.clusterId != nil {
                 map["cluster_id"] = self.clusterId!
             }
             if self.groupId != nil {
                 map["group_id"] = self.groupId!
             }
+            if self.workerRamRoleName != nil {
+                map["worker_ram_role_name"] = self.workerRamRoleName!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["auto_attach_enabled"] as? Bool {
+                self.autoAttachEnabled = value
+            }
             if let value = dict["cluster_id"] as? String {
                 self.clusterId = value
             }
             if let value = dict["group_id"] as? String {
                 self.groupId = value
+            }
+            if let value = dict["worker_ram_role_name"] as? String {
+                self.workerRamRoleName = value
             }
         }
     }
@@ -13156,9 +13172,13 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
     }
     public class EfloNodeGroup : Tea.TeaModel {
+        public var autoAttachEnabled: Bool?
+
         public var clusterId: String?
 
         public var groupId: String?
+
+        public var workerRamRoleName: String?
 
         public override init() {
             super.init()
@@ -13174,22 +13194,34 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoAttachEnabled != nil {
+                map["auto_attach_enabled"] = self.autoAttachEnabled!
+            }
             if self.clusterId != nil {
                 map["cluster_id"] = self.clusterId!
             }
             if self.groupId != nil {
                 map["group_id"] = self.groupId!
             }
+            if self.workerRamRoleName != nil {
+                map["worker_ram_role_name"] = self.workerRamRoleName!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["auto_attach_enabled"] as? Bool {
+                self.autoAttachEnabled = value
+            }
             if let value = dict["cluster_id"] as? String {
                 self.clusterId = value
             }
             if let value = dict["group_id"] as? String {
                 self.groupId = value
+            }
+            if let value = dict["worker_ram_role_name"] as? String {
+                self.workerRamRoleName = value
             }
         }
     }
@@ -13700,6 +13732,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
         public var config: DescribeClusterNodePoolDetailResponseBody.NodeComponents.Config?
 
+        public var configRevision: String?
+
         public var name: String?
 
         public var version: String?
@@ -13722,6 +13756,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if self.config != nil {
                 map["config"] = self.config?.toMap()
             }
+            if self.configRevision != nil {
+                map["config_revision"] = self.configRevision!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
@@ -13737,6 +13774,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 var model = DescribeClusterNodePoolDetailResponseBody.NodeComponents.Config()
                 model.fromMap(value)
                 self.config = model
+            }
+            if let value = dict["config_revision"] as? String {
+                self.configRevision = value
             }
             if let value = dict["name"] as? String {
                 self.name = value
@@ -15129,9 +15169,13 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
         }
         public class EfloNodeGroup : Tea.TeaModel {
+            public var autoAttachEnabled: Bool?
+
             public var clusterId: String?
 
             public var groupId: String?
+
+            public var workerRamRoleName: String?
 
             public override init() {
                 super.init()
@@ -15147,22 +15191,34 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoAttachEnabled != nil {
+                    map["auto_attach_enabled"] = self.autoAttachEnabled!
+                }
                 if self.clusterId != nil {
                     map["cluster_id"] = self.clusterId!
                 }
                 if self.groupId != nil {
                     map["group_id"] = self.groupId!
                 }
+                if self.workerRamRoleName != nil {
+                    map["worker_ram_role_name"] = self.workerRamRoleName!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["auto_attach_enabled"] as? Bool {
+                    self.autoAttachEnabled = value
+                }
                 if let value = dict["cluster_id"] as? String {
                     self.clusterId = value
                 }
                 if let value = dict["group_id"] as? String {
                     self.groupId = value
+                }
+                if let value = dict["worker_ram_role_name"] as? String {
+                    self.workerRamRoleName = value
                 }
             }
         }
@@ -15673,6 +15729,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
             public var config: DescribeClusterNodePoolsResponseBody.Nodepools.NodeComponents.Config?
 
+            public var configRevision: String?
+
             public var name: String?
 
             public var version: String?
@@ -15695,6 +15753,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if self.config != nil {
                     map["config"] = self.config?.toMap()
                 }
+                if self.configRevision != nil {
+                    map["config_revision"] = self.configRevision!
+                }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
@@ -15710,6 +15771,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     var model = DescribeClusterNodePoolsResponseBody.Nodepools.NodeComponents.Config()
                     model.fromMap(value)
                     self.config = model
+                }
+                if let value = dict["config_revision"] as? String {
+                    self.configRevision = value
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
@@ -31717,6 +31781,36 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
         }
     }
+    public class EfloNodeGroup : Tea.TeaModel {
+        public var autoAttachEnabled: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoAttachEnabled != nil {
+                map["auto_attach_enabled"] = self.autoAttachEnabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["auto_attach_enabled"] as? String {
+                self.autoAttachEnabled = value
+            }
+        }
+    }
     public class KubernetesConfig : Tea.TeaModel {
         public var cmsEnabled: Bool?
 
@@ -32773,6 +32867,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
     public var concurrency: Bool?
 
+    public var efloNodeGroup: ModifyClusterNodePoolRequest.EfloNodeGroup?
+
     public var kubernetesConfig: ModifyClusterNodePoolRequest.KubernetesConfig?
 
     public var management: ModifyClusterNodePoolRequest.Management?
@@ -32796,6 +32892,7 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.autoScaling?.validate()
+        try self.efloNodeGroup?.validate()
         try self.kubernetesConfig?.validate()
         try self.management?.validate()
         try self.nodepoolInfo?.validate()
@@ -32810,6 +32907,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         }
         if self.concurrency != nil {
             map["concurrency"] = self.concurrency!
+        }
+        if self.efloNodeGroup != nil {
+            map["eflo_node_group"] = self.efloNodeGroup?.toMap()
         }
         if self.kubernetesConfig != nil {
             map["kubernetes_config"] = self.kubernetesConfig?.toMap()
@@ -32841,6 +32941,11 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         }
         if let value = dict["concurrency"] as? Bool {
             self.concurrency = value
+        }
+        if let value = dict["eflo_node_group"] as? [String: Any?] {
+            var model = ModifyClusterNodePoolRequest.EfloNodeGroup()
+            model.fromMap(value)
+            self.efloNodeGroup = model
         }
         if let value = dict["kubernetes_config"] as? [String: Any?] {
             var model = ModifyClusterNodePoolRequest.KubernetesConfig()
