@@ -2959,6 +2959,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startSqlExecutionWithOptions(_ namespace: String, _ request: StartSqlExecutionRequest, _ headers: StartSqlExecutionHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartSqlExecutionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartSqlExecution",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-execution",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartSqlExecutionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startSqlExecution(_ namespace: String, _ request: StartSqlExecutionRequest) async throws -> StartSqlExecutionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: StartSqlExecutionHeaders = StartSqlExecutionHeaders([:])
+        return try await startSqlExecutionWithOptions(namespace as! String, request as! StartSqlExecutionRequest, headers as! StartSqlExecutionHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopApplyScheduledPlanWithOptions(_ namespace: String, _ scheduledPlanId: String, _ headers: StopApplyScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopApplyScheduledPlanResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
