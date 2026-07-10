@@ -366,6 +366,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
             request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.raspConfig)) {
+            request.raspConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.raspConfig, "RaspConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sidecarContainersConfig)) {
             request.sidecarContainersConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sidecarContainersConfig, "SidecarContainersConfig", "json")
         }
@@ -537,6 +540,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pythonModules)) {
             query["PythonModules"] = request.pythonModules ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.raspConfigShrink)) {
+            query["RaspConfig"] = request.raspConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.readiness)) {
             query["Readiness"] = request.readiness ?? "";
@@ -1881,6 +1887,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
             request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.raspConfig)) {
+            request.raspConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.raspConfig, "RaspConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sidecarContainersConfig)) {
             request.sidecarContainersConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sidecarContainersConfig, "SidecarContainersConfig", "json")
         }
@@ -2052,6 +2061,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pythonModules)) {
             query["PythonModules"] = request.pythonModules ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.raspConfigShrink)) {
+            query["RaspConfig"] = request.raspConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.readiness)) {
             query["Readiness"] = request.readiness ?? "";
@@ -4409,6 +4421,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.programmingLanguage)) {
+            query["ProgrammingLanguage"] = request.programmingLanguage ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.reverse)) {
             query["Reverse"] = request.reverse!;

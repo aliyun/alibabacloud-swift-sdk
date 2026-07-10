@@ -15337,6 +15337,52 @@ public class ConfirmPipelineBatchResponse : Tea.TeaModel {
 }
 
 public class CreateApplicationRequest : Tea.TeaModel {
+    public class RaspConfig : Tea.TeaModel {
+        public var enableRasp: Bool?
+
+        public var raspAppKey: String?
+
+        public var raspAppName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableRasp != nil {
+                map["EnableRasp"] = self.enableRasp!
+            }
+            if self.raspAppKey != nil {
+                map["RaspAppKey"] = self.raspAppKey!
+            }
+            if self.raspAppName != nil {
+                map["RaspAppName"] = self.raspAppName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableRasp"] as? Bool {
+                self.enableRasp = value
+            }
+            if let value = dict["RaspAppKey"] as? String {
+                self.raspAppKey = value
+            }
+            if let value = dict["RaspAppName"] as? String {
+                self.raspAppName = value
+            }
+        }
+    }
     public var acrAssumeRoleArn: String?
 
     public var acrInstanceId: String?
@@ -15475,6 +15521,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var pythonModules: String?
 
+    public var raspConfig: CreateApplicationRequest.RaspConfig?
+
     public var readiness: String?
 
     public var replicas: Int32?
@@ -15521,6 +15569,7 @@ public class CreateApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.raspConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -15735,6 +15784,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.pythonModules != nil {
             map["PythonModules"] = self.pythonModules!
+        }
+        if self.raspConfig != nil {
+            map["RaspConfig"] = self.raspConfig?.toMap()
         }
         if self.readiness != nil {
             map["Readiness"] = self.readiness!
@@ -16016,6 +16068,11 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["PythonModules"] as? String {
             self.pythonModules = value
         }
+        if let value = dict["RaspConfig"] as? [String: Any?] {
+            var model = CreateApplicationRequest.RaspConfig()
+            model.fromMap(value)
+            self.raspConfig = model
+        }
         if let value = dict["Readiness"] as? String {
             self.readiness = value
         }
@@ -16221,6 +16278,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var python: String?
 
     public var pythonModules: String?
+
+    public var raspConfigShrink: String?
 
     public var readiness: String?
 
@@ -16478,6 +16537,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.pythonModules != nil {
             map["PythonModules"] = self.pythonModules!
+        }
+        if self.raspConfigShrink != nil {
+            map["RaspConfig"] = self.raspConfigShrink!
         }
         if self.readiness != nil {
             map["Readiness"] = self.readiness!
@@ -16744,6 +16806,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PythonModules"] as? String {
             self.pythonModules = value
+        }
+        if let value = dict["RaspConfig"] as? String {
+            self.raspConfigShrink = value
         }
         if let value = dict["Readiness"] as? String {
             self.readiness = value
@@ -22953,6 +23018,52 @@ public class DeleteWebCustomDomainResponse : Tea.TeaModel {
 }
 
 public class DeployApplicationRequest : Tea.TeaModel {
+    public class RaspConfig : Tea.TeaModel {
+        public var enableRasp: Bool?
+
+        public var raspAppKey: String?
+
+        public var raspAppName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableRasp != nil {
+                map["EnableRasp"] = self.enableRasp!
+            }
+            if self.raspAppKey != nil {
+                map["RaspAppKey"] = self.raspAppKey!
+            }
+            if self.raspAppName != nil {
+                map["RaspAppName"] = self.raspAppName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableRasp"] as? Bool {
+                self.enableRasp = value
+            }
+            if let value = dict["RaspAppKey"] as? String {
+                self.raspAppKey = value
+            }
+            if let value = dict["RaspAppName"] as? String {
+                self.raspAppName = value
+            }
+        }
+    }
     public var acrAssumeRoleArn: String?
 
     public var acrInstanceId: String?
@@ -23089,6 +23200,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var pythonModules: String?
 
+    public var raspConfig: DeployApplicationRequest.RaspConfig?
+
     public var readiness: String?
 
     public var replicas: Int32?
@@ -23133,6 +23246,7 @@ public class DeployApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.raspConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -23344,6 +23458,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.pythonModules != nil {
             map["PythonModules"] = self.pythonModules!
+        }
+        if self.raspConfig != nil {
+            map["RaspConfig"] = self.raspConfig?.toMap()
         }
         if self.readiness != nil {
             map["Readiness"] = self.readiness!
@@ -23619,6 +23736,11 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["PythonModules"] as? String {
             self.pythonModules = value
         }
+        if let value = dict["RaspConfig"] as? [String: Any?] {
+            var model = DeployApplicationRequest.RaspConfig()
+            model.fromMap(value)
+            self.raspConfig = model
+        }
         if let value = dict["Readiness"] as? String {
             self.readiness = value
         }
@@ -23819,6 +23941,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
     public var python: String?
 
     public var pythonModules: String?
+
+    public var raspConfigShrink: String?
 
     public var readiness: String?
 
@@ -24071,6 +24195,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.pythonModules != nil {
             map["PythonModules"] = self.pythonModules!
+        }
+        if self.raspConfigShrink != nil {
+            map["RaspConfig"] = self.raspConfigShrink!
         }
         if self.readiness != nil {
             map["Readiness"] = self.readiness!
@@ -24331,6 +24458,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PythonModules"] as? String {
             self.pythonModules = value
+        }
+        if let value = dict["RaspConfig"] as? String {
+            self.raspConfigShrink = value
         }
         if let value = dict["Readiness"] as? String {
             self.readiness = value
@@ -25568,6 +25698,52 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RaspConfig : Tea.TeaModel {
+            public var enableRasp: Bool?
+
+            public var raspAppKey: String?
+
+            public var raspAppName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enableRasp != nil {
+                    map["EnableRasp"] = self.enableRasp!
+                }
+                if self.raspAppKey != nil {
+                    map["RaspAppKey"] = self.raspAppKey!
+                }
+                if self.raspAppName != nil {
+                    map["RaspAppName"] = self.raspAppName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EnableRasp"] as? Bool {
+                    self.enableRasp = value
+                }
+                if let value = dict["RaspAppKey"] as? String {
+                    self.raspAppKey = value
+                }
+                if let value = dict["RaspAppName"] as? String {
+                    self.raspAppName = value
+                }
+            }
+        }
         public class SecretMountDesc : Tea.TeaModel {
             public var key: String?
 
@@ -26152,6 +26328,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var pythonModules: String?
 
+        public var raspConfig: [DescribeApplicationConfigResponseBody.Data.RaspConfig]?
+
         public var readiness: String?
 
         public var regionId: String?
@@ -26470,6 +26648,13 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.pythonModules != nil {
                 map["PythonModules"] = self.pythonModules!
+            }
+            if self.raspConfig != nil {
+                var tmp : [Any] = []
+                for k in self.raspConfig! {
+                    tmp.append(k.toMap())
+                }
+                map["RaspConfig"] = tmp
             }
             if self.readiness != nil {
                 map["Readiness"] = self.readiness!
@@ -26843,6 +27028,19 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["PythonModules"] as? String {
                 self.pythonModules = value
+            }
+            if let value = dict["RaspConfig"] as? [Any?] {
+                var tmp : [DescribeApplicationConfigResponseBody.Data.RaspConfig] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationConfigResponseBody.Data.RaspConfig()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.raspConfig = tmp
             }
             if let value = dict["Readiness"] as? String {
                 self.readiness = value
@@ -46257,6 +46455,8 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var programmingLanguage: String?
+
     public var reverse: Bool?
 
     public var tags: String?
@@ -46305,6 +46505,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.programmingLanguage != nil {
+            map["ProgrammingLanguage"] = self.programmingLanguage!
+        }
         if self.reverse != nil {
             map["Reverse"] = self.reverse!
         }
@@ -46345,6 +46548,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["ProgrammingLanguage"] as? String {
+            self.programmingLanguage = value
         }
         if let value = dict["Reverse"] as? Bool {
             self.reverse = value
@@ -46690,6 +46896,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
             public var programmingLanguage: String?
 
+            public var raspEnabled: Bool?
+
             public var regionId: String?
 
             public var resourceType: String?
@@ -46783,6 +46991,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if self.programmingLanguage != nil {
                     map["ProgrammingLanguage"] = self.programmingLanguage!
+                }
+                if self.raspEnabled != nil {
+                    map["RaspEnabled"] = self.raspEnabled!
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
@@ -46883,6 +47094,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ProgrammingLanguage"] as? String {
                     self.programmingLanguage = value
+                }
+                if let value = dict["RaspEnabled"] as? Bool {
+                    self.raspEnabled = value
                 }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
