@@ -7620,6 +7620,10 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
 
                 public var mode: String?
 
+                public var resourceGroupId: String?
+
+                public var skills: String?
+
                 public override init() {
                     super.init()
                 }
@@ -7640,6 +7644,12 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
                     if self.mode != nil {
                         map["Mode"] = self.mode!
                     }
+                    if self.resourceGroupId != nil {
+                        map["ResourceGroupId"] = self.resourceGroupId!
+                    }
+                    if self.skills != nil {
+                        map["Skills"] = self.skills!
+                    }
                     return map
                 }
 
@@ -7650,6 +7660,12 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
                     }
                     if let value = dict["Mode"] as? String {
                         self.mode = value
+                    }
+                    if let value = dict["ResourceGroupId"] as? String {
+                        self.resourceGroupId = value
+                    }
+                    if let value = dict["Skills"] as? String {
+                        self.skills = value
                     }
                 }
             }
@@ -63324,11 +63340,17 @@ public class ListDataAssetsRequest : Tea.TeaModel {
             }
         }
     }
+    public var assetDomainId: Int64?
+
+    public var categoryUuid: String?
+
     public var dataAssetIds: [String]?
 
     public var dataAssetType: String?
 
     public var envType: String?
+
+    public var name: String?
 
     public var pageNumber: Int32?
 
@@ -63352,6 +63374,12 @@ public class ListDataAssetsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assetDomainId != nil {
+            map["AssetDomainId"] = self.assetDomainId!
+        }
+        if self.categoryUuid != nil {
+            map["CategoryUuid"] = self.categoryUuid!
+        }
         if self.dataAssetIds != nil {
             map["DataAssetIds"] = self.dataAssetIds!
         }
@@ -63360,6 +63388,9 @@ public class ListDataAssetsRequest : Tea.TeaModel {
         }
         if self.envType != nil {
             map["EnvType"] = self.envType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -63382,6 +63413,12 @@ public class ListDataAssetsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AssetDomainId"] as? Int64 {
+            self.assetDomainId = value
+        }
+        if let value = dict["CategoryUuid"] as? String {
+            self.categoryUuid = value
+        }
         if let value = dict["DataAssetIds"] as? [String] {
             self.dataAssetIds = value
         }
@@ -63390,6 +63427,9 @@ public class ListDataAssetsRequest : Tea.TeaModel {
         }
         if let value = dict["EnvType"] as? String {
             self.envType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -63417,11 +63457,17 @@ public class ListDataAssetsRequest : Tea.TeaModel {
 }
 
 public class ListDataAssetsShrinkRequest : Tea.TeaModel {
+    public var assetDomainId: Int64?
+
+    public var categoryUuid: String?
+
     public var dataAssetIdsShrink: String?
 
     public var dataAssetType: String?
 
     public var envType: String?
+
+    public var name: String?
 
     public var pageNumber: Int32?
 
@@ -63445,6 +63491,12 @@ public class ListDataAssetsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assetDomainId != nil {
+            map["AssetDomainId"] = self.assetDomainId!
+        }
+        if self.categoryUuid != nil {
+            map["CategoryUuid"] = self.categoryUuid!
+        }
         if self.dataAssetIdsShrink != nil {
             map["DataAssetIds"] = self.dataAssetIdsShrink!
         }
@@ -63453,6 +63505,9 @@ public class ListDataAssetsShrinkRequest : Tea.TeaModel {
         }
         if self.envType != nil {
             map["EnvType"] = self.envType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -63471,6 +63526,12 @@ public class ListDataAssetsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AssetDomainId"] as? Int64 {
+            self.assetDomainId = value
+        }
+        if let value = dict["CategoryUuid"] as? String {
+            self.categoryUuid = value
+        }
         if let value = dict["DataAssetIds"] as? String {
             self.dataAssetIdsShrink = value
         }
@@ -63479,6 +63540,9 @@ public class ListDataAssetsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EnvType"] as? String {
             self.envType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -63498,6 +63562,52 @@ public class ListDataAssetsShrinkRequest : Tea.TeaModel {
 public class ListDataAssetsResponseBody : Tea.TeaModel {
     public class PagingInfo : Tea.TeaModel {
         public class DataAssets : Tea.TeaModel {
+            public class AssetCategories : Tea.TeaModel {
+                public var assetDomainId: String?
+
+                public var id: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.assetDomainId != nil {
+                        map["AssetDomainId"] = self.assetDomainId!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AssetDomainId"] as? String {
+                        self.assetDomainId = value
+                    }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
             public class DataAssetTagMappings : Tea.TeaModel {
                 public var autoTraceEnabled: Bool?
 
@@ -63568,6 +63678,8 @@ public class ListDataAssetsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var assetCategories: [ListDataAssetsResponseBody.PagingInfo.DataAssets.AssetCategories]?
+
             public var dataAssetTagMappings: [ListDataAssetsResponseBody.PagingInfo.DataAssets.DataAssetTagMappings]?
 
             public var envType: String?
@@ -63594,6 +63706,13 @@ public class ListDataAssetsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.assetCategories != nil {
+                    var tmp : [Any] = []
+                    for k in self.assetCategories! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AssetCategories"] = tmp
+                }
                 if self.dataAssetTagMappings != nil {
                     var tmp : [Any] = []
                     for k in self.dataAssetTagMappings! {
@@ -63621,6 +63740,19 @@ public class ListDataAssetsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AssetCategories"] as? [Any?] {
+                    var tmp : [ListDataAssetsResponseBody.PagingInfo.DataAssets.AssetCategories] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListDataAssetsResponseBody.PagingInfo.DataAssets.AssetCategories()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.assetCategories = tmp
+                }
                 if let value = dict["DataAssetTagMappings"] as? [Any?] {
                     var tmp : [ListDataAssetsResponseBody.PagingInfo.DataAssets.DataAssetTagMappings] = []
                     for v in value {
