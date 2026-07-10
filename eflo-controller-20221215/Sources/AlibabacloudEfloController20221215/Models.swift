@@ -19200,6 +19200,36 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateNodeGroupRequest : Tea.TeaModel {
+    public class SystemDisk : Tea.TeaModel {
+        public var performanceLevel: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PerformanceLevel"] as? String {
+                self.performanceLevel = value
+            }
+        }
+    }
     public var fileSystemMountEnabled: Bool?
 
     public var imageId: String?
@@ -19213,6 +19243,106 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
     public var nodeGroupId: String?
 
     public var ramRoleName: String?
+
+    public var systemDisk: UpdateNodeGroupRequest.SystemDisk?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.systemDisk?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileSystemMountEnabled != nil {
+            map["FileSystemMountEnabled"] = self.fileSystemMountEnabled!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.keyPairName != nil {
+            map["KeyPairName"] = self.keyPairName!
+        }
+        if self.loginPassword != nil {
+            map["LoginPassword"] = self.loginPassword!
+        }
+        if self.newNodeGroupName != nil {
+            map["NewNodeGroupName"] = self.newNodeGroupName!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.ramRoleName != nil {
+            map["RamRoleName"] = self.ramRoleName!
+        }
+        if self.systemDisk != nil {
+            map["SystemDisk"] = self.systemDisk?.toMap()
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileSystemMountEnabled"] as? Bool {
+            self.fileSystemMountEnabled = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["KeyPairName"] as? String {
+            self.keyPairName = value
+        }
+        if let value = dict["LoginPassword"] as? String {
+            self.loginPassword = value
+        }
+        if let value = dict["NewNodeGroupName"] as? String {
+            self.newNodeGroupName = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["RamRoleName"] as? String {
+            self.ramRoleName = value
+        }
+        if let value = dict["SystemDisk"] as? [String: Any?] {
+            var model = UpdateNodeGroupRequest.SystemDisk()
+            model.fromMap(value)
+            self.systemDisk = model
+        }
+        if let value = dict["UserData"] as? String {
+            self.userData = value
+        }
+    }
+}
+
+public class UpdateNodeGroupShrinkRequest : Tea.TeaModel {
+    public var fileSystemMountEnabled: Bool?
+
+    public var imageId: String?
+
+    public var keyPairName: String?
+
+    public var loginPassword: String?
+
+    public var newNodeGroupName: String?
+
+    public var nodeGroupId: String?
+
+    public var ramRoleName: String?
+
+    public var systemDiskShrink: String?
 
     public var userData: String?
 
@@ -19251,6 +19381,9 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
         if self.ramRoleName != nil {
             map["RamRoleName"] = self.ramRoleName!
         }
+        if self.systemDiskShrink != nil {
+            map["SystemDisk"] = self.systemDiskShrink!
+        }
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
@@ -19279,6 +19412,9 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
         }
         if let value = dict["RamRoleName"] as? String {
             self.ramRoleName = value
+        }
+        if let value = dict["SystemDisk"] as? String {
+            self.systemDiskShrink = value
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
