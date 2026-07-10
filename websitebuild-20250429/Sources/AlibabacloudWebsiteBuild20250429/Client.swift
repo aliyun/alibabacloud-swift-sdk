@@ -77,6 +77,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func authorizeAppProxyOpsWithOptions(_ request: AuthorizeAppProxyOpsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AuthorizeAppProxyOpsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conversationId)) {
+            body["ConversationId"] = request.conversationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeAppProxyOps",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AuthorizeAppProxyOpsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func authorizeAppProxyOps(_ request: AuthorizeAppProxyOpsRequest) async throws -> AuthorizeAppProxyOpsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await authorizeAppProxyOpsWithOptions(request as! AuthorizeAppProxyOpsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchCheckResourceMeasureWithOptions(_ request: BatchCheckResourceMeasureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCheckResourceMeasureResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
