@@ -833,6 +833,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func exportConversationDetailsWithOptions(_ request: ExportConversationDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportConversationDetailsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.abTestId)) {
+            query["AbTestId"] = request.abTestId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.beginTimeLeftRange)) {
             query["BeginTimeLeftRange"] = request.beginTimeLeftRange!;
         }

@@ -3877,6 +3877,8 @@ public class EndDialogueResponse : Tea.TeaModel {
 }
 
 public class ExportConversationDetailsRequest : Tea.TeaModel {
+    public var abTestId: String?
+
     public var beginTimeLeftRange: Int64?
 
     public var beginTimeRightRange: Int64?
@@ -3909,6 +3911,9 @@ public class ExportConversationDetailsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.abTestId != nil {
+            map["AbTestId"] = self.abTestId!
+        }
         if self.beginTimeLeftRange != nil {
             map["BeginTimeLeftRange"] = self.beginTimeLeftRange!
         }
@@ -3941,6 +3946,9 @@ public class ExportConversationDetailsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AbTestId"] as? String {
+            self.abTestId = value
+        }
         if let value = dict["BeginTimeLeftRange"] as? Int64 {
             self.beginTimeLeftRange = value
         }
@@ -5102,6 +5110,8 @@ public class ListConversationDetailsResponse : Tea.TeaModel {
 }
 
 public class ListConversationsRequest : Tea.TeaModel {
+    public var abTestId: String?
+
     public var beginTimeLeftRange: Int64?
 
     public var beginTimeRightRange: Int64?
@@ -5140,6 +5150,9 @@ public class ListConversationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.abTestId != nil {
+            map["AbTestId"] = self.abTestId!
+        }
         if self.beginTimeLeftRange != nil {
             map["BeginTimeLeftRange"] = self.beginTimeLeftRange!
         }
@@ -5181,6 +5194,9 @@ public class ListConversationsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AbTestId"] as? String {
+            self.abTestId = value
+        }
         if let value = dict["BeginTimeLeftRange"] as? Int64 {
             self.beginTimeLeftRange = value
         }
@@ -5222,6 +5238,8 @@ public class ListConversationsRequest : Tea.TeaModel {
 
 public class ListConversationsResponseBody : Tea.TeaModel {
     public class Conversations : Tea.TeaModel {
+        public var abTestName: String?
+
         public var calledNumber: String?
 
         public var callingNumber: String?
@@ -5262,6 +5280,9 @@ public class ListConversationsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.abTestName != nil {
+                map["AbTestName"] = self.abTestName!
+            }
             if self.calledNumber != nil {
                 map["CalledNumber"] = self.calledNumber!
             }
@@ -5306,6 +5327,9 @@ public class ListConversationsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AbTestName"] as? String {
+                self.abTestName = value
+            }
             if let value = dict["CalledNumber"] as? String {
                 self.calledNumber = value
             }
