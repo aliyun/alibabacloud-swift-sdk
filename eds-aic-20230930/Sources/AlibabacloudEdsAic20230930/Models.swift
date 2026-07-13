@@ -2571,6 +2571,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var channelCookie: String?
+
     public var chargeType: String?
 
     public var clientToken: String?
@@ -2649,6 +2651,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
@@ -2745,6 +2750,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
@@ -2881,6 +2889,8 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var channelCookie: String?
+
     public var chargeType: String?
 
     public var clientToken: String?
@@ -2958,6 +2968,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
@@ -3054,6 +3067,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
@@ -3900,6 +3916,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var channelCookie: String?
+
     public var chargeType: String?
 
     public var count: String?
@@ -3984,6 +4002,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
@@ -4089,6 +4110,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
@@ -4237,6 +4261,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var channelCookie: String?
+
     public var chargeType: String?
 
     public var count: String?
@@ -4319,6 +4345,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
@@ -4424,6 +4453,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
@@ -4720,7 +4752,11 @@ public class CreateCloudPhoneNodeResponse : Tea.TeaModel {
 public class CreateCreditPackageRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
+    public var channelCookie: String?
+
     public var creditAmount: String?
+
+    public var packageAmount: String?
 
     public var period: Int32?
 
@@ -4745,8 +4781,14 @@ public class CreateCreditPackageRequest : Tea.TeaModel {
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
         }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
+        }
         if self.creditAmount != nil {
             map["CreditAmount"] = self.creditAmount!
+        }
+        if self.packageAmount != nil {
+            map["PackageAmount"] = self.packageAmount!
         }
         if self.period != nil {
             map["Period"] = self.period!
@@ -4765,8 +4807,14 @@ public class CreateCreditPackageRequest : Tea.TeaModel {
         if let value = dict["AutoPay"] as? Bool {
             self.autoPay = value
         }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
+        }
         if let value = dict["CreditAmount"] as? String {
             self.creditAmount = value
+        }
+        if let value = dict["PackageAmount"] as? String {
+            self.packageAmount = value
         }
         if let value = dict["Period"] as? Int32 {
             self.period = value
@@ -4782,6 +4830,8 @@ public class CreateCreditPackageRequest : Tea.TeaModel {
 
 public class CreateCreditPackageResponseBody : Tea.TeaModel {
     public var creditPackageId: String?
+
+    public var creditPackageIds: [String]?
 
     public var effectiveTime: String?
 
@@ -4808,6 +4858,9 @@ public class CreateCreditPackageResponseBody : Tea.TeaModel {
         if self.creditPackageId != nil {
             map["CreditPackageId"] = self.creditPackageId!
         }
+        if self.creditPackageIds != nil {
+            map["CreditPackageIds"] = self.creditPackageIds!
+        }
         if self.effectiveTime != nil {
             map["EffectiveTime"] = self.effectiveTime!
         }
@@ -4827,6 +4880,9 @@ public class CreateCreditPackageResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CreditPackageId"] as? String {
             self.creditPackageId = value
+        }
+        if let value = dict["CreditPackageIds"] as? [String] {
+            self.creditPackageIds = value
         }
         if let value = dict["EffectiveTime"] as? String {
             self.effectiveTime = value
@@ -5415,6 +5471,8 @@ public class CreateMobileAgentPackageRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var channelCookie: String?
+
     public var creditAmount: String?
 
     public var creditConfig: String?
@@ -5460,6 +5518,9 @@ public class CreateMobileAgentPackageRequest : Tea.TeaModel {
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
         }
         if self.creditAmount != nil {
             map["CreditAmount"] = self.creditAmount!
@@ -5507,6 +5568,9 @@ public class CreateMobileAgentPackageRequest : Tea.TeaModel {
         }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["CreditAmount"] as? String {
             self.creditAmount = value
@@ -7926,11 +7990,17 @@ public class DescribeAgentTaskResponseBody : Tea.TeaModel {
     public class Tasks : Tea.TeaModel {
         public var currentStatus: String?
 
+        public var digestSource: String?
+
         public var instanceId: String?
+
+        public var reason: String?
 
         public var runningAt: String?
 
         public var steps: String?
+
+        public var taskDigest: String?
 
         public var taskDuration: String?
 
@@ -7957,14 +8027,23 @@ public class DescribeAgentTaskResponseBody : Tea.TeaModel {
             if self.currentStatus != nil {
                 map["CurrentStatus"] = self.currentStatus!
             }
+            if self.digestSource != nil {
+                map["DigestSource"] = self.digestSource!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
             }
             if self.runningAt != nil {
                 map["RunningAt"] = self.runningAt!
             }
             if self.steps != nil {
                 map["Steps"] = self.steps!
+            }
+            if self.taskDigest != nil {
+                map["TaskDigest"] = self.taskDigest!
             }
             if self.taskDuration != nil {
                 map["TaskDuration"] = self.taskDuration!
@@ -7986,14 +8065,23 @@ public class DescribeAgentTaskResponseBody : Tea.TeaModel {
             if let value = dict["CurrentStatus"] as? String {
                 self.currentStatus = value
             }
+            if let value = dict["DigestSource"] as? String {
+                self.digestSource = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["Reason"] as? String {
+                self.reason = value
             }
             if let value = dict["RunningAt"] as? String {
                 self.runningAt = value
             }
             if let value = dict["Steps"] as? String {
                 self.steps = value
+            }
+            if let value = dict["TaskDigest"] as? String {
+                self.taskDigest = value
             }
             if let value = dict["TaskDuration"] as? String {
                 self.taskDuration = value
@@ -12393,6 +12481,8 @@ public class DescribeCreditPackageResponseBody : Tea.TeaModel {
     public class CreditsPackageInfos : Tea.TeaModel {
         public var availableCredits: String?
 
+        public var createTime: String?
+
         public var creditPackageId: String?
 
         public var creditPackageStatus: String?
@@ -12422,6 +12512,9 @@ public class DescribeCreditPackageResponseBody : Tea.TeaModel {
             if self.availableCredits != nil {
                 map["AvailableCredits"] = self.availableCredits!
             }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
             if self.creditPackageId != nil {
                 map["CreditPackageId"] = self.creditPackageId!
             }
@@ -12447,6 +12540,9 @@ public class DescribeCreditPackageResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AvailableCredits"] as? String {
                 self.availableCredits = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
             }
             if let value = dict["CreditPackageId"] as? String {
                 self.creditPackageId = value
@@ -25400,9 +25496,59 @@ public class ResetAndroidInstancesInGroupResponse : Tea.TeaModel {
 }
 
 public class ResumeAgentTaskRequest : Tea.TeaModel {
+    public class ClarificationAnswers : Tea.TeaModel {
+        public var customValue: String?
+
+        public var id: String?
+
+        public var selectedIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customValue != nil {
+                map["CustomValue"] = self.customValue!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.selectedIds != nil {
+                map["SelectedIds"] = self.selectedIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomValue"] as? String {
+                self.customValue = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["SelectedIds"] as? [String] {
+                self.selectedIds = value
+            }
+        }
+    }
     public var additionalPrompt: String?
 
+    public var clarificationAnswers: [ResumeAgentTaskRequest.ClarificationAnswers]?
+
     public var taskIds: [String]?
+
+    public var toolCallId: String?
 
     public override init() {
         super.init()
@@ -25421,8 +25567,18 @@ public class ResumeAgentTaskRequest : Tea.TeaModel {
         if self.additionalPrompt != nil {
             map["AdditionalPrompt"] = self.additionalPrompt!
         }
+        if self.clarificationAnswers != nil {
+            var tmp : [Any] = []
+            for k in self.clarificationAnswers! {
+                tmp.append(k.toMap())
+            }
+            map["ClarificationAnswers"] = tmp
+        }
         if self.taskIds != nil {
             map["TaskIds"] = self.taskIds!
+        }
+        if self.toolCallId != nil {
+            map["ToolCallId"] = self.toolCallId!
         }
         return map
     }
@@ -25432,8 +25588,24 @@ public class ResumeAgentTaskRequest : Tea.TeaModel {
         if let value = dict["AdditionalPrompt"] as? String {
             self.additionalPrompt = value
         }
+        if let value = dict["ClarificationAnswers"] as? [Any?] {
+            var tmp : [ResumeAgentTaskRequest.ClarificationAnswers] = []
+            for v in value {
+                if v != nil {
+                    var model = ResumeAgentTaskRequest.ClarificationAnswers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.clarificationAnswers = tmp
+        }
         if let value = dict["TaskIds"] as? [String] {
             self.taskIds = value
+        }
+        if let value = dict["ToolCallId"] as? String {
+            self.toolCallId = value
         }
     }
 }
