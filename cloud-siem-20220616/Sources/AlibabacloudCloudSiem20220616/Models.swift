@@ -10250,6 +10250,10 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
 
                 public var displayName: String?
 
+                public var disposeStatus: String?
+
+                public var errorMessage: String?
+
                 public var name: String?
 
                 public var opCode: String?
@@ -10289,6 +10293,12 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                     if self.displayName != nil {
                         map["DisplayName"] = self.displayName!
                     }
+                    if self.disposeStatus != nil {
+                        map["DisposeStatus"] = self.disposeStatus!
+                    }
+                    if self.errorMessage != nil {
+                        map["ErrorMessage"] = self.errorMessage!
+                    }
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
@@ -10326,6 +10336,12 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["DisplayName"] as? String {
                         self.displayName = value
+                    }
+                    if let value = dict["DisposeStatus"] as? String {
+                        self.disposeStatus = value
+                    }
+                    if let value = dict["ErrorMessage"] as? String {
+                        self.errorMessage = value
                     }
                     if let value = dict["Name"] as? String {
                         self.name = value
@@ -15228,6 +15244,515 @@ public class GetCapacityResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetCapacityResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetDataStorageRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+    }
+}
+
+public class GetDataStorageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class NormalizationLogStores : Tea.TeaModel {
+            public var logStoreName: String?
+
+            public var logStoreTtl: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logStoreName != nil {
+                    map["LogStoreName"] = self.logStoreName!
+                }
+                if self.logStoreTtl != nil {
+                    map["LogStoreTtl"] = self.logStoreTtl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LogStoreName"] as? String {
+                    self.logStoreName = value
+                }
+                if let value = dict["LogStoreTtl"] as? Int32 {
+                    self.logStoreTtl = value
+                }
+            }
+        }
+        public class NormalizationLogViews : Tea.TeaModel {
+            public var activityName: String?
+
+            public var categoryName: String?
+
+            public var detectionRuleReferenceCount: Int32?
+
+            public var detectionRuleReferenceProductIds: [String]?
+
+            public var logSearchConditions: String?
+
+            public var logStoreName: String?
+
+            public var logViewExisted: Bool?
+
+            public var logViewName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.activityName != nil {
+                    map["ActivityName"] = self.activityName!
+                }
+                if self.categoryName != nil {
+                    map["CategoryName"] = self.categoryName!
+                }
+                if self.detectionRuleReferenceCount != nil {
+                    map["DetectionRuleReferenceCount"] = self.detectionRuleReferenceCount!
+                }
+                if self.detectionRuleReferenceProductIds != nil {
+                    map["DetectionRuleReferenceProductIds"] = self.detectionRuleReferenceProductIds!
+                }
+                if self.logSearchConditions != nil {
+                    map["LogSearchConditions"] = self.logSearchConditions!
+                }
+                if self.logStoreName != nil {
+                    map["LogStoreName"] = self.logStoreName!
+                }
+                if self.logViewExisted != nil {
+                    map["LogViewExisted"] = self.logViewExisted!
+                }
+                if self.logViewName != nil {
+                    map["LogViewName"] = self.logViewName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ActivityName"] as? String {
+                    self.activityName = value
+                }
+                if let value = dict["CategoryName"] as? String {
+                    self.categoryName = value
+                }
+                if let value = dict["DetectionRuleReferenceCount"] as? Int32 {
+                    self.detectionRuleReferenceCount = value
+                }
+                if let value = dict["DetectionRuleReferenceProductIds"] as? [String] {
+                    self.detectionRuleReferenceProductIds = value
+                }
+                if let value = dict["LogSearchConditions"] as? String {
+                    self.logSearchConditions = value
+                }
+                if let value = dict["LogStoreName"] as? String {
+                    self.logStoreName = value
+                }
+                if let value = dict["LogViewExisted"] as? Bool {
+                    self.logViewExisted = value
+                }
+                if let value = dict["LogViewName"] as? String {
+                    self.logViewName = value
+                }
+            }
+        }
+        public class SasLogStores : Tea.TeaModel {
+            public var logCode: String?
+
+            public var logDeliveryGroup: String?
+
+            public var logDeliveryPermission: String?
+
+            public var logDeliveryStatus: String?
+
+            public var logDeliveryUpdateTime: String?
+
+            public var logName: String?
+
+            public var logSearchConditions: String?
+
+            public var logStoreExisted: Bool?
+
+            public var logStoreName: String?
+
+            public var logStoreTtl: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logCode != nil {
+                    map["LogCode"] = self.logCode!
+                }
+                if self.logDeliveryGroup != nil {
+                    map["LogDeliveryGroup"] = self.logDeliveryGroup!
+                }
+                if self.logDeliveryPermission != nil {
+                    map["LogDeliveryPermission"] = self.logDeliveryPermission!
+                }
+                if self.logDeliveryStatus != nil {
+                    map["LogDeliveryStatus"] = self.logDeliveryStatus!
+                }
+                if self.logDeliveryUpdateTime != nil {
+                    map["LogDeliveryUpdateTime"] = self.logDeliveryUpdateTime!
+                }
+                if self.logName != nil {
+                    map["LogName"] = self.logName!
+                }
+                if self.logSearchConditions != nil {
+                    map["LogSearchConditions"] = self.logSearchConditions!
+                }
+                if self.logStoreExisted != nil {
+                    map["LogStoreExisted"] = self.logStoreExisted!
+                }
+                if self.logStoreName != nil {
+                    map["LogStoreName"] = self.logStoreName!
+                }
+                if self.logStoreTtl != nil {
+                    map["LogStoreTtl"] = self.logStoreTtl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LogCode"] as? String {
+                    self.logCode = value
+                }
+                if let value = dict["LogDeliveryGroup"] as? String {
+                    self.logDeliveryGroup = value
+                }
+                if let value = dict["LogDeliveryPermission"] as? String {
+                    self.logDeliveryPermission = value
+                }
+                if let value = dict["LogDeliveryStatus"] as? String {
+                    self.logDeliveryStatus = value
+                }
+                if let value = dict["LogDeliveryUpdateTime"] as? String {
+                    self.logDeliveryUpdateTime = value
+                }
+                if let value = dict["LogName"] as? String {
+                    self.logName = value
+                }
+                if let value = dict["LogSearchConditions"] as? String {
+                    self.logSearchConditions = value
+                }
+                if let value = dict["LogStoreExisted"] as? Bool {
+                    self.logStoreExisted = value
+                }
+                if let value = dict["LogStoreName"] as? String {
+                    self.logStoreName = value
+                }
+                if let value = dict["LogStoreTtl"] as? Int32 {
+                    self.logStoreTtl = value
+                }
+            }
+        }
+        public var coldStorageUsedCapacity: Double?
+
+        public var dataStorageRegionId: String?
+
+        public var dataStorageRegionPermission: String?
+
+        public var dataStorageTotalCapacity: Int64?
+
+        public var dataStorageUsedCapacity: Double?
+
+        public var dataStorageUsedCapacityDetail: String?
+
+        public var logProject: String?
+
+        public var normalizationLogStores: [GetDataStorageResponseBody.Data.NormalizationLogStores]?
+
+        public var normalizationLogViews: [GetDataStorageResponseBody.Data.NormalizationLogViews]?
+
+        public var sasLogStores: [GetDataStorageResponseBody.Data.SasLogStores]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.coldStorageUsedCapacity != nil {
+                map["ColdStorageUsedCapacity"] = self.coldStorageUsedCapacity!
+            }
+            if self.dataStorageRegionId != nil {
+                map["DataStorageRegionId"] = self.dataStorageRegionId!
+            }
+            if self.dataStorageRegionPermission != nil {
+                map["DataStorageRegionPermission"] = self.dataStorageRegionPermission!
+            }
+            if self.dataStorageTotalCapacity != nil {
+                map["DataStorageTotalCapacity"] = self.dataStorageTotalCapacity!
+            }
+            if self.dataStorageUsedCapacity != nil {
+                map["DataStorageUsedCapacity"] = self.dataStorageUsedCapacity!
+            }
+            if self.dataStorageUsedCapacityDetail != nil {
+                map["DataStorageUsedCapacityDetail"] = self.dataStorageUsedCapacityDetail!
+            }
+            if self.logProject != nil {
+                map["LogProject"] = self.logProject!
+            }
+            if self.normalizationLogStores != nil {
+                var tmp : [Any] = []
+                for k in self.normalizationLogStores! {
+                    tmp.append(k.toMap())
+                }
+                map["NormalizationLogStores"] = tmp
+            }
+            if self.normalizationLogViews != nil {
+                var tmp : [Any] = []
+                for k in self.normalizationLogViews! {
+                    tmp.append(k.toMap())
+                }
+                map["NormalizationLogViews"] = tmp
+            }
+            if self.sasLogStores != nil {
+                var tmp : [Any] = []
+                for k in self.sasLogStores! {
+                    tmp.append(k.toMap())
+                }
+                map["SasLogStores"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ColdStorageUsedCapacity"] as? Double {
+                self.coldStorageUsedCapacity = value
+            }
+            if let value = dict["DataStorageRegionId"] as? String {
+                self.dataStorageRegionId = value
+            }
+            if let value = dict["DataStorageRegionPermission"] as? String {
+                self.dataStorageRegionPermission = value
+            }
+            if let value = dict["DataStorageTotalCapacity"] as? Int64 {
+                self.dataStorageTotalCapacity = value
+            }
+            if let value = dict["DataStorageUsedCapacity"] as? Double {
+                self.dataStorageUsedCapacity = value
+            }
+            if let value = dict["DataStorageUsedCapacityDetail"] as? String {
+                self.dataStorageUsedCapacityDetail = value
+            }
+            if let value = dict["LogProject"] as? String {
+                self.logProject = value
+            }
+            if let value = dict["NormalizationLogStores"] as? [Any?] {
+                var tmp : [GetDataStorageResponseBody.Data.NormalizationLogStores] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetDataStorageResponseBody.Data.NormalizationLogStores()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.normalizationLogStores = tmp
+            }
+            if let value = dict["NormalizationLogViews"] as? [Any?] {
+                var tmp : [GetDataStorageResponseBody.Data.NormalizationLogViews] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetDataStorageResponseBody.Data.NormalizationLogViews()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.normalizationLogViews = tmp
+            }
+            if let value = dict["SasLogStores"] as? [Any?] {
+                var tmp : [GetDataStorageResponseBody.Data.SasLogStores] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetDataStorageResponseBody.Data.SasLogStores()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sasLogStores = tmp
+            }
+        }
+    }
+    public var data: GetDataStorageResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetDataStorageResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetDataStorageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDataStorageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetDataStorageResponseBody()
             model.fromMap(value)
             self.body = model
         }
