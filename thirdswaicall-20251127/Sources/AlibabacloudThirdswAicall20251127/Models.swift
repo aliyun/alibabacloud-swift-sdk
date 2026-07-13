@@ -6,6 +6,8 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class QueryTaskConcurrencyRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
     public var taskId: Int64?
 
     public override init() {
@@ -22,6 +24,9 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -30,6 +35,9 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
         if let value = dict["TaskId"] as? Int64 {
             self.taskId = value
         }
@@ -215,6 +223,14 @@ public class QueryTaskConcurrencyResponse : Tea.TeaModel {
 }
 
 public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
+    public var callEndTimeBegin: Int64?
+
+    public var callEndTimeEnd: Int64?
+
+    public var callStartTimeBegin: Int64?
+
+    public var callStartTimeEnd: Int64?
+
     public var current: Int32?
 
     public var customerNameOrPhone: String?
@@ -247,6 +263,18 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.callEndTimeBegin != nil {
+            map["CallEndTimeBegin"] = self.callEndTimeBegin!
+        }
+        if self.callEndTimeEnd != nil {
+            map["CallEndTimeEnd"] = self.callEndTimeEnd!
+        }
+        if self.callStartTimeBegin != nil {
+            map["CallStartTimeBegin"] = self.callStartTimeBegin!
+        }
+        if self.callStartTimeEnd != nil {
+            map["CallStartTimeEnd"] = self.callStartTimeEnd!
+        }
         if self.current != nil {
             map["Current"] = self.current!
         }
@@ -279,6 +307,18 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CallEndTimeBegin"] as? Int64 {
+            self.callEndTimeBegin = value
+        }
+        if let value = dict["CallEndTimeEnd"] as? Int64 {
+            self.callEndTimeEnd = value
+        }
+        if let value = dict["CallStartTimeBegin"] as? Int64 {
+            self.callStartTimeBegin = value
+        }
+        if let value = dict["CallStartTimeEnd"] as? Int64 {
+            self.callStartTimeEnd = value
+        }
         if let value = dict["Current"] as? Int32 {
             self.current = value
         }
@@ -310,6 +350,14 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
 }
 
 public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
+    public var callEndTimeBegin: Int64?
+
+    public var callEndTimeEnd: Int64?
+
+    public var callStartTimeBegin: Int64?
+
+    public var callStartTimeEnd: Int64?
+
     public var current: Int32?
 
     public var customerNameOrPhone: String?
@@ -342,6 +390,18 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.callEndTimeBegin != nil {
+            map["CallEndTimeBegin"] = self.callEndTimeBegin!
+        }
+        if self.callEndTimeEnd != nil {
+            map["CallEndTimeEnd"] = self.callEndTimeEnd!
+        }
+        if self.callStartTimeBegin != nil {
+            map["CallStartTimeBegin"] = self.callStartTimeBegin!
+        }
+        if self.callStartTimeEnd != nil {
+            map["CallStartTimeEnd"] = self.callStartTimeEnd!
+        }
         if self.current != nil {
             map["Current"] = self.current!
         }
@@ -374,6 +434,18 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CallEndTimeBegin"] as? Int64 {
+            self.callEndTimeBegin = value
+        }
+        if let value = dict["CallEndTimeEnd"] as? Int64 {
+            self.callEndTimeEnd = value
+        }
+        if let value = dict["CallStartTimeBegin"] as? Int64 {
+            self.callStartTimeBegin = value
+        }
+        if let value = dict["CallStartTimeEnd"] as? Int64 {
+            self.callStartTimeEnd = value
+        }
         if let value = dict["Current"] as? Int32 {
             self.current = value
         }
@@ -460,6 +532,8 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var billingDuration: Int64?
+
         public var callEndTime: String?
 
         public var callId: String?
@@ -498,6 +572,8 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
 
         public var recordUrl: String?
 
+        public var remark: String?
+
         public var retryCount: Int32?
 
         public var sceneId: String?
@@ -528,6 +604,9 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.billingDuration != nil {
+                map["BillingDuration"] = self.billingDuration!
+            }
             if self.callEndTime != nil {
                 map["CallEndTime"] = self.callEndTime!
             }
@@ -589,6 +668,9 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
             if self.recordUrl != nil {
                 map["RecordUrl"] = self.recordUrl!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             if self.retryCount != nil {
                 map["RetryCount"] = self.retryCount!
             }
@@ -618,6 +700,9 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BillingDuration"] as? Int64 {
+                self.billingDuration = value
+            }
             if let value = dict["CallEndTime"] as? String {
                 self.callEndTime = value
             }
@@ -684,6 +769,9 @@ public class ReadOutboundTaskCallListResponseBody : Tea.TeaModel {
             }
             if let value = dict["RecordUrl"] as? String {
                 self.recordUrl = value
+            }
+            if let value = dict["Remark"] as? String {
+                self.remark = value
             }
             if let value = dict["RetryCount"] as? Int32 {
                 self.retryCount = value

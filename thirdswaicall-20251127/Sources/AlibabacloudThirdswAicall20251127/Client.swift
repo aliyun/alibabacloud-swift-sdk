@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryTaskConcurrencyWithOptions(_ request: QueryTaskConcurrencyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTaskConcurrencyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationCode)) {
+            body["ApplicationCode"] = request.applicationCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId!;
         }
@@ -66,6 +69,18 @@ open class Client : AlibabacloudOpenApi.Client {
             request.labelTagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelTags, "LabelTags", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callEndTimeBegin)) {
+            body["CallEndTimeBegin"] = request.callEndTimeBegin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callEndTimeEnd)) {
+            body["CallEndTimeEnd"] = request.callEndTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callStartTimeBegin)) {
+            body["CallStartTimeBegin"] = request.callStartTimeBegin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callStartTimeEnd)) {
+            body["CallStartTimeEnd"] = request.callStartTimeEnd!;
+        }
         if (!TeaUtils.Client.isUnset(request.current)) {
             body["Current"] = request.current!;
         }
