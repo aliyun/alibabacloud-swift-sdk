@@ -8270,6 +8270,8 @@ public class CreateAppInstanceTicketRequest : Tea.TeaModel {
 
     public var clientId: String?
 
+    public var role: String?
+
     public override init() {
         super.init()
     }
@@ -8290,6 +8292,9 @@ public class CreateAppInstanceTicketRequest : Tea.TeaModel {
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
+        if self.role != nil {
+            map["Role"] = self.role!
+        }
         return map
     }
 
@@ -8300,6 +8305,9 @@ public class CreateAppInstanceTicketRequest : Tea.TeaModel {
         }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
+        }
+        if let value = dict["Role"] as? String {
+            self.role = value
         }
     }
 }
@@ -47935,6 +47943,8 @@ public class UpdateAppSeoStatusRequest : Tea.TeaModel {
 
     public var seAuthInfo: String?
 
+    public var seIndexStatus: Int32?
+
     public var seType: String?
 
     public override init() {
@@ -47960,6 +47970,9 @@ public class UpdateAppSeoStatusRequest : Tea.TeaModel {
         if self.seAuthInfo != nil {
             map["SeAuthInfo"] = self.seAuthInfo!
         }
+        if self.seIndexStatus != nil {
+            map["SeIndexStatus"] = self.seIndexStatus!
+        }
         if self.seType != nil {
             map["SeType"] = self.seType!
         }
@@ -47976,6 +47989,9 @@ public class UpdateAppSeoStatusRequest : Tea.TeaModel {
         }
         if let value = dict["SeAuthInfo"] as? String {
             self.seAuthInfo = value
+        }
+        if let value = dict["SeIndexStatus"] as? Int32 {
+            self.seIndexStatus = value
         }
         if let value = dict["SeType"] as? String {
             self.seType = value
