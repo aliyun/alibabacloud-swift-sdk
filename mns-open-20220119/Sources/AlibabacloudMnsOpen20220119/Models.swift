@@ -808,6 +808,10 @@ public class CreateQueueRequest : Tea.TeaModel {
 
     public var enableLogging: Bool?
 
+    public var enableSSE: Bool?
+
+    public var kmsKeyId: String?
+
     public var maximumMessageSize: Int64?
 
     public var messageRetentionPeriod: Int64?
@@ -817,6 +821,10 @@ public class CreateQueueRequest : Tea.TeaModel {
     public var queueName: String?
 
     public var queueType: String?
+
+    public var sseAlgorithm: String?
+
+    public var sseType: String?
 
     public var tag: [CreateQueueRequest.Tag]?
 
@@ -849,6 +857,12 @@ public class CreateQueueRequest : Tea.TeaModel {
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
         }
+        if self.enableSSE != nil {
+            map["EnableSSE"] = self.enableSSE!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
         if self.maximumMessageSize != nil {
             map["MaximumMessageSize"] = self.maximumMessageSize!
         }
@@ -863,6 +877,12 @@ public class CreateQueueRequest : Tea.TeaModel {
         }
         if self.queueType != nil {
             map["QueueType"] = self.queueType!
+        }
+        if self.sseAlgorithm != nil {
+            map["SseAlgorithm"] = self.sseAlgorithm!
+        }
+        if self.sseType != nil {
+            map["SseType"] = self.sseType!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -893,6 +913,12 @@ public class CreateQueueRequest : Tea.TeaModel {
         if let value = dict["EnableLogging"] as? Bool {
             self.enableLogging = value
         }
+        if let value = dict["EnableSSE"] as? Bool {
+            self.enableSSE = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
         if let value = dict["MaximumMessageSize"] as? Int64 {
             self.maximumMessageSize = value
         }
@@ -907,6 +933,12 @@ public class CreateQueueRequest : Tea.TeaModel {
         }
         if let value = dict["QueueType"] as? String {
             self.queueType = value
+        }
+        if let value = dict["SseAlgorithm"] as? String {
+            self.sseAlgorithm = value
+        }
+        if let value = dict["SseType"] as? String {
+            self.sseType = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateQueueRequest.Tag] = []
@@ -977,6 +1009,10 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
 
     public var enableLogging: Bool?
 
+    public var enableSSE: Bool?
+
+    public var kmsKeyId: String?
+
     public var maximumMessageSize: Int64?
 
     public var messageRetentionPeriod: Int64?
@@ -986,6 +1022,10 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
     public var queueName: String?
 
     public var queueType: String?
+
+    public var sseAlgorithm: String?
+
+    public var sseType: String?
 
     public var tag: [CreateQueueShrinkRequest.Tag]?
 
@@ -1016,6 +1056,12 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
         }
+        if self.enableSSE != nil {
+            map["EnableSSE"] = self.enableSSE!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
         if self.maximumMessageSize != nil {
             map["MaximumMessageSize"] = self.maximumMessageSize!
         }
@@ -1030,6 +1076,12 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
         }
         if self.queueType != nil {
             map["QueueType"] = self.queueType!
+        }
+        if self.sseAlgorithm != nil {
+            map["SseAlgorithm"] = self.sseAlgorithm!
+        }
+        if self.sseType != nil {
+            map["SseType"] = self.sseType!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -1058,6 +1110,12 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
         if let value = dict["EnableLogging"] as? Bool {
             self.enableLogging = value
         }
+        if let value = dict["EnableSSE"] as? Bool {
+            self.enableSSE = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
         if let value = dict["MaximumMessageSize"] as? Int64 {
             self.maximumMessageSize = value
         }
@@ -1072,6 +1130,12 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["QueueType"] as? String {
             self.queueType = value
+        }
+        if let value = dict["SseAlgorithm"] as? String {
+            self.sseAlgorithm = value
+        }
+        if let value = dict["SseType"] as? String {
+            self.sseType = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateQueueShrinkRequest.Tag] = []
@@ -1306,7 +1370,15 @@ public class CreateTopicRequest : Tea.TeaModel {
     }
     public var enableLogging: Bool?
 
+    public var enableSSE: Bool?
+
+    public var kmsKeyId: String?
+
     public var maxMessageSize: Int64?
+
+    public var sseAlgorithm: String?
+
+    public var sseType: String?
 
     public var tag: [CreateTopicRequest.Tag]?
 
@@ -1331,8 +1403,20 @@ public class CreateTopicRequest : Tea.TeaModel {
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
         }
+        if self.enableSSE != nil {
+            map["EnableSSE"] = self.enableSSE!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
         if self.maxMessageSize != nil {
             map["MaxMessageSize"] = self.maxMessageSize!
+        }
+        if self.sseAlgorithm != nil {
+            map["SseAlgorithm"] = self.sseAlgorithm!
+        }
+        if self.sseType != nil {
+            map["SseType"] = self.sseType!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -1355,8 +1439,20 @@ public class CreateTopicRequest : Tea.TeaModel {
         if let value = dict["EnableLogging"] as? Bool {
             self.enableLogging = value
         }
+        if let value = dict["EnableSSE"] as? Bool {
+            self.enableSSE = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
         if let value = dict["MaxMessageSize"] as? Int64 {
             self.maxMessageSize = value
+        }
+        if let value = dict["SseAlgorithm"] as? String {
+            self.sseAlgorithm = value
+        }
+        if let value = dict["SseType"] as? String {
+            self.sseType = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateTopicRequest.Tag] = []
@@ -3179,7 +3275,13 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
 
         public var dlqPolicy: GetQueueAttributesResponseBody.Data.DlqPolicy?
 
+        public var enableSSE: Bool?
+
+        public var encryptionEnabled: Bool?
+
         public var inactiveMessages: Int64?
+
+        public var kmsKeyId: String?
 
         public var lastModifyTime: Int64?
 
@@ -3194,6 +3296,10 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
         public var queueName: String?
 
         public var queueType: String?
+
+        public var sseAlgorithm: String?
+
+        public var sseType: String?
 
         public var tags: [GetQueueAttributesResponseBody.Data.Tags]?
 
@@ -3232,8 +3338,17 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
             if self.dlqPolicy != nil {
                 map["DlqPolicy"] = self.dlqPolicy?.toMap()
             }
+            if self.enableSSE != nil {
+                map["EnableSSE"] = self.enableSSE!
+            }
+            if self.encryptionEnabled != nil {
+                map["EncryptionEnabled"] = self.encryptionEnabled!
+            }
             if self.inactiveMessages != nil {
                 map["InactiveMessages"] = self.inactiveMessages!
+            }
+            if self.kmsKeyId != nil {
+                map["KmsKeyId"] = self.kmsKeyId!
             }
             if self.lastModifyTime != nil {
                 map["LastModifyTime"] = self.lastModifyTime!
@@ -3255,6 +3370,12 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
             }
             if self.queueType != nil {
                 map["QueueType"] = self.queueType!
+            }
+            if self.sseAlgorithm != nil {
+                map["SseAlgorithm"] = self.sseAlgorithm!
+            }
+            if self.sseType != nil {
+                map["SseType"] = self.sseType!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -3291,8 +3412,17 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.dlqPolicy = model
             }
+            if let value = dict["EnableSSE"] as? Bool {
+                self.enableSSE = value
+            }
+            if let value = dict["EncryptionEnabled"] as? Bool {
+                self.encryptionEnabled = value
+            }
             if let value = dict["InactiveMessages"] as? Int64 {
                 self.inactiveMessages = value
+            }
+            if let value = dict["KmsKeyId"] as? String {
+                self.kmsKeyId = value
             }
             if let value = dict["LastModifyTime"] as? Int64 {
                 self.lastModifyTime = value
@@ -3314,6 +3444,12 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
             }
             if let value = dict["QueueType"] as? String {
                 self.queueType = value
+            }
+            if let value = dict["SseAlgorithm"] as? String {
+                self.sseAlgorithm = value
+            }
+            if let value = dict["SseType"] as? String {
+                self.sseType = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [GetQueueAttributesResponseBody.Data.Tags] = []
@@ -3949,6 +4085,12 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
         }
         public var createTime: Int64?
 
+        public var enableSSE: Bool?
+
+        public var encryptionEnabled: Bool?
+
+        public var kmsKeyId: String?
+
         public var lastModifyTime: Int64?
 
         public var loggingEnabled: Bool?
@@ -3958,6 +4100,10 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
         public var messageCount: Int64?
 
         public var messageRetentionPeriod: Int64?
+
+        public var sseAlgorithm: String?
+
+        public var sseType: String?
 
         public var tags: [GetTopicAttributesResponseBody.Data.Tags]?
 
@@ -3986,6 +4132,15 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.enableSSE != nil {
+                map["EnableSSE"] = self.enableSSE!
+            }
+            if self.encryptionEnabled != nil {
+                map["EncryptionEnabled"] = self.encryptionEnabled!
+            }
+            if self.kmsKeyId != nil {
+                map["KmsKeyId"] = self.kmsKeyId!
+            }
             if self.lastModifyTime != nil {
                 map["LastModifyTime"] = self.lastModifyTime!
             }
@@ -4000,6 +4155,12 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
             }
             if self.messageRetentionPeriod != nil {
                 map["MessageRetentionPeriod"] = self.messageRetentionPeriod!
+            }
+            if self.sseAlgorithm != nil {
+                map["SseAlgorithm"] = self.sseAlgorithm!
+            }
+            if self.sseType != nil {
+                map["SseType"] = self.sseType!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -4028,6 +4189,15 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
+            if let value = dict["EnableSSE"] as? Bool {
+                self.enableSSE = value
+            }
+            if let value = dict["EncryptionEnabled"] as? Bool {
+                self.encryptionEnabled = value
+            }
+            if let value = dict["KmsKeyId"] as? String {
+                self.kmsKeyId = value
+            }
             if let value = dict["LastModifyTime"] as? Int64 {
                 self.lastModifyTime = value
             }
@@ -4042,6 +4212,12 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
             }
             if let value = dict["MessageRetentionPeriod"] as? Int64 {
                 self.messageRetentionPeriod = value
+            }
+            if let value = dict["SseAlgorithm"] as? String {
+                self.sseAlgorithm = value
+            }
+            if let value = dict["SseType"] as? String {
+                self.sseType = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [GetTopicAttributesResponseBody.Data.Tags] = []
@@ -5055,7 +5231,13 @@ public class ListQueueResponseBody : Tea.TeaModel {
 
             public var dlqPolicy: ListQueueResponseBody.Data.PageData.DlqPolicy?
 
+            public var enableSSE: Bool?
+
+            public var encryptionEnabled: Bool?
+
             public var inactiveMessages: Int64?
+
+            public var kmsKeyId: String?
 
             public var lastModifyTime: Int64?
 
@@ -5070,6 +5252,10 @@ public class ListQueueResponseBody : Tea.TeaModel {
             public var queueName: String?
 
             public var queueType: String?
+
+            public var sseAlgorithm: String?
+
+            public var sseType: String?
 
             public var tags: [ListQueueResponseBody.Data.PageData.Tags]?
 
@@ -5105,8 +5291,17 @@ public class ListQueueResponseBody : Tea.TeaModel {
                 if self.dlqPolicy != nil {
                     map["DlqPolicy"] = self.dlqPolicy?.toMap()
                 }
+                if self.enableSSE != nil {
+                    map["EnableSSE"] = self.enableSSE!
+                }
+                if self.encryptionEnabled != nil {
+                    map["EncryptionEnabled"] = self.encryptionEnabled!
+                }
                 if self.inactiveMessages != nil {
                     map["InactiveMessages"] = self.inactiveMessages!
+                }
+                if self.kmsKeyId != nil {
+                    map["KmsKeyId"] = self.kmsKeyId!
                 }
                 if self.lastModifyTime != nil {
                     map["LastModifyTime"] = self.lastModifyTime!
@@ -5128,6 +5323,12 @@ public class ListQueueResponseBody : Tea.TeaModel {
                 }
                 if self.queueType != nil {
                     map["QueueType"] = self.queueType!
+                }
+                if self.sseAlgorithm != nil {
+                    map["SseAlgorithm"] = self.sseAlgorithm!
+                }
+                if self.sseType != nil {
+                    map["SseType"] = self.sseType!
                 }
                 if self.tags != nil {
                     var tmp : [Any] = []
@@ -5161,8 +5362,17 @@ public class ListQueueResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.dlqPolicy = model
                 }
+                if let value = dict["EnableSSE"] as? Bool {
+                    self.enableSSE = value
+                }
+                if let value = dict["EncryptionEnabled"] as? Bool {
+                    self.encryptionEnabled = value
+                }
                 if let value = dict["InactiveMessages"] as? Int64 {
                     self.inactiveMessages = value
+                }
+                if let value = dict["KmsKeyId"] as? String {
+                    self.kmsKeyId = value
                 }
                 if let value = dict["LastModifyTime"] as? Int64 {
                     self.lastModifyTime = value
@@ -5184,6 +5394,12 @@ public class ListQueueResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["QueueType"] as? String {
                     self.queueType = value
+                }
+                if let value = dict["SseAlgorithm"] as? String {
+                    self.sseAlgorithm = value
+                }
+                if let value = dict["SseType"] as? String {
+                    self.sseType = value
                 }
                 if let value = dict["Tags"] as? [Any?] {
                     var tmp : [ListQueueResponseBody.Data.PageData.Tags] = []
@@ -5989,6 +6205,12 @@ public class ListTopicResponseBody : Tea.TeaModel {
             }
             public var createTime: Int64?
 
+            public var enableSSE: Bool?
+
+            public var encryptionEnabled: Bool?
+
+            public var kmsKeyId: String?
+
             public var lastModifyTime: Int64?
 
             public var loggingEnabled: Bool?
@@ -5998,6 +6220,10 @@ public class ListTopicResponseBody : Tea.TeaModel {
             public var messageCount: Int64?
 
             public var messageRetentionPeriod: Int64?
+
+            public var sseAlgorithm: String?
+
+            public var sseType: String?
 
             public var tags: [ListTopicResponseBody.Data.PageData.Tags]?
 
@@ -6026,6 +6252,15 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.enableSSE != nil {
+                    map["EnableSSE"] = self.enableSSE!
+                }
+                if self.encryptionEnabled != nil {
+                    map["EncryptionEnabled"] = self.encryptionEnabled!
+                }
+                if self.kmsKeyId != nil {
+                    map["KmsKeyId"] = self.kmsKeyId!
+                }
                 if self.lastModifyTime != nil {
                     map["LastModifyTime"] = self.lastModifyTime!
                 }
@@ -6040,6 +6275,12 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 }
                 if self.messageRetentionPeriod != nil {
                     map["MessageRetentionPeriod"] = self.messageRetentionPeriod!
+                }
+                if self.sseAlgorithm != nil {
+                    map["SseAlgorithm"] = self.sseAlgorithm!
+                }
+                if self.sseType != nil {
+                    map["SseType"] = self.sseType!
                 }
                 if self.tags != nil {
                     var tmp : [Any] = []
@@ -6068,6 +6309,15 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
                 }
+                if let value = dict["EnableSSE"] as? Bool {
+                    self.enableSSE = value
+                }
+                if let value = dict["EncryptionEnabled"] as? Bool {
+                    self.encryptionEnabled = value
+                }
+                if let value = dict["KmsKeyId"] as? String {
+                    self.kmsKeyId = value
+                }
                 if let value = dict["LastModifyTime"] as? Int64 {
                     self.lastModifyTime = value
                 }
@@ -6082,6 +6332,12 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MessageRetentionPeriod"] as? Int64 {
                     self.messageRetentionPeriod = value
+                }
+                if let value = dict["SseAlgorithm"] as? String {
+                    self.sseAlgorithm = value
+                }
+                if let value = dict["SseType"] as? String {
+                    self.sseType = value
                 }
                 if let value = dict["Tags"] as? [Any?] {
                     var tmp : [ListTopicResponseBody.Data.PageData.Tags] = []
@@ -6598,6 +6854,10 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
 
     public var enableLogging: Bool?
 
+    public var enableSSE: Bool?
+
+    public var kmsKeyId: String?
+
     public var maximumMessageSize: Int64?
 
     public var messageRetentionPeriod: Int64?
@@ -6605,6 +6865,10 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
     public var pollingWaitSeconds: Int64?
 
     public var queueName: String?
+
+    public var sseAlgorithm: String?
+
+    public var sseType: String?
 
     public var tenantRateLimitPolicy: SetQueueAttributesRequest.TenantRateLimitPolicy?
 
@@ -6635,6 +6899,12 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
         }
+        if self.enableSSE != nil {
+            map["EnableSSE"] = self.enableSSE!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
         if self.maximumMessageSize != nil {
             map["MaximumMessageSize"] = self.maximumMessageSize!
         }
@@ -6646,6 +6916,12 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
         }
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
+        }
+        if self.sseAlgorithm != nil {
+            map["SseAlgorithm"] = self.sseAlgorithm!
+        }
+        if self.sseType != nil {
+            map["SseType"] = self.sseType!
         }
         if self.tenantRateLimitPolicy != nil {
             map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicy?.toMap()
@@ -6669,6 +6945,12 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
         if let value = dict["EnableLogging"] as? Bool {
             self.enableLogging = value
         }
+        if let value = dict["EnableSSE"] as? Bool {
+            self.enableSSE = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
         if let value = dict["MaximumMessageSize"] as? Int64 {
             self.maximumMessageSize = value
         }
@@ -6680,6 +6962,12 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
         }
         if let value = dict["QueueName"] as? String {
             self.queueName = value
+        }
+        if let value = dict["SseAlgorithm"] as? String {
+            self.sseAlgorithm = value
+        }
+        if let value = dict["SseType"] as? String {
+            self.sseType = value
         }
         if let value = dict["TenantRateLimitPolicy"] as? [String: Any?] {
             var model = SetQueueAttributesRequest.TenantRateLimitPolicy()
@@ -6699,6 +6987,10 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
 
     public var enableLogging: Bool?
 
+    public var enableSSE: Bool?
+
+    public var kmsKeyId: String?
+
     public var maximumMessageSize: Int64?
 
     public var messageRetentionPeriod: Int64?
@@ -6706,6 +6998,10 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
     public var pollingWaitSeconds: Int64?
 
     public var queueName: String?
+
+    public var sseAlgorithm: String?
+
+    public var sseType: String?
 
     public var tenantRateLimitPolicyShrink: String?
 
@@ -6734,6 +7030,12 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
         }
+        if self.enableSSE != nil {
+            map["EnableSSE"] = self.enableSSE!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
         if self.maximumMessageSize != nil {
             map["MaximumMessageSize"] = self.maximumMessageSize!
         }
@@ -6745,6 +7047,12 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
         }
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
+        }
+        if self.sseAlgorithm != nil {
+            map["SseAlgorithm"] = self.sseAlgorithm!
+        }
+        if self.sseType != nil {
+            map["SseType"] = self.sseType!
         }
         if self.tenantRateLimitPolicyShrink != nil {
             map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicyShrink!
@@ -6766,6 +7074,12 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
         if let value = dict["EnableLogging"] as? Bool {
             self.enableLogging = value
         }
+        if let value = dict["EnableSSE"] as? Bool {
+            self.enableSSE = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
         if let value = dict["MaximumMessageSize"] as? Int64 {
             self.maximumMessageSize = value
         }
@@ -6777,6 +7091,12 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["QueueName"] as? String {
             self.queueName = value
+        }
+        if let value = dict["SseAlgorithm"] as? String {
+            self.sseAlgorithm = value
+        }
+        if let value = dict["SseType"] as? String {
+            self.sseType = value
         }
         if let value = dict["TenantRateLimitPolicy"] as? String {
             self.tenantRateLimitPolicyShrink = value
@@ -7354,7 +7674,15 @@ public class SetSubscriptionAttributesResponse : Tea.TeaModel {
 public class SetTopicAttributesRequest : Tea.TeaModel {
     public var enableLogging: Bool?
 
+    public var enableSSE: Bool?
+
+    public var kmsKeyId: String?
+
     public var maxMessageSize: Int64?
+
+    public var sseAlgorithm: String?
+
+    public var sseType: String?
 
     public var topicName: String?
 
@@ -7375,8 +7703,20 @@ public class SetTopicAttributesRequest : Tea.TeaModel {
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
         }
+        if self.enableSSE != nil {
+            map["EnableSSE"] = self.enableSSE!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
         if self.maxMessageSize != nil {
             map["MaxMessageSize"] = self.maxMessageSize!
+        }
+        if self.sseAlgorithm != nil {
+            map["SseAlgorithm"] = self.sseAlgorithm!
+        }
+        if self.sseType != nil {
+            map["SseType"] = self.sseType!
         }
         if self.topicName != nil {
             map["TopicName"] = self.topicName!
@@ -7389,8 +7729,20 @@ public class SetTopicAttributesRequest : Tea.TeaModel {
         if let value = dict["EnableLogging"] as? Bool {
             self.enableLogging = value
         }
+        if let value = dict["EnableSSE"] as? Bool {
+            self.enableSSE = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
         if let value = dict["MaxMessageSize"] as? Int64 {
             self.maxMessageSize = value
+        }
+        if let value = dict["SseAlgorithm"] as? String {
+            self.sseAlgorithm = value
+        }
+        if let value = dict["SseType"] as? String {
+            self.sseType = value
         }
         if let value = dict["TopicName"] as? String {
             self.topicName = value

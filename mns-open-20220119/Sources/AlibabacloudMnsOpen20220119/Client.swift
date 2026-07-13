@@ -9,6 +9,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "mns-open.us-west-1.aliyuncs.com",
+            "us-east-1": "mns-open.us-east-1.aliyuncs.com",
+            "me-east-1": "mns-open.me-east-1.aliyuncs.com",
+            "me-central-1": "mns-open.me-central-1.aliyuncs.com",
+            "eu-west-1": "mns-open.eu-west-1.aliyuncs.com",
+            "eu-central-1": "mns-open.eu-central-1.aliyuncs.com",
+            "cn-zhengzhou-jva": "mns-open.cn-zhengzhou-jva.aliyuncs.com",
+            "cn-zhangjiakou": "mns-open.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "mns-open.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen-finance-1": "mns-open.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-shenzhen": "mns-open.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "mns-open.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "mns-open.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "mns-open.cn-qingdao.aliyuncs.com",
+            "cn-huhehaote": "mns-open.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "mns-open.cn-hongkong.aliyuncs.com",
+            "cn-heyuan-acdr-1": "mns-open.cn-heyuan-acdr-1.aliyuncs.com",
+            "cn-heyuan": "mns-open.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou-finance": "mns-open.cn-hangzhou-finance.aliyuncs.com",
+            "cn-hangzhou": "mns-open.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "mns-open.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "mns-open.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "mns-open.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "mns-open.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-5": "mns-open.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "mns-open.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "mns-open.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "mns-open.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "mns-open.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("mns-open", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -152,6 +183,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableLogging)) {
             query["EnableLogging"] = request.enableLogging!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableSSE)) {
+            query["EnableSSE"] = request.enableSSE!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            query["KmsKeyId"] = request.kmsKeyId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maximumMessageSize)) {
             query["MaximumMessageSize"] = request.maximumMessageSize!;
         }
@@ -166,6 +203,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.queueType)) {
             query["QueueType"] = request.queueType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sseAlgorithm)) {
+            query["SseAlgorithm"] = request.sseAlgorithm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sseType)) {
+            query["SseType"] = request.sseType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
@@ -214,8 +257,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableLogging)) {
             body["EnableLogging"] = request.enableLogging!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableSSE)) {
+            body["EnableSSE"] = request.enableSSE!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            body["KmsKeyId"] = request.kmsKeyId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxMessageSize)) {
             body["MaxMessageSize"] = request.maxMessageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sseAlgorithm)) {
+            body["SseAlgorithm"] = request.sseAlgorithm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sseType)) {
+            body["SseType"] = request.sseType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.topicName)) {
             body["TopicName"] = request.topicName ?? "";
@@ -825,6 +880,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableLogging)) {
             query["EnableLogging"] = request.enableLogging!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableSSE)) {
+            query["EnableSSE"] = request.enableSSE!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            query["KmsKeyId"] = request.kmsKeyId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maximumMessageSize)) {
             query["MaximumMessageSize"] = request.maximumMessageSize!;
         }
@@ -836,6 +897,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.queueName)) {
             query["QueueName"] = request.queueName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sseAlgorithm)) {
+            query["SseAlgorithm"] = request.sseAlgorithm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sseType)) {
+            query["SseType"] = request.sseType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantRateLimitPolicyShrink)) {
             query["TenantRateLimitPolicy"] = request.tenantRateLimitPolicyShrink ?? "";
@@ -928,8 +995,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableLogging)) {
             query["EnableLogging"] = request.enableLogging!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableSSE)) {
+            query["EnableSSE"] = request.enableSSE!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            query["KmsKeyId"] = request.kmsKeyId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxMessageSize)) {
             query["MaxMessageSize"] = request.maxMessageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sseAlgorithm)) {
+            query["SseAlgorithm"] = request.sseAlgorithm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sseType)) {
+            query["SseType"] = request.sseType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.topicName)) {
             query["TopicName"] = request.topicName ?? "";
