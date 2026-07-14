@@ -11607,6 +11607,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var officeSiteId: String?
 
+    public var ouPath: String?
+
     public var period: Int32?
 
     public var periodUnit: String?
@@ -11628,6 +11630,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
     public var savingPlanId: String?
 
     public var snapshotPolicyId: String?
+
+    public var subPayType: String?
 
     public var subnetId: String?
 
@@ -11732,6 +11736,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
         }
+        if self.ouPath != nil {
+            map["OuPath"] = self.ouPath!
+        }
         if self.period != nil {
             map["Period"] = self.period!
         }
@@ -11764,6 +11771,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.snapshotPolicyId != nil {
             map["SnapshotPolicyId"] = self.snapshotPolicyId!
+        }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
         }
         if self.subnetId != nil {
             map["SubnetId"] = self.subnetId!
@@ -11889,6 +11899,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         if let value = dict["OfficeSiteId"] as? String {
             self.officeSiteId = value
         }
+        if let value = dict["OuPath"] as? String {
+            self.ouPath = value
+        }
         if let value = dict["Period"] as? Int32 {
             self.period = value
         }
@@ -11923,6 +11936,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if let value = dict["SnapshotPolicyId"] as? String {
             self.snapshotPolicyId = value
+        }
+        if let value = dict["SubPayType"] as? String {
+            self.subPayType = value
         }
         if let value = dict["SubnetId"] as? String {
             self.subnetId = value
@@ -12301,6 +12317,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var officeSiteId: String?
 
+    public var ouPath: String?
+
     public var period: Int32?
 
     public var periodUnit: String?
@@ -12322,6 +12340,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
     public var savingPlanId: String?
 
     public var snapshotPolicyId: String?
+
+    public var subPayType: String?
 
     public var subnetId: String?
 
@@ -12424,6 +12444,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
         }
+        if self.ouPath != nil {
+            map["OuPath"] = self.ouPath!
+        }
         if self.period != nil {
             map["Period"] = self.period!
         }
@@ -12456,6 +12479,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if self.snapshotPolicyId != nil {
             map["SnapshotPolicyId"] = self.snapshotPolicyId!
+        }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
         }
         if self.subnetId != nil {
             map["SubnetId"] = self.subnetId!
@@ -12579,6 +12605,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         if let value = dict["OfficeSiteId"] as? String {
             self.officeSiteId = value
         }
+        if let value = dict["OuPath"] as? String {
+            self.ouPath = value
+        }
         if let value = dict["Period"] as? Int32 {
             self.period = value
         }
@@ -12611,6 +12640,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SnapshotPolicyId"] as? String {
             self.snapshotPolicyId = value
+        }
+        if let value = dict["SubPayType"] as? String {
+            self.subPayType = value
         }
         if let value = dict["SubnetId"] as? String {
             self.subnetId = value
@@ -14197,6 +14229,44 @@ public class CreateNatGatewayResponse : Tea.TeaModel {
 }
 
 public class CreateNetworkPackageRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var autoPay: Bool?
 
     public var autoRenew: Bool?
@@ -14220,6 +14290,8 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resellerOwnerUid: Int64?
+
+    public var tag: [CreateNetworkPackageRequest.Tag]?
 
     public override init() {
         super.init()
@@ -14271,6 +14343,13 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
         if self.resellerOwnerUid != nil {
             map["ResellerOwnerUid"] = self.resellerOwnerUid!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -14311,6 +14390,19 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
         }
         if let value = dict["ResellerOwnerUid"] as? Int64 {
             self.resellerOwnerUid = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateNetworkPackageRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateNetworkPackageRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
         }
     }
 }
@@ -23656,6 +23748,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var authorizeSecurityPolicyRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeSecurityPolicyRules]?
 
+        public var autoReconnect: String?
+
         public var cameraRedirect: String?
 
         public var clientControlMenu: String?
@@ -23694,6 +23788,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var desktopGroupCount: Int32?
 
+        public var deviceConnectHint: String?
+
         public var deviceRedirects: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRedirects]?
 
         public var deviceRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRules]?
@@ -23719,6 +23815,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var endUserGroupCoordinate: String?
 
         public var externalDrive: String?
+
+        public var fileMigrate: String?
 
         public var fileTransferAddress: String?
 
@@ -23838,6 +23936,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var remoteCoordinate: String?
 
+        public var resetDesktop: String?
+
         public var resolutionDpi: Int32?
 
         public var resolutionHeight: Int32?
@@ -23912,6 +24012,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var watermarkType: String?
 
+        public var wuyingKeeper: String?
+
         public var wyAssistant: String?
 
         public override init() {
@@ -23959,6 +24061,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["AuthorizeSecurityPolicyRules"] = tmp
+            }
+            if self.autoReconnect != nil {
+                map["AutoReconnect"] = self.autoReconnect!
             }
             if self.cameraRedirect != nil {
                 map["CameraRedirect"] = self.cameraRedirect!
@@ -24021,6 +24126,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.desktopGroupCount != nil {
                 map["DesktopGroupCount"] = self.desktopGroupCount!
             }
+            if self.deviceConnectHint != nil {
+                map["DeviceConnectHint"] = self.deviceConnectHint!
+            }
             if self.deviceRedirects != nil {
                 var tmp : [Any] = []
                 for k in self.deviceRedirects! {
@@ -24071,6 +24179,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.externalDrive != nil {
                 map["ExternalDrive"] = self.externalDrive!
+            }
+            if self.fileMigrate != nil {
+                map["FileMigrate"] = self.fileMigrate!
             }
             if self.fileTransferAddress != nil {
                 map["FileTransferAddress"] = self.fileTransferAddress!
@@ -24253,6 +24364,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.remoteCoordinate != nil {
                 map["RemoteCoordinate"] = self.remoteCoordinate!
             }
+            if self.resetDesktop != nil {
+                map["ResetDesktop"] = self.resetDesktop!
+            }
             if self.resolutionDpi != nil {
                 map["ResolutionDpi"] = self.resolutionDpi!
             }
@@ -24368,6 +24482,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.watermarkType != nil {
                 map["WatermarkType"] = self.watermarkType!
             }
+            if self.wuyingKeeper != nil {
+                map["WuyingKeeper"] = self.wuyingKeeper!
+            }
             if self.wyAssistant != nil {
                 map["WyAssistant"] = self.wyAssistant!
             }
@@ -24419,6 +24536,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                     }
                 }
                 self.authorizeSecurityPolicyRules = tmp
+            }
+            if let value = dict["AutoReconnect"] as? String {
+                self.autoReconnect = value
             }
             if let value = dict["CameraRedirect"] as? String {
                 self.cameraRedirect = value
@@ -24486,6 +24606,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["DesktopGroupCount"] as? Int32 {
                 self.desktopGroupCount = value
+            }
+            if let value = dict["DeviceConnectHint"] as? String {
+                self.deviceConnectHint = value
             }
             if let value = dict["DeviceRedirects"] as? [Any?] {
                 var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRedirects] = []
@@ -24555,6 +24678,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExternalDrive"] as? String {
                 self.externalDrive = value
+            }
+            if let value = dict["FileMigrate"] as? String {
+                self.fileMigrate = value
             }
             if let value = dict["FileTransferAddress"] as? String {
                 self.fileTransferAddress = value
@@ -24743,6 +24869,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["RemoteCoordinate"] as? String {
                 self.remoteCoordinate = value
             }
+            if let value = dict["ResetDesktop"] as? String {
+                self.resetDesktop = value
+            }
             if let value = dict["ResolutionDpi"] as? Int32 {
                 self.resolutionDpi = value
             }
@@ -24863,6 +24992,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["WatermarkType"] as? String {
                 self.watermarkType = value
+            }
+            if let value = dict["WuyingKeeper"] as? String {
+                self.wuyingKeeper = value
             }
             if let value = dict["WyAssistant"] as? String {
                 self.wyAssistant = value
@@ -35680,242 +35812,6 @@ public class DescribeFlowMetricResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeFlowStatisticRequest : Tea.TeaModel {
-    public var desktopId: String?
-
-    public var officeSiteId: String?
-
-    public var pageNumber: Int32?
-
-    public var pageSize: Int32?
-
-    public var period: Int32?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.desktopId != nil {
-            map["DesktopId"] = self.desktopId!
-        }
-        if self.officeSiteId != nil {
-            map["OfficeSiteId"] = self.officeSiteId!
-        }
-        if self.pageNumber != nil {
-            map["PageNumber"] = self.pageNumber!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.period != nil {
-            map["Period"] = self.period!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["DesktopId"] as? String {
-            self.desktopId = value
-        }
-        if let value = dict["OfficeSiteId"] as? String {
-            self.officeSiteId = value
-        }
-        if let value = dict["PageNumber"] as? Int32 {
-            self.pageNumber = value
-        }
-        if let value = dict["PageSize"] as? Int32 {
-            self.pageSize = value
-        }
-        if let value = dict["Period"] as? Int32 {
-            self.period = value
-        }
-        if let value = dict["RegionId"] as? String {
-            self.regionId = value
-        }
-    }
-}
-
-public class DescribeFlowStatisticResponseBody : Tea.TeaModel {
-    public class DesktopFlowStatistic : Tea.TeaModel {
-        public var desktopId: String?
-
-        public var desktopName: String?
-
-        public var flowIn: String?
-
-        public var flowRank: Int32?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.desktopId != nil {
-                map["DesktopId"] = self.desktopId!
-            }
-            if self.desktopName != nil {
-                map["DesktopName"] = self.desktopName!
-            }
-            if self.flowIn != nil {
-                map["FlowIn"] = self.flowIn!
-            }
-            if self.flowRank != nil {
-                map["FlowRank"] = self.flowRank!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["DesktopId"] as? String {
-                self.desktopId = value
-            }
-            if let value = dict["DesktopName"] as? String {
-                self.desktopName = value
-            }
-            if let value = dict["FlowIn"] as? String {
-                self.flowIn = value
-            }
-            if let value = dict["FlowRank"] as? Int32 {
-                self.flowRank = value
-            }
-        }
-    }
-    public var desktopCount: Int32?
-
-    public var desktopFlowStatistic: [DescribeFlowStatisticResponseBody.DesktopFlowStatistic]?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.desktopCount != nil {
-            map["DesktopCount"] = self.desktopCount!
-        }
-        if self.desktopFlowStatistic != nil {
-            var tmp : [Any] = []
-            for k in self.desktopFlowStatistic! {
-                tmp.append(k.toMap())
-            }
-            map["DesktopFlowStatistic"] = tmp
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["DesktopCount"] as? Int32 {
-            self.desktopCount = value
-        }
-        if let value = dict["DesktopFlowStatistic"] as? [Any?] {
-            var tmp : [DescribeFlowStatisticResponseBody.DesktopFlowStatistic] = []
-            for v in value {
-                if v != nil {
-                    var model = DescribeFlowStatisticResponseBody.DesktopFlowStatistic()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.desktopFlowStatistic = tmp
-        }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-    }
-}
-
-public class DescribeFlowStatisticResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeFlowStatisticResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = DescribeFlowStatisticResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
 public class DescribeForwardTableEntriesRequest : Tea.TeaModel {
     public var forwardEntryId: String?
 
@@ -41647,6 +41543,44 @@ public class DescribeNatGatewaysResponse : Tea.TeaModel {
 }
 
 public class DescribeNetworkPackagesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var internetChargeType: String?
 
     public var maxResults: Int32?
@@ -41656,6 +41590,8 @@ public class DescribeNetworkPackagesRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var regionId: String?
+
+    public var tag: [DescribeNetworkPackagesRequest.Tag]?
 
     public override init() {
         super.init()
@@ -41686,6 +41622,13 @@ public class DescribeNetworkPackagesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -41706,11 +41649,62 @@ public class DescribeNetworkPackagesRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [DescribeNetworkPackagesRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeNetworkPackagesRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
     }
 }
 
 public class DescribeNetworkPackagesResponseBody : Tea.TeaModel {
     public class NetworkPackages : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var bandwidth: Int32?
 
         public var businessStatus: String?
@@ -41740,6 +41734,8 @@ public class DescribeNetworkPackagesResponseBody : Tea.TeaModel {
         public var reservationBandwidth: Int32?
 
         public var reservationInternetChargeType: String?
+
+        public var tags: [DescribeNetworkPackagesResponseBody.NetworkPackages.Tags]?
 
         public override init() {
             super.init()
@@ -41800,6 +41796,13 @@ public class DescribeNetworkPackagesResponseBody : Tea.TeaModel {
             if self.reservationInternetChargeType != nil {
                 map["ReservationInternetChargeType"] = self.reservationInternetChargeType!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -41849,6 +41852,19 @@ public class DescribeNetworkPackagesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ReservationInternetChargeType"] as? String {
                 self.reservationInternetChargeType = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeNetworkPackagesResponseBody.NetworkPackages.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeNetworkPackagesResponseBody.NetworkPackages.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
         }
     }
