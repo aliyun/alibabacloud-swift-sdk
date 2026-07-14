@@ -460,6 +460,59 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPipelineWithOptions(_ agentSpace: String, _ request: CreatePipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePipelineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executePolicy)) {
+            body["executePolicy"] = request.executePolicy!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pipeline)) {
+            body["pipeline"] = request.pipeline!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineName)) {
+            body["pipelineName"] = request.pipelineName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sink)) {
+            body["sink"] = request.sink!;
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreatePipeline",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/agentspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/pipeline",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreatePipelineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPipeline(_ agentSpace: String, _ request: CreatePipelineRequest) async throws -> CreatePipelineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createPipelineWithOptions(agentSpace as! String, request as! CreatePipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAgentSpaceWithOptions(_ agentSpace: String, _ request: DeleteAgentSpaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAgentSpaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -795,6 +848,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1620,6 +1676,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await pausePipelineWithOptions(agentSpace as! String, pipelineName as! String, request as! PausePipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func previewPipelineWithOptions(_ agentSpace: String, _ request: PreviewPipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PreviewPipelineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fromTime)) {
+            body["fromTime"] = request.fromTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pipeline)) {
+            body["pipeline"] = request.pipeline!;
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source!;
+        }
+        if (!TeaUtils.Client.isUnset(request.toTime)) {
+            body["toTime"] = request.toTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PreviewPipeline",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/agentspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/pipeline/preview",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PreviewPipelineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func previewPipeline(_ agentSpace: String, _ request: PreviewPipelineRequest) async throws -> PreviewPipelineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await previewPipelineWithOptions(agentSpace as! String, request as! PreviewPipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
