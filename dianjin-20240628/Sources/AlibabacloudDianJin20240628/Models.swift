@@ -13,6 +13,10 @@ public class CommercializeFetchRequest : Tea.TeaModel {
 
     public var data: String?
 
+    public var encryptType: String?
+
+    public var env: String?
+
     public var productId: String?
 
     public var requestId: String?
@@ -20,6 +24,8 @@ public class CommercializeFetchRequest : Tea.TeaModel {
     public var secretKey: String?
 
     public var sign: String?
+
+    public var signType: String?
 
     public override init() {
         super.init()
@@ -41,6 +47,12 @@ public class CommercializeFetchRequest : Tea.TeaModel {
         if self.data != nil {
             map["data"] = self.data!
         }
+        if self.encryptType != nil {
+            map["encryptType"] = self.encryptType!
+        }
+        if self.env != nil {
+            map["env"] = self.env!
+        }
         if self.productId != nil {
             map["productId"] = self.productId!
         }
@@ -53,6 +65,9 @@ public class CommercializeFetchRequest : Tea.TeaModel {
         if self.sign != nil {
             map["sign"] = self.sign!
         }
+        if self.signType != nil {
+            map["signType"] = self.signType!
+        }
         return map
     }
 
@@ -63,6 +78,12 @@ public class CommercializeFetchRequest : Tea.TeaModel {
         }
         if let value = dict["data"] as? String {
             self.data = value
+        }
+        if let value = dict["encryptType"] as? String {
+            self.encryptType = value
+        }
+        if let value = dict["env"] as? String {
+            self.env = value
         }
         if let value = dict["productId"] as? String {
             self.productId = value
@@ -75,6 +96,9 @@ public class CommercializeFetchRequest : Tea.TeaModel {
         }
         if let value = dict["sign"] as? String {
             self.sign = value
+        }
+        if let value = dict["signType"] as? String {
+            self.signType = value
         }
     }
 }
