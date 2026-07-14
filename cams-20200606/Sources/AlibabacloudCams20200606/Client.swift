@@ -573,6 +573,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func archiveChatappTemplateWithOptions(_ tmpReq: ArchiveChatappTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ArchiveChatappTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ArchiveChatappTemplateShrinkRequest = ArchiveChatappTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.templateList)) {
+            request.templateListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.templateList, "TemplateList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.archiveType)) {
+            query["ArchiveType"] = request.archiveType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channelType)) {
+            query["ChannelType"] = request.channelType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateListShrink)) {
+            query["TemplateList"] = request.templateListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ArchiveChatappTemplate",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ArchiveChatappTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func archiveChatappTemplate(_ request: ArchiveChatappTemplateRequest) async throws -> ArchiveChatappTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await archiveChatappTemplateWithOptions(request as! ArchiveChatappTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func bindDmAccountWithOptions(_ tmpReq: BindDmAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BindDmAccountResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: BindDmAccountShrinkRequest = BindDmAccountShrinkRequest([:])
@@ -2618,6 +2663,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWhatsappUserNameWithOptions(_ request: DeleteWhatsappUserNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWhatsappUserNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phoneNumber)) {
+            query["PhoneNumber"] = request.phoneNumber ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWhatsappUserName",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWhatsappUserNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWhatsappUserName(_ request: DeleteWhatsappUserNameRequest) async throws -> DeleteWhatsappUserNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteWhatsappUserNameWithOptions(request as! DeleteWhatsappUserNameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deprecateFlowWithOptions(_ request: DeprecateFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeprecateFlowResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4435,6 +4514,74 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWhatsappHealthStatus(_ request: GetWhatsappHealthStatusRequest) async throws -> GetWhatsappHealthStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getWhatsappHealthStatusWithOptions(request as! GetWhatsappHealthStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWhatsappUserNameWithOptions(_ request: GetWhatsappUserNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWhatsappUserNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phoneNumber)) {
+            query["PhoneNumber"] = request.phoneNumber ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWhatsappUserName",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWhatsappUserNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWhatsappUserName(_ request: GetWhatsappUserNameRequest) async throws -> GetWhatsappUserNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getWhatsappUserNameWithOptions(request as! GetWhatsappUserNameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWhatsappUserNameSuggestionsWithOptions(_ request: GetWhatsappUserNameSuggestionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWhatsappUserNameSuggestionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phoneNumber)) {
+            query["PhoneNumber"] = request.phoneNumber ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWhatsappUserNameSuggestions",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWhatsappUserNameSuggestionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWhatsappUserNameSuggestions(_ request: GetWhatsappUserNameSuggestionsRequest) async throws -> GetWhatsappUserNameSuggestionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getWhatsappUserNameSuggestionsWithOptions(request as! GetWhatsappUserNameSuggestionsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -8512,6 +8659,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateWabaMmlStatus(_ request: UpdateWabaMmlStatusRequest) async throws -> UpdateWabaMmlStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateWabaMmlStatusWithOptions(request as! UpdateWabaMmlStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWhatsappUserNameWithOptions(_ request: UpdateWhatsappUserNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWhatsappUserNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phoneNumber)) {
+            query["PhoneNumber"] = request.phoneNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transferAction)) {
+            query["TransferAction"] = request.transferAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            query["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateWhatsappUserName",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateWhatsappUserNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWhatsappUserName(_ request: UpdateWhatsappUserNameRequest) async throws -> UpdateWhatsappUserNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateWhatsappUserNameWithOptions(request as! UpdateWhatsappUserNameRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
