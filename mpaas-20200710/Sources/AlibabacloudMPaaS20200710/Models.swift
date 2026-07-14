@@ -13906,6 +13906,8 @@ public class PushBroadcastRequest : Tea.TeaModel {
 
     public var unBindStartTime: Int64?
 
+    public var vendorTemplate: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -14009,6 +14011,9 @@ public class PushBroadcastRequest : Tea.TeaModel {
         if self.unBindStartTime != nil {
             map["UnBindStartTime"] = self.unBindStartTime!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -14104,6 +14109,9 @@ public class PushBroadcastRequest : Tea.TeaModel {
         if let value = dict["UnBindStartTime"] as? Int64 {
             self.unBindStartTime = value
         }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -14168,6 +14176,8 @@ public class PushBroadcastShrinkRequest : Tea.TeaModel {
     public var unBindPeriod: Int64?
 
     public var unBindStartTime: Int64?
+
+    public var vendorTemplate: String?
 
     public var workspaceId: String?
 
@@ -14272,6 +14282,9 @@ public class PushBroadcastShrinkRequest : Tea.TeaModel {
         if self.unBindStartTime != nil {
             map["UnBindStartTime"] = self.unBindStartTime!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -14366,6 +14379,9 @@ public class PushBroadcastShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["UnBindStartTime"] as? Int64 {
             self.unBindStartTime = value
+        }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -14628,6 +14644,8 @@ public class PushMultipleRequest : Tea.TeaModel {
 
     public var transparentMessageUrgency: String?
 
+    public var vendorTemplate: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -14717,6 +14735,9 @@ public class PushMultipleRequest : Tea.TeaModel {
         if self.transparentMessageUrgency != nil {
             map["TransparentMessageUrgency"] = self.transparentMessageUrgency!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -14803,6 +14824,9 @@ public class PushMultipleRequest : Tea.TeaModel {
         }
         if let value = dict["TransparentMessageUrgency"] as? String {
             self.transparentMessageUrgency = value
+        }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -14911,6 +14935,8 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
 
     public var transparentMessageUrgency: String?
 
+    public var vendorTemplate: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -15000,6 +15026,9 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
         if self.transparentMessageUrgency != nil {
             map["TransparentMessageUrgency"] = self.transparentMessageUrgency!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -15086,6 +15115,9 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TransparentMessageUrgency"] as? String {
             self.transparentMessageUrgency = value
+        }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -15561,6 +15593,8 @@ public class PushSimpleRequest : Tea.TeaModel {
 
     public var uri: String?
 
+    public var vendorTemplate: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -15661,6 +15695,9 @@ public class PushSimpleRequest : Tea.TeaModel {
         if self.uri != nil {
             map["Uri"] = self.uri!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -15753,6 +15790,9 @@ public class PushSimpleRequest : Tea.TeaModel {
         if let value = dict["Uri"] as? String {
             self.uri = value
         }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -15815,6 +15855,8 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
     public var transparentMessageUrgency: String?
 
     public var uri: String?
+
+    public var vendorTemplate: String?
 
     public var workspaceId: String?
 
@@ -15916,6 +15958,9 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         if self.uri != nil {
             map["Uri"] = self.uri!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -16007,6 +16052,9 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Uri"] as? String {
             self.uri = value
+        }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -16217,6 +16265,8 @@ public class PushTemplateRequest : Tea.TeaModel {
 
     public var transparentMessageUrgency: String?
 
+    public var vendorTemplate: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -16305,6 +16355,9 @@ public class PushTemplateRequest : Tea.TeaModel {
         if self.transparentMessageUrgency != nil {
             map["TransparentMessageUrgency"] = self.transparentMessageUrgency!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -16385,6 +16438,9 @@ public class PushTemplateRequest : Tea.TeaModel {
         if let value = dict["TransparentMessageUrgency"] as? String {
             self.transparentMessageUrgency = value
         }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -16439,6 +16495,8 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
     public var transparentMessagePayload: Any?
 
     public var transparentMessageUrgency: String?
+
+    public var vendorTemplate: String?
 
     public var workspaceId: String?
 
@@ -16528,6 +16586,9 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         if self.transparentMessageUrgency != nil {
             map["TransparentMessageUrgency"] = self.transparentMessageUrgency!
         }
+        if self.vendorTemplate != nil {
+            map["VendorTemplate"] = self.vendorTemplate!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -16607,6 +16668,9 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TransparentMessageUrgency"] as? String {
             self.transparentMessageUrgency = value
+        }
+        if let value = dict["VendorTemplate"] as? String {
+            self.vendorTemplate = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
