@@ -21627,9 +21627,17 @@ public class GenerateOauthTokenRequest : Tea.TeaModel {
 
     public var audience: String?
 
+    public var grantType: String?
+
     public var instanceId: String?
 
+    public var requestedTokenType: String?
+
     public var scopeValues: [String]?
+
+    public var subjectToken: String?
+
+    public var subjectTokenType: String?
 
     public override init() {
         super.init()
@@ -21651,11 +21659,23 @@ public class GenerateOauthTokenRequest : Tea.TeaModel {
         if self.audience != nil {
             map["Audience"] = self.audience!
         }
+        if self.grantType != nil {
+            map["GrantType"] = self.grantType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.requestedTokenType != nil {
+            map["RequestedTokenType"] = self.requestedTokenType!
+        }
         if self.scopeValues != nil {
             map["ScopeValues"] = self.scopeValues!
+        }
+        if self.subjectToken != nil {
+            map["SubjectToken"] = self.subjectToken!
+        }
+        if self.subjectTokenType != nil {
+            map["SubjectTokenType"] = self.subjectTokenType!
         }
         return map
     }
@@ -21668,11 +21688,23 @@ public class GenerateOauthTokenRequest : Tea.TeaModel {
         if let value = dict["Audience"] as? String {
             self.audience = value
         }
+        if let value = dict["GrantType"] as? String {
+            self.grantType = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["RequestedTokenType"] as? String {
+            self.requestedTokenType = value
+        }
         if let value = dict["ScopeValues"] as? [String] {
             self.scopeValues = value
+        }
+        if let value = dict["SubjectToken"] as? String {
+            self.subjectToken = value
+        }
+        if let value = dict["SubjectTokenType"] as? String {
+            self.subjectTokenType = value
         }
     }
 }
@@ -21684,6 +21716,8 @@ public class GenerateOauthTokenResponseBody : Tea.TeaModel {
         public var expiresAt: Int64?
 
         public var expiresIn: Int64?
+
+        public var issuedTokenType: String?
 
         public var tokenType: String?
 
@@ -21710,6 +21744,9 @@ public class GenerateOauthTokenResponseBody : Tea.TeaModel {
             if self.expiresIn != nil {
                 map["ExpiresIn"] = self.expiresIn!
             }
+            if self.issuedTokenType != nil {
+                map["IssuedTokenType"] = self.issuedTokenType!
+            }
             if self.tokenType != nil {
                 map["TokenType"] = self.tokenType!
             }
@@ -21726,6 +21763,9 @@ public class GenerateOauthTokenResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExpiresIn"] as? Int64 {
                 self.expiresIn = value
+            }
+            if let value = dict["IssuedTokenType"] as? String {
+                self.issuedTokenType = value
             }
             if let value = dict["TokenType"] as? String {
                 self.tokenType = value
