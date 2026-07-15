@@ -437,6 +437,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRemovalProWithOptions(_ request: ImageRemovalProRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRemovalProResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.async)) {
+            query["Async"] = request.async!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageRemovalPro",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageRemovalProResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRemovalPro(_ request: ImageRemovalProRequest) async throws -> ImageRemovalProResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageRemovalProWithOptions(request as! ImageRemovalProRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func imageRemoveWithOptions(_ tmpReq: ImageRemoveRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRemoveResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ImageRemoveShrinkRequest = ImageRemoveShrinkRequest([:])
@@ -482,55 +516,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageRemove(_ request: ImageRemoveRequest) async throws -> ImageRemoveResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await imageRemoveWithOptions(request as! ImageRemoveRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func imageTranslationPlusWithOptions(_ request: ImageTranslationPlusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationPlusResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.glossary)) {
-            body["Glossary"] = request.glossary ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
-            body["ImageUrl"] = request.imageUrl ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.includingProductArea)) {
-            body["IncludingProductArea"] = request.includingProductArea!;
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
-            body["SourceLanguage"] = request.sourceLanguage ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
-            body["TargetLanguage"] = request.targetLanguage ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.translatingBrandInTheProduct)) {
-            body["TranslatingBrandInTheProduct"] = request.translatingBrandInTheProduct!;
-        }
-        if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
-            body["UseImageEditor"] = request.useImageEditor!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ImageTranslationPlus",
-            "version": "2026-04-28",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ImageTranslationPlusResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func imageTranslationPlus(_ request: ImageTranslationPlusRequest) async throws -> ImageTranslationPlusResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await imageTranslationPlusWithOptions(request as! ImageTranslationPlusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -889,6 +874,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.sourceTextListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceTextList, "SourceTextList", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizName)) {
+            body["BizName"] = request.bizName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.formatType)) {
             body["FormatType"] = request.formatType ?? "";
         }
@@ -903,6 +891,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
             body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translateScene)) {
+            body["TranslateScene"] = request.translateScene ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
