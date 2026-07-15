@@ -6861,6 +6861,256 @@ public class MultiModalAgentResponse : Tea.TeaModel {
     }
 }
 
+public class MultiModalAgentSSERequest : Tea.TeaModel {
+    public var appID: String?
+
+    public var serviceParameters: String?
+
+    public var stream: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appID != nil {
+            map["AppID"] = self.appID!
+        }
+        if self.serviceParameters != nil {
+            map["ServiceParameters"] = self.serviceParameters!
+        }
+        if self.stream != nil {
+            map["Stream"] = self.stream!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppID"] as? String {
+            self.appID = value
+        }
+        if let value = dict["ServiceParameters"] as? String {
+            self.serviceParameters = value
+        }
+        if let value = dict["Stream"] as? String {
+            self.stream = value
+        }
+    }
+}
+
+public class MultiModalAgentSSEResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Usage : Tea.TeaModel {
+            public var credits: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.credits != nil {
+                    map["Credits"] = self.credits!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Credits"] as? Double {
+                    self.credits = value
+                }
+            }
+        }
+        public var created: Int64?
+
+        public var dataId: String?
+
+        public var finishReason: String?
+
+        public var output: String?
+
+        public var usage: MultiModalAgentSSEResponseBody.Data.Usage?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.usage?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.created != nil {
+                map["Created"] = self.created!
+            }
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
+            }
+            if self.finishReason != nil {
+                map["FinishReason"] = self.finishReason!
+            }
+            if self.output != nil {
+                map["Output"] = self.output!
+            }
+            if self.usage != nil {
+                map["Usage"] = self.usage?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Created"] as? Int64 {
+                self.created = value
+            }
+            if let value = dict["DataId"] as? String {
+                self.dataId = value
+            }
+            if let value = dict["FinishReason"] as? String {
+                self.finishReason = value
+            }
+            if let value = dict["Output"] as? String {
+                self.output = value
+            }
+            if let value = dict["Usage"] as? [String: Any?] {
+                var model = MultiModalAgentSSEResponseBody.Data.Usage()
+                model.fromMap(value)
+                self.usage = model
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: MultiModalAgentSSEResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = MultiModalAgentSSEResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class MultiModalAgentSSEResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MultiModalAgentSSEResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MultiModalAgentSSEResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class MultiModalGuardRequest : Tea.TeaModel {
     public var service: String?
 
