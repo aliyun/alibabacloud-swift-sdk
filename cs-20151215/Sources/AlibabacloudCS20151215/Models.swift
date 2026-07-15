@@ -1471,6 +1471,8 @@ public class Nodepool : Tea.TeaModel {
 
         public var autoVulFixPolicy: Nodepool.Management.AutoVulFixPolicy?
 
+        public var driftEnabled: Bool?
+
         public var enable: Bool?
 
         public var upgradeConfig: Nodepool.Management.UpgradeConfig?
@@ -1514,6 +1516,9 @@ public class Nodepool : Tea.TeaModel {
             if self.autoVulFixPolicy != nil {
                 map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
+            if self.driftEnabled != nil {
+                map["drift_enabled"] = self.driftEnabled!
+            }
             if self.enable != nil {
                 map["enable"] = self.enable!
             }
@@ -1551,6 +1556,9 @@ public class Nodepool : Tea.TeaModel {
                 var model = Nodepool.Management.AutoVulFixPolicy()
                 model.fromMap(value)
                 self.autoVulFixPolicy = model
+            }
+            if let value = dict["drift_enabled"] as? Bool {
+                self.driftEnabled = value
             }
             if let value = dict["enable"] as? Bool {
                 self.enable = value
@@ -7003,6 +7011,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var autoVulFixPolicy: CreateClusterNodePoolRequest.Management.AutoVulFixPolicy?
 
+        public var driftEnabled: Bool?
+
         public var enable: Bool?
 
         public var upgradeConfig: CreateClusterNodePoolRequest.Management.UpgradeConfig?
@@ -7046,6 +7056,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if self.autoVulFixPolicy != nil {
                 map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
+            if self.driftEnabled != nil {
+                map["drift_enabled"] = self.driftEnabled!
+            }
             if self.enable != nil {
                 map["enable"] = self.enable!
             }
@@ -7083,6 +7096,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 var model = CreateClusterNodePoolRequest.Management.AutoVulFixPolicy()
                 model.fromMap(value)
                 self.autoVulFixPolicy = model
+            }
+            if let value = dict["drift_enabled"] as? Bool {
+                self.driftEnabled = value
             }
             if let value = dict["enable"] as? Bool {
                 self.enable = value
@@ -13608,6 +13624,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var autoVulFixPolicy: DescribeClusterNodePoolDetailResponseBody.Management.AutoVulFixPolicy?
 
+        public var driftEnabled: Bool?
+
         public var enable: Bool?
 
         public var upgradeConfig: DescribeClusterNodePoolDetailResponseBody.Management.UpgradeConfig?
@@ -13651,6 +13669,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if self.autoVulFixPolicy != nil {
                 map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
+            if self.driftEnabled != nil {
+                map["drift_enabled"] = self.driftEnabled!
+            }
             if self.enable != nil {
                 map["enable"] = self.enable!
             }
@@ -13688,6 +13709,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 var model = DescribeClusterNodePoolDetailResponseBody.Management.AutoVulFixPolicy()
                 model.fromMap(value)
                 self.autoVulFixPolicy = model
+            }
+            if let value = dict["drift_enabled"] as? Bool {
+                self.driftEnabled = value
             }
             if let value = dict["enable"] as? Bool {
                 self.enable = value
@@ -15605,6 +15629,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var autoVulFixPolicy: DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoVulFixPolicy?
 
+            public var driftEnabled: Bool?
+
             public var enable: Bool?
 
             public var upgradeConfig: DescribeClusterNodePoolsResponseBody.Nodepools.Management.UpgradeConfig?
@@ -15648,6 +15674,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if self.autoVulFixPolicy != nil {
                     map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
                 }
+                if self.driftEnabled != nil {
+                    map["drift_enabled"] = self.driftEnabled!
+                }
                 if self.enable != nil {
                     map["enable"] = self.enable!
                 }
@@ -15685,6 +15714,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     var model = DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoVulFixPolicy()
                     model.fromMap(value)
                     self.autoVulFixPolicy = model
+                }
+                if let value = dict["drift_enabled"] as? Bool {
+                    self.driftEnabled = value
                 }
                 if let value = dict["enable"] as? Bool {
                     self.enable = value
@@ -32148,6 +32180,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var autoVulFixPolicy: ModifyClusterNodePoolRequest.Management.AutoVulFixPolicy?
 
+        public var driftEnabled: Bool?
+
         public var enable: Bool?
 
         public var upgradeConfig: ModifyClusterNodePoolRequest.Management.UpgradeConfig?
@@ -32191,6 +32225,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             if self.autoVulFixPolicy != nil {
                 map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
+            if self.driftEnabled != nil {
+                map["drift_enabled"] = self.driftEnabled!
+            }
             if self.enable != nil {
                 map["enable"] = self.enable!
             }
@@ -32228,6 +32265,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 var model = ModifyClusterNodePoolRequest.Management.AutoVulFixPolicy()
                 model.fromMap(value)
                 self.autoVulFixPolicy = model
+            }
+            if let value = dict["drift_enabled"] as? Bool {
+                self.driftEnabled = value
             }
             if let value = dict["enable"] as? Bool {
                 self.enable = value
