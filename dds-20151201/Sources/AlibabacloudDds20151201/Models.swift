@@ -2308,6 +2308,12 @@ public class CreateNodeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var searchDBInstanceClass: String?
+
+    public var searchNodeCount: Int32?
+
+    public var searchStorage: Int32?
+
     public var shardDirect: Bool?
 
     public override init() {
@@ -2369,6 +2375,15 @@ public class CreateNodeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.searchDBInstanceClass != nil {
+            map["SearchDBInstanceClass"] = self.searchDBInstanceClass!
+        }
+        if self.searchNodeCount != nil {
+            map["SearchNodeCount"] = self.searchNodeCount!
+        }
+        if self.searchStorage != nil {
+            map["SearchStorage"] = self.searchStorage!
+        }
         if self.shardDirect != nil {
             map["ShardDirect"] = self.shardDirect!
         }
@@ -2421,6 +2436,15 @@ public class CreateNodeRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["SearchDBInstanceClass"] as? String {
+            self.searchDBInstanceClass = value
+        }
+        if let value = dict["SearchNodeCount"] as? Int32 {
+            self.searchNodeCount = value
+        }
+        if let value = dict["SearchStorage"] as? Int32 {
+            self.searchStorage = value
         }
         if let value = dict["ShardDirect"] as? Bool {
             self.shardDirect = value
@@ -10750,6 +10774,8 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
 
     public var destRegion: String?
 
+    public var onlyDbTableRecovery: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -10782,6 +10808,9 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
         if self.destRegion != nil {
             map["DestRegion"] = self.destRegion!
         }
+        if self.onlyDbTableRecovery != nil {
+            map["OnlyDbTableRecovery"] = self.onlyDbTableRecovery!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -10810,6 +10839,9 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
         }
         if let value = dict["DestRegion"] as? String {
             self.destRegion = value
+        }
+        if let value = dict["OnlyDbTableRecovery"] as? Bool {
+            self.onlyDbTableRecovery = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -11711,6 +11743,112 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class ShardSearchNodes : Tea.TeaModel {
+                public class ShardSearchNodes : Tea.TeaModel {
+                    public var nodeId: String?
+
+                    public var searchNodeClass: String?
+
+                    public var searchNodeCount: String?
+
+                    public var searchNodeId: String?
+
+                    public var searchNodeStorage: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.nodeId != nil {
+                            map["NodeId"] = self.nodeId!
+                        }
+                        if self.searchNodeClass != nil {
+                            map["SearchNodeClass"] = self.searchNodeClass!
+                        }
+                        if self.searchNodeCount != nil {
+                            map["SearchNodeCount"] = self.searchNodeCount!
+                        }
+                        if self.searchNodeId != nil {
+                            map["SearchNodeId"] = self.searchNodeId!
+                        }
+                        if self.searchNodeStorage != nil {
+                            map["SearchNodeStorage"] = self.searchNodeStorage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["NodeId"] as? String {
+                            self.nodeId = value
+                        }
+                        if let value = dict["SearchNodeClass"] as? String {
+                            self.searchNodeClass = value
+                        }
+                        if let value = dict["SearchNodeCount"] as? String {
+                            self.searchNodeCount = value
+                        }
+                        if let value = dict["SearchNodeId"] as? String {
+                            self.searchNodeId = value
+                        }
+                        if let value = dict["SearchNodeStorage"] as? String {
+                            self.searchNodeStorage = value
+                        }
+                    }
+                }
+                public var shardSearchNodes: [DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardSearchNodes.ShardSearchNodes]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.shardSearchNodes != nil {
+                        var tmp : [Any] = []
+                        for k in self.shardSearchNodes! {
+                            tmp.append(k.toMap())
+                        }
+                        map["ShardSearchNodes"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ShardSearchNodes"] as? [Any?] {
+                        var tmp : [DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardSearchNodes.ShardSearchNodes] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardSearchNodes.ShardSearchNodes()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.shardSearchNodes = tmp
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var key: String?
@@ -11793,6 +11931,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var AIGatewayEnabled: Bool?
+
             public var burstingEnabled: Bool?
 
             public var capacityUnit: String?
@@ -11887,6 +12027,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var shardList: DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardList?
 
+            public var shardSearchNodes: DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardSearchNodes?
+
             public var storageEngine: String?
 
             public var storageType: String?
@@ -11921,11 +12063,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 try self.mongosList?.validate()
                 try self.replicaSets?.validate()
                 try self.shardList?.validate()
+                try self.shardSearchNodes?.validate()
                 try self.tags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.AIGatewayEnabled != nil {
+                    map["AIGatewayEnabled"] = self.AIGatewayEnabled!
+                }
                 if self.burstingEnabled != nil {
                     map["BurstingEnabled"] = self.burstingEnabled!
                 }
@@ -12067,6 +12213,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.shardList != nil {
                     map["ShardList"] = self.shardList?.toMap()
                 }
+                if self.shardSearchNodes != nil {
+                    map["ShardSearchNodes"] = self.shardSearchNodes?.toMap()
+                }
                 if self.storageEngine != nil {
                     map["StorageEngine"] = self.storageEngine!
                 }
@@ -12102,6 +12251,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AIGatewayEnabled"] as? Bool {
+                    self.AIGatewayEnabled = value
+                }
                 if let value = dict["BurstingEnabled"] as? Bool {
                     self.burstingEnabled = value
                 }
@@ -12250,6 +12402,11 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     var model = DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardList()
                     model.fromMap(value)
                     self.shardList = model
+                }
+                if let value = dict["ShardSearchNodes"] as? [String: Any?] {
+                    var model = DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardSearchNodes()
+                    model.fromMap(value)
+                    self.shardSearchNodes = model
                 }
                 if let value = dict["StorageEngine"] as? String {
                     self.storageEngine = value
@@ -17544,6 +17701,8 @@ public class DescribeInstanceRecoverTimeRequest : Tea.TeaModel {
 
     public var destRegion: String?
 
+    public var onlyDbTableRecovery: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -17578,6 +17737,9 @@ public class DescribeInstanceRecoverTimeRequest : Tea.TeaModel {
         if self.destRegion != nil {
             map["DestRegion"] = self.destRegion!
         }
+        if self.onlyDbTableRecovery != nil {
+            map["OnlyDbTableRecovery"] = self.onlyDbTableRecovery!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -17609,6 +17771,9 @@ public class DescribeInstanceRecoverTimeRequest : Tea.TeaModel {
         }
         if let value = dict["DestRegion"] as? String {
             self.destRegion = value
+        }
+        if let value = dict["OnlyDbTableRecovery"] as? Bool {
+            self.onlyDbTableRecovery = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -34999,6 +35164,8 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
 
     public var nodeId: String?
 
+    public var nodeType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -35029,6 +35196,9 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
         }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -35054,6 +35224,9 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["NodeId"] as? String {
             self.nodeId = value
+        }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
