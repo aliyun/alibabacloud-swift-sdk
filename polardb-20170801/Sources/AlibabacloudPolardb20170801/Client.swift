@@ -7686,6 +7686,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.consumerGroup)) {
             query["ConsumerGroup"] = request.consumerGroup ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.downsample)) {
+            query["Downsample"] = request.downsample ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endStep)) {
+            query["EndStep"] = request.endStep!;
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
@@ -7695,8 +7701,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.key)) {
             query["Key"] = request.key ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxPoints)) {
+            query["MaxPoints"] = request.maxPoints!;
+        }
         if (!TeaUtils.Client.isUnset(request.modelService)) {
             query["ModelService"] = request.modelService ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startStep)) {
+            query["StartStep"] = request.startStep!;
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
@@ -7791,6 +7803,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeApplicationServerlessConf(_ request: DescribeApplicationServerlessConfRequest) async throws -> DescribeApplicationServerlessConfResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeApplicationServerlessConfWithOptions(request as! DescribeApplicationServerlessConfRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeApplicationSessionIdsWithOptions(_ request: DescribeApplicationSessionIdsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeApplicationSessionIdsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeApplicationSessionIds",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeApplicationSessionIdsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeApplicationSessionIds(_ request: DescribeApplicationSessionIdsRequest) async throws -> DescribeApplicationSessionIdsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeApplicationSessionIdsWithOptions(request as! DescribeApplicationSessionIdsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
