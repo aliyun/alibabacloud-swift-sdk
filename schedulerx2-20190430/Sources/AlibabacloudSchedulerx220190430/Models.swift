@@ -1081,6 +1081,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var sendChannel: String?
 
+    public var startTime: Int64?
+
     public var status: Int32?
 
     public var successNoticeEnable: Bool?
@@ -1198,6 +1200,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.sendChannel != nil {
             map["SendChannel"] = self.sendChannel!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -1324,6 +1329,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if let value = dict["SendChannel"] as? String {
             self.sendChannel = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
         }
         if let value = dict["Status"] as? Int32 {
             self.status = value
@@ -10134,6 +10142,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var parameters: String?
 
+            public var startTime: Int64?
+
             public var status: Int32?
 
             public var timeConfig: ListJobsResponseBody.Data.Jobs.TimeConfig?
@@ -10199,6 +10209,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 if self.parameters != nil {
                     map["Parameters"] = self.parameters!
                 }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -10258,6 +10271,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Parameters"] as? String {
                     self.parameters = value
+                }
+                if let value = dict["StartTime"] as? Int64 {
+                    self.startTime = value
                 }
                 if let value = dict["Status"] as? Int32 {
                     self.status = value
@@ -15511,6 +15527,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var sendChannel: String?
 
+    public var startTime: Int64?
+
     public var successNoticeEnable: Bool?
 
     public var taskAttemptInterval: Int32?
@@ -15630,6 +15648,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.sendChannel != nil {
             map["SendChannel"] = self.sendChannel!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         if self.successNoticeEnable != nil {
             map["SuccessNoticeEnable"] = self.successNoticeEnable!
@@ -15759,6 +15780,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if let value = dict["SendChannel"] as? String {
             self.sendChannel = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
         }
         if let value = dict["SuccessNoticeEnable"] as? Bool {
             self.successNoticeEnable = value

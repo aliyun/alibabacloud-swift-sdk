@@ -13,7 +13,27 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-beijing": "schedulerx.cn-beijing.aliyuncs.com",
             "cn-hangzhou": "schedulerx.cn-hangzhou.aliyuncs.com",
             "cn-shanghai": "schedulerx.cn-shanghai.aliyuncs.com",
-            "cn-shenzhen": "schedulerx.cn-shenzhen.aliyuncs.com"
+            "cn-shenzhen": "schedulerx.cn-shenzhen.aliyuncs.com",
+            "us-west-1": "schedulerx.aliyuncs.com",
+            "us-east-1": "schedulerx.aliyuncs.com",
+            "public": "schedulerx.aliyuncs.com",
+            "eu-west-1": "schedulerx.aliyuncs.com",
+            "eu-central-1": "schedulerx.aliyuncs.com",
+            "cn-zhangjiakou": "schedulerx.aliyuncs.com",
+            "cn-wulanchabu": "schedulerx.aliyuncs.com",
+            "cn-shanghai-finance-1": "schedulerx.aliyuncs.com",
+            "cn-qingdao": "schedulerx.aliyuncs.com",
+            "cn-huhehaote": "schedulerx.aliyuncs.com",
+            "cn-hongkong": "schedulerx.aliyuncs.com",
+            "cn-guangzhou": "schedulerx.aliyuncs.com",
+            "cn-chengdu": "schedulerx.aliyuncs.com",
+            "ap-southeast-8": "schedulerx.aliyuncs.com",
+            "ap-southeast-7": "schedulerx.aliyuncs.com",
+            "ap-southeast-6": "schedulerx.aliyuncs.com",
+            "ap-southeast-5": "schedulerx.aliyuncs.com",
+            "ap-southeast-3": "schedulerx.aliyuncs.com",
+            "ap-southeast-1": "schedulerx.aliyuncs.com",
+            "ap-northeast-1": "schedulerx.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("schedulerx2", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -316,6 +336,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sendChannel)) {
             body["SendChannel"] = request.sendChannel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime!;
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["Status"] = request.status!;
@@ -2351,6 +2374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sendChannel)) {
             body["SendChannel"] = request.sendChannel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime!;
         }
         if (!TeaUtils.Client.isUnset(request.successNoticeEnable)) {
             body["SuccessNoticeEnable"] = request.successNoticeEnable!;
