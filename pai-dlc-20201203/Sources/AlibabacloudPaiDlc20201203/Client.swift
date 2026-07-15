@@ -52,7 +52,25 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "pai-dlc.aliyuncs.com",
             "eu-west-1-oxs": "pai-dlc.aliyuncs.com",
             "me-east-1": "pai-dlc.aliyuncs.com",
-            "rus-west-1-pop": "pai-dlc.aliyuncs.com"
+            "rus-west-1-pop": "pai-dlc.aliyuncs.com",
+            "us-west-1": "pai-dlc.us-west-1.aliyuncs.com",
+            "us-southeast-1": "pai-dlc.us-southeast-1.aliyuncs.com",
+            "us-east-1": "pai-dlc.us-east-1.aliyuncs.com",
+            "eu-central-1": "pai-dlc.eu-central-1.aliyuncs.com",
+            "cn-wulanchabu": "pai-dlc.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "pai-dlc.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "pai-dlc.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "pai-dlc.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "pai-dlc.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "pai-dlc.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "pai-dlc.cn-guangzhou.aliyuncs.com",
+            "cn-beijing": "pai-dlc.cn-beijing.aliyuncs.com",
+            "ap-southeast-8": "pai-dlc.ap-southeast-8.aliyuncs.com",
+            "ap-southeast-7": "pai-dlc.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-5": "pai-dlc.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "pai-dlc.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "pai-dlc.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "pai-dlc.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pai-dlc", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1387,6 +1405,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storagePath)) {
+            query["StoragePath"] = request.storagePath ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userIdForFilter)) {
             query["UserIdForFilter"] = request.userIdForFilter ?? "";

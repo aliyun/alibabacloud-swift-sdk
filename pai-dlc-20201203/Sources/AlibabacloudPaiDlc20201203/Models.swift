@@ -2166,6 +2166,45 @@ public class GPUDetail : Tea.TeaModel {
     }
 }
 
+public class HyperNodeSchedulingConfig : Tea.TeaModel {
+    public var minAvailable: Int32?
+
+    public var qualityPolicy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.minAvailable != nil {
+            map["MinAvailable"] = self.minAvailable!
+        }
+        if self.qualityPolicy != nil {
+            map["QualityPolicy"] = self.qualityPolicy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MinAvailable"] as? Int32 {
+            self.minAvailable = value
+        }
+        if let value = dict["QualityPolicy"] as? String {
+            self.qualityPolicy = value
+        }
+    }
+}
+
 public class HyperNodeSpec : Tea.TeaModel {
     public var hyperNodeName: String?
 
@@ -2772,6 +2811,8 @@ public class JobItem : Tea.TeaModel {
 
     public var restartTimes: String?
 
+    public var retryCount: Int32?
+
     public var schedulingStrategy: String?
 
     public var settings: JobSettings?
@@ -2966,6 +3007,9 @@ public class JobItem : Tea.TeaModel {
         }
         if self.restartTimes != nil {
             map["RestartTimes"] = self.restartTimes!
+        }
+        if self.retryCount != nil {
+            map["RetryCount"] = self.retryCount!
         }
         if self.schedulingStrategy != nil {
             map["SchedulingStrategy"] = self.schedulingStrategy!
@@ -3202,6 +3246,9 @@ public class JobItem : Tea.TeaModel {
         if let value = dict["RestartTimes"] as? String {
             self.restartTimes = value
         }
+        if let value = dict["RetryCount"] as? Int32 {
+            self.retryCount = value
+        }
         if let value = dict["SchedulingStrategy"] as? String {
             self.schedulingStrategy = value
         }
@@ -3417,7 +3464,11 @@ public class JobSettings : Tea.TeaModel {
 
     public var sanityCheckArgs: String?
 
+    public var shell: String?
+
     public var tags: [String: String]?
+
+    public var terminationGracePeriodSeconds: Int64?
 
     public override init() {
         super.init()
@@ -3501,8 +3552,14 @@ public class JobSettings : Tea.TeaModel {
         if self.sanityCheckArgs != nil {
             map["SanityCheckArgs"] = self.sanityCheckArgs!
         }
+        if self.shell != nil {
+            map["Shell"] = self.shell!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags!
+        }
+        if self.terminationGracePeriodSeconds != nil {
+            map["TerminationGracePeriodSeconds"] = self.terminationGracePeriodSeconds!
         }
         return map
     }
@@ -3579,8 +3636,14 @@ public class JobSettings : Tea.TeaModel {
         if let value = dict["SanityCheckArgs"] as? String {
             self.sanityCheckArgs = value
         }
+        if let value = dict["Shell"] as? String {
+            self.shell = value
+        }
         if let value = dict["Tags"] as? [String: String] {
             self.tags = value
+        }
+        if let value = dict["TerminationGracePeriodSeconds"] as? Int64 {
+            self.terminationGracePeriodSeconds = value
         }
     }
 }
@@ -3598,6 +3661,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var extraPodSpec: ExtraPodSpec?
 
+    public var hyperNodeSchedulingConfig: HyperNodeSchedulingConfig?
+
     public var image: String?
 
     public var imageConfig: ImageConfig?
@@ -3607,6 +3672,8 @@ public class JobSpec : Tea.TeaModel {
     public var isChief: Bool?
 
     public var localMountSpecs: [LocalMountSpec]?
+
+    public var oversoldType: String?
 
     public var podCount: Int64?
 
@@ -3641,6 +3708,7 @@ public class JobSpec : Tea.TeaModel {
         try self.assignNodeSpec?.validate()
         try self.autoScalingSpec?.validate()
         try self.extraPodSpec?.validate()
+        try self.hyperNodeSchedulingConfig?.validate()
         try self.imageConfig?.validate()
         try self.resourceConfig?.validate()
         try self.serviceSpec?.validate()
@@ -3672,6 +3740,9 @@ public class JobSpec : Tea.TeaModel {
         if self.extraPodSpec != nil {
             map["ExtraPodSpec"] = self.extraPodSpec?.toMap()
         }
+        if self.hyperNodeSchedulingConfig != nil {
+            map["HyperNodeSchedulingConfig"] = self.hyperNodeSchedulingConfig?.toMap()
+        }
         if self.image != nil {
             map["Image"] = self.image!
         }
@@ -3690,6 +3761,9 @@ public class JobSpec : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["LocalMountSpecs"] = tmp
+        }
+        if self.oversoldType != nil {
+            map["OversoldType"] = self.oversoldType!
         }
         if self.podCount != nil {
             map["PodCount"] = self.podCount!
@@ -3764,6 +3838,11 @@ public class JobSpec : Tea.TeaModel {
             model.fromMap(value)
             self.extraPodSpec = model
         }
+        if let value = dict["HyperNodeSchedulingConfig"] as? [String: Any?] {
+            var model = HyperNodeSchedulingConfig()
+            model.fromMap(value)
+            self.hyperNodeSchedulingConfig = model
+        }
         if let value = dict["Image"] as? String {
             self.image = value
         }
@@ -3790,6 +3869,9 @@ public class JobSpec : Tea.TeaModel {
                 }
             }
             self.localMountSpecs = tmp
+        }
+        if let value = dict["OversoldType"] as? String {
+            self.oversoldType = value
         }
         if let value = dict["PodCount"] as? Int64 {
             self.podCount = value
@@ -5479,6 +5561,53 @@ public class ServiceSpec : Tea.TeaModel {
         }
         if let value = dict["ServiceMode"] as? String {
             self.serviceMode = value
+        }
+    }
+}
+
+public class SignalTarget : Tea.TeaModel {
+    public var podNames: [String]?
+
+    public var roles: [String]?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.podNames != nil {
+            map["PodNames"] = self.podNames!
+        }
+        if self.roles != nil {
+            map["Roles"] = self.roles!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PodNames"] as? [String] {
+            self.podNames = value
+        }
+        if let value = dict["Roles"] as? [String] {
+            self.roles = value
+        }
+        if let value = dict["Scope"] as? String {
+            self.scope = value
         }
     }
 }
@@ -13248,6 +13377,8 @@ public class ListRayHistoryServersRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var storagePath: String?
+
     public var userIdForFilter: String?
 
     public var username: String?
@@ -13307,6 +13438,9 @@ public class ListRayHistoryServersRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.storagePath != nil {
+            map["StoragePath"] = self.storagePath!
+        }
         if self.userIdForFilter != nil {
             map["UserIdForFilter"] = self.userIdForFilter!
         }
@@ -13359,6 +13493,9 @@ public class ListRayHistoryServersRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["StoragePath"] as? String {
+            self.storagePath = value
         }
         if let value = dict["UserIdForFilter"] as? String {
             self.userIdForFilter = value
