@@ -3287,6 +3287,61 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func estimatedPriceQueryV2WithOptions(_ request: EstimatedPriceQueryV2Request, _ headers: EstimatedPriceQueryV2Headers, _ runtime: TeaUtils.RuntimeOptions) async throws -> EstimatedPriceQueryV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["biz_type"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.departDate)) {
+            query["depart_date"] = request.departDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fromCity)) {
+            query["from_city"] = request.fromCity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.leaveDate)) {
+            query["leave_date"] = request.leaveDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toCity)) {
+            query["to_city"] = request.toCity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["user_id"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripSoCorpToken)) {
+            realHeaders["x-acs-btrip-so-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripSoCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EstimatedPriceQueryV2",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/costcenter/v3/estimated-price",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EstimatedPriceQueryV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func estimatedPriceQueryV2(_ request: EstimatedPriceQueryV2Request) async throws -> EstimatedPriceQueryV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: EstimatedPriceQueryV2Headers = EstimatedPriceQueryV2Headers([:])
+        return try await estimatedPriceQueryV2WithOptions(request as! EstimatedPriceQueryV2Request, headers as! EstimatedPriceQueryV2Headers, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func exceedApplySyncWithOptions(_ request: ExceedApplySyncRequest, _ headers: ExceedApplySyncHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExceedApplySyncResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
