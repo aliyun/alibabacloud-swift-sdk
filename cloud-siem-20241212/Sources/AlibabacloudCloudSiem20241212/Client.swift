@@ -1200,6 +1200,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteNormalizationSchemaWithOptions(_ request: DeleteNormalizationSchemaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteNormalizationSchemaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.normalizationSchemaId)) {
+            body["NormalizationSchemaId"] = request.normalizationSchemaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.normalizationSchemaType)) {
+            body["NormalizationSchemaType"] = request.normalizationSchemaType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteNormalizationSchema",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteNormalizationSchemaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteNormalizationSchema(_ request: DeleteNormalizationSchemaRequest) async throws -> DeleteNormalizationSchemaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteNormalizationSchemaWithOptions(request as! DeleteNormalizationSchemaRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteProductWithOptions(_ request: DeleteProductRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteProductResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2804,6 +2847,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.incidentStatus)) {
             body["IncidentStatus"] = request.incidentStatus!;
         }
+        if (!TeaUtils.Client.isUnset(request.incidentStatusList)) {
+            body["IncidentStatusList"] = request.incidentStatusList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.incidentTags)) {
             body["IncidentTags"] = request.incidentTags ?? "";
         }
@@ -4141,6 +4187,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateDataBatchIngestion(_ request: UpdateDataBatchIngestionRequest) async throws -> UpdateDataBatchIngestionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateDataBatchIngestionWithOptions(request as! UpdateDataBatchIngestionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDataConnectorWithOptions(_ request: UpdateDataConnectorRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDataConnectorResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authConfigId)) {
+            body["AuthConfigId"] = request.authConfigId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authConfigProduct)) {
+            body["AuthConfigProduct"] = request.authConfigProduct ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authConfigVendor)) {
+            body["AuthConfigVendor"] = request.authConfigVendor ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataConnectorConfig)) {
+            body["DataConnectorConfig"] = request.dataConnectorConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataConnectorId)) {
+            body["DataConnectorId"] = request.dataConnectorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataConnectorStatus)) {
+            body["DataConnectorStatus"] = request.dataConnectorStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDataConnector",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDataConnectorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDataConnector(_ request: UpdateDataConnectorRequest) async throws -> UpdateDataConnectorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateDataConnectorWithOptions(request as! UpdateDataConnectorRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
