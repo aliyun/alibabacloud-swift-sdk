@@ -9175,9 +9175,15 @@ public class TargetVideo : Tea.TeaModel {
         }
         public class Desensitization : Tea.TeaModel {
             public class Face : Tea.TeaModel {
+                public var blurRadius: Int32?
+
                 public var confidence: Double?
 
                 public var minSize: Int32?
+
+                public var scaleRatio: Double?
+
+                public var transparency: Double?
 
                 public override init() {
                     super.init()
@@ -9193,29 +9199,53 @@ public class TargetVideo : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.blurRadius != nil {
+                        map["BlurRadius"] = self.blurRadius!
+                    }
                     if self.confidence != nil {
                         map["Confidence"] = self.confidence!
                     }
                     if self.minSize != nil {
                         map["MinSize"] = self.minSize!
                     }
+                    if self.scaleRatio != nil {
+                        map["ScaleRatio"] = self.scaleRatio!
+                    }
+                    if self.transparency != nil {
+                        map["Transparency"] = self.transparency!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["BlurRadius"] as? Int32 {
+                        self.blurRadius = value
+                    }
                     if let value = dict["Confidence"] as? Double {
                         self.confidence = value
                     }
                     if let value = dict["MinSize"] as? Int32 {
                         self.minSize = value
+                    }
+                    if let value = dict["ScaleRatio"] as? Double {
+                        self.scaleRatio = value
+                    }
+                    if let value = dict["Transparency"] as? Double {
+                        self.transparency = value
                     }
                 }
             }
             public class LicensePlate : Tea.TeaModel {
+                public var blurRadius: Int32?
+
                 public var confidence: Double?
 
                 public var minSize: Int32?
+
+                public var scaleRatio: Double?
+
+                public var transparency: Double?
 
                 public override init() {
                     super.init()
@@ -9231,22 +9261,40 @@ public class TargetVideo : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.blurRadius != nil {
+                        map["BlurRadius"] = self.blurRadius!
+                    }
                     if self.confidence != nil {
                         map["Confidence"] = self.confidence!
                     }
                     if self.minSize != nil {
                         map["MinSize"] = self.minSize!
                     }
+                    if self.scaleRatio != nil {
+                        map["ScaleRatio"] = self.scaleRatio!
+                    }
+                    if self.transparency != nil {
+                        map["Transparency"] = self.transparency!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["BlurRadius"] as? Int32 {
+                        self.blurRadius = value
+                    }
                     if let value = dict["Confidence"] as? Double {
                         self.confidence = value
                     }
                     if let value = dict["MinSize"] as? Int32 {
                         self.minSize = value
+                    }
+                    if let value = dict["ScaleRatio"] as? Double {
+                        self.scaleRatio = value
+                    }
+                    if let value = dict["Transparency"] as? Double {
+                        self.transparency = value
                     }
                 }
             }
@@ -27000,6 +27048,8 @@ public class GenerateVideoPlaylistRequest : Tea.TeaModel {
     public class Targets : Tea.TeaModel {
         public var audio: TargetAudio?
 
+        public var container: String?
+
         public var duration: Double?
 
         public var initialSegments: [Double]?
@@ -27036,6 +27086,9 @@ public class GenerateVideoPlaylistRequest : Tea.TeaModel {
             if self.audio != nil {
                 map["Audio"] = self.audio?.toMap()
             }
+            if self.container != nil {
+                map["Container"] = self.container!
+            }
             if self.duration != nil {
                 map["Duration"] = self.duration!
             }
@@ -27069,6 +27122,9 @@ public class GenerateVideoPlaylistRequest : Tea.TeaModel {
                 var model = TargetAudio()
                 model.fromMap(value)
                 self.audio = model
+            }
+            if let value = dict["Container"] as? String {
+                self.container = value
             }
             if let value = dict["Duration"] as? Double {
                 self.duration = value
