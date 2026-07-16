@@ -10040,6 +10040,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.usable)) {
+            query["Usable"] = request.usable!;
+        }
         if (!TeaUtils.Client.isUnset(request.usage)) {
             query["Usage"] = request.usage ?? "";
         }
