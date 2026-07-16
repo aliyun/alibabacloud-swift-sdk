@@ -8694,6 +8694,78 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightReShopCreateWithOptions(_ tmpReq: IntlFlightReShopCreateRequest, _ headers: IntlFlightReShopCreateHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IntlFlightReShopCreateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: IntlFlightReShopCreateShrinkRequest = IntlFlightReShopCreateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.selectedPassengers)) {
+            request.selectedPassengersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.selectedPassengers, "selected_passengers", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.asyncApplyKey)) {
+            body["async_apply_key"] = request.asyncApplyKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncApplyMode)) {
+            body["async_apply_mode"] = request.asyncApplyMode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            body["order_id"] = request.orderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.otaItemId)) {
+            body["ota_item_id"] = request.otaItemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outOrderId)) {
+            body["out_order_id"] = request.outOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outReShopApplyId)) {
+            body["out_re_shop_apply_id"] = request.outReShopApplyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.passengerJourneyGroupKey)) {
+            body["passenger_journey_group_key"] = request.passengerJourneyGroupKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reShopReasonCode)) {
+            body["re_shop_reason_code"] = request.reShopReasonCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedPassengersShrink)) {
+            body["selected_passengers"] = request.selectedPassengersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.totalReShopFee)) {
+            body["total_re_shop_fee"] = request.totalReShopFee!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IntlFlightReShopCreate",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/intl-flight/v1/flights/action/reshop/create",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IntlFlightReShopCreateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightReShopCreate(_ request: IntlFlightReShopCreateRequest) async throws -> IntlFlightReShopCreateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: IntlFlightReShopCreateHeaders = IntlFlightReShopCreateHeaders([:])
+        return try await intlFlightReShopCreateWithOptions(request as! IntlFlightReShopCreateRequest, headers as! IntlFlightReShopCreateHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func intlFlightReShopDetailWithOptions(_ request: IntlFlightReShopDetailRequest, _ headers: IntlFlightReShopDetailHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IntlFlightReShopDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8740,6 +8812,144 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: IntlFlightReShopDetailHeaders = IntlFlightReShopDetailHeaders([:])
         return try await intlFlightReShopDetailWithOptions(request as! IntlFlightReShopDetailRequest, headers as! IntlFlightReShopDetailHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightReShopListSearchWithOptions(_ tmpReq: IntlFlightReShopListSearchRequest, _ headers: IntlFlightReShopListSearchHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IntlFlightReShopListSearchResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: IntlFlightReShopListSearchShrinkRequest = IntlFlightReShopListSearchShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.searchJourneys)) {
+            request.searchJourneysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchJourneys, "search_journeys", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.selectedPassengers)) {
+            request.selectedPassengersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.selectedPassengers, "selected_passengers", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            query["order_id"] = request.orderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outOrderId)) {
+            query["out_order_id"] = request.outOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outWheelSearch)) {
+            query["out_wheel_search"] = request.outWheelSearch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.passengerJourneyGroupKey)) {
+            query["passenger_journey_group_key"] = request.passengerJourneyGroupKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reShopReasonCode)) {
+            query["re_shop_reason_code"] = request.reShopReasonCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchJourneysShrink)) {
+            query["search_journeys"] = request.searchJourneysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedPassengersShrink)) {
+            query["selected_passengers"] = request.selectedPassengersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            query["token"] = request.token ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IntlFlightReShopListSearch",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/intl-flight/v1/flights/action/reshop/listSearch",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IntlFlightReShopListSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightReShopListSearch(_ request: IntlFlightReShopListSearchRequest) async throws -> IntlFlightReShopListSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: IntlFlightReShopListSearchHeaders = IntlFlightReShopListSearchHeaders([:])
+        return try await intlFlightReShopListSearchWithOptions(request as! IntlFlightReShopListSearchRequest, headers as! IntlFlightReShopListSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightReShopOtaSearchWithOptions(_ tmpReq: IntlFlightReShopOtaSearchRequest, _ headers: IntlFlightReShopOtaSearchHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IntlFlightReShopOtaSearchResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: IntlFlightReShopOtaSearchShrinkRequest = IntlFlightReShopOtaSearchShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.searchJourneys)) {
+            request.searchJourneysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchJourneys, "search_journeys", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.selectedPassengers)) {
+            request.selectedPassengersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.selectedPassengers, "selected_passengers", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            query["order_id"] = request.orderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outOrderId)) {
+            query["out_order_id"] = request.outOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outWheelSearch)) {
+            query["out_wheel_search"] = request.outWheelSearch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.passengerJourneyGroupKey)) {
+            query["passenger_journey_group_key"] = request.passengerJourneyGroupKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reShopReasonCode)) {
+            query["re_shop_reason_code"] = request.reShopReasonCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchJourneysShrink)) {
+            query["search_journeys"] = request.searchJourneysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedPassengersShrink)) {
+            query["selected_passengers"] = request.selectedPassengersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            query["token"] = request.token ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IntlFlightReShopOtaSearch",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/intl-flight/v1/flights/action/reshop/otaSerach",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IntlFlightReShopOtaSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightReShopOtaSearch(_ request: IntlFlightReShopOtaSearchRequest) async throws -> IntlFlightReShopOtaSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: IntlFlightReShopOtaSearchHeaders = IntlFlightReShopOtaSearchHeaders([:])
+        return try await intlFlightReShopOtaSearchWithOptions(request as! IntlFlightReShopOtaSearchRequest, headers as! IntlFlightReShopOtaSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
