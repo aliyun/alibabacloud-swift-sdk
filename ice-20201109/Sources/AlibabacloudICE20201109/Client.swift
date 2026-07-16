@@ -12902,6 +12902,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitCosyVoiceCustomizedVoiceJobWithOptions(_ request: SubmitCosyVoiceCustomizedVoiceJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitCosyVoiceCustomizedVoiceJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.audios)) {
+            query["Audios"] = request.audios ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.demoAudioMediaURL)) {
+            query["DemoAudioMediaURL"] = request.demoAudioMediaURL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gender)) {
+            query["Gender"] = request.gender ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            query["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voiceName)) {
+            query["VoiceName"] = request.voiceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitCosyVoiceCustomizedVoiceJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitCosyVoiceCustomizedVoiceJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitCosyVoiceCustomizedVoiceJob(_ request: SubmitCosyVoiceCustomizedVoiceJobRequest) async throws -> SubmitCosyVoiceCustomizedVoiceJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitCosyVoiceCustomizedVoiceJobWithOptions(request as! SubmitCosyVoiceCustomizedVoiceJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitCustomizedVoiceJobWithOptions(_ request: SubmitCustomizedVoiceJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitCustomizedVoiceJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
