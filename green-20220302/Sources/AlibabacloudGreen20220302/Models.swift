@@ -8082,6 +8082,10 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
                 }
                 public var detail: [MultiModalGuardAsyncResultResponseBody.Data.FrameResult.Frames.Detail]?
 
+                public var errorCode: Int32?
+
+                public var errorMsg: String?
+
                 public var offset: Double?
 
                 public var suggestion: String?
@@ -8110,6 +8114,12 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
                             tmp.append(k.toMap())
                         }
                         map["Detail"] = tmp
+                    }
+                    if self.errorCode != nil {
+                        map["ErrorCode"] = self.errorCode!
+                    }
+                    if self.errorMsg != nil {
+                        map["ErrorMsg"] = self.errorMsg!
                     }
                     if self.offset != nil {
                         map["Offset"] = self.offset!
@@ -8140,6 +8150,12 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
                             }
                         }
                         self.detail = tmp
+                    }
+                    if let value = dict["ErrorCode"] as? Int32 {
+                        self.errorCode = value
+                    }
+                    if let value = dict["ErrorMsg"] as? String {
+                        self.errorMsg = value
                     }
                     if let value = dict["Offset"] as? Double {
                         self.offset = value
