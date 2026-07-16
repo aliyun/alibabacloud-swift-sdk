@@ -70,6 +70,50 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addChunkWithOptions(_ WorkspaceId: String, _ tmpReq: AddChunkRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddChunkResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddChunkShrinkRequest = AddChunkShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.field)) {
+            request.fieldShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.field, "field", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pipelineId)) {
+            query["PipelineId"] = request.pipelineId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataId)) {
+            query["dataId"] = request.dataId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldShrink)) {
+            query["field"] = request.fieldShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddChunk",
+            "version": "2023-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/chunk/create",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddChunkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addChunk(_ WorkspaceId: String, _ request: AddChunkRequest) async throws -> AddChunkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addChunkWithOptions(WorkspaceId as! String, request as! AddChunkRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addConnectorWithOptions(_ WorkspaceId: String, _ tmpReq: AddConnectorRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddConnectorResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddConnectorShrinkRequest = AddConnectorShrinkRequest([:])
