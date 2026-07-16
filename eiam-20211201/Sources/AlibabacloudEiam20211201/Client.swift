@@ -7505,6 +7505,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationName)) {
             query["ApplicationName"] = request.applicationName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationTemplateId)) {
+            query["ApplicationTemplateId"] = request.applicationTemplateId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.authorizationType)) {
             query["AuthorizationType"] = request.authorizationType ?? "";
         }

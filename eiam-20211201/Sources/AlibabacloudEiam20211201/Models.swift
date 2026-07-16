@@ -43362,6 +43362,8 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public var applicationName: String?
 
+    public var applicationTemplateId: String?
+
     public var authorizationType: String?
 
     public var customFields: [ListApplicationsRequest.CustomFields]?
@@ -43409,6 +43411,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
+        }
+        if self.applicationTemplateId != nil {
+            map["ApplicationTemplateId"] = self.applicationTemplateId!
         }
         if self.authorizationType != nil {
             map["AuthorizationType"] = self.authorizationType!
@@ -43463,6 +43468,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["ApplicationName"] as? String {
             self.applicationName = value
+        }
+        if let value = dict["ApplicationTemplateId"] as? String {
+            self.applicationTemplateId = value
         }
         if let value = dict["AuthorizationType"] as? String {
             self.authorizationType = value
