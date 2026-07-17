@@ -1584,6 +1584,150 @@ public class CreateYikeAssetUploadResponse : Tea.TeaModel {
     }
 }
 
+public class CreateYikeEditingProjectRequest : Tea.TeaModel {
+    public var coverURL: String?
+
+    public var materialMaps: String?
+
+    public var timeline: String?
+
+    public var title: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.coverURL != nil {
+            map["CoverURL"] = self.coverURL!
+        }
+        if self.materialMaps != nil {
+            map["MaterialMaps"] = self.materialMaps!
+        }
+        if self.timeline != nil {
+            map["Timeline"] = self.timeline!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CoverURL"] as? String {
+            self.coverURL = value
+        }
+        if let value = dict["MaterialMaps"] as? String {
+            self.materialMaps = value
+        }
+        if let value = dict["Timeline"] as? String {
+            self.timeline = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
+        }
+    }
+}
+
+public class CreateYikeEditingProjectResponseBody : Tea.TeaModel {
+    public var editingProjectId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.editingProjectId != nil {
+            map["EditingProjectId"] = self.editingProjectId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EditingProjectId"] as? String {
+            self.editingProjectId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateYikeEditingProjectResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateYikeEditingProjectResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateYikeEditingProjectResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateYikeProductionRequest : Tea.TeaModel {
     public var title: String?
 
@@ -2435,8 +2579,6 @@ public class GetImageGenerationJobResponse : Tea.TeaModel {
 }
 
 public class GetVideoGenerationJobRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var jobId: String?
 
     public override init() {
@@ -2453,9 +2595,6 @@ public class GetVideoGenerationJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
@@ -2464,9 +2603,6 @@ public class GetVideoGenerationJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["JobId"] as? String {
             self.jobId = value
         }
@@ -3082,6 +3218,249 @@ public class GetYikeAIAppJobResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetYikeAIAppJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetYikeAccountCreditRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetYikeAccountCreditResponseBody : Tea.TeaModel {
+    public class CreditInfo : Tea.TeaModel {
+        public var grantedCreditQuota: Double?
+
+        public var grantedCreditQuotaUsage: Double?
+
+        public var packCreditQuota: Double?
+
+        public var packCreditQuotaUsage: Double?
+
+        public var resourceCreditQuota: Double?
+
+        public var resourceCreditQuotaUsage: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.grantedCreditQuota != nil {
+                map["GrantedCreditQuota"] = self.grantedCreditQuota!
+            }
+            if self.grantedCreditQuotaUsage != nil {
+                map["GrantedCreditQuotaUsage"] = self.grantedCreditQuotaUsage!
+            }
+            if self.packCreditQuota != nil {
+                map["PackCreditQuota"] = self.packCreditQuota!
+            }
+            if self.packCreditQuotaUsage != nil {
+                map["PackCreditQuotaUsage"] = self.packCreditQuotaUsage!
+            }
+            if self.resourceCreditQuota != nil {
+                map["ResourceCreditQuota"] = self.resourceCreditQuota!
+            }
+            if self.resourceCreditQuotaUsage != nil {
+                map["ResourceCreditQuotaUsage"] = self.resourceCreditQuotaUsage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GrantedCreditQuota"] as? Double {
+                self.grantedCreditQuota = value
+            }
+            if let value = dict["GrantedCreditQuotaUsage"] as? Double {
+                self.grantedCreditQuotaUsage = value
+            }
+            if let value = dict["PackCreditQuota"] as? Double {
+                self.packCreditQuota = value
+            }
+            if let value = dict["PackCreditQuotaUsage"] as? Double {
+                self.packCreditQuotaUsage = value
+            }
+            if let value = dict["ResourceCreditQuota"] as? Double {
+                self.resourceCreditQuota = value
+            }
+            if let value = dict["ResourceCreditQuotaUsage"] as? Double {
+                self.resourceCreditQuotaUsage = value
+            }
+        }
+    }
+    public class MembershipInfo : Tea.TeaModel {
+        public var endTime: String?
+
+        public var membership: String?
+
+        public var startTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.membership != nil {
+                map["Membership"] = self.membership!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["Membership"] as? String {
+                self.membership = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+        }
+    }
+    public var creditInfo: GetYikeAccountCreditResponseBody.CreditInfo?
+
+    public var membershipInfo: GetYikeAccountCreditResponseBody.MembershipInfo?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.creditInfo?.validate()
+        try self.membershipInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.creditInfo != nil {
+            map["CreditInfo"] = self.creditInfo?.toMap()
+        }
+        if self.membershipInfo != nil {
+            map["MembershipInfo"] = self.membershipInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreditInfo"] as? [String: Any?] {
+            var model = GetYikeAccountCreditResponseBody.CreditInfo()
+            model.fromMap(value)
+            self.creditInfo = model
+        }
+        if let value = dict["MembershipInfo"] as? [String: Any?] {
+            var model = GetYikeAccountCreditResponseBody.MembershipInfo()
+            model.fromMap(value)
+            self.membershipInfo = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetYikeAccountCreditResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetYikeAccountCreditResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetYikeAccountCreditResponseBody()
             model.fromMap(value)
             self.body = model
         }
