@@ -9,6 +9,19 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-east-1": "opensearch.us-east-1.aliyuncs.com",
+            "eu-central-1": "opensearch.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "opensearch.cn-zhangjiakou.aliyuncs.com",
+            "cn-shenzhen": "opensearch.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "opensearch.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "opensearch.cn-qingdao.aliyuncs.com",
+            "cn-hongkong": "opensearch.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "opensearch.cn-hangzhou.aliyuncs.com",
+            "cn-beijing": "opensearch.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "opensearch.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-1": "opensearch.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("opensearch", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -384,6 +397,62 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createAppGroupCredentialsWithOptions(appGroupIdentity as! String, request as! CreateAppGroupCredentialsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createElasticPlanWithOptions(_ appGroupIdentity: String, _ request: CreateElasticPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateElasticPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customDates)) {
+            body["customDates"] = request.customDates ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.elasticLcu)) {
+            body["elasticLcu"] = request.elasticLcu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endHour)) {
+            body["endHour"] = request.endHour!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleType)) {
+            body["scheduleType"] = request.scheduleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startHour)) {
+            body["startHour"] = request.startHour!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateElasticPlan",
+            "version": "2017-12-25",
+            "protocol": "HTTPS",
+            "pathname": "/v4/openapi/app-groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appGroupIdentity)) + "/elastic-plans",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateElasticPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createElasticPlan(_ appGroupIdentity: String, _ request: CreateElasticPlanRequest) async throws -> CreateElasticPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createElasticPlanWithOptions(appGroupIdentity as! String, request as! CreateElasticPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1232,6 +1301,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await describeDataCollctionWithOptions(appGroupIdentity as! String, dataCollectionIdentity as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeElasticPlanWithOptions(_ appGroupIdentity: String, _ planId: String, _ request: DescribeElasticPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeElasticPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeElasticPlan",
+            "version": "2017-12-25",
+            "protocol": "HTTPS",
+            "pathname": "/v4/openapi/app-groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appGroupIdentity)) + "/elastic-plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(planId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeElasticPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeElasticPlan(_ appGroupIdentity: String, _ planId: String, _ request: DescribeElasticPlanRequest) async throws -> DescribeElasticPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await describeElasticPlanWithOptions(appGroupIdentity as! String, planId as! String, request as! DescribeElasticPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2144,6 +2246,54 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listDataSourceTablesWithOptions(dataSourceType as! String, request as! ListDataSourceTablesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listElasticPlansWithOptions(_ appGroupIdentity: String, _ request: ListElasticPlansRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListElasticPlansResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            query["enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListElasticPlans",
+            "version": "2017-12-25",
+            "protocol": "HTTPS",
+            "pathname": "/v4/openapi/app-groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appGroupIdentity)) + "/elastic-plans",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListElasticPlansResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listElasticPlans(_ appGroupIdentity: String, _ request: ListElasticPlansRequest) async throws -> ListElasticPlansResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listElasticPlansWithOptions(appGroupIdentity as! String, request as! ListElasticPlansRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3127,6 +3277,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyElasticPlanWithOptions(_ appGroupIdentity: String, _ planId: String, _ request: ModifyElasticPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyElasticPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["dryRun"] = request.dryRun!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customDates)) {
+            body["customDates"] = request.customDates ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.elasticLcu)) {
+            body["elasticLcu"] = request.elasticLcu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endHour)) {
+            body["endHour"] = request.endHour!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleType)) {
+            body["scheduleType"] = request.scheduleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startHour)) {
+            body["startHour"] = request.startHour!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyElasticPlan",
+            "version": "2017-12-25",
+            "protocol": "HTTPS",
+            "pathname": "/v4/openapi/app-groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appGroupIdentity)) + "/elastic-plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(planId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyElasticPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyElasticPlan(_ appGroupIdentity: String, _ planId: String, _ request: ModifyElasticPlanRequest) async throws -> ModifyElasticPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modifyElasticPlanWithOptions(appGroupIdentity as! String, planId as! String, request as! ModifyElasticPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyFirstRankWithOptions(_ appGroupIdentity: String, _ appId: String, _ name: String, _ request: ModifyFirstRankRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyFirstRankResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3435,6 +3641,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await removeDataCollectionWithOptions(appGroupIdentity as! String, dataCollectionIdentity as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeElasticPlanWithOptions(_ appGroupIdentity: String, _ planId: String, _ request: RemoveElasticPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveElasticPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveElasticPlan",
+            "version": "2017-12-25",
+            "protocol": "HTTPS",
+            "pathname": "/v4/openapi/app-groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appGroupIdentity)) + "/elastic-plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(planId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveElasticPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeElasticPlan(_ appGroupIdentity: String, _ planId: String, _ request: RemoveElasticPlanRequest) async throws -> RemoveElasticPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await removeElasticPlanWithOptions(appGroupIdentity as! String, planId as! String, request as! RemoveElasticPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
