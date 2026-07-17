@@ -4067,6 +4067,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.apiServerEipId)) {
             body["api_server_eip_id"] = request.apiServerEipId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["client_token"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterName)) {
             body["cluster_name"] = request.clusterName ?? "";
         }

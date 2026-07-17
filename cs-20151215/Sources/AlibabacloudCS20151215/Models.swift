@@ -1306,6 +1306,10 @@ public class Nodepool : Tea.TeaModel {
     }
     public class Management : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
+            public var maxParallelRepairingNodes: String?
+
+            public var maxUnhealthyNodesThreshold: String?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -1322,6 +1326,12 @@ public class Nodepool : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.maxParallelRepairingNodes != nil {
+                    map["max_parallel_repairing_nodes"] = self.maxParallelRepairingNodes!
+                }
+                if self.maxUnhealthyNodesThreshold != nil {
+                    map["max_unhealthy_nodes_threshold"] = self.maxUnhealthyNodesThreshold!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -1330,6 +1340,12 @@ public class Nodepool : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["max_parallel_repairing_nodes"] as? String {
+                    self.maxParallelRepairingNodes = value
+                }
+                if let value = dict["max_unhealthy_nodes_threshold"] as? String {
+                    self.maxUnhealthyNodesThreshold = value
+                }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
                 }
@@ -1729,6 +1745,36 @@ public class Nodepool : Tea.TeaModel {
         }
     }
     public class ScalingGroup : Tea.TeaModel {
+        public class CpuOptions : Tea.TeaModel {
+            public var nestedVirtualization: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nestedVirtualization != nil {
+                    map["nested_virtualization"] = self.nestedVirtualization!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["nested_virtualization"] as? String {
+                    self.nestedVirtualization = value
+                }
+            }
+        }
         public class PrivatePoolOptions : Tea.TeaModel {
             public var id: String?
 
@@ -1887,6 +1933,8 @@ public class Nodepool : Tea.TeaModel {
 
         public var compensateWithOnDemand: Bool?
 
+        public var cpuOptions: Nodepool.ScalingGroup.CpuOptions?
+
         public var dataDisks: [DataDisk]?
 
         public var deploymentsetId: String?
@@ -1981,6 +2029,7 @@ public class Nodepool : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cpuOptions?.validate()
             try self.instanceMetadataOptions?.validate()
             try self.privatePoolOptions?.validate()
             try self.resourcePoolOptions?.validate()
@@ -1996,6 +2045,9 @@ public class Nodepool : Tea.TeaModel {
             }
             if self.compensateWithOnDemand != nil {
                 map["compensate_with_on_demand"] = self.compensateWithOnDemand!
+            }
+            if self.cpuOptions != nil {
+                map["cpu_options"] = self.cpuOptions?.toMap()
             }
             if self.dataDisks != nil {
                 var tmp : [Any] = []
@@ -2152,6 +2204,11 @@ public class Nodepool : Tea.TeaModel {
             }
             if let value = dict["compensate_with_on_demand"] as? Bool {
                 self.compensateWithOnDemand = value
+            }
+            if let value = dict["cpu_options"] as? [String: Any?] {
+                var model = Nodepool.ScalingGroup.CpuOptions()
+                model.fromMap(value)
+                self.cpuOptions = model
             }
             if let value = dict["data_disks"] as? [Any?] {
                 var tmp : [DataDisk] = []
@@ -4969,7 +5026,47 @@ public class CreateClusterRequest : Tea.TeaModel {
                 }
             }
         }
+        public class LoadBalancersConfig : Tea.TeaModel {
+            public var endpointType: String?
+
+            public var loadBalancerId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpointType != nil {
+                    map["endpoint_type"] = self.endpointType!
+                }
+                if self.loadBalancerId != nil {
+                    map["load_balancer_id"] = self.loadBalancerId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["endpoint_type"] as? String {
+                    self.endpointType = value
+                }
+                if let value = dict["load_balancer_id"] as? String {
+                    self.loadBalancerId = value
+                }
+            }
+        }
         public var internalDnsConfig: CreateClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig?
+
+        public var loadBalancersConfig: [CreateClusterRequest.ControlPlaneEndpointsConfig.LoadBalancersConfig]?
 
         public override init() {
             super.init()
@@ -4989,6 +5086,13 @@ public class CreateClusterRequest : Tea.TeaModel {
             if self.internalDnsConfig != nil {
                 map["internal_dns_config"] = self.internalDnsConfig?.toMap()
             }
+            if self.loadBalancersConfig != nil {
+                var tmp : [Any] = []
+                for k in self.loadBalancersConfig! {
+                    tmp.append(k.toMap())
+                }
+                map["load_balancers_config"] = tmp
+            }
             return map
         }
 
@@ -4998,6 +5102,19 @@ public class CreateClusterRequest : Tea.TeaModel {
                 var model = CreateClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig()
                 model.fromMap(value)
                 self.internalDnsConfig = model
+            }
+            if let value = dict["load_balancers_config"] as? [Any?] {
+                var tmp : [CreateClusterRequest.ControlPlaneEndpointsConfig.LoadBalancersConfig] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateClusterRequest.ControlPlaneEndpointsConfig.LoadBalancersConfig()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.loadBalancersConfig = tmp
             }
         }
     }
@@ -6816,6 +6933,10 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
             public var approvalRequired: Bool?
 
+            public var maxParallelRepairingNodes: String?
+
+            public var maxUnhealthyNodesThreshold: String?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -6835,6 +6956,12 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 if self.approvalRequired != nil {
                     map["approval_required"] = self.approvalRequired!
                 }
+                if self.maxParallelRepairingNodes != nil {
+                    map["max_parallel_repairing_nodes"] = self.maxParallelRepairingNodes!
+                }
+                if self.maxUnhealthyNodesThreshold != nil {
+                    map["max_unhealthy_nodes_threshold"] = self.maxUnhealthyNodesThreshold!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -6845,6 +6972,12 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["approval_required"] as? Bool {
                     self.approvalRequired = value
+                }
+                if let value = dict["max_parallel_repairing_nodes"] as? String {
+                    self.maxParallelRepairingNodes = value
+                }
+                if let value = dict["max_unhealthy_nodes_threshold"] as? String {
+                    self.maxUnhealthyNodesThreshold = value
                 }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
@@ -7269,6 +7402,36 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
     }
     public class ScalingGroup : Tea.TeaModel {
+        public class CpuOptions : Tea.TeaModel {
+            public var nestedVirtualization: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nestedVirtualization != nil {
+                    map["nested_virtualization"] = self.nestedVirtualization!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["nested_virtualization"] as? String {
+                    self.nestedVirtualization = value
+                }
+            }
+        }
         public class PrivatePoolOptions : Tea.TeaModel {
             public var id: String?
 
@@ -7429,6 +7592,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var compensateWithOnDemand: Bool?
 
+        public var cpuOptions: CreateClusterNodePoolRequest.ScalingGroup.CpuOptions?
+
         public var dataDisks: [DataDisk]?
 
         public var deploymentsetId: String?
@@ -7531,6 +7696,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cpuOptions?.validate()
             try self.instanceMetadataOptions?.validate()
             try self.privatePoolOptions?.validate()
             try self.resourcePoolOptions?.validate()
@@ -7549,6 +7715,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.compensateWithOnDemand != nil {
                 map["compensate_with_on_demand"] = self.compensateWithOnDemand!
+            }
+            if self.cpuOptions != nil {
+                map["cpu_options"] = self.cpuOptions?.toMap()
             }
             if self.dataDisks != nil {
                 var tmp : [Any] = []
@@ -7724,6 +7893,11 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if let value = dict["compensate_with_on_demand"] as? Bool {
                 self.compensateWithOnDemand = value
+            }
+            if let value = dict["cpu_options"] as? [String: Any?] {
+                var model = CreateClusterNodePoolRequest.ScalingGroup.CpuOptions()
+                model.fromMap(value)
+                self.cpuOptions = model
             }
             if let value = dict["data_disks"] as? [Any?] {
                 var tmp : [DataDisk] = []
@@ -11960,7 +12134,55 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class LoadBalancersConfig : Tea.TeaModel {
+            public var endpoint: String?
+
+            public var endpointType: String?
+
+            public var loadBalancerId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpoint != nil {
+                    map["endpoint"] = self.endpoint!
+                }
+                if self.endpointType != nil {
+                    map["endpoint_type"] = self.endpointType!
+                }
+                if self.loadBalancerId != nil {
+                    map["load_balancer_id"] = self.loadBalancerId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["endpoint"] as? String {
+                    self.endpoint = value
+                }
+                if let value = dict["endpoint_type"] as? String {
+                    self.endpointType = value
+                }
+                if let value = dict["load_balancer_id"] as? String {
+                    self.loadBalancerId = value
+                }
+            }
+        }
         public var internalDnsConfig: DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig.InternalDnsConfig?
+
+        public var loadBalancersConfig: [DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig.LoadBalancersConfig]?
 
         public override init() {
             super.init()
@@ -11980,6 +12202,13 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             if self.internalDnsConfig != nil {
                 map["internal_dns_config"] = self.internalDnsConfig?.toMap()
             }
+            if self.loadBalancersConfig != nil {
+                var tmp : [Any] = []
+                for k in self.loadBalancersConfig! {
+                    tmp.append(k.toMap())
+                }
+                map["load_balancers_config"] = tmp
+            }
             return map
         }
 
@@ -11989,6 +12218,19 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
                 var model = DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig.InternalDnsConfig()
                 model.fromMap(value)
                 self.internalDnsConfig = model
+            }
+            if let value = dict["load_balancers_config"] as? [Any?] {
+                var tmp : [DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig.LoadBalancersConfig] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig.LoadBalancersConfig()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.loadBalancersConfig = tmp
             }
         }
     }
@@ -13439,6 +13681,10 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
             public var autoRepairPolicyId: String?
 
+            public var maxParallelRepairingNodes: String?
+
+            public var maxUnhealthyNodesThreshold: String?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -13461,6 +13707,12 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 if self.autoRepairPolicyId != nil {
                     map["auto_repair_policy_id"] = self.autoRepairPolicyId!
                 }
+                if self.maxParallelRepairingNodes != nil {
+                    map["max_parallel_repairing_nodes"] = self.maxParallelRepairingNodes!
+                }
+                if self.maxUnhealthyNodesThreshold != nil {
+                    map["max_unhealthy_nodes_threshold"] = self.maxUnhealthyNodesThreshold!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -13474,6 +13726,12 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["auto_repair_policy_id"] as? String {
                     self.autoRepairPolicyId = value
+                }
+                if let value = dict["max_parallel_repairing_nodes"] as? String {
+                    self.maxParallelRepairingNodes = value
+                }
+                if let value = dict["max_unhealthy_nodes_threshold"] as? String {
+                    self.maxUnhealthyNodesThreshold = value
                 }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
@@ -13974,6 +14232,36 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
     }
     public class ScalingGroup : Tea.TeaModel {
+        public class CpuOptions : Tea.TeaModel {
+            public var nestedVirtualization: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nestedVirtualization != nil {
+                    map["nested_virtualization"] = self.nestedVirtualization!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["nested_virtualization"] as? String {
+                    self.nestedVirtualization = value
+                }
+            }
+        }
         public class PrivatePoolOptions : Tea.TeaModel {
             public var id: String?
 
@@ -14096,6 +14384,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var compensateWithOnDemand: Bool?
 
+        public var cpuOptions: DescribeClusterNodePoolDetailResponseBody.ScalingGroup.CpuOptions?
+
         public var dataDisks: [DataDisk]?
 
         public var deploymentsetId: String?
@@ -14202,6 +14492,7 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cpuOptions?.validate()
             try self.instanceMetadataOptions?.validate()
             try self.privatePoolOptions?.validate()
             try self.resourcePoolOptions?.validate()
@@ -14220,6 +14511,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.compensateWithOnDemand != nil {
                 map["compensate_with_on_demand"] = self.compensateWithOnDemand!
+            }
+            if self.cpuOptions != nil {
+                map["cpu_options"] = self.cpuOptions?.toMap()
             }
             if self.dataDisks != nil {
                 var tmp : [Any] = []
@@ -14401,6 +14695,11 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["compensate_with_on_demand"] as? Bool {
                 self.compensateWithOnDemand = value
+            }
+            if let value = dict["cpu_options"] as? [String: Any?] {
+                var model = DescribeClusterNodePoolDetailResponseBody.ScalingGroup.CpuOptions()
+                model.fromMap(value)
+                self.cpuOptions = model
             }
             if let value = dict["data_disks"] as? [Any?] {
                 var tmp : [DataDisk] = []
@@ -15444,6 +15743,10 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
                 public var autoRepairPolicyId: String?
 
+                public var maxParallelRepairingNodes: String?
+
+                public var maxUnhealthyNodesThreshold: String?
+
                 public var restartNode: Bool?
 
                 public override init() {
@@ -15466,6 +15769,12 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     if self.autoRepairPolicyId != nil {
                         map["auto_repair_policy_id"] = self.autoRepairPolicyId!
                     }
+                    if self.maxParallelRepairingNodes != nil {
+                        map["max_parallel_repairing_nodes"] = self.maxParallelRepairingNodes!
+                    }
+                    if self.maxUnhealthyNodesThreshold != nil {
+                        map["max_unhealthy_nodes_threshold"] = self.maxUnhealthyNodesThreshold!
+                    }
                     if self.restartNode != nil {
                         map["restart_node"] = self.restartNode!
                     }
@@ -15479,6 +15788,12 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["auto_repair_policy_id"] as? String {
                         self.autoRepairPolicyId = value
+                    }
+                    if let value = dict["max_parallel_repairing_nodes"] as? String {
+                        self.maxParallelRepairingNodes = value
+                    }
+                    if let value = dict["max_unhealthy_nodes_threshold"] as? String {
+                        self.maxUnhealthyNodesThreshold = value
                     }
                     if let value = dict["restart_node"] as? Bool {
                         self.restartNode = value
@@ -15979,6 +16294,36 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
         }
         public class ScalingGroup : Tea.TeaModel {
+            public class CpuOptions : Tea.TeaModel {
+                public var nestedVirtualization: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.nestedVirtualization != nil {
+                        map["nested_virtualization"] = self.nestedVirtualization!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["nested_virtualization"] as? String {
+                        self.nestedVirtualization = value
+                    }
+                }
+            }
             public class PrivatePoolOptions : Tea.TeaModel {
                 public var id: String?
 
@@ -16101,6 +16446,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var compensateWithOnDemand: Bool?
 
+            public var cpuOptions: DescribeClusterNodePoolsResponseBody.Nodepools.ScalingGroup.CpuOptions?
+
             public var dataDisks: [DataDisk]?
 
             public var deploymentsetId: String?
@@ -16205,6 +16552,7 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.cpuOptions?.validate()
                 try self.privatePoolOptions?.validate()
                 try self.resourcePoolOptions?.validate()
             }
@@ -16222,6 +16570,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if self.compensateWithOnDemand != nil {
                     map["compensate_with_on_demand"] = self.compensateWithOnDemand!
+                }
+                if self.cpuOptions != nil {
+                    map["cpu_options"] = self.cpuOptions?.toMap()
                 }
                 if self.dataDisks != nil {
                     var tmp : [Any] = []
@@ -16400,6 +16751,11 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["compensate_with_on_demand"] as? Bool {
                     self.compensateWithOnDemand = value
+                }
+                if let value = dict["cpu_options"] as? [String: Any?] {
+                    var model = DescribeClusterNodePoolsResponseBody.Nodepools.ScalingGroup.CpuOptions()
+                    model.fromMap(value)
+                    self.cpuOptions = model
                 }
                 if let value = dict["data_disks"] as? [Any?] {
                     var tmp : [DataDisk] = []
@@ -31226,7 +31582,47 @@ public class ModifyClusterRequest : Tea.TeaModel {
                 }
             }
         }
+        public class LoadBalancersConfig : Tea.TeaModel {
+            public var endpointType: String?
+
+            public var loadBalancerId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpointType != nil {
+                    map["endpoint_type"] = self.endpointType!
+                }
+                if self.loadBalancerId != nil {
+                    map["load_balancer_id"] = self.loadBalancerId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["endpoint_type"] as? String {
+                    self.endpointType = value
+                }
+                if let value = dict["load_balancer_id"] as? String {
+                    self.loadBalancerId = value
+                }
+            }
+        }
         public var internalDnsConfig: ModifyClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig?
+
+        public var loadBalancersConfig: [ModifyClusterRequest.ControlPlaneEndpointsConfig.LoadBalancersConfig]?
 
         public override init() {
             super.init()
@@ -31246,6 +31642,13 @@ public class ModifyClusterRequest : Tea.TeaModel {
             if self.internalDnsConfig != nil {
                 map["internal_dns_config"] = self.internalDnsConfig?.toMap()
             }
+            if self.loadBalancersConfig != nil {
+                var tmp : [Any] = []
+                for k in self.loadBalancersConfig! {
+                    tmp.append(k.toMap())
+                }
+                map["load_balancers_config"] = tmp
+            }
             return map
         }
 
@@ -31255,6 +31658,19 @@ public class ModifyClusterRequest : Tea.TeaModel {
                 var model = ModifyClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig()
                 model.fromMap(value)
                 self.internalDnsConfig = model
+            }
+            if let value = dict["load_balancers_config"] as? [Any?] {
+                var tmp : [ModifyClusterRequest.ControlPlaneEndpointsConfig.LoadBalancersConfig] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyClusterRequest.ControlPlaneEndpointsConfig.LoadBalancersConfig()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.loadBalancersConfig = tmp
             }
         }
     }
@@ -31375,6 +31791,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var apiServerEipId: String?
 
+    public var clientToken: String?
+
     public var clusterName: String?
 
     public var clusterSpec: String?
@@ -31438,6 +31856,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if self.apiServerEipId != nil {
             map["api_server_eip_id"] = self.apiServerEipId!
+        }
+        if self.clientToken != nil {
+            map["client_token"] = self.clientToken!
         }
         if self.clusterName != nil {
             map["cluster_name"] = self.clusterName!
@@ -31505,6 +31926,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if let value = dict["api_server_eip_id"] as? String {
             self.apiServerEipId = value
+        }
+        if let value = dict["client_token"] as? String {
+            self.clientToken = value
         }
         if let value = dict["cluster_name"] as? String {
             self.clusterName = value
@@ -31979,6 +32403,10 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
             public var autoRepairPolicyId: String?
 
+            public var maxParallelRepairingNodes: String?
+
+            public var maxUnhealthyNodesThreshold: String?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -32001,6 +32429,12 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 if self.autoRepairPolicyId != nil {
                     map["auto_repair_policy_id"] = self.autoRepairPolicyId!
                 }
+                if self.maxParallelRepairingNodes != nil {
+                    map["max_parallel_repairing_nodes"] = self.maxParallelRepairingNodes!
+                }
+                if self.maxUnhealthyNodesThreshold != nil {
+                    map["max_unhealthy_nodes_threshold"] = self.maxUnhealthyNodesThreshold!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -32014,6 +32448,12 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 }
                 if let value = dict["auto_repair_policy_id"] as? String {
                     self.autoRepairPolicyId = value
+                }
+                if let value = dict["max_parallel_repairing_nodes"] as? String {
+                    self.maxParallelRepairingNodes = value
+                }
+                if let value = dict["max_unhealthy_nodes_threshold"] as? String {
+                    self.maxUnhealthyNodesThreshold = value
                 }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
