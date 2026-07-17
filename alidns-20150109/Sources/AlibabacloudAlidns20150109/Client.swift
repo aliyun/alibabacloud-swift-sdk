@@ -2192,6 +2192,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAtiAgentRegisterInfoMarketWithOptions(_ request: DescribeAtiAgentRegisterInfoMarketRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAtiAgentRegisterInfoMarketResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentHost)) {
+            query["AgentHost"] = request.agentHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentVersion)) {
+            query["AgentVersion"] = request.agentVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeAtiAgentRegisterInfoMarket",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAtiAgentRegisterInfoMarketResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAtiAgentRegisterInfoMarket(_ request: DescribeAtiAgentRegisterInfoMarketRequest) async throws -> DescribeAtiAgentRegisterInfoMarketResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeAtiAgentRegisterInfoMarketWithOptions(request as! DescribeAtiAgentRegisterInfoMarketRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeAtiAlertSettingsWithOptions(_ request: DescribeAtiAlertSettingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAtiAlertSettingsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
