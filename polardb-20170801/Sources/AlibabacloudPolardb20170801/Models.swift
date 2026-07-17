@@ -35006,6 +35006,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public class Endpoints : Tea.TeaModel {
         public var description_: String?
 
+        public var domain: String?
+
         public var endpointId: String?
 
         public var IP: String?
@@ -35033,6 +35035,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
             if self.endpointId != nil {
                 map["EndpointId"] = self.endpointId!
             }
@@ -35055,6 +35060,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["Domain"] as? String {
+                self.domain = value
             }
             if let value = dict["EndpointId"] as? String {
                 self.endpointId = value
@@ -107630,6 +107638,214 @@ public class RestartDBNodeZonalResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RestartDBNodeZonalResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RestartPolarClawGatewayRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var mode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+    }
+}
+
+public class RestartPolarClawGatewayResponseBody : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var code: Int32?
+
+    public var downtimeMs: Int64?
+
+    public var gatewayVersion: String?
+
+    public var message: String?
+
+    public var mode: String?
+
+    public var ok: Bool?
+
+    public var operation: String?
+
+    public var requestId: String?
+
+    public var restarted: Bool?
+
+    public var state: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.downtimeMs != nil {
+            map["DowntimeMs"] = self.downtimeMs!
+        }
+        if self.gatewayVersion != nil {
+            map["GatewayVersion"] = self.gatewayVersion!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.ok != nil {
+            map["Ok"] = self.ok!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.restarted != nil {
+            map["Restarted"] = self.restarted!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["DowntimeMs"] as? Int64 {
+            self.downtimeMs = value
+        }
+        if let value = dict["GatewayVersion"] as? String {
+            self.gatewayVersion = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["Ok"] as? Bool {
+            self.ok = value
+        }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Restarted"] as? Bool {
+            self.restarted = value
+        }
+        if let value = dict["State"] as? String {
+            self.state = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class RestartPolarClawGatewayResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RestartPolarClawGatewayResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RestartPolarClawGatewayResponseBody()
             model.fromMap(value)
             self.body = model
         }
