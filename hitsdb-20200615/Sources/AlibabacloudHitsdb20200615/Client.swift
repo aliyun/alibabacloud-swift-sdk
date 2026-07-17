@@ -9,6 +9,30 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "hitsdb.us-west-1.aliyuncs.com",
+            "us-east-1": "hitsdb.us-east-1.aliyuncs.com",
+            "eu-west-1": "hitsdb.eu-west-1.aliyuncs.com",
+            "eu-central-1": "hitsdb.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "hitsdb.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "hitsdb.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen-finance-1": "hitsdb.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-shenzhen": "hitsdb.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "hitsdb.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "hitsdb.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "hitsdb.cn-qingdao.aliyuncs.com",
+            "cn-north-2-gov-1": "hitsdb.cn-north-2-gov-1.aliyuncs.com",
+            "cn-huhehaote": "hitsdb.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "hitsdb.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou-finance": "hitsdb.cn-hangzhou-finance.aliyuncs.com",
+            "cn-hangzhou": "hitsdb.cn-hangzhou.aliyuncs.com",
+            "cn-chengdu": "hitsdb.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "hitsdb.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "hitsdb.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "hitsdb.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "hitsdb.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "hitsdb.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("hitsdb", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1220,6 +1244,113 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getComputeEngineJobDetailWithOptions(_ request: GetComputeEngineJobDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetComputeEngineJobDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetComputeEngineJobDetail",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetComputeEngineJobDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getComputeEngineJobDetail(_ request: GetComputeEngineJobDetailRequest) async throws -> GetComputeEngineJobDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getComputeEngineJobDetailWithOptions(request as! GetComputeEngineJobDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getComputeEngineJobLogWithOptions(_ request: GetComputeEngineJobLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetComputeEngineJobLogResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetComputeEngineJobLog",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetComputeEngineJobLogResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getComputeEngineJobLog(_ request: GetComputeEngineJobLogRequest) async throws -> GetComputeEngineJobLogResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getComputeEngineJobLogWithOptions(request as! GetComputeEngineJobLogRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getEngineDefaultAuthWithOptions(_ request: GetEngineDefaultAuthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEngineDefaultAuthResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2317,6 +2448,79 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAutoScalingRules(_ request: ListAutoScalingRulesRequest) async throws -> ListAutoScalingRulesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listAutoScalingRulesWithOptions(request as! ListAutoScalingRulesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listComputeEngineJobWithOptions(_ request: ListComputeEngineJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListComputeEngineJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computeGroup)) {
+            query["ComputeGroup"] = request.computeGroup ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobName)) {
+            query["JobName"] = request.jobName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.state)) {
+            query["State"] = request.state ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListComputeEngineJob",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListComputeEngineJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listComputeEngineJob(_ request: ListComputeEngineJobRequest) async throws -> ListComputeEngineJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listComputeEngineJobWithOptions(request as! ListComputeEngineJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
