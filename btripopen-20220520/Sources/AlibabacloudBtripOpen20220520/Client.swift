@@ -12314,6 +12314,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ruleName)) {
             query["rule_name"] = request.ruleName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["user_id"] = request.userId ?? "";
+        }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
