@@ -920,6 +920,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func videoTranslationWithOptions(_ tmpReq: VideoTranslationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VideoTranslationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: VideoTranslationShrinkRequest = VideoTranslationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.capabilities)) {
+            request.capabilitiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.capabilities, "Capabilities", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.capabilitiesShrink)) {
+            body["Capabilities"] = request.capabilitiesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            body["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoUrl)) {
+            body["VideoUrl"] = request.videoUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VideoTranslation",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VideoTranslationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func videoTranslation(_ request: VideoTranslationRequest) async throws -> VideoTranslationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await videoTranslationWithOptions(request as! VideoTranslationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func visionFlowWithOptions(_ tmpReq: VisionFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VisionFlowResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: VisionFlowShrinkRequest = VisionFlowShrinkRequest([:])

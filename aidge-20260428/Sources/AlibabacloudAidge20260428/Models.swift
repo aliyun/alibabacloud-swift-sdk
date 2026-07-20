@@ -6017,6 +6017,262 @@ public class TextTranslateResponse : Tea.TeaModel {
     }
 }
 
+public class VideoTranslationRequest : Tea.TeaModel {
+    public var capabilities: [String]?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var videoUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.capabilities != nil {
+            map["Capabilities"] = self.capabilities!
+        }
+        if self.sourceLanguage != nil {
+            map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["TargetLanguage"] = self.targetLanguage!
+        }
+        if self.videoUrl != nil {
+            map["VideoUrl"] = self.videoUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Capabilities"] as? [String] {
+            self.capabilities = value
+        }
+        if let value = dict["SourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["TargetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["VideoUrl"] as? String {
+            self.videoUrl = value
+        }
+    }
+}
+
+public class VideoTranslationShrinkRequest : Tea.TeaModel {
+    public var capabilitiesShrink: String?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var videoUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.capabilitiesShrink != nil {
+            map["Capabilities"] = self.capabilitiesShrink!
+        }
+        if self.sourceLanguage != nil {
+            map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["TargetLanguage"] = self.targetLanguage!
+        }
+        if self.videoUrl != nil {
+            map["VideoUrl"] = self.videoUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Capabilities"] as? String {
+            self.capabilitiesShrink = value
+        }
+        if let value = dict["SourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["TargetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["VideoUrl"] as? String {
+            self.videoUrl = value
+        }
+    }
+}
+
+public class VideoTranslationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: VideoTranslationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = VideoTranslationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class VideoTranslationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VideoTranslationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = VideoTranslationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class VisionFlowRequest : Tea.TeaModel {
     public var ability: [Int32]?
 
