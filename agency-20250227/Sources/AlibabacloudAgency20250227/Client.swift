@@ -83,6 +83,163 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteCreateWithOptions(_ request: CustomerNoteCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CustomerNoteCreateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactInformation)) {
+            body["ContactInformation"] = request.contactInformation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            body["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerName)) {
+            body["CustomerName"] = request.customerName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerUid)) {
+            body["CustomerUid"] = request.customerUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noteContent)) {
+            body["NoteContent"] = request.noteContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.touchDate)) {
+            body["TouchDate"] = request.touchDate!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CustomerNoteCreate",
+            "version": "2025-02-27",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CustomerNoteCreateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteCreate(_ request: CustomerNoteCreateRequest) async throws -> CustomerNoteCreateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await customerNoteCreateWithOptions(request as! CustomerNoteCreateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteEditWithOptions(_ request: CustomerNoteEditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CustomerNoteEditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactInformation)) {
+            body["ContactInformation"] = request.contactInformation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            body["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noteContent)) {
+            body["NoteContent"] = request.noteContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noteId)) {
+            body["NoteId"] = request.noteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.touchDate)) {
+            body["TouchDate"] = request.touchDate!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CustomerNoteEdit",
+            "version": "2025-02-27",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CustomerNoteEditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteEdit(_ request: CustomerNoteEditRequest) async throws -> CustomerNoteEditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await customerNoteEditWithOptions(request as! CustomerNoteEditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteListWithOptions(_ request: CustomerNoteListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CustomerNoteListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customerUid)) {
+            body["CustomerUid"] = request.customerUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            body["PageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CustomerNoteList",
+            "version": "2025-02-27",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CustomerNoteListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteList(_ request: CustomerNoteListRequest) async throws -> CustomerNoteListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await customerNoteListWithOptions(request as! CustomerNoteListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteListDetailWithOptions(_ request: CustomerNoteListDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CustomerNoteListDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.noteId)) {
+            body["NoteId"] = request.noteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CustomerNoteListDetail",
+            "version": "2025-02-27",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CustomerNoteListDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func customerNoteListDetail(_ request: CustomerNoteListDetailRequest) async throws -> CustomerNoteListDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await customerNoteListDetailWithOptions(request as! CustomerNoteListDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getBillDetailFileListWithOptions(_ request: GetBillDetailFileListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBillDetailFileListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
