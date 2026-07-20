@@ -16449,6 +16449,78 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRoutineBuildConfigurationWithOptions(_ tmpReq: UpdateRoutineBuildConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRoutineBuildConfigurationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateRoutineBuildConfigurationShrinkRequest = UpdateRoutineBuildConfigurationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.environmentVariables)) {
+            request.environmentVariablesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.environmentVariables, "EnvironmentVariables", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assetsDirectory)) {
+            query["AssetsDirectory"] = request.assetsDirectory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildBranches)) {
+            query["BuildBranches"] = request.buildBranches ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildCommand)) {
+            query["BuildCommand"] = request.buildCommand ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentVariablesShrink)) {
+            query["EnvironmentVariables"] = request.environmentVariablesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gitAccountId)) {
+            query["GitAccountId"] = request.gitAccountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.installCommand)) {
+            query["InstallCommand"] = request.installCommand ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isPrivate)) {
+            query["IsPrivate"] = request.isPrivate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeVersion)) {
+            query["NodeVersion"] = request.nodeVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productionBranch)) {
+            query["ProductionBranch"] = request.productionBranch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repository)) {
+            query["Repository"] = request.repository ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rootDirectory)) {
+            query["RootDirectory"] = request.rootDirectory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routineEntry)) {
+            query["RoutineEntry"] = request.routineEntry ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routineName)) {
+            query["RoutineName"] = request.routineName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateRoutineBuildConfiguration",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateRoutineBuildConfigurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRoutineBuildConfiguration(_ request: UpdateRoutineBuildConfigurationRequest) async throws -> UpdateRoutineBuildConfigurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateRoutineBuildConfigurationWithOptions(request as! UpdateRoutineBuildConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateRoutineConfigDescriptionWithOptions(_ request: UpdateRoutineConfigDescriptionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRoutineConfigDescriptionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

@@ -106222,6 +106222,341 @@ public class UpdateRewriteUrlRuleResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateRoutineBuildConfigurationRequest : Tea.TeaModel {
+    public var assetsDirectory: String?
+
+    public var buildBranches: String?
+
+    public var buildCommand: String?
+
+    public var environmentVariables: [String: String]?
+
+    public var gitAccountId: Int64?
+
+    public var installCommand: String?
+
+    public var isPrivate: Bool?
+
+    public var nodeVersion: String?
+
+    public var productionBranch: String?
+
+    public var repository: String?
+
+    public var rootDirectory: String?
+
+    public var routineEntry: String?
+
+    public var routineName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.assetsDirectory != nil {
+            map["AssetsDirectory"] = self.assetsDirectory!
+        }
+        if self.buildBranches != nil {
+            map["BuildBranches"] = self.buildBranches!
+        }
+        if self.buildCommand != nil {
+            map["BuildCommand"] = self.buildCommand!
+        }
+        if self.environmentVariables != nil {
+            map["EnvironmentVariables"] = self.environmentVariables!
+        }
+        if self.gitAccountId != nil {
+            map["GitAccountId"] = self.gitAccountId!
+        }
+        if self.installCommand != nil {
+            map["InstallCommand"] = self.installCommand!
+        }
+        if self.isPrivate != nil {
+            map["IsPrivate"] = self.isPrivate!
+        }
+        if self.nodeVersion != nil {
+            map["NodeVersion"] = self.nodeVersion!
+        }
+        if self.productionBranch != nil {
+            map["ProductionBranch"] = self.productionBranch!
+        }
+        if self.repository != nil {
+            map["Repository"] = self.repository!
+        }
+        if self.rootDirectory != nil {
+            map["RootDirectory"] = self.rootDirectory!
+        }
+        if self.routineEntry != nil {
+            map["RoutineEntry"] = self.routineEntry!
+        }
+        if self.routineName != nil {
+            map["RoutineName"] = self.routineName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetsDirectory"] as? String {
+            self.assetsDirectory = value
+        }
+        if let value = dict["BuildBranches"] as? String {
+            self.buildBranches = value
+        }
+        if let value = dict["BuildCommand"] as? String {
+            self.buildCommand = value
+        }
+        if let value = dict["EnvironmentVariables"] as? [String: String] {
+            self.environmentVariables = value
+        }
+        if let value = dict["GitAccountId"] as? Int64 {
+            self.gitAccountId = value
+        }
+        if let value = dict["InstallCommand"] as? String {
+            self.installCommand = value
+        }
+        if let value = dict["IsPrivate"] as? Bool {
+            self.isPrivate = value
+        }
+        if let value = dict["NodeVersion"] as? String {
+            self.nodeVersion = value
+        }
+        if let value = dict["ProductionBranch"] as? String {
+            self.productionBranch = value
+        }
+        if let value = dict["Repository"] as? String {
+            self.repository = value
+        }
+        if let value = dict["RootDirectory"] as? String {
+            self.rootDirectory = value
+        }
+        if let value = dict["RoutineEntry"] as? String {
+            self.routineEntry = value
+        }
+        if let value = dict["RoutineName"] as? String {
+            self.routineName = value
+        }
+    }
+}
+
+public class UpdateRoutineBuildConfigurationShrinkRequest : Tea.TeaModel {
+    public var assetsDirectory: String?
+
+    public var buildBranches: String?
+
+    public var buildCommand: String?
+
+    public var environmentVariablesShrink: String?
+
+    public var gitAccountId: Int64?
+
+    public var installCommand: String?
+
+    public var isPrivate: Bool?
+
+    public var nodeVersion: String?
+
+    public var productionBranch: String?
+
+    public var repository: String?
+
+    public var rootDirectory: String?
+
+    public var routineEntry: String?
+
+    public var routineName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.assetsDirectory != nil {
+            map["AssetsDirectory"] = self.assetsDirectory!
+        }
+        if self.buildBranches != nil {
+            map["BuildBranches"] = self.buildBranches!
+        }
+        if self.buildCommand != nil {
+            map["BuildCommand"] = self.buildCommand!
+        }
+        if self.environmentVariablesShrink != nil {
+            map["EnvironmentVariables"] = self.environmentVariablesShrink!
+        }
+        if self.gitAccountId != nil {
+            map["GitAccountId"] = self.gitAccountId!
+        }
+        if self.installCommand != nil {
+            map["InstallCommand"] = self.installCommand!
+        }
+        if self.isPrivate != nil {
+            map["IsPrivate"] = self.isPrivate!
+        }
+        if self.nodeVersion != nil {
+            map["NodeVersion"] = self.nodeVersion!
+        }
+        if self.productionBranch != nil {
+            map["ProductionBranch"] = self.productionBranch!
+        }
+        if self.repository != nil {
+            map["Repository"] = self.repository!
+        }
+        if self.rootDirectory != nil {
+            map["RootDirectory"] = self.rootDirectory!
+        }
+        if self.routineEntry != nil {
+            map["RoutineEntry"] = self.routineEntry!
+        }
+        if self.routineName != nil {
+            map["RoutineName"] = self.routineName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetsDirectory"] as? String {
+            self.assetsDirectory = value
+        }
+        if let value = dict["BuildBranches"] as? String {
+            self.buildBranches = value
+        }
+        if let value = dict["BuildCommand"] as? String {
+            self.buildCommand = value
+        }
+        if let value = dict["EnvironmentVariables"] as? String {
+            self.environmentVariablesShrink = value
+        }
+        if let value = dict["GitAccountId"] as? Int64 {
+            self.gitAccountId = value
+        }
+        if let value = dict["InstallCommand"] as? String {
+            self.installCommand = value
+        }
+        if let value = dict["IsPrivate"] as? Bool {
+            self.isPrivate = value
+        }
+        if let value = dict["NodeVersion"] as? String {
+            self.nodeVersion = value
+        }
+        if let value = dict["ProductionBranch"] as? String {
+            self.productionBranch = value
+        }
+        if let value = dict["Repository"] as? String {
+            self.repository = value
+        }
+        if let value = dict["RootDirectory"] as? String {
+            self.rootDirectory = value
+        }
+        if let value = dict["RoutineEntry"] as? String {
+            self.routineEntry = value
+        }
+        if let value = dict["RoutineName"] as? String {
+            self.routineName = value
+        }
+    }
+}
+
+public class UpdateRoutineBuildConfigurationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRoutineBuildConfigurationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRoutineBuildConfigurationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRoutineBuildConfigurationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateRoutineConfigDescriptionRequest : Tea.TeaModel {
     public var description_: String?
 
