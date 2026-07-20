@@ -77,6 +77,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func assignRbacUserRoleWithOptions(_ request: AssignRbacUserRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssignRbacUserRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userRoleData)) {
+            query["UserRoleData"] = request.userRoleData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AssignRbacUserRole",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AssignRbacUserRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func assignRbacUserRole(_ request: AssignRbacUserRoleRequest) async throws -> AssignRbacUserRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await assignRbacUserRoleWithOptions(request as! AssignRbacUserRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func authorizeAppProxyOpsWithOptions(_ request: AuthorizeAppProxyOpsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AuthorizeAppProxyOpsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1004,6 +1038,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRbacOrgUnitWithOptions(_ request: CreateRbacOrgUnitRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRbacOrgUnitResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgUnitData)) {
+            query["OrgUnitData"] = request.orgUnitData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateRbacOrgUnit",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateRbacOrgUnitResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRbacOrgUnit(_ request: CreateRbacOrgUnitRequest) async throws -> CreateRbacOrgUnitResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createRbacOrgUnitWithOptions(request as! CreateRbacOrgUnitRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRbacPermissionWithOptions(_ request: CreateRbacPermissionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRbacPermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.permissionData)) {
+            query["PermissionData"] = request.permissionData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateRbacPermission",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateRbacPermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRbacPermission(_ request: CreateRbacPermissionRequest) async throws -> CreateRbacPermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createRbacPermissionWithOptions(request as! CreateRbacPermissionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createRbacRoleWithOptions(_ request: CreateRbacRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRbacRoleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1309,6 +1411,74 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMaterialTask(_ request: DeleteMaterialTaskRequest) async throws -> DeleteMaterialTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteMaterialTaskWithOptions(request as! DeleteMaterialTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRbacOrgUnitWithOptions(_ request: DeleteRbacOrgUnitRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRbacOrgUnitResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgUnitId)) {
+            query["OrgUnitId"] = request.orgUnitId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRbacOrgUnit",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRbacOrgUnitResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRbacOrgUnit(_ request: DeleteRbacOrgUnitRequest) async throws -> DeleteRbacOrgUnitResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteRbacOrgUnitWithOptions(request as! DeleteRbacOrgUnitRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRbacPermissionWithOptions(_ request: DeleteRbacPermissionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRbacPermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.permissionId)) {
+            query["PermissionId"] = request.permissionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRbacPermission",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRbacPermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRbacPermission(_ request: DeleteRbacPermissionRequest) async throws -> DeleteRbacPermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteRbacPermissionWithOptions(request as! DeleteRbacPermissionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4939,6 +5109,132 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRbacRoleWithOptions(_ request: QueryRbacRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryRbacRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            query["RoleId"] = request.roleId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryRbacRole",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryRbacRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRbacRole(_ request: QueryRbacRoleRequest) async throws -> QueryRbacRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryRbacRoleWithOptions(request as! QueryRbacRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRbacRolePermissionsWithOptions(_ request: QueryRbacRolePermissionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryRbacRolePermissionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderColumn)) {
+            query["OrderColumn"] = request.orderColumn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderType)) {
+            query["OrderType"] = request.orderType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["PageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            query["RoleId"] = request.roleId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryRbacRolePermissions",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryRbacRolePermissionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRbacRolePermissions(_ request: QueryRbacRolePermissionsRequest) async throws -> QueryRbacRolePermissionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryRbacRolePermissionsWithOptions(request as! QueryRbacRolePermissionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRbacUserRolesWithOptions(_ request: QueryRbacUserRolesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryRbacUserRolesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationUserId)) {
+            query["ApplicationUserId"] = request.applicationUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderColumn)) {
+            query["OrderColumn"] = request.orderColumn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderType)) {
+            query["OrderType"] = request.orderType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["PageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryRbacUserRoles",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryRbacUserRolesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRbacUserRoles(_ request: QueryRbacUserRolesRequest) async throws -> QueryRbacUserRolesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryRbacUserRolesWithOptions(request as! QueryRbacUserRolesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func querySupabaseAuthConfigsForAdminWithOptions(_ request: QuerySupabaseAuthConfigsForAdminRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySupabaseAuthConfigsForAdminResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5314,6 +5610,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func renewAppSandbox(_ request: RenewAppSandboxRequest) async throws -> RenewAppSandboxResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await renewAppSandboxWithOptions(request as! RenewAppSandboxRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeRbacUserRoleWithOptions(_ request: RevokeRbacUserRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeRbacUserRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userRoleData)) {
+            query["UserRoleData"] = request.userRoleData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeRbacUserRole",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeRbacUserRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeRbacUserRole(_ request: RevokeRbacUserRoleRequest) async throws -> RevokeRbacUserRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await revokeRbacUserRoleWithOptions(request as! RevokeRbacUserRoleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6157,6 +6487,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateMiniAppBinding(_ request: UpdateMiniAppBindingRequest) async throws -> UpdateMiniAppBindingResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateMiniAppBindingWithOptions(request as! UpdateMiniAppBindingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRbacOrgUnitWithOptions(_ request: UpdateRbacOrgUnitRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRbacOrgUnitResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgUnitData)) {
+            query["OrgUnitData"] = request.orgUnitData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgUnitId)) {
+            query["OrgUnitId"] = request.orgUnitId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateRbacOrgUnit",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateRbacOrgUnitResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRbacOrgUnit(_ request: UpdateRbacOrgUnitRequest) async throws -> UpdateRbacOrgUnitResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateRbacOrgUnitWithOptions(request as! UpdateRbacOrgUnitRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
