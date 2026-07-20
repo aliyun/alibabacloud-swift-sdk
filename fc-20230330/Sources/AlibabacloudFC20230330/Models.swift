@@ -1434,6 +1434,8 @@ public class CreateLayerVersionInput : Tea.TeaModel {
 }
 
 public class CreateSessionInput : Tea.TeaModel {
+    public var allowInternetAccess: Bool?
+
     public var disableSessionIdReuse: Bool?
 
     public var enableAutoPause: Bool?
@@ -1443,6 +1445,8 @@ public class CreateSessionInput : Tea.TeaModel {
     public var juiceFsConfig: JuiceFsConfig?
 
     public var nasConfig: NASConfig?
+
+    public var network: CreateSessionNetworkConfig?
 
     public var ossMountConfig: OSSMountConfig?
 
@@ -1466,12 +1470,16 @@ public class CreateSessionInput : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.juiceFsConfig?.validate()
         try self.nasConfig?.validate()
+        try self.network?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowInternetAccess != nil {
+            map["allowInternetAccess"] = self.allowInternetAccess!
+        }
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
         }
@@ -1486,6 +1494,9 @@ public class CreateSessionInput : Tea.TeaModel {
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
+        }
+        if self.network != nil {
+            map["network"] = self.network?.toMap()
         }
         if self.ossMountConfig != nil {
             map["ossMountConfig"] = self.ossMountConfig?.toMap()
@@ -1507,6 +1518,9 @@ public class CreateSessionInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["allowInternetAccess"] as? Bool {
+            self.allowInternetAccess = value
+        }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
         }
@@ -1526,6 +1540,11 @@ public class CreateSessionInput : Tea.TeaModel {
             model.fromMap(value)
             self.nasConfig = model
         }
+        if let value = dict["network"] as? [String: Any?] {
+            var model = CreateSessionNetworkConfig()
+            model.fromMap(value)
+            self.network = model
+        }
         if let value = dict["ossMountConfig"] as? [String: Any?] {
             var model = OSSMountConfig()
             model.fromMap(value)
@@ -1544,6 +1563,61 @@ public class CreateSessionInput : Tea.TeaModel {
         }
         if let value = dict["sessionTTLInSeconds"] as? Int64 {
             self.sessionTTLInSeconds = value
+        }
+    }
+}
+
+public class CreateSessionNetworkConfig : Tea.TeaModel {
+    public var allowOut: [String]?
+
+    public var allowPublicTraffic: Bool?
+
+    public var denyOut: [String]?
+
+    public var maskRequestHost: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowOut != nil {
+            map["allowOut"] = self.allowOut!
+        }
+        if self.allowPublicTraffic != nil {
+            map["allowPublicTraffic"] = self.allowPublicTraffic!
+        }
+        if self.denyOut != nil {
+            map["denyOut"] = self.denyOut!
+        }
+        if self.maskRequestHost != nil {
+            map["maskRequestHost"] = self.maskRequestHost!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["allowOut"] as? [String] {
+            self.allowOut = value
+        }
+        if let value = dict["allowPublicTraffic"] as? Bool {
+            self.allowPublicTraffic = value
+        }
+        if let value = dict["denyOut"] as? [String] {
+            self.denyOut = value
+        }
+        if let value = dict["maskRequestHost"] as? String {
+            self.maskRequestHost = value
         }
     }
 }
@@ -8448,6 +8522,8 @@ public class ScheduledPolicy : Tea.TeaModel {
 }
 
 public class Session : Tea.TeaModel {
+    public var allowInternetAccess: Bool?
+
     public var containerId: String?
 
     public var createdTime: String?
@@ -8466,6 +8542,8 @@ public class Session : Tea.TeaModel {
 
     public var nasConfig: NASConfig?
 
+    public var network: CreateSessionNetworkConfig?
+
     public var ossMountConfig: OSSMountConfig?
 
     public var polarFsConfig: PolarFsConfig?
@@ -8482,6 +8560,8 @@ public class Session : Tea.TeaModel {
 
     public var sessionTTLInSeconds: Int64?
 
+    public var trafficAccessToken: String?
+
     public override init() {
         super.init()
     }
@@ -8494,12 +8574,16 @@ public class Session : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.juiceFsConfig?.validate()
         try self.nasConfig?.validate()
+        try self.network?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowInternetAccess != nil {
+            map["allowInternetAccess"] = self.allowInternetAccess!
+        }
         if self.containerId != nil {
             map["containerId"] = self.containerId!
         }
@@ -8527,6 +8611,9 @@ public class Session : Tea.TeaModel {
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
         }
+        if self.network != nil {
+            map["network"] = self.network?.toMap()
+        }
         if self.ossMountConfig != nil {
             map["ossMountConfig"] = self.ossMountConfig?.toMap()
         }
@@ -8551,11 +8638,17 @@ public class Session : Tea.TeaModel {
         if self.sessionTTLInSeconds != nil {
             map["sessionTTLInSeconds"] = self.sessionTTLInSeconds!
         }
+        if self.trafficAccessToken != nil {
+            map["trafficAccessToken"] = self.trafficAccessToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["allowInternetAccess"] as? Bool {
+            self.allowInternetAccess = value
+        }
         if let value = dict["containerId"] as? String {
             self.containerId = value
         }
@@ -8587,6 +8680,11 @@ public class Session : Tea.TeaModel {
             model.fromMap(value)
             self.nasConfig = model
         }
+        if let value = dict["network"] as? [String: Any?] {
+            var model = CreateSessionNetworkConfig()
+            model.fromMap(value)
+            self.network = model
+        }
         if let value = dict["ossMountConfig"] as? [String: Any?] {
             var model = OSSMountConfig()
             model.fromMap(value)
@@ -8614,6 +8712,9 @@ public class Session : Tea.TeaModel {
         }
         if let value = dict["sessionTTLInSeconds"] as? Int64 {
             self.sessionTTLInSeconds = value
+        }
+        if let value = dict["trafficAccessToken"] as? String {
+            self.trafficAccessToken = value
         }
     }
 }
@@ -10352,6 +10453,8 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
 }
 
 public class UpdateSessionInput : Tea.TeaModel {
+    public var allowInternetAccess: Bool?
+
     public var disableSessionIdReuse: Bool?
 
     public var enableAutoPause: Bool?
@@ -10361,6 +10464,8 @@ public class UpdateSessionInput : Tea.TeaModel {
     public var juiceFsConfig: JuiceFsConfig?
 
     public var nasConfig: NASConfig?
+
+    public var network: UpdateSessionNetworkConfig?
 
     public var ossMountConfig: OSSMountConfig?
 
@@ -10382,12 +10487,16 @@ public class UpdateSessionInput : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.juiceFsConfig?.validate()
         try self.nasConfig?.validate()
+        try self.network?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowInternetAccess != nil {
+            map["allowInternetAccess"] = self.allowInternetAccess!
+        }
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
         }
@@ -10402,6 +10511,9 @@ public class UpdateSessionInput : Tea.TeaModel {
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
+        }
+        if self.network != nil {
+            map["network"] = self.network?.toMap()
         }
         if self.ossMountConfig != nil {
             map["ossMountConfig"] = self.ossMountConfig?.toMap()
@@ -10420,6 +10532,9 @@ public class UpdateSessionInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["allowInternetAccess"] as? Bool {
+            self.allowInternetAccess = value
+        }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
         }
@@ -10439,6 +10554,11 @@ public class UpdateSessionInput : Tea.TeaModel {
             model.fromMap(value)
             self.nasConfig = model
         }
+        if let value = dict["network"] as? [String: Any?] {
+            var model = UpdateSessionNetworkConfig()
+            model.fromMap(value)
+            self.network = model
+        }
         if let value = dict["ossMountConfig"] as? [String: Any?] {
             var model = OSSMountConfig()
             model.fromMap(value)
@@ -10454,6 +10574,45 @@ public class UpdateSessionInput : Tea.TeaModel {
         }
         if let value = dict["sessionTTLInSeconds"] as? Int64 {
             self.sessionTTLInSeconds = value
+        }
+    }
+}
+
+public class UpdateSessionNetworkConfig : Tea.TeaModel {
+    public var allowOut: [String]?
+
+    public var denyOut: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowOut != nil {
+            map["allowOut"] = self.allowOut!
+        }
+        if self.denyOut != nil {
+            map["denyOut"] = self.denyOut!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["allowOut"] as? [String] {
+            self.allowOut = value
+        }
+        if let value = dict["denyOut"] as? [String] {
+            self.denyOut = value
         }
     }
 }
