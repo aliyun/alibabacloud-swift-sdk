@@ -7711,6 +7711,16 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var fileTransferAddress: String?
 
+    public var fileTransferInSize: Int32?
+
+    public var fileTransferInUnit: String?
+
+    public var fileTransferOutSize: Int32?
+
+    public var fileTransferOutUnit: String?
+
+    public var fileTransferSizeLimit: String?
+
     public var fileTransferSpeed: String?
 
     public var fileTransferSpeedLocation: String?
@@ -8060,6 +8070,21 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.fileTransferAddress != nil {
             map["FileTransferAddress"] = self.fileTransferAddress!
+        }
+        if self.fileTransferInSize != nil {
+            map["FileTransferInSize"] = self.fileTransferInSize!
+        }
+        if self.fileTransferInUnit != nil {
+            map["FileTransferInUnit"] = self.fileTransferInUnit!
+        }
+        if self.fileTransferOutSize != nil {
+            map["FileTransferOutSize"] = self.fileTransferOutSize!
+        }
+        if self.fileTransferOutUnit != nil {
+            map["FileTransferOutUnit"] = self.fileTransferOutUnit!
+        }
+        if self.fileTransferSizeLimit != nil {
+            map["FileTransferSizeLimit"] = self.fileTransferSizeLimit!
         }
         if self.fileTransferSpeed != nil {
             map["FileTransferSpeed"] = self.fileTransferSpeed!
@@ -8546,6 +8571,21 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["FileTransferAddress"] as? String {
             self.fileTransferAddress = value
+        }
+        if let value = dict["FileTransferInSize"] as? Int32 {
+            self.fileTransferInSize = value
+        }
+        if let value = dict["FileTransferInUnit"] as? String {
+            self.fileTransferInUnit = value
+        }
+        if let value = dict["FileTransferOutSize"] as? Int32 {
+            self.fileTransferOutSize = value
+        }
+        if let value = dict["FileTransferOutUnit"] as? String {
+            self.fileTransferOutUnit = value
+        }
+        if let value = dict["FileTransferSizeLimit"] as? String {
+            self.fileTransferSizeLimit = value
         }
         if let value = dict["FileTransferSpeed"] as? String {
             self.fileTransferSpeed = value
@@ -23820,6 +23860,16 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var fileTransferAddress: String?
 
+        public var fileTransferInSize: String?
+
+        public var fileTransferInUnit: String?
+
+        public var fileTransferOutSize: String?
+
+        public var fileTransferOutUnit: String?
+
+        public var fileTransferSizeLimit: String?
+
         public var fileTransferSpeed: String?
 
         public var fileTransferSpeedLocation: String?
@@ -24185,6 +24235,21 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.fileTransferAddress != nil {
                 map["FileTransferAddress"] = self.fileTransferAddress!
+            }
+            if self.fileTransferInSize != nil {
+                map["FileTransferInSize"] = self.fileTransferInSize!
+            }
+            if self.fileTransferInUnit != nil {
+                map["FileTransferInUnit"] = self.fileTransferInUnit!
+            }
+            if self.fileTransferOutSize != nil {
+                map["FileTransferOutSize"] = self.fileTransferOutSize!
+            }
+            if self.fileTransferOutUnit != nil {
+                map["FileTransferOutUnit"] = self.fileTransferOutUnit!
+            }
+            if self.fileTransferSizeLimit != nil {
+                map["FileTransferSizeLimit"] = self.fileTransferSizeLimit!
             }
             if self.fileTransferSpeed != nil {
                 map["FileTransferSpeed"] = self.fileTransferSpeed!
@@ -24685,6 +24750,21 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["FileTransferAddress"] as? String {
                 self.fileTransferAddress = value
             }
+            if let value = dict["FileTransferInSize"] as? String {
+                self.fileTransferInSize = value
+            }
+            if let value = dict["FileTransferInUnit"] as? String {
+                self.fileTransferInUnit = value
+            }
+            if let value = dict["FileTransferOutSize"] as? String {
+                self.fileTransferOutSize = value
+            }
+            if let value = dict["FileTransferOutUnit"] as? String {
+                self.fileTransferOutUnit = value
+            }
+            if let value = dict["FileTransferSizeLimit"] as? String {
+                self.fileTransferSizeLimit = value
+            }
             if let value = dict["FileTransferSpeed"] as? String {
                 self.fileTransferSpeed = value
             }
@@ -25124,6 +25204,8 @@ public class DescribeClientEventsRequest : Tea.TeaModel {
 
     public var endUserId: String?
 
+    public var endUserIds: [String]?
+
     public var eventType: String?
 
     public var eventTypes: [String]?
@@ -25175,6 +25257,9 @@ public class DescribeClientEventsRequest : Tea.TeaModel {
         }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
+        }
+        if self.endUserIds != nil {
+            map["EndUserIds"] = self.endUserIds!
         }
         if self.eventType != nil {
             map["EventType"] = self.eventType!
@@ -25228,6 +25313,9 @@ public class DescribeClientEventsRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserId"] as? String {
             self.endUserId = value
+        }
+        if let value = dict["EndUserIds"] as? [String] {
+            self.endUserIds = value
         }
         if let value = dict["EventType"] as? String {
             self.eventType = value
@@ -25532,6 +25620,8 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var totalCount: Int32?
+
     public override init() {
         super.init()
     }
@@ -25559,6 +25649,9 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -25582,6 +25675,9 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
@@ -29368,6 +29464,8 @@ public class DescribeDesktopMetadataRequest : Tea.TeaModel {
 
     public var maxResults: Int32?
 
+    public var networkInterfaceIp: String?
+
     public var nextToken: String?
 
     public var officeSiteId: String?
@@ -29419,6 +29517,9 @@ public class DescribeDesktopMetadataRequest : Tea.TeaModel {
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
+        if self.networkInterfaceIp != nil {
+            map["NetworkInterfaceIp"] = self.networkInterfaceIp!
+        }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
@@ -29465,6 +29566,9 @@ public class DescribeDesktopMetadataRequest : Tea.TeaModel {
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
+        }
+        if let value = dict["NetworkInterfaceIp"] as? String {
+            self.networkInterfaceIp = value
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
@@ -30610,6 +30714,8 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
 
     public var endUserIdFilter: String?
 
+    public var endUserIds: [String]?
+
     public var fillHardwareInfo: Bool?
 
     public var language: String?
@@ -30661,6 +30767,9 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         }
         if self.endUserIdFilter != nil {
             map["EndUserIdFilter"] = self.endUserIdFilter!
+        }
+        if self.endUserIds != nil {
+            map["EndUserIds"] = self.endUserIds!
         }
         if self.fillHardwareInfo != nil {
             map["FillHardwareInfo"] = self.fillHardwareInfo!
@@ -30714,6 +30823,9 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserIdFilter"] as? String {
             self.endUserIdFilter = value
+        }
+        if let value = dict["EndUserIds"] as? [String] {
+            self.endUserIds = value
         }
         if let value = dict["FillHardwareInfo"] as? Bool {
             self.fillHardwareInfo = value
@@ -32559,6 +32671,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var imageId: String?
 
+        public var imageName: String?
+
         public var isLdap: Bool?
 
         public var managementFlag: String?
@@ -32612,6 +32726,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
         public var standardStartTime: String?
 
         public var startTime: String?
+
+        public var subnetId: String?
 
         public var supportHibernation: Bool?
 
@@ -32762,6 +32878,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
             }
+            if self.imageName != nil {
+                map["ImageName"] = self.imageName!
+            }
             if self.isLdap != nil {
                 map["IsLdap"] = self.isLdap!
             }
@@ -32850,6 +32969,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
+            }
+            if self.subnetId != nil {
+                map["SubnetId"] = self.subnetId!
             }
             if self.supportHibernation != nil {
                 map["SupportHibernation"] = self.supportHibernation!
@@ -33014,6 +33136,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
             }
+            if let value = dict["ImageName"] as? String {
+                self.imageName = value
+            }
             if let value = dict["IsLdap"] as? Bool {
                 self.isLdap = value
             }
@@ -33116,6 +33241,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
+            }
+            if let value = dict["SubnetId"] as? String {
+                self.subnetId = value
             }
             if let value = dict["SupportHibernation"] as? Bool {
                 self.supportHibernation = value
@@ -36769,6 +36897,8 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
 
     public var subPayType: String?
 
+    public var userNames: [String]?
+
     public override init() {
         super.init()
     }
@@ -36837,6 +36967,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         if self.subPayType != nil {
             map["SubPayType"] = self.subPayType!
         }
+        if self.userNames != nil {
+            map["UserNames"] = self.userNames!
+        }
         return map
     }
 
@@ -36895,6 +37028,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["SubPayType"] as? String {
             self.subPayType = value
+        }
+        if let value = dict["UserNames"] as? [String] {
+            self.userNames = value
         }
     }
 }
@@ -36981,6 +37117,8 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
 
         public var cpu: Int32?
 
+        public var creationTime: String?
+
         public var desktopGroupId: String?
 
         public var desktopGroupName: String?
@@ -37048,6 +37186,9 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
             }
             if self.cpu != nil {
                 map["Cpu"] = self.cpu!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
             }
             if self.desktopGroupId != nil {
                 map["DesktopGroupId"] = self.desktopGroupId!
@@ -37139,6 +37280,9 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Cpu"] as? Int32 {
                 self.cpu = value
+            }
+            if let value = dict["CreationTime"] as? String {
+                self.creationTime = value
             }
             if let value = dict["DesktopGroupId"] as? String {
                 self.desktopGroupId = value
@@ -39340,6 +39484,8 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
             public var invocationStatus: String?
 
+            public var jvsAgentId: String?
+
             public var output: String?
 
             public var repeats: Int32?
@@ -39391,6 +39537,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                 if self.invocationStatus != nil {
                     map["InvocationStatus"] = self.invocationStatus!
                 }
+                if self.jvsAgentId != nil {
+                    map["JvsAgentId"] = self.jvsAgentId!
+                }
                 if self.output != nil {
                     map["Output"] = self.output!
                 }
@@ -39438,6 +39587,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                 if let value = dict["InvocationStatus"] as? String {
                     self.invocationStatus = value
                 }
+                if let value = dict["JvsAgentId"] as? String {
+                    self.jvsAgentId = value
+                }
                 if let value = dict["Output"] as? String {
                     self.output = value
                 }
@@ -39460,6 +39612,8 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
         public var commandType: String?
 
         public var creationTime: String?
+
+        public var desktopScenario: String?
 
         public var endUserId: String?
 
@@ -39496,6 +39650,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
             }
+            if self.desktopScenario != nil {
+                map["DesktopScenario"] = self.desktopScenario!
+            }
             if self.endUserId != nil {
                 map["EndUserId"] = self.endUserId!
             }
@@ -39531,6 +39688,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreationTime"] as? String {
                 self.creationTime = value
+            }
+            if let value = dict["DesktopScenario"] as? String {
+                self.desktopScenario = value
             }
             if let value = dict["EndUserId"] as? String {
                 self.endUserId = value
@@ -43785,6 +43945,16 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var fileTransferAddress: String?
 
+        public var fileTransferInSize: Int32?
+
+        public var fileTransferInUnit: String?
+
+        public var fileTransferOutSize: Int32?
+
+        public var fileTransferOutUnit: String?
+
+        public var fileTransferSizeLimit: String?
+
         public var fileTransferSpeed: String?
 
         public var fileTransferSpeedLocation: String?
@@ -44152,6 +44322,21 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.fileTransferAddress != nil {
                 map["FileTransferAddress"] = self.fileTransferAddress!
+            }
+            if self.fileTransferInSize != nil {
+                map["FileTransferInSize"] = self.fileTransferInSize!
+            }
+            if self.fileTransferInUnit != nil {
+                map["FileTransferInUnit"] = self.fileTransferInUnit!
+            }
+            if self.fileTransferOutSize != nil {
+                map["FileTransferOutSize"] = self.fileTransferOutSize!
+            }
+            if self.fileTransferOutUnit != nil {
+                map["FileTransferOutUnit"] = self.fileTransferOutUnit!
+            }
+            if self.fileTransferSizeLimit != nil {
+                map["FileTransferSizeLimit"] = self.fileTransferSizeLimit!
             }
             if self.fileTransferSpeed != nil {
                 map["FileTransferSpeed"] = self.fileTransferSpeed!
@@ -44658,6 +44843,21 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileTransferAddress"] as? String {
                 self.fileTransferAddress = value
+            }
+            if let value = dict["FileTransferInSize"] as? Int32 {
+                self.fileTransferInSize = value
+            }
+            if let value = dict["FileTransferInUnit"] as? String {
+                self.fileTransferInUnit = value
+            }
+            if let value = dict["FileTransferOutSize"] as? Int32 {
+                self.fileTransferOutSize = value
+            }
+            if let value = dict["FileTransferOutUnit"] as? String {
+                self.fileTransferOutUnit = value
+            }
+            if let value = dict["FileTransferSizeLimit"] as? String {
+                self.fileTransferSizeLimit = value
             }
             if let value = dict["FileTransferSpeed"] as? String {
                 self.fileTransferSpeed = value
@@ -49345,6 +49545,8 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
 
     public var desktopName: String?
 
+    public var desktopScenario: String?
+
     public var endTime: String?
 
     public var maxResults: Int32?
@@ -49387,6 +49589,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         }
         if self.desktopName != nil {
             map["DesktopName"] = self.desktopName!
+        }
+        if self.desktopScenario != nil {
+            map["DesktopScenario"] = self.desktopScenario!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -49431,6 +49636,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         }
         if let value = dict["DesktopName"] as? String {
             self.desktopName = value
+        }
+        if let value = dict["DesktopScenario"] as? String {
+            self.desktopScenario = value
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
@@ -49486,6 +49694,8 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
         public var envId: String?
 
         public var envType: String?
+
+        public var jvsId: String?
 
         public var osType: String?
 
@@ -49558,6 +49768,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if self.envType != nil {
                 map["EnvType"] = self.envType!
+            }
+            if self.jvsId != nil {
+                map["JvsId"] = self.jvsId!
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
@@ -49635,6 +49848,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnvType"] as? String {
                 self.envType = value
+            }
+            if let value = dict["JvsId"] as? String {
+                self.jvsId = value
             }
             if let value = dict["OsType"] as? String {
                 self.osType = value
@@ -62743,6 +62959,16 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var fileTransferAddress: String?
 
+    public var fileTransferInSize: String?
+
+    public var fileTransferInUnit: String?
+
+    public var fileTransferOutSize: String?
+
+    public var fileTransferOutUnit: String?
+
+    public var fileTransferSizeLimit: String?
+
     public var fileTransferSpeed: String?
 
     public var fileTransferSpeedLocation: String?
@@ -63096,6 +63322,21 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.fileTransferAddress != nil {
             map["FileTransferAddress"] = self.fileTransferAddress!
+        }
+        if self.fileTransferInSize != nil {
+            map["FileTransferInSize"] = self.fileTransferInSize!
+        }
+        if self.fileTransferInUnit != nil {
+            map["FileTransferInUnit"] = self.fileTransferInUnit!
+        }
+        if self.fileTransferOutSize != nil {
+            map["FileTransferOutSize"] = self.fileTransferOutSize!
+        }
+        if self.fileTransferOutUnit != nil {
+            map["FileTransferOutUnit"] = self.fileTransferOutUnit!
+        }
+        if self.fileTransferSizeLimit != nil {
+            map["FileTransferSizeLimit"] = self.fileTransferSizeLimit!
         }
         if self.fileTransferSpeed != nil {
             map["FileTransferSpeed"] = self.fileTransferSpeed!
@@ -63596,6 +63837,21 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["FileTransferAddress"] as? String {
             self.fileTransferAddress = value
+        }
+        if let value = dict["FileTransferInSize"] as? String {
+            self.fileTransferInSize = value
+        }
+        if let value = dict["FileTransferInUnit"] as? String {
+            self.fileTransferInUnit = value
+        }
+        if let value = dict["FileTransferOutSize"] as? String {
+            self.fileTransferOutSize = value
+        }
+        if let value = dict["FileTransferOutUnit"] as? String {
+            self.fileTransferOutUnit = value
+        }
+        if let value = dict["FileTransferSizeLimit"] as? String {
+            self.fileTransferSizeLimit = value
         }
         if let value = dict["FileTransferSpeed"] as? String {
             self.fileTransferSpeed = value
@@ -79477,6 +79733,8 @@ public class UpdateFotaTaskResponse : Tea.TeaModel {
 }
 
 public class UploadImageRequest : Tea.TeaModel {
+    public var bootMode: String?
+
     public var dataDiskSize: Int32?
 
     public var description_: String?
@@ -79515,6 +79773,9 @@ public class UploadImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bootMode != nil {
+            map["BootMode"] = self.bootMode!
+        }
         if self.dataDiskSize != nil {
             map["DataDiskSize"] = self.dataDiskSize!
         }
@@ -79556,6 +79817,9 @@ public class UploadImageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BootMode"] as? String {
+            self.bootMode = value
+        }
         if let value = dict["DataDiskSize"] as? Int32 {
             self.dataDiskSize = value
         }
