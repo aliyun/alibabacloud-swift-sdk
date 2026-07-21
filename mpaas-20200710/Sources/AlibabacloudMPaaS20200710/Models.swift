@@ -229,6 +229,8 @@ public class CancelPushSchedulerRequest : Tea.TeaModel {
 }
 
 public class CancelPushSchedulerResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var requestId: String?
 
     public var resultCode: String?
@@ -251,6 +253,9 @@ public class CancelPushSchedulerResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -268,6 +273,9 @@ public class CancelPushSchedulerResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -14436,6 +14444,8 @@ public class PushBroadcastResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var pushResult: PushBroadcastResponseBody.PushResult?
 
     public var requestId: String?
@@ -14459,6 +14469,9 @@ public class PushBroadcastResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.pushResult != nil {
             map["PushResult"] = self.pushResult?.toMap()
         }
@@ -14476,6 +14489,9 @@ public class PushBroadcastResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["PushResult"] as? [String: Any?] {
             var model = PushBroadcastResponseBody.PushResult()
             model.fromMap(value)
@@ -15172,6 +15188,8 @@ public class PushMultipleResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var pushResult: PushMultipleResponseBody.PushResult?
 
     public var requestId: String?
@@ -15195,6 +15213,9 @@ public class PushMultipleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.pushResult != nil {
             map["PushResult"] = self.pushResult?.toMap()
         }
@@ -15212,6 +15233,9 @@ public class PushMultipleResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["PushResult"] as? [String: Any?] {
             var model = PushMultipleResponseBody.PushResult()
             model.fromMap(value)
@@ -16109,6 +16133,8 @@ public class PushSimpleResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var pushResult: PushSimpleResponseBody.PushResult?
 
     public var requestId: String?
@@ -16132,6 +16158,9 @@ public class PushSimpleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.pushResult != nil {
             map["PushResult"] = self.pushResult?.toMap()
         }
@@ -16149,6 +16178,9 @@ public class PushSimpleResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["PushResult"] as? [String: Any?] {
             var model = PushSimpleResponseBody.PushResult()
             model.fromMap(value)
@@ -16725,6 +16757,8 @@ public class PushTemplateResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var pushResult: PushTemplateResponseBody.PushResult?
 
     public var requestId: String?
@@ -16748,6 +16782,9 @@ public class PushTemplateResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.pushResult != nil {
             map["PushResult"] = self.pushResult?.toMap()
         }
@@ -16765,6 +16802,9 @@ public class PushTemplateResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["PushResult"] as? [String: Any?] {
             var model = PushTemplateResponseBody.PushResult()
             model.fromMap(value)
@@ -18426,6 +18466,8 @@ public class QueryPushAnalysisCoreIndexResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var requestId: String?
 
     public var resultCode: String?
@@ -18449,6 +18491,9 @@ public class QueryPushAnalysisCoreIndexResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -18466,6 +18511,9 @@ public class QueryPushAnalysisCoreIndexResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -18700,6 +18748,8 @@ public class QueryPushAnalysisTaskDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var requestId: String?
 
     public var resultCode: String?
@@ -18723,6 +18773,9 @@ public class QueryPushAnalysisTaskDetailResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -18740,6 +18793,9 @@ public class QueryPushAnalysisTaskDetailResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -19101,6 +19157,8 @@ public class QueryPushAnalysisTaskListResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var requestId: String?
 
     public var resultCode: String?
@@ -19124,6 +19182,9 @@ public class QueryPushAnalysisTaskListResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -19141,6 +19202,9 @@ public class QueryPushAnalysisTaskListResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -19499,6 +19563,8 @@ public class QueryPushSchedulerListResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var requestId: String?
 
     public var resultCode: String?
@@ -19522,6 +19588,9 @@ public class QueryPushSchedulerListResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -19539,6 +19608,9 @@ public class QueryPushSchedulerListResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -19716,6 +19788,8 @@ public class RevokePushMessageResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var pushResult: RevokePushMessageResponseBody.PushResult?
 
     public var requestId: String?
@@ -19739,6 +19813,9 @@ public class RevokePushMessageResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.pushResult != nil {
             map["PushResult"] = self.pushResult?.toMap()
         }
@@ -19756,6 +19833,9 @@ public class RevokePushMessageResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["PushResult"] as? [String: Any?] {
             var model = RevokePushMessageResponseBody.PushResult()
             model.fromMap(value)
@@ -19925,6 +20005,8 @@ public class RevokePushTaskResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var pushResult: RevokePushTaskResponseBody.PushResult?
 
     public var requestId: String?
@@ -19948,6 +20030,9 @@ public class RevokePushTaskResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.pushResult != nil {
             map["PushResult"] = self.pushResult?.toMap()
         }
@@ -19965,6 +20050,9 @@ public class RevokePushTaskResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["PushResult"] as? [String: Any?] {
             var model = RevokePushTaskResponseBody.PushResult()
             model.fromMap(value)
