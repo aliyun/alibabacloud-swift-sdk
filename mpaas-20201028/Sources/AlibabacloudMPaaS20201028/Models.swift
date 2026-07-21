@@ -1546,6 +1546,8 @@ public class CheckUserAuthToMsceneResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var mpaasUserAuthCheckResponse: CheckUserAuthToMsceneResponseBody.MpaasUserAuthCheckResponse?
 
     public var requestId: String?
@@ -1571,6 +1573,9 @@ public class CheckUserAuthToMsceneResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.mpaasUserAuthCheckResponse != nil {
             map["MpaasUserAuthCheckResponse"] = self.mpaasUserAuthCheckResponse?.toMap()
         }
@@ -1591,6 +1596,9 @@ public class CheckUserAuthToMsceneResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["MpaasUserAuthCheckResponse"] as? [String: Any?] {
             var model = CheckUserAuthToMsceneResponseBody.MpaasUserAuthCheckResponse()
             model.fromMap(value)
@@ -40382,6 +40390,8 @@ public class QueryPayOrderToMsenceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var mpaasUserGamecenterPaymentQuerystatusResponse: QueryPayOrderToMsenceResponseBody.MpaasUserGamecenterPaymentQuerystatusResponse?
 
     public var requestId: String?
@@ -40407,6 +40417,9 @@ public class QueryPayOrderToMsenceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.mpaasUserGamecenterPaymentQuerystatusResponse != nil {
             map["MpaasUserGamecenterPaymentQuerystatusResponse"] = self.mpaasUserGamecenterPaymentQuerystatusResponse?.toMap()
         }
@@ -40427,6 +40440,9 @@ public class QueryPayOrderToMsenceResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["MpaasUserGamecenterPaymentQuerystatusResponse"] as? [String: Any?] {
             var model = QueryPayOrderToMsenceResponseBody.MpaasUserGamecenterPaymentQuerystatusResponse()
             model.fromMap(value)
@@ -43191,6 +43207,8 @@ public class SaveOrderRelationInfoToMsenceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var mpaasSaveOrderRelationResponse: SaveOrderRelationInfoToMsenceResponseBody.MpaasSaveOrderRelationResponse?
 
     public var requestId: String?
@@ -43216,6 +43234,9 @@ public class SaveOrderRelationInfoToMsenceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.mpaasSaveOrderRelationResponse != nil {
             map["MpaasSaveOrderRelationResponse"] = self.mpaasSaveOrderRelationResponse?.toMap()
         }
@@ -43236,6 +43257,9 @@ public class SaveOrderRelationInfoToMsenceResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["MpaasSaveOrderRelationResponse"] as? [String: Any?] {
             var model = SaveOrderRelationInfoToMsenceResponseBody.MpaasSaveOrderRelationResponse()
             model.fromMap(value)
@@ -46758,6 +46782,8 @@ public class VirtualDeliveryToMsceneResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var mpaasUserGamecenterPaymentVirtualdeliveryResponse: VirtualDeliveryToMsceneResponseBody.MpaasUserGamecenterPaymentVirtualdeliveryResponse?
 
     public var requestId: String?
@@ -46783,6 +46809,9 @@ public class VirtualDeliveryToMsceneResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.mpaasUserGamecenterPaymentVirtualdeliveryResponse != nil {
             map["MpaasUserGamecenterPaymentVirtualdeliveryResponse"] = self.mpaasUserGamecenterPaymentVirtualdeliveryResponse?.toMap()
         }
@@ -46803,6 +46832,9 @@ public class VirtualDeliveryToMsceneResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["MpaasUserGamecenterPaymentVirtualdeliveryResponse"] as? [String: Any?] {
             var model = VirtualDeliveryToMsceneResponseBody.MpaasUserGamecenterPaymentVirtualdeliveryResponse()
             model.fromMap(value)
