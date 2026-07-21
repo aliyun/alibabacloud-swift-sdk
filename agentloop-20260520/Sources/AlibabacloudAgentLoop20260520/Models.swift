@@ -272,6 +272,8 @@ public class DataFilter : Tea.TeaModel {
 
     public var samplingRate: Int32?
 
+    public var serviceNames: [String]?
+
     public override init() {
         super.init()
     }
@@ -298,6 +300,9 @@ public class DataFilter : Tea.TeaModel {
         if self.samplingRate != nil {
             map["samplingRate"] = self.samplingRate!
         }
+        if self.serviceNames != nil {
+            map["serviceNames"] = self.serviceNames!
+        }
         return map
     }
 
@@ -314,6 +319,9 @@ public class DataFilter : Tea.TeaModel {
         }
         if let value = dict["samplingRate"] as? Int32 {
             self.samplingRate = value
+        }
+        if let value = dict["serviceNames"] as? [String] {
+            self.serviceNames = value
         }
     }
 }
@@ -5494,6 +5502,8 @@ public class GetDatasetResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var isFavorite: Bool?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -5528,6 +5538,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.isFavorite != nil {
+            map["isFavorite"] = self.isFavorite!
+        }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
@@ -5560,6 +5573,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["isFavorite"] as? Bool {
+            self.isFavorite = value
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
@@ -8952,6 +8968,8 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var isFavorite: Bool?
+
         public var regionId: String?
 
         public var updateTime: String?
@@ -8982,6 +9000,9 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["description"] = self.description_!
             }
+            if self.isFavorite != nil {
+                map["isFavorite"] = self.isFavorite!
+            }
             if self.regionId != nil {
                 map["regionId"] = self.regionId!
             }
@@ -9004,6 +9025,9 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
             }
             if let value = dict["description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["isFavorite"] as? Bool {
+                self.isFavorite = value
             }
             if let value = dict["regionId"] as? String {
                 self.regionId = value
@@ -12609,6 +12633,8 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var status: String?
+
     public var clientToken: String?
 
     public override init() {
@@ -12635,6 +12661,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -12653,6 +12682,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
         }
         if let value = dict["clientToken"] as? String {
             self.clientToken = value
