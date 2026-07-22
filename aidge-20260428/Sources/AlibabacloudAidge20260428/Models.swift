@@ -3902,6 +3902,8 @@ public class ImageTranslationStandardRequest : Tea.TeaModel {
 
     public var translatingBrandInTheProduct: Bool?
 
+    public var useImageEditor: Bool?
+
     public override init() {
         super.init()
     }
@@ -3934,6 +3936,9 @@ public class ImageTranslationStandardRequest : Tea.TeaModel {
         if self.translatingBrandInTheProduct != nil {
             map["TranslatingBrandInTheProduct"] = self.translatingBrandInTheProduct!
         }
+        if self.useImageEditor != nil {
+            map["UseImageEditor"] = self.useImageEditor!
+        }
         return map
     }
 
@@ -3957,11 +3962,529 @@ public class ImageTranslationStandardRequest : Tea.TeaModel {
         if let value = dict["TranslatingBrandInTheProduct"] as? Bool {
             self.translatingBrandInTheProduct = value
         }
+        if let value = dict["UseImageEditor"] as? Bool {
+            self.useImageEditor = value
+        }
     }
 }
 
 public class ImageTranslationStandardResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class EditInfo : Tea.TeaModel {
+            public class GoodsRects : Tea.TeaModel {
+                public var degree: Int32?
+
+                public var height: Int32?
+
+                public var left_: Int32?
+
+                public var top: Int32?
+
+                public var width: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.degree != nil {
+                        map["Degree"] = self.degree!
+                    }
+                    if self.height != nil {
+                        map["Height"] = self.height!
+                    }
+                    if self.left_ != nil {
+                        map["Left"] = self.left_!
+                    }
+                    if self.top != nil {
+                        map["Top"] = self.top!
+                    }
+                    if self.width != nil {
+                        map["Width"] = self.width!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Degree"] as? Int32 {
+                        self.degree = value
+                    }
+                    if let value = dict["Height"] as? Int32 {
+                        self.height = value
+                    }
+                    if let value = dict["Left"] as? Int32 {
+                        self.left_ = value
+                    }
+                    if let value = dict["Top"] as? Int32 {
+                        self.top = value
+                    }
+                    if let value = dict["Width"] as? Int32 {
+                        self.width = value
+                    }
+                }
+            }
+            public class TextAreas : Tea.TeaModel {
+                public class Texts : Tea.TeaModel {
+                    public class ImageRect : Tea.TeaModel {
+                        public var degree: Int32?
+
+                        public var height: Int32?
+
+                        public var left_: Int32?
+
+                        public var top: Int32?
+
+                        public var width: Int32?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.degree != nil {
+                                map["Degree"] = self.degree!
+                            }
+                            if self.height != nil {
+                                map["Height"] = self.height!
+                            }
+                            if self.left_ != nil {
+                                map["Left"] = self.left_!
+                            }
+                            if self.top != nil {
+                                map["Top"] = self.top!
+                            }
+                            if self.width != nil {
+                                map["Width"] = self.width!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Degree"] as? Int32 {
+                                self.degree = value
+                            }
+                            if let value = dict["Height"] as? Int32 {
+                                self.height = value
+                            }
+                            if let value = dict["Left"] as? Int32 {
+                                self.left_ = value
+                            }
+                            if let value = dict["Top"] as? Int32 {
+                                self.top = value
+                            }
+                            if let value = dict["Width"] as? Int32 {
+                                self.width = value
+                            }
+                        }
+                    }
+                    public class TextRect : Tea.TeaModel {
+                        public var degree: Int32?
+
+                        public var height: Int32?
+
+                        public var left_: Int32?
+
+                        public var top: Int32?
+
+                        public var width: Int32?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.degree != nil {
+                                map["Degree"] = self.degree!
+                            }
+                            if self.height != nil {
+                                map["Height"] = self.height!
+                            }
+                            if self.left_ != nil {
+                                map["Left"] = self.left_!
+                            }
+                            if self.top != nil {
+                                map["Top"] = self.top!
+                            }
+                            if self.width != nil {
+                                map["Width"] = self.width!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Degree"] as? Int32 {
+                                self.degree = value
+                            }
+                            if let value = dict["Height"] as? Int32 {
+                                self.height = value
+                            }
+                            if let value = dict["Left"] as? Int32 {
+                                self.left_ = value
+                            }
+                            if let value = dict["Top"] as? Int32 {
+                                self.top = value
+                            }
+                            if let value = dict["Width"] as? Int32 {
+                                self.width = value
+                            }
+                        }
+                    }
+                    public var color: String?
+
+                    public var fontsize: Int32?
+
+                    public var horizontalLayout: String?
+
+                    public var imageRect: ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas.Texts.ImageRect?
+
+                    public var language: String?
+
+                    public var lineCount: Int32?
+
+                    public var ovisErrMsg: String?
+
+                    public var textRect: ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas.Texts.TextRect?
+
+                    public var valid: Bool?
+
+                    public var value: String?
+
+                    public var verticalLayout: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.imageRect?.validate()
+                        try self.textRect?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.color != nil {
+                            map["Color"] = self.color!
+                        }
+                        if self.fontsize != nil {
+                            map["Fontsize"] = self.fontsize!
+                        }
+                        if self.horizontalLayout != nil {
+                            map["HorizontalLayout"] = self.horizontalLayout!
+                        }
+                        if self.imageRect != nil {
+                            map["ImageRect"] = self.imageRect?.toMap()
+                        }
+                        if self.language != nil {
+                            map["Language"] = self.language!
+                        }
+                        if self.lineCount != nil {
+                            map["LineCount"] = self.lineCount!
+                        }
+                        if self.ovisErrMsg != nil {
+                            map["OvisErrMsg"] = self.ovisErrMsg!
+                        }
+                        if self.textRect != nil {
+                            map["TextRect"] = self.textRect?.toMap()
+                        }
+                        if self.valid != nil {
+                            map["Valid"] = self.valid!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        if self.verticalLayout != nil {
+                            map["VerticalLayout"] = self.verticalLayout!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Color"] as? String {
+                            self.color = value
+                        }
+                        if let value = dict["Fontsize"] as? Int32 {
+                            self.fontsize = value
+                        }
+                        if let value = dict["HorizontalLayout"] as? String {
+                            self.horizontalLayout = value
+                        }
+                        if let value = dict["ImageRect"] as? [String: Any?] {
+                            var model = ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas.Texts.ImageRect()
+                            model.fromMap(value)
+                            self.imageRect = model
+                        }
+                        if let value = dict["Language"] as? String {
+                            self.language = value
+                        }
+                        if let value = dict["LineCount"] as? Int32 {
+                            self.lineCount = value
+                        }
+                        if let value = dict["OvisErrMsg"] as? String {
+                            self.ovisErrMsg = value
+                        }
+                        if let value = dict["TextRect"] as? [String: Any?] {
+                            var model = ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas.Texts.TextRect()
+                            model.fromMap(value)
+                            self.textRect = model
+                        }
+                        if let value = dict["Valid"] as? Bool {
+                            self.valid = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                        if let value = dict["VerticalLayout"] as? String {
+                            self.verticalLayout = value
+                        }
+                    }
+                }
+                public var color: String?
+
+                public var content: String?
+
+                public var fontsize: Int32?
+
+                public var horizontalLayout: String?
+
+                public var lineCount: Int32?
+
+                public var texts: [ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas.Texts]?
+
+                public var verticalLayout: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.color != nil {
+                        map["Color"] = self.color!
+                    }
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    if self.fontsize != nil {
+                        map["Fontsize"] = self.fontsize!
+                    }
+                    if self.horizontalLayout != nil {
+                        map["HorizontalLayout"] = self.horizontalLayout!
+                    }
+                    if self.lineCount != nil {
+                        map["LineCount"] = self.lineCount!
+                    }
+                    if self.texts != nil {
+                        var tmp : [Any] = []
+                        for k in self.texts! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Texts"] = tmp
+                    }
+                    if self.verticalLayout != nil {
+                        map["VerticalLayout"] = self.verticalLayout!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Color"] as? String {
+                        self.color = value
+                    }
+                    if let value = dict["Content"] as? String {
+                        self.content = value
+                    }
+                    if let value = dict["Fontsize"] as? Int32 {
+                        self.fontsize = value
+                    }
+                    if let value = dict["HorizontalLayout"] as? String {
+                        self.horizontalLayout = value
+                    }
+                    if let value = dict["LineCount"] as? Int32 {
+                        self.lineCount = value
+                    }
+                    if let value = dict["Texts"] as? [Any?] {
+                        var tmp : [ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas.Texts] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas.Texts()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.texts = tmp
+                    }
+                    if let value = dict["VerticalLayout"] as? String {
+                        self.verticalLayout = value
+                    }
+                }
+            }
+            public var font: [String]?
+
+            public var goodsRects: ImageTranslationStandardResponseBody.Data.EditInfo.GoodsRects?
+
+            public var goodsUrl: String?
+
+            public var languages: [String]?
+
+            public var pictUrl: String?
+
+            public var repairedUrl: String?
+
+            public var repairedUrls: [String]?
+
+            public var resultImageIds: [String]?
+
+            public var resultUrls: [String]?
+
+            public var textAreas: [ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.goodsRects?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.font != nil {
+                    map["Font"] = self.font!
+                }
+                if self.goodsRects != nil {
+                    map["GoodsRects"] = self.goodsRects?.toMap()
+                }
+                if self.goodsUrl != nil {
+                    map["GoodsUrl"] = self.goodsUrl!
+                }
+                if self.languages != nil {
+                    map["Languages"] = self.languages!
+                }
+                if self.pictUrl != nil {
+                    map["PictUrl"] = self.pictUrl!
+                }
+                if self.repairedUrl != nil {
+                    map["RepairedUrl"] = self.repairedUrl!
+                }
+                if self.repairedUrls != nil {
+                    map["RepairedUrls"] = self.repairedUrls!
+                }
+                if self.resultImageIds != nil {
+                    map["ResultImageIds"] = self.resultImageIds!
+                }
+                if self.resultUrls != nil {
+                    map["ResultUrls"] = self.resultUrls!
+                }
+                if self.textAreas != nil {
+                    var tmp : [Any] = []
+                    for k in self.textAreas! {
+                        tmp.append(k.toMap())
+                    }
+                    map["TextAreas"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Font"] as? [String] {
+                    self.font = value
+                }
+                if let value = dict["GoodsRects"] as? [String: Any?] {
+                    var model = ImageTranslationStandardResponseBody.Data.EditInfo.GoodsRects()
+                    model.fromMap(value)
+                    self.goodsRects = model
+                }
+                if let value = dict["GoodsUrl"] as? String {
+                    self.goodsUrl = value
+                }
+                if let value = dict["Languages"] as? [String] {
+                    self.languages = value
+                }
+                if let value = dict["PictUrl"] as? String {
+                    self.pictUrl = value
+                }
+                if let value = dict["RepairedUrl"] as? String {
+                    self.repairedUrl = value
+                }
+                if let value = dict["RepairedUrls"] as? [String] {
+                    self.repairedUrls = value
+                }
+                if let value = dict["ResultImageIds"] as? [String] {
+                    self.resultImageIds = value
+                }
+                if let value = dict["ResultUrls"] as? [String] {
+                    self.resultUrls = value
+                }
+                if let value = dict["TextAreas"] as? [Any?] {
+                    var tmp : [ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ImageTranslationStandardResponseBody.Data.EditInfo.TextAreas()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.textAreas = tmp
+                }
+            }
+        }
+        public var editInfo: ImageTranslationStandardResponseBody.Data.EditInfo?
+
         public var imageUrl: String?
 
         public var usageMap: [String: Int64]?
@@ -3976,10 +4499,14 @@ public class ImageTranslationStandardResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.editInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.editInfo != nil {
+                map["EditInfo"] = self.editInfo?.toMap()
+            }
             if self.imageUrl != nil {
                 map["ImageUrl"] = self.imageUrl!
             }
@@ -3991,6 +4518,11 @@ public class ImageTranslationStandardResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EditInfo"] as? [String: Any?] {
+                var model = ImageTranslationStandardResponseBody.Data.EditInfo()
+                model.fromMap(value)
+                self.editInfo = model
+            }
             if let value = dict["ImageUrl"] as? String {
                 self.imageUrl = value
             }

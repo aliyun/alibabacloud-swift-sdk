@@ -592,6 +592,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.translatingBrandInTheProduct)) {
             query["TranslatingBrandInTheProduct"] = request.translatingBrandInTheProduct!;
         }
+        if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
+            query["UseImageEditor"] = request.useImageEditor!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
