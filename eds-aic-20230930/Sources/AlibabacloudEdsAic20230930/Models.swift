@@ -6227,6 +6227,430 @@ public class CreatePolicyGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CreateScheduledTaskRequest : Tea.TeaModel {
+    public class RunConfig : Tea.TeaModel {
+        public var extraParams: String?
+
+        public var maxSteps: Int32?
+
+        public var timeoutSeconds: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extraParams != nil {
+                map["ExtraParams"] = self.extraParams!
+            }
+            if self.maxSteps != nil {
+                map["MaxSteps"] = self.maxSteps!
+            }
+            if self.timeoutSeconds != nil {
+                map["TimeoutSeconds"] = self.timeoutSeconds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExtraParams"] as? String {
+                self.extraParams = value
+            }
+            if let value = dict["MaxSteps"] as? Int32 {
+                self.maxSteps = value
+            }
+            if let value = dict["TimeoutSeconds"] as? Int32 {
+                self.timeoutSeconds = value
+            }
+        }
+    }
+    public var cronExpression: String?
+
+    public var instanceIds: [String]?
+
+    public var maxExecutions: Int32?
+
+    public var runConfig: CreateScheduledTaskRequest.RunConfig?
+
+    public var taskName: String?
+
+    public var userPrompt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.runConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cronExpression != nil {
+            map["CronExpression"] = self.cronExpression!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.maxExecutions != nil {
+            map["MaxExecutions"] = self.maxExecutions!
+        }
+        if self.runConfig != nil {
+            map["RunConfig"] = self.runConfig?.toMap()
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        if self.userPrompt != nil {
+            map["UserPrompt"] = self.userPrompt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CronExpression"] as? String {
+            self.cronExpression = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["MaxExecutions"] as? Int32 {
+            self.maxExecutions = value
+        }
+        if let value = dict["RunConfig"] as? [String: Any?] {
+            var model = CreateScheduledTaskRequest.RunConfig()
+            model.fromMap(value)
+            self.runConfig = model
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+        if let value = dict["UserPrompt"] as? String {
+            self.userPrompt = value
+        }
+    }
+}
+
+public class CreateScheduledTaskShrinkRequest : Tea.TeaModel {
+    public var cronExpression: String?
+
+    public var instanceIds: [String]?
+
+    public var maxExecutions: Int32?
+
+    public var runConfigShrink: String?
+
+    public var taskName: String?
+
+    public var userPrompt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cronExpression != nil {
+            map["CronExpression"] = self.cronExpression!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.maxExecutions != nil {
+            map["MaxExecutions"] = self.maxExecutions!
+        }
+        if self.runConfigShrink != nil {
+            map["RunConfig"] = self.runConfigShrink!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        if self.userPrompt != nil {
+            map["UserPrompt"] = self.userPrompt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CronExpression"] as? String {
+            self.cronExpression = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["MaxExecutions"] as? Int32 {
+            self.maxExecutions = value
+        }
+        if let value = dict["RunConfig"] as? String {
+            self.runConfigShrink = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+        if let value = dict["UserPrompt"] as? String {
+            self.userPrompt = value
+        }
+    }
+}
+
+public class CreateScheduledTaskResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public class InstanceResults : Tea.TeaModel {
+            public var errorMessage: String?
+
+            public var instanceId: String?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public var instanceResults: [CreateScheduledTaskResponseBody.Tasks.InstanceResults]?
+
+        public var scheduledId: String?
+
+        public var taskConfigId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceResults != nil {
+                var tmp : [Any] = []
+                for k in self.instanceResults! {
+                    tmp.append(k.toMap())
+                }
+                map["InstanceResults"] = tmp
+            }
+            if self.scheduledId != nil {
+                map["ScheduledId"] = self.scheduledId!
+            }
+            if self.taskConfigId != nil {
+                map["TaskConfigId"] = self.taskConfigId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceResults"] as? [Any?] {
+                var tmp : [CreateScheduledTaskResponseBody.Tasks.InstanceResults] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateScheduledTaskResponseBody.Tasks.InstanceResults()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.instanceResults = tmp
+            }
+            if let value = dict["ScheduledId"] as? String {
+                self.scheduledId = value
+            }
+            if let value = dict["TaskConfigId"] as? String {
+                self.taskConfigId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var tasks: [CreateScheduledTaskResponseBody.Tasks]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tasks != nil {
+            var tmp : [Any] = []
+            for k in self.tasks! {
+                tmp.append(k.toMap())
+            }
+            map["Tasks"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Tasks"] as? [Any?] {
+            var tmp : [CreateScheduledTaskResponseBody.Tasks] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateScheduledTaskResponseBody.Tasks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tasks = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class CreateScheduledTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateScheduledTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateScheduledTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateScreenshotRequest : Tea.TeaModel {
     public var androidInstanceIdList: [String]?
 
@@ -7827,6 +8251,202 @@ public class DeletePolicyGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteScheduledTaskRequest : Tea.TeaModel {
+    public var scheduledId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.scheduledId != nil {
+            map["ScheduledId"] = self.scheduledId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ScheduledId"] as? String {
+            self.scheduledId = value
+        }
+    }
+}
+
+public class DeleteScheduledTaskResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public var scheduledId: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.scheduledId != nil {
+                map["ScheduledId"] = self.scheduledId!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ScheduledId"] as? String {
+                self.scheduledId = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var tasks: [DeleteScheduledTaskResponseBody.Tasks]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tasks != nil {
+            var tmp : [Any] = []
+            for k in self.tasks! {
+                tmp.append(k.toMap())
+            }
+            map["Tasks"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Tasks"] as? [Any?] {
+            var tmp : [DeleteScheduledTaskResponseBody.Tasks] = []
+            for v in value {
+                if v != nil {
+                    var model = DeleteScheduledTaskResponseBody.Tasks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tasks = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DeleteScheduledTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteScheduledTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteScheduledTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteSystemPropertyTemplatesRequest : Tea.TeaModel {
     public var templateIds: [String]?
 
@@ -8282,6 +8902,10 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
 
     public var saleMode: String?
 
+    public var sortKey: String?
+
+    public var sortType: String?
+
     public var status: String?
 
     public var tags: [DescribeAndroidInstanceGroupsRequest.Tags]?
@@ -8330,6 +8954,12 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
         if self.saleMode != nil {
             map["SaleMode"] = self.saleMode!
         }
+        if self.sortKey != nil {
+            map["SortKey"] = self.sortKey!
+        }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -8374,6 +9004,12 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["SaleMode"] as? String {
             self.saleMode = value
+        }
+        if let value = dict["SortKey"] as? String {
+            self.sortKey = value
+        }
+        if let value = dict["SortType"] as? String {
+            self.sortType = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -11437,6 +12073,10 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
 
     public var serverType: String?
 
+    public var sortKey: String?
+
+    public var sortType: String?
+
     public var status: String?
 
     public var tags: [DescribeCloudPhoneNodesRequest.Tags]?
@@ -11482,6 +12122,12 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
         if self.serverType != nil {
             map["ServerType"] = self.serverType!
         }
+        if self.sortKey != nil {
+            map["SortKey"] = self.sortKey!
+        }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -11523,6 +12169,12 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
         }
         if let value = dict["ServerType"] as? String {
             self.serverType = value
+        }
+        if let value = dict["SortKey"] as? String {
+            self.sortKey = value
+        }
+        if let value = dict["SortType"] as? String {
+            self.sortType = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -16228,6 +16880,759 @@ public class DescribeRegionsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeRegionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeScheduledTaskExecutionsRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var instanceId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var scheduledId: String?
+
+    public var startTime: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.scheduledId != nil {
+            map["ScheduledId"] = self.scheduledId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ScheduledId"] as? String {
+            self.scheduledId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class DescribeScheduledTaskExecutionsResponseBody : Tea.TeaModel {
+    public class Executions : Tea.TeaModel {
+        public var completedAt: String?
+
+        public var configSnapshot: String?
+
+        public var durationMs: Int64?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var instanceId: String?
+
+        public var output: String?
+
+        public var scheduledId: String?
+
+        public var startedAt: String?
+
+        public var status: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.completedAt != nil {
+                map["CompletedAt"] = self.completedAt!
+            }
+            if self.configSnapshot != nil {
+                map["ConfigSnapshot"] = self.configSnapshot!
+            }
+            if self.durationMs != nil {
+                map["DurationMs"] = self.durationMs!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.output != nil {
+                map["Output"] = self.output!
+            }
+            if self.scheduledId != nil {
+                map["ScheduledId"] = self.scheduledId!
+            }
+            if self.startedAt != nil {
+                map["StartedAt"] = self.startedAt!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CompletedAt"] as? String {
+                self.completedAt = value
+            }
+            if let value = dict["ConfigSnapshot"] as? String {
+                self.configSnapshot = value
+            }
+            if let value = dict["DurationMs"] as? Int64 {
+                self.durationMs = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["Output"] as? String {
+                self.output = value
+            }
+            if let value = dict["ScheduledId"] as? String {
+                self.scheduledId = value
+            }
+            if let value = dict["StartedAt"] as? String {
+                self.startedAt = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var executions: [DescribeScheduledTaskExecutionsResponseBody.Executions]?
+
+    public var maxResults: Int32?
+
+    public var message: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.executions != nil {
+            var tmp : [Any] = []
+            for k in self.executions! {
+                tmp.append(k.toMap())
+            }
+            map["Executions"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Executions"] as? [Any?] {
+            var tmp : [DescribeScheduledTaskExecutionsResponseBody.Executions] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeScheduledTaskExecutionsResponseBody.Executions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.executions = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeScheduledTaskExecutionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeScheduledTaskExecutionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeScheduledTaskExecutionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeScheduledTasksRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var scheduledIds: [String]?
+
+    public var status: String?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.scheduledIds != nil {
+            map["ScheduledIds"] = self.scheduledIds!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ScheduledIds"] as? [String] {
+            self.scheduledIds = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class DescribeScheduledTasksResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public class RunConfig : Tea.TeaModel {
+            public var extraParams: String?
+
+            public var maxSteps: Int32?
+
+            public var timeoutSeconds: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.extraParams != nil {
+                    map["ExtraParams"] = self.extraParams!
+                }
+                if self.maxSteps != nil {
+                    map["MaxSteps"] = self.maxSteps!
+                }
+                if self.timeoutSeconds != nil {
+                    map["TimeoutSeconds"] = self.timeoutSeconds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExtraParams"] as? String {
+                    self.extraParams = value
+                }
+                if let value = dict["MaxSteps"] as? Int32 {
+                    self.maxSteps = value
+                }
+                if let value = dict["TimeoutSeconds"] as? Int32 {
+                    self.timeoutSeconds = value
+                }
+            }
+        }
+        public var cronExpression: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var instanceIds: [String]?
+
+        public var lastExecutionAt: String?
+
+        public var nextExecutionAt: String?
+
+        public var runConfig: DescribeScheduledTasksResponseBody.Tasks.RunConfig?
+
+        public var scheduledId: String?
+
+        public var status: String?
+
+        public var taskConfigId: String?
+
+        public var taskName: String?
+
+        public var totalExecutions: Int64?
+
+        public var totalFailures: Int64?
+
+        public var userPrompt: String?
+
+        public var version: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.runConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cronExpression != nil {
+                map["CronExpression"] = self.cronExpression!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.instanceIds != nil {
+                map["InstanceIds"] = self.instanceIds!
+            }
+            if self.lastExecutionAt != nil {
+                map["LastExecutionAt"] = self.lastExecutionAt!
+            }
+            if self.nextExecutionAt != nil {
+                map["NextExecutionAt"] = self.nextExecutionAt!
+            }
+            if self.runConfig != nil {
+                map["RunConfig"] = self.runConfig?.toMap()
+            }
+            if self.scheduledId != nil {
+                map["ScheduledId"] = self.scheduledId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.taskConfigId != nil {
+                map["TaskConfigId"] = self.taskConfigId!
+            }
+            if self.taskName != nil {
+                map["TaskName"] = self.taskName!
+            }
+            if self.totalExecutions != nil {
+                map["TotalExecutions"] = self.totalExecutions!
+            }
+            if self.totalFailures != nil {
+                map["TotalFailures"] = self.totalFailures!
+            }
+            if self.userPrompt != nil {
+                map["UserPrompt"] = self.userPrompt!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CronExpression"] as? String {
+                self.cronExpression = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
+            if let value = dict["InstanceIds"] as? [String] {
+                self.instanceIds = value
+            }
+            if let value = dict["LastExecutionAt"] as? String {
+                self.lastExecutionAt = value
+            }
+            if let value = dict["NextExecutionAt"] as? String {
+                self.nextExecutionAt = value
+            }
+            if let value = dict["RunConfig"] as? [String: Any?] {
+                var model = DescribeScheduledTasksResponseBody.Tasks.RunConfig()
+                model.fromMap(value)
+                self.runConfig = model
+            }
+            if let value = dict["ScheduledId"] as? String {
+                self.scheduledId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TaskConfigId"] as? String {
+                self.taskConfigId = value
+            }
+            if let value = dict["TaskName"] as? String {
+                self.taskName = value
+            }
+            if let value = dict["TotalExecutions"] as? Int64 {
+                self.totalExecutions = value
+            }
+            if let value = dict["TotalFailures"] as? Int64 {
+                self.totalFailures = value
+            }
+            if let value = dict["UserPrompt"] as? String {
+                self.userPrompt = value
+            }
+            if let value = dict["Version"] as? Int32 {
+                self.version = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var maxResults: Int32?
+
+    public var message: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var tasks: [DescribeScheduledTasksResponseBody.Tasks]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tasks != nil {
+            var tmp : [Any] = []
+            for k in self.tasks! {
+                tmp.append(k.toMap())
+            }
+            map["Tasks"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Tasks"] as? [Any?] {
+            var tmp : [DescribeScheduledTasksResponseBody.Tasks] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeScheduledTasksResponseBody.Tasks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tasks = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeScheduledTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeScheduledTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeScheduledTasksResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -22814,6 +24219,462 @@ public class ModifyPolicyGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyPolicyGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyScheduledTaskRequest : Tea.TeaModel {
+    public class RunConfig : Tea.TeaModel {
+        public var extraParams: String?
+
+        public var maxSteps: Int32?
+
+        public var timeoutSeconds: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extraParams != nil {
+                map["ExtraParams"] = self.extraParams!
+            }
+            if self.maxSteps != nil {
+                map["MaxSteps"] = self.maxSteps!
+            }
+            if self.timeoutSeconds != nil {
+                map["TimeoutSeconds"] = self.timeoutSeconds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExtraParams"] as? String {
+                self.extraParams = value
+            }
+            if let value = dict["MaxSteps"] as? Int32 {
+                self.maxSteps = value
+            }
+            if let value = dict["TimeoutSeconds"] as? Int32 {
+                self.timeoutSeconds = value
+            }
+        }
+    }
+    public var cronExpression: String?
+
+    public var instanceIds: [String]?
+
+    public var runConfig: ModifyScheduledTaskRequest.RunConfig?
+
+    public var scheduledId: String?
+
+    public var status: String?
+
+    public var taskName: String?
+
+    public var taskVersion: Int32?
+
+    public var userPrompt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.runConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cronExpression != nil {
+            map["CronExpression"] = self.cronExpression!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.runConfig != nil {
+            map["RunConfig"] = self.runConfig?.toMap()
+        }
+        if self.scheduledId != nil {
+            map["ScheduledId"] = self.scheduledId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        if self.taskVersion != nil {
+            map["TaskVersion"] = self.taskVersion!
+        }
+        if self.userPrompt != nil {
+            map["UserPrompt"] = self.userPrompt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CronExpression"] as? String {
+            self.cronExpression = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["RunConfig"] as? [String: Any?] {
+            var model = ModifyScheduledTaskRequest.RunConfig()
+            model.fromMap(value)
+            self.runConfig = model
+        }
+        if let value = dict["ScheduledId"] as? String {
+            self.scheduledId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+        if let value = dict["TaskVersion"] as? Int32 {
+            self.taskVersion = value
+        }
+        if let value = dict["UserPrompt"] as? String {
+            self.userPrompt = value
+        }
+    }
+}
+
+public class ModifyScheduledTaskShrinkRequest : Tea.TeaModel {
+    public var cronExpression: String?
+
+    public var instanceIds: [String]?
+
+    public var runConfigShrink: String?
+
+    public var scheduledId: String?
+
+    public var status: String?
+
+    public var taskName: String?
+
+    public var taskVersion: Int32?
+
+    public var userPrompt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cronExpression != nil {
+            map["CronExpression"] = self.cronExpression!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.runConfigShrink != nil {
+            map["RunConfig"] = self.runConfigShrink!
+        }
+        if self.scheduledId != nil {
+            map["ScheduledId"] = self.scheduledId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        if self.taskVersion != nil {
+            map["TaskVersion"] = self.taskVersion!
+        }
+        if self.userPrompt != nil {
+            map["UserPrompt"] = self.userPrompt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CronExpression"] as? String {
+            self.cronExpression = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["RunConfig"] as? String {
+            self.runConfigShrink = value
+        }
+        if let value = dict["ScheduledId"] as? String {
+            self.scheduledId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+        if let value = dict["TaskVersion"] as? Int32 {
+            self.taskVersion = value
+        }
+        if let value = dict["UserPrompt"] as? String {
+            self.userPrompt = value
+        }
+    }
+}
+
+public class ModifyScheduledTaskResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public class InstanceResults : Tea.TeaModel {
+            public var errorMessage: String?
+
+            public var instanceId: String?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public var instanceResults: [ModifyScheduledTaskResponseBody.Tasks.InstanceResults]?
+
+        public var newVersion: Int32?
+
+        public var scheduledId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceResults != nil {
+                var tmp : [Any] = []
+                for k in self.instanceResults! {
+                    tmp.append(k.toMap())
+                }
+                map["InstanceResults"] = tmp
+            }
+            if self.newVersion != nil {
+                map["NewVersion"] = self.newVersion!
+            }
+            if self.scheduledId != nil {
+                map["ScheduledId"] = self.scheduledId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceResults"] as? [Any?] {
+                var tmp : [ModifyScheduledTaskResponseBody.Tasks.InstanceResults] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyScheduledTaskResponseBody.Tasks.InstanceResults()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.instanceResults = tmp
+            }
+            if let value = dict["NewVersion"] as? Int32 {
+                self.newVersion = value
+            }
+            if let value = dict["ScheduledId"] as? String {
+                self.scheduledId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var tasks: [ModifyScheduledTaskResponseBody.Tasks]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tasks != nil {
+            var tmp : [Any] = []
+            for k in self.tasks! {
+                tmp.append(k.toMap())
+            }
+            map["Tasks"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Tasks"] as? [Any?] {
+            var tmp : [ModifyScheduledTaskResponseBody.Tasks] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyScheduledTaskResponseBody.Tasks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tasks = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ModifyScheduledTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyScheduledTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyScheduledTaskResponseBody()
             model.fromMap(value)
             self.body = model
         }
