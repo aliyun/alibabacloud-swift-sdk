@@ -3918,6 +3918,8 @@ public class DeleteExecutorGroupResponse : Tea.TeaModel {
 }
 
 public class DeleteJobsRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -3938,6 +3940,9 @@ public class DeleteJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -3952,6 +3957,9 @@ public class DeleteJobsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -3965,6 +3973,8 @@ public class DeleteJobsRequest : Tea.TeaModel {
 }
 
 public class DeleteJobsShrinkRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -3985,6 +3995,9 @@ public class DeleteJobsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -3999,6 +4012,9 @@ public class DeleteJobsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -5725,6 +5741,8 @@ public class GetClusterResponse : Tea.TeaModel {
 }
 
 public class GetDesigateInfoRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -5745,6 +5763,9 @@ public class GetDesigateInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -5759,6 +5780,9 @@ public class GetDesigateInfoRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -6464,6 +6488,8 @@ public class GetJobExecutionResponse : Tea.TeaModel {
 }
 
 public class GetJobExecutionProgressRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -6484,6 +6510,9 @@ public class GetJobExecutionProgressRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -6498,6 +6527,9 @@ public class GetJobExecutionProgressRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -9851,6 +9883,158 @@ public class GetWorkflowExecutionDAGResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetWorkflowExecutionDAGResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ImportAgentJobsRequest : Tea.TeaModel {
+    public var agentName: String?
+
+    public var clusterId: String?
+
+    public var migrateStrategy: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentName != nil {
+            map["AgentName"] = self.agentName!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.migrateStrategy != nil {
+            map["MigrateStrategy"] = self.migrateStrategy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentName"] as? String {
+            self.agentName = value
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["MigrateStrategy"] as? Int32 {
+            self.migrateStrategy = value
+        }
+    }
+}
+
+public class ImportAgentJobsResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ImportAgentJobsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ImportAgentJobsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ImportAgentJobsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -13501,6 +13685,8 @@ public class ListExecutorGroupResponse : Tea.TeaModel {
 }
 
 public class ListExecutorsRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -13523,6 +13709,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -13540,6 +13729,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -13890,6 +14082,8 @@ public class ListJobExecutionsRequest : Tea.TeaModel {
 public class ListJobExecutionsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Records : Tea.TeaModel {
+            public var appGroupId: Int64?
+
             public var appName: String?
 
             public var attempt: Int32?
@@ -13952,6 +14146,9 @@ public class ListJobExecutionsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appGroupId != nil {
+                    map["AppGroupId"] = self.appGroupId!
+                }
                 if self.appName != nil {
                     map["AppName"] = self.appName!
                 }
@@ -14029,6 +14226,9 @@ public class ListJobExecutionsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AppGroupId"] as? Int64 {
+                    self.appGroupId = value
+                }
                 if let value = dict["AppName"] as? String {
                     self.appName = value
                 }
@@ -14692,6 +14892,8 @@ public class ListJobsRequest : Tea.TeaModel {
 public class ListJobsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Records : Tea.TeaModel {
+            public var appGroupId: Int64?
+
             public var appName: String?
 
             public var attemptInterval: Int32?
@@ -14778,6 +14980,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appGroupId != nil {
+                    map["AppGroupId"] = self.appGroupId!
+                }
                 if self.appName != nil {
                     map["AppName"] = self.appName!
                 }
@@ -14891,6 +15096,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AppGroupId"] as? Int64 {
+                    self.appGroupId = value
+                }
                 if let value = dict["AppName"] as? String {
                     self.appName = value
                 }
@@ -18055,6 +18263,8 @@ public class OperateConnectDatasourceResponse : Tea.TeaModel {
 public class OperateDesignateExecutorsRequest : Tea.TeaModel {
     public var addressList: [String]?
 
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -18082,6 +18292,9 @@ public class OperateDesignateExecutorsRequest : Tea.TeaModel {
         if self.addressList != nil {
             map["AddressList"] = self.addressList!
         }
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -18105,6 +18318,9 @@ public class OperateDesignateExecutorsRequest : Tea.TeaModel {
         if let value = dict["AddressList"] as? [String] {
             self.addressList = value
         }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -18125,6 +18341,8 @@ public class OperateDesignateExecutorsRequest : Tea.TeaModel {
 
 public class OperateDesignateExecutorsShrinkRequest : Tea.TeaModel {
     public var addressListShrink: String?
+
+    public var appGroupId: Int64?
 
     public var appName: String?
 
@@ -18153,6 +18371,9 @@ public class OperateDesignateExecutorsShrinkRequest : Tea.TeaModel {
         if self.addressListShrink != nil {
             map["AddressList"] = self.addressListShrink!
         }
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -18175,6 +18396,9 @@ public class OperateDesignateExecutorsShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AddressList"] as? String {
             self.addressListShrink = value
+        }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
         }
         if let value = dict["AppName"] as? String {
             self.appName = value
@@ -18300,6 +18524,8 @@ public class OperateDesignateExecutorsResponse : Tea.TeaModel {
 }
 
 public class OperateDisableJobsRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -18320,6 +18546,9 @@ public class OperateDisableJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -18334,6 +18563,9 @@ public class OperateDisableJobsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -18347,6 +18579,8 @@ public class OperateDisableJobsRequest : Tea.TeaModel {
 }
 
 public class OperateDisableJobsShrinkRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -18367,6 +18601,9 @@ public class OperateDisableJobsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -18381,6 +18618,9 @@ public class OperateDisableJobsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -18698,6 +18938,8 @@ public class OperateDisableWorkflowsResponse : Tea.TeaModel {
 }
 
 public class OperateEnableJobsRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -18718,6 +18960,9 @@ public class OperateEnableJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -18732,6 +18977,9 @@ public class OperateEnableJobsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -18745,6 +18993,8 @@ public class OperateEnableJobsRequest : Tea.TeaModel {
 }
 
 public class OperateEnableJobsShrinkRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -18765,6 +19015,9 @@ public class OperateEnableJobsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -18779,6 +19032,9 @@ public class OperateEnableJobsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -19096,6 +19352,8 @@ public class OperateEnableWorkflowsResponse : Tea.TeaModel {
 }
 
 public class OperateExecuteJobRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -19122,6 +19380,9 @@ public class OperateExecuteJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -19145,6 +19406,9 @@ public class OperateExecuteJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -20114,6 +20378,8 @@ public class OperateMarkSuccessWorkflowExecutionResponse : Tea.TeaModel {
 }
 
 public class OperateRerunJobRequest : Tea.TeaModel {
+    public var appId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -20140,6 +20406,9 @@ public class OperateRerunJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -20163,6 +20432,9 @@ public class OperateRerunJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppId"] as? Int64 {
+            self.appId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -20290,6 +20562,8 @@ public class OperateRerunJobResponse : Tea.TeaModel {
 }
 
 public class OperateRetryJobExecutionRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -20314,6 +20588,9 @@ public class OperateRetryJobExecutionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -20334,6 +20611,9 @@ public class OperateRetryJobExecutionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -20353,6 +20633,8 @@ public class OperateRetryJobExecutionRequest : Tea.TeaModel {
 }
 
 public class OperateRetryJobExecutionShrinkRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -20377,6 +20659,9 @@ public class OperateRetryJobExecutionShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -20397,6 +20682,9 @@ public class OperateRetryJobExecutionShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -20833,6 +21121,8 @@ public class OperateSkipJobExecutionResponse : Tea.TeaModel {
 }
 
 public class OperateStopJobExecutionRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -20855,6 +21145,9 @@ public class OperateStopJobExecutionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -20872,6 +21165,9 @@ public class OperateStopJobExecutionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -20888,6 +21184,8 @@ public class OperateStopJobExecutionRequest : Tea.TeaModel {
 }
 
 public class OperateStopJobExecutionShrinkRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var clusterId: String?
@@ -20910,6 +21208,9 @@ public class OperateStopJobExecutionShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -20927,6 +21228,9 @@ public class OperateStopJobExecutionShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -23461,6 +23765,8 @@ public class UpdateJobRequest : Tea.TeaModel {
             }
         }
     }
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var attemptInterval: Int32?
@@ -23528,6 +23834,9 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -23615,6 +23924,9 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }
@@ -23709,6 +24021,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 }
 
 public class UpdateJobShrinkRequest : Tea.TeaModel {
+    public var appGroupId: Int64?
+
     public var appName: String?
 
     public var attemptInterval: Int32?
@@ -23775,6 +24089,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appGroupId != nil {
+            map["AppGroupId"] = self.appGroupId!
+        }
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
@@ -23858,6 +24175,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppGroupId"] as? Int64 {
+            self.appGroupId = value
+        }
         if let value = dict["AppName"] as? String {
             self.appName = value
         }

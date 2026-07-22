@@ -787,6 +787,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.jobIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.jobIds, "JobIds", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            body["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             body["AppName"] = request.appName ?? "";
         }
@@ -1515,6 +1518,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWorkflowExecutionDAG(_ request: GetWorkflowExecutionDAGRequest) async throws -> GetWorkflowExecutionDAGResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getWorkflowExecutionDAGWithOptions(request as! GetWorkflowExecutionDAGRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importAgentJobsWithOptions(_ request: ImportAgentJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportAgentJobsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            body["AgentName"] = request.agentName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.migrateStrategy)) {
+            body["MigrateStrategy"] = request.migrateStrategy!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportAgentJobs",
+            "version": "2024-06-24",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportAgentJobsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importAgentJobs(_ request: ImportAgentJobsRequest) async throws -> ImportAgentJobsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importAgentJobsWithOptions(request as! ImportAgentJobsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2583,6 +2623,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.addressListShrink)) {
             body["AddressList"] = request.addressListShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            body["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             body["AppName"] = request.appName ?? "";
         }
@@ -2631,6 +2674,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.jobIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.jobIds, "JobIds", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            body["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             body["AppName"] = request.appName ?? "";
         }
@@ -2715,6 +2761,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.jobIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.jobIds, "JobIds", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            body["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             body["AppName"] = request.appName ?? "";
         }
@@ -2794,6 +2843,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func operateExecuteJobWithOptions(_ request: OperateExecuteJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateExecuteJobResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            body["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             body["AppName"] = request.appName ?? "";
         }
@@ -3025,6 +3077,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func operateRerunJobWithOptions(_ request: OperateRerunJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateRerunJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             query["AppName"] = request.appName ?? "";
         }
@@ -3076,6 +3131,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.taskListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskList, "TaskList", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            query["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             query["AppName"] = request.appName ?? "";
         }
@@ -3201,6 +3259,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.taskListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskList, "TaskList", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            query["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             query["AppName"] = request.appName ?? "";
         }
@@ -3773,6 +3834,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.noticeContactsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.noticeContacts, "NoticeContacts", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appGroupId)) {
+            body["AppGroupId"] = request.appGroupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.appName)) {
             body["AppName"] = request.appName ?? "";
         }
