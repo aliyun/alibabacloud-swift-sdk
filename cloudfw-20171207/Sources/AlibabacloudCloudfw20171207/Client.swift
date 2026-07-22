@@ -8207,6 +8207,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeTaskDispatchStatusWithOptions(_ request: DescribeTaskDispatchStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTaskDispatchStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeTaskDispatchStatus",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeTaskDispatchStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeTaskDispatchStatus(_ request: DescribeTaskDispatchStatusRequest) async throws -> DescribeTaskDispatchStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeTaskDispatchStatusWithOptions(request as! DescribeTaskDispatchStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeThreatIntelligenceSwitchWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeThreatIntelligenceSwitchResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -8540,6 +8571,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryId)) {
+            query["QueryId"] = request.queryId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             query["RuleId"] = request.ruleId ?? "";
@@ -11248,6 +11282,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySlsDispatchConfigWithOptions(_ request: ModifySlsDispatchConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySlsDispatchConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.detailConfig)) {
+            query["DetailConfig"] = request.detailConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logVersion)) {
+            query["LogVersion"] = request.logVersion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modifyType)) {
+            query["ModifyType"] = request.modifyType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySlsDispatchConfig",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySlsDispatchConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySlsDispatchConfig(_ request: ModifySlsDispatchConfigRequest) async throws -> ModifySlsDispatchConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySlsDispatchConfigWithOptions(request as! ModifySlsDispatchConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifySlsDispatchStatusWithOptions(_ request: ModifySlsDispatchStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySlsDispatchStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -12040,6 +12111,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putDisableFwSwitchWithOptions(_ request: PutDisableFwSwitchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutDisableFwSwitchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ipVersion)) {
             query["IpVersion"] = request.ipVersion ?? "";
         }
@@ -12126,6 +12203,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putEnableFwSwitchWithOptions(_ request: PutEnableFwSwitchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutEnableFwSwitchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ipVersion)) {
             query["IpVersion"] = request.ipVersion ?? "";
         }
