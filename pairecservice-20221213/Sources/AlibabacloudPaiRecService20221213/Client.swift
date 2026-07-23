@@ -8,7 +8,19 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "pairecservice.us-west-1.aliyuncs.com",
+            "us-east-1": "pairecservice.us-east-1.aliyuncs.com",
+            "eu-central-1": "pairecservice.eu-central-1.aliyuncs.com",
+            "cn-shenzhen": "pairecservice.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "pairecservice.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "pairecservice.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "pairecservice.cn-hangzhou.aliyuncs.com",
+            "cn-beijing": "pairecservice.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "pairecservice.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-1": "pairecservice.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pairecservice", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1160,6 +1172,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.itemTablePartitionFieldFormat)) {
             body["ItemTablePartitionFieldFormat"] = request.itemTablePartitionFieldFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxcomputeSchema)) {
+            body["MaxcomputeSchema"] = request.maxcomputeSchema ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
@@ -6431,6 +6446,69 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func shoppingAssistantWithOptions(_ request: ShoppingAssistantRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ShoppingAssistantResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            body["Config"] = request.config ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contents)) {
+            body["Contents"] = request.contents!;
+        }
+        if (!TeaUtils.Client.isUnset(request.conversationId)) {
+            body["ConversationId"] = request.conversationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputMessage)) {
+            body["InputMessage"] = request.inputMessage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            body["SceneId"] = request.sceneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["ServiceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uid)) {
+            body["Uid"] = request.uid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ShoppingAssistant",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/conversations/shopping_assistant/chat",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ShoppingAssistantResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func shoppingAssistant(_ request: ShoppingAssistantRequest) async throws -> ShoppingAssistantResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await shoppingAssistantWithOptions(request as! ShoppingAssistantRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func splitTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: SplitTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SplitTrafficControlTargetResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -6575,6 +6653,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await stopSampleConsistencyJobWithOptions(SampleConsistencyJobId as! String, request as! StopSampleConsistencyJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopTrafficControlFlinkTaskWithOptions(_ TrafficControlTaskId: String, _ request: StopTrafficControlFlinkTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopTrafficControlFlinkTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopTrafficControlFlinkTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/stopflink",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopTrafficControlFlinkTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopTrafficControlFlinkTask(_ TrafficControlTaskId: String, _ request: StopTrafficControlFlinkTaskRequest) async throws -> StopTrafficControlFlinkTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopTrafficControlFlinkTaskWithOptions(TrafficControlTaskId as! String, request as! StopTrafficControlFlinkTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7242,6 +7356,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.itemTablePartitionFieldFormat)) {
             body["ItemTablePartitionFieldFormat"] = request.itemTablePartitionFieldFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxcomputeSchema)) {
+            body["MaxcomputeSchema"] = request.maxcomputeSchema ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
