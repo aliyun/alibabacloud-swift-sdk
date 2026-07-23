@@ -2781,6 +2781,84 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRoutineBuildConfigurationWithOptions(_ tmpReq: CreateRoutineBuildConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRoutineBuildConfigurationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateRoutineBuildConfigurationShrinkRequest = CreateRoutineBuildConfigurationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.environmentVariables)) {
+            request.environmentVariablesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.environmentVariables, "EnvironmentVariables", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assetsDirectory)) {
+            query["AssetsDirectory"] = request.assetsDirectory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildBranches)) {
+            query["BuildBranches"] = request.buildBranches ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildCommand)) {
+            query["BuildCommand"] = request.buildCommand ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentVariablesShrink)) {
+            query["EnvironmentVariables"] = request.environmentVariablesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gitAccountId)) {
+            query["GitAccountId"] = request.gitAccountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gitPlatform)) {
+            query["GitPlatform"] = request.gitPlatform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.installCommand)) {
+            query["InstallCommand"] = request.installCommand ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isPrivate)) {
+            query["IsPrivate"] = request.isPrivate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeVersion)) {
+            query["NodeVersion"] = request.nodeVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productionBranch)) {
+            query["ProductionBranch"] = request.productionBranch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repository)) {
+            query["Repository"] = request.repository ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rootDirectory)) {
+            query["RootDirectory"] = request.rootDirectory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routineEntry)) {
+            query["RoutineEntry"] = request.routineEntry ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routineName)) {
+            query["RoutineName"] = request.routineName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["TemplateName"] = request.templateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateRoutineBuildConfiguration",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateRoutineBuildConfigurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRoutineBuildConfiguration(_ request: CreateRoutineBuildConfigurationRequest) async throws -> CreateRoutineBuildConfigurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createRoutineBuildConfigurationWithOptions(request as! CreateRoutineBuildConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createRoutineCodeDeploymentWithOptions(_ tmpReq: CreateRoutineCodeDeploymentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRoutineCodeDeploymentResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateRoutineCodeDeploymentShrinkRequest = CreateRoutineCodeDeploymentShrinkRequest([:])
@@ -3067,6 +3145,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwner)) {
+            query["ResourceOwner"] = request.resourceOwner!;
         }
         if (!TeaUtils.Client.isUnset(request.siteName)) {
             query["SiteName"] = request.siteName ?? "";
@@ -5101,6 +5182,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRoutineBuildConfigurationWithOptions(_ request: DeleteRoutineBuildConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRoutineBuildConfigurationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.routineName)) {
+            query["RoutineName"] = request.routineName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRoutineBuildConfiguration",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRoutineBuildConfigurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRoutineBuildConfiguration(_ request: DeleteRoutineBuildConfigurationRequest) async throws -> DeleteRoutineBuildConfigurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteRoutineBuildConfigurationWithOptions(request as! DeleteRoutineBuildConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteRoutineCodeVersionWithOptions(_ request: DeleteRoutineCodeVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRoutineCodeVersionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -6449,6 +6561,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwner)) {
+            query["ResourceOwner"] = request.resourceOwner!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -9135,6 +9250,68 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRoutineBuildWithOptions(_ request: GetRoutineBuildRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRoutineBuildResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.routineBuildId)) {
+            query["RoutineBuildId"] = request.routineBuildId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRoutineBuild",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRoutineBuildResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRoutineBuild(_ request: GetRoutineBuildRequest) async throws -> GetRoutineBuildResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getRoutineBuildWithOptions(request as! GetRoutineBuildRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRoutineBuildConfigurationWithOptions(_ request: GetRoutineBuildConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRoutineBuildConfigurationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.routineName)) {
+            query["RoutineName"] = request.routineName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRoutineBuildConfiguration",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRoutineBuildConfigurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRoutineBuildConfiguration(_ request: GetRoutineBuildConfigurationRequest) async throws -> GetRoutineBuildConfigurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getRoutineBuildConfigurationWithOptions(request as! GetRoutineBuildConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRoutineCodeVersionWithOptions(_ request: GetRoutineCodeVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRoutineCodeVersionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -11766,6 +11943,83 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRoutineBuildConfigurationsWithOptions(_ request: ListRoutineBuildConfigurationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRoutineBuildConfigurationsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.routineNames)) {
+            query["RoutineNames"] = request.routineNames ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRoutineBuildConfigurations",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRoutineBuildConfigurationsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRoutineBuildConfigurations(_ request: ListRoutineBuildConfigurationsRequest) async throws -> ListRoutineBuildConfigurationsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listRoutineBuildConfigurationsWithOptions(request as! ListRoutineBuildConfigurationsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRoutineBuildsWithOptions(_ request: ListRoutineBuildsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRoutineBuildsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            query["PageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routineName)) {
+            query["RoutineName"] = request.routineName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["SortOrder"] = request.sortOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRoutineBuilds",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRoutineBuildsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRoutineBuilds(_ request: ListRoutineBuildsRequest) async throws -> ListRoutineBuildsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listRoutineBuildsWithOptions(request as! ListRoutineBuildsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listRoutineCanaryAreasWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> ListRoutineCanaryAreasResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -13277,6 +13531,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func purchaseDDoSInstanceWithOptions(_ request: PurchaseDDoSInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PurchaseDDoSInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DDoSBillingMode)) {
+            query["DDoSBillingMode"] = request.DDoSBillingMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DDoSBurstableDomesticProtection)) {
+            query["DDoSBurstableDomesticProtection"] = request.DDoSBurstableDomesticProtection ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DDoSBurstableOverseasProtection)) {
+            query["DDoSBurstableOverseasProtection"] = request.DDoSBurstableOverseasProtection ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteInstanceId)) {
+            query["SiteInstanceId"] = request.siteInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PurchaseDDoSInstance",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PurchaseDDoSInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func purchaseDDoSInstance(_ request: PurchaseDDoSInstanceRequest) async throws -> PurchaseDDoSInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await purchaseDDoSInstanceWithOptions(request as! PurchaseDDoSInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func purchaseRatePlanWithOptions(_ request: PurchaseRatePlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PurchaseRatePlanResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -13297,6 +13591,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.coverage)) {
             query["Coverage"] = request.coverage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.overagePolicy)) {
+            query["OveragePolicy"] = request.overagePolicy ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period!;
@@ -13552,6 +13849,37 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var putKvWithHighCapacityResp: PutKvWithHighCapacityResponse = try await putKvWithHighCapacityWithOptions(putKvWithHighCapacityReq as! PutKvWithHighCapacityRequest, runtime as! TeaUtils.RuntimeOptions)
         return putKvWithHighCapacityResp as! PutKvWithHighCapacityResponse
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reDoRoutineBuildWithOptions(_ request: ReDoRoutineBuildRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReDoRoutineBuildResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.routineBuildId)) {
+            query["RoutineBuildId"] = request.routineBuildId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReDoRoutineBuild",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReDoRoutineBuildResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reDoRoutineBuild(_ request: ReDoRoutineBuildRequest) async throws -> ReDoRoutineBuildResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await reDoRoutineBuildWithOptions(request as! ReDoRoutineBuildRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -14283,6 +14611,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startScheduledPreloadExecution(_ request: StartScheduledPreloadExecutionRequest) async throws -> StartScheduledPreloadExecutionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await startScheduledPreloadExecutionWithOptions(request as! StartScheduledPreloadExecutionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopRoutineBuildWithOptions(_ request: StopRoutineBuildRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopRoutineBuildResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.routineBuildId)) {
+            query["RoutineBuildId"] = request.routineBuildId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopRoutineBuild",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopRoutineBuildResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopRoutineBuild(_ request: StopRoutineBuildRequest) async throws -> StopRoutineBuildResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await stopRoutineBuildWithOptions(request as! StopRoutineBuildRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -16472,6 +16831,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gitAccountId)) {
             query["GitAccountId"] = request.gitAccountId!;
         }
+        if (!TeaUtils.Client.isUnset(request.gitPlatform)) {
+            query["GitPlatform"] = request.gitPlatform ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.installCommand)) {
             query["InstallCommand"] = request.installCommand ?? "";
         }
@@ -16882,6 +17244,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSiteDeliveryTaskStatus(_ request: UpdateSiteDeliveryTaskStatusRequest) async throws -> UpdateSiteDeliveryTaskStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateSiteDeliveryTaskStatusWithOptions(request as! UpdateSiteDeliveryTaskStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSiteInstanceWithOptions(_ request: UpdateSiteInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSiteInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.newInstanceId)) {
+            query["NewInstanceId"] = request.newInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwner)) {
+            query["ResourceOwner"] = request.resourceOwner!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateSiteInstance",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateSiteInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSiteInstance(_ request: UpdateSiteInstanceRequest) async throws -> UpdateSiteInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateSiteInstanceWithOptions(request as! UpdateSiteInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
