@@ -563,6 +563,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func interruptForArbitrationWithOptions(_ tmpReq: InterruptForArbitrationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InterruptForArbitrationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: InterruptForArbitrationShrinkRequest = InterruptForArbitrationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.interrupt)) {
+            request.interruptShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.interrupt, "Interrupt", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            query["ChatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hubRequestId)) {
+            query["HubRequestId"] = request.hubRequestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.interruptShrink)) {
+            query["Interrupt"] = request.interruptShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InterruptForArbitration",
+            "version": "2025-09-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InterruptForArbitrationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func interruptForArbitration(_ request: InterruptForArbitrationRequest) async throws -> InterruptForArbitrationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await interruptForArbitrationWithOptions(request as! InterruptForArbitrationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listCommandWithOptions(_ request: ListCommandRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCommandResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

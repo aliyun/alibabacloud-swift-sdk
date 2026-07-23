@@ -3857,6 +3857,262 @@ public class DeviceUpdateResponse : Tea.TeaModel {
     }
 }
 
+public class InterruptForArbitrationRequest : Tea.TeaModel {
+    public class Interrupt : Tea.TeaModel {
+        public var submit: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.submit != nil {
+                map["Submit"] = self.submit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Submit"] as? Bool {
+                self.submit = value
+            }
+        }
+    }
+    public var appId: String?
+
+    public var chatId: String?
+
+    public var hubRequestId: String?
+
+    public var interrupt: InterruptForArbitrationRequest.Interrupt?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.interrupt?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.chatId != nil {
+            map["ChatId"] = self.chatId!
+        }
+        if self.hubRequestId != nil {
+            map["HubRequestId"] = self.hubRequestId!
+        }
+        if self.interrupt != nil {
+            map["Interrupt"] = self.interrupt?.toMap()
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["ChatId"] as? String {
+            self.chatId = value
+        }
+        if let value = dict["HubRequestId"] as? String {
+            self.hubRequestId = value
+        }
+        if let value = dict["Interrupt"] as? [String: Any?] {
+            var model = InterruptForArbitrationRequest.Interrupt()
+            model.fromMap(value)
+            self.interrupt = model
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class InterruptForArbitrationShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var chatId: String?
+
+    public var hubRequestId: String?
+
+    public var interruptShrink: String?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.chatId != nil {
+            map["ChatId"] = self.chatId!
+        }
+        if self.hubRequestId != nil {
+            map["HubRequestId"] = self.hubRequestId!
+        }
+        if self.interruptShrink != nil {
+            map["Interrupt"] = self.interruptShrink!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["ChatId"] as? String {
+            self.chatId = value
+        }
+        if let value = dict["HubRequestId"] as? String {
+            self.hubRequestId = value
+        }
+        if let value = dict["Interrupt"] as? String {
+            self.interruptShrink = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class InterruptForArbitrationResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class InterruptForArbitrationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InterruptForArbitrationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InterruptForArbitrationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListCommandRequest : Tea.TeaModel {
     public var appId: String?
 
