@@ -8,7 +8,35 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "eventbridge-console.us-west-1.aliyuncs.com",
+            "us-east-1": "eventbridge-console.us-east-1.aliyuncs.com",
+            "eu-west-1": "eventbridge-console.eu-west-1.aliyuncs.com",
+            "eu-central-1": "eventbridge-console.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "eventbridge-console.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "eventbridge-console.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen-finance-1": "eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-shenzhen": "eventbridge-console.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "eventbridge-console.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "eventbridge-console.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "eventbridge-console.cn-qingdao.aliyuncs.com",
+            "cn-huhehaote": "eventbridge-console.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "eventbridge-console.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "eventbridge-console.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou": "eventbridge-console.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "eventbridge-console.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "eventbridge-console.cn-chengdu.aliyuncs.com",
+            "cn-beijing-finance-1": "eventbridge-console.cn-beijing-finance-1.aliyuncs.com",
+            "cn-beijing": "eventbridge-console.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "eventbridge-console.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "eventbridge-console.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "eventbridge-console.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "eventbridge-console.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "eventbridge-console.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "eventbridge-console.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "eventbridge-console.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eventbridge", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -401,6 +429,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.filterPattern)) {
             body["FilterPattern"] = request.filterPattern ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["Metadata"] = request.metadata ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.runOptionsShrink)) {
             body["RunOptions"] = request.runOptionsShrink ?? "";
         }
@@ -715,6 +746,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEventAnalysisJobWithOptions(_ tmpReq: DeleteEventAnalysisJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEventAnalysisJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteEventAnalysisJobShrinkRequest = DeleteEventAnalysisJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.sourceResource)) {
+            request.sourceResourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceResource, "SourceResource", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.sourceResourceShrink)) {
+            body["SourceResource"] = request.sourceResourceShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteEventAnalysisJob",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEventAnalysisJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEventAnalysisJob(_ request: DeleteEventAnalysisJobRequest) async throws -> DeleteEventAnalysisJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteEventAnalysisJobWithOptions(request as! DeleteEventAnalysisJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteEventBusWithOptions(_ request: DeleteEventBusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEventBusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -743,6 +810,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteEventBus(_ request: DeleteEventBusRequest) async throws -> DeleteEventBusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteEventBusWithOptions(request as! DeleteEventBusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEventHouseRuntimeWithOptions(_ request: DeleteEventHouseRuntimeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEventHouseRuntimeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteEventHouseRuntime",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEventHouseRuntimeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEventHouseRuntime(_ request: DeleteEventHouseRuntimeRequest) async throws -> DeleteEventHouseRuntimeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteEventHouseRuntimeWithOptions(request as! DeleteEventHouseRuntimeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1279,6 +1377,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEventHouseRuntimeWithOptions(_ request: GetEventHouseRuntimeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEventHouseRuntimeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetEventHouseRuntime",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetEventHouseRuntimeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEventHouseRuntime(_ request: GetEventHouseRuntimeRequest) async throws -> GetEventHouseRuntimeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getEventHouseRuntimeWithOptions(request as! GetEventHouseRuntimeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getEventStreamingWithOptions(_ request: GetEventStreamingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEventStreamingResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1634,6 +1763,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listEventBuses(_ request: ListEventBusesRequest) async throws -> ListEventBusesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listEventBusesWithOptions(request as! ListEventBusesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEventHouseRuntimesWithOptions(_ request: ListEventHouseRuntimesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEventHouseRuntimesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListEventHouseRuntimes",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListEventHouseRuntimesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEventHouseRuntimes(_ request: ListEventHouseRuntimesRequest) async throws -> ListEventHouseRuntimesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listEventHouseRuntimesWithOptions(request as! ListEventHouseRuntimesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2509,6 +2672,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEventHouseRuntimeWithOptions(_ request: UpdateEventHouseRuntimeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateEventHouseRuntimeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cu)) {
+            query["Cu"] = request.cu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateEventHouseRuntime",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateEventHouseRuntimeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEventHouseRuntime(_ request: UpdateEventHouseRuntimeRequest) async throws -> UpdateEventHouseRuntimeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateEventHouseRuntimeWithOptions(request as! UpdateEventHouseRuntimeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateEventSourceWithOptions(_ tmpReq: UpdateEventSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateEventSourceResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateEventSourceShrinkRequest = UpdateEventSourceShrinkRequest([:])
@@ -2633,6 +2830,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.filterPattern)) {
             body["FilterPattern"] = request.filterPattern ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["Metadata"] = request.metadata ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.runOptionsShrink)) {
             body["RunOptions"] = request.runOptionsShrink ?? "";
