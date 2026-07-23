@@ -43,9 +43,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-southeast-6": "kms.ap-southeast-6.aliyuncs.com",
             "ap-southeast-5": "kms.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "kms.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "kms.ap-southeast-2.aliyuncs.com",
             "ap-southeast-1": "kms.ap-southeast-1.aliyuncs.com",
-            "ap-south-1": "kms.ap-south-1.aliyuncs.com",
             "ap-northeast-2": "kms.ap-northeast-2.aliyuncs.com",
             "ap-northeast-1": "kms.ap-northeast-1.aliyuncs.com"
         ]
@@ -1690,6 +1688,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getManagedDataKeyWithOptions(_ request: GetManagedDataKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetManagedDataKeyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataKeyName)) {
+            query["DataKeyName"] = request.dataKeyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataKeyVersionId)) {
+            query["DataKeyVersionId"] = request.dataKeyVersionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useLatest)) {
+            query["UseLatest"] = request.useLatest!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetManagedDataKey",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetManagedDataKeyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getManagedDataKey(_ request: GetManagedDataKeyRequest) async throws -> GetManagedDataKeyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getManagedDataKeyWithOptions(request as! GetManagedDataKeyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getParametersForImportWithOptions(_ request: GetParametersForImportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetParametersForImportResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2171,6 +2206,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listKmsInstances(_ request: ListKmsInstancesRequest) async throws -> ListKmsInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listKmsInstancesWithOptions(request as! ListKmsInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listManagedDataKeyVersionsWithOptions(_ request: ListManagedDataKeyVersionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListManagedDataKeyVersionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataKeyName)) {
+            query["DataKeyName"] = request.dataKeyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListManagedDataKeyVersions",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListManagedDataKeyVersionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listManagedDataKeyVersions(_ request: ListManagedDataKeyVersionsRequest) async throws -> ListManagedDataKeyVersionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listManagedDataKeyVersionsWithOptions(request as! ListManagedDataKeyVersionsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

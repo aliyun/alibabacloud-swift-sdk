@@ -7962,6 +7962,166 @@ public class GetKmsInstanceQuotaInfosResponse : Tea.TeaModel {
     }
 }
 
+public class GetManagedDataKeyRequest : Tea.TeaModel {
+    public var dataKeyName: String?
+
+    public var dataKeyVersionId: String?
+
+    public var useLatest: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataKeyName != nil {
+            map["DataKeyName"] = self.dataKeyName!
+        }
+        if self.dataKeyVersionId != nil {
+            map["DataKeyVersionId"] = self.dataKeyVersionId!
+        }
+        if self.useLatest != nil {
+            map["UseLatest"] = self.useLatest!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataKeyName"] as? String {
+            self.dataKeyName = value
+        }
+        if let value = dict["DataKeyVersionId"] as? String {
+            self.dataKeyVersionId = value
+        }
+        if let value = dict["UseLatest"] as? Bool {
+            self.useLatest = value
+        }
+    }
+}
+
+public class GetManagedDataKeyResponseBody : Tea.TeaModel {
+    public var dataKeyName: String?
+
+    public var dataKeyVersionId: String?
+
+    public var dataKeyVersionName: String?
+
+    public var plaintext: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataKeyName != nil {
+            map["DataKeyName"] = self.dataKeyName!
+        }
+        if self.dataKeyVersionId != nil {
+            map["DataKeyVersionId"] = self.dataKeyVersionId!
+        }
+        if self.dataKeyVersionName != nil {
+            map["DataKeyVersionName"] = self.dataKeyVersionName!
+        }
+        if self.plaintext != nil {
+            map["Plaintext"] = self.plaintext!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataKeyName"] as? String {
+            self.dataKeyName = value
+        }
+        if let value = dict["DataKeyVersionId"] as? String {
+            self.dataKeyVersionId = value
+        }
+        if let value = dict["DataKeyVersionName"] as? String {
+            self.dataKeyVersionName = value
+        }
+        if let value = dict["Plaintext"] as? String {
+            self.plaintext = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetManagedDataKeyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetManagedDataKeyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetManagedDataKeyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetParametersForImportRequest : Tea.TeaModel {
     public var keyId: String?
 
@@ -10671,6 +10831,259 @@ public class ListKmsInstancesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListKmsInstancesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListManagedDataKeyVersionsRequest : Tea.TeaModel {
+    public var dataKeyName: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataKeyName != nil {
+            map["DataKeyName"] = self.dataKeyName!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataKeyName"] as? String {
+            self.dataKeyName = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListManagedDataKeyVersionsResponseBody : Tea.TeaModel {
+    public class ManagedDataKeyVersions : Tea.TeaModel {
+        public class ManagedDataKeyVersion : Tea.TeaModel {
+            public var dataKeyVersionId: String?
+
+            public var dataKeyVersionName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataKeyVersionId != nil {
+                    map["DataKeyVersionId"] = self.dataKeyVersionId!
+                }
+                if self.dataKeyVersionName != nil {
+                    map["DataKeyVersionName"] = self.dataKeyVersionName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataKeyVersionId"] as? String {
+                    self.dataKeyVersionId = value
+                }
+                if let value = dict["DataKeyVersionName"] as? String {
+                    self.dataKeyVersionName = value
+                }
+            }
+        }
+        public var managedDataKeyVersion: [ListManagedDataKeyVersionsResponseBody.ManagedDataKeyVersions.ManagedDataKeyVersion]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.managedDataKeyVersion != nil {
+                var tmp : [Any] = []
+                for k in self.managedDataKeyVersion! {
+                    tmp.append(k.toMap())
+                }
+                map["ManagedDataKeyVersion"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ManagedDataKeyVersion"] as? [Any?] {
+                var tmp : [ListManagedDataKeyVersionsResponseBody.ManagedDataKeyVersions.ManagedDataKeyVersion] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListManagedDataKeyVersionsResponseBody.ManagedDataKeyVersions.ManagedDataKeyVersion()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.managedDataKeyVersion = tmp
+            }
+        }
+    }
+    public var dataKeyName: String?
+
+    public var managedDataKeyVersions: ListManagedDataKeyVersionsResponseBody.ManagedDataKeyVersions?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.managedDataKeyVersions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataKeyName != nil {
+            map["DataKeyName"] = self.dataKeyName!
+        }
+        if self.managedDataKeyVersions != nil {
+            map["ManagedDataKeyVersions"] = self.managedDataKeyVersions?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataKeyName"] as? String {
+            self.dataKeyName = value
+        }
+        if let value = dict["ManagedDataKeyVersions"] as? [String: Any?] {
+            var model = ListManagedDataKeyVersionsResponseBody.ManagedDataKeyVersions()
+            model.fromMap(value)
+            self.managedDataKeyVersions = model
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListManagedDataKeyVersionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListManagedDataKeyVersionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListManagedDataKeyVersionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
