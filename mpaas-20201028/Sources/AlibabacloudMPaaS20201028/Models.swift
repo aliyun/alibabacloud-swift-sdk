@@ -39714,6 +39714,330 @@ public class QueryMgsTestreqbodyautogenResponse : Tea.TeaModel {
     }
 }
 
+public class QueryMiniGameInfoByAppRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var miniProgramCode: String?
+
+    public var tenantId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.miniProgramCode != nil {
+            map["MiniProgramCode"] = self.miniProgramCode!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["MiniProgramCode"] as? String {
+            self.miniProgramCode = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class QueryMiniGameInfoByAppResponseBody : Tea.TeaModel {
+    public class Content : Tea.TeaModel {
+        public var gameEngine: String?
+
+        public var gameMaker: String?
+
+        public var gameTypeLevel1: String?
+
+        public var gameTypeLevel2: String?
+
+        public var gameTypeLevel3: String?
+
+        public var gameVersionId: String?
+
+        public var gmtModified: Int64?
+
+        public var icon: String?
+
+        public var introduction: String?
+
+        public var miniProgramCode: String?
+
+        public var miniProgramId: Int64?
+
+        public var miniProgramName: String?
+
+        public var slogan: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gameEngine != nil {
+                map["GameEngine"] = self.gameEngine!
+            }
+            if self.gameMaker != nil {
+                map["GameMaker"] = self.gameMaker!
+            }
+            if self.gameTypeLevel1 != nil {
+                map["GameTypeLevel1"] = self.gameTypeLevel1!
+            }
+            if self.gameTypeLevel2 != nil {
+                map["GameTypeLevel2"] = self.gameTypeLevel2!
+            }
+            if self.gameTypeLevel3 != nil {
+                map["GameTypeLevel3"] = self.gameTypeLevel3!
+            }
+            if self.gameVersionId != nil {
+                map["GameVersionId"] = self.gameVersionId!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.icon != nil {
+                map["Icon"] = self.icon!
+            }
+            if self.introduction != nil {
+                map["Introduction"] = self.introduction!
+            }
+            if self.miniProgramCode != nil {
+                map["MiniProgramCode"] = self.miniProgramCode!
+            }
+            if self.miniProgramId != nil {
+                map["MiniProgramId"] = self.miniProgramId!
+            }
+            if self.miniProgramName != nil {
+                map["MiniProgramName"] = self.miniProgramName!
+            }
+            if self.slogan != nil {
+                map["Slogan"] = self.slogan!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GameEngine"] as? String {
+                self.gameEngine = value
+            }
+            if let value = dict["GameMaker"] as? String {
+                self.gameMaker = value
+            }
+            if let value = dict["GameTypeLevel1"] as? String {
+                self.gameTypeLevel1 = value
+            }
+            if let value = dict["GameTypeLevel2"] as? String {
+                self.gameTypeLevel2 = value
+            }
+            if let value = dict["GameTypeLevel3"] as? String {
+                self.gameTypeLevel3 = value
+            }
+            if let value = dict["GameVersionId"] as? String {
+                self.gameVersionId = value
+            }
+            if let value = dict["GmtModified"] as? Int64 {
+                self.gmtModified = value
+            }
+            if let value = dict["Icon"] as? String {
+                self.icon = value
+            }
+            if let value = dict["Introduction"] as? String {
+                self.introduction = value
+            }
+            if let value = dict["MiniProgramCode"] as? String {
+                self.miniProgramCode = value
+            }
+            if let value = dict["MiniProgramId"] as? Int64 {
+                self.miniProgramId = value
+            }
+            if let value = dict["MiniProgramName"] as? String {
+                self.miniProgramName = value
+            }
+            if let value = dict["Slogan"] as? String {
+                self.slogan = value
+            }
+            if let value = dict["Version"] as? String {
+                self.version = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var content: [QueryMiniGameInfoByAppResponseBody.Content]?
+
+    public var errorCode: String?
+
+    public var requestId: String?
+
+    public var resultMsg: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.content != nil {
+            var tmp : [Any] = []
+            for k in self.content! {
+                tmp.append(k.toMap())
+            }
+            map["Content"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultMsg != nil {
+            map["ResultMsg"] = self.resultMsg!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Content"] as? [Any?] {
+            var tmp : [QueryMiniGameInfoByAppResponseBody.Content] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryMiniGameInfoByAppResponseBody.Content()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.content = tmp
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResultMsg"] as? String {
+            self.resultMsg = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryMiniGameInfoByAppResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryMiniGameInfoByAppResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryMiniGameInfoByAppResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QueryMpsSchedulerListRequest : Tea.TeaModel {
     public var appId: String?
 
