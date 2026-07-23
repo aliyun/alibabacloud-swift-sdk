@@ -460,6 +460,125 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createExperimentPlanWithOptions(_ agentSpace: String, _ request: CreateExperimentPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateExperimentPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            body["datasetId"] = request.datasetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluators)) {
+            body["evaluators"] = request.evaluators ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.experimentType)) {
+            body["experimentType"] = request.experimentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.experiments)) {
+            body["experiments"] = request.experiments ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            body["input"] = request.input ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.planName)) {
+            body["planName"] = request.planName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.querySql)) {
+            body["querySql"] = request.querySql ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedItemIds)) {
+            body["selectedItemIds"] = request.selectedItemIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateExperimentPlan",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/plans",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateExperimentPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createExperimentPlan(_ agentSpace: String, _ request: CreateExperimentPlanRequest) async throws -> CreateExperimentPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createExperimentPlanWithOptions(agentSpace as! String, request as! CreateExperimentPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createExperimentRunWithOptions(_ agentSpace: String, _ request: CreateExperimentRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateExperimentRunResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.completedAt)) {
+            body["completedAt"] = request.completedAt!;
+        }
+        if (!TeaUtils.Client.isUnset(request.completedTasks)) {
+            body["completedTasks"] = request.completedTasks!;
+        }
+        if (!TeaUtils.Client.isUnset(request.executedAt)) {
+            body["executedAt"] = request.executedAt!;
+        }
+        if (!TeaUtils.Client.isUnset(request.experimentPlanId)) {
+            body["experimentPlanId"] = request.experimentPlanId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.failedTasks)) {
+            body["failedTasks"] = request.failedTasks!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offlineExperiments)) {
+            body["offlineExperiments"] = request.offlineExperiments ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.recordName)) {
+            body["recordName"] = request.recordName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.totalTasks)) {
+            body["totalTasks"] = request.totalTasks!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateExperimentRun",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experimentruns/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/execute",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateExperimentRunResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createExperimentRun(_ agentSpace: String, _ request: CreateExperimentRunRequest) async throws -> CreateExperimentRunResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createExperimentRunWithOptions(agentSpace as! String, request as! CreateExperimentRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPipelineWithOptions(_ agentSpace: String, _ request: CreatePipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePipelineResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -755,6 +874,62 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteEvaluatorSkillWithOptions(name as! String, skillName as! String, request as! DeleteEvaluatorSkillRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteExperimentPlanWithOptions(_ agentSpace: String, _ planId: String, _ request: DeleteExperimentPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExperimentPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteExperimentPlan",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(planId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteExperimentPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteExperimentPlan(_ agentSpace: String, _ planId: String, _ request: DeleteExperimentPlanRequest) async throws -> DeleteExperimentPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteExperimentPlanWithOptions(agentSpace as! String, planId as! String, request as! DeleteExperimentPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteExperimentRunWithOptions(_ agentSpace: String, _ recordId: String, _ request: DeleteExperimentRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExperimentRunResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteExperimentRun",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experimentruns/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/records/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(recordId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteExperimentRunResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteExperimentRun(_ agentSpace: String, _ recordId: String, _ request: DeleteExperimentRunRequest) async throws -> DeleteExperimentRunResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteExperimentRunWithOptions(agentSpace as! String, recordId as! String, request as! DeleteExperimentRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1113,6 +1288,62 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getEvaluatorSkillWithOptions(name as! String, skillName as! String, request as! GetEvaluatorSkillRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getExperimentPlanWithOptions(_ agentSpace: String, _ planId: String, _ request: GetExperimentPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetExperimentPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetExperimentPlan",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(planId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetExperimentPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getExperimentPlan(_ agentSpace: String, _ planId: String, _ request: GetExperimentPlanRequest) async throws -> GetExperimentPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getExperimentPlanWithOptions(agentSpace as! String, planId as! String, request as! GetExperimentPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getExperimentRunWithOptions(_ agentSpace: String, _ recordId: String, _ request: GetExperimentRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetExperimentRunResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetExperimentRun",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experimentruns/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/records/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(recordId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetExperimentRunResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getExperimentRun(_ agentSpace: String, _ recordId: String, _ request: GetExperimentRunRequest) async throws -> GetExperimentRunResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getExperimentRunWithOptions(agentSpace as! String, recordId as! String, request as! GetExperimentRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1550,6 +1781,108 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listEvaluatorsWithOptions(request as! ListEvaluatorsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listExperimentPlansWithOptions(_ agentSpace: String, _ request: ListExperimentPlansRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListExperimentPlansResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.planName)) {
+            query["planName"] = request.planName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListExperimentPlans",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/plans",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListExperimentPlansResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listExperimentPlans(_ agentSpace: String, _ request: ListExperimentPlansRequest) async throws -> ListExperimentPlansResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listExperimentPlansWithOptions(agentSpace as! String, request as! ListExperimentPlansRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listExperimentRunsWithOptions(_ agentSpace: String, _ request: ListExperimentRunsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListExperimentRunsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            query["datasetId"] = request.datasetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.experimentName)) {
+            query["experimentName"] = request.experimentName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.planName)) {
+            query["planName"] = request.planName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListExperimentRuns",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experimentruns/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/records",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListExperimentRunsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listExperimentRuns(_ agentSpace: String, _ request: ListExperimentRunsRequest) async throws -> ListExperimentRunsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listExperimentRunsWithOptions(agentSpace as! String, request as! ListExperimentRunsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2190,6 +2523,122 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateEvaluatorSkillWithOptions(name as! String, skillName as! String, request as! UpdateEvaluatorSkillRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateExperimentPlanWithOptions(_ agentSpace: String, _ planId: String, _ request: UpdateExperimentPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateExperimentPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            body["datasetId"] = request.datasetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetProject)) {
+            body["datasetProject"] = request.datasetProject ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluators)) {
+            body["evaluators"] = request.evaluators ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.experimentType)) {
+            body["experimentType"] = request.experimentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.experiments)) {
+            body["experiments"] = request.experiments ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            body["input"] = request.input ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.planName)) {
+            body["planName"] = request.planName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.querySql)) {
+            body["querySql"] = request.querySql ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedItemIds)) {
+            body["selectedItemIds"] = request.selectedItemIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateExperimentPlan",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(planId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateExperimentPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateExperimentPlan(_ agentSpace: String, _ planId: String, _ request: UpdateExperimentPlanRequest) async throws -> UpdateExperimentPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateExperimentPlanWithOptions(agentSpace as! String, planId as! String, request as! UpdateExperimentPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateExperimentRunWithOptions(_ agentSpace: String, _ recordId: String, _ request: UpdateExperimentRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateExperimentRunResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.completedAt)) {
+            body["completedAt"] = request.completedAt!;
+        }
+        if (!TeaUtils.Client.isUnset(request.completedTasks)) {
+            body["completedTasks"] = request.completedTasks!;
+        }
+        if (!TeaUtils.Client.isUnset(request.executedAt)) {
+            body["executedAt"] = request.executedAt!;
+        }
+        if (!TeaUtils.Client.isUnset(request.failedTasks)) {
+            body["failedTasks"] = request.failedTasks!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recordName)) {
+            body["recordName"] = request.recordName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.totalTasks)) {
+            body["totalTasks"] = request.totalTasks!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateExperimentRun",
+            "version": "2026-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/experimentruns/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentSpace)) + "/records/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(recordId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateExperimentRunResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateExperimentRun(_ agentSpace: String, _ recordId: String, _ request: UpdateExperimentRunRequest) async throws -> UpdateExperimentRunResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateExperimentRunWithOptions(agentSpace as! String, recordId as! String, request as! UpdateExperimentRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
