@@ -11244,6 +11244,269 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class VoiceprintResponse : Tea.TeaModel {
+                public class Dialogue : Tea.TeaModel {
+                    public class Additions : Tea.TeaModel {
+                        public var age: String?
+
+                        public var ageGroup: String?
+
+                        public var ageScore: Double?
+
+                        public var bestVoiceprintScore: Double?
+
+                        public var emotion: String?
+
+                        public var emotionScore: Double?
+
+                        public var gender: String?
+
+                        public var genderScore: Double?
+
+                        public var isKnownVoiceprint: Bool?
+
+                        public var speaker: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.age != nil {
+                                map["Age"] = self.age!
+                            }
+                            if self.ageGroup != nil {
+                                map["AgeGroup"] = self.ageGroup!
+                            }
+                            if self.ageScore != nil {
+                                map["AgeScore"] = self.ageScore!
+                            }
+                            if self.bestVoiceprintScore != nil {
+                                map["BestVoiceprintScore"] = self.bestVoiceprintScore!
+                            }
+                            if self.emotion != nil {
+                                map["Emotion"] = self.emotion!
+                            }
+                            if self.emotionScore != nil {
+                                map["EmotionScore"] = self.emotionScore!
+                            }
+                            if self.gender != nil {
+                                map["Gender"] = self.gender!
+                            }
+                            if self.genderScore != nil {
+                                map["GenderScore"] = self.genderScore!
+                            }
+                            if self.isKnownVoiceprint != nil {
+                                map["IsKnownVoiceprint"] = self.isKnownVoiceprint!
+                            }
+                            if self.speaker != nil {
+                                map["Speaker"] = self.speaker!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Age"] as? String {
+                                self.age = value
+                            }
+                            if let value = dict["AgeGroup"] as? String {
+                                self.ageGroup = value
+                            }
+                            if let value = dict["AgeScore"] as? Double {
+                                self.ageScore = value
+                            }
+                            if let value = dict["BestVoiceprintScore"] as? Double {
+                                self.bestVoiceprintScore = value
+                            }
+                            if let value = dict["Emotion"] as? String {
+                                self.emotion = value
+                            }
+                            if let value = dict["EmotionScore"] as? Double {
+                                self.emotionScore = value
+                            }
+                            if let value = dict["Gender"] as? String {
+                                self.gender = value
+                            }
+                            if let value = dict["GenderScore"] as? Double {
+                                self.genderScore = value
+                            }
+                            if let value = dict["IsKnownVoiceprint"] as? Bool {
+                                self.isKnownVoiceprint = value
+                            }
+                            if let value = dict["Speaker"] as? String {
+                                self.speaker = value
+                            }
+                        }
+                    }
+                    public var additions: GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Dialogue.Additions?
+
+                    public var begin: Int64?
+
+                    public var end: Int64?
+
+                    public var words: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.additions?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.additions != nil {
+                            map["Additions"] = self.additions?.toMap()
+                        }
+                        if self.begin != nil {
+                            map["Begin"] = self.begin!
+                        }
+                        if self.end != nil {
+                            map["End"] = self.end!
+                        }
+                        if self.words != nil {
+                            map["Words"] = self.words!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Additions"] as? [String: Any?] {
+                            var model = GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Dialogue.Additions()
+                            model.fromMap(value)
+                            self.additions = model
+                        }
+                        if let value = dict["Begin"] as? Int64 {
+                            self.begin = value
+                        }
+                        if let value = dict["End"] as? Int64 {
+                            self.end = value
+                        }
+                        if let value = dict["Words"] as? String {
+                            self.words = value
+                        }
+                    }
+                }
+                public class Errors : Tea.TeaModel {
+                    public var code: String?
+
+                    public var message: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.code != nil {
+                            map["Code"] = self.code!
+                        }
+                        if self.message != nil {
+                            map["Message"] = self.message!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Code"] as? String {
+                            self.code = value
+                        }
+                        if let value = dict["Message"] as? String {
+                            self.message = value
+                        }
+                    }
+                }
+                public var dialogue: [GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Dialogue]?
+
+                public var errors: [GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Errors]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dialogue != nil {
+                        var tmp : [Any] = []
+                        for k in self.dialogue! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Dialogue"] = tmp
+                    }
+                    if self.errors != nil {
+                        var tmp : [Any] = []
+                        for k in self.errors! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Errors"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Dialogue"] as? [Any?] {
+                        var tmp : [GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Dialogue] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Dialogue()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.dialogue = tmp
+                    }
+                    if let value = dict["Errors"] as? [Any?] {
+                        var tmp : [GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Errors] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse.Errors()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.errors = tmp
+                    }
+                }
+            }
             public var customerPromptResponse: GetAgentTaskResultResponseBody.Data.Response.CustomerPromptResponse?
 
             public var fieldResponse: GetAgentTaskResultResponseBody.Data.Response.FieldResponse?
@@ -11251,6 +11514,8 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
             public var serviceInspectionResponse: GetAgentTaskResultResponseBody.Data.Response.ServiceInspectionResponse?
 
             public var tagCategoryResponse: GetAgentTaskResultResponseBody.Data.Response.TagCategoryResponse?
+
+            public var voiceprintResponse: GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse?
 
             public override init() {
                 super.init()
@@ -11266,6 +11531,7 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                 try self.fieldResponse?.validate()
                 try self.serviceInspectionResponse?.validate()
                 try self.tagCategoryResponse?.validate()
+                try self.voiceprintResponse?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -11281,6 +11547,9 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                 }
                 if self.tagCategoryResponse != nil {
                     map["TagCategoryResponse"] = self.tagCategoryResponse?.toMap()
+                }
+                if self.voiceprintResponse != nil {
+                    map["VoiceprintResponse"] = self.voiceprintResponse?.toMap()
                 }
                 return map
             }
@@ -11306,6 +11575,11 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                     var model = GetAgentTaskResultResponseBody.Data.Response.TagCategoryResponse()
                     model.fromMap(value)
                     self.tagCategoryResponse = model
+                }
+                if let value = dict["VoiceprintResponse"] as? [String: Any?] {
+                    var model = GetAgentTaskResultResponseBody.Data.Response.VoiceprintResponse()
+                    model.fromMap(value)
+                    self.voiceprintResponse = model
                 }
             }
         }
