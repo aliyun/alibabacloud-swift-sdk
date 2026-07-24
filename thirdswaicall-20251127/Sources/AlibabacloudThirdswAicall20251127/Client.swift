@@ -24,6 +24,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCallOutboundInstantWithOptions(_ request: CreateCallOutboundInstantRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCallOutboundInstantResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.calledNumber)) {
+            body["CalledNumber"] = request.calledNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerName)) {
+            body["CustomerName"] = request.customerName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.encryptCall)) {
+            body["EncryptCall"] = request.encryptCall!;
+        }
+        if (!TeaUtils.Client.isUnset(request.promptVariables)) {
+            body["PromptVariables"] = request.promptVariables ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCallOutboundInstant",
+            "version": "2025-11-27",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCallOutboundInstantResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCallOutboundInstant(_ request: CreateCallOutboundInstantRequest) async throws -> CreateCallOutboundInstantResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCallOutboundInstantWithOptions(request as! CreateCallOutboundInstantRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryTaskConcurrencyWithOptions(_ request: QueryTaskConcurrencyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTaskConcurrencyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
