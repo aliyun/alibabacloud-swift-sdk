@@ -27,7 +27,12 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-finance": "green.aliyuncs.com",
             "cn-shenzhen-finance-1": "green.aliyuncs.com",
             "cn-shanghai-finance-1": "green.aliyuncs.com",
-            "cn-north-2-gov-1": "green.aliyuncs.com"
+            "cn-north-2-gov-1": "green.aliyuncs.com",
+            "cn-shenzhen": "green-cip.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "green-cip.cn-shanghai.aliyuncs.com",
+            "cn-hangzhou": "green-cip.cn-hangzhou.aliyuncs.com",
+            "cn-beijing": "green-cip.cn-beijing.aliyuncs.com",
+            "ap-southeast-1": "green-cip.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("green", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -334,6 +339,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func cancelStockOssCheckTask(_ request: CancelStockOssCheckTaskRequest) async throws -> CancelStockOssCheckTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await cancelStockOssCheckTaskWithOptions(request as! CancelStockOssCheckTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func confirmAiAppScanWithOptions(_ request: ConfirmAiAppScanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfirmAiAppScanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
+            query["CommodityCode"] = request.commodityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ConfirmAiAppScan",
+            "version": "2022-09-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ConfirmAiAppScanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func confirmAiAppScan(_ request: ConfirmAiAppScanRequest) async throws -> ConfirmAiAppScanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await confirmAiAppScanWithOptions(request as! ConfirmAiAppScanRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
