@@ -468,6 +468,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSqlFileWithOptions(_ namespace: String, _ request: CreateSqlFileRequest, _ headers: CreateSqlFileHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSqlFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSqlFile",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-file",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSqlFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSqlFile(_ namespace: String, _ request: CreateSqlFileRequest) async throws -> CreateSqlFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateSqlFileHeaders = CreateSqlFileHeaders([:])
+        return try await createSqlFileWithOptions(namespace as! String, request as! CreateSqlFileRequest, headers as! CreateSqlFileHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createUdfArtifactWithOptions(_ namespace: String, _ request: CreateUdfArtifactRequest, _ headers: CreateUdfArtifactHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUdfArtifactResponse {
         try TeaUtils.Client.validateModel(request)
         var realHeaders: [String: String] = [:]
@@ -605,6 +641,46 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: DeleteDeploymentHeaders = DeleteDeploymentHeaders([:])
         return try await deleteDeploymentWithOptions(namespace as! String, deploymentId as! String, headers as! DeleteDeploymentHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDeploymentByNameWithOptions(_ namespace: String, _ request: DeleteDeploymentByNameRequest, _ headers: DeleteDeploymentByNameHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDeploymentByNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deploymentName)) {
+            query["deploymentName"] = request.deploymentName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDeploymentByName",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/deleteDeployment/byName",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDeploymentByNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDeploymentByName(_ namespace: String, _ request: DeleteDeploymentByNameRequest) async throws -> DeleteDeploymentByNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteDeploymentByNameHeaders = DeleteDeploymentByNameHeaders([:])
+        return try await deleteDeploymentByNameWithOptions(namespace as! String, request as! DeleteDeploymentByNameRequest, headers as! DeleteDeploymentByNameHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -880,6 +956,41 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSqlFileWithOptions(_ namespace: String, _ sqlFileId: String, _ request: DeleteSqlFileRequest, _ headers: DeleteSqlFileHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSqlFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSqlFile",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-file/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sqlFileId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSqlFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSqlFile(_ namespace: String, _ sqlFileId: String, _ request: DeleteSqlFileRequest) async throws -> DeleteSqlFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteSqlFileHeaders = DeleteSqlFileHeaders([:])
+        return try await deleteSqlFileWithOptions(namespace as! String, sqlFileId as! String, request as! DeleteSqlFileRequest, headers as! DeleteSqlFileHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteUdfArtifactWithOptions(_ namespace: String, _ udfArtifactName: String, _ headers: DeleteUdfArtifactHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteUdfArtifactResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -1060,6 +1171,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ExecuteSqlStatementHeaders = ExecuteSqlStatementHeaders([:])
         return try await executeSqlStatementWithOptions(namespace as! String, request as! ExecuteSqlStatementRequest, headers as! ExecuteSqlStatementHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func fetchSqlExecutionResultWithOptions(_ namespace: String, _ sqlExecutionId: String, _ request: FetchSqlExecutionResultRequest, _ headers: FetchSqlExecutionResultHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> FetchSqlExecutionResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "FetchSqlExecutionResult",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-execution/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sqlExecutionId)) + "%3AfetchSqlExecutionResult",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(FetchSqlExecutionResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func fetchSqlExecutionResult(_ namespace: String, _ sqlExecutionId: String, _ request: FetchSqlExecutionResultRequest) async throws -> FetchSqlExecutionResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: FetchSqlExecutionResultHeaders = FetchSqlExecutionResultHeaders([:])
+        return try await fetchSqlExecutionResultWithOptions(namespace as! String, sqlExecutionId as! String, request as! FetchSqlExecutionResultRequest, headers as! FetchSqlExecutionResultHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2040,6 +2186,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetSessionClusterHeaders = GetSessionClusterHeaders([:])
         return try await getSessionClusterWithOptions(namespace as! String, sessionClusterName as! String, headers as! GetSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSqlFileWithOptions(_ namespace: String, _ sqlFileId: String, _ request: GetSqlFileRequest, _ headers: GetSqlFileHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSqlFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSqlFile",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-file/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sqlFileId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSqlFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSqlFile(_ namespace: String, _ sqlFileId: String, _ request: GetSqlFileRequest) async throws -> GetSqlFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetSqlFileHeaders = GetSqlFileHeaders([:])
+        return try await getSqlFileWithOptions(namespace as! String, sqlFileId as! String, request as! GetSqlFileRequest, headers as! GetSqlFileHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3099,6 +3280,41 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopSqlExecutionWithOptions(_ namespace: String, _ sqlExecutionId: String, _ request: StopSqlExecutionRequest, _ headers: StopSqlExecutionHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopSqlExecutionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopSqlExecution",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-execution/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sqlExecutionId)) + "%3Astop",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopSqlExecutionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopSqlExecution(_ namespace: String, _ sqlExecutionId: String, _ request: StopSqlExecutionRequest) async throws -> StopSqlExecutionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: StopSqlExecutionHeaders = StopSqlExecutionHeaders([:])
+        return try await stopSqlExecutionWithOptions(namespace as! String, sqlExecutionId as! String, request as! StopSqlExecutionRequest, headers as! StopSqlExecutionHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitSqlPreviewWithOptions(_ namespace: String, _ request: SubmitSqlPreviewRequest, _ headers: SubmitSqlPreviewHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitSqlPreviewResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3173,6 +3389,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateDeploymentHeaders = UpdateDeploymentHeaders([:])
         return try await updateDeploymentWithOptions(namespace as! String, deploymentId as! String, request as! UpdateDeploymentRequest, headers as! UpdateDeploymentHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDeploymentByNameWithOptions(_ namespace: String, _ request: UpdateDeploymentByNameRequest, _ headers: UpdateDeploymentByNameHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDeploymentByNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deploymentName)) {
+            query["deploymentName"] = request.deploymentName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDeploymentByName",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/updateDeployment/byName",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDeploymentByNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDeploymentByName(_ namespace: String, _ request: UpdateDeploymentByNameRequest) async throws -> UpdateDeploymentByNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateDeploymentByNameHeaders = UpdateDeploymentByNameHeaders([:])
+        return try await updateDeploymentByNameWithOptions(namespace as! String, request as! UpdateDeploymentByNameRequest, headers as! UpdateDeploymentByNameHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3425,6 +3682,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateSessionClusterHeaders = UpdateSessionClusterHeaders([:])
         return try await updateSessionClusterWithOptions(namespace as! String, sessionClusterName as! String, request as! UpdateSessionClusterRequest, headers as! UpdateSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSqlFileWithOptions(_ namespace: String, _ sqlFileId: String, _ request: UpdateSqlFileRequest, _ headers: UpdateSqlFileHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSqlFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateSqlFile",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-file/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sqlFileId)),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateSqlFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSqlFile(_ namespace: String, _ sqlFileId: String, _ request: UpdateSqlFileRequest) async throws -> UpdateSqlFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateSqlFileHeaders = UpdateSqlFileHeaders([:])
+        return try await updateSqlFileWithOptions(namespace as! String, sqlFileId as! String, request as! UpdateSqlFileRequest, headers as! UpdateSqlFileHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
