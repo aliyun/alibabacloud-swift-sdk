@@ -15238,6 +15238,150 @@ public class CreateRoutineResponse : Tea.TeaModel {
     }
 }
 
+public class CreateRoutineBuildRequest : Tea.TeaModel {
+    public var artifactUrl: String?
+
+    public var branch: String?
+
+    public var routineName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactUrl != nil {
+            map["ArtifactUrl"] = self.artifactUrl!
+        }
+        if self.branch != nil {
+            map["Branch"] = self.branch!
+        }
+        if self.routineName != nil {
+            map["RoutineName"] = self.routineName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ArtifactUrl"] as? String {
+            self.artifactUrl = value
+        }
+        if let value = dict["Branch"] as? String {
+            self.branch = value
+        }
+        if let value = dict["RoutineName"] as? String {
+            self.routineName = value
+        }
+    }
+}
+
+public class CreateRoutineBuildResponseBody : Tea.TeaModel {
+    public var pipeLineRunId: Int64?
+
+    public var requestId: String?
+
+    public var routineBuildId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pipeLineRunId != nil {
+            map["PipeLineRunId"] = self.pipeLineRunId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.routineBuildId != nil {
+            map["RoutineBuildId"] = self.routineBuildId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PipeLineRunId"] as? Int64 {
+            self.pipeLineRunId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RoutineBuildId"] as? Int64 {
+            self.routineBuildId = value
+        }
+    }
+}
+
+public class CreateRoutineBuildResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRoutineBuildResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRoutineBuildResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateRoutineBuildConfigurationRequest : Tea.TeaModel {
     public var assetsDirectory: String?
 
@@ -31506,6 +31650,292 @@ public class DescribeDDoSOverseasAttackCountResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeDDoSOverseasAttackCountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDDoSPriceRequest : Tea.TeaModel {
+    public var DDoSBillingMode: String?
+
+    public var DDoSBurstableDomesticProtection: String?
+
+    public var DDoSBurstableOverseasProtection: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DDoSBillingMode != nil {
+            map["DDoSBillingMode"] = self.DDoSBillingMode!
+        }
+        if self.DDoSBurstableDomesticProtection != nil {
+            map["DDoSBurstableDomesticProtection"] = self.DDoSBurstableDomesticProtection!
+        }
+        if self.DDoSBurstableOverseasProtection != nil {
+            map["DDoSBurstableOverseasProtection"] = self.DDoSBurstableOverseasProtection!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DDoSBillingMode"] as? String {
+            self.DDoSBillingMode = value
+        }
+        if let value = dict["DDoSBurstableDomesticProtection"] as? String {
+            self.DDoSBurstableDomesticProtection = value
+        }
+        if let value = dict["DDoSBurstableOverseasProtection"] as? String {
+            self.DDoSBurstableOverseasProtection = value
+        }
+    }
+}
+
+public class DescribeDDoSPriceResponseBody : Tea.TeaModel {
+    public class PriceModel : Tea.TeaModel {
+        public class Rule : Tea.TeaModel {
+            public class RuleList : Tea.TeaModel {
+                public var name: String?
+
+                public var ruleDescId: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.ruleDescId != nil {
+                        map["RuleDescId"] = self.ruleDescId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["RuleDescId"] as? Int64 {
+                        self.ruleDescId = value
+                    }
+                }
+            }
+            public var ruleList: [DescribeDDoSPriceResponseBody.PriceModel.Rule.RuleList]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ruleList != nil {
+                    var tmp : [Any] = []
+                    for k in self.ruleList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RuleList"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RuleList"] as? [Any?] {
+                    var tmp : [DescribeDDoSPriceResponseBody.PriceModel.Rule.RuleList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeDDoSPriceResponseBody.PriceModel.Rule.RuleList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.ruleList = tmp
+                }
+            }
+        }
+        public var currency: String?
+
+        public var discountPrice: Double?
+
+        public var price: Double?
+
+        public var rule: DescribeDDoSPriceResponseBody.PriceModel.Rule?
+
+        public var totalPrice: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.rule?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.currency != nil {
+                map["Currency"] = self.currency!
+            }
+            if self.discountPrice != nil {
+                map["DiscountPrice"] = self.discountPrice!
+            }
+            if self.price != nil {
+                map["Price"] = self.price!
+            }
+            if self.rule != nil {
+                map["Rule"] = self.rule?.toMap()
+            }
+            if self.totalPrice != nil {
+                map["TotalPrice"] = self.totalPrice!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Currency"] as? String {
+                self.currency = value
+            }
+            if let value = dict["DiscountPrice"] as? Double {
+                self.discountPrice = value
+            }
+            if let value = dict["Price"] as? Double {
+                self.price = value
+            }
+            if let value = dict["Rule"] as? [String: Any?] {
+                var model = DescribeDDoSPriceResponseBody.PriceModel.Rule()
+                model.fromMap(value)
+                self.rule = model
+            }
+            if let value = dict["TotalPrice"] as? Double {
+                self.totalPrice = value
+            }
+        }
+    }
+    public var priceModel: DescribeDDoSPriceResponseBody.PriceModel?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.priceModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.priceModel != nil {
+            map["PriceModel"] = self.priceModel?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PriceModel"] as? [String: Any?] {
+            var model = DescribeDDoSPriceResponseBody.PriceModel()
+            model.fromMap(value)
+            self.priceModel = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeDDoSPriceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDDoSPriceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeDDoSPriceResponseBody()
             model.fromMap(value)
             self.body = model
         }
