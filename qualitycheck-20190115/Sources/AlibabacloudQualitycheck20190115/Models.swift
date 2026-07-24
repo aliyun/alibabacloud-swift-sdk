@@ -10833,6 +10833,84 @@ public class GetAgentTaskResultRequest : Tea.TeaModel {
 
 public class GetAgentTaskResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Dialogues : Tea.TeaModel {
+            public var begin: Int64?
+
+            public var emotionValue: Int32?
+
+            public var end: Int64?
+
+            public var hourMinSec: String?
+
+            public var role: String?
+
+            public var speechRate: Int32?
+
+            public var words: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.begin != nil {
+                    map["Begin"] = self.begin!
+                }
+                if self.emotionValue != nil {
+                    map["EmotionValue"] = self.emotionValue!
+                }
+                if self.end != nil {
+                    map["End"] = self.end!
+                }
+                if self.hourMinSec != nil {
+                    map["HourMinSec"] = self.hourMinSec!
+                }
+                if self.role != nil {
+                    map["Role"] = self.role!
+                }
+                if self.speechRate != nil {
+                    map["SpeechRate"] = self.speechRate!
+                }
+                if self.words != nil {
+                    map["Words"] = self.words!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Begin"] as? Int64 {
+                    self.begin = value
+                }
+                if let value = dict["EmotionValue"] as? Int32 {
+                    self.emotionValue = value
+                }
+                if let value = dict["End"] as? Int64 {
+                    self.end = value
+                }
+                if let value = dict["HourMinSec"] as? String {
+                    self.hourMinSec = value
+                }
+                if let value = dict["Role"] as? String {
+                    self.role = value
+                }
+                if let value = dict["SpeechRate"] as? Int32 {
+                    self.speechRate = value
+                }
+                if let value = dict["Words"] as? String {
+                    self.words = value
+                }
+            }
+        }
         public class Response : Tea.TeaModel {
             public class CustomerPromptResponse : Tea.TeaModel {
                 public var text: String?
@@ -11231,6 +11309,10 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var dialogues: [GetAgentTaskResultResponseBody.Data.Dialogues]?
+
+        public var errorMessage: String?
+
         public var inputTokens: String?
 
         public var llmRequestId: String?
@@ -11266,6 +11348,16 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dialogues != nil {
+                var tmp : [Any] = []
+                for k in self.dialogues! {
+                    tmp.append(k.toMap())
+                }
+                map["Dialogues"] = tmp
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
             if self.inputTokens != nil {
                 map["InputTokens"] = self.inputTokens!
             }
@@ -11301,6 +11393,22 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Dialogues"] as? [Any?] {
+                var tmp : [GetAgentTaskResultResponseBody.Data.Dialogues] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetAgentTaskResultResponseBody.Data.Dialogues()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dialogues = tmp
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
             if let value = dict["InputTokens"] as? String {
                 self.inputTokens = value
             }
@@ -39484,6 +39592,8 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
 
                     public var llmResponse: String?
 
+                    public var name: String?
+
                     public var rid: String?
 
                     public var tid: String?
@@ -39513,6 +39623,9 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
                         if self.llmResponse != nil {
                             map["LlmResponse"] = self.llmResponse!
                         }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
                         if self.rid != nil {
                             map["Rid"] = self.rid!
                         }
@@ -39536,6 +39649,9 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["LlmResponse"] as? String {
                             self.llmResponse = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
                         }
                         if let value = dict["Rid"] as? String {
                             self.rid = value
@@ -40256,6 +40372,8 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
 
                     public var hit: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit?
 
+                    public var name: String?
+
                     public var rid: String?
 
                     public var tid: String?
@@ -40282,6 +40400,9 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                         if self.hit != nil {
                             map["Hit"] = self.hit?.toMap()
                         }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
                         if self.rid != nil {
                             map["Rid"] = self.rid!
                         }
@@ -40302,6 +40423,9 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                             var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit()
                             model.fromMap(value)
                             self.hit = model
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
                         }
                         if let value = dict["Rid"] as? String {
                             self.rid = value
