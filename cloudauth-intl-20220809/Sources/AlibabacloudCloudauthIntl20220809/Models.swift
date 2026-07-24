@@ -7640,6 +7640,8 @@ public class FaceCrossCompareIntlResponse : Tea.TeaModel {
 public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
     public var autoRegistration: String?
 
+    public var faceAttributeCheck: String?
+
     public var faceGroupCodes: String?
 
     public var faceQualityCheck: String?
@@ -7688,6 +7690,9 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -7744,6 +7749,9 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
@@ -8363,6 +8371,8 @@ public class FaceGuardRiskResponse : Tea.TeaModel {
 public class FaceLivenessRequest : Tea.TeaModel {
     public var crop: String?
 
+    public var faceAttributeCheck: String?
+
     public var facePictureBase64: String?
 
     public var facePictureUrl: String?
@@ -8396,6 +8406,9 @@ public class FaceLivenessRequest : Tea.TeaModel {
         if self.crop != nil {
             map["Crop"] = self.crop!
         }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
+        }
         if self.facePictureBase64 != nil {
             map["FacePictureBase64"] = self.facePictureBase64!
         }
@@ -8427,6 +8440,9 @@ public class FaceLivenessRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Crop"] as? String {
             self.crop = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FacePictureBase64"] as? String {
             self.facePictureBase64 = value
@@ -8723,6 +8739,8 @@ public class FaceLivenessResponse : Tea.TeaModel {
 }
 
 public class FaceLivenessV2Request : Tea.TeaModel {
+    public var faceAttributeCheck: String?
+
     public var facePictureBase64: String?
 
     public var facePictureFile: String?
@@ -8751,6 +8769,9 @@ public class FaceLivenessV2Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
+        }
         if self.facePictureBase64 != nil {
             map["FacePictureBase64"] = self.facePictureBase64!
         }
@@ -8777,6 +8798,9 @@ public class FaceLivenessV2Request : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
+        }
         if let value = dict["FacePictureBase64"] as? String {
             self.facePictureBase64 = value
         }
@@ -8802,6 +8826,8 @@ public class FaceLivenessV2Request : Tea.TeaModel {
 }
 
 public class FaceLivenessV2AdvanceRequest : Tea.TeaModel {
+    public var faceAttributeCheck: String?
+
     public var facePictureBase64: String?
 
     public var facePictureFileObject: InputStream?
@@ -8830,6 +8856,9 @@ public class FaceLivenessV2AdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
+        }
         if self.facePictureBase64 != nil {
             map["FacePictureBase64"] = self.facePictureBase64!
         }
@@ -8856,6 +8885,9 @@ public class FaceLivenessV2AdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
+        }
         if let value = dict["FacePictureBase64"] as? String {
             self.facePictureBase64 = value
         }
@@ -9150,6 +9182,8 @@ public class FaceLivenessV2Response : Tea.TeaModel {
 public class FaceVerifyIntlRequest : Tea.TeaModel {
     public var autoRegistration: String?
 
+    public var faceAttributeCheck: String?
+
     public var faceGroupCodes: String?
 
     public var faceQualityCheck: String?
@@ -9194,6 +9228,9 @@ public class FaceVerifyIntlRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -9245,6 +9282,9 @@ public class FaceVerifyIntlRequest : Tea.TeaModel {
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
         }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
+        }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
         }
@@ -9293,6 +9333,8 @@ public class FaceVerifyIntlRequest : Tea.TeaModel {
 public class FaceVerifyIntlAdvanceRequest : Tea.TeaModel {
     public var autoRegistration: String?
 
+    public var faceAttributeCheck: String?
+
     public var faceGroupCodes: String?
 
     public var faceQualityCheck: String?
@@ -9337,6 +9379,9 @@ public class FaceVerifyIntlAdvanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -9387,6 +9432,9 @@ public class FaceVerifyIntlAdvanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
@@ -10787,6 +10835,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var authorize: String?
 
+    public var autoDocPageConfig: String?
+
     public var autoRegistration: String?
 
     public var callbackToken: String?
@@ -10820,6 +10870,8 @@ public class InitializeRequest : Tea.TeaModel {
     public var email: String?
 
     public var experienceCode: String?
+
+    public var faceAttributeCheck: String?
 
     public var faceGroupCodes: String?
 
@@ -10915,6 +10967,9 @@ public class InitializeRequest : Tea.TeaModel {
         if self.authorize != nil {
             map["Authorize"] = self.authorize!
         }
+        if self.autoDocPageConfig != nil {
+            map["AutoDocPageConfig"] = self.autoDocPageConfig!
+        }
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
         }
@@ -10965,6 +11020,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -11088,6 +11146,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["Authorize"] as? String {
             self.authorize = value
         }
+        if let value = dict["AutoDocPageConfig"] as? String {
+            self.autoDocPageConfig = value
+        }
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
         }
@@ -11138,6 +11199,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
@@ -11258,6 +11322,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var authorize: String?
 
+    public var autoDocPageConfig: String?
+
     public var autoRegistration: String?
 
     public var callbackToken: String?
@@ -11291,6 +11357,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var email: String?
 
     public var experienceCode: String?
+
+    public var faceAttributeCheck: String?
 
     public var faceGroupCodes: String?
 
@@ -11386,6 +11454,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if self.authorize != nil {
             map["Authorize"] = self.authorize!
         }
+        if self.autoDocPageConfig != nil {
+            map["AutoDocPageConfig"] = self.autoDocPageConfig!
+        }
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
         }
@@ -11436,6 +11507,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -11559,6 +11633,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if let value = dict["Authorize"] as? String {
             self.authorize = value
         }
+        if let value = dict["AutoDocPageConfig"] as? String {
+            self.autoDocPageConfig = value
+        }
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
         }
@@ -11609,6 +11686,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
@@ -11891,6 +11971,8 @@ public class InitializeV2Request : Tea.TeaModel {
 
     public var authorize: String?
 
+    public var autoDocPageConfig: String?
+
     public var autoRegistration: String?
 
     public var callbackToken: String?
@@ -11924,6 +12006,8 @@ public class InitializeV2Request : Tea.TeaModel {
     public var email: String?
 
     public var experienceCode: String?
+
+    public var faceAttributeCheck: String?
 
     public var faceGroupCodes: String?
 
@@ -12023,6 +12107,9 @@ public class InitializeV2Request : Tea.TeaModel {
         if self.authorize != nil {
             map["Authorize"] = self.authorize!
         }
+        if self.autoDocPageConfig != nil {
+            map["AutoDocPageConfig"] = self.autoDocPageConfig!
+        }
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
         }
@@ -12073,6 +12160,9 @@ public class InitializeV2Request : Tea.TeaModel {
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -12202,6 +12292,9 @@ public class InitializeV2Request : Tea.TeaModel {
         if let value = dict["Authorize"] as? String {
             self.authorize = value
         }
+        if let value = dict["AutoDocPageConfig"] as? String {
+            self.autoDocPageConfig = value
+        }
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
         }
@@ -12252,6 +12345,9 @@ public class InitializeV2Request : Tea.TeaModel {
         }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
@@ -12378,6 +12474,8 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
 
     public var authorize: String?
 
+    public var autoDocPageConfig: String?
+
     public var autoRegistration: String?
 
     public var callbackToken: String?
@@ -12411,6 +12509,8 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
     public var email: String?
 
     public var experienceCode: String?
+
+    public var faceAttributeCheck: String?
 
     public var faceGroupCodes: String?
 
@@ -12510,6 +12610,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         if self.authorize != nil {
             map["Authorize"] = self.authorize!
         }
+        if self.autoDocPageConfig != nil {
+            map["AutoDocPageConfig"] = self.autoDocPageConfig!
+        }
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
         }
@@ -12560,6 +12663,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -12689,6 +12795,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         if let value = dict["Authorize"] as? String {
             self.authorize = value
         }
+        if let value = dict["AutoDocPageConfig"] as? String {
+            self.autoDocPageConfig = value
+        }
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
         }
@@ -12739,6 +12848,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
@@ -12865,6 +12977,8 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
 
     public var authorize: String?
 
+    public var autoDocPageConfig: String?
+
     public var autoRegistration: String?
 
     public var callbackToken: String?
@@ -12898,6 +13012,8 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
     public var email: String?
 
     public var experienceCode: String?
+
+    public var faceAttributeCheck: String?
 
     public var faceGroupCodes: String?
 
@@ -12997,6 +13113,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         if self.authorize != nil {
             map["Authorize"] = self.authorize!
         }
+        if self.autoDocPageConfig != nil {
+            map["AutoDocPageConfig"] = self.autoDocPageConfig!
+        }
         if self.autoRegistration != nil {
             map["AutoRegistration"] = self.autoRegistration!
         }
@@ -13047,6 +13166,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
@@ -13176,6 +13298,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         if let value = dict["Authorize"] as? String {
             self.authorize = value
         }
+        if let value = dict["AutoDocPageConfig"] as? String {
+            self.autoDocPageConfig = value
+        }
         if let value = dict["AutoRegistration"] as? String {
             self.autoRegistration = value
         }
@@ -13226,6 +13351,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
+        }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
         }
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value

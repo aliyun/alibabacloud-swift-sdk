@@ -2196,6 +2196,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRegistration)) {
             body["AutoRegistration"] = request.autoRegistration ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.faceAttributeCheck)) {
+            body["FaceAttributeCheck"] = request.faceAttributeCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.faceGroupCodes)) {
             body["FaceGroupCodes"] = request.faceGroupCodes ?? "";
         }
@@ -2316,6 +2319,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.crop)) {
             query["Crop"] = request.crop ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.faceAttributeCheck)) {
+            query["FaceAttributeCheck"] = request.faceAttributeCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
             query["FacePictureUrl"] = request.facePictureUrl ?? "";
         }
@@ -2370,6 +2376,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func faceLivenessV2WithOptions(_ request: FaceLivenessV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> FaceLivenessV2Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceAttributeCheck)) {
+            query["FaceAttributeCheck"] = request.faceAttributeCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.facePictureFile)) {
             query["FacePictureFile"] = request.facePictureFile ?? "";
         }
@@ -2507,6 +2516,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoRegistration)) {
             query["AutoRegistration"] = request.autoRegistration ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceAttributeCheck)) {
+            query["FaceAttributeCheck"] = request.faceAttributeCheck ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.faceGroupCodes)) {
             query["FaceGroupCodes"] = request.faceGroupCodes ?? "";
@@ -2986,6 +2998,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authorize)) {
             query["Authorize"] = request.authorize ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.autoDocPageConfig)) {
+            query["AutoDocPageConfig"] = request.autoDocPageConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoRegistration)) {
             query["AutoRegistration"] = request.autoRegistration ?? "";
         }
@@ -3036,6 +3051,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.experienceCode)) {
             query["ExperienceCode"] = request.experienceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceAttributeCheck)) {
+            query["FaceAttributeCheck"] = request.faceAttributeCheck ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.faceGroupCodes)) {
             query["FaceGroupCodes"] = request.faceGroupCodes ?? "";
@@ -3189,6 +3207,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authorize)) {
             query["Authorize"] = request.authorize ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.autoDocPageConfig)) {
+            query["AutoDocPageConfig"] = request.autoDocPageConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoRegistration)) {
             query["AutoRegistration"] = request.autoRegistration ?? "";
         }
@@ -3239,6 +3260,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.experienceCode)) {
             query["ExperienceCode"] = request.experienceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceAttributeCheck)) {
+            query["FaceAttributeCheck"] = request.faceAttributeCheck ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.faceGroupCodes)) {
             query["FaceGroupCodes"] = request.faceGroupCodes ?? "";
