@@ -5317,6 +5317,8 @@ public class ChangeDetailResponseBody : Tea.TeaModel {
             public class ChangeFee : Tea.TeaModel {
                 public var serviceFee: Double?
 
+                public var suezServiceFee: Double?
+
                 public var taxFee: Double?
 
                 public var upgradeFee: Double?
@@ -5338,6 +5340,9 @@ public class ChangeDetailResponseBody : Tea.TeaModel {
                     if self.serviceFee != nil {
                         map["service_fee"] = self.serviceFee!
                     }
+                    if self.suezServiceFee != nil {
+                        map["suez_service_fee"] = self.suezServiceFee!
+                    }
                     if self.taxFee != nil {
                         map["tax_fee"] = self.taxFee!
                     }
@@ -5351,6 +5356,9 @@ public class ChangeDetailResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["service_fee"] as? Double {
                         self.serviceFee = value
+                    }
+                    if let value = dict["suez_service_fee"] as? Double {
+                        self.suezServiceFee = value
                     }
                     if let value = dict["tax_fee"] as? Double {
                         self.taxFee = value
@@ -7174,6 +7182,8 @@ public class ChangeDetailListOfOrderNumResponseBody : Tea.TeaModel {
                 public class ChangeFee : Tea.TeaModel {
                     public var serviceFee: Double?
 
+                    public var suezServiceFee: Double?
+
                     public var taxFee: Double?
 
                     public var upgradeFee: Double?
@@ -7195,6 +7205,9 @@ public class ChangeDetailListOfOrderNumResponseBody : Tea.TeaModel {
                         if self.serviceFee != nil {
                             map["service_fee"] = self.serviceFee!
                         }
+                        if self.suezServiceFee != nil {
+                            map["suez_service_fee"] = self.suezServiceFee!
+                        }
                         if self.taxFee != nil {
                             map["tax_fee"] = self.taxFee!
                         }
@@ -7208,6 +7221,9 @@ public class ChangeDetailListOfOrderNumResponseBody : Tea.TeaModel {
                         guard let dict else { return }
                         if let value = dict["service_fee"] as? Double {
                             self.serviceFee = value
+                        }
+                        if let value = dict["suez_service_fee"] as? Double {
+                            self.suezServiceFee = value
                         }
                         if let value = dict["tax_fee"] as? Double {
                             self.taxFee = value
@@ -16026,6 +16042,8 @@ public class RefundDetailResponseBody : Tea.TeaModel {
             public class RefundFee : Tea.TeaModel {
                 public var alreadyUsedTotalFee: Double?
 
+                public var ancillaryRefundToBuyerMoney: Double?
+
                 public var modifyRefundToBuyerMoney: Double?
 
                 public var nonRefundableChangeServiceFee: Double?
@@ -16037,6 +16055,8 @@ public class RefundDetailResponseBody : Tea.TeaModel {
                 public var nonRefundableTicketFee: Double?
 
                 public var refundToBuyerMoney: Double?
+
+                public var suezServiceFee: Double?
 
                 public override init() {
                     super.init()
@@ -16054,6 +16074,9 @@ public class RefundDetailResponseBody : Tea.TeaModel {
                     var map = super.toMap()
                     if self.alreadyUsedTotalFee != nil {
                         map["already_used_total_fee"] = self.alreadyUsedTotalFee!
+                    }
+                    if self.ancillaryRefundToBuyerMoney != nil {
+                        map["ancillary_refund_to_buyer_money"] = self.ancillaryRefundToBuyerMoney!
                     }
                     if self.modifyRefundToBuyerMoney != nil {
                         map["modify_refund_to_buyer_money"] = self.modifyRefundToBuyerMoney!
@@ -16073,6 +16096,9 @@ public class RefundDetailResponseBody : Tea.TeaModel {
                     if self.refundToBuyerMoney != nil {
                         map["refund_to_buyer_money"] = self.refundToBuyerMoney!
                     }
+                    if self.suezServiceFee != nil {
+                        map["suez_service_fee"] = self.suezServiceFee!
+                    }
                     return map
                 }
 
@@ -16080,6 +16106,9 @@ public class RefundDetailResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["already_used_total_fee"] as? Double {
                         self.alreadyUsedTotalFee = value
+                    }
+                    if let value = dict["ancillary_refund_to_buyer_money"] as? Double {
+                        self.ancillaryRefundToBuyerMoney = value
                     }
                     if let value = dict["modify_refund_to_buyer_money"] as? Double {
                         self.modifyRefundToBuyerMoney = value
@@ -16098,6 +16127,9 @@ public class RefundDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["refund_to_buyer_money"] as? Double {
                         self.refundToBuyerMoney = value
+                    }
+                    if let value = dict["suez_service_fee"] as? Double {
+                        self.suezServiceFee = value
                     }
                 }
             }
