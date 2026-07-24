@@ -467,6 +467,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAICloudPhoneWithOptions(_ request: CreateAICloudPhoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAICloudPhoneResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.amount)) {
+            query["Amount"] = request.amount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bandwidthPackageId)) {
+            query["BandwidthPackageId"] = request.bandwidthPackageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
+            query["BizRegionId"] = request.bizRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceGroupName)) {
+            query["InstanceGroupName"] = request.instanceGroupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceGroupSpec)) {
+            query["InstanceGroupSpec"] = request.instanceGroupSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.period)) {
+            query["Period"] = request.period!;
+        }
+        if (!TeaUtils.Client.isUnset(request.periodUnit)) {
+            query["PeriodUnit"] = request.periodUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyGroupId)) {
+            query["PolicyGroupId"] = request.policyGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionId)) {
+            query["PromotionId"] = request.promotionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAICloudPhone",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAICloudPhoneResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAICloudPhone(_ request: CreateAICloudPhoneRequest) async throws -> CreateAICloudPhoneResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAICloudPhoneWithOptions(request as! CreateAICloudPhoneRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAndroidInstanceGroupWithOptions(_ tmpReq: CreateAndroidInstanceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAndroidInstanceGroupResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateAndroidInstanceGroupShrinkRequest = CreateAndroidInstanceGroupShrinkRequest([:])
@@ -1987,6 +2048,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.packageIds)) {
             query["PackageIds"] = request.packageIds ?? [];
@@ -3800,6 +3867,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.creditConfig)) {
             query["CreditConfig"] = request.creditConfig ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["ImageId"] = request.imageId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? [];
