@@ -528,6 +528,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeAgentJobEstimatedCreditWithOptions(_ request: GetYikeAgentJobEstimatedCreditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeAgentJobEstimatedCreditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobAction)) {
+            body["JobAction"] = request.jobAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobParams)) {
+            body["JobParams"] = request.jobParams ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetYikeAgentJobEstimatedCredit",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetYikeAgentJobEstimatedCreditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeAgentJobEstimatedCredit(_ request: GetYikeAgentJobEstimatedCreditRequest) async throws -> GetYikeAgentJobEstimatedCreditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getYikeAgentJobEstimatedCreditWithOptions(request as! GetYikeAgentJobEstimatedCreditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getYikeAssetMediaInfoWithOptions(_ request: GetYikeAssetMediaInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeAssetMediaInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -556,6 +590,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getYikeAssetMediaInfo(_ request: GetYikeAssetMediaInfoRequest) async throws -> GetYikeAssetMediaInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getYikeAssetMediaInfoWithOptions(request as! GetYikeAssetMediaInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeJobCreditWithOptions(_ request: GetYikeJobCreditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeJobCreditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            body["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetYikeJobCredit",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetYikeJobCreditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeJobCredit(_ request: GetYikeJobCreditRequest) async throws -> GetYikeJobCreditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getYikeJobCreditWithOptions(request as! GetYikeJobCreditRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
