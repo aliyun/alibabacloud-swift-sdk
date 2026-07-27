@@ -5266,9 +5266,9 @@ public class DescribeAccountAuthorityResponse : Tea.TeaModel {
 public class DescribeAccountsRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var product: String?
 
@@ -5311,10 +5311,10 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
-        if let value = dict["PageNumber"] as? String {
+        if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
-        if let value = dict["PageSize"] as? String {
+        if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
         if let value = dict["Product"] as? String {

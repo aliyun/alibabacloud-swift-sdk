@@ -58,7 +58,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "clickhouse.eu-west-1.aliyuncs.com",
             "eu-central-1": "clickhouse.eu-central-1.aliyuncs.com",
             "cn-zhangjiakou": "clickhouse.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "clickhouse.aliyuncs.com",
+            "cn-wulanchabu": "clickhouse.cn-wulanchabu.aliyuncs.com",
             "cn-huhehaote": "clickhouse.cn-huhehaote.aliyuncs.com",
             "cn-guangzhou": "clickhouse.cn-guangzhou.aliyuncs.com",
             "cn-chengdu": "clickhouse.cn-chengdu.aliyuncs.com",
@@ -1112,10 +1112,10 @@ open class Client : AlibabacloudOpenApi.Client {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            query["PageNumber"] = request.pageNumber ?? "";
+            query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            query["PageSize"] = request.pageSize ?? "";
+            query["PageSize"] = request.pageSize!;
         }
         if (!TeaUtils.Client.isUnset(request.product)) {
             query["Product"] = request.product ?? "";
