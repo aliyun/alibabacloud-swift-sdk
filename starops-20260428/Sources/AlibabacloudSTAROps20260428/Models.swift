@@ -44,6 +44,190 @@ public class Tag : Tea.TeaModel {
     }
 }
 
+public class CreateArtifactUploadTokenRequest : Tea.TeaModel {
+    public var artifactPath: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactPath != nil {
+            map["artifactPath"] = self.artifactPath!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["artifactPath"] as? String {
+            self.artifactPath = value
+        }
+    }
+}
+
+public class CreateArtifactUploadTokenResponseBody : Tea.TeaModel {
+    public var accessId: String?
+
+    public var artifactPath: String?
+
+    public var dir: String?
+
+    public var expire: Int64?
+
+    public var host: String?
+
+    public var maxSize: Int64?
+
+    public var policy: String?
+
+    public var requestId: String?
+
+    public var signature: String?
+
+    public var successActionStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessId != nil {
+            map["accessId"] = self.accessId!
+        }
+        if self.artifactPath != nil {
+            map["artifactPath"] = self.artifactPath!
+        }
+        if self.dir != nil {
+            map["dir"] = self.dir!
+        }
+        if self.expire != nil {
+            map["expire"] = self.expire!
+        }
+        if self.host != nil {
+            map["host"] = self.host!
+        }
+        if self.maxSize != nil {
+            map["maxSize"] = self.maxSize!
+        }
+        if self.policy != nil {
+            map["policy"] = self.policy!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.signature != nil {
+            map["signature"] = self.signature!
+        }
+        if self.successActionStatus != nil {
+            map["successActionStatus"] = self.successActionStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["accessId"] as? String {
+            self.accessId = value
+        }
+        if let value = dict["artifactPath"] as? String {
+            self.artifactPath = value
+        }
+        if let value = dict["dir"] as? String {
+            self.dir = value
+        }
+        if let value = dict["expire"] as? Int64 {
+            self.expire = value
+        }
+        if let value = dict["host"] as? String {
+            self.host = value
+        }
+        if let value = dict["maxSize"] as? Int64 {
+            self.maxSize = value
+        }
+        if let value = dict["policy"] as? String {
+            self.policy = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["signature"] as? String {
+            self.signature = value
+        }
+        if let value = dict["successActionStatus"] as? String {
+            self.successActionStatus = value
+        }
+    }
+}
+
+public class CreateArtifactUploadTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateArtifactUploadTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateArtifactUploadTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateChatRequest : Tea.TeaModel {
     public class Messages : Tea.TeaModel {
         public class Contents : Tea.TeaModel {
@@ -571,6 +755,52 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
             }
         }
     }
+    public class SandboxNetworkPolicy : Tea.TeaModel {
+        public var allowCidrs: [String]?
+
+        public var allowFqdns: [String]?
+
+        public var enableAcl: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCidrs != nil {
+                map["allowCidrs"] = self.allowCidrs!
+            }
+            if self.allowFqdns != nil {
+                map["allowFqdns"] = self.allowFqdns!
+            }
+            if self.enableAcl != nil {
+                map["enableAcl"] = self.enableAcl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["allowCidrs"] as? [String] {
+                self.allowCidrs = value
+            }
+            if let value = dict["allowFqdns"] as? [String] {
+                self.allowFqdns = value
+            }
+            if let value = dict["enableAcl"] as? Bool {
+                self.enableAcl = value
+            }
+        }
+    }
     public class ToolPolicy : Tea.TeaModel {
         public class Aliyun : Tea.TeaModel {
             public class Statements : Tea.TeaModel {
@@ -726,6 +956,8 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
     public var roleArn: String?
 
+    public var sandboxNetworkPolicy: CreateDigitalEmployeeRequest.SandboxNetworkPolicy?
+
     public var tags: [Tag]?
 
     public var toolPolicy: CreateDigitalEmployeeRequest.ToolPolicy?
@@ -741,6 +973,7 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.knowledges?.validate()
+        try self.sandboxNetworkPolicy?.validate()
         try self.toolPolicy?.validate()
     }
 
@@ -769,6 +1002,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
         }
         if self.roleArn != nil {
             map["roleArn"] = self.roleArn!
+        }
+        if self.sandboxNetworkPolicy != nil {
+            map["sandboxNetworkPolicy"] = self.sandboxNetworkPolicy?.toMap()
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -810,6 +1046,11 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
         }
         if let value = dict["roleArn"] as? String {
             self.roleArn = value
+        }
+        if let value = dict["sandboxNetworkPolicy"] as? [String: Any?] {
+            var model = CreateDigitalEmployeeRequest.SandboxNetworkPolicy()
+            model.fromMap(value)
+            self.sandboxNetworkPolicy = model
         }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [Tag] = []
@@ -1177,6 +1418,8 @@ public class CreateMcpServiceRequest : Tea.TeaModel {
 
         public var endpoint: String?
 
+        public var headers: [String: String]?
+
         public var platform: String?
 
         public var timeout: Int64?
@@ -1204,6 +1447,9 @@ public class CreateMcpServiceRequest : Tea.TeaModel {
             if self.endpoint != nil {
                 map["endpoint"] = self.endpoint!
             }
+            if self.headers != nil {
+                map["headers"] = self.headers!
+            }
             if self.platform != nil {
                 map["platform"] = self.platform!
             }
@@ -1225,6 +1471,9 @@ public class CreateMcpServiceRequest : Tea.TeaModel {
             }
             if let value = dict["endpoint"] as? String {
                 self.endpoint = value
+            }
+            if let value = dict["headers"] as? [String: String] {
+                self.headers = value
             }
             if let value = dict["platform"] as? String {
                 self.platform = value
@@ -2389,6 +2638,8 @@ public class FetchRemoteMcpToolsRequest : Tea.TeaModel {
 
         public var endpoint: String?
 
+        public var headers: [String: String]?
+
         public var platform: String?
 
         public var timeout: Int64?
@@ -2416,6 +2667,9 @@ public class FetchRemoteMcpToolsRequest : Tea.TeaModel {
             if self.endpoint != nil {
                 map["endpoint"] = self.endpoint!
             }
+            if self.headers != nil {
+                map["headers"] = self.headers!
+            }
             if self.platform != nil {
                 map["platform"] = self.platform!
             }
@@ -2437,6 +2691,9 @@ public class FetchRemoteMcpToolsRequest : Tea.TeaModel {
             }
             if let value = dict["endpoint"] as? String {
                 self.endpoint = value
+            }
+            if let value = dict["headers"] as? [String: String] {
+                self.headers = value
             }
             if let value = dict["platform"] as? String {
                 self.platform = value
@@ -2754,6 +3011,134 @@ public class GetArtifactResponse : Tea.TeaModel {
     }
 }
 
+public class GetArtifactDownloadUrlRequest : Tea.TeaModel {
+    public var artifactPath: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactPath != nil {
+            map["artifactPath"] = self.artifactPath!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["artifactPath"] as? String {
+            self.artifactPath = value
+        }
+    }
+}
+
+public class GetArtifactDownloadUrlResponseBody : Tea.TeaModel {
+    public var expire: Int64?
+
+    public var requestId: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expire != nil {
+            map["expire"] = self.expire!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.url != nil {
+            map["url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expire"] as? Int64 {
+            self.expire = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["url"] as? String {
+            self.url = value
+        }
+    }
+}
+
+public class GetArtifactDownloadUrlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetArtifactDownloadUrlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetArtifactDownloadUrlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetDigitalEmployeeRequest : Tea.TeaModel {
 
     public override init() {
@@ -2882,6 +3267,52 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
             }
             if let value = dict["sop"] as? [[String: Any]] {
                 self.sop = value
+            }
+        }
+    }
+    public class SandboxNetworkPolicy : Tea.TeaModel {
+        public var allowCidrs: [String]?
+
+        public var allowFqdns: [String]?
+
+        public var enableAcl: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCidrs != nil {
+                map["allowCidrs"] = self.allowCidrs!
+            }
+            if self.allowFqdns != nil {
+                map["allowFqdns"] = self.allowFqdns!
+            }
+            if self.enableAcl != nil {
+                map["enableAcl"] = self.enableAcl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["allowCidrs"] as? [String] {
+                self.allowCidrs = value
+            }
+            if let value = dict["allowFqdns"] as? [String] {
+                self.allowFqdns = value
+            }
+            if let value = dict["enableAcl"] as? Bool {
+                self.enableAcl = value
             }
         }
     }
@@ -3048,6 +3479,8 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public var roleArn: String?
 
+    public var sandboxNetworkPolicy: GetDigitalEmployeeResponseBody.SandboxNetworkPolicy?
+
     public var tags: [Tag]?
 
     public var toolPolicy: GetDigitalEmployeeResponseBody.ToolPolicy?
@@ -3065,6 +3498,7 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.knowledges?.validate()
+        try self.sandboxNetworkPolicy?.validate()
         try self.toolPolicy?.validate()
     }
 
@@ -3105,6 +3539,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         }
         if self.roleArn != nil {
             map["roleArn"] = self.roleArn!
+        }
+        if self.sandboxNetworkPolicy != nil {
+            map["sandboxNetworkPolicy"] = self.sandboxNetworkPolicy?.toMap()
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -3161,6 +3598,11 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         }
         if let value = dict["roleArn"] as? String {
             self.roleArn = value
+        }
+        if let value = dict["sandboxNetworkPolicy"] as? [String: Any?] {
+            var model = GetDigitalEmployeeResponseBody.SandboxNetworkPolicy()
+            model.fromMap(value)
+            self.sandboxNetworkPolicy = model
         }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [Tag] = []
@@ -3541,6 +3983,8 @@ public class GetMcpServiceResponseBody : Tea.TeaModel {
 
             public var endpoint: String?
 
+            public var headers: [String: String]?
+
             public var platform: String?
 
             public var timeout: Int64?
@@ -3568,6 +4012,9 @@ public class GetMcpServiceResponseBody : Tea.TeaModel {
                 if self.endpoint != nil {
                     map["endpoint"] = self.endpoint!
                 }
+                if self.headers != nil {
+                    map["headers"] = self.headers!
+                }
                 if self.platform != nil {
                     map["platform"] = self.platform!
                 }
@@ -3589,6 +4036,9 @@ public class GetMcpServiceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["endpoint"] as? String {
                     self.endpoint = value
+                }
+                if let value = dict["headers"] as? [String: String] {
+                    self.headers = value
                 }
                 if let value = dict["platform"] as? String {
                     self.platform = value
@@ -5881,6 +6331,8 @@ public class ListMcpServicesResponseBody : Tea.TeaModel {
 
                 public var endpoint: String?
 
+                public var headers: [String: String]?
+
                 public var platform: String?
 
                 public var timeout: Int64?
@@ -5908,6 +6360,9 @@ public class ListMcpServicesResponseBody : Tea.TeaModel {
                     if self.endpoint != nil {
                         map["endpoint"] = self.endpoint!
                     }
+                    if self.headers != nil {
+                        map["headers"] = self.headers!
+                    }
                     if self.platform != nil {
                         map["platform"] = self.platform!
                     }
@@ -5929,6 +6384,9 @@ public class ListMcpServicesResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["endpoint"] as? String {
                         self.endpoint = value
+                    }
+                    if let value = dict["headers"] as? [String: String] {
+                        self.headers = value
                     }
                     if let value = dict["platform"] as? String {
                         self.platform = value
@@ -6971,6 +7429,52 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
             }
         }
     }
+    public class SandboxNetworkPolicy : Tea.TeaModel {
+        public var allowCidrs: [String]?
+
+        public var allowFqdns: [String]?
+
+        public var enableAcl: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCidrs != nil {
+                map["allowCidrs"] = self.allowCidrs!
+            }
+            if self.allowFqdns != nil {
+                map["allowFqdns"] = self.allowFqdns!
+            }
+            if self.enableAcl != nil {
+                map["enableAcl"] = self.enableAcl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["allowCidrs"] as? [String] {
+                self.allowCidrs = value
+            }
+            if let value = dict["allowFqdns"] as? [String] {
+                self.allowFqdns = value
+            }
+            if let value = dict["enableAcl"] as? Bool {
+                self.enableAcl = value
+            }
+        }
+    }
     public class ToolPolicy : Tea.TeaModel {
         public class Aliyun : Tea.TeaModel {
             public class Statements : Tea.TeaModel {
@@ -7122,6 +7626,8 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
     public var roleArn: String?
 
+    public var sandboxNetworkPolicy: UpdateDigitalEmployeeRequest.SandboxNetworkPolicy?
+
     public var toolPolicy: UpdateDigitalEmployeeRequest.ToolPolicy?
 
     public override init() {
@@ -7135,6 +7641,7 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.knowledges?.validate()
+        try self.sandboxNetworkPolicy?.validate()
         try self.toolPolicy?.validate()
     }
 
@@ -7157,6 +7664,9 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
         }
         if self.roleArn != nil {
             map["roleArn"] = self.roleArn!
+        }
+        if self.sandboxNetworkPolicy != nil {
+            map["sandboxNetworkPolicy"] = self.sandboxNetworkPolicy?.toMap()
         }
         if self.toolPolicy != nil {
             map["toolPolicy"] = self.toolPolicy?.toMap()
@@ -7185,6 +7695,11 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
         }
         if let value = dict["roleArn"] as? String {
             self.roleArn = value
+        }
+        if let value = dict["sandboxNetworkPolicy"] as? [String: Any?] {
+            var model = UpdateDigitalEmployeeRequest.SandboxNetworkPolicy()
+            model.fromMap(value)
+            self.sandboxNetworkPolicy = model
         }
         if let value = dict["toolPolicy"] as? [String: Any?] {
             var model = UpdateDigitalEmployeeRequest.ToolPolicy()
@@ -7515,6 +8030,8 @@ public class UpdateMcpServiceRequest : Tea.TeaModel {
 
         public var endpoint: String?
 
+        public var headers: [String: String]?
+
         public var platform: String?
 
         public var timeout: Int64?
@@ -7542,6 +8059,9 @@ public class UpdateMcpServiceRequest : Tea.TeaModel {
             if self.endpoint != nil {
                 map["endpoint"] = self.endpoint!
             }
+            if self.headers != nil {
+                map["headers"] = self.headers!
+            }
             if self.platform != nil {
                 map["platform"] = self.platform!
             }
@@ -7563,6 +8083,9 @@ public class UpdateMcpServiceRequest : Tea.TeaModel {
             }
             if let value = dict["endpoint"] as? String {
                 self.endpoint = value
+            }
+            if let value = dict["headers"] as? [String: String] {
+                self.headers = value
             }
             if let value = dict["platform"] as? String {
                 self.platform = value

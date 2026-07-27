@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-beijing": "starops.cn-beijing.aliyuncs.com",
+            "ap-southeast-1": "starops.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("starops", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -21,6 +25,39 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createArtifactUploadTokenWithOptions(_ name: String, _ request: CreateArtifactUploadTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateArtifactUploadTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.artifactPath)) {
+            query["artifactPath"] = request.artifactPath ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateArtifactUploadToken",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/artifacts/uploadToken",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateArtifactUploadTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createArtifactUploadToken(_ name: String, _ request: CreateArtifactUploadTokenRequest) async throws -> CreateArtifactUploadTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createArtifactUploadTokenWithOptions(name as! String, request as! CreateArtifactUploadTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -95,6 +132,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.roleArn)) {
             body["roleArn"] = request.roleArn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sandboxNetworkPolicy)) {
+            body["sandboxNetworkPolicy"] = request.sandboxNetworkPolicy!;
         }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             body["tags"] = request.tags ?? [];
@@ -494,6 +534,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getArtifactWithOptions(name as! String, request as! GetArtifactRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getArtifactDownloadUrlWithOptions(_ name: String, _ request: GetArtifactDownloadUrlRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetArtifactDownloadUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.artifactPath)) {
+            query["artifactPath"] = request.artifactPath ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetArtifactDownloadUrl",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/artifacts/downloadUrl",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetArtifactDownloadUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getArtifactDownloadUrl(_ name: String, _ request: GetArtifactDownloadUrlRequest) async throws -> GetArtifactDownloadUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getArtifactDownloadUrlWithOptions(name as! String, request as! GetArtifactDownloadUrlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -921,6 +994,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.roleArn)) {
             body["roleArn"] = request.roleArn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sandboxNetworkPolicy)) {
+            body["sandboxNetworkPolicy"] = request.sandboxNetworkPolicy!;
         }
         if (!TeaUtils.Client.isUnset(request.toolPolicy)) {
             body["toolPolicy"] = request.toolPolicy!;
