@@ -271,8 +271,6 @@ public class CategoryListResult : Tea.TeaModel {
 }
 
 public class ConfirmDisburseCmd : Tea.TeaModel {
-    public var disputeId: String?
-
     public var orderId: String?
 
     public var purchaseOrderId: String?
@@ -291,9 +289,6 @@ public class ConfirmDisburseCmd : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.disputeId != nil {
-            map["disputeId"] = self.disputeId!
-        }
         if self.orderId != nil {
             map["orderId"] = self.orderId!
         }
@@ -305,9 +300,6 @@ public class ConfirmDisburseCmd : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["disputeId"] as? String {
-            self.disputeId = value
-        }
         if let value = dict["orderId"] as? String {
             self.orderId = value
         }
@@ -352,6 +344,37 @@ public class ConfirmDisburseResult : Tea.TeaModel {
         }
         if let value = dict["result"] as? String {
             self.result = value
+        }
+    }
+}
+
+public class ConfirmReceiptCmd : Tea.TeaModel {
+    public var disputeId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.disputeId != nil {
+            map["disputeId"] = self.disputeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["disputeId"] as? String {
+            self.disputeId = value
         }
     }
 }
@@ -2520,6 +2543,8 @@ public class OrderListResult : Tea.TeaModel {
 public class OrderPageQuery : Tea.TeaModel {
     public var orderIdList: [String]?
 
+    public var outPurchaseOrderId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -2543,6 +2568,9 @@ public class OrderPageQuery : Tea.TeaModel {
         if self.orderIdList != nil {
             map["orderIdList"] = self.orderIdList!
         }
+        if self.outPurchaseOrderId != nil {
+            map["outPurchaseOrderId"] = self.outPurchaseOrderId!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -2559,6 +2587,9 @@ public class OrderPageQuery : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["orderIdList"] as? [String] {
             self.orderIdList = value
+        }
+        if let value = dict["outPurchaseOrderId"] as? String {
+            self.outPurchaseOrderId = value
         }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
