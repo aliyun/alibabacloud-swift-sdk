@@ -736,6 +736,10 @@ public class AddPolarFsPathMappingRequest : Tea.TeaModel {
     public class CustomBucketPathList : Tea.TeaModel {
         public var bucket: String?
 
+        public var bucketAccessKeyId: String?
+
+        public var bucketAccessKeySecret: String?
+
         public var path: String?
 
         public override init() {
@@ -755,6 +759,12 @@ public class AddPolarFsPathMappingRequest : Tea.TeaModel {
             if self.bucket != nil {
                 map["Bucket"] = self.bucket!
             }
+            if self.bucketAccessKeyId != nil {
+                map["BucketAccessKeyId"] = self.bucketAccessKeyId!
+            }
+            if self.bucketAccessKeySecret != nil {
+                map["BucketAccessKeySecret"] = self.bucketAccessKeySecret!
+            }
             if self.path != nil {
                 map["Path"] = self.path!
             }
@@ -765,6 +775,12 @@ public class AddPolarFsPathMappingRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Bucket"] as? String {
                 self.bucket = value
+            }
+            if let value = dict["BucketAccessKeyId"] as? String {
+                self.bucketAccessKeyId = value
+            }
+            if let value = dict["BucketAccessKeySecret"] as? String {
+                self.bucketAccessKeySecret = value
             }
             if let value = dict["Path"] as? String {
                 self.path = value
@@ -9006,6 +9022,10 @@ public class CreateBatchConsumerRequest : Tea.TeaModel {
 
     public var count: Int32?
 
+    public var creditToken: String?
+
+    public var description_: String?
+
     public var gwClusterId: String?
 
     public var regionId: String?
@@ -9033,6 +9053,12 @@ public class CreateBatchConsumerRequest : Tea.TeaModel {
         if self.count != nil {
             map["Count"] = self.count!
         }
+        if self.creditToken != nil {
+            map["CreditToken"] = self.creditToken!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.gwClusterId != nil {
             map["GwClusterId"] = self.gwClusterId!
         }
@@ -9053,6 +9079,12 @@ public class CreateBatchConsumerRequest : Tea.TeaModel {
         if let value = dict["Count"] as? Int32 {
             self.count = value
         }
+        if let value = dict["CreditToken"] as? String {
+            self.creditToken = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["GwClusterId"] as? String {
             self.gwClusterId = value
         }
@@ -9064,15 +9096,37 @@ public class CreateBatchConsumerRequest : Tea.TeaModel {
 
 public class CreateBatchConsumerResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public var active: Bool?
+
         public var apiKey: String?
 
+        public var apiKeyMd5: String?
+
+        public var apiKeyStatus: String?
+
         public var apiStatus: String?
+
+        public var budgetLimit: Int64?
+
+        public var budgetPolicyId: String?
+
+        public var budgetUsed: Int64?
 
         public var consumerGroupId: String?
 
         public var consumerId: String?
 
         public var consumerTag: String?
+
+        public var description_: String?
+
+        public var expireTime: String?
+
+        public var expired: Bool?
+
+        public var gmtCreated: String?
+
+        public var gmtModified: String?
 
         public var gwClusterId: String?
 
@@ -9094,11 +9148,29 @@ public class CreateBatchConsumerResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.active != nil {
+                map["Active"] = self.active!
+            }
             if self.apiKey != nil {
                 map["ApiKey"] = self.apiKey!
             }
+            if self.apiKeyMd5 != nil {
+                map["ApiKeyMd5"] = self.apiKeyMd5!
+            }
+            if self.apiKeyStatus != nil {
+                map["ApiKeyStatus"] = self.apiKeyStatus!
+            }
             if self.apiStatus != nil {
                 map["ApiStatus"] = self.apiStatus!
+            }
+            if self.budgetLimit != nil {
+                map["BudgetLimit"] = self.budgetLimit!
+            }
+            if self.budgetPolicyId != nil {
+                map["BudgetPolicyId"] = self.budgetPolicyId!
+            }
+            if self.budgetUsed != nil {
+                map["BudgetUsed"] = self.budgetUsed!
             }
             if self.consumerGroupId != nil {
                 map["ConsumerGroupId"] = self.consumerGroupId!
@@ -9108,6 +9180,21 @@ public class CreateBatchConsumerResponseBody : Tea.TeaModel {
             }
             if self.consumerTag != nil {
                 map["ConsumerTag"] = self.consumerTag!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
+            if self.expired != nil {
+                map["Expired"] = self.expired!
+            }
+            if self.gmtCreated != nil {
+                map["GmtCreated"] = self.gmtCreated!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
             }
             if self.gwClusterId != nil {
                 map["GwClusterId"] = self.gwClusterId!
@@ -9123,11 +9210,29 @@ public class CreateBatchConsumerResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Active"] as? Bool {
+                self.active = value
+            }
             if let value = dict["ApiKey"] as? String {
                 self.apiKey = value
             }
+            if let value = dict["ApiKeyMd5"] as? String {
+                self.apiKeyMd5 = value
+            }
+            if let value = dict["ApiKeyStatus"] as? String {
+                self.apiKeyStatus = value
+            }
             if let value = dict["ApiStatus"] as? String {
                 self.apiStatus = value
+            }
+            if let value = dict["BudgetLimit"] as? Int64 {
+                self.budgetLimit = value
+            }
+            if let value = dict["BudgetPolicyId"] as? String {
+                self.budgetPolicyId = value
+            }
+            if let value = dict["BudgetUsed"] as? Int64 {
+                self.budgetUsed = value
             }
             if let value = dict["ConsumerGroupId"] as? String {
                 self.consumerGroupId = value
@@ -9137,6 +9242,21 @@ public class CreateBatchConsumerResponseBody : Tea.TeaModel {
             }
             if let value = dict["ConsumerTag"] as? String {
                 self.consumerTag = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["ExpireTime"] as? String {
+                self.expireTime = value
+            }
+            if let value = dict["Expired"] as? Bool {
+                self.expired = value
+            }
+            if let value = dict["GmtCreated"] as? String {
+                self.gmtCreated = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
             }
             if let value = dict["GwClusterId"] as? String {
                 self.gwClusterId = value
@@ -14189,6 +14309,190 @@ public class CreateGlobalSecurityIPGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateGlobalSecurityIPGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateGwConsumerOrderRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var expireTime: String?
+
+    public var gatewayId: String?
+
+    public var keyCount: Int32?
+
+    public var packageSpec: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.keyCount != nil {
+            map["KeyCount"] = self.keyCount!
+        }
+        if self.packageSpec != nil {
+            map["PackageSpec"] = self.packageSpec!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ExpireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["GatewayId"] as? String {
+            self.gatewayId = value
+        }
+        if let value = dict["KeyCount"] as? Int32 {
+            self.keyCount = value
+        }
+        if let value = dict["PackageSpec"] as? String {
+            self.packageSpec = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateGwConsumerOrderResponseBody : Tea.TeaModel {
+    public var creditToken: String?
+
+    public var expireTime: String?
+
+    public var gatewayId: String?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.creditToken != nil {
+            map["CreditToken"] = self.creditToken!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreditToken"] as? String {
+            self.creditToken = value
+        }
+        if let value = dict["ExpireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["GatewayId"] as? String {
+            self.gatewayId = value
+        }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateGwConsumerOrderResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateGwConsumerOrderResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateGwConsumerOrderResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -97864,6 +98168,8 @@ public class ModifyDBClusterResourceGroupResponse : Tea.TeaModel {
 }
 
 public class ModifyDBClusterSSLRequest : Tea.TeaModel {
+    public var certValidDays: String?
+
     public var connectionString: String?
 
     public var DBClusterId: String?
@@ -97900,6 +98206,9 @@ public class ModifyDBClusterSSLRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.certValidDays != nil {
+            map["CertValidDays"] = self.certValidDays!
+        }
         if self.connectionString != nil {
             map["ConnectionString"] = self.connectionString!
         }
@@ -97938,6 +98247,9 @@ public class ModifyDBClusterSSLRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CertValidDays"] as? String {
+            self.certValidDays = value
+        }
         if let value = dict["ConnectionString"] as? String {
             self.connectionString = value
         }

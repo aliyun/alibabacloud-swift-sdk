@@ -67,9 +67,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-southeast-6": "polardb.ap-southeast-6.aliyuncs.com",
             "ap-southeast-5": "polardb.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "polardb.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "polardb.ap-southeast-2.aliyuncs.com",
             "ap-southeast-1": "polardb.ap-southeast-1.aliyuncs.com",
-            "ap-south-1": "polardb.ap-south-1.aliyuncs.com",
             "ap-northeast-2": "polardb.ap-northeast-2.aliyuncs.com",
             "ap-northeast-1": "polardb.ap-northeast-1.aliyuncs.com"
         ]
@@ -2232,6 +2230,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.count)) {
             query["Count"] = request.count!;
         }
+        if (!TeaUtils.Client.isUnset(request.creditToken)) {
+            query["CreditToken"] = request.creditToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gwClusterId)) {
             query["GwClusterId"] = request.gwClusterId ?? "";
         }
@@ -3668,6 +3672,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createGlobalSecurityIPGroup(_ request: CreateGlobalSecurityIPGroupRequest) async throws -> CreateGlobalSecurityIPGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createGlobalSecurityIPGroupWithOptions(request as! CreateGlobalSecurityIPGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGwConsumerOrderWithOptions(_ request: CreateGwConsumerOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGwConsumerOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            query["ExpireTime"] = request.expireTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyCount)) {
+            query["KeyCount"] = request.keyCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.packageSpec)) {
+            query["PackageSpec"] = request.packageSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGwConsumerOrder",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGwConsumerOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGwConsumerOrder(_ request: CreateGwConsumerOrderRequest) async throws -> CreateGwConsumerOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGwConsumerOrderWithOptions(request as! CreateGwConsumerOrderRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -17513,6 +17563,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBClusterSSLWithOptions(_ request: ModifyDBClusterSSLRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterSSLResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certValidDays)) {
+            query["CertValidDays"] = request.certValidDays ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionString)) {
             query["ConnectionString"] = request.connectionString ?? "";
         }
