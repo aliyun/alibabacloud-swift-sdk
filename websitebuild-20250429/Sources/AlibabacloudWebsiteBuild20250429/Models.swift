@@ -59661,3 +59661,356 @@ public class UploadMaterialFileResponse : Tea.TeaModel {
         }
     }
 }
+
+public class UploadMaterialFileForAdminRequest : Tea.TeaModel {
+    public var belongId: String?
+
+    public var bizId: String?
+
+    public var fileUrl: String?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.belongId != nil {
+            map["BelongId"] = self.belongId!
+        }
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BelongId"] as? String {
+            self.belongId = value
+        }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["FileUrl"] as? String {
+            self.fileUrl = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class UploadMaterialFileForAdminResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public var bizId: String?
+
+        public var contentType: String?
+
+        public var createTime: String?
+
+        public var deletedTime: String?
+
+        public var directoryId: String?
+
+        public var fileId: String?
+
+        public var fileUrl: String?
+
+        public var height: Int32?
+
+        public var name: String?
+
+        public var status: String?
+
+        public var storageSize: String?
+
+        public var suffix: String?
+
+        public var type: String?
+
+        public var width: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizId != nil {
+                map["BizId"] = self.bizId!
+            }
+            if self.contentType != nil {
+                map["ContentType"] = self.contentType!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.deletedTime != nil {
+                map["DeletedTime"] = self.deletedTime!
+            }
+            if self.directoryId != nil {
+                map["DirectoryId"] = self.directoryId!
+            }
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.fileUrl != nil {
+                map["FileUrl"] = self.fileUrl!
+            }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.storageSize != nil {
+                map["StorageSize"] = self.storageSize!
+            }
+            if self.suffix != nil {
+                map["Suffix"] = self.suffix!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BizId"] as? String {
+                self.bizId = value
+            }
+            if let value = dict["ContentType"] as? String {
+                self.contentType = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["DeletedTime"] as? String {
+                self.deletedTime = value
+            }
+            if let value = dict["DirectoryId"] as? String {
+                self.directoryId = value
+            }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["FileUrl"] as? String {
+                self.fileUrl = value
+            }
+            if let value = dict["Height"] as? Int32 {
+                self.height = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["StorageSize"] as? String {
+                self.storageSize = value
+            }
+            if let value = dict["Suffix"] as? String {
+                self.suffix = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["Width"] as? Int32 {
+                self.width = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var allowRetry: Bool?
+
+    public var appName: String?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorArgs: [Any]?
+
+    public var module: UploadMaterialFileForAdminResponseBody.Module?
+
+    public var requestId: String?
+
+    public var rootErrorCode: String?
+
+    public var rootErrorMsg: String?
+
+    public var synchro: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.allowRetry != nil {
+            map["AllowRetry"] = self.allowRetry!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorArgs != nil {
+            map["ErrorArgs"] = self.errorArgs!
+        }
+        if self.module != nil {
+            map["Module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rootErrorCode != nil {
+            map["RootErrorCode"] = self.rootErrorCode!
+        }
+        if self.rootErrorMsg != nil {
+            map["RootErrorMsg"] = self.rootErrorMsg!
+        }
+        if self.synchro != nil {
+            map["Synchro"] = self.synchro!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["AllowRetry"] as? Bool {
+            self.allowRetry = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["DynamicCode"] as? String {
+            self.dynamicCode = value
+        }
+        if let value = dict["DynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["ErrorArgs"] as? [Any] {
+            self.errorArgs = value
+        }
+        if let value = dict["Module"] as? [String: Any?] {
+            var model = UploadMaterialFileForAdminResponseBody.Module()
+            model.fromMap(value)
+            self.module = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RootErrorCode"] as? String {
+            self.rootErrorCode = value
+        }
+        if let value = dict["RootErrorMsg"] as? String {
+            self.rootErrorMsg = value
+        }
+        if let value = dict["Synchro"] as? Bool {
+            self.synchro = value
+        }
+    }
+}
+
+public class UploadMaterialFileForAdminResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UploadMaterialFileForAdminResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UploadMaterialFileForAdminResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
