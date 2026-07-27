@@ -11592,6 +11592,8 @@ public class ListIndexFileDetailsResponseBody : Tea.TeaModel {
 
             public var message: String?
 
+            public var metaExtractInfo: String?
+
             public var name: String?
 
             public var overlapSize: String?
@@ -11642,6 +11644,9 @@ public class ListIndexFileDetailsResponseBody : Tea.TeaModel {
                 if self.message != nil {
                     map["Message"] = self.message!
                 }
+                if self.metaExtractInfo != nil {
+                    map["MetaExtractInfo"] = self.metaExtractInfo!
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -11688,6 +11693,9 @@ public class ListIndexFileDetailsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Message"] as? String {
                     self.message = value
+                }
+                if let value = dict["MetaExtractInfo"] as? String {
+                    self.metaExtractInfo = value
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
