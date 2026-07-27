@@ -48,7 +48,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-southeast-6": "metrics.ap-southeast-6.aliyuncs.com",
             "ap-southeast-5": "metrics.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "metrics.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "metrics.ap-southeast-2.aliyuncs.com",
             "ap-southeast-1": "metrics.ap-southeast-1.aliyuncs.com",
             "ap-south-1": "metrics.ap-south-1.aliyuncs.com",
             "ap-northeast-2": "metrics.ap-northeast-2.aliyuncs.com",
@@ -4802,12 +4801,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.body)) {
             request.bodyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.body, "body", "json")
         }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callSource)) {
+            query["callSource"] = request.callSource ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bodyShrink)) {
             body["body"] = request.bodyShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -4916,6 +4920,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryJson)) {
+            query["queryJson"] = request.queryJson ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bodyShrink)) {
