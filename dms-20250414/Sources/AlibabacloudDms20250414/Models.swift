@@ -940,6 +940,8 @@ public class AgenticDmsInstanceSyncTaskInstance : Tea.TeaModel {
 public class AgenticTableBaseInfo : Tea.TeaModel {
     public var catalogType: String?
 
+    public var databaseQualifiedName: String?
+
     public var databaseUuid: String?
 
     public var description_: String?
@@ -970,6 +972,9 @@ public class AgenticTableBaseInfo : Tea.TeaModel {
         if self.catalogType != nil {
             map["CatalogType"] = self.catalogType!
         }
+        if self.databaseQualifiedName != nil {
+            map["DatabaseQualifiedName"] = self.databaseQualifiedName!
+        }
         if self.databaseUuid != nil {
             map["DatabaseUuid"] = self.databaseUuid!
         }
@@ -995,6 +1000,9 @@ public class AgenticTableBaseInfo : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CatalogType"] as? String {
             self.catalogType = value
+        }
+        if let value = dict["DatabaseQualifiedName"] as? String {
+            self.databaseQualifiedName = value
         }
         if let value = dict["DatabaseUuid"] as? String {
             self.databaseUuid = value
@@ -7828,6 +7836,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public var webReportConfig: String?
 
+    public var webReportTheme: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -7889,6 +7899,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         }
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
+        }
+        if self.webReportTheme != nil {
+            map["WebReportTheme"] = self.webReportTheme!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -7953,6 +7966,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
         }
+        if let value = dict["WebReportTheme"] as? String {
+            self.webReportTheme = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -7985,6 +8001,8 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
     public var textReportConfig: String?
 
     public var webReportConfig: String?
+
+    public var webReportTheme: String?
 
     public var workspaceId: String?
 
@@ -8041,6 +8059,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
         }
+        if self.webReportTheme != nil {
+            map["WebReportTheme"] = self.webReportTheme!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -8087,6 +8108,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
+        }
+        if let value = dict["WebReportTheme"] as? String {
+            self.webReportTheme = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -8360,6 +8384,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
 
         public var webReportConfig: String?
 
+        public var webReportTheme: String?
+
         public var workspaceId: String?
 
         public override init() {
@@ -8466,6 +8492,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.webReportConfig != nil {
                 map["WebReportConfig"] = self.webReportConfig!
+            }
+            if self.webReportTheme != nil {
+                map["WebReportTheme"] = self.webReportTheme!
             }
             if self.workspaceId != nil {
                 map["WorkspaceId"] = self.workspaceId!
@@ -8574,6 +8603,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["WebReportConfig"] as? String {
                 self.webReportConfig = value
+            }
+            if let value = dict["WebReportTheme"] as? String {
+                self.webReportTheme = value
             }
             if let value = dict["WorkspaceId"] as? String {
                 self.workspaceId = value
@@ -14020,6 +14052,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
         public var webReportConfig: String?
 
+        public var webReportTheme: String?
+
         public var workspaceId: String?
 
         public override init() {
@@ -14129,6 +14163,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.webReportConfig != nil {
                 map["WebReportConfig"] = self.webReportConfig!
+            }
+            if self.webReportTheme != nil {
+                map["WebReportTheme"] = self.webReportTheme!
             }
             if self.workspaceId != nil {
                 map["WorkspaceId"] = self.workspaceId!
@@ -14240,6 +14277,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["WebReportConfig"] as? String {
                 self.webReportConfig = value
+            }
+            if let value = dict["WebReportTheme"] as? String {
+                self.webReportTheme = value
             }
             if let value = dict["WorkspaceId"] as? String {
                 self.workspaceId = value
@@ -21139,6 +21179,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
             public var webReportConfig: String?
 
+            public var webReportTheme: String?
+
             public var workspaceId: String?
 
             public override init() {
@@ -21248,6 +21290,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if self.webReportConfig != nil {
                     map["WebReportConfig"] = self.webReportConfig!
+                }
+                if self.webReportTheme != nil {
+                    map["WebReportTheme"] = self.webReportTheme!
                 }
                 if self.workspaceId != nil {
                     map["WorkspaceId"] = self.workspaceId!
@@ -21359,6 +21404,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["WebReportConfig"] as? String {
                     self.webReportConfig = value
+                }
+                if let value = dict["WebReportTheme"] as? String {
+                    self.webReportTheme = value
                 }
                 if let value = dict["WorkspaceId"] as? String {
                     self.workspaceId = value
@@ -28513,6 +28561,8 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
 
     public var webReportConfig: String?
 
+    public var webReportTheme: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -28577,6 +28627,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
         }
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
+        }
+        if self.webReportTheme != nil {
+            map["WebReportTheme"] = self.webReportTheme!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -28644,6 +28697,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
         }
+        if let value = dict["WebReportTheme"] as? String {
+            self.webReportTheme = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -28678,6 +28734,8 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
     public var textReportConfig: String?
 
     public var webReportConfig: String?
+
+    public var webReportTheme: String?
 
     public var workspaceId: String?
 
@@ -28737,6 +28795,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
         }
+        if self.webReportTheme != nil {
+            map["WebReportTheme"] = self.webReportTheme!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -28786,6 +28847,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
+        }
+        if let value = dict["WebReportTheme"] as? String {
+            self.webReportTheme = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -29059,6 +29123,8 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
 
         public var webReportConfig: String?
 
+        public var webReportTheme: String?
+
         public var workspaceId: String?
 
         public override init() {
@@ -29165,6 +29231,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.webReportConfig != nil {
                 map["WebReportConfig"] = self.webReportConfig!
+            }
+            if self.webReportTheme != nil {
+                map["WebReportTheme"] = self.webReportTheme!
             }
             if self.workspaceId != nil {
                 map["WorkspaceId"] = self.workspaceId!
@@ -29273,6 +29342,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["WebReportConfig"] as? String {
                 self.webReportConfig = value
+            }
+            if let value = dict["WebReportTheme"] as? String {
+                self.webReportTheme = value
             }
             if let value = dict["WorkspaceId"] as? String {
                 self.workspaceId = value
@@ -30590,6 +30662,96 @@ public class SaveWorkspaceCodeResponse : Tea.TeaModel {
 
 public class SendChatMessageRequest : Tea.TeaModel {
     public class DataSource : Tea.TeaModel {
+        public class Permission : Tea.TeaModel {
+            public class Tables : Tea.TeaModel {
+                public var allowedColumns: [String]?
+
+                public var requiredRowFilter: String?
+
+                public var tableName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowedColumns != nil {
+                        map["AllowedColumns"] = self.allowedColumns!
+                    }
+                    if self.requiredRowFilter != nil {
+                        map["RequiredRowFilter"] = self.requiredRowFilter!
+                    }
+                    if self.tableName != nil {
+                        map["TableName"] = self.tableName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AllowedColumns"] as? [String] {
+                        self.allowedColumns = value
+                    }
+                    if let value = dict["RequiredRowFilter"] as? String {
+                        self.requiredRowFilter = value
+                    }
+                    if let value = dict["TableName"] as? String {
+                        self.tableName = value
+                    }
+                }
+            }
+            public var tables: [SendChatMessageRequest.DataSource.Permission.Tables]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tables != nil {
+                    var tmp : [Any] = []
+                    for k in self.tables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tables"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Tables"] as? [Any?] {
+                    var tmp : [SendChatMessageRequest.DataSource.Permission.Tables] = []
+                    for v in value {
+                        if v != nil {
+                            var model = SendChatMessageRequest.DataSource.Permission.Tables()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tables = tmp
+                }
+            }
+        }
         public var dataSourceId: String?
 
         public var dataSourceType: String?
@@ -30608,6 +30770,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var location: String?
 
+        public var permission: SendChatMessageRequest.DataSource.Permission?
+
         public var regionId: String?
 
         public var tables: [String]?
@@ -30622,6 +30786,7 @@ public class SendChatMessageRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.permission?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -30652,6 +30817,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if self.location != nil {
                 map["Location"] = self.location!
+            }
+            if self.permission != nil {
+                map["Permission"] = self.permission?.toMap()
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -30690,6 +30858,11 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["Location"] as? String {
                 self.location = value
+            }
+            if let value = dict["Permission"] as? [String: Any?] {
+                var model = SendChatMessageRequest.DataSource.Permission()
+                model.fromMap(value)
+                self.permission = model
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
@@ -30700,6 +30873,96 @@ public class SendChatMessageRequest : Tea.TeaModel {
         }
     }
     public class DataSources : Tea.TeaModel {
+        public class Permission : Tea.TeaModel {
+            public class Tables : Tea.TeaModel {
+                public var allowedColumns: [String]?
+
+                public var requiredRowFilter: String?
+
+                public var tableName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowedColumns != nil {
+                        map["AllowedColumns"] = self.allowedColumns!
+                    }
+                    if self.requiredRowFilter != nil {
+                        map["RequiredRowFilter"] = self.requiredRowFilter!
+                    }
+                    if self.tableName != nil {
+                        map["TableName"] = self.tableName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AllowedColumns"] as? [String] {
+                        self.allowedColumns = value
+                    }
+                    if let value = dict["RequiredRowFilter"] as? String {
+                        self.requiredRowFilter = value
+                    }
+                    if let value = dict["TableName"] as? String {
+                        self.tableName = value
+                    }
+                }
+            }
+            public var tables: [SendChatMessageRequest.DataSources.Permission.Tables]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tables != nil {
+                    var tmp : [Any] = []
+                    for k in self.tables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tables"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Tables"] as? [Any?] {
+                    var tmp : [SendChatMessageRequest.DataSources.Permission.Tables] = []
+                    for v in value {
+                        if v != nil {
+                            var model = SendChatMessageRequest.DataSources.Permission.Tables()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tables = tmp
+                }
+            }
+        }
         public var dataSourceId: String?
 
         public var dataSourceType: String?
@@ -30718,6 +30981,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var location: String?
 
+        public var permission: SendChatMessageRequest.DataSources.Permission?
+
         public var regionId: String?
 
         public var tables: [String]?
@@ -30732,6 +30997,7 @@ public class SendChatMessageRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.permission?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -30762,6 +31028,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if self.location != nil {
                 map["Location"] = self.location!
+            }
+            if self.permission != nil {
+                map["Permission"] = self.permission?.toMap()
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -30800,6 +31069,11 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["Location"] as? String {
                 self.location = value
+            }
+            if let value = dict["Permission"] as? [String: Any?] {
+                var model = SendChatMessageRequest.DataSources.Permission()
+                model.fromMap(value)
+                self.permission = model
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
