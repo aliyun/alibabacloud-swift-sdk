@@ -4026,6 +4026,10 @@ public class CreateOpenGlobalDataRequest : Tea.TeaModel {
 }
 
 public class CreateOpenGlobalDataResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var httpStatusCode: Int32?
+
     public var requestId: String?
 
     public var result: Bool?
@@ -4048,6 +4052,12 @@ public class CreateOpenGlobalDataResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4065,6 +4075,12 @@ public class CreateOpenGlobalDataResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -4266,6 +4282,10 @@ public class CreateOpenSingleDataRequest : Tea.TeaModel {
 }
 
 public class CreateOpenSingleDataResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var httpStatusCode: Int32?
+
     public var requestId: String?
 
     public var result: Bool?
@@ -4288,6 +4308,12 @@ public class CreateOpenSingleDataResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4305,6 +4331,12 @@ public class CreateOpenSingleDataResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
