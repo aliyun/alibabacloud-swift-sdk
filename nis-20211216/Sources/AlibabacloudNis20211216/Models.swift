@@ -2922,6 +2922,10 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
 
         public var packets: Double?
 
+        public var packetsIncrease: Double?
+
+        public var packetsIncreaseRatio: Double?
+
         public var packetsLostBlackhole: Double?
 
         public var packetsLostNoRoute: Double?
@@ -2935,6 +2939,8 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
         public var regionId: String?
 
         public var roundTripTime: Double?
+
+        public var roundTripTimeIncrease: Double?
 
         public var sourceIp: String?
 
@@ -3051,6 +3057,12 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
             if self.packets != nil {
                 map["Packets"] = self.packets!
             }
+            if self.packetsIncrease != nil {
+                map["PacketsIncrease"] = self.packetsIncrease!
+            }
+            if self.packetsIncreaseRatio != nil {
+                map["PacketsIncreaseRatio"] = self.packetsIncreaseRatio!
+            }
             if self.packetsLostBlackhole != nil {
                 map["PacketsLostBlackhole"] = self.packetsLostBlackhole!
             }
@@ -3071,6 +3083,9 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
             }
             if self.roundTripTime != nil {
                 map["RoundTripTime"] = self.roundTripTime!
+            }
+            if self.roundTripTimeIncrease != nil {
+                map["RoundTripTimeIncrease"] = self.roundTripTimeIncrease!
             }
             if self.sourceIp != nil {
                 map["SourceIp"] = self.sourceIp!
@@ -3197,6 +3212,12 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
             if let value = dict["Packets"] as? Double {
                 self.packets = value
             }
+            if let value = dict["PacketsIncrease"] as? Double {
+                self.packetsIncrease = value
+            }
+            if let value = dict["PacketsIncreaseRatio"] as? Double {
+                self.packetsIncreaseRatio = value
+            }
             if let value = dict["PacketsLostBlackhole"] as? Double {
                 self.packetsLostBlackhole = value
             }
@@ -3217,6 +3238,9 @@ public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
             }
             if let value = dict["RoundTripTime"] as? Double {
                 self.roundTripTime = value
+            }
+            if let value = dict["RoundTripTimeIncrease"] as? Double {
+                self.roundTripTimeIncrease = value
             }
             if let value = dict["SourceIp"] as? String {
                 self.sourceIp = value
@@ -5422,6 +5446,10 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
 
         public var destinationZone: String?
 
+        public var globalCountryCode: String?
+
+        public var globalProvinceCode: String?
+
         public var IP: String?
 
         public var inBps: Double?
@@ -5431,6 +5459,8 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
         public var instanceId: String?
 
         public var isp: String?
+
+        public var lineType: String?
 
         public var newSessionPerSecond: Double?
 
@@ -5455,6 +5485,8 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
         public var sourceIsp: String?
 
         public var sourcePort: String?
+
+        public var sourceRegion: String?
 
         public var sourceZone: String?
 
@@ -5510,6 +5542,12 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
             if self.destinationZone != nil {
                 map["DestinationZone"] = self.destinationZone!
             }
+            if self.globalCountryCode != nil {
+                map["GlobalCountryCode"] = self.globalCountryCode!
+            }
+            if self.globalProvinceCode != nil {
+                map["GlobalProvinceCode"] = self.globalProvinceCode!
+            }
             if self.IP != nil {
                 map["IP"] = self.IP!
             }
@@ -5524,6 +5562,9 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
             }
             if self.isp != nil {
                 map["Isp"] = self.isp!
+            }
+            if self.lineType != nil {
+                map["LineType"] = self.lineType!
             }
             if self.newSessionPerSecond != nil {
                 map["NewSessionPerSecond"] = self.newSessionPerSecond!
@@ -5560,6 +5601,9 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
             }
             if self.sourcePort != nil {
                 map["SourcePort"] = self.sourcePort!
+            }
+            if self.sourceRegion != nil {
+                map["SourceRegion"] = self.sourceRegion!
             }
             if self.sourceZone != nil {
                 map["SourceZone"] = self.sourceZone!
@@ -5608,6 +5652,12 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
             if let value = dict["DestinationZone"] as? String {
                 self.destinationZone = value
             }
+            if let value = dict["GlobalCountryCode"] as? String {
+                self.globalCountryCode = value
+            }
+            if let value = dict["GlobalProvinceCode"] as? String {
+                self.globalProvinceCode = value
+            }
             if let value = dict["IP"] as? String {
                 self.IP = value
             }
@@ -5622,6 +5672,9 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
             }
             if let value = dict["Isp"] as? String {
                 self.isp = value
+            }
+            if let value = dict["LineType"] as? String {
+                self.lineType = value
             }
             if let value = dict["NewSessionPerSecond"] as? Double {
                 self.newSessionPerSecond = value
@@ -5658,6 +5711,9 @@ public class GetNisNetworkRankingResponseBody : Tea.TeaModel {
             }
             if let value = dict["SourcePort"] as? String {
                 self.sourcePort = value
+            }
+            if let value = dict["SourceRegion"] as? String {
+                self.sourceRegion = value
             }
             if let value = dict["SourceZone"] as? String {
                 self.sourceZone = value
@@ -5763,6 +5819,509 @@ public class GetNisNetworkRankingResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetNisNetworkRankingResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetNisTrafficMetricsRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var key: String?
+
+        public var operator_: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.operator_ != nil {
+                map["Operator"] = self.operator_!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Operator"] as? String {
+                self.operator_ = value
+            }
+            if let value = dict["Value"] as? [String] {
+                self.value = value
+            }
+        }
+    }
+    public var beginTime: Int64?
+
+    public var direction: String?
+
+    public var endTime: Int64?
+
+    public var filter: [GetNisTrafficMetricsRequest.Filter]?
+
+    public var maxResults: Int32?
+
+    public var metricName: String?
+
+    public var nextToken: String?
+
+    public var regionNo: String?
+
+    public var scanBy: String?
+
+    public var stepMinutes: Int32?
+
+    public var storageInterval: Int32?
+
+    public var trafficAnalyzerId: String?
+
+    public var trafficScenario: String?
+
+    public var tupleDimension: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.filter != nil {
+            var tmp : [Any] = []
+            for k in self.filter! {
+                tmp.append(k.toMap())
+            }
+            map["Filter"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.metricName != nil {
+            map["MetricName"] = self.metricName!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionNo != nil {
+            map["RegionNo"] = self.regionNo!
+        }
+        if self.scanBy != nil {
+            map["ScanBy"] = self.scanBy!
+        }
+        if self.stepMinutes != nil {
+            map["StepMinutes"] = self.stepMinutes!
+        }
+        if self.storageInterval != nil {
+            map["StorageInterval"] = self.storageInterval!
+        }
+        if self.trafficAnalyzerId != nil {
+            map["TrafficAnalyzerId"] = self.trafficAnalyzerId!
+        }
+        if self.trafficScenario != nil {
+            map["TrafficScenario"] = self.trafficScenario!
+        }
+        if self.tupleDimension != nil {
+            map["TupleDimension"] = self.tupleDimension!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginTime"] as? Int64 {
+            self.beginTime = value
+        }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Filter"] as? [Any?] {
+            var tmp : [GetNisTrafficMetricsRequest.Filter] = []
+            for v in value {
+                if v != nil {
+                    var model = GetNisTrafficMetricsRequest.Filter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.filter = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["MetricName"] as? String {
+            self.metricName = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionNo"] as? String {
+            self.regionNo = value
+        }
+        if let value = dict["ScanBy"] as? String {
+            self.scanBy = value
+        }
+        if let value = dict["StepMinutes"] as? Int32 {
+            self.stepMinutes = value
+        }
+        if let value = dict["StorageInterval"] as? Int32 {
+            self.storageInterval = value
+        }
+        if let value = dict["TrafficAnalyzerId"] as? String {
+            self.trafficAnalyzerId = value
+        }
+        if let value = dict["TrafficScenario"] as? String {
+            self.trafficScenario = value
+        }
+        if let value = dict["TupleDimension"] as? String {
+            self.tupleDimension = value
+        }
+    }
+}
+
+public class GetNisTrafficMetricsShrinkRequest : Tea.TeaModel {
+    public var beginTime: Int64?
+
+    public var direction: String?
+
+    public var endTime: Int64?
+
+    public var filterShrink: String?
+
+    public var maxResults: Int32?
+
+    public var metricName: String?
+
+    public var nextToken: String?
+
+    public var regionNo: String?
+
+    public var scanBy: String?
+
+    public var stepMinutes: Int32?
+
+    public var storageInterval: Int32?
+
+    public var trafficAnalyzerId: String?
+
+    public var trafficScenario: String?
+
+    public var tupleDimension: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.metricName != nil {
+            map["MetricName"] = self.metricName!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionNo != nil {
+            map["RegionNo"] = self.regionNo!
+        }
+        if self.scanBy != nil {
+            map["ScanBy"] = self.scanBy!
+        }
+        if self.stepMinutes != nil {
+            map["StepMinutes"] = self.stepMinutes!
+        }
+        if self.storageInterval != nil {
+            map["StorageInterval"] = self.storageInterval!
+        }
+        if self.trafficAnalyzerId != nil {
+            map["TrafficAnalyzerId"] = self.trafficAnalyzerId!
+        }
+        if self.trafficScenario != nil {
+            map["TrafficScenario"] = self.trafficScenario!
+        }
+        if self.tupleDimension != nil {
+            map["TupleDimension"] = self.tupleDimension!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginTime"] as? Int64 {
+            self.beginTime = value
+        }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filterShrink = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["MetricName"] as? String {
+            self.metricName = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionNo"] as? String {
+            self.regionNo = value
+        }
+        if let value = dict["ScanBy"] as? String {
+            self.scanBy = value
+        }
+        if let value = dict["StepMinutes"] as? Int32 {
+            self.stepMinutes = value
+        }
+        if let value = dict["StorageInterval"] as? Int32 {
+            self.storageInterval = value
+        }
+        if let value = dict["TrafficAnalyzerId"] as? String {
+            self.trafficAnalyzerId = value
+        }
+        if let value = dict["TrafficScenario"] as? String {
+            self.trafficScenario = value
+        }
+        if let value = dict["TupleDimension"] as? String {
+            self.tupleDimension = value
+        }
+    }
+}
+
+public class GetNisTrafficMetricsResponseBody : Tea.TeaModel {
+    public class MetricStatics : Tea.TeaModel {
+        public var timeStamp: Int64?
+
+        public var value: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.timeStamp != nil {
+                map["TimeStamp"] = self.timeStamp!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TimeStamp"] as? Int64 {
+                self.timeStamp = value
+            }
+            if let value = dict["Value"] as? Double {
+                self.value = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var metricStatics: [GetNisTrafficMetricsResponseBody.MetricStatics]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var unit: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.metricStatics != nil {
+            var tmp : [Any] = []
+            for k in self.metricStatics! {
+                tmp.append(k.toMap())
+            }
+            map["MetricStatics"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.unit != nil {
+            map["Unit"] = self.unit!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["MetricStatics"] as? [Any?] {
+            var tmp : [GetNisTrafficMetricsResponseBody.MetricStatics] = []
+            for v in value {
+                if v != nil {
+                    var model = GetNisTrafficMetricsResponseBody.MetricStatics()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.metricStatics = tmp
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+        if let value = dict["Unit"] as? String {
+            self.unit = value
+        }
+    }
+}
+
+public class GetNisTrafficMetricsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetNisTrafficMetricsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetNisTrafficMetricsResponseBody()
             model.fromMap(value)
             self.body = model
         }

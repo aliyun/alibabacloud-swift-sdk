@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shanghai": "nis.aliyuncs.com",
+            "ap-southeast-1": "nis-intl.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("nis", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -843,6 +847,81 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getNisNetworkRanking(_ request: GetNisNetworkRankingRequest) async throws -> GetNisNetworkRankingResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getNisNetworkRankingWithOptions(request as! GetNisNetworkRankingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNisTrafficMetricsWithOptions(_ tmpReq: GetNisTrafficMetricsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNisTrafficMetricsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetNisTrafficMetricsShrinkRequest = GetNisTrafficMetricsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filter)) {
+            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "Filter", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.beginTime)) {
+            query["BeginTime"] = request.beginTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.direction)) {
+            query["Direction"] = request.direction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
+            query["Filter"] = request.filterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.metricName)) {
+            query["MetricName"] = request.metricName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionNo)) {
+            query["RegionNo"] = request.regionNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanBy)) {
+            query["ScanBy"] = request.scanBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stepMinutes)) {
+            query["StepMinutes"] = request.stepMinutes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.storageInterval)) {
+            query["StorageInterval"] = request.storageInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficAnalyzerId)) {
+            query["TrafficAnalyzerId"] = request.trafficAnalyzerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficScenario)) {
+            query["TrafficScenario"] = request.trafficScenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tupleDimension)) {
+            query["TupleDimension"] = request.tupleDimension ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetNisTrafficMetrics",
+            "version": "2021-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetNisTrafficMetricsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNisTrafficMetrics(_ request: GetNisTrafficMetricsRequest) async throws -> GetNisTrafficMetricsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getNisTrafficMetricsWithOptions(request as! GetNisTrafficMetricsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
