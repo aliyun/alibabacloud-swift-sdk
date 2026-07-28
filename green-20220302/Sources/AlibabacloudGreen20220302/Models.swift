@@ -508,6 +508,267 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RiskSummary : Tea.TeaModel {
+                public class Ext : Tea.TeaModel {
+                    public class AigcData : Tea.TeaModel {
+                        public class AIGC : Tea.TeaModel {
+                            public var contentProducer: String?
+
+                            public var contentPropagator: String?
+
+                            public var label: String?
+
+                            public var produceID: String?
+
+                            public var propagateID: String?
+
+                            public var reservedCode1: String?
+
+                            public var reservedCode2: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.contentProducer != nil {
+                                    map["ContentProducer"] = self.contentProducer!
+                                }
+                                if self.contentPropagator != nil {
+                                    map["ContentPropagator"] = self.contentPropagator!
+                                }
+                                if self.label != nil {
+                                    map["Label"] = self.label!
+                                }
+                                if self.produceID != nil {
+                                    map["ProduceID"] = self.produceID!
+                                }
+                                if self.propagateID != nil {
+                                    map["PropagateID"] = self.propagateID!
+                                }
+                                if self.reservedCode1 != nil {
+                                    map["ReservedCode1"] = self.reservedCode1!
+                                }
+                                if self.reservedCode2 != nil {
+                                    map["ReservedCode2"] = self.reservedCode2!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["ContentProducer"] as? String {
+                                    self.contentProducer = value
+                                }
+                                if let value = dict["ContentPropagator"] as? String {
+                                    self.contentPropagator = value
+                                }
+                                if let value = dict["Label"] as? String {
+                                    self.label = value
+                                }
+                                if let value = dict["ProduceID"] as? String {
+                                    self.produceID = value
+                                }
+                                if let value = dict["PropagateID"] as? String {
+                                    self.propagateID = value
+                                }
+                                if let value = dict["ReservedCode1"] as? String {
+                                    self.reservedCode1 = value
+                                }
+                                if let value = dict["ReservedCode2"] as? String {
+                                    self.reservedCode2 = value
+                                }
+                            }
+                        }
+                        public var AIGC: DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.Ext.AigcData.AIGC?
+
+                        public var explain: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.AIGC?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.AIGC != nil {
+                                map["AIGC"] = self.AIGC?.toMap()
+                            }
+                            if self.explain != nil {
+                                map["Explain"] = self.explain!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AIGC"] as? [String: Any?] {
+                                var model = DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.Ext.AigcData.AIGC()
+                                model.fromMap(value)
+                                self.AIGC = model
+                            }
+                            if let value = dict["Explain"] as? String {
+                                self.explain = value
+                            }
+                        }
+                    }
+                    public var aigcData: DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.Ext.AigcData?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.aigcData?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.aigcData != nil {
+                            map["AigcData"] = self.aigcData?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AigcData"] as? [String: Any?] {
+                            var model = DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.Ext.AigcData()
+                            model.fromMap(value)
+                            self.aigcData = model
+                        }
+                    }
+                }
+                public class RiskLabels : Tea.TeaModel {
+                    public var confidence: Double?
+
+                    public var description_: String?
+
+                    public var label: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Confidence"] as? Double {
+                            self.confidence = value
+                        }
+                        if let value = dict["Description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["Label"] as? String {
+                            self.label = value
+                        }
+                    }
+                }
+                public var ext: DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.Ext?
+
+                public var riskLabels: [DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.RiskLabels]?
+
+                public var riskLevel: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.ext?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ext != nil {
+                        map["Ext"] = self.ext?.toMap()
+                    }
+                    if self.riskLabels != nil {
+                        var tmp : [Any] = []
+                        for k in self.riskLabels! {
+                            tmp.append(k.toMap())
+                        }
+                        map["RiskLabels"] = tmp
+                    }
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Ext"] as? [String: Any?] {
+                        var model = DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.Ext()
+                        model.fromMap(value)
+                        self.ext = model
+                    }
+                    if let value = dict["RiskLabels"] as? [Any?] {
+                        var tmp : [DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.RiskLabels] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary.RiskLabels()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.riskLabels = tmp
+                    }
+                    if let value = dict["RiskLevel"] as? String {
+                        self.riskLevel = value
+                    }
+                }
+            }
             public class TextSummary : Tea.TeaModel {
                 public class TextLabels : Tea.TeaModel {
                     public var description_: String?
@@ -610,6 +871,8 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
 
             public var pageSum: Int32?
 
+            public var riskSummary: DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary?
+
             public var textSummary: DescribeFileModerationResultResponseBody.Data.PageSummary.TextSummary?
 
             public override init() {
@@ -623,6 +886,7 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.imageSummary?.validate()
+                try self.riskSummary?.validate()
                 try self.textSummary?.validate()
             }
 
@@ -633,6 +897,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                 }
                 if self.pageSum != nil {
                     map["PageSum"] = self.pageSum!
+                }
+                if self.riskSummary != nil {
+                    map["RiskSummary"] = self.riskSummary?.toMap()
                 }
                 if self.textSummary != nil {
                     map["TextSummary"] = self.textSummary?.toMap()
@@ -649,6 +916,11 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["PageSum"] as? Int32 {
                     self.pageSum = value
+                }
+                if let value = dict["RiskSummary"] as? [String: Any?] {
+                    var model = DescribeFileModerationResultResponseBody.Data.PageSummary.RiskSummary()
+                    model.fromMap(value)
+                    self.riskSummary = model
                 }
                 if let value = dict["TextSummary"] as? [String: Any?] {
                     var model = DescribeFileModerationResultResponseBody.Data.PageSummary.TextSummary()
@@ -8413,6 +8685,8 @@ public class MultiModalGuardAsyncResultResponse : Tea.TeaModel {
 }
 
 public class MultiModalGuardForBase64Request : Tea.TeaModel {
+    public var fileBase64Str: String?
+
     public var imageBase64Str: String?
 
     public var service: String?
@@ -8433,6 +8707,9 @@ public class MultiModalGuardForBase64Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fileBase64Str != nil {
+            map["FileBase64Str"] = self.fileBase64Str!
+        }
         if self.imageBase64Str != nil {
             map["ImageBase64Str"] = self.imageBase64Str!
         }
@@ -8447,6 +8724,9 @@ public class MultiModalGuardForBase64Request : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FileBase64Str"] as? String {
+            self.fileBase64Str = value
+        }
         if let value = dict["ImageBase64Str"] as? String {
             self.imageBase64Str = value
         }

@@ -695,6 +695,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["Service"] = request.service ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileBase64Str)) {
+            body["FileBase64Str"] = request.fileBase64Str ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageBase64Str)) {
             body["ImageBase64Str"] = request.imageBase64Str ?? "";
         }
