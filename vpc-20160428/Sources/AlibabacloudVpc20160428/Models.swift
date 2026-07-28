@@ -10480,6 +10480,8 @@ public class CreateFlowLogRequest : Tea.TeaModel {
 
     public var ipVersion: String?
 
+    public var logFormat: String?
+
     public var logStoreName: String?
 
     public var ownerAccount: String?
@@ -10531,6 +10533,9 @@ public class CreateFlowLogRequest : Tea.TeaModel {
         }
         if self.ipVersion != nil {
             map["IpVersion"] = self.ipVersion!
+        }
+        if self.logFormat != nil {
+            map["LogFormat"] = self.logFormat!
         }
         if self.logStoreName != nil {
             map["LogStoreName"] = self.logStoreName!
@@ -10591,6 +10596,9 @@ public class CreateFlowLogRequest : Tea.TeaModel {
         }
         if let value = dict["IpVersion"] as? String {
             self.ipVersion = value
+        }
+        if let value = dict["LogFormat"] as? String {
+            self.logFormat = value
         }
         if let value = dict["LogStoreName"] as? String {
             self.logStoreName = value
@@ -43883,6 +43891,8 @@ public class DescribeFlowLogsResponseBody : Tea.TeaModel {
 
             public var ipVersion: String?
 
+            public var logFormat: String?
+
             public var logStoreName: String?
 
             public var projectName: String?
@@ -43948,6 +43958,9 @@ public class DescribeFlowLogsResponseBody : Tea.TeaModel {
                 if self.ipVersion != nil {
                     map["IpVersion"] = self.ipVersion!
                 }
+                if self.logFormat != nil {
+                    map["LogFormat"] = self.logFormat!
+                }
                 if self.logStoreName != nil {
                     map["LogStoreName"] = self.logStoreName!
                 }
@@ -44012,6 +44025,9 @@ public class DescribeFlowLogsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IpVersion"] as? String {
                     self.ipVersion = value
+                }
+                if let value = dict["LogFormat"] as? String {
+                    self.logFormat = value
                 }
                 if let value = dict["LogStoreName"] as? String {
                     self.logStoreName = value
@@ -94595,6 +94611,8 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
 
     public var ipVersion: String?
 
+    public var logFormat: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -94634,6 +94652,9 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
         if self.ipVersion != nil {
             map["IpVersion"] = self.ipVersion!
         }
+        if self.logFormat != nil {
+            map["LogFormat"] = self.logFormat!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -94668,6 +94689,9 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["IpVersion"] as? String {
             self.ipVersion = value
+        }
+        if let value = dict["LogFormat"] as? String {
+            self.logFormat = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
