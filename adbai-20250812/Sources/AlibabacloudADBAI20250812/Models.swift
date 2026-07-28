@@ -1103,6 +1103,8 @@ public class DescribeChatMessageRequest : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var skill: String?
+
     public var timezone: String?
 
     public override init() {
@@ -1128,6 +1130,9 @@ public class DescribeChatMessageRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.skill != nil {
+            map["Skill"] = self.skill!
+        }
         if self.timezone != nil {
             map["Timezone"] = self.timezone!
         }
@@ -1144,6 +1149,9 @@ public class DescribeChatMessageRequest : Tea.TeaModel {
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["Skill"] as? String {
+            self.skill = value
         }
         if let value = dict["Timezone"] as? String {
             self.timezone = value

@@ -8,7 +8,15 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shenzhen": "adbai.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "adbai.cn-shanghai.aliyuncs.com",
+            "cn-hangzhou": "adbai.cn-hangzhou.aliyuncs.com",
+            "cn-beijing": "adbai.cn-beijing.aliyuncs.com",
+            "ap-southeast-1": "adbai.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "adbai.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("adbai", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -211,6 +219,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skill)) {
+            query["Skill"] = request.skill ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.timezone)) {
             query["Timezone"] = request.timezone ?? "";
