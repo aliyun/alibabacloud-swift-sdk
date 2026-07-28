@@ -5329,6 +5329,8 @@ public class DescribeInstanceEndpointsResponseBody : Tea.TeaModel {
     public class InstanceEndpoints : Tea.TeaModel {
         public var connectionString: String?
 
+        public var domain: String?
+
         public var IP: String?
 
         public var ipType: String?
@@ -5352,6 +5354,9 @@ public class DescribeInstanceEndpointsResponseBody : Tea.TeaModel {
             if self.connectionString != nil {
                 map["ConnectionString"] = self.connectionString!
             }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
             if self.IP != nil {
                 map["IP"] = self.IP!
             }
@@ -5368,6 +5373,9 @@ public class DescribeInstanceEndpointsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ConnectionString"] as? String {
                 self.connectionString = value
+            }
+            if let value = dict["Domain"] as? String {
+                self.domain = value
             }
             if let value = dict["IP"] as? String {
                 self.IP = value
@@ -6062,6 +6070,8 @@ public class DescribeInstanceSSLResponseBody : Tea.TeaModel {
 
     public var SSLEnabled: String?
 
+    public var SSLExpiredTime: String?
+
     public var serverCert: String?
 
     public var serverKey: String?
@@ -6095,6 +6105,9 @@ public class DescribeInstanceSSLResponseBody : Tea.TeaModel {
         if self.SSLEnabled != nil {
             map["SSLEnabled"] = self.SSLEnabled!
         }
+        if self.SSLExpiredTime != nil {
+            map["SSLExpiredTime"] = self.SSLExpiredTime!
+        }
         if self.serverCert != nil {
             map["ServerCert"] = self.serverCert!
         }
@@ -6120,6 +6133,9 @@ public class DescribeInstanceSSLResponseBody : Tea.TeaModel {
         }
         if let value = dict["SSLEnabled"] as? String {
             self.SSLEnabled = value
+        }
+        if let value = dict["SSLExpiredTime"] as? String {
+            self.SSLExpiredTime = value
         }
         if let value = dict["ServerCert"] as? String {
             self.serverCert = value
@@ -14507,6 +14523,8 @@ public class ModifyInstanceSSLResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var SSLExpiredTime: String?
+
     public override init() {
         super.init()
     }
@@ -14530,6 +14548,9 @@ public class ModifyInstanceSSLResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.SSLExpiredTime != nil {
+            map["SSLExpiredTime"] = self.SSLExpiredTime!
+        }
         return map
     }
 
@@ -14543,6 +14564,9 @@ public class ModifyInstanceSSLResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SSLExpiredTime"] as? String {
+            self.SSLExpiredTime = value
         }
     }
 }
@@ -15019,6 +15043,8 @@ public class ModifyInstancesSSLResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var SSLExpiredTime: String?
+
     public override init() {
         super.init()
     }
@@ -15039,6 +15065,9 @@ public class ModifyInstancesSSLResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.SSLExpiredTime != nil {
+            map["SSLExpiredTime"] = self.SSLExpiredTime!
+        }
         return map
     }
 
@@ -15049,6 +15078,9 @@ public class ModifyInstancesSSLResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SSLExpiredTime"] as? String {
+            self.SSLExpiredTime = value
         }
     }
 }
