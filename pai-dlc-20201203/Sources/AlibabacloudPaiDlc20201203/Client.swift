@@ -1370,6 +1370,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceId)) {
             query["ResourceId"] = request.resourceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceIds)) {
+            query["ResourceIds"] = request.resourceIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceQuotaName)) {
             query["ResourceQuotaName"] = request.resourceQuotaName ?? "";
         }

@@ -522,6 +522,8 @@ public class ContainerSpec : Tea.TeaModel {
 
     public var resources: ResourceRequirements?
 
+    public var securityContext: SecurityContext?
+
     public var workingDir: String?
 
     public override init() {
@@ -535,6 +537,7 @@ public class ContainerSpec : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.resources?.validate()
+        try self.securityContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -560,6 +563,9 @@ public class ContainerSpec : Tea.TeaModel {
         }
         if self.resources != nil {
             map["Resources"] = self.resources?.toMap()
+        }
+        if self.securityContext != nil {
+            map["SecurityContext"] = self.securityContext?.toMap()
         }
         if self.workingDir != nil {
             map["WorkingDir"] = self.workingDir!
@@ -598,6 +604,11 @@ public class ContainerSpec : Tea.TeaModel {
             var model = ResourceRequirements()
             model.fromMap(value)
             self.resources = model
+        }
+        if let value = dict["SecurityContext"] as? [String: Any?] {
+            var model = SecurityContext()
+            model.fromMap(value)
+            self.securityContext = model
         }
         if let value = dict["WorkingDir"] as? String {
             self.workingDir = value
@@ -2853,6 +2864,8 @@ public class JobItem : Tea.TeaModel {
 
     public var workspaceName: String?
 
+    public var supportedProfilingTypes: String?
+
     public override init() {
         super.init()
     }
@@ -3074,6 +3087,9 @@ public class JobItem : Tea.TeaModel {
         }
         if self.workspaceName != nil {
             map["WorkspaceName"] = self.workspaceName!
+        }
+        if self.supportedProfilingTypes != nil {
+            map["supportedProfilingTypes"] = self.supportedProfilingTypes!
         }
         return map
     }
@@ -3322,6 +3338,9 @@ public class JobItem : Tea.TeaModel {
         }
         if let value = dict["WorkspaceName"] as? String {
             self.workspaceName = value
+        }
+        if let value = dict["supportedProfilingTypes"] as? String {
+            self.supportedProfilingTypes = value
         }
     }
 }
@@ -3655,6 +3674,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var considerInSuccessPolicy: Bool?
 
+    public var driver: String?
+
     public var ecsSpec: String?
 
     public var elasticSpotSpecs: [ElasticSpotSpec]?
@@ -3726,6 +3747,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.considerInSuccessPolicy != nil {
             map["ConsiderInSuccessPolicy"] = self.considerInSuccessPolicy!
+        }
+        if self.driver != nil {
+            map["Driver"] = self.driver!
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -3816,6 +3840,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if let value = dict["ConsiderInSuccessPolicy"] as? Bool {
             self.considerInSuccessPolicy = value
+        }
+        if let value = dict["Driver"] as? String {
+            self.driver = value
         }
         if let value = dict["EcsSpec"] as? String {
             self.ecsSpec = value
@@ -4531,6 +4558,8 @@ public class PodItem : Tea.TeaModel {
 
     public var type: String?
 
+    public var supportedProfilingTypes: String?
+
     public override init() {
         super.init()
     }
@@ -4591,6 +4620,9 @@ public class PodItem : Tea.TeaModel {
         }
         if self.type != nil {
             map["Type"] = self.type!
+        }
+        if self.supportedProfilingTypes != nil {
+            map["supportedProfilingTypes"] = self.supportedProfilingTypes!
         }
         return map
     }
@@ -4655,6 +4687,9 @@ public class PodItem : Tea.TeaModel {
         }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+        if let value = dict["supportedProfilingTypes"] as? String {
+            self.supportedProfilingTypes = value
         }
     }
 }
@@ -6537,6 +6572,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public var commit: String?
 
+        public var isSharedMountPath: Bool?
+
         public var mountPath: String?
 
         public override init() {
@@ -6562,6 +6599,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.commit != nil {
                 map["Commit"] = self.commit!
             }
+            if self.isSharedMountPath != nil {
+                map["IsSharedMountPath"] = self.isSharedMountPath!
+            }
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
@@ -6578,6 +6618,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
             if let value = dict["Commit"] as? String {
                 self.commit = value
+            }
+            if let value = dict["IsSharedMountPath"] as? Bool {
+                self.isSharedMountPath = value
             }
             if let value = dict["MountPath"] as? String {
                 self.mountPath = value
@@ -8797,6 +8840,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
             public var type: String?
 
+            public var supportedProfilingTypes: String?
+
             public override init() {
                 super.init()
             }
@@ -8854,6 +8899,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
+                if self.supportedProfilingTypes != nil {
+                    map["supportedProfilingTypes"] = self.supportedProfilingTypes!
+                }
                 return map
             }
 
@@ -8908,6 +8956,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if let value = dict["Type"] as? String {
                     self.type = value
                 }
+                if let value = dict["supportedProfilingTypes"] as? String {
+                    self.supportedProfilingTypes = value
+                }
             }
         }
         public var duration: Double?
@@ -8937,6 +8988,8 @@ public class GetJobResponseBody : Tea.TeaModel {
         public var subStatus: String?
 
         public var type: String?
+
+        public var supportedProfilingTypes: String?
 
         public override init() {
             super.init()
@@ -9001,6 +9054,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if self.type != nil {
                 map["Type"] = self.type!
+            }
+            if self.supportedProfilingTypes != nil {
+                map["supportedProfilingTypes"] = self.supportedProfilingTypes!
             }
             return map
         }
@@ -9068,6 +9124,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["Type"] as? String {
                 self.type = value
+            }
+            if let value = dict["supportedProfilingTypes"] as? String {
+                self.supportedProfilingTypes = value
             }
         }
     }
@@ -9437,6 +9496,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var workspaceName: String?
 
+    public var supportedProfilingTypes: String?
+
     public override init() {
         super.init()
     }
@@ -9624,6 +9685,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.workspaceName != nil {
             map["WorkspaceName"] = self.workspaceName!
+        }
+        if self.supportedProfilingTypes != nil {
+            map["supportedProfilingTypes"] = self.supportedProfilingTypes!
         }
         return map
     }
@@ -9850,6 +9914,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["WorkspaceName"] as? String {
             self.workspaceName = value
+        }
+        if let value = dict["supportedProfilingTypes"] as? String {
+            self.supportedProfilingTypes = value
         }
     }
 }
@@ -13021,6 +13088,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var resourceId: String?
 
+    public var resourceIds: String?
+
     public var resourceQuotaName: String?
 
     public var showOwn: Bool?
@@ -13130,6 +13199,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
         }
         if self.resourceQuotaName != nil {
             map["ResourceQuotaName"] = self.resourceQuotaName!
@@ -13244,6 +13316,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
         }
+        if let value = dict["ResourceIds"] as? String {
+            self.resourceIds = value
+        }
         if let value = dict["ResourceQuotaName"] as? String {
             self.resourceQuotaName = value
         }
@@ -13331,6 +13406,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var reasonSearch: String?
 
     public var resourceId: String?
+
+    public var resourceIds: String?
 
     public var resourceQuotaName: String?
 
@@ -13441,6 +13518,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
         }
         if self.resourceQuotaName != nil {
             map["ResourceQuotaName"] = self.resourceQuotaName!
@@ -13554,6 +13634,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
+        }
+        if let value = dict["ResourceIds"] as? String {
+            self.resourceIds = value
         }
         if let value = dict["ResourceQuotaName"] as? String {
             self.resourceQuotaName = value
