@@ -2907,6 +2907,8 @@ public class CreateStackRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var parameterSetIds: [String]?
+
     public var ramRole: String?
 
     public var source: String?
@@ -2938,6 +2940,9 @@ public class CreateStackRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.parameterSetIds != nil {
+            map["parameterSetIds"] = self.parameterSetIds!
+        }
         if self.ramRole != nil {
             map["ramRole"] = self.ramRole!
         }
@@ -2963,6 +2968,9 @@ public class CreateStackRequest : Tea.TeaModel {
         }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["parameterSetIds"] as? [String] {
+            self.parameterSetIds = value
         }
         if let value = dict["ramRole"] as? String {
             self.ramRole = value
@@ -3217,9 +3225,13 @@ public class CreateTaskRequest : Tea.TeaModel {
 
     public var skipPropertyValidation: Bool?
 
+    public var skipRegionValidation: Bool?
+
     public var tags: [CreateTaskRequest.Tags]?
 
     public var taskBackend: CreateTaskRequest.TaskBackend?
+
+    public var terraformProviderVersion: String?
 
     public var terraformVersion: String?
 
@@ -3280,6 +3292,9 @@ public class CreateTaskRequest : Tea.TeaModel {
         if self.skipPropertyValidation != nil {
             map["skipPropertyValidation"] = self.skipPropertyValidation!
         }
+        if self.skipRegionValidation != nil {
+            map["skipRegionValidation"] = self.skipRegionValidation!
+        }
         if self.tags != nil {
             var tmp : [Any] = []
             for k in self.tags! {
@@ -3289,6 +3304,9 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
         if self.taskBackend != nil {
             map["taskBackend"] = self.taskBackend?.toMap()
+        }
+        if self.terraformProviderVersion != nil {
+            map["terraformProviderVersion"] = self.terraformProviderVersion!
         }
         if self.terraformVersion != nil {
             map["terraformVersion"] = self.terraformVersion!
@@ -3342,6 +3360,9 @@ public class CreateTaskRequest : Tea.TeaModel {
         if let value = dict["skipPropertyValidation"] as? Bool {
             self.skipPropertyValidation = value
         }
+        if let value = dict["skipRegionValidation"] as? Bool {
+            self.skipRegionValidation = value
+        }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [CreateTaskRequest.Tags] = []
             for v in value {
@@ -3359,6 +3380,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             var model = CreateTaskRequest.TaskBackend()
             model.fromMap(value)
             self.taskBackend = model
+        }
+        if let value = dict["terraformProviderVersion"] as? String {
+            self.terraformProviderVersion = value
         }
         if let value = dict["terraformVersion"] as? String {
             self.terraformVersion = value
@@ -8328,6 +8352,150 @@ public class GetProjectResponse : Tea.TeaModel {
     }
 }
 
+public class GetProviderDocumentRequest : Tea.TeaModel {
+    public var providerVersion: String?
+
+    public var terraformResourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.providerVersion != nil {
+            map["providerVersion"] = self.providerVersion!
+        }
+        if self.terraformResourceType != nil {
+            map["terraformResourceType"] = self.terraformResourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["providerVersion"] as? String {
+            self.providerVersion = value
+        }
+        if let value = dict["terraformResourceType"] as? String {
+            self.terraformResourceType = value
+        }
+    }
+}
+
+public class GetProviderDocumentResponseBody : Tea.TeaModel {
+    public var document: String?
+
+    public var providerVersion: String?
+
+    public var requestId: String?
+
+    public var terraformResourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.document != nil {
+            map["document"] = self.document!
+        }
+        if self.providerVersion != nil {
+            map["providerVersion"] = self.providerVersion!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.terraformResourceType != nil {
+            map["terraformResourceType"] = self.terraformResourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["document"] as? String {
+            self.document = value
+        }
+        if let value = dict["providerVersion"] as? String {
+            self.providerVersion = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["terraformResourceType"] as? String {
+            self.terraformResourceType = value
+        }
+    }
+}
+
+public class GetProviderDocumentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetProviderDocumentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetProviderDocumentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetRegistryModuleRequest : Tea.TeaModel {
 
     public override init() {
@@ -9595,6 +9763,8 @@ public class GetResourceTypeResponseBody : Tea.TeaModel {
 
         public var resourceListPageUrl: String?
 
+        public var resourceType: String?
+
         public var status: String?
 
         public var statusStartVersion: String?
@@ -9650,6 +9820,9 @@ public class GetResourceTypeResponseBody : Tea.TeaModel {
             }
             if self.resourceListPageUrl != nil {
                 map["resourceListPageUrl"] = self.resourceListPageUrl!
+            }
+            if self.resourceType != nil {
+                map["resourceType"] = self.resourceType!
             }
             if self.status != nil {
                 map["status"] = self.status!
@@ -9710,6 +9883,9 @@ public class GetResourceTypeResponseBody : Tea.TeaModel {
             }
             if let value = dict["resourceListPageUrl"] as? String {
                 self.resourceListPageUrl = value
+            }
+            if let value = dict["resourceType"] as? String {
+                self.resourceType = value
             }
             if let value = dict["status"] as? String {
                 self.status = value
@@ -11273,6 +11449,8 @@ public class GetTaskResponseBody : Tea.TeaModel {
 
         public var skipPropertyValidation: Bool?
 
+        public var skipRegionValidation: Bool?
+
         public var status: String?
 
         public var tags: [GetTaskResponseBody.Task.Tags]?
@@ -11353,6 +11531,9 @@ public class GetTaskResponseBody : Tea.TeaModel {
             }
             if self.skipPropertyValidation != nil {
                 map["skipPropertyValidation"] = self.skipPropertyValidation!
+            }
+            if self.skipRegionValidation != nil {
+                map["skipRegionValidation"] = self.skipRegionValidation!
             }
             if self.status != nil {
                 map["status"] = self.status!
@@ -11436,6 +11617,9 @@ public class GetTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["skipPropertyValidation"] as? Bool {
                 self.skipPropertyValidation = value
+            }
+            if let value = dict["skipRegionValidation"] as? Bool {
+                self.skipRegionValidation = value
             }
             if let value = dict["status"] as? String {
                 self.status = value
@@ -23891,7 +24075,11 @@ public class UpdateTaskAttributeRequest : Tea.TeaModel {
 
     public var skipPropertyValidation: Bool?
 
+    public var skipRegionValidation: Bool?
+
     public var tags: [UpdateTaskAttributeRequest.Tags]?
+
+    public var terraformProviderVersion: String?
 
     public var terraformVersion: String?
 
@@ -23945,12 +24133,18 @@ public class UpdateTaskAttributeRequest : Tea.TeaModel {
         if self.skipPropertyValidation != nil {
             map["skipPropertyValidation"] = self.skipPropertyValidation!
         }
+        if self.skipRegionValidation != nil {
+            map["skipRegionValidation"] = self.skipRegionValidation!
+        }
         if self.tags != nil {
             var tmp : [Any] = []
             for k in self.tags! {
                 tmp.append(k.toMap())
             }
             map["tags"] = tmp
+        }
+        if self.terraformProviderVersion != nil {
+            map["terraformProviderVersion"] = self.terraformProviderVersion!
         }
         if self.terraformVersion != nil {
             map["terraformVersion"] = self.terraformVersion!
@@ -23998,6 +24192,9 @@ public class UpdateTaskAttributeRequest : Tea.TeaModel {
         if let value = dict["skipPropertyValidation"] as? Bool {
             self.skipPropertyValidation = value
         }
+        if let value = dict["skipRegionValidation"] as? Bool {
+            self.skipRegionValidation = value
+        }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [UpdateTaskAttributeRequest.Tags] = []
             for v in value {
@@ -24010,6 +24207,9 @@ public class UpdateTaskAttributeRequest : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["terraformProviderVersion"] as? String {
+            self.terraformProviderVersion = value
         }
         if let value = dict["terraformVersion"] as? String {
             self.terraformVersion = value

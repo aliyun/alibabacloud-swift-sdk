@@ -11,7 +11,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-zhangjiakou": "iac.cn-zhangjiakou.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("iacservice", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -818,6 +821,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parameterSetIds)) {
+            body["parameterSetIds"] = request.parameterSetIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.ramRole)) {
             body["ramRole"] = request.ramRole ?? "";
         }
@@ -899,11 +905,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.skipPropertyValidation)) {
             body["skipPropertyValidation"] = request.skipPropertyValidation!;
         }
+        if (!TeaUtils.Client.isUnset(request.skipRegionValidation)) {
+            body["skipRegionValidation"] = request.skipRegionValidation!;
+        }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             body["tags"] = request.tags ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.taskBackend)) {
             body["taskBackend"] = request.taskBackend!;
+        }
+        if (!TeaUtils.Client.isUnset(request.terraformProviderVersion)) {
+            body["terraformProviderVersion"] = request.terraformProviderVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.terraformVersion)) {
             body["terraformVersion"] = request.terraformVersion ?? "";
@@ -1867,6 +1879,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getProjectWithOptions(projectId as! String, request as! GetProjectRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getProviderDocumentWithOptions(_ request: GetProviderDocumentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProviderDocumentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.providerVersion)) {
+            query["providerVersion"] = request.providerVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.terraformResourceType)) {
+            query["terraformResourceType"] = request.terraformResourceType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetProviderDocument",
+            "version": "2021-08-06",
+            "protocol": "HTTPS",
+            "pathname": "/version/terraform/provider/document",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetProviderDocumentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getProviderDocument(_ request: GetProviderDocumentRequest) async throws -> GetProviderDocumentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getProviderDocumentWithOptions(request as! GetProviderDocumentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4037,8 +4085,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.skipPropertyValidation)) {
             body["skipPropertyValidation"] = request.skipPropertyValidation!;
         }
+        if (!TeaUtils.Client.isUnset(request.skipRegionValidation)) {
+            body["skipRegionValidation"] = request.skipRegionValidation!;
+        }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             body["tags"] = request.tags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.terraformProviderVersion)) {
+            body["terraformProviderVersion"] = request.terraformProviderVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.terraformVersion)) {
             body["terraformVersion"] = request.terraformVersion ?? "";
