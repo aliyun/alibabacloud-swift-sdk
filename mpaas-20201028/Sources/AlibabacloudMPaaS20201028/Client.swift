@@ -1449,6 +1449,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileUrl)) {
             body["FileUrl"] = request.fileUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.harmonyMaxVersion)) {
+            body["HarmonyMaxVersion"] = request.harmonyMaxVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyMinVersion)) {
+            body["HarmonyMinVersion"] = request.harmonyMinVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.iosMaxVersion)) {
             body["IosMaxVersion"] = request.iosMaxVersion ?? "";
         }
