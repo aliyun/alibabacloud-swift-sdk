@@ -5,6 +5,53 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class ComponentCapacityConstraint : Tea.TeaModel {
+    public var componentType: String?
+
+    public var maxCapacity: Int32?
+
+    public var minCapacity: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentType != nil {
+            map["componentType"] = self.componentType!
+        }
+        if self.maxCapacity != nil {
+            map["maxCapacity"] = self.maxCapacity!
+        }
+        if self.minCapacity != nil {
+            map["minCapacity"] = self.minCapacity!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["componentType"] as? String {
+            self.componentType = value
+        }
+        if let value = dict["maxCapacity"] as? Int32 {
+            self.maxCapacity = value
+        }
+        if let value = dict["minCapacity"] as? Int32 {
+            self.minCapacity = value
+        }
+    }
+}
+
 public class DBVersionDetail : Tea.TeaModel {
     public class Specs : Tea.TeaModel {
         public class ComponentSpecs : Tea.TeaModel {
@@ -220,15 +267,387 @@ public class DBVersionDetail : Tea.TeaModel {
     }
 }
 
+public class DlfDatabase : Tea.TeaModel {
+    public var databaseName: String?
+
+    public var description_: String?
+
+    public var tableCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.databaseName != nil {
+            map["databaseName"] = self.databaseName!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.tableCount != nil {
+            map["tableCount"] = self.tableCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["databaseName"] as? String {
+            self.databaseName = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["tableCount"] as? Int32 {
+            self.tableCount = value
+        }
+    }
+}
+
+public class DlfFieldSchema : Tea.TeaModel {
+    public var comment: String?
+
+    public var dimension: Int32?
+
+    public var dlfFieldType: String?
+
+    public var fieldName: String?
+
+    public var isPrimaryKey: Bool?
+
+    public var isSupported: Bool?
+
+    public var isVectorField: Bool?
+
+    public var milvusFieldType: String?
+
+    public var nullable: Bool?
+
+    public var unsupportedReason: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.comment != nil {
+            map["comment"] = self.comment!
+        }
+        if self.dimension != nil {
+            map["dimension"] = self.dimension!
+        }
+        if self.dlfFieldType != nil {
+            map["dlfFieldType"] = self.dlfFieldType!
+        }
+        if self.fieldName != nil {
+            map["fieldName"] = self.fieldName!
+        }
+        if self.isPrimaryKey != nil {
+            map["isPrimaryKey"] = self.isPrimaryKey!
+        }
+        if self.isSupported != nil {
+            map["isSupported"] = self.isSupported!
+        }
+        if self.isVectorField != nil {
+            map["isVectorField"] = self.isVectorField!
+        }
+        if self.milvusFieldType != nil {
+            map["milvusFieldType"] = self.milvusFieldType!
+        }
+        if self.nullable != nil {
+            map["nullable"] = self.nullable!
+        }
+        if self.unsupportedReason != nil {
+            map["unsupportedReason"] = self.unsupportedReason!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["dimension"] as? Int32 {
+            self.dimension = value
+        }
+        if let value = dict["dlfFieldType"] as? String {
+            self.dlfFieldType = value
+        }
+        if let value = dict["fieldName"] as? String {
+            self.fieldName = value
+        }
+        if let value = dict["isPrimaryKey"] as? Bool {
+            self.isPrimaryKey = value
+        }
+        if let value = dict["isSupported"] as? Bool {
+            self.isSupported = value
+        }
+        if let value = dict["isVectorField"] as? Bool {
+            self.isVectorField = value
+        }
+        if let value = dict["milvusFieldType"] as? String {
+            self.milvusFieldType = value
+        }
+        if let value = dict["nullable"] as? Bool {
+            self.nullable = value
+        }
+        if let value = dict["unsupportedReason"] as? String {
+            self.unsupportedReason = value
+        }
+    }
+}
+
+public class DlfInstance : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var instanceName: String?
+
+    public var instanceType: String?
+
+    public var regionId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.instanceName != nil {
+            map["instanceName"] = self.instanceName!
+        }
+        if self.instanceType != nil {
+            map["instanceType"] = self.instanceType!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["instanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["instanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class DlfTable : Tea.TeaModel {
+    public var description_: String?
+
+    public var location: String?
+
+    public var tableFormat: String?
+
+    public var tableName: String?
+
+    public var tableType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.location != nil {
+            map["location"] = self.location!
+        }
+        if self.tableFormat != nil {
+            map["tableFormat"] = self.tableFormat!
+        }
+        if self.tableName != nil {
+            map["tableName"] = self.tableName!
+        }
+        if self.tableType != nil {
+            map["tableType"] = self.tableType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["location"] as? String {
+            self.location = value
+        }
+        if let value = dict["tableFormat"] as? String {
+            self.tableFormat = value
+        }
+        if let value = dict["tableName"] as? String {
+            self.tableName = value
+        }
+        if let value = dict["tableType"] as? String {
+            self.tableType = value
+        }
+    }
+}
+
 public class InstanceDetail : Tea.TeaModel {
     public class Components : Tea.TeaModel {
+        public class DataDisk : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public var performanceLevel: String?
+
+            public var size: Int32?
+
+            public var storageClass: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                if self.performanceLevel != nil {
+                    map["performanceLevel"] = self.performanceLevel!
+                }
+                if self.size != nil {
+                    map["size"] = self.size!
+                }
+                if self.storageClass != nil {
+                    map["storageClass"] = self.storageClass!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["performanceLevel"] as? String {
+                    self.performanceLevel = value
+                }
+                if let value = dict["size"] as? Int32 {
+                    self.size = value
+                }
+                if let value = dict["storageClass"] as? String {
+                    self.storageClass = value
+                }
+            }
+        }
+        public class PodsList : Tea.TeaModel {
+            public var podId: String?
+
+            public var podName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.podId != nil {
+                    map["podId"] = self.podId!
+                }
+                if self.podName != nil {
+                    map["podName"] = self.podName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["podId"] as? String {
+                    self.podId = value
+                }
+                if let value = dict["podName"] as? String {
+                    self.podName = value
+                }
+            }
+        }
         public var cuNum: Int32?
 
         public var cuType: String?
 
+        public var dataDisk: InstanceDetail.Components.DataDisk?
+
         public var diskSizeType: String?
 
         public var payType: String?
+
+        public var podsList: [InstanceDetail.Components.PodsList]?
 
         public var replica: Int32?
 
@@ -244,6 +663,7 @@ public class InstanceDetail : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataDisk?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -254,11 +674,21 @@ public class InstanceDetail : Tea.TeaModel {
             if self.cuType != nil {
                 map["cuType"] = self.cuType!
             }
+            if self.dataDisk != nil {
+                map["dataDisk"] = self.dataDisk?.toMap()
+            }
             if self.diskSizeType != nil {
                 map["diskSizeType"] = self.diskSizeType!
             }
             if self.payType != nil {
                 map["payType"] = self.payType!
+            }
+            if self.podsList != nil {
+                var tmp : [Any] = []
+                for k in self.podsList! {
+                    tmp.append(k.toMap())
+                }
+                map["podsList"] = tmp
             }
             if self.replica != nil {
                 map["replica"] = self.replica!
@@ -277,11 +707,29 @@ public class InstanceDetail : Tea.TeaModel {
             if let value = dict["cuType"] as? String {
                 self.cuType = value
             }
+            if let value = dict["dataDisk"] as? [String: Any?] {
+                var model = InstanceDetail.Components.DataDisk()
+                model.fromMap(value)
+                self.dataDisk = model
+            }
             if let value = dict["diskSizeType"] as? String {
                 self.diskSizeType = value
             }
             if let value = dict["payType"] as? String {
                 self.payType = value
+            }
+            if let value = dict["podsList"] as? [Any?] {
+                var tmp : [InstanceDetail.Components.PodsList] = []
+                for v in value {
+                    if v != nil {
+                        var model = InstanceDetail.Components.PodsList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.podsList = tmp
             }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
@@ -1052,6 +1500,108 @@ public class PromotionInfo : Tea.TeaModel {
     }
 }
 
+public class RamAccount : Tea.TeaModel {
+    public var bindable: Bool?
+
+    public var displayName: String?
+
+    public var uid: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bindable != nil {
+            map["bindable"] = self.bindable!
+        }
+        if self.displayName != nil {
+            map["displayName"] = self.displayName!
+        }
+        if self.uid != nil {
+            map["uid"] = self.uid!
+        }
+        if self.userName != nil {
+            map["userName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["bindable"] as? Bool {
+            self.bindable = value
+        }
+        if let value = dict["displayName"] as? String {
+            self.displayName = value
+        }
+        if let value = dict["uid"] as? String {
+            self.uid = value
+        }
+        if let value = dict["userName"] as? String {
+            self.userName = value
+        }
+    }
+}
+
+public class RamBindingEntry : Tea.TeaModel {
+    public var boundUid: String?
+
+    public var boundUserName: String?
+
+    public var milvusUsername: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.boundUid != nil {
+            map["boundUid"] = self.boundUid!
+        }
+        if self.boundUserName != nil {
+            map["boundUserName"] = self.boundUserName!
+        }
+        if self.milvusUsername != nil {
+            map["milvusUsername"] = self.milvusUsername!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["boundUid"] as? String {
+            self.boundUid = value
+        }
+        if let value = dict["boundUserName"] as? String {
+            self.boundUserName = value
+        }
+        if let value = dict["milvusUsername"] as? String {
+            self.milvusUsername = value
+        }
+    }
+}
+
 public class ScalingActivity : Tea.TeaModel {
     public var componentTypes: String?
 
@@ -1314,6 +1864,140 @@ public class ScalingRule : Tea.TeaModel {
         }
         if let value = dict["timeZone"] as? String {
             self.timeZone = value
+        }
+    }
+}
+
+public class OpenStructDlfSnapshotDto : Tea.TeaModel {
+    public var changelogRecordCount: Int64?
+
+    public var commitKind: String?
+
+    public var deltaRecordCount: Int64?
+
+    public var schemaId: Int64?
+
+    public var snapshotId: Int64?
+
+    public var timeMillis: Int64?
+
+    public var totalRecordCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.changelogRecordCount != nil {
+            map["changelogRecordCount"] = self.changelogRecordCount!
+        }
+        if self.commitKind != nil {
+            map["commitKind"] = self.commitKind!
+        }
+        if self.deltaRecordCount != nil {
+            map["deltaRecordCount"] = self.deltaRecordCount!
+        }
+        if self.schemaId != nil {
+            map["schemaId"] = self.schemaId!
+        }
+        if self.snapshotId != nil {
+            map["snapshotId"] = self.snapshotId!
+        }
+        if self.timeMillis != nil {
+            map["timeMillis"] = self.timeMillis!
+        }
+        if self.totalRecordCount != nil {
+            map["totalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["changelogRecordCount"] as? Int64 {
+            self.changelogRecordCount = value
+        }
+        if let value = dict["commitKind"] as? String {
+            self.commitKind = value
+        }
+        if let value = dict["deltaRecordCount"] as? Int64 {
+            self.deltaRecordCount = value
+        }
+        if let value = dict["schemaId"] as? Int64 {
+            self.schemaId = value
+        }
+        if let value = dict["snapshotId"] as? Int64 {
+            self.snapshotId = value
+        }
+        if let value = dict["timeMillis"] as? Int64 {
+            self.timeMillis = value
+        }
+        if let value = dict["totalRecordCount"] as? Int64 {
+            self.totalRecordCount = value
+        }
+    }
+}
+
+public class OpenStructDlfTagDto : Tea.TeaModel {
+    public var snapshotId: Int64?
+
+    public var tagName: String?
+
+    public var timeMillis: Int64?
+
+    public var totalRecordCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.snapshotId != nil {
+            map["snapshotId"] = self.snapshotId!
+        }
+        if self.tagName != nil {
+            map["tagName"] = self.tagName!
+        }
+        if self.timeMillis != nil {
+            map["timeMillis"] = self.timeMillis!
+        }
+        if self.totalRecordCount != nil {
+            map["totalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["snapshotId"] as? Int64 {
+            self.snapshotId = value
+        }
+        if let value = dict["tagName"] as? String {
+            self.tagName = value
+        }
+        if let value = dict["timeMillis"] as? Int64 {
+            self.timeMillis = value
+        }
+        if let value = dict["totalRecordCount"] as? Int64 {
+            self.totalRecordCount = value
         }
     }
 }
@@ -1871,9 +2555,65 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
     }
     public class Components : Tea.TeaModel {
+        public class DataDisk : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public var performanceLevel: String?
+
+            public var size: Int32?
+
+            public var storageClass: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                if self.performanceLevel != nil {
+                    map["performanceLevel"] = self.performanceLevel!
+                }
+                if self.size != nil {
+                    map["size"] = self.size!
+                }
+                if self.storageClass != nil {
+                    map["storageClass"] = self.storageClass!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["performanceLevel"] as? String {
+                    self.performanceLevel = value
+                }
+                if let value = dict["size"] as? Int32 {
+                    self.size = value
+                }
+                if let value = dict["storageClass"] as? String {
+                    self.storageClass = value
+                }
+            }
+        }
         public var cuNum: Int32?
 
         public var cuType: String?
+
+        public var dataDisk: CreateInstanceRequest.Components.DataDisk?
 
         public var diskSizeType: String?
 
@@ -1891,6 +2631,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataDisk?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -1900,6 +2641,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if self.cuType != nil {
                 map["cuType"] = self.cuType!
+            }
+            if self.dataDisk != nil {
+                map["dataDisk"] = self.dataDisk?.toMap()
             }
             if self.diskSizeType != nil {
                 map["diskSizeType"] = self.diskSizeType!
@@ -1920,6 +2664,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if let value = dict["cuType"] as? String {
                 self.cuType = value
+            }
+            if let value = dict["dataDisk"] as? [String: Any?] {
+                var model = CreateInstanceRequest.Components.DataDisk()
+                model.fromMap(value)
+                self.dataDisk = model
             }
             if let value = dict["diskSizeType"] as? String {
                 self.diskSizeType = value
@@ -3108,6 +3857,44 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ClusterInfo : Tea.TeaModel {
             public class MilvusResourceInfoList : Tea.TeaModel {
+                public class PodsList : Tea.TeaModel {
+                    public var podId: String?
+
+                    public var podName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.podId != nil {
+                            map["podId"] = self.podId!
+                        }
+                        if self.podName != nil {
+                            map["podName"] = self.podName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["podId"] as? String {
+                            self.podId = value
+                        }
+                        if let value = dict["podName"] as? String {
+                            self.podName = value
+                        }
+                    }
+                }
                 public var componentType: String?
 
                 public var cuNum: Int32?
@@ -3123,6 +3910,14 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 public var replica: Int32?
 
                 public var zoneId: String?
+
+                public var dataDiskEnabled: Bool?
+
+                public var dataDiskSize: Int32?
+
+                public var dataDiskStorageClass: String?
+
+                public var podsList: [GetInstanceDetailResponseBody.Data.ClusterInfo.MilvusResourceInfoList.PodsList]?
 
                 public override init() {
                     super.init()
@@ -3162,6 +3957,22 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                     if self.zoneId != nil {
                         map["ZoneId"] = self.zoneId!
                     }
+                    if self.dataDiskEnabled != nil {
+                        map["dataDiskEnabled"] = self.dataDiskEnabled!
+                    }
+                    if self.dataDiskSize != nil {
+                        map["dataDiskSize"] = self.dataDiskSize!
+                    }
+                    if self.dataDiskStorageClass != nil {
+                        map["dataDiskStorageClass"] = self.dataDiskStorageClass!
+                    }
+                    if self.podsList != nil {
+                        var tmp : [Any] = []
+                        for k in self.podsList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["podsList"] = tmp
+                    }
                     return map
                 }
 
@@ -3190,6 +4001,28 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["ZoneId"] as? String {
                         self.zoneId = value
+                    }
+                    if let value = dict["dataDiskEnabled"] as? Bool {
+                        self.dataDiskEnabled = value
+                    }
+                    if let value = dict["dataDiskSize"] as? Int32 {
+                        self.dataDiskSize = value
+                    }
+                    if let value = dict["dataDiskStorageClass"] as? String {
+                        self.dataDiskStorageClass = value
+                    }
+                    if let value = dict["podsList"] as? [Any?] {
+                        var tmp : [GetInstanceDetailResponseBody.Data.ClusterInfo.MilvusResourceInfoList.PodsList] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetInstanceDetailResponseBody.Data.ClusterInfo.MilvusResourceInfoList.PodsList()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.podsList = tmp
                     }
                 }
             }
@@ -3598,6 +4431,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public var zoneId: String?
 
+        public var maintainablePeriodTimeZone: String?
+
         public override init() {
             super.init()
         }
@@ -3721,6 +4556,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
+            }
+            if self.maintainablePeriodTimeZone != nil {
+                map["maintainablePeriodTimeZone"] = self.maintainablePeriodTimeZone!
             }
             return map
         }
@@ -3851,6 +4689,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["ZoneId"] as? String {
                 self.zoneId = value
+            }
+            if let value = dict["maintainablePeriodTimeZone"] as? String {
+                self.maintainablePeriodTimeZone = value
             }
         }
     }
@@ -6283,9 +7124,65 @@ public class UpdateAclGroupCidrsResponse : Tea.TeaModel {
 
 public class UpdateInstanceRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
+        public class DataDisk : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public var performanceLevel: String?
+
+            public var size: Int32?
+
+            public var storageClass: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                if self.performanceLevel != nil {
+                    map["performanceLevel"] = self.performanceLevel!
+                }
+                if self.size != nil {
+                    map["size"] = self.size!
+                }
+                if self.storageClass != nil {
+                    map["storageClass"] = self.storageClass!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["performanceLevel"] as? String {
+                    self.performanceLevel = value
+                }
+                if let value = dict["size"] as? Int32 {
+                    self.size = value
+                }
+                if let value = dict["storageClass"] as? String {
+                    self.storageClass = value
+                }
+            }
+        }
         public var cuNum: Int32?
 
         public var cuType: String?
+
+        public var dataDisk: UpdateInstanceRequest.Components.DataDisk?
 
         public var payType: String?
 
@@ -6303,6 +7200,7 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataDisk?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6312,6 +7210,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             if self.cuType != nil {
                 map["cuType"] = self.cuType!
+            }
+            if self.dataDisk != nil {
+                map["dataDisk"] = self.dataDisk?.toMap()
             }
             if self.payType != nil {
                 map["payType"] = self.payType!
@@ -6332,6 +7233,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             if let value = dict["cuType"] as? String {
                 self.cuType = value
+            }
+            if let value = dict["dataDisk"] as? [String: Any?] {
+                var model = UpdateInstanceRequest.Components.DataDisk()
+                model.fromMap(value)
+                self.dataDisk = model
             }
             if let value = dict["payType"] as? String {
                 self.payType = value
