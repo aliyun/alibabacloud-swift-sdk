@@ -124,6 +124,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatAiAgentWithOptions(_ namespace: String, _ request: ChatAiAgentRequest, _ headers: ChatAiAgentHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatAiAgentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hitlDecisions)) {
+            body["hitlDecisions"] = request.hitlDecisions ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.refs)) {
+            body["refs"] = request.refs!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["sessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userMessage)) {
+            body["userMessage"] = request.userMessage ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ChatAiAgent",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/advisor/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/ai-agent/stream/agent/v2/chat",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChatAiAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatAiAgent(_ namespace: String, _ request: ChatAiAgentRequest) async throws -> ChatAiAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ChatAiAgentHeaders = ChatAiAgentHeaders([:])
+        return try await chatAiAgentWithOptions(namespace as! String, request as! ChatAiAgentRequest, headers as! ChatAiAgentHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDeploymentWithOptions(_ namespace: String, _ request: CreateDeploymentRequest, _ headers: CreateDeploymentHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeploymentResponse {
         try TeaUtils.Client.validateModel(request)
         var realHeaders: [String: String] = [:]
@@ -1380,6 +1429,41 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutopilotPolicyWithOptions(_ namespace: String, _ deploymentId: String, _ request: GetAutopilotPolicyRequest, _ headers: GetAutopilotPolicyHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAutopilotPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAutopilotPolicy",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)) + "/autopilotpolicy-describe",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAutopilotPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutopilotPolicy(_ namespace: String, _ deploymentId: String, _ request: GetAutopilotPolicyRequest) async throws -> GetAutopilotPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetAutopilotPolicyHeaders = GetAutopilotPolicyHeaders([:])
+        return try await getAutopilotPolicyWithOptions(namespace as! String, deploymentId as! String, request as! GetAutopilotPolicyRequest, headers as! GetAutopilotPolicyHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCatalogsWithOptions(_ namespace: String, _ request: GetCatalogsRequest, _ headers: GetCatalogsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCatalogsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2372,6 +2456,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAutopilotTuningHistoriesWithOptions(_ namespace: String, _ deploymentId: String, _ request: ListAutopilotTuningHistoriesRequest, _ headers: ListAutopilotTuningHistoriesHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAutopilotTuningHistoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.acceptLanguage)) {
+            realHeaders["Accept-Language"] = TeaUtils.Client.toJSONString(headers.acceptLanguage);
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAutopilotTuningHistories",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)) + "/tuninghistories",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAutopilotTuningHistoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAutopilotTuningHistories(_ namespace: String, _ deploymentId: String, _ request: ListAutopilotTuningHistoriesRequest) async throws -> ListAutopilotTuningHistoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListAutopilotTuningHistoriesHeaders = ListAutopilotTuningHistoriesHeaders([:])
+        return try await listAutopilotTuningHistoriesWithOptions(namespace as! String, deploymentId as! String, request as! ListAutopilotTuningHistoriesRequest, headers as! ListAutopilotTuningHistoriesHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listCustomConnectorsWithOptions(_ namespace: String, _ headers: ListCustomConnectorsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCustomConnectorsResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -3353,6 +3489,49 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: SubmitSqlPreviewHeaders = SubmitSqlPreviewHeaders([:])
         return try await submitSqlPreviewWithOptions(namespace as! String, request as! SubmitSqlPreviewRequest, headers as! SubmitSqlPreviewHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAutopilotPolicyWithOptions(_ namespace: String, _ deploymentId: String, _ request: UpdateAutopilotPolicyRequest, _ headers: UpdateAutopilotPolicyHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAutopilotPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.policyConfig)) {
+            body["policyConfig"] = request.policyConfig!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAutopilotPolicy",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)) + "/autopilotpolicy-update",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAutopilotPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAutopilotPolicy(_ namespace: String, _ deploymentId: String, _ request: UpdateAutopilotPolicyRequest) async throws -> UpdateAutopilotPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateAutopilotPolicyHeaders = UpdateAutopilotPolicyHeaders([:])
+        return try await updateAutopilotPolicyWithOptions(namespace as! String, deploymentId as! String, request as! UpdateAutopilotPolicyRequest, headers as! UpdateAutopilotPolicyHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
