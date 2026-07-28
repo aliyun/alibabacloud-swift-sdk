@@ -1038,6 +1038,8 @@ public class CreateMmAppRequest : Tea.TeaModel {
         }
     }
     public class ModelConfig : Tea.TeaModel {
+        public var appType: String?
+
         public var historyLimit: Int32?
 
         public var modelType: String?
@@ -1060,6 +1062,9 @@ public class CreateMmAppRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appType != nil {
+                map["AppType"] = self.appType!
+            }
             if self.historyLimit != nil {
                 map["HistoryLimit"] = self.historyLimit!
             }
@@ -1077,6 +1082,9 @@ public class CreateMmAppRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AppType"] as? String {
+                self.appType = value
+            }
             if let value = dict["HistoryLimit"] as? Int32 {
                 self.historyLimit = value
             }
@@ -4575,6 +4583,294 @@ public class ListCommandResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListCommandResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListDomainRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class ListDomainResponseBody : Tea.TeaModel {
+    public class DomainInfoList : Tea.TeaModel {
+        public class ToolList : Tea.TeaModel {
+            public var toolCode: String?
+
+            public var toolName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.toolCode != nil {
+                    map["ToolCode"] = self.toolCode!
+                }
+                if self.toolName != nil {
+                    map["ToolName"] = self.toolName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ToolCode"] as? String {
+                    self.toolCode = value
+                }
+                if let value = dict["ToolName"] as? String {
+                    self.toolName = value
+                }
+            }
+        }
+        public var domainCode: String?
+
+        public var domainName: String?
+
+        public var toolCount: Int32?
+
+        public var toolList: [ListDomainResponseBody.DomainInfoList.ToolList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainCode != nil {
+                map["DomainCode"] = self.domainCode!
+            }
+            if self.domainName != nil {
+                map["DomainName"] = self.domainName!
+            }
+            if self.toolCount != nil {
+                map["ToolCount"] = self.toolCount!
+            }
+            if self.toolList != nil {
+                var tmp : [Any] = []
+                for k in self.toolList! {
+                    tmp.append(k.toMap())
+                }
+                map["ToolList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DomainCode"] as? String {
+                self.domainCode = value
+            }
+            if let value = dict["DomainName"] as? String {
+                self.domainName = value
+            }
+            if let value = dict["ToolCount"] as? Int32 {
+                self.toolCount = value
+            }
+            if let value = dict["ToolList"] as? [Any?] {
+                var tmp : [ListDomainResponseBody.DomainInfoList.ToolList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListDomainResponseBody.DomainInfoList.ToolList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.toolList = tmp
+            }
+        }
+    }
+    public var domainInfoList: [ListDomainResponseBody.DomainInfoList]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.domainInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["DomainInfoList"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DomainInfoList"] as? [Any?] {
+            var tmp : [ListDomainResponseBody.DomainInfoList] = []
+            for v in value {
+                if v != nil {
+                    var model = ListDomainResponseBody.DomainInfoList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.domainInfoList = tmp
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListDomainResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDomainResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListDomainResponseBody()
             model.fromMap(value)
             self.body = model
         }
