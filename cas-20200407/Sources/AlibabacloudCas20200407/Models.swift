@@ -6407,6 +6407,8 @@ public class GetContactResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var webhookList: [String]?
+
     public var webhooks: String?
 
     public override init() {
@@ -6447,6 +6449,9 @@ public class GetContactResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.webhookList != nil {
+            map["WebhookList"] = self.webhookList!
+        }
         if self.webhooks != nil {
             map["Webhooks"] = self.webhooks!
         }
@@ -6478,6 +6483,9 @@ public class GetContactResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["WebhookList"] as? [String] {
+            self.webhookList = value
         }
         if let value = dict["Webhooks"] as? String {
             self.webhooks = value
@@ -10796,6 +10804,8 @@ public class ListContactResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var webhookList: [String]?
+
         public var webhooks: String?
 
         public override init() {
@@ -10830,6 +10840,9 @@ public class ListContactResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.webhookList != nil {
+                map["WebhookList"] = self.webhookList!
+            }
             if self.webhooks != nil {
                 map["Webhooks"] = self.webhooks!
             }
@@ -10855,6 +10868,9 @@ public class ListContactResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["WebhookList"] as? [String] {
+                self.webhookList = value
             }
             if let value = dict["Webhooks"] as? String {
                 self.webhooks = value
