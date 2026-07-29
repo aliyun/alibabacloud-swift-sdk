@@ -12985,6 +12985,8 @@ public class ListPublishedAgentRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var subTypes: [String]?
+
     public override init() {
         super.init()
     }
@@ -13005,6 +13007,9 @@ public class ListPublishedAgentRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.subTypes != nil {
+            map["subTypes"] = self.subTypes!
+        }
         return map
     }
 
@@ -13015,6 +13020,56 @@ public class ListPublishedAgentRequest : Tea.TeaModel {
         }
         if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["subTypes"] as? [String] {
+            self.subTypes = value
+        }
+    }
+}
+
+public class ListPublishedAgentShrinkRequest : Tea.TeaModel {
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var subTypesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNo != nil {
+            map["pageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.subTypesShrink != nil {
+            map["subTypes"] = self.subTypesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["pageNo"] as? Int32 {
+            self.pageNo = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["subTypes"] as? String {
+            self.subTypesShrink = value
         }
     }
 }
@@ -13429,11 +13484,17 @@ public class ListPublishedAgentResponseBody : Tea.TeaModel {
 
             public var code: String?
 
+            public var description_: String?
+
             public var instructions: String?
 
             public var modelId: String?
 
             public var name: String?
+
+            public var subType: String?
+
+            public var type: Int32?
 
             public override init() {
                 super.init()
@@ -13456,6 +13517,9 @@ public class ListPublishedAgentResponseBody : Tea.TeaModel {
                 if self.code != nil {
                     map["code"] = self.code!
                 }
+                if self.description_ != nil {
+                    map["description"] = self.description_!
+                }
                 if self.instructions != nil {
                     map["instructions"] = self.instructions!
                 }
@@ -13464,6 +13528,12 @@ public class ListPublishedAgentResponseBody : Tea.TeaModel {
                 }
                 if self.name != nil {
                     map["name"] = self.name!
+                }
+                if self.subType != nil {
+                    map["subType"] = self.subType!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
                 }
                 return map
             }
@@ -13478,6 +13548,9 @@ public class ListPublishedAgentResponseBody : Tea.TeaModel {
                 if let value = dict["code"] as? String {
                     self.code = value
                 }
+                if let value = dict["description"] as? String {
+                    self.description_ = value
+                }
                 if let value = dict["instructions"] as? String {
                     self.instructions = value
                 }
@@ -13486,6 +13559,12 @@ public class ListPublishedAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["subType"] as? String {
+                    self.subType = value
+                }
+                if let value = dict["type"] as? Int32 {
+                    self.type = value
                 }
             }
         }

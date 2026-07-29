@@ -1986,14 +1986,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPublishedAgentWithOptions(_ workspaceId: String, _ request: ListPublishedAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPublishedAgentResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listPublishedAgentWithOptions(_ workspaceId: String, _ tmpReq: ListPublishedAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPublishedAgentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListPublishedAgentShrinkRequest = ListPublishedAgentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.subTypes)) {
+            request.subTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.subTypes, "subTypes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["pageNo"] = request.pageNo!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.subTypesShrink)) {
+            query["subTypes"] = request.subTypesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
