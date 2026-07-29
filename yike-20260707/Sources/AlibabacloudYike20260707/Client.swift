@@ -592,8 +592,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitMediaComprehensionJobWithOptions(_ request: SubmitMediaComprehensionJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitMediaComprehensionJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            query["Input"] = request.input ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobParams)) {
             query["JobParams"] = request.jobParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            query["JobType"] = request.jobType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             query["UserData"] = request.userData ?? "";

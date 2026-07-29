@@ -3297,6 +3297,76 @@ public class GetMediaComprehensionJobRequest : Tea.TeaModel {
 }
 
 public class GetMediaComprehensionJobResponseBody : Tea.TeaModel {
+    public class Job : Tea.TeaModel {
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var mediaIds: [String]?
+
+        public var result: String?
+
+        public var status: String?
+
+        public var userData: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.mediaIds != nil {
+                map["MediaIds"] = self.mediaIds!
+            }
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["MediaIds"] as? [String] {
+                self.mediaIds = value
+            }
+            if let value = dict["Result"] as? String {
+                self.result = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UserData"] as? String {
+                self.userData = value
+            }
+        }
+    }
     public class MediaComprehensionJob : Tea.TeaModel {
         public var errorCode: String?
 
@@ -3375,6 +3445,8 @@ public class GetMediaComprehensionJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var job: GetMediaComprehensionJobResponseBody.Job?
+
     public var mediaComprehensionJob: GetMediaComprehensionJobResponseBody.MediaComprehensionJob?
 
     public var requestId: String?
@@ -3389,11 +3461,15 @@ public class GetMediaComprehensionJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.job?.validate()
         try self.mediaComprehensionJob?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.job != nil {
+            map["Job"] = self.job?.toMap()
+        }
         if self.mediaComprehensionJob != nil {
             map["MediaComprehensionJob"] = self.mediaComprehensionJob?.toMap()
         }
@@ -3405,6 +3481,11 @@ public class GetMediaComprehensionJobResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Job"] as? [String: Any?] {
+            var model = GetMediaComprehensionJobResponseBody.Job()
+            model.fromMap(value)
+            self.job = model
+        }
         if let value = dict["MediaComprehensionJob"] as? [String: Any?] {
             var model = GetMediaComprehensionJobResponseBody.MediaComprehensionJob()
             model.fromMap(value)
@@ -5423,7 +5504,11 @@ public class SubmitImageGenerationJobResponse : Tea.TeaModel {
 }
 
 public class SubmitMediaComprehensionJobRequest : Tea.TeaModel {
+    public var input: String?
+
     public var jobParams: String?
+
+    public var jobType: String?
 
     public var userData: String?
 
@@ -5441,8 +5526,14 @@ public class SubmitMediaComprehensionJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.input != nil {
+            map["Input"] = self.input!
+        }
         if self.jobParams != nil {
             map["JobParams"] = self.jobParams!
+        }
+        if self.jobType != nil {
+            map["JobType"] = self.jobType!
         }
         if self.userData != nil {
             map["UserData"] = self.userData!
@@ -5452,8 +5543,14 @@ public class SubmitMediaComprehensionJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Input"] as? String {
+            self.input = value
+        }
         if let value = dict["JobParams"] as? String {
             self.jobParams = value
+        }
+        if let value = dict["JobType"] as? String {
+            self.jobType = value
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
