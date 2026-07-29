@@ -11,7 +11,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-beijing": "dtsai.cn-beijing.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dtsai", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -125,11 +128,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileUrl)) {
             query["FileUrl"] = request.fileUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.imageMode)) {
+            query["ImageMode"] = request.imageMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossFileUrl)) {
+            query["OssFileUrl"] = request.ossFileUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.outputFormat)) {
             query["OutputFormat"] = request.outputFormat ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resultType)) {
+            query["ResultType"] = request.resultType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableFormat)) {
+            query["TableFormat"] = request.tableFormat ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

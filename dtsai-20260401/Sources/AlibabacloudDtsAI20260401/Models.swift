@@ -15,9 +15,17 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
 
     public var fileUrl: String?
 
+    public var imageMode: String?
+
+    public var ossFileUrl: String?
+
     public var outputFormat: String?
 
     public var regionId: String?
+
+    public var resultType: String?
+
+    public var tableFormat: String?
 
     public override init() {
         super.init()
@@ -42,11 +50,23 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
         }
+        if self.imageMode != nil {
+            map["ImageMode"] = self.imageMode!
+        }
+        if self.ossFileUrl != nil {
+            map["OssFileUrl"] = self.ossFileUrl!
+        }
         if self.outputFormat != nil {
             map["OutputFormat"] = self.outputFormat!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resultType != nil {
+            map["ResultType"] = self.resultType!
+        }
+        if self.tableFormat != nil {
+            map["TableFormat"] = self.tableFormat!
         }
         return map
     }
@@ -62,11 +82,23 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
         if let value = dict["FileUrl"] as? String {
             self.fileUrl = value
         }
+        if let value = dict["ImageMode"] as? String {
+            self.imageMode = value
+        }
+        if let value = dict["OssFileUrl"] as? String {
+            self.ossFileUrl = value
+        }
         if let value = dict["OutputFormat"] as? String {
             self.outputFormat = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResultType"] as? String {
+            self.resultType = value
+        }
+        if let value = dict["TableFormat"] as? String {
+            self.tableFormat = value
         }
     }
 }
@@ -78,9 +110,17 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
 
     public var fileUrlObject: InputStream?
 
+    public var imageMode: String?
+
+    public var ossFileUrl: String?
+
     public var outputFormat: String?
 
     public var regionId: String?
+
+    public var resultType: String?
+
+    public var tableFormat: String?
 
     public override init() {
         super.init()
@@ -105,11 +145,23 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
         if self.fileUrlObject != nil {
             map["FileUrl"] = self.fileUrlObject!
         }
+        if self.imageMode != nil {
+            map["ImageMode"] = self.imageMode!
+        }
+        if self.ossFileUrl != nil {
+            map["OssFileUrl"] = self.ossFileUrl!
+        }
         if self.outputFormat != nil {
             map["OutputFormat"] = self.outputFormat!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resultType != nil {
+            map["ResultType"] = self.resultType!
+        }
+        if self.tableFormat != nil {
+            map["TableFormat"] = self.tableFormat!
         }
         return map
     }
@@ -125,11 +177,23 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
         if let value = dict["FileUrl"] as? InputStream {
             self.fileUrlObject = value
         }
+        if let value = dict["ImageMode"] as? String {
+            self.imageMode = value
+        }
+        if let value = dict["OssFileUrl"] as? String {
+            self.ossFileUrl = value
+        }
         if let value = dict["OutputFormat"] as? String {
             self.outputFormat = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResultType"] as? String {
+            self.resultType = value
+        }
+        if let value = dict["TableFormat"] as? String {
+            self.tableFormat = value
         }
     }
 }
@@ -305,6 +369,10 @@ public class DescribeDocParserJobResultResponseBody : Tea.TeaModel {
 
     public var result: String?
 
+    public var resultType: String?
+
+    public var resultUrl: String?
+
     public var success: Bool?
 
     public override init() {
@@ -336,6 +404,12 @@ public class DescribeDocParserJobResultResponseBody : Tea.TeaModel {
         if self.result != nil {
             map["Result"] = self.result!
         }
+        if self.resultType != nil {
+            map["ResultType"] = self.resultType!
+        }
+        if self.resultUrl != nil {
+            map["ResultUrl"] = self.resultUrl!
+        }
         if self.success != nil {
             map["Success"] = self.success!
         }
@@ -358,6 +432,12 @@ public class DescribeDocParserJobResultResponseBody : Tea.TeaModel {
         }
         if let value = dict["Result"] as? String {
             self.result = value
+        }
+        if let value = dict["ResultType"] as? String {
+            self.resultType = value
+        }
+        if let value = dict["ResultUrl"] as? String {
+            self.resultUrl = value
         }
         if let value = dict["Success"] as? Bool {
             self.success = value
