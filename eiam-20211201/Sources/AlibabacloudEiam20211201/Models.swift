@@ -2765,6 +2765,10 @@ public class CheckInstanceModuleStatusRequest : Tea.TeaModel {
 
     public var moduleKey: String?
 
+    public var resourceLabelKey: String?
+
+    public var resourceLabelValue: String?
+
     public var subFeatureKey: String?
 
     public override init() {
@@ -2790,6 +2794,12 @@ public class CheckInstanceModuleStatusRequest : Tea.TeaModel {
         if self.moduleKey != nil {
             map["ModuleKey"] = self.moduleKey!
         }
+        if self.resourceLabelKey != nil {
+            map["ResourceLabelKey"] = self.resourceLabelKey!
+        }
+        if self.resourceLabelValue != nil {
+            map["ResourceLabelValue"] = self.resourceLabelValue!
+        }
         if self.subFeatureKey != nil {
             map["SubFeatureKey"] = self.subFeatureKey!
         }
@@ -2806,6 +2816,12 @@ public class CheckInstanceModuleStatusRequest : Tea.TeaModel {
         }
         if let value = dict["ModuleKey"] as? String {
             self.moduleKey = value
+        }
+        if let value = dict["ResourceLabelKey"] as? String {
+            self.resourceLabelKey = value
+        }
+        if let value = dict["ResourceLabelValue"] as? String {
+            self.resourceLabelValue = value
         }
         if let value = dict["SubFeatureKey"] as? String {
             self.subFeatureKey = value
@@ -35890,6 +35906,78 @@ public class GetNetworkAccessEndpointRequest : Tea.TeaModel {
 
 public class GetNetworkAccessEndpointResponseBody : Tea.TeaModel {
     public class NetworkAccessEndpoint : Tea.TeaModel {
+        public class BackupVpcEndpoint : Tea.TeaModel {
+            public var backupEgressPrivateIpAddresses: [String]?
+
+            public var backupEgressPublicIpAddresses: [String]?
+
+            public var backupSecurityGroupId: String?
+
+            public var backupVSwitchIds: [String]?
+
+            public var backupVpcId: String?
+
+            public var backupVpcRegionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backupEgressPrivateIpAddresses != nil {
+                    map["BackupEgressPrivateIpAddresses"] = self.backupEgressPrivateIpAddresses!
+                }
+                if self.backupEgressPublicIpAddresses != nil {
+                    map["BackupEgressPublicIpAddresses"] = self.backupEgressPublicIpAddresses!
+                }
+                if self.backupSecurityGroupId != nil {
+                    map["BackupSecurityGroupId"] = self.backupSecurityGroupId!
+                }
+                if self.backupVSwitchIds != nil {
+                    map["BackupVSwitchIds"] = self.backupVSwitchIds!
+                }
+                if self.backupVpcId != nil {
+                    map["BackupVpcId"] = self.backupVpcId!
+                }
+                if self.backupVpcRegionId != nil {
+                    map["BackupVpcRegionId"] = self.backupVpcRegionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackupEgressPrivateIpAddresses"] as? [String] {
+                    self.backupEgressPrivateIpAddresses = value
+                }
+                if let value = dict["BackupEgressPublicIpAddresses"] as? [String] {
+                    self.backupEgressPublicIpAddresses = value
+                }
+                if let value = dict["BackupSecurityGroupId"] as? String {
+                    self.backupSecurityGroupId = value
+                }
+                if let value = dict["BackupVSwitchIds"] as? [String] {
+                    self.backupVSwitchIds = value
+                }
+                if let value = dict["BackupVpcId"] as? String {
+                    self.backupVpcId = value
+                }
+                if let value = dict["BackupVpcRegionId"] as? String {
+                    self.backupVpcRegionId = value
+                }
+            }
+        }
+        public var backupVpcEndpoint: GetNetworkAccessEndpointResponseBody.NetworkAccessEndpoint.BackupVpcEndpoint?
+
         public var createTime: Int64?
 
         public var egressPrivateIpAddresses: [String]?
@@ -35926,10 +36014,14 @@ public class GetNetworkAccessEndpointResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.backupVpcEndpoint?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backupVpcEndpoint != nil {
+                map["BackupVpcEndpoint"] = self.backupVpcEndpoint?.toMap()
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -35974,6 +36066,11 @@ public class GetNetworkAccessEndpointResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BackupVpcEndpoint"] as? [String: Any?] {
+                var model = GetNetworkAccessEndpointResponseBody.NetworkAccessEndpoint.BackupVpcEndpoint()
+                model.fromMap(value)
+                self.backupVpcEndpoint = model
+            }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
@@ -56244,6 +56341,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var serviceManaged: Bool?
+
     public var status: String?
 
     public override init() {
@@ -56275,6 +56374,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -56297,6 +56399,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["ServiceManaged"] as? Bool {
+            self.serviceManaged = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -57025,6 +57130,78 @@ public class ListNetworkAccessEndpointsRequest : Tea.TeaModel {
 
 public class ListNetworkAccessEndpointsResponseBody : Tea.TeaModel {
     public class NetworkAccessEndpoints : Tea.TeaModel {
+        public class BackupVpcEndpoint : Tea.TeaModel {
+            public var backupEgressPrivateIpAddresses: [String]?
+
+            public var backupEgressPublicIpAddresses: [String]?
+
+            public var backupSecurityGroupId: String?
+
+            public var backupVSwitchIds: [String]?
+
+            public var backupVpcId: String?
+
+            public var backupVpcRegionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backupEgressPrivateIpAddresses != nil {
+                    map["BackupEgressPrivateIpAddresses"] = self.backupEgressPrivateIpAddresses!
+                }
+                if self.backupEgressPublicIpAddresses != nil {
+                    map["BackupEgressPublicIpAddresses"] = self.backupEgressPublicIpAddresses!
+                }
+                if self.backupSecurityGroupId != nil {
+                    map["BackupSecurityGroupId"] = self.backupSecurityGroupId!
+                }
+                if self.backupVSwitchIds != nil {
+                    map["BackupVSwitchIds"] = self.backupVSwitchIds!
+                }
+                if self.backupVpcId != nil {
+                    map["BackupVpcId"] = self.backupVpcId!
+                }
+                if self.backupVpcRegionId != nil {
+                    map["BackupVpcRegionId"] = self.backupVpcRegionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackupEgressPrivateIpAddresses"] as? [String] {
+                    self.backupEgressPrivateIpAddresses = value
+                }
+                if let value = dict["BackupEgressPublicIpAddresses"] as? [String] {
+                    self.backupEgressPublicIpAddresses = value
+                }
+                if let value = dict["BackupSecurityGroupId"] as? String {
+                    self.backupSecurityGroupId = value
+                }
+                if let value = dict["BackupVSwitchIds"] as? [String] {
+                    self.backupVSwitchIds = value
+                }
+                if let value = dict["BackupVpcId"] as? String {
+                    self.backupVpcId = value
+                }
+                if let value = dict["BackupVpcRegionId"] as? String {
+                    self.backupVpcRegionId = value
+                }
+            }
+        }
+        public var backupVpcEndpoint: ListNetworkAccessEndpointsResponseBody.NetworkAccessEndpoints.BackupVpcEndpoint?
+
         public var createTime: Int64?
 
         public var instanceId: String?
@@ -57057,10 +57234,14 @@ public class ListNetworkAccessEndpointsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.backupVpcEndpoint?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backupVpcEndpoint != nil {
+                map["BackupVpcEndpoint"] = self.backupVpcEndpoint?.toMap()
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -57099,6 +57280,11 @@ public class ListNetworkAccessEndpointsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BackupVpcEndpoint"] as? [String: Any?] {
+                var model = ListNetworkAccessEndpointsResponseBody.NetworkAccessEndpoints.BackupVpcEndpoint()
+                model.fromMap(value)
+                self.backupVpcEndpoint = model
+            }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
@@ -57295,6 +57481,8 @@ public class ListNetworkAccessPathsResponseBody : Tea.TeaModel {
     public class NetworkAccessPaths : Tea.TeaModel {
         public var createTime: Int64?
 
+        public var crossRegionReplicationRole: String?
+
         public var instanceId: String?
 
         public var networkAccessEndpointId: String?
@@ -57310,6 +57498,10 @@ public class ListNetworkAccessPathsResponseBody : Tea.TeaModel {
         public var updateTime: Int64?
 
         public var vSwitchId: String?
+
+        public var vpcId: String?
+
+        public var vpcRegionId: String?
 
         public override init() {
             super.init()
@@ -57327,6 +57519,9 @@ public class ListNetworkAccessPathsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.crossRegionReplicationRole != nil {
+                map["CrossRegionReplicationRole"] = self.crossRegionReplicationRole!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -57352,6 +57547,12 @@ public class ListNetworkAccessPathsResponseBody : Tea.TeaModel {
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            if self.vpcRegionId != nil {
+                map["VpcRegionId"] = self.vpcRegionId!
+            }
             return map
         }
 
@@ -57359,6 +57560,9 @@ public class ListNetworkAccessPathsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
+            }
+            if let value = dict["CrossRegionReplicationRole"] as? String {
+                self.crossRegionReplicationRole = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -57383,6 +57587,12 @@ public class ListNetworkAccessPathsResponseBody : Tea.TeaModel {
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+            if let value = dict["VpcRegionId"] as? String {
+                self.vpcRegionId = value
             }
         }
     }
