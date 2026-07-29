@@ -48,9 +48,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-southeast-6": "cr.ap-southeast-6.aliyuncs.com",
             "ap-southeast-5": "cr.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "cr.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "cr.ap-southeast-2.aliyuncs.com",
             "ap-southeast-1": "cr.ap-southeast-1.aliyuncs.com",
-            "ap-south-1": "cr.ap-south-1.aliyuncs.com",
             "ap-northeast-2": "cr.ap-northeast-2.aliyuncs.com",
             "ap-northeast-1": "cr.ap-northeast-1.aliyuncs.com"
         ]
@@ -3686,6 +3684,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;
         }
@@ -3820,6 +3824,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;

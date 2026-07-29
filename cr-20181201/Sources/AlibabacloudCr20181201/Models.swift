@@ -21357,6 +21357,10 @@ public class ListRepoSyncTaskResponse : Tea.TeaModel {
 public class ListRepoTagRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -21380,6 +21384,12 @@ public class ListRepoTagRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -21396,6 +21406,12 @@ public class ListRepoTagRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
@@ -21494,6 +21510,10 @@ public class ListRepoTagResponseBody : Tea.TeaModel {
 
     public var isSuccess: Bool?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -21528,6 +21548,12 @@ public class ListRepoTagResponseBody : Tea.TeaModel {
         }
         if self.isSuccess != nil {
             map["IsSuccess"] = self.isSuccess!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
@@ -21564,6 +21590,12 @@ public class ListRepoTagResponseBody : Tea.TeaModel {
         }
         if let value = dict["IsSuccess"] as? Bool {
             self.isSuccess = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
@@ -22241,6 +22273,10 @@ public class ListRepoTriggerResponse : Tea.TeaModel {
 public class ListRepositoryRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -22268,6 +22304,12 @@ public class ListRepositoryRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -22290,6 +22332,12 @@ public class ListRepositoryRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
@@ -22432,6 +22480,10 @@ public class ListRepositoryResponseBody : Tea.TeaModel {
 
     public var isSuccess: Bool?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -22462,6 +22514,12 @@ public class ListRepositoryResponseBody : Tea.TeaModel {
         if self.isSuccess != nil {
             map["IsSuccess"] = self.isSuccess!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -22491,6 +22549,12 @@ public class ListRepositoryResponseBody : Tea.TeaModel {
         }
         if let value = dict["IsSuccess"] as? Bool {
             self.isSuccess = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
