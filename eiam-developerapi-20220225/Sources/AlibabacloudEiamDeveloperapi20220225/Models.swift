@@ -1030,6 +1030,8 @@ public class CreateUserExclusiveCredentialRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var returnCiphertext: Bool?
+
     public override init() {
         super.init()
     }
@@ -1066,6 +1068,9 @@ public class CreateUserExclusiveCredentialRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.returnCiphertext != nil {
+            map["returnCiphertext"] = self.returnCiphertext!
+        }
         return map
     }
 
@@ -1094,10 +1099,15 @@ public class CreateUserExclusiveCredentialRequest : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["returnCiphertext"] as? Bool {
+            self.returnCiphertext = value
+        }
     }
 }
 
 public class CreateUserExclusiveCredentialResponseBody : Tea.TeaModel {
+    public var credentialCiphertext: String?
+
     public var credentialId: String?
 
     public var credentialIdentifier: String?
@@ -1116,6 +1126,9 @@ public class CreateUserExclusiveCredentialResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.credentialCiphertext != nil {
+            map["credentialCiphertext"] = self.credentialCiphertext!
+        }
         if self.credentialId != nil {
             map["credentialId"] = self.credentialId!
         }
@@ -1127,6 +1140,9 @@ public class CreateUserExclusiveCredentialResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["credentialCiphertext"] as? String {
+            self.credentialCiphertext = value
+        }
         if let value = dict["credentialId"] as? String {
             self.credentialId = value
         }
@@ -1738,6 +1754,10 @@ public class FetchOAuthAuthenticationTokenHeaders : Tea.TeaModel {
 public class FetchOAuthAuthenticationTokenRequest : Tea.TeaModel {
     public var credentialProviderIdentifier: String?
 
+    public var customParameters: [String: String]?
+
+    public var forceAuthentication: Bool?
+
     public var scope: String?
 
     public override init() {
@@ -1757,6 +1777,12 @@ public class FetchOAuthAuthenticationTokenRequest : Tea.TeaModel {
         if self.credentialProviderIdentifier != nil {
             map["credentialProviderIdentifier"] = self.credentialProviderIdentifier!
         }
+        if self.customParameters != nil {
+            map["customParameters"] = self.customParameters!
+        }
+        if self.forceAuthentication != nil {
+            map["forceAuthentication"] = self.forceAuthentication!
+        }
         if self.scope != nil {
             map["scope"] = self.scope!
         }
@@ -1767,6 +1793,12 @@ public class FetchOAuthAuthenticationTokenRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["credentialProviderIdentifier"] as? String {
             self.credentialProviderIdentifier = value
+        }
+        if let value = dict["customParameters"] as? [String: String] {
+            self.customParameters = value
+        }
+        if let value = dict["forceAuthentication"] as? Bool {
+            self.forceAuthentication = value
         }
         if let value = dict["scope"] as? String {
             self.scope = value
@@ -1821,6 +1853,60 @@ public class FetchOAuthAuthenticationTokenResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class OauthAuthorizationSession : Tea.TeaModel {
+        public var authorizationUrl: String?
+
+        public var sessionId: String?
+
+        public var sessionStatus: String?
+
+        public var sessionUri: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authorizationUrl != nil {
+                map["authorizationUrl"] = self.authorizationUrl!
+            }
+            if self.sessionId != nil {
+                map["sessionId"] = self.sessionId!
+            }
+            if self.sessionStatus != nil {
+                map["sessionStatus"] = self.sessionStatus!
+            }
+            if self.sessionUri != nil {
+                map["sessionUri"] = self.sessionUri!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["authorizationUrl"] as? String {
+                self.authorizationUrl = value
+            }
+            if let value = dict["sessionId"] as? String {
+                self.sessionId = value
+            }
+            if let value = dict["sessionStatus"] as? String {
+                self.sessionStatus = value
+            }
+            if let value = dict["sessionUri"] as? String {
+                self.sessionUri = value
+            }
+        }
+    }
     public var authenticationTokenId: String?
 
     public var authenticationTokenType: String?
@@ -1843,6 +1929,8 @@ public class FetchOAuthAuthenticationTokenResponseBody : Tea.TeaModel {
 
     public var oauthAccessTokenContent: FetchOAuthAuthenticationTokenResponseBody.OauthAccessTokenContent?
 
+    public var oauthAuthorizationSession: FetchOAuthAuthenticationTokenResponseBody.OauthAuthorizationSession?
+
     public var revoked: Bool?
 
     public var updateTime: Int64?
@@ -1858,6 +1946,7 @@ public class FetchOAuthAuthenticationTokenResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.oauthAccessTokenContent?.validate()
+        try self.oauthAuthorizationSession?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1894,6 +1983,9 @@ public class FetchOAuthAuthenticationTokenResponseBody : Tea.TeaModel {
         }
         if self.oauthAccessTokenContent != nil {
             map["oauthAccessTokenContent"] = self.oauthAccessTokenContent?.toMap()
+        }
+        if self.oauthAuthorizationSession != nil {
+            map["oauthAuthorizationSession"] = self.oauthAuthorizationSession?.toMap()
         }
         if self.revoked != nil {
             map["revoked"] = self.revoked!
@@ -1940,6 +2032,11 @@ public class FetchOAuthAuthenticationTokenResponseBody : Tea.TeaModel {
             var model = FetchOAuthAuthenticationTokenResponseBody.OauthAccessTokenContent()
             model.fromMap(value)
             self.oauthAccessTokenContent = model
+        }
+        if let value = dict["oauthAuthorizationSession"] as? [String: Any?] {
+            var model = FetchOAuthAuthenticationTokenResponseBody.OauthAuthorizationSession()
+            model.fromMap(value)
+            self.oauthAuthorizationSession = model
         }
         if let value = dict["revoked"] as? Bool {
             self.revoked = value
@@ -7115,11 +7212,67 @@ public class ObtainCloudAccountRoleAccessCredentialResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TencentCloudStsToken : Tea.TeaModel {
+            public var expiration: String?
+
+            public var tmpSecretId: String?
+
+            public var tmpSecretKey: String?
+
+            public var token: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.expiration != nil {
+                    map["expiration"] = self.expiration!
+                }
+                if self.tmpSecretId != nil {
+                    map["tmpSecretId"] = self.tmpSecretId!
+                }
+                if self.tmpSecretKey != nil {
+                    map["tmpSecretKey"] = self.tmpSecretKey!
+                }
+                if self.token != nil {
+                    map["token"] = self.token!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["expiration"] as? String {
+                    self.expiration = value
+                }
+                if let value = dict["tmpSecretId"] as? String {
+                    self.tmpSecretId = value
+                }
+                if let value = dict["tmpSecretKey"] as? String {
+                    self.tmpSecretKey = value
+                }
+                if let value = dict["token"] as? String {
+                    self.token = value
+                }
+            }
+        }
         public var accessCredentialExpiresAt: Int64?
 
         public var alibabaCloudStsToken: ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential.AlibabaCloudStsToken?
 
         public var awsStsToken: ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential.AwsStsToken?
+
+        public var tencentCloudStsToken: ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential.TencentCloudStsToken?
 
         public override init() {
             super.init()
@@ -7133,6 +7286,7 @@ public class ObtainCloudAccountRoleAccessCredentialResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.alibabaCloudStsToken?.validate()
             try self.awsStsToken?.validate()
+            try self.tencentCloudStsToken?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -7145,6 +7299,9 @@ public class ObtainCloudAccountRoleAccessCredentialResponseBody : Tea.TeaModel {
             }
             if self.awsStsToken != nil {
                 map["awsStsToken"] = self.awsStsToken?.toMap()
+            }
+            if self.tencentCloudStsToken != nil {
+                map["tencentCloudStsToken"] = self.tencentCloudStsToken?.toMap()
             }
             return map
         }
@@ -7163,6 +7320,11 @@ public class ObtainCloudAccountRoleAccessCredentialResponseBody : Tea.TeaModel {
                 var model = ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential.AwsStsToken()
                 model.fromMap(value)
                 self.awsStsToken = model
+            }
+            if let value = dict["tencentCloudStsToken"] as? [String: Any?] {
+                var model = ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential.TencentCloudStsToken()
+                model.fromMap(value)
+                self.tencentCloudStsToken = model
             }
         }
     }

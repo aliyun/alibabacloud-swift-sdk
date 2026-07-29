@@ -8,7 +8,15 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "eu-central-1": "eiam-developerapi.eu-central-1.aliyuncs.com",
+            "cn-hongkong": "eiam-developerapi.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "eiam-developerapi.cn-hangzhou.aliyuncs.com",
+            "ap-southeast-5": "eiam-developerapi.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-1": "eiam-developerapi.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "eiam-developerapi.ap-northeast-2.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eiam-developerapi", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -296,6 +304,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.returnCiphertext)) {
+            body["returnCiphertext"] = request.returnCiphertext!;
+        }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
@@ -510,6 +521,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.credentialProviderIdentifier)) {
             body["credentialProviderIdentifier"] = request.credentialProviderIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customParameters)) {
+            body["customParameters"] = request.customParameters ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.forceAuthentication)) {
+            body["forceAuthentication"] = request.forceAuthentication!;
         }
         if (!TeaUtils.Client.isUnset(request.scope)) {
             body["scope"] = request.scope ?? "";
