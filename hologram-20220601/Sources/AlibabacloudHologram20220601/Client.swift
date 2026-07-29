@@ -8,7 +8,30 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "hologram.us-west-1.aliyuncs.com",
+            "us-east-1": "hologram.us-east-1.aliyuncs.com",
+            "na-south-1": "hologram.na-south-1.aliyuncs.com",
+            "me-east-1": "hologram.me-east-1.aliyuncs.com",
+            "eu-central-1": "hologram.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "hologram.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "hologram.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen-finance-1": "hologram.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-shenzhen": "hologram.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "hologram.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "hologram.cn-shanghai.aliyuncs.com",
+            "cn-north-2-gov-1": "hologram.cn-north-2-gov-1.aliyuncs.com",
+            "cn-hongkong": "hologram.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou": "hologram.cn-hangzhou.aliyuncs.com",
+            "cn-chengdu": "hologram.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "hologram.cn-beijing.aliyuncs.com",
+            "ap-southeast-5": "hologram.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "hologram.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "hologram.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "hologram.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "hologram.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("hologram", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1951,6 +1974,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.provider)) {
+            query["provider"] = request.provider ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

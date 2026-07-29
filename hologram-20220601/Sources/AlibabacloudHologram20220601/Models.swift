@@ -6467,6 +6467,8 @@ public class GetInstanceModelResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var supportApiKeyAccess: Bool?
+
         public var taskType: String?
 
         public var version: String?
@@ -6527,6 +6529,9 @@ public class GetInstanceModelResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["status"] = self.status!
             }
+            if self.supportApiKeyAccess != nil {
+                map["supportApiKeyAccess"] = self.supportApiKeyAccess!
+            }
             if self.taskType != nil {
                 map["taskType"] = self.taskType!
             }
@@ -6579,6 +6584,9 @@ public class GetInstanceModelResponseBody : Tea.TeaModel {
             }
             if let value = dict["status"] as? String {
                 self.status = value
+            }
+            if let value = dict["supportApiKeyAccess"] as? Bool {
+                self.supportApiKeyAccess = value
             }
             if let value = dict["taskType"] as? String {
                 self.taskType = value
@@ -10842,6 +10850,8 @@ public class ListModelCatalogRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var provider: String?
+
     public override init() {
         super.init()
     }
@@ -10862,6 +10872,9 @@ public class ListModelCatalogRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
         return map
     }
 
@@ -10872,6 +10885,9 @@ public class ListModelCatalogRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
         }
     }
 }
@@ -10889,6 +10905,8 @@ public class ListModelCatalogResponseBody : Tea.TeaModel {
         public var provider: String?
 
         public var serviceDeployRegion: String?
+
+        public var supportApiKeyAccess: Bool?
 
         public var taskType: String?
 
@@ -10924,6 +10942,9 @@ public class ListModelCatalogResponseBody : Tea.TeaModel {
             if self.serviceDeployRegion != nil {
                 map["serviceDeployRegion"] = self.serviceDeployRegion!
             }
+            if self.supportApiKeyAccess != nil {
+                map["supportApiKeyAccess"] = self.supportApiKeyAccess!
+            }
             if self.taskType != nil {
                 map["taskType"] = self.taskType!
             }
@@ -10949,6 +10970,9 @@ public class ListModelCatalogResponseBody : Tea.TeaModel {
             }
             if let value = dict["serviceDeployRegion"] as? String {
                 self.serviceDeployRegion = value
+            }
+            if let value = dict["supportApiKeyAccess"] as? Bool {
+                self.supportApiKeyAccess = value
             }
             if let value = dict["taskType"] as? String {
                 self.taskType = value
