@@ -940,6 +940,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.callTime)) {
             request.callTimeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTime, "CallTime", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.callableTime)) {
+            request.callableTimeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callableTime, "CallableTime", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentId)) {
             query["AgentId"] = request.agentId ?? "";
@@ -949,6 +952,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.callDayShrink)) {
             query["CallDay"] = request.callDayShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callExpireDate)) {
+            query["CallExpireDate"] = request.callExpireDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callExpireMinutes)) {
+            query["CallExpireMinutes"] = request.callExpireMinutes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callExpireType)) {
+            query["CallExpireType"] = request.callExpireType!;
         }
         if (!TeaUtils.Client.isUnset(request.callRetryInterval)) {
             query["CallRetryInterval"] = request.callRetryInterval!;
@@ -961,6 +973,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.callTimeShrink)) {
             query["CallTime"] = request.callTimeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callableTimeShrink)) {
+            query["CallableTime"] = request.callableTimeShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lineEncoding)) {
             query["LineEncoding"] = request.lineEncoding ?? "";
@@ -7645,9 +7660,21 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.callTime)) {
             request.callTimeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTime, "CallTime", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.callableTime)) {
+            request.callableTimeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callableTime, "CallableTime", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callDayShrink)) {
             query["CallDay"] = request.callDayShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callExpireDate)) {
+            query["CallExpireDate"] = request.callExpireDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callExpireMinutes)) {
+            query["CallExpireMinutes"] = request.callExpireMinutes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callExpireType)) {
+            query["CallExpireType"] = request.callExpireType!;
         }
         if (!TeaUtils.Client.isUnset(request.callRetryInterval)) {
             query["CallRetryInterval"] = request.callRetryInterval!;
@@ -7660,6 +7687,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.callTimeShrink)) {
             query["CallTime"] = request.callTimeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callableTimeShrink)) {
+            query["CallableTime"] = request.callableTimeShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lineEncoding)) {
             query["LineEncoding"] = request.lineEncoding ?? "";
@@ -7991,6 +8021,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pauseTime)) {
+            query["PauseTime"] = request.pauseTime!;
         }
         if (!TeaUtils.Client.isUnset(request.prompt)) {
             query["Prompt"] = request.prompt ?? "";
