@@ -9,6 +9,32 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "ecd.us-west-1.aliyuncs.com",
+            "us-east-1": "ecd.us-east-1.aliyuncs.com",
+            "me-east-1": "ecd.me-east-1.aliyuncs.com",
+            "me-central-1": "ecd.me-central-1.aliyuncs.com",
+            "eu-west-1": "ecd.eu-west-1.aliyuncs.com",
+            "eu-central-1": "ecd.eu-central-1.aliyuncs.com",
+            "cn-zhangjiakou": "ecd.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "ecd.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "ecd.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "ecd.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "ecd.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "ecd.cn-qingdao.aliyuncs.com",
+            "cn-nanjing": "ecd.cn-nanjing.aliyuncs.com",
+            "cn-hongkong": "ecd.cn-hongkong.aliyuncs.com",
+            "cn-hangzhou-finance": "ecd.cn-hangzhou-finance.aliyuncs.com",
+            "cn-hangzhou": "ecd.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "ecd.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "ecd.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "ecd.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "ecd.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "ecd.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "ecd.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-1": "ecd.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "ecd.ap-northeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ecd", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -838,43 +864,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getLoginToken(_ request: GetLoginTokenRequest) async throws -> GetLoginTokenResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getLoginTokenWithOptions(request as! GetLoginTokenRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func isKeepAliveWithOptions(_ request: IsKeepAliveRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> IsKeepAliveResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clientId)) {
-            query["ClientId"] = request.clientId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
-            query["OfficeSiteId"] = request.officeSiteId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "IsKeepAlive",
-            "version": "2020-10-02",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "Anonymous",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await doRPCRequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(IsKeepAliveResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func isKeepAlive(_ request: IsKeepAliveRequest) async throws -> IsKeepAliveResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await isKeepAliveWithOptions(request as! IsKeepAliveRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
