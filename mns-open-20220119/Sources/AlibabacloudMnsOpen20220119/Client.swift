@@ -459,6 +459,31 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAccountAttributesWithOptions(_ request: GetAccountAttributesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAccountAttributesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAccountAttributes",
+            "version": "2022-01-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAccountAttributesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAccountAttributes(_ request: GetAccountAttributesRequest) async throws -> GetAccountAttributesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAccountAttributesWithOptions(request as! GetAccountAttributesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getEndpointAttributeWithOptions(_ request: GetEndpointAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEndpointAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -857,6 +882,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func revokeEndpointAcl(_ request: RevokeEndpointAclRequest) async throws -> RevokeEndpointAclResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await revokeEndpointAclWithOptions(request as! RevokeEndpointAclRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAccountAttributesWithOptions(_ request: SetAccountAttributesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetAccountAttributesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logEnabled)) {
+            query["LogEnabled"] = request.logEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.logStoreName)) {
+            query["LogStoreName"] = request.logStoreName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.messageTraceEnabled)) {
+            query["MessageTraceEnabled"] = request.messageTraceEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectName)) {
+            query["ProjectName"] = request.projectName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetAccountAttributes",
+            "version": "2022-01-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetAccountAttributesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAccountAttributes(_ request: SetAccountAttributesRequest) async throws -> SetAccountAttributesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setAccountAttributesWithOptions(request as! SetAccountAttributesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
