@@ -29,7 +29,11 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-finance": "ddosbgp.aliyuncs.com",
             "cn-shenzhen-finance-1": "ddosbgp.aliyuncs.com",
             "cn-shanghai-finance-1": "ddosbgp.aliyuncs.com",
-            "cn-north-2-gov-1": "ddosbgp.aliyuncs.com"
+            "cn-north-2-gov-1": "ddosbgp.aliyuncs.com",
+            "us-west-1": "ddosbgp.us-west-1.aliyuncs.com",
+            "us-east-1": "ddosbgp.us-east-1.aliyuncs.com",
+            "cn-hongkong": "ddosbgp.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "ddosbgp.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ddosbgp", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -765,6 +769,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeInstanceSpecs(_ request: DescribeInstanceSpecsRequest) async throws -> DescribeInstanceSpecsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeInstanceSpecsWithOptions(request as! DescribeInstanceSpecsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNetworkLayerInterceptsWithOptions(_ request: DescribeNetworkLayerInterceptsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNetworkLayerInterceptsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destinationIp)) {
+            query["DestinationIp"] = request.destinationIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationPort)) {
+            query["DestinationPort"] = request.destinationPort!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkProtocol)) {
+            query["NetworkProtocol"] = request.networkProtocol ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["Page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.protocolNumber)) {
+            query["ProtocolNumber"] = request.protocolNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourcePort)) {
+            query["SourcePort"] = request.sourcePort!;
+        }
+        if (!TeaUtils.Client.isUnset(request.srcIp)) {
+            query["SrcIp"] = request.srcIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeNetworkLayerIntercepts",
+            "version": "2018-07-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeNetworkLayerInterceptsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNetworkLayerIntercepts(_ request: DescribeNetworkLayerInterceptsRequest) async throws -> DescribeNetworkLayerInterceptsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeNetworkLayerInterceptsWithOptions(request as! DescribeNetworkLayerInterceptsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

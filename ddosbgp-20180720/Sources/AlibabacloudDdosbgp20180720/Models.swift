@@ -4051,6 +4051,346 @@ public class DescribeInstanceSpecsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNetworkLayerInterceptsRequest : Tea.TeaModel {
+    public var destinationIp: String?
+
+    public var destinationPort: Int64?
+
+    public var endTime: Int64?
+
+    public var instanceId: String?
+
+    public var networkProtocol: String?
+
+    public var page: Int64?
+
+    public var pageSize: Int64?
+
+    public var protocolNumber: Int64?
+
+    public var sourcePort: Int64?
+
+    public var srcIp: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.destinationIp != nil {
+            map["DestinationIp"] = self.destinationIp!
+        }
+        if self.destinationPort != nil {
+            map["DestinationPort"] = self.destinationPort!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.networkProtocol != nil {
+            map["NetworkProtocol"] = self.networkProtocol!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.protocolNumber != nil {
+            map["ProtocolNumber"] = self.protocolNumber!
+        }
+        if self.sourcePort != nil {
+            map["SourcePort"] = self.sourcePort!
+        }
+        if self.srcIp != nil {
+            map["SrcIp"] = self.srcIp!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DestinationIp"] as? String {
+            self.destinationIp = value
+        }
+        if let value = dict["DestinationPort"] as? Int64 {
+            self.destinationPort = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["NetworkProtocol"] as? String {
+            self.networkProtocol = value
+        }
+        if let value = dict["Page"] as? Int64 {
+            self.page = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["ProtocolNumber"] as? Int64 {
+            self.protocolNumber = value
+        }
+        if let value = dict["SourcePort"] as? Int64 {
+            self.sourcePort = value
+        }
+        if let value = dict["SrcIp"] as? String {
+            self.srcIp = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeNetworkLayerInterceptsResponseBody : Tea.TeaModel {
+    public class InterceptionRecords : Tea.TeaModel {
+        public var destinationIp: String?
+
+        public var destinationPort: String?
+
+        public var interceptAction: String?
+
+        public var interceptCount: Int64?
+
+        public var interceptEndTime: Int64?
+
+        public var interceptModule: String?
+
+        public var interceptStartTime: Int64?
+
+        public var networkProtocol: String?
+
+        public var protocolNumber: String?
+
+        public var sourceIp: String?
+
+        public var sourcePort: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.destinationIp != nil {
+                map["DestinationIp"] = self.destinationIp!
+            }
+            if self.destinationPort != nil {
+                map["DestinationPort"] = self.destinationPort!
+            }
+            if self.interceptAction != nil {
+                map["InterceptAction"] = self.interceptAction!
+            }
+            if self.interceptCount != nil {
+                map["InterceptCount"] = self.interceptCount!
+            }
+            if self.interceptEndTime != nil {
+                map["InterceptEndTime"] = self.interceptEndTime!
+            }
+            if self.interceptModule != nil {
+                map["InterceptModule"] = self.interceptModule!
+            }
+            if self.interceptStartTime != nil {
+                map["InterceptStartTime"] = self.interceptStartTime!
+            }
+            if self.networkProtocol != nil {
+                map["NetworkProtocol"] = self.networkProtocol!
+            }
+            if self.protocolNumber != nil {
+                map["ProtocolNumber"] = self.protocolNumber!
+            }
+            if self.sourceIp != nil {
+                map["SourceIp"] = self.sourceIp!
+            }
+            if self.sourcePort != nil {
+                map["SourcePort"] = self.sourcePort!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DestinationIp"] as? String {
+                self.destinationIp = value
+            }
+            if let value = dict["DestinationPort"] as? String {
+                self.destinationPort = value
+            }
+            if let value = dict["InterceptAction"] as? String {
+                self.interceptAction = value
+            }
+            if let value = dict["InterceptCount"] as? Int64 {
+                self.interceptCount = value
+            }
+            if let value = dict["InterceptEndTime"] as? Int64 {
+                self.interceptEndTime = value
+            }
+            if let value = dict["InterceptModule"] as? String {
+                self.interceptModule = value
+            }
+            if let value = dict["InterceptStartTime"] as? Int64 {
+                self.interceptStartTime = value
+            }
+            if let value = dict["NetworkProtocol"] as? String {
+                self.networkProtocol = value
+            }
+            if let value = dict["ProtocolNumber"] as? String {
+                self.protocolNumber = value
+            }
+            if let value = dict["SourceIp"] as? String {
+                self.sourceIp = value
+            }
+            if let value = dict["SourcePort"] as? String {
+                self.sourcePort = value
+            }
+        }
+    }
+    public var interceptionRecordCount: Int64?
+
+    public var interceptionRecords: [DescribeNetworkLayerInterceptsResponseBody.InterceptionRecords]?
+
+    public var requestId: String?
+
+    public var totalCnt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.interceptionRecordCount != nil {
+            map["InterceptionRecordCount"] = self.interceptionRecordCount!
+        }
+        if self.interceptionRecords != nil {
+            var tmp : [Any] = []
+            for k in self.interceptionRecords! {
+                tmp.append(k.toMap())
+            }
+            map["InterceptionRecords"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCnt != nil {
+            map["TotalCnt"] = self.totalCnt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InterceptionRecordCount"] as? Int64 {
+            self.interceptionRecordCount = value
+        }
+        if let value = dict["InterceptionRecords"] as? [Any?] {
+            var tmp : [DescribeNetworkLayerInterceptsResponseBody.InterceptionRecords] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeNetworkLayerInterceptsResponseBody.InterceptionRecords()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.interceptionRecords = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCnt"] as? String {
+            self.totalCnt = value
+        }
+    }
+}
+
+public class DescribeNetworkLayerInterceptsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNetworkLayerInterceptsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeNetworkLayerInterceptsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeOpEntitiesRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
@@ -6763,6 +7103,100 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SipDefense : Tea.TeaModel {
+                public var enable: Bool?
+
+                public var level: String?
+
+                public var sipDefend: Bool?
+
+                public var sipLearn: Bool?
+
+                public var sipModule: Bool?
+
+                public var sipPort: String?
+
+                public var sipRate: Int64?
+
+                public var sipStartMbps: Int64?
+
+                public var sipStartPps: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enable != nil {
+                        map["Enable"] = self.enable!
+                    }
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    if self.sipDefend != nil {
+                        map["SipDefend"] = self.sipDefend!
+                    }
+                    if self.sipLearn != nil {
+                        map["SipLearn"] = self.sipLearn!
+                    }
+                    if self.sipModule != nil {
+                        map["SipModule"] = self.sipModule!
+                    }
+                    if self.sipPort != nil {
+                        map["SipPort"] = self.sipPort!
+                    }
+                    if self.sipRate != nil {
+                        map["SipRate"] = self.sipRate!
+                    }
+                    if self.sipStartMbps != nil {
+                        map["SipStartMbps"] = self.sipStartMbps!
+                    }
+                    if self.sipStartPps != nil {
+                        map["SipStartPps"] = self.sipStartPps!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Enable"] as? Bool {
+                        self.enable = value
+                    }
+                    if let value = dict["Level"] as? String {
+                        self.level = value
+                    }
+                    if let value = dict["SipDefend"] as? Bool {
+                        self.sipDefend = value
+                    }
+                    if let value = dict["SipLearn"] as? Bool {
+                        self.sipLearn = value
+                    }
+                    if let value = dict["SipModule"] as? Bool {
+                        self.sipModule = value
+                    }
+                    if let value = dict["SipPort"] as? String {
+                        self.sipPort = value
+                    }
+                    if let value = dict["SipRate"] as? Int64 {
+                        self.sipRate = value
+                    }
+                    if let value = dict["SipStartMbps"] as? Int64 {
+                        self.sipStartMbps = value
+                    }
+                    if let value = dict["SipStartPps"] as? Int64 {
+                        self.sipStartPps = value
+                    }
+                }
+            }
             public class SourceBlockList : Tea.TeaModel {
                 public var blockExpireSeconds: Int32?
 
@@ -6895,6 +7329,8 @@ public class ListPolicyResponseBody : Tea.TeaModel {
 
             public var regionBlockProvinceList: [Int32]?
 
+            public var sipDefense: ListPolicyResponseBody.PolicyList.Content.SipDefense?
+
             public var sourceBlockList: [ListPolicyResponseBody.PolicyList.Content.SourceBlockList]?
 
             public var sourceLimit: ListPolicyResponseBody.PolicyList.Content.SourceLimit?
@@ -6911,6 +7347,7 @@ public class ListPolicyResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.sipDefense?.validate()
                 try self.sourceLimit?.validate()
             }
 
@@ -6963,6 +7400,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                 }
                 if self.regionBlockProvinceList != nil {
                     map["RegionBlockProvinceList"] = self.regionBlockProvinceList!
+                }
+                if self.sipDefense != nil {
+                    map["SipDefense"] = self.sipDefense?.toMap()
                 }
                 if self.sourceBlockList != nil {
                     var tmp : [Any] = []
@@ -7047,6 +7487,11 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RegionBlockProvinceList"] as? [Int32] {
                     self.regionBlockProvinceList = value
+                }
+                if let value = dict["SipDefense"] as? [String: Any?] {
+                    var model = ListPolicyResponseBody.PolicyList.Content.SipDefense()
+                    model.fromMap(value)
+                    self.sipDefense = model
                 }
                 if let value = dict["SourceBlockList"] as? [Any?] {
                     var tmp : [ListPolicyResponseBody.PolicyList.Content.SourceBlockList] = []
@@ -8650,6 +9095,100 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SipDefense : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var level: String?
+
+            public var sipDefend: Bool?
+
+            public var sipLearn: Bool?
+
+            public var sipModule: Bool?
+
+            public var sipPort: String?
+
+            public var sipRate: Int64?
+
+            public var sipStartMbps: Int64?
+
+            public var sipStartPps: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.level != nil {
+                    map["Level"] = self.level!
+                }
+                if self.sipDefend != nil {
+                    map["SipDefend"] = self.sipDefend!
+                }
+                if self.sipLearn != nil {
+                    map["SipLearn"] = self.sipLearn!
+                }
+                if self.sipModule != nil {
+                    map["SipModule"] = self.sipModule!
+                }
+                if self.sipPort != nil {
+                    map["SipPort"] = self.sipPort!
+                }
+                if self.sipRate != nil {
+                    map["SipRate"] = self.sipRate!
+                }
+                if self.sipStartMbps != nil {
+                    map["SipStartMbps"] = self.sipStartMbps!
+                }
+                if self.sipStartPps != nil {
+                    map["SipStartPps"] = self.sipStartPps!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["Level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["SipDefend"] as? Bool {
+                    self.sipDefend = value
+                }
+                if let value = dict["SipLearn"] as? Bool {
+                    self.sipLearn = value
+                }
+                if let value = dict["SipModule"] as? Bool {
+                    self.sipModule = value
+                }
+                if let value = dict["SipPort"] as? String {
+                    self.sipPort = value
+                }
+                if let value = dict["SipRate"] as? Int64 {
+                    self.sipRate = value
+                }
+                if let value = dict["SipStartMbps"] as? Int64 {
+                    self.sipStartMbps = value
+                }
+                if let value = dict["SipStartPps"] as? Int64 {
+                    self.sipStartPps = value
+                }
+            }
+        }
         public class SourceBlockList : Tea.TeaModel {
             public var blockExpireSeconds: Int32?
 
@@ -8782,6 +9321,8 @@ public class ModifyPolicyRequest : Tea.TeaModel {
 
         public var regionBlockProvinceList: [Int32]?
 
+        public var sipDefense: ModifyPolicyRequest.Content.SipDefense?
+
         public var sourceBlockList: [ModifyPolicyRequest.Content.SourceBlockList]?
 
         public var sourceLimit: ModifyPolicyRequest.Content.SourceLimit?
@@ -8800,6 +9341,7 @@ public class ModifyPolicyRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.sipDefense?.validate()
             try self.sourceLimit?.validate()
         }
 
@@ -8852,6 +9394,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
             }
             if self.regionBlockProvinceList != nil {
                 map["RegionBlockProvinceList"] = self.regionBlockProvinceList!
+            }
+            if self.sipDefense != nil {
+                map["SipDefense"] = self.sipDefense?.toMap()
             }
             if self.sourceBlockList != nil {
                 var tmp : [Any] = []
@@ -8939,6 +9484,11 @@ public class ModifyPolicyRequest : Tea.TeaModel {
             }
             if let value = dict["RegionBlockProvinceList"] as? [Int32] {
                 self.regionBlockProvinceList = value
+            }
+            if let value = dict["SipDefense"] as? [String: Any?] {
+                var model = ModifyPolicyRequest.Content.SipDefense()
+                model.fromMap(value)
+                self.sipDefense = model
             }
             if let value = dict["SourceBlockList"] as? [Any?] {
                 var tmp : [ModifyPolicyRequest.Content.SourceBlockList] = []
@@ -9600,6 +10150,100 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SipDefense : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var level: String?
+
+            public var sipDefend: Bool?
+
+            public var sipLearn: Bool?
+
+            public var sipModule: Bool?
+
+            public var sipPort: String?
+
+            public var sipRate: Int64?
+
+            public var sipStartMbps: Int64?
+
+            public var sipStartPps: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.level != nil {
+                    map["Level"] = self.level!
+                }
+                if self.sipDefend != nil {
+                    map["SipDefend"] = self.sipDefend!
+                }
+                if self.sipLearn != nil {
+                    map["SipLearn"] = self.sipLearn!
+                }
+                if self.sipModule != nil {
+                    map["SipModule"] = self.sipModule!
+                }
+                if self.sipPort != nil {
+                    map["SipPort"] = self.sipPort!
+                }
+                if self.sipRate != nil {
+                    map["SipRate"] = self.sipRate!
+                }
+                if self.sipStartMbps != nil {
+                    map["SipStartMbps"] = self.sipStartMbps!
+                }
+                if self.sipStartPps != nil {
+                    map["SipStartPps"] = self.sipStartPps!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["Level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["SipDefend"] as? Bool {
+                    self.sipDefend = value
+                }
+                if let value = dict["SipLearn"] as? Bool {
+                    self.sipLearn = value
+                }
+                if let value = dict["SipModule"] as? Bool {
+                    self.sipModule = value
+                }
+                if let value = dict["SipPort"] as? String {
+                    self.sipPort = value
+                }
+                if let value = dict["SipRate"] as? Int64 {
+                    self.sipRate = value
+                }
+                if let value = dict["SipStartMbps"] as? Int64 {
+                    self.sipStartMbps = value
+                }
+                if let value = dict["SipStartPps"] as? Int64 {
+                    self.sipStartPps = value
+                }
+            }
+        }
         public class SourceBlockList : Tea.TeaModel {
             public var blockExpireSeconds: Int32?
 
@@ -9730,6 +10374,8 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
 
         public var regionBlockProvinceList: [Int32]?
 
+        public var sipDefense: ModifyPolicyContentRequest.Content.SipDefense?
+
         public var sourceBlockList: [ModifyPolicyContentRequest.Content.SourceBlockList]?
 
         public var sourceLimit: ModifyPolicyContentRequest.Content.SourceLimit?
@@ -9746,6 +10392,7 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.sipDefense?.validate()
             try self.sourceLimit?.validate()
         }
 
@@ -9795,6 +10442,9 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
             }
             if self.regionBlockProvinceList != nil {
                 map["RegionBlockProvinceList"] = self.regionBlockProvinceList!
+            }
+            if self.sipDefense != nil {
+                map["SipDefense"] = self.sipDefense?.toMap()
             }
             if self.sourceBlockList != nil {
                 var tmp : [Any] = []
@@ -9876,6 +10526,11 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
             }
             if let value = dict["RegionBlockProvinceList"] as? [Int32] {
                 self.regionBlockProvinceList = value
+            }
+            if let value = dict["SipDefense"] as? [String: Any?] {
+                var model = ModifyPolicyContentRequest.Content.SipDefense()
+                model.fromMap(value)
+                self.sipDefense = model
             }
             if let value = dict["SourceBlockList"] as? [Any?] {
                 var tmp : [ModifyPolicyContentRequest.Content.SourceBlockList] = []
