@@ -328,6 +328,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeAccountCreditWithOptions(_ request: GetYikeAccountCreditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeAccountCreditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetYikeAccountCredit",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetYikeAccountCreditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeAccountCredit(_ request: GetYikeAccountCreditRequest) async throws -> GetYikeAccountCreditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getYikeAccountCreditWithOptions(request as! GetYikeAccountCreditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeJobCreditWithOptions(_ request: GetYikeJobCreditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeJobCreditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            body["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetYikeJobCredit",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetYikeJobCreditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeJobCredit(_ request: GetYikeJobCreditRequest) async throws -> GetYikeJobCreditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getYikeJobCreditWithOptions(request as! GetYikeJobCreditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func importMediaWithOptions(_ request: ImportMediaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportMediaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -435,9 +491,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.categoryId)) {
             query["CategoryId"] = request.categoryId!;
         }
-        if (!TeaUtils.Client.isUnset(request.entityId)) {
-            query["EntityId"] = request.entityId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.match)) {
             query["Match"] = request.match ?? "";
         }
@@ -449,9 +502,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scrollToken)) {
             query["ScrollToken"] = request.scrollToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.searchLibName)) {
-            query["SearchLibName"] = request.searchLibName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sortBy)) {
             query["SortBy"] = request.sortBy ?? "";
@@ -631,6 +681,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitVideoGenerationJob(_ request: SubmitVideoGenerationJobRequest) async throws -> SubmitVideoGenerationJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitVideoGenerationJobWithOptions(request as! SubmitVideoGenerationJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoTranslationJobWithOptions(_ request: SubmitVideoTranslationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVideoTranslationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            body["Input"] = request.input ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobParameters)) {
+            body["JobParameters"] = request.jobParameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            body["JobType"] = request.jobType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.output)) {
+            body["Output"] = request.output ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            body["Title"] = request.title ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            body["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitVideoTranslationJob",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitVideoTranslationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoTranslationJob(_ request: SubmitVideoTranslationJobRequest) async throws -> SubmitVideoTranslationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitVideoTranslationJobWithOptions(request as! SubmitVideoTranslationJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
