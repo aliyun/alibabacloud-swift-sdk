@@ -38,6 +38,8 @@ public class CheckTuringTaskRequest : Tea.TeaModel {
 
 public class CheckTuringTaskResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public var failBizCode: String?
+
         public var failCode: String?
 
         public var failMsg: String?
@@ -62,6 +64,9 @@ public class CheckTuringTaskResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.failBizCode != nil {
+                map["failBizCode"] = self.failBizCode!
+            }
             if self.failCode != nil {
                 map["failCode"] = self.failCode!
             }
@@ -82,6 +87,9 @@ public class CheckTuringTaskResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["failBizCode"] as? String {
+                self.failBizCode = value
+            }
             if let value = dict["failCode"] as? String {
                 self.failCode = value
             }
