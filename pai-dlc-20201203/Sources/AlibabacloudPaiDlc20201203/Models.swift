@@ -3455,6 +3455,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var driver: String?
 
+    public var elasticSpotJobMaxRestartTimes: Int32?
+
     public var enableCPUAffinity: Bool?
 
     public var enableDSWDev: Bool?
@@ -3528,6 +3530,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
+        }
+        if self.elasticSpotJobMaxRestartTimes != nil {
+            map["ElasticSpotJobMaxRestartTimes"] = self.elasticSpotJobMaxRestartTimes!
         }
         if self.enableCPUAffinity != nil {
             map["EnableCPUAffinity"] = self.enableCPUAffinity!
@@ -3610,6 +3615,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if let value = dict["Driver"] as? String {
             self.driver = value
+        }
+        if let value = dict["ElasticSpotJobMaxRestartTimes"] as? Int32 {
+            self.elasticSpotJobMaxRestartTimes = value
         }
         if let value = dict["EnableCPUAffinity"] as? Bool {
             self.enableCPUAffinity = value
