@@ -963,6 +963,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func videoGenerationWithOptions(_ tmpReq: VideoGenerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VideoGenerationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: VideoGenerationShrinkRequest = VideoGenerationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.input)) {
+            request.inputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.input, "Input", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.intent)) {
+            request.intentShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.intent, "Intent", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.output)) {
+            request.outputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.output, "Output", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.inputShrink)) {
+            query["Input"] = request.inputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intentShrink)) {
+            query["Intent"] = request.intentShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputShrink)) {
+            query["Output"] = request.outputShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VideoGeneration",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VideoGenerationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func videoGeneration(_ request: VideoGenerationRequest) async throws -> VideoGenerationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await videoGenerationWithOptions(request as! VideoGenerationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func videoTranslationWithOptions(_ tmpReq: VideoTranslationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VideoTranslationResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: VideoTranslationShrinkRequest = VideoTranslationShrinkRequest([:])

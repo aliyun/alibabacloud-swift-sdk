@@ -5783,7 +5783,7 @@ public class QueryAsyncTaskResultResponseBody : Tea.TeaModel {
 
         public var taskId: String?
 
-        public var usageMap: [String: Int64]?
+        public var usageMap: [String: Any]?
 
         public override init() {
             super.init()
@@ -5825,7 +5825,7 @@ public class QueryAsyncTaskResultResponseBody : Tea.TeaModel {
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
             }
-            if let value = dict["UsageMap"] as? [String: Int64] {
+            if let value = dict["UsageMap"] as? [String: Any] {
                 self.usageMap = value
             }
         }
@@ -6937,6 +6937,393 @@ public class TextTranslateResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = TextTranslateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class VideoGenerationRequest : Tea.TeaModel {
+    public class Input : Tea.TeaModel {
+        public var extra: [String: Any]?
+
+        public var images: [String]?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extra != nil {
+                map["Extra"] = self.extra!
+            }
+            if self.images != nil {
+                map["Images"] = self.images!
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Extra"] as? [String: Any] {
+                self.extra = value
+            }
+            if let value = dict["Images"] as? [String] {
+                self.images = value
+            }
+            if let value = dict["Title"] as? String {
+                self.title = value
+            }
+        }
+    }
+    public class Intent : Tea.TeaModel {
+        public var channel: String?
+
+        public var goal: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.channel != nil {
+                map["Channel"] = self.channel!
+            }
+            if self.goal != nil {
+                map["Goal"] = self.goal!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Channel"] as? String {
+                self.channel = value
+            }
+            if let value = dict["Goal"] as? String {
+                self.goal = value
+            }
+        }
+    }
+    public class Output : Tea.TeaModel {
+        public var duration: Int64?
+
+        public var quality: String?
+
+        public var ratio: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.quality != nil {
+                map["Quality"] = self.quality!
+            }
+            if self.ratio != nil {
+                map["Ratio"] = self.ratio!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Duration"] as? Int64 {
+                self.duration = value
+            }
+            if let value = dict["Quality"] as? String {
+                self.quality = value
+            }
+            if let value = dict["Ratio"] as? String {
+                self.ratio = value
+            }
+        }
+    }
+    public var input: VideoGenerationRequest.Input?
+
+    public var intent: VideoGenerationRequest.Intent?
+
+    public var output: VideoGenerationRequest.Output?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.input?.validate()
+        try self.intent?.validate()
+        try self.output?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.input != nil {
+            map["Input"] = self.input?.toMap()
+        }
+        if self.intent != nil {
+            map["Intent"] = self.intent?.toMap()
+        }
+        if self.output != nil {
+            map["Output"] = self.output?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Input"] as? [String: Any?] {
+            var model = VideoGenerationRequest.Input()
+            model.fromMap(value)
+            self.input = model
+        }
+        if let value = dict["Intent"] as? [String: Any?] {
+            var model = VideoGenerationRequest.Intent()
+            model.fromMap(value)
+            self.intent = model
+        }
+        if let value = dict["Output"] as? [String: Any?] {
+            var model = VideoGenerationRequest.Output()
+            model.fromMap(value)
+            self.output = model
+        }
+    }
+}
+
+public class VideoGenerationShrinkRequest : Tea.TeaModel {
+    public var inputShrink: String?
+
+    public var intentShrink: String?
+
+    public var outputShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inputShrink != nil {
+            map["Input"] = self.inputShrink!
+        }
+        if self.intentShrink != nil {
+            map["Intent"] = self.intentShrink!
+        }
+        if self.outputShrink != nil {
+            map["Output"] = self.outputShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Input"] as? String {
+            self.inputShrink = value
+        }
+        if let value = dict["Intent"] as? String {
+            self.intentShrink = value
+        }
+        if let value = dict["Output"] as? String {
+            self.outputShrink = value
+        }
+    }
+}
+
+public class VideoGenerationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public var usageMap: [String: Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.usageMap != nil {
+                map["UsageMap"] = self.usageMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["UsageMap"] as? [String: Int64] {
+                self.usageMap = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: VideoGenerationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = VideoGenerationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class VideoGenerationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VideoGenerationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = VideoGenerationResponseBody()
             model.fromMap(value)
             self.body = model
         }
