@@ -519,6 +519,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationPlusWithOptions(_ request: ImageTranslationPlusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationPlusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.glossary)) {
+            body["Glossary"] = request.glossary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            body["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includingProductArea)) {
+            body["IncludingProductArea"] = request.includingProductArea!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            body["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translatingBrandInTheProduct)) {
+            body["TranslatingBrandInTheProduct"] = request.translatingBrandInTheProduct!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
+            body["UseImageEditor"] = request.useImageEditor!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageTranslationPlus",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageTranslationPlusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationPlus(_ request: ImageTranslationPlusRequest) async throws -> ImageTranslationPlusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageTranslationPlusWithOptions(request as! ImageTranslationPlusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func imageTranslationProWithOptions(_ request: ImageTranslationProRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationProResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
