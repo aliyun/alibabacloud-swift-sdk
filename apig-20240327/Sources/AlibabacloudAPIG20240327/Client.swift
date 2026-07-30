@@ -350,6 +350,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAiModelProviderWithOptions(_ request: CreateAiModelProviderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAiModelProviderResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             body["displayName"] = request.displayName ?? "";
@@ -365,6 +369,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -2499,6 +2504,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getGatewayQuotaRuleSubjectUsageWithOptions(_ gatewayId: String, _ ruleId: String, _ subjectId: String, _ request: GetGatewayQuotaRuleSubjectUsageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayQuotaRuleSubjectUsageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filterFailedRequests)) {
+            query["filterFailedRequests"] = request.filterFailedRequests!;
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
@@ -3572,6 +3580,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tagShrink)) {
             query["tag"] = request.tagShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["vpcId"] = request.vpcId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

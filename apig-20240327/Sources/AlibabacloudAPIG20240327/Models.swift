@@ -11550,6 +11550,68 @@ public class RiskCheckResults : Tea.TeaModel {
 }
 
 public class Service : Tea.TeaModel {
+    public class OutlierDetection : Tea.TeaModel {
+        public var baseEjectionTime: Int32?
+
+        public var enable: Bool?
+
+        public var failurePercentageMinimumHosts: Int32?
+
+        public var failurePercentageThreshold: Int32?
+
+        public var interval: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.baseEjectionTime != nil {
+                map["baseEjectionTime"] = self.baseEjectionTime!
+            }
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.failurePercentageMinimumHosts != nil {
+                map["failurePercentageMinimumHosts"] = self.failurePercentageMinimumHosts!
+            }
+            if self.failurePercentageThreshold != nil {
+                map["failurePercentageThreshold"] = self.failurePercentageThreshold!
+            }
+            if self.interval != nil {
+                map["interval"] = self.interval!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["baseEjectionTime"] as? Int32 {
+                self.baseEjectionTime = value
+            }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["failurePercentageMinimumHosts"] as? Int32 {
+                self.failurePercentageMinimumHosts = value
+            }
+            if let value = dict["failurePercentageThreshold"] as? Int32 {
+                self.failurePercentageThreshold = value
+            }
+            if let value = dict["interval"] as? Int32 {
+                self.interval = value
+            }
+        }
+    }
     public class Ports : Tea.TeaModel {
         public var name: String?
 
@@ -11694,6 +11756,8 @@ public class Service : Tea.TeaModel {
 
     public var createTimestamp: Int64?
 
+    public var dnsServers: [String]?
+
     public var expressType: String?
 
     public var gatewayId: String?
@@ -11704,6 +11768,8 @@ public class Service : Tea.TeaModel {
 
     public var healthStatus: String?
 
+    public var healthyPanicThreshold: Double?
+
     public var labelDetails: [LabelDetail]?
 
     public var modelProviderId: String?
@@ -11711,6 +11777,8 @@ public class Service : Tea.TeaModel {
     public var name: String?
 
     public var namespace: String?
+
+    public var outlierDetection: Service.OutlierDetection?
 
     public var outlierEndpoints: [String]?
 
@@ -11749,6 +11817,7 @@ public class Service : Tea.TeaModel {
         try self.agentServiceConfig?.validate()
         try self.aiServiceConfig?.validate()
         try self.healthCheck?.validate()
+        try self.outlierDetection?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -11765,6 +11834,9 @@ public class Service : Tea.TeaModel {
         if self.createTimestamp != nil {
             map["createTimestamp"] = self.createTimestamp!
         }
+        if self.dnsServers != nil {
+            map["dnsServers"] = self.dnsServers!
+        }
         if self.expressType != nil {
             map["expressType"] = self.expressType!
         }
@@ -11779,6 +11851,9 @@ public class Service : Tea.TeaModel {
         }
         if self.healthStatus != nil {
             map["healthStatus"] = self.healthStatus!
+        }
+        if self.healthyPanicThreshold != nil {
+            map["healthyPanicThreshold"] = self.healthyPanicThreshold!
         }
         if self.labelDetails != nil {
             var tmp : [Any] = []
@@ -11795,6 +11870,9 @@ public class Service : Tea.TeaModel {
         }
         if self.namespace != nil {
             map["namespace"] = self.namespace!
+        }
+        if self.outlierDetection != nil {
+            map["outlierDetection"] = self.outlierDetection?.toMap()
         }
         if self.outlierEndpoints != nil {
             map["outlierEndpoints"] = self.outlierEndpoints!
@@ -11861,6 +11939,9 @@ public class Service : Tea.TeaModel {
         if let value = dict["createTimestamp"] as? Int64 {
             self.createTimestamp = value
         }
+        if let value = dict["dnsServers"] as? [String] {
+            self.dnsServers = value
+        }
         if let value = dict["expressType"] as? String {
             self.expressType = value
         }
@@ -11877,6 +11958,9 @@ public class Service : Tea.TeaModel {
         }
         if let value = dict["healthStatus"] as? String {
             self.healthStatus = value
+        }
+        if let value = dict["healthyPanicThreshold"] as? Double {
+            self.healthyPanicThreshold = value
         }
         if let value = dict["labelDetails"] as? [Any?] {
             var tmp : [LabelDetail] = []
@@ -11899,6 +11983,11 @@ public class Service : Tea.TeaModel {
         }
         if let value = dict["namespace"] as? String {
             self.namespace = value
+        }
+        if let value = dict["outlierDetection"] as? [String: Any?] {
+            var model = Service.OutlierDetection()
+            model.fromMap(value)
+            self.outlierDetection = model
         }
         if let value = dict["outlierEndpoints"] as? [String] {
             self.outlierEndpoints = value
@@ -14810,6 +14899,8 @@ public class CreateAiModelProviderRequest : Tea.TeaModel {
 
     public var serviceIds: [String]?
 
+    public var clientToken: String?
+
     public override init() {
         super.init()
     }
@@ -14836,6 +14927,9 @@ public class CreateAiModelProviderRequest : Tea.TeaModel {
         if self.serviceIds != nil {
             map["serviceIds"] = self.serviceIds!
         }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
         return map
     }
 
@@ -14852,6 +14946,9 @@ public class CreateAiModelProviderRequest : Tea.TeaModel {
         }
         if let value = dict["serviceIds"] as? [String] {
             self.serviceIds = value
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
         }
     }
 }
@@ -15031,6 +15128,8 @@ public class CreateAiModelProviderResponseBody : Tea.TeaModel {
 
             public var source: String?
 
+            public var sourceURL: String?
+
             public var updateTime: String?
 
             public override init() {
@@ -15080,6 +15179,9 @@ public class CreateAiModelProviderResponseBody : Tea.TeaModel {
                 if self.source != nil {
                     map["source"] = self.source!
                 }
+                if self.sourceURL != nil {
+                    map["sourceURL"] = self.sourceURL!
+                }
                 if self.updateTime != nil {
                     map["updateTime"] = self.updateTime!
                 }
@@ -15128,6 +15230,9 @@ public class CreateAiModelProviderResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["source"] as? String {
                     self.source = value
+                }
+                if let value = dict["sourceURL"] as? String {
+                    self.sourceURL = value
                 }
                 if let value = dict["updateTime"] as? String {
                     self.updateTime = value
@@ -28588,6 +28693,8 @@ public class GetGatewayQuotaRuleResponse : Tea.TeaModel {
 }
 
 public class GetGatewayQuotaRuleSubjectUsageRequest : Tea.TeaModel {
+    public var filterFailedRequests: Bool?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -28606,6 +28713,9 @@ public class GetGatewayQuotaRuleSubjectUsageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.filterFailedRequests != nil {
+            map["filterFailedRequests"] = self.filterFailedRequests!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -28617,6 +28727,9 @@ public class GetGatewayQuotaRuleSubjectUsageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["filterFailedRequests"] as? Bool {
+            self.filterFailedRequests = value
+        }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -37437,6 +37550,8 @@ public class ListGatewaysRequest : Tea.TeaModel {
 
     public var tag: [ListGatewaysRequest.Tag]?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -37479,6 +37594,9 @@ public class ListGatewaysRequest : Tea.TeaModel {
             }
             map["tag"] = tmp
         }
+        if self.vpcId != nil {
+            map["vpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -37518,6 +37636,9 @@ public class ListGatewaysRequest : Tea.TeaModel {
             }
             self.tag = tmp
         }
+        if let value = dict["vpcId"] as? String {
+            self.vpcId = value
+        }
     }
 }
 
@@ -37537,6 +37658,8 @@ public class ListGatewaysShrinkRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var tagShrink: String?
+
+    public var vpcId: String?
 
     public override init() {
         super.init()
@@ -37576,6 +37699,9 @@ public class ListGatewaysShrinkRequest : Tea.TeaModel {
         if self.tagShrink != nil {
             map["tag"] = self.tagShrink!
         }
+        if self.vpcId != nil {
+            map["vpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -37604,6 +37730,9 @@ public class ListGatewaysShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["tag"] as? String {
             self.tagShrink = value
+        }
+        if let value = dict["vpcId"] as? String {
+            self.vpcId = value
         }
     }
 }
