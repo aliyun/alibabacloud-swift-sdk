@@ -481,6 +481,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.input)) {
             body["input"] = request.input ?? [:];
         }
+        if (!TeaUtils.Client.isUnset(request.pipelineName)) {
+            body["pipelineName"] = request.pipelineName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.planName)) {
             body["planName"] = request.planName ?? "";
         }
@@ -1562,11 +1565,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listDatasetsWithOptions(_ agentSpace: String, _ request: ListDatasetsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listDatasetsWithOptions(_ agentSpace: String, _ tmpReq: ListDatasetsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListDatasetsShrinkRequest = ListDatasetsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
+            request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "labels", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.datasetName)) {
             query["datasetName"] = request.datasetName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
+            query["labels"] = request.labelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
@@ -2549,6 +2560,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.input)) {
             body["input"] = request.input ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineName)) {
+            body["pipelineName"] = request.pipelineName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.planName)) {
             body["planName"] = request.planName ?? "";

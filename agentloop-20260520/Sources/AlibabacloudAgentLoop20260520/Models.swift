@@ -536,6 +536,8 @@ public class ExperimentPlanData : Tea.TeaModel {
 
     public var experimentType: String?
 
+    public var pipelineName: String?
+
     public var planId: String?
 
     public var planName: String?
@@ -575,6 +577,9 @@ public class ExperimentPlanData : Tea.TeaModel {
         if self.experimentType != nil {
             map["experimentType"] = self.experimentType!
         }
+        if self.pipelineName != nil {
+            map["pipelineName"] = self.pipelineName!
+        }
         if self.planId != nil {
             map["planId"] = self.planId!
         }
@@ -609,6 +614,9 @@ public class ExperimentPlanData : Tea.TeaModel {
         }
         if let value = dict["experimentType"] as? String {
             self.experimentType = value
+        }
+        if let value = dict["pipelineName"] as? String {
+            self.pipelineName = value
         }
         if let value = dict["planId"] as? String {
             self.planId = value
@@ -2772,6 +2780,8 @@ public class CreateExperimentPlanRequest : Tea.TeaModel {
 
     public var input: [String: Any]?
 
+    public var pipelineName: String?
+
     public var planName: String?
 
     public var querySql: String?
@@ -2817,6 +2827,9 @@ public class CreateExperimentPlanRequest : Tea.TeaModel {
         }
         if self.input != nil {
             map["input"] = self.input!
+        }
+        if self.pipelineName != nil {
+            map["pipelineName"] = self.pipelineName!
         }
         if self.planName != nil {
             map["planName"] = self.planName!
@@ -2869,6 +2882,9 @@ public class CreateExperimentPlanRequest : Tea.TeaModel {
         }
         if let value = dict["input"] as? [String: Any] {
             self.input = value
+        }
+        if let value = dict["pipelineName"] as? String {
+            self.pipelineName = value
         }
         if let value = dict["planName"] as? String {
             self.planName = value
@@ -6180,6 +6196,8 @@ public class GetDatasetResponseBody : Tea.TeaModel {
 
     public var isFavorite: Bool?
 
+    public var labels: [String: [String]]?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -6217,6 +6235,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         if self.isFavorite != nil {
             map["isFavorite"] = self.isFavorite!
         }
+        if self.labels != nil {
+            map["labels"] = self.labels!
+        }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
@@ -6252,6 +6273,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         }
         if let value = dict["isFavorite"] as? Bool {
             self.isFavorite = value
+        }
+        if let value = dict["labels"] as? [String: [String]] {
+            self.labels = value
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
@@ -7570,6 +7594,8 @@ public class GetExperimentPlanResponseBody : Tea.TeaModel {
 
     public var input: [String: Any]?
 
+    public var pipelineName: String?
+
     public var planId: String?
 
     public var planName: String?
@@ -7626,6 +7652,9 @@ public class GetExperimentPlanResponseBody : Tea.TeaModel {
         }
         if self.input != nil {
             map["input"] = self.input!
+        }
+        if self.pipelineName != nil {
+            map["pipelineName"] = self.pipelineName!
         }
         if self.planId != nil {
             map["planId"] = self.planId!
@@ -7693,6 +7722,9 @@ public class GetExperimentPlanResponseBody : Tea.TeaModel {
         }
         if let value = dict["input"] as? [String: Any] {
             self.input = value
+        }
+        if let value = dict["pipelineName"] as? String {
+            self.pipelineName = value
         }
         if let value = dict["planId"] as? String {
             self.planId = value
@@ -9951,6 +9983,8 @@ public class ListContextStoresResponse : Tea.TeaModel {
 public class ListDatasetsRequest : Tea.TeaModel {
     public var datasetName: String?
 
+    public var labels: [String: [String]]?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -9972,6 +10006,9 @@ public class ListDatasetsRequest : Tea.TeaModel {
         if self.datasetName != nil {
             map["datasetName"] = self.datasetName!
         }
+        if self.labels != nil {
+            map["labels"] = self.labels!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -9985,6 +10022,64 @@ public class ListDatasetsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["datasetName"] as? String {
             self.datasetName = value
+        }
+        if let value = dict["labels"] as? [String: [String]] {
+            self.labels = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class ListDatasetsShrinkRequest : Tea.TeaModel {
+    public var datasetName: String?
+
+    public var labelsShrink: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.datasetName != nil {
+            map["datasetName"] = self.datasetName!
+        }
+        if self.labelsShrink != nil {
+            map["labels"] = self.labelsShrink!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["datasetName"] as? String {
+            self.datasetName = value
+        }
+        if let value = dict["labels"] as? String {
+            self.labelsShrink = value
         }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
@@ -10006,6 +10101,8 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
         public var description_: String?
 
         public var isFavorite: Bool?
+
+        public var labels: [String: [String]]?
 
         public var regionId: String?
 
@@ -10040,6 +10137,9 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
             if self.isFavorite != nil {
                 map["isFavorite"] = self.isFavorite!
             }
+            if self.labels != nil {
+                map["labels"] = self.labels!
+            }
             if self.regionId != nil {
                 map["regionId"] = self.regionId!
             }
@@ -10065,6 +10165,9 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
             }
             if let value = dict["isFavorite"] as? Bool {
                 self.isFavorite = value
+            }
+            if let value = dict["labels"] as? [String: [String]] {
+                self.labels = value
             }
             if let value = dict["regionId"] as? String {
                 self.regionId = value
@@ -15086,6 +15189,8 @@ public class UpdateExperimentPlanRequest : Tea.TeaModel {
 
     public var input: [String: Any]?
 
+    public var pipelineName: String?
+
     public var planName: String?
 
     public var querySql: String?
@@ -15134,6 +15239,9 @@ public class UpdateExperimentPlanRequest : Tea.TeaModel {
         }
         if self.input != nil {
             map["input"] = self.input!
+        }
+        if self.pipelineName != nil {
+            map["pipelineName"] = self.pipelineName!
         }
         if self.planName != nil {
             map["planName"] = self.planName!
@@ -15189,6 +15297,9 @@ public class UpdateExperimentPlanRequest : Tea.TeaModel {
         }
         if let value = dict["input"] as? [String: Any] {
             self.input = value
+        }
+        if let value = dict["pipelineName"] as? String {
+            self.pipelineName = value
         }
         if let value = dict["planName"] as? String {
             self.planName = value
