@@ -1296,6 +1296,44 @@ public class ListSkillsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SupportAgentList : Tea.TeaModel {
+            public var tagId: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagId != nil {
+                    map["TagId"] = self.tagId!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TagId"] as? String {
+                    self.tagId = value
+                }
+                if let value = dict["TagValue"] as? String {
+                    self.tagValue = value
+                }
+            }
+        }
         public var apiKey: String?
 
         public var author: String?
@@ -1327,6 +1365,8 @@ public class ListSkillsResponseBody : Tea.TeaModel {
         public var sourceMarketName: String?
 
         public var supplierType: String?
+
+        public var supportAgentList: [ListSkillsResponseBody.Skills.SupportAgentList]?
 
         public override init() {
             super.init()
@@ -1394,6 +1434,13 @@ public class ListSkillsResponseBody : Tea.TeaModel {
             if self.supplierType != nil {
                 map["SupplierType"] = self.supplierType!
             }
+            if self.supportAgentList != nil {
+                var tmp : [Any] = []
+                for k in self.supportAgentList! {
+                    tmp.append(k.toMap())
+                }
+                map["SupportAgentList"] = tmp
+            }
             return map
         }
 
@@ -1456,6 +1503,19 @@ public class ListSkillsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SupplierType"] as? String {
                 self.supplierType = value
+            }
+            if let value = dict["SupportAgentList"] as? [Any?] {
+                var tmp : [ListSkillsResponseBody.Skills.SupportAgentList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListSkillsResponseBody.Skills.SupportAgentList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.supportAgentList = tmp
             }
         }
     }
