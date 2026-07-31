@@ -6081,9 +6081,23 @@ public class CreateCredentialProviderRequest : Tea.TeaModel {
             }
         }
         public class OAuthProviderConfig : Tea.TeaModel {
+            public var authorizationEndpoint: String?
+
+            public var authorizationFlow: String?
+
             public var clientId: String?
 
             public var clientSecret: String?
+
+            public var discoveryUrl: String?
+
+            public var issuer: String?
+
+            public var pkceChallengeMethod: String?
+
+            public var pkceEnabled: Bool?
+
+            public var providerVendor: String?
 
             public var scope: String?
 
@@ -6103,11 +6117,32 @@ public class CreateCredentialProviderRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.authorizationEndpoint != nil {
+                    map["AuthorizationEndpoint"] = self.authorizationEndpoint!
+                }
+                if self.authorizationFlow != nil {
+                    map["AuthorizationFlow"] = self.authorizationFlow!
+                }
                 if self.clientId != nil {
                     map["ClientId"] = self.clientId!
                 }
                 if self.clientSecret != nil {
                     map["ClientSecret"] = self.clientSecret!
+                }
+                if self.discoveryUrl != nil {
+                    map["DiscoveryUrl"] = self.discoveryUrl!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                if self.pkceChallengeMethod != nil {
+                    map["PkceChallengeMethod"] = self.pkceChallengeMethod!
+                }
+                if self.pkceEnabled != nil {
+                    map["PkceEnabled"] = self.pkceEnabled!
+                }
+                if self.providerVendor != nil {
+                    map["ProviderVendor"] = self.providerVendor!
                 }
                 if self.scope != nil {
                     map["Scope"] = self.scope!
@@ -6120,11 +6155,32 @@ public class CreateCredentialProviderRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AuthorizationEndpoint"] as? String {
+                    self.authorizationEndpoint = value
+                }
+                if let value = dict["AuthorizationFlow"] as? String {
+                    self.authorizationFlow = value
+                }
                 if let value = dict["ClientId"] as? String {
                     self.clientId = value
                 }
                 if let value = dict["ClientSecret"] as? String {
                     self.clientSecret = value
+                }
+                if let value = dict["DiscoveryUrl"] as? String {
+                    self.discoveryUrl = value
+                }
+                if let value = dict["Issuer"] as? String {
+                    self.issuer = value
+                }
+                if let value = dict["PkceChallengeMethod"] as? String {
+                    self.pkceChallengeMethod = value
+                }
+                if let value = dict["PkceEnabled"] as? Bool {
+                    self.pkceEnabled = value
+                }
+                if let value = dict["ProviderVendor"] as? String {
+                    self.providerVendor = value
                 }
                 if let value = dict["Scope"] as? String {
                     self.scope = value
@@ -28660,9 +28716,25 @@ public class GetCredentialProviderResponseBody : Tea.TeaModel {
                 }
             }
             public class OAuthProviderConfig : Tea.TeaModel {
+                public var authorizationEndpoint: String?
+
+                public var authorizationFlow: String?
+
                 public var clientId: String?
 
+                public var discoveryUrl: String?
+
+                public var issuer: String?
+
+                public var pkceChallengeMethod: String?
+
+                public var pkceEnabled: Bool?
+
+                public var providerVendor: String?
+
                 public var scope: String?
+
+                public var systemRedirectUri: String?
 
                 public var tokenEndpoint: String?
 
@@ -28680,11 +28752,35 @@ public class GetCredentialProviderResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.authorizationEndpoint != nil {
+                        map["AuthorizationEndpoint"] = self.authorizationEndpoint!
+                    }
+                    if self.authorizationFlow != nil {
+                        map["AuthorizationFlow"] = self.authorizationFlow!
+                    }
                     if self.clientId != nil {
                         map["ClientId"] = self.clientId!
                     }
+                    if self.discoveryUrl != nil {
+                        map["DiscoveryUrl"] = self.discoveryUrl!
+                    }
+                    if self.issuer != nil {
+                        map["Issuer"] = self.issuer!
+                    }
+                    if self.pkceChallengeMethod != nil {
+                        map["PkceChallengeMethod"] = self.pkceChallengeMethod!
+                    }
+                    if self.pkceEnabled != nil {
+                        map["PkceEnabled"] = self.pkceEnabled!
+                    }
+                    if self.providerVendor != nil {
+                        map["ProviderVendor"] = self.providerVendor!
+                    }
                     if self.scope != nil {
                         map["Scope"] = self.scope!
+                    }
+                    if self.systemRedirectUri != nil {
+                        map["SystemRedirectUri"] = self.systemRedirectUri!
                     }
                     if self.tokenEndpoint != nil {
                         map["TokenEndpoint"] = self.tokenEndpoint!
@@ -28694,11 +28790,35 @@ public class GetCredentialProviderResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AuthorizationEndpoint"] as? String {
+                        self.authorizationEndpoint = value
+                    }
+                    if let value = dict["AuthorizationFlow"] as? String {
+                        self.authorizationFlow = value
+                    }
                     if let value = dict["ClientId"] as? String {
                         self.clientId = value
                     }
+                    if let value = dict["DiscoveryUrl"] as? String {
+                        self.discoveryUrl = value
+                    }
+                    if let value = dict["Issuer"] as? String {
+                        self.issuer = value
+                    }
+                    if let value = dict["PkceChallengeMethod"] as? String {
+                        self.pkceChallengeMethod = value
+                    }
+                    if let value = dict["PkceEnabled"] as? Bool {
+                        self.pkceEnabled = value
+                    }
+                    if let value = dict["ProviderVendor"] as? String {
+                        self.providerVendor = value
+                    }
                     if let value = dict["Scope"] as? String {
                         self.scope = value
+                    }
+                    if let value = dict["SystemRedirectUri"] as? String {
+                        self.systemRedirectUri = value
                     }
                     if let value = dict["TokenEndpoint"] as? String {
                         self.tokenEndpoint = value
@@ -51141,9 +51261,25 @@ public class ListCredentialProvidersResponseBody : Tea.TeaModel {
                 }
             }
             public class OAuthProviderConfig : Tea.TeaModel {
+                public var authorizationEndpoint: String?
+
+                public var authorizationFlow: String?
+
                 public var clientId: String?
 
+                public var discoveryUrl: String?
+
+                public var issuer: String?
+
+                public var pkceChallengeMethod: String?
+
+                public var pkceEnabled: Bool?
+
+                public var providerVendor: String?
+
                 public var scope: String?
+
+                public var systemRedirectUri: String?
 
                 public var tokenEndpoint: String?
 
@@ -51161,11 +51297,35 @@ public class ListCredentialProvidersResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.authorizationEndpoint != nil {
+                        map["AuthorizationEndpoint"] = self.authorizationEndpoint!
+                    }
+                    if self.authorizationFlow != nil {
+                        map["AuthorizationFlow"] = self.authorizationFlow!
+                    }
                     if self.clientId != nil {
                         map["ClientId"] = self.clientId!
                     }
+                    if self.discoveryUrl != nil {
+                        map["DiscoveryUrl"] = self.discoveryUrl!
+                    }
+                    if self.issuer != nil {
+                        map["Issuer"] = self.issuer!
+                    }
+                    if self.pkceChallengeMethod != nil {
+                        map["PkceChallengeMethod"] = self.pkceChallengeMethod!
+                    }
+                    if self.pkceEnabled != nil {
+                        map["PkceEnabled"] = self.pkceEnabled!
+                    }
+                    if self.providerVendor != nil {
+                        map["ProviderVendor"] = self.providerVendor!
+                    }
                     if self.scope != nil {
                         map["Scope"] = self.scope!
+                    }
+                    if self.systemRedirectUri != nil {
+                        map["SystemRedirectUri"] = self.systemRedirectUri!
                     }
                     if self.tokenEndpoint != nil {
                         map["TokenEndpoint"] = self.tokenEndpoint!
@@ -51175,11 +51335,35 @@ public class ListCredentialProvidersResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AuthorizationEndpoint"] as? String {
+                        self.authorizationEndpoint = value
+                    }
+                    if let value = dict["AuthorizationFlow"] as? String {
+                        self.authorizationFlow = value
+                    }
                     if let value = dict["ClientId"] as? String {
                         self.clientId = value
                     }
+                    if let value = dict["DiscoveryUrl"] as? String {
+                        self.discoveryUrl = value
+                    }
+                    if let value = dict["Issuer"] as? String {
+                        self.issuer = value
+                    }
+                    if let value = dict["PkceChallengeMethod"] as? String {
+                        self.pkceChallengeMethod = value
+                    }
+                    if let value = dict["PkceEnabled"] as? Bool {
+                        self.pkceEnabled = value
+                    }
+                    if let value = dict["ProviderVendor"] as? String {
+                        self.providerVendor = value
+                    }
                     if let value = dict["Scope"] as? String {
                         self.scope = value
+                    }
+                    if let value = dict["SystemRedirectUri"] as? String {
+                        self.systemRedirectUri = value
                     }
                     if let value = dict["TokenEndpoint"] as? String {
                         self.tokenEndpoint = value
@@ -76983,7 +77167,21 @@ public class UpdateCredentialProviderRequest : Tea.TeaModel {
             }
         }
         public class OAuthProviderConfig : Tea.TeaModel {
+            public var authorizationEndpoint: String?
+
+            public var authorizationFlow: String?
+
             public var clientSecret: String?
+
+            public var discoveryUrl: String?
+
+            public var issuer: String?
+
+            public var pkceChallengeMethod: String?
+
+            public var pkceEnabled: Bool?
+
+            public var providerVendor: String?
 
             public var scope: String?
 
@@ -77003,8 +77201,29 @@ public class UpdateCredentialProviderRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.authorizationEndpoint != nil {
+                    map["AuthorizationEndpoint"] = self.authorizationEndpoint!
+                }
+                if self.authorizationFlow != nil {
+                    map["AuthorizationFlow"] = self.authorizationFlow!
+                }
                 if self.clientSecret != nil {
                     map["ClientSecret"] = self.clientSecret!
+                }
+                if self.discoveryUrl != nil {
+                    map["DiscoveryUrl"] = self.discoveryUrl!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                if self.pkceChallengeMethod != nil {
+                    map["PkceChallengeMethod"] = self.pkceChallengeMethod!
+                }
+                if self.pkceEnabled != nil {
+                    map["PkceEnabled"] = self.pkceEnabled!
+                }
+                if self.providerVendor != nil {
+                    map["ProviderVendor"] = self.providerVendor!
                 }
                 if self.scope != nil {
                     map["Scope"] = self.scope!
@@ -77017,8 +77236,29 @@ public class UpdateCredentialProviderRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AuthorizationEndpoint"] as? String {
+                    self.authorizationEndpoint = value
+                }
+                if let value = dict["AuthorizationFlow"] as? String {
+                    self.authorizationFlow = value
+                }
                 if let value = dict["ClientSecret"] as? String {
                     self.clientSecret = value
+                }
+                if let value = dict["DiscoveryUrl"] as? String {
+                    self.discoveryUrl = value
+                }
+                if let value = dict["Issuer"] as? String {
+                    self.issuer = value
+                }
+                if let value = dict["PkceChallengeMethod"] as? String {
+                    self.pkceChallengeMethod = value
+                }
+                if let value = dict["PkceEnabled"] as? Bool {
+                    self.pkceEnabled = value
+                }
+                if let value = dict["ProviderVendor"] as? String {
+                    self.providerVendor = value
                 }
                 if let value = dict["Scope"] as? String {
                     self.scope = value
