@@ -1634,6 +1634,8 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var templateId: String?
+
     public override init() {
         super.init()
     }
@@ -1672,6 +1674,9 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
         return map
     }
 
@@ -1700,6 +1705,9 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
         }
     }
 }
@@ -2385,6 +2393,8 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var templateId: String?
+
     public var timeRange: String?
 
     public override init() {
@@ -2431,6 +2441,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
         if self.timeRange != nil {
             map["TimeRange"] = self.timeRange!
         }
@@ -2468,6 +2481,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
         }
         if let value = dict["TimeRange"] as? String {
             self.timeRange = value
@@ -9706,6 +9722,10 @@ public class GetInspectionReportResponseBody : Tea.TeaModel {
 
     public var taskId: String?
 
+    public var templateId: String?
+
+    public var templateName: String?
+
     public override init() {
         super.init()
     }
@@ -9736,6 +9756,12 @@ public class GetInspectionReportResponseBody : Tea.TeaModel {
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
         return map
     }
 
@@ -9762,6 +9788,12 @@ public class GetInspectionReportResponseBody : Tea.TeaModel {
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
         }
     }
 }
@@ -11241,6 +11273,10 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
 
         public var taskId: String?
 
+        public var templateId: String?
+
+        public var templateName: String?
+
         public override init() {
             super.init()
         }
@@ -11282,6 +11318,12 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            if self.templateName != nil {
+                map["TemplateName"] = self.templateName!
+            }
             return map
         }
 
@@ -11313,6 +11355,12 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
+            }
+            if let value = dict["TemplateId"] as? String {
+                self.templateId = value
+            }
+            if let value = dict["TemplateName"] as? String {
+                self.templateName = value
             }
         }
     }
@@ -12671,6 +12719,10 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
 
         public var taskStartTime: String?
 
+        public var templateId: String?
+
+        public var templateName: String?
+
         public var timeRange: String?
 
         public override init() {
@@ -12720,6 +12772,12 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
             if self.taskStartTime != nil {
                 map["TaskStartTime"] = self.taskStartTime!
             }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            if self.templateName != nil {
+                map["TemplateName"] = self.templateName!
+            }
             if self.timeRange != nil {
                 map["TimeRange"] = self.timeRange!
             }
@@ -12760,6 +12818,12 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["TaskStartTime"] as? String {
                 self.taskStartTime = value
+            }
+            if let value = dict["TemplateId"] as? String {
+                self.templateId = value
+            }
+            if let value = dict["TemplateName"] as? String {
+                self.templateName = value
             }
             if let value = dict["TimeRange"] as? String {
                 self.timeRange = value
@@ -15448,6 +15512,8 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var templateId: String?
+
     public var timeRange: String?
 
     public override init() {
@@ -15488,6 +15554,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
         if self.timeRange != nil {
             map["TimeRange"] = self.timeRange!
         }
@@ -15519,6 +15588,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
         }
         if let value = dict["TimeRange"] as? String {
             self.timeRange = value
