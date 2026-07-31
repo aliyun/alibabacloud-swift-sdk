@@ -10570,6 +10570,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
             public var diskEncryption: Bool?
 
+            public var diskPreference: String?
+
             public var diskType: String?
 
             public var performanceLevel: String?
@@ -10598,6 +10600,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 if self.diskEncryption != nil {
                     map["diskEncryption"] = self.diskEncryption!
                 }
+                if self.diskPreference != nil {
+                    map["diskPreference"] = self.diskPreference!
+                }
                 if self.diskType != nil {
                     map["diskType"] = self.diskType!
                 }
@@ -10620,6 +10625,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["diskEncryption"] as? Bool {
                     self.diskEncryption = value
+                }
+                if let value = dict["diskPreference"] as? String {
+                    self.diskPreference = value
                 }
                 if let value = dict["diskType"] as? String {
                     self.diskType = value
@@ -13582,6 +13590,8 @@ public class EnableKibanaPvlNetworkRequest : Tea.TeaModel {
     }
     public var endpointName: String?
 
+    public var managedSecurityGroup: Bool?
+
     public var securityGroups: [String]?
 
     public var vSwitchIdsZone: [EnableKibanaPvlNetworkRequest.VSwitchIdsZone]?
@@ -13607,6 +13617,9 @@ public class EnableKibanaPvlNetworkRequest : Tea.TeaModel {
         if self.endpointName != nil {
             map["endpointName"] = self.endpointName!
         }
+        if self.managedSecurityGroup != nil {
+            map["managedSecurityGroup"] = self.managedSecurityGroup!
+        }
         if self.securityGroups != nil {
             map["securityGroups"] = self.securityGroups!
         }
@@ -13630,6 +13643,9 @@ public class EnableKibanaPvlNetworkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["endpointName"] as? String {
             self.endpointName = value
+        }
+        if let value = dict["managedSecurityGroup"] as? Bool {
+            self.managedSecurityGroup = value
         }
         if let value = dict["securityGroups"] as? [String] {
             self.securityGroups = value
@@ -27726,6 +27742,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
 
             public var diskEncryption: Bool?
 
+            public var diskPreference: String?
+
             public var diskType: String?
 
             public var performanceLevel: String?
@@ -27754,6 +27772,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
                 if self.diskEncryption != nil {
                     map["diskEncryption"] = self.diskEncryption!
                 }
+                if self.diskPreference != nil {
+                    map["diskPreference"] = self.diskPreference!
+                }
                 if self.diskType != nil {
                     map["diskType"] = self.diskType!
                 }
@@ -27776,6 +27797,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["diskEncryption"] as? Bool {
                     self.diskEncryption = value
+                }
+                if let value = dict["diskPreference"] as? String {
+                    self.diskPreference = value
                 }
                 if let value = dict["diskType"] as? String {
                     self.diskType = value
@@ -29573,6 +29597,8 @@ public class ListKibanaPvlNetworkResponseBody : Tea.TeaModel {
 
         public var endpointStatus: String?
 
+        public var managedSecurityGroup: Bool?
+
         public var pvlId: String?
 
         public var securityGroups: [String]?
@@ -29607,6 +29633,9 @@ public class ListKibanaPvlNetworkResponseBody : Tea.TeaModel {
             if self.endpointStatus != nil {
                 map["endpointStatus"] = self.endpointStatus!
             }
+            if self.managedSecurityGroup != nil {
+                map["managedSecurityGroup"] = self.managedSecurityGroup!
+            }
             if self.pvlId != nil {
                 map["pvlId"] = self.pvlId!
             }
@@ -29639,6 +29668,9 @@ public class ListKibanaPvlNetworkResponseBody : Tea.TeaModel {
             }
             if let value = dict["endpointStatus"] as? String {
                 self.endpointStatus = value
+            }
+            if let value = dict["managedSecurityGroup"] as? Bool {
+                self.managedSecurityGroup = value
             }
             if let value = dict["pvlId"] as? String {
                 self.pvlId = value
@@ -32523,9 +32555,13 @@ public class ListSnapshotReposByInstanceIdResponse : Tea.TeaModel {
 }
 
 public class ListStatsEventRecordsRequest : Tea.TeaModel {
+    public var endTime: Int64?
+
     public var eventType: String?
 
     public var level: String?
+
+    public var startTime: Int64?
 
     public var status: String?
 
@@ -32543,11 +32579,17 @@ public class ListStatsEventRecordsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
         if self.eventType != nil {
             map["eventType"] = self.eventType!
         }
         if self.level != nil {
             map["level"] = self.level!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
         }
         if self.status != nil {
             map["status"] = self.status!
@@ -32557,11 +32599,17 @@ public class ListStatsEventRecordsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["endTime"] as? Int64 {
+            self.endTime = value
+        }
         if let value = dict["eventType"] as? String {
             self.eventType = value
         }
         if let value = dict["level"] as? String {
             self.level = value
+        }
+        if let value = dict["startTime"] as? Int64 {
+            self.startTime = value
         }
         if let value = dict["status"] as? String {
             self.status = value

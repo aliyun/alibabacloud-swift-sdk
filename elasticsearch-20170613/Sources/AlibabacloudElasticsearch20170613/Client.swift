@@ -12,9 +12,11 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointMap = [
             "us-west-1": "elasticsearch.us-west-1.aliyuncs.com",
             "us-east-1": "elasticsearch.us-east-1.aliyuncs.com",
+            "na-south-1": "elasticsearch.na-south-1.aliyuncs.com",
             "eu-west-1": "elasticsearch.eu-west-1.aliyuncs.com",
             "eu-central-1": "elasticsearch.eu-central-1.aliyuncs.com",
             "cn-zhangjiakou": "elasticsearch.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "elasticsearch.cn-wulanchabu-gic-1.aliyuncs.com",
             "cn-wulanchabu": "elasticsearch.cn-wulanchabu.aliyuncs.com",
             "cn-shenzhen": "elasticsearch.cn-shenzhen.aliyuncs.com",
             "cn-shanghai-finance-1": "elasticsearch.cn-shanghai-finance-1.aliyuncs.com",
@@ -27,11 +29,11 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-guangzhou": "elasticsearch.cn-guangzhou.aliyuncs.com",
             "cn-chengdu": "elasticsearch.cn-chengdu.aliyuncs.com",
             "cn-beijing": "elasticsearch.cn-beijing.aliyuncs.com",
+            "ap-southeast-7": "elasticsearch.ap-southeast-7.aliyuncs.com",
             "ap-southeast-5": "elasticsearch.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "elasticsearch.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "elasticsearch.ap-southeast-2.aliyuncs.com",
             "ap-southeast-1": "elasticsearch.ap-southeast-1.aliyuncs.com",
-            "ap-south-1": "elasticsearch.ap-south-1.aliyuncs.com",
+            "ap-northeast-2": "elasticsearch.ap-northeast-2.aliyuncs.com",
             "ap-northeast-1": "elasticsearch.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
@@ -1886,6 +1888,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.endpointName)) {
             body["endpointName"] = request.endpointName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managedSecurityGroup)) {
+            body["managedSecurityGroup"] = request.managedSecurityGroup!;
         }
         if (!TeaUtils.Client.isUnset(request.securityGroups)) {
             body["securityGroups"] = request.securityGroups ?? [];
@@ -4306,11 +4311,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listStatsEventRecordsWithOptions(_ request: ListStatsEventRecordsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListStatsEventRecordsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.eventType)) {
             query["eventType"] = request.eventType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.level)) {
             query["level"] = request.level ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["status"] = request.status ?? "";
