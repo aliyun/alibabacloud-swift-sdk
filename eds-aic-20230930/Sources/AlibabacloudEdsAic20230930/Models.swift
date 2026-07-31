@@ -14908,6 +14908,44 @@ public class DescribeJVSInstanceRequest : Tea.TeaModel {
 
 public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class AgentVersion : Tea.TeaModel {
+            public var upgradeStatus: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.upgradeStatus != nil {
+                    map["UpgradeStatus"] = self.upgradeStatus!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UpgradeStatus"] as? String {
+                    self.upgradeStatus = value
+                }
+                if let value = dict["Version"] as? String {
+                    self.version = value
+                }
+            }
+        }
         public class CreditConfig : Tea.TeaModel {
             public var creditLimit: Int64?
 
@@ -14943,6 +14981,76 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LimitPeriod"] as? String {
                     self.limitPeriod = value
+                }
+            }
+        }
+        public class InstalledSkills : Tea.TeaModel {
+            public var description_: String?
+
+            public var iconUrl: String?
+
+            public var installedAt: String?
+
+            public var skillId: String?
+
+            public var skillName: String?
+
+            public var skillType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.iconUrl != nil {
+                    map["IconUrl"] = self.iconUrl!
+                }
+                if self.installedAt != nil {
+                    map["InstalledAt"] = self.installedAt!
+                }
+                if self.skillId != nil {
+                    map["SkillId"] = self.skillId!
+                }
+                if self.skillName != nil {
+                    map["SkillName"] = self.skillName!
+                }
+                if self.skillType != nil {
+                    map["SkillType"] = self.skillType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["IconUrl"] as? String {
+                    self.iconUrl = value
+                }
+                if let value = dict["InstalledAt"] as? String {
+                    self.installedAt = value
+                }
+                if let value = dict["SkillId"] as? String {
+                    self.skillId = value
+                }
+                if let value = dict["SkillName"] as? String {
+                    self.skillName = value
+                }
+                if let value = dict["SkillType"] as? String {
+                    self.skillType = value
                 }
             }
         }
@@ -14984,11 +15092,15 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var agentVersion: DescribeJVSInstanceResponseBody.Data.AgentVersion?
+
         public var createTime: String?
 
         public var creditConfig: [DescribeJVSInstanceResponseBody.Data.CreditConfig]?
 
         public var expireTime: String?
+
+        public var installedSkills: [DescribeJVSInstanceResponseBody.Data.InstalledSkills]?
 
         public var instanceId: String?
 
@@ -15010,10 +15122,14 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.agentVersion?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentVersion != nil {
+                map["AgentVersion"] = self.agentVersion?.toMap()
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -15026,6 +15142,13 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
+            }
+            if self.installedSkills != nil {
+                var tmp : [Any] = []
+                for k in self.installedSkills! {
+                    tmp.append(k.toMap())
+                }
+                map["InstalledSkills"] = tmp
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -15051,6 +15174,11 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentVersion"] as? [String: Any?] {
+                var model = DescribeJVSInstanceResponseBody.Data.AgentVersion()
+                model.fromMap(value)
+                self.agentVersion = model
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -15069,6 +15197,19 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExpireTime"] as? String {
                 self.expireTime = value
+            }
+            if let value = dict["InstalledSkills"] as? [Any?] {
+                var tmp : [DescribeJVSInstanceResponseBody.Data.InstalledSkills] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeJVSInstanceResponseBody.Data.InstalledSkills()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.installedSkills = tmp
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -15103,6 +15244,8 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var pendingUpgradeCount: Int32?
+
     public var requestId: String?
 
     public var totalCount: Int32?
@@ -15134,6 +15277,9 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.pendingUpgradeCount != nil {
+            map["PendingUpgradeCount"] = self.pendingUpgradeCount!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -15163,6 +15309,9 @@ public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["PendingUpgradeCount"] as? Int32 {
+            self.pendingUpgradeCount = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -23784,6 +23933,8 @@ public class ModifyJVSInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var agentVersion: String?
+
     public var applyToAll: Bool?
 
     public var creditConfig: [ModifyJVSInstanceRequest.CreditConfig]?
@@ -23808,6 +23959,9 @@ public class ModifyJVSInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentVersion != nil {
+            map["AgentVersion"] = self.agentVersion!
+        }
         if self.applyToAll != nil {
             map["ApplyToAll"] = self.applyToAll!
         }
@@ -23832,6 +23986,9 @@ public class ModifyJVSInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentVersion"] as? String {
+            self.agentVersion = value
+        }
         if let value = dict["ApplyToAll"] as? Bool {
             self.applyToAll = value
         }

@@ -3862,6 +3862,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyJVSInstanceWithOptions(_ request: ModifyJVSInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyJVSInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentVersion)) {
+            query["AgentVersion"] = request.agentVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.applyToAll)) {
             query["ApplyToAll"] = request.applyToAll!;
         }
