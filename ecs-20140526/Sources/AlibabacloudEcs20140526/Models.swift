@@ -15208,6 +15208,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var repairItem: [String]?
+
     public var repairMode: String?
 
     public var resourceGroupId: String?
@@ -15299,6 +15301,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.repairItem != nil {
+            map["RepairItem"] = self.repairItem!
         }
         if self.repairMode != nil {
             map["RepairMode"] = self.repairMode!
@@ -15398,6 +15403,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["RepairItem"] as? [String] {
+            self.repairItem = value
         }
         if let value = dict["RepairMode"] as? String {
             self.repairMode = value
@@ -17149,6 +17157,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
     }
     public class SecurityOptions : Tea.TeaModel {
+        public var enableSecureBoot: Bool?
+
         public var trustedSystemMode: String?
 
         public override init() {
@@ -17165,6 +17175,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableSecureBoot != nil {
+                map["EnableSecureBoot"] = self.enableSecureBoot!
+            }
             if self.trustedSystemMode != nil {
                 map["TrustedSystemMode"] = self.trustedSystemMode!
             }
@@ -17173,6 +17186,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EnableSecureBoot"] as? Bool {
+                self.enableSecureBoot = value
+            }
             if let value = dict["TrustedSystemMode"] as? String {
                 self.trustedSystemMode = value
             }
@@ -19462,6 +19478,8 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enablePrimaryIPv6: Bool?
+
     public var enhancedNetwork: CreateNetworkInterfaceRequest.EnhancedNetwork?
 
     public var instanceType: String?
@@ -19553,6 +19571,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enablePrimaryIPv6 != nil {
+            map["EnablePrimaryIPv6"] = self.enablePrimaryIPv6!
         }
         if self.enhancedNetwork != nil {
             map["EnhancedNetwork"] = self.enhancedNetwork?.toMap()
@@ -19669,6 +19690,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnablePrimaryIPv6"] as? Bool {
+            self.enablePrimaryIPv6 = value
         }
         if let value = dict["EnhancedNetwork"] as? [String: Any?] {
             var model = CreateNetworkInterfaceRequest.EnhancedNetwork()
@@ -19930,6 +19954,8 @@ public class CreateNetworkInterfaceResponseBody : Tea.TeaModel {
         public class Ipv6Set : Tea.TeaModel {
             public var ipv6Address: String?
 
+            public var primary: Bool?
+
             public override init() {
                 super.init()
             }
@@ -19947,6 +19973,9 @@ public class CreateNetworkInterfaceResponseBody : Tea.TeaModel {
                 if self.ipv6Address != nil {
                     map["Ipv6Address"] = self.ipv6Address!
                 }
+                if self.primary != nil {
+                    map["Primary"] = self.primary!
+                }
                 return map
             }
 
@@ -19954,6 +19983,9 @@ public class CreateNetworkInterfaceResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["Ipv6Address"] as? String {
                     self.ipv6Address = value
+                }
+                if let value = dict["Primary"] as? Bool {
+                    self.primary = value
                 }
             }
         }
@@ -55105,6 +55137,36 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RepairItems : Tea.TeaModel {
+                public var repairItem: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.repairItem != nil {
+                        map["RepairItem"] = self.repairItem!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["RepairItem"] as? [String] {
+                        self.repairItem = value
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -55251,6 +55313,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
             public var nvmeSupport: String?
 
+            public var repairItems: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.RepairItems?
+
             public var repairMode: String?
 
             public var resourceGroupId: String?
@@ -55279,6 +55343,7 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 try self.advancedOptions?.validate()
                 try self.imageOptions?.validate()
                 try self.importImageOptions?.validate()
+                try self.repairItems?.validate()
                 try self.tags?.validate()
                 try self.toRegionIds?.validate()
             }
@@ -55335,6 +55400,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if self.nvmeSupport != nil {
                     map["NvmeSupport"] = self.nvmeSupport!
+                }
+                if self.repairItems != nil {
+                    map["RepairItems"] = self.repairItems?.toMap()
                 }
                 if self.repairMode != nil {
                     map["RepairMode"] = self.repairMode!
@@ -55420,6 +55488,11 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NvmeSupport"] as? String {
                     self.nvmeSupport = value
+                }
+                if let value = dict["RepairItems"] as? [String: Any?] {
+                    var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.RepairItems()
+                    model.fromMap(value)
+                    self.repairItems = model
                 }
                 if let value = dict["RepairMode"] as? String {
                     self.repairMode = value
@@ -58250,6 +58323,36 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SecurityOptions : Tea.TeaModel {
+        public var enableSecureBoot: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableSecureBoot != nil {
+                map["EnableSecureBoot"] = self.enableSecureBoot!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableSecureBoot"] as? Bool {
+                self.enableSecureBoot = value
+            }
+        }
+    }
     public class VpcAttributes : Tea.TeaModel {
         public class PrivateIpAddress : Tea.TeaModel {
             public var ipAddress: [String]?
@@ -58395,6 +58498,8 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var securityGroupIds: DescribeInstanceAttributeResponseBody.SecurityGroupIds?
 
+    public var securityOptions: DescribeInstanceAttributeResponseBody.SecurityOptions?
+
     public var serialNumber: String?
 
     public var status: String?
@@ -58424,6 +58529,7 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         try self.operationLocks?.validate()
         try self.publicIpAddress?.validate()
         try self.securityGroupIds?.validate()
+        try self.securityOptions?.validate()
         try self.vpcAttributes?.validate()
     }
 
@@ -58515,6 +58621,9 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds?.toMap()
+        }
+        if self.securityOptions != nil {
+            map["SecurityOptions"] = self.securityOptions?.toMap()
         }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
@@ -58639,6 +58748,11 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             var model = DescribeInstanceAttributeResponseBody.SecurityGroupIds()
             model.fromMap(value)
             self.securityGroupIds = model
+        }
+        if let value = dict["SecurityOptions"] as? [String: Any?] {
+            var model = DescribeInstanceAttributeResponseBody.SecurityOptions()
+            model.fromMap(value)
+            self.securityOptions = model
         }
         if let value = dict["SerialNumber"] as? String {
             self.serialNumber = value
@@ -63741,6 +63855,36 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SecurityOptions : Tea.TeaModel {
+                public var secureBootSupport: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.secureBootSupport != nil {
+                        map["SecureBootSupport"] = self.secureBootSupport!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecureBootSupport"] as? String {
+                        self.secureBootSupport = value
+                    }
+                }
+            }
             public class SupportedBootModes : Tea.TeaModel {
                 public var supportedBootMode: [String]?
 
@@ -63857,6 +64001,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public var secondaryEniQueueNumber: Int32?
 
+            public var securityOptions: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.SecurityOptions?
+
             public var supportedBootModes: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.SupportedBootModes?
 
             public var totalEniQueueQuantity: Int32?
@@ -63877,6 +64023,7 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 try self.enhancedNetwork?.validate()
                 try self.networkCards?.validate()
                 try self.networkInfo?.validate()
+                try self.securityOptions?.validate()
                 try self.supportedBootModes?.validate()
             }
 
@@ -64010,6 +64157,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if self.secondaryEniQueueNumber != nil {
                     map["SecondaryEniQueueNumber"] = self.secondaryEniQueueNumber!
+                }
+                if self.securityOptions != nil {
+                    map["SecurityOptions"] = self.securityOptions?.toMap()
                 }
                 if self.supportedBootModes != nil {
                     map["SupportedBootModes"] = self.supportedBootModes?.toMap()
@@ -64162,6 +64312,11 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SecondaryEniQueueNumber"] as? Int32 {
                     self.secondaryEniQueueNumber = value
+                }
+                if let value = dict["SecurityOptions"] as? [String: Any?] {
+                    var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.SecurityOptions()
+                    model.fromMap(value)
+                    self.securityOptions = model
                 }
                 if let value = dict["SupportedBootModes"] as? [String: Any?] {
                     var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.SupportedBootModes()
@@ -65585,6 +65740,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                         public class Ipv6Set : Tea.TeaModel {
                             public var ipv6Address: String?
 
+                            public var primary: Bool?
+
                             public override init() {
                                 super.init()
                             }
@@ -65602,6 +65759,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                                 if self.ipv6Address != nil {
                                     map["Ipv6Address"] = self.ipv6Address!
                                 }
+                                if self.primary != nil {
+                                    map["Primary"] = self.primary!
+                                }
                                 return map
                             }
 
@@ -65609,6 +65769,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                                 guard let dict else { return }
                                 if let value = dict["Ipv6Address"] as? String {
                                     self.ipv6Address = value
+                                }
+                                if let value = dict["Primary"] as? Bool {
+                                    self.primary = value
                                 }
                             }
                         }
@@ -66119,6 +66282,36 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SecurityOptions : Tea.TeaModel {
+                public var enableSecureBoot: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enableSecureBoot != nil {
+                        map["EnableSecureBoot"] = self.enableSecureBoot!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EnableSecureBoot"] as? Bool {
+                        self.enableSecureBoot = value
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -66400,6 +66593,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var securityGroupIds: DescribeInstancesResponseBody.Instances.Instance.SecurityGroupIds?
 
+            public var securityOptions: DescribeInstancesResponseBody.Instances.Instance.SecurityOptions?
+
             public var serialNumber: String?
 
             public var spotDuration: Int32?
@@ -66451,6 +66646,7 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 try self.publicIpAddress?.validate()
                 try self.rdmaIpAddress?.validate()
                 try self.securityGroupIds?.validate()
+                try self.securityOptions?.validate()
                 try self.tags?.validate()
                 try self.vpcAttributes?.validate()
             }
@@ -66624,6 +66820,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.securityGroupIds != nil {
                     map["SecurityGroupIds"] = self.securityGroupIds?.toMap()
+                }
+                if self.securityOptions != nil {
+                    map["SecurityOptions"] = self.securityOptions?.toMap()
                 }
                 if self.serialNumber != nil {
                     map["SerialNumber"] = self.serialNumber!
@@ -66867,6 +67066,11 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.Instance.SecurityGroupIds()
                     model.fromMap(value)
                     self.securityGroupIds = model
+                }
+                if let value = dict["SecurityOptions"] as? [String: Any?] {
+                    var model = DescribeInstancesResponseBody.Instances.Instance.SecurityOptions()
+                    model.fromMap(value)
+                    self.securityOptions = model
                 }
                 if let value = dict["SerialNumber"] as? String {
                     self.serialNumber = value
@@ -74145,6 +74349,8 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         public class Ipv6Set : Tea.TeaModel {
             public var ipv6Address: String?
 
+            public var primary: Bool?
+
             public override init() {
                 super.init()
             }
@@ -74162,6 +74368,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
                 if self.ipv6Address != nil {
                     map["Ipv6Address"] = self.ipv6Address!
                 }
+                if self.primary != nil {
+                    map["Primary"] = self.primary!
+                }
                 return map
             }
 
@@ -74169,6 +74378,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["Ipv6Address"] as? String {
                     self.ipv6Address = value
+                }
+                if let value = dict["Primary"] as? Bool {
+                    self.primary = value
                 }
             }
         }
@@ -75894,6 +76106,8 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                 public class Ipv6Set : Tea.TeaModel {
                     public var ipv6Address: String?
 
+                    public var primary: Bool?
+
                     public override init() {
                         super.init()
                     }
@@ -75911,6 +76125,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                         if self.ipv6Address != nil {
                             map["Ipv6Address"] = self.ipv6Address!
                         }
+                        if self.primary != nil {
+                            map["Primary"] = self.primary!
+                        }
                         return map
                     }
 
@@ -75918,6 +76135,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                         guard let dict else { return }
                         if let value = dict["Ipv6Address"] as? String {
                             self.ipv6Address = value
+                        }
+                        if let value = dict["Primary"] as? Bool {
+                            self.primary = value
                         }
                     }
                 }
@@ -115331,6 +115551,8 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enablePrimaryIPv6: Bool?
+
     public var enhancedNetwork: ModifyNetworkInterfaceAttributeRequest.EnhancedNetwork?
 
     public var networkInterfaceId: String?
@@ -115384,6 +115606,9 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enablePrimaryIPv6 != nil {
+            map["EnablePrimaryIPv6"] = self.enablePrimaryIPv6!
         }
         if self.enhancedNetwork != nil {
             map["EnhancedNetwork"] = self.enhancedNetwork?.toMap()
@@ -115442,6 +115667,9 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnablePrimaryIPv6"] as? Bool {
+            self.enablePrimaryIPv6 = value
         }
         if let value = dict["EnhancedNetwork"] as? [String: Any?] {
             var model = ModifyNetworkInterfaceAttributeRequest.EnhancedNetwork()
@@ -128640,6 +128868,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
         public var trustedSystemMode: String?
 
+        public var enableSecureBoot: Bool?
+
         public override init() {
             super.init()
         }
@@ -128660,6 +128890,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             if self.trustedSystemMode != nil {
                 map["TrustedSystemMode"] = self.trustedSystemMode!
             }
+            if self.enableSecureBoot != nil {
+                map["EnableSecureBoot"] = self.enableSecureBoot!
+            }
             return map
         }
 
@@ -128670,6 +128903,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
             if let value = dict["TrustedSystemMode"] as? String {
                 self.trustedSystemMode = value
+            }
+            if let value = dict["EnableSecureBoot"] as? Bool {
+                self.enableSecureBoot = value
             }
         }
     }

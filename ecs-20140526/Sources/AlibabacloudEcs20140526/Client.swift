@@ -78,9 +78,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-southeast-6": "ecs.ap-southeast-6.aliyuncs.com",
             "ap-southeast-5": "ecs.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "ecs.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "ecs.ap-southeast-2.aliyuncs.com",
             "ap-southeast-1": "ecs.ap-southeast-1.aliyuncs.com",
-            "ap-south-1": "ecs.ap-south-1.aliyuncs.com",
             "ap-northeast-2": "ecs.ap-northeast-2.aliyuncs.com",
             "ap-northeast-1": "ecs.ap-northeast-1.aliyuncs.com"
         ]
@@ -3155,6 +3153,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.repairItem)) {
+            query["RepairItem"] = request.repairItem ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.repairMode)) {
             query["RepairMode"] = request.repairMode ?? "";
         }
@@ -3934,6 +3935,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enablePrimaryIPv6)) {
+            query["EnablePrimaryIPv6"] = request.enablePrimaryIPv6!;
         }
         if (!TeaUtils.Client.isUnset(request.enhancedNetwork)) {
             query["EnhancedNetwork"] = request.enhancedNetwork!;
@@ -19023,6 +19027,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enablePrimaryIPv6)) {
+            query["EnablePrimaryIPv6"] = request.enablePrimaryIPv6!;
         }
         if (!TeaUtils.Client.isUnset(request.enhancedNetwork)) {
             query["EnhancedNetwork"] = request.enhancedNetwork!;
