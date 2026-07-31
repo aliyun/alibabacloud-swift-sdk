@@ -17173,6 +17173,8 @@ public class DescribeAccountsResponse : Tea.TeaModel {
 }
 
 public class DescribeAdbMySqlColumnsRequest : Tea.TeaModel {
+    public var catalog: String?
+
     public var DBClusterId: String?
 
     public var regionId: String?
@@ -17195,6 +17197,9 @@ public class DescribeAdbMySqlColumnsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.catalog != nil {
+            map["Catalog"] = self.catalog!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -17212,6 +17217,9 @@ public class DescribeAdbMySqlColumnsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Catalog"] as? String {
+            self.catalog = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
@@ -17661,6 +17669,8 @@ public class DescribeAdbMySqlIndexesResponse : Tea.TeaModel {
 }
 
 public class DescribeAdbMySqlSchemasRequest : Tea.TeaModel {
+    public var catalog: String?
+
     public var DBClusterId: String?
 
     public var regionId: String?
@@ -17679,6 +17689,9 @@ public class DescribeAdbMySqlSchemasRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.catalog != nil {
+            map["Catalog"] = self.catalog!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -17690,6 +17703,9 @@ public class DescribeAdbMySqlSchemasRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Catalog"] as? String {
+            self.catalog = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
@@ -18110,6 +18126,8 @@ public class DescribeAdbMySqlTableMetaResponse : Tea.TeaModel {
 }
 
 public class DescribeAdbMySqlTablesRequest : Tea.TeaModel {
+    public var catalog: String?
+
     public var DBClusterId: String?
 
     public var regionId: String?
@@ -18130,6 +18148,9 @@ public class DescribeAdbMySqlTablesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.catalog != nil {
+            map["Catalog"] = self.catalog!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -18144,6 +18165,9 @@ public class DescribeAdbMySqlTablesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Catalog"] as? String {
+            self.catalog = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }

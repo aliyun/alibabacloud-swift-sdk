@@ -2766,6 +2766,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAdbMySqlColumnsWithOptions(_ request: DescribeAdbMySqlColumnsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAdbMySqlColumnsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalog)) {
+            query["Catalog"] = request.catalog ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
@@ -2846,6 +2849,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAdbMySqlSchemasWithOptions(_ request: DescribeAdbMySqlSchemasRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAdbMySqlSchemasResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalog)) {
+            query["Catalog"] = request.catalog ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
@@ -2920,6 +2926,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAdbMySqlTablesWithOptions(_ request: DescribeAdbMySqlTablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAdbMySqlTablesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalog)) {
+            query["Catalog"] = request.catalog ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
