@@ -780,6 +780,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVoiceWithOptions(_ request: ListVoiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVoiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["ModelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVoice",
+            "version": "2025-09-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVoiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVoice(_ request: ListVoiceRequest) async throws -> ListVoiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVoiceWithOptions(request as! ListVoiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mmAppBindingMcpWithOptions(_ tmpReq: MmAppBindingMcpRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MmAppBindingMcpResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: MmAppBindingMcpShrinkRequest = MmAppBindingMcpShrinkRequest([:])
@@ -1107,6 +1141,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func querySelectOptionsWithOptions(_ request: QuerySelectOptionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySelectOptionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QuerySelectOptions",
+            "version": "2025-09-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QuerySelectOptionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func querySelectOptions(_ request: QuerySelectOptionsRequest) async throws -> QuerySelectOptionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await querySelectOptionsWithOptions(request as! QuerySelectOptionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryUserProfileWithOptions(_ request: QueryUserProfileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryUserProfileResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1321,6 +1386,72 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateMmApp(_ request: UpdateMmAppRequest) async throws -> UpdateMmAppResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateMmAppWithOptions(request as! UpdateMmAppRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmAppAndBindingWithOptions(_ tmpReq: UpdateMmAppAndBindingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMmAppAndBindingResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMmAppAndBindingShrinkRequest = UpdateMmAppAndBindingShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.bindingConfig)) {
+            request.bindingConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.bindingConfig, "BindingConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.conversationConfig)) {
+            request.conversationConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.conversationConfig, "ConversationConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.memoryConfig)) {
+            request.memoryConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.memoryConfig, "MemoryConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.modelConfig)) {
+            request.modelConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.modelConfig, "ModelConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            query["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bindingConfigShrink)) {
+            query["BindingConfig"] = request.bindingConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conversationConfigShrink)) {
+            query["ConversationConfig"] = request.conversationConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryConfigShrink)) {
+            query["MemoryConfig"] = request.memoryConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelConfigShrink)) {
+            query["ModelConfig"] = request.modelConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            query["Prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMmAppAndBinding",
+            "version": "2025-09-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMmAppAndBindingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMmAppAndBinding(_ request: UpdateMmAppAndBindingRequest) async throws -> UpdateMmAppAndBindingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateMmAppAndBindingWithOptions(request as! UpdateMmAppAndBindingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
