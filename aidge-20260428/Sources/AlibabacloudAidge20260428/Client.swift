@@ -817,6 +817,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func prepaidTextTranslateWithOptions(_ tmpReq: PrepaidTextTranslateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PrepaidTextTranslateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PrepaidTextTranslateShrinkRequest = PrepaidTextTranslateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.sourceTextList)) {
+            request.sourceTextListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceTextList, "SourceTextList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizName)) {
+            body["BizName"] = request.bizName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formatType)) {
+            body["FormatType"] = request.formatType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.glossary)) {
+            body["Glossary"] = request.glossary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            body["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTextListShrink)) {
+            body["SourceTextList"] = request.sourceTextListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translateScene)) {
+            body["TranslateScene"] = request.translateScene ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PrepaidTextTranslate",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PrepaidTextTranslateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func prepaidTextTranslate(_ request: PrepaidTextTranslateRequest) async throws -> PrepaidTextTranslateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await prepaidTextTranslateWithOptions(request as! PrepaidTextTranslateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryAsyncTaskResultWithOptions(_ request: QueryAsyncTaskResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAsyncTaskResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
