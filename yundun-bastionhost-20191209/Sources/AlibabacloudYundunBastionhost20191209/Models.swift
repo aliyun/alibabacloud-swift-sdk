@@ -7978,6 +7978,10 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aiCreditStatus: String?
+
+        public var aiOpsModule: String?
+
         public var appOperationModule: String?
 
         public var authorizedSecurityGroups: [String]?
@@ -8068,6 +8072,12 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiCreditStatus != nil {
+                map["AiCreditStatus"] = self.aiCreditStatus!
+            }
+            if self.aiOpsModule != nil {
+                map["AiOpsModule"] = self.aiOpsModule!
+            }
             if self.appOperationModule != nil {
                 map["AppOperationModule"] = self.appOperationModule!
             }
@@ -8195,6 +8205,12 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiCreditStatus"] as? String {
+                self.aiCreditStatus = value
+            }
+            if let value = dict["AiOpsModule"] as? String {
+                self.aiOpsModule = value
+            }
             if let value = dict["AppOperationModule"] as? String {
                 self.appOperationModule = value
             }
