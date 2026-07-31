@@ -57,6 +57,8 @@ public class CreateMultiOrderRequest : Tea.TeaModel {
 
         public var instanceIds: [String]?
 
+        public var paidCallBackUrl: String?
+
         public var period: Int32?
 
         public var periodUnit: String?
@@ -102,6 +104,9 @@ public class CreateMultiOrderRequest : Tea.TeaModel {
             }
             if self.instanceIds != nil {
                 map["InstanceIds"] = self.instanceIds!
+            }
+            if self.paidCallBackUrl != nil {
+                map["PaidCallBackUrl"] = self.paidCallBackUrl!
             }
             if self.period != nil {
                 map["Period"] = self.period!
@@ -150,6 +155,9 @@ public class CreateMultiOrderRequest : Tea.TeaModel {
             }
             if let value = dict["InstanceIds"] as? [String] {
                 self.instanceIds = value
+            }
+            if let value = dict["PaidCallBackUrl"] as? String {
+                self.paidCallBackUrl = value
             }
             if let value = dict["Period"] as? Int32 {
                 self.period = value
@@ -296,6 +304,8 @@ public class CreateMultiOrderShrinkRequest : Tea.TeaModel {
 
         public var instanceIds: [String]?
 
+        public var paidCallBackUrl: String?
+
         public var period: Int32?
 
         public var periodUnit: String?
@@ -341,6 +351,9 @@ public class CreateMultiOrderShrinkRequest : Tea.TeaModel {
             }
             if self.instanceIds != nil {
                 map["InstanceIds"] = self.instanceIds!
+            }
+            if self.paidCallBackUrl != nil {
+                map["PaidCallBackUrl"] = self.paidCallBackUrl!
             }
             if self.period != nil {
                 map["Period"] = self.period!
@@ -389,6 +402,9 @@ public class CreateMultiOrderShrinkRequest : Tea.TeaModel {
             }
             if let value = dict["InstanceIds"] as? [String] {
                 self.instanceIds = value
+            }
+            if let value = dict["PaidCallBackUrl"] as? String {
+                self.paidCallBackUrl = value
             }
             if let value = dict["Period"] as? Int32 {
                 self.period = value
@@ -2545,6 +2561,8 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                 }
             }
             public class Promotions : Tea.TeaModel {
+                public var activityId: String?
+
                 public var optionCode: String?
 
                 public var promotionDesc: String?
@@ -2569,6 +2587,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.activityId != nil {
+                        map["ActivityId"] = self.activityId!
+                    }
                     if self.optionCode != nil {
                         map["OptionCode"] = self.optionCode!
                     }
@@ -2589,6 +2610,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["ActivityId"] as? String {
+                        self.activityId = value
+                    }
                     if let value = dict["OptionCode"] as? String {
                         self.optionCode = value
                     }
