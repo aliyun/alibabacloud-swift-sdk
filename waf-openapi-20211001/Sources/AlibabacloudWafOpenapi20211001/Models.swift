@@ -15444,7 +15444,15 @@ public class DescribeBotRuleLabelsResponseBody : Tea.TeaModel {
     public class RuleLabels : Tea.TeaModel {
         public var botBehavior: String?
 
+        public var defaultAction: String?
+
+        public var defaultConfig: String?
+
+        public var defaultStatus: Int32?
+
         public var labelKey: String?
+
+        public var labelStatus: String?
 
         public var labelType: String?
 
@@ -15467,8 +15475,20 @@ public class DescribeBotRuleLabelsResponseBody : Tea.TeaModel {
             if self.botBehavior != nil {
                 map["BotBehavior"] = self.botBehavior!
             }
+            if self.defaultAction != nil {
+                map["DefaultAction"] = self.defaultAction!
+            }
+            if self.defaultConfig != nil {
+                map["DefaultConfig"] = self.defaultConfig!
+            }
+            if self.defaultStatus != nil {
+                map["DefaultStatus"] = self.defaultStatus!
+            }
             if self.labelKey != nil {
                 map["LabelKey"] = self.labelKey!
+            }
+            if self.labelStatus != nil {
+                map["LabelStatus"] = self.labelStatus!
             }
             if self.labelType != nil {
                 map["LabelType"] = self.labelType!
@@ -15484,8 +15504,20 @@ public class DescribeBotRuleLabelsResponseBody : Tea.TeaModel {
             if let value = dict["BotBehavior"] as? String {
                 self.botBehavior = value
             }
+            if let value = dict["DefaultAction"] as? String {
+                self.defaultAction = value
+            }
+            if let value = dict["DefaultConfig"] as? String {
+                self.defaultConfig = value
+            }
+            if let value = dict["DefaultStatus"] as? Int32 {
+                self.defaultStatus = value
+            }
             if let value = dict["LabelKey"] as? String {
                 self.labelKey = value
+            }
+            if let value = dict["LabelStatus"] as? String {
+                self.labelStatus = value
             }
             if let value = dict["LabelType"] as? String {
                 self.labelType = value
@@ -16377,6 +16409,8 @@ public class DescribeChargeResultRequest : Tea.TeaModel {
 
     public var chargeModules: [DescribeChargeResultRequest.ChargeModules]?
 
+    public var chargeUnit: String?
+
     public var payType: String?
 
     public var regionId: String?
@@ -16406,6 +16440,9 @@ public class DescribeChargeResultRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ChargeModules"] = tmp
+        }
+        if self.chargeUnit != nil {
+            map["ChargeUnit"] = self.chargeUnit!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -16437,6 +16474,9 @@ public class DescribeChargeResultRequest : Tea.TeaModel {
             }
             self.chargeModules = tmp
         }
+        if let value = dict["ChargeUnit"] as? String {
+            self.chargeUnit = value
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -16451,6 +16491,8 @@ public class DescribeChargeResultRequest : Tea.TeaModel {
 
 public class DescribeChargeResultResponseBody : Tea.TeaModel {
     public class ModuleDetails : Tea.TeaModel {
+        public var credit: Double?
+
         public var moduleCode: String?
 
         public var seCu: Double?
@@ -16469,6 +16511,9 @@ public class DescribeChargeResultResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.credit != nil {
+                map["Credit"] = self.credit!
+            }
             if self.moduleCode != nil {
                 map["ModuleCode"] = self.moduleCode!
             }
@@ -16480,6 +16525,9 @@ public class DescribeChargeResultResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Credit"] as? Double {
+                self.credit = value
+            }
             if let value = dict["ModuleCode"] as? String {
                 self.moduleCode = value
             }
@@ -16491,6 +16539,8 @@ public class DescribeChargeResultResponseBody : Tea.TeaModel {
     public var moduleDetails: [DescribeChargeResultResponseBody.ModuleDetails]?
 
     public var requestId: String?
+
+    public var totalCredit: Double?
 
     public var totalSeCu: Double?
 
@@ -16518,6 +16568,9 @@ public class DescribeChargeResultResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.totalCredit != nil {
+            map["TotalCredit"] = self.totalCredit!
+        }
         if self.totalSeCu != nil {
             map["TotalSeCu"] = self.totalSeCu!
         }
@@ -16541,6 +16594,9 @@ public class DescribeChargeResultResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TotalCredit"] as? Double {
+            self.totalCredit = value
         }
         if let value = dict["TotalSeCu"] as? Double {
             self.totalSeCu = value
@@ -25186,13 +25242,19 @@ public class DescribeElasticBillsRequest : Tea.TeaModel {
 
 public class DescribeElasticBillsResponseBody : Tea.TeaModel {
     public class Bills : Tea.TeaModel {
+        public var credit: Double?
+
         public var cu: Double?
 
         public var endTime: Int64?
 
+        public var functionCredit: Double?
+
         public var functionCu: Double?
 
         public var startTime: Int64?
+
+        public var trafficCredit: Double?
 
         public var trafficCu: Double?
 
@@ -25210,17 +25272,26 @@ public class DescribeElasticBillsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.credit != nil {
+                map["Credit"] = self.credit!
+            }
             if self.cu != nil {
                 map["Cu"] = self.cu!
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.functionCredit != nil {
+                map["FunctionCredit"] = self.functionCredit!
+            }
             if self.functionCu != nil {
                 map["FunctionCu"] = self.functionCu!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
+            }
+            if self.trafficCredit != nil {
+                map["TrafficCredit"] = self.trafficCredit!
             }
             if self.trafficCu != nil {
                 map["TrafficCu"] = self.trafficCu!
@@ -25230,17 +25301,26 @@ public class DescribeElasticBillsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Credit"] as? Double {
+                self.credit = value
+            }
             if let value = dict["Cu"] as? Double {
                 self.cu = value
             }
             if let value = dict["EndTime"] as? Int64 {
                 self.endTime = value
             }
+            if let value = dict["FunctionCredit"] as? Double {
+                self.functionCredit = value
+            }
             if let value = dict["FunctionCu"] as? Double {
                 self.functionCu = value
             }
             if let value = dict["StartTime"] as? Int64 {
                 self.startTime = value
+            }
+            if let value = dict["TrafficCredit"] as? Double {
+                self.trafficCredit = value
             }
             if let value = dict["TrafficCu"] as? Double {
                 self.trafficCu = value
@@ -35173,13 +35253,21 @@ public class DescribePostpayBillsResponseBody : Tea.TeaModel {
     public class BillDetail : Tea.TeaModel {
         public var chargeData: String?
 
+        public var credit: Double?
+
+        public var creditChargeData: String?
+
         public var cu: String?
 
         public var endTime: Int64?
 
+        public var functionCredit: Double?
+
         public var functionCu: String?
 
         public var startTime: Int64?
+
+        public var trafficCredit: Double?
 
         public var trafficCu: String?
 
@@ -35200,17 +35288,29 @@ public class DescribePostpayBillsResponseBody : Tea.TeaModel {
             if self.chargeData != nil {
                 map["ChargeData"] = self.chargeData!
             }
+            if self.credit != nil {
+                map["Credit"] = self.credit!
+            }
+            if self.creditChargeData != nil {
+                map["CreditChargeData"] = self.creditChargeData!
+            }
             if self.cu != nil {
                 map["Cu"] = self.cu!
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.functionCredit != nil {
+                map["FunctionCredit"] = self.functionCredit!
+            }
             if self.functionCu != nil {
                 map["FunctionCu"] = self.functionCu!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
+            }
+            if self.trafficCredit != nil {
+                map["TrafficCredit"] = self.trafficCredit!
             }
             if self.trafficCu != nil {
                 map["TrafficCu"] = self.trafficCu!
@@ -35223,17 +35323,29 @@ public class DescribePostpayBillsResponseBody : Tea.TeaModel {
             if let value = dict["ChargeData"] as? String {
                 self.chargeData = value
             }
+            if let value = dict["Credit"] as? Double {
+                self.credit = value
+            }
+            if let value = dict["CreditChargeData"] as? String {
+                self.creditChargeData = value
+            }
             if let value = dict["Cu"] as? String {
                 self.cu = value
             }
             if let value = dict["EndTime"] as? Int64 {
                 self.endTime = value
             }
+            if let value = dict["FunctionCredit"] as? Double {
+                self.functionCredit = value
+            }
             if let value = dict["FunctionCu"] as? String {
                 self.functionCu = value
             }
             if let value = dict["StartTime"] as? Int64 {
                 self.startTime = value
+            }
+            if let value = dict["TrafficCredit"] as? Double {
+                self.trafficCredit = value
             }
             if let value = dict["TrafficCu"] as? String {
                 self.trafficCu = value

@@ -3543,6 +3543,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeModules)) {
             query["ChargeModules"] = request.chargeModules ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.chargeUnit)) {
+            query["ChargeUnit"] = request.chargeUnit ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.payType)) {
             query["PayType"] = request.payType ?? "";
         }
