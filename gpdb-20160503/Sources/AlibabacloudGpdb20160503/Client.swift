@@ -31,14 +31,13 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "gpdb.eu-west-1.aliyuncs.com",
             "eu-central-1": "gpdb.eu-central-1.aliyuncs.com",
             "cn-zhangjiakou": "gpdb.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "gpdb.cn-wulanchabu.aliyuncs.com",
             "cn-huhehaote": "gpdb.cn-huhehaote.aliyuncs.com",
             "cn-chengdu": "gpdb.cn-chengdu.aliyuncs.com",
-            "cn-beijing-finance-1": "gpdb.aliyuncs.com",
+            "cn-beijing-finance-1": "gpdb.cn-beijing-finance-1.aliyuncs.com",
             "ap-southeast-7": "gpdb.ap-southeast-7.aliyuncs.com",
             "ap-southeast-5": "gpdb.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "gpdb.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "gpdb.ap-southeast-2.aliyuncs.com",
-            "ap-south-1": "gpdb.ap-south-1.aliyuncs.com",
             "ap-northeast-2": "gpdb.ap-northeast-2.aliyuncs.com",
             "ap-northeast-1": "gpdb.ap-northeast-1.aliyuncs.com"
         ]
@@ -2482,6 +2481,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.storageSize)) {
             query["StorageSize"] = request.storageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.usedTime)) {
             query["UsedTime"] = request.usedTime ?? "";

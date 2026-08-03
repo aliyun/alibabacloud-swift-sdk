@@ -12284,6 +12284,44 @@ public class CreateStreamingJobResponse : Tea.TeaModel {
 }
 
 public class CreateSupabaseProjectRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var accountPassword: String?
 
     public var autoScale: Bool?
@@ -12307,6 +12345,8 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
     public var securityIPList: String?
 
     public var storageSize: Int64?
+
+    public var tags: [CreateSupabaseProjectRequest.Tags]?
 
     public var usedTime: String?
 
@@ -12366,6 +12406,13 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -12418,6 +12465,19 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         }
         if let value = dict["StorageSize"] as? Int64 {
             self.storageSize = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateSupabaseProjectRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateSupabaseProjectRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["UsedTime"] as? String {
             self.usedTime = value
@@ -50132,9 +50192,83 @@ public class ListSaasServiceRequest : Tea.TeaModel {
 
 public class ListSaasServiceResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public class Components : Tea.TeaModel {
+            public var componentId: String?
+
+            public var componentType: String?
+
+            public var createTime: String?
+
+            public var cu: String?
+
+            public var deletionProtection: Bool?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.componentId != nil {
+                    map["ComponentId"] = self.componentId!
+                }
+                if self.componentType != nil {
+                    map["ComponentType"] = self.componentType!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.cu != nil {
+                    map["Cu"] = self.cu!
+                }
+                if self.deletionProtection != nil {
+                    map["DeletionProtection"] = self.deletionProtection!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ComponentId"] as? String {
+                    self.componentId = value
+                }
+                if let value = dict["ComponentType"] as? String {
+                    self.componentType = value
+                }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["Cu"] as? String {
+                    self.cu = value
+                }
+                if let value = dict["DeletionProtection"] as? Bool {
+                    self.deletionProtection = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
+        public var components: [ListSaasServiceResponseBody.Items.Components]?
+
         public var createTime: String?
 
         public var cu: Int32?
+
+        public var deletionProtection: Bool?
 
         public var expireTime: String?
 
@@ -50164,11 +50298,21 @@ public class ListSaasServiceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.components != nil {
+                var tmp : [Any] = []
+                for k in self.components! {
+                    tmp.append(k.toMap())
+                }
+                map["Components"] = tmp
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
             if self.cu != nil {
                 map["Cu"] = self.cu!
+            }
+            if self.deletionProtection != nil {
+                map["DeletionProtection"] = self.deletionProtection!
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
@@ -50196,11 +50340,27 @@ public class ListSaasServiceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Components"] as? [Any?] {
+                var tmp : [ListSaasServiceResponseBody.Items.Components] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListSaasServiceResponseBody.Items.Components()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.components = tmp
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
             if let value = dict["Cu"] as? Int32 {
                 self.cu = value
+            }
+            if let value = dict["DeletionProtection"] as? Bool {
+                self.deletionProtection = value
             }
             if let value = dict["ExpireTime"] as? String {
                 self.expireTime = value
@@ -53848,9 +54008,83 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
         }
         public class Services : Tea.TeaModel {
+            public class Components : Tea.TeaModel {
+                public var createTime: String?
+
+                public var cu: String?
+
+                public var deletionProtection: Bool?
+
+                public var status: String?
+
+                public var componentId: String?
+
+                public var componentType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.createTime != nil {
+                        map["CreateTime"] = self.createTime!
+                    }
+                    if self.cu != nil {
+                        map["Cu"] = self.cu!
+                    }
+                    if self.deletionProtection != nil {
+                        map["DeletionProtection"] = self.deletionProtection!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.componentId != nil {
+                        map["componentId"] = self.componentId!
+                    }
+                    if self.componentType != nil {
+                        map["componentType"] = self.componentType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CreateTime"] as? String {
+                        self.createTime = value
+                    }
+                    if let value = dict["Cu"] as? String {
+                        self.cu = value
+                    }
+                    if let value = dict["DeletionProtection"] as? Bool {
+                        self.deletionProtection = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                    if let value = dict["componentId"] as? String {
+                        self.componentId = value
+                    }
+                    if let value = dict["componentType"] as? String {
+                        self.componentType = value
+                    }
+                }
+            }
+            public var components: [ListWorkspacesResponseBody.Items.Services.Components]?
+
             public var createTime: String?
 
             public var cu: String?
+
+            public var deletionProtection: Bool?
 
             public var expireTime: String?
 
@@ -53880,11 +54114,21 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.components != nil {
+                    var tmp : [Any] = []
+                    for k in self.components! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Components"] = tmp
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
                 if self.cu != nil {
                     map["Cu"] = self.cu!
+                }
+                if self.deletionProtection != nil {
+                    map["DeletionProtection"] = self.deletionProtection!
                 }
                 if self.expireTime != nil {
                     map["ExpireTime"] = self.expireTime!
@@ -53912,11 +54156,27 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Components"] as? [Any?] {
+                    var tmp : [ListWorkspacesResponseBody.Items.Services.Components] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListWorkspacesResponseBody.Items.Services.Components()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.components = tmp
+                }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
                 }
                 if let value = dict["Cu"] as? String {
                     self.cu = value
+                }
+                if let value = dict["DeletionProtection"] as? Bool {
+                    self.deletionProtection = value
                 }
                 if let value = dict["ExpireTime"] as? String {
                     self.expireTime = value
