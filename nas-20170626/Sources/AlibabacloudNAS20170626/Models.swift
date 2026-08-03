@@ -4739,6 +4739,44 @@ public class CreateLDAPConfigResponse : Tea.TeaModel {
 }
 
 public class CreateLifecyclePolicyRequest : Tea.TeaModel {
+    public class DeleteRules : Tea.TeaModel {
+        public var attribute: String?
+
+        public var threshold: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attribute != nil {
+                map["Attribute"] = self.attribute!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Attribute"] as? String {
+                self.attribute = value
+            }
+            if let value = dict["Threshold"] as? String {
+                self.threshold = value
+            }
+        }
+    }
     public class RetrieveRules : Tea.TeaModel {
         public var attribute: String?
 
@@ -4815,6 +4853,8 @@ public class CreateLifecyclePolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public var deleteRules: [CreateLifecyclePolicyRequest.DeleteRules]?
+
     public var description_: String?
 
     public var fileSystemId: String?
@@ -4849,6 +4889,13 @@ public class CreateLifecyclePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteRules != nil {
+            var tmp : [Any] = []
+            for k in self.deleteRules! {
+                tmp.append(k.toMap())
+            }
+            map["DeleteRules"] = tmp
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -4892,6 +4939,19 @@ public class CreateLifecyclePolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DeleteRules"] as? [Any?] {
+            var tmp : [CreateLifecyclePolicyRequest.DeleteRules] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateLifecyclePolicyRequest.DeleteRules()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.deleteRules = tmp
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -12438,6 +12498,8 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
 
             public var endTime: String?
 
+            public var entryList: String?
+
             public var errorMsg: String?
 
             public var fileSystemPath: String?
@@ -12506,6 +12568,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
+                }
+                if self.entryList != nil {
+                    map["EntryList"] = self.entryList!
                 }
                 if self.errorMsg != nil {
                     map["ErrorMsg"] = self.errorMsg!
@@ -12580,6 +12645,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EndTime"] as? String {
                     self.endTime = value
+                }
+                if let value = dict["EntryList"] as? String {
+                    self.entryList = value
                 }
                 if let value = dict["ErrorMsg"] as? String {
                     self.errorMsg = value
@@ -14665,6 +14733,8 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
             public class Options : Tea.TeaModel {
                 public var enableABE: Bool?
 
+                public var enableDataInsight: Bool?
+
                 public var enableOplock: Bool?
 
                 public var vscAccessPointAccessOnly: Bool?
@@ -14686,6 +14756,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     if self.enableABE != nil {
                         map["EnableABE"] = self.enableABE!
                     }
+                    if self.enableDataInsight != nil {
+                        map["EnableDataInsight"] = self.enableDataInsight!
+                    }
                     if self.enableOplock != nil {
                         map["EnableOplock"] = self.enableOplock!
                     }
@@ -14699,6 +14772,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["EnableABE"] as? Bool {
                         self.enableABE = value
+                    }
+                    if let value = dict["EnableDataInsight"] as? Bool {
+                        self.enableDataInsight = value
                     }
                     if let value = dict["EnableOplock"] as? Bool {
                         self.enableOplock = value
@@ -16628,6 +16704,44 @@ public class DescribeLifecyclePoliciesRequest : Tea.TeaModel {
 
 public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
     public class LifecyclePolicies : Tea.TeaModel {
+        public class DeleteRules : Tea.TeaModel {
+            public var attribute: String?
+
+            public var threshold: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attribute != nil {
+                    map["Attribute"] = self.attribute!
+                }
+                if self.threshold != nil {
+                    map["Threshold"] = self.threshold!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Attribute"] as? String {
+                    self.attribute = value
+                }
+                if let value = dict["Threshold"] as? String {
+                    self.threshold = value
+                }
+            }
+        }
         public class RetrieveRules : Tea.TeaModel {
             public var attribute: String?
 
@@ -16706,6 +16820,8 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
         }
         public var createTime: String?
 
+        public var deleteRules: [DescribeLifecyclePoliciesResponseBody.LifecyclePolicies.DeleteRules]?
+
         public var description_: String?
 
         public var fileSystemId: String?
@@ -16744,6 +16860,13 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.deleteRules != nil {
+                var tmp : [Any] = []
+                for k in self.deleteRules! {
+                    tmp.append(k.toMap())
+                }
+                map["DeleteRules"] = tmp
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -16793,6 +16916,19 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["DeleteRules"] as? [Any?] {
+                var tmp : [DescribeLifecyclePoliciesResponseBody.LifecyclePolicies.DeleteRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeLifecyclePoliciesResponseBody.LifecyclePolicies.DeleteRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.deleteRules = tmp
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
@@ -17032,6 +17168,44 @@ public class DescribeLifecyclePolicyLogsRequest : Tea.TeaModel {
 
 public class DescribeLifecyclePolicyLogsResponseBody : Tea.TeaModel {
     public class LifecyclePolicyLogs : Tea.TeaModel {
+        public class DeleteRules : Tea.TeaModel {
+            public var attribute: String?
+
+            public var threshold: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attribute != nil {
+                    map["Attribute"] = self.attribute!
+                }
+                if self.threshold != nil {
+                    map["Threshold"] = self.threshold!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Attribute"] as? String {
+                    self.attribute = value
+                }
+                if let value = dict["Threshold"] as? String {
+                    self.threshold = value
+                }
+            }
+        }
         public class RetrieveRules : Tea.TeaModel {
             public var attribute: String?
 
@@ -17110,6 +17284,8 @@ public class DescribeLifecyclePolicyLogsResponseBody : Tea.TeaModel {
         }
         public var createTime: String?
 
+        public var deleteRules: [DescribeLifecyclePolicyLogsResponseBody.LifecyclePolicyLogs.DeleteRules]?
+
         public var paths: [String]?
 
         public var retrieveRules: [DescribeLifecyclePolicyLogsResponseBody.LifecyclePolicyLogs.RetrieveRules]?
@@ -17138,6 +17314,13 @@ public class DescribeLifecyclePolicyLogsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.deleteRules != nil {
+                var tmp : [Any] = []
+                for k in self.deleteRules! {
+                    tmp.append(k.toMap())
+                }
+                map["DeleteRules"] = tmp
             }
             if self.paths != nil {
                 map["Paths"] = self.paths!
@@ -17172,6 +17355,19 @@ public class DescribeLifecyclePolicyLogsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["DeleteRules"] as? [Any?] {
+                var tmp : [DescribeLifecyclePolicyLogsResponseBody.LifecyclePolicyLogs.DeleteRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeLifecyclePolicyLogsResponseBody.LifecyclePolicyLogs.DeleteRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.deleteRules = tmp
             }
             if let value = dict["Paths"] as? [String] {
                 self.paths = value
@@ -29494,6 +29690,44 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateLifecyclePolicyRequest : Tea.TeaModel {
+    public class DeleteRules : Tea.TeaModel {
+        public var attribute: String?
+
+        public var threshold: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attribute != nil {
+                map["Attribute"] = self.attribute!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Attribute"] as? String {
+                self.attribute = value
+            }
+            if let value = dict["Threshold"] as? String {
+                self.threshold = value
+            }
+        }
+    }
     public class RetrieveRules : Tea.TeaModel {
         public var attribute: String?
 
@@ -29570,6 +29804,8 @@ public class UpdateLifecyclePolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public var deleteRules: [UpdateLifecyclePolicyRequest.DeleteRules]?
+
     public var description_: String?
 
     public var fileSystemId: String?
@@ -29598,6 +29834,13 @@ public class UpdateLifecyclePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteRules != nil {
+            var tmp : [Any] = []
+            for k in self.deleteRules! {
+                tmp.append(k.toMap())
+            }
+            map["DeleteRules"] = tmp
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -29632,6 +29875,19 @@ public class UpdateLifecyclePolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DeleteRules"] as? [Any?] {
+            var tmp : [UpdateLifecyclePolicyRequest.DeleteRules] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateLifecyclePolicyRequest.DeleteRules()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.deleteRules = tmp
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
