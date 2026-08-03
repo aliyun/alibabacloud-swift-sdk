@@ -11602,6 +11602,36 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
             public class Frames : Tea.TeaModel {
                 public class Results : Tea.TeaModel {
+                    public class AigcData : Tea.TeaModel {
+                        public var explain: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.explain != nil {
+                                map["Explain"] = self.explain!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Explain"] as? String {
+                                self.explain = value
+                            }
+                        }
+                    }
                     public class CustomImage : Tea.TeaModel {
                         public var imageId: String?
 
@@ -11985,6 +12015,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public var aigcData: VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.AigcData?
+
                     public var customImage: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.CustomImage]?
 
                     public var logoData: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData]?
@@ -12009,11 +12041,15 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
+                        try self.aigcData?.validate()
                         try self.vlContent?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.aigcData != nil {
+                            map["AigcData"] = self.aigcData?.toMap()
+                        }
                         if self.customImage != nil {
                             var tmp : [Any] = []
                             for k in self.customImage! {
@@ -12056,6 +12092,11 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["AigcData"] as? [String: Any?] {
+                            var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.AigcData()
+                            model.fromMap(value)
+                            self.aigcData = model
+                        }
                         if let value = dict["CustomImage"] as? [Any?] {
                             var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.CustomImage] = []
                             for v in value {
