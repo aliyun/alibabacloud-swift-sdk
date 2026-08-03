@@ -16608,6 +16608,8 @@ public class DownloadRecordingRequest : Tea.TeaModel {
 
 public class DownloadRecordingResponseBody : Tea.TeaModel {
     public class DownloadParams : Tea.TeaModel {
+        public var earlyMediaSignatureUrl: String?
+
         public var fileName: String?
 
         public var signatureUrl: String?
@@ -16628,6 +16630,9 @@ public class DownloadRecordingResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.earlyMediaSignatureUrl != nil {
+                map["EarlyMediaSignatureUrl"] = self.earlyMediaSignatureUrl!
+            }
             if self.fileName != nil {
                 map["FileName"] = self.fileName!
             }
@@ -16642,6 +16647,9 @@ public class DownloadRecordingResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EarlyMediaSignatureUrl"] as? String {
+                self.earlyMediaSignatureUrl = value
+            }
             if let value = dict["FileName"] as? String {
                 self.fileName = value
             }
