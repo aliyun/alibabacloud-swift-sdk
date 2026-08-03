@@ -22233,6 +22233,8 @@ public class DescribeAuditLogRecordsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var engineType: String?
+
     public var hostAddress: String?
 
     public var order: String?
@@ -22287,6 +22289,9 @@ public class DescribeAuditLogRecordsRequest : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.engineType != nil {
+            map["EngineType"] = self.engineType!
         }
         if self.hostAddress != nil {
             map["HostAddress"] = self.hostAddress!
@@ -22349,6 +22354,9 @@ public class DescribeAuditLogRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["EngineType"] as? String {
+            self.engineType = value
         }
         if let value = dict["HostAddress"] as? String {
             self.hostAddress = value

@@ -3509,6 +3509,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.engineType)) {
+            query["EngineType"] = request.engineType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.hostAddress)) {
             query["HostAddress"] = request.hostAddress ?? "";
         }
