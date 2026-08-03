@@ -1469,6 +1469,8 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
 
     public var detectionRuleType: String?
 
+    public var detectionRules: String?
+
     public var entityMappings: String?
 
     public var incidentAggregationExpression: String?
@@ -1577,6 +1579,9 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         }
         if self.detectionRuleType != nil {
             map["DetectionRuleType"] = self.detectionRuleType!
+        }
+        if self.detectionRules != nil {
+            map["DetectionRules"] = self.detectionRules!
         }
         if self.entityMappings != nil {
             map["EntityMappings"] = self.entityMappings!
@@ -1693,6 +1698,9 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         }
         if let value = dict["DetectionRuleType"] as? String {
             self.detectionRuleType = value
+        }
+        if let value = dict["DetectionRules"] as? String {
+            self.detectionRules = value
         }
         if let value = dict["EntityMappings"] as? String {
             self.entityMappings = value
@@ -7157,6 +7165,12 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
 
         public var logProject: String?
 
+        public var logProjectState: String?
+
+        public var logProjectStateChangeAllowed: Bool?
+
+        public var logServiceDisabled: Bool?
+
         public var normalizationLogStores: [GetDataStorageResponseBody.Data.NormalizationLogStores]?
 
         public var normalizationLogViews: [GetDataStorageResponseBody.Data.NormalizationLogViews]?
@@ -7201,6 +7215,15 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
             }
             if self.logProject != nil {
                 map["LogProject"] = self.logProject!
+            }
+            if self.logProjectState != nil {
+                map["LogProjectState"] = self.logProjectState!
+            }
+            if self.logProjectStateChangeAllowed != nil {
+                map["LogProjectStateChangeAllowed"] = self.logProjectStateChangeAllowed!
+            }
+            if self.logServiceDisabled != nil {
+                map["LogServiceDisabled"] = self.logServiceDisabled!
             }
             if self.normalizationLogStores != nil {
                 var tmp : [Any] = []
@@ -7262,6 +7285,15 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
             }
             if let value = dict["LogProject"] as? String {
                 self.logProject = value
+            }
+            if let value = dict["LogProjectState"] as? String {
+                self.logProjectState = value
+            }
+            if let value = dict["LogProjectStateChangeAllowed"] as? Bool {
+                self.logProjectStateChangeAllowed = value
+            }
+            if let value = dict["LogServiceDisabled"] as? Bool {
+                self.logServiceDisabled = value
             }
             if let value = dict["NormalizationLogStores"] as? [Any?] {
                 var tmp : [GetDataStorageResponseBody.Data.NormalizationLogStores] = []
@@ -15245,6 +15277,8 @@ public class ListDetectionRulesResponse : Tea.TeaModel {
 public class ListIncidentsRequest : Tea.TeaModel {
     public var alertUuid: String?
 
+    public var detectionRuleIds: [String]?
+
     public var endTime: Int64?
 
     public var incidentName: String?
@@ -15303,6 +15337,9 @@ public class ListIncidentsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.alertUuid != nil {
             map["AlertUuid"] = self.alertUuid!
+        }
+        if self.detectionRuleIds != nil {
+            map["DetectionRuleIds"] = self.detectionRuleIds!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -15375,6 +15412,9 @@ public class ListIncidentsRequest : Tea.TeaModel {
         if let value = dict["AlertUuid"] as? String {
             self.alertUuid = value
         }
+        if let value = dict["DetectionRuleIds"] as? [String] {
+            self.detectionRuleIds = value
+        }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
         }
@@ -15444,6 +15484,8 @@ public class ListIncidentsRequest : Tea.TeaModel {
 public class ListIncidentsShrinkRequest : Tea.TeaModel {
     public var alertUuid: String?
 
+    public var detectionRuleIds: [String]?
+
     public var endTime: Int64?
 
     public var incidentName: String?
@@ -15502,6 +15544,9 @@ public class ListIncidentsShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.alertUuid != nil {
             map["AlertUuid"] = self.alertUuid!
+        }
+        if self.detectionRuleIds != nil {
+            map["DetectionRuleIds"] = self.detectionRuleIds!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -15573,6 +15618,9 @@ public class ListIncidentsShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AlertUuid"] as? String {
             self.alertUuid = value
+        }
+        if let value = dict["DetectionRuleIds"] as? [String] {
+            self.detectionRuleIds = value
         }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
@@ -15650,6 +15698,8 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
 
         public var detectionRuleId: String?
 
+        public var detectionRuleName: String?
+
         public var entityInfos: String?
 
         public var incidentDescription: String?
@@ -15701,6 +15751,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             }
             if self.detectionRuleId != nil {
                 map["DetectionRuleId"] = self.detectionRuleId!
+            }
+            if self.detectionRuleName != nil {
+                map["DetectionRuleName"] = self.detectionRuleName!
             }
             if self.entityInfos != nil {
                 map["EntityInfos"] = self.entityInfos!
@@ -15757,6 +15810,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DetectionRuleId"] as? String {
                 self.detectionRuleId = value
+            }
+            if let value = dict["DetectionRuleName"] as? String {
+                self.detectionRuleName = value
             }
             if let value = dict["EntityInfos"] as? String {
                 self.entityInfos = value
@@ -19720,6 +19776,12 @@ public class ListQueryViewsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var logProjectName: String?
+
+    public var logRegionId: String?
+
+    public var logStoreName: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -19742,6 +19804,15 @@ public class ListQueryViewsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.logProjectName != nil {
+            map["LogProjectName"] = self.logProjectName!
+        }
+        if self.logRegionId != nil {
+            map["LogRegionId"] = self.logRegionId!
+        }
+        if self.logStoreName != nil {
+            map["LogStoreName"] = self.logStoreName!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -19763,6 +19834,15 @@ public class ListQueryViewsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["LogProjectName"] as? String {
+            self.logProjectName = value
+        }
+        if let value = dict["LogRegionId"] as? String {
+            self.logRegionId = value
+        }
+        if let value = dict["LogStoreName"] as? String {
+            self.logStoreName = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
