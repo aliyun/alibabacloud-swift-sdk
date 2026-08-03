@@ -1380,4 +1380,1288 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: TransitVisaHeaders = TransitVisaHeaders([:])
         return try await transitVisaWithOptions(request as! TransitVisaRequest, headers as! TransitVisaHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyRefundWithOptions(_ request: ApplyRefundRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyRefundResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refundReason)) {
+            body["RefundReason"] = request.refundReason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "applyRefund",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/applyRefund",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ApplyRefundResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyRefund(_ request: ApplyRefundRequest) async throws -> ApplyRefundResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await applyRefundWithOptions(request as! ApplyRefundRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetHotelDetailWithOptions(_ tmpReq: BatchGetHotelDetailRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchGetHotelDetailResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchGetHotelDetailShrinkRequest = BatchGetHotelDetailShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.standardHotelIds)) {
+            request.standardHotelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.standardHotelIds, "StandardHotelIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.standardHotelIdsShrink)) {
+            body["StandardHotelIds"] = request.standardHotelIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "batchGetHotelDetail",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/batchGetHotelDetail",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchGetHotelDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetHotelDetail(_ request: BatchGetHotelDetailRequest) async throws -> BatchGetHotelDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchGetHotelDetailWithOptions(request as! BatchGetHotelDetailRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelOrRefundWithOptions(_ request: CancelOrRefundRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelOrRefundResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "cancelOrRefund",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/cancelOrRefund",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelOrRefundResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelOrRefund(_ request: CancelOrRefundRequest) async throws -> CancelOrRefundResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await cancelOrRefundWithOptions(request as! CancelOrRefundRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelOrderWithOptions(_ request: CancelOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "cancelOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/cancelOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelOrder(_ request: CancelOrderRequest) async throws -> CancelOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await cancelOrderWithOptions(request as! CancelOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAndPayWithOptions(_ tmpReq: CreateAndPayRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAndPayResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAndPayShrinkRequest = CreateAndPayShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contact)) {
+            request.contactShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contact, "Contact", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.guests)) {
+            request.guestsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.guests, "Guests", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactShrink)) {
+            body["Contact"] = request.contactShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalOrderNo)) {
+            body["ExternalOrderNo"] = request.externalOrderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.guestsShrink)) {
+            body["Guests"] = request.guestsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemOfferId)) {
+            body["ItemOfferId"] = request.itemOfferId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "createAndPay",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/createAndPay",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAndPayResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAndPay(_ request: CreateAndPayRequest) async throws -> CreateAndPayResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createAndPayWithOptions(request as! CreateAndPayRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOrderWithOptions(_ tmpReq: CreateOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateOrderShrinkRequest = CreateOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contact)) {
+            request.contactShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contact, "Contact", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.guests)) {
+            request.guestsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.guests, "Guests", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactShrink)) {
+            body["Contact"] = request.contactShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalOrderNo)) {
+            body["ExternalOrderNo"] = request.externalOrderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.guestsShrink)) {
+            body["Guests"] = request.guestsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemOfferId)) {
+            body["ItemOfferId"] = request.itemOfferId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "createOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/createOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOrder(_ request: CreateOrderRequest) async throws -> CreateOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createOrderWithOptions(request as! CreateOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelApplyRefundWithOptions(_ request: GlobalHotelApplyRefundRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelApplyRefundResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refundReason)) {
+            body["RefundReason"] = request.refundReason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelApplyRefund",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelApplyRefund",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelApplyRefundResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelApplyRefund(_ request: GlobalHotelApplyRefundRequest) async throws -> GlobalHotelApplyRefundResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelApplyRefundWithOptions(request as! GlobalHotelApplyRefundRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelBatchGetHotelDetailWithOptions(_ tmpReq: GlobalHotelBatchGetHotelDetailRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelBatchGetHotelDetailResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GlobalHotelBatchGetHotelDetailShrinkRequest = GlobalHotelBatchGetHotelDetailShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.standardHotelIds)) {
+            request.standardHotelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.standardHotelIds, "StandardHotelIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.standardHotelIdsShrink)) {
+            body["StandardHotelIds"] = request.standardHotelIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelBatchGetHotelDetail",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelBatchGetHotelDetail",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelBatchGetHotelDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelBatchGetHotelDetail(_ request: GlobalHotelBatchGetHotelDetailRequest) async throws -> GlobalHotelBatchGetHotelDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelBatchGetHotelDetailWithOptions(request as! GlobalHotelBatchGetHotelDetailRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCancelOrRefundWithOptions(_ request: GlobalHotelCancelOrRefundRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelCancelOrRefundResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelCancelOrRefund",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelCancelOrRefund",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelCancelOrRefundResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCancelOrRefund(_ request: GlobalHotelCancelOrRefundRequest) async throws -> GlobalHotelCancelOrRefundResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelCancelOrRefundWithOptions(request as! GlobalHotelCancelOrRefundRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCancelOrderWithOptions(_ request: GlobalHotelCancelOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelCancelOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelCancelOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelCancelOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelCancelOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCancelOrder(_ request: GlobalHotelCancelOrderRequest) async throws -> GlobalHotelCancelOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelCancelOrderWithOptions(request as! GlobalHotelCancelOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCreateAndPayWithOptions(_ tmpReq: GlobalHotelCreateAndPayRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelCreateAndPayResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GlobalHotelCreateAndPayShrinkRequest = GlobalHotelCreateAndPayShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contact)) {
+            request.contactShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contact, "Contact", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.guests)) {
+            request.guestsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.guests, "Guests", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactShrink)) {
+            body["Contact"] = request.contactShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalOrderNo)) {
+            body["ExternalOrderNo"] = request.externalOrderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.guestsShrink)) {
+            body["Guests"] = request.guestsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemOfferId)) {
+            body["ItemOfferId"] = request.itemOfferId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelCreateAndPay",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelCreateAndPay",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelCreateAndPayResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCreateAndPay(_ request: GlobalHotelCreateAndPayRequest) async throws -> GlobalHotelCreateAndPayResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelCreateAndPayWithOptions(request as! GlobalHotelCreateAndPayRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCreateOrderWithOptions(_ tmpReq: GlobalHotelCreateOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelCreateOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GlobalHotelCreateOrderShrinkRequest = GlobalHotelCreateOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contact)) {
+            request.contactShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contact, "Contact", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.guests)) {
+            request.guestsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.guests, "Guests", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactShrink)) {
+            body["Contact"] = request.contactShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalOrderNo)) {
+            body["ExternalOrderNo"] = request.externalOrderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.guestsShrink)) {
+            body["Guests"] = request.guestsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemOfferId)) {
+            body["ItemOfferId"] = request.itemOfferId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelCreateOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelCreateOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelCreateOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelCreateOrder(_ request: GlobalHotelCreateOrderRequest) async throws -> GlobalHotelCreateOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelCreateOrderWithOptions(request as! GlobalHotelCreateOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelPayWithOptions(_ request: GlobalHotelPayRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelPayResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelPay",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelPay",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelPayResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelPay(_ request: GlobalHotelPayRequest) async throws -> GlobalHotelPayResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelPayWithOptions(request as! GlobalHotelPayRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelQueryAvailabilityWithOptions(_ tmpReq: GlobalHotelQueryAvailabilityRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelQueryAvailabilityResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GlobalHotelQueryAvailabilityShrinkRequest = GlobalHotelQueryAvailabilityShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.childrenAges)) {
+            request.childrenAgesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.childrenAges, "ChildrenAges", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.standardHotelIds)) {
+            request.standardHotelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.standardHotelIds, "StandardHotelIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.adultCount)) {
+            body["AdultCount"] = request.adultCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.checkInDate)) {
+            body["CheckInDate"] = request.checkInDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkOutDate)) {
+            body["CheckOutDate"] = request.checkOutDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.childCount)) {
+            body["ChildCount"] = request.childCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.childrenAgesShrink)) {
+            body["ChildrenAges"] = request.childrenAgesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.standardHotelIdsShrink)) {
+            body["StandardHotelIds"] = request.standardHotelIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelQueryAvailability",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelQueryAvailability",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelQueryAvailabilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelQueryAvailability(_ request: GlobalHotelQueryAvailabilityRequest) async throws -> GlobalHotelQueryAvailabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelQueryAvailabilityWithOptions(request as! GlobalHotelQueryAvailabilityRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelQueryCalendarAvailabilityWithOptions(_ tmpReq: GlobalHotelQueryCalendarAvailabilityRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelQueryCalendarAvailabilityResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GlobalHotelQueryCalendarAvailabilityShrinkRequest = GlobalHotelQueryCalendarAvailabilityShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.childrenAges)) {
+            request.childrenAgesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.childrenAges, "ChildrenAges", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.standardHotelIds)) {
+            request.standardHotelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.standardHotelIds, "StandardHotelIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.adultCount)) {
+            body["AdultCount"] = request.adultCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.checkInDateEnd)) {
+            body["CheckInDateEnd"] = request.checkInDateEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkInDateStart)) {
+            body["CheckInDateStart"] = request.checkInDateStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.childCount)) {
+            body["ChildCount"] = request.childCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.childrenAgesShrink)) {
+            body["ChildrenAges"] = request.childrenAgesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.standardHotelIdsShrink)) {
+            body["StandardHotelIds"] = request.standardHotelIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelQueryCalendarAvailability",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelQueryCalendarAvailability",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelQueryCalendarAvailabilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelQueryCalendarAvailability(_ request: GlobalHotelQueryCalendarAvailabilityRequest) async throws -> GlobalHotelQueryCalendarAvailabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelQueryCalendarAvailabilityWithOptions(request as! GlobalHotelQueryCalendarAvailabilityRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelQueryOrderWithOptions(_ request: GlobalHotelQueryOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelQueryOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.externalOrderNo)) {
+            body["ExternalOrderNo"] = request.externalOrderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelQueryOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelQueryOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelQueryOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelQueryOrder(_ request: GlobalHotelQueryOrderRequest) async throws -> GlobalHotelQueryOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelQueryOrderWithOptions(request as! GlobalHotelQueryOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelSearchCityPageWithOptions(_ request: GlobalHotelSearchCityPageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelSearchCityPageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.count)) {
+            body["Count"] = request.count!;
+        }
+        if (!TeaUtils.Client.isUnset(request.countryCode)) {
+            body["CountryCode"] = request.countryCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.start)) {
+            body["Start"] = request.start!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelSearchCityPage",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelSearchCityPage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelSearchCityPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelSearchCityPage(_ request: GlobalHotelSearchCityPageRequest) async throws -> GlobalHotelSearchCityPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelSearchCityPageWithOptions(request as! GlobalHotelSearchCityPageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelSearchHotelListWithOptions(_ request: GlobalHotelSearchHotelListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelSearchHotelListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cityCode)) {
+            body["CityCode"] = request.cityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            body["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelSearchHotelList",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelSearchHotelList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelSearchHotelListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelSearchHotelList(_ request: GlobalHotelSearchHotelListRequest) async throws -> GlobalHotelSearchHotelListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelSearchHotelListWithOptions(request as! GlobalHotelSearchHotelListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelValidatePriceWithOptions(_ tmpReq: GlobalHotelValidatePriceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalHotelValidatePriceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GlobalHotelValidatePriceShrinkRequest = GlobalHotelValidatePriceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.childrenAges)) {
+            request.childrenAgesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.childrenAges, "ChildrenAges", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.adults)) {
+            body["Adults"] = request.adults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.children)) {
+            body["Children"] = request.children!;
+        }
+        if (!TeaUtils.Client.isUnset(request.childrenAgesShrink)) {
+            body["ChildrenAges"] = request.childrenAgesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemOfferKey)) {
+            body["ItemOfferKey"] = request.itemOfferKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "globalHotelValidatePrice",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotelValidatePrice",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GlobalHotelValidatePriceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalHotelValidatePrice(_ request: GlobalHotelValidatePriceRequest) async throws -> GlobalHotelValidatePriceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalHotelValidatePriceWithOptions(request as! GlobalHotelValidatePriceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func payWithOptions(_ request: PayRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PayResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "pay",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/pay",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PayResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pay(_ request: PayRequest) async throws -> PayResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await payWithOptions(request as! PayRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAvailabilityWithOptions(_ tmpReq: QueryAvailabilityRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAvailabilityResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryAvailabilityShrinkRequest = QueryAvailabilityShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.childrenAges)) {
+            request.childrenAgesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.childrenAges, "ChildrenAges", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.standardHotelIds)) {
+            request.standardHotelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.standardHotelIds, "StandardHotelIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.adultCount)) {
+            body["AdultCount"] = request.adultCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.checkInDate)) {
+            body["CheckInDate"] = request.checkInDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkOutDate)) {
+            body["CheckOutDate"] = request.checkOutDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.childCount)) {
+            body["ChildCount"] = request.childCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.childrenAgesShrink)) {
+            body["ChildrenAges"] = request.childrenAgesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.standardHotelIdsShrink)) {
+            body["StandardHotelIds"] = request.standardHotelIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "queryAvailability",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/queryAvailability",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryAvailabilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAvailability(_ request: QueryAvailabilityRequest) async throws -> QueryAvailabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await queryAvailabilityWithOptions(request as! QueryAvailabilityRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCalendarAvailabilityWithOptions(_ tmpReq: QueryCalendarAvailabilityRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCalendarAvailabilityResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryCalendarAvailabilityShrinkRequest = QueryCalendarAvailabilityShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.childrenAges)) {
+            request.childrenAgesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.childrenAges, "ChildrenAges", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.standardHotelIds)) {
+            request.standardHotelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.standardHotelIds, "StandardHotelIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.adultCount)) {
+            body["AdultCount"] = request.adultCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.checkInDateEnd)) {
+            body["CheckInDateEnd"] = request.checkInDateEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkInDateStart)) {
+            body["CheckInDateStart"] = request.checkInDateStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.childCount)) {
+            body["ChildCount"] = request.childCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.childrenAgesShrink)) {
+            body["ChildrenAges"] = request.childrenAgesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.standardHotelIdsShrink)) {
+            body["StandardHotelIds"] = request.standardHotelIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "queryCalendarAvailability",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/queryCalendarAvailability",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryCalendarAvailabilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCalendarAvailability(_ request: QueryCalendarAvailabilityRequest) async throws -> QueryCalendarAvailabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await queryCalendarAvailabilityWithOptions(request as! QueryCalendarAvailabilityRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryOrderWithOptions(_ request: QueryOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.externalOrderNo)) {
+            body["ExternalOrderNo"] = request.externalOrderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderNo)) {
+            body["OrderNo"] = request.orderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "queryOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/queryOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryOrder(_ request: QueryOrderRequest) async throws -> QueryOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await queryOrderWithOptions(request as! QueryOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCityPageWithOptions(_ request: SearchCityPageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchCityPageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.count)) {
+            body["Count"] = request.count!;
+        }
+        if (!TeaUtils.Client.isUnset(request.countryCode)) {
+            body["CountryCode"] = request.countryCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.start)) {
+            body["Start"] = request.start!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "searchCityPage",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/searchCityPage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchCityPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCityPage(_ request: SearchCityPageRequest) async throws -> SearchCityPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await searchCityPageWithOptions(request as! SearchCityPageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchHotelListWithOptions(_ request: SearchHotelListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchHotelListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cityCode)) {
+            body["CityCode"] = request.cityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            body["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "searchHotelList",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/globalHotel/searchHotelList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchHotelListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchHotelList(_ request: SearchHotelListRequest) async throws -> SearchHotelListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await searchHotelListWithOptions(request as! SearchHotelListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validatePriceWithOptions(_ tmpReq: ValidatePriceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidatePriceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ValidatePriceShrinkRequest = ValidatePriceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.childrenAges)) {
+            request.childrenAgesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.childrenAges, "ChildrenAges", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.adults)) {
+            body["Adults"] = request.adults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.children)) {
+            body["Children"] = request.children!;
+        }
+        if (!TeaUtils.Client.isUnset(request.childrenAgesShrink)) {
+            body["ChildrenAges"] = request.childrenAgesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemOfferKey)) {
+            body["ItemOfferKey"] = request.itemOfferKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roomCount)) {
+            body["RoomCount"] = request.roomCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tracerId)) {
+            body["TracerId"] = request.tracerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "validatePrice",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/validatePrice",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidatePriceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validatePrice(_ request: ValidatePriceRequest) async throws -> ValidatePriceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await validatePriceWithOptions(request as! ValidatePriceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
 }
