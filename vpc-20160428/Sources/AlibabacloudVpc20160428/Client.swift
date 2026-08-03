@@ -56,8 +56,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "vpc.eu-west-1.aliyuncs.com",
             "eu-central-1": "vpc.eu-central-1.aliyuncs.com",
             "cn-zhongwei": "vpc.cn-zhongwei.aliyuncs.com",
-            "cn-zhengzhou-jva": "vpc.cn-zhengzhou-jva.aliyuncs.com",
             "cn-zhangjiakou": "vpc.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "vpc.cn-wulanchabu-gic-1.aliyuncs.com",
             "cn-wulanchabu": "vpc.cn-wulanchabu.aliyuncs.com",
             "cn-wuhan-lr": "vpc.cn-wuhan-lr.aliyuncs.com",
             "cn-shenzhen": "vpc.cn-shenzhen.aliyuncs.com",
@@ -19132,6 +19132,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.downDelayTime)) {
+            query["DownDelayTime"] = request.downDelayTime!;
         }
         if (!TeaUtils.Client.isUnset(request.lineOperator)) {
             query["LineOperator"] = request.lineOperator ?? "";

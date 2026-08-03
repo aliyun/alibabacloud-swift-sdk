@@ -54604,6 +54604,10 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var deviceFeaturesSelected: String?
+
+            public var downDelayTime: Int32?
+
             public var enabledTime: String?
 
             public var endTime: String?
@@ -54709,6 +54713,12 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
+                }
+                if self.deviceFeaturesSelected != nil {
+                    map["DeviceFeaturesSelected"] = self.deviceFeaturesSelected!
+                }
+                if self.downDelayTime != nil {
+                    map["DownDelayTime"] = self.downDelayTime!
                 }
                 if self.enabledTime != nil {
                     map["EnabledTime"] = self.enabledTime!
@@ -54834,6 +54844,12 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["DeviceFeaturesSelected"] as? String {
+                    self.deviceFeaturesSelected = value
+                }
+                if let value = dict["DownDelayTime"] as? Int32 {
+                    self.downDelayTime = value
                 }
                 if let value = dict["EnabledTime"] as? String {
                     self.enabledTime = value
@@ -98367,6 +98383,8 @@ public class ModifyPhysicalConnectionAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var downDelayTime: Int32?
+
     public var lineOperator: String?
 
     public var name: String?
@@ -98413,6 +98431,9 @@ public class ModifyPhysicalConnectionAttributeRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.downDelayTime != nil {
+            map["DownDelayTime"] = self.downDelayTime!
         }
         if self.lineOperator != nil {
             map["LineOperator"] = self.lineOperator!
@@ -98463,6 +98484,9 @@ public class ModifyPhysicalConnectionAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DownDelayTime"] as? Int32 {
+            self.downDelayTime = value
         }
         if let value = dict["LineOperator"] as? String {
             self.lineOperator = value
