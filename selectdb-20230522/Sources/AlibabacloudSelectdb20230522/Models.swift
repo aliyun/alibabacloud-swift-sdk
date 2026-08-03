@@ -1447,6 +1447,10 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var engineVersion: String?
 
+    public var FEClassCode: String?
+
+    public var FENodeCount: String?
+
     public var multiZone: [CreateDBInstanceRequest.MultiZone]?
 
     public var period: String?
@@ -1525,6 +1529,12 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.FEClassCode != nil {
+            map["FEClassCode"] = self.FEClassCode!
+        }
+        if self.FENodeCount != nil {
+            map["FENodeCount"] = self.FENodeCount!
         }
         if self.multiZone != nil {
             var tmp : [Any] = []
@@ -1617,6 +1627,12 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if let value = dict["EngineVersion"] as? String {
             self.engineVersion = value
         }
+        if let value = dict["FEClassCode"] as? String {
+            self.FEClassCode = value
+        }
+        if let value = dict["FENodeCount"] as? String {
+            self.FENodeCount = value
+        }
         if let value = dict["MultiZone"] as? [Any?] {
             var tmp : [CreateDBInstanceRequest.MultiZone] = []
             for v in value {
@@ -1706,6 +1722,10 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var engineVersion: String?
 
+    public var FEClassCode: String?
+
+    public var FENodeCount: String?
+
     public var multiZoneShrink: String?
 
     public var period: String?
@@ -1784,6 +1804,12 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.FEClassCode != nil {
+            map["FEClassCode"] = self.FEClassCode!
+        }
+        if self.FENodeCount != nil {
+            map["FENodeCount"] = self.FENodeCount!
         }
         if self.multiZoneShrink != nil {
             map["MultiZone"] = self.multiZoneShrink!
@@ -1867,6 +1893,12 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EngineVersion"] as? String {
             self.engineVersion = value
+        }
+        if let value = dict["FEClassCode"] as? String {
+            self.FEClassCode = value
+        }
+        if let value = dict["FENodeCount"] as? String {
+            self.FENodeCount = value
         }
         if let value = dict["MultiZone"] as? String {
             self.multiZoneShrink = value
@@ -4821,6 +4853,68 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class FEClusterList : Tea.TeaModel {
+        public var dbClusterId: String?
+
+        public var nodeCount: Int64?
+
+        public var singleNodeCpuCores: Int64?
+
+        public var singleNodeMemoryInGB: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dbClusterId != nil {
+                map["DbClusterId"] = self.dbClusterId!
+            }
+            if self.nodeCount != nil {
+                map["NodeCount"] = self.nodeCount!
+            }
+            if self.singleNodeCpuCores != nil {
+                map["SingleNodeCpuCores"] = self.singleNodeCpuCores!
+            }
+            if self.singleNodeMemoryInGB != nil {
+                map["SingleNodeMemoryInGB"] = self.singleNodeMemoryInGB!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DbClusterId"] as? String {
+                self.dbClusterId = value
+            }
+            if let value = dict["NodeCount"] as? Int64 {
+                self.nodeCount = value
+            }
+            if let value = dict["SingleNodeCpuCores"] as? Int64 {
+                self.singleNodeCpuCores = value
+            }
+            if let value = dict["SingleNodeMemoryInGB"] as? Int64 {
+                self.singleNodeMemoryInGB = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public class MultiZone : Tea.TeaModel {
         public var availableIpCount: Int64?
 
@@ -5027,6 +5121,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var expireTime: String?
 
+    public var FEClusterList: [DescribeDBInstanceAttributeResponseBody.FEClusterList]?
+
     public var gmtModified: String?
 
     public var langfuseInstanceIds: [String]?
@@ -5136,6 +5232,13 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.expireTime != nil {
             map["ExpireTime"] = self.expireTime!
+        }
+        if self.FEClusterList != nil {
+            var tmp : [Any] = []
+            for k in self.FEClusterList! {
+                tmp.append(k.toMap())
+            }
+            map["FEClusterList"] = tmp
         }
         if self.gmtModified != nil {
             map["GmtModified"] = self.gmtModified!
@@ -5280,6 +5383,19 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ExpireTime"] as? String {
             self.expireTime = value
+        }
+        if let value = dict["FEClusterList"] as? [Any?] {
+            var tmp : [DescribeDBInstanceAttributeResponseBody.FEClusterList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDBInstanceAttributeResponseBody.FEClusterList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.FEClusterList = tmp
         }
         if let value = dict["GmtModified"] as? String {
             self.gmtModified = value

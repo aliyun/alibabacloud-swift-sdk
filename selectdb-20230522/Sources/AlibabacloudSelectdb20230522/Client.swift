@@ -449,6 +449,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.engineVersion)) {
             query["EngineVersion"] = request.engineVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.FEClassCode)) {
+            query["FEClassCode"] = request.FEClassCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.FENodeCount)) {
+            query["FENodeCount"] = request.FENodeCount ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.multiZoneShrink)) {
             query["MultiZone"] = request.multiZoneShrink ?? "";
         }
