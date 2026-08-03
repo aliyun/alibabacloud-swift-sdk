@@ -2563,7 +2563,15 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
             public class Promotions : Tea.TeaModel {
                 public var activityId: String?
 
+                public var effective: Bool?
+
+                public var endTimestamp: String?
+
                 public var optionCode: String?
+
+                public var priceBreakReduceValue: String?
+
+                public var priceBreakThreshold: String?
 
                 public var promotionDesc: String?
 
@@ -2572,6 +2580,8 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                 public var promotionName: String?
 
                 public var selected: Bool?
+
+                public var startTimestamp: String?
 
                 public override init() {
                     super.init()
@@ -2590,8 +2600,20 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                     if self.activityId != nil {
                         map["ActivityId"] = self.activityId!
                     }
+                    if self.effective != nil {
+                        map["Effective"] = self.effective!
+                    }
+                    if self.endTimestamp != nil {
+                        map["EndTimestamp"] = self.endTimestamp!
+                    }
                     if self.optionCode != nil {
                         map["OptionCode"] = self.optionCode!
+                    }
+                    if self.priceBreakReduceValue != nil {
+                        map["PriceBreakReduceValue"] = self.priceBreakReduceValue!
+                    }
+                    if self.priceBreakThreshold != nil {
+                        map["PriceBreakThreshold"] = self.priceBreakThreshold!
                     }
                     if self.promotionDesc != nil {
                         map["PromotionDesc"] = self.promotionDesc!
@@ -2605,6 +2627,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                     if self.selected != nil {
                         map["Selected"] = self.selected!
                     }
+                    if self.startTimestamp != nil {
+                        map["StartTimestamp"] = self.startTimestamp!
+                    }
                     return map
                 }
 
@@ -2613,8 +2638,20 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                     if let value = dict["ActivityId"] as? String {
                         self.activityId = value
                     }
+                    if let value = dict["Effective"] as? Bool {
+                        self.effective = value
+                    }
+                    if let value = dict["EndTimestamp"] as? String {
+                        self.endTimestamp = value
+                    }
                     if let value = dict["OptionCode"] as? String {
                         self.optionCode = value
+                    }
+                    if let value = dict["PriceBreakReduceValue"] as? String {
+                        self.priceBreakReduceValue = value
+                    }
+                    if let value = dict["PriceBreakThreshold"] as? String {
+                        self.priceBreakThreshold = value
                     }
                     if let value = dict["PromotionDesc"] as? String {
                         self.promotionDesc = value
@@ -2627,6 +2664,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Selected"] as? Bool {
                         self.selected = value
+                    }
+                    if let value = dict["StartTimestamp"] as? String {
+                        self.startTimestamp = value
                     }
                 }
             }
