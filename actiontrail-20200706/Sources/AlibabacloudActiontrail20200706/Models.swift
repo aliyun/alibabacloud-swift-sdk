@@ -6,6 +6,8 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class CreateAdvancedQueryHistoryRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var querySql: String?
 
     public var simpleQuery: Bool?
@@ -24,6 +26,9 @@ public class CreateAdvancedQueryHistoryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.querySql != nil {
             map["QuerySql"] = self.querySql!
         }
@@ -35,6 +40,9 @@ public class CreateAdvancedQueryHistoryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["QuerySql"] as? String {
             self.querySql = value
         }
@@ -45,6 +53,8 @@ public class CreateAdvancedQueryHistoryRequest : Tea.TeaModel {
 }
 
 public class CreateAdvancedQueryHistoryResponseBody : Tea.TeaModel {
+    public var dryRunResult: String?
+
     public var queryId: String?
 
     public var querySql: String?
@@ -67,6 +77,9 @@ public class CreateAdvancedQueryHistoryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRunResult != nil {
+            map["DryRunResult"] = self.dryRunResult!
+        }
         if self.queryId != nil {
             map["QueryId"] = self.queryId!
         }
@@ -84,6 +97,9 @@ public class CreateAdvancedQueryHistoryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRunResult"] as? String {
+            self.dryRunResult = value
+        }
         if let value = dict["QueryId"] as? String {
             self.queryId = value
         }

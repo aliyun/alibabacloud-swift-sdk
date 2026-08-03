@@ -41,7 +41,40 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhangjiakou-na62-a01": "actiontrail.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "actiontrail.aliyuncs.com",
             "eu-west-1-oxs": "actiontrail.ap-northeast-1.aliyuncs.com",
-            "rus-west-1-pop": "actiontrail.ap-northeast-1.aliyuncs.com"
+            "rus-west-1-pop": "actiontrail.ap-northeast-1.aliyuncs.com",
+            "us-west-1": "actiontrail.us-west-1.aliyuncs.com",
+            "us-southeast-1": "actiontrail.us-southeast-1.aliyuncs.com",
+            "us-east-1": "actiontrail.us-east-1.aliyuncs.com",
+            "na-south-1": "actiontrail.na-south-1.aliyuncs.com",
+            "me-east-1": "actiontrail.me-east-1.aliyuncs.com",
+            "me-central-1": "actiontrail.me-central-1.aliyuncs.com",
+            "eu-west-2": "actiontrail.eu-west-2.aliyuncs.com",
+            "eu-west-1": "actiontrail.eu-west-1.aliyuncs.com",
+            "eu-central-1": "actiontrail.eu-central-1.aliyuncs.com",
+            "cn-zhongwei": "actiontrail.cn-zhongwei.aliyuncs.com",
+            "cn-zhangjiakou": "actiontrail.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu": "actiontrail.cn-wulanchabu.aliyuncs.com",
+            "cn-shenzhen": "actiontrail.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai-finance-1": "actiontrail.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai": "actiontrail.cn-shanghai.aliyuncs.com",
+            "cn-qingdao": "actiontrail.cn-qingdao.aliyuncs.com",
+            "cn-north-2-gov-1": "actiontrail.cn-north-2-gov-1.aliyuncs.com",
+            "cn-nanjing": "actiontrail.cn-nanjing.aliyuncs.com",
+            "cn-huhehaote": "actiontrail.cn-huhehaote.aliyuncs.com",
+            "cn-hongkong": "actiontrail.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "actiontrail.cn-heyuan.aliyuncs.com",
+            "cn-hangzhou": "actiontrail.cn-hangzhou.aliyuncs.com",
+            "cn-guangzhou": "actiontrail.cn-guangzhou.aliyuncs.com",
+            "cn-chengdu": "actiontrail.cn-chengdu.aliyuncs.com",
+            "cn-beijing": "actiontrail.cn-beijing.aliyuncs.com",
+            "ap-southeast-8": "actiontrail.ap-southeast-8.aliyuncs.com",
+            "ap-southeast-7": "actiontrail.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "actiontrail.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-5": "actiontrail.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-3": "actiontrail.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-1": "actiontrail.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "actiontrail.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "actiontrail.ap-northeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("actiontrail", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -61,6 +94,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAdvancedQueryHistoryWithOptions(_ request: CreateAdvancedQueryHistoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAdvancedQueryHistoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.querySql)) {
             query["QuerySql"] = request.querySql ?? "";
         }
