@@ -28,7 +28,12 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-qingdao": "pai.cn-qingdao.aliyuncs.com",
             "cn-shanghai-finance-1": "pai.cn-shanghai-finance-1.aliyuncs.com",
             "cn-wulanchabu": "pai.cn-wulanchabu.aliyuncs.com",
-            "cn-zhangjiakou": "pai.cn-zhangjiakou.aliyuncs.com"
+            "cn-zhangjiakou": "pai.cn-zhangjiakou.aliyuncs.com",
+            "us-southeast-1": "pai.us-southeast-1.aliyuncs.com",
+            "cn-zhongwei": "pai.cn-zhongwei.aliyuncs.com",
+            "cn-guangzhou": "pai.cn-guangzhou.aliyuncs.com",
+            "ap-southeast-8": "pai.ap-southeast-8.aliyuncs.com",
+            "ap-northeast-2": "pai.ap-northeast-2.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("paistudio", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -322,6 +327,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.computeResource)) {
             body["ComputeResource"] = request.computeResource!;
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialConfig)) {
+            body["CredentialConfig"] = request.credentialConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.environments)) {
             body["Environments"] = request.environments ?? [:];
@@ -1233,6 +1241,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listAlgorithmsWithOptions(request as! ListAlgorithmsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodePodsWithOptions(_ NodeId: String, _ request: ListNodePodsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodePodsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.GPUIndexes)) {
+            query["GPUIndexes"] = request.GPUIndexes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.oversoldTypes)) {
+            query["OversoldTypes"] = request.oversoldTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListNodePods",
+            "version": "2022-01-12",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/nodes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(NodeId)) + "/Pods",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListNodePodsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodePods(_ NodeId: String, _ request: ListNodePodsRequest) async throws -> ListNodePodsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listNodePodsWithOptions(NodeId as! String, request as! ListNodePodsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2454,6 +2501,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.labels)) {
             body["Labels"] = request.labels ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.propagateDefaultGPUDriver)) {
+            body["PropagateDefaultGPUDriver"] = request.propagateDefaultGPUDriver!;
         }
         if (!TeaUtils.Client.isUnset(request.queueStrategy)) {
             body["QueueStrategy"] = request.queueStrategy ?? "";
