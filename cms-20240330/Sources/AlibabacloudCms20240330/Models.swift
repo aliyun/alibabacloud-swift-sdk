@@ -42144,6 +42144,44 @@ public class GetWorkspaceRequest : Tea.TeaModel {
 }
 
 public class GetWorkspaceResponseBody : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var createTime: String?
 
     public var description_: String?
@@ -42156,7 +42194,11 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var slsProject: String?
+
+    public var tags: [GetWorkspaceResponseBody.Tags]?
 
     public var workspaceName: String?
 
@@ -42192,8 +42234,18 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.slsProject != nil {
             map["slsProject"] = self.slsProject!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
         }
         if self.workspaceName != nil {
             map["workspaceName"] = self.workspaceName!
@@ -42221,8 +42273,24 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["slsProject"] as? String {
             self.slsProject = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [GetWorkspaceResponseBody.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = GetWorkspaceResponseBody.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["workspaceName"] as? String {
             self.workspaceName = value
@@ -55224,11 +55292,53 @@ public class ListTagResourcesResponse : Tea.TeaModel {
 }
 
 public class ListWorkspacesRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var maxResults: Int32?
 
     public var nextToken: String?
 
     public var region: String?
+
+    public var resourceGroupId: String?
+
+    public var tags: [ListWorkspacesRequest.Tags]?
 
     public var workspaceName: String?
 
@@ -55257,6 +55367,16 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         if self.region != nil {
             map["region"] = self.region!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
         if self.workspaceName != nil {
             map["workspaceName"] = self.workspaceName!
         }
@@ -55277,6 +55397,22 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         if let value = dict["region"] as? String {
             self.region = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [ListWorkspacesRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = ListWorkspacesRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
         if let value = dict["workspaceName"] as? String {
             self.workspaceName = value
         }
@@ -55292,6 +55428,10 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var region: String?
+
+    public var resourceGroupId: String?
+
+    public var tagsShrink: String?
 
     public var workspaceName: String?
 
@@ -55320,6 +55460,12 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
         if self.region != nil {
             map["region"] = self.region!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tagsShrink != nil {
+            map["tags"] = self.tagsShrink!
+        }
         if self.workspaceName != nil {
             map["workspaceName"] = self.workspaceName!
         }
@@ -55340,6 +55486,12 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
         if let value = dict["region"] as? String {
             self.region = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["tags"] as? String {
+            self.tagsShrink = value
+        }
         if let value = dict["workspaceName"] as? String {
             self.workspaceName = value
         }
@@ -55351,6 +55503,44 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
 
 public class ListWorkspacesResponseBody : Tea.TeaModel {
     public class Workspaces : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["key"] = self.key!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var createTime: String?
 
         public var description_: String?
@@ -55361,7 +55551,11 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var slsProject: String?
+
+        public var tags: [ListWorkspacesResponseBody.Workspaces.Tags]?
 
         public var workspaceName: String?
 
@@ -55394,8 +55588,18 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["regionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["resourceGroupId"] = self.resourceGroupId!
+            }
             if self.slsProject != nil {
                 map["slsProject"] = self.slsProject!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["tags"] = tmp
             }
             if self.workspaceName != nil {
                 map["workspaceName"] = self.workspaceName!
@@ -55420,8 +55624,24 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             if let value = dict["regionId"] as? String {
                 self.regionId = value
             }
+            if let value = dict["resourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
             if let value = dict["slsProject"] as? String {
                 self.slsProject = value
+            }
+            if let value = dict["tags"] as? [Any?] {
+                var tmp : [ListWorkspacesResponseBody.Workspaces.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListWorkspacesResponseBody.Workspaces.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["workspaceName"] as? String {
                 self.workspaceName = value
@@ -55799,11 +56019,53 @@ public class OpenCmsServiceResponse : Tea.TeaModel {
 }
 
 public class PutWorkspaceRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var description_: String?
 
     public var displayName: String?
 
+    public var resourceGroupId: String?
+
     public var slsProject: String?
+
+    public var tags: [PutWorkspaceRequest.Tags]?
 
     public override init() {
         super.init()
@@ -55825,8 +56087,18 @@ public class PutWorkspaceRequest : Tea.TeaModel {
         if self.displayName != nil {
             map["displayName"] = self.displayName!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.slsProject != nil {
             map["slsProject"] = self.slsProject!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
         }
         return map
     }
@@ -55839,8 +56111,24 @@ public class PutWorkspaceRequest : Tea.TeaModel {
         if let value = dict["displayName"] as? String {
             self.displayName = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["slsProject"] as? String {
             self.slsProject = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [PutWorkspaceRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = PutWorkspaceRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
