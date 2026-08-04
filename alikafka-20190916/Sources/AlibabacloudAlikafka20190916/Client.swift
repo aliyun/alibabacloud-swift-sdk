@@ -11,13 +11,16 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointRule = "regional"
         self._endpointMap = [
             "us-west-1": "alikafka.us-west-1.aliyuncs.com",
+            "us-southeast-1": "alikafka.us-southeast-1.aliyuncs.com",
             "us-east-1": "alikafka.us-east-1.aliyuncs.com",
             "na-south-1": "alikafka.na-south-1.aliyuncs.com",
             "me-east-1": "alikafka.me-east-1.aliyuncs.com",
             "me-central-1": "alikafka.me-central-1.aliyuncs.com",
             "eu-west-1": "alikafka.eu-west-1.aliyuncs.com",
             "eu-central-1": "alikafka.eu-central-1.aliyuncs.com",
+            "cn-zhengzhou-jva": "alikafka.cn-zhengzhou-jva.aliyuncs.com",
             "cn-zhangjiakou": "alikafka.cn-zhangjiakou.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "alikafka.cn-wulanchabu-gic-1.aliyuncs.com",
             "cn-wulanchabu": "alikafka.cn-wulanchabu.aliyuncs.com",
             "cn-shenzhen-finance-1": "alikafka.cn-shenzhen-finance-1.aliyuncs.com",
             "cn-shenzhen": "alikafka.cn-shenzhen.aliyuncs.com",
@@ -30,13 +33,14 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-finance": "alikafka.cn-hangzhou-finance.aliyuncs.com",
             "cn-hangzhou": "alikafka.cn-hangzhou.aliyuncs.com",
             "cn-guangzhou": "alikafka.cn-guangzhou.aliyuncs.com",
+            "cn-fuzhou": "alikafka.cn-fuzhou.aliyuncs.com",
             "cn-chengdu": "alikafka.cn-chengdu.aliyuncs.com",
             "cn-beijing-finance-1": "alikafka.cn-beijing-finance-1.aliyuncs.com",
             "cn-beijing": "alikafka.cn-beijing.aliyuncs.com",
             "ap-southeast-7": "alikafka.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-6": "alikafka.ap-southeast-6.aliyuncs.com",
             "ap-southeast-5": "alikafka.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "alikafka.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "alikafka.ap-southeast-2.aliyuncs.com",
             "ap-southeast-1": "alikafka.ap-southeast-1.aliyuncs.com",
             "ap-northeast-2": "alikafka.ap-northeast-2.aliyuncs.com",
             "ap-northeast-1": "alikafka.ap-northeast-1.aliyuncs.com"
@@ -95,6 +99,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addUserDefinedSg(_ request: AddUserDefinedSgRequest) async throws -> AddUserDefinedSgResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await addUserDefinedSgWithOptions(request as! AddUserDefinedSgRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteTopicsWithOptions(_ tmpReq: BatchDeleteTopicsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchDeleteTopicsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchDeleteTopicsShrinkRequest = BatchDeleteTopicsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.topics)) {
+            request.topicsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.topics, "Topics", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topicsShrink)) {
+            query["Topics"] = request.topicsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchDeleteTopics",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchDeleteTopicsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteTopics(_ request: BatchDeleteTopicsRequest) async throws -> BatchDeleteTopicsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchDeleteTopicsWithOptions(request as! BatchDeleteTopicsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
