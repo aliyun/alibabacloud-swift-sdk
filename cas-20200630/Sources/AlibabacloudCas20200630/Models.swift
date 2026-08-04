@@ -6500,6 +6500,8 @@ public class GetCaInstanceCrlAddressRequest : Tea.TeaModel {
 public class GetCaInstanceCrlAddressResponseBody : Tea.TeaModel {
     public var caInstanceStatus: String?
 
+    public var caType: String?
+
     public var crlUrl: String?
 
     public var hashCode: String?
@@ -6525,6 +6527,9 @@ public class GetCaInstanceCrlAddressResponseBody : Tea.TeaModel {
         if self.caInstanceStatus != nil {
             map["CaInstanceStatus"] = self.caInstanceStatus!
         }
+        if self.caType != nil {
+            map["CaType"] = self.caType!
+        }
         if self.crlUrl != nil {
             map["CrlUrl"] = self.crlUrl!
         }
@@ -6544,6 +6549,9 @@ public class GetCaInstanceCrlAddressResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CaInstanceStatus"] as? String {
             self.caInstanceStatus = value
+        }
+        if let value = dict["CaType"] as? String {
+            self.caType = value
         }
         if let value = dict["CrlUrl"] as? String {
             self.crlUrl = value
