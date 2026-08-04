@@ -11965,6 +11965,60 @@ public class ListIndicesRequest : Tea.TeaModel {
 public class ListIndicesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Indices : Tea.TeaModel {
+            public class StructuredIndexConfig : Tea.TeaModel {
+                public var isRecall: Bool?
+
+                public var isSearch: Bool?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.isRecall != nil {
+                        map["IsRecall"] = self.isRecall!
+                    }
+                    if self.isSearch != nil {
+                        map["IsSearch"] = self.isSearch!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["IsRecall"] as? Bool {
+                        self.isRecall = value
+                    }
+                    if let value = dict["IsSearch"] as? Bool {
+                        self.isSearch = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
             public var chunkSize: Int32?
 
             public var confgModel: String?
@@ -11998,6 +12052,8 @@ public class ListIndicesResponseBody : Tea.TeaModel {
             public var sourceType: String?
 
             public var structureType: String?
+
+            public var structuredIndexConfig: [ListIndicesResponseBody.Data.Indices.StructuredIndexConfig]?
 
             public override init() {
                 super.init()
@@ -12064,6 +12120,13 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 if self.structureType != nil {
                     map["StructureType"] = self.structureType!
                 }
+                if self.structuredIndexConfig != nil {
+                    var tmp : [Any] = []
+                    for k in self.structuredIndexConfig! {
+                        tmp.append(k.toMap())
+                    }
+                    map["StructuredIndexConfig"] = tmp
+                }
                 return map
             }
 
@@ -12119,6 +12182,19 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["StructureType"] as? String {
                     self.structureType = value
+                }
+                if let value = dict["StructuredIndexConfig"] as? [Any?] {
+                    var tmp : [ListIndicesResponseBody.Data.Indices.StructuredIndexConfig] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListIndicesResponseBody.Data.Indices.StructuredIndexConfig()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.structuredIndexConfig = tmp
                 }
             }
         }
