@@ -2795,6 +2795,216 @@ public class OpenStructSaseUserSimple : Tea.TeaModel {
     }
 }
 
+public class PAApplicationUnauthorizedAccessConfig : Tea.TeaModel {
+    public class BlockContent : Tea.TeaModel {
+        public class BlockTextEn : Tea.TeaModel {
+            public var browserAlertContent: String?
+
+            public var browserAlertStyle: String?
+
+            public var browserAlertTitle: String?
+
+            public var reportButtonText: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.browserAlertContent != nil {
+                    map["BrowserAlertContent"] = self.browserAlertContent!
+                }
+                if self.browserAlertStyle != nil {
+                    map["BrowserAlertStyle"] = self.browserAlertStyle!
+                }
+                if self.browserAlertTitle != nil {
+                    map["BrowserAlertTitle"] = self.browserAlertTitle!
+                }
+                if self.reportButtonText != nil {
+                    map["ReportButtonText"] = self.reportButtonText!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BrowserAlertContent"] as? String {
+                    self.browserAlertContent = value
+                }
+                if let value = dict["BrowserAlertStyle"] as? String {
+                    self.browserAlertStyle = value
+                }
+                if let value = dict["BrowserAlertTitle"] as? String {
+                    self.browserAlertTitle = value
+                }
+                if let value = dict["ReportButtonText"] as? String {
+                    self.reportButtonText = value
+                }
+            }
+        }
+        public class BlockTextZh : Tea.TeaModel {
+            public var browserAlertContent: String?
+
+            public var browserAlertStyle: String?
+
+            public var browserAlertTitle: String?
+
+            public var reportButtonText: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.browserAlertContent != nil {
+                    map["BrowserAlertContent"] = self.browserAlertContent!
+                }
+                if self.browserAlertStyle != nil {
+                    map["BrowserAlertStyle"] = self.browserAlertStyle!
+                }
+                if self.browserAlertTitle != nil {
+                    map["BrowserAlertTitle"] = self.browserAlertTitle!
+                }
+                if self.reportButtonText != nil {
+                    map["ReportButtonText"] = self.reportButtonText!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BrowserAlertContent"] as? String {
+                    self.browserAlertContent = value
+                }
+                if let value = dict["BrowserAlertStyle"] as? String {
+                    self.browserAlertStyle = value
+                }
+                if let value = dict["BrowserAlertTitle"] as? String {
+                    self.browserAlertTitle = value
+                }
+                if let value = dict["ReportButtonText"] as? String {
+                    self.reportButtonText = value
+                }
+            }
+        }
+        public var blockTextEn: PAApplicationUnauthorizedAccessConfig.BlockContent.BlockTextEn?
+
+        public var blockTextZh: PAApplicationUnauthorizedAccessConfig.BlockContent.BlockTextZh?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.blockTextEn?.validate()
+            try self.blockTextZh?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.blockTextEn != nil {
+                map["BlockTextEn"] = self.blockTextEn?.toMap()
+            }
+            if self.blockTextZh != nil {
+                map["BlockTextZh"] = self.blockTextZh?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BlockTextEn"] as? [String: Any?] {
+                var model = PAApplicationUnauthorizedAccessConfig.BlockContent.BlockTextEn()
+                model.fromMap(value)
+                self.blockTextEn = model
+            }
+            if let value = dict["BlockTextZh"] as? [String: Any?] {
+                var model = PAApplicationUnauthorizedAccessConfig.BlockContent.BlockTextZh()
+                model.fromMap(value)
+                self.blockTextZh = model
+            }
+        }
+    }
+    public var allowReport: Bool?
+
+    public var blockContent: PAApplicationUnauthorizedAccessConfig.BlockContent?
+
+    public var enabled: Bool?
+
+    public var reportProcessId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.blockContent?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowReport != nil {
+            map["AllowReport"] = self.allowReport!
+        }
+        if self.blockContent != nil {
+            map["BlockContent"] = self.blockContent?.toMap()
+        }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.reportProcessId != nil {
+            map["ReportProcessId"] = self.reportProcessId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowReport"] as? Bool {
+            self.allowReport = value
+        }
+        if let value = dict["BlockContent"] as? [String: Any?] {
+            var model = PAApplicationUnauthorizedAccessConfig.BlockContent()
+            model.fromMap(value)
+            self.blockContent = model
+        }
+        if let value = dict["Enabled"] as? Bool {
+            self.enabled = value
+        }
+        if let value = dict["ReportProcessId"] as? String {
+            self.reportProcessId = value
+        }
+    }
+}
+
 public class PAL7Config : Tea.TeaModel {
     public class BypassConfig : Tea.TeaModel {
         public class UrlBypassRules : Tea.TeaModel {
@@ -4097,6 +4307,8 @@ public class CreateApprovalProcessRequest : Tea.TeaModel {
 
         public var peripheralBlockSchemaId: String?
 
+        public var privateAccessBlockSchemaId: String?
+
         public var softwareBlockSchemaId: String?
 
         public var softwareHardeningSchemaId: String?
@@ -4136,6 +4348,9 @@ public class CreateApprovalProcessRequest : Tea.TeaModel {
             if self.peripheralBlockSchemaId != nil {
                 map["PeripheralBlockSchemaId"] = self.peripheralBlockSchemaId!
             }
+            if self.privateAccessBlockSchemaId != nil {
+                map["PrivateAccessBlockSchemaId"] = self.privateAccessBlockSchemaId!
+            }
             if self.softwareBlockSchemaId != nil {
                 map["SoftwareBlockSchemaId"] = self.softwareBlockSchemaId!
             }
@@ -4167,6 +4382,9 @@ public class CreateApprovalProcessRequest : Tea.TeaModel {
             }
             if let value = dict["PeripheralBlockSchemaId"] as? String {
                 self.peripheralBlockSchemaId = value
+            }
+            if let value = dict["PrivateAccessBlockSchemaId"] as? String {
+                self.privateAccessBlockSchemaId = value
             }
             if let value = dict["SoftwareBlockSchemaId"] as? String {
                 self.softwareBlockSchemaId = value
@@ -4556,6 +4774,44 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PrivateAccessBlockPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PolicyIds"] as? [String] {
+                    self.policyIds = value
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
         public class ProcessNodes : Tea.TeaModel {
             public var saseUserId: String?
 
@@ -4688,6 +4944,8 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
 
         public var peripheralBlockPolicies: CreateApprovalProcessResponseBody.Process.PeripheralBlockPolicies?
 
+        public var privateAccessBlockPolicies: CreateApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies?
+
         public var processId: String?
 
         public var processName: String?
@@ -4715,6 +4973,7 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
             try self.domainWhitelistPolicies?.validate()
             try self.endpointHardeningPolicies?.validate()
             try self.peripheralBlockPolicies?.validate()
+            try self.privateAccessBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
             try self.softwareHardeningPolicies?.validate()
         }
@@ -4747,6 +5006,9 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.peripheralBlockPolicies != nil {
                 map["PeripheralBlockPolicies"] = self.peripheralBlockPolicies?.toMap()
+            }
+            if self.privateAccessBlockPolicies != nil {
+                map["PrivateAccessBlockPolicies"] = self.privateAccessBlockPolicies?.toMap()
             }
             if self.processId != nil {
                 map["ProcessId"] = self.processId!
@@ -4816,6 +5078,11 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
                 var model = CreateApprovalProcessResponseBody.Process.PeripheralBlockPolicies()
                 model.fromMap(value)
                 self.peripheralBlockPolicies = model
+            }
+            if let value = dict["PrivateAccessBlockPolicies"] as? [String: Any?] {
+                var model = CreateApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies()
+                model.fromMap(value)
+                self.privateAccessBlockPolicies = model
             }
             if let value = dict["ProcessId"] as? String {
                 self.processId = value
@@ -6341,6 +6608,8 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public var tagIds: [String]?
 
+    public var unauthorizedAccessConfig: PAApplicationUnauthorizedAccessConfig?
+
     public override init() {
         super.init()
     }
@@ -6352,6 +6621,7 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.l7Config?.validate()
+        try self.unauthorizedAccessConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6402,6 +6672,9 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if self.tagIds != nil {
             map["TagIds"] = self.tagIds!
+        }
+        if self.unauthorizedAccessConfig != nil {
+            map["UnauthorizedAccessConfig"] = self.unauthorizedAccessConfig?.toMap()
         }
         return map
     }
@@ -6468,6 +6741,11 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["TagIds"] as? [String] {
             self.tagIds = value
+        }
+        if let value = dict["UnauthorizedAccessConfig"] as? [String: Any?] {
+            var model = PAApplicationUnauthorizedAccessConfig()
+            model.fromMap(value)
+            self.unauthorizedAccessConfig = model
         }
     }
 }
@@ -6537,6 +6815,8 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public var tagIds: [String]?
 
+    public var unauthorizedAccessConfigShrink: String?
+
     public override init() {
         super.init()
     }
@@ -6597,6 +6877,9 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.tagIds != nil {
             map["TagIds"] = self.tagIds!
+        }
+        if self.unauthorizedAccessConfigShrink != nil {
+            map["UnauthorizedAccessConfig"] = self.unauthorizedAccessConfigShrink!
         }
         return map
     }
@@ -6661,6 +6944,9 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TagIds"] as? [String] {
             self.tagIds = value
+        }
+        if let value = dict["UnauthorizedAccessConfig"] as? String {
+            self.unauthorizedAccessConfigShrink = value
         }
     }
 }
@@ -14550,6 +14836,120 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PrivateAccessBlockPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies.FieldMap]?
+
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["PolicyIds"] as? [String] {
+                    self.policyIds = value
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
         public class ProcessNodes : Tea.TeaModel {
             public var saseUserId: String?
 
@@ -14840,6 +15240,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
         public var peripheralBlockPolicies: GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies?
 
+        public var privateAccessBlockPolicies: GetApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies?
+
         public var processId: String?
 
         public var processName: String?
@@ -14867,6 +15269,7 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             try self.domainWhitelistPolicies?.validate()
             try self.endpointHardeningPolicies?.validate()
             try self.peripheralBlockPolicies?.validate()
+            try self.privateAccessBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
             try self.softwareHardeningPolicies?.validate()
         }
@@ -14908,6 +15311,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.peripheralBlockPolicies != nil {
                 map["PeripheralBlockPolicies"] = self.peripheralBlockPolicies?.toMap()
+            }
+            if self.privateAccessBlockPolicies != nil {
+                map["PrivateAccessBlockPolicies"] = self.privateAccessBlockPolicies?.toMap()
             }
             if self.processId != nil {
                 map["ProcessId"] = self.processId!
@@ -14986,6 +15392,11 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 var model = GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies()
                 model.fromMap(value)
                 self.peripheralBlockPolicies = model
+            }
+            if let value = dict["PrivateAccessBlockPolicies"] as? [String: Any?] {
+                var model = GetApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies()
+                model.fromMap(value)
+                self.privateAccessBlockPolicies = model
             }
             if let value = dict["ProcessId"] as? String {
                 self.processId = value
@@ -18008,6 +18419,8 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
 
         public var tagIds: [String]?
 
+        public var unauthorizedAccessConfig: PAApplicationUnauthorizedAccessConfig?
+
         public override init() {
             super.init()
         }
@@ -18019,6 +18432,7 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.l7Config?.validate()
+            try self.unauthorizedAccessConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -18084,6 +18498,9 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if self.tagIds != nil {
                 map["TagIds"] = self.tagIds!
+            }
+            if self.unauthorizedAccessConfig != nil {
+                map["UnauthorizedAccessConfig"] = self.unauthorizedAccessConfig?.toMap()
             }
             return map
         }
@@ -18165,6 +18582,11 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["TagIds"] as? [String] {
                 self.tagIds = value
+            }
+            if let value = dict["UnauthorizedAccessConfig"] as? [String: Any?] {
+                var model = PAApplicationUnauthorizedAccessConfig()
+                model.fromMap(value)
+                self.unauthorizedAccessConfig = model
             }
         }
     }
@@ -21500,6 +21922,44 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PrivateAccessBlockPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PolicyIds"] as? [String] {
+                    self.policyIds = value
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
         public class ProcessNodes : Tea.TeaModel {
             public var saseUserId: String?
 
@@ -21634,6 +22094,8 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
 
         public var peripheralBlockPolicies: ListApprovalProcessesResponseBody.Processes.PeripheralBlockPolicies?
 
+        public var privateAccessBlockPolicies: ListApprovalProcessesResponseBody.Processes.PrivateAccessBlockPolicies?
+
         public var processId: String?
 
         public var processName: String?
@@ -21661,6 +22123,7 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
             try self.domainWhitelistPolicies?.validate()
             try self.endpointHardeningPolicies?.validate()
             try self.peripheralBlockPolicies?.validate()
+            try self.privateAccessBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
             try self.softwareHardeningPolicies?.validate()
         }
@@ -21696,6 +22159,9 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
             }
             if self.peripheralBlockPolicies != nil {
                 map["PeripheralBlockPolicies"] = self.peripheralBlockPolicies?.toMap()
+            }
+            if self.privateAccessBlockPolicies != nil {
+                map["PrivateAccessBlockPolicies"] = self.privateAccessBlockPolicies?.toMap()
             }
             if self.processId != nil {
                 map["ProcessId"] = self.processId!
@@ -21768,6 +22234,11 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
                 var model = ListApprovalProcessesResponseBody.Processes.PeripheralBlockPolicies()
                 model.fromMap(value)
                 self.peripheralBlockPolicies = model
+            }
+            if let value = dict["PrivateAccessBlockPolicies"] as? [String: Any?] {
+                var model = ListApprovalProcessesResponseBody.Processes.PrivateAccessBlockPolicies()
+                model.fromMap(value)
+                self.privateAccessBlockPolicies = model
             }
             if let value = dict["ProcessId"] as? String {
                 self.processId = value
@@ -23861,6 +24332,8 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
 
         public var upgradeTime: ListConnectorsResponseBody.Connectors.UpgradeTime?
 
+        public var vipCidr: String?
+
         public override init() {
             super.init()
         }
@@ -23919,6 +24392,9 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
             }
             if self.upgradeTime != nil {
                 map["UpgradeTime"] = self.upgradeTime?.toMap()
+            }
+            if self.vipCidr != nil {
+                map["VipCidr"] = self.vipCidr!
             }
             return map
         }
@@ -23982,6 +24458,9 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
                 var model = ListConnectorsResponseBody.Connectors.UpgradeTime()
                 model.fromMap(value)
                 self.upgradeTime = model
+            }
+            if let value = dict["VipCidr"] as? String {
+                self.vipCidr = value
             }
         }
     }
@@ -32707,6 +33186,8 @@ public class ListUserDevicesRequest : Tea.TeaModel {
 
     public var sharingStatus: Bool?
 
+    public var snBios: String?
+
     public var snSystem: String?
 
     public var sortBy: String?
@@ -32789,6 +33270,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         if self.sharingStatus != nil {
             map["SharingStatus"] = self.sharingStatus!
         }
+        if self.snBios != nil {
+            map["SnBios"] = self.snBios!
+        }
         if self.snSystem != nil {
             map["SnSystem"] = self.snSystem!
         }
@@ -32865,6 +33349,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if let value = dict["SharingStatus"] as? Bool {
             self.sharingStatus = value
+        }
+        if let value = dict["SnBios"] as? String {
+            self.snBios = value
         }
         if let value = dict["SnSystem"] as? String {
             self.snSystem = value
@@ -36359,6 +36846,112 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                 }
             }
         }
+        public class PrivateAccessBlockSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.PrivateAccessBlockSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.PrivateAccessBlockSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.PrivateAccessBlockSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
         public class SoftwareBlockSchemaConfig : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
@@ -36585,6 +37178,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
 
         public var peripheralBlockSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.PeripheralBlockSchemaConfig?
 
+        public var privateAccessBlockSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.PrivateAccessBlockSchemaConfig?
+
         public var softwareBlockSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareBlockSchemaConfig?
 
         public var softwareHardeningSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareHardeningSchemaConfig?
@@ -36606,6 +37201,7 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             try self.domainWhitelistSchemaConfig?.validate()
             try self.endpointHardeningSchemaConfig?.validate()
             try self.peripheralBlockSchemaConfig?.validate()
+            try self.privateAccessBlockSchemaConfig?.validate()
             try self.softwareBlockSchemaConfig?.validate()
             try self.softwareHardeningSchemaConfig?.validate()
         }
@@ -36632,6 +37228,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             }
             if self.peripheralBlockSchemaConfig != nil {
                 map["PeripheralBlockSchemaConfig"] = self.peripheralBlockSchemaConfig?.toMap()
+            }
+            if self.privateAccessBlockSchemaConfig != nil {
+                map["PrivateAccessBlockSchemaConfig"] = self.privateAccessBlockSchemaConfig?.toMap()
             }
             if self.softwareBlockSchemaConfig != nil {
                 map["SoftwareBlockSchemaConfig"] = self.softwareBlockSchemaConfig?.toMap()
@@ -36679,6 +37278,11 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.peripheralBlockSchemaConfig = model
             }
+            if let value = dict["PrivateAccessBlockSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.PrivateAccessBlockSchemaConfig()
+                model.fromMap(value)
+                self.privateAccessBlockSchemaConfig = model
+            }
             if let value = dict["SoftwareBlockSchemaConfig"] as? [String: Any?] {
                 var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareBlockSchemaConfig()
                 model.fromMap(value)
@@ -36705,6 +37309,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
         public var endpointHardeningSchemaId: String?
 
         public var peripheralBlockSchemaId: String?
+
+        public var privateAccessBlockSchemaId: String?
 
         public var softwareBlockSchemaId: String?
 
@@ -36745,6 +37351,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             if self.peripheralBlockSchemaId != nil {
                 map["PeripheralBlockSchemaId"] = self.peripheralBlockSchemaId!
             }
+            if self.privateAccessBlockSchemaId != nil {
+                map["PrivateAccessBlockSchemaId"] = self.privateAccessBlockSchemaId!
+            }
             if self.softwareBlockSchemaId != nil {
                 map["SoftwareBlockSchemaId"] = self.softwareBlockSchemaId!
             }
@@ -36776,6 +37385,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             }
             if let value = dict["PeripheralBlockSchemaId"] as? String {
                 self.peripheralBlockSchemaId = value
+            }
+            if let value = dict["PrivateAccessBlockSchemaId"] as? String {
+                self.privateAccessBlockSchemaId = value
             }
             if let value = dict["SoftwareBlockSchemaId"] as? String {
                 self.softwareBlockSchemaId = value
@@ -37780,6 +38392,120 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PrivateAccessBlockPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies.FieldMap]?
+
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["PolicyIds"] as? [String] {
+                    self.policyIds = value
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
         public class ProcessNodes : Tea.TeaModel {
             public var saseUserId: String?
 
@@ -38070,6 +38796,8 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
         public var peripheraBlockPolicies: UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies?
 
+        public var privateAccessBlockPolicies: UpdateApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies?
+
         public var processId: String?
 
         public var processName: String?
@@ -38097,6 +38825,7 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             try self.domainWhitelistPolicies?.validate()
             try self.endpointHardeningPolicies?.validate()
             try self.peripheraBlockPolicies?.validate()
+            try self.privateAccessBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
             try self.softwareHardeningPolicies?.validate()
         }
@@ -38138,6 +38867,9 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.peripheraBlockPolicies != nil {
                 map["PeripheraBlockPolicies"] = self.peripheraBlockPolicies?.toMap()
+            }
+            if self.privateAccessBlockPolicies != nil {
+                map["PrivateAccessBlockPolicies"] = self.privateAccessBlockPolicies?.toMap()
             }
             if self.processId != nil {
                 map["ProcessId"] = self.processId!
@@ -38216,6 +38948,11 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 var model = UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies()
                 model.fromMap(value)
                 self.peripheraBlockPolicies = model
+            }
+            if let value = dict["PrivateAccessBlockPolicies"] as? [String: Any?] {
+                var model = UpdateApprovalProcessResponseBody.Process.PrivateAccessBlockPolicies()
+                model.fromMap(value)
+                self.privateAccessBlockPolicies = model
             }
             if let value = dict["ProcessId"] as? String {
                 self.processId = value
@@ -40648,6 +41385,8 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public var tagIds: [String]?
 
+    public var unauthorizedAccessConfig: PAApplicationUnauthorizedAccessConfig?
+
     public override init() {
         super.init()
     }
@@ -40659,6 +41398,7 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.l7Config?.validate()
+        try self.unauthorizedAccessConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -40715,6 +41455,9 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if self.tagIds != nil {
             map["TagIds"] = self.tagIds!
+        }
+        if self.unauthorizedAccessConfig != nil {
+            map["UnauthorizedAccessConfig"] = self.unauthorizedAccessConfig?.toMap()
         }
         return map
     }
@@ -40788,6 +41531,11 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         if let value = dict["TagIds"] as? [String] {
             self.tagIds = value
         }
+        if let value = dict["UnauthorizedAccessConfig"] as? [String: Any?] {
+            var model = PAApplicationUnauthorizedAccessConfig()
+            model.fromMap(value)
+            self.unauthorizedAccessConfig = model
+        }
     }
 }
 
@@ -40860,6 +41608,8 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public var tagIds: [String]?
 
+    public var unauthorizedAccessConfigShrink: String?
+
     public override init() {
         super.init()
     }
@@ -40926,6 +41676,9 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.tagIds != nil {
             map["TagIds"] = self.tagIds!
+        }
+        if self.unauthorizedAccessConfigShrink != nil {
+            map["UnauthorizedAccessConfig"] = self.unauthorizedAccessConfigShrink!
         }
         return map
     }
@@ -40996,6 +41749,9 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TagIds"] as? [String] {
             self.tagIds = value
+        }
+        if let value = dict["UnauthorizedAccessConfig"] as? String {
+            self.unauthorizedAccessConfigShrink = value
         }
     }
 }
