@@ -3162,6 +3162,8 @@ public class DeleteMFADeviceForUserRequest : Tea.TeaModel {
 
     public var MFADeviceId: String?
 
+    public var mfaType: String?
+
     public var userId: String?
 
     public override init() {
@@ -3184,6 +3186,9 @@ public class DeleteMFADeviceForUserRequest : Tea.TeaModel {
         if self.MFADeviceId != nil {
             map["MFADeviceId"] = self.MFADeviceId!
         }
+        if self.mfaType != nil {
+            map["MfaType"] = self.mfaType!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -3197,6 +3202,9 @@ public class DeleteMFADeviceForUserRequest : Tea.TeaModel {
         }
         if let value = dict["MFADeviceId"] as? String {
             self.MFADeviceId = value
+        }
+        if let value = dict["MfaType"] as? String {
+            self.mfaType = value
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
@@ -5983,6 +5991,8 @@ public class GetMFAAuthenticationSettingInfoRequest : Tea.TeaModel {
 
 public class GetMFAAuthenticationSettingInfoResponseBody : Tea.TeaModel {
     public class MFAAuthenticationSettingInfo : Tea.TeaModel {
+        public var allowedVerificationTypes: [String]?
+
         public var mfaAuthenticationAdvanceSettings: String?
 
         public var operationForRiskLogin: String?
@@ -6001,6 +6011,9 @@ public class GetMFAAuthenticationSettingInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowedVerificationTypes != nil {
+                map["AllowedVerificationTypes"] = self.allowedVerificationTypes!
+            }
             if self.mfaAuthenticationAdvanceSettings != nil {
                 map["MfaAuthenticationAdvanceSettings"] = self.mfaAuthenticationAdvanceSettings!
             }
@@ -6012,6 +6025,9 @@ public class GetMFAAuthenticationSettingInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllowedVerificationTypes"] as? [String] {
+                self.allowedVerificationTypes = value
+            }
             if let value = dict["MfaAuthenticationAdvanceSettings"] as? String {
                 self.mfaAuthenticationAdvanceSettings = value
             }
@@ -11545,6 +11561,8 @@ public class ListMFADevicesForUserResponseBody : Tea.TeaModel {
 
         public var effectiveTime: String?
 
+        public var lastUseTime: String?
+
         public var userId: String?
 
         public override init() {
@@ -11573,6 +11591,9 @@ public class ListMFADevicesForUserResponseBody : Tea.TeaModel {
             if self.effectiveTime != nil {
                 map["EffectiveTime"] = self.effectiveTime!
             }
+            if self.lastUseTime != nil {
+                map["LastUseTime"] = self.lastUseTime!
+            }
             if self.userId != nil {
                 map["UserId"] = self.userId!
             }
@@ -11592,6 +11613,9 @@ public class ListMFADevicesForUserResponseBody : Tea.TeaModel {
             }
             if let value = dict["EffectiveTime"] as? String {
                 self.effectiveTime = value
+            }
+            if let value = dict["LastUseTime"] as? String {
+                self.lastUseTime = value
             }
             if let value = dict["UserId"] as? String {
                 self.userId = value
@@ -16254,6 +16278,8 @@ public class UpdateInlinePolicyForAccessConfigurationResponse : Tea.TeaModel {
 }
 
 public class UpdateMFAAuthenticationSettingsRequest : Tea.TeaModel {
+    public var allowedVerificationTypes: [String]?
+
     public var directoryId: String?
 
     public var MFAAuthenticationSettings: String?
@@ -16274,6 +16300,9 @@ public class UpdateMFAAuthenticationSettingsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowedVerificationTypes != nil {
+            map["AllowedVerificationTypes"] = self.allowedVerificationTypes!
+        }
         if self.directoryId != nil {
             map["DirectoryId"] = self.directoryId!
         }
@@ -16288,6 +16317,64 @@ public class UpdateMFAAuthenticationSettingsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowedVerificationTypes"] as? [String] {
+            self.allowedVerificationTypes = value
+        }
+        if let value = dict["DirectoryId"] as? String {
+            self.directoryId = value
+        }
+        if let value = dict["MFAAuthenticationSettings"] as? String {
+            self.MFAAuthenticationSettings = value
+        }
+        if let value = dict["OperationForRiskLogin"] as? String {
+            self.operationForRiskLogin = value
+        }
+    }
+}
+
+public class UpdateMFAAuthenticationSettingsShrinkRequest : Tea.TeaModel {
+    public var allowedVerificationTypesShrink: String?
+
+    public var directoryId: String?
+
+    public var MFAAuthenticationSettings: String?
+
+    public var operationForRiskLogin: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowedVerificationTypesShrink != nil {
+            map["AllowedVerificationTypes"] = self.allowedVerificationTypesShrink!
+        }
+        if self.directoryId != nil {
+            map["DirectoryId"] = self.directoryId!
+        }
+        if self.MFAAuthenticationSettings != nil {
+            map["MFAAuthenticationSettings"] = self.MFAAuthenticationSettings!
+        }
+        if self.operationForRiskLogin != nil {
+            map["OperationForRiskLogin"] = self.operationForRiskLogin!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowedVerificationTypes"] as? String {
+            self.allowedVerificationTypesShrink = value
+        }
         if let value = dict["DirectoryId"] as? String {
             self.directoryId = value
         }

@@ -9,6 +9,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "us-west-1": "cloudsso.us-west-1.aliyuncs.com",
+            "eu-central-1": "cloudsso.eu-central-1.aliyuncs.com",
+            "cn-shanghai": "cloudsso.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "cloudsso.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "cloudsso.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "cloudsso.ap-northeast-2.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudsso", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -626,6 +634,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.MFADeviceId)) {
             query["MFADeviceId"] = request.MFADeviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mfaType)) {
+            query["MfaType"] = request.mfaType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             query["UserId"] = request.userId ?? "";
@@ -2911,9 +2922,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateMFAAuthenticationSettingsWithOptions(_ request: UpdateMFAAuthenticationSettingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMFAAuthenticationSettingsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateMFAAuthenticationSettingsWithOptions(_ tmpReq: UpdateMFAAuthenticationSettingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMFAAuthenticationSettingsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMFAAuthenticationSettingsShrinkRequest = UpdateMFAAuthenticationSettingsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.allowedVerificationTypes)) {
+            request.allowedVerificationTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.allowedVerificationTypes, "AllowedVerificationTypes", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowedVerificationTypesShrink)) {
+            query["AllowedVerificationTypes"] = request.allowedVerificationTypesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
         }
