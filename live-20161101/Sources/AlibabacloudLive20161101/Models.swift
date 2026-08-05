@@ -8780,6 +8780,8 @@ public class BatchGetOnlineUsersResponse : Tea.TeaModel {
 public class BatchSetLiveDomainConfigsRequest : Tea.TeaModel {
     public var domainNames: String?
 
+    public var dryRun: Bool?
+
     public var functions: String?
 
     public var ownerAccount: String?
@@ -8805,6 +8807,9 @@ public class BatchSetLiveDomainConfigsRequest : Tea.TeaModel {
         if self.domainNames != nil {
             map["DomainNames"] = self.domainNames!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.functions != nil {
             map["Functions"] = self.functions!
         }
@@ -8824,6 +8829,9 @@ public class BatchSetLiveDomainConfigsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DomainNames"] as? String {
             self.domainNames = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Functions"] as? String {
             self.functions = value
@@ -24669,6 +24677,8 @@ public class DescribeCasterConfigResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var audioMixerMode: String?
+
     public var autoSwitchUrgentConfig: String?
 
     public var autoSwitchUrgentOn: String?
@@ -24726,6 +24736,9 @@ public class DescribeCasterConfigResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.audioMixerMode != nil {
+            map["AudioMixerMode"] = self.audioMixerMode!
+        }
         if self.autoSwitchUrgentConfig != nil {
             map["AutoSwitchUrgentConfig"] = self.autoSwitchUrgentConfig!
         }
@@ -24791,6 +24804,9 @@ public class DescribeCasterConfigResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AudioMixerMode"] as? String {
+            self.audioMixerMode = value
+        }
         if let value = dict["AutoSwitchUrgentConfig"] as? String {
             self.autoSwitchUrgentConfig = value
         }
@@ -90675,6 +90691,8 @@ public class SetLiveDomainCertificateRequest : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var dryRun: Bool?
+
     public var forceSet: String?
 
     public var ownerId: Int64?
@@ -90710,6 +90728,9 @@ public class SetLiveDomainCertificateRequest : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.forceSet != nil {
             map["ForceSet"] = self.forceSet!
         }
@@ -90741,6 +90762,9 @@ public class SetLiveDomainCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["ForceSet"] as? String {
             self.forceSet = value

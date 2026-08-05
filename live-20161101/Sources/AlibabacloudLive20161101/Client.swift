@@ -66,7 +66,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "me-east-1": "live.aliyuncs.com",
             "rus-west-1-pop": "live.aliyuncs.com",
             "us-east-1": "live.aliyuncs.com",
-            "us-west-1": "live.aliyuncs.com"
+            "us-west-1": "live.aliyuncs.com",
+            "me-central-1": "live.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("live", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -2262,6 +2263,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.domainNames)) {
             query["DomainNames"] = request.domainNames ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.functions)) {
             query["Functions"] = request.functions ?? "";
@@ -16663,6 +16667,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.forceSet)) {
             query["ForceSet"] = request.forceSet ?? "";
