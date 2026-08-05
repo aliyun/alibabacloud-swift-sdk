@@ -13,6 +13,8 @@ public class ChatMessagesRequest : Tea.TeaModel {
 
         public var language: String?
 
+        public var modelId: String?
+
         public var regionId: String?
 
         public var thinkEffort: String?
@@ -42,6 +44,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
             if self.language != nil {
                 map["Language"] = self.language!
             }
+            if self.modelId != nil {
+                map["ModelId"] = self.modelId!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -64,6 +69,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
             }
             if let value = dict["Language"] as? String {
                 self.language = value
+            }
+            if let value = dict["ModelId"] as? String {
+                self.modelId = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
