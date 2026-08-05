@@ -3948,6 +3948,8 @@ public class NodeOperationResult : Tea.TeaModel {
 }
 
 public class NodePodInfo : Tea.TeaModel {
+    public var GPUIndexes: [Int32]?
+
     public var phase: String?
 
     public var podIP: String?
@@ -3977,6 +3979,9 @@ public class NodePodInfo : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.GPUIndexes != nil {
+            map["GPUIndexes"] = self.GPUIndexes!
+        }
         if self.phase != nil {
             map["Phase"] = self.phase!
         }
@@ -4003,6 +4008,9 @@ public class NodePodInfo : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["GPUIndexes"] as? [Int32] {
+            self.GPUIndexes = value
+        }
         if let value = dict["Phase"] as? String {
             self.phase = value
         }
