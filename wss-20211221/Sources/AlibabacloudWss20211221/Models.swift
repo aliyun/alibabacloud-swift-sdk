@@ -944,6 +944,8 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var contactGroupNames: [String]?
+
             public var creditTrendList: [DescribeCreditUsageInfoResponseBody.UsageInfoList.UsageInfo.CreditTrendList]?
 
             public var currentInstanceId: String?
@@ -955,6 +957,8 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
             public var currentUsedCredit: Int64?
 
             public var dayUsedCredit: Int64?
+
+            public var lastTriggeredAt: String?
 
             public var periodTotalCredit: Int64?
 
@@ -988,6 +992,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.contactGroupNames != nil {
+                    map["ContactGroupNames"] = self.contactGroupNames!
+                }
                 if self.creditTrendList != nil {
                     var tmp : [Any] = []
                     for k in self.creditTrendList! {
@@ -1009,6 +1016,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                 }
                 if self.dayUsedCredit != nil {
                     map["DayUsedCredit"] = self.dayUsedCredit!
+                }
+                if self.lastTriggeredAt != nil {
+                    map["LastTriggeredAt"] = self.lastTriggeredAt!
                 }
                 if self.periodTotalCredit != nil {
                     map["PeriodTotalCredit"] = self.periodTotalCredit!
@@ -1042,6 +1052,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ContactGroupNames"] as? [String] {
+                    self.contactGroupNames = value
+                }
                 if let value = dict["CreditTrendList"] as? [Any?] {
                     var tmp : [DescribeCreditUsageInfoResponseBody.UsageInfoList.UsageInfo.CreditTrendList] = []
                     for v in value {
@@ -1069,6 +1082,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DayUsedCredit"] as? Int64 {
                     self.dayUsedCredit = value
+                }
+                if let value = dict["LastTriggeredAt"] as? String {
+                    self.lastTriggeredAt = value
                 }
                 if let value = dict["PeriodTotalCredit"] as? Int64 {
                     self.periodTotalCredit = value
@@ -3372,6 +3388,434 @@ public class DescribePackageDeductionsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribePackageDeductionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
+    public var agentType: String?
+
+    public var aliUid: Int64?
+
+    public var bizType: String?
+
+    public var deductionTypes: [String]?
+
+    public var endTime: Int64?
+
+    public var groupSeparator: Bool?
+
+    public var instanceIdType: String?
+
+    public var instanceIds: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var packageIds: [String]?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceType: String?
+
+    public var resourceTypes: [String]?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentType != nil {
+            map["AgentType"] = self.agentType!
+        }
+        if self.aliUid != nil {
+            map["AliUid"] = self.aliUid!
+        }
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.deductionTypes != nil {
+            map["DeductionTypes"] = self.deductionTypes!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.groupSeparator != nil {
+            map["GroupSeparator"] = self.groupSeparator!
+        }
+        if self.instanceIdType != nil {
+            map["InstanceIdType"] = self.instanceIdType!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.packageIds != nil {
+            map["PackageIds"] = self.packageIds!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.resourceTypes != nil {
+            map["ResourceTypes"] = self.resourceTypes!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentType"] as? String {
+            self.agentType = value
+        }
+        if let value = dict["AliUid"] as? Int64 {
+            self.aliUid = value
+        }
+        if let value = dict["BizType"] as? String {
+            self.bizType = value
+        }
+        if let value = dict["DeductionTypes"] as? [String] {
+            self.deductionTypes = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["GroupSeparator"] as? Bool {
+            self.groupSeparator = value
+        }
+        if let value = dict["InstanceIdType"] as? String {
+            self.instanceIdType = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PackageIds"] as? [String] {
+            self.packageIds = value
+        }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["ResourceTypes"] as? [String] {
+            self.resourceTypes = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeRunIdDeductionsResponseBody : Tea.TeaModel {
+    public class Deductions : Tea.TeaModel {
+        public var agentType: String?
+
+        public var endTime: String?
+
+        public var groupResourceType: String?
+
+        public var instanceId: String?
+
+        public var packageId: String?
+
+        public var resourceId: String?
+
+        public var resourceType: String?
+
+        public var runId: String?
+
+        public var startTime: String?
+
+        public var summary: String?
+
+        public var usedTime: Int64?
+
+        public var usedTimeDecimal: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentType != nil {
+                map["AgentType"] = self.agentType!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.groupResourceType != nil {
+                map["GroupResourceType"] = self.groupResourceType!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.packageId != nil {
+                map["PackageId"] = self.packageId!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.runId != nil {
+                map["RunId"] = self.runId!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.summary != nil {
+                map["Summary"] = self.summary!
+            }
+            if self.usedTime != nil {
+                map["UsedTime"] = self.usedTime!
+            }
+            if self.usedTimeDecimal != nil {
+                map["UsedTimeDecimal"] = self.usedTimeDecimal!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AgentType"] as? String {
+                self.agentType = value
+            }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["GroupResourceType"] as? String {
+                self.groupResourceType = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["PackageId"] as? String {
+                self.packageId = value
+            }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["ResourceType"] as? String {
+                self.resourceType = value
+            }
+            if let value = dict["RunId"] as? String {
+                self.runId = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Summary"] as? String {
+                self.summary = value
+            }
+            if let value = dict["UsedTime"] as? Int64 {
+                self.usedTime = value
+            }
+            if let value = dict["UsedTimeDecimal"] as? String {
+                self.usedTimeDecimal = value
+            }
+        }
+    }
+    public var deductions: [DescribeRunIdDeductionsResponseBody.Deductions]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public var totalUsedTime: Int64?
+
+    public var totalUsedTimeDecimal: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deductions != nil {
+            var tmp : [Any] = []
+            for k in self.deductions! {
+                tmp.append(k.toMap())
+            }
+            map["Deductions"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.totalUsedTime != nil {
+            map["TotalUsedTime"] = self.totalUsedTime!
+        }
+        if self.totalUsedTimeDecimal != nil {
+            map["TotalUsedTimeDecimal"] = self.totalUsedTimeDecimal!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Deductions"] as? [Any?] {
+            var tmp : [DescribeRunIdDeductionsResponseBody.Deductions] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeRunIdDeductionsResponseBody.Deductions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.deductions = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+        if let value = dict["TotalUsedTime"] as? Int64 {
+            self.totalUsedTime = value
+        }
+        if let value = dict["TotalUsedTimeDecimal"] as? String {
+            self.totalUsedTimeDecimal = value
+        }
+    }
+}
+
+public class DescribeRunIdDeductionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRunIdDeductionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeRunIdDeductionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
