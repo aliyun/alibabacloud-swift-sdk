@@ -686,6 +686,474 @@ public class AsymmetricVerifyResponse : Tea.TeaModel {
     }
 }
 
+public class BatchGetSecretValueRequest : Tea.TeaModel {
+    public class SecretsList : Tea.TeaModel {
+        public var fetchExtendedConfig: String?
+
+        public var secretName: String?
+
+        public var versionId: String?
+
+        public var versionStage: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fetchExtendedConfig != nil {
+                map["FetchExtendedConfig"] = self.fetchExtendedConfig!
+            }
+            if self.secretName != nil {
+                map["SecretName"] = self.secretName!
+            }
+            if self.versionId != nil {
+                map["VersionId"] = self.versionId!
+            }
+            if self.versionStage != nil {
+                map["VersionStage"] = self.versionStage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FetchExtendedConfig"] as? String {
+                self.fetchExtendedConfig = value
+            }
+            if let value = dict["SecretName"] as? String {
+                self.secretName = value
+            }
+            if let value = dict["VersionId"] as? String {
+                self.versionId = value
+            }
+            if let value = dict["VersionStage"] as? String {
+                self.versionStage = value
+            }
+        }
+    }
+    public var secretsList: [BatchGetSecretValueRequest.SecretsList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.secretsList != nil {
+            var tmp : [Any] = []
+            for k in self.secretsList! {
+                tmp.append(k.toMap())
+            }
+            map["SecretsList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SecretsList"] as? [Any?] {
+            var tmp : [BatchGetSecretValueRequest.SecretsList] = []
+            for v in value {
+                if v != nil {
+                    var model = BatchGetSecretValueRequest.SecretsList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.secretsList = tmp
+        }
+    }
+}
+
+public class BatchGetSecretValueShrinkRequest : Tea.TeaModel {
+    public var secretsListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.secretsListShrink != nil {
+            map["SecretsList"] = self.secretsListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SecretsList"] as? String {
+            self.secretsListShrink = value
+        }
+    }
+}
+
+public class BatchGetSecretValueResponseBody : Tea.TeaModel {
+    public class Errors : Tea.TeaModel {
+        public var code: String?
+
+        public var httpStatus: Int32?
+
+        public var message: String?
+
+        public var secretName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.httpStatus != nil {
+                map["HttpStatus"] = self.httpStatus!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.secretName != nil {
+                map["SecretName"] = self.secretName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["HttpStatus"] as? Int32 {
+                self.httpStatus = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["SecretName"] as? String {
+                self.secretName = value
+            }
+        }
+    }
+    public class SecretValues : Tea.TeaModel {
+        public class VersionStages : Tea.TeaModel {
+            public var versionStage: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.versionStage != nil {
+                    map["VersionStage"] = self.versionStage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["VersionStage"] as? [String] {
+                    self.versionStage = value
+                }
+            }
+        }
+        public var automaticRotation: String?
+
+        public var createTime: String?
+
+        public var extendedConfig: String?
+
+        public var lastRotationDate: String?
+
+        public var nextRotationDate: String?
+
+        public var requestId: String?
+
+        public var rotationInterval: String?
+
+        public var secretData: String?
+
+        public var secretDataType: String?
+
+        public var secretName: String?
+
+        public var secretType: String?
+
+        public var versionId: String?
+
+        public var versionStages: BatchGetSecretValueResponseBody.SecretValues.VersionStages?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.versionStages?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.automaticRotation != nil {
+                map["AutomaticRotation"] = self.automaticRotation!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.extendedConfig != nil {
+                map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.lastRotationDate != nil {
+                map["LastRotationDate"] = self.lastRotationDate!
+            }
+            if self.nextRotationDate != nil {
+                map["NextRotationDate"] = self.nextRotationDate!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.rotationInterval != nil {
+                map["RotationInterval"] = self.rotationInterval!
+            }
+            if self.secretData != nil {
+                map["SecretData"] = self.secretData!
+            }
+            if self.secretDataType != nil {
+                map["SecretDataType"] = self.secretDataType!
+            }
+            if self.secretName != nil {
+                map["SecretName"] = self.secretName!
+            }
+            if self.secretType != nil {
+                map["SecretType"] = self.secretType!
+            }
+            if self.versionId != nil {
+                map["VersionId"] = self.versionId!
+            }
+            if self.versionStages != nil {
+                map["VersionStages"] = self.versionStages?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutomaticRotation"] as? String {
+                self.automaticRotation = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["ExtendedConfig"] as? String {
+                self.extendedConfig = value
+            }
+            if let value = dict["LastRotationDate"] as? String {
+                self.lastRotationDate = value
+            }
+            if let value = dict["NextRotationDate"] as? String {
+                self.nextRotationDate = value
+            }
+            if let value = dict["RequestId"] as? String {
+                self.requestId = value
+            }
+            if let value = dict["RotationInterval"] as? String {
+                self.rotationInterval = value
+            }
+            if let value = dict["SecretData"] as? String {
+                self.secretData = value
+            }
+            if let value = dict["SecretDataType"] as? String {
+                self.secretDataType = value
+            }
+            if let value = dict["SecretName"] as? String {
+                self.secretName = value
+            }
+            if let value = dict["SecretType"] as? String {
+                self.secretType = value
+            }
+            if let value = dict["VersionId"] as? String {
+                self.versionId = value
+            }
+            if let value = dict["VersionStages"] as? [String: Any?] {
+                var model = BatchGetSecretValueResponseBody.SecretValues.VersionStages()
+                model.fromMap(value)
+                self.versionStages = model
+            }
+        }
+    }
+    public var errors: [BatchGetSecretValueResponseBody.Errors]?
+
+    public var requestId: String?
+
+    public var secretValues: [BatchGetSecretValueResponseBody.SecretValues]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errors != nil {
+            var tmp : [Any] = []
+            for k in self.errors! {
+                tmp.append(k.toMap())
+            }
+            map["Errors"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.secretValues != nil {
+            var tmp : [Any] = []
+            for k in self.secretValues! {
+                tmp.append(k.toMap())
+            }
+            map["SecretValues"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Errors"] as? [Any?] {
+            var tmp : [BatchGetSecretValueResponseBody.Errors] = []
+            for v in value {
+                if v != nil {
+                    var model = BatchGetSecretValueResponseBody.Errors()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.errors = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SecretValues"] as? [Any?] {
+            var tmp : [BatchGetSecretValueResponseBody.SecretValues] = []
+            for v in value {
+                if v != nil {
+                    var model = BatchGetSecretValueResponseBody.SecretValues()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.secretValues = tmp
+        }
+    }
+}
+
+public class BatchGetSecretValueResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchGetSecretValueResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchGetSecretValueResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CancelKeyDeletionRequest : Tea.TeaModel {
     public var keyId: String?
 

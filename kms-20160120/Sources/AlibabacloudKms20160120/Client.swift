@@ -16,6 +16,7 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointMap = [
             "us-west-1": "kms.us-west-1.aliyuncs.com",
             "us-east-1": "kms.us-east-1.aliyuncs.com",
+            "na-south-1": "kms.na-south-1.aliyuncs.com",
             "me-east-1": "kms.me-east-1.aliyuncs.com",
             "me-central-1": "kms.me-central-1.aliyuncs.com",
             "eu-west-1": "kms.eu-west-1.aliyuncs.com",
@@ -31,6 +32,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-qingdao": "kms.cn-qingdao.aliyuncs.com",
             "cn-huhehaote": "kms.cn-huhehaote.aliyuncs.com",
             "cn-hongkong": "kms.cn-hongkong.aliyuncs.com",
+            "cn-heyuan-acdr-1": "kms.cn-heyuan-acdr-1.aliyuncs.com",
             "cn-heyuan": "kms.cn-heyuan.aliyuncs.com",
             "cn-hangzhou-finance": "kms.cn-hangzhou-finance.aliyuncs.com",
             "cn-hangzhou": "kms.cn-hangzhou.aliyuncs.com",
@@ -234,6 +236,42 @@ open class Client : AlibabacloudOpenApi.Client {
     public func asymmetricVerify(_ request: AsymmetricVerifyRequest) async throws -> AsymmetricVerifyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await asymmetricVerifyWithOptions(request as! AsymmetricVerifyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetSecretValueWithOptions(_ tmpReq: BatchGetSecretValueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchGetSecretValueResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchGetSecretValueShrinkRequest = BatchGetSecretValueShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.secretsList)) {
+            request.secretsListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.secretsList, "SecretsList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.secretsListShrink)) {
+            query["SecretsList"] = request.secretsListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchGetSecretValue",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchGetSecretValueResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetSecretValue(_ request: BatchGetSecretValueRequest) async throws -> BatchGetSecretValueResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchGetSecretValueWithOptions(request as! BatchGetSecretValueRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
