@@ -2511,6 +2511,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["Status"] = request.status!;
         }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            body["TargetType"] = request.targetType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["Type"] = request.type!;
         }

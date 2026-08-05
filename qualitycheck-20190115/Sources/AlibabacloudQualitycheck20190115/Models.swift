@@ -26724,6 +26724,8 @@ public class ListRulesV4Request : Tea.TeaModel {
 
     public var status: Int32?
 
+    public var targetType: String?
+
     public var type: Int32?
 
     public var typeName: String?
@@ -26811,6 +26813,9 @@ public class ListRulesV4Request : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -26893,6 +26898,9 @@ public class ListRulesV4Request : Tea.TeaModel {
         }
         if let value = dict["Status"] as? Int32 {
             self.status = value
+        }
+        if let value = dict["TargetType"] as? String {
+            self.targetType = value
         }
         if let value = dict["Type"] as? Int32 {
             self.type = value
