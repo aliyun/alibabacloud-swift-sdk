@@ -372,6 +372,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.urlScopeDomains)) {
+            query["UrlScopeDomains"] = request.urlScopeDomains ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.urlScopeMode)) {
+            query["UrlScopeMode"] = request.urlScopeMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

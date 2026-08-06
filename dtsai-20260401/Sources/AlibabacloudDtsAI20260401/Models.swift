@@ -870,6 +870,10 @@ public class WebSearchRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var urlScopeDomains: String?
+
+    public var urlScopeMode: String?
+
     public override init() {
         super.init()
     }
@@ -893,6 +897,12 @@ public class WebSearchRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.urlScopeDomains != nil {
+            map["UrlScopeDomains"] = self.urlScopeDomains!
+        }
+        if self.urlScopeMode != nil {
+            map["UrlScopeMode"] = self.urlScopeMode!
+        }
         return map
     }
 
@@ -906,6 +916,12 @@ public class WebSearchRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["UrlScopeDomains"] as? String {
+            self.urlScopeDomains = value
+        }
+        if let value = dict["UrlScopeMode"] as? String {
+            self.urlScopeMode = value
         }
     }
 }
