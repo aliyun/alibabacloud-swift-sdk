@@ -8825,6 +8825,52 @@ public class DescribeFrInstancesShrinkRequest : Tea.TeaModel {
 
 public class DescribeFrInstancesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class AutoPurchase : Tea.TeaModel {
+            public var alreadyAutoPurchase: Bool?
+
+            public var settingAutoPurchase: Bool?
+
+            public var supportAutoPurchase: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alreadyAutoPurchase != nil {
+                    map["AlreadyAutoPurchase"] = self.alreadyAutoPurchase!
+                }
+                if self.settingAutoPurchase != nil {
+                    map["SettingAutoPurchase"] = self.settingAutoPurchase!
+                }
+                if self.supportAutoPurchase != nil {
+                    map["SupportAutoPurchase"] = self.supportAutoPurchase!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AlreadyAutoPurchase"] as? Bool {
+                    self.alreadyAutoPurchase = value
+                }
+                if let value = dict["SettingAutoPurchase"] as? Bool {
+                    self.settingAutoPurchase = value
+                }
+                if let value = dict["SupportAutoPurchase"] as? Bool {
+                    self.supportAutoPurchase = value
+                }
+            }
+        }
         public class CapacityType : Tea.TeaModel {
             public var code: String?
 
@@ -9095,6 +9141,8 @@ public class DescribeFrInstancesResponseBody : Tea.TeaModel {
 
         public var accountName: String?
 
+        public var autoPurchase: DescribeFrInstancesResponseBody.Data.AutoPurchase?
+
         public var capacitiyTypeName: String?
 
         public var capacityType: DescribeFrInstancesResponseBody.Data.CapacityType?
@@ -9122,6 +9170,8 @@ public class DescribeFrInstancesResponseBody : Tea.TeaModel {
         public var cycleTypeName: String?
 
         public var deductRegions: [DescribeFrInstancesResponseBody.Data.DeductRegions]?
+
+        public var enableDeductRule: Bool?
 
         public var enableExchange: Bool?
 
@@ -9191,6 +9241,7 @@ public class DescribeFrInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.autoPurchase?.validate()
             try self.capacityType?.validate()
             try self.commodity?.validate()
             try self.cycleType?.validate()
@@ -9206,6 +9257,9 @@ public class DescribeFrInstancesResponseBody : Tea.TeaModel {
             }
             if self.accountName != nil {
                 map["AccountName"] = self.accountName!
+            }
+            if self.autoPurchase != nil {
+                map["AutoPurchase"] = self.autoPurchase?.toMap()
             }
             if self.capacitiyTypeName != nil {
                 map["CapacitiyTypeName"] = self.capacitiyTypeName!
@@ -9252,6 +9306,9 @@ public class DescribeFrInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["DeductRegions"] = tmp
+            }
+            if self.enableDeductRule != nil {
+                map["EnableDeductRule"] = self.enableDeductRule!
             }
             if self.enableExchange != nil {
                 map["EnableExchange"] = self.enableExchange!
@@ -9351,6 +9408,11 @@ public class DescribeFrInstancesResponseBody : Tea.TeaModel {
             if let value = dict["AccountName"] as? String {
                 self.accountName = value
             }
+            if let value = dict["AutoPurchase"] as? [String: Any?] {
+                var model = DescribeFrInstancesResponseBody.Data.AutoPurchase()
+                model.fromMap(value)
+                self.autoPurchase = model
+            }
             if let value = dict["CapacitiyTypeName"] as? String {
                 self.capacitiyTypeName = value
             }
@@ -9408,6 +9470,9 @@ public class DescribeFrInstancesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.deductRegions = tmp
+            }
+            if let value = dict["EnableDeductRule"] as? Bool {
+                self.enableDeductRule = value
             }
             if let value = dict["EnableExchange"] as? Bool {
                 self.enableExchange = value
