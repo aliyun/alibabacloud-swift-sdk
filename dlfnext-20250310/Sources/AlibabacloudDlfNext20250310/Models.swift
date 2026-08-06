@@ -13309,6 +13309,136 @@ public class UpdateRoleUsersResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateVpcConfigRequest : Tea.TeaModel {
+    public class Updates : Tea.TeaModel {
+        public var extendedOptions: [String: String]?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extendedOptions != nil {
+                map["extendedOptions"] = self.extendedOptions!
+            }
+            if self.vpcId != nil {
+                map["vpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extendedOptions"] as? [String: String] {
+                self.extendedOptions = value
+            }
+            if let value = dict["vpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var removals: [String]?
+
+    public var updates: [UpdateVpcConfigRequest.Updates]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.removals != nil {
+            map["removals"] = self.removals!
+        }
+        if self.updates != nil {
+            var tmp : [Any] = []
+            for k in self.updates! {
+                tmp.append(k.toMap())
+            }
+            map["updates"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["removals"] as? [String] {
+            self.removals = value
+        }
+        if let value = dict["updates"] as? [Any?] {
+            var tmp : [UpdateVpcConfigRequest.Updates] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateVpcConfigRequest.Updates()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.updates = tmp
+        }
+    }
+}
+
+public class UpdateVpcConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+    }
+}
+
 public class VerifyCatalogKmsRequest : Tea.TeaModel {
     public var kmsKeyId: String?
 

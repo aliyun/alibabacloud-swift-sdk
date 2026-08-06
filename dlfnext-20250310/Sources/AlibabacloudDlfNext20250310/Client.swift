@@ -2716,6 +2716,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVpcConfigWithOptions(_ request: UpdateVpcConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVpcConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.removals)) {
+            body["removals"] = request.removals ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.updates)) {
+            body["updates"] = request.updates ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVpcConfig",
+            "version": "2025-03-10",
+            "protocol": "HTTPS",
+            "pathname": "/dlf/v1/auth/vpc",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVpcConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVpcConfig(_ request: UpdateVpcConfigRequest) async throws -> UpdateVpcConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateVpcConfigWithOptions(request as! UpdateVpcConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func verifyCatalogKmsWithOptions(_ catalog: String, _ request: VerifyCatalogKmsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyCatalogKmsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
