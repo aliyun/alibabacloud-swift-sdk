@@ -21338,6 +21338,118 @@ public class DisableAndCleanRecycleBinResponse : Tea.TeaModel {
     }
 }
 
+public class DisableDataInsightRequest : Tea.TeaModel {
+    public var fileSystemId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileSystemId"] as? String {
+            self.fileSystemId = value
+        }
+    }
+}
+
+public class DisableDataInsightResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DisableDataInsightResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableDataInsightResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DisableDataInsightResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DisableNfsAclRequest : Tea.TeaModel {
     public var fileSystemId: String?
 
@@ -21556,6 +21668,118 @@ public class DisableSmbAclResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DisableSmbAclResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnableDataInsightRequest : Tea.TeaModel {
+    public var fileSystemId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileSystemId"] as? String {
+            self.fileSystemId = value
+        }
+    }
+}
+
+public class EnableDataInsightResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class EnableDataInsightResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableDataInsightResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableDataInsightResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -23777,6 +24001,379 @@ public class ListAccessPointsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListAccessPointsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListDataInsightDirectoriesRequest : Tea.TeaModel {
+    public var fileSystemId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var parentDir: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.parentDir != nil {
+            map["ParentDir"] = self.parentDir!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileSystemId"] as? String {
+            self.fileSystemId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ParentDir"] as? String {
+            self.parentDir = value
+        }
+    }
+}
+
+public class ListDataInsightDirectoriesResponseBody : Tea.TeaModel {
+    public class Directory : Tea.TeaModel {
+        public class SubDirectories : Tea.TeaModel {
+            public var createdAt: String?
+
+            public var dirCapacity: Int64?
+
+            public var dirCapacityOffline: Int64?
+
+            public var dirCapacityOnline: Int64?
+
+            public var dirLevel: Int32?
+
+            public var dirName: String?
+
+            public var fileCount: Int64?
+
+            public var fileCountOffline: Int64?
+
+            public var fileCountOnline: Int64?
+
+            public var lastAccessTime: String?
+
+            public var updatedAt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createdAt != nil {
+                    map["CreatedAt"] = self.createdAt!
+                }
+                if self.dirCapacity != nil {
+                    map["DirCapacity"] = self.dirCapacity!
+                }
+                if self.dirCapacityOffline != nil {
+                    map["DirCapacityOffline"] = self.dirCapacityOffline!
+                }
+                if self.dirCapacityOnline != nil {
+                    map["DirCapacityOnline"] = self.dirCapacityOnline!
+                }
+                if self.dirLevel != nil {
+                    map["DirLevel"] = self.dirLevel!
+                }
+                if self.dirName != nil {
+                    map["DirName"] = self.dirName!
+                }
+                if self.fileCount != nil {
+                    map["FileCount"] = self.fileCount!
+                }
+                if self.fileCountOffline != nil {
+                    map["FileCountOffline"] = self.fileCountOffline!
+                }
+                if self.fileCountOnline != nil {
+                    map["FileCountOnline"] = self.fileCountOnline!
+                }
+                if self.lastAccessTime != nil {
+                    map["LastAccessTime"] = self.lastAccessTime!
+                }
+                if self.updatedAt != nil {
+                    map["UpdatedAt"] = self.updatedAt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreatedAt"] as? String {
+                    self.createdAt = value
+                }
+                if let value = dict["DirCapacity"] as? Int64 {
+                    self.dirCapacity = value
+                }
+                if let value = dict["DirCapacityOffline"] as? Int64 {
+                    self.dirCapacityOffline = value
+                }
+                if let value = dict["DirCapacityOnline"] as? Int64 {
+                    self.dirCapacityOnline = value
+                }
+                if let value = dict["DirLevel"] as? Int32 {
+                    self.dirLevel = value
+                }
+                if let value = dict["DirName"] as? String {
+                    self.dirName = value
+                }
+                if let value = dict["FileCount"] as? Int64 {
+                    self.fileCount = value
+                }
+                if let value = dict["FileCountOffline"] as? Int64 {
+                    self.fileCountOffline = value
+                }
+                if let value = dict["FileCountOnline"] as? Int64 {
+                    self.fileCountOnline = value
+                }
+                if let value = dict["LastAccessTime"] as? String {
+                    self.lastAccessTime = value
+                }
+                if let value = dict["UpdatedAt"] as? String {
+                    self.updatedAt = value
+                }
+            }
+        }
+        public var dirCapacity: Int64?
+
+        public var dirCapacityOffline: Int64?
+
+        public var dirCapacityOnline: Int64?
+
+        public var fileCount: Int64?
+
+        public var fileCountOffline: Int64?
+
+        public var fileCountOnline: Int64?
+
+        public var subDirectories: [ListDataInsightDirectoriesResponseBody.Directory.SubDirectories]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dirCapacity != nil {
+                map["DirCapacity"] = self.dirCapacity!
+            }
+            if self.dirCapacityOffline != nil {
+                map["DirCapacityOffline"] = self.dirCapacityOffline!
+            }
+            if self.dirCapacityOnline != nil {
+                map["DirCapacityOnline"] = self.dirCapacityOnline!
+            }
+            if self.fileCount != nil {
+                map["FileCount"] = self.fileCount!
+            }
+            if self.fileCountOffline != nil {
+                map["FileCountOffline"] = self.fileCountOffline!
+            }
+            if self.fileCountOnline != nil {
+                map["FileCountOnline"] = self.fileCountOnline!
+            }
+            if self.subDirectories != nil {
+                var tmp : [Any] = []
+                for k in self.subDirectories! {
+                    tmp.append(k.toMap())
+                }
+                map["SubDirectories"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DirCapacity"] as? Int64 {
+                self.dirCapacity = value
+            }
+            if let value = dict["DirCapacityOffline"] as? Int64 {
+                self.dirCapacityOffline = value
+            }
+            if let value = dict["DirCapacityOnline"] as? Int64 {
+                self.dirCapacityOnline = value
+            }
+            if let value = dict["FileCount"] as? Int64 {
+                self.fileCount = value
+            }
+            if let value = dict["FileCountOffline"] as? Int64 {
+                self.fileCountOffline = value
+            }
+            if let value = dict["FileCountOnline"] as? Int64 {
+                self.fileCountOnline = value
+            }
+            if let value = dict["SubDirectories"] as? [Any?] {
+                var tmp : [ListDataInsightDirectoriesResponseBody.Directory.SubDirectories] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListDataInsightDirectoriesResponseBody.Directory.SubDirectories()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.subDirectories = tmp
+            }
+        }
+    }
+    public var directory: ListDataInsightDirectoriesResponseBody.Directory?
+
+    public var fileSystemId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.directory?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.directory != nil {
+            map["Directory"] = self.directory?.toMap()
+        }
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Directory"] as? [String: Any?] {
+            var model = ListDataInsightDirectoriesResponseBody.Directory()
+            model.fromMap(value)
+            self.directory = model
+        }
+        if let value = dict["FileSystemId"] as? String {
+            self.fileSystemId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListDataInsightDirectoriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataInsightDirectoriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListDataInsightDirectoriesResponseBody()
             model.fromMap(value)
             self.body = model
         }
