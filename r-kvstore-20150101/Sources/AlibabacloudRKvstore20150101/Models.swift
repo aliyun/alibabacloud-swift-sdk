@@ -40850,6 +40850,8 @@ public class ModifyInstanceSpecRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var secondaryZoneId: String?
+
     public var securityToken: String?
 
     public var shardCount: Int32?
@@ -40935,6 +40937,9 @@ public class ModifyInstanceSpecRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.secondaryZoneId != nil {
+            map["SecondaryZoneId"] = self.secondaryZoneId!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -41017,6 +41022,9 @@ public class ModifyInstanceSpecRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["SecondaryZoneId"] as? String {
+            self.secondaryZoneId = value
         }
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
@@ -45741,6 +45749,8 @@ public class SwitchInstanceToTargetZoneRequest : Tea.TeaModel {
 public class SwitchInstanceToTargetZoneResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var taskId: String?
+
     public override init() {
         super.init()
     }
@@ -45758,6 +45768,9 @@ public class SwitchInstanceToTargetZoneResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
@@ -45765,6 +45778,9 @@ public class SwitchInstanceToTargetZoneResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
         }
     }
 }
