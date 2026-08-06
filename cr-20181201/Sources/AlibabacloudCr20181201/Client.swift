@@ -2189,6 +2189,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAuthorizationTokenWithOptions(_ request: GetAuthorizationTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAuthorizationTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expiresInHours)) {
+            query["ExpiresInHours"] = request.expiresInHours!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }

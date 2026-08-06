@@ -9927,6 +9927,8 @@ public class GetArtifactSubscriptionTaskResultResponse : Tea.TeaModel {
 }
 
 public class GetAuthorizationTokenRequest : Tea.TeaModel {
+    public var expiresInHours: Int32?
+
     public var instanceId: String?
 
     public override init() {
@@ -9943,6 +9945,9 @@ public class GetAuthorizationTokenRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.expiresInHours != nil {
+            map["ExpiresInHours"] = self.expiresInHours!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -9951,6 +9956,9 @@ public class GetAuthorizationTokenRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExpiresInHours"] as? Int32 {
+            self.expiresInHours = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
