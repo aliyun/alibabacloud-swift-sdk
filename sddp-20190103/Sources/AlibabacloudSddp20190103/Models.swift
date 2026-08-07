@@ -7222,6 +7222,8 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public var domainId: Int64?
 
+    public var engineType: String?
+
     public var featureType: Int32?
 
     public var fileCategoryCode: Int64?
@@ -7300,6 +7302,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         }
         if self.domainId != nil {
             map["DomainId"] = self.domainId!
+        }
+        if self.engineType != nil {
+            map["EngineType"] = self.engineType!
         }
         if self.featureType != nil {
             map["FeatureType"] = self.featureType!
@@ -7395,6 +7400,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         }
         if let value = dict["DomainId"] as? Int64 {
             self.domainId = value
+        }
+        if let value = dict["EngineType"] as? String {
+            self.engineType = value
         }
         if let value = dict["FeatureType"] as? Int32 {
             self.featureType = value
@@ -7602,6 +7610,8 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
 
         public var dbName: String?
 
+        public var engineType: String?
+
         public var fileCategoryCode: Int32?
 
         public var id: String?
@@ -7694,6 +7704,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             if self.dbName != nil {
                 map["DbName"] = self.dbName!
+            }
+            if self.engineType != nil {
+                map["EngineType"] = self.engineType!
             }
             if self.fileCategoryCode != nil {
                 map["FileCategoryCode"] = self.fileCategoryCode!
@@ -7818,6 +7831,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DbName"] as? String {
                 self.dbName = value
+            }
+            if let value = dict["EngineType"] as? String {
+                self.engineType = value
             }
             if let value = dict["FileCategoryCode"] as? Int32 {
                 self.fileCategoryCode = value

@@ -12,6 +12,9 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointMap = [
             "cn-hongkong": "sddp-api.cn-hongkong.aliyuncs.com",
             "cn-zhangjiakou": "sddp.cn-zhangjiakou.aliyuncs.com",
+            "cn-shanghai": "sddp.cn-shanghai.aliyuncs.com",
+            "cn-hangzhou": "sddp.cn-hangzhou.aliyuncs.com",
+            "ap-southeast-5": "sddp.ap-southeast-5.aliyuncs.com",
             "ap-southeast-1": "sddp.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
@@ -1249,6 +1252,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.domainId)) {
             query["DomainId"] = request.domainId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.engineType)) {
+            query["EngineType"] = request.engineType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.featureType)) {
             query["FeatureType"] = request.featureType!;
