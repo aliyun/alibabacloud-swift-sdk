@@ -5108,6 +5108,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryInspirationBalanceForPartnerWithOptions(_ request: QueryInspirationBalanceForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryInspirationBalanceForPartnerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.belongId)) {
+            query["BelongId"] = request.belongId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.belongIdType)) {
+            query["BelongIdType"] = request.belongIdType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryInspirationBalanceForPartner",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryInspirationBalanceForPartnerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryInspirationBalanceForPartner(_ request: QueryInspirationBalanceForPartnerRequest) async throws -> QueryInspirationBalanceForPartnerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryInspirationBalanceForPartnerWithOptions(request as! QueryInspirationBalanceForPartnerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryInspirationConsumeRecordsWithOptions(_ request: QueryInspirationConsumeRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryInspirationConsumeRecordsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
