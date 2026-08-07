@@ -12490,6 +12490,8 @@ public class ListNodesResponseBody : Tea.TeaModel {
 
         public var queueName: String?
 
+        public var reason: String?
+
         public var spotStrategy: String?
 
         public var stateInSched: String?
@@ -12555,6 +12557,9 @@ public class ListNodesResponseBody : Tea.TeaModel {
             if self.queueName != nil {
                 map["QueueName"] = self.queueName!
             }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
             if self.spotStrategy != nil {
                 map["SpotStrategy"] = self.spotStrategy!
             }
@@ -12616,6 +12621,9 @@ public class ListNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["QueueName"] as? String {
                 self.queueName = value
+            }
+            if let value = dict["Reason"] as? String {
+                self.reason = value
             }
             if let value = dict["SpotStrategy"] as? String {
                 self.spotStrategy = value
