@@ -1180,6 +1180,166 @@ public class AddPolarFsQuotaResponse : Tea.TeaModel {
     }
 }
 
+public class AddPolarOSSAuthorizedAccountRequest : Tea.TeaModel {
+    public var authorizedUserIds: String?
+
+    public var DBClusterId: String?
+
+    public var pfsInstanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizedUserIds != nil {
+            map["AuthorizedUserIds"] = self.authorizedUserIds!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.pfsInstanceId != nil {
+            map["PfsInstanceId"] = self.pfsInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizedUserIds"] as? String {
+            self.authorizedUserIds = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PfsInstanceId"] as? String {
+            self.pfsInstanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class AddPolarOSSAuthorizedAccountResponseBody : Tea.TeaModel {
+    public var authorizedUserArnIds: String?
+
+    public var authorizedUserIds: String?
+
+    public var pfsInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizedUserArnIds != nil {
+            map["AuthorizedUserArnIds"] = self.authorizedUserArnIds!
+        }
+        if self.authorizedUserIds != nil {
+            map["AuthorizedUserIds"] = self.authorizedUserIds!
+        }
+        if self.pfsInstanceId != nil {
+            map["PfsInstanceId"] = self.pfsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizedUserArnIds"] as? String {
+            self.authorizedUserArnIds = value
+        }
+        if let value = dict["AuthorizedUserIds"] as? String {
+            self.authorizedUserIds = value
+        }
+        if let value = dict["PfsInstanceId"] as? String {
+            self.pfsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AddPolarOSSAuthorizedAccountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddPolarOSSAuthorizedAccountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddPolarOSSAuthorizedAccountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddSQLRateLimitingRulesRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -4973,6 +5133,8 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var createPublicEndpoint: String?
+
     public var DBClusterDescription: String?
 
     public var DBClusterId: String?
@@ -4996,6 +5158,8 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
     public var managementMode: String?
 
     public var modelName: String?
+
+    public var modelSpace: String?
 
     public var ownerAccount: String?
 
@@ -5057,6 +5221,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.createPublicEndpoint != nil {
+            map["CreatePublicEndpoint"] = self.createPublicEndpoint!
+        }
         if self.DBClusterDescription != nil {
             map["DBClusterDescription"] = self.DBClusterDescription!
         }
@@ -5092,6 +5259,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.modelSpace != nil {
+            map["ModelSpace"] = self.modelSpace!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -5165,6 +5335,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["CreatePublicEndpoint"] as? String {
+            self.createPublicEndpoint = value
+        }
         if let value = dict["DBClusterDescription"] as? String {
             self.DBClusterDescription = value
         }
@@ -5200,6 +5373,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
+        }
+        if let value = dict["ModelSpace"] as? String {
+            self.modelSpace = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -5373,6 +5549,8 @@ public class CreateAIDBClusterResponse : Tea.TeaModel {
 public class CreateAIDBClusterApiKeyRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var modelSpaceName: String?
+
     public var regionId: String?
 
     public override init() {
@@ -5392,6 +5570,9 @@ public class CreateAIDBClusterApiKeyRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.modelSpaceName != nil {
+            map["ModelSpaceName"] = self.modelSpaceName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -5402,6 +5583,9 @@ public class CreateAIDBClusterApiKeyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["ModelSpaceName"] as? String {
+            self.modelSpaceName = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -5788,9 +5972,13 @@ public class CreateAIDBClusterDatasetResponse : Tea.TeaModel {
 }
 
 public class CreateAIDBClusterTaskRequest : Tea.TeaModel {
+    public var customOssBucketName: String?
+
     public var DBClusterId: String?
 
     public var DBInstanceClass: String?
+
+    public var dataserviceMode: String?
 
     public var datasetPath: String?
 
@@ -5842,11 +6030,17 @@ public class CreateAIDBClusterTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customOssBucketName != nil {
+            map["CustomOssBucketName"] = self.customOssBucketName!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
         if self.DBInstanceClass != nil {
             map["DBInstanceClass"] = self.DBInstanceClass!
+        }
+        if self.dataserviceMode != nil {
+            map["DataserviceMode"] = self.dataserviceMode!
         }
         if self.datasetPath != nil {
             map["DatasetPath"] = self.datasetPath!
@@ -5907,11 +6101,17 @@ public class CreateAIDBClusterTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CustomOssBucketName"] as? String {
+            self.customOssBucketName = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
         if let value = dict["DBInstanceClass"] as? String {
             self.DBInstanceClass = value
+        }
+        if let value = dict["DataserviceMode"] as? String {
+            self.dataserviceMode = value
         }
         if let value = dict["DatasetPath"] as? String {
             self.datasetPath = value
@@ -10798,6 +10998,10 @@ public class CreateConsumerGroupResponse : Tea.TeaModel {
 public class CreateCostRuleRequest : Tea.TeaModel {
     public var cacheCostPointsPerMillion: String?
 
+    public var effectiveTargetType: String?
+
+    public var effectiveTargetValue: String?
+
     public var gwClusterId: String?
 
     public var inputCostPointsPerMillion: String?
@@ -10827,6 +11031,12 @@ public class CreateCostRuleRequest : Tea.TeaModel {
         if self.cacheCostPointsPerMillion != nil {
             map["CacheCostPointsPerMillion"] = self.cacheCostPointsPerMillion!
         }
+        if self.effectiveTargetType != nil {
+            map["EffectiveTargetType"] = self.effectiveTargetType!
+        }
+        if self.effectiveTargetValue != nil {
+            map["EffectiveTargetValue"] = self.effectiveTargetValue!
+        }
         if self.gwClusterId != nil {
             map["GwClusterId"] = self.gwClusterId!
         }
@@ -10852,6 +11062,12 @@ public class CreateCostRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CacheCostPointsPerMillion"] as? String {
             self.cacheCostPointsPerMillion = value
+        }
+        if let value = dict["EffectiveTargetType"] as? String {
+            self.effectiveTargetType = value
+        }
+        if let value = dict["EffectiveTargetValue"] as? String {
+            self.effectiveTargetValue = value
         }
         if let value = dict["GwClusterId"] as? String {
             self.gwClusterId = value
@@ -19401,6 +19617,8 @@ public class CreateStoragePlanResponse : Tea.TeaModel {
 public class DeleteAIDBClusterRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var modelSpace: String?
+
     public override init() {
         super.init()
     }
@@ -19418,6 +19636,9 @@ public class DeleteAIDBClusterRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.modelSpace != nil {
+            map["ModelSpace"] = self.modelSpace!
+        }
         return map
     }
 
@@ -19425,6 +19646,9 @@ public class DeleteAIDBClusterRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["ModelSpace"] as? String {
+            self.modelSpace = value
         }
     }
 }
@@ -19521,6 +19745,8 @@ public class DeleteAIDBClusterResponse : Tea.TeaModel {
 public class DeleteAIDBClusterApiKeyRequest : Tea.TeaModel {
     public var apiKey: String?
 
+    public var modelSpaceName: String?
+
     public var regionId: String?
 
     public override init() {
@@ -19540,6 +19766,9 @@ public class DeleteAIDBClusterApiKeyRequest : Tea.TeaModel {
         if self.apiKey != nil {
             map["ApiKey"] = self.apiKey!
         }
+        if self.modelSpaceName != nil {
+            map["ModelSpaceName"] = self.modelSpaceName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -19550,6 +19779,9 @@ public class DeleteAIDBClusterApiKeyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApiKey"] as? String {
             self.apiKey = value
+        }
+        if let value = dict["ModelSpaceName"] as? String {
+            self.modelSpaceName = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -26593,6 +26825,166 @@ public class DeletePolarFsQuotaResponse : Tea.TeaModel {
     }
 }
 
+public class DeletePolarOSSAuthorizedAccountRequest : Tea.TeaModel {
+    public var authorizedUserIds: String?
+
+    public var DBClusterId: String?
+
+    public var pfsInstanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizedUserIds != nil {
+            map["AuthorizedUserIds"] = self.authorizedUserIds!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.pfsInstanceId != nil {
+            map["PfsInstanceId"] = self.pfsInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizedUserIds"] as? String {
+            self.authorizedUserIds = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PfsInstanceId"] as? String {
+            self.pfsInstanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeletePolarOSSAuthorizedAccountResponseBody : Tea.TeaModel {
+    public var authorizedUserArnIds: String?
+
+    public var authorizedUserIds: String?
+
+    public var pfsInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizedUserArnIds != nil {
+            map["AuthorizedUserArnIds"] = self.authorizedUserArnIds!
+        }
+        if self.authorizedUserIds != nil {
+            map["AuthorizedUserIds"] = self.authorizedUserIds!
+        }
+        if self.pfsInstanceId != nil {
+            map["PfsInstanceId"] = self.pfsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthorizedUserArnIds"] as? String {
+            self.authorizedUserArnIds = value
+        }
+        if let value = dict["AuthorizedUserIds"] as? String {
+            self.authorizedUserIds = value
+        }
+        if let value = dict["PfsInstanceId"] as? String {
+            self.pfsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeletePolarOSSAuthorizedAccountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeletePolarOSSAuthorizedAccountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeletePolarOSSAuthorizedAccountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteRateLimitPolicyRequest : Tea.TeaModel {
     public var gwClusterId: String?
 
@@ -27018,6 +27410,8 @@ public class DeleteSQLRateLimitingRulesResponse : Tea.TeaModel {
 }
 
 public class DescribeAIDBClusterApiKeysRequest : Tea.TeaModel {
+    public var modelSpaceName: String?
+
     public var regionId: String?
 
     public override init() {
@@ -27034,6 +27428,9 @@ public class DescribeAIDBClusterApiKeysRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.modelSpaceName != nil {
+            map["ModelSpaceName"] = self.modelSpaceName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -27042,6 +27439,9 @@ public class DescribeAIDBClusterApiKeysRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ModelSpaceName"] as? String {
+            self.modelSpaceName = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -27113,6 +27513,10 @@ public class DescribeAIDBClusterApiKeysResponseBody : Tea.TeaModel {
     }
     public var apiKeys: [DescribeAIDBClusterApiKeysResponseBody.ApiKeys]?
 
+    public var pageNumber: String?
+
+    public var pageSize: String?
+
     public var requestId: String?
 
     public override init() {
@@ -27136,6 +27540,12 @@ public class DescribeAIDBClusterApiKeysResponseBody : Tea.TeaModel {
             }
             map["ApiKeys"] = tmp
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -27156,6 +27566,12 @@ public class DescribeAIDBClusterApiKeysResponseBody : Tea.TeaModel {
                 }
             }
             self.apiKeys = tmp
+        }
+        if let value = dict["PageNumber"] as? String {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -27340,6 +27756,60 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SupportedApis : Tea.TeaModel {
+            public var apiName: String?
+
+            public var generationMode: String?
+
+            public var path: String?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.apiName != nil {
+                    map["ApiName"] = self.apiName!
+                }
+                if self.generationMode != nil {
+                    map["GenerationMode"] = self.generationMode!
+                }
+                if self.path != nil {
+                    map["Path"] = self.path!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApiName"] as? String {
+                    self.apiName = value
+                }
+                if let value = dict["GenerationMode"] as? String {
+                    self.generationMode = value
+                }
+                if let value = dict["Path"] as? String {
+                    self.path = value
+                }
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
         public var childVolumes: [DescribeAIDBClusterAttributeResponseBody.DBNodes.ChildVolumes]?
 
         public var cpuCores: String?
@@ -27360,7 +27830,11 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var memorySize: String?
 
+        public var modelName: String?
+
         public var publicIp: String?
+
+        public var supportedApis: [DescribeAIDBClusterAttributeResponseBody.DBNodes.SupportedApis]?
 
         public var VNodeId: String?
 
@@ -27418,8 +27892,18 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
+            if self.modelName != nil {
+                map["ModelName"] = self.modelName!
+            }
             if self.publicIp != nil {
                 map["PublicIp"] = self.publicIp!
+            }
+            if self.supportedApis != nil {
+                var tmp : [Any] = []
+                for k in self.supportedApis! {
+                    tmp.append(k.toMap())
+                }
+                map["SupportedApis"] = tmp
             }
             if self.VNodeId != nil {
                 map["VNodeId"] = self.VNodeId!
@@ -27478,8 +27962,24 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             if let value = dict["MemorySize"] as? String {
                 self.memorySize = value
             }
+            if let value = dict["ModelName"] as? String {
+                self.modelName = value
+            }
             if let value = dict["PublicIp"] as? String {
                 self.publicIp = value
+            }
+            if let value = dict["SupportedApis"] as? [Any?] {
+                var tmp : [DescribeAIDBClusterAttributeResponseBody.DBNodes.SupportedApis] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAIDBClusterAttributeResponseBody.DBNodes.SupportedApis()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.supportedApis = tmp
             }
             if let value = dict["VNodeId"] as? String {
                 self.VNodeId = value
@@ -27891,6 +28391,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var DBClusterStatus: String?
 
+    public var DBInstanceStatusDesc: String?
+
     public var DBNodes: [DescribeAIDBClusterAttributeResponseBody.DBNodes]?
 
     public var DBVersion: String?
@@ -27915,7 +28417,11 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var maxQPM: String?
 
+    public var maxTPM: String?
+
     public var modelName: String?
+
+    public var modelSpaceName: String?
 
     public var modelType: String?
 
@@ -27981,6 +28487,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.DBClusterStatus != nil {
             map["DBClusterStatus"] = self.DBClusterStatus!
         }
+        if self.DBInstanceStatusDesc != nil {
+            map["DBInstanceStatusDesc"] = self.DBInstanceStatusDesc!
+        }
         if self.DBNodes != nil {
             var tmp : [Any] = []
             for k in self.DBNodes! {
@@ -28025,8 +28534,14 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.maxQPM != nil {
             map["MaxQPM"] = self.maxQPM!
         }
+        if self.maxTPM != nil {
+            map["MaxTPM"] = self.maxTPM!
+        }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.modelSpaceName != nil {
+            map["ModelSpaceName"] = self.modelSpaceName!
         }
         if self.modelType != nil {
             map["ModelType"] = self.modelType!
@@ -28100,6 +28615,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         if let value = dict["DBClusterStatus"] as? String {
             self.DBClusterStatus = value
         }
+        if let value = dict["DBInstanceStatusDesc"] as? String {
+            self.DBInstanceStatusDesc = value
+        }
         if let value = dict["DBNodes"] as? [Any?] {
             var tmp : [DescribeAIDBClusterAttributeResponseBody.DBNodes] = []
             for v in value {
@@ -28156,8 +28674,14 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         if let value = dict["MaxQPM"] as? String {
             self.maxQPM = value
         }
+        if let value = dict["MaxTPM"] as? String {
+            self.maxTPM = value
+        }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
+        }
+        if let value = dict["ModelSpaceName"] as? String {
+            self.modelSpaceName = value
         }
         if let value = dict["ModelType"] as? String {
             self.modelType = value
@@ -29107,6 +29631,36 @@ public class DescribeAIDBClusterTaskAttributeRequest : Tea.TeaModel {
 }
 
 public class DescribeAIDBClusterTaskAttributeResponseBody : Tea.TeaModel {
+    public class CustomBucketInfo : Tea.TeaModel {
+        public var customOssBucketName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customOssBucketName != nil {
+                map["CustomOssBucketName"] = self.customOssBucketName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomOssBucketName"] as? String {
+                self.customOssBucketName = value
+            }
+        }
+    }
     public class DataSets : Tea.TeaModel {
         public var datasetName: String?
 
@@ -29253,6 +29807,8 @@ public class DescribeAIDBClusterTaskAttributeResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var customBucketInfo: DescribeAIDBClusterTaskAttributeResponseBody.CustomBucketInfo?
+
     public var DBClusterDescription: String?
 
     public var DBClusterId: String?
@@ -29299,6 +29855,7 @@ public class DescribeAIDBClusterTaskAttributeResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.customBucketInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -29311,6 +29868,9 @@ public class DescribeAIDBClusterTaskAttributeResponseBody : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.customBucketInfo != nil {
+            map["CustomBucketInfo"] = self.customBucketInfo?.toMap()
         }
         if self.DBClusterDescription != nil {
             map["DBClusterDescription"] = self.DBClusterDescription!
@@ -29387,6 +29947,11 @@ public class DescribeAIDBClusterTaskAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["CustomBucketInfo"] as? [String: Any?] {
+            var model = DescribeAIDBClusterTaskAttributeResponseBody.CustomBucketInfo()
+            model.fromMap(value)
+            self.customBucketInfo = model
         }
         if let value = dict["DBClusterDescription"] as? String {
             self.DBClusterDescription = value
@@ -30847,6 +31412,8 @@ public class DescribeAIDBClustersResponseBody : Tea.TeaModel {
 
             public var lockMode: String?
 
+            public var modelSpace: String?
+
             public var modelType: String?
 
             public var payType: String?
@@ -30916,6 +31483,9 @@ public class DescribeAIDBClustersResponseBody : Tea.TeaModel {
                 }
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
+                }
+                if self.modelSpace != nil {
+                    map["ModelSpace"] = self.modelSpace!
                 }
                 if self.modelType != nil {
                     map["ModelType"] = self.modelType!
@@ -30987,6 +31557,9 @@ public class DescribeAIDBClustersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LockMode"] as? String {
                     self.lockMode = value
+                }
+                if let value = dict["ModelSpace"] as? String {
+                    self.modelSpace = value
                 }
                 if let value = dict["ModelType"] as? String {
                     self.modelType = value
@@ -38995,6 +39568,8 @@ public class DescribeApplicationPerformanceRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var filter: [String: Any]?
+
     public override init() {
         super.init()
     }
@@ -39045,6 +39620,9 @@ public class DescribeApplicationPerformanceRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.filter != nil {
+            map["filter"] = self.filter!
+        }
         return map
     }
 
@@ -39085,6 +39663,136 @@ public class DescribeApplicationPerformanceRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
+        }
+        if let value = dict["filter"] as? [String: Any] {
+            self.filter = value
+        }
+    }
+}
+
+public class DescribeApplicationPerformanceShrinkRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var consumer: String?
+
+    public var consumerGroup: String?
+
+    public var downsample: String?
+
+    public var endStep: Int64?
+
+    public var endTime: String?
+
+    public var interval: String?
+
+    public var key: String?
+
+    public var maxPoints: Int32?
+
+    public var modelService: String?
+
+    public var startStep: Int64?
+
+    public var startTime: String?
+
+    public var filterShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.consumer != nil {
+            map["Consumer"] = self.consumer!
+        }
+        if self.consumerGroup != nil {
+            map["ConsumerGroup"] = self.consumerGroup!
+        }
+        if self.downsample != nil {
+            map["Downsample"] = self.downsample!
+        }
+        if self.endStep != nil {
+            map["EndStep"] = self.endStep!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.maxPoints != nil {
+            map["MaxPoints"] = self.maxPoints!
+        }
+        if self.modelService != nil {
+            map["ModelService"] = self.modelService!
+        }
+        if self.startStep != nil {
+            map["StartStep"] = self.startStep!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.filterShrink != nil {
+            map["filter"] = self.filterShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["Consumer"] as? String {
+            self.consumer = value
+        }
+        if let value = dict["ConsumerGroup"] as? String {
+            self.consumerGroup = value
+        }
+        if let value = dict["Downsample"] as? String {
+            self.downsample = value
+        }
+        if let value = dict["EndStep"] as? Int64 {
+            self.endStep = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Interval"] as? String {
+            self.interval = value
+        }
+        if let value = dict["Key"] as? String {
+            self.key = value
+        }
+        if let value = dict["MaxPoints"] as? Int32 {
+            self.maxPoints = value
+        }
+        if let value = dict["ModelService"] as? String {
+            self.modelService = value
+        }
+        if let value = dict["StartStep"] as? Int64 {
+            self.startStep = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["filter"] as? String {
+            self.filterShrink = value
         }
     }
 }
@@ -46541,6 +47249,10 @@ public class DescribeConsumersResponse : Tea.TeaModel {
 }
 
 public class DescribeCostRulesRequest : Tea.TeaModel {
+    public var effectiveTargetType: String?
+
+    public var effectiveTargetValue: String?
+
     public var gwClusterId: String?
 
     public var modelName: String?
@@ -46567,6 +47279,12 @@ public class DescribeCostRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.effectiveTargetType != nil {
+            map["EffectiveTargetType"] = self.effectiveTargetType!
+        }
+        if self.effectiveTargetValue != nil {
+            map["EffectiveTargetValue"] = self.effectiveTargetValue!
+        }
         if self.gwClusterId != nil {
             map["GwClusterId"] = self.gwClusterId!
         }
@@ -46590,6 +47308,12 @@ public class DescribeCostRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EffectiveTargetType"] as? String {
+            self.effectiveTargetType = value
+        }
+        if let value = dict["EffectiveTargetValue"] as? String {
+            self.effectiveTargetValue = value
+        }
         if let value = dict["GwClusterId"] as? String {
             self.gwClusterId = value
         }
@@ -46616,6 +47340,10 @@ public class DescribeCostRulesResponseBody : Tea.TeaModel {
         public var cacheCostPointsPerMillion: String?
 
         public var costRuleId: String?
+
+        public var effectiveTargetType: String?
+
+        public var effectiveTargetValue: String?
 
         public var gmtCreated: String?
 
@@ -46651,6 +47379,12 @@ public class DescribeCostRulesResponseBody : Tea.TeaModel {
             if self.costRuleId != nil {
                 map["CostRuleId"] = self.costRuleId!
             }
+            if self.effectiveTargetType != nil {
+                map["EffectiveTargetType"] = self.effectiveTargetType!
+            }
+            if self.effectiveTargetValue != nil {
+                map["EffectiveTargetValue"] = self.effectiveTargetValue!
+            }
             if self.gmtCreated != nil {
                 map["GmtCreated"] = self.gmtCreated!
             }
@@ -46682,6 +47416,12 @@ public class DescribeCostRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CostRuleId"] as? String {
                 self.costRuleId = value
+            }
+            if let value = dict["EffectiveTargetType"] as? String {
+                self.effectiveTargetType = value
+            }
+            if let value = dict["EffectiveTargetValue"] as? String {
+                self.effectiveTargetValue = value
             }
             if let value = dict["GmtCreated"] as? String {
                 self.gmtCreated = value
@@ -79453,6 +80193,10 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
 
     public var acceleratingEnable: String?
 
+    public var authorizedUserArnIds: String?
+
+    public var authorizedUserIds: String?
+
     public var bandwidth: Double?
 
     public var bandwidthBaseLine: Double?
@@ -79558,6 +80302,12 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if self.acceleratingEnable != nil {
             map["AcceleratingEnable"] = self.acceleratingEnable!
+        }
+        if self.authorizedUserArnIds != nil {
+            map["AuthorizedUserArnIds"] = self.authorizedUserArnIds!
+        }
+        if self.authorizedUserIds != nil {
+            map["AuthorizedUserIds"] = self.authorizedUserIds!
         }
         if self.bandwidth != nil {
             map["Bandwidth"] = self.bandwidth!
@@ -79703,6 +80453,12 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["AcceleratingEnable"] as? String {
             self.acceleratingEnable = value
+        }
+        if let value = dict["AuthorizedUserArnIds"] as? String {
+            self.authorizedUserArnIds = value
+        }
+        if let value = dict["AuthorizedUserIds"] as? String {
+            self.authorizedUserIds = value
         }
         if let value = dict["Bandwidth"] as? Double {
             self.bandwidth = value
@@ -112750,6 +113506,10 @@ public class SearchMemoriesRequest : Tea.TeaModel {
 
     public var memoryUserId: String?
 
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
     public var query: String?
 
     public var topK: String?
@@ -112783,6 +113543,12 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if self.memoryUserId != nil {
             map["MemoryUserId"] = self.memoryUserId!
         }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.query != nil {
             map["Query"] = self.query!
         }
@@ -112808,6 +113574,12 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         }
         if let value = dict["MemoryUserId"] as? String {
             self.memoryUserId = value
+        }
+        if let value = dict["Page"] as? Int32 {
+            self.page = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["Query"] as? String {
             self.query = value
@@ -112905,9 +113677,17 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var page: String?
+
+    public var pageSize: String?
+
     public var requestId: String?
 
     public var results: [SearchMemoriesResponseBody.Results]?
+
+    public var total: String?
+
+    public var totalPages: String?
 
     public override init() {
         super.init()
@@ -112923,6 +113703,12 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -112933,11 +113719,23 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
             }
             map["Results"] = tmp
         }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Page"] as? String {
+            self.page = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -112953,6 +113751,12 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
                 }
             }
             self.results = tmp
+        }
+        if let value = dict["Total"] as? String {
+            self.total = value
+        }
+        if let value = dict["TotalPages"] as? String {
+            self.totalPages = value
         }
     }
 }
