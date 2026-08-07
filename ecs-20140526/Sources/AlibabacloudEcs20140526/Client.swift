@@ -2090,6 +2090,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAutoSnapshotPolicyWithOptions(_ request: CreateAutoSnapshotPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAutoSnapshotPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.associationType)) {
+            query["AssociationType"] = request.associationType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.copiedSnapshotsRetentionDays)) {
             query["CopiedSnapshotsRetentionDays"] = request.copiedSnapshotsRetentionDays!;
         }
@@ -2119,6 +2122,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.targetCopyRegions)) {
             query["TargetCopyRegions"] = request.targetCopyRegions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetTags)) {
+            query["TargetTags"] = request.targetTags ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.autoSnapshotPolicyName)) {
             query["autoSnapshotPolicyName"] = request.autoSnapshotPolicyName ?? "";
@@ -2982,6 +2988,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.secureBootOptions)) {
+            query["SecureBootOptions"] = request.secureBootOptions!;
         }
         if (!TeaUtils.Client.isUnset(request.snapshotId)) {
             query["SnapshotId"] = request.snapshotId ?? "";
@@ -16490,6 +16499,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.targetCopyRegions)) {
             query["TargetCopyRegions"] = request.targetCopyRegions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetTags)) {
+            query["TargetTags"] = request.targetTags ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.autoSnapshotPolicyId)) {
             query["autoSnapshotPolicyId"] = request.autoSnapshotPolicyId ?? "";

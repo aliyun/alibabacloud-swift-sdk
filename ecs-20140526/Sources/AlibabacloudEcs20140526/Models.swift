@@ -10729,6 +10729,46 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public class TargetTags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var associationType: String?
+
     public var copiedSnapshotsRetentionDays: Int32?
 
     public var copyEncryptionConfiguration: CreateAutoSnapshotPolicyRequest.CopyEncryptionConfiguration?
@@ -10748,6 +10788,8 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
     public var tag: [CreateAutoSnapshotPolicyRequest.Tag]?
 
     public var targetCopyRegions: String?
+
+    public var targetTags: [CreateAutoSnapshotPolicyRequest.TargetTags]?
 
     public var autoSnapshotPolicyName: String?
 
@@ -10774,6 +10816,9 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.associationType != nil {
+            map["AssociationType"] = self.associationType!
+        }
         if self.copiedSnapshotsRetentionDays != nil {
             map["CopiedSnapshotsRetentionDays"] = self.copiedSnapshotsRetentionDays!
         }
@@ -10808,6 +10853,13 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
         if self.targetCopyRegions != nil {
             map["TargetCopyRegions"] = self.targetCopyRegions!
         }
+        if self.targetTags != nil {
+            var tmp : [Any] = []
+            for k in self.targetTags! {
+                tmp.append(k.toMap())
+            }
+            map["TargetTags"] = tmp
+        }
         if self.autoSnapshotPolicyName != nil {
             map["autoSnapshotPolicyName"] = self.autoSnapshotPolicyName!
         }
@@ -10828,6 +10880,9 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AssociationType"] as? String {
+            self.associationType = value
+        }
         if let value = dict["CopiedSnapshotsRetentionDays"] as? Int32 {
             self.copiedSnapshotsRetentionDays = value
         }
@@ -10869,6 +10924,19 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["TargetCopyRegions"] as? String {
             self.targetCopyRegions = value
+        }
+        if let value = dict["TargetTags"] as? [Any?] {
+            var tmp : [CreateAutoSnapshotPolicyRequest.TargetTags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateAutoSnapshotPolicyRequest.TargetTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.targetTags = tmp
         }
         if let value = dict["autoSnapshotPolicyName"] as? String {
             self.autoSnapshotPolicyName = value
@@ -14035,6 +14103,36 @@ public class CreateImageRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecureBootOptions : Tea.TeaModel {
+        public var secureBootSupport: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.secureBootSupport != nil {
+                map["SecureBootSupport"] = self.secureBootSupport!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SecureBootSupport"] as? String {
+                self.secureBootSupport = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -14111,6 +14209,8 @@ public class CreateImageRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var secureBootOptions: CreateImageRequest.SecureBootOptions?
+
     public var snapshotId: String?
 
     public var tag: [CreateImageRequest.Tag]?
@@ -14126,6 +14226,7 @@ public class CreateImageRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.features?.validate()
+        try self.secureBootOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -14190,6 +14291,9 @@ public class CreateImageRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.secureBootOptions != nil {
+            map["SecureBootOptions"] = self.secureBootOptions?.toMap()
         }
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
@@ -14274,6 +14378,11 @@ public class CreateImageRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["SecureBootOptions"] as? [String: Any?] {
+            var model = CreateImageRequest.SecureBootOptions()
+            model.fromMap(value)
+            self.secureBootOptions = model
         }
         if let value = dict["SnapshotId"] as? String {
             self.snapshotId = value
@@ -35703,6 +35812,90 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class TargetTags : Tea.TeaModel {
+                public class TargetTag : Tea.TeaModel {
+                    public var tagKey: String?
+
+                    public var tagValue: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.tagKey != nil {
+                            map["TagKey"] = self.tagKey!
+                        }
+                        if self.tagValue != nil {
+                            map["TagValue"] = self.tagValue!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["TagKey"] as? String {
+                            self.tagKey = value
+                        }
+                        if let value = dict["TagValue"] as? String {
+                            self.tagValue = value
+                        }
+                    }
+                }
+                public var targetTag: [DescribeAutoSnapshotPolicyExResponseBody.AutoSnapshotPolicies.AutoSnapshotPolicy.TargetTags.TargetTag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.targetTag != nil {
+                        var tmp : [Any] = []
+                        for k in self.targetTag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TargetTag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["TargetTag"] as? [Any?] {
+                        var tmp : [DescribeAutoSnapshotPolicyExResponseBody.AutoSnapshotPolicies.AutoSnapshotPolicy.TargetTags.TargetTag] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeAutoSnapshotPolicyExResponseBody.AutoSnapshotPolicies.AutoSnapshotPolicy.TargetTags.TargetTag()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.targetTag = tmp
+                    }
+                }
+            }
+            public var associationType: String?
+
             public var autoSnapshotPolicyId: String?
 
             public var autoSnapshotPolicyName: String?
@@ -35731,6 +35924,8 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
 
             public var targetCopyRegions: String?
 
+            public var targetTags: DescribeAutoSnapshotPolicyExResponseBody.AutoSnapshotPolicies.AutoSnapshotPolicy.TargetTags?
+
             public var timePoints: String?
 
             public var type: String?
@@ -35749,10 +35944,14 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.copyEncryptionConfiguration?.validate()
                 try self.tags?.validate()
+                try self.targetTags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.associationType != nil {
+                    map["AssociationType"] = self.associationType!
+                }
                 if self.autoSnapshotPolicyId != nil {
                     map["AutoSnapshotPolicyId"] = self.autoSnapshotPolicyId!
                 }
@@ -35795,6 +35994,9 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
                 if self.targetCopyRegions != nil {
                     map["TargetCopyRegions"] = self.targetCopyRegions!
                 }
+                if self.targetTags != nil {
+                    map["TargetTags"] = self.targetTags?.toMap()
+                }
                 if self.timePoints != nil {
                     map["TimePoints"] = self.timePoints!
                 }
@@ -35809,6 +36011,9 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AssociationType"] as? String {
+                    self.associationType = value
+                }
                 if let value = dict["AutoSnapshotPolicyId"] as? String {
                     self.autoSnapshotPolicyId = value
                 }
@@ -35854,6 +36059,11 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TargetCopyRegions"] as? String {
                     self.targetCopyRegions = value
+                }
+                if let value = dict["TargetTags"] as? [String: Any?] {
+                    var model = DescribeAutoSnapshotPolicyExResponseBody.AutoSnapshotPolicies.AutoSnapshotPolicy.TargetTags()
+                    model.fromMap(value)
+                    self.targetTags = model
                 }
                 if let value = dict["TimePoints"] as? String {
                     self.timePoints = value
@@ -57119,6 +57329,36 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SecureBootOptions : Tea.TeaModel {
+                public var secureBootSupport: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.secureBootSupport != nil {
+                        map["SecureBootSupport"] = self.secureBootSupport!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecureBootSupport"] as? String {
+                        self.secureBootSupport = value
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -57257,6 +57497,8 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var secureBootOptions: DescribeImagesResponseBody.Images.Image.SecureBootOptions?
+
             public var size: Int32?
 
             public var status: String?
@@ -57282,6 +57524,7 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 try self.detectionOptions?.validate()
                 try self.diskDeviceMappings?.validate()
                 try self.features?.validate()
+                try self.secureBootOptions?.validate()
                 try self.tags?.validate()
             }
 
@@ -57370,6 +57613,9 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                if self.secureBootOptions != nil {
+                    map["SecureBootOptions"] = self.secureBootOptions?.toMap()
                 }
                 if self.size != nil {
                     map["Size"] = self.size!
@@ -57483,6 +57729,11 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ResourceGroupId"] as? String {
                     self.resourceGroupId = value
+                }
+                if let value = dict["SecureBootOptions"] as? [String: Any?] {
+                    var model = DescribeImagesResponseBody.Images.Image.SecureBootOptions()
+                    model.fromMap(value)
+                    self.secureBootOptions = model
                 }
                 if let value = dict["Size"] as? Int32 {
                     self.size = value
@@ -105854,6 +106105,44 @@ public class ModifyAutoSnapshotPolicyExRequest : Tea.TeaModel {
             }
         }
     }
+    public class TargetTags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var copiedSnapshotsRetentionDays: Int32?
 
     public var copyEncryptionConfiguration: ModifyAutoSnapshotPolicyExRequest.CopyEncryptionConfiguration?
@@ -105867,6 +106156,8 @@ public class ModifyAutoSnapshotPolicyExRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var targetCopyRegions: String?
+
+    public var targetTags: [ModifyAutoSnapshotPolicyExRequest.TargetTags]?
 
     public var autoSnapshotPolicyId: String?
 
@@ -105916,6 +106207,13 @@ public class ModifyAutoSnapshotPolicyExRequest : Tea.TeaModel {
         if self.targetCopyRegions != nil {
             map["TargetCopyRegions"] = self.targetCopyRegions!
         }
+        if self.targetTags != nil {
+            var tmp : [Any] = []
+            for k in self.targetTags! {
+                tmp.append(k.toMap())
+            }
+            map["TargetTags"] = tmp
+        }
         if self.autoSnapshotPolicyId != nil {
             map["autoSnapshotPolicyId"] = self.autoSnapshotPolicyId!
         }
@@ -105961,6 +106259,19 @@ public class ModifyAutoSnapshotPolicyExRequest : Tea.TeaModel {
         }
         if let value = dict["TargetCopyRegions"] as? String {
             self.targetCopyRegions = value
+        }
+        if let value = dict["TargetTags"] as? [Any?] {
+            var tmp : [ModifyAutoSnapshotPolicyExRequest.TargetTags] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyAutoSnapshotPolicyExRequest.TargetTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.targetTags = tmp
         }
         if let value = dict["autoSnapshotPolicyId"] as? String {
             self.autoSnapshotPolicyId = value
