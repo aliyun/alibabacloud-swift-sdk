@@ -81452,6 +81452,8 @@ public class ListLineagesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var recentDays: Int32?
+
     public var sortBy: String?
 
     public var srcEntityId: String?
@@ -81490,6 +81492,9 @@ public class ListLineagesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.recentDays != nil {
+            map["RecentDays"] = self.recentDays!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -81521,6 +81526,9 @@ public class ListLineagesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["RecentDays"] as? Int32 {
+            self.recentDays = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
