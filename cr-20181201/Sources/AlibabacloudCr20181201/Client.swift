@@ -917,6 +917,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.namespaceName)) {
             query["NamespaceName"] = request.namespaceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.namespaceNameFilter)) {
+            query["NamespaceNameFilter"] = request.namespaceNameFilter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            query["Priority"] = request.priority!;
+        }
         if (!TeaUtils.Client.isUnset(request.repoName)) {
             query["RepoName"] = request.repoName ?? "";
         }
@@ -984,6 +990,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.override_)) {
             query["Override"] = request.override_!;
         }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            query["Priority"] = request.priority!;
+        }
         if (!TeaUtils.Client.isUnset(request.repoId)) {
             query["RepoId"] = request.repoId ?? "";
         }
@@ -1038,6 +1047,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            query["Priority"] = request.priority!;
         }
         if (!TeaUtils.Client.isUnset(request.repoId)) {
             query["RepoId"] = request.repoId ?? "";

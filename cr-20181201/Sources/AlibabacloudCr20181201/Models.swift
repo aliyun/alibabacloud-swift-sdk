@@ -3791,6 +3791,10 @@ public class CreateRepoSyncRuleRequest : Tea.TeaModel {
 
     public var namespaceName: String?
 
+    public var namespaceNameFilter: String?
+
+    public var priority: Int32?
+
     public var repoName: String?
 
     public var repoNameFilter: String?
@@ -3835,6 +3839,12 @@ public class CreateRepoSyncRuleRequest : Tea.TeaModel {
         }
         if self.namespaceName != nil {
             map["NamespaceName"] = self.namespaceName!
+        }
+        if self.namespaceNameFilter != nil {
+            map["NamespaceNameFilter"] = self.namespaceNameFilter!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
         }
         if self.repoName != nil {
             map["RepoName"] = self.repoName!
@@ -3882,6 +3892,12 @@ public class CreateRepoSyncRuleRequest : Tea.TeaModel {
         }
         if let value = dict["NamespaceName"] as? String {
             self.namespaceName = value
+        }
+        if let value = dict["NamespaceNameFilter"] as? String {
+            self.namespaceNameFilter = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
         }
         if let value = dict["RepoName"] as? String {
             self.repoName = value
@@ -4029,6 +4045,8 @@ public class CreateRepoSyncTaskRequest : Tea.TeaModel {
 
     public var override_: Bool?
 
+    public var priority: Int32?
+
     public var repoId: String?
 
     public var tag: String?
@@ -4065,6 +4083,9 @@ public class CreateRepoSyncTaskRequest : Tea.TeaModel {
         if self.override_ != nil {
             map["Override"] = self.override_!
         }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
         if self.repoId != nil {
             map["RepoId"] = self.repoId!
         }
@@ -4099,6 +4120,9 @@ public class CreateRepoSyncTaskRequest : Tea.TeaModel {
         }
         if let value = dict["Override"] as? Bool {
             self.override_ = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
         }
         if let value = dict["RepoId"] as? String {
             self.repoId = value
@@ -4235,6 +4259,8 @@ public class CreateRepoSyncTaskResponse : Tea.TeaModel {
 public class CreateRepoSyncTaskByRuleRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var priority: Int32?
+
     public var repoId: String?
 
     public var syncRuleId: String?
@@ -4258,6 +4284,9 @@ public class CreateRepoSyncTaskByRuleRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
         if self.repoId != nil {
             map["RepoId"] = self.repoId!
         }
@@ -4274,6 +4303,9 @@ public class CreateRepoSyncTaskByRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
         }
         if let value = dict["RepoId"] as? String {
             self.repoId = value
@@ -13454,6 +13486,8 @@ public class GetRepoSyncTaskResponseBody : Tea.TeaModel {
 
     public var layerTasks: [GetRepoSyncTaskResponseBody.LayerTasks]?
 
+    public var priority: Int32?
+
     public var progress: Int64?
 
     public var requestId: String?
@@ -13511,6 +13545,9 @@ public class GetRepoSyncTaskResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["LayerTasks"] = tmp
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
         }
         if self.progress != nil {
             map["Progress"] = self.progress!
@@ -13578,6 +13615,9 @@ public class GetRepoSyncTaskResponseBody : Tea.TeaModel {
                 }
             }
             self.layerTasks = tmp
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
         }
         if let value = dict["Progress"] as? Int64 {
             self.progress = value
@@ -20569,6 +20609,10 @@ public class ListRepoSyncRuleResponseBody : Tea.TeaModel {
 
         public var modifiedTime: Int64?
 
+        public var namespaceNameFilter: String?
+
+        public var priority: Int32?
+
         public var repoNameFilter: String?
 
         public var syncDirection: String?
@@ -20628,6 +20672,12 @@ public class ListRepoSyncRuleResponseBody : Tea.TeaModel {
             }
             if self.modifiedTime != nil {
                 map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.namespaceNameFilter != nil {
+                map["NamespaceNameFilter"] = self.namespaceNameFilter!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
             }
             if self.repoNameFilter != nil {
                 map["RepoNameFilter"] = self.repoNameFilter!
@@ -20690,6 +20740,12 @@ public class ListRepoSyncRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["ModifiedTime"] as? Int64 {
                 self.modifiedTime = value
+            }
+            if let value = dict["NamespaceNameFilter"] as? String {
+                self.namespaceNameFilter = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
             }
             if let value = dict["RepoNameFilter"] as? String {
                 self.repoNameFilter = value
@@ -21089,6 +21145,8 @@ public class ListRepoSyncTaskResponseBody : Tea.TeaModel {
 
         public var modifiedTime: Int64?
 
+        public var priority: Int32?
+
         public var syncBatchTaskId: String?
 
         public var syncRuleId: String?
@@ -21143,6 +21201,9 @@ public class ListRepoSyncTaskResponseBody : Tea.TeaModel {
             if self.modifiedTime != nil {
                 map["ModifiedTime"] = self.modifiedTime!
             }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
             if self.syncBatchTaskId != nil {
                 map["SyncBatchTaskId"] = self.syncBatchTaskId!
             }
@@ -21196,6 +21257,9 @@ public class ListRepoSyncTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["ModifiedTime"] as? Int64 {
                 self.modifiedTime = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
             }
             if let value = dict["SyncBatchTaskId"] as? String {
                 self.syncBatchTaskId = value
