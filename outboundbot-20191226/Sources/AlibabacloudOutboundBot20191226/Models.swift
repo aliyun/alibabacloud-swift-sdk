@@ -19848,6 +19848,8 @@ public class GetContactBlockListRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var searchPattern: String?
+
     public override init() {
         super.init()
     }
@@ -19874,6 +19876,9 @@ public class GetContactBlockListRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.searchPattern != nil {
+            map["SearchPattern"] = self.searchPattern!
+        }
         return map
     }
 
@@ -19890,6 +19895,9 @@ public class GetContactBlockListRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SearchPattern"] as? String {
+            self.searchPattern = value
         }
     }
 }
@@ -20181,6 +20189,8 @@ public class GetContactWhiteListRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var searchPattern: String?
+
     public override init() {
         super.init()
     }
@@ -20207,6 +20217,9 @@ public class GetContactWhiteListRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.searchPattern != nil {
+            map["SearchPattern"] = self.searchPattern!
+        }
         return map
     }
 
@@ -20223,6 +20236,9 @@ public class GetContactWhiteListRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SearchPattern"] as? String {
+            self.searchPattern = value
         }
     }
 }
@@ -34180,6 +34196,8 @@ public class ListScriptsResponseBody : Tea.TeaModel {
 
             public var agentLlm: Bool?
 
+            public var chatBotId: String?
+
             public var createTime: Int64?
 
             public var debugStatus: String?
@@ -34242,6 +34260,9 @@ public class ListScriptsResponseBody : Tea.TeaModel {
                 }
                 if self.agentLlm != nil {
                     map["AgentLlm"] = self.agentLlm!
+                }
+                if self.chatBotId != nil {
+                    map["ChatBotId"] = self.chatBotId!
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -34316,6 +34337,9 @@ public class ListScriptsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AgentLlm"] as? Bool {
                     self.agentLlm = value
+                }
+                if let value = dict["ChatBotId"] as? String {
+                    self.chatBotId = value
                 }
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
@@ -42301,6 +42325,8 @@ public class QueryJobsWithResultResponseBody : Tea.TeaModel {
 
                 public var taskEndReason: String?
 
+                public var voiceName: String?
+
                 public override init() {
                     super.init()
                 }
@@ -42372,6 +42398,9 @@ public class QueryJobsWithResultResponseBody : Tea.TeaModel {
                     }
                     if self.taskEndReason != nil {
                         map["TaskEndReason"] = self.taskEndReason!
+                    }
+                    if self.voiceName != nil {
+                        map["VoiceName"] = self.voiceName!
                     }
                     return map
                 }
@@ -42454,6 +42483,9 @@ public class QueryJobsWithResultResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["TaskEndReason"] as? String {
                         self.taskEndReason = value
+                    }
+                    if let value = dict["VoiceName"] as? String {
+                        self.voiceName = value
                     }
                 }
             }
