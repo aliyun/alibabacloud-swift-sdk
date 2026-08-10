@@ -2622,6 +2622,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyLangfuseSecurityIPListWithOptions(_ request: ModifyLangfuseSecurityIPListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyLangfuseSecurityIPListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupName)) {
+            query["GroupName"] = request.groupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifyMode)) {
+            query["ModifyMode"] = request.modifyMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityIPList)) {
+            query["SecurityIPList"] = request.securityIPList ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyLangfuseSecurityIPList",
+            "version": "2023-05-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyLangfuseSecurityIPListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyLangfuseSecurityIPList(_ request: ModifyLangfuseSecurityIPListRequest) async throws -> ModifyLangfuseSecurityIPListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyLangfuseSecurityIPListWithOptions(request as! ModifyLangfuseSecurityIPListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifySecurityIPListWithOptions(_ request: ModifySecurityIPListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySecurityIPListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
