@@ -5994,6 +5994,8 @@ public class LiveManifestConfig : Tea.TeaModel {
 
     public var minVideoBitrate: Int32?
 
+    public var partHoldBackMs: Int32?
+
     public var presentationDelay: Int32?
 
     public var segmentCount: Int32?
@@ -6037,6 +6039,9 @@ public class LiveManifestConfig : Tea.TeaModel {
         if self.minVideoBitrate != nil {
             map["MinVideoBitrate"] = self.minVideoBitrate!
         }
+        if self.partHoldBackMs != nil {
+            map["PartHoldBackMs"] = self.partHoldBackMs!
+        }
         if self.presentationDelay != nil {
             map["PresentationDelay"] = self.presentationDelay!
         }
@@ -6074,6 +6079,9 @@ public class LiveManifestConfig : Tea.TeaModel {
         }
         if let value = dict["MinVideoBitrate"] as? Int32 {
             self.minVideoBitrate = value
+        }
+        if let value = dict["PartHoldBackMs"] as? Int32 {
+            self.partHoldBackMs = value
         }
         if let value = dict["PresentationDelay"] as? Int32 {
             self.presentationDelay = value
@@ -6165,6 +6173,8 @@ public class LivePackagingConfig : Tea.TeaModel {
 
     public var liveManifestConfigs: [LiveManifestConfig]?
 
+    public var partDurationMs: Int32?
+
     public var segmentDuration: Int32?
 
     public var useAudioRenditionGroups: Bool?
@@ -6194,6 +6204,9 @@ public class LivePackagingConfig : Tea.TeaModel {
             }
             map["LiveManifestConfigs"] = tmp
         }
+        if self.partDurationMs != nil {
+            map["PartDurationMs"] = self.partDurationMs!
+        }
         if self.segmentDuration != nil {
             map["SegmentDuration"] = self.segmentDuration!
         }
@@ -6222,6 +6235,9 @@ public class LivePackagingConfig : Tea.TeaModel {
                 }
             }
             self.liveManifestConfigs = tmp
+        }
+        if let value = dict["PartDurationMs"] as? Int32 {
+            self.partDurationMs = value
         }
         if let value = dict["SegmentDuration"] as? Int32 {
             self.segmentDuration = value
