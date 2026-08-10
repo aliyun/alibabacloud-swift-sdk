@@ -4249,6 +4249,133 @@ public class OneMetaKnowledgeBaseDocument : Tea.TeaModel {
     }
 }
 
+public class OneMetaSqlTemplateView : Tea.TeaModel {
+    public var catalogUuid: String?
+
+    public var databaseUuid: String?
+
+    public var description_: String?
+
+    public var expr: String?
+
+    public var gmtCreated: Int64?
+
+    public var gmtModified: Int64?
+
+    public var knowledgeUuid: String?
+
+    public var source: String?
+
+    public var sqlParams: String?
+
+    public var summary: String?
+
+    public var tag: String?
+
+    public var title: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogUuid != nil {
+            map["CatalogUuid"] = self.catalogUuid!
+        }
+        if self.databaseUuid != nil {
+            map["DatabaseUuid"] = self.databaseUuid!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.expr != nil {
+            map["Expr"] = self.expr!
+        }
+        if self.gmtCreated != nil {
+            map["GmtCreated"] = self.gmtCreated!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.knowledgeUuid != nil {
+            map["KnowledgeUuid"] = self.knowledgeUuid!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.sqlParams != nil {
+            map["SqlParams"] = self.sqlParams!
+        }
+        if self.summary != nil {
+            map["Summary"] = self.summary!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CatalogUuid"] as? String {
+            self.catalogUuid = value
+        }
+        if let value = dict["DatabaseUuid"] as? String {
+            self.databaseUuid = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Expr"] as? String {
+            self.expr = value
+        }
+        if let value = dict["GmtCreated"] as? Int64 {
+            self.gmtCreated = value
+        }
+        if let value = dict["GmtModified"] as? Int64 {
+            self.gmtModified = value
+        }
+        if let value = dict["KnowledgeUuid"] as? String {
+            self.knowledgeUuid = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+        if let value = dict["SqlParams"] as? String {
+            self.sqlParams = value
+        }
+        if let value = dict["Summary"] as? String {
+            self.summary = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
+        }
+    }
+}
+
 public class OneMetaTableBaseInfo : Tea.TeaModel {
     public var catalogType: String?
 
@@ -5125,6 +5252,157 @@ public class OpenClawInstanceVO : Tea.TeaModel {
         }
         if let value = dict["Variables"] as? String {
             self.variables = value
+        }
+    }
+}
+
+public class OssieModelView : Tea.TeaModel {
+    public var catalogUuid: String?
+
+    public var databaseUuid: String?
+
+    public var description_: String?
+
+    public var docFormat: String?
+
+    public var domainTopic: String?
+
+    public var expr: String?
+
+    public var gmtCreated: Int64?
+
+    public var gmtModified: Int64?
+
+    public var knowledgeUuid: String?
+
+    public var rawDoc: String?
+
+    public var semanticType: String?
+
+    public var source: String?
+
+    public var summary: String?
+
+    public var tag: String?
+
+    public var title: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogUuid != nil {
+            map["CatalogUuid"] = self.catalogUuid!
+        }
+        if self.databaseUuid != nil {
+            map["DatabaseUuid"] = self.databaseUuid!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.docFormat != nil {
+            map["DocFormat"] = self.docFormat!
+        }
+        if self.domainTopic != nil {
+            map["DomainTopic"] = self.domainTopic!
+        }
+        if self.expr != nil {
+            map["Expr"] = self.expr!
+        }
+        if self.gmtCreated != nil {
+            map["GmtCreated"] = self.gmtCreated!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.knowledgeUuid != nil {
+            map["KnowledgeUuid"] = self.knowledgeUuid!
+        }
+        if self.rawDoc != nil {
+            map["RawDoc"] = self.rawDoc!
+        }
+        if self.semanticType != nil {
+            map["SemanticType"] = self.semanticType!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.summary != nil {
+            map["Summary"] = self.summary!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CatalogUuid"] as? String {
+            self.catalogUuid = value
+        }
+        if let value = dict["DatabaseUuid"] as? String {
+            self.databaseUuid = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DocFormat"] as? String {
+            self.docFormat = value
+        }
+        if let value = dict["DomainTopic"] as? String {
+            self.domainTopic = value
+        }
+        if let value = dict["Expr"] as? String {
+            self.expr = value
+        }
+        if let value = dict["GmtCreated"] as? Int64 {
+            self.gmtCreated = value
+        }
+        if let value = dict["GmtModified"] as? Int64 {
+            self.gmtModified = value
+        }
+        if let value = dict["KnowledgeUuid"] as? String {
+            self.knowledgeUuid = value
+        }
+        if let value = dict["RawDoc"] as? String {
+            self.rawDoc = value
+        }
+        if let value = dict["SemanticType"] as? String {
+            self.semanticType = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+        if let value = dict["Summary"] as? String {
+            self.summary = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -8166,6 +8444,60 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             }
         }
     }
+    public class KnowledgeSemanticConfigList : Tea.TeaModel {
+        public var dbId: String?
+
+        public var instanceId: String?
+
+        public var knowledgeUuid: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dbId != nil {
+                map["DbId"] = self.dbId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.knowledgeUuid != nil {
+                map["KnowledgeUuid"] = self.knowledgeUuid!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DbId"] as? String {
+                self.dbId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["KnowledgeUuid"] as? String {
+                self.knowledgeUuid = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public class ScheduleTaskConfig : Tea.TeaModel {
         public var cronExpression: String?
 
@@ -8228,6 +8560,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public var knowledgeConfigList: [CreateCustomAgentRequest.KnowledgeConfigList]?
 
+    public var knowledgeSemanticConfigList: [CreateCustomAgentRequest.KnowledgeSemanticConfigList]?
+
     public var name: String?
 
     public var relatedSessionId: String?
@@ -8286,6 +8620,13 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["KnowledgeConfigList"] = tmp
+        }
+        if self.knowledgeSemanticConfigList != nil {
+            var tmp : [Any] = []
+            for k in self.knowledgeSemanticConfigList! {
+                tmp.append(k.toMap())
+            }
+            map["KnowledgeSemanticConfigList"] = tmp
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -8351,6 +8692,19 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             }
             self.knowledgeConfigList = tmp
         }
+        if let value = dict["KnowledgeSemanticConfigList"] as? [Any?] {
+            var tmp : [CreateCustomAgentRequest.KnowledgeSemanticConfigList] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCustomAgentRequest.KnowledgeSemanticConfigList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.knowledgeSemanticConfigList = tmp
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
@@ -8393,6 +8747,8 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
     public var knowledge: String?
 
     public var knowledgeConfigListShrink: String?
+
+    public var knowledgeSemanticConfigListShrink: String?
 
     public var name: String?
 
@@ -8446,6 +8802,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         if self.knowledgeConfigListShrink != nil {
             map["KnowledgeConfigList"] = self.knowledgeConfigListShrink!
         }
+        if self.knowledgeSemanticConfigListShrink != nil {
+            map["KnowledgeSemanticConfigList"] = self.knowledgeSemanticConfigListShrink!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -8495,6 +8854,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["KnowledgeConfigList"] as? String {
             self.knowledgeConfigListShrink = value
+        }
+        if let value = dict["KnowledgeSemanticConfigList"] as? String {
+            self.knowledgeSemanticConfigListShrink = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -8684,6 +9046,60 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class KnowledgeSemanticConfigList : Tea.TeaModel {
+            public var dbId: String?
+
+            public var instanceId: String?
+
+            public var knowledgeUuid: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dbId != nil {
+                    map["DbId"] = self.dbId!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.knowledgeUuid != nil {
+                    map["KnowledgeUuid"] = self.knowledgeUuid!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DbId"] as? String {
+                    self.dbId = value
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["KnowledgeUuid"] as? String {
+                    self.knowledgeUuid = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class ScheduleTaskConfig : Tea.TeaModel {
             public var cronExpression: String?
 
@@ -8761,6 +9177,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
         public var knowledge: String?
 
         public var knowledgeConfigList: [CreateCustomAgentResponseBody.Data.KnowledgeConfigList]?
+
+        public var knowledgeSemanticConfigList: [CreateCustomAgentResponseBody.Data.KnowledgeSemanticConfigList]?
 
         public var modifier: String?
 
@@ -8858,6 +9276,13 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["KnowledgeConfigList"] = tmp
+            }
+            if self.knowledgeSemanticConfigList != nil {
+                var tmp : [Any] = []
+                for k in self.knowledgeSemanticConfigList! {
+                    tmp.append(k.toMap())
+                }
+                map["KnowledgeSemanticConfigList"] = tmp
             }
             if self.modifier != nil {
                 map["Modifier"] = self.modifier!
@@ -8967,6 +9392,19 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                     }
                 }
                 self.knowledgeConfigList = tmp
+            }
+            if let value = dict["KnowledgeSemanticConfigList"] as? [Any?] {
+                var tmp : [CreateCustomAgentResponseBody.Data.KnowledgeSemanticConfigList] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateCustomAgentResponseBody.Data.KnowledgeSemanticConfigList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.knowledgeSemanticConfigList = tmp
             }
             if let value = dict["Modifier"] as? String {
                 self.modifier = value
@@ -14734,6 +15172,60 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class KnowledgeSemanticConfigList : Tea.TeaModel {
+            public var dbId: String?
+
+            public var instanceId: String?
+
+            public var knowledgeUuid: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dbId != nil {
+                    map["DbId"] = self.dbId!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.knowledgeUuid != nil {
+                    map["KnowledgeUuid"] = self.knowledgeUuid!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DbId"] as? String {
+                    self.dbId = value
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["KnowledgeUuid"] as? String {
+                    self.knowledgeUuid = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class ScheduleTaskConfig : Tea.TeaModel {
             public var cronExpression: String?
 
@@ -14813,6 +15305,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
         public var knowledge: String?
 
         public var knowledgeConfigList: [DescribeCustomAgentResponseBody.Data.KnowledgeConfigList]?
+
+        public var knowledgeSemanticConfigList: [DescribeCustomAgentResponseBody.Data.KnowledgeSemanticConfigList]?
 
         public var modifier: String?
 
@@ -14913,6 +15407,13 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["KnowledgeConfigList"] = tmp
+            }
+            if self.knowledgeSemanticConfigList != nil {
+                var tmp : [Any] = []
+                for k in self.knowledgeSemanticConfigList! {
+                    tmp.append(k.toMap())
+                }
+                map["KnowledgeSemanticConfigList"] = tmp
             }
             if self.modifier != nil {
                 map["Modifier"] = self.modifier!
@@ -15025,6 +15526,19 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
                     }
                 }
                 self.knowledgeConfigList = tmp
+            }
+            if let value = dict["KnowledgeSemanticConfigList"] as? [Any?] {
+                var tmp : [DescribeCustomAgentResponseBody.Data.KnowledgeSemanticConfigList] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCustomAgentResponseBody.Data.KnowledgeSemanticConfigList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.knowledgeSemanticConfigList = tmp
             }
             if let value = dict["Modifier"] as? String {
                 self.modifier = value
@@ -18524,6 +19038,459 @@ public class GetDataAgentSubAccountInfoResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetDataAgentSubAccountInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetDataAgentTaskModelUsageRequest : Tea.TeaModel {
+    public var beginTime: Int64?
+
+    public var DMSUnit: String?
+
+    public var endTime: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.DMSUnit != nil {
+            map["DMSUnit"] = self.DMSUnit!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginTime"] as? Int64 {
+            self.beginTime = value
+        }
+        if let value = dict["DMSUnit"] as? String {
+            self.DMSUnit = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetDataAgentTaskModelUsageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var peakTpm: Int64?
+
+        public var totalCallCount: Int64?
+
+        public var totalTokenConsumed: Int64?
+
+        public var usedModels: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.peakTpm != nil {
+                map["peakTpm"] = self.peakTpm!
+            }
+            if self.totalCallCount != nil {
+                map["totalCallCount"] = self.totalCallCount!
+            }
+            if self.totalTokenConsumed != nil {
+                map["totalTokenConsumed"] = self.totalTokenConsumed!
+            }
+            if self.usedModels != nil {
+                map["usedModels"] = self.usedModels!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["peakTpm"] as? Int64 {
+                self.peakTpm = value
+            }
+            if let value = dict["totalCallCount"] as? Int64 {
+                self.totalCallCount = value
+            }
+            if let value = dict["totalTokenConsumed"] as? Int64 {
+                self.totalTokenConsumed = value
+            }
+            if let value = dict["usedModels"] as? Int64 {
+                self.usedModels = value
+            }
+        }
+    }
+    public var data: GetDataAgentTaskModelUsageResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetDataAgentTaskModelUsageResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class GetDataAgentTaskModelUsageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDataAgentTaskModelUsageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetDataAgentTaskModelUsageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetDataAgentTaskModelUsageMetricsRequest : Tea.TeaModel {
+    public var beginTime: String?
+
+    public var DMSUnit: String?
+
+    public var endTime: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.DMSUnit != nil {
+            map["DMSUnit"] = self.DMSUnit!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginTime"] as? String {
+            self.beginTime = value
+        }
+        if let value = dict["DMSUnit"] as? String {
+            self.DMSUnit = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetDataAgentTaskModelUsageMetricsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var beginTime: Int64?
+
+        public var endTime: Int64?
+
+        public var tpm: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.beginTime != nil {
+                map["BeginTime"] = self.beginTime!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.tpm != nil {
+                map["Tpm"] = self.tpm!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BeginTime"] as? Int64 {
+                self.beginTime = value
+            }
+            if let value = dict["EndTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["Tpm"] as? Int64 {
+                self.tpm = value
+            }
+        }
+    }
+    public var data: [GetDataAgentTaskModelUsageMetricsResponseBody.Data]?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [GetDataAgentTaskModelUsageMetricsResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = GetDataAgentTaskModelUsageMetricsResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetDataAgentTaskModelUsageMetricsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDataAgentTaskModelUsageMetricsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetDataAgentTaskModelUsageMetricsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -22650,6 +23617,60 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class KnowledgeSemanticConfigList : Tea.TeaModel {
+                public var dbId: String?
+
+                public var instanceId: String?
+
+                public var knowledgeUuid: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dbId != nil {
+                        map["DbId"] = self.dbId!
+                    }
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    if self.knowledgeUuid != nil {
+                        map["KnowledgeUuid"] = self.knowledgeUuid!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DbId"] as? String {
+                        self.dbId = value
+                    }
+                    if let value = dict["InstanceId"] as? String {
+                        self.instanceId = value
+                    }
+                    if let value = dict["KnowledgeUuid"] as? String {
+                        self.knowledgeUuid = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
             public class ScheduleTaskConfig : Tea.TeaModel {
                 public var cronExpression: String?
 
@@ -22729,6 +23750,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
             public var knowledge: String?
 
             public var knowledgeConfigList: [ListCustomAgentResponseBody.Data.Content.KnowledgeConfigList]?
+
+            public var knowledgeSemanticConfigList: [ListCustomAgentResponseBody.Data.Content.KnowledgeSemanticConfigList]?
 
             public var modifier: String?
 
@@ -22829,6 +23852,13 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["KnowledgeConfigList"] = tmp
+                }
+                if self.knowledgeSemanticConfigList != nil {
+                    var tmp : [Any] = []
+                    for k in self.knowledgeSemanticConfigList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["KnowledgeSemanticConfigList"] = tmp
                 }
                 if self.modifier != nil {
                     map["Modifier"] = self.modifier!
@@ -22941,6 +23971,19 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                         }
                     }
                     self.knowledgeConfigList = tmp
+                }
+                if let value = dict["KnowledgeSemanticConfigList"] as? [Any?] {
+                    var tmp : [ListCustomAgentResponseBody.Data.Content.KnowledgeSemanticConfigList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListCustomAgentResponseBody.Data.Content.KnowledgeSemanticConfigList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.knowledgeSemanticConfigList = tmp
                 }
                 if let value = dict["Modifier"] as? String {
                     self.modifier = value
@@ -30764,6 +31807,60 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
             }
         }
     }
+    public class KnowledgeSemanticConfigList : Tea.TeaModel {
+        public var dbId: String?
+
+        public var instanceId: String?
+
+        public var knowledgeUuid: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dbId != nil {
+                map["DbId"] = self.dbId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.knowledgeUuid != nil {
+                map["KnowledgeUuid"] = self.knowledgeUuid!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DbId"] as? String {
+                self.dbId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["KnowledgeUuid"] as? String {
+                self.knowledgeUuid = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public class ScheduleTaskConfig : Tea.TeaModel {
         public var cronExpression: String?
 
@@ -30828,6 +31925,8 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
 
     public var knowledgeConfigList: [ModifyCustomAgentRequest.KnowledgeConfigList]?
 
+    public var knowledgeSemanticConfigList: [ModifyCustomAgentRequest.KnowledgeSemanticConfigList]?
+
     public var name: String?
 
     public var relatedSessionId: String?
@@ -30889,6 +31988,13 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["KnowledgeConfigList"] = tmp
+        }
+        if self.knowledgeSemanticConfigList != nil {
+            var tmp : [Any] = []
+            for k in self.knowledgeSemanticConfigList! {
+                tmp.append(k.toMap())
+            }
+            map["KnowledgeSemanticConfigList"] = tmp
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -30957,6 +32063,19 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
             }
             self.knowledgeConfigList = tmp
         }
+        if let value = dict["KnowledgeSemanticConfigList"] as? [Any?] {
+            var tmp : [ModifyCustomAgentRequest.KnowledgeSemanticConfigList] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyCustomAgentRequest.KnowledgeSemanticConfigList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.knowledgeSemanticConfigList = tmp
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
@@ -31001,6 +32120,8 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
     public var knowledge: String?
 
     public var knowledgeConfigListShrink: String?
+
+    public var knowledgeSemanticConfigListShrink: String?
 
     public var name: String?
 
@@ -31057,6 +32178,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
         if self.knowledgeConfigListShrink != nil {
             map["KnowledgeConfigList"] = self.knowledgeConfigListShrink!
         }
+        if self.knowledgeSemanticConfigListShrink != nil {
+            map["KnowledgeSemanticConfigList"] = self.knowledgeSemanticConfigListShrink!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -31109,6 +32233,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["KnowledgeConfigList"] as? String {
             self.knowledgeConfigListShrink = value
+        }
+        if let value = dict["KnowledgeSemanticConfigList"] as? String {
+            self.knowledgeSemanticConfigListShrink = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -31298,6 +32425,60 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class KnowledgeSemanticConfigList : Tea.TeaModel {
+            public var dbId: String?
+
+            public var instanceId: String?
+
+            public var knowledgeUuid: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dbId != nil {
+                    map["DbId"] = self.dbId!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.knowledgeUuid != nil {
+                    map["KnowledgeUuid"] = self.knowledgeUuid!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DbId"] as? String {
+                    self.dbId = value
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["KnowledgeUuid"] as? String {
+                    self.knowledgeUuid = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class ScheduleTaskConfig : Tea.TeaModel {
             public var cronExpression: String?
 
@@ -31375,6 +32556,8 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
         public var knowledge: String?
 
         public var knowledgeConfigList: [ModifyCustomAgentResponseBody.Data.KnowledgeConfigList]?
+
+        public var knowledgeSemanticConfigList: [ModifyCustomAgentResponseBody.Data.KnowledgeSemanticConfigList]?
 
         public var modifier: String?
 
@@ -31472,6 +32655,13 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["KnowledgeConfigList"] = tmp
+            }
+            if self.knowledgeSemanticConfigList != nil {
+                var tmp : [Any] = []
+                for k in self.knowledgeSemanticConfigList! {
+                    tmp.append(k.toMap())
+                }
+                map["KnowledgeSemanticConfigList"] = tmp
             }
             if self.modifier != nil {
                 map["Modifier"] = self.modifier!
@@ -31581,6 +32771,19 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
                     }
                 }
                 self.knowledgeConfigList = tmp
+            }
+            if let value = dict["KnowledgeSemanticConfigList"] as? [Any?] {
+                var tmp : [ModifyCustomAgentResponseBody.Data.KnowledgeSemanticConfigList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyCustomAgentResponseBody.Data.KnowledgeSemanticConfigList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.knowledgeSemanticConfigList = tmp
             }
             if let value = dict["Modifier"] as? String {
                 self.modifier = value
