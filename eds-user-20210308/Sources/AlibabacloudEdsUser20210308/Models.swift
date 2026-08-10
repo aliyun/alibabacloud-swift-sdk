@@ -4344,6 +4344,8 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
 
             public var timerStatus: String?
 
+            public var type: String?
+
             public override init() {
                 super.init()
             }
@@ -4370,6 +4372,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
                 if self.timerStatus != nil {
                     map["TimerStatus"] = self.timerStatus!
                 }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
                 return map
             }
 
@@ -4386,6 +4391,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TimerStatus"] as? String {
                     self.timerStatus = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
                 }
             }
         }
