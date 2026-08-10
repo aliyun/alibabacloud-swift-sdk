@@ -19770,6 +19770,8 @@ public class DescribeBranchResponseBody : Tea.TeaModel {
 
         public var serviceType: String?
 
+        public var spbProjectId: String?
+
         public var status: String?
 
         public var tags: [DescribeBranchResponseBody.Branch.Tags]?
@@ -19833,6 +19835,9 @@ public class DescribeBranchResponseBody : Tea.TeaModel {
             if self.serviceType != nil {
                 map["ServiceType"] = self.serviceType!
             }
+            if self.spbProjectId != nil {
+                map["SpbProjectId"] = self.spbProjectId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -19892,6 +19897,9 @@ public class DescribeBranchResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceType"] as? String {
                 self.serviceType = value
+            }
+            if let value = dict["SpbProjectId"] as? String {
+                self.spbProjectId = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -46195,6 +46203,8 @@ public class ListBranchesResponseBody : Tea.TeaModel {
 
             public var serviceType: String?
 
+            public var spbProjectId: String?
+
             public var status: String?
 
             public var tags: ListBranchesResponseBody.Branches.Branch.Tags?
@@ -46256,6 +46266,9 @@ public class ListBranchesResponseBody : Tea.TeaModel {
                 if self.serviceType != nil {
                     map["ServiceType"] = self.serviceType!
                 }
+                if self.spbProjectId != nil {
+                    map["SpbProjectId"] = self.spbProjectId!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -46308,6 +46321,9 @@ public class ListBranchesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ServiceType"] as? String {
                     self.serviceType = value
+                }
+                if let value = dict["SpbProjectId"] as? String {
+                    self.spbProjectId = value
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
