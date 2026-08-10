@@ -3470,6 +3470,8 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
 
         public var ipType: String?
 
+        public var logExt: String?
+
         public var product: String?
 
         public var remark: String?
@@ -3526,6 +3528,9 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
             if self.ipType != nil {
                 map["IpType"] = self.ipType!
             }
+            if self.logExt != nil {
+                map["LogExt"] = self.logExt!
+            }
             if self.product != nil {
                 map["Product"] = self.product!
             }
@@ -3577,6 +3582,9 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
             }
             if let value = dict["IpType"] as? String {
                 self.ipType = value
+            }
+            if let value = dict["LogExt"] as? String {
+                self.logExt = value
             }
             if let value = dict["Product"] as? String {
                 self.product = value
