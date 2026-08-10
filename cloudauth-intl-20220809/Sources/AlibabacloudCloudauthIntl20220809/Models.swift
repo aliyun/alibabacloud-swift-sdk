@@ -7672,6 +7672,8 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
 
     public var targetFacePictureUrl: String?
 
+    public var updateFaceIfUserExists: String?
+
     public var verifyModel: String?
 
     public override init() {
@@ -7739,6 +7741,9 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
         if self.targetFacePictureUrl != nil {
             map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.verifyModel != nil {
             map["VerifyModel"] = self.verifyModel!
         }
@@ -7797,6 +7802,9 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
         }
         if let value = dict["TargetFacePictureUrl"] as? String {
             self.targetFacePictureUrl = value
+        }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
         }
         if let value = dict["VerifyModel"] as? String {
             self.verifyModel = value
@@ -9210,6 +9218,8 @@ public class FaceVerifyIntlRequest : Tea.TeaModel {
 
     public var targetFacePictureUrl: String?
 
+    public var updateFaceIfUserExists: String?
+
     public var verifyModel: String?
 
     public override init() {
@@ -9271,6 +9281,9 @@ public class FaceVerifyIntlRequest : Tea.TeaModel {
         if self.targetFacePictureUrl != nil {
             map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.verifyModel != nil {
             map["VerifyModel"] = self.verifyModel!
         }
@@ -9324,6 +9337,9 @@ public class FaceVerifyIntlRequest : Tea.TeaModel {
         if let value = dict["TargetFacePictureUrl"] as? String {
             self.targetFacePictureUrl = value
         }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
+        }
         if let value = dict["VerifyModel"] as? String {
             self.verifyModel = value
         }
@@ -9360,6 +9376,8 @@ public class FaceVerifyIntlAdvanceRequest : Tea.TeaModel {
     public var targetFacePictureFileObject: InputStream?
 
     public var targetFacePictureUrl: String?
+
+    public var updateFaceIfUserExists: String?
 
     public var verifyModel: String?
 
@@ -9422,6 +9440,9 @@ public class FaceVerifyIntlAdvanceRequest : Tea.TeaModel {
         if self.targetFacePictureUrl != nil {
             map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.verifyModel != nil {
             map["VerifyModel"] = self.verifyModel!
         }
@@ -9474,6 +9495,9 @@ public class FaceVerifyIntlAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["TargetFacePictureUrl"] as? String {
             self.targetFacePictureUrl = value
+        }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
         }
         if let value = dict["VerifyModel"] as? String {
             self.verifyModel = value
@@ -10943,6 +10967,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var templateType: String?
 
+    public var updateFaceIfUserExists: String?
+
     public var useNFC: String?
 
     public var verifyModel: String?
@@ -11129,6 +11155,9 @@ public class InitializeRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
         }
@@ -11308,6 +11337,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["TemplateType"] as? String {
             self.templateType = value
         }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
+        }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value
         }
@@ -11429,6 +11461,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var templateRanCount: String?
 
     public var templateType: String?
+
+    public var updateFaceIfUserExists: String?
 
     public var useNFC: String?
 
@@ -11616,6 +11650,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
         }
@@ -11794,6 +11831,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateType"] as? String {
             self.templateType = value
+        }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
         }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value
@@ -12083,6 +12123,8 @@ public class InitializeV2Request : Tea.TeaModel {
 
     public var templateType: String?
 
+    public var updateFaceIfUserExists: String?
+
     public var useNFC: String?
 
     public var verifyModel: String?
@@ -12275,6 +12317,9 @@ public class InitializeV2Request : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
         }
@@ -12460,6 +12505,9 @@ public class InitializeV2Request : Tea.TeaModel {
         if let value = dict["TemplateType"] as? String {
             self.templateType = value
         }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
+        }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value
         }
@@ -12585,6 +12633,8 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
     public var templateRanCount: String?
 
     public var templateType: String?
+
+    public var updateFaceIfUserExists: String?
 
     public var useNFC: String?
 
@@ -12778,6 +12828,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
         }
@@ -12963,6 +13016,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         if let value = dict["TemplateType"] as? String {
             self.templateType = value
         }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
+        }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value
         }
@@ -13088,6 +13144,8 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
     public var templateRanCount: String?
 
     public var templateType: String?
+
+    public var updateFaceIfUserExists: String?
 
     public var useNFC: String?
 
@@ -13281,6 +13339,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.updateFaceIfUserExists != nil {
+            map["UpdateFaceIfUserExists"] = self.updateFaceIfUserExists!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
         }
@@ -13465,6 +13526,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateType"] as? String {
             self.templateType = value
+        }
+        if let value = dict["UpdateFaceIfUserExists"] as? String {
+            self.updateFaceIfUserExists = value
         }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value

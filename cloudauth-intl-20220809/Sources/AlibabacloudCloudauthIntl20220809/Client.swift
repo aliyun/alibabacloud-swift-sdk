@@ -2241,6 +2241,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetFacePictureUrl)) {
             body["TargetFacePictureUrl"] = request.targetFacePictureUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.updateFaceIfUserExists)) {
+            body["UpdateFaceIfUserExists"] = request.updateFaceIfUserExists ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.verifyModel)) {
             body["VerifyModel"] = request.verifyModel ?? "";
         }
@@ -2552,6 +2555,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.targetFacePictureUrl)) {
             query["TargetFacePictureUrl"] = request.targetFacePictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateFaceIfUserExists)) {
+            query["UpdateFaceIfUserExists"] = request.updateFaceIfUserExists ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.verifyModel)) {
             query["VerifyModel"] = request.verifyModel ?? "";
@@ -3157,6 +3163,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.templateType)) {
             query["TemplateType"] = request.templateType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.updateFaceIfUserExists)) {
+            query["UpdateFaceIfUserExists"] = request.updateFaceIfUserExists ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.useNFC)) {
             query["UseNFC"] = request.useNFC ?? "";
         }
@@ -3368,6 +3377,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateType)) {
             query["TemplateType"] = request.templateType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateFaceIfUserExists)) {
+            query["UpdateFaceIfUserExists"] = request.updateFaceIfUserExists ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.useNFC)) {
             query["UseNFC"] = request.useNFC ?? "";
