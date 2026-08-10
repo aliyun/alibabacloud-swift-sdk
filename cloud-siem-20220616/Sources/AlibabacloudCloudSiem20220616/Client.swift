@@ -2410,6 +2410,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.entityUuid)) {
             body["EntityUuid"] = request.entityUuid ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.entityUuids)) {
+            body["EntityUuids"] = request.entityUuids ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.incidentUuid)) {
             body["IncidentUuid"] = request.incidentUuid ?? "";
         }
@@ -3084,9 +3087,24 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listDisposeStrategyWithOptions(_ request: ListDisposeStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDisposeStrategyResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listDisposeStrategyWithOptions(_ tmpReq: ListDisposeStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDisposeStrategyResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListDisposeStrategyShrinkRequest = ListDisposeStrategyShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.entityUuidList)) {
+            request.entityUuidListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.entityUuidList, "EntityUuidList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertUuid)) {
+            body["AlertUuid"] = request.alertUuid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             body["CurrentPage"] = request.currentPage!;
         }
@@ -3101,6 +3119,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.entityType)) {
             body["EntityType"] = request.entityType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entityUuidListShrink)) {
+            body["EntityUuidList"] = request.entityUuidListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupBy)) {
+            body["GroupBy"] = request.groupBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupKey)) {
+            body["GroupKey"] = request.groupKey ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.incidentUuid)) {
             body["IncidentUuid"] = request.incidentUuid ?? "";
@@ -3123,8 +3150,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.playbookUuid)) {
             body["PlaybookUuid"] = request.playbookUuid ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.queryMode)) {
+            body["QueryMode"] = request.queryMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRuleId)) {
+            body["ResponseRuleId"] = request.responseRuleId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.roleFor)) {
             body["RoleFor"] = request.roleFor!;
@@ -3141,7 +3174,11 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["Status"] = request.status!;
         }
+        if (!TeaUtils.Client.isUnset(request.strategyId)) {
+            body["StrategyId"] = request.strategyId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

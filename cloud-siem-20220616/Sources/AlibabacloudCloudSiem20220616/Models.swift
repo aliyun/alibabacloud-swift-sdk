@@ -15770,6 +15770,8 @@ public class GetEntitiyStatRequest : Tea.TeaModel {
 
     public var entityUuid: String?
 
+    public var entityUuids: String?
+
     public var incidentUuid: String?
 
     public var isAsset: String?
@@ -15813,6 +15815,9 @@ public class GetEntitiyStatRequest : Tea.TeaModel {
         if self.entityUuid != nil {
             map["EntityUuid"] = self.entityUuid!
         }
+        if self.entityUuids != nil {
+            map["EntityUuids"] = self.entityUuids!
+        }
         if self.incidentUuid != nil {
             map["IncidentUuid"] = self.incidentUuid!
         }
@@ -15854,6 +15859,9 @@ public class GetEntitiyStatRequest : Tea.TeaModel {
         if let value = dict["EntityUuid"] as? String {
             self.entityUuid = value
         }
+        if let value = dict["EntityUuids"] as? String {
+            self.entityUuids = value
+        }
         if let value = dict["IncidentUuid"] as? String {
             self.incidentUuid = value
         }
@@ -15880,11 +15888,15 @@ public class GetEntitiyStatRequest : Tea.TeaModel {
 
 public class GetEntitiyStatResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var alertNum: Int64?
+
         public var entityNum: Int32?
 
         public var entityType: String?
 
         public var entityUuid: String?
+
+        public var incidentNum: Int64?
 
         public override init() {
             super.init()
@@ -15900,6 +15912,9 @@ public class GetEntitiyStatResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alertNum != nil {
+                map["AlertNum"] = self.alertNum!
+            }
             if self.entityNum != nil {
                 map["EntityNum"] = self.entityNum!
             }
@@ -15909,11 +15924,17 @@ public class GetEntitiyStatResponseBody : Tea.TeaModel {
             if self.entityUuid != nil {
                 map["EntityUuid"] = self.entityUuid!
             }
+            if self.incidentNum != nil {
+                map["IncidentNum"] = self.incidentNum!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AlertNum"] as? Int64 {
+                self.alertNum = value
+            }
             if let value = dict["EntityNum"] as? Int32 {
                 self.entityNum = value
             }
@@ -15922,6 +15943,9 @@ public class GetEntitiyStatResponseBody : Tea.TeaModel {
             }
             if let value = dict["EntityUuid"] as? String {
                 self.entityUuid = value
+            }
+            if let value = dict["IncidentNum"] as? Int64 {
+                self.incidentNum = value
             }
         }
     }
@@ -20538,6 +20562,8 @@ public class ListDeliveryResponse : Tea.TeaModel {
 }
 
 public class ListDisposeStrategyRequest : Tea.TeaModel {
+    public var alertUuid: String?
+
     public var currentPage: Int32?
 
     public var effectiveStatus: Int32?
@@ -20548,7 +20574,17 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
 
     public var entityType: String?
 
+    public var entityUuidList: [String]?
+
+    public var groupBy: String?
+
+    public var groupKey: String?
+
     public var incidentUuid: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
 
     public var order: String?
 
@@ -20562,7 +20598,11 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
 
     public var playbookUuid: String?
 
+    public var queryMode: String?
+
     public var regionId: String?
+
+    public var responseRuleId: String?
 
     public var roleFor: Int64?
 
@@ -20573,6 +20613,8 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
     public var startTime: Int64?
 
     public var status: Int32?
+
+    public var strategyId: String?
 
     public override init() {
         super.init()
@@ -20588,6 +20630,9 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.alertUuid != nil {
+            map["AlertUuid"] = self.alertUuid!
+        }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
@@ -20603,8 +20648,23 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
         if self.entityType != nil {
             map["EntityType"] = self.entityType!
         }
+        if self.entityUuidList != nil {
+            map["EntityUuidList"] = self.entityUuidList!
+        }
+        if self.groupBy != nil {
+            map["GroupBy"] = self.groupBy!
+        }
+        if self.groupKey != nil {
+            map["GroupKey"] = self.groupKey!
+        }
         if self.incidentUuid != nil {
             map["IncidentUuid"] = self.incidentUuid!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.order != nil {
             map["Order"] = self.order!
@@ -20624,8 +20684,14 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
         if self.playbookUuid != nil {
             map["PlaybookUuid"] = self.playbookUuid!
         }
+        if self.queryMode != nil {
+            map["QueryMode"] = self.queryMode!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.responseRuleId != nil {
+            map["ResponseRuleId"] = self.responseRuleId!
         }
         if self.roleFor != nil {
             map["RoleFor"] = self.roleFor!
@@ -20642,11 +20708,17 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.strategyId != nil {
+            map["StrategyId"] = self.strategyId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AlertUuid"] as? String {
+            self.alertUuid = value
+        }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
         }
@@ -20662,8 +20734,23 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
         if let value = dict["EntityType"] as? String {
             self.entityType = value
         }
+        if let value = dict["EntityUuidList"] as? [String] {
+            self.entityUuidList = value
+        }
+        if let value = dict["GroupBy"] as? String {
+            self.groupBy = value
+        }
+        if let value = dict["GroupKey"] as? String {
+            self.groupKey = value
+        }
         if let value = dict["IncidentUuid"] as? String {
             self.incidentUuid = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["Order"] as? String {
             self.order = value
@@ -20683,8 +20770,14 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
         if let value = dict["PlaybookUuid"] as? String {
             self.playbookUuid = value
         }
+        if let value = dict["QueryMode"] as? String {
+            self.queryMode = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResponseRuleId"] as? String {
+            self.responseRuleId = value
         }
         if let value = dict["RoleFor"] as? Int64 {
             self.roleFor = value
@@ -20701,11 +20794,404 @@ public class ListDisposeStrategyRequest : Tea.TeaModel {
         if let value = dict["Status"] as? Int32 {
             self.status = value
         }
+        if let value = dict["StrategyId"] as? String {
+            self.strategyId = value
+        }
+    }
+}
+
+public class ListDisposeStrategyShrinkRequest : Tea.TeaModel {
+    public var alertUuid: String?
+
+    public var currentPage: Int32?
+
+    public var effectiveStatus: Int32?
+
+    public var endTime: Int64?
+
+    public var entityIdentity: String?
+
+    public var entityType: String?
+
+    public var entityUuidListShrink: String?
+
+    public var groupBy: String?
+
+    public var groupKey: String?
+
+    public var incidentUuid: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var order: String?
+
+    public var orderField: String?
+
+    public var pageSize: Int32?
+
+    public var playbookName: String?
+
+    public var playbookTypes: String?
+
+    public var playbookUuid: String?
+
+    public var queryMode: String?
+
+    public var regionId: String?
+
+    public var responseRuleId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public var sophonTaskId: String?
+
+    public var startTime: Int64?
+
+    public var status: Int32?
+
+    public var strategyId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertUuid != nil {
+            map["AlertUuid"] = self.alertUuid!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.effectiveStatus != nil {
+            map["EffectiveStatus"] = self.effectiveStatus!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.entityIdentity != nil {
+            map["EntityIdentity"] = self.entityIdentity!
+        }
+        if self.entityType != nil {
+            map["EntityType"] = self.entityType!
+        }
+        if self.entityUuidListShrink != nil {
+            map["EntityUuidList"] = self.entityUuidListShrink!
+        }
+        if self.groupBy != nil {
+            map["GroupBy"] = self.groupBy!
+        }
+        if self.groupKey != nil {
+            map["GroupKey"] = self.groupKey!
+        }
+        if self.incidentUuid != nil {
+            map["IncidentUuid"] = self.incidentUuid!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.orderField != nil {
+            map["OrderField"] = self.orderField!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.playbookName != nil {
+            map["PlaybookName"] = self.playbookName!
+        }
+        if self.playbookTypes != nil {
+            map["PlaybookTypes"] = self.playbookTypes!
+        }
+        if self.playbookUuid != nil {
+            map["PlaybookUuid"] = self.playbookUuid!
+        }
+        if self.queryMode != nil {
+            map["QueryMode"] = self.queryMode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.responseRuleId != nil {
+            map["ResponseRuleId"] = self.responseRuleId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        if self.sophonTaskId != nil {
+            map["SophonTaskId"] = self.sophonTaskId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.strategyId != nil {
+            map["StrategyId"] = self.strategyId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AlertUuid"] as? String {
+            self.alertUuid = value
+        }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["EffectiveStatus"] as? Int32 {
+            self.effectiveStatus = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["EntityIdentity"] as? String {
+            self.entityIdentity = value
+        }
+        if let value = dict["EntityType"] as? String {
+            self.entityType = value
+        }
+        if let value = dict["EntityUuidList"] as? String {
+            self.entityUuidListShrink = value
+        }
+        if let value = dict["GroupBy"] as? String {
+            self.groupBy = value
+        }
+        if let value = dict["GroupKey"] as? String {
+            self.groupKey = value
+        }
+        if let value = dict["IncidentUuid"] as? String {
+            self.incidentUuid = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["OrderField"] as? String {
+            self.orderField = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["PlaybookName"] as? String {
+            self.playbookName = value
+        }
+        if let value = dict["PlaybookTypes"] as? String {
+            self.playbookTypes = value
+        }
+        if let value = dict["PlaybookUuid"] as? String {
+            self.playbookUuid = value
+        }
+        if let value = dict["QueryMode"] as? String {
+            self.queryMode = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResponseRuleId"] as? String {
+            self.responseRuleId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+        if let value = dict["SophonTaskId"] as? String {
+            self.sophonTaskId = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
+        }
+        if let value = dict["StrategyId"] as? String {
+            self.strategyId = value
+        }
     }
 }
 
 public class ListDisposeStrategyResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Groups : Tea.TeaModel {
+            public class GroupMeta : Tea.TeaModel {
+                public var groupInfo: Any?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.groupInfo != nil {
+                        map["GroupInfo"] = self.groupInfo!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["GroupInfo"] as? Any {
+                        self.groupInfo = value
+                    }
+                }
+            }
+            public var failedCount: Int64?
+
+            public var firstOccurrenceTime: Int64?
+
+            public var groupBy: String?
+
+            public var groupKey: String?
+
+            public var groupMeta: ListDisposeStrategyResponseBody.Data.Groups.GroupMeta?
+
+            public var groupName: String?
+
+            public var groupTitle: String?
+
+            public var lastOccurrenceTime: Int64?
+
+            public var latestModifiedTime: Int64?
+
+            public var runningCount: Int64?
+
+            public var successCount: Int64?
+
+            public var totalCount: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.groupMeta?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.failedCount != nil {
+                    map["FailedCount"] = self.failedCount!
+                }
+                if self.firstOccurrenceTime != nil {
+                    map["FirstOccurrenceTime"] = self.firstOccurrenceTime!
+                }
+                if self.groupBy != nil {
+                    map["GroupBy"] = self.groupBy!
+                }
+                if self.groupKey != nil {
+                    map["GroupKey"] = self.groupKey!
+                }
+                if self.groupMeta != nil {
+                    map["GroupMeta"] = self.groupMeta?.toMap()
+                }
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                if self.groupTitle != nil {
+                    map["GroupTitle"] = self.groupTitle!
+                }
+                if self.lastOccurrenceTime != nil {
+                    map["LastOccurrenceTime"] = self.lastOccurrenceTime!
+                }
+                if self.latestModifiedTime != nil {
+                    map["LatestModifiedTime"] = self.latestModifiedTime!
+                }
+                if self.runningCount != nil {
+                    map["RunningCount"] = self.runningCount!
+                }
+                if self.successCount != nil {
+                    map["SuccessCount"] = self.successCount!
+                }
+                if self.totalCount != nil {
+                    map["TotalCount"] = self.totalCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FailedCount"] as? Int64 {
+                    self.failedCount = value
+                }
+                if let value = dict["FirstOccurrenceTime"] as? Int64 {
+                    self.firstOccurrenceTime = value
+                }
+                if let value = dict["GroupBy"] as? String {
+                    self.groupBy = value
+                }
+                if let value = dict["GroupKey"] as? String {
+                    self.groupKey = value
+                }
+                if let value = dict["GroupMeta"] as? [String: Any?] {
+                    var model = ListDisposeStrategyResponseBody.Data.Groups.GroupMeta()
+                    model.fromMap(value)
+                    self.groupMeta = model
+                }
+                if let value = dict["GroupName"] as? String {
+                    self.groupName = value
+                }
+                if let value = dict["GroupTitle"] as? String {
+                    self.groupTitle = value
+                }
+                if let value = dict["LastOccurrenceTime"] as? Int64 {
+                    self.lastOccurrenceTime = value
+                }
+                if let value = dict["LatestModifiedTime"] as? Int64 {
+                    self.latestModifiedTime = value
+                }
+                if let value = dict["RunningCount"] as? Int64 {
+                    self.runningCount = value
+                }
+                if let value = dict["SuccessCount"] as? Int64 {
+                    self.successCount = value
+                }
+                if let value = dict["TotalCount"] as? Int64 {
+                    self.totalCount = value
+                }
+            }
+        }
         public class PageInfo : Tea.TeaModel {
             public var currentPage: Int32?
 
@@ -20753,6 +21239,8 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
             }
         }
         public class ResponseData : Tea.TeaModel {
+            public var alertName: String?
+
             public var alertUuid: String?
 
             public var aliuid: Int64?
@@ -20811,6 +21299,9 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.alertName != nil {
+                    map["AlertName"] = self.alertName!
+                }
                 if self.alertUuid != nil {
                     map["AlertUuid"] = self.alertUuid!
                 }
@@ -20882,6 +21373,9 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AlertName"] as? String {
+                    self.alertName = value
+                }
                 if let value = dict["AlertUuid"] as? String {
                     self.alertUuid = value
                 }
@@ -20950,6 +21444,8 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var groups: [ListDisposeStrategyResponseBody.Data.Groups]?
+
         public var pageInfo: ListDisposeStrategyResponseBody.Data.PageInfo?
 
         public var responseData: [ListDisposeStrategyResponseBody.Data.ResponseData]?
@@ -20969,6 +21465,13 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.groups != nil {
+                var tmp : [Any] = []
+                for k in self.groups! {
+                    tmp.append(k.toMap())
+                }
+                map["Groups"] = tmp
+            }
             if self.pageInfo != nil {
                 map["PageInfo"] = self.pageInfo?.toMap()
             }
@@ -20984,6 +21487,19 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Groups"] as? [Any?] {
+                var tmp : [ListDisposeStrategyResponseBody.Data.Groups] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListDisposeStrategyResponseBody.Data.Groups()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.groups = tmp
+            }
             if let value = dict["PageInfo"] as? [String: Any?] {
                 var model = ListDisposeStrategyResponseBody.Data.PageInfo()
                 model.fromMap(value)
