@@ -2159,6 +2159,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var jobType: String?
 
+    public var label: String?
+
     public var maxAttempt: Int32?
 
     public var maxConcurrency: Int32?
@@ -2241,6 +2243,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
         }
         if self.maxAttempt != nil {
             map["MaxAttempt"] = self.maxAttempt!
@@ -2337,6 +2342,9 @@ public class CreateJobRequest : Tea.TeaModel {
         if let value = dict["JobType"] as? String {
             self.jobType = value
         }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
         if let value = dict["MaxAttempt"] as? Int32 {
             self.maxAttempt = value
         }
@@ -2426,6 +2434,8 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
 
     public var jobType: String?
 
+    public var label: String?
+
     public var maxAttempt: Int32?
 
     public var maxConcurrency: Int32?
@@ -2506,6 +2516,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
         }
         if self.maxAttempt != nil {
             map["MaxAttempt"] = self.maxAttempt!
@@ -2595,6 +2608,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["JobType"] as? String {
             self.jobType = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
         }
         if let value = dict["MaxAttempt"] as? Int32 {
             self.maxAttempt = value
@@ -13329,6 +13345,8 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var enableJobs: Int32?
+
             public var integrationType: String?
 
             public var maxJobs: Int32?
@@ -13387,6 +13405,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
+                }
+                if self.enableJobs != nil {
+                    map["EnableJobs"] = self.enableJobs!
                 }
                 if self.integrationType != nil {
                     map["IntegrationType"] = self.integrationType!
@@ -13453,6 +13474,9 @@ public class ListExecutorGroupResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["EnableJobs"] as? Int32 {
+                    self.enableJobs = value
                 }
                 if let value = dict["IntegrationType"] as? String {
                     self.integrationType = value
@@ -14799,6 +14823,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var jobName: String?
 
+    public var label: String?
+
     public var pageNum: Int32?
 
     public var pageSize: Int32?
@@ -14839,6 +14865,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.jobName != nil {
             map["JobName"] = self.jobName!
         }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.pageNum != nil {
             map["PageNum"] = self.pageNum!
         }
@@ -14873,6 +14902,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if let value = dict["JobName"] as? String {
             self.jobName = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
         }
         if let value = dict["PageNum"] as? Int32 {
             self.pageNum = value
@@ -14921,6 +14953,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
             public var jobId: Int64?
 
             public var jobType: String?
+
+            public var label: String?
 
             public var lastExecuteEndTime: String?
 
@@ -15024,6 +15058,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if self.jobType != nil {
                     map["JobType"] = self.jobType!
+                }
+                if self.label != nil {
+                    map["Label"] = self.label!
                 }
                 if self.lastExecuteEndTime != nil {
                     map["LastExecuteEndTime"] = self.lastExecuteEndTime!
@@ -15140,6 +15177,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["JobType"] as? String {
                     self.jobType = value
+                }
+                if let value = dict["Label"] as? String {
+                    self.label = value
                 }
                 if let value = dict["LastExecuteEndTime"] as? String {
                     self.lastExecuteEndTime = value
@@ -23787,6 +23827,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var jobId: Int64?
 
+    public var label: String?
+
     public var maxAttempt: Int32?
 
     public var maxConcurrency: Int32?
@@ -23866,6 +23908,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
         }
         if self.maxAttempt != nil {
             map["MaxAttempt"] = self.maxAttempt!
@@ -23957,6 +24002,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if let value = dict["JobId"] as? Int64 {
             self.jobId = value
         }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
         if let value = dict["MaxAttempt"] as? Int32 {
             self.maxAttempt = value
         }
@@ -24043,6 +24091,8 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
 
     public var jobId: Int64?
 
+    public var label: String?
+
     public var maxAttempt: Int32?
 
     public var maxConcurrency: Int32?
@@ -24121,6 +24171,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
         }
         if self.maxAttempt != nil {
             map["MaxAttempt"] = self.maxAttempt!
@@ -24207,6 +24260,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["JobId"] as? Int64 {
             self.jobId = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
         }
         if let value = dict["MaxAttempt"] as? Int32 {
             self.maxAttempt = value
