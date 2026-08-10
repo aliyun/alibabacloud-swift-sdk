@@ -18,15 +18,23 @@ public class ApiKey : Tea.TeaModel {
 
     public var expireTime: String?
 
+    public var ipBlacklist: [IPConfig]?
+
+    public var ipWhitelist: [IPConfig]?
+
     public var lastUsedTime: String?
 
     public var resourceGroupID: String?
+
+    public var source: String?
 
     public var status: String?
 
     public var teamID: String?
 
     public var teamName: String?
+
+    public var teamPlan: String?
 
     public var userID: String?
 
@@ -64,11 +72,28 @@ public class ApiKey : Tea.TeaModel {
         if self.expireTime != nil {
             map["expireTime"] = self.expireTime!
         }
+        if self.ipBlacklist != nil {
+            var tmp : [Any] = []
+            for k in self.ipBlacklist! {
+                tmp.append(k.toMap())
+            }
+            map["ipBlacklist"] = tmp
+        }
+        if self.ipWhitelist != nil {
+            var tmp : [Any] = []
+            for k in self.ipWhitelist! {
+                tmp.append(k.toMap())
+            }
+            map["ipWhitelist"] = tmp
+        }
         if self.lastUsedTime != nil {
             map["lastUsedTime"] = self.lastUsedTime!
         }
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
+        }
+        if self.source != nil {
+            map["source"] = self.source!
         }
         if self.status != nil {
             map["status"] = self.status!
@@ -78,6 +103,9 @@ public class ApiKey : Tea.TeaModel {
         }
         if self.teamName != nil {
             map["teamName"] = self.teamName!
+        }
+        if self.teamPlan != nil {
+            map["teamPlan"] = self.teamPlan!
         }
         if self.userID != nil {
             map["userID"] = self.userID!
@@ -108,11 +136,40 @@ public class ApiKey : Tea.TeaModel {
         if let value = dict["expireTime"] as? String {
             self.expireTime = value
         }
+        if let value = dict["ipBlacklist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipBlacklist = tmp
+        }
+        if let value = dict["ipWhitelist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipWhitelist = tmp
+        }
         if let value = dict["lastUsedTime"] as? String {
             self.lastUsedTime = value
         }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
+        }
+        if let value = dict["source"] as? String {
+            self.source = value
         }
         if let value = dict["status"] as? String {
             self.status = value
@@ -122,6 +179,9 @@ public class ApiKey : Tea.TeaModel {
         }
         if let value = dict["teamName"] as? String {
             self.teamName = value
+        }
+        if let value = dict["teamPlan"] as? String {
+            self.teamPlan = value
         }
         if let value = dict["userID"] as? String {
             self.userID = value
@@ -179,10 +239,45 @@ public class CertConfig : Tea.TeaModel {
     }
 }
 
+public class ContainerConfiguration : Tea.TeaModel {
+    public var image: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.image != nil {
+            map["image"] = self.image!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["image"] as? String {
+            self.image = value
+        }
+    }
+}
+
 public class CreateApiKeyInput : Tea.TeaModel {
     public var apiKeyName: String?
 
     public var expireTime: String?
+
+    public var ipBlacklist: [IPConfig]?
+
+    public var ipWhitelist: [IPConfig]?
 
     public var teamID: String?
 
@@ -206,6 +301,20 @@ public class CreateApiKeyInput : Tea.TeaModel {
         if self.expireTime != nil {
             map["expireTime"] = self.expireTime!
         }
+        if self.ipBlacklist != nil {
+            var tmp : [Any] = []
+            for k in self.ipBlacklist! {
+                tmp.append(k.toMap())
+            }
+            map["ipBlacklist"] = tmp
+        }
+        if self.ipWhitelist != nil {
+            var tmp : [Any] = []
+            for k in self.ipWhitelist! {
+                tmp.append(k.toMap())
+            }
+            map["ipWhitelist"] = tmp
+        }
         if self.teamID != nil {
             map["teamID"] = self.teamID!
         }
@@ -219,6 +328,32 @@ public class CreateApiKeyInput : Tea.TeaModel {
         }
         if let value = dict["expireTime"] as? String {
             self.expireTime = value
+        }
+        if let value = dict["ipBlacklist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipBlacklist = tmp
+        }
+        if let value = dict["ipWhitelist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipWhitelist = tmp
         }
         if let value = dict["teamID"] as? String {
             self.teamID = value
@@ -290,6 +425,8 @@ public class CreateCustomDomainInput : Tea.TeaModel {
 public class CreateTeamInput : Tea.TeaModel {
     public var description_: String?
 
+    public var plan: String?
+
     public var resourceGroupID: String?
 
     public var teamName: String?
@@ -311,6 +448,9 @@ public class CreateTeamInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.plan != nil {
+            map["plan"] = self.plan!
+        }
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
         }
@@ -324,6 +464,9 @@ public class CreateTeamInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["plan"] as? String {
+            self.plan = value
         }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
@@ -473,6 +616,8 @@ public class E2BListedSandbox : Tea.TeaModel {
 
     public var teamName: String?
 
+    public var teamPlan: String?
+
     public var templateID: String?
 
     public var templateName: String?
@@ -526,6 +671,9 @@ public class E2BListedSandbox : Tea.TeaModel {
         if self.teamName != nil {
             map["teamName"] = self.teamName!
         }
+        if self.teamPlan != nil {
+            map["teamPlan"] = self.teamPlan!
+        }
         if self.templateID != nil {
             map["templateID"] = self.templateID!
         }
@@ -573,6 +721,9 @@ public class E2BListedSandbox : Tea.TeaModel {
         if let value = dict["teamName"] as? String {
             self.teamName = value
         }
+        if let value = dict["teamPlan"] as? String {
+            self.teamPlan = value
+        }
         if let value = dict["templateID"] as? String {
             self.templateID = value
         }
@@ -589,6 +740,8 @@ public class E2BListedTemplate : Tea.TeaModel {
     public var buildStatus: String?
 
     public var category: String?
+
+    public var containerConfiguration: ContainerConfiguration?
 
     public var cpuCount: Int32?
 
@@ -614,6 +767,8 @@ public class E2BListedTemplate : Tea.TeaModel {
 
     public var teamName: String?
 
+    public var teamPlan: String?
+
     public var templateID: String?
 
     public var updatedAt: String?
@@ -630,6 +785,7 @@ public class E2BListedTemplate : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.containerConfiguration?.validate()
         try self.logConfiguration?.validate()
     }
 
@@ -640,6 +796,9 @@ public class E2BListedTemplate : Tea.TeaModel {
         }
         if self.category != nil {
             map["category"] = self.category!
+        }
+        if self.containerConfiguration != nil {
+            map["containerConfiguration"] = self.containerConfiguration?.toMap()
         }
         if self.cpuCount != nil {
             map["cpuCount"] = self.cpuCount!
@@ -681,6 +840,9 @@ public class E2BListedTemplate : Tea.TeaModel {
         if self.teamName != nil {
             map["teamName"] = self.teamName!
         }
+        if self.teamPlan != nil {
+            map["teamPlan"] = self.teamPlan!
+        }
         if self.templateID != nil {
             map["templateID"] = self.templateID!
         }
@@ -700,6 +862,11 @@ public class E2BListedTemplate : Tea.TeaModel {
         }
         if let value = dict["category"] as? String {
             self.category = value
+        }
+        if let value = dict["containerConfiguration"] as? [String: Any?] {
+            var model = ContainerConfiguration()
+            model.fromMap(value)
+            self.containerConfiguration = model
         }
         if let value = dict["cpuCount"] as? Int32 {
             self.cpuCount = value
@@ -748,6 +915,9 @@ public class E2BListedTemplate : Tea.TeaModel {
         }
         if let value = dict["teamName"] as? String {
             self.teamName = value
+        }
+        if let value = dict["teamPlan"] as? String {
+            self.teamPlan = value
         }
         if let value = dict["templateID"] as? String {
             self.templateID = value
@@ -849,6 +1019,8 @@ public class E2BSandbox : Tea.TeaModel {
 
     public var teamName: String?
 
+    public var teamPlan: String?
+
     public var templateID: String?
 
     public var templateName: String?
@@ -917,6 +1089,9 @@ public class E2BSandbox : Tea.TeaModel {
         if self.teamName != nil {
             map["teamName"] = self.teamName!
         }
+        if self.teamPlan != nil {
+            map["teamPlan"] = self.teamPlan!
+        }
         if self.templateID != nil {
             map["templateID"] = self.templateID!
         }
@@ -979,6 +1154,9 @@ public class E2BSandbox : Tea.TeaModel {
         if let value = dict["teamName"] as? String {
             self.teamName = value
         }
+        if let value = dict["teamPlan"] as? String {
+            self.teamPlan = value
+        }
         if let value = dict["templateID"] as? String {
             self.templateID = value
         }
@@ -997,6 +1175,8 @@ public class E2BTeam : Tea.TeaModel {
     public var createdTime: String?
 
     public var description_: String?
+
+    public var plan: String?
 
     public var resourceGroupID: String?
 
@@ -1031,6 +1211,9 @@ public class E2BTeam : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.plan != nil {
+            map["plan"] = self.plan!
+        }
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
         }
@@ -1060,6 +1243,9 @@ public class E2BTeam : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["plan"] as? String {
+            self.plan = value
+        }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
         }
@@ -1082,6 +1268,8 @@ public class E2BTemplate : Tea.TeaModel {
     public var buildStatus: String?
 
     public var category: String?
+
+    public var containerConfiguration: ContainerConfiguration?
 
     public var cpuCount: Int32?
 
@@ -1107,6 +1295,8 @@ public class E2BTemplate : Tea.TeaModel {
 
     public var teamName: String?
 
+    public var teamPlan: String?
+
     public var templateID: String?
 
     public var updatedAt: String?
@@ -1123,6 +1313,7 @@ public class E2BTemplate : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.containerConfiguration?.validate()
         try self.logConfiguration?.validate()
         try self.networkConfiguration?.validate()
     }
@@ -1134,6 +1325,9 @@ public class E2BTemplate : Tea.TeaModel {
         }
         if self.category != nil {
             map["category"] = self.category!
+        }
+        if self.containerConfiguration != nil {
+            map["containerConfiguration"] = self.containerConfiguration?.toMap()
         }
         if self.cpuCount != nil {
             map["cpuCount"] = self.cpuCount!
@@ -1175,6 +1369,9 @@ public class E2BTemplate : Tea.TeaModel {
         if self.teamName != nil {
             map["teamName"] = self.teamName!
         }
+        if self.teamPlan != nil {
+            map["teamPlan"] = self.teamPlan!
+        }
         if self.templateID != nil {
             map["templateID"] = self.templateID!
         }
@@ -1194,6 +1391,11 @@ public class E2BTemplate : Tea.TeaModel {
         }
         if let value = dict["category"] as? String {
             self.category = value
+        }
+        if let value = dict["containerConfiguration"] as? [String: Any?] {
+            var model = ContainerConfiguration()
+            model.fromMap(value)
+            self.containerConfiguration = model
         }
         if let value = dict["cpuCount"] as? Int32 {
             self.cpuCount = value
@@ -1244,6 +1446,9 @@ public class E2BTemplate : Tea.TeaModel {
         }
         if let value = dict["teamName"] as? String {
             self.teamName = value
+        }
+        if let value = dict["teamPlan"] as? String {
+            self.teamPlan = value
         }
         if let value = dict["templateID"] as? String {
             self.templateID = value
@@ -1434,6 +1639,100 @@ public class E2BVolumeMount : Tea.TeaModel {
         }
         if let value = dict["path"] as? String {
             self.path = value
+        }
+    }
+}
+
+public class IPConfig : Tea.TeaModel {
+    public var description_: String?
+
+    public var ipAddress: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.ipAddress != nil {
+            map["ipAddress"] = self.ipAddress!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["ipAddress"] as? String {
+            self.ipAddress = value
+        }
+    }
+}
+
+public class ImportApiKeyInput : Tea.TeaModel {
+    public var apiKeyName: String?
+
+    public var apiKeyValue: String?
+
+    public var expireTime: String?
+
+    public var teamID: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiKeyName != nil {
+            map["apiKeyName"] = self.apiKeyName!
+        }
+        if self.apiKeyValue != nil {
+            map["apiKeyValue"] = self.apiKeyValue!
+        }
+        if self.expireTime != nil {
+            map["expireTime"] = self.expireTime!
+        }
+        if self.teamID != nil {
+            map["teamID"] = self.teamID!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["apiKeyName"] as? String {
+            self.apiKeyName = value
+        }
+        if let value = dict["apiKeyValue"] as? String {
+            self.apiKeyValue = value
+        }
+        if let value = dict["expireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["teamID"] as? String {
+            self.teamID = value
         }
     }
 }
@@ -1631,6 +1930,10 @@ public class UpdateApiKeyInput : Tea.TeaModel {
 
     public var expireTime: String?
 
+    public var ipBlacklist: [IPConfig]?
+
+    public var ipWhitelist: [IPConfig]?
+
     public var status: String?
 
     public override init() {
@@ -1653,6 +1956,20 @@ public class UpdateApiKeyInput : Tea.TeaModel {
         if self.expireTime != nil {
             map["expireTime"] = self.expireTime!
         }
+        if self.ipBlacklist != nil {
+            var tmp : [Any] = []
+            for k in self.ipBlacklist! {
+                tmp.append(k.toMap())
+            }
+            map["ipBlacklist"] = tmp
+        }
+        if self.ipWhitelist != nil {
+            var tmp : [Any] = []
+            for k in self.ipWhitelist! {
+                tmp.append(k.toMap())
+            }
+            map["ipWhitelist"] = tmp
+        }
         if self.status != nil {
             map["status"] = self.status!
         }
@@ -1666,6 +1983,32 @@ public class UpdateApiKeyInput : Tea.TeaModel {
         }
         if let value = dict["expireTime"] as? String {
             self.expireTime = value
+        }
+        if let value = dict["ipBlacklist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipBlacklist = tmp
+        }
+        if let value = dict["ipWhitelist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipWhitelist = tmp
         }
         if let value = dict["status"] as? String {
             self.status = value
@@ -1729,6 +2072,8 @@ public class UpdateCustomDomainInput : Tea.TeaModel {
 public class UpdateTeamInput : Tea.TeaModel {
     public var description_: String?
 
+    public var plan: String?
+
     public var resourceGroupID: String?
 
     public var teamName: String?
@@ -1750,6 +2095,9 @@ public class UpdateTeamInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.plan != nil {
+            map["plan"] = self.plan!
+        }
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
         }
@@ -1764,6 +2112,9 @@ public class UpdateTeamInput : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["plan"] as? String {
+            self.plan = value
+        }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
         }
@@ -1774,6 +2125,8 @@ public class UpdateTeamInput : Tea.TeaModel {
 }
 
 public class UpdateTemplateInput : Tea.TeaModel {
+    public var containerConfiguration: ContainerConfiguration?
+
     public var logConfiguration: LogConfiguration?
 
     public var networkConfiguration: NetworkConfiguration?
@@ -1788,12 +2141,16 @@ public class UpdateTemplateInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.containerConfiguration?.validate()
         try self.logConfiguration?.validate()
         try self.networkConfiguration?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.containerConfiguration != nil {
+            map["containerConfiguration"] = self.containerConfiguration?.toMap()
+        }
         if self.logConfiguration != nil {
             map["logConfiguration"] = self.logConfiguration?.toMap()
         }
@@ -1805,6 +2162,11 @@ public class UpdateTemplateInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["containerConfiguration"] as? [String: Any?] {
+            var model = ContainerConfiguration()
+            model.fromMap(value)
+            self.containerConfiguration = model
+        }
         if let value = dict["logConfiguration"] as? [String: Any?] {
             var model = LogConfiguration()
             model.fromMap(value)
@@ -1857,6 +2219,10 @@ public class CreateApiKeyResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var ipBlacklist: [IPConfig]?
+
+    public var ipWhitelist: [IPConfig]?
+
     public var message: String?
 
     public var requestId: String?
@@ -1882,6 +2248,20 @@ public class CreateApiKeyResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["code"] = self.code!
         }
+        if self.ipBlacklist != nil {
+            var tmp : [Any] = []
+            for k in self.ipBlacklist! {
+                tmp.append(k.toMap())
+            }
+            map["ipBlacklist"] = tmp
+        }
+        if self.ipWhitelist != nil {
+            var tmp : [Any] = []
+            for k in self.ipWhitelist! {
+                tmp.append(k.toMap())
+            }
+            map["ipWhitelist"] = tmp
+        }
         if self.message != nil {
             map["message"] = self.message!
         }
@@ -1900,6 +2280,32 @@ public class CreateApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["ipBlacklist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipBlacklist = tmp
+        }
+        if let value = dict["ipWhitelist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipWhitelist = tmp
         }
         if let value = dict["message"] as? String {
             self.message = value
@@ -2501,6 +2907,10 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var ipBlacklist: [IPConfig]?
+
+    public var ipWhitelist: [IPConfig]?
+
     public var message: String?
 
     public var requestId: String?
@@ -2526,6 +2936,20 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["code"] = self.code!
         }
+        if self.ipBlacklist != nil {
+            var tmp : [Any] = []
+            for k in self.ipBlacklist! {
+                tmp.append(k.toMap())
+            }
+            map["ipBlacklist"] = tmp
+        }
+        if self.ipWhitelist != nil {
+            var tmp : [Any] = []
+            for k in self.ipWhitelist! {
+                tmp.append(k.toMap())
+            }
+            map["ipWhitelist"] = tmp
+        }
         if self.message != nil {
             map["message"] = self.message!
         }
@@ -2544,6 +2968,32 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["ipBlacklist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipBlacklist = tmp
+        }
+        if let value = dict["ipWhitelist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipWhitelist = tmp
         }
         if let value = dict["message"] as? String {
             self.message = value
@@ -3276,6 +3726,8 @@ public class ListTeamsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var plan: String?
+
     public var resourceGroupID: String?
 
     public var teamName: String?
@@ -3300,6 +3752,9 @@ public class ListTeamsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.plan != nil {
+            map["plan"] = self.plan!
+        }
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
         }
@@ -3316,6 +3771,9 @@ public class ListTeamsRequest : Tea.TeaModel {
         }
         if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["plan"] as? String {
+            self.plan = value
         }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
@@ -3498,6 +3956,10 @@ public class ResetApiKeyResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var ipBlacklist: [IPConfig]?
+
+    public var ipWhitelist: [IPConfig]?
+
     public var message: String?
 
     public var requestId: String?
@@ -3523,6 +3985,20 @@ public class ResetApiKeyResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["code"] = self.code!
         }
+        if self.ipBlacklist != nil {
+            var tmp : [Any] = []
+            for k in self.ipBlacklist! {
+                tmp.append(k.toMap())
+            }
+            map["ipBlacklist"] = tmp
+        }
+        if self.ipWhitelist != nil {
+            var tmp : [Any] = []
+            for k in self.ipWhitelist! {
+                tmp.append(k.toMap())
+            }
+            map["ipWhitelist"] = tmp
+        }
         if self.message != nil {
             map["message"] = self.message!
         }
@@ -3541,6 +4017,32 @@ public class ResetApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["ipBlacklist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipBlacklist = tmp
+        }
+        if let value = dict["ipWhitelist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipWhitelist = tmp
         }
         if let value = dict["message"] as? String {
             self.message = value
@@ -3640,6 +4142,10 @@ public class UpdateApiKeyResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var ipBlacklist: [IPConfig]?
+
+    public var ipWhitelist: [IPConfig]?
+
     public var message: String?
 
     public var requestId: String?
@@ -3665,6 +4171,20 @@ public class UpdateApiKeyResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["code"] = self.code!
         }
+        if self.ipBlacklist != nil {
+            var tmp : [Any] = []
+            for k in self.ipBlacklist! {
+                tmp.append(k.toMap())
+            }
+            map["ipBlacklist"] = tmp
+        }
+        if self.ipWhitelist != nil {
+            var tmp : [Any] = []
+            for k in self.ipWhitelist! {
+                tmp.append(k.toMap())
+            }
+            map["ipWhitelist"] = tmp
+        }
         if self.message != nil {
             map["message"] = self.message!
         }
@@ -3683,6 +4203,32 @@ public class UpdateApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["ipBlacklist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipBlacklist = tmp
+        }
+        if let value = dict["ipWhitelist"] as? [Any?] {
+            var tmp : [IPConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = IPConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ipWhitelist = tmp
         }
         if let value = dict["message"] as? String {
             self.message = value
