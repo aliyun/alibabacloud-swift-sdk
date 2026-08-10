@@ -24560,9 +24560,9 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
             public class Facilities : Tea.TeaModel {
                 public var description_: String?
 
-                public var facilityId: String?
-
                 public var name: String?
+
+                public var type: String?
 
                 public override init() {
                     super.init()
@@ -24581,11 +24581,11 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
                     if self.description_ != nil {
                         map["Description"] = self.description_!
                     }
-                    if self.facilityId != nil {
-                        map["FacilityId"] = self.facilityId!
-                    }
                     if self.name != nil {
                         map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
                     }
                     return map
                 }
@@ -24595,11 +24595,11 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
                     if let value = dict["Description"] as? String {
                         self.description_ = value
                     }
-                    if let value = dict["FacilityId"] as? String {
-                        self.facilityId = value
-                    }
                     if let value = dict["Name"] as? String {
                         self.name = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
                     }
                 }
             }
@@ -28717,7 +28717,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
 
             public var roomIndex: Int32?
 
-            public var roomName: String?
+            public var status: String?
 
             public override init() {
                 super.init()
@@ -28746,8 +28746,8 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                 if self.roomIndex != nil {
                     map["RoomIndex"] = self.roomIndex!
                 }
-                if self.roomName != nil {
-                    map["RoomName"] = self.roomName!
+                if self.status != nil {
+                    map["Status"] = self.status!
                 }
                 return map
             }
@@ -28773,8 +28773,8 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                 if let value = dict["RoomIndex"] as? Int32 {
                     self.roomIndex = value
                 }
-                if let value = dict["RoomName"] as? String {
-                    self.roomName = value
+                if let value = dict["Status"] as? String {
+                    self.status = value
                 }
             }
         }
@@ -29126,8 +29126,6 @@ public class GlobalHotelSearchCityPageResponseBody : Tea.TeaModel {
 
             public var region: Int32?
 
-            public var type: Int32?
-
             public override init() {
                 super.init()
             }
@@ -29166,9 +29164,6 @@ public class GlobalHotelSearchCityPageResponseBody : Tea.TeaModel {
                 if self.region != nil {
                     map["Region"] = self.region!
                 }
-                if self.type != nil {
-                    map["Type"] = self.type!
-                }
                 return map
             }
 
@@ -29197,9 +29192,6 @@ public class GlobalHotelSearchCityPageResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Region"] as? Int32 {
                     self.region = value
-                }
-                if let value = dict["Type"] as? Int32 {
-                    self.type = value
                 }
             }
         }
