@@ -11,11 +11,11 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-hongkong": "sddp-api.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "sddp.ap-southeast-1.aliyuncs.com",
             "cn-zhangjiakou": "sddp.cn-zhangjiakou.aliyuncs.com",
-            "cn-shanghai": "sddp.cn-shanghai.aliyuncs.com",
-            "cn-hangzhou": "sddp.cn-hangzhou.aliyuncs.com",
             "ap-southeast-5": "sddp.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-1": "sddp.ap-southeast-1.aliyuncs.com"
+            "cn-hangzhou": "sddp.cn-hangzhou.aliyuncs.com",
+            "cn-shanghai": "sddp.cn-shanghai.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("sddp", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1246,6 +1246,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cursor)) {
+            query["Cursor"] = request.cursor ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cursorDirection)) {
+            query["CursorDirection"] = request.cursorDirection ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";

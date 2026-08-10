@@ -7218,6 +7218,10 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public var currentPage: Int32?
 
+    public var cursor: String?
+
+    public var cursorDirection: String?
+
     public var dbName: String?
 
     public var domainId: Int64?
@@ -7296,6 +7300,12 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
+        }
+        if self.cursor != nil {
+            map["Cursor"] = self.cursor!
+        }
+        if self.cursorDirection != nil {
+            map["CursorDirection"] = self.cursorDirection!
         }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
@@ -7394,6 +7404,12 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["Cursor"] as? String {
+            self.cursor = value
+        }
+        if let value = dict["CursorDirection"] as? String {
+            self.cursorDirection = value
         }
         if let value = dict["DbName"] as? String {
             self.dbName = value
@@ -7955,11 +7971,25 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
     }
     public var currentPage: Int32?
 
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var hasNext: Bool?
+
+    public var hasPrevious: Bool?
+
     public var items: [DescribeDataObjectsResponseBody.Items]?
+
+    public var nextCursor: String?
 
     public var pageSize: Int32?
 
+    public var previousCursor: String?
+
     public var requestId: String?
+
+    public var syncStatus: String?
 
     public var totalCount: Int32?
 
@@ -7980,6 +8010,18 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.hasNext != nil {
+            map["HasNext"] = self.hasNext!
+        }
+        if self.hasPrevious != nil {
+            map["HasPrevious"] = self.hasPrevious!
+        }
         if self.items != nil {
             var tmp : [Any] = []
             for k in self.items! {
@@ -7987,11 +8029,20 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             map["Items"] = tmp
         }
+        if self.nextCursor != nil {
+            map["NextCursor"] = self.nextCursor!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.previousCursor != nil {
+            map["PreviousCursor"] = self.previousCursor!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.syncStatus != nil {
+            map["SyncStatus"] = self.syncStatus!
         }
         if self.totalCount != nil {
             map["TotalCount"] = self.totalCount!
@@ -8003,6 +8054,18 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["HasNext"] as? Bool {
+            self.hasNext = value
+        }
+        if let value = dict["HasPrevious"] as? Bool {
+            self.hasPrevious = value
         }
         if let value = dict["Items"] as? [Any?] {
             var tmp : [DescribeDataObjectsResponseBody.Items] = []
@@ -8017,11 +8080,20 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             self.items = tmp
         }
+        if let value = dict["NextCursor"] as? String {
+            self.nextCursor = value
+        }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["PreviousCursor"] as? String {
+            self.previousCursor = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SyncStatus"] as? String {
+            self.syncStatus = value
         }
         if let value = dict["TotalCount"] as? Int32 {
             self.totalCount = value
