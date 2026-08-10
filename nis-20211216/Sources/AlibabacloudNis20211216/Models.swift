@@ -8051,6 +8051,1806 @@ public class ListNisInspectionTasksResponse : Tea.TeaModel {
     }
 }
 
+public class SendNapalStreamMessageRequest : Tea.TeaModel {
+    public class Configuration : Tea.TeaModel {
+        public var acceptedOutputModes: [String]?
+
+        public var historyLength: Int32?
+
+        public var returnImmediately: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acceptedOutputModes != nil {
+                map["AcceptedOutputModes"] = self.acceptedOutputModes!
+            }
+            if self.historyLength != nil {
+                map["HistoryLength"] = self.historyLength!
+            }
+            if self.returnImmediately != nil {
+                map["ReturnImmediately"] = self.returnImmediately!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AcceptedOutputModes"] as? [String] {
+                self.acceptedOutputModes = value
+            }
+            if let value = dict["HistoryLength"] as? Int32 {
+                self.historyLength = value
+            }
+            if let value = dict["ReturnImmediately"] as? Bool {
+                self.returnImmediately = value
+            }
+        }
+    }
+    public class Message : Tea.TeaModel {
+        public class Parts : Tea.TeaModel {
+            public var data: Any?
+
+            public var filename: String?
+
+            public var mediaType: String?
+
+            public var raw: String?
+
+            public var text: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.data != nil {
+                    map["Data"] = self.data!
+                }
+                if self.filename != nil {
+                    map["Filename"] = self.filename!
+                }
+                if self.mediaType != nil {
+                    map["MediaType"] = self.mediaType!
+                }
+                if self.raw != nil {
+                    map["Raw"] = self.raw!
+                }
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Data"] as? Any {
+                    self.data = value
+                }
+                if let value = dict["Filename"] as? String {
+                    self.filename = value
+                }
+                if let value = dict["MediaType"] as? String {
+                    self.mediaType = value
+                }
+                if let value = dict["Raw"] as? String {
+                    self.raw = value
+                }
+                if let value = dict["Text"] as? String {
+                    self.text = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
+                }
+            }
+        }
+        public var contextId: String?
+
+        public var extensions: [String]?
+
+        public var messageId: String?
+
+        public var metadata: [String: Any]?
+
+        public var parts: [SendNapalStreamMessageRequest.Message.Parts]?
+
+        public var referenceTaskIds: [String]?
+
+        public var role: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contextId != nil {
+                map["ContextId"] = self.contextId!
+            }
+            if self.extensions != nil {
+                map["Extensions"] = self.extensions!
+            }
+            if self.messageId != nil {
+                map["MessageId"] = self.messageId!
+            }
+            if self.metadata != nil {
+                map["Metadata"] = self.metadata!
+            }
+            if self.parts != nil {
+                var tmp : [Any] = []
+                for k in self.parts! {
+                    tmp.append(k.toMap())
+                }
+                map["Parts"] = tmp
+            }
+            if self.referenceTaskIds != nil {
+                map["ReferenceTaskIds"] = self.referenceTaskIds!
+            }
+            if self.role != nil {
+                map["Role"] = self.role!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContextId"] as? String {
+                self.contextId = value
+            }
+            if let value = dict["Extensions"] as? [String] {
+                self.extensions = value
+            }
+            if let value = dict["MessageId"] as? String {
+                self.messageId = value
+            }
+            if let value = dict["Metadata"] as? [String: Any] {
+                self.metadata = value
+            }
+            if let value = dict["Parts"] as? [Any?] {
+                var tmp : [SendNapalStreamMessageRequest.Message.Parts] = []
+                for v in value {
+                    if v != nil {
+                        var model = SendNapalStreamMessageRequest.Message.Parts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.parts = tmp
+            }
+            if let value = dict["ReferenceTaskIds"] as? [String] {
+                self.referenceTaskIds = value
+            }
+            if let value = dict["Role"] as? String {
+                self.role = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var configuration: SendNapalStreamMessageRequest.Configuration?
+
+    public var message: SendNapalStreamMessageRequest.Message?
+
+    public var metadata: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.configuration?.validate()
+        try self.message?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configuration != nil {
+            map["Configuration"] = self.configuration?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message?.toMap()
+        }
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configuration"] as? [String: Any?] {
+            var model = SendNapalStreamMessageRequest.Configuration()
+            model.fromMap(value)
+            self.configuration = model
+        }
+        if let value = dict["Message"] as? [String: Any?] {
+            var model = SendNapalStreamMessageRequest.Message()
+            model.fromMap(value)
+            self.message = model
+        }
+        if let value = dict["Metadata"] as? [String: String] {
+            self.metadata = value
+        }
+    }
+}
+
+public class SendNapalStreamMessageShrinkRequest : Tea.TeaModel {
+    public var configurationShrink: String?
+
+    public var messageShrink: String?
+
+    public var metadataShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configurationShrink != nil {
+            map["Configuration"] = self.configurationShrink!
+        }
+        if self.messageShrink != nil {
+            map["Message"] = self.messageShrink!
+        }
+        if self.metadataShrink != nil {
+            map["Metadata"] = self.metadataShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configuration"] as? String {
+            self.configurationShrink = value
+        }
+        if let value = dict["Message"] as? String {
+            self.messageShrink = value
+        }
+        if let value = dict["Metadata"] as? String {
+            self.metadataShrink = value
+        }
+    }
+}
+
+public class SendNapalStreamMessageResponseBody : Tea.TeaModel {
+    public class Message : Tea.TeaModel {
+        public class Parts : Tea.TeaModel {
+            public var data: Any?
+
+            public var filename: String?
+
+            public var mediaType: String?
+
+            public var raw: String?
+
+            public var text: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.data != nil {
+                    map["Data"] = self.data!
+                }
+                if self.filename != nil {
+                    map["Filename"] = self.filename!
+                }
+                if self.mediaType != nil {
+                    map["MediaType"] = self.mediaType!
+                }
+                if self.raw != nil {
+                    map["Raw"] = self.raw!
+                }
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Data"] as? Any {
+                    self.data = value
+                }
+                if let value = dict["Filename"] as? String {
+                    self.filename = value
+                }
+                if let value = dict["MediaType"] as? String {
+                    self.mediaType = value
+                }
+                if let value = dict["Raw"] as? String {
+                    self.raw = value
+                }
+                if let value = dict["Text"] as? String {
+                    self.text = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
+                }
+            }
+        }
+        public var contextId: String?
+
+        public var extensions: [String]?
+
+        public var messageId: String?
+
+        public var metadata: [String: Any]?
+
+        public var parts: [SendNapalStreamMessageResponseBody.Message.Parts]?
+
+        public var referenceTaskIds: [String]?
+
+        public var role: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contextId != nil {
+                map["ContextId"] = self.contextId!
+            }
+            if self.extensions != nil {
+                map["Extensions"] = self.extensions!
+            }
+            if self.messageId != nil {
+                map["MessageId"] = self.messageId!
+            }
+            if self.metadata != nil {
+                map["Metadata"] = self.metadata!
+            }
+            if self.parts != nil {
+                var tmp : [Any] = []
+                for k in self.parts! {
+                    tmp.append(k.toMap())
+                }
+                map["Parts"] = tmp
+            }
+            if self.referenceTaskIds != nil {
+                map["ReferenceTaskIds"] = self.referenceTaskIds!
+            }
+            if self.role != nil {
+                map["Role"] = self.role!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContextId"] as? String {
+                self.contextId = value
+            }
+            if let value = dict["Extensions"] as? [String] {
+                self.extensions = value
+            }
+            if let value = dict["MessageId"] as? String {
+                self.messageId = value
+            }
+            if let value = dict["Metadata"] as? [String: Any] {
+                self.metadata = value
+            }
+            if let value = dict["Parts"] as? [Any?] {
+                var tmp : [SendNapalStreamMessageResponseBody.Message.Parts] = []
+                for v in value {
+                    if v != nil {
+                        var model = SendNapalStreamMessageResponseBody.Message.Parts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.parts = tmp
+            }
+            if let value = dict["ReferenceTaskIds"] as? [String] {
+                self.referenceTaskIds = value
+            }
+            if let value = dict["Role"] as? String {
+                self.role = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public class Task : Tea.TeaModel {
+        public class Artifacts : Tea.TeaModel {
+            public class Parts : Tea.TeaModel {
+                public var data: Any?
+
+                public var filename: String?
+
+                public var mediaType: String?
+
+                public var raw: String?
+
+                public var text: String?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.data != nil {
+                        map["Data"] = self.data!
+                    }
+                    if self.filename != nil {
+                        map["Filename"] = self.filename!
+                    }
+                    if self.mediaType != nil {
+                        map["MediaType"] = self.mediaType!
+                    }
+                    if self.raw != nil {
+                        map["Raw"] = self.raw!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Data"] as? Any {
+                        self.data = value
+                    }
+                    if let value = dict["Filename"] as? String {
+                        self.filename = value
+                    }
+                    if let value = dict["MediaType"] as? String {
+                        self.mediaType = value
+                    }
+                    if let value = dict["Raw"] as? String {
+                        self.raw = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                    if let value = dict["Url"] as? String {
+                        self.url = value
+                    }
+                }
+            }
+            public var artifactId: String?
+
+            public var description_: String?
+
+            public var extensions: [String]?
+
+            public var metadata: [String: Any]?
+
+            public var name: String?
+
+            public var parts: [SendNapalStreamMessageResponseBody.Task.Artifacts.Parts]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.artifactId != nil {
+                    map["ArtifactId"] = self.artifactId!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.extensions != nil {
+                    map["Extensions"] = self.extensions!
+                }
+                if self.metadata != nil {
+                    map["Metadata"] = self.metadata!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.parts != nil {
+                    var tmp : [Any] = []
+                    for k in self.parts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Parts"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ArtifactId"] as? String {
+                    self.artifactId = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["Extensions"] as? [String] {
+                    self.extensions = value
+                }
+                if let value = dict["Metadata"] as? [String: Any] {
+                    self.metadata = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Parts"] as? [Any?] {
+                    var tmp : [SendNapalStreamMessageResponseBody.Task.Artifacts.Parts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = SendNapalStreamMessageResponseBody.Task.Artifacts.Parts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.parts = tmp
+                }
+            }
+        }
+        public class History : Tea.TeaModel {
+            public class Parts : Tea.TeaModel {
+                public var data: Any?
+
+                public var filename: String?
+
+                public var mediaType: String?
+
+                public var raw: String?
+
+                public var text: String?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.data != nil {
+                        map["Data"] = self.data!
+                    }
+                    if self.filename != nil {
+                        map["Filename"] = self.filename!
+                    }
+                    if self.mediaType != nil {
+                        map["MediaType"] = self.mediaType!
+                    }
+                    if self.raw != nil {
+                        map["Raw"] = self.raw!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Data"] as? Any {
+                        self.data = value
+                    }
+                    if let value = dict["Filename"] as? String {
+                        self.filename = value
+                    }
+                    if let value = dict["MediaType"] as? String {
+                        self.mediaType = value
+                    }
+                    if let value = dict["Raw"] as? String {
+                        self.raw = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                    if let value = dict["Url"] as? String {
+                        self.url = value
+                    }
+                }
+            }
+            public var contextId: String?
+
+            public var extensions: [String]?
+
+            public var messageId: String?
+
+            public var metadata: [String: Any]?
+
+            public var parts: [SendNapalStreamMessageResponseBody.Task.History.Parts]?
+
+            public var referenceTaskIds: [String]?
+
+            public var role: String?
+
+            public var taskId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.contextId != nil {
+                    map["ContextId"] = self.contextId!
+                }
+                if self.extensions != nil {
+                    map["Extensions"] = self.extensions!
+                }
+                if self.messageId != nil {
+                    map["MessageId"] = self.messageId!
+                }
+                if self.metadata != nil {
+                    map["Metadata"] = self.metadata!
+                }
+                if self.parts != nil {
+                    var tmp : [Any] = []
+                    for k in self.parts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Parts"] = tmp
+                }
+                if self.referenceTaskIds != nil {
+                    map["ReferenceTaskIds"] = self.referenceTaskIds!
+                }
+                if self.role != nil {
+                    map["Role"] = self.role!
+                }
+                if self.taskId != nil {
+                    map["TaskId"] = self.taskId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ContextId"] as? String {
+                    self.contextId = value
+                }
+                if let value = dict["Extensions"] as? [String] {
+                    self.extensions = value
+                }
+                if let value = dict["MessageId"] as? String {
+                    self.messageId = value
+                }
+                if let value = dict["Metadata"] as? [String: Any] {
+                    self.metadata = value
+                }
+                if let value = dict["Parts"] as? [Any?] {
+                    var tmp : [SendNapalStreamMessageResponseBody.Task.History.Parts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = SendNapalStreamMessageResponseBody.Task.History.Parts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.parts = tmp
+                }
+                if let value = dict["ReferenceTaskIds"] as? [String] {
+                    self.referenceTaskIds = value
+                }
+                if let value = dict["Role"] as? String {
+                    self.role = value
+                }
+                if let value = dict["TaskId"] as? String {
+                    self.taskId = value
+                }
+            }
+        }
+        public class Status : Tea.TeaModel {
+            public class Message : Tea.TeaModel {
+                public class Parts : Tea.TeaModel {
+                    public var data: Any?
+
+                    public var filename: String?
+
+                    public var mediaType: String?
+
+                    public var raw: String?
+
+                    public var text: String?
+
+                    public var url: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.data != nil {
+                            map["Data"] = self.data!
+                        }
+                        if self.filename != nil {
+                            map["Filename"] = self.filename!
+                        }
+                        if self.mediaType != nil {
+                            map["MediaType"] = self.mediaType!
+                        }
+                        if self.raw != nil {
+                            map["Raw"] = self.raw!
+                        }
+                        if self.text != nil {
+                            map["Text"] = self.text!
+                        }
+                        if self.url != nil {
+                            map["Url"] = self.url!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Data"] as? Any {
+                            self.data = value
+                        }
+                        if let value = dict["Filename"] as? String {
+                            self.filename = value
+                        }
+                        if let value = dict["MediaType"] as? String {
+                            self.mediaType = value
+                        }
+                        if let value = dict["Raw"] as? String {
+                            self.raw = value
+                        }
+                        if let value = dict["Text"] as? String {
+                            self.text = value
+                        }
+                        if let value = dict["Url"] as? String {
+                            self.url = value
+                        }
+                    }
+                }
+                public var messageId: String?
+
+                public var parts: [SendNapalStreamMessageResponseBody.Task.Status.Message.Parts]?
+
+                public var role: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.messageId != nil {
+                        map["MessageId"] = self.messageId!
+                    }
+                    if self.parts != nil {
+                        var tmp : [Any] = []
+                        for k in self.parts! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Parts"] = tmp
+                    }
+                    if self.role != nil {
+                        map["Role"] = self.role!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MessageId"] as? String {
+                        self.messageId = value
+                    }
+                    if let value = dict["Parts"] as? [Any?] {
+                        var tmp : [SendNapalStreamMessageResponseBody.Task.Status.Message.Parts] = []
+                        for v in value {
+                            if v != nil {
+                                var model = SendNapalStreamMessageResponseBody.Task.Status.Message.Parts()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.parts = tmp
+                    }
+                    if let value = dict["Role"] as? String {
+                        self.role = value
+                    }
+                }
+            }
+            public var message: SendNapalStreamMessageResponseBody.Task.Status.Message?
+
+            public var state: String?
+
+            public var timestamp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.message?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.message != nil {
+                    map["Message"] = self.message?.toMap()
+                }
+                if self.state != nil {
+                    map["State"] = self.state!
+                }
+                if self.timestamp != nil {
+                    map["Timestamp"] = self.timestamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Message"] as? [String: Any?] {
+                    var model = SendNapalStreamMessageResponseBody.Task.Status.Message()
+                    model.fromMap(value)
+                    self.message = model
+                }
+                if let value = dict["State"] as? String {
+                    self.state = value
+                }
+                if let value = dict["Timestamp"] as? String {
+                    self.timestamp = value
+                }
+            }
+        }
+        public var artifacts: [SendNapalStreamMessageResponseBody.Task.Artifacts]?
+
+        public var contextId: String?
+
+        public var history: [SendNapalStreamMessageResponseBody.Task.History]?
+
+        public var id: String?
+
+        public var metadata: [String: Any]?
+
+        public var status: SendNapalStreamMessageResponseBody.Task.Status?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.status?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.artifacts != nil {
+                var tmp : [Any] = []
+                for k in self.artifacts! {
+                    tmp.append(k.toMap())
+                }
+                map["Artifacts"] = tmp
+            }
+            if self.contextId != nil {
+                map["ContextId"] = self.contextId!
+            }
+            if self.history != nil {
+                var tmp : [Any] = []
+                for k in self.history! {
+                    tmp.append(k.toMap())
+                }
+                map["History"] = tmp
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.metadata != nil {
+                map["Metadata"] = self.metadata!
+            }
+            if self.status != nil {
+                map["Status"] = self.status?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Artifacts"] as? [Any?] {
+                var tmp : [SendNapalStreamMessageResponseBody.Task.Artifacts] = []
+                for v in value {
+                    if v != nil {
+                        var model = SendNapalStreamMessageResponseBody.Task.Artifacts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.artifacts = tmp
+            }
+            if let value = dict["ContextId"] as? String {
+                self.contextId = value
+            }
+            if let value = dict["History"] as? [Any?] {
+                var tmp : [SendNapalStreamMessageResponseBody.Task.History] = []
+                for v in value {
+                    if v != nil {
+                        var model = SendNapalStreamMessageResponseBody.Task.History()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.history = tmp
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Metadata"] as? [String: Any] {
+                self.metadata = value
+            }
+            if let value = dict["Status"] as? [String: Any?] {
+                var model = SendNapalStreamMessageResponseBody.Task.Status()
+                model.fromMap(value)
+                self.status = model
+            }
+        }
+    }
+    public class TaskArtifactUpdate : Tea.TeaModel {
+        public class Artifact : Tea.TeaModel {
+            public class Parts : Tea.TeaModel {
+                public var data: Any?
+
+                public var filename: String?
+
+                public var mediaType: String?
+
+                public var raw: String?
+
+                public var text: String?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.data != nil {
+                        map["Data"] = self.data!
+                    }
+                    if self.filename != nil {
+                        map["Filename"] = self.filename!
+                    }
+                    if self.mediaType != nil {
+                        map["MediaType"] = self.mediaType!
+                    }
+                    if self.raw != nil {
+                        map["Raw"] = self.raw!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Data"] as? Any {
+                        self.data = value
+                    }
+                    if let value = dict["Filename"] as? String {
+                        self.filename = value
+                    }
+                    if let value = dict["MediaType"] as? String {
+                        self.mediaType = value
+                    }
+                    if let value = dict["Raw"] as? String {
+                        self.raw = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                    if let value = dict["Url"] as? String {
+                        self.url = value
+                    }
+                }
+            }
+            public var artifactId: String?
+
+            public var description_: String?
+
+            public var extensions: [String]?
+
+            public var metadata: [String: Any]?
+
+            public var name: String?
+
+            public var parts: [SendNapalStreamMessageResponseBody.TaskArtifactUpdate.Artifact.Parts]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.artifactId != nil {
+                    map["ArtifactId"] = self.artifactId!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.extensions != nil {
+                    map["Extensions"] = self.extensions!
+                }
+                if self.metadata != nil {
+                    map["Metadata"] = self.metadata!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.parts != nil {
+                    var tmp : [Any] = []
+                    for k in self.parts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Parts"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ArtifactId"] as? String {
+                    self.artifactId = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["Extensions"] as? [String] {
+                    self.extensions = value
+                }
+                if let value = dict["Metadata"] as? [String: Any] {
+                    self.metadata = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Parts"] as? [Any?] {
+                    var tmp : [SendNapalStreamMessageResponseBody.TaskArtifactUpdate.Artifact.Parts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = SendNapalStreamMessageResponseBody.TaskArtifactUpdate.Artifact.Parts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.parts = tmp
+                }
+            }
+        }
+        public var append: Bool?
+
+        public var artifact: SendNapalStreamMessageResponseBody.TaskArtifactUpdate.Artifact?
+
+        public var contextId: String?
+
+        public var lastChunk: Bool?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.artifact?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.append != nil {
+                map["Append"] = self.append!
+            }
+            if self.artifact != nil {
+                map["Artifact"] = self.artifact?.toMap()
+            }
+            if self.contextId != nil {
+                map["ContextId"] = self.contextId!
+            }
+            if self.lastChunk != nil {
+                map["LastChunk"] = self.lastChunk!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Append"] as? Bool {
+                self.append = value
+            }
+            if let value = dict["Artifact"] as? [String: Any?] {
+                var model = SendNapalStreamMessageResponseBody.TaskArtifactUpdate.Artifact()
+                model.fromMap(value)
+                self.artifact = model
+            }
+            if let value = dict["ContextId"] as? String {
+                self.contextId = value
+            }
+            if let value = dict["LastChunk"] as? Bool {
+                self.lastChunk = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public class TaskStatusUpdate : Tea.TeaModel {
+        public class Metadata : Tea.TeaModel {
+            public class Step : Tea.TeaModel {
+                public var costTime: Int64?
+
+                public var id: String?
+
+                public var isError: Bool?
+
+                public var name: String?
+
+                public var params: Any?
+
+                public var result: Any?
+
+                public var retryCount: Int64?
+
+                public var uiContent: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.costTime != nil {
+                        map["CostTime"] = self.costTime!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.isError != nil {
+                        map["IsError"] = self.isError!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.params != nil {
+                        map["Params"] = self.params!
+                    }
+                    if self.result != nil {
+                        map["Result"] = self.result!
+                    }
+                    if self.retryCount != nil {
+                        map["RetryCount"] = self.retryCount!
+                    }
+                    if self.uiContent != nil {
+                        map["UiContent"] = self.uiContent!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CostTime"] as? Int64 {
+                        self.costTime = value
+                    }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["IsError"] as? Bool {
+                        self.isError = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["Params"] as? Any {
+                        self.params = value
+                    }
+                    if let value = dict["Result"] as? Any {
+                        self.result = value
+                    }
+                    if let value = dict["RetryCount"] as? Int64 {
+                        self.retryCount = value
+                    }
+                    if let value = dict["UiContent"] as? String {
+                        self.uiContent = value
+                    }
+                }
+            }
+            public var step: SendNapalStreamMessageResponseBody.TaskStatusUpdate.Metadata.Step?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.step?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.step != nil {
+                    map["Step"] = self.step?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Step"] as? [String: Any?] {
+                    var model = SendNapalStreamMessageResponseBody.TaskStatusUpdate.Metadata.Step()
+                    model.fromMap(value)
+                    self.step = model
+                }
+            }
+        }
+        public class Status : Tea.TeaModel {
+            public class Message : Tea.TeaModel {
+                public class Parts : Tea.TeaModel {
+                    public var data: Any?
+
+                    public var filename: String?
+
+                    public var mediaType: String?
+
+                    public var raw: String?
+
+                    public var text: String?
+
+                    public var url: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.data != nil {
+                            map["Data"] = self.data!
+                        }
+                        if self.filename != nil {
+                            map["Filename"] = self.filename!
+                        }
+                        if self.mediaType != nil {
+                            map["MediaType"] = self.mediaType!
+                        }
+                        if self.raw != nil {
+                            map["Raw"] = self.raw!
+                        }
+                        if self.text != nil {
+                            map["Text"] = self.text!
+                        }
+                        if self.url != nil {
+                            map["Url"] = self.url!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Data"] as? Any {
+                            self.data = value
+                        }
+                        if let value = dict["Filename"] as? String {
+                            self.filename = value
+                        }
+                        if let value = dict["MediaType"] as? String {
+                            self.mediaType = value
+                        }
+                        if let value = dict["Raw"] as? String {
+                            self.raw = value
+                        }
+                        if let value = dict["Text"] as? String {
+                            self.text = value
+                        }
+                        if let value = dict["Url"] as? String {
+                            self.url = value
+                        }
+                    }
+                }
+                public var messageId: String?
+
+                public var parts: [SendNapalStreamMessageResponseBody.TaskStatusUpdate.Status.Message.Parts]?
+
+                public var role: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.messageId != nil {
+                        map["MessageId"] = self.messageId!
+                    }
+                    if self.parts != nil {
+                        var tmp : [Any] = []
+                        for k in self.parts! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Parts"] = tmp
+                    }
+                    if self.role != nil {
+                        map["Role"] = self.role!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MessageId"] as? String {
+                        self.messageId = value
+                    }
+                    if let value = dict["Parts"] as? [Any?] {
+                        var tmp : [SendNapalStreamMessageResponseBody.TaskStatusUpdate.Status.Message.Parts] = []
+                        for v in value {
+                            if v != nil {
+                                var model = SendNapalStreamMessageResponseBody.TaskStatusUpdate.Status.Message.Parts()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.parts = tmp
+                    }
+                    if let value = dict["Role"] as? String {
+                        self.role = value
+                    }
+                }
+            }
+            public var message: SendNapalStreamMessageResponseBody.TaskStatusUpdate.Status.Message?
+
+            public var state: String?
+
+            public var timestamp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.message?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.message != nil {
+                    map["Message"] = self.message?.toMap()
+                }
+                if self.state != nil {
+                    map["State"] = self.state!
+                }
+                if self.timestamp != nil {
+                    map["Timestamp"] = self.timestamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Message"] as? [String: Any?] {
+                    var model = SendNapalStreamMessageResponseBody.TaskStatusUpdate.Status.Message()
+                    model.fromMap(value)
+                    self.message = model
+                }
+                if let value = dict["State"] as? String {
+                    self.state = value
+                }
+                if let value = dict["Timestamp"] as? String {
+                    self.timestamp = value
+                }
+            }
+        }
+        public var contextId: String?
+
+        public var final_: Bool?
+
+        public var metadata: SendNapalStreamMessageResponseBody.TaskStatusUpdate.Metadata?
+
+        public var status: SendNapalStreamMessageResponseBody.TaskStatusUpdate.Status?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.metadata?.validate()
+            try self.status?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contextId != nil {
+                map["ContextId"] = self.contextId!
+            }
+            if self.final_ != nil {
+                map["Final"] = self.final_!
+            }
+            if self.metadata != nil {
+                map["Metadata"] = self.metadata?.toMap()
+            }
+            if self.status != nil {
+                map["Status"] = self.status?.toMap()
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContextId"] as? String {
+                self.contextId = value
+            }
+            if let value = dict["Final"] as? Bool {
+                self.final_ = value
+            }
+            if let value = dict["Metadata"] as? [String: Any?] {
+                var model = SendNapalStreamMessageResponseBody.TaskStatusUpdate.Metadata()
+                model.fromMap(value)
+                self.metadata = model
+            }
+            if let value = dict["Status"] as? [String: Any?] {
+                var model = SendNapalStreamMessageResponseBody.TaskStatusUpdate.Status()
+                model.fromMap(value)
+                self.status = model
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var message: SendNapalStreamMessageResponseBody.Message?
+
+    public var requestId: String?
+
+    public var task: SendNapalStreamMessageResponseBody.Task?
+
+    public var taskArtifactUpdate: SendNapalStreamMessageResponseBody.TaskArtifactUpdate?
+
+    public var taskStatusUpdate: SendNapalStreamMessageResponseBody.TaskStatusUpdate?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.message?.validate()
+        try self.task?.validate()
+        try self.taskArtifactUpdate?.validate()
+        try self.taskStatusUpdate?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.task != nil {
+            map["Task"] = self.task?.toMap()
+        }
+        if self.taskArtifactUpdate != nil {
+            map["TaskArtifactUpdate"] = self.taskArtifactUpdate?.toMap()
+        }
+        if self.taskStatusUpdate != nil {
+            map["TaskStatusUpdate"] = self.taskStatusUpdate?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Message"] as? [String: Any?] {
+            var model = SendNapalStreamMessageResponseBody.Message()
+            model.fromMap(value)
+            self.message = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Task"] as? [String: Any?] {
+            var model = SendNapalStreamMessageResponseBody.Task()
+            model.fromMap(value)
+            self.task = model
+        }
+        if let value = dict["TaskArtifactUpdate"] as? [String: Any?] {
+            var model = SendNapalStreamMessageResponseBody.TaskArtifactUpdate()
+            model.fromMap(value)
+            self.taskArtifactUpdate = model
+        }
+        if let value = dict["TaskStatusUpdate"] as? [String: Any?] {
+            var model = SendNapalStreamMessageResponseBody.TaskStatusUpdate()
+            model.fromMap(value)
+            self.taskStatusUpdate = model
+        }
+    }
+}
+
+public class SendNapalStreamMessageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SendNapalStreamMessageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SendNapalStreamMessageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class StartNisInspectionTaskRequest : Tea.TeaModel {
     public var inspectionTaskId: String?
 

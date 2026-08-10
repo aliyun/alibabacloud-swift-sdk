@@ -1206,6 +1206,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendNapalStreamMessageWithOptions(_ tmpReq: SendNapalStreamMessageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendNapalStreamMessageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SendNapalStreamMessageShrinkRequest = SendNapalStreamMessageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.configuration)) {
+            request.configurationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.configuration, "Configuration", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.message)) {
+            request.messageShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.message, "Message", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.metadata)) {
+            request.metadataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.metadata, "Metadata", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configurationShrink)) {
+            body["Configuration"] = request.configurationShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.messageShrink)) {
+            body["Message"] = request.messageShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metadataShrink)) {
+            body["Metadata"] = request.metadataShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendNapalStreamMessage",
+            "version": "2021-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendNapalStreamMessageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendNapalStreamMessage(_ request: SendNapalStreamMessageRequest) async throws -> SendNapalStreamMessageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendNapalStreamMessageWithOptions(request as! SendNapalStreamMessageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startNisInspectionTaskWithOptions(_ request: StartNisInspectionTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartNisInspectionTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
