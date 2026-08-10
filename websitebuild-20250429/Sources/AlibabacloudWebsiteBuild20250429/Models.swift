@@ -20817,11 +20817,15 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
 
         public var currentStep: String?
 
+        public var currentStepCode: String?
+
         public var deployChannel: String?
 
         public var description_: String?
 
         public var errorStep: String?
+
+        public var errorStepCode: String?
 
         public var isFinish: Bool?
 
@@ -20830,6 +20834,8 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
         public var msg: String?
 
         public var orderType: String?
+
+        public var orderTypeCode: String?
 
         public var percent: Int32?
 
@@ -20840,6 +20846,8 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
         public var publishTime: String?
 
         public var siteId: String?
+
+        public var stepCodes: [String]?
 
         public var steps: [String]?
 
@@ -20865,6 +20873,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             if self.currentStep != nil {
                 map["CurrentStep"] = self.currentStep!
             }
+            if self.currentStepCode != nil {
+                map["CurrentStepCode"] = self.currentStepCode!
+            }
             if self.deployChannel != nil {
                 map["DeployChannel"] = self.deployChannel!
             }
@@ -20873,6 +20884,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if self.errorStep != nil {
                 map["ErrorStep"] = self.errorStep!
+            }
+            if self.errorStepCode != nil {
+                map["ErrorStepCode"] = self.errorStepCode!
             }
             if self.isFinish != nil {
                 map["IsFinish"] = self.isFinish!
@@ -20885,6 +20899,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if self.orderType != nil {
                 map["OrderType"] = self.orderType!
+            }
+            if self.orderTypeCode != nil {
+                map["OrderTypeCode"] = self.orderTypeCode!
             }
             if self.percent != nil {
                 map["Percent"] = self.percent!
@@ -20900,6 +20917,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if self.siteId != nil {
                 map["SiteId"] = self.siteId!
+            }
+            if self.stepCodes != nil {
+                map["StepCodes"] = self.stepCodes!
             }
             if self.steps != nil {
                 map["Steps"] = self.steps!
@@ -20918,6 +20938,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             if let value = dict["CurrentStep"] as? String {
                 self.currentStep = value
             }
+            if let value = dict["CurrentStepCode"] as? String {
+                self.currentStepCode = value
+            }
             if let value = dict["DeployChannel"] as? String {
                 self.deployChannel = value
             }
@@ -20926,6 +20949,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["ErrorStep"] as? String {
                 self.errorStep = value
+            }
+            if let value = dict["ErrorStepCode"] as? String {
+                self.errorStepCode = value
             }
             if let value = dict["IsFinish"] as? Bool {
                 self.isFinish = value
@@ -20938,6 +20964,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["OrderType"] as? String {
                 self.orderType = value
+            }
+            if let value = dict["OrderTypeCode"] as? String {
+                self.orderTypeCode = value
             }
             if let value = dict["Percent"] as? Int32 {
                 self.percent = value
@@ -20953,6 +20982,9 @@ public class GetAppPublishStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["SiteId"] as? String {
                 self.siteId = value
+            }
+            if let value = dict["StepCodes"] as? [String] {
+                self.stepCodes = value
             }
             if let value = dict["Steps"] as? [String] {
                 self.steps = value
@@ -35124,11 +35156,15 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
 
             public var currentStep: String?
 
+            public var currentStepCode: String?
+
             public var deployChannel: String?
 
             public var description_: String?
 
             public var errorStep: String?
+
+            public var errorStepCode: String?
 
             public var isFinish: Bool?
 
@@ -35138,6 +35174,8 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
 
             public var orderType: String?
 
+            public var orderTypeCode: String?
+
             public var percent: Int32?
 
             public var publishNumber: String?
@@ -35145,6 +35183,8 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
             public var publishOrderId: Int64?
 
             public var publishTime: String?
+
+            public var stepCodes: [String]?
 
             public var steps: [String]?
 
@@ -35173,6 +35213,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if self.currentStep != nil {
                     map["CurrentStep"] = self.currentStep!
                 }
+                if self.currentStepCode != nil {
+                    map["CurrentStepCode"] = self.currentStepCode!
+                }
                 if self.deployChannel != nil {
                     map["DeployChannel"] = self.deployChannel!
                 }
@@ -35181,6 +35224,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 }
                 if self.errorStep != nil {
                     map["ErrorStep"] = self.errorStep!
+                }
+                if self.errorStepCode != nil {
+                    map["ErrorStepCode"] = self.errorStepCode!
                 }
                 if self.isFinish != nil {
                     map["IsFinish"] = self.isFinish!
@@ -35194,6 +35240,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if self.orderType != nil {
                     map["OrderType"] = self.orderType!
                 }
+                if self.orderTypeCode != nil {
+                    map["OrderTypeCode"] = self.orderTypeCode!
+                }
                 if self.percent != nil {
                     map["Percent"] = self.percent!
                 }
@@ -35205,6 +35254,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 }
                 if self.publishTime != nil {
                     map["PublishTime"] = self.publishTime!
+                }
+                if self.stepCodes != nil {
+                    map["StepCodes"] = self.stepCodes!
                 }
                 if self.steps != nil {
                     map["Steps"] = self.steps!
@@ -35226,6 +35278,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if let value = dict["CurrentStep"] as? String {
                     self.currentStep = value
                 }
+                if let value = dict["CurrentStepCode"] as? String {
+                    self.currentStepCode = value
+                }
                 if let value = dict["DeployChannel"] as? String {
                     self.deployChannel = value
                 }
@@ -35234,6 +35289,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ErrorStep"] as? String {
                     self.errorStep = value
+                }
+                if let value = dict["ErrorStepCode"] as? String {
+                    self.errorStepCode = value
                 }
                 if let value = dict["IsFinish"] as? Bool {
                     self.isFinish = value
@@ -35247,6 +35305,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 if let value = dict["OrderType"] as? String {
                     self.orderType = value
                 }
+                if let value = dict["OrderTypeCode"] as? String {
+                    self.orderTypeCode = value
+                }
                 if let value = dict["Percent"] as? Int32 {
                     self.percent = value
                 }
@@ -35258,6 +35319,9 @@ public class ListAppPublishHistoryResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["PublishTime"] as? String {
                     self.publishTime = value
+                }
+                if let value = dict["StepCodes"] as? [String] {
+                    self.stepCodes = value
                 }
                 if let value = dict["Steps"] as? [String] {
                     self.steps = value
