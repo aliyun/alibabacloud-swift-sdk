@@ -10,24 +10,24 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "me-east-1": "eflo-controller.me-east-1.aliyuncs.com",
-            "eu-central-1": "eflo-controller.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "eflo-controller.cn-zhangjiakou.aliyuncs.com",
             "cn-wulanchabu": "eflo-controller.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "eflo-controller.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "eflo-controller.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-beijing": "eflo-controller.cn-beijing.aliyuncs.com",
             "cn-shanghai": "eflo-controller.cn-shanghai.aliyuncs.com",
-            "cn-huhehaote": "eflo-controller.cn-huhehaote.aliyuncs.com",
             "cn-hongkong": "eflo-controller.cn-hongkong.aliyuncs.com",
             "cn-heyuan": "eflo-controller.cn-heyuan.aliyuncs.com",
-            "cn-hangzhou": "eflo-controller.cn-hangzhou.aliyuncs.com",
+            "cn-zhangjiakou": "eflo-controller.cn-zhangjiakou.aliyuncs.com",
+            "cn-shenzhen": "eflo-controller.cn-shenzhen.aliyuncs.com",
+            "ap-northeast-1": "eflo-controller.ap-northeast-1.aliyuncs.com",
             "cn-guangzhou": "eflo-controller.cn-guangzhou.aliyuncs.com",
-            "cn-beijing": "eflo-controller.cn-beijing.aliyuncs.com",
-            "ap-southeast-8": "eflo-controller.ap-sourtheast-8.aliyuncs.com",
-            "ap-southeast-7": "eflo-controller.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-3": "eflo-controller.ap-southeast-3.aliyuncs.com",
             "ap-southeast-1": "eflo-controller.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "eflo-controller.ap-northeast-1.aliyuncs.com"
+            "ap-southeast-3": "eflo-controller.ap-southeast-3.aliyuncs.com",
+            "cn-huhehaote": "eflo-controller.cn-huhehaote.aliyuncs.com",
+            "ap-southeast-7": "eflo-controller.ap-southeast-7.aliyuncs.com",
+            "cn-hangzhou": "eflo-controller.cn-hangzhou.aliyuncs.com",
+            "ap-southeast-8": "eflo-controller.ap-southeast-8.aliyuncs.com",
+            "eu-central-1": "eflo-controller.eu-central-1.aliyuncs.com",
+            "me-east-1": "eflo-controller.me-east-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "eflo-controller.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eflo-controller", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -945,6 +945,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNodeGroupRefreshTaskWithOptions(_ tmpReq: DescribeNodeGroupRefreshTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNodeGroupRefreshTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeNodeGroupRefreshTaskShrinkRequest = DescribeNodeGroupRefreshTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.nodeStatuses)) {
+            request.nodeStatusesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeStatuses, "NodeStatuses", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeGroupRefreshTaskId)) {
+            body["NodeGroupRefreshTaskId"] = request.nodeGroupRefreshTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeStatusesShrink)) {
+            body["NodeStatuses"] = request.nodeStatusesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeNodeGroupRefreshTask",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeNodeGroupRefreshTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNodeGroupRefreshTask(_ request: DescribeNodeGroupRefreshTaskRequest) async throws -> DescribeNodeGroupRefreshTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeNodeGroupRefreshTaskWithOptions(request as! DescribeNodeGroupRefreshTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeNodeTypeWithOptions(_ request: DescribeNodeTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNodeTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1693,6 +1738,99 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodeGroupDriftedNodesWithOptions(_ tmpReq: ListNodeGroupDriftedNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodeGroupDriftedNodesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListNodeGroupDriftedNodesShrinkRequest = ListNodeGroupDriftedNodesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.nodeIds)) {
+            request.nodeIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeIds, "NodeIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeGroupId)) {
+            body["NodeGroupId"] = request.nodeGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeIdsShrink)) {
+            body["NodeIds"] = request.nodeIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListNodeGroupDriftedNodes",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListNodeGroupDriftedNodesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodeGroupDriftedNodes(_ request: ListNodeGroupDriftedNodesRequest) async throws -> ListNodeGroupDriftedNodesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listNodeGroupDriftedNodesWithOptions(request as! ListNodeGroupDriftedNodesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodeGroupRefreshTasksWithOptions(_ tmpReq: ListNodeGroupRefreshTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodeGroupRefreshTasksResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListNodeGroupRefreshTasksShrinkRequest = ListNodeGroupRefreshTasksShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.statuses)) {
+            request.statusesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statuses, "Statuses", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeGroupId)) {
+            body["NodeGroupId"] = request.nodeGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusesShrink)) {
+            body["Statuses"] = request.statusesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListNodeGroupRefreshTasks",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListNodeGroupRefreshTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodeGroupRefreshTasks(_ request: ListNodeGroupRefreshTasksRequest) async throws -> ListNodeGroupRefreshTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listNodeGroupRefreshTasksWithOptions(request as! ListNodeGroupRefreshTasksRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listNodeGroupsWithOptions(_ request: ListNodeGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodeGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1938,6 +2076,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rebootNodes(_ request: RebootNodesRequest) async throws -> RebootNodesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await rebootNodesWithOptions(request as! RebootNodesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshNodeGroupNodesWithOptions(_ tmpReq: RefreshNodeGroupNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshNodeGroupNodesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RefreshNodeGroupNodesShrinkRequest = RefreshNodeGroupNodesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.nodeIds)) {
+            request.nodeIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeIds, "NodeIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxDisruptiveAction)) {
+            body["MaxDisruptiveAction"] = request.maxDisruptiveAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeGroupId)) {
+            body["NodeGroupId"] = request.nodeGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeIdsShrink)) {
+            body["NodeIds"] = request.nodeIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RefreshNodeGroupNodes",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RefreshNodeGroupNodesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshNodeGroupNodes(_ request: RefreshNodeGroupNodesRequest) async throws -> RefreshNodeGroupNodesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await refreshNodeGroupNodesWithOptions(request as! RefreshNodeGroupNodesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

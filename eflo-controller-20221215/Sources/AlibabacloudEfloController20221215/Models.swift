@@ -7835,6 +7835,453 @@ public class DescribeNodeGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNodeGroupRefreshTaskRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupRefreshTaskId: String?
+
+    public var nodeStatuses: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupRefreshTaskId != nil {
+            map["NodeGroupRefreshTaskId"] = self.nodeGroupRefreshTaskId!
+        }
+        if self.nodeStatuses != nil {
+            map["NodeStatuses"] = self.nodeStatuses!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupRefreshTaskId"] as? String {
+            self.nodeGroupRefreshTaskId = value
+        }
+        if let value = dict["NodeStatuses"] as? [String] {
+            self.nodeStatuses = value
+        }
+    }
+}
+
+public class DescribeNodeGroupRefreshTaskShrinkRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupRefreshTaskId: String?
+
+    public var nodeStatusesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupRefreshTaskId != nil {
+            map["NodeGroupRefreshTaskId"] = self.nodeGroupRefreshTaskId!
+        }
+        if self.nodeStatusesShrink != nil {
+            map["NodeStatuses"] = self.nodeStatusesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupRefreshTaskId"] as? String {
+            self.nodeGroupRefreshTaskId = value
+        }
+        if let value = dict["NodeStatuses"] as? String {
+            self.nodeStatusesShrink = value
+        }
+    }
+}
+
+public class DescribeNodeGroupRefreshTaskResponseBody : Tea.TeaModel {
+    public class Nodes : Tea.TeaModel {
+        public class PropertyDrifts : Tea.TeaModel {
+            public var actualValue: String?
+
+            public var minRequiredAction: String?
+
+            public var propertyPath: String?
+
+            public var skipped: Bool?
+
+            public var targetValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.actualValue != nil {
+                    map["ActualValue"] = self.actualValue!
+                }
+                if self.minRequiredAction != nil {
+                    map["MinRequiredAction"] = self.minRequiredAction!
+                }
+                if self.propertyPath != nil {
+                    map["PropertyPath"] = self.propertyPath!
+                }
+                if self.skipped != nil {
+                    map["Skipped"] = self.skipped!
+                }
+                if self.targetValue != nil {
+                    map["TargetValue"] = self.targetValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ActualValue"] as? String {
+                    self.actualValue = value
+                }
+                if let value = dict["MinRequiredAction"] as? String {
+                    self.minRequiredAction = value
+                }
+                if let value = dict["PropertyPath"] as? String {
+                    self.propertyPath = value
+                }
+                if let value = dict["Skipped"] as? Bool {
+                    self.skipped = value
+                }
+                if let value = dict["TargetValue"] as? String {
+                    self.targetValue = value
+                }
+            }
+        }
+        public var action: String?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var nodeId: String?
+
+        public var propertyDrifts: [DescribeNodeGroupRefreshTaskResponseBody.Nodes.PropertyDrifts]?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.nodeId != nil {
+                map["NodeId"] = self.nodeId!
+            }
+            if self.propertyDrifts != nil {
+                var tmp : [Any] = []
+                for k in self.propertyDrifts! {
+                    tmp.append(k.toMap())
+                }
+                map["PropertyDrifts"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Action"] as? String {
+                self.action = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["NodeId"] as? String {
+                self.nodeId = value
+            }
+            if let value = dict["PropertyDrifts"] as? [Any?] {
+                var tmp : [DescribeNodeGroupRefreshTaskResponseBody.Nodes.PropertyDrifts] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeNodeGroupRefreshTaskResponseBody.Nodes.PropertyDrifts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.propertyDrifts = tmp
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var failedCount: Int64?
+
+    public var finishedCount: Int64?
+
+    public var maxDisruptiveAction: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupId: String?
+
+    public var nodeGroupRefreshTaskId: String?
+
+    public var nodes: [DescribeNodeGroupRefreshTaskResponseBody.Nodes]?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public var status: String?
+
+    public var totalNodeCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.failedCount != nil {
+            map["FailedCount"] = self.failedCount!
+        }
+        if self.finishedCount != nil {
+            map["FinishedCount"] = self.finishedCount!
+        }
+        if self.maxDisruptiveAction != nil {
+            map["MaxDisruptiveAction"] = self.maxDisruptiveAction!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.nodeGroupRefreshTaskId != nil {
+            map["NodeGroupRefreshTaskId"] = self.nodeGroupRefreshTaskId!
+        }
+        if self.nodes != nil {
+            var tmp : [Any] = []
+            for k in self.nodes! {
+                tmp.append(k.toMap())
+            }
+            map["Nodes"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.totalNodeCount != nil {
+            map["TotalNodeCount"] = self.totalNodeCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["FailedCount"] as? Int64 {
+            self.failedCount = value
+        }
+        if let value = dict["FinishedCount"] as? Int64 {
+            self.finishedCount = value
+        }
+        if let value = dict["MaxDisruptiveAction"] as? String {
+            self.maxDisruptiveAction = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["NodeGroupRefreshTaskId"] as? String {
+            self.nodeGroupRefreshTaskId = value
+        }
+        if let value = dict["Nodes"] as? [Any?] {
+            var tmp : [DescribeNodeGroupRefreshTaskResponseBody.Nodes] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeNodeGroupRefreshTaskResponseBody.Nodes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nodes = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TotalNodeCount"] as? Int64 {
+            self.totalNodeCount = value
+        }
+    }
+}
+
+public class DescribeNodeGroupRefreshTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNodeGroupRefreshTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeNodeGroupRefreshTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeNodeTypeRequest : Tea.TeaModel {
     public var nodeType: String?
 
@@ -15214,6 +15661,680 @@ public class ListNetTestResultsResponse : Tea.TeaModel {
     }
 }
 
+public class ListNodeGroupDriftedNodesRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupId: String?
+
+    public var nodeIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.nodeIds != nil {
+            map["NodeIds"] = self.nodeIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["NodeIds"] as? [String] {
+            self.nodeIds = value
+        }
+    }
+}
+
+public class ListNodeGroupDriftedNodesShrinkRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupId: String?
+
+    public var nodeIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.nodeIdsShrink != nil {
+            map["NodeIds"] = self.nodeIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["NodeIds"] as? String {
+            self.nodeIdsShrink = value
+        }
+    }
+}
+
+public class ListNodeGroupDriftedNodesResponseBody : Tea.TeaModel {
+    public class Nodes : Tea.TeaModel {
+        public class PropertyDrifts : Tea.TeaModel {
+            public var actualValue: String?
+
+            public var minRequiredAction: String?
+
+            public var propertyPath: String?
+
+            public var targetValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.actualValue != nil {
+                    map["ActualValue"] = self.actualValue!
+                }
+                if self.minRequiredAction != nil {
+                    map["MinRequiredAction"] = self.minRequiredAction!
+                }
+                if self.propertyPath != nil {
+                    map["PropertyPath"] = self.propertyPath!
+                }
+                if self.targetValue != nil {
+                    map["TargetValue"] = self.targetValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ActualValue"] as? String {
+                    self.actualValue = value
+                }
+                if let value = dict["MinRequiredAction"] as? String {
+                    self.minRequiredAction = value
+                }
+                if let value = dict["PropertyPath"] as? String {
+                    self.propertyPath = value
+                }
+                if let value = dict["TargetValue"] as? String {
+                    self.targetValue = value
+                }
+            }
+        }
+        public var nodeId: String?
+
+        public var propertyDrifts: [ListNodeGroupDriftedNodesResponseBody.Nodes.PropertyDrifts]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nodeId != nil {
+                map["NodeId"] = self.nodeId!
+            }
+            if self.propertyDrifts != nil {
+                var tmp : [Any] = []
+                for k in self.propertyDrifts! {
+                    tmp.append(k.toMap())
+                }
+                map["PropertyDrifts"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NodeId"] as? String {
+                self.nodeId = value
+            }
+            if let value = dict["PropertyDrifts"] as? [Any?] {
+                var tmp : [ListNodeGroupDriftedNodesResponseBody.Nodes.PropertyDrifts] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListNodeGroupDriftedNodesResponseBody.Nodes.PropertyDrifts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.propertyDrifts = tmp
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodes: [ListNodeGroupDriftedNodesResponseBody.Nodes]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodes != nil {
+            var tmp : [Any] = []
+            for k in self.nodes! {
+                tmp.append(k.toMap())
+            }
+            map["Nodes"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["Nodes"] as? [Any?] {
+            var tmp : [ListNodeGroupDriftedNodesResponseBody.Nodes] = []
+            for v in value {
+                if v != nil {
+                    var model = ListNodeGroupDriftedNodesResponseBody.Nodes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nodes = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListNodeGroupDriftedNodesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListNodeGroupDriftedNodesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListNodeGroupDriftedNodesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListNodeGroupRefreshTasksRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupId: String?
+
+    public var statuses: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.statuses != nil {
+            map["Statuses"] = self.statuses!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["Statuses"] as? [String] {
+            self.statuses = value
+        }
+    }
+}
+
+public class ListNodeGroupRefreshTasksShrinkRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupId: String?
+
+    public var statusesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.statusesShrink != nil {
+            map["Statuses"] = self.statusesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["Statuses"] as? String {
+            self.statusesShrink = value
+        }
+    }
+}
+
+public class ListNodeGroupRefreshTasksResponseBody : Tea.TeaModel {
+    public class NodeGroupRefreshTasks : Tea.TeaModel {
+        public var endTime: String?
+
+        public var failedCount: Int64?
+
+        public var finishedCount: Int64?
+
+        public var maxDisruptiveAction: String?
+
+        public var nodeGroupId: String?
+
+        public var nodeGroupRefreshTaskId: String?
+
+        public var startTime: String?
+
+        public var status: String?
+
+        public var totalNodeCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.failedCount != nil {
+                map["FailedCount"] = self.failedCount!
+            }
+            if self.finishedCount != nil {
+                map["FinishedCount"] = self.finishedCount!
+            }
+            if self.maxDisruptiveAction != nil {
+                map["MaxDisruptiveAction"] = self.maxDisruptiveAction!
+            }
+            if self.nodeGroupId != nil {
+                map["NodeGroupId"] = self.nodeGroupId!
+            }
+            if self.nodeGroupRefreshTaskId != nil {
+                map["NodeGroupRefreshTaskId"] = self.nodeGroupRefreshTaskId!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.totalNodeCount != nil {
+                map["TotalNodeCount"] = self.totalNodeCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["FailedCount"] as? Int64 {
+                self.failedCount = value
+            }
+            if let value = dict["FinishedCount"] as? Int64 {
+                self.finishedCount = value
+            }
+            if let value = dict["MaxDisruptiveAction"] as? String {
+                self.maxDisruptiveAction = value
+            }
+            if let value = dict["NodeGroupId"] as? String {
+                self.nodeGroupId = value
+            }
+            if let value = dict["NodeGroupRefreshTaskId"] as? String {
+                self.nodeGroupRefreshTaskId = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TotalNodeCount"] as? Int64 {
+                self.totalNodeCount = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupRefreshTasks: [ListNodeGroupRefreshTasksResponseBody.NodeGroupRefreshTasks]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupRefreshTasks != nil {
+            var tmp : [Any] = []
+            for k in self.nodeGroupRefreshTasks! {
+                tmp.append(k.toMap())
+            }
+            map["NodeGroupRefreshTasks"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupRefreshTasks"] as? [Any?] {
+            var tmp : [ListNodeGroupRefreshTasksResponseBody.NodeGroupRefreshTasks] = []
+            for v in value {
+                if v != nil {
+                    var model = ListNodeGroupRefreshTasksResponseBody.NodeGroupRefreshTasks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nodeGroupRefreshTasks = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListNodeGroupRefreshTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListNodeGroupRefreshTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListNodeGroupRefreshTasksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListNodeGroupsRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -17004,6 +18125,189 @@ public class RebootNodesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RebootNodesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RefreshNodeGroupNodesRequest : Tea.TeaModel {
+    public var maxDisruptiveAction: String?
+
+    public var nodeGroupId: String?
+
+    public var nodeIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxDisruptiveAction != nil {
+            map["MaxDisruptiveAction"] = self.maxDisruptiveAction!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.nodeIds != nil {
+            map["NodeIds"] = self.nodeIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxDisruptiveAction"] as? String {
+            self.maxDisruptiveAction = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["NodeIds"] as? [String] {
+            self.nodeIds = value
+        }
+    }
+}
+
+public class RefreshNodeGroupNodesShrinkRequest : Tea.TeaModel {
+    public var maxDisruptiveAction: String?
+
+    public var nodeGroupId: String?
+
+    public var nodeIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxDisruptiveAction != nil {
+            map["MaxDisruptiveAction"] = self.maxDisruptiveAction!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.nodeIdsShrink != nil {
+            map["NodeIds"] = self.nodeIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxDisruptiveAction"] as? String {
+            self.maxDisruptiveAction = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["NodeIds"] as? String {
+            self.nodeIdsShrink = value
+        }
+    }
+}
+
+public class RefreshNodeGroupNodesResponseBody : Tea.TeaModel {
+    public var nodeGroupRefreshTaskId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodeGroupRefreshTaskId != nil {
+            map["NodeGroupRefreshTaskId"] = self.nodeGroupRefreshTaskId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NodeGroupRefreshTaskId"] as? String {
+            self.nodeGroupRefreshTaskId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class RefreshNodeGroupNodesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RefreshNodeGroupNodesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RefreshNodeGroupNodesResponseBody()
             model.fromMap(value)
             self.body = model
         }
