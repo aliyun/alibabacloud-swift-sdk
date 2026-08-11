@@ -7602,6 +7602,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var diskInit: [DiskInit]?
 
+        public var enableHighDensityMode: Bool?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -7738,6 +7740,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["disk_init"] = tmp
+            }
+            if self.enableHighDensityMode != nil {
+                map["enable_high_density_mode"] = self.enableHighDensityMode!
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
@@ -7930,6 +7935,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                     }
                 }
                 self.diskInit = tmp
+            }
+            if let value = dict["enable_high_density_mode"] as? Bool {
+                self.enableHighDensityMode = value
             }
             if let value = dict["image_id"] as? String {
                 self.imageId = value
@@ -14394,6 +14402,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var diskInit: [DiskInit]?
 
+        public var enableHighDensityMode: Bool?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -14534,6 +14544,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["disk_init"] = tmp
+            }
+            if self.enableHighDensityMode != nil {
+                map["enable_high_density_mode"] = self.enableHighDensityMode!
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
@@ -14732,6 +14745,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                     }
                 }
                 self.diskInit = tmp
+            }
+            if let value = dict["enable_high_density_mode"] as? Bool {
+                self.enableHighDensityMode = value
             }
             if let value = dict["image_id"] as? String {
                 self.imageId = value
@@ -16456,6 +16472,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var diskInit: [DiskInit]?
 
+            public var enableHighDensityMode: Bool?
+
             public var imageId: String?
 
             public var imageType: String?
@@ -16593,6 +16611,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["disk_init"] = tmp
+                }
+                if self.enableHighDensityMode != nil {
+                    map["enable_high_density_mode"] = self.enableHighDensityMode!
                 }
                 if self.imageId != nil {
                     map["image_id"] = self.imageId!
@@ -16788,6 +16809,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                         }
                     }
                     self.diskInit = tmp
+                }
+                if let value = dict["enable_high_density_mode"] as? Bool {
+                    self.enableHighDensityMode = value
                 }
                 if let value = dict["image_id"] as? String {
                     self.imageId = value
@@ -27475,6 +27499,8 @@ public class InstallNodePoolComponentsRequest : Tea.TeaModel {
     public class RollingPolicy : Tea.TeaModel {
         public var batchInterval: Int64?
 
+        public var maxFailedNodes: Int64?
+
         public var maxParallelism: Int64?
 
         public var pausePolicy: String?
@@ -27496,6 +27522,9 @@ public class InstallNodePoolComponentsRequest : Tea.TeaModel {
             if self.batchInterval != nil {
                 map["batchInterval"] = self.batchInterval!
             }
+            if self.maxFailedNodes != nil {
+                map["maxFailedNodes"] = self.maxFailedNodes!
+            }
             if self.maxParallelism != nil {
                 map["maxParallelism"] = self.maxParallelism!
             }
@@ -27509,6 +27538,9 @@ public class InstallNodePoolComponentsRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["batchInterval"] as? Int64 {
                 self.batchInterval = value
+            }
+            if let value = dict["maxFailedNodes"] as? Int64 {
+                self.maxFailedNodes = value
             }
             if let value = dict["maxParallelism"] as? Int64 {
                 self.maxParallelism = value
@@ -32886,6 +32918,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var diskInit: [DiskInit]?
 
+        public var enableHighDensityMode: Bool?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -33002,6 +33036,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["disk_init"] = tmp
+            }
+            if self.enableHighDensityMode != nil {
+                map["enable_high_density_mode"] = self.enableHighDensityMode!
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
@@ -33168,6 +33205,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                     }
                 }
                 self.diskInit = tmp
+            }
+            if let value = dict["enable_high_density_mode"] as? Bool {
+                self.enableHighDensityMode = value
             }
             if let value = dict["image_id"] as? String {
                 self.imageId = value
@@ -33682,6 +33722,8 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
         }
     }
     public class RollingPolicy : Tea.TeaModel {
+        public var maxFailedNodes: Int64?
+
         public var maxParallelism: Int64?
 
         public override init() {
@@ -33698,6 +33740,9 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.maxFailedNodes != nil {
+                map["max_failed_nodes"] = self.maxFailedNodes!
+            }
             if self.maxParallelism != nil {
                 map["max_parallelism"] = self.maxParallelism!
             }
@@ -33706,6 +33751,9 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["max_failed_nodes"] as? Int64 {
+                self.maxFailedNodes = value
+            }
             if let value = dict["max_parallelism"] as? Int64 {
                 self.maxParallelism = value
             }
@@ -37547,6 +37595,8 @@ public class UpdateNodePoolComponentRequest : Tea.TeaModel {
     public class RollingPolicy : Tea.TeaModel {
         public var batchInterval: Int64?
 
+        public var maxFailedNodes: Int64?
+
         public var maxParallelism: Int64?
 
         public var pausePolicy: String?
@@ -37568,6 +37618,9 @@ public class UpdateNodePoolComponentRequest : Tea.TeaModel {
             if self.batchInterval != nil {
                 map["batchInterval"] = self.batchInterval!
             }
+            if self.maxFailedNodes != nil {
+                map["maxFailedNodes"] = self.maxFailedNodes!
+            }
             if self.maxParallelism != nil {
                 map["maxParallelism"] = self.maxParallelism!
             }
@@ -37581,6 +37634,9 @@ public class UpdateNodePoolComponentRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["batchInterval"] as? Int64 {
                 self.batchInterval = value
+            }
+            if let value = dict["maxFailedNodes"] as? Int64 {
+                self.maxFailedNodes = value
             }
             if let value = dict["maxParallelism"] as? Int64 {
                 self.maxParallelism = value
@@ -38596,6 +38652,8 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
     public class RollingPolicy : Tea.TeaModel {
         public var batchInterval: Int32?
 
+        public var maxFailedNodes: Int32?
+
         public var maxParallelism: Int32?
 
         public var pausePolicy: String?
@@ -38617,6 +38675,9 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
             if self.batchInterval != nil {
                 map["batch_interval"] = self.batchInterval!
             }
+            if self.maxFailedNodes != nil {
+                map["max_failed_nodes"] = self.maxFailedNodes!
+            }
             if self.maxParallelism != nil {
                 map["max_parallelism"] = self.maxParallelism!
             }
@@ -38630,6 +38691,9 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["batch_interval"] as? Int32 {
                 self.batchInterval = value
+            }
+            if let value = dict["max_failed_nodes"] as? Int32 {
+                self.maxFailedNodes = value
             }
             if let value = dict["max_parallelism"] as? Int32 {
                 self.maxParallelism = value
