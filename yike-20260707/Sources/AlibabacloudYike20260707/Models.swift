@@ -5894,9 +5894,13 @@ public class ListInfiniteCanvasesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var productionId: String?
+
     public var sortBy: String?
 
     public var sortOrder: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -5921,11 +5925,17 @@ public class ListInfiniteCanvasesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.productionId != nil {
+            map["ProductionId"] = self.productionId!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
         if self.sortOrder != nil {
             map["SortOrder"] = self.sortOrder!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -5941,11 +5951,17 @@ public class ListInfiniteCanvasesRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["ProductionId"] as? String {
+            self.productionId = value
+        }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
         }
         if let value = dict["SortOrder"] as? String {
             self.sortOrder = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
