@@ -1729,8 +1729,8 @@ public class DataSolutionSegmentRefundChangeRuleMappingListRefundChangeRuleMapVa
 
 public class DataHotelsValue : Tea.TeaModel {
     public class Rooms : Tea.TeaModel {
-        public class LowestSellingPrice : Tea.TeaModel {
-            public var amount: Double?
+        public class LowestPrice : Tea.TeaModel {
+            public var amount: String?
 
             public var currency: String?
 
@@ -1764,7 +1764,7 @@ public class DataHotelsValue : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["Amount"] as? Double {
+                if let value = dict["Amount"] as? String {
                     self.amount = value
                 }
                 if let value = dict["Currency"] as? String {
@@ -1778,9 +1778,9 @@ public class DataHotelsValue : Tea.TeaModel {
         public class Offers : Tea.TeaModel {
             public class CancelPolicy : Tea.TeaModel {
                 public class Penalties : Tea.TeaModel {
-                    public var start: Int64?
+                    public var start: String?
 
-                    public var end: Int64?
+                    public var end: String?
 
                     public var penaltyType: String?
 
@@ -1827,10 +1827,10 @@ public class DataHotelsValue : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
-                        if let value = dict["Start"] as? Int64 {
+                        if let value = dict["Start"] as? String {
                             self.start = value
                         }
-                        if let value = dict["End"] as? Int64 {
+                        if let value = dict["End"] as? String {
                             self.end = value
                         }
                         if let value = dict["PenaltyType"] as? String {
@@ -1906,8 +1906,8 @@ public class DataHotelsValue : Tea.TeaModel {
                     }
                 }
             }
-            public class SellingTotalPrice : Tea.TeaModel {
-                public var amount: Double?
+            public class TotalPrice : Tea.TeaModel {
+                public var amount: String?
 
                 public var currency: String?
 
@@ -1941,7 +1941,7 @@ public class DataHotelsValue : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Amount"] as? Double {
+                    if let value = dict["Amount"] as? String {
                         self.amount = value
                     }
                     if let value = dict["Currency"] as? String {
@@ -1952,9 +1952,9 @@ public class DataHotelsValue : Tea.TeaModel {
                     }
                 }
             }
-            public class SellingDailyPrices : Tea.TeaModel {
+            public class DailyPrices : Tea.TeaModel {
                 public class Price : Tea.TeaModel {
-                    public var amount: Double?
+                    public var amount: String?
 
                     public var currency: String?
 
@@ -1988,7 +1988,7 @@ public class DataHotelsValue : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
-                        if let value = dict["Amount"] as? Double {
+                        if let value = dict["Amount"] as? String {
                             self.amount = value
                         }
                         if let value = dict["Currency"] as? String {
@@ -2001,7 +2001,7 @@ public class DataHotelsValue : Tea.TeaModel {
                 }
                 public var date: String?
 
-                public var price: DataHotelsValue.Rooms.Offers.SellingDailyPrices.Price?
+                public var price: DataHotelsValue.Rooms.Offers.DailyPrices.Price?
 
                 public var tracerId: String?
 
@@ -2038,7 +2038,7 @@ public class DataHotelsValue : Tea.TeaModel {
                         self.date = value
                     }
                     if let value = dict["Price"] as? [String: Any?] {
-                        var model = DataHotelsValue.Rooms.Offers.SellingDailyPrices.Price()
+                        var model = DataHotelsValue.Rooms.Offers.DailyPrices.Price()
                         model.fromMap(value)
                         self.price = model
                     }
@@ -2057,9 +2057,9 @@ public class DataHotelsValue : Tea.TeaModel {
 
             public var cancelPolicy: DataHotelsValue.Rooms.Offers.CancelPolicy?
 
-            public var sellingTotalPrice: DataHotelsValue.Rooms.Offers.SellingTotalPrice?
+            public var totalPrice: DataHotelsValue.Rooms.Offers.TotalPrice?
 
-            public var sellingDailyPrices: [DataHotelsValue.Rooms.Offers.SellingDailyPrices]?
+            public var dailyPrices: [DataHotelsValue.Rooms.Offers.DailyPrices]?
 
             public var availableRooms: Int32?
 
@@ -2078,7 +2078,7 @@ public class DataHotelsValue : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.cancelPolicy?.validate()
-                try self.sellingTotalPrice?.validate()
+                try self.totalPrice?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -2098,15 +2098,15 @@ public class DataHotelsValue : Tea.TeaModel {
                 if self.cancelPolicy != nil {
                     map["CancelPolicy"] = self.cancelPolicy?.toMap()
                 }
-                if self.sellingTotalPrice != nil {
-                    map["SellingTotalPrice"] = self.sellingTotalPrice?.toMap()
+                if self.totalPrice != nil {
+                    map["TotalPrice"] = self.totalPrice?.toMap()
                 }
-                if self.sellingDailyPrices != nil {
+                if self.dailyPrices != nil {
                     var tmp : [Any] = []
-                    for k in self.sellingDailyPrices! {
+                    for k in self.dailyPrices! {
                         tmp.append(k.toMap())
                     }
-                    map["SellingDailyPrices"] = tmp
+                    map["DailyPrices"] = tmp
                 }
                 if self.availableRooms != nil {
                     map["AvailableRooms"] = self.availableRooms!
@@ -2139,23 +2139,23 @@ public class DataHotelsValue : Tea.TeaModel {
                     model.fromMap(value)
                     self.cancelPolicy = model
                 }
-                if let value = dict["SellingTotalPrice"] as? [String: Any?] {
-                    var model = DataHotelsValue.Rooms.Offers.SellingTotalPrice()
+                if let value = dict["TotalPrice"] as? [String: Any?] {
+                    var model = DataHotelsValue.Rooms.Offers.TotalPrice()
                     model.fromMap(value)
-                    self.sellingTotalPrice = model
+                    self.totalPrice = model
                 }
-                if let value = dict["SellingDailyPrices"] as? [Any?] {
-                    var tmp : [DataHotelsValue.Rooms.Offers.SellingDailyPrices] = []
+                if let value = dict["DailyPrices"] as? [Any?] {
+                    var tmp : [DataHotelsValue.Rooms.Offers.DailyPrices] = []
                     for v in value {
                         if v != nil {
-                            var model = DataHotelsValue.Rooms.Offers.SellingDailyPrices()
+                            var model = DataHotelsValue.Rooms.Offers.DailyPrices()
                             if v != nil {
                                 model.fromMap(v as? [String: Any?])
                             }
                             tmp.append(model)
                         }
                     }
-                    self.sellingDailyPrices = tmp
+                    self.dailyPrices = tmp
                 }
                 if let value = dict["AvailableRooms"] as? Int32 {
                     self.availableRooms = value
@@ -2170,7 +2170,7 @@ public class DataHotelsValue : Tea.TeaModel {
         }
         public var standardRoomId: String?
 
-        public var lowestSellingPrice: DataHotelsValue.Rooms.LowestSellingPrice?
+        public var lowestPrice: DataHotelsValue.Rooms.LowestPrice?
 
         public var offers: [DataHotelsValue.Rooms.Offers]?
 
@@ -2184,7 +2184,7 @@ public class DataHotelsValue : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.lowestSellingPrice?.validate()
+            try self.lowestPrice?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2192,8 +2192,8 @@ public class DataHotelsValue : Tea.TeaModel {
             if self.standardRoomId != nil {
                 map["StandardRoomId"] = self.standardRoomId!
             }
-            if self.lowestSellingPrice != nil {
-                map["LowestSellingPrice"] = self.lowestSellingPrice?.toMap()
+            if self.lowestPrice != nil {
+                map["LowestPrice"] = self.lowestPrice?.toMap()
             }
             if self.offers != nil {
                 var tmp : [Any] = []
@@ -2210,10 +2210,10 @@ public class DataHotelsValue : Tea.TeaModel {
             if let value = dict["StandardRoomId"] as? String {
                 self.standardRoomId = value
             }
-            if let value = dict["LowestSellingPrice"] as? [String: Any?] {
-                var model = DataHotelsValue.Rooms.LowestSellingPrice()
+            if let value = dict["LowestPrice"] as? [String: Any?] {
+                var model = DataHotelsValue.Rooms.LowestPrice()
                 model.fromMap(value)
-                self.lowestSellingPrice = model
+                self.lowestPrice = model
             }
             if let value = dict["Offers"] as? [Any?] {
                 var tmp : [DataHotelsValue.Rooms.Offers] = []
@@ -2233,9 +2233,9 @@ public class DataHotelsValue : Tea.TeaModel {
     public class Offers : Tea.TeaModel {
         public class CancelPolicy : Tea.TeaModel {
             public class Penalties : Tea.TeaModel {
-                public var start: Int64?
+                public var start: String?
 
-                public var end: Int64?
+                public var end: String?
 
                 public var penaltyType: String?
 
@@ -2282,10 +2282,10 @@ public class DataHotelsValue : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Start"] as? Int64 {
+                    if let value = dict["Start"] as? String {
                         self.start = value
                     }
-                    if let value = dict["End"] as? Int64 {
+                    if let value = dict["End"] as? String {
                         self.end = value
                     }
                     if let value = dict["PenaltyType"] as? String {
@@ -2361,8 +2361,8 @@ public class DataHotelsValue : Tea.TeaModel {
                 }
             }
         }
-        public class SellingTotalPrice : Tea.TeaModel {
-            public var amount: Double?
+        public class TotalPrice : Tea.TeaModel {
+            public var amount: String?
 
             public var currency: String?
 
@@ -2396,7 +2396,7 @@ public class DataHotelsValue : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["Amount"] as? Double {
+                if let value = dict["Amount"] as? String {
                     self.amount = value
                 }
                 if let value = dict["Currency"] as? String {
@@ -2407,9 +2407,9 @@ public class DataHotelsValue : Tea.TeaModel {
                 }
             }
         }
-        public class SellingDailyPrices : Tea.TeaModel {
+        public class DailyPrices : Tea.TeaModel {
             public class Price : Tea.TeaModel {
-                public var amount: Double?
+                public var amount: String?
 
                 public var currency: String?
 
@@ -2443,7 +2443,7 @@ public class DataHotelsValue : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Amount"] as? Double {
+                    if let value = dict["Amount"] as? String {
                         self.amount = value
                     }
                     if let value = dict["Currency"] as? String {
@@ -2456,7 +2456,7 @@ public class DataHotelsValue : Tea.TeaModel {
             }
             public var date: String?
 
-            public var price: DataHotelsValue.Offers.SellingDailyPrices.Price?
+            public var price: DataHotelsValue.Offers.DailyPrices.Price?
 
             public var tracerId: String?
 
@@ -2493,7 +2493,7 @@ public class DataHotelsValue : Tea.TeaModel {
                     self.date = value
                 }
                 if let value = dict["Price"] as? [String: Any?] {
-                    var model = DataHotelsValue.Offers.SellingDailyPrices.Price()
+                    var model = DataHotelsValue.Offers.DailyPrices.Price()
                     model.fromMap(value)
                     self.price = model
                 }
@@ -2512,9 +2512,9 @@ public class DataHotelsValue : Tea.TeaModel {
 
         public var cancelPolicy: DataHotelsValue.Offers.CancelPolicy?
 
-        public var sellingTotalPrice: DataHotelsValue.Offers.SellingTotalPrice?
+        public var totalPrice: DataHotelsValue.Offers.TotalPrice?
 
-        public var sellingDailyPrices: [DataHotelsValue.Offers.SellingDailyPrices]?
+        public var dailyPrices: [DataHotelsValue.Offers.DailyPrices]?
 
         public var availableRooms: Int32?
 
@@ -2533,7 +2533,7 @@ public class DataHotelsValue : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.cancelPolicy?.validate()
-            try self.sellingTotalPrice?.validate()
+            try self.totalPrice?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2553,15 +2553,15 @@ public class DataHotelsValue : Tea.TeaModel {
             if self.cancelPolicy != nil {
                 map["CancelPolicy"] = self.cancelPolicy?.toMap()
             }
-            if self.sellingTotalPrice != nil {
-                map["SellingTotalPrice"] = self.sellingTotalPrice?.toMap()
+            if self.totalPrice != nil {
+                map["TotalPrice"] = self.totalPrice?.toMap()
             }
-            if self.sellingDailyPrices != nil {
+            if self.dailyPrices != nil {
                 var tmp : [Any] = []
-                for k in self.sellingDailyPrices! {
+                for k in self.dailyPrices! {
                     tmp.append(k.toMap())
                 }
-                map["SellingDailyPrices"] = tmp
+                map["DailyPrices"] = tmp
             }
             if self.availableRooms != nil {
                 map["AvailableRooms"] = self.availableRooms!
@@ -2594,23 +2594,23 @@ public class DataHotelsValue : Tea.TeaModel {
                 model.fromMap(value)
                 self.cancelPolicy = model
             }
-            if let value = dict["SellingTotalPrice"] as? [String: Any?] {
-                var model = DataHotelsValue.Offers.SellingTotalPrice()
+            if let value = dict["TotalPrice"] as? [String: Any?] {
+                var model = DataHotelsValue.Offers.TotalPrice()
                 model.fromMap(value)
-                self.sellingTotalPrice = model
+                self.totalPrice = model
             }
-            if let value = dict["SellingDailyPrices"] as? [Any?] {
-                var tmp : [DataHotelsValue.Offers.SellingDailyPrices] = []
+            if let value = dict["DailyPrices"] as? [Any?] {
+                var tmp : [DataHotelsValue.Offers.DailyPrices] = []
                 for v in value {
                     if v != nil {
-                        var model = DataHotelsValue.Offers.SellingDailyPrices()
+                        var model = DataHotelsValue.Offers.DailyPrices()
                         if v != nil {
                             model.fromMap(v as? [String: Any?])
                         }
                         tmp.append(model)
                     }
                 }
-                self.sellingDailyPrices = tmp
+                self.dailyPrices = tmp
             }
             if let value = dict["AvailableRooms"] as? Int32 {
                 self.availableRooms = value
@@ -24262,7 +24262,7 @@ public class GlobalHotelApplyRefundResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var sellRefundOrderId: Int64?
+        public var refundOrderNo: String?
 
         public var totalPenaltyAmount: GlobalHotelApplyRefundResponseBody.Data.TotalPenaltyAmount?
 
@@ -24286,8 +24286,8 @@ public class GlobalHotelApplyRefundResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.sellRefundOrderId != nil {
-                map["SellRefundOrderId"] = self.sellRefundOrderId!
+            if self.refundOrderNo != nil {
+                map["RefundOrderNo"] = self.refundOrderNo!
             }
             if self.totalPenaltyAmount != nil {
                 map["TotalPenaltyAmount"] = self.totalPenaltyAmount?.toMap()
@@ -24303,8 +24303,8 @@ public class GlobalHotelApplyRefundResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["SellRefundOrderId"] as? Int64 {
-                self.sellRefundOrderId = value
+            if let value = dict["RefundOrderNo"] as? String {
+                self.refundOrderNo = value
             }
             if let value = dict["TotalPenaltyAmount"] as? [String: Any?] {
                 var model = GlobalHotelApplyRefundResponseBody.Data.TotalPenaltyAmount()
@@ -24944,7 +24944,7 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
 
                 public var roomNameCn: String?
 
-                public var roomSize: Double?
+                public var roomSize: String?
 
                 public var roomSizeUnit: String?
 
@@ -25040,7 +25040,7 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
                     if let value = dict["RoomNameCn"] as? String {
                         self.roomNameCn = value
                     }
-                    if let value = dict["RoomSize"] as? Double {
+                    if let value = dict["RoomSize"] as? String {
                         self.roomSize = value
                     }
                     if let value = dict["RoomSizeUnit"] as? String {
@@ -25641,7 +25641,7 @@ public class GlobalHotelCancelOrRefundResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var refundOrderId: String?
+        public var refundOrderNo: String?
 
         public var totalPenaltyAmount: GlobalHotelCancelOrRefundResponseBody.Data.TotalPenaltyAmount?
 
@@ -25665,8 +25665,8 @@ public class GlobalHotelCancelOrRefundResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.refundOrderId != nil {
-                map["RefundOrderId"] = self.refundOrderId!
+            if self.refundOrderNo != nil {
+                map["RefundOrderNo"] = self.refundOrderNo!
             }
             if self.totalPenaltyAmount != nil {
                 map["TotalPenaltyAmount"] = self.totalPenaltyAmount?.toMap()
@@ -25682,8 +25682,8 @@ public class GlobalHotelCancelOrRefundResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["RefundOrderId"] as? String {
-                self.refundOrderId = value
+            if let value = dict["RefundOrderNo"] as? String {
+                self.refundOrderNo = value
             }
             if let value = dict["TotalPenaltyAmount"] as? [String: Any?] {
                 var model = GlobalHotelCancelOrRefundResponseBody.Data.TotalPenaltyAmount()
@@ -27619,54 +27619,6 @@ public class GlobalHotelQueryCalendarAvailabilityShrinkRequest : Tea.TeaModel {
 
 public class GlobalHotelQueryCalendarAvailabilityResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public class FailedHotels : Tea.TeaModel {
-            public var errorCode: String?
-
-            public var errorMessage: String?
-
-            public var standardHotelId: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.errorCode != nil {
-                    map["ErrorCode"] = self.errorCode!
-                }
-                if self.errorMessage != nil {
-                    map["ErrorMessage"] = self.errorMessage!
-                }
-                if self.standardHotelId != nil {
-                    map["StandardHotelId"] = self.standardHotelId!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["ErrorCode"] as? String {
-                    self.errorCode = value
-                }
-                if let value = dict["ErrorMessage"] as? String {
-                    self.errorMessage = value
-                }
-                if let value = dict["StandardHotelId"] as? String {
-                    self.standardHotelId = value
-                }
-            }
-        }
-        public var failedHotels: [GlobalHotelQueryCalendarAvailabilityResponseBody.Data.FailedHotels]?
-
         public var hotels: [String: [DataHotelsValue]]?
 
         public var tracerId: String?
@@ -27685,13 +27637,6 @@ public class GlobalHotelQueryCalendarAvailabilityResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.failedHotels != nil {
-                var tmp : [Any] = []
-                for k in self.failedHotels! {
-                    tmp.append(k.toMap())
-                }
-                map["FailedHotels"] = tmp
-            }
             if self.hotels != nil {
                 var tmp : [String: Any] = [:]
                 for (k, v) in self.hotels! {
@@ -27711,19 +27656,6 @@ public class GlobalHotelQueryCalendarAvailabilityResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["FailedHotels"] as? [Any?] {
-                var tmp : [GlobalHotelQueryCalendarAvailabilityResponseBody.Data.FailedHotels] = []
-                for v in value {
-                    if v != nil {
-                        var model = GlobalHotelQueryCalendarAvailabilityResponseBody.Data.FailedHotels()
-                        if v != nil {
-                            model.fromMap(v as? [String: Any?])
-                        }
-                        tmp.append(model)
-                    }
-                }
-                self.failedHotels = tmp
-            }
             if let value = dict["Hotels"] as? [String: Any?] {
                 var tmp : [String: [DataHotelsValue]] = [:]
                 for (k, v) in value {
@@ -27931,13 +27863,13 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                 public class Penalties : Tea.TeaModel {
                     public var currency: String?
 
-                    public var end: Int64?
+                    public var end: String?
 
                     public var penaltyType: String?
 
                     public var penaltyValue: String?
 
-                    public var start: Int64?
+                    public var start: String?
 
                     public var tracerId: String?
 
@@ -27981,7 +27913,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                         if let value = dict["Currency"] as? String {
                             self.currency = value
                         }
-                        if let value = dict["End"] as? Int64 {
+                        if let value = dict["End"] as? String {
                             self.end = value
                         }
                         if let value = dict["PenaltyType"] as? String {
@@ -27990,7 +27922,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                         if let value = dict["PenaltyValue"] as? String {
                             self.penaltyValue = value
                         }
-                        if let value = dict["Start"] as? Int64 {
+                        if let value = dict["Start"] as? String {
                             self.start = value
                         }
                         if let value = dict["TracerId"] as? String {
@@ -28059,55 +27991,11 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
             }
             public class DailyPrices : Tea.TeaModel {
                 public class Price : Tea.TeaModel {
-                    public class Currency : Tea.TeaModel {
-                        public var currencyCode: String?
+                    public var amount: String?
 
-                        public var defaultFractionDigits: Int32?
+                    public var currency: String?
 
-                        public var numericCode: Int32?
-
-                        public override init() {
-                            super.init()
-                        }
-
-                        public init(_ dict: [String: Any]) {
-                            super.init()
-                            self.fromMap(dict)
-                        }
-
-                        public override func validate() throws -> Void {
-                        }
-
-                        public override func toMap() -> [String : Any] {
-                            var map = super.toMap()
-                            if self.currencyCode != nil {
-                                map["CurrencyCode"] = self.currencyCode!
-                            }
-                            if self.defaultFractionDigits != nil {
-                                map["DefaultFractionDigits"] = self.defaultFractionDigits!
-                            }
-                            if self.numericCode != nil {
-                                map["NumericCode"] = self.numericCode!
-                            }
-                            return map
-                        }
-
-                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                            guard let dict else { return }
-                            if let value = dict["CurrencyCode"] as? String {
-                                self.currencyCode = value
-                            }
-                            if let value = dict["DefaultFractionDigits"] as? Int32 {
-                                self.defaultFractionDigits = value
-                            }
-                            if let value = dict["NumericCode"] as? Int32 {
-                                self.numericCode = value
-                            }
-                        }
-                    }
-                    public var cent: Int64?
-
-                    public var currency: GlobalHotelQueryOrderResponseBody.Data.ItemInfo.DailyPrices.Price.Currency?
+                    public var tracerId: String?
 
                     public override init() {
                         super.init()
@@ -28119,35 +28007,40 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
-                        try self.currency?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
-                        if self.cent != nil {
-                            map["Cent"] = self.cent!
+                        if self.amount != nil {
+                            map["Amount"] = self.amount!
                         }
                         if self.currency != nil {
-                            map["Currency"] = self.currency?.toMap()
+                            map["Currency"] = self.currency!
+                        }
+                        if self.tracerId != nil {
+                            map["TracerId"] = self.tracerId!
                         }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
-                        if let value = dict["Cent"] as? Int64 {
-                            self.cent = value
+                        if let value = dict["Amount"] as? String {
+                            self.amount = value
                         }
-                        if let value = dict["Currency"] as? [String: Any?] {
-                            var model = GlobalHotelQueryOrderResponseBody.Data.ItemInfo.DailyPrices.Price.Currency()
-                            model.fromMap(value)
-                            self.currency = model
+                        if let value = dict["Currency"] as? String {
+                            self.currency = value
+                        }
+                        if let value = dict["TracerId"] as? String {
+                            self.tracerId = value
                         }
                     }
                 }
                 public var date: String?
 
                 public var price: GlobalHotelQueryOrderResponseBody.Data.ItemInfo.DailyPrices.Price?
+
+                public var tracerId: String?
 
                 public override init() {
                     super.init()
@@ -28170,6 +28063,9 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                     if self.price != nil {
                         map["Price"] = self.price?.toMap()
                     }
+                    if self.tracerId != nil {
+                        map["TracerId"] = self.tracerId!
+                    }
                     return map
                 }
 
@@ -28182,6 +28078,9 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                         var model = GlobalHotelQueryOrderResponseBody.Data.ItemInfo.DailyPrices.Price()
                         model.fromMap(value)
                         self.price = model
+                    }
+                    if let value = dict["TracerId"] as? String {
+                        self.tracerId = value
                     }
                 }
             }
@@ -28231,7 +28130,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                     }
                 }
             }
-            public class SellingTotalPrice : Tea.TeaModel {
+            public class TotalPrice : Tea.TeaModel {
                 public var amount: String?
 
                 public var currency: String?
@@ -28291,7 +28190,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
 
             public var roomCount: Int32?
 
-            public var sellingTotalPrice: GlobalHotelQueryOrderResponseBody.Data.ItemInfo.SellingTotalPrice?
+            public var totalPrice: GlobalHotelQueryOrderResponseBody.Data.ItemInfo.TotalPrice?
 
             public override init() {
                 super.init()
@@ -28305,7 +28204,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.cancelPolicy?.validate()
                 try self.meal?.validate()
-                try self.sellingTotalPrice?.validate()
+                try self.totalPrice?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -28335,8 +28234,8 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                 if self.roomCount != nil {
                     map["RoomCount"] = self.roomCount!
                 }
-                if self.sellingTotalPrice != nil {
-                    map["SellingTotalPrice"] = self.sellingTotalPrice?.toMap()
+                if self.totalPrice != nil {
+                    map["TotalPrice"] = self.totalPrice?.toMap()
                 }
                 return map
             }
@@ -28378,10 +28277,10 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                 if let value = dict["RoomCount"] as? Int32 {
                     self.roomCount = value
                 }
-                if let value = dict["SellingTotalPrice"] as? [String: Any?] {
-                    var model = GlobalHotelQueryOrderResponseBody.Data.ItemInfo.SellingTotalPrice()
+                if let value = dict["TotalPrice"] as? [String: Any?] {
+                    var model = GlobalHotelQueryOrderResponseBody.Data.ItemInfo.TotalPrice()
                     model.fromMap(value)
-                    self.sellingTotalPrice = model
+                    self.totalPrice = model
                 }
             }
         }
@@ -28434,7 +28333,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
             }
             public var amount: GlobalHotelQueryOrderResponseBody.Data.Payment.Amount?
 
-            public var gmtPaid: Int64?
+            public var gmtPaid: String?
 
             public var paymentMethod: String?
 
@@ -28477,7 +28376,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.amount = model
                 }
-                if let value = dict["GmtPaid"] as? Int64 {
+                if let value = dict["GmtPaid"] as? String {
                     self.gmtPaid = value
                 }
                 if let value = dict["PaymentMethod"] as? String {
@@ -28581,13 +28480,13 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                     }
                 }
             }
-            public var gmtCreate: Int64?
+            public var gmtCreate: String?
+
+            public var refundOrderNo: String?
 
             public var refundTransactionId: String?
 
             public var rejectReason: String?
-
-            public var sellRefundOrderNo: String?
 
             public var status: String?
 
@@ -28614,14 +28513,14 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
                 if self.gmtCreate != nil {
                     map["GmtCreate"] = self.gmtCreate!
                 }
+                if self.refundOrderNo != nil {
+                    map["RefundOrderNo"] = self.refundOrderNo!
+                }
                 if self.refundTransactionId != nil {
                     map["RefundTransactionId"] = self.refundTransactionId!
                 }
                 if self.rejectReason != nil {
                     map["RejectReason"] = self.rejectReason!
-                }
-                if self.sellRefundOrderNo != nil {
-                    map["SellRefundOrderNo"] = self.sellRefundOrderNo!
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -28637,17 +28536,17 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["GmtCreate"] as? Int64 {
+                if let value = dict["GmtCreate"] as? String {
                     self.gmtCreate = value
+                }
+                if let value = dict["RefundOrderNo"] as? String {
+                    self.refundOrderNo = value
                 }
                 if let value = dict["RefundTransactionId"] as? String {
                     self.refundTransactionId = value
                 }
                 if let value = dict["RejectReason"] as? String {
                     self.rejectReason = value
-                }
-                if let value = dict["SellRefundOrderNo"] as? String {
-                    self.sellRefundOrderNo = value
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
@@ -28782,7 +28681,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
 
         public var externalOrderNo: String?
 
-        public var gmtCreate: Int64?
+        public var gmtCreate: String?
 
         public var itemInfo: GlobalHotelQueryOrderResponseBody.Data.ItemInfo?
 
@@ -28868,7 +28767,7 @@ public class GlobalHotelQueryOrderResponseBody : Tea.TeaModel {
             if let value = dict["ExternalOrderNo"] as? String {
                 self.externalOrderNo = value
             }
-            if let value = dict["GmtCreate"] as? Int64 {
+            if let value = dict["GmtCreate"] as? String {
                 self.gmtCreate = value
             }
             if let value = dict["ItemInfo"] as? [String: Any?] {
@@ -29842,13 +29741,13 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
             public class Penalties : Tea.TeaModel {
                 public var currency: String?
 
-                public var end: Int64?
+                public var end: String?
 
                 public var penaltyType: String?
 
                 public var penaltyValue: String?
 
-                public var start: Int64?
+                public var start: String?
 
                 public var tracerId: String?
 
@@ -29892,7 +29791,7 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
                     if let value = dict["Currency"] as? String {
                         self.currency = value
                     }
-                    if let value = dict["End"] as? Int64 {
+                    if let value = dict["End"] as? String {
                         self.end = value
                     }
                     if let value = dict["PenaltyType"] as? String {
@@ -29901,7 +29800,7 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
                     if let value = dict["PenaltyValue"] as? String {
                         self.penaltyValue = value
                     }
-                    if let value = dict["Start"] as? Int64 {
+                    if let value = dict["Start"] as? String {
                         self.start = value
                     }
                     if let value = dict["TracerId"] as? String {
@@ -29968,11 +29867,11 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public class Pricing : Tea.TeaModel {
-            public class NightlyPrices : Tea.TeaModel {
+        public class DailyPrices : Tea.TeaModel {
+            public class Price : Tea.TeaModel {
                 public var amount: String?
 
-                public var date: String?
+                public var currency: String?
 
                 public var tracerId: String?
 
@@ -29993,8 +29892,8 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
                     if self.amount != nil {
                         map["Amount"] = self.amount!
                     }
-                    if self.date != nil {
-                        map["Date"] = self.date!
+                    if self.currency != nil {
+                        map["Currency"] = self.currency!
                     }
                     if self.tracerId != nil {
                         map["TracerId"] = self.tracerId!
@@ -30007,19 +29906,66 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
                     if let value = dict["Amount"] as? String {
                         self.amount = value
                     }
-                    if let value = dict["Date"] as? String {
-                        self.date = value
+                    if let value = dict["Currency"] as? String {
+                        self.currency = value
                     }
                     if let value = dict["TracerId"] as? String {
                         self.tracerId = value
                     }
                 }
             }
+            public var date: String?
+
+            public var price: GlobalHotelValidatePriceResponseBody.Data.DailyPrices.Price?
+
+            public var tracerId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.price?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.date != nil {
+                    map["Date"] = self.date!
+                }
+                if self.price != nil {
+                    map["Price"] = self.price?.toMap()
+                }
+                if self.tracerId != nil {
+                    map["TracerId"] = self.tracerId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Date"] as? String {
+                    self.date = value
+                }
+                if let value = dict["Price"] as? [String: Any?] {
+                    var model = GlobalHotelValidatePriceResponseBody.Data.DailyPrices.Price()
+                    model.fromMap(value)
+                    self.price = model
+                }
+                if let value = dict["TracerId"] as? String {
+                    self.tracerId = value
+                }
+            }
+        }
+        public class TotalPrice : Tea.TeaModel {
+            public var amount: String?
+
             public var currency: String?
-
-            public var nightlyPrices: [GlobalHotelValidatePriceResponseBody.Data.Pricing.NightlyPrices]?
-
-            public var totalAmount: String?
 
             public var tracerId: String?
 
@@ -30037,18 +29983,11 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.amount != nil {
+                    map["Amount"] = self.amount!
+                }
                 if self.currency != nil {
                     map["Currency"] = self.currency!
-                }
-                if self.nightlyPrices != nil {
-                    var tmp : [Any] = []
-                    for k in self.nightlyPrices! {
-                        tmp.append(k.toMap())
-                    }
-                    map["NightlyPrices"] = tmp
-                }
-                if self.totalAmount != nil {
-                    map["TotalAmount"] = self.totalAmount!
                 }
                 if self.tracerId != nil {
                     map["TracerId"] = self.tracerId!
@@ -30058,24 +29997,11 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Amount"] as? String {
+                    self.amount = value
+                }
                 if let value = dict["Currency"] as? String {
                     self.currency = value
-                }
-                if let value = dict["NightlyPrices"] as? [Any?] {
-                    var tmp : [GlobalHotelValidatePriceResponseBody.Data.Pricing.NightlyPrices] = []
-                    for v in value {
-                        if v != nil {
-                            var model = GlobalHotelValidatePriceResponseBody.Data.Pricing.NightlyPrices()
-                            if v != nil {
-                                model.fromMap(v as? [String: Any?])
-                            }
-                            tmp.append(model)
-                        }
-                    }
-                    self.nightlyPrices = tmp
-                }
-                if let value = dict["TotalAmount"] as? String {
-                    self.totalAmount = value
                 }
                 if let value = dict["TracerId"] as? String {
                     self.tracerId = value
@@ -30084,9 +30010,11 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
         }
         public var cancellationPolicies: [GlobalHotelValidatePriceResponseBody.Data.CancellationPolicies]?
 
+        public var dailyPrices: [GlobalHotelValidatePriceResponseBody.Data.DailyPrices]?
+
         public var itemOfferId: String?
 
-        public var pricing: GlobalHotelValidatePriceResponseBody.Data.Pricing?
+        public var totalPrice: GlobalHotelValidatePriceResponseBody.Data.TotalPrice?
 
         public var tracerId: String?
 
@@ -30100,7 +30028,7 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.pricing?.validate()
+            try self.totalPrice?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -30112,11 +30040,18 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
                 }
                 map["CancellationPolicies"] = tmp
             }
+            if self.dailyPrices != nil {
+                var tmp : [Any] = []
+                for k in self.dailyPrices! {
+                    tmp.append(k.toMap())
+                }
+                map["DailyPrices"] = tmp
+            }
             if self.itemOfferId != nil {
                 map["ItemOfferId"] = self.itemOfferId!
             }
-            if self.pricing != nil {
-                map["Pricing"] = self.pricing?.toMap()
+            if self.totalPrice != nil {
+                map["TotalPrice"] = self.totalPrice?.toMap()
             }
             if self.tracerId != nil {
                 map["TracerId"] = self.tracerId!
@@ -30139,13 +30074,26 @@ public class GlobalHotelValidatePriceResponseBody : Tea.TeaModel {
                 }
                 self.cancellationPolicies = tmp
             }
+            if let value = dict["DailyPrices"] as? [Any?] {
+                var tmp : [GlobalHotelValidatePriceResponseBody.Data.DailyPrices] = []
+                for v in value {
+                    if v != nil {
+                        var model = GlobalHotelValidatePriceResponseBody.Data.DailyPrices()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dailyPrices = tmp
+            }
             if let value = dict["ItemOfferId"] as? String {
                 self.itemOfferId = value
             }
-            if let value = dict["Pricing"] as? [String: Any?] {
-                var model = GlobalHotelValidatePriceResponseBody.Data.Pricing()
+            if let value = dict["TotalPrice"] as? [String: Any?] {
+                var model = GlobalHotelValidatePriceResponseBody.Data.TotalPrice()
                 model.fromMap(value)
-                self.pricing = model
+                self.totalPrice = model
             }
             if let value = dict["TracerId"] as? String {
                 self.tracerId = value
