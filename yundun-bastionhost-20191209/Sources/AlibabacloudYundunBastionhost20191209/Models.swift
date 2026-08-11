@@ -10,6 +10,8 @@ public class AcceptApproveCommandRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -32,6 +34,9 @@ public class AcceptApproveCommandRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -45,6 +50,9 @@ public class AcceptApproveCommandRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -146,6 +154,8 @@ public class AcceptOperationTicketRequest : Tea.TeaModel {
 
     public var operationTicketId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -180,6 +190,9 @@ public class AcceptOperationTicketRequest : Tea.TeaModel {
         if self.operationTicketId != nil {
             map["OperationTicketId"] = self.operationTicketId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -205,6 +218,9 @@ public class AcceptOperationTicketRequest : Tea.TeaModel {
         }
         if let value = dict["OperationTicketId"] as? String {
             self.operationTicketId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -512,6 +528,8 @@ public class AddHostsToGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -537,6 +555,9 @@ public class AddHostsToGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -553,6 +574,9 @@ public class AddHostsToGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -848,6 +872,8 @@ public class AddInstanceRdMemberResponse : Tea.TeaModel {
 public class AddUsersToGroupRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -871,6 +897,9 @@ public class AddUsersToGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -887,6 +916,9 @@ public class AddUsersToGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -1062,6 +1094,8 @@ public class AllowOperationTaskApprovalRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -1084,6 +1118,9 @@ public class AllowOperationTaskApprovalRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1097,6 +1134,9 @@ public class AllowOperationTaskApprovalRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -1628,6 +1668,8 @@ public class AttachDatabaseAccountsToUserGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -1656,6 +1698,9 @@ public class AttachDatabaseAccountsToUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1682,6 +1727,9 @@ public class AttachDatabaseAccountsToUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -1924,6 +1972,8 @@ public class AttachHostAccountsToHostShareKeyRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -1949,6 +1999,9 @@ public class AttachHostAccountsToHostShareKeyRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1965,6 +2018,9 @@ public class AttachHostAccountsToHostShareKeyRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -2414,6 +2470,8 @@ public class AttachHostAccountsToUserGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -2438,6 +2496,9 @@ public class AttachHostAccountsToUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -2454,6 +2515,9 @@ public class AttachHostAccountsToUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -3612,6 +3676,8 @@ public class CreateDatabaseRequest : Tea.TeaModel {
 
     public var polarDBEndpointType: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var source: String?
@@ -3667,6 +3733,9 @@ public class CreateDatabaseRequest : Tea.TeaModel {
         if self.polarDBEndpointType != nil {
             map["PolarDBEndpointType"] = self.polarDBEndpointType!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -3716,6 +3785,9 @@ public class CreateDatabaseRequest : Tea.TeaModel {
         }
         if let value = dict["PolarDBEndpointType"] as? String {
             self.polarDBEndpointType = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -3834,6 +3906,8 @@ public class CreateDatabaseAccountRequest : Tea.TeaModel {
 
     public var password: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -3868,6 +3942,9 @@ public class CreateDatabaseAccountRequest : Tea.TeaModel {
         if self.password != nil {
             map["Password"] = self.password!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -3893,6 +3970,9 @@ public class CreateDatabaseAccountRequest : Tea.TeaModel {
         }
         if let value = dict["Password"] as? String {
             self.password = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -4138,6 +4218,8 @@ public class CreateHostRequest : Tea.TeaModel {
 
     public var OSType: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var source: String?
@@ -4188,6 +4270,9 @@ public class CreateHostRequest : Tea.TeaModel {
         if self.OSType != nil {
             map["OSType"] = self.OSType!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4231,6 +4316,9 @@ public class CreateHostRequest : Tea.TeaModel {
         }
         if let value = dict["OSType"] as? String {
             self.OSType = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -4350,6 +4438,8 @@ public class CreateHostAccountRequest : Tea.TeaModel {
 
     public var privilegeType: String?
 
+    public var projectId: Int64?
+
     public var protocolName: String?
 
     public var regionId: String?
@@ -4394,6 +4484,9 @@ public class CreateHostAccountRequest : Tea.TeaModel {
         if self.privilegeType != nil {
             map["PrivilegeType"] = self.privilegeType!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.protocolName != nil {
             map["ProtocolName"] = self.protocolName!
         }
@@ -4431,6 +4524,9 @@ public class CreateHostAccountRequest : Tea.TeaModel {
         }
         if let value = dict["PrivilegeType"] as? String {
             self.privilegeType = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["ProtocolName"] as? String {
             self.protocolName = value
@@ -4540,6 +4636,8 @@ public class CreateHostGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -4565,6 +4663,9 @@ public class CreateHostGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4581,6 +4682,9 @@ public class CreateHostGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -4686,6 +4790,8 @@ public class CreateHostShareKeyRequest : Tea.TeaModel {
 
     public var privateKey: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -4714,6 +4820,9 @@ public class CreateHostShareKeyRequest : Tea.TeaModel {
         if self.privateKey != nil {
             map["PrivateKey"] = self.privateKey!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4733,6 +4842,9 @@ public class CreateHostShareKeyRequest : Tea.TeaModel {
         }
         if let value = dict["PrivateKey"] as? String {
             self.privateKey = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -4908,6 +5020,8 @@ public class CreateNetworkDomainRequest : Tea.TeaModel {
 
     public var networkDomainType: String?
 
+    public var projectId: Int64?
+
     public var proxies: [CreateNetworkDomainRequest.Proxies]?
 
     public var regionId: String?
@@ -4938,6 +5052,9 @@ public class CreateNetworkDomainRequest : Tea.TeaModel {
         if self.networkDomainType != nil {
             map["NetworkDomainType"] = self.networkDomainType!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.proxies != nil {
             var tmp : [Any] = []
             for k in self.proxies! {
@@ -4964,6 +5081,9 @@ public class CreateNetworkDomainRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkDomainType"] as? String {
             self.networkDomainType = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["Proxies"] as? [Any?] {
             var tmp : [CreateNetworkDomainRequest.Proxies] = []
@@ -5088,6 +5208,8 @@ public class CreateOperationTicketRequest : Tea.TeaModel {
 
     public var isOneTimeEffect: Bool?
 
+    public var projectId: Int64?
+
     public var protocolName: String?
 
     public var regionId: String?
@@ -5127,6 +5249,9 @@ public class CreateOperationTicketRequest : Tea.TeaModel {
         if self.isOneTimeEffect != nil {
             map["IsOneTimeEffect"] = self.isOneTimeEffect!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.protocolName != nil {
             map["ProtocolName"] = self.protocolName!
         }
@@ -5158,6 +5283,9 @@ public class CreateOperationTicketRequest : Tea.TeaModel {
         }
         if let value = dict["IsOneTimeEffect"] as? Bool {
             self.isOneTimeEffect = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["ProtocolName"] as? String {
             self.protocolName = value
@@ -5266,6 +5394,8 @@ public class CreatePolicyRequest : Tea.TeaModel {
 
     public var priority: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -5294,6 +5424,9 @@ public class CreatePolicyRequest : Tea.TeaModel {
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -5313,6 +5446,9 @@ public class CreatePolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Priority"] as? String {
             self.priority = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -5538,6 +5674,8 @@ public class CreateRuleRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var ruleName: String?
@@ -5592,6 +5730,9 @@ public class CreateRuleRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -5660,6 +5801,9 @@ public class CreateRuleRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -6026,6 +6170,8 @@ public class CreateUserGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupName: String?
@@ -6050,6 +6196,9 @@ public class CreateUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6066,6 +6215,9 @@ public class CreateUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -6330,6 +6482,8 @@ public class DeleteDatabaseRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -6352,6 +6506,9 @@ public class DeleteDatabaseRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6365,6 +6522,9 @@ public class DeleteDatabaseRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -6458,6 +6618,8 @@ public class DeleteDatabaseAccountRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -6480,6 +6642,9 @@ public class DeleteDatabaseAccountRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6493,6 +6658,9 @@ public class DeleteDatabaseAccountRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -6586,6 +6754,8 @@ public class DeleteHostRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -6608,6 +6778,9 @@ public class DeleteHostRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6621,6 +6794,9 @@ public class DeleteHostRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -6714,6 +6890,8 @@ public class DeleteHostAccountRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -6736,6 +6914,9 @@ public class DeleteHostAccountRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6749,6 +6930,9 @@ public class DeleteHostAccountRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -6842,6 +7026,8 @@ public class DeleteHostGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -6864,6 +7050,9 @@ public class DeleteHostGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6877,6 +7066,9 @@ public class DeleteHostGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7098,6 +7290,8 @@ public class DeleteNetworkDomainRequest : Tea.TeaModel {
 
     public var networkDomainId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -7120,6 +7314,9 @@ public class DeleteNetworkDomainRequest : Tea.TeaModel {
         if self.networkDomainId != nil {
             map["NetworkDomainId"] = self.networkDomainId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7133,6 +7330,9 @@ public class DeleteNetworkDomainRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkDomainId"] as? String {
             self.networkDomainId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7226,6 +7426,8 @@ public class DeletePolicyRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -7248,6 +7450,9 @@ public class DeletePolicyRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7261,6 +7466,9 @@ public class DeletePolicyRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7352,6 +7560,8 @@ public class DeletePolicyResponse : Tea.TeaModel {
 public class DeleteRuleRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var ruleId: String?
@@ -7373,6 +7583,9 @@ public class DeleteRuleRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7386,6 +7599,9 @@ public class DeleteRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7608,6 +7824,8 @@ public class DeleteUserResponse : Tea.TeaModel {
 public class DeleteUserGroupRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -7629,6 +7847,9 @@ public class DeleteUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7642,6 +7863,9 @@ public class DeleteUserGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -9409,6 +9633,8 @@ public class DetachDatabaseAccountsFromUserGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -9437,6 +9663,9 @@ public class DetachDatabaseAccountsFromUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -9463,6 +9692,9 @@ public class DetachDatabaseAccountsFromUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -9705,6 +9937,8 @@ public class DetachHostAccountsFromHostShareKeyRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -9730,6 +9964,9 @@ public class DetachHostAccountsFromHostShareKeyRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -9746,6 +9983,9 @@ public class DetachHostAccountsFromHostShareKeyRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -10195,6 +10435,8 @@ public class DetachHostAccountsFromUserGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -10219,6 +10461,9 @@ public class DetachHostAccountsFromUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -10235,6 +10480,9 @@ public class DetachHostAccountsFromUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -11161,6 +11409,8 @@ public class DisableInstancePublicAccessResponse : Tea.TeaModel {
 public class DisableRuleRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var ruleId: String?
@@ -11182,6 +11432,9 @@ public class DisableRuleRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -11195,6 +11448,9 @@ public class DisableRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -11417,6 +11673,8 @@ public class EnableInstancePublicAccessResponse : Tea.TeaModel {
 public class EnableRuleRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var ruleId: String?
@@ -11438,6 +11696,9 @@ public class EnableRuleRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -11451,6 +11712,9 @@ public class EnableRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -11850,6 +12114,8 @@ public class GenerateAssetOperationTokenResponse : Tea.TeaModel {
 public class GetAutoOpsTaskRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var taskId: String?
@@ -11871,6 +12137,9 @@ public class GetAutoOpsTaskRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -11884,6 +12153,9 @@ public class GetAutoOpsTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -12101,6 +12373,8 @@ public class GetDatabaseRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -12123,6 +12397,9 @@ public class GetDatabaseRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -12136,6 +12413,9 @@ public class GetDatabaseRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -12366,6 +12646,8 @@ public class GetDatabaseAccountRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -12388,6 +12670,9 @@ public class GetDatabaseAccountRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -12401,6 +12686,9 @@ public class GetDatabaseAccountRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -12735,6 +13023,8 @@ public class GetHostRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -12757,6 +13047,9 @@ public class GetHostRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -12770,6 +13063,9 @@ public class GetHostRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -13060,6 +13356,8 @@ public class GetHostAccountRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -13082,6 +13380,9 @@ public class GetHostAccountRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -13095,6 +13396,9 @@ public class GetHostAccountRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -13301,6 +13605,8 @@ public class GetHostGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -13323,6 +13629,9 @@ public class GetHostGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -13336,6 +13645,9 @@ public class GetHostGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -13486,6 +13798,8 @@ public class GetHostShareKeyRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -13508,6 +13822,9 @@ public class GetHostShareKeyRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -13521,6 +13838,9 @@ public class GetHostShareKeyRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -13679,6 +13999,8 @@ public class GetInstanceADAuthServerRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var userSourceId: String?
+
     public override init() {
         super.init()
     }
@@ -13699,6 +14021,9 @@ public class GetInstanceADAuthServerRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.userSourceId != nil {
+            map["UserSourceId"] = self.userSourceId!
+        }
         return map
     }
 
@@ -13709,6 +14034,9 @@ public class GetInstanceADAuthServerRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["UserSourceId"] as? String {
+            self.userSourceId = value
         }
     }
 }
@@ -13727,7 +14055,19 @@ public class GetInstanceADAuthServerResponseBody : Tea.TeaModel {
 
         public var hasPassword: Bool?
 
+        public var isDefault: Bool?
+
         public var isSSL: Bool?
+
+        public var isSyncEmailAttr: Bool?
+
+        public var isSyncMobileAttr: Bool?
+
+        public var isSyncNameAttr: Bool?
+
+        public var isSyncOuAsUserGroup: Bool?
+
+        public var latestSyncTime: Int64?
 
         public var mobileMapping: String?
 
@@ -13737,7 +14077,13 @@ public class GetInstanceADAuthServerResponseBody : Tea.TeaModel {
 
         public var server: String?
 
+        public var serverName: String?
+
         public var standbyServer: String?
+
+        public var syncInterval: Int64?
+
+        public var userSourceId: String?
 
         public override init() {
             super.init()
@@ -13771,8 +14117,26 @@ public class GetInstanceADAuthServerResponseBody : Tea.TeaModel {
             if self.hasPassword != nil {
                 map["HasPassword"] = self.hasPassword!
             }
+            if self.isDefault != nil {
+                map["IsDefault"] = self.isDefault!
+            }
             if self.isSSL != nil {
                 map["IsSSL"] = self.isSSL!
+            }
+            if self.isSyncEmailAttr != nil {
+                map["IsSyncEmailAttr"] = self.isSyncEmailAttr!
+            }
+            if self.isSyncMobileAttr != nil {
+                map["IsSyncMobileAttr"] = self.isSyncMobileAttr!
+            }
+            if self.isSyncNameAttr != nil {
+                map["IsSyncNameAttr"] = self.isSyncNameAttr!
+            }
+            if self.isSyncOuAsUserGroup != nil {
+                map["IsSyncOuAsUserGroup"] = self.isSyncOuAsUserGroup!
+            }
+            if self.latestSyncTime != nil {
+                map["LatestSyncTime"] = self.latestSyncTime!
             }
             if self.mobileMapping != nil {
                 map["MobileMapping"] = self.mobileMapping!
@@ -13786,8 +14150,17 @@ public class GetInstanceADAuthServerResponseBody : Tea.TeaModel {
             if self.server != nil {
                 map["Server"] = self.server!
             }
+            if self.serverName != nil {
+                map["ServerName"] = self.serverName!
+            }
             if self.standbyServer != nil {
                 map["StandbyServer"] = self.standbyServer!
+            }
+            if self.syncInterval != nil {
+                map["SyncInterval"] = self.syncInterval!
+            }
+            if self.userSourceId != nil {
+                map["UserSourceId"] = self.userSourceId!
             }
             return map
         }
@@ -13812,8 +14185,26 @@ public class GetInstanceADAuthServerResponseBody : Tea.TeaModel {
             if let value = dict["HasPassword"] as? Bool {
                 self.hasPassword = value
             }
+            if let value = dict["IsDefault"] as? Bool {
+                self.isDefault = value
+            }
             if let value = dict["IsSSL"] as? Bool {
                 self.isSSL = value
+            }
+            if let value = dict["IsSyncEmailAttr"] as? Bool {
+                self.isSyncEmailAttr = value
+            }
+            if let value = dict["IsSyncMobileAttr"] as? Bool {
+                self.isSyncMobileAttr = value
+            }
+            if let value = dict["IsSyncNameAttr"] as? Bool {
+                self.isSyncNameAttr = value
+            }
+            if let value = dict["IsSyncOuAsUserGroup"] as? Bool {
+                self.isSyncOuAsUserGroup = value
+            }
+            if let value = dict["LatestSyncTime"] as? Int64 {
+                self.latestSyncTime = value
             }
             if let value = dict["MobileMapping"] as? String {
                 self.mobileMapping = value
@@ -13827,8 +14218,17 @@ public class GetInstanceADAuthServerResponseBody : Tea.TeaModel {
             if let value = dict["Server"] as? String {
                 self.server = value
             }
+            if let value = dict["ServerName"] as? String {
+                self.serverName = value
+            }
             if let value = dict["StandbyServer"] as? String {
                 self.standbyServer = value
+            }
+            if let value = dict["SyncInterval"] as? Int64 {
+                self.syncInterval = value
+            }
+            if let value = dict["UserSourceId"] as? String {
+                self.userSourceId = value
             }
         }
     }
@@ -14492,6 +14892,8 @@ public class GetNetworkDomainRequest : Tea.TeaModel {
 
     public var networkDomainId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -14517,6 +14919,9 @@ public class GetNetworkDomainRequest : Tea.TeaModel {
         if self.networkDomainId != nil {
             map["NetworkDomainId"] = self.networkDomainId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -14533,6 +14938,9 @@ public class GetNetworkDomainRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkDomainId"] as? String {
             self.networkDomainId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -14807,6 +15215,8 @@ public class GetPolicyRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -14829,6 +15239,9 @@ public class GetPolicyRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -14842,6 +15255,9 @@ public class GetPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -15557,6 +15973,8 @@ public class GetPolicyAssetScopeRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -15579,6 +15997,9 @@ public class GetPolicyAssetScopeRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -15592,6 +16013,9 @@ public class GetPolicyAssetScopeRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -15930,6 +16354,8 @@ public class GetPolicyUserScopeRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -15952,6 +16378,9 @@ public class GetPolicyUserScopeRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -15965,6 +16394,9 @@ public class GetPolicyUserScopeRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -16113,6 +16545,8 @@ public class GetPolicyUserScopeResponse : Tea.TeaModel {
 public class GetRuleRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var ruleId: String?
@@ -16134,6 +16568,9 @@ public class GetRuleRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -16147,6 +16584,9 @@ public class GetRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -16283,6 +16723,8 @@ public class GetRuleResponseBody : Tea.TeaModel {
             public class HostAccounts : Tea.TeaModel {
                 public var hostAccountId: String?
 
+                public var hostAccountName: String?
+
                 public override init() {
                     super.init()
                 }
@@ -16300,6 +16742,9 @@ public class GetRuleResponseBody : Tea.TeaModel {
                     if self.hostAccountId != nil {
                         map["HostAccountId"] = self.hostAccountId!
                     }
+                    if self.hostAccountName != nil {
+                        map["HostAccountName"] = self.hostAccountName!
+                    }
                     return map
                 }
 
@@ -16307,6 +16752,9 @@ public class GetRuleResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["HostAccountId"] as? String {
                         self.hostAccountId = value
+                    }
+                    if let value = dict["HostAccountName"] as? String {
+                        self.hostAccountName = value
                     }
                 }
             }
@@ -16983,6 +17431,8 @@ public class GetUserResponse : Tea.TeaModel {
 public class GetUserGroupRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -17004,6 +17454,9 @@ public class GetUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -17017,6 +17470,9 @@ public class GetUserGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -17491,6 +17947,8 @@ public class ListApproveCommandsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -17516,6 +17974,9 @@ public class ListApproveCommandsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -17532,6 +17993,9 @@ public class ListApproveCommandsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -17771,6 +18235,8 @@ public class ListDatabaseAccountsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -17802,6 +18268,9 @@ public class ListDatabaseAccountsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -17824,6 +18293,9 @@ public class ListDatabaseAccountsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -18267,6 +18739,8 @@ public class ListDatabaseAccountsForUserGroupRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -18300,6 +18774,9 @@ public class ListDatabaseAccountsForUserGroupRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -18325,6 +18802,9 @@ public class ListDatabaseAccountsForUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -18521,6 +19001,8 @@ public class ListDatabasesRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var source: String?
@@ -18557,6 +19039,9 @@ public class ListDatabasesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -18585,6 +19070,9 @@ public class ListDatabasesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -18847,6 +19335,8 @@ public class ListDatabasesForUserRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userId: String?
@@ -18886,6 +19376,9 @@ public class ListDatabasesForUserRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -18918,6 +19411,9 @@ public class ListDatabasesForUserRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -18946,6 +19442,10 @@ public class ListDatabasesForUserResponseBody : Tea.TeaModel {
         public var databaseType: String?
 
         public var networkDomainId: String?
+
+        public var projectId: String?
+
+        public var projectName: String?
 
         public var source: String?
 
@@ -18992,6 +19492,12 @@ public class ListDatabasesForUserResponseBody : Tea.TeaModel {
             if self.networkDomainId != nil {
                 map["NetworkDomainId"] = self.networkDomainId!
             }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -19029,6 +19535,12 @@ public class ListDatabasesForUserResponseBody : Tea.TeaModel {
             }
             if let value = dict["NetworkDomainId"] as? String {
                 self.networkDomainId = value
+            }
+            if let value = dict["ProjectId"] as? String {
+                self.projectId = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
             }
             if let value = dict["Source"] as? String {
                 self.source = value
@@ -19163,6 +19675,8 @@ public class ListDatabasesForUserGroupRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -19202,6 +19716,9 @@ public class ListDatabasesForUserGroupRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -19234,6 +19751,9 @@ public class ListDatabasesForUserGroupRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -19264,6 +19784,10 @@ public class ListDatabasesForUserGroupResponseBody : Tea.TeaModel {
         public var databaseType: String?
 
         public var networkDomainId: String?
+
+        public var projectId: String?
+
+        public var projectName: String?
 
         public var source: String?
 
@@ -19313,6 +19837,12 @@ public class ListDatabasesForUserGroupResponseBody : Tea.TeaModel {
             if self.networkDomainId != nil {
                 map["NetworkDomainId"] = self.networkDomainId!
             }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -19353,6 +19883,12 @@ public class ListDatabasesForUserGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["NetworkDomainId"] as? String {
                 self.networkDomainId = value
+            }
+            if let value = dict["ProjectId"] as? String {
+                self.projectId = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
             }
             if let value = dict["Source"] as? String {
                 self.source = value
@@ -19485,6 +20021,8 @@ public class ListHostAccountsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var protocolName: String?
 
     public var regionId: String?
@@ -19521,6 +20059,9 @@ public class ListHostAccountsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.protocolName != nil {
             map["ProtocolName"] = self.protocolName!
         }
@@ -19549,6 +20090,9 @@ public class ListHostAccountsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["ProtocolName"] as? String {
             self.protocolName = value
@@ -19781,6 +20325,8 @@ public class ListHostAccountsForHostShareKeyRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -19809,6 +20355,9 @@ public class ListHostAccountsForHostShareKeyRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -19828,6 +20377,9 @@ public class ListHostAccountsForHostShareKeyRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -20011,6 +20563,8 @@ public class ListHostAccountsForUserRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userId: String?
@@ -20044,6 +20598,9 @@ public class ListHostAccountsForUserRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -20069,6 +20626,9 @@ public class ListHostAccountsForUserRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -20263,6 +20823,8 @@ public class ListHostAccountsForUserGroupRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -20296,6 +20858,9 @@ public class ListHostAccountsForUserGroupRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -20321,6 +20886,9 @@ public class ListHostAccountsForUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -20509,6 +21077,8 @@ public class ListHostGroupAccountNamesForUserRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userId: String?
@@ -20533,6 +21103,9 @@ public class ListHostGroupAccountNamesForUserRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -20549,6 +21122,9 @@ public class ListHostGroupAccountNamesForUserRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -20653,6 +21229,8 @@ public class ListHostGroupAccountNamesForUserGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -20677,6 +21255,9 @@ public class ListHostGroupAccountNamesForUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -20693,6 +21274,9 @@ public class ListHostGroupAccountNamesForUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -20801,6 +21385,8 @@ public class ListHostGroupsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -20829,6 +21415,9 @@ public class ListHostGroupsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -20848,6 +21437,9 @@ public class ListHostGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -21031,6 +21623,8 @@ public class ListHostGroupsForUserRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userId: String?
@@ -21064,6 +21658,9 @@ public class ListHostGroupsForUserRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -21089,6 +21686,9 @@ public class ListHostGroupsForUserRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -21267,6 +21867,8 @@ public class ListHostGroupsForUserGroupRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -21300,6 +21902,9 @@ public class ListHostGroupsForUserGroupRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -21325,6 +21930,9 @@ public class ListHostGroupsForUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -21499,6 +22107,8 @@ public class ListHostShareKeysRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -21524,6 +22134,9 @@ public class ListHostShareKeysRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -21540,6 +22153,9 @@ public class ListHostShareKeysRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -21735,6 +22351,8 @@ public class ListHostsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: String?
+
     public var regionId: String?
 
     public var source: String?
@@ -21778,6 +22396,9 @@ public class ListHostsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -21815,6 +22436,9 @@ public class ListHostsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -22067,6 +22691,8 @@ public class ListHostsForUserRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userId: String?
@@ -22106,6 +22732,9 @@ public class ListHostsForUserRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -22138,6 +22767,9 @@ public class ListHostsForUserRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -22162,6 +22794,10 @@ public class ListHostsForUserResponseBody : Tea.TeaModel {
         public var hostPublicAddress: String?
 
         public var OSType: String?
+
+        public var projectId: String?
+
+        public var projectName: String?
 
         public override init() {
             super.init()
@@ -22198,6 +22834,12 @@ public class ListHostsForUserResponseBody : Tea.TeaModel {
             if self.OSType != nil {
                 map["OSType"] = self.OSType!
             }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
             return map
         }
 
@@ -22223,6 +22865,12 @@ public class ListHostsForUserResponseBody : Tea.TeaModel {
             }
             if let value = dict["OSType"] as? String {
                 self.OSType = value
+            }
+            if let value = dict["ProjectId"] as? String {
+                self.projectId = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
             }
         }
     }
@@ -22351,6 +22999,8 @@ public class ListHostsForUserGroupRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -22390,6 +23040,9 @@ public class ListHostsForUserGroupRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -22421,6 +23074,9 @@ public class ListHostsForUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -23071,6 +23727,8 @@ public class ListNetworkDomainsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -23102,6 +23760,9 @@ public class ListNetworkDomainsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -23124,6 +23785,9 @@ public class ListNetworkDomainsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -23371,6 +24035,8 @@ public class ListOperationDatabaseAccountsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var operationProjectId: String?
+
     public var pageNumber: String?
 
     public var pageSize: String?
@@ -23400,6 +24066,9 @@ public class ListOperationDatabaseAccountsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.operationProjectId != nil {
+            map["OperationProjectId"] = self.operationProjectId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -23422,6 +24091,9 @@ public class ListOperationDatabaseAccountsRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["OperationProjectId"] as? String {
+            self.operationProjectId = value
         }
         if let value = dict["PageNumber"] as? String {
             self.pageNumber = value
@@ -23637,6 +24309,8 @@ public class ListOperationDatabasesRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var source: String?
@@ -23677,6 +24351,9 @@ public class ListOperationDatabasesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -23711,6 +24388,9 @@ public class ListOperationDatabasesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -24274,6 +24954,8 @@ public class ListOperationHostsRequest : Tea.TeaModel {
 
     public var OSType: String?
 
+    public var operationProjectId: String?
+
     public var pageNumber: String?
 
     public var pageSize: String?
@@ -24312,6 +24994,9 @@ public class ListOperationHostsRequest : Tea.TeaModel {
         if self.OSType != nil {
             map["OSType"] = self.OSType!
         }
+        if self.operationProjectId != nil {
+            map["OperationProjectId"] = self.operationProjectId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -24346,6 +25031,9 @@ public class ListOperationHostsRequest : Tea.TeaModel {
         }
         if let value = dict["OSType"] as? String {
             self.OSType = value
+        }
+        if let value = dict["OperationProjectId"] as? String {
+            self.operationProjectId = value
         }
         if let value = dict["PageNumber"] as? String {
             self.pageNumber = value
@@ -24383,6 +25071,8 @@ public class ListOperationHostsResponseBody : Tea.TeaModel {
         public var hostPublicAddress: String?
 
         public var OSType: String?
+
+        public var projectName: String?
 
         public var source: String?
 
@@ -24425,6 +25115,9 @@ public class ListOperationHostsResponseBody : Tea.TeaModel {
             if self.OSType != nil {
                 map["OSType"] = self.OSType!
             }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -24459,6 +25152,9 @@ public class ListOperationHostsResponseBody : Tea.TeaModel {
             }
             if let value = dict["OSType"] as? String {
                 self.OSType = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
             }
             if let value = dict["Source"] as? String {
                 self.source = value
@@ -24590,6 +25286,8 @@ public class ListOperationTicketsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -24618,6 +25316,9 @@ public class ListOperationTicketsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -24637,6 +25338,9 @@ public class ListOperationTicketsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -24938,6 +25642,8 @@ public class ListPoliciesRequest : Tea.TeaModel {
 
     public var policyName: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -24966,6 +25672,9 @@ public class ListPoliciesRequest : Tea.TeaModel {
         if self.policyName != nil {
             map["PolicyName"] = self.policyName!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -24985,6 +25694,9 @@ public class ListPoliciesRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyName"] as? String {
             self.policyName = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -25164,6 +25876,8 @@ public class ListRulesRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var ruleName: String?
@@ -25193,6 +25907,9 @@ public class ListRulesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -25215,6 +25932,9 @@ public class ListRulesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -25934,6 +26654,8 @@ public class ListTodoOpsTaskApprovalsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var scheduleType: String?
@@ -25964,6 +26686,9 @@ public class ListTodoOpsTaskApprovalsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -25986,6 +26711,9 @@ public class ListTodoOpsTaskApprovalsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -26200,6 +26928,8 @@ public class ListUserGroupsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupName: String?
@@ -26227,6 +26957,9 @@ public class ListUserGroupsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -26246,6 +26979,9 @@ public class ListUserGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -27252,6 +27988,8 @@ public class ModifyDatabaseRequest : Tea.TeaModel {
 
     public var networkDomainId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var sourceInstanceId: String?
@@ -27297,6 +28035,9 @@ public class ModifyDatabaseRequest : Tea.TeaModel {
         if self.networkDomainId != nil {
             map["NetworkDomainId"] = self.networkDomainId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -27334,6 +28075,9 @@ public class ModifyDatabaseRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkDomainId"] as? String {
             self.networkDomainId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -27436,6 +28180,8 @@ public class ModifyDatabaseAccountRequest : Tea.TeaModel {
 
     public var password: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -27467,6 +28213,9 @@ public class ModifyDatabaseAccountRequest : Tea.TeaModel {
         if self.password != nil {
             map["Password"] = self.password!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -27489,6 +28238,9 @@ public class ModifyDatabaseAccountRequest : Tea.TeaModel {
         }
         if let value = dict["Password"] as? String {
             self.password = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -27596,6 +28348,8 @@ public class ModifyHostRequest : Tea.TeaModel {
 
     public var prefKex: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -27639,6 +28393,9 @@ public class ModifyHostRequest : Tea.TeaModel {
         if self.prefKex != nil {
             map["PrefKex"] = self.prefKex!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -27673,6 +28430,9 @@ public class ModifyHostRequest : Tea.TeaModel {
         }
         if let value = dict["PrefKex"] as? String {
             self.prefKex = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -27778,6 +28538,8 @@ public class ModifyHostAccountRequest : Tea.TeaModel {
 
     public var privilegeType: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var rotationMode: String?
@@ -27820,6 +28582,9 @@ public class ModifyHostAccountRequest : Tea.TeaModel {
         if self.privilegeType != nil {
             map["PrivilegeType"] = self.privilegeType!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -27854,6 +28619,9 @@ public class ModifyHostAccountRequest : Tea.TeaModel {
         }
         if let value = dict["PrivilegeType"] as? String {
             self.privilegeType = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -27954,6 +28722,8 @@ public class ModifyHostGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -27982,6 +28752,9 @@ public class ModifyHostGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -28001,6 +28774,9 @@ public class ModifyHostGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -28100,6 +28876,8 @@ public class ModifyHostShareKeyRequest : Tea.TeaModel {
 
     public var privateKey: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -28131,6 +28909,9 @@ public class ModifyHostShareKeyRequest : Tea.TeaModel {
         if self.privateKey != nil {
             map["PrivateKey"] = self.privateKey!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -28153,6 +28934,9 @@ public class ModifyHostShareKeyRequest : Tea.TeaModel {
         }
         if let value = dict["PrivateKey"] as? String {
             self.privateKey = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -28248,6 +29032,8 @@ public class ModifyHostsActiveAddressTypeRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -28273,6 +29059,9 @@ public class ModifyHostsActiveAddressTypeRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -28289,6 +29078,9 @@ public class ModifyHostsActiveAddressTypeRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -28452,6 +29244,8 @@ public class ModifyHostsPortRequest : Tea.TeaModel {
 
     public var port: String?
 
+    public var projectId: Int64?
+
     public var protocolName: String?
 
     public var regionId: String?
@@ -28479,6 +29273,9 @@ public class ModifyHostsPortRequest : Tea.TeaModel {
         if self.port != nil {
             map["Port"] = self.port!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.protocolName != nil {
             map["ProtocolName"] = self.protocolName!
         }
@@ -28498,6 +29295,9 @@ public class ModifyHostsPortRequest : Tea.TeaModel {
         }
         if let value = dict["Port"] as? String {
             self.port = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["ProtocolName"] as? String {
             self.protocolName = value
@@ -28670,7 +29470,17 @@ public class ModifyInstanceADAuthServerRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var isDefault: String?
+
     public var isSSL: String?
+
+    public var isSyncEmailAttr: String?
+
+    public var isSyncMobileAttr: String?
+
+    public var isSyncNameAttr: String?
+
+    public var isSyncOuAsUserGroup: String?
 
     public var mobileMapping: String?
 
@@ -28684,7 +29494,13 @@ public class ModifyInstanceADAuthServerRequest : Tea.TeaModel {
 
     public var server: String?
 
+    public var serverName: String?
+
     public var standbyServer: String?
+
+    public var syncInterval: String?
+
+    public var userSourceId: String?
 
     public override init() {
         super.init()
@@ -28718,8 +29534,23 @@ public class ModifyInstanceADAuthServerRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.isDefault != nil {
+            map["IsDefault"] = self.isDefault!
+        }
         if self.isSSL != nil {
             map["IsSSL"] = self.isSSL!
+        }
+        if self.isSyncEmailAttr != nil {
+            map["IsSyncEmailAttr"] = self.isSyncEmailAttr!
+        }
+        if self.isSyncMobileAttr != nil {
+            map["IsSyncMobileAttr"] = self.isSyncMobileAttr!
+        }
+        if self.isSyncNameAttr != nil {
+            map["IsSyncNameAttr"] = self.isSyncNameAttr!
+        }
+        if self.isSyncOuAsUserGroup != nil {
+            map["IsSyncOuAsUserGroup"] = self.isSyncOuAsUserGroup!
         }
         if self.mobileMapping != nil {
             map["MobileMapping"] = self.mobileMapping!
@@ -28739,8 +29570,17 @@ public class ModifyInstanceADAuthServerRequest : Tea.TeaModel {
         if self.server != nil {
             map["Server"] = self.server!
         }
+        if self.serverName != nil {
+            map["ServerName"] = self.serverName!
+        }
         if self.standbyServer != nil {
             map["StandbyServer"] = self.standbyServer!
+        }
+        if self.syncInterval != nil {
+            map["SyncInterval"] = self.syncInterval!
+        }
+        if self.userSourceId != nil {
+            map["UserSourceId"] = self.userSourceId!
         }
         return map
     }
@@ -28765,8 +29605,23 @@ public class ModifyInstanceADAuthServerRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["IsDefault"] as? String {
+            self.isDefault = value
+        }
         if let value = dict["IsSSL"] as? String {
             self.isSSL = value
+        }
+        if let value = dict["IsSyncEmailAttr"] as? String {
+            self.isSyncEmailAttr = value
+        }
+        if let value = dict["IsSyncMobileAttr"] as? String {
+            self.isSyncMobileAttr = value
+        }
+        if let value = dict["IsSyncNameAttr"] as? String {
+            self.isSyncNameAttr = value
+        }
+        if let value = dict["IsSyncOuAsUserGroup"] as? String {
+            self.isSyncOuAsUserGroup = value
         }
         if let value = dict["MobileMapping"] as? String {
             self.mobileMapping = value
@@ -28786,8 +29641,17 @@ public class ModifyInstanceADAuthServerRequest : Tea.TeaModel {
         if let value = dict["Server"] as? String {
             self.server = value
         }
+        if let value = dict["ServerName"] as? String {
+            self.serverName = value
+        }
         if let value = dict["StandbyServer"] as? String {
             self.standbyServer = value
+        }
+        if let value = dict["SyncInterval"] as? String {
+            self.syncInterval = value
+        }
+        if let value = dict["UserSourceId"] as? String {
+            self.userSourceId = value
         }
     }
 }
@@ -29442,6 +30306,8 @@ public class ModifyNetworkDomainRequest : Tea.TeaModel {
 
     public var networkDomainType: String?
 
+    public var projectId: Int64?
+
     public var proxies: [ModifyNetworkDomainRequest.Proxies]?
 
     public var regionId: String?
@@ -29475,6 +30341,9 @@ public class ModifyNetworkDomainRequest : Tea.TeaModel {
         if self.networkDomainType != nil {
             map["NetworkDomainType"] = self.networkDomainType!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.proxies != nil {
             var tmp : [Any] = []
             for k in self.proxies! {
@@ -29504,6 +30373,9 @@ public class ModifyNetworkDomainRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkDomainType"] as? String {
             self.networkDomainType = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["Proxies"] as? [Any?] {
             var tmp : [ModifyNetworkDomainRequest.Proxies] = []
@@ -29616,6 +30488,8 @@ public class ModifyPolicyRequest : Tea.TeaModel {
 
     public var priority: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -29647,6 +30521,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -29669,6 +30546,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Priority"] as? String {
             self.priority = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -29886,6 +30766,8 @@ public class ModifyRuleRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var ruleId: String?
@@ -29942,6 +30824,9 @@ public class ModifyRuleRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -30013,6 +30898,9 @@ public class ModifyRuleRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -30350,6 +31238,8 @@ public class ModifyUserGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -30376,6 +31266,9 @@ public class ModifyUserGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -30395,6 +31288,9 @@ public class ModifyUserGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -30648,6 +31544,8 @@ public class MoveDatabasesToNetworkDomainRequest : Tea.TeaModel {
 
     public var networkDomainId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -30673,6 +31571,9 @@ public class MoveDatabasesToNetworkDomainRequest : Tea.TeaModel {
         if self.networkDomainId != nil {
             map["NetworkDomainId"] = self.networkDomainId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -30689,6 +31590,9 @@ public class MoveDatabasesToNetworkDomainRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkDomainId"] as? String {
             self.networkDomainId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -30852,6 +31756,8 @@ public class MoveHostsToNetworkDomainRequest : Tea.TeaModel {
 
     public var networkDomainId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -30877,6 +31783,9 @@ public class MoveHostsToNetworkDomainRequest : Tea.TeaModel {
         if self.networkDomainId != nil {
             map["NetworkDomainId"] = self.networkDomainId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -30893,6 +31802,9 @@ public class MoveHostsToNetworkDomainRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkDomainId"] as? String {
             self.networkDomainId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -31190,6 +32102,8 @@ public class RejectApproveCommandRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -31212,6 +32126,9 @@ public class RejectApproveCommandRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -31225,6 +32142,9 @@ public class RejectApproveCommandRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -31318,6 +32238,8 @@ public class RejectOperationTaskApprovalRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -31340,6 +32262,9 @@ public class RejectOperationTaskApprovalRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -31353,6 +32278,9 @@ public class RejectOperationTaskApprovalRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -31516,6 +32444,8 @@ public class RejectOperationTicketRequest : Tea.TeaModel {
 
     public var operationTicketId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -31541,6 +32471,9 @@ public class RejectOperationTicketRequest : Tea.TeaModel {
         if self.operationTicketId != nil {
             map["OperationTicketId"] = self.operationTicketId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -31557,6 +32490,9 @@ public class RejectOperationTicketRequest : Tea.TeaModel {
         }
         if let value = dict["OperationTicketId"] as? String {
             self.operationTicketId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -31864,6 +32800,8 @@ public class RemoveHostsFromGroupRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -31889,6 +32827,9 @@ public class RemoveHostsFromGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -31905,6 +32846,9 @@ public class RemoveHostsFromGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -32200,6 +33144,8 @@ public class RemoveInstanceRdMemberResponse : Tea.TeaModel {
 public class RemoveUsersFromGroupRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var userGroupId: String?
@@ -32223,6 +33169,9 @@ public class RemoveUsersFromGroupRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -32239,6 +33188,9 @@ public class RemoveUsersFromGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -32414,6 +33366,8 @@ public class RenewAssetOperationTokenRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var token: String?
+
     public var tokenId: String?
 
     public override init() {
@@ -32436,6 +33390,9 @@ public class RenewAssetOperationTokenRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
         if self.tokenId != nil {
             map["TokenId"] = self.tokenId!
         }
@@ -32449,6 +33406,9 @@ public class RenewAssetOperationTokenRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["Token"] as? String {
+            self.token = value
         }
         if let value = dict["TokenId"] as? String {
             self.tokenId = value
@@ -32544,6 +33504,8 @@ public class ResetHostAccountCredentialRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -32569,6 +33531,9 @@ public class ResetHostAccountCredentialRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -32585,6 +33550,9 @@ public class ResetHostAccountCredentialRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -32762,6 +33730,8 @@ public class SetPolicyAccessTimeRangeConfigRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -32788,6 +33758,9 @@ public class SetPolicyAccessTimeRangeConfigRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -32807,6 +33780,9 @@ public class SetPolicyAccessTimeRangeConfigRequest : Tea.TeaModel {
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -32819,6 +33795,8 @@ public class SetPolicyAccessTimeRangeConfigShrinkRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var policyId: String?
+
+    public var projectId: Int64?
 
     public var regionId: String?
 
@@ -32845,6 +33823,9 @@ public class SetPolicyAccessTimeRangeConfigShrinkRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -32861,6 +33842,9 @@ public class SetPolicyAccessTimeRangeConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -32986,6 +33970,8 @@ public class SetPolicyApprovalConfigRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -33012,6 +33998,9 @@ public class SetPolicyApprovalConfigRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -33031,6 +34020,9 @@ public class SetPolicyApprovalConfigRequest : Tea.TeaModel {
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -33043,6 +34035,8 @@ public class SetPolicyApprovalConfigShrinkRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var policyId: String?
+
+    public var projectId: Int64?
 
     public var regionId: String?
 
@@ -33069,6 +34063,9 @@ public class SetPolicyApprovalConfigShrinkRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -33085,6 +34082,9 @@ public class SetPolicyApprovalConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -33322,6 +34322,8 @@ public class SetPolicyAssetScopeRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var scopeType: String?
@@ -33366,6 +34368,9 @@ public class SetPolicyAssetScopeRequest : Tea.TeaModel {
         }
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -33422,6 +34427,9 @@ public class SetPolicyAssetScopeRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -33632,6 +34640,8 @@ public class SetPolicyCommandConfigRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -33658,6 +34668,9 @@ public class SetPolicyCommandConfigRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -33677,6 +34690,9 @@ public class SetPolicyCommandConfigRequest : Tea.TeaModel {
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -33689,6 +34705,8 @@ public class SetPolicyCommandConfigShrinkRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var policyId: String?
+
+    public var projectId: Int64?
 
     public var regionId: String?
 
@@ -33715,6 +34733,9 @@ public class SetPolicyCommandConfigShrinkRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -33731,6 +34752,9 @@ public class SetPolicyCommandConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -33864,6 +34888,8 @@ public class SetPolicyIPAclConfigRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public override init() {
@@ -33890,6 +34916,9 @@ public class SetPolicyIPAclConfigRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -33909,6 +34938,9 @@ public class SetPolicyIPAclConfigRequest : Tea.TeaModel {
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -33921,6 +34953,8 @@ public class SetPolicyIPAclConfigShrinkRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var policyId: String?
+
+    public var projectId: Int64?
 
     public var regionId: String?
 
@@ -33947,6 +34981,9 @@ public class SetPolicyIPAclConfigShrinkRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -33963,6 +35000,9 @@ public class SetPolicyIPAclConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -34296,6 +35336,8 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var protocolConfig: SetPolicyProtocolConfigRequest.ProtocolConfig?
 
     public var regionId: String?
@@ -34321,6 +35363,9 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.protocolConfig != nil {
             map["ProtocolConfig"] = self.protocolConfig?.toMap()
         }
@@ -34338,6 +35383,9 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
         }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
         if let value = dict["ProtocolConfig"] as? [String: Any?] {
             var model = SetPolicyProtocolConfigRequest.ProtocolConfig()
             model.fromMap(value)
@@ -34353,6 +35401,8 @@ public class SetPolicyProtocolConfigShrinkRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var policyId: String?
+
+    public var projectId: Int64?
 
     public var protocolConfigShrink: String?
 
@@ -34378,6 +35428,9 @@ public class SetPolicyProtocolConfigShrinkRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.protocolConfigShrink != nil {
             map["ProtocolConfig"] = self.protocolConfigShrink!
         }
@@ -34394,6 +35447,9 @@ public class SetPolicyProtocolConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["ProtocolConfig"] as? String {
             self.protocolConfigShrink = value
@@ -34490,6 +35546,8 @@ public class SetPolicyUserScopeRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var projectId: Int64?
+
     public var regionId: String?
 
     public var scopeType: String?
@@ -34518,6 +35576,9 @@ public class SetPolicyUserScopeRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -34540,6 +35601,9 @@ public class SetPolicyUserScopeRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
