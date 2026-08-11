@@ -3204,6 +3204,8 @@ public class CreateResponseRuleRequest : Tea.TeaModel {
 
     public var responseRulePriority: String?
 
+    public var responseRuleRemark: String?
+
     public var responseTriggerType: String?
 
     public var roleFor: Int64?
@@ -3251,6 +3253,9 @@ public class CreateResponseRuleRequest : Tea.TeaModel {
         if self.responseRulePriority != nil {
             map["ResponseRulePriority"] = self.responseRulePriority!
         }
+        if self.responseRuleRemark != nil {
+            map["ResponseRuleRemark"] = self.responseRuleRemark!
+        }
         if self.responseTriggerType != nil {
             map["ResponseTriggerType"] = self.responseTriggerType!
         }
@@ -3291,6 +3296,9 @@ public class CreateResponseRuleRequest : Tea.TeaModel {
         }
         if let value = dict["ResponseRulePriority"] as? String {
             self.responseRulePriority = value
+        }
+        if let value = dict["ResponseRuleRemark"] as? String {
+            self.responseRuleRemark = value
         }
         if let value = dict["ResponseTriggerType"] as? String {
             self.responseTriggerType = value
@@ -9962,6 +9970,514 @@ public class GetUserConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetUserConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListAlertAggregationsRequest : Tea.TeaModel {
+    public var aggregationType: String?
+
+    public var endTime: Int64?
+
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryCondition: String?
+
+    public var queryViewId: String?
+
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aggregationType != nil {
+            map["AggregationType"] = self.aggregationType!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryCondition != nil {
+            map["QueryCondition"] = self.queryCondition!
+        }
+        if self.queryViewId != nil {
+            map["QueryViewId"] = self.queryViewId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AggregationType"] as? String {
+            self.aggregationType = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["QueryCondition"] as? String {
+            self.queryCondition = value
+        }
+        if let value = dict["QueryViewId"] as? String {
+            self.queryViewId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+    }
+}
+
+public class ListAlertAggregationsResponseBody : Tea.TeaModel {
+    public class AlertAggregations : Tea.TeaModel {
+        public class DefenseActionCounts : Tea.TeaModel {
+            public var name: String?
+
+            public var value: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Value"] as? Int64 {
+                    self.value = value
+                }
+            }
+        }
+        public class StatusCounts : Tea.TeaModel {
+            public var name: String?
+
+            public var value: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Value"] as? Int64 {
+                    self.value = value
+                }
+            }
+        }
+        public var accountDisplayValues: [String]?
+
+        public var accountIds: [String]?
+
+        public var aggregationKey: String?
+
+        public var aggregationType: String?
+
+        public var alertCount: Int64?
+
+        public var attackStages: [String]?
+
+        public var defenseActionCounts: [ListAlertAggregationsResponseBody.AlertAggregations.DefenseActionCounts]?
+
+        public var firstTime: Int64?
+
+        public var latestTime: Int64?
+
+        public var primaryDisplayValue: String?
+
+        public var primaryValue: String?
+
+        public var secondaryValue: String?
+
+        public var sourceCodes: [String]?
+
+        public var statusCounts: [ListAlertAggregationsResponseBody.AlertAggregations.StatusCounts]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountDisplayValues != nil {
+                map["AccountDisplayValues"] = self.accountDisplayValues!
+            }
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.aggregationKey != nil {
+                map["AggregationKey"] = self.aggregationKey!
+            }
+            if self.aggregationType != nil {
+                map["AggregationType"] = self.aggregationType!
+            }
+            if self.alertCount != nil {
+                map["AlertCount"] = self.alertCount!
+            }
+            if self.attackStages != nil {
+                map["AttackStages"] = self.attackStages!
+            }
+            if self.defenseActionCounts != nil {
+                var tmp : [Any] = []
+                for k in self.defenseActionCounts! {
+                    tmp.append(k.toMap())
+                }
+                map["DefenseActionCounts"] = tmp
+            }
+            if self.firstTime != nil {
+                map["FirstTime"] = self.firstTime!
+            }
+            if self.latestTime != nil {
+                map["LatestTime"] = self.latestTime!
+            }
+            if self.primaryDisplayValue != nil {
+                map["PrimaryDisplayValue"] = self.primaryDisplayValue!
+            }
+            if self.primaryValue != nil {
+                map["PrimaryValue"] = self.primaryValue!
+            }
+            if self.secondaryValue != nil {
+                map["SecondaryValue"] = self.secondaryValue!
+            }
+            if self.sourceCodes != nil {
+                map["SourceCodes"] = self.sourceCodes!
+            }
+            if self.statusCounts != nil {
+                var tmp : [Any] = []
+                for k in self.statusCounts! {
+                    tmp.append(k.toMap())
+                }
+                map["StatusCounts"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountDisplayValues"] as? [String] {
+                self.accountDisplayValues = value
+            }
+            if let value = dict["AccountIds"] as? [String] {
+                self.accountIds = value
+            }
+            if let value = dict["AggregationKey"] as? String {
+                self.aggregationKey = value
+            }
+            if let value = dict["AggregationType"] as? String {
+                self.aggregationType = value
+            }
+            if let value = dict["AlertCount"] as? Int64 {
+                self.alertCount = value
+            }
+            if let value = dict["AttackStages"] as? [String] {
+                self.attackStages = value
+            }
+            if let value = dict["DefenseActionCounts"] as? [Any?] {
+                var tmp : [ListAlertAggregationsResponseBody.AlertAggregations.DefenseActionCounts] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListAlertAggregationsResponseBody.AlertAggregations.DefenseActionCounts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.defenseActionCounts = tmp
+            }
+            if let value = dict["FirstTime"] as? Int64 {
+                self.firstTime = value
+            }
+            if let value = dict["LatestTime"] as? Int64 {
+                self.latestTime = value
+            }
+            if let value = dict["PrimaryDisplayValue"] as? String {
+                self.primaryDisplayValue = value
+            }
+            if let value = dict["PrimaryValue"] as? String {
+                self.primaryValue = value
+            }
+            if let value = dict["SecondaryValue"] as? String {
+                self.secondaryValue = value
+            }
+            if let value = dict["SourceCodes"] as? [String] {
+                self.sourceCodes = value
+            }
+            if let value = dict["StatusCounts"] as? [Any?] {
+                var tmp : [ListAlertAggregationsResponseBody.AlertAggregations.StatusCounts] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListAlertAggregationsResponseBody.AlertAggregations.StatusCounts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.statusCounts = tmp
+            }
+        }
+    }
+    public var alertAggregations: [ListAlertAggregationsResponseBody.AlertAggregations]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertAggregations != nil {
+            var tmp : [Any] = []
+            for k in self.alertAggregations! {
+                tmp.append(k.toMap())
+            }
+            map["AlertAggregations"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AlertAggregations"] as? [Any?] {
+            var tmp : [ListAlertAggregationsResponseBody.AlertAggregations] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAlertAggregationsResponseBody.AlertAggregations()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.alertAggregations = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAlertAggregationsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAlertAggregationsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAlertAggregationsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -20449,6 +20965,8 @@ public class ListResponseRulesResponseBody : Tea.TeaModel {
 
         public var responseRulePriority: Int32?
 
+        public var responseRuleRemark: String?
+
         public var responseRuleStatus: Int32?
 
         public var responseRuleType: String?
@@ -20492,6 +21010,9 @@ public class ListResponseRulesResponseBody : Tea.TeaModel {
             if self.responseRulePriority != nil {
                 map["ResponseRulePriority"] = self.responseRulePriority!
             }
+            if self.responseRuleRemark != nil {
+                map["ResponseRuleRemark"] = self.responseRuleRemark!
+            }
             if self.responseRuleStatus != nil {
                 map["ResponseRuleStatus"] = self.responseRuleStatus!
             }
@@ -20529,6 +21050,9 @@ public class ListResponseRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResponseRulePriority"] as? Int32 {
                 self.responseRulePriority = value
+            }
+            if let value = dict["ResponseRuleRemark"] as? String {
+                self.responseRuleRemark = value
             }
             if let value = dict["ResponseRuleStatus"] as? Int32 {
                 self.responseRuleStatus = value
@@ -26484,6 +27008,8 @@ public class UpdateResponseRuleRequest : Tea.TeaModel {
 
     public var responseRulePriority: Int32?
 
+    public var responseRuleRemark: String?
+
     public var responseRuleStatus: Int32?
 
     public var responseTriggerType: String?
@@ -26532,6 +27058,9 @@ public class UpdateResponseRuleRequest : Tea.TeaModel {
         if self.responseRulePriority != nil {
             map["ResponseRulePriority"] = self.responseRulePriority!
         }
+        if self.responseRuleRemark != nil {
+            map["ResponseRuleRemark"] = self.responseRuleRemark!
+        }
         if self.responseRuleStatus != nil {
             map["ResponseRuleStatus"] = self.responseRuleStatus!
         }
@@ -26572,6 +27101,9 @@ public class UpdateResponseRuleRequest : Tea.TeaModel {
         }
         if let value = dict["ResponseRulePriority"] as? Int32 {
             self.responseRulePriority = value
+        }
+        if let value = dict["ResponseRuleRemark"] as? String {
+            self.responseRuleRemark = value
         }
         if let value = dict["ResponseRuleStatus"] as? Int32 {
             self.responseRuleStatus = value
