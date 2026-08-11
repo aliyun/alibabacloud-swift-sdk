@@ -6250,6 +6250,184 @@ public class GetDetectConfigResponse : Tea.TeaModel {
     }
 }
 
+public class GetEncryptionConfigRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetEncryptionConfigResponseBody : Tea.TeaModel {
+    public class Config : Tea.TeaModel {
+        public var alias: String?
+
+        public var creator: String?
+
+        public var keyArn: String?
+
+        public var keyId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alias != nil {
+                map["alias"] = self.alias!
+            }
+            if self.creator != nil {
+                map["creator"] = self.creator!
+            }
+            if self.keyArn != nil {
+                map["keyArn"] = self.keyArn!
+            }
+            if self.keyId != nil {
+                map["keyId"] = self.keyId!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["alias"] as? String {
+                self.alias = value
+            }
+            if let value = dict["creator"] as? String {
+                self.creator = value
+            }
+            if let value = dict["keyArn"] as? String {
+                self.keyArn = value
+            }
+            if let value = dict["keyId"] as? String {
+                self.keyId = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var config: GetEncryptionConfigResponseBody.Config?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.config?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.config != nil {
+            map["config"] = self.config?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["config"] as? [String: Any?] {
+            var model = GetEncryptionConfigResponseBody.Config()
+            model.fromMap(value)
+            self.config = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetEncryptionConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetEncryptionConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetEncryptionConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetExecuteStateRequest : Tea.TeaModel {
 
     public override init() {
@@ -11060,6 +11238,8 @@ public class GetStackExecutionResultResponseBody : Tea.TeaModel {
         }
         public var deployments: [GetStackExecutionResultResponseBody.StackResults.Deployments]?
 
+        public var errorCode: String?
+
         public var message: String?
 
         public var stackId: String?
@@ -11088,6 +11268,9 @@ public class GetStackExecutionResultResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["deployments"] = tmp
+            }
+            if self.errorCode != nil {
+                map["errorCode"] = self.errorCode!
             }
             if self.message != nil {
                 map["message"] = self.message!
@@ -11118,6 +11301,9 @@ public class GetStackExecutionResultResponseBody : Tea.TeaModel {
                     }
                 }
                 self.deployments = tmp
+            }
+            if let value = dict["errorCode"] as? String {
+                self.errorCode = value
             }
             if let value = dict["message"] as? String {
                 self.message = value
@@ -21802,6 +21988,134 @@ public class RemoveSharedAccountsResponse : Tea.TeaModel {
     }
 }
 
+public class SetEncryptionConfigRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var kmsKeyId: String?
+
+    public var kmsRegionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.kmsKeyId != nil {
+            map["kmsKeyId"] = self.kmsKeyId!
+        }
+        if self.kmsRegionId != nil {
+            map["kmsRegionId"] = self.kmsRegionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["kmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
+        if let value = dict["kmsRegionId"] as? String {
+            self.kmsRegionId = value
+        }
+    }
+}
+
+public class SetEncryptionConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class SetEncryptionConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetEncryptionConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SetEncryptionConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class TriggerStackExecutionRequest : Tea.TeaModel {
     public var action: String?
 
@@ -21812,6 +22126,8 @@ public class TriggerStackExecutionRequest : Tea.TeaModel {
     public var codePackagePath: String?
 
     public var codeVersionId: String?
+
+    public var sourceTriggerId: String?
 
     public override init() {
         super.init()
@@ -21842,6 +22158,9 @@ public class TriggerStackExecutionRequest : Tea.TeaModel {
         if self.codeVersionId != nil {
             map["codeVersionId"] = self.codeVersionId!
         }
+        if self.sourceTriggerId != nil {
+            map["sourceTriggerId"] = self.sourceTriggerId!
+        }
         return map
     }
 
@@ -21861,6 +22180,9 @@ public class TriggerStackExecutionRequest : Tea.TeaModel {
         }
         if let value = dict["codeVersionId"] as? String {
             self.codeVersionId = value
+        }
+        if let value = dict["sourceTriggerId"] as? String {
+            self.sourceTriggerId = value
         }
     }
 }
