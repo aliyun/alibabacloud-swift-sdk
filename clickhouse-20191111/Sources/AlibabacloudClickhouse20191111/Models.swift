@@ -7722,6 +7722,8 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
         public var backupMethod: String?
 
+        public var backupScheduleType: String?
+
         public var backupSetInfo: String?
 
         public var backupSize: Int64?
@@ -7759,6 +7761,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
             if self.backupMethod != nil {
                 map["BackupMethod"] = self.backupMethod!
             }
+            if self.backupScheduleType != nil {
+                map["BackupScheduleType"] = self.backupScheduleType!
+            }
             if self.backupSetInfo != nil {
                 map["BackupSetInfo"] = self.backupSetInfo!
             }
@@ -7793,6 +7798,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["BackupMethod"] as? String {
                 self.backupMethod = value
+            }
+            if let value = dict["BackupScheduleType"] as? String {
+                self.backupScheduleType = value
             }
             if let value = dict["BackupSetInfo"] as? String {
                 self.backupSetInfo = value
@@ -8894,6 +8902,36 @@ public class DescribeDBClusterAttributeRequest : Tea.TeaModel {
 
 public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     public class DBCluster : Tea.TeaModel {
+        public class LangfuseInstanceIds : Tea.TeaModel {
+            public var langfuseInstanceId: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.langfuseInstanceId != nil {
+                    map["LangfuseInstanceId"] = self.langfuseInstanceId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LangfuseInstanceId"] as? [String] {
+                    self.langfuseInstanceId = value
+                }
+            }
+        }
         public class ScaleOutStatus : Tea.TeaModel {
             public var progress: String?
 
@@ -9076,6 +9114,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var isExpired: String?
 
+        public var langfuseInstanceIds: DescribeDBClusterAttributeResponseBody.DBCluster.LangfuseInstanceIds?
+
         public var lbKind: String?
 
         public var lockMode: String?
@@ -9142,6 +9182,7 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.langfuseInstanceIds?.validate()
             try self.scaleOutStatus?.validate()
             try self.tags?.validate()
         }
@@ -9240,6 +9281,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if self.isExpired != nil {
                 map["IsExpired"] = self.isExpired!
+            }
+            if self.langfuseInstanceIds != nil {
+                map["LangfuseInstanceIds"] = self.langfuseInstanceIds?.toMap()
             }
             if self.lbKind != nil {
                 map["LbKind"] = self.lbKind!
@@ -9422,6 +9466,11 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsExpired"] as? String {
                 self.isExpired = value
+            }
+            if let value = dict["LangfuseInstanceIds"] as? [String: Any?] {
+                var model = DescribeDBClusterAttributeResponseBody.DBCluster.LangfuseInstanceIds()
+                model.fromMap(value)
+                self.langfuseInstanceIds = model
             }
             if let value = dict["LbKind"] as? String {
                 self.lbKind = value
