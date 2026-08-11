@@ -6262,6 +6262,813 @@ public class EnterpriseContactQueryPageListResponse : Tea.TeaModel {
     }
 }
 
+public class EnterpriseOrgCreateNodeRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var ext: [String: Any]?
+
+    public var isOpenApi: Bool?
+
+    public var nodeId: String?
+
+    public var nodeName: String?
+
+    public var nodeType: String?
+
+    public var orientedEcId: String?
+
+    public var orientedLeId: String?
+
+    public var orientedNbId: String?
+
+    public var parentNodeId: String?
+
+    public var parentNodeType: String?
+
+    public var showCompleteInfo: Bool?
+
+    public var treeId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.ext != nil {
+            map["Ext"] = self.ext!
+        }
+        if self.isOpenApi != nil {
+            map["IsOpenApi"] = self.isOpenApi!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.nodeName != nil {
+            map["NodeName"] = self.nodeName!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.orientedEcId != nil {
+            map["OrientedEcId"] = self.orientedEcId!
+        }
+        if self.orientedLeId != nil {
+            map["OrientedLeId"] = self.orientedLeId!
+        }
+        if self.orientedNbId != nil {
+            map["OrientedNbId"] = self.orientedNbId!
+        }
+        if self.parentNodeId != nil {
+            map["ParentNodeId"] = self.parentNodeId!
+        }
+        if self.parentNodeType != nil {
+            map["ParentNodeType"] = self.parentNodeType!
+        }
+        if self.showCompleteInfo != nil {
+            map["ShowCompleteInfo"] = self.showCompleteInfo!
+        }
+        if self.treeId != nil {
+            map["TreeId"] = self.treeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["Ext"] as? [String: Any] {
+            self.ext = value
+        }
+        if let value = dict["IsOpenApi"] as? Bool {
+            self.isOpenApi = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+        if let value = dict["NodeName"] as? String {
+            self.nodeName = value
+        }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
+        if let value = dict["OrientedEcId"] as? String {
+            self.orientedEcId = value
+        }
+        if let value = dict["OrientedLeId"] as? String {
+            self.orientedLeId = value
+        }
+        if let value = dict["OrientedNbId"] as? String {
+            self.orientedNbId = value
+        }
+        if let value = dict["ParentNodeId"] as? String {
+            self.parentNodeId = value
+        }
+        if let value = dict["ParentNodeType"] as? String {
+            self.parentNodeType = value
+        }
+        if let value = dict["ShowCompleteInfo"] as? Bool {
+            self.showCompleteInfo = value
+        }
+        if let value = dict["TreeId"] as? Int64 {
+            self.treeId = value
+        }
+    }
+}
+
+public class EnterpriseOrgCreateNodeShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var extShrink: String?
+
+    public var isOpenApi: Bool?
+
+    public var nodeId: String?
+
+    public var nodeName: String?
+
+    public var nodeType: String?
+
+    public var orientedEcId: String?
+
+    public var orientedLeId: String?
+
+    public var orientedNbId: String?
+
+    public var parentNodeId: String?
+
+    public var parentNodeType: String?
+
+    public var showCompleteInfo: Bool?
+
+    public var treeId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.extShrink != nil {
+            map["Ext"] = self.extShrink!
+        }
+        if self.isOpenApi != nil {
+            map["IsOpenApi"] = self.isOpenApi!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.nodeName != nil {
+            map["NodeName"] = self.nodeName!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.orientedEcId != nil {
+            map["OrientedEcId"] = self.orientedEcId!
+        }
+        if self.orientedLeId != nil {
+            map["OrientedLeId"] = self.orientedLeId!
+        }
+        if self.orientedNbId != nil {
+            map["OrientedNbId"] = self.orientedNbId!
+        }
+        if self.parentNodeId != nil {
+            map["ParentNodeId"] = self.parentNodeId!
+        }
+        if self.parentNodeType != nil {
+            map["ParentNodeType"] = self.parentNodeType!
+        }
+        if self.showCompleteInfo != nil {
+            map["ShowCompleteInfo"] = self.showCompleteInfo!
+        }
+        if self.treeId != nil {
+            map["TreeId"] = self.treeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["Ext"] as? String {
+            self.extShrink = value
+        }
+        if let value = dict["IsOpenApi"] as? Bool {
+            self.isOpenApi = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+        if let value = dict["NodeName"] as? String {
+            self.nodeName = value
+        }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
+        if let value = dict["OrientedEcId"] as? String {
+            self.orientedEcId = value
+        }
+        if let value = dict["OrientedLeId"] as? String {
+            self.orientedLeId = value
+        }
+        if let value = dict["OrientedNbId"] as? String {
+            self.orientedNbId = value
+        }
+        if let value = dict["ParentNodeId"] as? String {
+            self.parentNodeId = value
+        }
+        if let value = dict["ParentNodeType"] as? String {
+            self.parentNodeType = value
+        }
+        if let value = dict["ShowCompleteInfo"] as? Bool {
+            self.showCompleteInfo = value
+        }
+        if let value = dict["TreeId"] as? Int64 {
+            self.treeId = value
+        }
+    }
+}
+
+public class EnterpriseOrgCreateNodeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var gmtCreate: String?
+
+        public var id: Int64?
+
+        public var nodeId: String?
+
+        public var nodeName: String?
+
+        public var nodeType: String?
+
+        public var parentNodeId: String?
+
+        public var parentNodeType: String?
+
+        public var treeId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.nodeId != nil {
+                map["NodeId"] = self.nodeId!
+            }
+            if self.nodeName != nil {
+                map["NodeName"] = self.nodeName!
+            }
+            if self.nodeType != nil {
+                map["NodeType"] = self.nodeType!
+            }
+            if self.parentNodeId != nil {
+                map["ParentNodeId"] = self.parentNodeId!
+            }
+            if self.parentNodeType != nil {
+                map["ParentNodeType"] = self.parentNodeType!
+            }
+            if self.treeId != nil {
+                map["TreeId"] = self.treeId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["NodeId"] as? String {
+                self.nodeId = value
+            }
+            if let value = dict["NodeName"] as? String {
+                self.nodeName = value
+            }
+            if let value = dict["NodeType"] as? String {
+                self.nodeType = value
+            }
+            if let value = dict["ParentNodeId"] as? String {
+                self.parentNodeId = value
+            }
+            if let value = dict["ParentNodeType"] as? String {
+                self.parentNodeType = value
+            }
+            if let value = dict["TreeId"] as? Int64 {
+                self.treeId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: EnterpriseOrgCreateNodeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = EnterpriseOrgCreateNodeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class EnterpriseOrgCreateNodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnterpriseOrgCreateNodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnterpriseOrgCreateNodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnterpriseOrgDeleteNodeRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var ext: [String: Any]?
+
+    public var isOpenApi: Bool?
+
+    public var nodeId: String?
+
+    public var nodeType: String?
+
+    public var orientedEcId: String?
+
+    public var orientedLeId: String?
+
+    public var orientedNbId: String?
+
+    public var showCompleteInfo: Bool?
+
+    public var treeId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.ext != nil {
+            map["Ext"] = self.ext!
+        }
+        if self.isOpenApi != nil {
+            map["IsOpenApi"] = self.isOpenApi!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.orientedEcId != nil {
+            map["OrientedEcId"] = self.orientedEcId!
+        }
+        if self.orientedLeId != nil {
+            map["OrientedLeId"] = self.orientedLeId!
+        }
+        if self.orientedNbId != nil {
+            map["OrientedNbId"] = self.orientedNbId!
+        }
+        if self.showCompleteInfo != nil {
+            map["ShowCompleteInfo"] = self.showCompleteInfo!
+        }
+        if self.treeId != nil {
+            map["TreeId"] = self.treeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["Ext"] as? [String: Any] {
+            self.ext = value
+        }
+        if let value = dict["IsOpenApi"] as? Bool {
+            self.isOpenApi = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
+        if let value = dict["OrientedEcId"] as? String {
+            self.orientedEcId = value
+        }
+        if let value = dict["OrientedLeId"] as? String {
+            self.orientedLeId = value
+        }
+        if let value = dict["OrientedNbId"] as? String {
+            self.orientedNbId = value
+        }
+        if let value = dict["ShowCompleteInfo"] as? Bool {
+            self.showCompleteInfo = value
+        }
+        if let value = dict["TreeId"] as? Int64 {
+            self.treeId = value
+        }
+    }
+}
+
+public class EnterpriseOrgDeleteNodeShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var extShrink: String?
+
+    public var isOpenApi: Bool?
+
+    public var nodeId: String?
+
+    public var nodeType: String?
+
+    public var orientedEcId: String?
+
+    public var orientedLeId: String?
+
+    public var orientedNbId: String?
+
+    public var showCompleteInfo: Bool?
+
+    public var treeId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.extShrink != nil {
+            map["Ext"] = self.extShrink!
+        }
+        if self.isOpenApi != nil {
+            map["IsOpenApi"] = self.isOpenApi!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.orientedEcId != nil {
+            map["OrientedEcId"] = self.orientedEcId!
+        }
+        if self.orientedLeId != nil {
+            map["OrientedLeId"] = self.orientedLeId!
+        }
+        if self.orientedNbId != nil {
+            map["OrientedNbId"] = self.orientedNbId!
+        }
+        if self.showCompleteInfo != nil {
+            map["ShowCompleteInfo"] = self.showCompleteInfo!
+        }
+        if self.treeId != nil {
+            map["TreeId"] = self.treeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["Ext"] as? String {
+            self.extShrink = value
+        }
+        if let value = dict["IsOpenApi"] as? Bool {
+            self.isOpenApi = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
+        if let value = dict["OrientedEcId"] as? String {
+            self.orientedEcId = value
+        }
+        if let value = dict["OrientedLeId"] as? String {
+            self.orientedLeId = value
+        }
+        if let value = dict["OrientedNbId"] as? String {
+            self.orientedNbId = value
+        }
+        if let value = dict["ShowCompleteInfo"] as? Bool {
+            self.showCompleteInfo = value
+        }
+        if let value = dict["TreeId"] as? Int64 {
+            self.treeId = value
+        }
+    }
+}
+
+public class EnterpriseOrgDeleteNodeResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class EnterpriseOrgDeleteNodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnterpriseOrgDeleteNodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnterpriseOrgDeleteNodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class EnterpriseOrgQueryLoadTreeRequest : Tea.TeaModel {
     public var encryptTicket: String?
 
@@ -6440,6 +7247,357 @@ public class EnterpriseOrgQueryLoadTreeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = EnterpriseOrgQueryLoadTreeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnterpriseOrgRenameNodeRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var ext: [String: Any]?
+
+    public var isOpenApi: Bool?
+
+    public var nodeId: String?
+
+    public var nodeName: String?
+
+    public var nodeType: String?
+
+    public var orientedEcId: String?
+
+    public var orientedLeId: String?
+
+    public var orientedNbId: String?
+
+    public var showCompleteInfo: Bool?
+
+    public var treeId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.ext != nil {
+            map["Ext"] = self.ext!
+        }
+        if self.isOpenApi != nil {
+            map["IsOpenApi"] = self.isOpenApi!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.nodeName != nil {
+            map["NodeName"] = self.nodeName!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.orientedEcId != nil {
+            map["OrientedEcId"] = self.orientedEcId!
+        }
+        if self.orientedLeId != nil {
+            map["OrientedLeId"] = self.orientedLeId!
+        }
+        if self.orientedNbId != nil {
+            map["OrientedNbId"] = self.orientedNbId!
+        }
+        if self.showCompleteInfo != nil {
+            map["ShowCompleteInfo"] = self.showCompleteInfo!
+        }
+        if self.treeId != nil {
+            map["TreeId"] = self.treeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["Ext"] as? [String: Any] {
+            self.ext = value
+        }
+        if let value = dict["IsOpenApi"] as? Bool {
+            self.isOpenApi = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+        if let value = dict["NodeName"] as? String {
+            self.nodeName = value
+        }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
+        if let value = dict["OrientedEcId"] as? String {
+            self.orientedEcId = value
+        }
+        if let value = dict["OrientedLeId"] as? String {
+            self.orientedLeId = value
+        }
+        if let value = dict["OrientedNbId"] as? String {
+            self.orientedNbId = value
+        }
+        if let value = dict["ShowCompleteInfo"] as? Bool {
+            self.showCompleteInfo = value
+        }
+        if let value = dict["TreeId"] as? Int64 {
+            self.treeId = value
+        }
+    }
+}
+
+public class EnterpriseOrgRenameNodeShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var extShrink: String?
+
+    public var isOpenApi: Bool?
+
+    public var nodeId: String?
+
+    public var nodeName: String?
+
+    public var nodeType: String?
+
+    public var orientedEcId: String?
+
+    public var orientedLeId: String?
+
+    public var orientedNbId: String?
+
+    public var showCompleteInfo: Bool?
+
+    public var treeId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.extShrink != nil {
+            map["Ext"] = self.extShrink!
+        }
+        if self.isOpenApi != nil {
+            map["IsOpenApi"] = self.isOpenApi!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.nodeName != nil {
+            map["NodeName"] = self.nodeName!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.orientedEcId != nil {
+            map["OrientedEcId"] = self.orientedEcId!
+        }
+        if self.orientedLeId != nil {
+            map["OrientedLeId"] = self.orientedLeId!
+        }
+        if self.orientedNbId != nil {
+            map["OrientedNbId"] = self.orientedNbId!
+        }
+        if self.showCompleteInfo != nil {
+            map["ShowCompleteInfo"] = self.showCompleteInfo!
+        }
+        if self.treeId != nil {
+            map["TreeId"] = self.treeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["Ext"] as? String {
+            self.extShrink = value
+        }
+        if let value = dict["IsOpenApi"] as? Bool {
+            self.isOpenApi = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+        if let value = dict["NodeName"] as? String {
+            self.nodeName = value
+        }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
+        if let value = dict["OrientedEcId"] as? String {
+            self.orientedEcId = value
+        }
+        if let value = dict["OrientedLeId"] as? String {
+            self.orientedLeId = value
+        }
+        if let value = dict["OrientedNbId"] as? String {
+            self.orientedNbId = value
+        }
+        if let value = dict["ShowCompleteInfo"] as? Bool {
+            self.showCompleteInfo = value
+        }
+        if let value = dict["TreeId"] as? Int64 {
+            self.treeId = value
+        }
+    }
+}
+
+public class EnterpriseOrgRenameNodeResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class EnterpriseOrgRenameNodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnterpriseOrgRenameNodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnterpriseOrgRenameNodeResponseBody()
             model.fromMap(value)
             self.body = model
         }

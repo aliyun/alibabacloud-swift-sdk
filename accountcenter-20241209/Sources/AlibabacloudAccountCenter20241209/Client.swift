@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "ap-southeast-1": "accountcenter-intl.aliyuncs.com",
+            "cn-hangzhou": "accountcenter.cn-hangzhou.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("accountcenter", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1312,6 +1316,147 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseOrgCreateNodeWithOptions(_ tmpReq: EnterpriseOrgCreateNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseOrgCreateNodeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: EnterpriseOrgCreateNodeShrinkRequest = EnterpriseOrgCreateNodeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ext)) {
+            request.extShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ext, "Ext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizName)) {
+            body["BizName"] = request.bizName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extShrink)) {
+            body["Ext"] = request.extShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isOpenApi)) {
+            body["IsOpenApi"] = request.isOpenApi!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            body["NodeId"] = request.nodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeName)) {
+            body["NodeName"] = request.nodeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeType)) {
+            body["NodeType"] = request.nodeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentNodeId)) {
+            body["ParentNodeId"] = request.parentNodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentNodeType)) {
+            body["ParentNodeType"] = request.parentNodeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showCompleteInfo)) {
+            body["ShowCompleteInfo"] = request.showCompleteInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.treeId)) {
+            body["TreeId"] = request.treeId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseOrgCreateNode",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseOrgCreateNodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseOrgCreateNode(_ request: EnterpriseOrgCreateNodeRequest) async throws -> EnterpriseOrgCreateNodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseOrgCreateNodeWithOptions(request as! EnterpriseOrgCreateNodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseOrgDeleteNodeWithOptions(_ tmpReq: EnterpriseOrgDeleteNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseOrgDeleteNodeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: EnterpriseOrgDeleteNodeShrinkRequest = EnterpriseOrgDeleteNodeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ext)) {
+            request.extShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ext, "Ext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizName)) {
+            body["BizName"] = request.bizName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extShrink)) {
+            body["Ext"] = request.extShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isOpenApi)) {
+            body["IsOpenApi"] = request.isOpenApi!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            body["NodeId"] = request.nodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeType)) {
+            body["NodeType"] = request.nodeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showCompleteInfo)) {
+            body["ShowCompleteInfo"] = request.showCompleteInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.treeId)) {
+            body["TreeId"] = request.treeId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseOrgDeleteNode",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseOrgDeleteNodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseOrgDeleteNode(_ request: EnterpriseOrgDeleteNodeRequest) async throws -> EnterpriseOrgDeleteNodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseOrgDeleteNodeWithOptions(request as! EnterpriseOrgDeleteNodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enterpriseOrgQueryLoadTreeWithOptions(_ request: EnterpriseOrgQueryLoadTreeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseOrgQueryLoadTreeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1357,6 +1502,75 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enterpriseOrgQueryLoadTree(_ request: EnterpriseOrgQueryLoadTreeRequest) async throws -> EnterpriseOrgQueryLoadTreeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await enterpriseOrgQueryLoadTreeWithOptions(request as! EnterpriseOrgQueryLoadTreeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseOrgRenameNodeWithOptions(_ tmpReq: EnterpriseOrgRenameNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseOrgRenameNodeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: EnterpriseOrgRenameNodeShrinkRequest = EnterpriseOrgRenameNodeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ext)) {
+            request.extShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ext, "Ext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizName)) {
+            body["BizName"] = request.bizName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extShrink)) {
+            body["Ext"] = request.extShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isOpenApi)) {
+            body["IsOpenApi"] = request.isOpenApi!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            body["NodeId"] = request.nodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeName)) {
+            body["NodeName"] = request.nodeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeType)) {
+            body["NodeType"] = request.nodeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showCompleteInfo)) {
+            body["ShowCompleteInfo"] = request.showCompleteInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.treeId)) {
+            body["TreeId"] = request.treeId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseOrgRenameNode",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseOrgRenameNodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseOrgRenameNode(_ request: EnterpriseOrgRenameNodeRequest) async throws -> EnterpriseOrgRenameNodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseOrgRenameNodeWithOptions(request as! EnterpriseOrgRenameNodeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
