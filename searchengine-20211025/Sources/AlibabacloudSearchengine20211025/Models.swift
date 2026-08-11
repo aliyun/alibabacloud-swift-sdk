@@ -16003,6 +16003,8 @@ public class ListDateSourceGenerationsResponseBody : Tea.TeaModel {
 
         public var generation: Int64?
 
+        public var outPutType: String?
+
         public var partition: [String: Int32]?
 
         public var status: String?
@@ -16035,6 +16037,9 @@ public class ListDateSourceGenerationsResponseBody : Tea.TeaModel {
             if self.generation != nil {
                 map["generation"] = self.generation!
             }
+            if self.outPutType != nil {
+                map["outPutType"] = self.outPutType!
+            }
             if self.partition != nil {
                 map["partition"] = self.partition!
             }
@@ -16060,6 +16065,9 @@ public class ListDateSourceGenerationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["generation"] as? Int64 {
                 self.generation = value
+            }
+            if let value = dict["outPutType"] as? String {
+                self.outPutType = value
             }
             if let value = dict["partition"] as? [String: Int32] {
                 self.partition = value
@@ -25966,6 +25974,8 @@ public class PushDocumentsResponse : Tea.TeaModel {
 }
 
 public class RecoverIndexRequest : Tea.TeaModel {
+    public var bucket: String?
+
     public var buildDeployId: Int32?
 
     public var dataSourceName: String?
@@ -25973,6 +25983,20 @@ public class RecoverIndexRequest : Tea.TeaModel {
     public var generation: String?
 
     public var indexName: String?
+
+    public var odpsAccessId: String?
+
+    public var odpsAccessKey: String?
+
+    public var odpsPartition: String?
+
+    public var odpsProject: String?
+
+    public var odpsTable: String?
+
+    public var outPutType: String?
+
+    public var path: String?
 
     public override init() {
         super.init()
@@ -25988,6 +26012,9 @@ public class RecoverIndexRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bucket != nil {
+            map["bucket"] = self.bucket!
+        }
         if self.buildDeployId != nil {
             map["buildDeployId"] = self.buildDeployId!
         }
@@ -26000,11 +26027,35 @@ public class RecoverIndexRequest : Tea.TeaModel {
         if self.indexName != nil {
             map["indexName"] = self.indexName!
         }
+        if self.odpsAccessId != nil {
+            map["odpsAccessId"] = self.odpsAccessId!
+        }
+        if self.odpsAccessKey != nil {
+            map["odpsAccessKey"] = self.odpsAccessKey!
+        }
+        if self.odpsPartition != nil {
+            map["odpsPartition"] = self.odpsPartition!
+        }
+        if self.odpsProject != nil {
+            map["odpsProject"] = self.odpsProject!
+        }
+        if self.odpsTable != nil {
+            map["odpsTable"] = self.odpsTable!
+        }
+        if self.outPutType != nil {
+            map["outPutType"] = self.outPutType!
+        }
+        if self.path != nil {
+            map["path"] = self.path!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["bucket"] as? String {
+            self.bucket = value
+        }
         if let value = dict["buildDeployId"] as? Int32 {
             self.buildDeployId = value
         }
@@ -26016,6 +26067,27 @@ public class RecoverIndexRequest : Tea.TeaModel {
         }
         if let value = dict["indexName"] as? String {
             self.indexName = value
+        }
+        if let value = dict["odpsAccessId"] as? String {
+            self.odpsAccessId = value
+        }
+        if let value = dict["odpsAccessKey"] as? String {
+            self.odpsAccessKey = value
+        }
+        if let value = dict["odpsPartition"] as? String {
+            self.odpsPartition = value
+        }
+        if let value = dict["odpsProject"] as? String {
+            self.odpsProject = value
+        }
+        if let value = dict["odpsTable"] as? String {
+            self.odpsTable = value
+        }
+        if let value = dict["outPutType"] as? String {
+            self.outPutType = value
+        }
+        if let value = dict["path"] as? String {
+            self.path = value
         }
     }
 }

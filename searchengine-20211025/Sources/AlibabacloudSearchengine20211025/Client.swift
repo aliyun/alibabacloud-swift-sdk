@@ -8,7 +8,17 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "ap-southeast-1": "searchengine.ap-southeast-1.aliyuncs.com",
+            "cn-beijing": "searchengine.cn-beijing.aliyuncs.com",
+            "cn-hangzhou": "searchengine.cn-hangzhou.aliyuncs.com",
+            "cn-shanghai": "searchengine.cn-shanghai.aliyuncs.com",
+            "cn-shenzhen": "searchengine.cn-shenzhen.aliyuncs.com",
+            "cn-hongkong": "searchengine.cn-hongkong.aliyuncs.com",
+            "cn-zhangjiakou": "searchengine.cn-zhangjiakou.aliyuncs.com",
+            "eu-central-1": "searchengine.eu-central-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("searchengine", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -3700,6 +3710,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recoverIndexWithOptions(_ instanceId: String, _ request: RecoverIndexRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RecoverIndexResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucket)) {
+            body["bucket"] = request.bucket ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.buildDeployId)) {
             body["buildDeployId"] = request.buildDeployId!;
         }
@@ -3711,6 +3724,27 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.indexName)) {
             body["indexName"] = request.indexName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.odpsAccessId)) {
+            body["odpsAccessId"] = request.odpsAccessId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.odpsAccessKey)) {
+            body["odpsAccessKey"] = request.odpsAccessKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.odpsPartition)) {
+            body["odpsPartition"] = request.odpsPartition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.odpsProject)) {
+            body["odpsProject"] = request.odpsProject ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.odpsTable)) {
+            body["odpsTable"] = request.odpsTable ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outPutType)) {
+            body["outPutType"] = request.outPutType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            body["path"] = request.path ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
