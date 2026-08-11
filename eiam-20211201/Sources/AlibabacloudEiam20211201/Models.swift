@@ -4461,6 +4461,8 @@ public class CreateAuthorizationRuleRequest : Tea.TeaModel {
 
     public var authorizationRuleName: String?
 
+    public var authorizationRuleScenarioLabel: String?
+
     public var clientToken: String?
 
     public var description_: String?
@@ -4489,6 +4491,9 @@ public class CreateAuthorizationRuleRequest : Tea.TeaModel {
         if self.authorizationRuleName != nil {
             map["AuthorizationRuleName"] = self.authorizationRuleName!
         }
+        if self.authorizationRuleScenarioLabel != nil {
+            map["AuthorizationRuleScenarioLabel"] = self.authorizationRuleScenarioLabel!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -4511,6 +4516,9 @@ public class CreateAuthorizationRuleRequest : Tea.TeaModel {
         }
         if let value = dict["AuthorizationRuleName"] as? String {
             self.authorizationRuleName = value
+        }
+        if let value = dict["AuthorizationRuleScenarioLabel"] as? String {
+            self.authorizationRuleScenarioLabel = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -26039,6 +26047,8 @@ public class GetAuthorizationRuleResponseBody : Tea.TeaModel {
 
         public var authorizationRuleName: String?
 
+        public var authorizationRuleScenarioLabel: String?
+
         public var authorizationRuleSubjectId: String?
 
         public var authorizationRuleSubjectScope: String?
@@ -26083,6 +26093,9 @@ public class GetAuthorizationRuleResponseBody : Tea.TeaModel {
             if self.authorizationRuleName != nil {
                 map["AuthorizationRuleName"] = self.authorizationRuleName!
             }
+            if self.authorizationRuleScenarioLabel != nil {
+                map["AuthorizationRuleScenarioLabel"] = self.authorizationRuleScenarioLabel!
+            }
             if self.authorizationRuleSubjectId != nil {
                 map["AuthorizationRuleSubjectId"] = self.authorizationRuleSubjectId!
             }
@@ -26126,6 +26139,9 @@ public class GetAuthorizationRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthorizationRuleName"] as? String {
                 self.authorizationRuleName = value
+            }
+            if let value = dict["AuthorizationRuleScenarioLabel"] as? String {
+                self.authorizationRuleScenarioLabel = value
             }
             if let value = dict["AuthorizationRuleSubjectId"] as? String {
                 self.authorizationRuleSubjectId = value
@@ -27145,6 +27161,44 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PrivilegeHostingError : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+            }
+        }
         public var cloudAccountExternalId: String?
 
         public var cloudAccountHealth: String?
@@ -27159,6 +27213,8 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
 
         public var cloudAccountProviderName: String?
 
+        public var cloudAccountRoleCreationType: String?
+
         public var cloudAccountSite: String?
 
         public var cloudAccountVendorType: String?
@@ -27168,6 +27224,14 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
         public var description_: String?
 
         public var instanceId: String?
+
+        public var privilegeApplicationIds: [String]?
+
+        public var privilegeHostingError: GetCloudAccountResponseBody.CloudAccount.PrivilegeHostingError?
+
+        public var privilegeHostingState: String?
+
+        public var privilegeStatus: String?
 
         public var updateTime: Int64?
 
@@ -27183,6 +27247,7 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.cloudAccountHealthCheckResult?.validate()
             try self.cloudAccountProviderConfig?.validate()
+            try self.privilegeHostingError?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -27208,6 +27273,9 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             if self.cloudAccountProviderName != nil {
                 map["CloudAccountProviderName"] = self.cloudAccountProviderName!
             }
+            if self.cloudAccountRoleCreationType != nil {
+                map["CloudAccountRoleCreationType"] = self.cloudAccountRoleCreationType!
+            }
             if self.cloudAccountSite != nil {
                 map["CloudAccountSite"] = self.cloudAccountSite!
             }
@@ -27222,6 +27290,18 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.privilegeApplicationIds != nil {
+                map["PrivilegeApplicationIds"] = self.privilegeApplicationIds!
+            }
+            if self.privilegeHostingError != nil {
+                map["PrivilegeHostingError"] = self.privilegeHostingError?.toMap()
+            }
+            if self.privilegeHostingState != nil {
+                map["PrivilegeHostingState"] = self.privilegeHostingState!
+            }
+            if self.privilegeStatus != nil {
+                map["PrivilegeStatus"] = self.privilegeStatus!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
@@ -27256,6 +27336,9 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             if let value = dict["CloudAccountProviderName"] as? String {
                 self.cloudAccountProviderName = value
             }
+            if let value = dict["CloudAccountRoleCreationType"] as? String {
+                self.cloudAccountRoleCreationType = value
+            }
             if let value = dict["CloudAccountSite"] as? String {
                 self.cloudAccountSite = value
             }
@@ -27270,6 +27353,20 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["PrivilegeApplicationIds"] as? [String] {
+                self.privilegeApplicationIds = value
+            }
+            if let value = dict["PrivilegeHostingError"] as? [String: Any?] {
+                var model = GetCloudAccountResponseBody.CloudAccount.PrivilegeHostingError()
+                model.fromMap(value)
+                self.privilegeHostingError = model
+            }
+            if let value = dict["PrivilegeHostingState"] as? String {
+                self.privilegeHostingState = value
+            }
+            if let value = dict["PrivilegeStatus"] as? String {
+                self.privilegeStatus = value
             }
             if let value = dict["UpdateTime"] as? Int64 {
                 self.updateTime = value
@@ -27505,6 +27602,8 @@ public class GetCloudAccountRoleResponseBody : Tea.TeaModel {
         }
         public var cloudAccountId: String?
 
+        public var cloudAccountRoleCreationType: String?
+
         public var cloudAccountRoleExternalId: String?
 
         public var cloudAccountRoleHealth: String?
@@ -27546,6 +27645,9 @@ public class GetCloudAccountRoleResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.cloudAccountId != nil {
                 map["CloudAccountId"] = self.cloudAccountId!
+            }
+            if self.cloudAccountRoleCreationType != nil {
+                map["CloudAccountRoleCreationType"] = self.cloudAccountRoleCreationType!
             }
             if self.cloudAccountRoleExternalId != nil {
                 map["CloudAccountRoleExternalId"] = self.cloudAccountRoleExternalId!
@@ -27590,6 +27692,9 @@ public class GetCloudAccountRoleResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CloudAccountId"] as? String {
                 self.cloudAccountId = value
+            }
+            if let value = dict["CloudAccountRoleCreationType"] as? String {
+                self.cloudAccountRoleCreationType = value
             }
             if let value = dict["CloudAccountRoleExternalId"] as? String {
                 self.cloudAccountRoleExternalId = value
@@ -46082,6 +46187,8 @@ public class ListAuthorizationRulesResponseBody : Tea.TeaModel {
 
         public var authorizationRuleName: String?
 
+        public var authorizationRuleScenarioLabel: String?
+
         public var authorizationRuleSubjectId: String?
 
         public var authorizationRuleSubjectScope: String?
@@ -46126,6 +46233,9 @@ public class ListAuthorizationRulesResponseBody : Tea.TeaModel {
             if self.authorizationRuleName != nil {
                 map["AuthorizationRuleName"] = self.authorizationRuleName!
             }
+            if self.authorizationRuleScenarioLabel != nil {
+                map["AuthorizationRuleScenarioLabel"] = self.authorizationRuleScenarioLabel!
+            }
             if self.authorizationRuleSubjectId != nil {
                 map["AuthorizationRuleSubjectId"] = self.authorizationRuleSubjectId!
             }
@@ -46169,6 +46279,9 @@ public class ListAuthorizationRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthorizationRuleName"] as? String {
                 self.authorizationRuleName = value
+            }
+            if let value = dict["AuthorizationRuleScenarioLabel"] as? String {
+                self.authorizationRuleScenarioLabel = value
             }
             if let value = dict["AuthorizationRuleSubjectId"] as? String {
                 self.authorizationRuleSubjectId = value
@@ -48174,6 +48287,8 @@ public class ListCloudAccountRolesResponseBody : Tea.TeaModel {
         }
         public var cloudAccountId: String?
 
+        public var cloudAccountRoleCreationType: String?
+
         public var cloudAccountRoleExternalId: String?
 
         public var cloudAccountRoleHealth: String?
@@ -48215,6 +48330,9 @@ public class ListCloudAccountRolesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.cloudAccountId != nil {
                 map["CloudAccountId"] = self.cloudAccountId!
+            }
+            if self.cloudAccountRoleCreationType != nil {
+                map["CloudAccountRoleCreationType"] = self.cloudAccountRoleCreationType!
             }
             if self.cloudAccountRoleExternalId != nil {
                 map["CloudAccountRoleExternalId"] = self.cloudAccountRoleExternalId!
@@ -48259,6 +48377,9 @@ public class ListCloudAccountRolesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CloudAccountId"] as? String {
                 self.cloudAccountId = value
+            }
+            if let value = dict["CloudAccountRoleCreationType"] as? String {
+                self.cloudAccountRoleCreationType = value
             }
             if let value = dict["CloudAccountRoleExternalId"] as? String {
                 self.cloudAccountRoleExternalId = value
@@ -48622,6 +48743,44 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PrivilegeHostingError : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+            }
+        }
         public var cloudAccountExternalId: String?
 
         public var cloudAccountHealth: String?
@@ -48644,6 +48803,14 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var privilegeApplicationIds: [String]?
+
+        public var privilegeHostingError: ListCloudAccountsResponseBody.CloudAccounts.PrivilegeHostingError?
+
+        public var privilegeHostingState: String?
+
+        public var privilegeStatus: String?
+
         public var updateTime: Int64?
 
         public override init() {
@@ -48657,6 +48824,7 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.cloudAccountHealthCheckResult?.validate()
+            try self.privilegeHostingError?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -48693,6 +48861,18 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.privilegeApplicationIds != nil {
+                map["PrivilegeApplicationIds"] = self.privilegeApplicationIds!
+            }
+            if self.privilegeHostingError != nil {
+                map["PrivilegeHostingError"] = self.privilegeHostingError?.toMap()
+            }
+            if self.privilegeHostingState != nil {
+                map["PrivilegeHostingState"] = self.privilegeHostingState!
+            }
+            if self.privilegeStatus != nil {
+                map["PrivilegeStatus"] = self.privilegeStatus!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
@@ -48736,6 +48916,20 @@ public class ListCloudAccountsResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["PrivilegeApplicationIds"] as? [String] {
+                self.privilegeApplicationIds = value
+            }
+            if let value = dict["PrivilegeHostingError"] as? [String: Any?] {
+                var model = ListCloudAccountsResponseBody.CloudAccounts.PrivilegeHostingError()
+                model.fromMap(value)
+                self.privilegeHostingError = model
+            }
+            if let value = dict["PrivilegeHostingState"] as? String {
+                self.privilegeHostingState = value
+            }
+            if let value = dict["PrivilegeStatus"] as? String {
+                self.privilegeStatus = value
             }
             if let value = dict["UpdateTime"] as? Int64 {
                 self.updateTime = value

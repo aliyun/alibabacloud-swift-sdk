@@ -10,13 +10,13 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "eu-central-1": "eiam.eu-central-1.aliyuncs.com",
             "cn-hongkong": "eiam.cn-hongkong.aliyuncs.com",
+            "ap-northeast-2": "eiam.ap-northeast-2.aliyuncs.com",
+            "ap-southeast-1": "eiam.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-5": "eiam.ap-southeast-5.aliyuncs.com",
             "cn-hangzhou": "eiam.cn-hangzhou.aliyuncs.com",
             "cn-beijing": "eiam.cn-beijing.aliyuncs.com",
-            "ap-southeast-5": "eiam.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-1": "eiam.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "eiam.ap-northeast-2.aliyuncs.com"
+            "eu-central-1": "eiam.eu-central-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eiam", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1100,6 +1100,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.authorizationRuleName)) {
             query["AuthorizationRuleName"] = request.authorizationRuleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authorizationRuleScenarioLabel)) {
+            query["AuthorizationRuleScenarioLabel"] = request.authorizationRuleScenarioLabel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
