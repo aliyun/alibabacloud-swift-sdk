@@ -10,31 +10,31 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
+            "ap-southeast-2": "apig.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-6": "apig.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "apig.ap-southeast-7.aliyuncs.com",
+            "cn-guangzhou": "apig.cn-guangzhou.aliyuncs.com",
+            "cn-heyuan": "apig.cn-heyuan.aliyuncs.com",
+            "cn-shenzhen": "apig.cn-shenzhen.aliyuncs.com",
+            "cn-wulanchabu": "apig.cn-wulanchabu.aliyuncs.com",
+            "cn-beijing": "apig.cn-beijing.aliyuncs.com",
+            "ap-northeast-2": "apig.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "apig.ap-northeast-1.aliyuncs.com",
+            "cn-chengdu": "apig.cn-chengdu.aliyuncs.com",
+            "cn-qingdao": "apig.cn-qingdao.aliyuncs.com",
+            "cn-shanghai": "apig.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "apig.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "apig.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "apig.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "apig.ap-southeast-5.aliyuncs.com",
+            "cn-zhangjiakou": "apig.cn-zhangjiakou.aliyuncs.com",
+            "cn-hangzhou": "apig.cn-hangzhou.aliyuncs.com",
             "us-west-1": "apig.us-west-1.aliyuncs.com",
             "us-east-1": "apig.us-east-1.aliyuncs.com",
-            "me-east-1": "apig.me-east-1.aliyuncs.com",
-            "me-central-1": "apig.me-central-1.aliyuncs.com",
-            "eu-west-1": "apig.eu-west-1.aliyuncs.com",
             "eu-central-1": "apig.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "apig.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "apig.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "apig.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai": "apig.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "apig.cn-qingdao.aliyuncs.com",
-            "cn-hongkong": "apig.cn-hongkong.aliyuncs.com",
-            "cn-heyuan": "apig.cn-heyuan.aliyuncs.com",
-            "cn-hangzhou": "apig.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "apig.cn-guangzhou.aliyuncs.com",
-            "cn-chengdu": "apig.cn-chengdu.aliyuncs.com",
-            "cn-beijing": "apig.cn-beijing.aliyuncs.com",
-            "ap-southeast-7": "apig.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "apig.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "apig.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "apig.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "apig.ap-southeast-2.aliyuncs.com",
-            "ap-southeast-1": "apig.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "apig.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "apig.ap-northeast-1.aliyuncs.com"
+            "eu-west-1": "apig.eu-west-1.aliyuncs.com",
+            "me-east-1": "apig.me-east-1.aliyuncs.com",
+            "me-central-1": "apig.me-central-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("apig", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -219,6 +219,108 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await batchDeleteConsumerAuthorizationRuleWithOptions(request as! BatchDeleteConsumerAuthorizationRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchExportHttpApisWithOptions(_ request: BatchExportHttpApisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchExportHttpApisResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiIds)) {
+            body["apiIds"] = request.apiIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.apiType)) {
+            body["apiType"] = request.apiType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extensionConfig)) {
+            body["extensionConfig"] = request.extensionConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.format)) {
+            body["format"] = request.format ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            body["gatewayId"] = request.gatewayId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchExportHttpApis",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-apis/batch-export",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchExportHttpApisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchExportHttpApis(_ request: BatchExportHttpApisRequest) async throws -> BatchExportHttpApisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchExportHttpApisWithOptions(request as! BatchExportHttpApisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchImportHttpApisWithOptions(_ request: BatchImportHttpApisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchImportHttpApisResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowUpdate)) {
+            body["allowUpdate"] = request.allowUpdate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.apiType)) {
+            body["apiType"] = request.apiType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["dryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            body["gatewayId"] = request.gatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.specFileUrl)) {
+            body["specFileUrl"] = request.specFileUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.specOssConfig)) {
+            body["specOssConfig"] = request.specOssConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            body["strategy"] = request.strategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withGatewayExtension)) {
+            body["withGatewayExtension"] = request.withGatewayExtension!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchImportHttpApis",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-apis/batch-import",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchImportHttpApisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchImportHttpApis(_ request: BatchImportHttpApisRequest) async throws -> BatchImportHttpApisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchImportHttpApisWithOptions(request as! BatchImportHttpApisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2225,6 +2327,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchExportTaskWithOptions(_ taskId: String, _ request: GetBatchExportTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBatchExportTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetBatchExportTask",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-api-batch-export-tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetBatchExportTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchExportTask(_ taskId: String, _ request: GetBatchExportTaskRequest) async throws -> GetBatchExportTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getBatchExportTaskWithOptions(taskId as! String, request as! GetBatchExportTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchImportTaskWithOptions(_ taskId: String, _ request: GetBatchImportTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBatchImportTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetBatchImportTask",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-api-batch-import-tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetBatchImportTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchImportTask(_ taskId: String, _ request: GetBatchImportTaskRequest) async throws -> GetBatchImportTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getBatchImportTaskWithOptions(taskId as! String, request as! GetBatchImportTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getConsumerWithOptions(_ consumerId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConsumerResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -3123,6 +3281,60 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listAiModelProvidersWithOptions(request as! ListAiModelProvidersRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listBatchExportTasksWithOptions(_ request: ListBatchExportTasksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListBatchExportTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["gatewayId"] = request.gatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statuses)) {
+            query["statuses"] = request.statuses ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListBatchExportTasks",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-api-batch-export-tasks",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListBatchExportTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listBatchExportTasks(_ request: ListBatchExportTasksRequest) async throws -> ListBatchExportTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listBatchExportTasksWithOptions(request as! ListBatchExportTasksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
