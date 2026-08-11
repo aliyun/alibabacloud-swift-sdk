@@ -54,21 +54,21 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1-oxs": "adb.ap-northeast-1.aliyuncs.com",
             "me-east-1": "adb.ap-northeast-1.aliyuncs.com",
             "rus-west-1-pop": "adb.ap-northeast-1.aliyuncs.com",
-            "na-south-1": "adb.na-south-1.aliyuncs.com",
-            "me-central-1": "adb.me-central-1.aliyuncs.com",
+            "cn-chengdu": "adb.cn-chengdu.aliyuncs.com",
+            "cn-wulanchabu": "adb.cn-wulanchabu.aliyuncs.com",
+            "cn-zhangjiakou": "adb.cn-zhangjiakou.aliyuncs.com",
+            "ap-northeast-2": "adb.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "adb.ap-northeast-1.aliyuncs.com",
+            "cn-guangzhou": "adb.cn-guangzhou.aliyuncs.com",
+            "ap-southeast-3": "adb.ap-southeast-3.aliyuncs.com",
+            "cn-huhehaote": "adb.cn-huhehaote.aliyuncs.com",
+            "ap-southeast-5": "adb.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "adb.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "adb.ap-southeast-7.aliyuncs.com",
             "eu-west-1": "adb.eu-west-1.aliyuncs.com",
             "eu-central-1": "adb.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "adb.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "adb.cn-wulanchabu.aliyuncs.com",
-            "cn-huhehaote": "adb.cn-huhehaote.aliyuncs.com",
-            "cn-guangzhou": "adb.cn-guangzhou.aliyuncs.com",
-            "cn-chengdu": "adb.cn-chengdu.aliyuncs.com",
-            "ap-southeast-7": "adb.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "adb.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "adb.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "adb.ap-southeast-3.aliyuncs.com",
-            "ap-northeast-2": "adb.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "adb.ap-northeast-1.aliyuncs.com"
+            "na-south-1": "adb.na-south-1.aliyuncs.com",
+            "me-central-1": "adb.me-central-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("adb", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -552,6 +552,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func checkSampleDataSet(_ request: CheckSampleDataSetRequest) async throws -> CheckSampleDataSetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await checkSampleDataSetWithOptions(request as! CheckSampleDataSetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func closeLogSyncToSLSWithOptions(_ request: CloseLogSyncToSLSRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CloseLogSyncToSLSResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logType)) {
+            query["LogType"] = request.logType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CloseLogSyncToSLS",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CloseLogSyncToSLSResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func closeLogSyncToSLS(_ request: CloseLogSyncToSLSRequest) async throws -> CloseLogSyncToSLSResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await closeLogSyncToSLSWithOptions(request as! CloseLogSyncToSLSRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7569,6 +7606,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.topk)) {
             query["Topk"] = request.topk!;
         }
+        if (!TeaUtils.Client.isUnset(request.user)) {
+            query["User"] = request.user ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -7630,6 +7670,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getLakeStorage(_ request: GetLakeStorageRequest) async throws -> GetLakeStorageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getLakeStorageWithOptions(request as! GetLakeStorageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLogSyncToSLSWithOptions(_ request: GetLogSyncToSLSRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLogSyncToSLSResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logType)) {
+            query["LogType"] = request.logType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLogSyncToSLS",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLogSyncToSLSResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLogSyncToSLS(_ request: GetLogSyncToSLSRequest) async throws -> GetLogSyncToSLSResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getLogSyncToSLSWithOptions(request as! GetLogSyncToSLSRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -10468,6 +10545,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyUserEniVswitchOptions(_ request: ModifyUserEniVswitchOptionsRequest) async throws -> ModifyUserEniVswitchOptionsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyUserEniVswitchOptionsWithOptions(request as! ModifyUserEniVswitchOptionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openLogSyncToSLSWithOptions(_ request: OpenLogSyncToSLSRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OpenLogSyncToSLSResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logType)) {
+            query["LogType"] = request.logType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLogStore)) {
+            query["TargetLogStore"] = request.targetLogStore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetProject)) {
+            query["TargetProject"] = request.targetProject ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "OpenLogSyncToSLS",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(OpenLogSyncToSLSResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openLogSyncToSLS(_ request: OpenLogSyncToSLSRequest) async throws -> OpenLogSyncToSLSResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await openLogSyncToSLSWithOptions(request as! OpenLogSyncToSLSRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
