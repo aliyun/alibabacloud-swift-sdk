@@ -1323,6 +1323,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateScriptVersionWithOptions(_ tmpReq: UpdateScriptVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateScriptVersionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateScriptVersionShrinkRequest = UpdateScriptVersionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.interactionConfig)) {
+            request.interactionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.interactionConfig, "InteractionConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.labelConfigs)) {
+            request.labelConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelConfigs, "LabelConfigs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.scriptProfile)) {
+            request.scriptProfileShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scriptProfile, "ScriptProfile", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.synthesizerConfig)) {
+            request.synthesizerConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.synthesizerConfig, "SynthesizerConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.transcriberConfig)) {
+            request.transcriberConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transcriberConfig, "TranscriberConfig", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.interactionConfigShrink)) {
+            body["InteractionConfig"] = request.interactionConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelConfigsShrink)) {
+            body["LabelConfigs"] = request.labelConfigsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scriptId)) {
+            body["ScriptId"] = request.scriptId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scriptProfileShrink)) {
+            body["ScriptProfile"] = request.scriptProfileShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.synthesizerConfigShrink)) {
+            body["SynthesizerConfig"] = request.synthesizerConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transcriberConfigShrink)) {
+            body["TranscriberConfig"] = request.transcriberConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionId)) {
+            body["VersionId"] = request.versionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateScriptVersion",
+            "version": "2025-11-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateScriptVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateScriptVersion(_ request: UpdateScriptVersionRequest) async throws -> UpdateScriptVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateScriptVersionWithOptions(request as! UpdateScriptVersionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateSubscriptionWithOptions(_ tmpReq: UpdateSubscriptionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSubscriptionResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateSubscriptionShrinkRequest = UpdateSubscriptionShrinkRequest([:])
