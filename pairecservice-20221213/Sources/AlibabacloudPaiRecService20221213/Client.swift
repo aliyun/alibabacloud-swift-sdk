@@ -10,16 +10,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-west-1": "pairecservice.us-west-1.aliyuncs.com",
-            "us-east-1": "pairecservice.us-east-1.aliyuncs.com",
-            "eu-central-1": "pairecservice.eu-central-1.aliyuncs.com",
             "cn-shenzhen": "pairecservice.cn-shenzhen.aliyuncs.com",
             "cn-shanghai": "pairecservice.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "pairecservice.cn-hongkong.aliyuncs.com",
             "cn-hangzhou": "pairecservice.cn-hangzhou.aliyuncs.com",
             "cn-beijing": "pairecservice.cn-beijing.aliyuncs.com",
             "ap-southeast-5": "pairecservice.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-1": "pairecservice.ap-southeast-1.aliyuncs.com"
+            "ap-southeast-1": "pairecservice.ap-southeast-1.aliyuncs.com",
+            "eu-central-1": "pairecservice.eu-central-1.aliyuncs.com",
+            "us-east-1": "pairecservice.us-east-1.aliyuncs.com",
+            "us-west-1": "pairecservice.us-west-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pairecservice", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -887,6 +887,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -5214,6 +5217,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
@@ -7113,6 +7119,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

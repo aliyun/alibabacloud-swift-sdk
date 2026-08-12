@@ -3065,6 +3065,8 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -3094,6 +3096,9 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -3113,6 +3118,9 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -13120,6 +13128,8 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
 
     public var status: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -13161,6 +13171,9 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -13192,6 +13205,9 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -23920,6 +23936,8 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var type: String?
+
         public var version: String?
 
         public override init() {
@@ -23963,6 +23981,9 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.version != nil {
                 map["Version"] = self.version!
             }
@@ -23997,6 +24018,9 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
             if let value = dict["Version"] as? String {
                 self.version = value
@@ -28777,6 +28801,8 @@ public class ListRecallManagementServicesRequest : Tea.TeaModel {
 
     public var maxResults: Int32?
 
+    public var name: String?
+
     public var nextToken: String?
 
     public var order: String?
@@ -28807,6 +28833,9 @@ public class ListRecallManagementServicesRequest : Tea.TeaModel {
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
@@ -28832,6 +28861,9 @@ public class ListRecallManagementServicesRequest : Tea.TeaModel {
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
@@ -34212,9 +34244,13 @@ public class QuerySampleConsistencyJobDifferenceResponseBody : Tea.TeaModel {
 
         public var itemId: String?
 
+        public var replyTableFeatureRawValue: String?
+
         public var replyTableFeatureValue: Double?
 
         public var requestId: String?
+
+        public var sampleTableFeatureRawValue: String?
 
         public var sampleTableFeatureValue: Double?
 
@@ -34240,11 +34276,17 @@ public class QuerySampleConsistencyJobDifferenceResponseBody : Tea.TeaModel {
             if self.itemId != nil {
                 map["ItemId"] = self.itemId!
             }
+            if self.replyTableFeatureRawValue != nil {
+                map["ReplyTableFeatureRawValue"] = self.replyTableFeatureRawValue!
+            }
             if self.replyTableFeatureValue != nil {
                 map["ReplyTableFeatureValue"] = self.replyTableFeatureValue!
             }
             if self.requestId != nil {
                 map["RequestId"] = self.requestId!
+            }
+            if self.sampleTableFeatureRawValue != nil {
+                map["SampleTableFeatureRawValue"] = self.sampleTableFeatureRawValue!
             }
             if self.sampleTableFeatureValue != nil {
                 map["SampleTableFeatureValue"] = self.sampleTableFeatureValue!
@@ -34263,11 +34305,17 @@ public class QuerySampleConsistencyJobDifferenceResponseBody : Tea.TeaModel {
             if let value = dict["ItemId"] as? String {
                 self.itemId = value
             }
+            if let value = dict["ReplyTableFeatureRawValue"] as? String {
+                self.replyTableFeatureRawValue = value
+            }
             if let value = dict["ReplyTableFeatureValue"] as? Double {
                 self.replyTableFeatureValue = value
             }
             if let value = dict["RequestId"] as? String {
                 self.requestId = value
+            }
+            if let value = dict["SampleTableFeatureRawValue"] as? String {
+                self.sampleTableFeatureRawValue = value
             }
             if let value = dict["SampleTableFeatureValue"] as? Double {
                 self.sampleTableFeatureValue = value
@@ -38263,6 +38311,8 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -38292,6 +38342,9 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -38311,6 +38364,9 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
