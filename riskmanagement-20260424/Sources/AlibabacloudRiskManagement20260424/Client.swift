@@ -9,6 +9,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "public": "riskmanagement.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("riskmanagement", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1071,6 +1074,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.actionCodes)) {
             request.actionCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.actionCodes, "ActionCodes", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.businessCodes)) {
+            request.businessCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.businessCodes, "BusinessCodes", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.caseCodesPrefix)) {
             request.caseCodesPrefixShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.caseCodesPrefix, "CaseCodesPrefix", "json")
         }
@@ -1110,6 +1116,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.businessCode)) {
             query["BusinessCode"] = request.businessCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessCodesShrink)) {
+            query["BusinessCodes"] = request.businessCodesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.caseCodesPrefixShrink)) {
             query["CaseCodesPrefix"] = request.caseCodesPrefixShrink ?? "";

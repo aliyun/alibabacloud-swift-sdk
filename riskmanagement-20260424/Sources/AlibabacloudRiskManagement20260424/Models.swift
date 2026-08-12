@@ -11463,6 +11463,8 @@ public class QueryResourceControlEventsRequest : Tea.TeaModel {
 
     public var businessCode: String?
 
+    public var businessCodes: [String]?
+
     public var caseCodesPrefix: [String]?
 
     public var current: Int32?
@@ -11530,6 +11532,9 @@ public class QueryResourceControlEventsRequest : Tea.TeaModel {
         }
         if self.businessCode != nil {
             map["BusinessCode"] = self.businessCode!
+        }
+        if self.businessCodes != nil {
+            map["BusinessCodes"] = self.businessCodes!
         }
         if self.caseCodesPrefix != nil {
             map["CaseCodesPrefix"] = self.caseCodesPrefix!
@@ -11611,6 +11616,9 @@ public class QueryResourceControlEventsRequest : Tea.TeaModel {
         if let value = dict["BusinessCode"] as? String {
             self.businessCode = value
         }
+        if let value = dict["BusinessCodes"] as? [String] {
+            self.businessCodes = value
+        }
         if let value = dict["CaseCodesPrefix"] as? [String] {
             self.caseCodesPrefix = value
         }
@@ -11686,6 +11694,8 @@ public class QueryResourceControlEventsShrinkRequest : Tea.TeaModel {
 
     public var businessCode: String?
 
+    public var businessCodesShrink: String?
+
     public var caseCodesPrefixShrink: String?
 
     public var current: Int32?
@@ -11753,6 +11763,9 @@ public class QueryResourceControlEventsShrinkRequest : Tea.TeaModel {
         }
         if self.businessCode != nil {
             map["BusinessCode"] = self.businessCode!
+        }
+        if self.businessCodesShrink != nil {
+            map["BusinessCodes"] = self.businessCodesShrink!
         }
         if self.caseCodesPrefixShrink != nil {
             map["CaseCodesPrefix"] = self.caseCodesPrefixShrink!
@@ -11833,6 +11846,9 @@ public class QueryResourceControlEventsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["BusinessCode"] as? String {
             self.businessCode = value
+        }
+        if let value = dict["BusinessCodes"] as? String {
+            self.businessCodesShrink = value
         }
         if let value = dict["CaseCodesPrefix"] as? String {
             self.caseCodesPrefixShrink = value
