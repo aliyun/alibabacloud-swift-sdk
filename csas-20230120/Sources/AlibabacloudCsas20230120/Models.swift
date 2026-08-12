@@ -32392,6 +32392,458 @@ public class ListRegistrationPoliciesForUserGroupResponse : Tea.TeaModel {
     }
 }
 
+public class ListRiskItemsRequest : Tea.TeaModel {
+    public var currentPage: Int32?
+
+    public var pageSize: Int32?
+
+    public var policyName: String?
+
+    public var riskCategory: String?
+
+    public var riskId: String?
+
+    public var riskLevel: String?
+
+    public var riskScene: String?
+
+    public var status: String?
+
+    public var statusList: [String]?
+
+    public var username: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.policyName != nil {
+            map["PolicyName"] = self.policyName!
+        }
+        if self.riskCategory != nil {
+            map["RiskCategory"] = self.riskCategory!
+        }
+        if self.riskId != nil {
+            map["RiskId"] = self.riskId!
+        }
+        if self.riskLevel != nil {
+            map["RiskLevel"] = self.riskLevel!
+        }
+        if self.riskScene != nil {
+            map["RiskScene"] = self.riskScene!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.statusList != nil {
+            map["StatusList"] = self.statusList!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["PolicyName"] as? String {
+            self.policyName = value
+        }
+        if let value = dict["RiskCategory"] as? String {
+            self.riskCategory = value
+        }
+        if let value = dict["RiskId"] as? String {
+            self.riskId = value
+        }
+        if let value = dict["RiskLevel"] as? String {
+            self.riskLevel = value
+        }
+        if let value = dict["RiskScene"] as? String {
+            self.riskScene = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["StatusList"] as? [String] {
+            self.statusList = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+    }
+}
+
+public class ListRiskItemsResponseBody : Tea.TeaModel {
+    public class RiskItems : Tea.TeaModel {
+        public var agentName: String?
+
+        public var aiConclusion: String?
+
+        public var aiRiskConfirm: String?
+
+        public var checkName: String?
+
+        public var department: String?
+
+        public var groupInfo: String?
+
+        public var hostname: String?
+
+        public var innerIp: String?
+
+        public var report: String?
+
+        public var riskAnalysisPolicyNames: [String]?
+
+        public var riskCategory: String?
+
+        public var riskConfirm: String?
+
+        public var riskConfirmDesc: String?
+
+        public var riskDesc: String?
+
+        public var riskEndTime: String?
+
+        public var riskFeatureIds: [String]?
+
+        public var riskFoundTime: String?
+
+        public var riskId: String?
+
+        public var riskLevel: String?
+
+        public var riskScene: String?
+
+        public var riskStartTime: String?
+
+        public var saseUserId: String?
+
+        public var skillName: String?
+
+        public var solution: String?
+
+        public var status: String?
+
+        public var supportAnalysis: Bool?
+
+        public var username: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentName != nil {
+                map["AgentName"] = self.agentName!
+            }
+            if self.aiConclusion != nil {
+                map["AiConclusion"] = self.aiConclusion!
+            }
+            if self.aiRiskConfirm != nil {
+                map["AiRiskConfirm"] = self.aiRiskConfirm!
+            }
+            if self.checkName != nil {
+                map["CheckName"] = self.checkName!
+            }
+            if self.department != nil {
+                map["Department"] = self.department!
+            }
+            if self.groupInfo != nil {
+                map["GroupInfo"] = self.groupInfo!
+            }
+            if self.hostname != nil {
+                map["Hostname"] = self.hostname!
+            }
+            if self.innerIp != nil {
+                map["InnerIp"] = self.innerIp!
+            }
+            if self.report != nil {
+                map["Report"] = self.report!
+            }
+            if self.riskAnalysisPolicyNames != nil {
+                map["RiskAnalysisPolicyNames"] = self.riskAnalysisPolicyNames!
+            }
+            if self.riskCategory != nil {
+                map["RiskCategory"] = self.riskCategory!
+            }
+            if self.riskConfirm != nil {
+                map["RiskConfirm"] = self.riskConfirm!
+            }
+            if self.riskConfirmDesc != nil {
+                map["RiskConfirmDesc"] = self.riskConfirmDesc!
+            }
+            if self.riskDesc != nil {
+                map["RiskDesc"] = self.riskDesc!
+            }
+            if self.riskEndTime != nil {
+                map["RiskEndTime"] = self.riskEndTime!
+            }
+            if self.riskFeatureIds != nil {
+                map["RiskFeatureIds"] = self.riskFeatureIds!
+            }
+            if self.riskFoundTime != nil {
+                map["RiskFoundTime"] = self.riskFoundTime!
+            }
+            if self.riskId != nil {
+                map["RiskId"] = self.riskId!
+            }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
+            if self.riskScene != nil {
+                map["RiskScene"] = self.riskScene!
+            }
+            if self.riskStartTime != nil {
+                map["RiskStartTime"] = self.riskStartTime!
+            }
+            if self.saseUserId != nil {
+                map["SaseUserId"] = self.saseUserId!
+            }
+            if self.skillName != nil {
+                map["SkillName"] = self.skillName!
+            }
+            if self.solution != nil {
+                map["Solution"] = self.solution!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.supportAnalysis != nil {
+                map["SupportAnalysis"] = self.supportAnalysis!
+            }
+            if self.username != nil {
+                map["Username"] = self.username!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AgentName"] as? String {
+                self.agentName = value
+            }
+            if let value = dict["AiConclusion"] as? String {
+                self.aiConclusion = value
+            }
+            if let value = dict["AiRiskConfirm"] as? String {
+                self.aiRiskConfirm = value
+            }
+            if let value = dict["CheckName"] as? String {
+                self.checkName = value
+            }
+            if let value = dict["Department"] as? String {
+                self.department = value
+            }
+            if let value = dict["GroupInfo"] as? String {
+                self.groupInfo = value
+            }
+            if let value = dict["Hostname"] as? String {
+                self.hostname = value
+            }
+            if let value = dict["InnerIp"] as? String {
+                self.innerIp = value
+            }
+            if let value = dict["Report"] as? String {
+                self.report = value
+            }
+            if let value = dict["RiskAnalysisPolicyNames"] as? [String] {
+                self.riskAnalysisPolicyNames = value
+            }
+            if let value = dict["RiskCategory"] as? String {
+                self.riskCategory = value
+            }
+            if let value = dict["RiskConfirm"] as? String {
+                self.riskConfirm = value
+            }
+            if let value = dict["RiskConfirmDesc"] as? String {
+                self.riskConfirmDesc = value
+            }
+            if let value = dict["RiskDesc"] as? String {
+                self.riskDesc = value
+            }
+            if let value = dict["RiskEndTime"] as? String {
+                self.riskEndTime = value
+            }
+            if let value = dict["RiskFeatureIds"] as? [String] {
+                self.riskFeatureIds = value
+            }
+            if let value = dict["RiskFoundTime"] as? String {
+                self.riskFoundTime = value
+            }
+            if let value = dict["RiskId"] as? String {
+                self.riskId = value
+            }
+            if let value = dict["RiskLevel"] as? String {
+                self.riskLevel = value
+            }
+            if let value = dict["RiskScene"] as? String {
+                self.riskScene = value
+            }
+            if let value = dict["RiskStartTime"] as? String {
+                self.riskStartTime = value
+            }
+            if let value = dict["SaseUserId"] as? String {
+                self.saseUserId = value
+            }
+            if let value = dict["SkillName"] as? String {
+                self.skillName = value
+            }
+            if let value = dict["Solution"] as? String {
+                self.solution = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SupportAnalysis"] as? Bool {
+                self.supportAnalysis = value
+            }
+            if let value = dict["Username"] as? String {
+                self.username = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var riskItems: [ListRiskItemsResponseBody.RiskItems]?
+
+    public var totalNum: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.riskItems != nil {
+            var tmp : [Any] = []
+            for k in self.riskItems! {
+                tmp.append(k.toMap())
+            }
+            map["RiskItems"] = tmp
+        }
+        if self.totalNum != nil {
+            map["TotalNum"] = self.totalNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RiskItems"] as? [Any?] {
+            var tmp : [ListRiskItemsResponseBody.RiskItems] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRiskItemsResponseBody.RiskItems()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.riskItems = tmp
+        }
+        if let value = dict["TotalNum"] as? Int32 {
+            self.totalNum = value
+        }
+    }
+}
+
+public class ListRiskItemsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRiskItemsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRiskItemsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListSoftwareForUserDeviceRequest : Tea.TeaModel {
     public var currentPage: Int64?
 
@@ -43671,6 +44123,150 @@ public class UpdateRegistrationPolicyResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateRegistrationPolicyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRiskStatusRequest : Tea.TeaModel {
+    public var riskConfirm: String?
+
+    public var riskConfirmDesc: String?
+
+    public var riskId: String?
+
+    public var riskScene: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.riskConfirm != nil {
+            map["RiskConfirm"] = self.riskConfirm!
+        }
+        if self.riskConfirmDesc != nil {
+            map["RiskConfirmDesc"] = self.riskConfirmDesc!
+        }
+        if self.riskId != nil {
+            map["RiskId"] = self.riskId!
+        }
+        if self.riskScene != nil {
+            map["RiskScene"] = self.riskScene!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RiskConfirm"] as? String {
+            self.riskConfirm = value
+        }
+        if let value = dict["RiskConfirmDesc"] as? String {
+            self.riskConfirmDesc = value
+        }
+        if let value = dict["RiskId"] as? String {
+            self.riskId = value
+        }
+        if let value = dict["RiskScene"] as? String {
+            self.riskScene = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class UpdateRiskStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRiskStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRiskStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRiskStatusResponseBody()
             model.fromMap(value)
             self.body = model
         }

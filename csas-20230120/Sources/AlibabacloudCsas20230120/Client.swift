@@ -3211,6 +3211,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRiskItemsWithOptions(_ request: ListRiskItemsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRiskItemsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.policyName)) {
+            query["PolicyName"] = request.policyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskCategory)) {
+            query["RiskCategory"] = request.riskCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskId)) {
+            query["RiskId"] = request.riskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskLevel)) {
+            query["RiskLevel"] = request.riskLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskScene)) {
+            query["RiskScene"] = request.riskScene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusList)) {
+            query["StatusList"] = request.statusList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            query["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRiskItems",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRiskItemsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRiskItems(_ request: ListRiskItemsRequest) async throws -> ListRiskItemsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listRiskItemsWithOptions(request as! ListRiskItemsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listSoftwareForUserDeviceWithOptions(_ request: ListSoftwareForUserDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSoftwareForUserDeviceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -4515,6 +4573,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateRegistrationPolicy(_ request: UpdateRegistrationPolicyRequest) async throws -> UpdateRegistrationPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateRegistrationPolicyWithOptions(request as! UpdateRegistrationPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRiskStatusWithOptions(_ request: UpdateRiskStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRiskStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.riskConfirm)) {
+            body["RiskConfirm"] = request.riskConfirm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskConfirmDesc)) {
+            body["RiskConfirmDesc"] = request.riskConfirmDesc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskId)) {
+            body["RiskId"] = request.riskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskScene)) {
+            body["RiskScene"] = request.riskScene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateRiskStatus",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateRiskStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRiskStatus(_ request: UpdateRiskStatusRequest) async throws -> UpdateRiskStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateRiskStatusWithOptions(request as! UpdateRiskStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
