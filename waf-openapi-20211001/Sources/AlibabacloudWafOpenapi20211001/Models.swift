@@ -28425,6 +28425,8 @@ public class DescribeHybridCloudGroupsRequest : Tea.TeaModel {
 
     public var clusterProxyType: String?
 
+    public var groupDisplayName: String?
+
     public var groupName: Int32?
 
     public var groupType: String?
@@ -28459,6 +28461,9 @@ public class DescribeHybridCloudGroupsRequest : Tea.TeaModel {
         if self.clusterProxyType != nil {
             map["ClusterProxyType"] = self.clusterProxyType!
         }
+        if self.groupDisplayName != nil {
+            map["GroupDisplayName"] = self.groupDisplayName!
+        }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
@@ -28490,6 +28495,9 @@ public class DescribeHybridCloudGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["ClusterProxyType"] as? String {
             self.clusterProxyType = value
+        }
+        if let value = dict["GroupDisplayName"] as? String {
+            self.groupDisplayName = value
         }
         if let value = dict["GroupName"] as? Int32 {
             self.groupName = value
@@ -31657,9 +31665,13 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
     public class Details : Tea.TeaModel {
         public var aclRuleMaxIpCount: Int64?
 
+        public var agenticApisec: Bool?
+
         public var antiScan: Bool?
 
         public var antiScanTemplateMaxCount: Int64?
+
+        public var apisec: Bool?
 
         public var backendMaxCount: Int64?
 
@@ -31725,6 +31737,10 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var httpsPorts: String?
 
+        public var hybridCloud: Bool?
+
+        public var hybridCloudNodeExtend: Int32?
+
         public var ipBlacklist: Bool?
 
         public var ipBlacklistIpInRuleMaxCount: Int64?
@@ -31742,6 +31758,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         public var majorProtectionTemplateMaxCount: Int64?
 
         public var qpsBillingCap: Int32?
+
+        public var resourceDirectory: Bool?
 
         public var tamperproof: Bool?
 
@@ -31782,11 +31800,17 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if self.aclRuleMaxIpCount != nil {
                 map["AclRuleMaxIpCount"] = self.aclRuleMaxIpCount!
             }
+            if self.agenticApisec != nil {
+                map["AgenticApisec"] = self.agenticApisec!
+            }
             if self.antiScan != nil {
                 map["AntiScan"] = self.antiScan!
             }
             if self.antiScanTemplateMaxCount != nil {
                 map["AntiScanTemplateMaxCount"] = self.antiScanTemplateMaxCount!
+            }
+            if self.apisec != nil {
+                map["Apisec"] = self.apisec!
             }
             if self.backendMaxCount != nil {
                 map["BackendMaxCount"] = self.backendMaxCount!
@@ -31884,6 +31908,12 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if self.httpsPorts != nil {
                 map["HttpsPorts"] = self.httpsPorts!
             }
+            if self.hybridCloud != nil {
+                map["HybridCloud"] = self.hybridCloud!
+            }
+            if self.hybridCloudNodeExtend != nil {
+                map["HybridCloudNodeExtend"] = self.hybridCloudNodeExtend!
+            }
             if self.ipBlacklist != nil {
                 map["IpBlacklist"] = self.ipBlacklist!
             }
@@ -31910,6 +31940,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if self.qpsBillingCap != nil {
                 map["QpsBillingCap"] = self.qpsBillingCap!
+            }
+            if self.resourceDirectory != nil {
+                map["ResourceDirectory"] = self.resourceDirectory!
             }
             if self.tamperproof != nil {
                 map["Tamperproof"] = self.tamperproof!
@@ -31952,11 +31985,17 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if let value = dict["AclRuleMaxIpCount"] as? Int64 {
                 self.aclRuleMaxIpCount = value
             }
+            if let value = dict["AgenticApisec"] as? Bool {
+                self.agenticApisec = value
+            }
             if let value = dict["AntiScan"] as? Bool {
                 self.antiScan = value
             }
             if let value = dict["AntiScanTemplateMaxCount"] as? Int64 {
                 self.antiScanTemplateMaxCount = value
+            }
+            if let value = dict["Apisec"] as? Bool {
+                self.apisec = value
             }
             if let value = dict["BackendMaxCount"] as? Int64 {
                 self.backendMaxCount = value
@@ -32054,6 +32093,12 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if let value = dict["HttpsPorts"] as? String {
                 self.httpsPorts = value
             }
+            if let value = dict["HybridCloud"] as? Bool {
+                self.hybridCloud = value
+            }
+            if let value = dict["HybridCloudNodeExtend"] as? Int32 {
+                self.hybridCloudNodeExtend = value
+            }
             if let value = dict["IpBlacklist"] as? Bool {
                 self.ipBlacklist = value
             }
@@ -32080,6 +32125,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["QpsBillingCap"] as? Int32 {
                 self.qpsBillingCap = value
+            }
+            if let value = dict["ResourceDirectory"] as? Bool {
+                self.resourceDirectory = value
             }
             if let value = dict["Tamperproof"] as? Bool {
                 self.tamperproof = value

@@ -5551,6 +5551,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterProxyType)) {
             query["ClusterProxyType"] = request.clusterProxyType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.groupDisplayName)) {
+            query["GroupDisplayName"] = request.groupDisplayName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName!;
         }
