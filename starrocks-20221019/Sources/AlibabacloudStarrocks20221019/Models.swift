@@ -1546,6 +1546,8 @@ public class CreateInstanceV1Request : Tea.TeaModel {
 
     public var duration: Int32?
 
+    public var enableAiFunction: Bool?
+
     public var enableMultiAz: Bool?
 
     public var encrypted: Bool?
@@ -1637,6 +1639,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.enableAiFunction != nil {
+            map["EnableAiFunction"] = self.enableAiFunction!
         }
         if self.enableMultiAz != nil {
             map["EnableMultiAz"] = self.enableMultiAz!
@@ -1766,6 +1771,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["EnableAiFunction"] as? Bool {
+            self.enableAiFunction = value
         }
         if let value = dict["EnableMultiAz"] as? Bool {
             self.enableMultiAz = value

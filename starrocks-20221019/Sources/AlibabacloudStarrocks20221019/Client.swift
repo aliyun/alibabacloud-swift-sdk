@@ -8,7 +8,22 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "ap-southeast-1": "starrocks.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-5": "starrocks.ap-southeast-5.aliyuncs.com",
+            "cn-beijing": "starrocks.cn-beijing.aliyuncs.com",
+            "cn-hangzhou": "starrocks.cn-hangzhou.aliyuncs.com",
+            "cn-hongkong": "starrocks.cn-hongkong.aliyuncs.com",
+            "cn-qingdao": "starrocks.cn-qingdao.aliyuncs.com",
+            "cn-shanghai": "starrocks.cn-shanghai.aliyuncs.com",
+            "cn-shenzhen": "starrocks.cn-shenzhen.aliyuncs.com",
+            "cn-wulanchabu": "starrocks.cn-wulanchabu.aliyuncs.com",
+            "cn-zhangjiakou": "starrocks.cn-zhangjiakou.aliyuncs.com",
+            "us-west-1": "starrocks.us-west-1.aliyuncs.com",
+            "us-east-1": "starrocks.us-east-1.aliyuncs.com",
+            "eu-central-1": "starrocks.eu-central-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("starrocks", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -275,6 +290,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.duration)) {
             body["Duration"] = request.duration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableAiFunction)) {
+            body["EnableAiFunction"] = request.enableAiFunction!;
         }
         if (!TeaUtils.Client.isUnset(request.enableMultiAz)) {
             body["EnableMultiAz"] = request.enableMultiAz!;
