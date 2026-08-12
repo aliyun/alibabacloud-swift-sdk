@@ -10,48 +10,48 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-west-1": "metrics.us-west-1.aliyuncs.com",
-            "us-southeast-1": "metrics.us-southeast-1.aliyuncs.com",
-            "us-east-1": "metrics.us-east-1.aliyuncs.com",
-            "na-south-1": "metrics.na-south-1.aliyuncs.com",
-            "me-east-1": "metrics.me-east-1.aliyuncs.com",
-            "me-central-1": "metrics.me-central-1.aliyuncs.com",
-            "eu-west-2": "metrics.eu-west-2.aliyuncs.com",
-            "eu-west-1": "metrics.eu-west-1.aliyuncs.com",
-            "eu-central-1": "metrics.eu-central-1.aliyuncs.com",
-            "cn-zhongwei": "metrics.cn-zhongwei.aliyuncs.com",
+            "cn-beijing": "metrics.cn-beijing.aliyuncs.com",
             "cn-zhengzhou-jva": "metrics.cn-zhengzhou-jva.aliyuncs.com",
-            "cn-zhangjiakou": "metrics.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu-gic-1": "metrics.cn-wulanchabu-gic-1.aliyuncs.com",
-            "cn-wulanchabu": "metrics.cn-wulanchabu.aliyuncs.com",
-            "cn-wuhan-lr": "metrics.cn-wuhan-lr.aliyuncs.com",
-            "cn-shenzhen-finance-1": "metrics.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shenzhen": "metrics.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "metrics.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "metrics.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "metrics.cn-qingdao.aliyuncs.com",
-            "cn-north-2-gov-1": "metrics.cn-north-2-gov-1.aliyuncs.com",
-            "cn-nanjing": "metrics.cn-nanjing.aliyuncs.com",
-            "cn-huhehaote": "metrics.cn-huhehaote.aliyuncs.com",
-            "cn-hongkong": "metrics.cn-hongkong.aliyuncs.com",
-            "cn-heyuan-acdr-1": "metrics.cn-heyuan-acdr-1.aliyuncs.com",
             "cn-heyuan": "metrics.cn-heyuan.aliyuncs.com",
-            "cn-hangzhou-finance": "metrics.cn-hangzhou-finance.aliyuncs.com",
-            "cn-hangzhou": "metrics.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "metrics.cn-guangzhou.aliyuncs.com",
+            "cn-zhangjiakou": "metrics.cn-zhangjiakou.aliyuncs.com",
+            "ap-northeast-2": "metrics.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "metrics.ap-northeast-1.aliyuncs.com",
+            "ap-southeast-1": "metrics.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "metrics.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "metrics.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "metrics.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "metrics.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-8": "metrics.ap-southeast-8.aliyuncs.com",
+            "cn-zhongwei": "metrics.cn-zhongwei.aliyuncs.com",
+            "cn-wulanchabu": "metrics.cn-wulanchabu.aliyuncs.com",
+            "cn-qingdao": "metrics.cn-qingdao.aliyuncs.com",
+            "cn-wuhan-lr": "metrics.cn-wuhan-lr.aliyuncs.com",
+            "cn-shanghai": "metrics.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "metrics.cn-hongkong.aliyuncs.com",
+            "cn-shenzhen": "metrics.cn-shenzhen.aliyuncs.com",
+            "cn-nanjing": "metrics.cn-nanjing.aliyuncs.com",
             "cn-fuzhou": "metrics.cn-fuzhou.aliyuncs.com",
             "cn-chengdu": "metrics.cn-chengdu.aliyuncs.com",
-            "cn-beijing-finance-1": "metrics.cn-beijing-finance-1.aliyuncs.com",
-            "cn-beijing": "metrics.cn-beijing.aliyuncs.com",
-            "ap-southeast-8": "metrics.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "metrics.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "metrics.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "metrics.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "metrics.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "metrics.ap-southeast-1.aliyuncs.com",
+            "cn-guangzhou": "metrics.cn-guangzhou.aliyuncs.com",
+            "cn-huhehaote": "metrics.cn-huhehaote.aliyuncs.com",
+            "cn-hangzhou": "metrics.cn-hangzhou.aliyuncs.com",
+            "us-southeast-1": "metrics.us-southeast-1.aliyuncs.com",
+            "eu-west-1": "metrics.eu-west-1.aliyuncs.com",
+            "eu-west-2": "metrics.eu-west-2.aliyuncs.com",
+            "eu-central-1": "metrics.eu-central-1.aliyuncs.com",
+            "us-east-1": "metrics.us-east-1.aliyuncs.com",
+            "us-west-1": "metrics.us-west-1.aliyuncs.com",
+            "na-south-1": "metrics.na-south-1.aliyuncs.com",
+            "me-east-1": "metrics.me-east-1.aliyuncs.com",
             "ap-south-1": "metrics.ap-south-1.aliyuncs.com",
-            "ap-northeast-2": "metrics.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "metrics.ap-northeast-1.aliyuncs.com"
+            "me-central-1": "metrics.me-central-1.aliyuncs.com",
+            "cn-hangzhou-finance": "metrics.cn-hangzhou-finance.aliyuncs.com",
+            "cn-shenzhen-finance-1": "metrics.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-beijing-finance-1": "metrics.cn-beijing-finance-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "metrics.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "metrics.cn-wulanchabu-gic-1.aliyuncs.com",
+            "cn-heyuan-acdr-1": "metrics.cn-heyuan-acdr-1.aliyuncs.com",
+            "cn-north-2-gov-1": "metrics.cn-north-2-gov-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cms", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -550,6 +550,57 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createContextStoreAPIKeyWithOptions(workspace as! String, contextStoreName as! String, request as! CreateContextStoreAPIKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataPipelineWithOptions(_ workspace: String, _ request: CreateDataPipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataPipelineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kind)) {
+            body["kind"] = request.kind ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputs)) {
+            body["outputs"] = request.outputs ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineName)) {
+            body["pipelineName"] = request.pipelineName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.processors)) {
+            body["processors"] = request.processors ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.sinks)) {
+            body["sinks"] = request.sinks ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDataPipeline",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/datapipeline",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDataPipelineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataPipeline(_ workspace: String, _ request: CreateDataPipelineRequest) async throws -> CreateDataPipelineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createDataPipelineWithOptions(workspace as! String, request as! CreateDataPipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1529,6 +1580,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteContextsWithOptions(workspace as! String, contextStoreName as! String, request as! DeleteContextsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataPipelineWithOptions(_ workspace: String, _ pipelineName: String, _ request: DeleteDataPipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDataPipelineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDataPipeline",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/datapipeline/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(pipelineName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDataPipelineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataPipeline(_ workspace: String, _ pipelineName: String, _ request: DeleteDataPipelineRequest) async throws -> DeleteDataPipelineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteDataPipelineWithOptions(workspace as! String, pipelineName as! String, request as! DeleteDataPipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2666,6 +2745,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getContextStoreWithOptions(workspace as! String, contextStoreName as! String, request as! GetContextStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDataPipelineWithOptions(_ workspace: String, _ pipelineName: String, _ request: GetDataPipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDataPipelineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDataPipeline",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/datapipeline/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(pipelineName)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDataPipelineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDataPipeline(_ workspace: String, _ pipelineName: String, _ request: GetDataPipelineRequest) async throws -> GetDataPipelineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getDataPipelineWithOptions(workspace as! String, pipelineName as! String, request as! GetDataPipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3939,6 +4046,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataPipelinesWithOptions(_ workspace: String, _ request: ListDataPipelinesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataPipelinesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDataPipelines",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/datapipeline",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDataPipelinesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataPipelines(_ workspace: String, _ request: ListDataPipelinesRequest) async throws -> ListDataPipelinesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listDataPipelinesWithOptions(workspace as! String, request as! ListDataPipelinesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDatasetsWithOptions(_ workspace: String, _ request: ListDatasetsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5021,6 +5164,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func previewDataPipelineWithOptions(_ workspace: String, _ request: PreviewDataPipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PreviewDataPipelineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fromTime)) {
+            body["fromTime"] = request.fromTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kind)) {
+            body["kind"] = request.kind ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputs)) {
+            body["outputs"] = request.outputs ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineName)) {
+            body["pipelineName"] = request.pipelineName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.processors)) {
+            body["processors"] = request.processors ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.sinks)) {
+            body["sinks"] = request.sinks ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source!;
+        }
+        if (!TeaUtils.Client.isUnset(request.toTime)) {
+            body["toTime"] = request.toTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PreviewDataPipeline",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/datapipeline/preview",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PreviewDataPipelineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func previewDataPipeline(_ workspace: String, _ request: PreviewDataPipelineRequest) async throws -> PreviewDataPipelineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await previewDataPipelineWithOptions(workspace as! String, request as! PreviewDataPipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func putWorkspaceWithOptions(_ workspaceName: String, _ request: PutWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PutWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -5645,6 +5845,57 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateContextStoreWithOptions(workspace as! String, contextStoreName as! String, request as! UpdateContextStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDataPipelineWithOptions(_ workspace: String, _ pipelineName: String, _ request: UpdateDataPipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDataPipelineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expectedVersion)) {
+            body["expectedVersion"] = request.expectedVersion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kind)) {
+            body["kind"] = request.kind ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputs)) {
+            body["outputs"] = request.outputs ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.processors)) {
+            body["processors"] = request.processors ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.sinks)) {
+            body["sinks"] = request.sinks ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDataPipeline",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/datapipeline/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(pipelineName)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDataPipelineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDataPipeline(_ workspace: String, _ pipelineName: String, _ request: UpdateDataPipelineRequest) async throws -> UpdateDataPipelineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateDataPipelineWithOptions(workspace as! String, pipelineName as! String, request as! UpdateDataPipelineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
