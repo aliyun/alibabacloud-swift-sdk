@@ -3890,6 +3890,8 @@ public class AuthorizationResourceInfo : Tea.TeaModel {
 
 public class Backend : Tea.TeaModel {
     public class Services : Tea.TeaModel {
+        public var modelName: String?
+
         public var name: String?
 
         public var port: Int32?
@@ -3916,6 +3918,9 @@ public class Backend : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.modelName != nil {
+                map["modelName"] = self.modelName!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
@@ -3939,6 +3944,9 @@ public class Backend : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["modelName"] as? String {
+                self.modelName = value
+            }
             if let value = dict["name"] as? String {
                 self.name = value
             }
@@ -3959,6 +3967,8 @@ public class Backend : Tea.TeaModel {
             }
         }
     }
+    public var enableSystemModels: Bool?
+
     public var scene: String?
 
     public var services: [Backend.Services]?
@@ -3977,6 +3987,9 @@ public class Backend : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableSystemModels != nil {
+            map["enableSystemModels"] = self.enableSystemModels!
+        }
         if self.scene != nil {
             map["scene"] = self.scene!
         }
@@ -3992,6 +4005,9 @@ public class Backend : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["enableSystemModels"] as? Bool {
+            self.enableSystemModels = value
+        }
         if let value = dict["scene"] as? String {
             self.scene = value
         }
@@ -7792,6 +7808,8 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
     public var customDomainInfos: [HttpApiDeployConfig.CustomDomainInfos]?
 
+    public var enableSystemModels: Bool?
+
     public var envDomainIds: [String]?
 
     public var envDomainInfos: [HttpApiDeployConfig.EnvDomainInfos]?
@@ -7849,6 +7867,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["customDomainInfos"] = tmp
+        }
+        if self.enableSystemModels != nil {
+            map["enableSystemModels"] = self.enableSystemModels!
         }
         if self.envDomainIds != nil {
             map["envDomainIds"] = self.envDomainIds!
@@ -7928,6 +7949,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
             self.customDomainInfos = tmp
+        }
+        if let value = dict["enableSystemModels"] as? Bool {
+            self.enableSystemModels = value
         }
         if let value = dict["envDomainIds"] as? [String] {
             self.envDomainIds = value
@@ -19309,6 +19333,8 @@ public class CreateHttpApiOperationResponse : Tea.TeaModel {
 public class CreateHttpApiRouteRequest : Tea.TeaModel {
     public class BackendConfig : Tea.TeaModel {
         public class Services : Tea.TeaModel {
+            public var modelName: String?
+
             public var port: Int32?
 
             public var protocol_: String?
@@ -19333,6 +19359,9 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.modelName != nil {
+                    map["modelName"] = self.modelName!
+                }
                 if self.port != nil {
                     map["port"] = self.port!
                 }
@@ -19353,6 +19382,9 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["modelName"] as? String {
+                    self.modelName = value
+                }
                 if let value = dict["port"] as? Int32 {
                     self.port = value
                 }
@@ -39787,6 +39819,36 @@ public class ListExternalServicesResponse : Tea.TeaModel {
 public class ListGatewayFeaturesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public class Constraints : Tea.TeaModel {
+                public var bodyMaxSizeLimit: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bodyMaxSizeLimit != nil {
+                        map["bodyMaxSizeLimit"] = self.bodyMaxSizeLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["bodyMaxSizeLimit"] as? Int32 {
+                        self.bodyMaxSizeLimit = value
+                    }
+                }
+            }
             public class Definition : Tea.TeaModel {
                 public class ValueOptions : Tea.TeaModel {
                     public var key: String?
@@ -39981,6 +40043,8 @@ public class ListGatewayFeaturesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var constraints: ListGatewayFeaturesResponseBody.Data.Items.Constraints?
+
             public var definition: ListGatewayFeaturesResponseBody.Data.Items.Definition?
 
             public var value: String?
@@ -39995,11 +40059,15 @@ public class ListGatewayFeaturesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.constraints?.validate()
                 try self.definition?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.constraints != nil {
+                    map["constraints"] = self.constraints?.toMap()
+                }
                 if self.definition != nil {
                     map["definition"] = self.definition?.toMap()
                 }
@@ -40011,6 +40079,11 @@ public class ListGatewayFeaturesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["constraints"] as? [String: Any?] {
+                    var model = ListGatewayFeaturesResponseBody.Data.Items.Constraints()
+                    model.fromMap(value)
+                    self.constraints = model
+                }
                 if let value = dict["definition"] as? [String: Any?] {
                     var model = ListGatewayFeaturesResponseBody.Data.Items.Definition()
                     model.fromMap(value)
@@ -52345,6 +52418,8 @@ public class UpdateHttpApiOperationResponse : Tea.TeaModel {
 public class UpdateHttpApiRouteRequest : Tea.TeaModel {
     public class BackendConfig : Tea.TeaModel {
         public class Services : Tea.TeaModel {
+            public var modelName: String?
+
             public var port: Int32?
 
             public var protocol_: String?
@@ -52369,6 +52444,9 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.modelName != nil {
+                    map["modelName"] = self.modelName!
+                }
                 if self.port != nil {
                     map["port"] = self.port!
                 }
@@ -52389,6 +52467,9 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["modelName"] as? String {
+                    self.modelName = value
+                }
                 if let value = dict["port"] as? Int32 {
                     self.port = value
                 }
