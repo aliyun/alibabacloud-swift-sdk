@@ -133,6 +133,8 @@ public class FlussInstance : Tea.TeaModel {
 
     public var diskSize: Int64?
 
+    public var ha: Bool?
+
     public var instanceId: String?
 
     public var instanceName: String?
@@ -150,6 +152,10 @@ public class FlussInstance : Tea.TeaModel {
     public var tabletServerNum: Int64?
 
     public var tabletServerType: String?
+
+    public var tieringPostCu: Int64?
+
+    public var tieringPreCu: Int64?
 
     public var uid: String?
 
@@ -184,6 +190,9 @@ public class FlussInstance : Tea.TeaModel {
         if self.diskSize != nil {
             map["DiskSize"] = self.diskSize!
         }
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -210,6 +219,12 @@ public class FlussInstance : Tea.TeaModel {
         }
         if self.tabletServerType != nil {
             map["TabletServerType"] = self.tabletServerType!
+        }
+        if self.tieringPostCu != nil {
+            map["TieringPostCu"] = self.tieringPostCu!
+        }
+        if self.tieringPreCu != nil {
+            map["TieringPreCu"] = self.tieringPreCu!
         }
         if self.uid != nil {
             map["Uid"] = self.uid!
@@ -243,6 +258,9 @@ public class FlussInstance : Tea.TeaModel {
         if let value = dict["DiskSize"] as? Int64 {
             self.diskSize = value
         }
+        if let value = dict["Ha"] as? Bool {
+            self.ha = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -270,6 +288,12 @@ public class FlussInstance : Tea.TeaModel {
         if let value = dict["TabletServerType"] as? String {
             self.tabletServerType = value
         }
+        if let value = dict["TieringPostCu"] as? Int64 {
+            self.tieringPostCu = value
+        }
+        if let value = dict["TieringPreCu"] as? Int64 {
+            self.tieringPreCu = value
+        }
         if let value = dict["Uid"] as? String {
             self.uid = value
         }
@@ -288,6 +312,69 @@ public class FlussInstance : Tea.TeaModel {
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
+        }
+    }
+}
+
+public class FlussResourceSpec : Tea.TeaModel {
+    public var diskSizeInGB: Int64?
+
+    public var slaveModel: String?
+
+    public var slaveNum: Int64?
+
+    public var tieringPostCu: Int64?
+
+    public var tieringPreCu: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskSizeInGB != nil {
+            map["DiskSizeInGB"] = self.diskSizeInGB!
+        }
+        if self.slaveModel != nil {
+            map["SlaveModel"] = self.slaveModel!
+        }
+        if self.slaveNum != nil {
+            map["SlaveNum"] = self.slaveNum!
+        }
+        if self.tieringPostCu != nil {
+            map["TieringPostCu"] = self.tieringPostCu!
+        }
+        if self.tieringPreCu != nil {
+            map["TieringPreCu"] = self.tieringPreCu!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiskSizeInGB"] as? Int64 {
+            self.diskSizeInGB = value
+        }
+        if let value = dict["SlaveModel"] as? String {
+            self.slaveModel = value
+        }
+        if let value = dict["SlaveNum"] as? Int64 {
+            self.slaveNum = value
+        }
+        if let value = dict["TieringPostCu"] as? Int64 {
+            self.tieringPostCu = value
+        }
+        if let value = dict["TieringPreCu"] as? Int64 {
+            self.tieringPreCu = value
         }
     }
 }
@@ -3840,6 +3927,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var storage: DescribeInstancesResponseBody.Instances.Storage?
 
+        public var supportDisasterRecoveryDrill: Bool?
+
         public var tags: [DescribeInstancesResponseBody.Instances.Tags]?
 
         public var uid: String?
@@ -3974,6 +4063,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.storage != nil {
                 map["Storage"] = self.storage?.toMap()
+            }
+            if self.supportDisasterRecoveryDrill != nil {
+                map["SupportDisasterRecoveryDrill"] = self.supportDisasterRecoveryDrill!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -4134,6 +4226,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 var model = DescribeInstancesResponseBody.Instances.Storage()
                 model.fromMap(value)
                 self.storage = model
+            }
+            if let value = dict["SupportDisasterRecoveryDrill"] as? Bool {
+                self.supportDisasterRecoveryDrill = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [DescribeInstancesResponseBody.Instances.Tags] = []
