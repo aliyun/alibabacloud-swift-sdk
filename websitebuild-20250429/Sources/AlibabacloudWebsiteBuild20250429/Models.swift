@@ -849,6 +849,8 @@ public class AppInstanceProfile : Tea.TeaModel {
 
     public var seoSite: String?
 
+    public var shareRenderWatermark: String?
+
     public var siteVersion: String?
 
     public var siteVersionText: String?
@@ -921,6 +923,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         if self.seoSite != nil {
             map["SeoSite"] = self.seoSite!
         }
+        if self.shareRenderWatermark != nil {
+            map["ShareRenderWatermark"] = self.shareRenderWatermark!
+        }
         if self.siteVersion != nil {
             map["SiteVersion"] = self.siteVersion!
         }
@@ -988,6 +993,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["SeoSite"] as? String {
             self.seoSite = value
+        }
+        if let value = dict["ShareRenderWatermark"] as? String {
+            self.shareRenderWatermark = value
         }
         if let value = dict["SiteVersion"] as? String {
             self.siteVersion = value
@@ -4785,6 +4793,8 @@ public class BindAppDomainRequest : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var domainType: String?
+
     public var extend: String?
 
     public var operateType: String?
@@ -4809,6 +4819,9 @@ public class BindAppDomainRequest : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
+        if self.domainType != nil {
+            map["DomainType"] = self.domainType!
+        }
         if self.extend != nil {
             map["Extend"] = self.extend!
         }
@@ -4825,6 +4838,9 @@ public class BindAppDomainRequest : Tea.TeaModel {
         }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["DomainType"] as? String {
+            self.domainType = value
         }
         if let value = dict["Extend"] as? String {
             self.extend = value
@@ -31361,6 +31377,8 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
 
     public var domainKeyword: String?
 
+    public var domainType: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -31393,6 +31411,9 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
         if self.domainKeyword != nil {
             map["DomainKeyword"] = self.domainKeyword!
         }
+        if self.domainType != nil {
+            map["DomainType"] = self.domainType!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -31421,6 +31442,9 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
         }
         if let value = dict["DomainKeyword"] as? String {
             self.domainKeyword = value
+        }
+        if let value = dict["DomainType"] as? String {
+            self.domainType = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
@@ -31954,9 +31978,13 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public var createTime: String?
 
+            public var deployType: String?
+
             public var dnsConflict: ListAppInstanceDomainsResponseBody.Module.Data.DnsConflict?
 
             public var domainName: String?
+
+            public var domainType: String?
 
             public var migration: ListAppInstanceDomainsResponseBody.Module.Data.Migration?
 
@@ -31997,11 +32025,17 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.deployType != nil {
+                    map["DeployType"] = self.deployType!
+                }
                 if self.dnsConflict != nil {
                     map["DnsConflict"] = self.dnsConflict?.toMap()
                 }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
+                }
+                if self.domainType != nil {
+                    map["DomainType"] = self.domainType!
                 }
                 if self.migration != nil {
                     map["Migration"] = self.migration?.toMap()
@@ -32034,6 +32068,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
                 }
+                if let value = dict["DeployType"] as? String {
+                    self.deployType = value
+                }
                 if let value = dict["DnsConflict"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Data.DnsConflict()
                     model.fromMap(value)
@@ -32041,6 +32078,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DomainName"] as? String {
                     self.domainName = value
+                }
+                if let value = dict["DomainType"] as? String {
+                    self.domainType = value
                 }
                 if let value = dict["Migration"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Data.Migration()
@@ -50898,6 +50938,8 @@ public class ReconnectAppChatRequest : Tea.TeaModel {
 
     public var lastEventId: Int32?
 
+    public var latestMessageCreateTime: String?
+
     public override init() {
         super.init()
     }
@@ -50921,6 +50963,9 @@ public class ReconnectAppChatRequest : Tea.TeaModel {
         if self.lastEventId != nil {
             map["LastEventId"] = self.lastEventId!
         }
+        if self.latestMessageCreateTime != nil {
+            map["LatestMessageCreateTime"] = self.latestMessageCreateTime!
+        }
         return map
     }
 
@@ -50934,6 +50979,9 @@ public class ReconnectAppChatRequest : Tea.TeaModel {
         }
         if let value = dict["LastEventId"] as? Int32 {
             self.lastEventId = value
+        }
+        if let value = dict["LatestMessageCreateTime"] as? String {
+            self.latestMessageCreateTime = value
         }
     }
 }
