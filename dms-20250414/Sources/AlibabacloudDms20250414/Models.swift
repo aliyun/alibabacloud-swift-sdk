@@ -8345,6 +8345,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         }
     }
     public class ExecutionConfig : Tea.TeaModel {
+        public var forbiddenAppendDataSource: Bool?
+
         public var skipAskHuman: Bool?
 
         public var skipPlan: Bool?
@@ -8367,6 +8369,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.forbiddenAppendDataSource != nil {
+                map["ForbiddenAppendDataSource"] = self.forbiddenAppendDataSource!
+            }
             if self.skipAskHuman != nil {
                 map["SkipAskHuman"] = self.skipAskHuman!
             }
@@ -8384,6 +8389,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ForbiddenAppendDataSource"] as? Bool {
+                self.forbiddenAppendDataSource = value
+            }
             if let value = dict["SkipAskHuman"] as? Bool {
                 self.skipAskHuman = value
             }
@@ -8947,6 +8955,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
         }
         public class ExecutionConfig : Tea.TeaModel {
+            public var forbiddenAppendDataSource: Bool?
+
             public var skipAskHuman: Bool?
 
             public var skipPlan: Bool?
@@ -8969,6 +8979,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.forbiddenAppendDataSource != nil {
+                    map["ForbiddenAppendDataSource"] = self.forbiddenAppendDataSource!
+                }
                 if self.skipAskHuman != nil {
                     map["SkipAskHuman"] = self.skipAskHuman!
                 }
@@ -8986,6 +8999,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ForbiddenAppendDataSource"] as? Bool {
+                    self.forbiddenAppendDataSource = value
+                }
                 if let value = dict["SkipAskHuman"] as? Bool {
                     self.skipAskHuman = value
                 }
@@ -15073,6 +15089,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
         }
         public class ExecutionConfig : Tea.TeaModel {
+            public var forbiddenAppendDataSource: Bool?
+
             public var skipAskHuman: Bool?
 
             public var skipPlan: Bool?
@@ -15095,6 +15113,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.forbiddenAppendDataSource != nil {
+                    map["ForbiddenAppendDataSource"] = self.forbiddenAppendDataSource!
+                }
                 if self.skipAskHuman != nil {
                     map["SkipAskHuman"] = self.skipAskHuman!
                 }
@@ -15112,6 +15133,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ForbiddenAppendDataSource"] as? Bool {
+                    self.forbiddenAppendDataSource = value
+                }
                 if let value = dict["SkipAskHuman"] as? Bool {
                     self.skipAskHuman = value
                 }
@@ -19051,6 +19075,8 @@ public class GetDataAgentTaskModelUsageRequest : Tea.TeaModel {
 
     public var endTime: Int64?
 
+    public var payLevel: String?
+
     public var regionId: String?
 
     public override init() {
@@ -19076,6 +19102,9 @@ public class GetDataAgentTaskModelUsageRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.payLevel != nil {
+            map["PayLevel"] = self.payLevel!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -19093,6 +19122,9 @@ public class GetDataAgentTaskModelUsageRequest : Tea.TeaModel {
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
         }
+        if let value = dict["PayLevel"] as? String {
+            self.payLevel = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -19101,6 +19133,14 @@ public class GetDataAgentTaskModelUsageRequest : Tea.TeaModel {
 
 public class GetDataAgentTaskModelUsageResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var accelerationRatio: Double?
+
+        public var rateLimitedSessionCount: Int64?
+
+        public var totalLlmWaitDuration: Double?
+
+        public var totalSessionCount: Int64?
+
         public var peakTpm: Int64?
 
         public var totalCallCount: Int64?
@@ -19123,6 +19163,18 @@ public class GetDataAgentTaskModelUsageResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accelerationRatio != nil {
+                map["AccelerationRatio"] = self.accelerationRatio!
+            }
+            if self.rateLimitedSessionCount != nil {
+                map["RateLimitedSessionCount"] = self.rateLimitedSessionCount!
+            }
+            if self.totalLlmWaitDuration != nil {
+                map["TotalLlmWaitDuration"] = self.totalLlmWaitDuration!
+            }
+            if self.totalSessionCount != nil {
+                map["TotalSessionCount"] = self.totalSessionCount!
+            }
             if self.peakTpm != nil {
                 map["peakTpm"] = self.peakTpm!
             }
@@ -19140,6 +19192,18 @@ public class GetDataAgentTaskModelUsageResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccelerationRatio"] as? Double {
+                self.accelerationRatio = value
+            }
+            if let value = dict["RateLimitedSessionCount"] as? Int64 {
+                self.rateLimitedSessionCount = value
+            }
+            if let value = dict["TotalLlmWaitDuration"] as? Double {
+                self.totalLlmWaitDuration = value
+            }
+            if let value = dict["TotalSessionCount"] as? Int64 {
+                self.totalSessionCount = value
+            }
             if let value = dict["peakTpm"] as? Int64 {
                 self.peakTpm = value
             }
@@ -19276,6 +19340,8 @@ public class GetDataAgentTaskModelUsageMetricsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var payLevel: String?
+
     public var regionId: String?
 
     public override init() {
@@ -19301,6 +19367,9 @@ public class GetDataAgentTaskModelUsageMetricsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.payLevel != nil {
+            map["PayLevel"] = self.payLevel!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -19317,6 +19386,9 @@ public class GetDataAgentTaskModelUsageMetricsRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["PayLevel"] as? String {
+            self.payLevel = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -23518,6 +23590,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
             public class ExecutionConfig : Tea.TeaModel {
+                public var forbiddenAppendDataSource: Bool?
+
                 public var skipAskHuman: Bool?
 
                 public var skipPlan: Bool?
@@ -23540,6 +23614,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.forbiddenAppendDataSource != nil {
+                        map["ForbiddenAppendDataSource"] = self.forbiddenAppendDataSource!
+                    }
                     if self.skipAskHuman != nil {
                         map["SkipAskHuman"] = self.skipAskHuman!
                     }
@@ -23557,6 +23634,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["ForbiddenAppendDataSource"] as? Bool {
+                        self.forbiddenAppendDataSource = value
+                    }
                     if let value = dict["SkipAskHuman"] as? Bool {
                         self.skipAskHuman = value
                     }
@@ -31708,6 +31788,8 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
         }
     }
     public class ExecutionConfig : Tea.TeaModel {
+        public var forbiddenAppendDataSource: Bool?
+
         public var skipAskHuman: Bool?
 
         public var skipPlan: Bool?
@@ -31730,6 +31812,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.forbiddenAppendDataSource != nil {
+                map["ForbiddenAppendDataSource"] = self.forbiddenAppendDataSource!
+            }
             if self.skipAskHuman != nil {
                 map["SkipAskHuman"] = self.skipAskHuman!
             }
@@ -31747,6 +31832,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ForbiddenAppendDataSource"] as? Bool {
+                self.forbiddenAppendDataSource = value
+            }
             if let value = dict["SkipAskHuman"] as? Bool {
                 self.skipAskHuman = value
             }
@@ -32326,6 +32414,8 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
             }
         }
         public class ExecutionConfig : Tea.TeaModel {
+            public var forbiddenAppendDataSource: Bool?
+
             public var skipAskHuman: Bool?
 
             public var skipPlan: Bool?
@@ -32348,6 +32438,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.forbiddenAppendDataSource != nil {
+                    map["ForbiddenAppendDataSource"] = self.forbiddenAppendDataSource!
+                }
                 if self.skipAskHuman != nil {
                     map["SkipAskHuman"] = self.skipAskHuman!
                 }
@@ -32365,6 +32458,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ForbiddenAppendDataSource"] as? Bool {
+                    self.forbiddenAppendDataSource = value
+                }
                 if let value = dict["SkipAskHuman"] as? Bool {
                     self.skipAskHuman = value
                 }
