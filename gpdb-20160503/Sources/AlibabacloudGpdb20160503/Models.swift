@@ -12476,6 +12476,8 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
 
     public var engineVersion: String?
 
+    public var lightweight: Bool?
+
     public var payType: String?
 
     public var period: String?
@@ -12528,6 +12530,9 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.lightweight != nil {
+            map["Lightweight"] = self.lightweight!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -12588,6 +12593,9 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         }
         if let value = dict["EngineVersion"] as? String {
             self.engineVersion = value
+        }
+        if let value = dict["Lightweight"] as? Bool {
+            self.lightweight = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
@@ -42479,6 +42487,8 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public var instanceVersion: String?
 
+    public var lightweight: String?
+
     public var payType: String?
 
     public var privateConnectUrl: String?
@@ -42554,6 +42564,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if self.instanceVersion != nil {
             map["InstanceVersion"] = self.instanceVersion!
+        }
+        if self.lightweight != nil {
+            map["Lightweight"] = self.lightweight!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -42637,6 +42650,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if let value = dict["InstanceVersion"] as? String {
             self.instanceVersion = value
+        }
+        if let value = dict["Lightweight"] as? String {
+            self.lightweight = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
