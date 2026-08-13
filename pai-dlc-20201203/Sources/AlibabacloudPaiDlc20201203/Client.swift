@@ -53,24 +53,24 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1-oxs": "pai-dlc.aliyuncs.com",
             "me-east-1": "pai-dlc.aliyuncs.com",
             "rus-west-1-pop": "pai-dlc.aliyuncs.com",
-            "us-west-1": "pai-dlc.us-west-1.aliyuncs.com",
-            "us-southeast-1": "pai-dlc.us-southeast-1.aliyuncs.com",
-            "us-east-1": "pai-dlc.us-east-1.aliyuncs.com",
-            "eu-central-1": "pai-dlc.eu-central-1.aliyuncs.com",
             "cn-wulanchabu": "pai-dlc.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "pai-dlc.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "pai-dlc.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-beijing": "pai-dlc.cn-beijing.aliyuncs.com",
             "cn-shanghai": "pai-dlc.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "pai-dlc.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "pai-dlc.cn-hangzhou.aliyuncs.com",
+            "cn-shenzhen": "pai-dlc.cn-shenzhen.aliyuncs.com",
+            "ap-northeast-1": "pai-dlc.ap-northeast-1.aliyuncs.com",
             "cn-guangzhou": "pai-dlc.cn-guangzhou.aliyuncs.com",
-            "cn-beijing": "pai-dlc.cn-beijing.aliyuncs.com",
-            "ap-southeast-8": "pai-dlc.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "pai-dlc.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-5": "pai-dlc.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "pai-dlc.ap-southeast-3.aliyuncs.com",
             "ap-southeast-1": "pai-dlc.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "pai-dlc.ap-northeast-1.aliyuncs.com"
+            "ap-southeast-3": "pai-dlc.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "pai-dlc.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-7": "pai-dlc.ap-southeast-7.aliyuncs.com",
+            "cn-hangzhou": "pai-dlc.cn-hangzhou.aliyuncs.com",
+            "ap-southeast-8": "pai-dlc.ap-southeast-8.aliyuncs.com",
+            "us-east-1": "pai-dlc.us-east-1.aliyuncs.com",
+            "us-southeast-1": "pai-dlc.us-southeast-1.aliyuncs.com",
+            "us-west-1": "pai-dlc.us-west-1.aliyuncs.com",
+            "eu-central-1": "pai-dlc.eu-central-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "pai-dlc.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pai-dlc", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1834,6 +1834,98 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await stopTensorboardWithOptions(TensorboardId as! String, request as! StopTensorboardRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func tagResourcesWithOptions(_ request: TagResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TagResourcesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            body["ResourceId"] = request.resourceId ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            body["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            body["Tag"] = request.tag ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TagResources",
+            "version": "2020-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/tags",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TagResourcesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func tagResources(_ request: TagResourcesRequest) async throws -> TagResourcesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await tagResourcesWithOptions(request as! TagResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func untagResourcesWithOptions(_ tmpReq: UntagResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UntagResourcesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UntagResourcesShrinkRequest = UntagResourcesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceId)) {
+            request.resourceIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceId, "ResourceId", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tagKey)) {
+            request.tagKeyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagKey, "TagKey", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.all)) {
+            query["All"] = request.all ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceIdShrink)) {
+            query["ResourceId"] = request.resourceIdShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagKeyShrink)) {
+            query["TagKey"] = request.tagKeyShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UntagResources",
+            "version": "2020-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/tags",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UntagResourcesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func untagResources(_ request: UntagResourcesRequest) async throws -> UntagResourcesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await untagResourcesWithOptions(request as! UntagResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
