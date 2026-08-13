@@ -10,8 +10,8 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "cn-shanghai": "voicenavigator.cn-shanghai.aliyuncs.com",
-            "cn-hangzhou": "voicenavigator.cn-hangzhou.aliyuncs.com"
+            "cn-hangzhou": "voicenavigator.cn-hangzhou.aliyuncs.com",
+            "cn-shanghai": "voicenavigator.cn-shanghai.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("voicenavigator", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -650,7 +650,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeTTSConfigWithOptions(_ request: DescribeTTSConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTTSConfigResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceOwnerId)) {
+            query["InstanceOwnerId"] = request.instanceOwnerId!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -659,7 +665,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2018-06-12",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -1340,6 +1346,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.appKey)) {
             query["AppKey"] = request.appKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backgroundMusicName)) {
+            query["BackgroundMusicName"] = request.backgroundMusicName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.engine)) {
             query["Engine"] = request.engine ?? "";

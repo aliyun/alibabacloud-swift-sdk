@@ -3136,6 +3136,8 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
 
     public var appKey: String?
 
+    public var backgroundMusicName: String?
+
     public var engine: String?
 
     public var engineXunfei: String?
@@ -3175,6 +3177,9 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
         }
         if self.appKey != nil {
             map["AppKey"] = self.appKey!
+        }
+        if self.backgroundMusicName != nil {
+            map["BackgroundMusicName"] = self.backgroundMusicName!
         }
         if self.engine != nil {
             map["Engine"] = self.engine!
@@ -3216,6 +3221,9 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["AppKey"] as? String {
             self.appKey = value
+        }
+        if let value = dict["BackgroundMusicName"] as? String {
+            self.backgroundMusicName = value
         }
         if let value = dict["Engine"] as? String {
             self.engine = value
@@ -6916,6 +6924,8 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
 
     public var appKey: String?
 
+    public var backgroundMusicName: String?
+
     public var engine: String?
 
     public var engineXunfei: String?
@@ -6955,6 +6965,9 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
         }
         if self.appKey != nil {
             map["AppKey"] = self.appKey!
+        }
+        if self.backgroundMusicName != nil {
+            map["BackgroundMusicName"] = self.backgroundMusicName!
         }
         if self.engine != nil {
             map["Engine"] = self.engine!
@@ -6996,6 +7009,9 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
         }
         if let value = dict["AppKey"] as? String {
             self.appKey = value
+        }
+        if let value = dict["BackgroundMusicName"] as? String {
+            self.backgroundMusicName = value
         }
         if let value = dict["Engine"] as? String {
             self.engine = value
