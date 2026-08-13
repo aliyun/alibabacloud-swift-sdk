@@ -10108,11 +10108,15 @@ public class DescribeDataSourceParametersResponse : Tea.TeaModel {
 }
 
 public class DescribeDisposeAndPlaybookRequest : Tea.TeaModel {
+    public var availableOnly: Bool?
+
     public var currentPage: Int32?
 
     public var entityType: String?
 
     public var entityUuid: String?
+
+    public var entityUuidList: String?
 
     public var incidentUuid: String?
 
@@ -10138,6 +10142,9 @@ public class DescribeDisposeAndPlaybookRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.availableOnly != nil {
+            map["AvailableOnly"] = self.availableOnly!
+        }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
@@ -10146,6 +10153,9 @@ public class DescribeDisposeAndPlaybookRequest : Tea.TeaModel {
         }
         if self.entityUuid != nil {
             map["EntityUuid"] = self.entityUuid!
+        }
+        if self.entityUuidList != nil {
+            map["EntityUuidList"] = self.entityUuidList!
         }
         if self.incidentUuid != nil {
             map["IncidentUuid"] = self.incidentUuid!
@@ -10167,6 +10177,9 @@ public class DescribeDisposeAndPlaybookRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AvailableOnly"] as? Bool {
+            self.availableOnly = value
+        }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
         }
@@ -10175,6 +10188,9 @@ public class DescribeDisposeAndPlaybookRequest : Tea.TeaModel {
         }
         if let value = dict["EntityUuid"] as? String {
             self.entityUuid = value
+        }
+        if let value = dict["EntityUuidList"] as? String {
+            self.entityUuidList = value
         }
         if let value = dict["IncidentUuid"] as? String {
             self.incidentUuid = value
@@ -10379,6 +10395,8 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
 
             public var entityType: String?
 
+            public var entityUuid: String?
+
             public var opcodeMap: [String: String]?
 
             public var opcodeSet: [String]?
@@ -10416,6 +10434,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                 if self.entityType != nil {
                     map["EntityType"] = self.entityType!
                 }
+                if self.entityUuid != nil {
+                    map["EntityUuid"] = self.entityUuid!
+                }
                 if self.opcodeMap != nil {
                     map["OpcodeMap"] = self.opcodeMap!
                 }
@@ -10452,6 +10473,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                 if let value = dict["EntityType"] as? String {
                     self.entityType = value
                 }
+                if let value = dict["EntityUuid"] as? String {
+                    self.entityUuid = value
+                }
                 if let value = dict["OpcodeMap"] as? [String: String] {
                     self.opcodeMap = value
                 }
@@ -10476,6 +10500,8 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var available: Bool?
+
         public var pageInfo: DescribeDisposeAndPlaybookResponseBody.Data.PageInfo?
 
         public var responseData: [DescribeDisposeAndPlaybookResponseBody.Data.ResponseData]?
@@ -10495,6 +10521,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.available != nil {
+                map["Available"] = self.available!
+            }
             if self.pageInfo != nil {
                 map["PageInfo"] = self.pageInfo?.toMap()
             }
@@ -10510,6 +10539,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Available"] as? Bool {
+                self.available = value
+            }
             if let value = dict["PageInfo"] as? [String: Any?] {
                 var model = DescribeDisposeAndPlaybookResponseBody.Data.PageInfo()
                 model.fromMap(value)
@@ -21253,6 +21285,8 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
 
             public var entityType: String?
 
+            public var errorCode: String?
+
             public var errorMessage: String?
 
             public var finishTime: String?
@@ -21319,6 +21353,9 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
                 }
                 if self.entityType != nil {
                     map["EntityType"] = self.entityType!
+                }
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
                 }
                 if self.errorMessage != nil {
                     map["ErrorMessage"] = self.errorMessage!
@@ -21393,6 +21430,9 @@ public class ListDisposeStrategyResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EntityType"] as? String {
                     self.entityType = value
+                }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
                 }
                 if let value = dict["ErrorMessage"] as? String {
                     self.errorMessage = value

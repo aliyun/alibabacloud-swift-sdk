@@ -1551,6 +1551,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDisposeAndPlaybookWithOptions(_ request: DescribeDisposeAndPlaybookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDisposeAndPlaybookResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.availableOnly)) {
+            query["AvailableOnly"] = request.availableOnly!;
+        }
+        if (!TeaUtils.Client.isUnset(request.entityUuidList)) {
+            query["EntityUuidList"] = request.entityUuidList ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             body["CurrentPage"] = request.currentPage!;
@@ -1577,6 +1584,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["RoleType"] = request.roleType!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
