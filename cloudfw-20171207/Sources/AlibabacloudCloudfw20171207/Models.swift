@@ -1058,6 +1058,8 @@ public class AddControlPolicyRequest : Tea.TeaModel {
 
     public var applicationNameList: [String]?
 
+    public var clientToken: String?
+
     public var description_: String?
 
     public var destPort: String?
@@ -1073,6 +1075,8 @@ public class AddControlPolicyRequest : Tea.TeaModel {
     public var direction: String?
 
     public var domainResolveType: String?
+
+    public var dryRun: Bool?
 
     public var endTime: Int64?
 
@@ -1125,6 +1129,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         if self.applicationNameList != nil {
             map["ApplicationNameList"] = self.applicationNameList!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -1148,6 +1155,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         }
         if self.domainResolveType != nil {
             map["DomainResolveType"] = self.domainResolveType!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -1205,6 +1215,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         if let value = dict["ApplicationNameList"] as? [String] {
             self.applicationNameList = value
         }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -1228,6 +1241,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["DomainResolveType"] as? String {
             self.domainResolveType = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
@@ -4127,6 +4143,10 @@ public class CreateSecurityProxyRequest : Tea.TeaModel {
             }
         }
     }
+    public var firewallServiceMode: String?
+
+    public var firewallServiceZones: [String]?
+
     public var firewallSwitch: String?
 
     public var fwVswitchZoneId: String?
@@ -4165,6 +4185,12 @@ public class CreateSecurityProxyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.firewallServiceMode != nil {
+            map["FirewallServiceMode"] = self.firewallServiceMode!
+        }
+        if self.firewallServiceZones != nil {
+            map["FirewallServiceZones"] = self.firewallServiceZones!
+        }
         if self.firewallSwitch != nil {
             map["FirewallSwitch"] = self.firewallSwitch!
         }
@@ -4210,6 +4236,12 @@ public class CreateSecurityProxyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FirewallServiceMode"] as? String {
+            self.firewallServiceMode = value
+        }
+        if let value = dict["FirewallServiceZones"] as? [String] {
+            self.firewallServiceZones = value
+        }
         if let value = dict["FirewallSwitch"] as? String {
             self.firewallSwitch = value
         }
@@ -4471,9 +4503,15 @@ public class CreateSlsLogDispatchResponse : Tea.TeaModel {
 public class CreateTrFirewallV2Request : Tea.TeaModel {
     public var cenId: String?
 
+    public var firewallAttachmentZone: String?
+
     public var firewallDescription: String?
 
     public var firewallName: String?
+
+    public var firewallServiceMode: String?
+
+    public var firewallServiceZones: [String]?
 
     public var firewallSubnetCidr: String?
 
@@ -4497,6 +4535,8 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
 
     public var trAttachmentSlaveZone: String?
 
+    public var trAttachmentZones: [String]?
+
     public var transitRouterId: String?
 
     public override init() {
@@ -4516,11 +4556,20 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
         if self.cenId != nil {
             map["CenId"] = self.cenId!
         }
+        if self.firewallAttachmentZone != nil {
+            map["FirewallAttachmentZone"] = self.firewallAttachmentZone!
+        }
         if self.firewallDescription != nil {
             map["FirewallDescription"] = self.firewallDescription!
         }
         if self.firewallName != nil {
             map["FirewallName"] = self.firewallName!
+        }
+        if self.firewallServiceMode != nil {
+            map["FirewallServiceMode"] = self.firewallServiceMode!
+        }
+        if self.firewallServiceZones != nil {
+            map["FirewallServiceZones"] = self.firewallServiceZones!
         }
         if self.firewallSubnetCidr != nil {
             map["FirewallSubnetCidr"] = self.firewallSubnetCidr!
@@ -4555,6 +4604,9 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
         if self.trAttachmentSlaveZone != nil {
             map["TrAttachmentSlaveZone"] = self.trAttachmentSlaveZone!
         }
+        if self.trAttachmentZones != nil {
+            map["TrAttachmentZones"] = self.trAttachmentZones!
+        }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
         }
@@ -4566,11 +4618,20 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
         if let value = dict["CenId"] as? String {
             self.cenId = value
         }
+        if let value = dict["FirewallAttachmentZone"] as? String {
+            self.firewallAttachmentZone = value
+        }
         if let value = dict["FirewallDescription"] as? String {
             self.firewallDescription = value
         }
         if let value = dict["FirewallName"] as? String {
             self.firewallName = value
+        }
+        if let value = dict["FirewallServiceMode"] as? String {
+            self.firewallServiceMode = value
+        }
+        if let value = dict["FirewallServiceZones"] as? [String] {
+            self.firewallServiceZones = value
         }
         if let value = dict["FirewallSubnetCidr"] as? String {
             self.firewallSubnetCidr = value
@@ -4604,6 +4665,9 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
         }
         if let value = dict["TrAttachmentSlaveZone"] as? String {
             self.trAttachmentSlaveZone = value
+        }
+        if let value = dict["TrAttachmentZones"] as? [String] {
+            self.trAttachmentZones = value
         }
         if let value = dict["TransitRouterId"] as? String {
             self.transitRouterId = value
@@ -5058,6 +5122,8 @@ public class CreateVpcFirewallCenConfigureRequest : Tea.TeaModel {
 
     public var firewallVSwitchCidrBlock: String?
 
+    public var firewallVSwitchZoneId: String?
+
     public var firewallVpcCidrBlock: String?
 
     public var firewallVpcStandbyZoneId: String?
@@ -5099,6 +5165,9 @@ public class CreateVpcFirewallCenConfigureRequest : Tea.TeaModel {
         if self.firewallVSwitchCidrBlock != nil {
             map["FirewallVSwitchCidrBlock"] = self.firewallVSwitchCidrBlock!
         }
+        if self.firewallVSwitchZoneId != nil {
+            map["FirewallVSwitchZoneId"] = self.firewallVSwitchZoneId!
+        }
         if self.firewallVpcCidrBlock != nil {
             map["FirewallVpcCidrBlock"] = self.firewallVpcCidrBlock!
         }
@@ -5139,6 +5208,9 @@ public class CreateVpcFirewallCenConfigureRequest : Tea.TeaModel {
         }
         if let value = dict["FirewallVSwitchCidrBlock"] as? String {
             self.firewallVSwitchCidrBlock = value
+        }
+        if let value = dict["FirewallVSwitchZoneId"] as? String {
+            self.firewallVSwitchZoneId = value
         }
         if let value = dict["FirewallVpcCidrBlock"] as? String {
             self.firewallVpcCidrBlock = value
@@ -30289,6 +30361,10 @@ public class DescribeNatFirewallListResponseBody : Tea.TeaModel {
 
         public var errorDetail: String?
 
+        public var firewallServiceMode: String?
+
+        public var firewallServiceZones: [String]?
+
         public var memberUid: Int64?
 
         public var natGatewayId: String?
@@ -30336,6 +30412,12 @@ public class DescribeNatFirewallListResponseBody : Tea.TeaModel {
             }
             if self.errorDetail != nil {
                 map["ErrorDetail"] = self.errorDetail!
+            }
+            if self.firewallServiceMode != nil {
+                map["FirewallServiceMode"] = self.firewallServiceMode!
+            }
+            if self.firewallServiceZones != nil {
+                map["FirewallServiceZones"] = self.firewallServiceZones!
             }
             if self.memberUid != nil {
                 map["MemberUid"] = self.memberUid!
@@ -30393,6 +30475,12 @@ public class DescribeNatFirewallListResponseBody : Tea.TeaModel {
             }
             if let value = dict["ErrorDetail"] as? String {
                 self.errorDetail = value
+            }
+            if let value = dict["FirewallServiceMode"] as? String {
+                self.firewallServiceMode = value
+            }
+            if let value = dict["FirewallServiceZones"] as? [String] {
+                self.firewallServiceZones = value
             }
             if let value = dict["MemberUid"] as? Int64 {
                 self.memberUid = value
@@ -48277,7 +48365,47 @@ public class DescribeTrFirewallsV2DetailRequest : Tea.TeaModel {
 }
 
 public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
+    public class TrAttachmentZones : Tea.TeaModel {
+        public var vSwitchCidr: String?
+
+        public var vSwitchZoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vSwitchCidr != nil {
+                map["VSwitchCidr"] = self.vSwitchCidr!
+            }
+            if self.vSwitchZoneId != nil {
+                map["VSwitchZoneId"] = self.vSwitchZoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VSwitchCidr"] as? String {
+                self.vSwitchCidr = value
+            }
+            if let value = dict["VSwitchZoneId"] as? String {
+                self.vSwitchZoneId = value
+            }
+        }
+    }
     public var cenId: String?
+
+    public var firewallAttachmentZone: String?
 
     public var firewallDescription: String?
 
@@ -48290,6 +48418,10 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
     public var firewallId: String?
 
     public var firewallName: String?
+
+    public var firewallServiceMode: String?
+
+    public var firewallServiceZones: [String]?
 
     public var firewallStatus: String?
 
@@ -48315,6 +48447,8 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
 
     public var trAttachmentSlaveZone: String?
 
+    public var trAttachmentZones: [DescribeTrFirewallsV2DetailResponseBody.TrAttachmentZones]?
+
     public var transitRouterId: String?
 
     public override init() {
@@ -48334,6 +48468,9 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         if self.cenId != nil {
             map["CenId"] = self.cenId!
         }
+        if self.firewallAttachmentZone != nil {
+            map["FirewallAttachmentZone"] = self.firewallAttachmentZone!
+        }
         if self.firewallDescription != nil {
             map["FirewallDescription"] = self.firewallDescription!
         }
@@ -48351,6 +48488,12 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         }
         if self.firewallName != nil {
             map["FirewallName"] = self.firewallName!
+        }
+        if self.firewallServiceMode != nil {
+            map["FirewallServiceMode"] = self.firewallServiceMode!
+        }
+        if self.firewallServiceZones != nil {
+            map["FirewallServiceZones"] = self.firewallServiceZones!
         }
         if self.firewallStatus != nil {
             map["FirewallStatus"] = self.firewallStatus!
@@ -48388,6 +48531,13 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         if self.trAttachmentSlaveZone != nil {
             map["TrAttachmentSlaveZone"] = self.trAttachmentSlaveZone!
         }
+        if self.trAttachmentZones != nil {
+            var tmp : [Any] = []
+            for k in self.trAttachmentZones! {
+                tmp.append(k.toMap())
+            }
+            map["TrAttachmentZones"] = tmp
+        }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
         }
@@ -48398,6 +48548,9 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CenId"] as? String {
             self.cenId = value
+        }
+        if let value = dict["FirewallAttachmentZone"] as? String {
+            self.firewallAttachmentZone = value
         }
         if let value = dict["FirewallDescription"] as? String {
             self.firewallDescription = value
@@ -48416,6 +48569,12 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["FirewallName"] as? String {
             self.firewallName = value
+        }
+        if let value = dict["FirewallServiceMode"] as? String {
+            self.firewallServiceMode = value
+        }
+        if let value = dict["FirewallServiceZones"] as? [String] {
+            self.firewallServiceZones = value
         }
         if let value = dict["FirewallStatus"] as? String {
             self.firewallStatus = value
@@ -48452,6 +48611,19 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["TrAttachmentSlaveZone"] as? String {
             self.trAttachmentSlaveZone = value
+        }
+        if let value = dict["TrAttachmentZones"] as? [Any?] {
+            var tmp : [DescribeTrFirewallsV2DetailResponseBody.TrAttachmentZones] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeTrFirewallsV2DetailResponseBody.TrAttachmentZones()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.trAttachmentZones = tmp
         }
         if let value = dict["TransitRouterId"] as? String {
             self.transitRouterId = value
@@ -53749,6 +53921,10 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
     public class FirewallVpc : Tea.TeaModel {
         public var allowConfiguration: Int32?
 
+        public var firewallServiceMode: String?
+
+        public var firewallServiceZones: [String]?
+
         public var standbyZoneId: String?
 
         public var vpcCidr: String?
@@ -53780,6 +53956,12 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
             if self.allowConfiguration != nil {
                 map["AllowConfiguration"] = self.allowConfiguration!
             }
+            if self.firewallServiceMode != nil {
+                map["FirewallServiceMode"] = self.firewallServiceMode!
+            }
+            if self.firewallServiceZones != nil {
+                map["FirewallServiceZones"] = self.firewallServiceZones!
+            }
             if self.standbyZoneId != nil {
                 map["StandbyZoneId"] = self.standbyZoneId!
             }
@@ -53808,6 +53990,12 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AllowConfiguration"] as? Int32 {
                 self.allowConfiguration = value
+            }
+            if let value = dict["FirewallServiceMode"] as? String {
+                self.firewallServiceMode = value
+            }
+            if let value = dict["FirewallServiceZones"] as? [String] {
+                self.firewallServiceZones = value
             }
             if let value = dict["StandbyZoneId"] as? String {
                 self.standbyZoneId = value
@@ -53840,6 +54028,8 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
 
             public var eniVSwitchId: String?
 
+            public var eniZoneId: String?
+
             public override init() {
                 super.init()
             }
@@ -53863,6 +54053,9 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
                 if self.eniVSwitchId != nil {
                     map["EniVSwitchId"] = self.eniVSwitchId!
                 }
+                if self.eniZoneId != nil {
+                    map["EniZoneId"] = self.eniZoneId!
+                }
                 return map
             }
 
@@ -53876,6 +54069,9 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EniVSwitchId"] as? String {
                     self.eniVSwitchId = value
+                }
+                if let value = dict["EniZoneId"] as? String {
+                    self.eniZoneId = value
                 }
             }
         }
@@ -60504,6 +60700,8 @@ public class DescribeVpcFirewallZoneResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var firewallServiceMode: String?
+
     public var requestId: String?
 
     public var zoneList: [[DescribeVpcFirewallZoneResponseBody.ZoneList]]?
@@ -60522,6 +60720,9 @@ public class DescribeVpcFirewallZoneResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.firewallServiceMode != nil {
+            map["FirewallServiceMode"] = self.firewallServiceMode!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -60541,6 +60742,9 @@ public class DescribeVpcFirewallZoneResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FirewallServiceMode"] as? String {
+            self.firewallServiceMode = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -62662,7 +62866,11 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
 
     public var autoAddTagEcs: String?
 
+    public var clientToken: String?
+
     public var description_: String?
+
+    public var dryRun: Bool?
 
     public var groupName: String?
 
@@ -62718,8 +62926,14 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
         if self.autoAddTagEcs != nil {
             map["AutoAddTagEcs"] = self.autoAddTagEcs!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
@@ -62789,8 +63003,14 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
         if let value = dict["AutoAddTagEcs"] as? String {
             self.autoAddTagEcs = value
         }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
@@ -62915,7 +63135,11 @@ public class ModifyAddressBookShrinkRequest : Tea.TeaModel {
 
     public var autoAddTagEcs: String?
 
+    public var clientToken: String?
+
     public var description_: String?
+
+    public var dryRun: Bool?
 
     public var groupName: String?
 
@@ -62967,8 +63191,14 @@ public class ModifyAddressBookShrinkRequest : Tea.TeaModel {
         if self.autoAddTagEcs != nil {
             map["AutoAddTagEcs"] = self.autoAddTagEcs!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
@@ -63028,8 +63258,14 @@ public class ModifyAddressBookShrinkRequest : Tea.TeaModel {
         if let value = dict["AutoAddTagEcs"] as? String {
             self.autoAddTagEcs = value
         }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
@@ -63066,6 +63302,8 @@ public class ModifyAddressBookShrinkRequest : Tea.TeaModel {
 }
 
 public class ModifyAddressBookResponseBody : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var requestId: String?
 
     public override init() {
@@ -63082,6 +63320,9 @@ public class ModifyAddressBookResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -63090,6 +63331,9 @@ public class ModifyAddressBookResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -63327,6 +63571,8 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
 
     public var applicationNameList: [String]?
 
+    public var clientToken: String?
+
     public var description_: String?
 
     public var destPort: String?
@@ -63342,6 +63588,8 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
     public var direction: String?
 
     public var domainResolveType: String?
+
+    public var dryRun: Bool?
 
     public var endTime: Int64?
 
@@ -63391,6 +63639,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         if self.applicationNameList != nil {
             map["ApplicationNameList"] = self.applicationNameList!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -63414,6 +63665,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         }
         if self.domainResolveType != nil {
             map["DomainResolveType"] = self.domainResolveType!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -63465,6 +63719,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         if let value = dict["ApplicationNameList"] as? [String] {
             self.applicationNameList = value
         }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -63488,6 +63745,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["DomainResolveType"] as? String {
             self.domainResolveType = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
@@ -63526,6 +63786,8 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
 }
 
 public class ModifyControlPolicyResponseBody : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var requestId: String?
 
     public override init() {
@@ -63542,6 +63804,9 @@ public class ModifyControlPolicyResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -63550,6 +63815,9 @@ public class ModifyControlPolicyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }

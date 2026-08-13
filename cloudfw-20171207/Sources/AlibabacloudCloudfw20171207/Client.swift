@@ -12,30 +12,30 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointMap = [
             "ap-southeast-1": "cloudfw.ap-southeast-1.aliyuncs.com",
             "cn-hangzhou": "cloudfw.cn-hangzhou.aliyuncs.com",
-            "us-west-1": "cloudfw.aliyuncs.com",
-            "us-east-1": "cloudfw.aliyuncs.com",
-            "me-east-1": "cloudfw.aliyuncs.com",
-            "eu-west-1": "cloudfw.aliyuncs.com",
-            "eu-central-1": "cloudfw.aliyuncs.com",
-            "cn-zhangjiakou": "cloudfw.aliyuncs.com",
-            "cn-wulanchabu": "cloudfw.aliyuncs.com",
-            "cn-shenzhen-finance-1": "cloudfw.aliyuncs.com",
-            "cn-shenzhen": "cloudfw.aliyuncs.com",
-            "cn-shanghai-finance-1": "cloudfw.aliyuncs.com",
-            "cn-shanghai": "cloudfw.aliyuncs.com",
             "cn-qingdao": "cloudfw.aliyuncs.com",
-            "cn-north-2-gov-1": "cloudfw.aliyuncs.com",
+            "cn-zhangjiakou": "cloudfw.aliyuncs.com",
             "cn-huhehaote": "cloudfw.aliyuncs.com",
-            "cn-hongkong": "cloudfw.aliyuncs.com",
+            "cn-wulanchabu": "cloudfw.aliyuncs.com",
             "cn-heyuan": "cloudfw.aliyuncs.com",
-            "cn-hangzhou-finance": "cloudfw.aliyuncs.com",
-            "cn-guangzhou": "cloudfw.aliyuncs.com",
             "cn-chengdu": "cloudfw.aliyuncs.com",
-            "cn-beijing-finance-1": "cloudfw.aliyuncs.com",
-            "cn-beijing": "cloudfw.aliyuncs.com",
+            "ap-northeast-1": "cloudfw.aliyuncs.com",
             "ap-southeast-5": "cloudfw.aliyuncs.com",
             "ap-southeast-3": "cloudfw.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "cloudfw.aliyuncs.com"
+            "cn-shenzhen": "cloudfw.aliyuncs.com",
+            "cn-beijing": "cloudfw.aliyuncs.com",
+            "cn-shanghai": "cloudfw.aliyuncs.com",
+            "cn-guangzhou": "cloudfw.aliyuncs.com",
+            "cn-hongkong": "cloudfw.aliyuncs.com",
+            "us-east-1": "cloudfw.aliyuncs.com",
+            "us-west-1": "cloudfw.aliyuncs.com",
+            "eu-west-1": "cloudfw.aliyuncs.com",
+            "eu-central-1": "cloudfw.aliyuncs.com",
+            "me-east-1": "cloudfw.aliyuncs.com",
+            "cn-shenzhen-finance-1": "cloudfw.aliyuncs.com",
+            "cn-shanghai-finance-1": "cloudfw.aliyuncs.com",
+            "cn-hangzhou-finance": "cloudfw.aliyuncs.com",
+            "cn-beijing-finance-1": "cloudfw.aliyuncs.com",
+            "cn-north-2-gov-1": "cloudfw.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudfw", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -182,6 +182,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationNameList)) {
             query["ApplicationNameList"] = request.applicationNameList ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -205,6 +208,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.domainResolveType)) {
             query["DomainResolveType"] = request.domainResolveType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime!;
@@ -993,6 +999,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSecurityProxyWithOptions(_ request: CreateSecurityProxyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSecurityProxyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.firewallServiceMode)) {
+            query["FirewallServiceMode"] = request.firewallServiceMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.firewallServiceZones)) {
+            query["FirewallServiceZones"] = request.firewallServiceZones ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.firewallSwitch)) {
             query["FirewallSwitch"] = request.firewallSwitch ?? "";
         }
@@ -1094,11 +1106,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cenId)) {
             query["CenId"] = request.cenId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.firewallAttachmentZone)) {
+            query["FirewallAttachmentZone"] = request.firewallAttachmentZone ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.firewallDescription)) {
             query["FirewallDescription"] = request.firewallDescription ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.firewallName)) {
             query["FirewallName"] = request.firewallName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.firewallServiceMode)) {
+            query["FirewallServiceMode"] = request.firewallServiceMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.firewallServiceZones)) {
+            query["FirewallServiceZones"] = request.firewallServiceZones ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.firewallSubnetCidr)) {
             query["FirewallSubnetCidr"] = request.firewallSubnetCidr ?? "";
@@ -1132,6 +1153,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.trAttachmentSlaveZone)) {
             query["TrAttachmentSlaveZone"] = request.trAttachmentSlaveZone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trAttachmentZones)) {
+            query["TrAttachmentZones"] = request.trAttachmentZones ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.transitRouterId)) {
             query["TransitRouterId"] = request.transitRouterId ?? "";
@@ -1229,6 +1253,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.firewallVSwitchCidrBlock)) {
             query["FirewallVSwitchCidrBlock"] = request.firewallVSwitchCidrBlock ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.firewallVSwitchZoneId)) {
+            query["FirewallVSwitchZoneId"] = request.firewallVSwitchZoneId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.firewallVpcCidrBlock)) {
             query["FirewallVpcCidrBlock"] = request.firewallVpcCidrBlock ?? "";
@@ -10394,8 +10421,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoAddTagEcs)) {
             query["AutoAddTagEcs"] = request.autoAddTagEcs ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
@@ -10492,6 +10525,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationNameList)) {
             query["ApplicationNameList"] = request.applicationNameList ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -10515,6 +10551,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.domainResolveType)) {
             query["DomainResolveType"] = request.domainResolveType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime!;
