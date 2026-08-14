@@ -6978,6 +6978,8 @@ public class DescribeAuditLogRecordsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var processId: String?
+
     public var queryKeyword: String?
 
     public var regionId: String?
@@ -7038,6 +7040,9 @@ public class DescribeAuditLogRecordsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.processId != nil {
+            map["ProcessId"] = self.processId!
+        }
         if self.queryKeyword != nil {
             map["QueryKeyword"] = self.queryKeyword!
         }
@@ -7096,6 +7101,9 @@ public class DescribeAuditLogRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["ProcessId"] as? String {
+            self.processId = value
         }
         if let value = dict["QueryKeyword"] as? String {
             self.queryKeyword = value
