@@ -33412,6 +33412,8 @@ public class ModelRouterQueryUserListRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var phone: String?
+
     public override init() {
         super.init()
     }
@@ -33435,6 +33437,9 @@ public class ModelRouterQueryUserListRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.phone != nil {
+            map["phone"] = self.phone!
+        }
         return map
     }
 
@@ -33448,6 +33453,9 @@ public class ModelRouterQueryUserListRequest : Tea.TeaModel {
         }
         if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["phone"] as? String {
+            self.phone = value
         }
     }
 }

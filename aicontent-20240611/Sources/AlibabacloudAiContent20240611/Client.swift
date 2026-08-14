@@ -10,10 +10,10 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "public": "aicontent.aliyuncs.com",
-            "cn-shanghai": "aicontent.aliyuncs.com",
+            "cn-beijing": "aicontent.cn-beijing.aliyuncs.com",
             "cn-hangzhou": "aicontent.cn-hangzhou.aliyuncs.com",
-            "cn-beijing": "aicontent.cn-beijing.aliyuncs.com"
+            "cn-shanghai": "aicontent.aliyuncs.com",
+            "public": "aicontent.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aicontent", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -4558,6 +4558,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            query["phone"] = request.phone ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
