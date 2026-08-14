@@ -819,6 +819,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public var diarizationEnabled: Bool?
 
+            public var disfluencyEnabled: Bool?
+
             public var model: String?
 
             public var outputLevel: Int32?
@@ -856,6 +858,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 if self.diarizationEnabled != nil {
                     map["DiarizationEnabled"] = self.diarizationEnabled!
                 }
+                if self.disfluencyEnabled != nil {
+                    map["DisfluencyEnabled"] = self.disfluencyEnabled!
+                }
                 if self.model != nil {
                     map["Model"] = self.model!
                 }
@@ -890,6 +895,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 if let value = dict["DiarizationEnabled"] as? Bool {
                     self.diarizationEnabled = value
                 }
+                if let value = dict["DisfluencyEnabled"] as? Bool {
+                    self.disfluencyEnabled = value
+                }
                 if let value = dict["Model"] as? String {
                     self.model = value
                 }
@@ -914,6 +922,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public var targetLanguages: [String]?
 
+            public var translateLlmSceneEnabled: Bool?
+
             public override init() {
                 super.init()
             }
@@ -937,6 +947,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 if self.targetLanguages != nil {
                     map["TargetLanguages"] = self.targetLanguages!
                 }
+                if self.translateLlmSceneEnabled != nil {
+                    map["TranslateLlmSceneEnabled"] = self.translateLlmSceneEnabled!
+                }
                 return map
             }
 
@@ -950,6 +963,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
                 if let value = dict["TargetLanguages"] as? [String] {
                     self.targetLanguages = value
+                }
+                if let value = dict["TranslateLlmSceneEnabled"] as? Bool {
+                    self.translateLlmSceneEnabled = value
                 }
             }
         }
