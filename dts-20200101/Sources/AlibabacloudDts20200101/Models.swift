@@ -12992,6 +12992,8 @@ public class DescribeDtsJobConfigResponse : Tea.TeaModel {
 }
 
 public class DescribeDtsJobDetailRequest : Tea.TeaModel {
+    public var dbObjectOutputType: String?
+
     public var dtsInstanceID: String?
 
     public var dtsJobId: String?
@@ -13020,6 +13022,9 @@ public class DescribeDtsJobDetailRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dbObjectOutputType != nil {
+            map["DbObjectOutputType"] = self.dbObjectOutputType!
+        }
         if self.dtsInstanceID != nil {
             map["DtsInstanceID"] = self.dtsInstanceID!
         }
@@ -13046,6 +13051,9 @@ public class DescribeDtsJobDetailRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DbObjectOutputType"] as? String {
+            self.dbObjectOutputType = value
+        }
         if let value = dict["DtsInstanceID"] as? String {
             self.dtsInstanceID = value
         }
@@ -15225,6 +15233,12 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
             public var dbObject: String?
 
+            public var dbObjectOssUrl: String?
+
+            public var dbObjectOssUrlExpireTime: String?
+
+            public var dbObjectSize: Int64?
+
             public var delay: Int64?
 
             public var destNetType: String?
@@ -15353,6 +15367,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
                 }
                 if self.dbObject != nil {
                     map["DbObject"] = self.dbObject!
+                }
+                if self.dbObjectOssUrl != nil {
+                    map["DbObjectOssUrl"] = self.dbObjectOssUrl!
+                }
+                if self.dbObjectOssUrlExpireTime != nil {
+                    map["DbObjectOssUrlExpireTime"] = self.dbObjectOssUrlExpireTime!
+                }
+                if self.dbObjectSize != nil {
+                    map["DbObjectSize"] = self.dbObjectSize!
                 }
                 if self.delay != nil {
                     map["Delay"] = self.delay!
@@ -15506,6 +15529,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DbObject"] as? String {
                     self.dbObject = value
+                }
+                if let value = dict["DbObjectOssUrl"] as? String {
+                    self.dbObjectOssUrl = value
+                }
+                if let value = dict["DbObjectOssUrlExpireTime"] as? String {
+                    self.dbObjectOssUrlExpireTime = value
+                }
+                if let value = dict["DbObjectSize"] as? Int64 {
+                    self.dbObjectSize = value
                 }
                 if let value = dict["Delay"] as? Int64 {
                     self.delay = value
@@ -16054,6 +16086,12 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
         public var dbObject: String?
 
+        public var dbObjectOssUrl: String?
+
+        public var dbObjectOssUrlExpireTime: String?
+
+        public var dbObjectSize: Int64?
+
         public var delay: Int64?
 
         public var destNetType: String?
@@ -16185,6 +16223,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
             }
             if self.dbObject != nil {
                 map["DbObject"] = self.dbObject!
+            }
+            if self.dbObjectOssUrl != nil {
+                map["DbObjectOssUrl"] = self.dbObjectOssUrl!
+            }
+            if self.dbObjectOssUrlExpireTime != nil {
+                map["DbObjectOssUrlExpireTime"] = self.dbObjectOssUrlExpireTime!
+            }
+            if self.dbObjectSize != nil {
+                map["DbObjectSize"] = self.dbObjectSize!
             }
             if self.delay != nil {
                 map["Delay"] = self.delay!
@@ -16341,6 +16388,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["DbObject"] as? String {
                 self.dbObject = value
+            }
+            if let value = dict["DbObjectOssUrl"] as? String {
+                self.dbObjectOssUrl = value
+            }
+            if let value = dict["DbObjectOssUrlExpireTime"] as? String {
+                self.dbObjectOssUrlExpireTime = value
+            }
+            if let value = dict["DbObjectSize"] as? Int64 {
+                self.dbObjectSize = value
             }
             if let value = dict["Delay"] as? Int64 {
                 self.delay = value
@@ -18120,6 +18176,12 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
             public var dbObject: String?
 
+            public var dbObjectOssUrl: String?
+
+            public var dbObjectOssUrlExpireTime: String?
+
+            public var dbObjectSize: Int64?
+
             public var delay: Int64?
 
             public var destNetType: String?
@@ -18244,6 +18306,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
                 }
                 if self.dbObject != nil {
                     map["DbObject"] = self.dbObject!
+                }
+                if self.dbObjectOssUrl != nil {
+                    map["DbObjectOssUrl"] = self.dbObjectOssUrl!
+                }
+                if self.dbObjectOssUrlExpireTime != nil {
+                    map["DbObjectOssUrlExpireTime"] = self.dbObjectOssUrlExpireTime!
+                }
+                if self.dbObjectSize != nil {
+                    map["DbObjectSize"] = self.dbObjectSize!
                 }
                 if self.delay != nil {
                     map["Delay"] = self.delay!
@@ -18391,6 +18462,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DbObject"] as? String {
                     self.dbObject = value
+                }
+                if let value = dict["DbObjectOssUrl"] as? String {
+                    self.dbObjectOssUrl = value
+                }
+                if let value = dict["DbObjectOssUrlExpireTime"] as? String {
+                    self.dbObjectOssUrlExpireTime = value
+                }
+                if let value = dict["DbObjectSize"] as? Int64 {
+                    self.dbObjectSize = value
                 }
                 if let value = dict["Delay"] as? Int64 {
                     self.delay = value
@@ -18933,6 +19013,12 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
         public var dbObject: String?
 
+        public var dbObjectOssUrl: String?
+
+        public var dbObjectOssUrlExpireTime: String?
+
+        public var dbObjectSize: Int64?
+
         public var delay: Int64?
 
         public var destNetType: String?
@@ -19064,6 +19150,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
             }
             if self.dbObject != nil {
                 map["DbObject"] = self.dbObject!
+            }
+            if self.dbObjectOssUrl != nil {
+                map["DbObjectOssUrl"] = self.dbObjectOssUrl!
+            }
+            if self.dbObjectOssUrlExpireTime != nil {
+                map["DbObjectOssUrlExpireTime"] = self.dbObjectOssUrlExpireTime!
+            }
+            if self.dbObjectSize != nil {
+                map["DbObjectSize"] = self.dbObjectSize!
             }
             if self.delay != nil {
                 map["Delay"] = self.delay!
@@ -19220,6 +19315,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["DbObject"] as? String {
                 self.dbObject = value
+            }
+            if let value = dict["DbObjectOssUrl"] as? String {
+                self.dbObjectOssUrl = value
+            }
+            if let value = dict["DbObjectOssUrlExpireTime"] as? String {
+                self.dbObjectOssUrlExpireTime = value
+            }
+            if let value = dict["DbObjectSize"] as? Int64 {
+                self.dbObjectSize = value
             }
             if let value = dict["Delay"] as? Int64 {
                 self.delay = value
@@ -19479,6 +19583,12 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
     public var dbObject: String?
 
+    public var dbObjectOssUrl: String?
+
+    public var dbObjectOssUrlExpireTime: String?
+
+    public var dbObjectSize: Int64?
+
     public var dedicatedClusterId: String?
 
     public var delay: Int64?
@@ -19639,6 +19749,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
         if self.dbObject != nil {
             map["DbObject"] = self.dbObject!
+        }
+        if self.dbObjectOssUrl != nil {
+            map["DbObjectOssUrl"] = self.dbObjectOssUrl!
+        }
+        if self.dbObjectOssUrlExpireTime != nil {
+            map["DbObjectOssUrlExpireTime"] = self.dbObjectOssUrlExpireTime!
+        }
+        if self.dbObjectSize != nil {
+            map["DbObjectSize"] = self.dbObjectSize!
         }
         if self.dedicatedClusterId != nil {
             map["DedicatedClusterId"] = self.dedicatedClusterId!
@@ -19839,6 +19958,15 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["DbObject"] as? String {
             self.dbObject = value
+        }
+        if let value = dict["DbObjectOssUrl"] as? String {
+            self.dbObjectOssUrl = value
+        }
+        if let value = dict["DbObjectOssUrlExpireTime"] as? String {
+            self.dbObjectOssUrlExpireTime = value
+        }
+        if let value = dict["DbObjectSize"] as? Int64 {
+            self.dbObjectSize = value
         }
         if let value = dict["DedicatedClusterId"] as? String {
             self.dedicatedClusterId = value
@@ -20775,6 +20903,8 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
 
             public var structureInitialization: Bool?
 
+            public var timeWindowCheck: Bool?
+
             public override init() {
                 super.init()
             }
@@ -20807,6 +20937,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                 if self.structureInitialization != nil {
                     map["StructureInitialization"] = self.structureInitialization!
                 }
+                if self.timeWindowCheck != nil {
+                    map["TimeWindowCheck"] = self.timeWindowCheck!
+                }
                 return map
             }
 
@@ -20829,6 +20962,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["StructureInitialization"] as? Bool {
                     self.structureInitialization = value
+                }
+                if let value = dict["TimeWindowCheck"] as? Bool {
+                    self.timeWindowCheck = value
                 }
             }
         }
@@ -21520,6 +21656,8 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
 
                 public var structureInitialization: Bool?
 
+                public var timeWindowCheck: Bool?
+
                 public override init() {
                     super.init()
                 }
@@ -21552,6 +21690,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                     if self.structureInitialization != nil {
                         map["StructureInitialization"] = self.structureInitialization!
                     }
+                    if self.timeWindowCheck != nil {
+                        map["TimeWindowCheck"] = self.timeWindowCheck!
+                    }
                     return map
                 }
 
@@ -21574,6 +21715,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["StructureInitialization"] as? Bool {
                         self.structureInitialization = value
+                    }
+                    if let value = dict["TimeWindowCheck"] as? Bool {
+                        self.timeWindowCheck = value
                     }
                 }
             }
@@ -22535,6 +22679,60 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TimeWindowDataCheckStatus : Tea.TeaModel {
+            public var errorMessage: String?
+
+            public var percent: String?
+
+            public var progress: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.percent != nil {
+                    map["Percent"] = self.percent!
+                }
+                if self.progress != nil {
+                    map["Progress"] = self.progress!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["Percent"] as? String {
+                    self.percent = value
+                }
+                if let value = dict["Progress"] as? String {
+                    self.progress = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public var appName: String?
 
         public var beginTimestamp: String?
@@ -22647,6 +22845,8 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
 
         public var tagList: [DescribeDtsJobsResponseBody.DtsJobList.TagList]?
 
+        public var timeWindowDataCheckStatus: DescribeDtsJobsResponseBody.DtsJobList.TimeWindowDataCheckStatus?
+
         public override init() {
             super.init()
         }
@@ -22672,6 +22872,7 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
             try self.sourceEndpoint?.validate()
             try self.structureDataCheckStatus?.validate()
             try self.structureInitializationStatus?.validate()
+            try self.timeWindowDataCheckStatus?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -22851,6 +23052,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["TagList"] = tmp
+            }
+            if self.timeWindowDataCheckStatus != nil {
+                map["TimeWindowDataCheckStatus"] = self.timeWindowDataCheckStatus?.toMap()
             }
             return map
         }
@@ -23074,6 +23278,11 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tagList = tmp
+            }
+            if let value = dict["TimeWindowDataCheckStatus"] as? [String: Any?] {
+                var model = DescribeDtsJobsResponseBody.DtsJobList.TimeWindowDataCheckStatus()
+                model.fromMap(value)
+                self.timeWindowDataCheckStatus = model
             }
         }
     }
