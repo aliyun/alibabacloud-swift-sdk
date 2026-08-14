@@ -3570,6 +3570,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.processId)) {
+            query["ProcessId"] = request.processId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.proxyUser)) {
             query["ProxyUser"] = request.proxyUser ?? "";
         }
