@@ -14,10 +14,11 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-east-1": "dm.us-east-1.aliyuncs.com",
-            "eu-central-1": "dm.eu-central-1.aliyuncs.com",
+            "ap-southeast-1": "dm.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-2": "dm.ap-southeast-2.aliyuncs.com",
             "cn-hangzhou": "dm.aliyuncs.com",
-            "ap-southeast-1": "dm.ap-southeast-1.aliyuncs.com"
+            "us-east-1": "dm.us-east-1.aliyuncs.com",
+            "eu-central-1": "dm.eu-central-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dm", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -756,6 +757,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressType)) {
+            query["AddressType"] = request.addressType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;

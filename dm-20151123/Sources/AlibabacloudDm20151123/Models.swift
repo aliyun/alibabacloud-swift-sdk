@@ -2791,6 +2791,8 @@ public class CreateDomainResponse : Tea.TeaModel {
 public class CreateMailAddressRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var addressType: String?
+
     public var ownerId: Int64?
 
     public var replyAddress: String?
@@ -2818,6 +2820,9 @@ public class CreateMailAddressRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -2840,6 +2845,9 @@ public class CreateMailAddressRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountName"] as? String {
             self.accountName = value
+        }
+        if let value = dict["AddressType"] as? String {
+            self.addressType = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -12184,6 +12192,8 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
 
             public var accountStatus: String?
 
+            public var addressType: String?
+
             public var configSetId: String?
 
             public var configSetName: String?
@@ -12198,6 +12208,8 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
 
             public var mailAddressId: String?
 
+            public var mailAddressVerificationStatus: String?
+
             public var monthCount: String?
 
             public var monthReqCount: String?
@@ -12205,6 +12217,8 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
             public var replyAddress: String?
 
             public var replyStatus: String?
+
+            public var senderAddress: String?
 
             public var sendtype: String?
 
@@ -12228,6 +12242,9 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 if self.accountStatus != nil {
                     map["AccountStatus"] = self.accountStatus!
                 }
+                if self.addressType != nil {
+                    map["AddressType"] = self.addressType!
+                }
                 if self.configSetId != nil {
                     map["ConfigSetId"] = self.configSetId!
                 }
@@ -12249,6 +12266,9 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 if self.mailAddressId != nil {
                     map["MailAddressId"] = self.mailAddressId!
                 }
+                if self.mailAddressVerificationStatus != nil {
+                    map["MailAddressVerificationStatus"] = self.mailAddressVerificationStatus!
+                }
                 if self.monthCount != nil {
                     map["MonthCount"] = self.monthCount!
                 }
@@ -12260,6 +12280,9 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 }
                 if self.replyStatus != nil {
                     map["ReplyStatus"] = self.replyStatus!
+                }
+                if self.senderAddress != nil {
+                    map["SenderAddress"] = self.senderAddress!
                 }
                 if self.sendtype != nil {
                     map["Sendtype"] = self.sendtype!
@@ -12274,6 +12297,9 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AccountStatus"] as? String {
                     self.accountStatus = value
+                }
+                if let value = dict["AddressType"] as? String {
+                    self.addressType = value
                 }
                 if let value = dict["ConfigSetId"] as? String {
                     self.configSetId = value
@@ -12296,6 +12322,9 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 if let value = dict["MailAddressId"] as? String {
                     self.mailAddressId = value
                 }
+                if let value = dict["MailAddressVerificationStatus"] as? String {
+                    self.mailAddressVerificationStatus = value
+                }
                 if let value = dict["MonthCount"] as? String {
                     self.monthCount = value
                 }
@@ -12307,6 +12336,9 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ReplyStatus"] as? String {
                     self.replyStatus = value
+                }
+                if let value = dict["SenderAddress"] as? String {
+                    self.senderAddress = value
                 }
                 if let value = dict["Sendtype"] as? String {
                     self.sendtype = value
