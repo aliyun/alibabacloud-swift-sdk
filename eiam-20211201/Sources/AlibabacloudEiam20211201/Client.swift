@@ -5199,6 +5199,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeInstanceFailoverWithOptions(_ request: ExecuteInstanceFailoverRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteInstanceFailoverResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceFailoverStatus)) {
+            query["InstanceFailoverStatus"] = request.instanceFailoverStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteInstanceFailover",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteInstanceFailoverResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeInstanceFailover(_ request: ExecuteInstanceFailoverRequest) async throws -> ExecuteInstanceFailoverResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await executeInstanceFailoverWithOptions(request as! ExecuteInstanceFailoverRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func generateDownloadUrlForSynchronizationJobWithOptions(_ request: GenerateDownloadUrlForSynchronizationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateDownloadUrlForSynchronizationJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
