@@ -8777,6 +8777,44 @@ public class InstallAgentForClusterResponse : Tea.TeaModel {
 }
 
 public class InstallAgentWithTypeRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public class Instances : Tea.TeaModel {
         public var instance: String?
 
@@ -8815,6 +8853,8 @@ public class InstallAgentWithTypeRequest : Tea.TeaModel {
             }
         }
     }
+    public var tag: [InstallAgentWithTypeRequest.Tag]?
+
     public var agentId: String?
 
     public var agentVersion: String?
@@ -8839,6 +8879,13 @@ public class InstallAgentWithTypeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.agentId != nil {
             map["agentId"] = self.agentId!
         }
@@ -8863,6 +8910,19 @@ public class InstallAgentWithTypeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [InstallAgentWithTypeRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = InstallAgentWithTypeRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
         if let value = dict["agentId"] as? String {
             self.agentId = value
         }

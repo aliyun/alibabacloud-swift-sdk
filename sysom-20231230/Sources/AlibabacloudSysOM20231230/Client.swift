@@ -1616,6 +1616,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func installAgentWithTypeWithOptions(_ request: InstallAgentWithTypeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> InstallAgentWithTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            body["Tag"] = request.tag ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.agentId)) {
             body["agentId"] = request.agentId ?? "";
         }
