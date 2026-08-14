@@ -40527,6 +40527,8 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addonNames: [String]?
+
         public var bindResource: GetIntegrationPolicyResponseBody.Policy.BindResource?
 
         public var csUmodelStatus: Bool?
@@ -40568,6 +40570,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addonNames != nil {
+                map["addonNames"] = self.addonNames!
+            }
             if self.bindResource != nil {
                 map["bindResource"] = self.bindResource?.toMap()
             }
@@ -40613,6 +40618,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["addonNames"] as? [String] {
+                self.addonNames = value
+            }
             if let value = dict["bindResource"] as? [String: Any?] {
                 var model = GetIntegrationPolicyResponseBody.Policy.BindResource()
                 model.fromMap(value)
@@ -53057,6 +53065,8 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addonNames: [String]?
+
         public var bindResource: ListIntegrationPoliciesResponseBody.Policies.BindResource?
 
         public var csUmodelStatus: Bool?
@@ -53101,6 +53111,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addonNames != nil {
+                map["addonNames"] = self.addonNames!
+            }
             if self.bindResource != nil {
                 map["bindResource"] = self.bindResource?.toMap()
             }
@@ -53145,6 +53158,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["addonNames"] as? [String] {
+                self.addonNames = value
+            }
             if let value = dict["bindResource"] as? [String: Any?] {
                 var model = ListIntegrationPoliciesResponseBody.Policies.BindResource()
                 model.fromMap(value)
@@ -54471,6 +54487,8 @@ public class ListIntegrationPolicyCollectorsResponse : Tea.TeaModel {
 public class ListIntegrationPolicyCustomScrapeJobRulesRequest : Tea.TeaModel {
     public var addonReleaseName: String?
 
+    public var collectorReleaseName: String?
+
     public var encryptYaml: Bool?
 
     public var namespace: String?
@@ -54492,6 +54510,9 @@ public class ListIntegrationPolicyCustomScrapeJobRulesRequest : Tea.TeaModel {
         if self.addonReleaseName != nil {
             map["addonReleaseName"] = self.addonReleaseName!
         }
+        if self.collectorReleaseName != nil {
+            map["collectorReleaseName"] = self.collectorReleaseName!
+        }
         if self.encryptYaml != nil {
             map["encryptYaml"] = self.encryptYaml!
         }
@@ -54505,6 +54526,9 @@ public class ListIntegrationPolicyCustomScrapeJobRulesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["addonReleaseName"] as? String {
             self.addonReleaseName = value
+        }
+        if let value = dict["collectorReleaseName"] as? String {
+            self.collectorReleaseName = value
         }
         if let value = dict["encryptYaml"] as? Bool {
             self.encryptYaml = value
@@ -55083,6 +55107,8 @@ public class ListIntegrationPolicyDashboardsResponse : Tea.TeaModel {
 public class ListIntegrationPolicyPodMonitorsRequest : Tea.TeaModel {
     public var addonReleaseName: String?
 
+    public var collectorReleaseName: String?
+
     public var encryptYaml: Bool?
 
     public var namespace: String?
@@ -55104,6 +55130,9 @@ public class ListIntegrationPolicyPodMonitorsRequest : Tea.TeaModel {
         if self.addonReleaseName != nil {
             map["addonReleaseName"] = self.addonReleaseName!
         }
+        if self.collectorReleaseName != nil {
+            map["collectorReleaseName"] = self.collectorReleaseName!
+        }
         if self.encryptYaml != nil {
             map["encryptYaml"] = self.encryptYaml!
         }
@@ -55117,6 +55146,9 @@ public class ListIntegrationPolicyPodMonitorsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["addonReleaseName"] as? String {
             self.addonReleaseName = value
+        }
+        if let value = dict["collectorReleaseName"] as? String {
+            self.collectorReleaseName = value
         }
         if let value = dict["encryptYaml"] as? Bool {
             self.encryptYaml = value
@@ -55427,6 +55459,8 @@ public class ListIntegrationPolicyPodMonitorsResponse : Tea.TeaModel {
 public class ListIntegrationPolicyServiceMonitorsRequest : Tea.TeaModel {
     public var addonReleaseName: String?
 
+    public var collectorReleaseName: String?
+
     public var encryptYaml: Bool?
 
     public var namespace: String?
@@ -55448,6 +55482,9 @@ public class ListIntegrationPolicyServiceMonitorsRequest : Tea.TeaModel {
         if self.addonReleaseName != nil {
             map["addonReleaseName"] = self.addonReleaseName!
         }
+        if self.collectorReleaseName != nil {
+            map["collectorReleaseName"] = self.collectorReleaseName!
+        }
         if self.encryptYaml != nil {
             map["encryptYaml"] = self.encryptYaml!
         }
@@ -55461,6 +55498,9 @@ public class ListIntegrationPolicyServiceMonitorsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["addonReleaseName"] as? String {
             self.addonReleaseName = value
+        }
+        if let value = dict["collectorReleaseName"] as? String {
+            self.collectorReleaseName = value
         }
         if let value = dict["encryptYaml"] as? Bool {
             self.encryptYaml = value

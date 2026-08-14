@@ -4321,6 +4321,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.addonReleaseName)) {
             query["addonReleaseName"] = request.addonReleaseName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.collectorReleaseName)) {
+            query["collectorReleaseName"] = request.collectorReleaseName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.encryptYaml)) {
             query["encryptYaml"] = request.encryptYaml!;
         }
@@ -4399,6 +4402,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.addonReleaseName)) {
             query["addonReleaseName"] = request.addonReleaseName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.collectorReleaseName)) {
+            query["collectorReleaseName"] = request.collectorReleaseName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.encryptYaml)) {
             query["encryptYaml"] = request.encryptYaml!;
         }
@@ -4437,6 +4443,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.addonReleaseName)) {
             query["addonReleaseName"] = request.addonReleaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.collectorReleaseName)) {
+            query["collectorReleaseName"] = request.collectorReleaseName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.encryptYaml)) {
             query["encryptYaml"] = request.encryptYaml!;
