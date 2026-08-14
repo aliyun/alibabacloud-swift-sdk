@@ -20946,6 +20946,8 @@ public class CreateVSwitchCidrReservationRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var ipPrefixNumber: Int32?
+
     public var ipVersion: String?
 
     public var ownerAccount: String?
@@ -20991,6 +20993,9 @@ public class CreateVSwitchCidrReservationRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.ipPrefixNumber != nil {
+            map["IpPrefixNumber"] = self.ipPrefixNumber!
         }
         if self.ipVersion != nil {
             map["IpVersion"] = self.ipVersion!
@@ -21045,6 +21050,9 @@ public class CreateVSwitchCidrReservationRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["IpPrefixNumber"] as? Int32 {
+            self.ipPrefixNumber = value
         }
         if let value = dict["IpVersion"] as? String {
             self.ipVersion = value
