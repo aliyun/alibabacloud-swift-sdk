@@ -257,6 +257,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func diduiAreaDeductionWithOptions(_ tmpReq: DiduiAreaDeductionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DiduiAreaDeductionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DiduiAreaDeductionShrinkRequest = DiduiAreaDeductionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.products)) {
+            request.productsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.products, "Products", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.productsShrink)) {
+            query["Products"] = request.productsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ragId)) {
+            query["RagId"] = request.ragId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reqId)) {
+            query["ReqId"] = request.reqId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetImageUrl)) {
+            query["TargetImageUrl"] = request.targetImageUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DiduiAreaDeduction",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DiduiAreaDeductionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func diduiAreaDeduction(_ request: DiduiAreaDeductionRequest) async throws -> DiduiAreaDeductionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await diduiAreaDeductionWithOptions(request as! DiduiAreaDeductionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func documentTranslateWithOptions(_ request: DocumentTranslateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocumentTranslateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -868,6 +913,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func prepaidTextTranslate(_ request: PrepaidTextTranslateRequest) async throws -> PrepaidTextTranslateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await prepaidTextTranslateWithOptions(request as! PrepaidTextTranslateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func productHotspotDetectionWithOptions(_ tmpReq: ProductHotspotDetectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ProductHotspotDetectionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ProductHotspotDetectionShrinkRequest = ProductHotspotDetectionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.referenceImageUrls)) {
+            request.referenceImageUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.referenceImageUrls, "ReferenceImageUrls", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.referenceImageUrlsShrink)) {
+            query["ReferenceImageUrls"] = request.referenceImageUrlsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reqId)) {
+            query["ReqId"] = request.reqId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetImageUrl)) {
+            query["TargetImageUrl"] = request.targetImageUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ProductHotspotDetection",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ProductHotspotDetectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func productHotspotDetection(_ request: ProductHotspotDetectionRequest) async throws -> ProductHotspotDetectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await productHotspotDetectionWithOptions(request as! ProductHotspotDetectionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
