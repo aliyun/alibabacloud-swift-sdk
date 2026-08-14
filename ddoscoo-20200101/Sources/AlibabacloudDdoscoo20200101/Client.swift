@@ -9,6 +9,10 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
+        self._endpointMap = [
+            "ap-southeast-1": "ddoscoo.ap-southeast-1.aliyuncs.com",
+            "cn-hangzhou": "ddoscoo.cn-hangzhou.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ddoscoo", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -764,6 +768,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createNetworkRulesWithOptions(_ request: CreateNetworkRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateNetworkRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipMode)) {
+            query["IpMode"] = request.ipMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.networkRules)) {
             query["NetworkRules"] = request.networkRules ?? "";
         }
@@ -806,6 +813,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipMode)) {
+            query["IpMode"] = request.ipMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.proxyEnable)) {
             query["ProxyEnable"] = request.proxyEnable!;

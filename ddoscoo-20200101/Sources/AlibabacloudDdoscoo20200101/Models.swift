@@ -2618,6 +2618,8 @@ public class CreateDomainResourceResponse : Tea.TeaModel {
 }
 
 public class CreateNetworkRulesRequest : Tea.TeaModel {
+    public var ipMode: String?
+
     public var networkRules: String?
 
     public override init() {
@@ -2634,6 +2636,9 @@ public class CreateNetworkRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ipMode != nil {
+            map["IpMode"] = self.ipMode!
+        }
         if self.networkRules != nil {
             map["NetworkRules"] = self.networkRules!
         }
@@ -2642,6 +2647,9 @@ public class CreateNetworkRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["IpMode"] as? String {
+            self.ipMode = value
+        }
         if let value = dict["NetworkRules"] as? String {
             self.networkRules = value
         }
@@ -2738,6 +2746,8 @@ public class CreatePortRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var ipMode: String?
+
     public var proxyEnable: Int64?
 
     public var realServers: [String]?
@@ -2768,6 +2778,9 @@ public class CreatePortRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.ipMode != nil {
+            map["IpMode"] = self.ipMode!
+        }
         if self.proxyEnable != nil {
             map["ProxyEnable"] = self.proxyEnable!
         }
@@ -2790,6 +2803,9 @@ public class CreatePortRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["IpMode"] as? String {
+            self.ipMode = value
         }
         if let value = dict["ProxyEnable"] as? Int64 {
             self.proxyEnable = value
@@ -19542,6 +19558,8 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var ipMode: String?
+
         public var isAutoCreate: Bool?
 
         public var payloadRuleEnable: Int64?
@@ -19579,6 +19597,9 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.ipMode != nil {
+                map["IpMode"] = self.ipMode!
+            }
             if self.isAutoCreate != nil {
                 map["IsAutoCreate"] = self.isAutoCreate!
             }
@@ -19613,6 +19634,9 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["IpMode"] as? String {
+                self.ipMode = value
             }
             if let value = dict["IsAutoCreate"] as? Bool {
                 self.isAutoCreate = value
@@ -20080,6 +20104,8 @@ public class DescribePortResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var ipMode: String?
+
         public var isAutoCreate: Bool?
 
         public var realServers: [String]?
@@ -20110,6 +20136,9 @@ public class DescribePortResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.ipMode != nil {
+                map["IpMode"] = self.ipMode!
+            }
             if self.isAutoCreate != nil {
                 map["IsAutoCreate"] = self.isAutoCreate!
             }
@@ -20132,6 +20161,9 @@ public class DescribePortResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["IpMode"] as? String {
+                self.ipMode = value
             }
             if let value = dict["IsAutoCreate"] as? Bool {
                 self.isAutoCreate = value
@@ -28846,6 +28878,8 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
 
         public var userCertName: String?
 
+        public var wafProtectionEnable: Bool?
+
         public var whiteList: [String]?
 
         public override init() {
@@ -28948,6 +28982,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             }
             if self.userCertName != nil {
                 map["UserCertName"] = self.userCertName!
+            }
+            if self.wafProtectionEnable != nil {
+                map["WafProtectionEnable"] = self.wafProtectionEnable!
             }
             if self.whiteList != nil {
                 map["WhiteList"] = self.whiteList!
@@ -29056,6 +29093,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["UserCertName"] as? String {
                 self.userCertName = value
+            }
+            if let value = dict["WafProtectionEnable"] as? Bool {
+                self.wafProtectionEnable = value
             }
             if let value = dict["WhiteList"] as? [String] {
                 self.whiteList = value
