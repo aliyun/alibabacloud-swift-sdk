@@ -655,6 +655,8 @@ public class CheckLdpsColumnarIndexStatusRequest : Tea.TeaModel {
 public class CheckLdpsColumnarIndexStatusResponseBody : Tea.TeaModel {
     public var accessDeniedDetail: String?
 
+    public var mode: String?
+
     public var opened: Bool?
 
     public var requestId: String?
@@ -676,6 +678,9 @@ public class CheckLdpsColumnarIndexStatusResponseBody : Tea.TeaModel {
         if self.accessDeniedDetail != nil {
             map["AccessDeniedDetail"] = self.accessDeniedDetail!
         }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
         if self.opened != nil {
             map["Opened"] = self.opened!
         }
@@ -689,6 +694,9 @@ public class CheckLdpsColumnarIndexStatusResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccessDeniedDetail"] as? String {
             self.accessDeniedDetail = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
         }
         if let value = dict["Opened"] as? Bool {
             self.opened = value
@@ -8300,6 +8308,60 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SingleZoneRiskAlert : Tea.TeaModel {
+        public var confirmDate: String?
+
+        public var dispositionType: String?
+
+        public var needAlert: Bool?
+
+        public var plannedCompletionDate: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.confirmDate != nil {
+                map["ConfirmDate"] = self.confirmDate!
+            }
+            if self.dispositionType != nil {
+                map["DispositionType"] = self.dispositionType!
+            }
+            if self.needAlert != nil {
+                map["NeedAlert"] = self.needAlert!
+            }
+            if self.plannedCompletionDate != nil {
+                map["PlannedCompletionDate"] = self.plannedCompletionDate!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfirmDate"] as? String {
+                self.confirmDate = value
+            }
+            if let value = dict["DispositionType"] as? String {
+                self.dispositionType = value
+            }
+            if let value = dict["NeedAlert"] as? Bool {
+                self.needAlert = value
+            }
+            if let value = dict["PlannedCompletionDate"] as? String {
+                self.plannedCompletionDate = value
+            }
+        }
+    }
     public var aliUid: Int64?
 
     public var arbiterVSwitchId: String?
@@ -8406,6 +8468,8 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
 
     public var serviceType: String?
 
+    public var singleZoneRiskAlert: GetLindormInstanceResponseBody.SingleZoneRiskAlert?
+
     public var standbyVSwitchId: String?
 
     public var standbyZoneId: String?
@@ -8426,6 +8490,7 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.singleZoneRiskAlert?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -8592,6 +8657,9 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
         }
         if self.serviceType != nil {
             map["ServiceType"] = self.serviceType!
+        }
+        if self.singleZoneRiskAlert != nil {
+            map["SingleZoneRiskAlert"] = self.singleZoneRiskAlert?.toMap()
         }
         if self.standbyVSwitchId != nil {
             map["StandbyVSwitchId"] = self.standbyVSwitchId!
@@ -8781,6 +8849,11 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServiceType"] as? String {
             self.serviceType = value
+        }
+        if let value = dict["SingleZoneRiskAlert"] as? [String: Any?] {
+            var model = GetLindormInstanceResponseBody.SingleZoneRiskAlert()
+            model.fromMap(value)
+            self.singleZoneRiskAlert = model
         }
         if let value = dict["StandbyVSwitchId"] as? String {
             self.standbyVSwitchId = value
@@ -10100,6 +10173,60 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SingleZoneRiskAlert : Tea.TeaModel {
+        public var confirmDate: String?
+
+        public var dispositionType: String?
+
+        public var needAlert: String?
+
+        public var plannedCompletionDate: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.confirmDate != nil {
+                map["ConfirmDate"] = self.confirmDate!
+            }
+            if self.dispositionType != nil {
+                map["DispositionType"] = self.dispositionType!
+            }
+            if self.needAlert != nil {
+                map["NeedAlert"] = self.needAlert!
+            }
+            if self.plannedCompletionDate != nil {
+                map["PlannedCompletionDate"] = self.plannedCompletionDate!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfirmDate"] as? String {
+                self.confirmDate = value
+            }
+            if let value = dict["DispositionType"] as? String {
+                self.dispositionType = value
+            }
+            if let value = dict["NeedAlert"] as? String {
+                self.needAlert = value
+            }
+            if let value = dict["PlannedCompletionDate"] as? String {
+                self.plannedCompletionDate = value
+            }
+        }
+    }
     public class StorageUsage : Tea.TeaModel {
         public var capacityByDiskCategory: [[String: Any]]?
 
@@ -10238,6 +10365,8 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
 
     public var serviceType: String?
 
+    public var singleZoneRiskAlert: GetLindormV2InstanceResponseBody.SingleZoneRiskAlert?
+
     public var standbyVSwitchId: String?
 
     public var standbyZoneId: String?
@@ -10264,6 +10393,7 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.singleZoneRiskAlert?.validate()
         try self.storageUsage?.validate()
     }
 
@@ -10365,6 +10495,9 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
         }
         if self.serviceType != nil {
             map["ServiceType"] = self.serviceType!
+        }
+        if self.singleZoneRiskAlert != nil {
+            map["SingleZoneRiskAlert"] = self.singleZoneRiskAlert?.toMap()
         }
         if self.standbyVSwitchId != nil {
             map["StandbyVSwitchId"] = self.standbyVSwitchId!
@@ -10501,6 +10634,11 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServiceType"] as? String {
             self.serviceType = value
+        }
+        if let value = dict["SingleZoneRiskAlert"] as? [String: Any?] {
+            var model = GetLindormV2InstanceResponseBody.SingleZoneRiskAlert()
+            model.fromMap(value)
+            self.singleZoneRiskAlert = model
         }
         if let value = dict["StandbyVSwitchId"] as? String {
             self.standbyVSwitchId = value
@@ -20296,6 +20434,8 @@ public class UpdateLdpsComputeGroupResponse : Tea.TeaModel {
 public class UpdateLindormInstanceAttributeRequest : Tea.TeaModel {
     public var deletionProtection: Bool?
 
+    public var dispositionType: String?
+
     public var instanceAlias: String?
 
     public var instanceId: String?
@@ -20303,6 +20443,8 @@ public class UpdateLindormInstanceAttributeRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var plannedCompletionDate: String?
 
     public var resourceOwnerAccount: String?
 
@@ -20327,6 +20469,9 @@ public class UpdateLindormInstanceAttributeRequest : Tea.TeaModel {
         if self.deletionProtection != nil {
             map["DeletionProtection"] = self.deletionProtection!
         }
+        if self.dispositionType != nil {
+            map["DispositionType"] = self.dispositionType!
+        }
         if self.instanceAlias != nil {
             map["InstanceAlias"] = self.instanceAlias!
         }
@@ -20338,6 +20483,9 @@ public class UpdateLindormInstanceAttributeRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.plannedCompletionDate != nil {
+            map["PlannedCompletionDate"] = self.plannedCompletionDate!
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
@@ -20356,6 +20504,9 @@ public class UpdateLindormInstanceAttributeRequest : Tea.TeaModel {
         if let value = dict["DeletionProtection"] as? Bool {
             self.deletionProtection = value
         }
+        if let value = dict["DispositionType"] as? String {
+            self.dispositionType = value
+        }
         if let value = dict["InstanceAlias"] as? String {
             self.instanceAlias = value
         }
@@ -20367,6 +20518,9 @@ public class UpdateLindormInstanceAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["PlannedCompletionDate"] as? String {
+            self.plannedCompletionDate = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
