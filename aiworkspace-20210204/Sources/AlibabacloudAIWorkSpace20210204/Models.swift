@@ -3693,6 +3693,8 @@ public class AddImageRequest : Tea.TeaModel {
 
     public var sourceType: String?
 
+    public var userId: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -3740,6 +3742,9 @@ public class AddImageRequest : Tea.TeaModel {
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -3784,6 +3789,9 @@ public class AddImageRequest : Tea.TeaModel {
         }
         if let value = dict["SourceType"] as? String {
             self.sourceType = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -9201,6 +9209,8 @@ public class CreateWorkspaceRoleRequest : Tea.TeaModel {
 
     public var roleType: String?
 
+    public var userId: String?
+
     public override init() {
         super.init()
     }
@@ -9228,6 +9238,9 @@ public class CreateWorkspaceRoleRequest : Tea.TeaModel {
         if self.roleType != nil {
             map["RoleType"] = self.roleType!
         }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
         return map
     }
 
@@ -9251,6 +9264,9 @@ public class CreateWorkspaceRoleRequest : Tea.TeaModel {
         }
         if let value = dict["RoleType"] as? String {
             self.roleType = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
         }
     }
 }

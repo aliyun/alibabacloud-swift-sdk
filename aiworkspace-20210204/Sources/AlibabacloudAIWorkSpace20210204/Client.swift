@@ -50,14 +50,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1-oxs": "aiworkspace.aliyuncs.com",
             "me-east-1": "aiworkspace.aliyuncs.com",
             "rus-west-1-pop": "aiworkspace.aliyuncs.com",
-            "us-west-1": "aiworkspace.us-west-1.aliyuncs.com",
-            "us-southeast-1": "aiworkspace.us-southeast-1.aliyuncs.com",
-            "us-east-1": "aiworkspace.us-east-1.aliyuncs.com",
-            "na-south-1": "aiworkspace.na-south-1.aliyuncs.com",
-            "eu-central-1": "aiworkspace.eu-central-1.aliyuncs.com",
             "cn-wulanchabu": "aiworkspace.cn-wulanchabu.aliyuncs.com",
             "cn-shenzhen": "aiworkspace.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "aiworkspace.cn-shanghai-finance-1.aliyuncs.com",
             "cn-shanghai": "aiworkspace.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "aiworkspace.cn-hongkong.aliyuncs.com",
             "cn-heyuan": "aiworkspace.cn-heyuan.aliyuncs.com",
@@ -68,9 +62,15 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-southeast-7": "aiworkspace.ap-southeast-7.aliyuncs.com",
             "ap-southeast-3": "aiworkspace.ap-southeast-3.aliyuncs.com",
             "ap-southeast-1": "aiworkspace.ap-southeast-1.aliyuncs.com",
-            "ap-south-1": "aiworkspace.ap-south-1.aliyuncs.com",
             "ap-northeast-2": "aiworkspace.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "aiworkspace.ap-northeast-1.aliyuncs.com"
+            "ap-northeast-1": "aiworkspace.ap-northeast-1.aliyuncs.com",
+            "eu-central-1": "aiworkspace.eu-central-1.aliyuncs.com",
+            "na-south-1": "aiworkspace.na-south-1.aliyuncs.com",
+            "us-east-1": "aiworkspace.us-east-1.aliyuncs.com",
+            "us-southeast-1": "aiworkspace.us-southeast-1.aliyuncs.com",
+            "us-west-1": "aiworkspace.us-west-1.aliyuncs.com",
+            "ap-south-1": "aiworkspace.ap-south-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "aiworkspace.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aiworkspace", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -152,6 +152,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sourceType)) {
             body["SourceType"] = request.sourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["UserId"] = request.userId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -1352,6 +1355,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.roleType)) {
             body["RoleType"] = request.roleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["UserId"] = request.userId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
