@@ -10,8 +10,8 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "cn-shanghai": "eds-aic.cn-shanghai.aliyuncs.com",
-            "ap-southeast-1": "eds-aic.ap-southeast-1.aliyuncs.com"
+            "ap-southeast-1": "eds-aic.ap-southeast-1.aliyuncs.com",
+            "cn-shanghai": "eds-aic.cn-shanghai.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eds-aic", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -3859,6 +3859,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceGroupSpecWithOptions(_ request: ModifyInstanceGroupSpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceGroupSpecResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceGroupIds)) {
+            query["InstanceGroupIds"] = request.instanceGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceGroupSpec)) {
+            query["InstanceGroupSpec"] = request.instanceGroupSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionId)) {
+            query["PromotionId"] = request.promotionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyInstanceGroupSpec",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyInstanceGroupSpecResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceGroupSpec(_ request: ModifyInstanceGroupSpecRequest) async throws -> ModifyInstanceGroupSpecResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyInstanceGroupSpecWithOptions(request as! ModifyInstanceGroupSpecRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyJVSInstanceWithOptions(_ request: ModifyJVSInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyJVSInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4496,6 +4536,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mobileAgentPackageIds)) {
             query["MobileAgentPackageIds"] = request.mobileAgentPackageIds ?? [];
         }
@@ -4616,8 +4659,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func runAgentTaskWithOptions(_ request: RunAgentTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunAgentTaskResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func runAgentTaskWithOptions(_ tmpReq: RunAgentTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunAgentTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunAgentTaskShrinkRequest = RunAgentTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.runConfig)) {
+            request.runConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.runConfig, "RunConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             query["BizRegionId"] = request.bizRegionId ?? "";
@@ -4627,6 +4675,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.maxSteps)) {
             query["MaxSteps"] = request.maxSteps!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runConfigShrink)) {
+            query["RunConfig"] = request.runConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.scheduleId)) {
             query["ScheduleId"] = request.scheduleId ?? "";

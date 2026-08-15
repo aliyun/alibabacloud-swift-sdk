@@ -6474,6 +6474,8 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
 
         public var maxSteps: Int32?
 
+        public var skills: [String]?
+
         public var timeoutSeconds: Int32?
 
         public override init() {
@@ -6496,6 +6498,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
             if self.maxSteps != nil {
                 map["MaxSteps"] = self.maxSteps!
             }
+            if self.skills != nil {
+                map["Skills"] = self.skills!
+            }
             if self.timeoutSeconds != nil {
                 map["TimeoutSeconds"] = self.timeoutSeconds!
             }
@@ -6509,6 +6514,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
             }
             if let value = dict["MaxSteps"] as? Int32 {
                 self.maxSteps = value
+            }
+            if let value = dict["Skills"] as? [String] {
+                self.skills = value
             }
             if let value = dict["TimeoutSeconds"] as? Int32 {
                 self.timeoutSeconds = value
@@ -12622,6 +12630,8 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
 
         public var bizTags: [DescribeCloudPhoneNodesResponseBody.NodeModel.BizTags]?
 
+        public var channel: String?
+
         public var chargeType: String?
 
         public var cpu: String?
@@ -12645,6 +12655,8 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
         public var nodeId: String?
 
         public var nodeName: String?
+
+        public var packageId: String?
 
         public var phoneCount: Int32?
 
@@ -12699,6 +12711,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
                 }
                 map["BizTags"] = tmp
             }
+            if self.channel != nil {
+                map["Channel"] = self.channel!
+            }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
@@ -12738,6 +12753,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if self.nodeName != nil {
                 map["NodeName"] = self.nodeName!
+            }
+            if self.packageId != nil {
+                map["PackageId"] = self.packageId!
             }
             if self.phoneCount != nil {
                 map["PhoneCount"] = self.phoneCount!
@@ -12803,6 +12821,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
                 }
                 self.bizTags = tmp
             }
+            if let value = dict["Channel"] as? String {
+                self.channel = value
+            }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
             }
@@ -12848,6 +12869,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NodeName"] as? String {
                 self.nodeName = value
+            }
+            if let value = dict["PackageId"] as? String {
+                self.packageId = value
             }
             if let value = dict["PhoneCount"] as? Int32 {
                 self.phoneCount = value
@@ -13122,6 +13146,8 @@ public class DescribeCreditDetailResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var durationMs: Int64?
+
             public var inputTokens: Int64?
 
             public var instanceId: String?
@@ -13139,6 +13165,8 @@ public class DescribeCreditDetailResponseBody : Tea.TeaModel {
             public var taskId: String?
 
             public var totalTokens: Int64?
+
+            public var ttftMs: Int64?
 
             public override init() {
                 super.init()
@@ -13169,6 +13197,9 @@ public class DescribeCreditDetailResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.durationMs != nil {
+                    map["DurationMs"] = self.durationMs!
+                }
                 if self.inputTokens != nil {
                     map["InputTokens"] = self.inputTokens!
                 }
@@ -13196,6 +13227,9 @@ public class DescribeCreditDetailResponseBody : Tea.TeaModel {
                 if self.totalTokens != nil {
                     map["TotalTokens"] = self.totalTokens!
                 }
+                if self.ttftMs != nil {
+                    map["TtftMs"] = self.ttftMs!
+                }
                 return map
             }
 
@@ -13215,6 +13249,9 @@ public class DescribeCreditDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["DurationMs"] as? Int64 {
+                    self.durationMs = value
                 }
                 if let value = dict["InputTokens"] as? Int64 {
                     self.inputTokens = value
@@ -13242,6 +13279,9 @@ public class DescribeCreditDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TotalTokens"] as? Int64 {
                     self.totalTokens = value
+                }
+                if let value = dict["TtftMs"] as? Int64 {
+                    self.ttftMs = value
                 }
             }
         }
@@ -17806,6 +17846,8 @@ public class DescribeScheduledTasksResponseBody : Tea.TeaModel {
 
             public var maxSteps: Int32?
 
+            public var skills: [String]?
+
             public var timeoutSeconds: Int32?
 
             public override init() {
@@ -17828,6 +17870,9 @@ public class DescribeScheduledTasksResponseBody : Tea.TeaModel {
                 if self.maxSteps != nil {
                     map["MaxSteps"] = self.maxSteps!
                 }
+                if self.skills != nil {
+                    map["Skills"] = self.skills!
+                }
                 if self.timeoutSeconds != nil {
                     map["TimeoutSeconds"] = self.timeoutSeconds!
                 }
@@ -17841,6 +17886,9 @@ public class DescribeScheduledTasksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MaxSteps"] as? Int32 {
                     self.maxSteps = value
+                }
+                if let value = dict["Skills"] as? [String] {
+                    self.skills = value
                 }
                 if let value = dict["TimeoutSeconds"] as? Int32 {
                     self.timeoutSeconds = value
@@ -23894,6 +23942,210 @@ public class ModifyInstanceChargeTypeResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyInstanceGroupSpecRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
+    public var instanceGroupIds: [String]?
+
+    public var instanceGroupSpec: String?
+
+    public var promotionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.instanceGroupIds != nil {
+            map["InstanceGroupIds"] = self.instanceGroupIds!
+        }
+        if self.instanceGroupSpec != nil {
+            map["InstanceGroupSpec"] = self.instanceGroupSpec!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["InstanceGroupIds"] as? [String] {
+            self.instanceGroupIds = value
+        }
+        if let value = dict["InstanceGroupSpec"] as? String {
+            self.instanceGroupSpec = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
+        }
+    }
+}
+
+public class ModifyInstanceGroupSpecResponseBody : Tea.TeaModel {
+    public class OrderInfo : Tea.TeaModel {
+        public var instanceIds: [String]?
+
+        public var orderId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceIds != nil {
+                map["InstanceIds"] = self.instanceIds!
+            }
+            if self.orderId != nil {
+                map["OrderId"] = self.orderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceIds"] as? [String] {
+                self.instanceIds = value
+            }
+            if let value = dict["OrderId"] as? String {
+                self.orderId = value
+            }
+        }
+    }
+    public var orderInfo: [ModifyInstanceGroupSpecResponseBody.OrderInfo]?
+
+    public var orderTaskId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderInfo != nil {
+            var tmp : [Any] = []
+            for k in self.orderInfo! {
+                tmp.append(k.toMap())
+            }
+            map["OrderInfo"] = tmp
+        }
+        if self.orderTaskId != nil {
+            map["OrderTaskId"] = self.orderTaskId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OrderInfo"] as? [Any?] {
+            var tmp : [ModifyInstanceGroupSpecResponseBody.OrderInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyInstanceGroupSpecResponseBody.OrderInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.orderInfo = tmp
+        }
+        if let value = dict["OrderTaskId"] as? String {
+            self.orderTaskId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyInstanceGroupSpecResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyInstanceGroupSpecResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyInstanceGroupSpecResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyJVSInstanceRequest : Tea.TeaModel {
     public class CreditConfig : Tea.TeaModel {
         public var creditLimit: Int64?
@@ -24741,6 +24993,8 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
 
         public var maxSteps: Int32?
 
+        public var skills: [String]?
+
         public var timeoutSeconds: Int32?
 
         public override init() {
@@ -24763,6 +25017,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
             if self.maxSteps != nil {
                 map["MaxSteps"] = self.maxSteps!
             }
+            if self.skills != nil {
+                map["Skills"] = self.skills!
+            }
             if self.timeoutSeconds != nil {
                 map["TimeoutSeconds"] = self.timeoutSeconds!
             }
@@ -24776,6 +25033,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
             }
             if let value = dict["MaxSteps"] as? Int32 {
                 self.maxSteps = value
+            }
+            if let value = dict["Skills"] as? [String] {
+                self.skills = value
             }
             if let value = dict["TimeoutSeconds"] as? Int32 {
                 self.timeoutSeconds = value
@@ -27466,6 +27726,8 @@ public class RenewMobileAgentPackageRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var clientToken: String?
+
     public var mobileAgentPackageIds: [String]?
 
     public var paidCallbackUrl: String?
@@ -27496,6 +27758,9 @@ public class RenewMobileAgentPackageRequest : Tea.TeaModel {
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.mobileAgentPackageIds != nil {
             map["MobileAgentPackageIds"] = self.mobileAgentPackageIds!
         }
@@ -27521,6 +27786,9 @@ public class RenewMobileAgentPackageRequest : Tea.TeaModel {
         }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["MobileAgentPackageIds"] as? [String] {
             self.mobileAgentPackageIds = value
@@ -28163,6 +28431,36 @@ public class ResumeAgentTaskResponse : Tea.TeaModel {
 }
 
 public class RunAgentTaskRequest : Tea.TeaModel {
+    public class RunConfig : Tea.TeaModel {
+        public var skills: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.skills != nil {
+                map["Skills"] = self.skills!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Skills"] as? [String] {
+                self.skills = value
+            }
+        }
+    }
     public class Targets : Tea.TeaModel {
         public var instanceId: String?
 
@@ -28207,6 +28505,8 @@ public class RunAgentTaskRequest : Tea.TeaModel {
 
     public var maxSteps: Int32?
 
+    public var runConfig: RunAgentTaskRequest.RunConfig?
+
     public var scheduleId: String?
 
     public var targets: [RunAgentTaskRequest.Targets]?
@@ -28227,6 +28527,7 @@ public class RunAgentTaskRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.runConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -28239,6 +28540,9 @@ public class RunAgentTaskRequest : Tea.TeaModel {
         }
         if self.maxSteps != nil {
             map["MaxSteps"] = self.maxSteps!
+        }
+        if self.runConfig != nil {
+            map["RunConfig"] = self.runConfig?.toMap()
         }
         if self.scheduleId != nil {
             map["ScheduleId"] = self.scheduleId!
@@ -28273,6 +28577,11 @@ public class RunAgentTaskRequest : Tea.TeaModel {
         if let value = dict["MaxSteps"] as? Int32 {
             self.maxSteps = value
         }
+        if let value = dict["RunConfig"] as? [String: Any?] {
+            var model = RunAgentTaskRequest.RunConfig()
+            model.fromMap(value)
+            self.runConfig = model
+        }
         if let value = dict["ScheduleId"] as? String {
             self.scheduleId = value
         }
@@ -28281,6 +28590,153 @@ public class RunAgentTaskRequest : Tea.TeaModel {
             for v in value {
                 if v != nil {
                     var model = RunAgentTaskRequest.Targets()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.targets = tmp
+        }
+        if let value = dict["TaskConfigId"] as? String {
+            self.taskConfigId = value
+        }
+        if let value = dict["TimeoutSeconds"] as? Int32 {
+            self.timeoutSeconds = value
+        }
+        if let value = dict["UserPrompt"] as? String {
+            self.userPrompt = value
+        }
+    }
+}
+
+public class RunAgentTaskShrinkRequest : Tea.TeaModel {
+    public class Targets : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var sessionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["SessionId"] as? String {
+                self.sessionId = value
+            }
+        }
+    }
+    public var bizRegionId: String?
+
+    public var instanceIds: [String]?
+
+    public var maxSteps: Int32?
+
+    public var runConfigShrink: String?
+
+    public var scheduleId: String?
+
+    public var targets: [RunAgentTaskShrinkRequest.Targets]?
+
+    public var taskConfigId: String?
+
+    public var timeoutSeconds: Int32?
+
+    public var userPrompt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.maxSteps != nil {
+            map["MaxSteps"] = self.maxSteps!
+        }
+        if self.runConfigShrink != nil {
+            map["RunConfig"] = self.runConfigShrink!
+        }
+        if self.scheduleId != nil {
+            map["ScheduleId"] = self.scheduleId!
+        }
+        if self.targets != nil {
+            var tmp : [Any] = []
+            for k in self.targets! {
+                tmp.append(k.toMap())
+            }
+            map["Targets"] = tmp
+        }
+        if self.taskConfigId != nil {
+            map["TaskConfigId"] = self.taskConfigId!
+        }
+        if self.timeoutSeconds != nil {
+            map["TimeoutSeconds"] = self.timeoutSeconds!
+        }
+        if self.userPrompt != nil {
+            map["UserPrompt"] = self.userPrompt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["MaxSteps"] as? Int32 {
+            self.maxSteps = value
+        }
+        if let value = dict["RunConfig"] as? String {
+            self.runConfigShrink = value
+        }
+        if let value = dict["ScheduleId"] as? String {
+            self.scheduleId = value
+        }
+        if let value = dict["Targets"] as? [Any?] {
+            var tmp : [RunAgentTaskShrinkRequest.Targets] = []
+            for v in value {
+                if v != nil {
+                    var model = RunAgentTaskShrinkRequest.Targets()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
