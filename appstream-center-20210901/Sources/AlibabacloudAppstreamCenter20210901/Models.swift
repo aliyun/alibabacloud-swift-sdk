@@ -3524,6 +3524,8 @@ public class CreateModelTemplateRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var refScope: String?
+
     public override init() {
         super.init()
     }
@@ -3553,6 +3555,9 @@ public class CreateModelTemplateRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.refScope != nil {
+            map["RefScope"] = self.refScope!
+        }
         return map
     }
 
@@ -3572,6 +3577,9 @@ public class CreateModelTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["RefScope"] as? String {
+            self.refScope = value
         }
     }
 }
@@ -8924,6 +8932,44 @@ public class GetRuntimeModelConfigResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ModelProviderList : Tea.TeaModel {
             public class LlmInfoList : Tea.TeaModel {
+                public class CreditMultiplier : Tea.TeaModel {
+                    public var max: Double?
+
+                    public var min: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.max != nil {
+                            map["Max"] = self.max!
+                        }
+                        if self.min != nil {
+                            map["Min"] = self.min!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Max"] as? Double {
+                            self.max = value
+                        }
+                        if let value = dict["Min"] as? Double {
+                            self.min = value
+                        }
+                    }
+                }
                 public class InferenceMetadata : Tea.TeaModel {
                     public var requestModality: [String]?
 
@@ -8962,6 +9008,8 @@ public class GetRuntimeModelConfigResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var creditMultiplier: GetRuntimeModelConfigResponseBody.Data.ModelProviderList.LlmInfoList.CreditMultiplier?
+
                 public var description_: String?
 
                 public var features: [String]?
@@ -8986,11 +9034,15 @@ public class GetRuntimeModelConfigResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.creditMultiplier?.validate()
                     try self.inferenceMetadata?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.creditMultiplier != nil {
+                        map["CreditMultiplier"] = self.creditMultiplier?.toMap()
+                    }
                     if self.description_ != nil {
                         map["Description"] = self.description_!
                     }
@@ -9017,6 +9069,11 @@ public class GetRuntimeModelConfigResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["CreditMultiplier"] as? [String: Any?] {
+                        var model = GetRuntimeModelConfigResponseBody.Data.ModelProviderList.LlmInfoList.CreditMultiplier()
+                        model.fromMap(value)
+                        self.creditMultiplier = model
+                    }
                     if let value = dict["Description"] as? String {
                         self.description_ = value
                     }
@@ -11402,15 +11459,25 @@ public class ListBindInfoResponse : Tea.TeaModel {
 }
 
 public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
+    public var agentImOnlineStatus: String?
+
     public var agentInstanceStatuses: [String]?
 
     public var agentInstanceVersions: [String]?
 
     public var agentPlatform: String?
 
+    public var agentPlatformList: [String]?
+
     public var agentProvider: String?
 
+    public var agentProviderList: [String]?
+
+    public var agentTemplateIds: [String]?
+
     public var authUsers: [String]?
+
+    public var bizRegionId: String?
 
     public var bizType: Int32?
 
@@ -11436,6 +11503,8 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
 
     public var modelTemplateId: String?
 
+    public var officeSiteId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -11458,6 +11527,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentImOnlineStatus != nil {
+            map["AgentImOnlineStatus"] = self.agentImOnlineStatus!
+        }
         if self.agentInstanceStatuses != nil {
             map["AgentInstanceStatuses"] = self.agentInstanceStatuses!
         }
@@ -11467,11 +11539,23 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         if self.agentPlatform != nil {
             map["AgentPlatform"] = self.agentPlatform!
         }
+        if self.agentPlatformList != nil {
+            map["AgentPlatformList"] = self.agentPlatformList!
+        }
         if self.agentProvider != nil {
             map["AgentProvider"] = self.agentProvider!
         }
+        if self.agentProviderList != nil {
+            map["AgentProviderList"] = self.agentProviderList!
+        }
+        if self.agentTemplateIds != nil {
+            map["AgentTemplateIds"] = self.agentTemplateIds!
+        }
         if self.authUsers != nil {
             map["AuthUsers"] = self.authUsers!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
         }
         if self.bizType != nil {
             map["BizType"] = self.bizType!
@@ -11509,6 +11593,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         if self.modelTemplateId != nil {
             map["ModelTemplateId"] = self.modelTemplateId!
         }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -11526,6 +11613,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentImOnlineStatus"] as? String {
+            self.agentImOnlineStatus = value
+        }
         if let value = dict["AgentInstanceStatuses"] as? [String] {
             self.agentInstanceStatuses = value
         }
@@ -11535,11 +11625,23 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         if let value = dict["AgentPlatform"] as? String {
             self.agentPlatform = value
         }
+        if let value = dict["AgentPlatformList"] as? [String] {
+            self.agentPlatformList = value
+        }
         if let value = dict["AgentProvider"] as? String {
             self.agentProvider = value
         }
+        if let value = dict["AgentProviderList"] as? [String] {
+            self.agentProviderList = value
+        }
+        if let value = dict["AgentTemplateIds"] as? [String] {
+            self.agentTemplateIds = value
+        }
         if let value = dict["AuthUsers"] as? [String] {
             self.authUsers = value
+        }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
         }
         if let value = dict["BizType"] as? Int32 {
             self.bizType = value
@@ -11577,6 +11679,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         if let value = dict["ModelTemplateId"] as? String {
             self.modelTemplateId = value
         }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -11595,6 +11700,8 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
 public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class AgentImInfo : Tea.TeaModel {
+            public var agentImOnlineStatus: String?
+
             public var agentImStatus: String?
 
             public var cloudSpaceStatus: String?
@@ -11613,6 +11720,9 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.agentImOnlineStatus != nil {
+                    map["AgentImOnlineStatus"] = self.agentImOnlineStatus!
+                }
                 if self.agentImStatus != nil {
                     map["AgentImStatus"] = self.agentImStatus!
                 }
@@ -11624,6 +11734,9 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AgentImOnlineStatus"] as? String {
+                    self.agentImOnlineStatus = value
+                }
                 if let value = dict["AgentImStatus"] as? String {
                     self.agentImStatus = value
                 }
@@ -13221,6 +13334,8 @@ public class ListImageResponse : Tea.TeaModel {
 }
 
 public class ListLlmTemplatesRequest : Tea.TeaModel {
+    public var bizType: Int32?
+
     public var llmCode: String?
 
     public var llmTemplateIds: [String]?
@@ -13232,6 +13347,8 @@ public class ListLlmTemplatesRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var providerTemplateId: String?
+
+    public var smartModel: Bool?
 
     public override init() {
         super.init()
@@ -13247,6 +13364,9 @@ public class ListLlmTemplatesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
         if self.llmCode != nil {
             map["LlmCode"] = self.llmCode!
         }
@@ -13265,11 +13385,17 @@ public class ListLlmTemplatesRequest : Tea.TeaModel {
         if self.providerTemplateId != nil {
             map["ProviderTemplateId"] = self.providerTemplateId!
         }
+        if self.smartModel != nil {
+            map["SmartModel"] = self.smartModel!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizType"] as? Int32 {
+            self.bizType = value
+        }
         if let value = dict["LlmCode"] as? String {
             self.llmCode = value
         }
@@ -13288,10 +13414,15 @@ public class ListLlmTemplatesRequest : Tea.TeaModel {
         if let value = dict["ProviderTemplateId"] as? String {
             self.providerTemplateId = value
         }
+        if let value = dict["SmartModel"] as? Bool {
+            self.smartModel = value
+        }
     }
 }
 
 public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
+    public var bizType: Int32?
+
     public var llmCode: String?
 
     public var llmTemplateIdsShrink: String?
@@ -13303,6 +13434,8 @@ public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var providerTemplateId: String?
+
+    public var smartModel: Bool?
 
     public override init() {
         super.init()
@@ -13318,6 +13451,9 @@ public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
         if self.llmCode != nil {
             map["LlmCode"] = self.llmCode!
         }
@@ -13336,11 +13472,17 @@ public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
         if self.providerTemplateId != nil {
             map["ProviderTemplateId"] = self.providerTemplateId!
         }
+        if self.smartModel != nil {
+            map["SmartModel"] = self.smartModel!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizType"] as? Int32 {
+            self.bizType = value
+        }
         if let value = dict["LlmCode"] as? String {
             self.llmCode = value
         }
@@ -13359,14 +13501,197 @@ public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
         if let value = dict["ProviderTemplateId"] as? String {
             self.providerTemplateId = value
         }
+        if let value = dict["SmartModel"] as? Bool {
+            self.smartModel = value
+        }
     }
 }
 
 public class ListLlmTemplatesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class CreditMultiplier : Tea.TeaModel {
+            public var max: Double?
+
+            public var min: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.max != nil {
+                    map["Max"] = self.max!
+                }
+                if self.min != nil {
+                    map["Min"] = self.min!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Max"] as? Double {
+                    self.max = value
+                }
+                if let value = dict["Min"] as? Double {
+                    self.min = value
+                }
+            }
+        }
+        public class InferenceMetadata : Tea.TeaModel {
+            public var requestModality: [String]?
+
+            public var responseModality: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.requestModality != nil {
+                    map["RequestModality"] = self.requestModality!
+                }
+                if self.responseModality != nil {
+                    map["ResponseModality"] = self.responseModality!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RequestModality"] as? [String] {
+                    self.requestModality = value
+                }
+                if let value = dict["ResponseModality"] as? [String] {
+                    self.responseModality = value
+                }
+            }
+        }
+        public class Prices : Tea.TeaModel {
+            public class Prices : Tea.TeaModel {
+                public var price: String?
+
+                public var priceName: String?
+
+                public var priceUnit: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.price != nil {
+                        map["Price"] = self.price!
+                    }
+                    if self.priceName != nil {
+                        map["PriceName"] = self.priceName!
+                    }
+                    if self.priceUnit != nil {
+                        map["PriceUnit"] = self.priceUnit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Price"] as? String {
+                        self.price = value
+                    }
+                    if let value = dict["PriceName"] as? String {
+                        self.priceName = value
+                    }
+                    if let value = dict["PriceUnit"] as? String {
+                        self.priceUnit = value
+                    }
+                }
+            }
+            public var prices: [ListLlmTemplatesResponseBody.Data.Prices.Prices]?
+
+            public var rangeName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.prices != nil {
+                    var tmp : [Any] = []
+                    for k in self.prices! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Prices"] = tmp
+                }
+                if self.rangeName != nil {
+                    map["RangeName"] = self.rangeName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Prices"] as? [Any?] {
+                    var tmp : [ListLlmTemplatesResponseBody.Data.Prices.Prices] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListLlmTemplatesResponseBody.Data.Prices.Prices()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.prices = tmp
+                }
+                if let value = dict["RangeName"] as? String {
+                    self.rangeName = value
+                }
+            }
+        }
         public var config: String?
 
+        public var creditMultiplier: ListLlmTemplatesResponseBody.Data.CreditMultiplier?
+
         public var description_: String?
+
+        public var features: [String]?
+
+        public var inferenceMetadata: ListLlmTemplatesResponseBody.Data.InferenceMetadata?
 
         public var isDefaultModel: Bool?
 
@@ -13374,9 +13699,19 @@ public class ListLlmTemplatesResponseBody : Tea.TeaModel {
 
         public var llmTemplateId: String?
 
+        public var modelInfo: [String: Any]?
+
         public var name: String?
 
+        public var prices: [ListLlmTemplatesResponseBody.Data.Prices]?
+
         public var providerTemplateId: String?
+
+        public var publishedTime: String?
+
+        public var refScope: String?
+
+        public var routePolicyCount: Int32?
 
         public override init() {
             super.init()
@@ -13388,6 +13723,8 @@ public class ListLlmTemplatesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.creditMultiplier?.validate()
+            try self.inferenceMetadata?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -13395,8 +13732,17 @@ public class ListLlmTemplatesResponseBody : Tea.TeaModel {
             if self.config != nil {
                 map["Config"] = self.config!
             }
+            if self.creditMultiplier != nil {
+                map["CreditMultiplier"] = self.creditMultiplier?.toMap()
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.features != nil {
+                map["Features"] = self.features!
+            }
+            if self.inferenceMetadata != nil {
+                map["InferenceMetadata"] = self.inferenceMetadata?.toMap()
             }
             if self.isDefaultModel != nil {
                 map["IsDefaultModel"] = self.isDefaultModel!
@@ -13407,11 +13753,30 @@ public class ListLlmTemplatesResponseBody : Tea.TeaModel {
             if self.llmTemplateId != nil {
                 map["LlmTemplateId"] = self.llmTemplateId!
             }
+            if self.modelInfo != nil {
+                map["ModelInfo"] = self.modelInfo!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.prices != nil {
+                var tmp : [Any] = []
+                for k in self.prices! {
+                    tmp.append(k.toMap())
+                }
+                map["Prices"] = tmp
+            }
             if self.providerTemplateId != nil {
                 map["ProviderTemplateId"] = self.providerTemplateId!
+            }
+            if self.publishedTime != nil {
+                map["PublishedTime"] = self.publishedTime!
+            }
+            if self.refScope != nil {
+                map["RefScope"] = self.refScope!
+            }
+            if self.routePolicyCount != nil {
+                map["RoutePolicyCount"] = self.routePolicyCount!
             }
             return map
         }
@@ -13421,8 +13786,21 @@ public class ListLlmTemplatesResponseBody : Tea.TeaModel {
             if let value = dict["Config"] as? String {
                 self.config = value
             }
+            if let value = dict["CreditMultiplier"] as? [String: Any?] {
+                var model = ListLlmTemplatesResponseBody.Data.CreditMultiplier()
+                model.fromMap(value)
+                self.creditMultiplier = model
+            }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["Features"] as? [String] {
+                self.features = value
+            }
+            if let value = dict["InferenceMetadata"] as? [String: Any?] {
+                var model = ListLlmTemplatesResponseBody.Data.InferenceMetadata()
+                model.fromMap(value)
+                self.inferenceMetadata = model
             }
             if let value = dict["IsDefaultModel"] as? Bool {
                 self.isDefaultModel = value
@@ -13433,11 +13811,36 @@ public class ListLlmTemplatesResponseBody : Tea.TeaModel {
             if let value = dict["LlmTemplateId"] as? String {
                 self.llmTemplateId = value
             }
+            if let value = dict["ModelInfo"] as? [String: Any] {
+                self.modelInfo = value
+            }
             if let value = dict["Name"] as? String {
                 self.name = value
             }
+            if let value = dict["Prices"] as? [Any?] {
+                var tmp : [ListLlmTemplatesResponseBody.Data.Prices] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListLlmTemplatesResponseBody.Data.Prices()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.prices = tmp
+            }
             if let value = dict["ProviderTemplateId"] as? String {
                 self.providerTemplateId = value
+            }
+            if let value = dict["PublishedTime"] as? String {
+                self.publishedTime = value
+            }
+            if let value = dict["RefScope"] as? String {
+                self.refScope = value
+            }
+            if let value = dict["RoutePolicyCount"] as? Int32 {
+                self.routePolicyCount = value
             }
         }
     }
@@ -14457,7 +14860,11 @@ public class ListModelTemplateResourceGroupResponse : Tea.TeaModel {
 public class ListModelTemplatesRequest : Tea.TeaModel {
     public var agentPlatform: String?
 
+    public var agentPlatformList: [String]?
+
     public var agentProvider: String?
+
+    public var agentProviderList: [String]?
 
     public var bizType: Int32?
 
@@ -14465,9 +14872,15 @@ public class ListModelTemplatesRequest : Tea.TeaModel {
 
     public var modelTemplateIdList: [String]?
 
+    public var name: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var refScope: String?
+
+    public var source: String?
 
     public override init() {
         super.init()
@@ -14486,8 +14899,14 @@ public class ListModelTemplatesRequest : Tea.TeaModel {
         if self.agentPlatform != nil {
             map["AgentPlatform"] = self.agentPlatform!
         }
+        if self.agentPlatformList != nil {
+            map["AgentPlatformList"] = self.agentPlatformList!
+        }
         if self.agentProvider != nil {
             map["AgentProvider"] = self.agentProvider!
+        }
+        if self.agentProviderList != nil {
+            map["AgentProviderList"] = self.agentProviderList!
         }
         if self.bizType != nil {
             map["BizType"] = self.bizType!
@@ -14498,11 +14917,20 @@ public class ListModelTemplatesRequest : Tea.TeaModel {
         if self.modelTemplateIdList != nil {
             map["ModelTemplateIdList"] = self.modelTemplateIdList!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.refScope != nil {
+            map["RefScope"] = self.refScope!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         return map
     }
@@ -14512,8 +14940,14 @@ public class ListModelTemplatesRequest : Tea.TeaModel {
         if let value = dict["AgentPlatform"] as? String {
             self.agentPlatform = value
         }
+        if let value = dict["AgentPlatformList"] as? [String] {
+            self.agentPlatformList = value
+        }
         if let value = dict["AgentProvider"] as? String {
             self.agentProvider = value
+        }
+        if let value = dict["AgentProviderList"] as? [String] {
+            self.agentProviderList = value
         }
         if let value = dict["BizType"] as? Int32 {
             self.bizType = value
@@ -14524,11 +14958,20 @@ public class ListModelTemplatesRequest : Tea.TeaModel {
         if let value = dict["ModelTemplateIdList"] as? [String] {
             self.modelTemplateIdList = value
         }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["RefScope"] as? String {
+            self.refScope = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
         }
     }
 }
@@ -14536,7 +14979,11 @@ public class ListModelTemplatesRequest : Tea.TeaModel {
 public class ListModelTemplatesShrinkRequest : Tea.TeaModel {
     public var agentPlatform: String?
 
+    public var agentPlatformList: [String]?
+
     public var agentProvider: String?
+
+    public var agentProviderList: [String]?
 
     public var bizType: Int32?
 
@@ -14544,9 +14991,15 @@ public class ListModelTemplatesShrinkRequest : Tea.TeaModel {
 
     public var modelTemplateIdListShrink: String?
 
+    public var name: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var refScope: String?
+
+    public var source: String?
 
     public override init() {
         super.init()
@@ -14565,8 +15018,14 @@ public class ListModelTemplatesShrinkRequest : Tea.TeaModel {
         if self.agentPlatform != nil {
             map["AgentPlatform"] = self.agentPlatform!
         }
+        if self.agentPlatformList != nil {
+            map["AgentPlatformList"] = self.agentPlatformList!
+        }
         if self.agentProvider != nil {
             map["AgentProvider"] = self.agentProvider!
+        }
+        if self.agentProviderList != nil {
+            map["AgentProviderList"] = self.agentProviderList!
         }
         if self.bizType != nil {
             map["BizType"] = self.bizType!
@@ -14577,11 +15036,20 @@ public class ListModelTemplatesShrinkRequest : Tea.TeaModel {
         if self.modelTemplateIdListShrink != nil {
             map["ModelTemplateIdList"] = self.modelTemplateIdListShrink!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.refScope != nil {
+            map["RefScope"] = self.refScope!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         return map
     }
@@ -14591,8 +15059,14 @@ public class ListModelTemplatesShrinkRequest : Tea.TeaModel {
         if let value = dict["AgentPlatform"] as? String {
             self.agentPlatform = value
         }
+        if let value = dict["AgentPlatformList"] as? [String] {
+            self.agentPlatformList = value
+        }
         if let value = dict["AgentProvider"] as? String {
             self.agentProvider = value
+        }
+        if let value = dict["AgentProviderList"] as? [String] {
+            self.agentProviderList = value
         }
         if let value = dict["BizType"] as? Int32 {
             self.bizType = value
@@ -14603,17 +15077,28 @@ public class ListModelTemplatesShrinkRequest : Tea.TeaModel {
         if let value = dict["ModelTemplateIdList"] as? String {
             self.modelTemplateIdListShrink = value
         }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["RefScope"] as? String {
+            self.refScope = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
     }
 }
 
 public class ListModelTemplatesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var agentPlatform: String?
+
         public var agentProvider: String?
 
         public var config: String?
@@ -14622,9 +15107,17 @@ public class ListModelTemplatesResponseBody : Tea.TeaModel {
 
         public var hasModel: Bool?
 
+        public var modelCount: Int32?
+
         public var modelTemplateId: String?
 
         public var name: String?
+
+        public var refScope: String?
+
+        public var userCount: Int32?
+
+        public var userGroupCount: Int32?
 
         public override init() {
             super.init()
@@ -14640,6 +15133,9 @@ public class ListModelTemplatesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentPlatform != nil {
+                map["AgentPlatform"] = self.agentPlatform!
+            }
             if self.agentProvider != nil {
                 map["AgentProvider"] = self.agentProvider!
             }
@@ -14652,17 +15148,32 @@ public class ListModelTemplatesResponseBody : Tea.TeaModel {
             if self.hasModel != nil {
                 map["HasModel"] = self.hasModel!
             }
+            if self.modelCount != nil {
+                map["ModelCount"] = self.modelCount!
+            }
             if self.modelTemplateId != nil {
                 map["ModelTemplateId"] = self.modelTemplateId!
             }
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.refScope != nil {
+                map["RefScope"] = self.refScope!
+            }
+            if self.userCount != nil {
+                map["UserCount"] = self.userCount!
+            }
+            if self.userGroupCount != nil {
+                map["UserGroupCount"] = self.userGroupCount!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentPlatform"] as? String {
+                self.agentPlatform = value
+            }
             if let value = dict["AgentProvider"] as? String {
                 self.agentProvider = value
             }
@@ -14675,11 +15186,23 @@ public class ListModelTemplatesResponseBody : Tea.TeaModel {
             if let value = dict["HasModel"] as? Bool {
                 self.hasModel = value
             }
+            if let value = dict["ModelCount"] as? Int32 {
+                self.modelCount = value
+            }
             if let value = dict["ModelTemplateId"] as? String {
                 self.modelTemplateId = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["RefScope"] as? String {
+                self.refScope = value
+            }
+            if let value = dict["UserCount"] as? Int32 {
+                self.userCount = value
+            }
+            if let value = dict["UserGroupCount"] as? Int32 {
+                self.userGroupCount = value
             }
         }
     }
@@ -14812,6 +15335,8 @@ public class ListModelTemplatesResponse : Tea.TeaModel {
 public class ListNodeInstanceTypeRequest : Tea.TeaModel {
     public var bizRegionId: String?
 
+    public var chargeType: String?
+
     public var cpu: Double?
 
     public var gpu: Double?
@@ -14858,6 +15383,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
         }
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
@@ -14911,6 +15439,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
         }
         if let value = dict["Cpu"] as? Double {
             self.cpu = value
@@ -16512,7 +17043,17 @@ public class ListWuyingServerRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var createTimeEnd: String?
+
+    public var createTimeStart: String?
+
+    public var expiredTimeEnd: String?
+
+    public var expiredTimeStart: String?
+
     public var imageId: String?
+
+    public var networkInterfaceIp: String?
 
     public var officeSiteId: String?
 
@@ -16533,6 +17074,8 @@ public class ListWuyingServerRequest : Tea.TeaModel {
     public var wuyingServerIdList: [String]?
 
     public var wuyingServerNameOrId: String?
+
+    public var zoneId: String?
 
     public override init() {
         super.init()
@@ -16560,8 +17103,23 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
+        if self.createTimeEnd != nil {
+            map["CreateTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["CreateTimeStart"] = self.createTimeStart!
+        }
+        if self.expiredTimeEnd != nil {
+            map["ExpiredTimeEnd"] = self.expiredTimeEnd!
+        }
+        if self.expiredTimeStart != nil {
+            map["ExpiredTimeStart"] = self.expiredTimeStart!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.networkInterfaceIp != nil {
+            map["NetworkInterfaceIp"] = self.networkInterfaceIp!
         }
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
@@ -16593,6 +17151,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if self.wuyingServerNameOrId != nil {
             map["WuyingServerNameOrId"] = self.wuyingServerNameOrId!
         }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
         return map
     }
 
@@ -16610,8 +17171,23 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
         }
+        if let value = dict["CreateTimeEnd"] as? String {
+            self.createTimeEnd = value
+        }
+        if let value = dict["CreateTimeStart"] as? String {
+            self.createTimeStart = value
+        }
+        if let value = dict["ExpiredTimeEnd"] as? String {
+            self.expiredTimeEnd = value
+        }
+        if let value = dict["ExpiredTimeStart"] as? String {
+            self.expiredTimeStart = value
+        }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
+        }
+        if let value = dict["NetworkInterfaceIp"] as? String {
+            self.networkInterfaceIp = value
         }
         if let value = dict["OfficeSiteId"] as? String {
             self.officeSiteId = value
@@ -16642,6 +17218,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         }
         if let value = dict["WuyingServerNameOrId"] as? String {
             self.wuyingServerNameOrId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
         }
     }
 }
@@ -16972,6 +17551,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var wuyingServerName: String?
 
+        public var zoneId: String?
+
         public override init() {
             super.init()
         }
@@ -17119,6 +17700,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if self.wuyingServerName != nil {
                 map["WuyingServerName"] = self.wuyingServerName!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
             }
             return map
         }
@@ -17283,6 +17867,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["WuyingServerName"] as? String {
                 self.wuyingServerName = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
             }
         }
     }
@@ -18667,6 +19254,82 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
         }
     }
     public class Policy : Tea.TeaModel {
+        public class AuthorizeAccessPolicyRules : Tea.TeaModel {
+            public var cidrIp: String?
+
+            public var description_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidrIp != nil {
+                    map["CidrIp"] = self.cidrIp!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CidrIp"] as? String {
+                    self.cidrIp = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+            }
+        }
+        public class ClientTypes : Tea.TeaModel {
+            public var clientType: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clientType != nil {
+                    map["ClientType"] = self.clientType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ClientType"] as? String {
+                    self.clientType = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public class ClipboardPolicy : Tea.TeaModel {
             public var clipboard: String?
 
@@ -18901,6 +19564,12 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public var appContentProtection: String?
+
+        public var authorizeAccessPolicyRules: [ModifyBrowserInstanceGroupRequest.Policy.AuthorizeAccessPolicyRules]?
+
+        public var clientTypes: [ModifyBrowserInstanceGroupRequest.Policy.ClientTypes]?
+
         public var clipboardPolicy: ModifyBrowserInstanceGroupRequest.Policy.ClipboardPolicy?
 
         public var disconnectKeepSession: String?
@@ -18940,6 +19609,23 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appContentProtection != nil {
+                map["AppContentProtection"] = self.appContentProtection!
+            }
+            if self.authorizeAccessPolicyRules != nil {
+                var tmp : [Any] = []
+                for k in self.authorizeAccessPolicyRules! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthorizeAccessPolicyRules"] = tmp
+            }
+            if self.clientTypes != nil {
+                var tmp : [Any] = []
+                for k in self.clientTypes! {
+                    tmp.append(k.toMap())
+                }
+                map["ClientTypes"] = tmp
+            }
             if self.clipboardPolicy != nil {
                 map["ClipboardPolicy"] = self.clipboardPolicy?.toMap()
             }
@@ -18978,6 +19664,35 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AppContentProtection"] as? String {
+                self.appContentProtection = value
+            }
+            if let value = dict["AuthorizeAccessPolicyRules"] as? [Any?] {
+                var tmp : [ModifyBrowserInstanceGroupRequest.Policy.AuthorizeAccessPolicyRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyBrowserInstanceGroupRequest.Policy.AuthorizeAccessPolicyRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.authorizeAccessPolicyRules = tmp
+            }
+            if let value = dict["ClientTypes"] as? [Any?] {
+                var tmp : [ModifyBrowserInstanceGroupRequest.Policy.ClientTypes] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyBrowserInstanceGroupRequest.Policy.ClientTypes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.clientTypes = tmp
+            }
             if let value = dict["ClipboardPolicy"] as? [String: Any?] {
                 var model = ModifyBrowserInstanceGroupRequest.Policy.ClipboardPolicy()
                 model.fromMap(value)
@@ -23349,6 +24064,8 @@ public class UpdateModelTemplateRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var refScope: String?
+
     public override init() {
         super.init()
     }
@@ -23375,6 +24092,9 @@ public class UpdateModelTemplateRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.refScope != nil {
+            map["RefScope"] = self.refScope!
+        }
         return map
     }
 
@@ -23391,6 +24111,9 @@ public class UpdateModelTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["RefScope"] as? String {
+            self.refScope = value
         }
     }
 }
