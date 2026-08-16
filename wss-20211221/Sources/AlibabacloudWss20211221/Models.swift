@@ -944,6 +944,46 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RemainCreditInfo : Tea.TeaModel {
+                public var deductingAmount: Int32?
+
+                public var pendingAmount: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.deductingAmount != nil {
+                        map["DeductingAmount"] = self.deductingAmount!
+                    }
+                    if self.pendingAmount != nil {
+                        map["PendingAmount"] = self.pendingAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DeductingAmount"] as? Int32 {
+                        self.deductingAmount = value
+                    }
+                    if let value = dict["PendingAmount"] as? Int32 {
+                        self.pendingAmount = value
+                    }
+                }
+            }
+            public var availableAmount: Int32?
+
             public var contactGroupNames: [String]?
 
             public var creditTrendList: [DescribeCreditUsageInfoResponseBody.UsageInfoList.UsageInfo.CreditTrendList]?
@@ -965,6 +1005,8 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
             public var periodUsedCredit: Int64?
 
             public var remainCredit: Int64?
+
+            public var remainCreditInfo: DescribeCreditUsageInfoResponseBody.UsageInfoList.UsageInfo.RemainCreditInfo?
 
             public var todayUsed: String?
 
@@ -988,10 +1030,14 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.remainCreditInfo?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.availableAmount != nil {
+                    map["AvailableAmount"] = self.availableAmount!
+                }
                 if self.contactGroupNames != nil {
                     map["ContactGroupNames"] = self.contactGroupNames!
                 }
@@ -1029,6 +1075,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                 if self.remainCredit != nil {
                     map["RemainCredit"] = self.remainCredit!
                 }
+                if self.remainCreditInfo != nil {
+                    map["RemainCreditInfo"] = self.remainCreditInfo?.toMap()
+                }
                 if self.todayUsed != nil {
                     map["TodayUsed"] = self.todayUsed!
                 }
@@ -1052,6 +1101,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AvailableAmount"] as? Int32 {
+                    self.availableAmount = value
+                }
                 if let value = dict["ContactGroupNames"] as? [String] {
                     self.contactGroupNames = value
                 }
@@ -1094,6 +1146,11 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RemainCredit"] as? Int64 {
                     self.remainCredit = value
+                }
+                if let value = dict["RemainCreditInfo"] as? [String: Any?] {
+                    var model = DescribeCreditUsageInfoResponseBody.UsageInfoList.UsageInfo.RemainCreditInfo()
+                    model.fromMap(value)
+                    self.remainCreditInfo = model
                 }
                 if let value = dict["TodayUsed"] as? String {
                     self.todayUsed = value
@@ -3397,6 +3454,8 @@ public class DescribePackageDeductionsResponse : Tea.TeaModel {
 public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
     public var agentType: String?
 
+    public var agentTypes: [String]?
+
     public var aliUid: Int64?
 
     public var bizType: String?
@@ -3404,6 +3463,10 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
     public var deductionTypes: [String]?
 
     public var endTime: Int64?
+
+    public var groupByFields: [String]?
+
+    public var groupResourceTypes: [String]?
 
     public var groupSeparator: Bool?
 
@@ -3427,6 +3490,8 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
 
     public var startTime: Int64?
 
+    public var wyId: String?
+
     public override init() {
         super.init()
     }
@@ -3444,6 +3509,9 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
         if self.agentType != nil {
             map["AgentType"] = self.agentType!
         }
+        if self.agentTypes != nil {
+            map["AgentTypes"] = self.agentTypes!
+        }
         if self.aliUid != nil {
             map["AliUid"] = self.aliUid!
         }
@@ -3455,6 +3523,12 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.groupByFields != nil {
+            map["GroupByFields"] = self.groupByFields!
+        }
+        if self.groupResourceTypes != nil {
+            map["GroupResourceTypes"] = self.groupResourceTypes!
         }
         if self.groupSeparator != nil {
             map["GroupSeparator"] = self.groupSeparator!
@@ -3489,6 +3563,9 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.wyId != nil {
+            map["WyId"] = self.wyId!
+        }
         return map
     }
 
@@ -3496,6 +3573,9 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AgentType"] as? String {
             self.agentType = value
+        }
+        if let value = dict["AgentTypes"] as? [String] {
+            self.agentTypes = value
         }
         if let value = dict["AliUid"] as? Int64 {
             self.aliUid = value
@@ -3508,6 +3588,12 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
+        }
+        if let value = dict["GroupByFields"] as? [String] {
+            self.groupByFields = value
+        }
+        if let value = dict["GroupResourceTypes"] as? [String] {
+            self.groupResourceTypes = value
         }
         if let value = dict["GroupSeparator"] as? Bool {
             self.groupSeparator = value
@@ -3542,6 +3628,9 @@ public class DescribeRunIdDeductionsRequest : Tea.TeaModel {
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
         }
+        if let value = dict["WyId"] as? String {
+            self.wyId = value
+        }
     }
 }
 
@@ -3554,6 +3643,8 @@ public class DescribeRunIdDeductionsResponseBody : Tea.TeaModel {
         public var groupResourceType: String?
 
         public var instanceId: String?
+
+        public var model: String?
 
         public var packageId: String?
 
@@ -3597,6 +3688,9 @@ public class DescribeRunIdDeductionsResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
             if self.packageId != nil {
                 map["PackageId"] = self.packageId!
             }
@@ -3637,6 +3731,9 @@ public class DescribeRunIdDeductionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["Model"] as? String {
+                self.model = value
             }
             if let value = dict["PackageId"] as? String {
                 self.packageId = value

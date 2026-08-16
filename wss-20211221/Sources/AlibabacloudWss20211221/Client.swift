@@ -10,8 +10,8 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "cn-shanghai": "wss.cn-shanghai.aliyuncs.com",
-            "ap-southeast-1": "wss.ap-southeast-1.aliyuncs.com"
+            "ap-southeast-1": "wss.ap-southeast-1.aliyuncs.com",
+            "cn-shanghai": "wss.cn-shanghai.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("wss", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -321,6 +321,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentType)) {
             query["AgentType"] = request.agentType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agentTypes)) {
+            query["AgentTypes"] = request.agentTypes ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.aliUid)) {
             query["AliUid"] = request.aliUid!;
         }
@@ -332,6 +335,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByFields)) {
+            query["GroupByFields"] = request.groupByFields ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.groupResourceTypes)) {
+            query["GroupResourceTypes"] = request.groupResourceTypes ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.groupSeparator)) {
             query["GroupSeparator"] = request.groupSeparator!;
@@ -365,6 +374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wyId)) {
+            query["WyId"] = request.wyId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
