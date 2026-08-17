@@ -988,6 +988,8 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
 
             public var creditTrendList: [DescribeCreditUsageInfoResponseBody.UsageInfoList.UsageInfo.CreditTrendList]?
 
+            public var currentInstanceExpiredTime: String?
+
             public var currentInstanceId: String?
 
             public var currentRemainCredit: Int64?
@@ -1047,6 +1049,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["CreditTrendList"] = tmp
+                }
+                if self.currentInstanceExpiredTime != nil {
+                    map["CurrentInstanceExpiredTime"] = self.currentInstanceExpiredTime!
                 }
                 if self.currentInstanceId != nil {
                     map["CurrentInstanceId"] = self.currentInstanceId!
@@ -1119,6 +1124,9 @@ public class DescribeCreditUsageInfoResponseBody : Tea.TeaModel {
                         }
                     }
                     self.creditTrendList = tmp
+                }
+                if let value = dict["CurrentInstanceExpiredTime"] as? String {
+                    self.currentInstanceExpiredTime = value
                 }
                 if let value = dict["CurrentInstanceId"] as? String {
                     self.currentInstanceId = value
