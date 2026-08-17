@@ -8,7 +8,24 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-shenzhen": "ehpcinstant.cn-shenzhen.aliyuncs.com",
+            "cn-wulanchabu": "ehpcinstant.cn-wulanchabu.aliyuncs.com",
+            "cn-beijing": "ehpcinstant.cn-beijing.aliyuncs.com",
+            "ap-northeast-2": "ehpcinstant.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "ehpcinstant.ap-northeast-1.aliyuncs.com",
+            "cn-chengdu": "ehpcinstant.cn-chengdu.aliyuncs.com",
+            "cn-shanghai": "ehpcinstant.cn-shanghai.aliyuncs.com",
+            "cn-guangzhou": "ehpcinstant.cn-guangzhou.aliyuncs.com",
+            "cn-hongkong": "ehpcinstant.cn-hongkong.aliyuncs.com",
+            "cn-heyuan": "ehpcinstant.cn-heyuan.aliyuncs.com",
+            "ap-southeast-1": "ehpcinstant.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "ehpcinstant.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "ehpcinstant.ap-southeast-5.aliyuncs.com",
+            "cn-hangzhou": "ehpcinstant.cn-hangzhou.aliyuncs.com",
+            "eu-central-1": "ehpcinstant.eu-central-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ehpcinstant", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -178,6 +195,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.jobScheduler)) {
             query["JobScheduler"] = request.jobScheduler ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobTemplateId)) {
+            query["JobTemplateId"] = request.jobTemplateId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.securityPolicyShrink)) {
             query["SecurityPolicy"] = request.securityPolicyShrink ?? "";
