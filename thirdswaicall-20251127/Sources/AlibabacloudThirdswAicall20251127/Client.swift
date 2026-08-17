@@ -30,6 +30,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.calledNumber)) {
             body["CalledNumber"] = request.calledNumber ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callerUacAccountId)) {
+            body["CallerUacAccountId"] = request.callerUacAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.currentWorkspaceId)) {
+            body["CurrentWorkspaceId"] = request.currentWorkspaceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customerName)) {
             body["CustomerName"] = request.customerName ?? "";
         }
@@ -72,6 +78,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationCode)) {
             body["ApplicationCode"] = request.applicationCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callerUacAccountId)) {
+            body["CallerUacAccountId"] = request.callerUacAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.currentWorkspaceId)) {
+            body["CurrentWorkspaceId"] = request.currentWorkspaceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId!;
@@ -124,8 +136,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callStartTimeEnd)) {
             body["CallStartTimeEnd"] = request.callStartTimeEnd!;
         }
+        if (!TeaUtils.Client.isUnset(request.callerUacAccountId)) {
+            body["CallerUacAccountId"] = request.callerUacAccountId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.current)) {
             body["Current"] = request.current!;
+        }
+        if (!TeaUtils.Client.isUnset(request.currentWorkspaceId)) {
+            body["CurrentWorkspaceId"] = request.currentWorkspaceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.customerNameOrPhone)) {
             body["CustomerNameOrPhone"] = request.customerNameOrPhone ?? "";

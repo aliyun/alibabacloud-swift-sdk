@@ -8,6 +8,10 @@ import AlibabacloudEndpointUtil
 public class CreateCallOutboundInstantRequest : Tea.TeaModel {
     public var calledNumber: String?
 
+    public var callerUacAccountId: String?
+
+    public var currentWorkspaceId: String?
+
     public var customerName: String?
 
     public var encryptCall: Bool?
@@ -33,6 +37,12 @@ public class CreateCallOutboundInstantRequest : Tea.TeaModel {
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
         }
+        if self.callerUacAccountId != nil {
+            map["CallerUacAccountId"] = self.callerUacAccountId!
+        }
+        if self.currentWorkspaceId != nil {
+            map["CurrentWorkspaceId"] = self.currentWorkspaceId!
+        }
         if self.customerName != nil {
             map["CustomerName"] = self.customerName!
         }
@@ -52,6 +62,12 @@ public class CreateCallOutboundInstantRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CalledNumber"] as? String {
             self.calledNumber = value
+        }
+        if let value = dict["CallerUacAccountId"] as? String {
+            self.callerUacAccountId = value
+        }
+        if let value = dict["CurrentWorkspaceId"] as? String {
+            self.currentWorkspaceId = value
         }
         if let value = dict["CustomerName"] as? String {
             self.customerName = value
@@ -257,6 +273,10 @@ public class CreateCallOutboundInstantResponse : Tea.TeaModel {
 public class QueryTaskConcurrencyRequest : Tea.TeaModel {
     public var applicationCode: String?
 
+    public var callerUacAccountId: String?
+
+    public var currentWorkspaceId: String?
+
     public var taskId: Int64?
 
     public override init() {
@@ -276,6 +296,12 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
         if self.applicationCode != nil {
             map["ApplicationCode"] = self.applicationCode!
         }
+        if self.callerUacAccountId != nil {
+            map["CallerUacAccountId"] = self.callerUacAccountId!
+        }
+        if self.currentWorkspaceId != nil {
+            map["CurrentWorkspaceId"] = self.currentWorkspaceId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -286,6 +312,12 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationCode"] as? String {
             self.applicationCode = value
+        }
+        if let value = dict["CallerUacAccountId"] as? String {
+            self.callerUacAccountId = value
+        }
+        if let value = dict["CurrentWorkspaceId"] as? String {
+            self.currentWorkspaceId = value
         }
         if let value = dict["TaskId"] as? Int64 {
             self.taskId = value
@@ -480,7 +512,11 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
 
     public var callStartTimeEnd: Int64?
 
+    public var callerUacAccountId: String?
+
     public var current: Int32?
+
+    public var currentWorkspaceId: String?
 
     public var customerNameOrPhone: String?
 
@@ -524,8 +560,14 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         if self.callStartTimeEnd != nil {
             map["CallStartTimeEnd"] = self.callStartTimeEnd!
         }
+        if self.callerUacAccountId != nil {
+            map["CallerUacAccountId"] = self.callerUacAccountId!
+        }
         if self.current != nil {
             map["Current"] = self.current!
+        }
+        if self.currentWorkspaceId != nil {
+            map["CurrentWorkspaceId"] = self.currentWorkspaceId!
         }
         if self.customerNameOrPhone != nil {
             map["CustomerNameOrPhone"] = self.customerNameOrPhone!
@@ -568,8 +610,14 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         if let value = dict["CallStartTimeEnd"] as? Int64 {
             self.callStartTimeEnd = value
         }
+        if let value = dict["CallerUacAccountId"] as? String {
+            self.callerUacAccountId = value
+        }
         if let value = dict["Current"] as? Int32 {
             self.current = value
+        }
+        if let value = dict["CurrentWorkspaceId"] as? String {
+            self.currentWorkspaceId = value
         }
         if let value = dict["CustomerNameOrPhone"] as? String {
             self.customerNameOrPhone = value
@@ -607,7 +655,11 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
 
     public var callStartTimeEnd: Int64?
 
+    public var callerUacAccountId: String?
+
     public var current: Int32?
+
+    public var currentWorkspaceId: String?
 
     public var customerNameOrPhone: String?
 
@@ -651,8 +703,14 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         if self.callStartTimeEnd != nil {
             map["CallStartTimeEnd"] = self.callStartTimeEnd!
         }
+        if self.callerUacAccountId != nil {
+            map["CallerUacAccountId"] = self.callerUacAccountId!
+        }
         if self.current != nil {
             map["Current"] = self.current!
+        }
+        if self.currentWorkspaceId != nil {
+            map["CurrentWorkspaceId"] = self.currentWorkspaceId!
         }
         if self.customerNameOrPhone != nil {
             map["CustomerNameOrPhone"] = self.customerNameOrPhone!
@@ -695,8 +753,14 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         if let value = dict["CallStartTimeEnd"] as? Int64 {
             self.callStartTimeEnd = value
         }
+        if let value = dict["CallerUacAccountId"] as? String {
+            self.callerUacAccountId = value
+        }
         if let value = dict["Current"] as? Int32 {
             self.current = value
+        }
+        if let value = dict["CurrentWorkspaceId"] as? String {
+            self.currentWorkspaceId = value
         }
         if let value = dict["CustomerNameOrPhone"] as? String {
             self.customerNameOrPhone = value
