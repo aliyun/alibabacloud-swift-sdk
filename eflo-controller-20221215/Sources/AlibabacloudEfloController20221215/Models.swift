@@ -14723,21 +14723,293 @@ public class ListMachineTypesRequest : Tea.TeaModel {
 
 public class ListMachineTypesResponseBody : Tea.TeaModel {
     public class MachineTypes : Tea.TeaModel {
+        public class CpuInfoDetail : Tea.TeaModel {
+            public var cpuArch: String?
+
+            public var cpuSockets: Int32?
+
+            public var VCpuCores: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpuArch != nil {
+                    map["CpuArch"] = self.cpuArch!
+                }
+                if self.cpuSockets != nil {
+                    map["CpuSockets"] = self.cpuSockets!
+                }
+                if self.VCpuCores != nil {
+                    map["VCpuCores"] = self.VCpuCores!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CpuArch"] as? String {
+                    self.cpuArch = value
+                }
+                if let value = dict["CpuSockets"] as? Int32 {
+                    self.cpuSockets = value
+                }
+                if let value = dict["VCpuCores"] as? Int32 {
+                    self.VCpuCores = value
+                }
+            }
+        }
+        public class DiskInfoDetail : Tea.TeaModel {
+            public var localDiskCount: Int32?
+
+            public var localDiskSizeInTB: Double?
+
+            public var localDiskType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.localDiskCount != nil {
+                    map["LocalDiskCount"] = self.localDiskCount!
+                }
+                if self.localDiskSizeInTB != nil {
+                    map["LocalDiskSizeInTB"] = self.localDiskSizeInTB!
+                }
+                if self.localDiskType != nil {
+                    map["LocalDiskType"] = self.localDiskType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LocalDiskCount"] as? Int32 {
+                    self.localDiskCount = value
+                }
+                if let value = dict["LocalDiskSizeInTB"] as? Double {
+                    self.localDiskSizeInTB = value
+                }
+                if let value = dict["LocalDiskType"] as? String {
+                    self.localDiskType = value
+                }
+            }
+        }
+        public class FrontendNetworkDetail : Tea.TeaModel {
+            public var frontendNetworkType: String?
+
+            public var jumboFrameSupported: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.frontendNetworkType != nil {
+                    map["FrontendNetworkType"] = self.frontendNetworkType!
+                }
+                if self.jumboFrameSupported != nil {
+                    map["JumboFrameSupported"] = self.jumboFrameSupported!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FrontendNetworkType"] as? String {
+                    self.frontendNetworkType = value
+                }
+                if let value = dict["JumboFrameSupported"] as? Bool {
+                    self.jumboFrameSupported = value
+                }
+            }
+        }
+        public class GpuInfoDetail : Tea.TeaModel {
+            public var gpuCount: Int32?
+
+            public var gpuMemoryInGB: Int32?
+
+            public var gpuName: String?
+
+            public var gpuVendor: String?
+
+            public var totalGpuMemoryInGB: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.gpuCount != nil {
+                    map["GpuCount"] = self.gpuCount!
+                }
+                if self.gpuMemoryInGB != nil {
+                    map["GpuMemoryInGB"] = self.gpuMemoryInGB!
+                }
+                if self.gpuName != nil {
+                    map["GpuName"] = self.gpuName!
+                }
+                if self.gpuVendor != nil {
+                    map["GpuVendor"] = self.gpuVendor!
+                }
+                if self.totalGpuMemoryInGB != nil {
+                    map["TotalGpuMemoryInGB"] = self.totalGpuMemoryInGB!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GpuCount"] as? Int32 {
+                    self.gpuCount = value
+                }
+                if let value = dict["GpuMemoryInGB"] as? Int32 {
+                    self.gpuMemoryInGB = value
+                }
+                if let value = dict["GpuName"] as? String {
+                    self.gpuName = value
+                }
+                if let value = dict["GpuVendor"] as? String {
+                    self.gpuVendor = value
+                }
+                if let value = dict["TotalGpuMemoryInGB"] as? Int32 {
+                    self.totalGpuMemoryInGB = value
+                }
+            }
+        }
+        public class MemoryInfoDetail : Tea.TeaModel {
+            public var memorySizeInGB: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.memorySizeInGB != nil {
+                    map["MemorySizeInGB"] = self.memorySizeInGB!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MemorySizeInGB"] as? Int32 {
+                    self.memorySizeInGB = value
+                }
+            }
+        }
+        public class RdmaInfoDetail : Tea.TeaModel {
+            public var backendRdmaNicBwInGbps: Int32?
+
+            public var backendRdmaNicCount: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendRdmaNicBwInGbps != nil {
+                    map["BackendRdmaNicBwInGbps"] = self.backendRdmaNicBwInGbps!
+                }
+                if self.backendRdmaNicCount != nil {
+                    map["BackendRdmaNicCount"] = self.backendRdmaNicCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackendRdmaNicBwInGbps"] as? Int32 {
+                    self.backendRdmaNicBwInGbps = value
+                }
+                if let value = dict["BackendRdmaNicCount"] as? Int32 {
+                    self.backendRdmaNicCount = value
+                }
+            }
+        }
         public var bondNum: Int32?
 
         public var cpuInfo: String?
 
+        public var cpuInfoDetail: ListMachineTypesResponseBody.MachineTypes.CpuInfoDetail?
+
         public var diskInfo: String?
+
+        public var diskInfoDetail: ListMachineTypesResponseBody.MachineTypes.DiskInfoDetail?
+
+        public var frontendNetworkDetail: ListMachineTypesResponseBody.MachineTypes.FrontendNetworkDetail?
 
         public var gpuInfo: String?
 
+        public var gpuInfoDetail: ListMachineTypesResponseBody.MachineTypes.GpuInfoDetail?
+
         public var memoryInfo: String?
+
+        public var memoryInfoDetail: ListMachineTypesResponseBody.MachineTypes.MemoryInfoDetail?
 
         public var name: String?
 
         public var networkInfo: String?
 
         public var nodeCount: String?
+
+        public var rdmaInfoDetail: ListMachineTypesResponseBody.MachineTypes.RdmaInfoDetail?
 
         public var totalCpuCore: Int32?
 
@@ -14753,6 +15025,12 @@ public class ListMachineTypesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cpuInfoDetail?.validate()
+            try self.diskInfoDetail?.validate()
+            try self.frontendNetworkDetail?.validate()
+            try self.gpuInfoDetail?.validate()
+            try self.memoryInfoDetail?.validate()
+            try self.rdmaInfoDetail?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -14763,14 +15041,29 @@ public class ListMachineTypesResponseBody : Tea.TeaModel {
             if self.cpuInfo != nil {
                 map["CpuInfo"] = self.cpuInfo!
             }
+            if self.cpuInfoDetail != nil {
+                map["CpuInfoDetail"] = self.cpuInfoDetail?.toMap()
+            }
             if self.diskInfo != nil {
                 map["DiskInfo"] = self.diskInfo!
+            }
+            if self.diskInfoDetail != nil {
+                map["DiskInfoDetail"] = self.diskInfoDetail?.toMap()
+            }
+            if self.frontendNetworkDetail != nil {
+                map["FrontendNetworkDetail"] = self.frontendNetworkDetail?.toMap()
             }
             if self.gpuInfo != nil {
                 map["GpuInfo"] = self.gpuInfo!
             }
+            if self.gpuInfoDetail != nil {
+                map["GpuInfoDetail"] = self.gpuInfoDetail?.toMap()
+            }
             if self.memoryInfo != nil {
                 map["MemoryInfo"] = self.memoryInfo!
+            }
+            if self.memoryInfoDetail != nil {
+                map["MemoryInfoDetail"] = self.memoryInfoDetail?.toMap()
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -14780,6 +15073,9 @@ public class ListMachineTypesResponseBody : Tea.TeaModel {
             }
             if self.nodeCount != nil {
                 map["NodeCount"] = self.nodeCount!
+            }
+            if self.rdmaInfoDetail != nil {
+                map["RdmaInfoDetail"] = self.rdmaInfoDetail?.toMap()
             }
             if self.totalCpuCore != nil {
                 map["TotalCpuCore"] = self.totalCpuCore!
@@ -14798,14 +15094,39 @@ public class ListMachineTypesResponseBody : Tea.TeaModel {
             if let value = dict["CpuInfo"] as? String {
                 self.cpuInfo = value
             }
+            if let value = dict["CpuInfoDetail"] as? [String: Any?] {
+                var model = ListMachineTypesResponseBody.MachineTypes.CpuInfoDetail()
+                model.fromMap(value)
+                self.cpuInfoDetail = model
+            }
             if let value = dict["DiskInfo"] as? String {
                 self.diskInfo = value
+            }
+            if let value = dict["DiskInfoDetail"] as? [String: Any?] {
+                var model = ListMachineTypesResponseBody.MachineTypes.DiskInfoDetail()
+                model.fromMap(value)
+                self.diskInfoDetail = model
+            }
+            if let value = dict["FrontendNetworkDetail"] as? [String: Any?] {
+                var model = ListMachineTypesResponseBody.MachineTypes.FrontendNetworkDetail()
+                model.fromMap(value)
+                self.frontendNetworkDetail = model
             }
             if let value = dict["GpuInfo"] as? String {
                 self.gpuInfo = value
             }
+            if let value = dict["GpuInfoDetail"] as? [String: Any?] {
+                var model = ListMachineTypesResponseBody.MachineTypes.GpuInfoDetail()
+                model.fromMap(value)
+                self.gpuInfoDetail = model
+            }
             if let value = dict["MemoryInfo"] as? String {
                 self.memoryInfo = value
+            }
+            if let value = dict["MemoryInfoDetail"] as? [String: Any?] {
+                var model = ListMachineTypesResponseBody.MachineTypes.MemoryInfoDetail()
+                model.fromMap(value)
+                self.memoryInfoDetail = model
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -14815,6 +15136,11 @@ public class ListMachineTypesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NodeCount"] as? String {
                 self.nodeCount = value
+            }
+            if let value = dict["RdmaInfoDetail"] as? [String: Any?] {
+                var model = ListMachineTypesResponseBody.MachineTypes.RdmaInfoDetail()
+                model.fromMap(value)
+                self.rdmaInfoDetail = model
             }
             if let value = dict["TotalCpuCore"] as? Int32 {
                 self.totalCpuCore = value
