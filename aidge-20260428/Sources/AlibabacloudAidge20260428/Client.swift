@@ -526,6 +526,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.objectRemoveElements)) {
             request.objectRemoveElementsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.objectRemoveElements, "ObjectRemoveElements", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.userImage)) {
+            request.userImageShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userImage, "UserImage", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.userText)) {
+            request.userTextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userText, "UserText", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.imageUrl)) {
             query["ImageUrl"] = request.imageUrl ?? "";
@@ -538,6 +544,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.objectRemoveElementsShrink)) {
             query["ObjectRemoveElements"] = request.objectRemoveElementsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.position)) {
+            query["Position"] = request.position ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userImageShrink)) {
+            query["UserImage"] = request.userImageShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userTextShrink)) {
+            query["UserText"] = request.userTextShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

@@ -3251,6 +3251,12 @@ public class ImageRemoveRequest : Tea.TeaModel {
 
     public var objectRemoveElements: [Int32]?
 
+    public var position: String?
+
+    public var userImage: [String]?
+
+    public var userText: [String]?
+
     public override init() {
         super.init()
     }
@@ -3277,6 +3283,15 @@ public class ImageRemoveRequest : Tea.TeaModel {
         if self.objectRemoveElements != nil {
             map["ObjectRemoveElements"] = self.objectRemoveElements!
         }
+        if self.position != nil {
+            map["Position"] = self.position!
+        }
+        if self.userImage != nil {
+            map["UserImage"] = self.userImage!
+        }
+        if self.userText != nil {
+            map["UserText"] = self.userText!
+        }
         return map
     }
 
@@ -3294,6 +3309,15 @@ public class ImageRemoveRequest : Tea.TeaModel {
         if let value = dict["ObjectRemoveElements"] as? [Int32] {
             self.objectRemoveElements = value
         }
+        if let value = dict["Position"] as? String {
+            self.position = value
+        }
+        if let value = dict["UserImage"] as? [String] {
+            self.userImage = value
+        }
+        if let value = dict["UserText"] as? [String] {
+            self.userText = value
+        }
     }
 }
 
@@ -3305,6 +3329,12 @@ public class ImageRemoveShrinkRequest : Tea.TeaModel {
     public var nonObjectRemoveElementsShrink: String?
 
     public var objectRemoveElementsShrink: String?
+
+    public var position: String?
+
+    public var userImageShrink: String?
+
+    public var userTextShrink: String?
 
     public override init() {
         super.init()
@@ -3332,6 +3362,15 @@ public class ImageRemoveShrinkRequest : Tea.TeaModel {
         if self.objectRemoveElementsShrink != nil {
             map["ObjectRemoveElements"] = self.objectRemoveElementsShrink!
         }
+        if self.position != nil {
+            map["Position"] = self.position!
+        }
+        if self.userImageShrink != nil {
+            map["UserImage"] = self.userImageShrink!
+        }
+        if self.userTextShrink != nil {
+            map["UserText"] = self.userTextShrink!
+        }
         return map
     }
 
@@ -3348,6 +3387,15 @@ public class ImageRemoveShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ObjectRemoveElements"] as? String {
             self.objectRemoveElementsShrink = value
+        }
+        if let value = dict["Position"] as? String {
+            self.position = value
+        }
+        if let value = dict["UserImage"] as? String {
+            self.userImageShrink = value
+        }
+        if let value = dict["UserText"] as? String {
+            self.userTextShrink = value
         }
     }
 }
