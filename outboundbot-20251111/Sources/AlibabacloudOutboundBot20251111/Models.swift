@@ -559,7 +559,47 @@ public class AppendCasesShrinkRequest : Tea.TeaModel {
 }
 
 public class AppendCasesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var phoneNumber: String?
+
+        public var referenceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.phoneNumber != nil {
+                map["PhoneNumber"] = self.phoneNumber!
+            }
+            if self.referenceId != nil {
+                map["ReferenceId"] = self.referenceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PhoneNumber"] as? String {
+                self.phoneNumber = value
+            }
+            if let value = dict["ReferenceId"] as? String {
+                self.referenceId = value
+            }
+        }
+    }
     public var code: String?
+
+    public var data: [AppendCasesResponseBody.Data]?
 
     public var httpStatusCode: Int32?
 
@@ -588,6 +628,13 @@ public class AppendCasesResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
         if self.httpStatusCode != nil {
             map["HttpStatusCode"] = self.httpStatusCode!
         }
@@ -610,6 +657,19 @@ public class AppendCasesResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Code"] as? String {
             self.code = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [AppendCasesResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = AppendCasesResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
         }
         if let value = dict["HttpStatusCode"] as? Int32 {
             self.httpStatusCode = value
