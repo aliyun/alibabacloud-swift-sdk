@@ -2474,6 +2474,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDomainItemsWithOptions(_ request: ListDomainItemsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDomainItemsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.itemValue)) {
+            query["ItemValue"] = request.itemValue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.listId)) {
+            query["ListId"] = request.listId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.listType)) {
+            query["ListType"] = request.listType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDomainItems",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDomainItemsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDomainItems(_ request: ListDomainItemsRequest) async throws -> ListDomainItemsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDomainItemsWithOptions(request as! ListDomainItemsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDomainMetasWithOptions(_ request: ListDomainMetasRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDomainMetasResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
