@@ -604,6 +604,14 @@ public class CreateAlertDestinationRequest : Tea.TeaModel {
             }
         }
     }
+    public var appId: String?
+
+    public var appSecret: String?
+
+    public var groupId: [String]?
+
+    public var imbot: Bool?
+
     public var name: String?
 
     public var params: CreateAlertDestinationRequest.Params?
@@ -627,6 +635,18 @@ public class CreateAlertDestinationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appId != nil {
+            map["app_id"] = self.appId!
+        }
+        if self.appSecret != nil {
+            map["app_secret"] = self.appSecret!
+        }
+        if self.groupId != nil {
+            map["group_id"] = self.groupId!
+        }
+        if self.imbot != nil {
+            map["imbot"] = self.imbot!
+        }
         if self.name != nil {
             map["name"] = self.name!
         }
@@ -644,6 +664,18 @@ public class CreateAlertDestinationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["app_id"] as? String {
+            self.appId = value
+        }
+        if let value = dict["app_secret"] as? String {
+            self.appSecret = value
+        }
+        if let value = dict["group_id"] as? [String] {
+            self.groupId = value
+        }
+        if let value = dict["imbot"] as? Bool {
+            self.imbot = value
+        }
         if let value = dict["name"] as? String {
             self.name = value
         }
@@ -16392,7 +16424,15 @@ public class UpdateAlertDestinationRequest : Tea.TeaModel {
             }
         }
     }
+    public var appId: String?
+
+    public var appSecret: String?
+
+    public var groupId: [String]?
+
     public var id: String?
+
+    public var imbot: Bool?
 
     public var name: String?
 
@@ -16417,8 +16457,20 @@ public class UpdateAlertDestinationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appId != nil {
+            map["app_id"] = self.appId!
+        }
+        if self.appSecret != nil {
+            map["app_secret"] = self.appSecret!
+        }
+        if self.groupId != nil {
+            map["group_id"] = self.groupId!
+        }
         if self.id != nil {
             map["id"] = self.id!
+        }
+        if self.imbot != nil {
+            map["imbot"] = self.imbot!
         }
         if self.name != nil {
             map["name"] = self.name!
@@ -16437,8 +16489,20 @@ public class UpdateAlertDestinationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["app_id"] as? String {
+            self.appId = value
+        }
+        if let value = dict["app_secret"] as? String {
+            self.appSecret = value
+        }
+        if let value = dict["group_id"] as? [String] {
+            self.groupId = value
+        }
         if let value = dict["id"] as? String {
             self.id = value
+        }
+        if let value = dict["imbot"] as? Bool {
+            self.imbot = value
         }
         if let value = dict["name"] as? String {
             self.name = value

@@ -138,6 +138,18 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAlertDestinationWithOptions(_ request: CreateAlertDestinationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAlertDestinationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["app_id"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appSecret)) {
+            body["app_secret"] = request.appSecret ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            body["group_id"] = request.groupId ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.imbot)) {
+            body["imbot"] = request.imbot!;
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
@@ -2857,8 +2869,20 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateAlertDestinationWithOptions(_ request: UpdateAlertDestinationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAlertDestinationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["app_id"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appSecret)) {
+            body["app_secret"] = request.appSecret ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            body["group_id"] = request.groupId ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imbot)) {
+            body["imbot"] = request.imbot!;
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
