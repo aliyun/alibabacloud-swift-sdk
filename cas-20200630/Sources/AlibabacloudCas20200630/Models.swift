@@ -186,6 +186,8 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
 
     public var aliasName: String?
 
+    public var asynchronousFlag: Bool?
+
     public var beforeTime: Int64?
 
     public var clientToken: String?
@@ -246,6 +248,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         }
         if self.aliasName != nil {
             map["AliasName"] = self.aliasName!
+        }
+        if self.asynchronousFlag != nil {
+            map["AsynchronousFlag"] = self.asynchronousFlag!
         }
         if self.beforeTime != nil {
             map["BeforeTime"] = self.beforeTime!
@@ -321,6 +326,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["AliasName"] as? String {
             self.aliasName = value
+        }
+        if let value = dict["AsynchronousFlag"] as? Bool {
+            self.asynchronousFlag = value
         }
         if let value = dict["BeforeTime"] as? Int64 {
             self.beforeTime = value
@@ -548,6 +556,8 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
 
     public var algorithm: String?
 
+    public var asynchronousFlag: Bool?
+
     public var beforeTime: Int64?
 
     public var commonName: String?
@@ -605,6 +615,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         }
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
+        }
+        if self.asynchronousFlag != nil {
+            map["AsynchronousFlag"] = self.asynchronousFlag!
         }
         if self.beforeTime != nil {
             map["BeforeTime"] = self.beforeTime!
@@ -677,6 +690,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         }
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
+        }
+        if let value = dict["AsynchronousFlag"] as? Bool {
+            self.asynchronousFlag = value
         }
         if let value = dict["BeforeTime"] as? Int64 {
             self.beforeTime = value
@@ -2462,6 +2478,8 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
 
     public var algorithm: String?
 
+    public var asynchronousFlag: Bool?
+
     public var beforeTime: Int64?
 
     public var commonName: String?
@@ -2515,6 +2533,9 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         }
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
+        }
+        if self.asynchronousFlag != nil {
+            map["AsynchronousFlag"] = self.asynchronousFlag!
         }
         if self.beforeTime != nil {
             map["BeforeTime"] = self.beforeTime!
@@ -2581,6 +2602,9 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
+        }
+        if let value = dict["AsynchronousFlag"] as? Bool {
+            self.asynchronousFlag = value
         }
         if let value = dict["BeforeTime"] as? Int64 {
             self.beforeTime = value
@@ -2802,6 +2826,8 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
 
     public var algorithm: String?
 
+    public var asynchronousFlag: Bool?
+
     public var beforeTime: Int64?
 
     public var commonName: String?
@@ -2857,6 +2883,9 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         }
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
+        }
+        if self.asynchronousFlag != nil {
+            map["AsynchronousFlag"] = self.asynchronousFlag!
         }
         if self.beforeTime != nil {
             map["BeforeTime"] = self.beforeTime!
@@ -2926,6 +2955,9 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         }
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
+        }
+        if let value = dict["AsynchronousFlag"] as? Bool {
+            self.asynchronousFlag = value
         }
         if let value = dict["BeforeTime"] as? Int64 {
             self.beforeTime = value
