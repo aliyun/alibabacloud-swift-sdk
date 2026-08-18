@@ -3609,6 +3609,8 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
 
     public var policyDocument: String?
 
+    public var protectedEnabled: Bool?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -3684,6 +3686,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         }
         if self.policyDocument != nil {
             map["PolicyDocument"] = self.policyDocument!
+        }
+        if self.protectedEnabled != nil {
+            map["ProtectedEnabled"] = self.protectedEnabled!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -3761,6 +3766,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["PolicyDocument"] as? String {
             self.policyDocument = value
+        }
+        if let value = dict["ProtectedEnabled"] as? Bool {
+            self.protectedEnabled = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7342,6 +7350,8 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
 
         public var policyDocument: String?
 
+        public var protectedEnabled: Bool?
+
         public var regionId: String?
 
         public var resourceGroupId: String?
@@ -7412,6 +7422,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             }
             if self.policyDocument != nil {
                 map["PolicyDocument"] = self.policyDocument!
+            }
+            if self.protectedEnabled != nil {
+                map["ProtectedEnabled"] = self.protectedEnabled!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -7487,6 +7500,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["PolicyDocument"] as? String {
                 self.policyDocument = value
+            }
+            if let value = dict["ProtectedEnabled"] as? Bool {
+                self.protectedEnabled = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
