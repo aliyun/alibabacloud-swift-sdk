@@ -10956,6 +10956,8 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
 
             public var antiPunishTime: String?
 
+            public var callApi: String?
+
             public var dateExtras: QueryAccountSafetyIncidentResponseBody.Data.List.DateExtras?
 
             public var eventId: String?
@@ -10965,6 +10967,12 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
             public var eventName: String?
 
             public var eventReason: String?
+
+            public var eventType: String?
+
+            public var exceptionCallTime: String?
+
+            public var exceptionIp: String?
 
             public var punishTime: String?
 
@@ -11006,6 +11014,9 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
                 if self.antiPunishTime != nil {
                     map["AntiPunishTime"] = self.antiPunishTime!
                 }
+                if self.callApi != nil {
+                    map["CallApi"] = self.callApi!
+                }
                 if self.dateExtras != nil {
                     map["DateExtras"] = self.dateExtras?.toMap()
                 }
@@ -11020,6 +11031,15 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
                 }
                 if self.eventReason != nil {
                     map["EventReason"] = self.eventReason!
+                }
+                if self.eventType != nil {
+                    map["EventType"] = self.eventType!
+                }
+                if self.exceptionCallTime != nil {
+                    map["ExceptionCallTime"] = self.exceptionCallTime!
+                }
+                if self.exceptionIp != nil {
+                    map["ExceptionIp"] = self.exceptionIp!
                 }
                 if self.punishTime != nil {
                     map["PunishTime"] = self.punishTime!
@@ -11059,6 +11079,9 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
                 if let value = dict["AntiPunishTime"] as? String {
                     self.antiPunishTime = value
                 }
+                if let value = dict["CallApi"] as? String {
+                    self.callApi = value
+                }
                 if let value = dict["DateExtras"] as? [String: Any?] {
                     var model = QueryAccountSafetyIncidentResponseBody.Data.List.DateExtras()
                     model.fromMap(value)
@@ -11075,6 +11098,15 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EventReason"] as? String {
                     self.eventReason = value
+                }
+                if let value = dict["EventType"] as? String {
+                    self.eventType = value
+                }
+                if let value = dict["ExceptionCallTime"] as? String {
+                    self.exceptionCallTime = value
+                }
+                if let value = dict["ExceptionIp"] as? String {
+                    self.exceptionIp = value
                 }
                 if let value = dict["PunishTime"] as? String {
                     self.punishTime = value
