@@ -1458,6 +1458,8 @@ public class CreateSessionInput : Tea.TeaModel {
 
     public var sessionTTLInSeconds: Int64?
 
+    public var snapshotId: String?
+
     public override init() {
         super.init()
     }
@@ -1513,6 +1515,9 @@ public class CreateSessionInput : Tea.TeaModel {
         if self.sessionTTLInSeconds != nil {
             map["sessionTTLInSeconds"] = self.sessionTTLInSeconds!
         }
+        if self.snapshotId != nil {
+            map["snapshotId"] = self.snapshotId!
+        }
         return map
     }
 
@@ -1563,6 +1568,9 @@ public class CreateSessionInput : Tea.TeaModel {
         }
         if let value = dict["sessionTTLInSeconds"] as? Int64 {
             self.sessionTTLInSeconds = value
+        }
+        if let value = dict["snapshotId"] as? String {
+            self.snapshotId = value
         }
     }
 }
@@ -1618,6 +1626,45 @@ public class CreateSessionNetworkConfig : Tea.TeaModel {
         }
         if let value = dict["maskRequestHost"] as? String {
             self.maskRequestHost = value
+        }
+    }
+}
+
+public class CreateSnapshotInput : Tea.TeaModel {
+    public var description_: String?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
         }
     }
 }
@@ -5489,6 +5536,59 @@ public class ListSessionsOutput : Tea.TeaModel {
     }
 }
 
+public class ListSnapshotsOutput : Tea.TeaModel {
+    public var nextToken: String?
+
+    public var snapshots: [Snapshot]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.snapshots != nil {
+            var tmp : [Any] = []
+            for k in self.snapshots! {
+                tmp.append(k.toMap())
+            }
+            map["snapshots"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["snapshots"] as? [Any?] {
+            var tmp : [Snapshot] = []
+            for v in value {
+                if v != nil {
+                    var model = Snapshot()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.snapshots = tmp
+        }
+    }
+}
+
 public class ListTagResourcesOutput : Tea.TeaModel {
     public var nextToken: String?
 
@@ -6006,9 +6106,15 @@ public class MNSTopicTriggerConfig : Tea.TeaModel {
 }
 
 public class MicroSandboxConfig : Tea.TeaModel {
+    public var acrInstanceId: String?
+
+    public var image: String?
+
     public var osType: String?
 
     public var readyCommand: String?
+
+    public var registryConfig: RegistryConfig?
 
     public var startCommand: String?
 
@@ -6022,15 +6128,25 @@ public class MicroSandboxConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.registryConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acrInstanceId != nil {
+            map["acrInstanceId"] = self.acrInstanceId!
+        }
+        if self.image != nil {
+            map["image"] = self.image!
+        }
         if self.osType != nil {
             map["osType"] = self.osType!
         }
         if self.readyCommand != nil {
             map["readyCommand"] = self.readyCommand!
+        }
+        if self.registryConfig != nil {
+            map["registryConfig"] = self.registryConfig?.toMap()
         }
         if self.startCommand != nil {
             map["startCommand"] = self.startCommand!
@@ -6040,11 +6156,22 @@ public class MicroSandboxConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["acrInstanceId"] as? String {
+            self.acrInstanceId = value
+        }
+        if let value = dict["image"] as? String {
+            self.image = value
+        }
         if let value = dict["osType"] as? String {
             self.osType = value
         }
         if let value = dict["readyCommand"] as? String {
             self.readyCommand = value
+        }
+        if let value = dict["registryConfig"] as? [String: Any?] {
+            var model = RegistryConfig()
+            model.fromMap(value)
+            self.registryConfig = model
         }
         if let value = dict["startCommand"] as? String {
             self.startCommand = value
@@ -8715,6 +8842,213 @@ public class Session : Tea.TeaModel {
         }
         if let value = dict["trafficAccessToken"] as? String {
             self.trafficAccessToken = value
+        }
+    }
+}
+
+public class Snapshot : Tea.TeaModel {
+    public var artifactDiskTotalSizeInB: Int64?
+
+    public var artifactDiskUsedSizeInB: Int64?
+
+    public var artifactMemCacheSizeInB: Int64?
+
+    public var artifactMemTotalSizeInB: Int64?
+
+    public var artifactMemUsedSizeInB: Int64?
+
+    public var cpu: Int64?
+
+    public var createdTime: String?
+
+    public var description_: String?
+
+    public var diskSizeMB: Int64?
+
+    public var envs: [String: String]?
+
+    public var expiredTime: String?
+
+    public var functionName: String?
+
+    public var imageDigest: String?
+
+    public var imageRepository: String?
+
+    public var memoryMB: Int64?
+
+    public var osType: String?
+
+    public var qualifier: String?
+
+    public var readyCommand: String?
+
+    public var resolvedVersion: String?
+
+    public var snapshotId: String?
+
+    public var sourceSessionId: String?
+
+    public var startCommand: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactDiskTotalSizeInB != nil {
+            map["artifactDiskTotalSizeInB"] = self.artifactDiskTotalSizeInB!
+        }
+        if self.artifactDiskUsedSizeInB != nil {
+            map["artifactDiskUsedSizeInB"] = self.artifactDiskUsedSizeInB!
+        }
+        if self.artifactMemCacheSizeInB != nil {
+            map["artifactMemCacheSizeInB"] = self.artifactMemCacheSizeInB!
+        }
+        if self.artifactMemTotalSizeInB != nil {
+            map["artifactMemTotalSizeInB"] = self.artifactMemTotalSizeInB!
+        }
+        if self.artifactMemUsedSizeInB != nil {
+            map["artifactMemUsedSizeInB"] = self.artifactMemUsedSizeInB!
+        }
+        if self.cpu != nil {
+            map["cpu"] = self.cpu!
+        }
+        if self.createdTime != nil {
+            map["createdTime"] = self.createdTime!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.diskSizeMB != nil {
+            map["diskSizeMB"] = self.diskSizeMB!
+        }
+        if self.envs != nil {
+            map["envs"] = self.envs!
+        }
+        if self.expiredTime != nil {
+            map["expiredTime"] = self.expiredTime!
+        }
+        if self.functionName != nil {
+            map["functionName"] = self.functionName!
+        }
+        if self.imageDigest != nil {
+            map["imageDigest"] = self.imageDigest!
+        }
+        if self.imageRepository != nil {
+            map["imageRepository"] = self.imageRepository!
+        }
+        if self.memoryMB != nil {
+            map["memoryMB"] = self.memoryMB!
+        }
+        if self.osType != nil {
+            map["osType"] = self.osType!
+        }
+        if self.qualifier != nil {
+            map["qualifier"] = self.qualifier!
+        }
+        if self.readyCommand != nil {
+            map["readyCommand"] = self.readyCommand!
+        }
+        if self.resolvedVersion != nil {
+            map["resolvedVersion"] = self.resolvedVersion!
+        }
+        if self.snapshotId != nil {
+            map["snapshotId"] = self.snapshotId!
+        }
+        if self.sourceSessionId != nil {
+            map["sourceSessionId"] = self.sourceSessionId!
+        }
+        if self.startCommand != nil {
+            map["startCommand"] = self.startCommand!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["artifactDiskTotalSizeInB"] as? Int64 {
+            self.artifactDiskTotalSizeInB = value
+        }
+        if let value = dict["artifactDiskUsedSizeInB"] as? Int64 {
+            self.artifactDiskUsedSizeInB = value
+        }
+        if let value = dict["artifactMemCacheSizeInB"] as? Int64 {
+            self.artifactMemCacheSizeInB = value
+        }
+        if let value = dict["artifactMemTotalSizeInB"] as? Int64 {
+            self.artifactMemTotalSizeInB = value
+        }
+        if let value = dict["artifactMemUsedSizeInB"] as? Int64 {
+            self.artifactMemUsedSizeInB = value
+        }
+        if let value = dict["cpu"] as? Int64 {
+            self.cpu = value
+        }
+        if let value = dict["createdTime"] as? String {
+            self.createdTime = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["diskSizeMB"] as? Int64 {
+            self.diskSizeMB = value
+        }
+        if let value = dict["envs"] as? [String: String] {
+            self.envs = value
+        }
+        if let value = dict["expiredTime"] as? String {
+            self.expiredTime = value
+        }
+        if let value = dict["functionName"] as? String {
+            self.functionName = value
+        }
+        if let value = dict["imageDigest"] as? String {
+            self.imageDigest = value
+        }
+        if let value = dict["imageRepository"] as? String {
+            self.imageRepository = value
+        }
+        if let value = dict["memoryMB"] as? Int64 {
+            self.memoryMB = value
+        }
+        if let value = dict["osType"] as? String {
+            self.osType = value
+        }
+        if let value = dict["qualifier"] as? String {
+            self.qualifier = value
+        }
+        if let value = dict["readyCommand"] as? String {
+            self.readyCommand = value
+        }
+        if let value = dict["resolvedVersion"] as? String {
+            self.resolvedVersion = value
+        }
+        if let value = dict["snapshotId"] as? String {
+            self.snapshotId = value
+        }
+        if let value = dict["sourceSessionId"] as? String {
+            self.sourceSessionId = value
+        }
+        if let value = dict["startCommand"] as? String {
+            self.startCommand = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
         }
     }
 }
