@@ -13,8 +13,8 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "cn-hangzhou": "esa.cn-hangzhou.aliyuncs.com",
-            "ap-southeast-1": "esa.ap-southeast-1.aliyuncs.com"
+            "ap-southeast-1": "esa.ap-southeast-1.aliyuncs.com",
+            "cn-hangzhou": "esa.cn-hangzhou.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("esa", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -5281,6 +5281,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteRoutineCodeVersion(_ request: DeleteRoutineCodeVersionRequest) async throws -> DeleteRoutineCodeVersionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteRoutineCodeVersionWithOptions(request as! DeleteRoutineCodeVersionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRoutineEnvironmentVariablesWithOptions(_ tmpReq: DeleteRoutineEnvironmentVariablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRoutineEnvironmentVariablesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteRoutineEnvironmentVariablesShrinkRequest = DeleteRoutineEnvironmentVariablesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.environmentVariableKeys)) {
+            request.environmentVariableKeysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.environmentVariableKeys, "EnvironmentVariableKeys", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            body["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentVariableKeysShrink)) {
+            body["EnvironmentVariableKeys"] = request.environmentVariableKeysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRoutineEnvironmentVariables",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRoutineEnvironmentVariablesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRoutineEnvironmentVariables(_ request: DeleteRoutineEnvironmentVariablesRequest) async throws -> DeleteRoutineEnvironmentVariablesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteRoutineEnvironmentVariablesWithOptions(request as! DeleteRoutineEnvironmentVariablesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -12238,6 +12280,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRoutineEnvironmentVariablesWithOptions(_ request: ListRoutineEnvironmentVariablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRoutineEnvironmentVariablesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            body["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyWord)) {
+            body["KeyWord"] = request.keyWord ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRoutineEnvironmentVariables",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRoutineEnvironmentVariablesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRoutineEnvironmentVariables(_ request: ListRoutineEnvironmentVariablesRequest) async throws -> ListRoutineEnvironmentVariablesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listRoutineEnvironmentVariablesWithOptions(request as! ListRoutineEnvironmentVariablesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listRoutineRelatedRecordsWithOptions(_ request: ListRoutineRelatedRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRoutineRelatedRecordsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -14734,6 +14819,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setOriginClientCertificateHostnames(_ request: SetOriginClientCertificateHostnamesRequest) async throws -> SetOriginClientCertificateHostnamesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setOriginClientCertificateHostnamesWithOptions(request as! SetOriginClientCertificateHostnamesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setRoutineEnvironmentVariablesWithOptions(_ tmpReq: SetRoutineEnvironmentVariablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetRoutineEnvironmentVariablesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SetRoutineEnvironmentVariablesShrinkRequest = SetRoutineEnvironmentVariablesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.environmentVariables)) {
+            request.environmentVariablesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.environmentVariables, "EnvironmentVariables", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            body["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentVariablesShrink)) {
+            body["EnvironmentVariables"] = request.environmentVariablesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetRoutineEnvironmentVariables",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetRoutineEnvironmentVariablesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setRoutineEnvironmentVariables(_ request: SetRoutineEnvironmentVariablesRequest) async throws -> SetRoutineEnvironmentVariablesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setRoutineEnvironmentVariablesWithOptions(request as! SetRoutineEnvironmentVariablesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

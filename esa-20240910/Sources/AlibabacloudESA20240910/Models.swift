@@ -2868,6 +2868,45 @@ public class QuotaPageContentTypesValue : Tea.TeaModel {
     }
 }
 
+public class EnvironmentVariablesValue : Tea.TeaModel {
+    public var type: String?
+
+    public var value: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+    }
+}
+
 public class ActivateClientCertificateRequest : Tea.TeaModel {
     public var id: String?
 
@@ -26868,6 +26907,197 @@ public class DeleteRoutineCodeVersionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteRoutineCodeVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRoutineEnvironmentVariablesRequest : Tea.TeaModel {
+    public var env: String?
+
+    public var environmentVariableKeys: [String]?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.environmentVariableKeys != nil {
+            map["EnvironmentVariableKeys"] = self.environmentVariableKeys!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Env"] as? String {
+            self.env = value
+        }
+        if let value = dict["EnvironmentVariableKeys"] as? [String] {
+            self.environmentVariableKeys = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class DeleteRoutineEnvironmentVariablesShrinkRequest : Tea.TeaModel {
+    public var env: String?
+
+    public var environmentVariableKeysShrink: String?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.environmentVariableKeysShrink != nil {
+            map["EnvironmentVariableKeys"] = self.environmentVariableKeysShrink!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Env"] as? String {
+            self.env = value
+        }
+        if let value = dict["EnvironmentVariableKeys"] as? String {
+            self.environmentVariableKeysShrink = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class DeleteRoutineEnvironmentVariablesResponseBody : Tea.TeaModel {
+    public var deletedKeys: [String]?
+
+    public var failedKeys: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deletedKeys != nil {
+            map["DeletedKeys"] = self.deletedKeys!
+        }
+        if self.failedKeys != nil {
+            map["FailedKeys"] = self.failedKeys!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DeletedKeys"] as? [String] {
+            self.deletedKeys = value
+        }
+        if let value = dict["FailedKeys"] as? [String] {
+            self.failedKeys = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRoutineEnvironmentVariablesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRoutineEnvironmentVariablesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRoutineEnvironmentVariablesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -81717,6 +81947,202 @@ public class ListRoutineCodeVersionsResponse : Tea.TeaModel {
     }
 }
 
+public class ListRoutineEnvironmentVariablesRequest : Tea.TeaModel {
+    public var env: String?
+
+    public var keyWord: String?
+
+    public var name: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.keyWord != nil {
+            map["KeyWord"] = self.keyWord!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Env"] as? String {
+            self.env = value
+        }
+        if let value = dict["KeyWord"] as? String {
+            self.keyWord = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListRoutineEnvironmentVariablesResponseBody : Tea.TeaModel {
+    public var count: Int64?
+
+    public var environmentVariables: [String: EnvironmentVariablesValue]?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.environmentVariables != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.environmentVariables! {
+                tmp[k] = v.toMap()
+            }
+            map["EnvironmentVariables"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int64 {
+            self.count = value
+        }
+        if let value = dict["EnvironmentVariables"] as? [String: Any?] {
+            var tmp : [String: EnvironmentVariablesValue] = [:]
+            for (k, v) in value {
+                if v != nil {
+                    var model = EnvironmentVariablesValue()
+                    model.fromMap(v as? [String: Any?])
+                    tmp[k] = model
+                }
+            }
+            self.environmentVariables = tmp
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRoutineEnvironmentVariablesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRoutineEnvironmentVariablesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRoutineEnvironmentVariablesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListRoutineRelatedRecordsRequest : Tea.TeaModel {
     public var name: String?
 
@@ -84906,6 +85332,76 @@ public class ListSiteFunctionsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class MarkdownForAgent : Tea.TeaModel {
+            public var configId: Int64?
+
+            public var enable: String?
+
+            public var rule: String?
+
+            public var ruleEnable: String?
+
+            public var ruleName: String?
+
+            public var sequence: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.configId != nil {
+                    map["ConfigId"] = self.configId!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.rule != nil {
+                    map["Rule"] = self.rule!
+                }
+                if self.ruleEnable != nil {
+                    map["RuleEnable"] = self.ruleEnable!
+                }
+                if self.ruleName != nil {
+                    map["RuleName"] = self.ruleName!
+                }
+                if self.sequence != nil {
+                    map["Sequence"] = self.sequence!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ConfigId"] as? Int64 {
+                    self.configId = value
+                }
+                if let value = dict["Enable"] as? String {
+                    self.enable = value
+                }
+                if let value = dict["Rule"] as? String {
+                    self.rule = value
+                }
+                if let value = dict["RuleEnable"] as? String {
+                    self.ruleEnable = value
+                }
+                if let value = dict["RuleName"] as? String {
+                    self.ruleName = value
+                }
+                if let value = dict["Sequence"] as? String {
+                    self.sequence = value
+                }
+            }
+        }
         public class NetworkOptimization : Tea.TeaModel {
             public var configId: Int64?
 
@@ -85676,6 +86172,8 @@ public class ListSiteFunctionsResponseBody : Tea.TeaModel {
 
         public var managedTransforms: [ListSiteFunctionsResponseBody.Configs.ManagedTransforms]?
 
+        public var markdownForAgent: [ListSiteFunctionsResponseBody.Configs.MarkdownForAgent]?
+
         public var networkOptimization: [ListSiteFunctionsResponseBody.Configs.NetworkOptimization]?
 
         public var originRules: [ListSiteFunctionsResponseBody.Configs.OriginRules]?
@@ -85833,6 +86331,13 @@ public class ListSiteFunctionsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ManagedTransforms"] = tmp
+            }
+            if self.markdownForAgent != nil {
+                var tmp : [Any] = []
+                for k in self.markdownForAgent! {
+                    tmp.append(k.toMap())
+                }
+                map["MarkdownForAgent"] = tmp
             }
             if self.networkOptimization != nil {
                 var tmp : [Any] = []
@@ -86135,6 +86640,19 @@ public class ListSiteFunctionsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.managedTransforms = tmp
+            }
+            if let value = dict["MarkdownForAgent"] as? [Any?] {
+                var tmp : [ListSiteFunctionsResponseBody.Configs.MarkdownForAgent] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListSiteFunctionsResponseBody.Configs.MarkdownForAgent()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.markdownForAgent = tmp
             }
             if let value = dict["NetworkOptimization"] as? [Any?] {
                 var tmp : [ListSiteFunctionsResponseBody.Configs.NetworkOptimization] = []
@@ -100043,6 +100561,201 @@ public class SetOriginClientCertificateHostnamesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SetOriginClientCertificateHostnamesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SetRoutineEnvironmentVariablesRequest : Tea.TeaModel {
+    public var env: String?
+
+    public var environmentVariables: [String: EnvironmentVariablesValue]?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.environmentVariables != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.environmentVariables! {
+                tmp[k] = v.toMap()
+            }
+            map["EnvironmentVariables"] = tmp
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Env"] as? String {
+            self.env = value
+        }
+        if let value = dict["EnvironmentVariables"] as? [String: Any?] {
+            var tmp : [String: EnvironmentVariablesValue] = [:]
+            for (k, v) in value {
+                if v != nil {
+                    var model = EnvironmentVariablesValue()
+                    model.fromMap(v as? [String: Any?])
+                    tmp[k] = model
+                }
+            }
+            self.environmentVariables = tmp
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class SetRoutineEnvironmentVariablesShrinkRequest : Tea.TeaModel {
+    public var env: String?
+
+    public var environmentVariablesShrink: String?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.environmentVariablesShrink != nil {
+            map["EnvironmentVariables"] = self.environmentVariablesShrink!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Env"] as? String {
+            self.env = value
+        }
+        if let value = dict["EnvironmentVariables"] as? String {
+            self.environmentVariablesShrink = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class SetRoutineEnvironmentVariablesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var setKeys: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.setKeys != nil {
+            map["SetKeys"] = self.setKeys!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SetKeys"] as? [String] {
+            self.setKeys = value
+        }
+    }
+}
+
+public class SetRoutineEnvironmentVariablesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetRoutineEnvironmentVariablesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SetRoutineEnvironmentVariablesResponseBody()
             model.fromMap(value)
             self.body = model
         }
