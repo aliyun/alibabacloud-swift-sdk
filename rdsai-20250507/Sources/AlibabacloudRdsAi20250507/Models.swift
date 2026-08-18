@@ -566,6 +566,10 @@ public class CreateApiKeyRequest : Tea.TeaModel {
 
     public var quantity: Int32?
 
+    public var roleArn: String?
+
+    public var roleName: String?
+
     public var tokenQuota: Int64?
 
     public override init() {
@@ -600,6 +604,12 @@ public class CreateApiKeyRequest : Tea.TeaModel {
         if self.quantity != nil {
             map["Quantity"] = self.quantity!
         }
+        if self.roleArn != nil {
+            map["RoleArn"] = self.roleArn!
+        }
+        if self.roleName != nil {
+            map["RoleName"] = self.roleName!
+        }
         if self.tokenQuota != nil {
             map["TokenQuota"] = self.tokenQuota!
         }
@@ -626,6 +636,12 @@ public class CreateApiKeyRequest : Tea.TeaModel {
         if let value = dict["Quantity"] as? Int32 {
             self.quantity = value
         }
+        if let value = dict["RoleArn"] as? String {
+            self.roleArn = value
+        }
+        if let value = dict["RoleName"] as? String {
+            self.roleName = value
+        }
         if let value = dict["TokenQuota"] as? Int64 {
             self.tokenQuota = value
         }
@@ -644,6 +660,8 @@ public class CreateApiKeyResponseBody : Tea.TeaModel {
             public var limitRate: Double?
 
             public var limitType: String?
+
+            public var roleArn: String?
 
             public var tokenQuota: Int64?
 
@@ -676,6 +694,9 @@ public class CreateApiKeyResponseBody : Tea.TeaModel {
                 if self.limitType != nil {
                     map["LimitType"] = self.limitType!
                 }
+                if self.roleArn != nil {
+                    map["RoleArn"] = self.roleArn!
+                }
                 if self.tokenQuota != nil {
                     map["TokenQuota"] = self.tokenQuota!
                 }
@@ -698,6 +719,9 @@ public class CreateApiKeyResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LimitType"] as? String {
                     self.limitType = value
+                }
+                if let value = dict["RoleArn"] as? String {
+                    self.roleArn = value
                 }
                 if let value = dict["TokenQuota"] as? Int64 {
                     self.tokenQuota = value
@@ -13319,6 +13343,8 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
 
             public var limitType: String?
 
+            public var roleArn: String?
+
             public var thresholdPercent: Int32?
 
             public var tokenQuota: Int64?
@@ -13355,6 +13381,9 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
                 if self.limitType != nil {
                     map["LimitType"] = self.limitType!
                 }
+                if self.roleArn != nil {
+                    map["RoleArn"] = self.roleArn!
+                }
                 if self.thresholdPercent != nil {
                     map["ThresholdPercent"] = self.thresholdPercent!
                 }
@@ -13383,6 +13412,9 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LimitType"] as? String {
                     self.limitType = value
+                }
+                if let value = dict["RoleArn"] as? String {
+                    self.roleArn = value
                 }
                 if let value = dict["ThresholdPercent"] as? Int32 {
                     self.thresholdPercent = value
@@ -18453,6 +18485,10 @@ public class RenameApiKeyRequest : Tea.TeaModel {
 
     public var keyName: String?
 
+    public var roleArn: String?
+
+    public var roleName: String?
+
     public override init() {
         super.init()
     }
@@ -18476,6 +18512,12 @@ public class RenameApiKeyRequest : Tea.TeaModel {
         if self.keyName != nil {
             map["KeyName"] = self.keyName!
         }
+        if self.roleArn != nil {
+            map["RoleArn"] = self.roleArn!
+        }
+        if self.roleName != nil {
+            map["RoleName"] = self.roleName!
+        }
         return map
     }
 
@@ -18489,6 +18531,12 @@ public class RenameApiKeyRequest : Tea.TeaModel {
         }
         if let value = dict["KeyName"] as? String {
             self.keyName = value
+        }
+        if let value = dict["RoleArn"] as? String {
+            self.roleArn = value
+        }
+        if let value = dict["RoleName"] as? String {
+            self.roleName = value
         }
     }
 }
