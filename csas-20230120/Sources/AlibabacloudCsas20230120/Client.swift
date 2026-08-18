@@ -104,6 +104,84 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchCreateDomainItemsWithOptions(_ request: BatchCreateDomainItemsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCreateDomainItemsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainItems)) {
+            bodyFlat["DomainItems"] = request.domainItems ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.listId)) {
+            body["ListId"] = request.listId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.listType)) {
+            body["ListType"] = request.listType ?? "";
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchCreateDomainItems",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchCreateDomainItemsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchCreateDomainItems(_ request: BatchCreateDomainItemsRequest) async throws -> BatchCreateDomainItemsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchCreateDomainItemsWithOptions(request as! BatchCreateDomainItemsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteDomainItemsWithOptions(_ request: BatchDeleteDomainItemsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchDeleteDomainItemsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.itemIds)) {
+            bodyFlat["ItemIds"] = request.itemIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.listId)) {
+            body["ListId"] = request.listId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.listType)) {
+            body["ListType"] = request.listType ?? "";
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchDeleteDomainItems",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchDeleteDomainItemsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteDomainItems(_ request: BatchDeleteDomainItemsRequest) async throws -> BatchDeleteDomainItemsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchDeleteDomainItemsWithOptions(request as! BatchDeleteDomainItemsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createApprovalProcessWithOptions(_ tmpReq: CreateApprovalProcessRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateApprovalProcessResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateApprovalProcessShrinkRequest = CreateApprovalProcessShrinkRequest([:])

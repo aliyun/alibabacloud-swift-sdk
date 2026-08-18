@@ -4291,6 +4291,262 @@ public class AttachPolicy2ApprovalProcessResponse : Tea.TeaModel {
     }
 }
 
+public class BatchCreateDomainItemsRequest : Tea.TeaModel {
+    public var domainItems: [String]?
+
+    public var listId: String?
+
+    public var listType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainItems != nil {
+            map["DomainItems"] = self.domainItems!
+        }
+        if self.listId != nil {
+            map["ListId"] = self.listId!
+        }
+        if self.listType != nil {
+            map["ListType"] = self.listType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DomainItems"] as? [String] {
+            self.domainItems = value
+        }
+        if let value = dict["ListId"] as? String {
+            self.listId = value
+        }
+        if let value = dict["ListType"] as? String {
+            self.listType = value
+        }
+    }
+}
+
+public class BatchCreateDomainItemsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class BatchCreateDomainItemsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchCreateDomainItemsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchCreateDomainItemsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class BatchDeleteDomainItemsRequest : Tea.TeaModel {
+    public var itemIds: [Int64]?
+
+    public var listId: String?
+
+    public var listType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.itemIds != nil {
+            map["ItemIds"] = self.itemIds!
+        }
+        if self.listId != nil {
+            map["ListId"] = self.listId!
+        }
+        if self.listType != nil {
+            map["ListType"] = self.listType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ItemIds"] as? [Int64] {
+            self.itemIds = value
+        }
+        if let value = dict["ListId"] as? String {
+            self.listId = value
+        }
+        if let value = dict["ListType"] as? String {
+            self.listType = value
+        }
+    }
+}
+
+public class BatchDeleteDomainItemsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class BatchDeleteDomainItemsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchDeleteDomainItemsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchDeleteDomainItemsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateApprovalProcessRequest : Tea.TeaModel {
     public class MatchSchemas : Tea.TeaModel {
         public var appUninstallSchemaId: String?
@@ -13980,13 +14236,122 @@ public class GetApprovalResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class BackendReportDetail : Tea.TeaModel {
+            public class TargetUser : Tea.TeaModel {
+                public var userId: String?
+
+                public var username: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.userId != nil {
+                        map["UserId"] = self.userId!
+                    }
+                    if self.username != nil {
+                        map["Username"] = self.username!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["UserId"] as? String {
+                        self.userId = value
+                    }
+                    if let value = dict["Username"] as? String {
+                        self.username = value
+                    }
+                }
+            }
+            public var associatedPolicyName: String?
+
+            public var associatedPolicyType: String?
+
+            public var remark: String?
+
+            public var reportObject: Any?
+
+            public var targetUser: GetApprovalResponseBody.Approval.BackendReportDetail.TargetUser?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.targetUser?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.associatedPolicyName != nil {
+                    map["AssociatedPolicyName"] = self.associatedPolicyName!
+                }
+                if self.associatedPolicyType != nil {
+                    map["AssociatedPolicyType"] = self.associatedPolicyType!
+                }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
+                }
+                if self.reportObject != nil {
+                    map["ReportObject"] = self.reportObject!
+                }
+                if self.targetUser != nil {
+                    map["TargetUser"] = self.targetUser?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AssociatedPolicyName"] as? String {
+                    self.associatedPolicyName = value
+                }
+                if let value = dict["AssociatedPolicyType"] as? String {
+                    self.associatedPolicyType = value
+                }
+                if let value = dict["Remark"] as? String {
+                    self.remark = value
+                }
+                if let value = dict["ReportObject"] as? Any {
+                    self.reportObject = value
+                }
+                if let value = dict["TargetUser"] as? [String: Any?] {
+                    var model = GetApprovalResponseBody.Approval.BackendReportDetail.TargetUser()
+                    model.fromMap(value)
+                    self.targetUser = model
+                }
+            }
+        }
         public var approvalDetail: String?
 
         public var approvalId: String?
 
         public var approvalProgresses: [GetApprovalResponseBody.Approval.ApprovalProgresses]?
 
+        public var approvalType: Int32?
+
+        public var backendReportDetail: GetApprovalResponseBody.Approval.BackendReportDetail?
+
         public var createTime: String?
+
+        public var createTimeUnix: Int64?
 
         public var creatorDepartment: String?
 
@@ -13995,6 +14360,8 @@ public class GetApprovalResponseBody : Tea.TeaModel {
         public var creatorUserId: String?
 
         public var creatorUsername: String?
+
+        public var effectStatus: String?
 
         public var endTimestamp: Int64?
 
@@ -14006,6 +14373,8 @@ public class GetApprovalResponseBody : Tea.TeaModel {
 
         public var reason: String?
 
+        public var reportType: String?
+
         public var schemaContent: String?
 
         public var schemaId: String?
@@ -14013,6 +14382,8 @@ public class GetApprovalResponseBody : Tea.TeaModel {
         public var schemaName: String?
 
         public var status: String?
+
+        public var validityType: String?
 
         public override init() {
             super.init()
@@ -14024,6 +14395,7 @@ public class GetApprovalResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.backendReportDetail?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -14041,8 +14413,17 @@ public class GetApprovalResponseBody : Tea.TeaModel {
                 }
                 map["ApprovalProgresses"] = tmp
             }
+            if self.approvalType != nil {
+                map["ApprovalType"] = self.approvalType!
+            }
+            if self.backendReportDetail != nil {
+                map["BackendReportDetail"] = self.backendReportDetail?.toMap()
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.createTimeUnix != nil {
+                map["CreateTimeUnix"] = self.createTimeUnix!
             }
             if self.creatorDepartment != nil {
                 map["CreatorDepartment"] = self.creatorDepartment!
@@ -14055,6 +14436,9 @@ public class GetApprovalResponseBody : Tea.TeaModel {
             }
             if self.creatorUsername != nil {
                 map["CreatorUsername"] = self.creatorUsername!
+            }
+            if self.effectStatus != nil {
+                map["EffectStatus"] = self.effectStatus!
             }
             if self.endTimestamp != nil {
                 map["EndTimestamp"] = self.endTimestamp!
@@ -14071,6 +14455,9 @@ public class GetApprovalResponseBody : Tea.TeaModel {
             if self.reason != nil {
                 map["Reason"] = self.reason!
             }
+            if self.reportType != nil {
+                map["ReportType"] = self.reportType!
+            }
             if self.schemaContent != nil {
                 map["SchemaContent"] = self.schemaContent!
             }
@@ -14082,6 +14469,9 @@ public class GetApprovalResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.validityType != nil {
+                map["ValidityType"] = self.validityType!
             }
             return map
         }
@@ -14107,8 +14497,19 @@ public class GetApprovalResponseBody : Tea.TeaModel {
                 }
                 self.approvalProgresses = tmp
             }
+            if let value = dict["ApprovalType"] as? Int32 {
+                self.approvalType = value
+            }
+            if let value = dict["BackendReportDetail"] as? [String: Any?] {
+                var model = GetApprovalResponseBody.Approval.BackendReportDetail()
+                model.fromMap(value)
+                self.backendReportDetail = model
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["CreateTimeUnix"] as? Int64 {
+                self.createTimeUnix = value
             }
             if let value = dict["CreatorDepartment"] as? String {
                 self.creatorDepartment = value
@@ -14121,6 +14522,9 @@ public class GetApprovalResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreatorUsername"] as? String {
                 self.creatorUsername = value
+            }
+            if let value = dict["EffectStatus"] as? String {
+                self.effectStatus = value
             }
             if let value = dict["EndTimestamp"] as? Int64 {
                 self.endTimestamp = value
@@ -14137,6 +14541,9 @@ public class GetApprovalResponseBody : Tea.TeaModel {
             if let value = dict["Reason"] as? String {
                 self.reason = value
             }
+            if let value = dict["ReportType"] as? String {
+                self.reportType = value
+            }
             if let value = dict["SchemaContent"] as? String {
                 self.schemaContent = value
             }
@@ -14148,6 +14555,9 @@ public class GetApprovalResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["ValidityType"] as? String {
+                self.validityType = value
             }
         }
     }
@@ -23537,6 +23947,8 @@ public class ListApprovalsRequest : Tea.TeaModel {
 
     public var currentPage: Int64?
 
+    public var effectStatuses: [String]?
+
     public var operatorUserId: String?
 
     public var operatorUsername: String?
@@ -23548,6 +23960,8 @@ public class ListApprovalsRequest : Tea.TeaModel {
     public var processId: String?
 
     public var processName: String?
+
+    public var reportTypes: [String]?
 
     public var schemaId: String?
 
@@ -23593,6 +24007,9 @@ public class ListApprovalsRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.effectStatuses != nil {
+            map["EffectStatuses"] = self.effectStatuses!
+        }
         if self.operatorUserId != nil {
             map["OperatorUserId"] = self.operatorUserId!
         }
@@ -23610,6 +24027,9 @@ public class ListApprovalsRequest : Tea.TeaModel {
         }
         if self.processName != nil {
             map["ProcessName"] = self.processName!
+        }
+        if self.reportTypes != nil {
+            map["ReportTypes"] = self.reportTypes!
         }
         if self.schemaId != nil {
             map["SchemaId"] = self.schemaId!
@@ -23649,6 +24069,9 @@ public class ListApprovalsRequest : Tea.TeaModel {
         if let value = dict["CurrentPage"] as? Int64 {
             self.currentPage = value
         }
+        if let value = dict["EffectStatuses"] as? [String] {
+            self.effectStatuses = value
+        }
         if let value = dict["OperatorUserId"] as? String {
             self.operatorUserId = value
         }
@@ -23666,6 +24089,9 @@ public class ListApprovalsRequest : Tea.TeaModel {
         }
         if let value = dict["ProcessName"] as? String {
             self.processName = value
+        }
+        if let value = dict["ReportTypes"] as? [String] {
+            self.reportTypes = value
         }
         if let value = dict["SchemaId"] as? String {
             self.schemaId = value
@@ -23821,6 +24247,8 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
 
         public var creatorUsername: String?
 
+        public var effectStatus: String?
+
         public var endTimestamp: Int64?
 
         public var policyType: String?
@@ -23831,6 +24259,8 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
 
         public var reason: String?
 
+        public var reportType: String?
+
         public var schemaContent: String?
 
         public var schemaId: String?
@@ -23838,6 +24268,8 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
         public var schemaName: String?
 
         public var status: String?
+
+        public var validityType: String?
 
         public override init() {
             super.init()
@@ -23884,6 +24316,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
             if self.creatorUsername != nil {
                 map["CreatorUsername"] = self.creatorUsername!
             }
+            if self.effectStatus != nil {
+                map["EffectStatus"] = self.effectStatus!
+            }
             if self.endTimestamp != nil {
                 map["EndTimestamp"] = self.endTimestamp!
             }
@@ -23899,6 +24334,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
             if self.reason != nil {
                 map["Reason"] = self.reason!
             }
+            if self.reportType != nil {
+                map["ReportType"] = self.reportType!
+            }
             if self.schemaContent != nil {
                 map["SchemaContent"] = self.schemaContent!
             }
@@ -23910,6 +24348,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.validityType != nil {
+                map["ValidityType"] = self.validityType!
             }
             return map
         }
@@ -23953,6 +24394,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
             if let value = dict["CreatorUsername"] as? String {
                 self.creatorUsername = value
             }
+            if let value = dict["EffectStatus"] as? String {
+                self.effectStatus = value
+            }
             if let value = dict["EndTimestamp"] as? Int64 {
                 self.endTimestamp = value
             }
@@ -23968,6 +24412,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
             if let value = dict["Reason"] as? String {
                 self.reason = value
             }
+            if let value = dict["ReportType"] as? String {
+                self.reportType = value
+            }
             if let value = dict["SchemaContent"] as? String {
                 self.schemaContent = value
             }
@@ -23979,6 +24426,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["ValidityType"] as? String {
+                self.validityType = value
             }
         }
     }
