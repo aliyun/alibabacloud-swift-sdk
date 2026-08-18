@@ -2719,6 +2719,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterGetBillingBillSummaryWithOptions(_ request: ModelRouterGetBillingBillSummaryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterGetBillingBillSummaryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.memberUserIds)) {
+            query["memberUserIds"] = request.memberUserIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["modelId"] = request.modelId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelTypes)) {
+            query["modelTypes"] = request.modelTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterGetBillingBillSummary",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/bills/summary",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterGetBillingBillSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterGetBillingBillSummary(_ request: ModelRouterGetBillingBillSummaryRequest) async throws -> ModelRouterGetBillingBillSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterGetBillingBillSummaryWithOptions(request as! ModelRouterGetBillingBillSummaryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterGetClientBalanceWithOptions(_ id: String, _ request: ModelRouterGetClientBalanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterGetClientBalanceResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -3279,6 +3339,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
         }
@@ -3624,6 +3687,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
         }
@@ -3687,6 +3753,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
         }
@@ -3747,6 +3816,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
         }
@@ -3803,6 +3875,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
@@ -4295,6 +4370,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime ?? "";
         }
@@ -4345,6 +4423,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime ?? "";
@@ -4421,6 +4502,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime ?? "";
         }
@@ -4495,6 +4579,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
