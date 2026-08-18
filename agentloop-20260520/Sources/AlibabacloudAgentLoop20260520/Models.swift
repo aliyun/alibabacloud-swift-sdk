@@ -1443,6 +1443,8 @@ public class CreateAgentSpaceRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var mseNamespaceId: String?
+
     public var trajectoryStoreEnabled: Bool?
 
     public var clientToken: String?
@@ -1470,6 +1472,9 @@ public class CreateAgentSpaceRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.mseNamespaceId != nil {
+            map["mseNamespaceId"] = self.mseNamespaceId!
+        }
         if self.trajectoryStoreEnabled != nil {
             map["trajectoryStoreEnabled"] = self.trajectoryStoreEnabled!
         }
@@ -1489,6 +1494,9 @@ public class CreateAgentSpaceRequest : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["mseNamespaceId"] as? String {
+            self.mseNamespaceId = value
         }
         if let value = dict["trajectoryStoreEnabled"] as? Bool {
             self.trajectoryStoreEnabled = value
@@ -5541,6 +5549,8 @@ public class GetAgentSpaceRequest : Tea.TeaModel {
 
 public class GetAgentSpaceResponseBody : Tea.TeaModel {
     public class MseNamespace : Tea.TeaModel {
+        public var bindType: String?
+
         public var namespaceId: String?
 
         public var namespaceName: String?
@@ -5559,6 +5569,9 @@ public class GetAgentSpaceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bindType != nil {
+                map["bindType"] = self.bindType!
+            }
             if self.namespaceId != nil {
                 map["namespaceId"] = self.namespaceId!
             }
@@ -5570,6 +5583,9 @@ public class GetAgentSpaceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["bindType"] as? String {
+                self.bindType = value
+            }
             if let value = dict["namespaceId"] as? String {
                 self.namespaceId = value
             }
@@ -9225,6 +9241,8 @@ public class ListAgentSpacesRequest : Tea.TeaModel {
 public class ListAgentSpacesResponseBody : Tea.TeaModel {
     public class AgentSpaces : Tea.TeaModel {
         public class MseNamespace : Tea.TeaModel {
+            public var bindType: String?
+
             public var namespaceId: String?
 
             public var namespaceName: String?
@@ -9243,6 +9261,9 @@ public class ListAgentSpacesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bindType != nil {
+                    map["bindType"] = self.bindType!
+                }
                 if self.namespaceId != nil {
                     map["namespaceId"] = self.namespaceId!
                 }
@@ -9254,6 +9275,9 @@ public class ListAgentSpacesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["bindType"] as? String {
+                    self.bindType = value
+                }
                 if let value = dict["namespaceId"] as? String {
                     self.namespaceId = value
                 }
