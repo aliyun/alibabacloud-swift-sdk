@@ -61,8 +61,13 @@ open class Client : AlibabacloudOpenApi.Client {
             "rus-west-1-pop": "cas.aliyuncs.com",
             "us-east-1": "cas.aliyuncs.com",
             "us-west-1": "cas.aliyuncs.com",
+            "ap-southeast-2": "cas.ap-southeast-2.aliyuncs.com",
+            "ap-northeast-1": "cas.ap-northeast-1.aliyuncs.com",
+            "ap-southeast-1": "cas.ap-southeast-1.aliyuncs.com",
             "eu-central-1": "cas.eu-central-1.aliyuncs.com",
-            "ap-southeast-1": "cas.ap-southeast-1.aliyuncs.com"
+            "me-central-1": "cas.me-central-1.aliyuncs.com",
+            "ap-south-1": "cas.ap-south-1.aliyuncs.com",
+            "me-east-1": "cas.me-east-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cas", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1464,6 +1469,31 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCertificatePackageCountWithOptions(_ request: GetCertificatePackageCountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCertificatePackageCountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCertificatePackageCount",
+            "version": "2020-04-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCertificatePackageCountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCertificatePackageCount(_ request: GetCertificatePackageCountRequest) async throws -> GetCertificatePackageCountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCertificatePackageCountWithOptions(request as! GetCertificatePackageCountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCompanyWithOptions(_ request: GetCompanyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCompanyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2300,6 +2330,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listInstances(_ request: ListInstancesRequest) async throws -> ListInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listInstancesWithOptions(request as! ListInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTrusteeOrderWithOptions(_ request: ListTrusteeOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTrusteeOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certificateId)) {
+            query["CertificateId"] = request.certificateId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            query["OrderId"] = request.orderId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTrusteeOrder",
+            "version": "2020-04-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTrusteeOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTrusteeOrder(_ request: ListTrusteeOrderRequest) async throws -> ListTrusteeOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listTrusteeOrderWithOptions(request as! ListTrusteeOrderRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
