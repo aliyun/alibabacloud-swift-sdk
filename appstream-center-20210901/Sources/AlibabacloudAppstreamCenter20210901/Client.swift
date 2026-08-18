@@ -480,6 +480,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             body["BizType"] = request.bizType!;
         }
+        if (!TeaUtils.Client.isUnset(request.copyProfile)) {
+            body["CopyProfile"] = request.copyProfile!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
         }

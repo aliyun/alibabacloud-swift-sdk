@@ -2878,6 +2878,8 @@ public class CreateImageByInstanceRequest : Tea.TeaModel {
 
     public var bizType: Int32?
 
+    public var copyProfile: Bool?
+
     public var description_: String?
 
     public var diskType: String?
@@ -2913,6 +2915,9 @@ public class CreateImageByInstanceRequest : Tea.TeaModel {
         }
         if self.bizType != nil {
             map["BizType"] = self.bizType!
+        }
+        if self.copyProfile != nil {
+            map["CopyProfile"] = self.copyProfile!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -2952,6 +2957,9 @@ public class CreateImageByInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["BizType"] as? Int32 {
             self.bizType = value
+        }
+        if let value = dict["CopyProfile"] as? Bool {
+            self.copyProfile = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
