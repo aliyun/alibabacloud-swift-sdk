@@ -19504,6 +19504,44 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public class RevokeAccessPolicyRules : Tea.TeaModel {
+            public var cidrIp: String?
+
+            public var description_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidrIp != nil {
+                    map["CidrIp"] = self.cidrIp!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CidrIp"] as? String {
+                    self.cidrIp = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+            }
+        }
         public class VideoPolicy : Tea.TeaModel {
             public var frameRate: Int32?
 
@@ -19596,6 +19634,8 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public var policyVersion: String?
 
+        public var revokeAccessPolicyRules: [ModifyBrowserInstanceGroupRequest.Policy.RevokeAccessPolicyRules]?
+
         public var videoPolicy: ModifyBrowserInstanceGroupRequest.Policy.VideoPolicy?
 
         public var watermarkPolicy: ModifyBrowserInstanceGroupRequest.Policy.WatermarkPolicy?
@@ -19660,6 +19700,13 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if self.policyVersion != nil {
                 map["PolicyVersion"] = self.policyVersion!
+            }
+            if self.revokeAccessPolicyRules != nil {
+                var tmp : [Any] = []
+                for k in self.revokeAccessPolicyRules! {
+                    tmp.append(k.toMap())
+                }
+                map["RevokeAccessPolicyRules"] = tmp
             }
             if self.videoPolicy != nil {
                 map["VideoPolicy"] = self.videoPolicy?.toMap()
@@ -19729,6 +19776,19 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["PolicyVersion"] as? String {
                 self.policyVersion = value
+            }
+            if let value = dict["RevokeAccessPolicyRules"] as? [Any?] {
+                var tmp : [ModifyBrowserInstanceGroupRequest.Policy.RevokeAccessPolicyRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyBrowserInstanceGroupRequest.Policy.RevokeAccessPolicyRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.revokeAccessPolicyRules = tmp
             }
             if let value = dict["VideoPolicy"] as? [String: Any?] {
                 var model = ModifyBrowserInstanceGroupRequest.Policy.VideoPolicy()
