@@ -751,6 +751,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             body["ClusterId"] = request.clusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deleteJobs)) {
+            body["DeleteJobs"] = request.deleteJobs!;
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["Id"] = request.id!;
         }

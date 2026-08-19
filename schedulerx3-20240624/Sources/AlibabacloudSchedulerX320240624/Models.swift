@@ -3784,6 +3784,8 @@ public class DeleteDatasourceResponse : Tea.TeaModel {
 public class DeleteExecutorGroupRequest : Tea.TeaModel {
     public var clusterId: String?
 
+    public var deleteJobs: Bool?
+
     public var id: Int32?
 
     public var name: String?
@@ -3805,6 +3807,9 @@ public class DeleteExecutorGroupRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.deleteJobs != nil {
+            map["DeleteJobs"] = self.deleteJobs!
+        }
         if self.id != nil {
             map["Id"] = self.id!
         }
@@ -3818,6 +3823,9 @@ public class DeleteExecutorGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
+        }
+        if let value = dict["DeleteJobs"] as? Bool {
+            self.deleteJobs = value
         }
         if let value = dict["Id"] as? Int32 {
             self.id = value
