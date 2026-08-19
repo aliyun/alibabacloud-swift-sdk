@@ -334,6 +334,8 @@ public class PushTask : Tea.TeaModel {
                     }
                 }
                 public class Vivo : Tea.TeaModel {
+                    public var addBadge: Bool?
+
                     public var category: String?
 
                     public var importance: Int32?
@@ -356,6 +358,9 @@ public class PushTask : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.addBadge != nil {
+                            map["AddBadge"] = self.addBadge!
+                        }
                         if self.category != nil {
                             map["Category"] = self.category!
                         }
@@ -373,6 +378,9 @@ public class PushTask : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["AddBadge"] as? Bool {
+                            self.addBadge = value
+                        }
                         if let value = dict["Category"] as? String {
                             self.category = value
                         }
