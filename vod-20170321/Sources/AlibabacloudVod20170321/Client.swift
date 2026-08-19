@@ -53,7 +53,18 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1-oxs": "vod.aliyuncs.com",
             "me-east-1": "vod.aliyuncs.com",
             "rus-west-1-pop": "vod.aliyuncs.com",
-            "us-east-1": "vod.aliyuncs.com"
+            "us-east-1": "vod.aliyuncs.com",
+            "cn-shenzhen": "vod.cn-shenzhen.aliyuncs.com",
+            "cn-beijing": "vod.cn-beijing.aliyuncs.com",
+            "cn-shanghai": "vod.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "vod.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "vod.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-1": "vod.ap-northeast-1.aliyuncs.com",
+            "ap-southeast-5": "vod.ap-southeast-5.aliyuncs.com",
+            "us-west-1": "vod.us-west-1.aliyuncs.com",
+            "eu-central-1": "vod.eu-central-1.aliyuncs.com",
+            "me-central-1": "vod.me-central-1.aliyuncs.com",
+            "cn-north-2-gov-1": "vod.cn-north-2-gov-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("vod", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -5112,6 +5123,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWatermark(_ request: GetWatermarkRequest) async throws -> GetWatermarkResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getWatermarkWithOptions(request as! GetWatermarkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkflowTaskWithOptions(_ request: GetWorkflowTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkflowTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWorkflowTask",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWorkflowTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkflowTask(_ request: GetWorkflowTaskRequest) async throws -> GetWorkflowTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getWorkflowTaskWithOptions(request as! GetWorkflowTaskRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
