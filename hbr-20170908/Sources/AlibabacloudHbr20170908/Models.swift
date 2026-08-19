@@ -4993,6 +4993,8 @@ public class CreatePolicyV2Request : Tea.TeaModel {
                 }
             }
         }
+        public var archiveDays: Int64?
+
         public var backupType: String?
 
         public var dataSourceFilters: [CreatePolicyV2Request.Rules.DataSourceFilters]?
@@ -5029,6 +5031,9 @@ public class CreatePolicyV2Request : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.archiveDays != nil {
+                map["ArchiveDays"] = self.archiveDays!
+            }
             if self.backupType != nil {
                 map["BackupType"] = self.backupType!
             }
@@ -5079,6 +5084,9 @@ public class CreatePolicyV2Request : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ArchiveDays"] as? Int64 {
+                self.archiveDays = value
+            }
             if let value = dict["BackupType"] as? String {
                 self.backupType = value
             }
