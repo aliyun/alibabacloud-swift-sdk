@@ -4305,6 +4305,69 @@ public class CreateApplicationTokenResponse : Tea.TeaModel {
 }
 
 public class CreateAuthorizationResourceRequest : Tea.TeaModel {
+    public class Condition : Tea.TeaModel {
+        public class CredentialCondition : Tea.TeaModel {
+            public var allowSameNameIdentity: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowSameNameIdentity != nil {
+                    map["AllowSameNameIdentity"] = self.allowSameNameIdentity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllowSameNameIdentity"] as? Bool {
+                    self.allowSameNameIdentity = value
+                }
+            }
+        }
+        public var credentialCondition: CreateAuthorizationResourceRequest.Condition.CredentialCondition?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.credentialCondition?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.credentialCondition != nil {
+                map["CredentialCondition"] = self.credentialCondition?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CredentialCondition"] as? [String: Any?] {
+                var model = CreateAuthorizationResourceRequest.Condition.CredentialCondition()
+                model.fromMap(value)
+                self.credentialCondition = model
+            }
+        }
+    }
     public var authorizationResourceEntityId: String?
 
     public var authorizationResourceEntityType: String?
@@ -4312,6 +4375,8 @@ public class CreateAuthorizationResourceRequest : Tea.TeaModel {
     public var authorizationRuleId: String?
 
     public var clientToken: String?
+
+    public var condition: CreateAuthorizationResourceRequest.Condition?
 
     public var instanceId: String?
 
@@ -4325,6 +4390,7 @@ public class CreateAuthorizationResourceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.condition?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4340,6 +4406,9 @@ public class CreateAuthorizationResourceRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.condition != nil {
+            map["Condition"] = self.condition?.toMap()
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -4360,6 +4429,11 @@ public class CreateAuthorizationResourceRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Condition"] as? [String: Any?] {
+            var model = CreateAuthorizationResourceRequest.Condition()
+            model.fromMap(value)
+            self.condition = model
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -25958,6 +26032,69 @@ public class GetAuthorizationResourceRequest : Tea.TeaModel {
 
 public class GetAuthorizationResourceResponseBody : Tea.TeaModel {
     public class AuthorizationResource : Tea.TeaModel {
+        public class Condition : Tea.TeaModel {
+            public class CredentialCondition : Tea.TeaModel {
+                public var allowSameNameIdentity: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowSameNameIdentity != nil {
+                        map["AllowSameNameIdentity"] = self.allowSameNameIdentity!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AllowSameNameIdentity"] as? Bool {
+                        self.allowSameNameIdentity = value
+                    }
+                }
+            }
+            public var credentialCondition: GetAuthorizationResourceResponseBody.AuthorizationResource.Condition.CredentialCondition?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.credentialCondition?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.credentialCondition != nil {
+                    map["CredentialCondition"] = self.credentialCondition?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CredentialCondition"] as? [String: Any?] {
+                    var model = GetAuthorizationResourceResponseBody.AuthorizationResource.Condition.CredentialCondition()
+                    model.fromMap(value)
+                    self.credentialCondition = model
+                }
+            }
+        }
         public var authorizationResourceEntityId: String?
 
         public var authorizationResourceEntityType: String?
@@ -25968,7 +26105,13 @@ public class GetAuthorizationResourceResponseBody : Tea.TeaModel {
 
         public var cloudAccountId: String?
 
+        public var condition: GetAuthorizationResourceResponseBody.AuthorizationResource.Condition?
+
+        public var createTime: Int64?
+
         public var instanceId: String?
+
+        public var updateTime: Int64?
 
         public override init() {
             super.init()
@@ -25980,6 +26123,7 @@ public class GetAuthorizationResourceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.condition?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -25999,8 +26143,17 @@ public class GetAuthorizationResourceResponseBody : Tea.TeaModel {
             if self.cloudAccountId != nil {
                 map["CloudAccountId"] = self.cloudAccountId!
             }
+            if self.condition != nil {
+                map["Condition"] = self.condition?.toMap()
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
             }
             return map
         }
@@ -26022,8 +26175,19 @@ public class GetAuthorizationResourceResponseBody : Tea.TeaModel {
             if let value = dict["CloudAccountId"] as? String {
                 self.cloudAccountId = value
             }
+            if let value = dict["Condition"] as? [String: Any?] {
+                var model = GetAuthorizationResourceResponseBody.AuthorizationResource.Condition()
+                model.fromMap(value)
+                self.condition = model
+            }
+            if let value = dict["CreateTime"] as? Int64 {
+                self.createTime = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["UpdateTime"] as? Int64 {
+                self.updateTime = value
             }
         }
     }
@@ -45995,6 +46159,69 @@ public class ListAuthorizationResourcesRequest : Tea.TeaModel {
 
 public class ListAuthorizationResourcesResponseBody : Tea.TeaModel {
     public class AuthorizationResources : Tea.TeaModel {
+        public class Condition : Tea.TeaModel {
+            public class CredentialCondition : Tea.TeaModel {
+                public var allowSameNameIdentity: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowSameNameIdentity != nil {
+                        map["AllowSameNameIdentity"] = self.allowSameNameIdentity!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AllowSameNameIdentity"] as? Bool {
+                        self.allowSameNameIdentity = value
+                    }
+                }
+            }
+            public var credentialCondition: ListAuthorizationResourcesResponseBody.AuthorizationResources.Condition.CredentialCondition?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.credentialCondition?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.credentialCondition != nil {
+                    map["CredentialCondition"] = self.credentialCondition?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CredentialCondition"] as? [String: Any?] {
+                    var model = ListAuthorizationResourcesResponseBody.AuthorizationResources.Condition.CredentialCondition()
+                    model.fromMap(value)
+                    self.credentialCondition = model
+                }
+            }
+        }
         public var authorizationResourceEntityId: String?
 
         public var authorizationResourceEntityType: String?
@@ -46005,7 +46232,13 @@ public class ListAuthorizationResourcesResponseBody : Tea.TeaModel {
 
         public var cloudAccountId: String?
 
+        public var condition: ListAuthorizationResourcesResponseBody.AuthorizationResources.Condition?
+
+        public var createTime: Int64?
+
         public var instanceId: String?
+
+        public var updateTime: Int64?
 
         public override init() {
             super.init()
@@ -46017,6 +46250,7 @@ public class ListAuthorizationResourcesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.condition?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -46036,8 +46270,17 @@ public class ListAuthorizationResourcesResponseBody : Tea.TeaModel {
             if self.cloudAccountId != nil {
                 map["CloudAccountId"] = self.cloudAccountId!
             }
+            if self.condition != nil {
+                map["Condition"] = self.condition?.toMap()
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
             }
             return map
         }
@@ -46059,8 +46302,19 @@ public class ListAuthorizationResourcesResponseBody : Tea.TeaModel {
             if let value = dict["CloudAccountId"] as? String {
                 self.cloudAccountId = value
             }
+            if let value = dict["Condition"] as? [String: Any?] {
+                var model = ListAuthorizationResourcesResponseBody.AuthorizationResources.Condition()
+                model.fromMap(value)
+                self.condition = model
+            }
+            if let value = dict["CreateTime"] as? Int64 {
+                self.createTime = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["UpdateTime"] as? Int64 {
+                self.updateTime = value
             }
         }
     }

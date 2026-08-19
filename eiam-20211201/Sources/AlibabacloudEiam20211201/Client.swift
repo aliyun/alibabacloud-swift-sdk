@@ -1059,6 +1059,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authorizationRuleId)) {
             query["AuthorizationRuleId"] = request.authorizationRuleId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.condition)) {
+            query["Condition"] = request.condition!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
