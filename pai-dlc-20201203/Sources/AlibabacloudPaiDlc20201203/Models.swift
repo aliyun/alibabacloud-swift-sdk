@@ -6432,6 +6432,45 @@ public class TensorboardSpec : Tea.TeaModel {
     }
 }
 
+public class TokenSettings : Tea.TeaModel {
+    public var enableCrossAccountAccess: Bool?
+
+    public var enableLogDownloadJob: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableCrossAccountAccess != nil {
+            map["EnableCrossAccountAccess"] = self.enableCrossAccountAccess!
+        }
+        if self.enableLogDownloadJob != nil {
+            map["EnableLogDownloadJob"] = self.enableLogDownloadJob!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableCrossAccountAccess"] as? Bool {
+            self.enableCrossAccountAccess = value
+        }
+        if let value = dict["EnableLogDownloadJob"] as? Bool {
+            self.enableLogDownloadJob = value
+        }
+    }
+}
+
 public class Workspace : Tea.TeaModel {
     public var creator: String?
 
@@ -12124,6 +12163,8 @@ public class GetTokenRequest : Tea.TeaModel {
 
     public var targetType: String?
 
+    public var tokenSettings: TokenSettings?
+
     public override init() {
         super.init()
     }
@@ -12134,6 +12175,7 @@ public class GetTokenRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tokenSettings?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -12146,6 +12188,9 @@ public class GetTokenRequest : Tea.TeaModel {
         }
         if self.targetType != nil {
             map["TargetType"] = self.targetType!
+        }
+        if self.tokenSettings != nil {
+            map["TokenSettings"] = self.tokenSettings?.toMap()
         }
         return map
     }
@@ -12160,6 +12205,11 @@ public class GetTokenRequest : Tea.TeaModel {
         }
         if let value = dict["TargetType"] as? String {
             self.targetType = value
+        }
+        if let value = dict["TokenSettings"] as? [String: Any?] {
+            var model = TokenSettings()
+            model.fromMap(value)
+            self.tokenSettings = model
         }
     }
 }
