@@ -677,6 +677,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.includeOrgIds)) {
             query["IncludeOrgIds"] = request.includeOrgIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.isQueryAllSubOrgs)) {
+            query["IsQueryAllSubOrgs"] = request.isQueryAllSubOrgs!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }

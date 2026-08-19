@@ -3760,6 +3760,8 @@ public class DescribeOrgsRequest : Tea.TeaModel {
 
     public var includeOrgIds: [String]?
 
+    public var isQueryAllSubOrgs: Bool?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -3790,6 +3792,9 @@ public class DescribeOrgsRequest : Tea.TeaModel {
         if self.includeOrgIds != nil {
             map["IncludeOrgIds"] = self.includeOrgIds!
         }
+        if self.isQueryAllSubOrgs != nil {
+            map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -3816,6 +3821,9 @@ public class DescribeOrgsRequest : Tea.TeaModel {
         if let value = dict["IncludeOrgIds"] as? [String] {
             self.includeOrgIds = value
         }
+        if let value = dict["IsQueryAllSubOrgs"] as? Bool {
+            self.isQueryAllSubOrgs = value
+        }
         if let value = dict["MaxResults"] as? Int64 {
             self.maxResults = value
         }
@@ -3838,6 +3846,8 @@ public class DescribeOrgsShrinkRequest : Tea.TeaModel {
     public var businessChannel: String?
 
     public var includeOrgIds: [String]?
+
+    public var isQueryAllSubOrgs: Bool?
 
     public var maxResults: Int64?
 
@@ -3869,6 +3879,9 @@ public class DescribeOrgsShrinkRequest : Tea.TeaModel {
         if self.includeOrgIds != nil {
             map["IncludeOrgIds"] = self.includeOrgIds!
         }
+        if self.isQueryAllSubOrgs != nil {
+            map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -3894,6 +3907,9 @@ public class DescribeOrgsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["IncludeOrgIds"] as? [String] {
             self.includeOrgIds = value
+        }
+        if let value = dict["IsQueryAllSubOrgs"] as? Bool {
+            self.isQueryAllSubOrgs = value
         }
         if let value = dict["MaxResults"] as? Int64 {
             self.maxResults = value
@@ -3953,6 +3969,8 @@ public class DescribeOrgsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var accessType: String?
+
         public var orgId: String?
 
         public var orgName: String?
@@ -3977,6 +3995,9 @@ public class DescribeOrgsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accessType != nil {
+                map["AccessType"] = self.accessType!
+            }
             if self.orgId != nil {
                 map["OrgId"] = self.orgId!
             }
@@ -4001,6 +4022,9 @@ public class DescribeOrgsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccessType"] as? String {
+                self.accessType = value
+            }
             if let value = dict["OrgId"] as? String {
                 self.orgId = value
             }
@@ -5806,6 +5830,8 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var count: Int32?
+
     public var nextToken: String?
 
     public var requestId: String?
@@ -5826,6 +5852,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
@@ -5844,6 +5873,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
