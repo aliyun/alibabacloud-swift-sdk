@@ -3399,6 +3399,69 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryBillingDetailsWithOptions(_ request: ModelRouterQueryBillingDetailsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryBillingDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientIds)) {
+            query["clientIds"] = request.clientIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCodes)) {
+            query["modelCodes"] = request.modelCodes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["modelId"] = request.modelId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelTypes)) {
+            query["modelTypes"] = request.modelTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            query["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryBillingDetails",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/details",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryBillingDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryBillingDetails(_ request: ModelRouterQueryBillingDetailsRequest) async throws -> ModelRouterQueryBillingDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryBillingDetailsWithOptions(request as! ModelRouterQueryBillingDetailsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterQueryBillingRuleListWithOptions(_ request: ModelRouterQueryBillingRuleListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryBillingRuleListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
