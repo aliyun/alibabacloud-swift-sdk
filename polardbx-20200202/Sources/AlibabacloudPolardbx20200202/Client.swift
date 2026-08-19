@@ -5534,6 +5534,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBInstanceClassWithOptions(_ request: ModifyDBInstanceClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBInstanceClassResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alignStoragePrimaryAzone)) {
+            query["AlignStoragePrimaryAzone"] = request.alignStoragePrimaryAzone!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -5557,6 +5560,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.specifiedDNSpecMapJson)) {
             query["SpecifiedDNSpecMapJson"] = request.specifiedDNSpecMapJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.switchTime)) {
             query["SwitchTime"] = request.switchTime ?? "";

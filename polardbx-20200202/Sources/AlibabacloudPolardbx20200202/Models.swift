@@ -36675,6 +36675,8 @@ public class ModifyCustomEndpointNetResponse : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceClassRequest : Tea.TeaModel {
+    public var alignStoragePrimaryAzone: Bool?
+
     public var clientToken: String?
 
     public var cnClass: String?
@@ -36690,6 +36692,8 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
     public var specifiedDNScale: Bool?
 
     public var specifiedDNSpecMapJson: String?
+
+    public var storageType: String?
 
     public var switchTime: String?
 
@@ -36711,6 +36715,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.alignStoragePrimaryAzone != nil {
+            map["AlignStoragePrimaryAzone"] = self.alignStoragePrimaryAzone!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -36735,6 +36742,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         if self.specifiedDNSpecMapJson != nil {
             map["SpecifiedDNSpecMapJson"] = self.specifiedDNSpecMapJson!
         }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
         if self.switchTime != nil {
             map["SwitchTime"] = self.switchTime!
         }
@@ -36749,6 +36759,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AlignStoragePrimaryAzone"] as? Bool {
+            self.alignStoragePrimaryAzone = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -36773,6 +36786,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         if let value = dict["SpecifiedDNSpecMapJson"] as? String {
             self.specifiedDNSpecMapJson = value
         }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
+        }
         if let value = dict["SwitchTime"] as? String {
             self.switchTime = value
         }
@@ -36789,6 +36805,8 @@ public class ModifyDBInstanceClassResponseBody : Tea.TeaModel {
     public var orderId: String?
 
     public var requestId: String?
+
+    public var taskId: Int32?
 
     public override init() {
         super.init()
@@ -36810,6 +36828,9 @@ public class ModifyDBInstanceClassResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
@@ -36820,6 +36841,9 @@ public class ModifyDBInstanceClassResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TaskId"] as? Int32 {
+            self.taskId = value
         }
     }
 }
