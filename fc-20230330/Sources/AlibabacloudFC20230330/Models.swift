@@ -1584,6 +1584,8 @@ public class CreateSessionNetworkConfig : Tea.TeaModel {
 
     public var maskRequestHost: String?
 
+    public var rules: [String: [SessionNetworkRule]]?
+
     public override init() {
         super.init()
     }
@@ -1610,6 +1612,17 @@ public class CreateSessionNetworkConfig : Tea.TeaModel {
         if self.maskRequestHost != nil {
             map["maskRequestHost"] = self.maskRequestHost!
         }
+        if self.rules != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.rules! {
+                var l1 : [Any] = []
+                for k1 in v {
+                    l1.append(k1.toMap())
+                }
+                tmp[k] = l1
+            }
+            map["rules"] = tmp
+        }
         return map
     }
 
@@ -1626,6 +1639,23 @@ public class CreateSessionNetworkConfig : Tea.TeaModel {
         }
         if let value = dict["maskRequestHost"] as? String {
             self.maskRequestHost = value
+        }
+        if let value = dict["rules"] as? [String: Any?] {
+            var tmp : [String: [SessionNetworkRule]] = [:]
+            for (k, v) in value {
+                var l1 : [SessionNetworkRule] = []
+                for v1 in v as! [Any?] {
+                    if v1 != nil {
+                        var model = SessionNetworkRule()
+                        if v1 != nil {
+                            model.fromMap(v1 as? [String: Any?])
+                        }
+                        l1.append(model)
+                    }
+                }
+                tmp[k] = l1
+            }
+            self.rules = tmp
         }
     }
 }
@@ -8846,14 +8876,134 @@ public class Session : Tea.TeaModel {
     }
 }
 
+public class SessionNetworkHeaderValueReplacement : Tea.TeaModel {
+    public var placeholder: String?
+
+    public var value: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.placeholder != nil {
+            map["placeholder"] = self.placeholder!
+        }
+        if self.value != nil {
+            map["value"] = self.value!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["placeholder"] as? String {
+            self.placeholder = value
+        }
+        if let value = dict["value"] as? String {
+            self.value = value
+        }
+    }
+}
+
+public class SessionNetworkRule : Tea.TeaModel {
+    public var transform: SessionNetworkRuleTransform?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.transform?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.transform != nil {
+            map["transform"] = self.transform?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["transform"] as? [String: Any?] {
+            var model = SessionNetworkRuleTransform()
+            model.fromMap(value)
+            self.transform = model
+        }
+    }
+}
+
+public class SessionNetworkRuleTransform : Tea.TeaModel {
+    public var headerValueReplacements: [SessionNetworkHeaderValueReplacement]?
+
+    public var headers: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headerValueReplacements != nil {
+            var tmp : [Any] = []
+            for k in self.headerValueReplacements! {
+                tmp.append(k.toMap())
+            }
+            map["headerValueReplacements"] = tmp
+        }
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headerValueReplacements"] as? [Any?] {
+            var tmp : [SessionNetworkHeaderValueReplacement] = []
+            for v in value {
+                if v != nil {
+                    var model = SessionNetworkHeaderValueReplacement()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.headerValueReplacements = tmp
+        }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+    }
+}
+
 public class Snapshot : Tea.TeaModel {
-    public var artifactDiskTotalSizeInB: Int64?
-
     public var artifactDiskUsedSizeInB: Int64?
-
-    public var artifactMemCacheSizeInB: Int64?
-
-    public var artifactMemTotalSizeInB: Int64?
 
     public var artifactMemUsedSizeInB: Int64?
 
@@ -8907,17 +9057,8 @@ public class Snapshot : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.artifactDiskTotalSizeInB != nil {
-            map["artifactDiskTotalSizeInB"] = self.artifactDiskTotalSizeInB!
-        }
         if self.artifactDiskUsedSizeInB != nil {
             map["artifactDiskUsedSizeInB"] = self.artifactDiskUsedSizeInB!
-        }
-        if self.artifactMemCacheSizeInB != nil {
-            map["artifactMemCacheSizeInB"] = self.artifactMemCacheSizeInB!
-        }
-        if self.artifactMemTotalSizeInB != nil {
-            map["artifactMemTotalSizeInB"] = self.artifactMemTotalSizeInB!
         }
         if self.artifactMemUsedSizeInB != nil {
             map["artifactMemUsedSizeInB"] = self.artifactMemUsedSizeInB!
@@ -8981,17 +9122,8 @@ public class Snapshot : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["artifactDiskTotalSizeInB"] as? Int64 {
-            self.artifactDiskTotalSizeInB = value
-        }
         if let value = dict["artifactDiskUsedSizeInB"] as? Int64 {
             self.artifactDiskUsedSizeInB = value
-        }
-        if let value = dict["artifactMemCacheSizeInB"] as? Int64 {
-            self.artifactMemCacheSizeInB = value
-        }
-        if let value = dict["artifactMemTotalSizeInB"] as? Int64 {
-            self.artifactMemTotalSizeInB = value
         }
         if let value = dict["artifactMemUsedSizeInB"] as? Int64 {
             self.artifactMemUsedSizeInB = value
@@ -10917,6 +11049,8 @@ public class UpdateSessionNetworkConfig : Tea.TeaModel {
 
     public var denyOut: [String]?
 
+    public var rules: [String: [SessionNetworkRule]]?
+
     public override init() {
         super.init()
     }
@@ -10937,6 +11071,17 @@ public class UpdateSessionNetworkConfig : Tea.TeaModel {
         if self.denyOut != nil {
             map["denyOut"] = self.denyOut!
         }
+        if self.rules != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.rules! {
+                var l1 : [Any] = []
+                for k1 in v {
+                    l1.append(k1.toMap())
+                }
+                tmp[k] = l1
+            }
+            map["rules"] = tmp
+        }
         return map
     }
 
@@ -10947,6 +11092,23 @@ public class UpdateSessionNetworkConfig : Tea.TeaModel {
         }
         if let value = dict["denyOut"] as? [String] {
             self.denyOut = value
+        }
+        if let value = dict["rules"] as? [String: Any?] {
+            var tmp : [String: [SessionNetworkRule]] = [:]
+            for (k, v) in value {
+                var l1 : [SessionNetworkRule] = []
+                for v1 in v as! [Any?] {
+                    if v1 != nil {
+                        var model = SessionNetworkRule()
+                        if v1 != nil {
+                            model.fromMap(v1 as? [String: Any?])
+                        }
+                        l1.append(model)
+                    }
+                }
+                tmp[k] = l1
+            }
+            self.rules = tmp
         }
     }
 }
@@ -16088,6 +16250,8 @@ public class ListVpcBindingsResponse : Tea.TeaModel {
 }
 
 public class PauseSessionRequest : Tea.TeaModel {
+    public var fileSystemOnly: String?
+
     public var qualifier: String?
 
     public override init() {
@@ -16104,6 +16268,9 @@ public class PauseSessionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fileSystemOnly != nil {
+            map["fileSystemOnly"] = self.fileSystemOnly!
+        }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
         }
@@ -16112,6 +16279,9 @@ public class PauseSessionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["fileSystemOnly"] as? String {
+            self.fileSystemOnly = value
+        }
         if let value = dict["qualifier"] as? String {
             self.qualifier = value
         }
