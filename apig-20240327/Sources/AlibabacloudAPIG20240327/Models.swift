@@ -8606,6 +8606,8 @@ public class HttpApiPolicyConfigs : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var policyReference: HttpApiPolicyReference?
+
     public var semanticRouterConfig: HttpApiPolicyConfigs.SemanticRouterConfig?
 
     public var type: String?
@@ -8627,6 +8629,7 @@ public class HttpApiPolicyConfigs : Tea.TeaModel {
         try self.aiStatisticsConfig?.validate()
         try self.aiTokenRateLimitConfig?.validate()
         try self.aiToolSelectionConfig?.validate()
+        try self.policyReference?.validate()
         try self.semanticRouterConfig?.validate()
     }
 
@@ -8655,6 +8658,9 @@ public class HttpApiPolicyConfigs : Tea.TeaModel {
         }
         if self.enable != nil {
             map["enable"] = self.enable!
+        }
+        if self.policyReference != nil {
+            map["policyReference"] = self.policyReference?.toMap()
         }
         if self.semanticRouterConfig != nil {
             map["semanticRouterConfig"] = self.semanticRouterConfig?.toMap()
@@ -8705,6 +8711,11 @@ public class HttpApiPolicyConfigs : Tea.TeaModel {
         if let value = dict["enable"] as? Bool {
             self.enable = value
         }
+        if let value = dict["policyReference"] as? [String: Any?] {
+            var model = HttpApiPolicyReference()
+            model.fromMap(value)
+            self.policyReference = model
+        }
         if let value = dict["semanticRouterConfig"] as? [String: Any?] {
             var model = HttpApiPolicyConfigs.SemanticRouterConfig()
             model.fromMap(value)
@@ -8712,6 +8723,45 @@ public class HttpApiPolicyConfigs : Tea.TeaModel {
         }
         if let value = dict["type"] as? String {
             self.type = value
+        }
+    }
+}
+
+public class HttpApiPolicyReference : Tea.TeaModel {
+    public var policyAttachmentId: String?
+
+    public var policyId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.policyAttachmentId != nil {
+            map["policyAttachmentId"] = self.policyAttachmentId!
+        }
+        if self.policyId != nil {
+            map["policyId"] = self.policyId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["policyAttachmentId"] as? String {
+            self.policyAttachmentId = value
+        }
+        if let value = dict["policyId"] as? String {
+            self.policyId = value
         }
     }
 }
@@ -14736,6 +14786,8 @@ public class BatchImportHttpApisRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var specContentBase64: String?
+
     public var specFileUrl: String?
 
     public var specOssConfig: BatchImportHttpApisRequest.SpecOssConfig?
@@ -14774,6 +14826,9 @@ public class BatchImportHttpApisRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
         }
+        if self.specContentBase64 != nil {
+            map["specContentBase64"] = self.specContentBase64!
+        }
         if self.specFileUrl != nil {
             map["specFileUrl"] = self.specFileUrl!
         }
@@ -14805,6 +14860,9 @@ public class BatchImportHttpApisRequest : Tea.TeaModel {
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["specContentBase64"] as? String {
+            self.specContentBase64 = value
         }
         if let value = dict["specFileUrl"] as? String {
             self.specFileUrl = value
@@ -17732,6 +17790,8 @@ public class CreateDomainRequest : Tea.TeaModel {
 
     public var tlsMin: String?
 
+    public var dryRun: Bool?
+
     public override init() {
         super.init()
     }
@@ -17789,6 +17849,9 @@ public class CreateDomainRequest : Tea.TeaModel {
         if self.tlsMin != nil {
             map["tlsMin"] = self.tlsMin!
         }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
@@ -17837,6 +17900,9 @@ public class CreateDomainRequest : Tea.TeaModel {
         }
         if let value = dict["tlsMin"] as? String {
             self.tlsMin = value
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }
@@ -23502,6 +23568,37 @@ public class DeleteGatewaySecurityGroupRuleResponse : Tea.TeaModel {
             var model = DeleteGatewaySecurityGroupRuleResponseBody()
             model.fromMap(value)
             self.body = model
+        }
+    }
+}
+
+public class DeleteHttpApiRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }
@@ -31746,6 +31843,37 @@ public class GetGatewayQuotaRuleSubjectUsageResponse : Tea.TeaModel {
             var model = GetGatewayQuotaRuleSubjectUsageResponseBody()
             model.fromMap(value)
             self.body = model
+        }
+    }
+}
+
+public class GetHttpApiRequest : Tea.TeaModel {
+    public var expandPolicyConfigs: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expandPolicyConfigs != nil {
+            map["expandPolicyConfigs"] = self.expandPolicyConfigs!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expandPolicyConfigs"] as? Bool {
+            self.expandPolicyConfigs = value
         }
     }
 }
@@ -52064,6 +52192,8 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
 
     public var versionConfig: HttpApiVersionConfig?
 
+    public var dryRun: Bool?
+
     public override init() {
         super.init()
     }
@@ -52124,6 +52254,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
         if self.versionConfig != nil {
             map["versionConfig"] = self.versionConfig?.toMap()
         }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
@@ -52183,6 +52316,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
             var model = HttpApiVersionConfig()
             model.fromMap(value)
             self.versionConfig = model
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }
