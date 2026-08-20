@@ -3500,6 +3500,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeChargeModuleWithOptions(_ request: DescribeChargeModuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeChargeModuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chargeUnit)) {
+            query["ChargeUnit"] = request.chargeUnit ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.payType)) {
             query["PayType"] = request.payType ?? "";
         }

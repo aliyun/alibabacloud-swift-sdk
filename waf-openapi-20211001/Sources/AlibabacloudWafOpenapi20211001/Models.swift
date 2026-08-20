@@ -16147,6 +16147,8 @@ public class DescribeCertsResponse : Tea.TeaModel {
 }
 
 public class DescribeChargeModuleRequest : Tea.TeaModel {
+    public var chargeUnit: String?
+
     public var payType: String?
 
     public var regionId: String?
@@ -16167,6 +16169,9 @@ public class DescribeChargeModuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chargeUnit != nil {
+            map["ChargeUnit"] = self.chargeUnit!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -16181,6 +16186,9 @@ public class DescribeChargeModuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChargeUnit"] as? String {
+            self.chargeUnit = value
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -16198,6 +16206,8 @@ public class DescribeChargeModuleResponseBody : Tea.TeaModel {
         public var chargeMode: String?
 
         public var chargeModeDetails: [String]?
+
+        public var chargeUnit: String?
 
         public var moduleCode: String?
 
@@ -16227,6 +16237,9 @@ public class DescribeChargeModuleResponseBody : Tea.TeaModel {
             if self.chargeModeDetails != nil {
                 map["ChargeModeDetails"] = self.chargeModeDetails!
             }
+            if self.chargeUnit != nil {
+                map["ChargeUnit"] = self.chargeUnit!
+            }
             if self.moduleCode != nil {
                 map["ModuleCode"] = self.moduleCode!
             }
@@ -16249,6 +16262,9 @@ public class DescribeChargeModuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["ChargeModeDetails"] as? [String] {
                 self.chargeModeDetails = value
+            }
+            if let value = dict["ChargeUnit"] as? String {
+                self.chargeUnit = value
             }
             if let value = dict["ModuleCode"] as? String {
                 self.moduleCode = value
