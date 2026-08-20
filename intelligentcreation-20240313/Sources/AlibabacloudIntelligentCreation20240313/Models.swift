@@ -1634,6 +1634,8 @@ public class TextThemeListResult : Tea.TeaModel {
 public class UploadInfo : Tea.TeaModel {
     public var accessId: String?
 
+    public var accessUrl: String?
+
     public var host: String?
 
     public var key: String?
@@ -1661,6 +1663,9 @@ public class UploadInfo : Tea.TeaModel {
         if self.accessId != nil {
             map["accessId"] = self.accessId!
         }
+        if self.accessUrl != nil {
+            map["accessUrl"] = self.accessUrl!
+        }
         if self.host != nil {
             map["host"] = self.host!
         }
@@ -1683,6 +1688,9 @@ public class UploadInfo : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["accessId"] as? String {
             self.accessId = value
+        }
+        if let value = dict["accessUrl"] as? String {
+            self.accessUrl = value
         }
         if let value = dict["host"] as? String {
             self.host = value
