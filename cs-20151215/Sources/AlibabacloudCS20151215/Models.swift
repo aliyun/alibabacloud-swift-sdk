@@ -1951,6 +1951,8 @@ public class Nodepool : Tea.TeaModel {
 
         public var instanceMetadataOptions: InstanceMetadataOptions?
 
+        public var instancePatterns: [InstancePatterns]?
+
         public var instanceTypes: [String]?
 
         public var internetChargeType: String?
@@ -2080,6 +2082,13 @@ public class Nodepool : Tea.TeaModel {
             }
             if self.instanceMetadataOptions != nil {
                 map["instance_metadata_options"] = self.instanceMetadataOptions?.toMap()
+            }
+            if self.instancePatterns != nil {
+                var tmp : [Any] = []
+                for k in self.instancePatterns! {
+                    tmp.append(k.toMap())
+                }
+                map["instance_patterns"] = tmp
             }
             if self.instanceTypes != nil {
                 map["instance_types"] = self.instanceTypes!
@@ -2255,6 +2264,19 @@ public class Nodepool : Tea.TeaModel {
                 var model = InstanceMetadataOptions()
                 model.fromMap(value)
                 self.instanceMetadataOptions = model
+            }
+            if let value = dict["instance_patterns"] as? [Any?] {
+                var tmp : [InstancePatterns] = []
+                for v in value {
+                    if v != nil {
+                        var model = InstancePatterns()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.instancePatterns = tmp
             }
             if let value = dict["instance_types"] as? [String] {
                 self.instanceTypes = value
