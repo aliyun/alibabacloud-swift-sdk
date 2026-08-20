@@ -14464,6 +14464,8 @@ public class ListModelProviderTemplatesResponseBody : Tea.TeaModel {
 
         public var providerType: String?
 
+        public var wuyingProviderKey: String?
+
         public override init() {
             super.init()
         }
@@ -14499,6 +14501,9 @@ public class ListModelProviderTemplatesResponseBody : Tea.TeaModel {
             if self.providerType != nil {
                 map["ProviderType"] = self.providerType!
             }
+            if self.wuyingProviderKey != nil {
+                map["WuyingProviderKey"] = self.wuyingProviderKey!
+            }
             return map
         }
 
@@ -14524,6 +14529,9 @@ public class ListModelProviderTemplatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProviderType"] as? String {
                 self.providerType = value
+            }
+            if let value = dict["WuyingProviderKey"] as? String {
+                self.wuyingProviderKey = value
             }
         }
     }
