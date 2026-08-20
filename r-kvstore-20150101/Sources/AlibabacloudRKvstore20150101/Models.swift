@@ -1038,6 +1038,8 @@ public class CreateAccountRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var parameters: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -1084,6 +1086,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -1124,6 +1129,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["Parameters"] as? String {
+            self.parameters = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -7088,9 +7096,15 @@ public class DescribeAccountsRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var searchAccountName: String?
 
     public var securityToken: String?
 
@@ -7120,11 +7134,20 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.searchAccountName != nil {
+            map["SearchAccountName"] = self.searchAccountName!
         }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
@@ -7146,11 +7169,20 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["SearchAccountName"] as? String {
+            self.searchAccountName = value
         }
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
@@ -7247,6 +7279,8 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
 
             public var instanceId: String?
 
+            public var parameters: String?
+
             public override init() {
                 super.init()
             }
@@ -7280,6 +7314,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
+                if self.parameters != nil {
+                    map["Parameters"] = self.parameters!
+                }
                 return map
             }
 
@@ -7304,6 +7341,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
+                }
+                if let value = dict["Parameters"] as? String {
+                    self.parameters = value
                 }
             }
         }
@@ -7352,7 +7392,13 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
     }
     public var accounts: DescribeAccountsResponseBody.Accounts?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var requestId: String?
+
+    public var totalCount: Int32?
 
     public override init() {
         super.init()
@@ -7372,8 +7418,17 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
         if self.accounts != nil {
             map["Accounts"] = self.accounts?.toMap()
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
         }
         return map
     }
@@ -7385,8 +7440,17 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
             model.fromMap(value)
             self.accounts = model
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
@@ -25297,6 +25361,8 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var parameterCategory: String?
+
     public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
@@ -25337,6 +25403,9 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.parameterCategory != nil {
+            map["ParameterCategory"] = self.parameterCategory!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -25371,6 +25440,9 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["ParameterCategory"] as? String {
+            self.parameterCategory = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -36288,6 +36360,142 @@ public class ModifyAccountDescriptionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyAccountDescriptionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyAccountParameterRequest : Tea.TeaModel {
+    public var accountName: String?
+
+    public var instanceId: String?
+
+    public var parameters: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccountName"] as? String {
+            self.accountName = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Parameters"] as? String {
+            self.parameters = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+    }
+}
+
+public class ModifyAccountParameterResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyAccountParameterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyAccountParameterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyAccountParameterResponseBody()
             model.fromMap(value)
             self.body = model
         }

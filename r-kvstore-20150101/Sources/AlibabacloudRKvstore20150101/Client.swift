@@ -47,40 +47,38 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhengzhou-nebula-1": "r-kvstore.aliyuncs.com",
             "eu-west-1-oxs": "r-kvstore.aliyuncs.com",
             "rus-west-1-pop": "r-kvstore.aliyuncs.com",
-            "us-west-1": "r-kvstore.us-west-1.aliyuncs.com",
-            "us-southeast-1": "r-kvstore.us-southeast-1.aliyuncs.com",
+            "cn-zhengzhou-jva": "r-kvstore.cn-zhengzhou-jva.aliyuncs.com",
+            "cn-wuhan-lr": "r-kvstore.cn-wuhan-lr.aliyuncs.com",
+            "cn-hongkong": "r-kvstore.cn-hongkong.aliyuncs.com",
+            "cn-zhangjiakou": "r-kvstore.cn-zhangjiakou.aliyuncs.com",
+            "cn-shenzhen": "r-kvstore.cn-shenzhen.aliyuncs.com",
+            "cn-nanjing": "r-kvstore.cn-nanjing.aliyuncs.com",
+            "ap-northeast-2": "r-kvstore.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "r-kvstore.ap-northeast-1.aliyuncs.com",
+            "cn-fuzhou": "r-kvstore.cn-fuzhou.aliyuncs.com",
+            "cn-chengdu": "r-kvstore.cn-chengdu.aliyuncs.com",
+            "cn-guangzhou": "r-kvstore.cn-guangzhou.aliyuncs.com",
+            "ap-southeast-1": "r-kvstore.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-2": "r-kvstore.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-3": "r-kvstore.ap-southeast-3.aliyuncs.com",
+            "cn-huhehaote": "r-kvstore.cn-huhehaote.aliyuncs.com",
+            "ap-southeast-5": "r-kvstore.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "r-kvstore.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "r-kvstore.ap-southeast-7.aliyuncs.com",
             "us-east-1": "r-kvstore.us-east-1.aliyuncs.com",
+            "us-southeast-1": "r-kvstore.us-southeast-1.aliyuncs.com",
+            "eu-west-1": "r-kvstore.eu-west-1.aliyuncs.com",
+            "us-west-1": "r-kvstore.us-west-1.aliyuncs.com",
+            "eu-central-1": "r-kvstore.eu-central-1.aliyuncs.com",
             "na-south-1": "r-kvstore.na-south-1.aliyuncs.com",
             "me-east-1": "r-kvstore.me-east-1.aliyuncs.com",
             "me-central-1": "r-kvstore.me-central-1.aliyuncs.com",
-            "eu-west-2": "r-kvstore.eu-west-2.aliyuncs.com",
-            "eu-west-1": "r-kvstore.eu-west-1.aliyuncs.com",
-            "eu-central-1": "r-kvstore.eu-central-1.aliyuncs.com",
-            "cn-zhongwei": "r-kvstore.cn-zhongwei.aliyuncs.com",
-            "cn-zhengzhou-jva": "r-kvstore.cn-zhengzhou-jva.aliyuncs.com",
-            "cn-zhangjiakou": "r-kvstore.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu-gic-1": "r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com",
-            "cn-wuhan-lr": "r-kvstore.cn-wuhan-lr.aliyuncs.com",
-            "cn-shenzhen-finance-1": "r-kvstore.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shenzhen": "r-kvstore.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "r-kvstore.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-north-2-gov-1": "r-kvstore.cn-north-2-gov-1.aliyuncs.com",
-            "cn-nanjing": "r-kvstore.cn-nanjing.aliyuncs.com",
-            "cn-huhehaote": "r-kvstore.cn-huhehaote.aliyuncs.com",
-            "cn-hongkong": "r-kvstore.cn-hongkong.aliyuncs.com",
+            "ap-south-1": "r-kvstore.ap-south-1.aliyuncs.com",
             "cn-heyuan-acdr-1": "r-kvstore.cn-heyuan-acdr-1.aliyuncs.com",
-            "cn-guangzhou": "r-kvstore.cn-guangzhou.aliyuncs.com",
-            "cn-fuzhou": "r-kvstore.cn-fuzhou.aliyuncs.com",
-            "cn-chengdu": "r-kvstore.cn-chengdu.aliyuncs.com",
+            "cn-shenzhen-finance-1": "r-kvstore.cn-shenzhen-finance-1.aliyuncs.com",
             "cn-beijing-finance-1": "r-kvstore.cn-beijing-finance-1.aliyuncs.com",
-            "ap-southeast-8": "r-kvstore.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "r-kvstore.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "r-kvstore.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "r-kvstore.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "r-kvstore.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "r-kvstore.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "r-kvstore.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "r-kvstore.ap-northeast-1.aliyuncs.com"
+            "cn-shanghai-finance-1": "r-kvstore.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("r-kvstore", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -426,6 +424,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            query["Parameters"] = request.parameters ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -2022,11 +2023,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchAccountName)) {
+            query["SearchAccountName"] = request.searchAccountName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
@@ -4833,6 +4843,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.parameterCategory)) {
+            query["ParameterCategory"] = request.parameterCategory ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
@@ -6422,6 +6435,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyAccountDescription(_ request: ModifyAccountDescriptionRequest) async throws -> ModifyAccountDescriptionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyAccountDescriptionWithOptions(request as! ModifyAccountDescriptionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAccountParameterWithOptions(_ request: ModifyAccountParameterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAccountParameterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountName)) {
+            query["AccountName"] = request.accountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            query["Parameters"] = request.parameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyAccountParameter",
+            "version": "2015-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyAccountParameterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAccountParameter(_ request: ModifyAccountParameterRequest) async throws -> ModifyAccountParameterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyAccountParameterWithOptions(request as! ModifyAccountParameterRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
