@@ -8,9 +8,13 @@ import AlibabacloudEndpointUtil
 public class CreateCallOutboundInstantRequest : Tea.TeaModel {
     public var calledNumber: String?
 
+    public var callerNumber: String?
+
     public var callerUacAccountId: String?
 
     public var currentWorkspaceId: String?
+
+    public var customerLineCode: String?
 
     public var customerName: String?
 
@@ -37,11 +41,17 @@ public class CreateCallOutboundInstantRequest : Tea.TeaModel {
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
         }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
         if self.callerUacAccountId != nil {
             map["CallerUacAccountId"] = self.callerUacAccountId!
         }
         if self.currentWorkspaceId != nil {
             map["CurrentWorkspaceId"] = self.currentWorkspaceId!
+        }
+        if self.customerLineCode != nil {
+            map["CustomerLineCode"] = self.customerLineCode!
         }
         if self.customerName != nil {
             map["CustomerName"] = self.customerName!
@@ -63,11 +73,17 @@ public class CreateCallOutboundInstantRequest : Tea.TeaModel {
         if let value = dict["CalledNumber"] as? String {
             self.calledNumber = value
         }
+        if let value = dict["CallerNumber"] as? String {
+            self.callerNumber = value
+        }
         if let value = dict["CallerUacAccountId"] as? String {
             self.callerUacAccountId = value
         }
         if let value = dict["CurrentWorkspaceId"] as? String {
             self.currentWorkspaceId = value
+        }
+        if let value = dict["CustomerLineCode"] as? String {
+            self.customerLineCode = value
         }
         if let value = dict["CustomerName"] as? String {
             self.customerName = value

@@ -30,11 +30,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.calledNumber)) {
             body["CalledNumber"] = request.calledNumber ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callerNumber)) {
+            body["CallerNumber"] = request.callerNumber ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.callerUacAccountId)) {
             body["CallerUacAccountId"] = request.callerUacAccountId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.currentWorkspaceId)) {
             body["CurrentWorkspaceId"] = request.currentWorkspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerLineCode)) {
+            body["CustomerLineCode"] = request.customerLineCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.customerName)) {
             body["CustomerName"] = request.customerName ?? "";
