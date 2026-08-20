@@ -7826,6 +7826,8 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
     public var policyConfigs: [HttpApiPolicyConfigs]?
 
+    public var restApiRouteMode: String?
+
     public var routeBackend: Backend?
 
     public var serviceConfigs: [HttpApiDeployConfig.ServiceConfigs]?
@@ -7902,6 +7904,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["policyConfigs"] = tmp
+        }
+        if self.restApiRouteMode != nil {
+            map["restApiRouteMode"] = self.restApiRouteMode!
         }
         if self.routeBackend != nil {
             map["routeBackend"] = self.routeBackend?.toMap()
@@ -8000,6 +8005,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
             self.policyConfigs = tmp
+        }
+        if let value = dict["restApiRouteMode"] as? String {
+            self.restApiRouteMode = value
         }
         if let value = dict["routeBackend"] as? [String: Any?] {
             var model = Backend()
@@ -25012,6 +25020,8 @@ public class DeployHttpApiRequest : Tea.TeaModel {
         }
         public var description_: String?
 
+        public var enableRouteCompression: Bool?
+
         public var environment: DeployHttpApiRequest.RestApiConfig.Environment?
 
         public var gatewayId: String?
@@ -25040,6 +25050,9 @@ public class DeployHttpApiRequest : Tea.TeaModel {
             if self.description_ != nil {
                 map["description"] = self.description_!
             }
+            if self.enableRouteCompression != nil {
+                map["enableRouteCompression"] = self.enableRouteCompression!
+            }
             if self.environment != nil {
                 map["environment"] = self.environment?.toMap()
             }
@@ -25066,6 +25079,9 @@ public class DeployHttpApiRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["enableRouteCompression"] as? Bool {
+                self.enableRouteCompression = value
             }
             if let value = dict["environment"] as? [String: Any?] {
                 var model = DeployHttpApiRequest.RestApiConfig.Environment()
