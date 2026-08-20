@@ -10807,13 +10807,19 @@ public class OpenTrialPackageResponse : Tea.TeaModel {
 }
 
 public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
+    public var actionCodes: [String]?
+
     public var aliyunLang: String?
 
     public var caseCode: String?
 
+    public var caseCodes: [String]?
+
     public var current: String?
 
     public var eventId: String?
+
+    public var eventIds: [String]?
 
     public var pageSize: String?
 
@@ -10824,6 +10830,8 @@ public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
     public var resourceId: String?
 
     public var status: String?
+
+    public var statuses: [String]?
 
     public override init() {
         super.init()
@@ -10839,17 +10847,26 @@ public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.actionCodes != nil {
+            map["ActionCodes"] = self.actionCodes!
+        }
         if self.aliyunLang != nil {
             map["AliyunLang"] = self.aliyunLang!
         }
         if self.caseCode != nil {
             map["CaseCode"] = self.caseCode!
         }
+        if self.caseCodes != nil {
+            map["CaseCodes"] = self.caseCodes!
+        }
         if self.current != nil {
             map["Current"] = self.current!
         }
         if self.eventId != nil {
             map["EventId"] = self.eventId!
+        }
+        if self.eventIds != nil {
+            map["EventIds"] = self.eventIds!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
@@ -10866,22 +10883,34 @@ public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.statuses != nil {
+            map["Statuses"] = self.statuses!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ActionCodes"] as? [String] {
+            self.actionCodes = value
+        }
         if let value = dict["AliyunLang"] as? String {
             self.aliyunLang = value
         }
         if let value = dict["CaseCode"] as? String {
             self.caseCode = value
         }
+        if let value = dict["CaseCodes"] as? [String] {
+            self.caseCodes = value
+        }
         if let value = dict["Current"] as? String {
             self.current = value
         }
         if let value = dict["EventId"] as? String {
             self.eventId = value
+        }
+        if let value = dict["EventIds"] as? [String] {
+            self.eventIds = value
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
@@ -10897,6 +10926,136 @@ public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Statuses"] as? [String] {
+            self.statuses = value
+        }
+    }
+}
+
+public class QueryAccountSafetyIncidentShrinkRequest : Tea.TeaModel {
+    public var actionCodesShrink: String?
+
+    public var aliyunLang: String?
+
+    public var caseCode: String?
+
+    public var caseCodesShrink: String?
+
+    public var current: String?
+
+    public var eventId: String?
+
+    public var eventIdsShrink: String?
+
+    public var pageSize: String?
+
+    public var punishEndTime: String?
+
+    public var punishStartTime: String?
+
+    public var resourceId: String?
+
+    public var status: String?
+
+    public var statusesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionCodesShrink != nil {
+            map["ActionCodes"] = self.actionCodesShrink!
+        }
+        if self.aliyunLang != nil {
+            map["AliyunLang"] = self.aliyunLang!
+        }
+        if self.caseCode != nil {
+            map["CaseCode"] = self.caseCode!
+        }
+        if self.caseCodesShrink != nil {
+            map["CaseCodes"] = self.caseCodesShrink!
+        }
+        if self.current != nil {
+            map["Current"] = self.current!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.eventIdsShrink != nil {
+            map["EventIds"] = self.eventIdsShrink!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.punishEndTime != nil {
+            map["PunishEndTime"] = self.punishEndTime!
+        }
+        if self.punishStartTime != nil {
+            map["PunishStartTime"] = self.punishStartTime!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.statusesShrink != nil {
+            map["Statuses"] = self.statusesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionCodes"] as? String {
+            self.actionCodesShrink = value
+        }
+        if let value = dict["AliyunLang"] as? String {
+            self.aliyunLang = value
+        }
+        if let value = dict["CaseCode"] as? String {
+            self.caseCode = value
+        }
+        if let value = dict["CaseCodes"] as? String {
+            self.caseCodesShrink = value
+        }
+        if let value = dict["Current"] as? String {
+            self.current = value
+        }
+        if let value = dict["EventId"] as? String {
+            self.eventId = value
+        }
+        if let value = dict["EventIds"] as? String {
+            self.eventIdsShrink = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["PunishEndTime"] as? String {
+            self.punishEndTime = value
+        }
+        if let value = dict["PunishStartTime"] as? String {
+            self.punishStartTime = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Statuses"] as? String {
+            self.statusesShrink = value
         }
     }
 }

@@ -987,20 +987,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryAccountSafetyIncidentWithOptions(_ request: QueryAccountSafetyIncidentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAccountSafetyIncidentResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func queryAccountSafetyIncidentWithOptions(_ tmpReq: QueryAccountSafetyIncidentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAccountSafetyIncidentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryAccountSafetyIncidentShrinkRequest = QueryAccountSafetyIncidentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.actionCodes)) {
+            request.actionCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.actionCodes, "ActionCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.caseCodes)) {
+            request.caseCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.caseCodes, "CaseCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.eventIds)) {
+            request.eventIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.eventIds, "EventIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.statuses)) {
+            request.statusesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statuses, "Statuses", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actionCodesShrink)) {
+            query["ActionCodes"] = request.actionCodesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
             query["AliyunLang"] = request.aliyunLang ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.caseCode)) {
             query["CaseCode"] = request.caseCode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.caseCodesShrink)) {
+            query["CaseCodes"] = request.caseCodesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.current)) {
             query["Current"] = request.current ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.eventId)) {
             query["EventId"] = request.eventId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventIdsShrink)) {
+            query["EventIds"] = request.eventIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize ?? "";
@@ -1016,6 +1039,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusesShrink)) {
+            query["Statuses"] = request.statusesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
