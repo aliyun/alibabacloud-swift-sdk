@@ -119,6 +119,21 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDocParserJobWithOptions(_ request: CreateDocParserJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDocParserJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            query["AgentName"] = request.agentName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asrLanguage)) {
+            query["AsrLanguage"] = request.asrLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.audioClipOutput)) {
+            query["AudioClipOutput"] = request.audioClipOutput!;
+        }
+        if (!TeaUtils.Client.isUnset(request.audioWindowSeconds)) {
+            query["AudioWindowSeconds"] = request.audioWindowSeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.chunkSummary)) {
+            query["ChunkSummary"] = request.chunkSummary!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileFormat)) {
             query["FileFormat"] = request.fileFormat ?? "";
         }
@@ -128,8 +143,32 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileUrl)) {
             query["FileUrl"] = request.fileUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.frameOutput)) {
+            query["FrameOutput"] = request.frameOutput!;
+        }
+        if (!TeaUtils.Client.isUnset(request.globalSummary)) {
+            query["GlobalSummary"] = request.globalSummary!;
+        }
         if (!TeaUtils.Client.isUnset(request.imageMode)) {
             query["ImageMode"] = request.imageMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUnderstanding)) {
+            query["ImageUnderstanding"] = request.imageUnderstanding ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaChunkIntervalSeconds)) {
+            query["MediaChunkIntervalSeconds"] = request.mediaChunkIntervalSeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaChunkStrategy)) {
+            query["MediaChunkStrategy"] = request.mediaChunkStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaFramesPerMinute)) {
+            query["MediaFramesPerMinute"] = request.mediaFramesPerMinute!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaMaxFrameBudget)) {
+            query["MediaMaxFrameBudget"] = request.mediaMaxFrameBudget!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaMinFrameBudget)) {
+            query["MediaMinFrameBudget"] = request.mediaMinFrameBudget!;
         }
         if (!TeaUtils.Client.isUnset(request.ossFileUrl)) {
             query["OssFileUrl"] = request.ossFileUrl ?? "";
@@ -137,8 +176,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.outputFormat)) {
             query["OutputFormat"] = request.outputFormat ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parseScene)) {
+            query["ParseScene"] = request.parseScene ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseMode)) {
+            query["ResponseMode"] = request.responseMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resultType)) {
             query["ResultType"] = request.resultType ?? "";
@@ -258,11 +303,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDocParserJobResultWithOptions(_ request: DescribeDocParserJobResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDocParserJobResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            query["AgentName"] = request.agentName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobId)) {
             query["JobId"] = request.jobId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resultType)) {
+            query["ResultType"] = request.resultType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -292,6 +343,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDocParserJobStatusWithOptions(_ request: DescribeDocParserJobStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDocParserJobStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            query["AgentName"] = request.agentName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobId)) {
             query["JobId"] = request.jobId ?? "";
         }
@@ -326,6 +380,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func webFetchWithOptions(_ request: WebFetchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> WebFetchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            query["AgentName"] = request.agentName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.outputFormat)) {
             query["OutputFormat"] = request.outputFormat ?? "";
         }
@@ -363,6 +420,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func webSearchWithOptions(_ request: WebSearchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> WebSearchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            query["AgentName"] = request.agentName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
