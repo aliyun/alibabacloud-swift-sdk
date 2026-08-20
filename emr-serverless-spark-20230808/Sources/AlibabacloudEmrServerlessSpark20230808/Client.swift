@@ -10,21 +10,21 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-west-1": "emr-serverless-spark.us-west-1.aliyuncs.com",
-            "us-east-1": "emr-serverless-spark.us-east-1.aliyuncs.com",
-            "na-south-1": "emr-serverless-spark.na-south-1.aliyuncs.com",
-            "eu-central-1": "emr-serverless-spark.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "emr-serverless-spark.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "emr-serverless-spark.cn-wulanchabu.aliyuncs.com",
             "cn-shenzhen": "emr-serverless-spark.cn-shenzhen.aliyuncs.com",
+            "cn-wulanchabu": "emr-serverless-spark.cn-wulanchabu.aliyuncs.com",
+            "cn-beijing": "emr-serverless-spark.cn-beijing.aliyuncs.com",
+            "ap-northeast-1": "emr-serverless-spark.ap-northeast-1.aliyuncs.com",
+            "cn-chengdu": "emr-serverless-spark.cn-chengdu.aliyuncs.com",
             "cn-shanghai": "emr-serverless-spark.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "emr-serverless-spark.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "emr-serverless-spark.cn-hangzhou.aliyuncs.com",
-            "cn-chengdu": "emr-serverless-spark.cn-chengdu.aliyuncs.com",
-            "cn-beijing": "emr-serverless-spark.cn-beijing.aliyuncs.com",
-            "ap-southeast-5": "emr-serverless-spark.ap-southeast-5.aliyuncs.com",
             "ap-southeast-1": "emr-serverless-spark.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "emr-serverless-spark.ap-northeast-1.aliyuncs.com"
+            "ap-southeast-5": "emr-serverless-spark.ap-southeast-5.aliyuncs.com",
+            "cn-zhangjiakou": "emr-serverless-spark.cn-zhangjiakou.aliyuncs.com",
+            "cn-hangzhou": "emr-serverless-spark.cn-hangzhou.aliyuncs.com",
+            "us-west-1": "emr-serverless-spark.us-west-1.aliyuncs.com",
+            "us-east-1": "emr-serverless-spark.us-east-1.aliyuncs.com",
+            "eu-central-1": "emr-serverless-spark.eu-central-1.aliyuncs.com",
+            "na-south-1": "emr-serverless-spark.na-south-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("emr-serverless-spark", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1048,6 +1048,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWorkspaceQueueWithOptions(_ workspaceId: String, _ workspaceQueueName: String, _ request: DeleteWorkspaceQueueRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWorkspaceQueueResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWorkspaceQueue",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/queues/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceQueueName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWorkspaceQueueResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWorkspaceQueue(_ workspaceId: String, _ workspaceQueueName: String, _ request: DeleteWorkspaceQueueRequest) async throws -> DeleteWorkspaceQueueResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteWorkspaceQueueWithOptions(workspaceId as! String, workspaceQueueName as! String, request as! DeleteWorkspaceQueueRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func editWorkspaceQueueWithOptions(_ request: EditWorkspaceQueueRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EditWorkspaceQueueResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1060,6 +1093,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.gpuSpec)) {
             body["gpuSpec"] = request.gpuSpec ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["instanceId"] = request.instanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceSpec)) {
             body["resourceSpec"] = request.resourceSpec!;
@@ -1850,6 +1886,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endTimeShrink)) {
             query["endTime"] = request.endTimeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByState)) {
+            query["groupByState"] = request.groupByState!;
         }
         if (!TeaUtils.Client.isUnset(request.isWorkflow)) {
             query["isWorkflow"] = request.isWorkflow ?? "";
@@ -3665,6 +3704,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.gpuSpec)) {
             body["gpuSpec"] = request.gpuSpec ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.gpuSubscription)) {
+            body["gpuSubscription"] = request.gpuSubscription!;
         }
         if (!TeaUtils.Client.isUnset(request.ipWhiteList)) {
             body["ipWhiteList"] = request.ipWhiteList ?? [];
