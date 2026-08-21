@@ -4364,6 +4364,14 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
             }
         }
         public class ReceiptUserInfoDto : Tea.TeaModel {
+            public var bankAccount: String?
+
+            public var bankName: String?
+
+            public var regAddress: String?
+
+            public var regPhone: String?
+
             public var taxNumber: String?
 
             public override init() {
@@ -4380,6 +4388,18 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bankAccount != nil {
+                    map["BankAccount"] = self.bankAccount!
+                }
+                if self.bankName != nil {
+                    map["BankName"] = self.bankName!
+                }
+                if self.regAddress != nil {
+                    map["RegAddress"] = self.regAddress!
+                }
+                if self.regPhone != nil {
+                    map["RegPhone"] = self.regPhone!
+                }
                 if self.taxNumber != nil {
                     map["TaxNumber"] = self.taxNumber!
                 }
@@ -4388,6 +4408,18 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BankAccount"] as? String {
+                    self.bankAccount = value
+                }
+                if let value = dict["BankName"] as? String {
+                    self.bankName = value
+                }
+                if let value = dict["RegAddress"] as? String {
+                    self.regAddress = value
+                }
+                if let value = dict["RegPhone"] as? String {
+                    self.regPhone = value
+                }
                 if let value = dict["TaxNumber"] as? String {
                     self.taxNumber = value
                 }
@@ -9663,9 +9695,15 @@ public class PushMeteringDataResponse : Tea.TeaModel {
 }
 
 public class PushTimesUsageRequest : Tea.TeaModel {
+    public var adjust: Bool?
+
+    public var adjustDate: Int64?
+
     public var clientToken: String?
 
     public var instanceId: String?
+
+    public var mark: String?
 
     public var times: Int64?
 
@@ -9683,11 +9721,20 @@ public class PushTimesUsageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adjust != nil {
+            map["Adjust"] = self.adjust!
+        }
+        if self.adjustDate != nil {
+            map["AdjustDate"] = self.adjustDate!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.mark != nil {
+            map["Mark"] = self.mark!
         }
         if self.times != nil {
             map["Times"] = self.times!
@@ -9697,11 +9744,20 @@ public class PushTimesUsageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Adjust"] as? Bool {
+            self.adjust = value
+        }
+        if let value = dict["AdjustDate"] as? Int64 {
+            self.adjustDate = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["Mark"] as? String {
+            self.mark = value
         }
         if let value = dict["Times"] as? Int64 {
             self.times = value

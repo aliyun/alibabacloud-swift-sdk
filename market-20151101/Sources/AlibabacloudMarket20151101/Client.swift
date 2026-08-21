@@ -32,7 +32,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-finance": "market.aliyuncs.com",
             "cn-shenzhen-finance-1": "market.aliyuncs.com",
             "cn-shanghai-finance-1": "market.aliyuncs.com",
-            "cn-north-2-gov-1": "market.aliyuncs.com"
+            "cn-north-2-gov-1": "market.aliyuncs.com",
+            "ap-southeast-1": "market.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("market", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1113,11 +1114,20 @@ open class Client : AlibabacloudOpenApi.Client {
     public func pushTimesUsageWithOptions(_ request: PushTimesUsageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PushTimesUsageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adjust)) {
+            query["Adjust"] = request.adjust!;
+        }
+        if (!TeaUtils.Client.isUnset(request.adjustDate)) {
+            query["AdjustDate"] = request.adjustDate!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mark)) {
+            query["Mark"] = request.mark ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.times)) {
             query["Times"] = request.times!;
