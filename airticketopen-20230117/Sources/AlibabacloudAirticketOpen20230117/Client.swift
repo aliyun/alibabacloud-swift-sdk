@@ -1248,6 +1248,530 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketApplyRefundWithOptions(_ request: TicketApplyRefundRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketApplyRefundResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.distributorOrderId)) {
+            body["DistributorOrderId"] = request.distributorOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refundReason)) {
+            body["RefundReason"] = request.refundReason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refundRemark)) {
+            body["RefundRemark"] = request.refundRemark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketApplyRefund",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketApplyRefund",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketApplyRefundResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketApplyRefund(_ request: TicketApplyRefundRequest) async throws -> TicketApplyRefundResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketApplyRefundWithOptions(request as! TicketApplyRefundRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketCancelOrderWithOptions(_ request: TicketCancelOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketCancelOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.distributorOrderId)) {
+            body["DistributorOrderId"] = request.distributorOrderId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketCancelOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketCancelOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketCancelOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketCancelOrder(_ request: TicketCancelOrderRequest) async throws -> TicketCancelOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketCancelOrderWithOptions(request as! TicketCancelOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketCheckRefundWithOptions(_ request: TicketCheckRefundRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketCheckRefundResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.distributorOrderId)) {
+            body["DistributorOrderId"] = request.distributorOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refundReason)) {
+            body["RefundReason"] = request.refundReason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refundRemark)) {
+            body["RefundRemark"] = request.refundRemark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketCheckRefund",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketCheckRefund",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketCheckRefundResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketCheckRefund(_ request: TicketCheckRefundRequest) async throws -> TicketCheckRefundResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketCheckRefundWithOptions(request as! TicketCheckRefundRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketCreateOrderWithOptions(_ tmpReq: TicketCreateOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketCreateOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: TicketCreateOrderShrinkRequest = TicketCreateOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contact)) {
+            request.contactShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contact, "Contact", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.orderProduct)) {
+            request.orderProductShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.orderProduct, "OrderProduct", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.totalDistributionPrice)) {
+            request.totalDistributionPriceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.totalDistributionPrice, "TotalDistributionPrice", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.travelers)) {
+            request.travelersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.travelers, "Travelers", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactShrink)) {
+            body["Contact"] = request.contactShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.distributorOrderId)) {
+            body["DistributorOrderId"] = request.distributorOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderProductShrink)) {
+            body["OrderProduct"] = request.orderProductShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quantity)) {
+            body["Quantity"] = request.quantity!;
+        }
+        if (!TeaUtils.Client.isUnset(request.totalDistributionPriceShrink)) {
+            body["TotalDistributionPrice"] = request.totalDistributionPriceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.travelersShrink)) {
+            body["Travelers"] = request.travelersShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketCreateOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketCreateOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketCreateOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketCreateOrder(_ request: TicketCreateOrderRequest) async throws -> TicketCreateOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketCreateOrderWithOptions(request as! TicketCreateOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketPageQueryProductWithOptions(_ request: TicketPageQueryProductRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketPageQueryProductResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            body["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scenicId)) {
+            body["ScenicId"] = request.scenicId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketPageQueryProduct",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketPageQueryProduct",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketPageQueryProductResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketPageQueryProduct(_ request: TicketPageQueryProductRequest) async throws -> TicketPageQueryProductResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketPageQueryProductWithOptions(request as! TicketPageQueryProductRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketPageQueryScenicWithOptions(_ request: TicketPageQueryScenicRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketPageQueryScenicResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            body["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketPageQueryScenic",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketPageQueryScenic",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketPageQueryScenicResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketPageQueryScenic(_ request: TicketPageQueryScenicRequest) async throws -> TicketPageQueryScenicResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketPageQueryScenicWithOptions(request as! TicketPageQueryScenicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketPayOrderWithOptions(_ request: TicketPayOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketPayOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.distributorOrderId)) {
+            body["DistributorOrderId"] = request.distributorOrderId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketPayOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketPayOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketPayOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketPayOrder(_ request: TicketPayOrderRequest) async throws -> TicketPayOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketPayOrderWithOptions(request as! TicketPayOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryOrderWithOptions(_ request: TicketQueryOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketQueryOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.distributorOrderId)) {
+            body["DistributorOrderId"] = request.distributorOrderId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketQueryOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketQueryOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketQueryOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryOrder(_ request: TicketQueryOrderRequest) async throws -> TicketQueryOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketQueryOrderWithOptions(request as! TicketQueryOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryPriceStockWithOptions(_ request: TicketQueryPriceStockRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketQueryPriceStockResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["EndDate"] = request.endDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productId)) {
+            body["ProductId"] = request.productId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["StartDate"] = request.startDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketQueryPriceStock",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketQueryPriceStock",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketQueryPriceStockResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryPriceStock(_ request: TicketQueryPriceStockRequest) async throws -> TicketQueryPriceStockResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketQueryPriceStockWithOptions(request as! TicketQueryPriceStockRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryProductWithOptions(_ request: TicketQueryProductRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketQueryProductResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productId)) {
+            body["ProductId"] = request.productId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketQueryProduct",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketQueryProduct",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketQueryProductResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryProduct(_ request: TicketQueryProductRequest) async throws -> TicketQueryProductResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketQueryProductWithOptions(request as! TicketQueryProductRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryRefundOrderWithOptions(_ request: TicketQueryRefundOrderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketQueryRefundOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.distributorOrderId)) {
+            body["DistributorOrderId"] = request.distributorOrderId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketQueryRefundOrder",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketQueryRefundOrder",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketQueryRefundOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryRefundOrder(_ request: TicketQueryRefundOrderRequest) async throws -> TicketQueryRefundOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketQueryRefundOrderWithOptions(request as! TicketQueryRefundOrderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryScenicWithOptions(_ request: TicketQueryScenicRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketQueryScenicResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scenicId)) {
+            body["ScenicId"] = request.scenicId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketQueryScenic",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketQueryScenic",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketQueryScenicResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryScenic(_ request: TicketQueryScenicRequest) async throws -> TicketQueryScenicResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketQueryScenicWithOptions(request as! TicketQueryScenicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryShelfWithOptions(_ request: TicketQueryShelfRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketQueryShelfResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNo)) {
+            body["AccountNo"] = request.accountNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scenicId)) {
+            body["ScenicId"] = request.scenicId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TicketQueryShelf",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/TicketQueryShelf",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TicketQueryShelfResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ticketQueryShelf(_ request: TicketQueryShelfRequest) async throws -> TicketQueryShelfResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await ticketQueryShelfWithOptions(request as! TicketQueryShelfRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func ticketingWithOptions(_ request: TicketingRequest, _ headers: TicketingHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketingResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
