@@ -1000,6 +1000,181 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProhibitedPolicyWithOptions(_ request: CreateProhibitedPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProhibitedPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowReport)) {
+            body["AllowReport"] = request.allowReport ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["Enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.forceKill)) {
+            body["ForceKill"] = request.forceKill!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainButtonTextCh)) {
+            body["MainButtonTextCh"] = request.mainButtonTextCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mainButtonTextEn)) {
+            body["MainButtonTextEn"] = request.mainButtonTextEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minorButtonTextCh)) {
+            body["MinorButtonTextCh"] = request.minorButtonTextCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minorButtonTextEn)) {
+            body["MinorButtonTextEn"] = request.minorButtonTextEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectType)) {
+            body["ObjectType"] = request.objectType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyType)) {
+            body["PolicyType"] = request.policyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.promptCh)) {
+            body["PromptCh"] = request.promptCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promptEn)) {
+            body["PromptEn"] = request.promptEn ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.softwareIds)) {
+            bodyFlat["SoftwareIds"] = request.softwareIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.titleCh)) {
+            body["TitleCh"] = request.titleCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.titleEn)) {
+            body["TitleEn"] = request.titleEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateProhibitedPolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateProhibitedPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProhibitedPolicy(_ request: CreateProhibitedPolicyRequest) async throws -> CreateProhibitedPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createProhibitedPolicyWithOptions(request as! CreateProhibitedPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProhibitedSoftwareWithOptions(_ request: CreateProhibitedSoftwareRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProhibitedSoftwareResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.linuxProcesses)) {
+            bodyFlat["LinuxProcesses"] = request.linuxProcesses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.macOSProcesses)) {
+            bodyFlat["MacOSProcesses"] = request.macOSProcesses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.windowsProcesses)) {
+            bodyFlat["WindowsProcesses"] = request.windowsProcesses ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateProhibitedSoftware",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateProhibitedSoftwareResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProhibitedSoftware(_ request: CreateProhibitedSoftwareRequest) async throws -> CreateProhibitedSoftwareResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createProhibitedSoftwareWithOptions(request as! CreateProhibitedSoftwareRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProhibitedTagWithOptions(_ request: CreateProhibitedTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProhibitedTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateProhibitedTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateProhibitedTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProhibitedTag(_ request: CreateProhibitedTagRequest) async throws -> CreateProhibitedTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createProhibitedTagWithOptions(request as! CreateProhibitedTagRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createRegistrationPolicyWithOptions(_ tmpReq: CreateRegistrationPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRegistrationPolicyResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateRegistrationPolicyShrinkRequest = CreateRegistrationPolicyShrinkRequest([:])
@@ -1856,6 +2031,105 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteProhibitedPoliciesWithOptions(_ request: DeleteProhibitedPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteProhibitedPoliciesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.policyIds)) {
+            bodyFlat["PolicyIds"] = request.policyIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteProhibitedPolicies",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteProhibitedPoliciesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteProhibitedPolicies(_ request: DeleteProhibitedPoliciesRequest) async throws -> DeleteProhibitedPoliciesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteProhibitedPoliciesWithOptions(request as! DeleteProhibitedPoliciesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteProhibitedSoftwareWithOptions(_ request: DeleteProhibitedSoftwareRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteProhibitedSoftwareResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.softwareIds)) {
+            bodyFlat["SoftwareIds"] = request.softwareIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteProhibitedSoftware",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteProhibitedSoftwareResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteProhibitedSoftware(_ request: DeleteProhibitedSoftwareRequest) async throws -> DeleteProhibitedSoftwareResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteProhibitedSoftwareWithOptions(request as! DeleteProhibitedSoftwareRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteProhibitedTagsWithOptions(_ request: DeleteProhibitedTagsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteProhibitedTagsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteProhibitedTags",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteProhibitedTagsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteProhibitedTags(_ request: DeleteProhibitedTagsRequest) async throws -> DeleteProhibitedTagsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteProhibitedTagsWithOptions(request as! DeleteProhibitedTagsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteRegistrationPoliciesWithOptions(_ request: DeleteRegistrationPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRegistrationPoliciesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2640,6 +2914,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPrivateAccessPolicy(_ request: GetPrivateAccessPolicyRequest) async throws -> GetPrivateAccessPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getPrivateAccessPolicyWithOptions(request as! GetPrivateAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getProhibitedPolicyWithOptions(_ request: GetProhibitedPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProhibitedPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetProhibitedPolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetProhibitedPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getProhibitedPolicy(_ request: GetProhibitedPolicyRequest) async throws -> GetProhibitedPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getProhibitedPolicyWithOptions(request as! GetProhibitedPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getProhibitedSoftwareWithOptions(_ tmpReq: GetProhibitedSoftwareRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProhibitedSoftwareResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetProhibitedSoftwareShrinkRequest = GetProhibitedSoftwareShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.softwareId)) {
+            request.softwareIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.softwareId, "SoftwareId", "json")
+        }
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetProhibitedSoftware",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetProhibitedSoftwareResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getProhibitedSoftware(_ request: GetProhibitedSoftwareRequest) async throws -> GetProhibitedSoftwareResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getProhibitedSoftwareWithOptions(request as! GetProhibitedSoftwareRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3898,6 +4233,123 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listPrivateAccessTagsForDynamicRoute(_ request: ListPrivateAccessTagsForDynamicRouteRequest) async throws -> ListPrivateAccessTagsForDynamicRouteResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listPrivateAccessTagsForDynamicRouteWithOptions(request as! ListPrivateAccessTagsForDynamicRouteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listProhibitedPoliciesWithOptions(_ tmpReq: ListProhibitedPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProhibitedPoliciesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListProhibitedPoliciesShrinkRequest = ListProhibitedPoliciesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.softwareId)) {
+            request.softwareIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.softwareId, "SoftwareId", "json")
+        }
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListProhibitedPolicies",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListProhibitedPoliciesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listProhibitedPolicies(_ request: ListProhibitedPoliciesRequest) async throws -> ListProhibitedPoliciesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listProhibitedPoliciesWithOptions(request as! ListProhibitedPoliciesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listProhibitedSoftwareWithOptions(_ tmpReq: ListProhibitedSoftwareRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProhibitedSoftwareResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListProhibitedSoftwareShrinkRequest = ListProhibitedSoftwareShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tagId)) {
+            request.tagIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagId, "TagId", "json")
+        }
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListProhibitedSoftware",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListProhibitedSoftwareResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listProhibitedSoftware(_ request: ListProhibitedSoftwareRequest) async throws -> ListProhibitedSoftwareResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listProhibitedSoftwareWithOptions(request as! ListProhibitedSoftwareRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listProhibitedTagsWithOptions(_ tmpReq: ListProhibitedTagsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProhibitedTagsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListProhibitedTagsShrinkRequest = ListProhibitedTagsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.softwareId)) {
+            request.softwareIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.softwareId, "SoftwareId", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.policyId)) {
+            query["PolicyId"] = request.policyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.softwareIdShrink)) {
+            query["SoftwareId"] = request.softwareIdShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            query["TagIds"] = request.tagIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListProhibitedTags",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListProhibitedTagsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listProhibitedTags(_ request: ListProhibitedTagsRequest) async throws -> ListProhibitedTagsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listProhibitedTagsWithOptions(request as! ListProhibitedTagsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5549,6 +6001,190 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updatePrivateAccessPolicy(_ request: UpdatePrivateAccessPolicyRequest) async throws -> UpdatePrivateAccessPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updatePrivateAccessPolicyWithOptions(request as! UpdatePrivateAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProhibitedPolicyWithOptions(_ request: UpdateProhibitedPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateProhibitedPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowReport)) {
+            body["AllowReport"] = request.allowReport ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["Enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.forceKill)) {
+            body["ForceKill"] = request.forceKill!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainButtonTextCh)) {
+            body["MainButtonTextCh"] = request.mainButtonTextCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mainButtonTextEn)) {
+            body["MainButtonTextEn"] = request.mainButtonTextEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minorButtonTextCh)) {
+            body["MinorButtonTextCh"] = request.minorButtonTextCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minorButtonTextEn)) {
+            body["MinorButtonTextEn"] = request.minorButtonTextEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectType)) {
+            body["ObjectType"] = request.objectType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyId)) {
+            body["PolicyId"] = request.policyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyType)) {
+            body["PolicyType"] = request.policyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.promptCh)) {
+            body["PromptCh"] = request.promptCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promptEn)) {
+            body["PromptEn"] = request.promptEn ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.softwareIds)) {
+            bodyFlat["SoftwareIds"] = request.softwareIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.titleCh)) {
+            body["TitleCh"] = request.titleCh ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.titleEn)) {
+            body["TitleEn"] = request.titleEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateProhibitedPolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateProhibitedPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProhibitedPolicy(_ request: UpdateProhibitedPolicyRequest) async throws -> UpdateProhibitedPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateProhibitedPolicyWithOptions(request as! UpdateProhibitedPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProhibitedSoftwareWithOptions(_ request: UpdateProhibitedSoftwareRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateProhibitedSoftwareResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.linuxProcesses)) {
+            bodyFlat["LinuxProcesses"] = request.linuxProcesses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.macOSProcesses)) {
+            bodyFlat["MacOSProcesses"] = request.macOSProcesses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.softwareId)) {
+            body["SoftwareId"] = request.softwareId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.windowsProcesses)) {
+            bodyFlat["WindowsProcesses"] = request.windowsProcesses ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateProhibitedSoftware",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateProhibitedSoftwareResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProhibitedSoftware(_ request: UpdateProhibitedSoftwareRequest) async throws -> UpdateProhibitedSoftwareResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateProhibitedSoftwareWithOptions(request as! UpdateProhibitedSoftwareRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProhibitedTagWithOptions(_ request: UpdateProhibitedTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateProhibitedTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagId)) {
+            body["TagId"] = request.tagId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateProhibitedTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateProhibitedTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProhibitedTag(_ request: UpdateProhibitedTagRequest) async throws -> UpdateProhibitedTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateProhibitedTagWithOptions(request as! UpdateProhibitedTagRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
