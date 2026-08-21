@@ -728,6 +728,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDomainWithOptions(_ request: CreateDomainRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["dryRun"] = request.dryRun!;
         }

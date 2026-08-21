@@ -17798,6 +17798,8 @@ public class CreateDomainRequest : Tea.TeaModel {
 
     public var tlsMin: String?
 
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public override init() {
@@ -17857,6 +17859,9 @@ public class CreateDomainRequest : Tea.TeaModel {
         if self.tlsMin != nil {
             map["tlsMin"] = self.tlsMin!
         }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["dryRun"] = self.dryRun!
         }
@@ -17908,6 +17913,9 @@ public class CreateDomainRequest : Tea.TeaModel {
         }
         if let value = dict["tlsMin"] as? String {
             self.tlsMin = value
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["dryRun"] as? Bool {
             self.dryRun = value
