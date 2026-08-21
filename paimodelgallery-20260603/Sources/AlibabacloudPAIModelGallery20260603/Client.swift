@@ -10,21 +10,21 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
+            "cn-shenzhen": "paimodelgallery.cn-shenzhen.aliyuncs.com",
+            "cn-wulanchabu": "paimodelgallery.cn-wulanchabu.aliyuncs.com",
+            "cn-beijing": "paimodelgallery.cn-beijing.aliyuncs.com",
+            "ap-northeast-2": "paimodelgallery.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "paimodelgallery.ap-northeast-1.aliyuncs.com",
+            "cn-shanghai": "paimodelgallery.cn-shanghai.aliyuncs.com",
+            "cn-guangzhou": "paimodelgallery.cn-guangzhou.aliyuncs.com",
+            "cn-hongkong": "paimodelgallery.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "paimodelgallery.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "paimodelgallery.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "paimodelgallery.ap-southeast-5.aliyuncs.com",
+            "cn-hangzhou": "paimodelgallery.cn-hangzhou.aliyuncs.com",
             "us-west-1": "paimodelgallery.us-west-1.aliyuncs.com",
             "us-east-1": "paimodelgallery.us-east-1.aliyuncs.com",
-            "eu-central-1": "paimodelgallery.eu-central-1.aliyuncs.com",
-            "cn-wulanchabu": "paimodelgallery.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "paimodelgallery.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai": "paimodelgallery.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "paimodelgallery.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "paimodelgallery.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "paimodelgallery.cn-guangzhou.aliyuncs.com",
-            "cn-beijing": "paimodelgallery.cn-beijing.aliyuncs.com",
-            "ap-southeast-5": "paimodelgallery.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "paimodelgallery.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "paimodelgallery.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "paimodelgallery.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "paimodelgallery.ap-northeast-1.aliyuncs.com"
+            "eu-central-1": "paimodelgallery.eu-central-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("paimodelgallery", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -38,6 +38,129 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getModelDeploymentResourcesWithOptions(_ ModelId: String, _ request: GetModelDeploymentResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModelDeploymentResourcesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizKey)) {
+            query["BizKey"] = request.bizKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelVersion)) {
+            query["ModelVersion"] = request.modelVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.profileId)) {
+            query["ProfileId"] = request.profileId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetModelDeploymentResources",
+            "version": "2026-06-03",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/modelgallery/models/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ModelId)) + "/deployment-resources",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetModelDeploymentResourcesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getModelDeploymentResources(_ ModelId: String, _ request: GetModelDeploymentResourcesRequest) async throws -> GetModelDeploymentResourcesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getModelDeploymentResourcesWithOptions(ModelId as! String, request as! GetModelDeploymentResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getModelDeploymentSpecWithOptions(_ ModelId: String, _ request: GetModelDeploymentSpecRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModelDeploymentSpecResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizKey)) {
+            query["BizKey"] = request.bizKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelVersion)) {
+            query["ModelVersion"] = request.modelVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.profileId)) {
+            query["ProfileId"] = request.profileId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceSelections)) {
+            query["ResourceSelections"] = request.resourceSelections ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetModelDeploymentSpec",
+            "version": "2026-06-03",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/modelgallery/models/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ModelId)) + "/deployment-spec",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetModelDeploymentSpecResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getModelDeploymentSpec(_ ModelId: String, _ request: GetModelDeploymentSpecRequest) async throws -> GetModelDeploymentSpecResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getModelDeploymentSpecWithOptions(ModelId as! String, request as! GetModelDeploymentSpecRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listModelDeploymentProfilesWithOptions(_ ModelId: String, _ request: ListModelDeploymentProfilesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListModelDeploymentProfilesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizKey)) {
+            query["BizKey"] = request.bizKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelVersion)) {
+            query["ModelVersion"] = request.modelVersion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListModelDeploymentProfiles",
+            "version": "2026-06-03",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/modelgallery/models/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ModelId)) + "/deployment-profiles",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListModelDeploymentProfilesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listModelDeploymentProfiles(_ ModelId: String, _ request: ListModelDeploymentProfilesRequest) async throws -> ListModelDeploymentProfilesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listModelDeploymentProfilesWithOptions(ModelId as! String, request as! ListModelDeploymentProfilesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
