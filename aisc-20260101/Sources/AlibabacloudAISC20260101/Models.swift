@@ -11,6 +11,8 @@ public class CreateSkillFileCheckRequest : Tea.TeaModel {
 
         public var fileName: String?
 
+        public var uploadKey: String?
+
         public override init() {
             super.init()
         }
@@ -31,6 +33,9 @@ public class CreateSkillFileCheckRequest : Tea.TeaModel {
             if self.fileName != nil {
                 map["FileName"] = self.fileName!
             }
+            if self.uploadKey != nil {
+                map["UploadKey"] = self.uploadKey!
+            }
             return map
         }
 
@@ -42,9 +47,14 @@ public class CreateSkillFileCheckRequest : Tea.TeaModel {
             if let value = dict["FileName"] as? String {
                 self.fileName = value
             }
+            if let value = dict["UploadKey"] as? String {
+                self.uploadKey = value
+            }
         }
     }
     public var files: [CreateSkillFileCheckRequest.Files]?
+
+    public var source: String?
 
     public override init() {
         super.init()
@@ -67,6 +77,9 @@ public class CreateSkillFileCheckRequest : Tea.TeaModel {
             }
             map["Files"] = tmp
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         return map
     }
 
@@ -84,6 +97,9 @@ public class CreateSkillFileCheckRequest : Tea.TeaModel {
                 }
             }
             self.files = tmp
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
         }
     }
 }
@@ -329,6 +345,10 @@ public class ListAIAgentEventRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var order: String?
+
+    public var orderBy: String?
+
     public var pageSize: Int32?
 
     public var riskLevel: String?
@@ -384,6 +404,12 @@ public class ListAIAgentEventRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -436,6 +462,12 @@ public class ListAIAgentEventRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
