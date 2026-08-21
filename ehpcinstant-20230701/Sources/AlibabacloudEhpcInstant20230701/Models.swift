@@ -2304,6 +2304,44 @@ public class CreatePoolRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var poolName: String?
 
     public var priority: Int32?
@@ -2311,6 +2349,8 @@ public class CreatePoolRequest : Tea.TeaModel {
     public var resourceLimits: CreatePoolRequest.ResourceLimits?
 
     public var schedulingPolicyId: String?
+
+    public var tags: [CreatePoolRequest.Tags]?
 
     public override init() {
         super.init()
@@ -2339,6 +2379,13 @@ public class CreatePoolRequest : Tea.TeaModel {
         if self.schedulingPolicyId != nil {
             map["SchedulingPolicyId"] = self.schedulingPolicyId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -2358,6 +2405,19 @@ public class CreatePoolRequest : Tea.TeaModel {
         if let value = dict["SchedulingPolicyId"] as? String {
             self.schedulingPolicyId = value
         }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreatePoolRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreatePoolRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
     }
 }
 
@@ -2369,6 +2429,8 @@ public class CreatePoolShrinkRequest : Tea.TeaModel {
     public var resourceLimitsShrink: String?
 
     public var schedulingPolicyId: String?
+
+    public var tagsShrink: String?
 
     public override init() {
         super.init()
@@ -2396,6 +2458,9 @@ public class CreatePoolShrinkRequest : Tea.TeaModel {
         if self.schedulingPolicyId != nil {
             map["SchedulingPolicyId"] = self.schedulingPolicyId!
         }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
         return map
     }
 
@@ -2412,6 +2477,9 @@ public class CreatePoolShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SchedulingPolicyId"] as? String {
             self.schedulingPolicyId = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
     }
 }
@@ -6379,7 +6447,47 @@ public class GetPoolRequest : Tea.TeaModel {
 
 public class GetPoolResponseBody : Tea.TeaModel {
     public class PoolInfo : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var createTime: String?
+
+        public var creator: String?
 
         public var executorUsage: Int32?
 
@@ -6396,6 +6504,8 @@ public class GetPoolResponseBody : Tea.TeaModel {
         public var schedulingPolicyId: String?
 
         public var status: String?
+
+        public var tags: [GetPoolResponseBody.PoolInfo.Tags]?
 
         public var updateTime: String?
 
@@ -6415,6 +6525,9 @@ public class GetPoolResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.creator != nil {
+                map["Creator"] = self.creator!
             }
             if self.executorUsage != nil {
                 map["ExecutorUsage"] = self.executorUsage!
@@ -6440,6 +6553,13 @@ public class GetPoolResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -6450,6 +6570,9 @@ public class GetPoolResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["Creator"] as? String {
+                self.creator = value
             }
             if let value = dict["ExecutorUsage"] as? Int32 {
                 self.executorUsage = value
@@ -6474,6 +6597,19 @@ public class GetPoolResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [GetPoolResponseBody.PoolInfo.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetPoolResponseBody.PoolInfo.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
@@ -7526,6 +7662,8 @@ public class ListExecutorsRequest : Tea.TeaModel {
 
         public var jobTemplateId: String?
 
+        public var poolName: String?
+
         public var status: [String]?
 
         public var timeCreatedAfter: Int32?
@@ -7565,6 +7703,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             if self.jobTemplateId != nil {
                 map["JobTemplateId"] = self.jobTemplateId!
             }
+            if self.poolName != nil {
+                map["PoolName"] = self.poolName!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -7599,6 +7740,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             }
             if let value = dict["JobTemplateId"] as? String {
                 self.jobTemplateId = value
+            }
+            if let value = dict["PoolName"] as? String {
+                self.poolName = value
             }
             if let value = dict["Status"] as? [String] {
                 self.status = value
@@ -9171,6 +9315,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
         public var jobTemplateId: String?
 
+        public var poolName: String?
+
         public var status: String?
 
         public var tag: [ListJobsRequest.Filter.Tag]?
@@ -9205,6 +9351,9 @@ public class ListJobsRequest : Tea.TeaModel {
             if self.jobTemplateId != nil {
                 map["JobTemplateId"] = self.jobTemplateId!
             }
+            if self.poolName != nil {
+                map["PoolName"] = self.poolName!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -9237,6 +9386,9 @@ public class ListJobsRequest : Tea.TeaModel {
             }
             if let value = dict["JobTemplateId"] as? String {
                 self.jobTemplateId = value
+            }
+            if let value = dict["PoolName"] as? String {
+                self.poolName = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -9881,6 +10033,44 @@ public class ListPoolsShrinkRequest : Tea.TeaModel {
 
 public class ListPoolsResponseBody : Tea.TeaModel {
     public class PoolList : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var createTime: String?
 
         public var isDefault: Bool?
@@ -9894,6 +10084,8 @@ public class ListPoolsResponseBody : Tea.TeaModel {
         public var schedulingPolicyId: String?
 
         public var status: String?
+
+        public var tags: [ListPoolsResponseBody.PoolList.Tags]?
 
         public var updateTime: String?
 
@@ -9932,6 +10124,13 @@ public class ListPoolsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -9960,6 +10159,19 @@ public class ListPoolsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [ListPoolsResponseBody.PoolList.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListPoolsResponseBody.PoolList.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
