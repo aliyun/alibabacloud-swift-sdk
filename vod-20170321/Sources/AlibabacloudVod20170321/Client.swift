@@ -4377,6 +4377,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMediaAiAnalysisWithOptions(_ request: GetMediaAiAnalysisRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMediaAiAnalysisResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authTimeout)) {
+            query["AuthTimeout"] = request.authTimeout ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaId)) {
+            query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputType)) {
+            query["OutputType"] = request.outputType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resultTypes)) {
+            query["ResultTypes"] = request.resultTypes ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMediaAiAnalysis",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMediaAiAnalysisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMediaAiAnalysis(_ request: GetMediaAiAnalysisRequest) async throws -> GetMediaAiAnalysisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getMediaAiAnalysisWithOptions(request as! GetMediaAiAnalysisRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getMediaAuditAudioResultDetailWithOptions(_ request: GetMediaAuditAudioResultDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMediaAuditAudioResultDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

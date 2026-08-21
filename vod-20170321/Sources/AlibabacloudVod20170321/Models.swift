@@ -27531,6 +27531,259 @@ public class GetJobDetailResponse : Tea.TeaModel {
     }
 }
 
+public class GetMediaAiAnalysisRequest : Tea.TeaModel {
+    public var authTimeout: String?
+
+    public var mediaId: String?
+
+    public var outputType: String?
+
+    public var resultTypes: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authTimeout != nil {
+            map["AuthTimeout"] = self.authTimeout!
+        }
+        if self.mediaId != nil {
+            map["MediaId"] = self.mediaId!
+        }
+        if self.outputType != nil {
+            map["OutputType"] = self.outputType!
+        }
+        if self.resultTypes != nil {
+            map["ResultTypes"] = self.resultTypes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthTimeout"] as? String {
+            self.authTimeout = value
+        }
+        if let value = dict["MediaId"] as? String {
+            self.mediaId = value
+        }
+        if let value = dict["OutputType"] as? String {
+            self.outputType = value
+        }
+        if let value = dict["ResultTypes"] as? String {
+            self.resultTypes = value
+        }
+    }
+}
+
+public class GetMediaAiAnalysisResponseBody : Tea.TeaModel {
+    public class AiAnalysisResultList : Tea.TeaModel {
+        public class AiAnalysisResult : Tea.TeaModel {
+            public var content: String?
+
+            public var extra: String?
+
+            public var resultType: String?
+
+            public var summary: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                if self.extra != nil {
+                    map["Extra"] = self.extra!
+                }
+                if self.resultType != nil {
+                    map["ResultType"] = self.resultType!
+                }
+                if self.summary != nil {
+                    map["Summary"] = self.summary!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["Extra"] as? String {
+                    self.extra = value
+                }
+                if let value = dict["ResultType"] as? String {
+                    self.resultType = value
+                }
+                if let value = dict["Summary"] as? String {
+                    self.summary = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public var aiAnalysisResult: [GetMediaAiAnalysisResponseBody.AiAnalysisResultList.AiAnalysisResult]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aiAnalysisResult != nil {
+                var tmp : [Any] = []
+                for k in self.aiAnalysisResult! {
+                    tmp.append(k.toMap())
+                }
+                map["AiAnalysisResult"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AiAnalysisResult"] as? [Any?] {
+                var tmp : [GetMediaAiAnalysisResponseBody.AiAnalysisResultList.AiAnalysisResult] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetMediaAiAnalysisResponseBody.AiAnalysisResultList.AiAnalysisResult()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.aiAnalysisResult = tmp
+            }
+        }
+    }
+    public var aiAnalysisResultList: GetMediaAiAnalysisResponseBody.AiAnalysisResultList?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.aiAnalysisResultList?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aiAnalysisResultList != nil {
+            map["AiAnalysisResultList"] = self.aiAnalysisResultList?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AiAnalysisResultList"] as? [String: Any?] {
+            var model = GetMediaAiAnalysisResponseBody.AiAnalysisResultList()
+            model.fromMap(value)
+            self.aiAnalysisResultList = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetMediaAiAnalysisResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetMediaAiAnalysisResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetMediaAiAnalysisResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetMediaAuditAudioResultDetailRequest : Tea.TeaModel {
     public var mediaId: String?
 
