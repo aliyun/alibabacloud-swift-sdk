@@ -8,7 +8,23 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "central"
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "ap-northeast-1": "pvtz.aliyuncs.com",
+            "cn-hangzhou": "pvtz.aliyuncs.com",
+            "cn-qingdao": "pvtz.aliyuncs.com",
+            "cn-zhangjiakou": "pvtz.aliyuncs.com",
+            "eu-west-1": "pvtz.aliyuncs.com",
+            "us-east-1": "pvtz.aliyuncs.com",
+            "us-west-1": "pvtz.aliyuncs.com",
+            "ap-south-1": "pvtz.aliyuncs.com",
+            "me-east-1": "pvtz.aliyuncs.com",
+            "cn-beijing-finance-1": "pvtz.aliyuncs.com",
+            "cn-hangzhou-finance": "pvtz.aliyuncs.com",
+            "cn-north-2-gov-1": "pvtz.aliyuncs.com",
+            "cn-shanghai-finance-1": "pvtz.aliyuncs.com",
+            "cn-shenzhen-finance-1": "pvtz.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pvtz", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1950,6 +1966,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setZoneLbaStatusWithOptions(_ request: SetZoneLbaStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetZoneLbaStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.line)) {
+            query["Line"] = request.line ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.open_)) {
+            query["Open"] = request.open_!;
+        }
+        if (!TeaUtils.Client.isUnset(request.rr)) {
+            query["Rr"] = request.rr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userClientIp)) {
+            query["UserClientIp"] = request.userClientIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            query["ZoneId"] = request.zoneId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetZoneLbaStatus",
+            "version": "2018-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetZoneLbaStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setZoneLbaStatus(_ request: SetZoneLbaStatusRequest) async throws -> SetZoneLbaStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setZoneLbaStatusWithOptions(request as! SetZoneLbaStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setZoneRecordStatusWithOptions(_ request: SetZoneRecordStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetZoneRecordStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2346,6 +2414,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateZoneRecord(_ request: UpdateZoneRecordRequest) async throws -> UpdateZoneRecordResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateZoneRecordWithOptions(request as! UpdateZoneRecordRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateZoneRecordWeightWithOptions(_ request: UpdateZoneRecordWeightRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateZoneRecordWeightResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordId)) {
+            query["RecordId"] = request.recordId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.weight)) {
+            query["Weight"] = request.weight!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateZoneRecordWeight",
+            "version": "2018-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateZoneRecordWeightResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateZoneRecordWeight(_ request: UpdateZoneRecordWeightRequest) async throws -> UpdateZoneRecordWeightResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateZoneRecordWeightWithOptions(request as! UpdateZoneRecordWeightRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
