@@ -2579,6 +2579,8 @@ public class CreateSkillRequest : Tea.TeaModel {
 
     public var ossUrl: String?
 
+    public var requiredConnections: [String]?
+
     public var skillDescription: String?
 
     public var skillDisplayName: String?
@@ -2613,6 +2615,9 @@ public class CreateSkillRequest : Tea.TeaModel {
         if self.ossUrl != nil {
             map["OssUrl"] = self.ossUrl!
         }
+        if self.requiredConnections != nil {
+            map["RequiredConnections"] = self.requiredConnections!
+        }
         if self.skillDescription != nil {
             map["SkillDescription"] = self.skillDescription!
         }
@@ -2644,6 +2649,9 @@ public class CreateSkillRequest : Tea.TeaModel {
         }
         if let value = dict["OssUrl"] as? String {
             self.ossUrl = value
+        }
+        if let value = dict["RequiredConnections"] as? [String] {
+            self.requiredConnections = value
         }
         if let value = dict["SkillDescription"] as? String {
             self.skillDescription = value
@@ -8990,6 +8998,10 @@ public class GetSkillResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var requiredConnections: [String]?
+
+    public var securityScanStatus: String?
+
     public var skillDescription: String?
 
     public var skillDisplayName: String?
@@ -9030,6 +9042,12 @@ public class GetSkillResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.requiredConnections != nil {
+            map["RequiredConnections"] = self.requiredConnections!
+        }
+        if self.securityScanStatus != nil {
+            map["SecurityScanStatus"] = self.securityScanStatus!
         }
         if self.skillDescription != nil {
             map["SkillDescription"] = self.skillDescription!
@@ -9075,6 +9093,12 @@ public class GetSkillResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["RequiredConnections"] as? [String] {
+            self.requiredConnections = value
+        }
+        if let value = dict["SecurityScanStatus"] as? String {
+            self.securityScanStatus = value
         }
         if let value = dict["SkillDescription"] as? String {
             self.skillDescription = value
@@ -10501,6 +10525,10 @@ public class ListPublicSkillsResponseBody : Tea.TeaModel {
 
         public var locales: [ListPublicSkillsResponseBody.Skills.Locales]?
 
+        public var requiredConnections: [String]?
+
+        public var securityScanStatus: String?
+
         public var skillDescription: String?
 
         public var skillDisplayName: String?
@@ -10541,6 +10569,12 @@ public class ListPublicSkillsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Locales"] = tmp
+            }
+            if self.requiredConnections != nil {
+                map["RequiredConnections"] = self.requiredConnections!
+            }
+            if self.securityScanStatus != nil {
+                map["SecurityScanStatus"] = self.securityScanStatus!
             }
             if self.skillDescription != nil {
                 map["SkillDescription"] = self.skillDescription!
@@ -10586,6 +10620,12 @@ public class ListPublicSkillsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.locales = tmp
+            }
+            if let value = dict["RequiredConnections"] as? [String] {
+                self.requiredConnections = value
+            }
+            if let value = dict["SecurityScanStatus"] as? String {
+                self.securityScanStatus = value
             }
             if let value = dict["SkillDescription"] as? String {
                 self.skillDescription = value
@@ -15274,6 +15314,10 @@ public class ListSkillsResponseBody : Tea.TeaModel {
 
         public var locales: [ListSkillsResponseBody.Skills.Locales]?
 
+        public var requiredConnections: [String]?
+
+        public var securityScanStatus: String?
+
         public var skillDescription: String?
 
         public var skillDisplayName: String?
@@ -15314,6 +15358,12 @@ public class ListSkillsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Locales"] = tmp
+            }
+            if self.requiredConnections != nil {
+                map["RequiredConnections"] = self.requiredConnections!
+            }
+            if self.securityScanStatus != nil {
+                map["SecurityScanStatus"] = self.securityScanStatus!
             }
             if self.skillDescription != nil {
                 map["SkillDescription"] = self.skillDescription!
@@ -15359,6 +15409,12 @@ public class ListSkillsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.locales = tmp
+            }
+            if let value = dict["RequiredConnections"] as? [String] {
+                self.requiredConnections = value
+            }
+            if let value = dict["SecurityScanStatus"] as? String {
+                self.securityScanStatus = value
             }
             if let value = dict["SkillDescription"] as? String {
                 self.skillDescription = value
@@ -18088,6 +18144,8 @@ public class UpdateSkillRequest : Tea.TeaModel {
 
     public var ossUrl: String?
 
+    public var requiredConnections: [String]?
+
     public var skillDescription: String?
 
     public var skillDisplayName: String?
@@ -18122,6 +18180,9 @@ public class UpdateSkillRequest : Tea.TeaModel {
         if self.ossUrl != nil {
             map["OssUrl"] = self.ossUrl!
         }
+        if self.requiredConnections != nil {
+            map["RequiredConnections"] = self.requiredConnections!
+        }
         if self.skillDescription != nil {
             map["SkillDescription"] = self.skillDescription!
         }
@@ -18153,6 +18214,9 @@ public class UpdateSkillRequest : Tea.TeaModel {
         }
         if let value = dict["OssUrl"] as? String {
             self.ossUrl = value
+        }
+        if let value = dict["RequiredConnections"] as? [String] {
+            self.requiredConnections = value
         }
         if let value = dict["SkillDescription"] as? String {
             self.skillDescription = value
