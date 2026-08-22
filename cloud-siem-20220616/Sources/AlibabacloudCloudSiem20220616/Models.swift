@@ -3622,7 +3622,17 @@ public class DescribeAlertTypeResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var alertType: String?
 
+        public var alertTypeCategory: String?
+
+        public var alertTypeCategoryMds: String?
+
+        public var alertTypeCategoryOrder: Int32?
+
         public var alertTypeMds: String?
+
+        public var alertTypeNameEn: String?
+
+        public var alertTypeNameZh: String?
 
         public override init() {
             super.init()
@@ -3641,8 +3651,23 @@ public class DescribeAlertTypeResponseBody : Tea.TeaModel {
             if self.alertType != nil {
                 map["AlertType"] = self.alertType!
             }
+            if self.alertTypeCategory != nil {
+                map["AlertTypeCategory"] = self.alertTypeCategory!
+            }
+            if self.alertTypeCategoryMds != nil {
+                map["AlertTypeCategoryMds"] = self.alertTypeCategoryMds!
+            }
+            if self.alertTypeCategoryOrder != nil {
+                map["AlertTypeCategoryOrder"] = self.alertTypeCategoryOrder!
+            }
             if self.alertTypeMds != nil {
                 map["AlertTypeMds"] = self.alertTypeMds!
+            }
+            if self.alertTypeNameEn != nil {
+                map["AlertTypeNameEn"] = self.alertTypeNameEn!
+            }
+            if self.alertTypeNameZh != nil {
+                map["AlertTypeNameZh"] = self.alertTypeNameZh!
             }
             return map
         }
@@ -3652,8 +3677,23 @@ public class DescribeAlertTypeResponseBody : Tea.TeaModel {
             if let value = dict["AlertType"] as? String {
                 self.alertType = value
             }
+            if let value = dict["AlertTypeCategory"] as? String {
+                self.alertTypeCategory = value
+            }
+            if let value = dict["AlertTypeCategoryMds"] as? String {
+                self.alertTypeCategoryMds = value
+            }
+            if let value = dict["AlertTypeCategoryOrder"] as? Int32 {
+                self.alertTypeCategoryOrder = value
+            }
             if let value = dict["AlertTypeMds"] as? String {
                 self.alertTypeMds = value
+            }
+            if let value = dict["AlertTypeNameEn"] as? String {
+                self.alertTypeNameEn = value
+            }
+            if let value = dict["AlertTypeNameZh"] as? String {
+                self.alertTypeNameZh = value
             }
         }
     }
