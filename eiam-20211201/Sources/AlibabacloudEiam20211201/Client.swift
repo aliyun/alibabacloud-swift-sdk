@@ -1896,6 +1896,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createInstanceWithOptions(_ request: CreateInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -9127,6 +9130,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.managedServiceCode)) {
+            query["ManagedServiceCode"] = request.managedServiceCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;

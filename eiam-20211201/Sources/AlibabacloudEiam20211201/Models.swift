@@ -9637,6 +9637,8 @@ public class CreateIdentityProviderStatusCheckJobResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var description_: String?
 
     public override init() {
@@ -9653,6 +9655,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -9661,6 +9666,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -35401,6 +35409,8 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
 
             public var networkAccessEndpointQuota: Int64?
 
+            public var pamLicenseStatus: String?
+
             public var prepaidActiveUserNumber: Int64?
 
             public var userQuota: Int64?
@@ -35434,6 +35444,9 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
                 if self.networkAccessEndpointQuota != nil {
                     map["NetworkAccessEndpointQuota"] = self.networkAccessEndpointQuota!
                 }
+                if self.pamLicenseStatus != nil {
+                    map["PamLicenseStatus"] = self.pamLicenseStatus!
+                }
                 if self.prepaidActiveUserNumber != nil {
                     map["PrepaidActiveUserNumber"] = self.prepaidActiveUserNumber!
                 }
@@ -35459,6 +35472,9 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NetworkAccessEndpointQuota"] as? Int64 {
                     self.networkAccessEndpointQuota = value
+                }
+                if let value = dict["PamLicenseStatus"] as? String {
+                    self.pamLicenseStatus = value
                 }
                 if let value = dict["PrepaidActiveUserNumber"] as? Int64 {
                     self.prepaidActiveUserNumber = value
@@ -57089,6 +57105,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var instanceIds: [String]?
 
+    public var managedServiceCode: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -57120,6 +57138,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
+        if self.managedServiceCode != nil {
+            map["ManagedServiceCode"] = self.managedServiceCode!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -57145,6 +57166,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
+        }
+        if let value = dict["ManagedServiceCode"] as? String {
+            self.managedServiceCode = value
         }
         if let value = dict["PageNumber"] as? Int64 {
             self.pageNumber = value
