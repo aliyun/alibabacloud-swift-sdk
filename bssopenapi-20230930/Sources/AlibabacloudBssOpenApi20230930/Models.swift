@@ -3882,6 +3882,8 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
 
     public var reportType: String?
 
+    public var selectedFields: [String]?
+
     public var sendWithAttach: String?
 
     public var splitFileOnUserId: String?
@@ -3933,6 +3935,9 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         if self.reportType != nil {
             map["ReportType"] = self.reportType!
         }
+        if self.selectedFields != nil {
+            map["SelectedFields"] = self.selectedFields!
+        }
         if self.sendWithAttach != nil {
             map["SendWithAttach"] = self.sendWithAttach!
         }
@@ -3976,6 +3981,144 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         }
         if let value = dict["ReportType"] as? String {
             self.reportType = value
+        }
+        if let value = dict["SelectedFields"] as? [String] {
+            self.selectedFields = value
+        }
+        if let value = dict["SendWithAttach"] as? String {
+            self.sendWithAttach = value
+        }
+        if let value = dict["SplitFileOnUserId"] as? String {
+            self.splitFileOnUserId = value
+        }
+    }
+}
+
+public class CreateReportDefinitionShrinkRequest : Tea.TeaModel {
+    public var beginBillingCycle: String?
+
+    public var includeMembers: String?
+
+    public var mcProject: String?
+
+    public var mcTableName: String?
+
+    public var nbid: String?
+
+    public var notSendOnNoData: String?
+
+    public var ossBucketName: String?
+
+    public var ossBucketOwnerAccountId: Int64?
+
+    public var ossBucketPath: String?
+
+    public var reportSourceType: String?
+
+    public var reportType: String?
+
+    public var selectedFieldsShrink: String?
+
+    public var sendWithAttach: String?
+
+    public var splitFileOnUserId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginBillingCycle != nil {
+            map["BeginBillingCycle"] = self.beginBillingCycle!
+        }
+        if self.includeMembers != nil {
+            map["IncludeMembers"] = self.includeMembers!
+        }
+        if self.mcProject != nil {
+            map["McProject"] = self.mcProject!
+        }
+        if self.mcTableName != nil {
+            map["McTableName"] = self.mcTableName!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.notSendOnNoData != nil {
+            map["NotSendOnNoData"] = self.notSendOnNoData!
+        }
+        if self.ossBucketName != nil {
+            map["OssBucketName"] = self.ossBucketName!
+        }
+        if self.ossBucketOwnerAccountId != nil {
+            map["OssBucketOwnerAccountId"] = self.ossBucketOwnerAccountId!
+        }
+        if self.ossBucketPath != nil {
+            map["OssBucketPath"] = self.ossBucketPath!
+        }
+        if self.reportSourceType != nil {
+            map["ReportSourceType"] = self.reportSourceType!
+        }
+        if self.reportType != nil {
+            map["ReportType"] = self.reportType!
+        }
+        if self.selectedFieldsShrink != nil {
+            map["SelectedFields"] = self.selectedFieldsShrink!
+        }
+        if self.sendWithAttach != nil {
+            map["SendWithAttach"] = self.sendWithAttach!
+        }
+        if self.splitFileOnUserId != nil {
+            map["SplitFileOnUserId"] = self.splitFileOnUserId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginBillingCycle"] as? String {
+            self.beginBillingCycle = value
+        }
+        if let value = dict["IncludeMembers"] as? String {
+            self.includeMembers = value
+        }
+        if let value = dict["McProject"] as? String {
+            self.mcProject = value
+        }
+        if let value = dict["McTableName"] as? String {
+            self.mcTableName = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["NotSendOnNoData"] as? String {
+            self.notSendOnNoData = value
+        }
+        if let value = dict["OssBucketName"] as? String {
+            self.ossBucketName = value
+        }
+        if let value = dict["OssBucketOwnerAccountId"] as? Int64 {
+            self.ossBucketOwnerAccountId = value
+        }
+        if let value = dict["OssBucketPath"] as? String {
+            self.ossBucketPath = value
+        }
+        if let value = dict["ReportSourceType"] as? String {
+            self.reportSourceType = value
+        }
+        if let value = dict["ReportType"] as? String {
+            self.reportType = value
+        }
+        if let value = dict["SelectedFields"] as? String {
+            self.selectedFieldsShrink = value
         }
         if let value = dict["SendWithAttach"] as? String {
             self.sendWithAttach = value
@@ -16777,6 +16920,8 @@ public class ListReportDefinitionsResponseBody : Tea.TeaModel {
 
         public var reportType: String?
 
+        public var selectedFields: [String]?
+
         public var subscribeCreateTime: String?
 
         public override init() {
@@ -16817,6 +16962,9 @@ public class ListReportDefinitionsResponseBody : Tea.TeaModel {
             if self.reportType != nil {
                 map["ReportType"] = self.reportType!
             }
+            if self.selectedFields != nil {
+                map["SelectedFields"] = self.selectedFields!
+            }
             if self.subscribeCreateTime != nil {
                 map["SubscribeCreateTime"] = self.subscribeCreateTime!
             }
@@ -16848,6 +16996,9 @@ public class ListReportDefinitionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ReportType"] as? String {
                 self.reportType = value
+            }
+            if let value = dict["SelectedFields"] as? [String] {
+                self.selectedFields = value
             }
             if let value = dict["SubscribeCreateTime"] as? String {
                 self.subscribeCreateTime = value

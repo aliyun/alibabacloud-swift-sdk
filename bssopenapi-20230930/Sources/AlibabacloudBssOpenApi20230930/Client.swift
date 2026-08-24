@@ -619,8 +619,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createReportDefinitionWithOptions(_ request: CreateReportDefinitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateReportDefinitionResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createReportDefinitionWithOptions(_ tmpReq: CreateReportDefinitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateReportDefinitionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateReportDefinitionShrinkRequest = CreateReportDefinitionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.selectedFields)) {
+            request.selectedFieldsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.selectedFields, "SelectedFields", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.beginBillingCycle)) {
             query["BeginBillingCycle"] = request.beginBillingCycle ?? "";
@@ -645,6 +650,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.reportType)) {
             query["ReportType"] = request.reportType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedFieldsShrink)) {
+            query["SelectedFields"] = request.selectedFieldsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sendWithAttach)) {
             query["SendWithAttach"] = request.sendWithAttach ?? "";
