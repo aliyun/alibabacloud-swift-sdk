@@ -10,8 +10,6 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "me-east-1": "ehpc.me-east-1.aliyuncs.com",
-            "eu-central-1": "ehpc.eu-central-1.aliyuncs.com",
             "cn-zhangjiakou": "ehpc.cn-zhangjiakou.aliyuncs.com",
             "cn-wulanchabu": "ehpc.cn-wulanchabu.aliyuncs.com",
             "cn-wuhan-lr": "ehpc.cn-wuhan-lr.aliyuncs.com",
@@ -27,7 +25,9 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-beijing": "ehpc.cn-beijing.aliyuncs.com",
             "ap-southeast-5": "ehpc.ap-southeast-5.aliyuncs.com",
             "ap-southeast-1": "ehpc.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "ehpc.ap-northeast-1.aliyuncs.com"
+            "ap-northeast-1": "ehpc.ap-northeast-1.aliyuncs.com",
+            "eu-central-1": "ehpc.eu-central-1.aliyuncs.com",
+            "me-east-1": "ehpc.me-east-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ehpc", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -969,6 +969,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getQueue(_ request: GetQueueRequest) async throws -> GetQueueResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getQueueWithOptions(request as! GetQueueRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUserWithOptions(_ request: GetUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetUser",
+            "version": "2024-07-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUser(_ request: GetUserRequest) async throws -> GetUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getUserWithOptions(request as! GetUserRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
