@@ -487,8 +487,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func configSetCreateWithOptions(_ request: ConfigSetCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfigSetCreateResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func configSetCreateWithOptions(_ tmpReq: ConfigSetCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfigSetCreateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ConfigSetCreateShrinkRequest = ConfigSetCreateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.validationOption)) {
+            request.validationOptionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.validationOption, "ValidationOption", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
@@ -501,6 +506,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validationOptionShrink)) {
+            query["ValidationOption"] = request.validationOptionShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -666,8 +674,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func configSetUpdateWithOptions(_ request: ConfigSetUpdateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfigSetUpdateResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func configSetUpdateWithOptions(_ tmpReq: ConfigSetUpdateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfigSetUpdateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ConfigSetUpdateShrinkRequest = ConfigSetUpdateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.validationOption)) {
+            request.validationOptionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.validationOption, "ValidationOption", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
@@ -683,6 +696,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validationOptionShrink)) {
+            query["ValidationOption"] = request.validationOptionShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

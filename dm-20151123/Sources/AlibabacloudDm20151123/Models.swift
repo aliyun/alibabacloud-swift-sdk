@@ -1566,6 +1566,52 @@ public class ConfigSetCancelRelationFromAddressResponse : Tea.TeaModel {
 }
 
 public class ConfigSetCreateRequest : Tea.TeaModel {
+    public class ValidationOption : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var forbiddenStatusList: [String]?
+
+        public var forbiddenSubStatusList: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.forbiddenStatusList != nil {
+                map["ForbiddenStatusList"] = self.forbiddenStatusList!
+            }
+            if self.forbiddenSubStatusList != nil {
+                map["ForbiddenSubStatusList"] = self.forbiddenSubStatusList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["ForbiddenStatusList"] as? [String] {
+                self.forbiddenStatusList = value
+            }
+            if let value = dict["ForbiddenSubStatusList"] as? [String] {
+                self.forbiddenSubStatusList = value
+            }
+        }
+    }
     public var description_: String?
 
     public var ipPoolId: String?
@@ -1573,6 +1619,74 @@ public class ConfigSetCreateRequest : Tea.TeaModel {
     public var isPublicChannelBackoff: Bool?
 
     public var name: String?
+
+    public var validationOption: ConfigSetCreateRequest.ValidationOption?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validationOption?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.ipPoolId != nil {
+            map["IpPoolId"] = self.ipPoolId!
+        }
+        if self.isPublicChannelBackoff != nil {
+            map["IsPublicChannelBackoff"] = self.isPublicChannelBackoff!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.validationOption != nil {
+            map["ValidationOption"] = self.validationOption?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["IpPoolId"] as? String {
+            self.ipPoolId = value
+        }
+        if let value = dict["IsPublicChannelBackoff"] as? Bool {
+            self.isPublicChannelBackoff = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["ValidationOption"] as? [String: Any?] {
+            var model = ConfigSetCreateRequest.ValidationOption()
+            model.fromMap(value)
+            self.validationOption = model
+        }
+    }
+}
+
+public class ConfigSetCreateShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var ipPoolId: String?
+
+    public var isPublicChannelBackoff: Bool?
+
+    public var name: String?
+
+    public var validationOptionShrink: String?
 
     public override init() {
         super.init()
@@ -1600,6 +1714,9 @@ public class ConfigSetCreateRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.validationOptionShrink != nil {
+            map["ValidationOption"] = self.validationOptionShrink!
+        }
         return map
     }
 
@@ -1616,6 +1733,9 @@ public class ConfigSetCreateRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ValidationOption"] as? String {
+            self.validationOptionShrink = value
         }
     }
 }
@@ -1900,6 +2020,52 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ValidationOption : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public var forbiddenStatusList: [String]?
+
+            public var forbiddenSubStatusList: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.forbiddenStatusList != nil {
+                    map["ForbiddenStatusList"] = self.forbiddenStatusList!
+                }
+                if self.forbiddenSubStatusList != nil {
+                    map["ForbiddenSubStatusList"] = self.forbiddenSubStatusList!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["ForbiddenStatusList"] as? [String] {
+                    self.forbiddenStatusList = value
+                }
+                if let value = dict["ForbiddenSubStatusList"] as? [String] {
+                    self.forbiddenSubStatusList = value
+                }
+            }
+        }
         public var description_: String?
 
         public var id: String?
@@ -1909,6 +2075,8 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
         public var isPublicChannelBackoff: Bool?
 
         public var name: String?
+
+        public var validationOption: ConfigSetDetailResponseBody.Detail.ValidationOption?
 
         public override init() {
             super.init()
@@ -1921,6 +2089,7 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.ipPool?.validate()
+            try self.validationOption?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -1939,6 +2108,9 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.validationOption != nil {
+                map["ValidationOption"] = self.validationOption?.toMap()
             }
             return map
         }
@@ -1961,6 +2133,11 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["ValidationOption"] as? [String: Any?] {
+                var model = ConfigSetDetailResponseBody.Detail.ValidationOption()
+                model.fromMap(value)
+                self.validationOption = model
             }
         }
     }
@@ -2150,6 +2327,52 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ValidationOption : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public var forbiddenStatusList: [String]?
+
+            public var forbiddenSubStatusList: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.forbiddenStatusList != nil {
+                    map["ForbiddenStatusList"] = self.forbiddenStatusList!
+                }
+                if self.forbiddenSubStatusList != nil {
+                    map["ForbiddenSubStatusList"] = self.forbiddenSubStatusList!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["ForbiddenStatusList"] as? [String] {
+                    self.forbiddenStatusList = value
+                }
+                if let value = dict["ForbiddenSubStatusList"] as? [String] {
+                    self.forbiddenSubStatusList = value
+                }
+            }
+        }
         public var description_: String?
 
         public var fromAddresses: [String]?
@@ -2162,6 +2385,8 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var validationOption: ConfigSetListResponseBody.ConfigSets.ValidationOption?
+
         public override init() {
             super.init()
         }
@@ -2173,6 +2398,7 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.ipPool?.validate()
+            try self.validationOption?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2194,6 +2420,9 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.validationOption != nil {
+                map["ValidationOption"] = self.validationOption?.toMap()
             }
             return map
         }
@@ -2219,6 +2448,11 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["ValidationOption"] as? [String: Any?] {
+                var model = ConfigSetListResponseBody.ConfigSets.ValidationOption()
+                model.fromMap(value)
+                self.validationOption = model
             }
         }
     }
@@ -2485,6 +2719,52 @@ public class ConfigSetRelationFromAddressResponse : Tea.TeaModel {
 }
 
 public class ConfigSetUpdateRequest : Tea.TeaModel {
+    public class ValidationOption : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var forbiddenStatusList: [String]?
+
+        public var forbiddenSubStatusList: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.forbiddenStatusList != nil {
+                map["ForbiddenStatusList"] = self.forbiddenStatusList!
+            }
+            if self.forbiddenSubStatusList != nil {
+                map["ForbiddenSubStatusList"] = self.forbiddenSubStatusList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["ForbiddenStatusList"] as? [String] {
+                self.forbiddenStatusList = value
+            }
+            if let value = dict["ForbiddenSubStatusList"] as? [String] {
+                self.forbiddenSubStatusList = value
+            }
+        }
+    }
     public var description_: String?
 
     public var id: String?
@@ -2494,6 +2774,82 @@ public class ConfigSetUpdateRequest : Tea.TeaModel {
     public var isPublicChannelBackoff: Bool?
 
     public var name: String?
+
+    public var validationOption: ConfigSetUpdateRequest.ValidationOption?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validationOption?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.ipPoolId != nil {
+            map["IpPoolId"] = self.ipPoolId!
+        }
+        if self.isPublicChannelBackoff != nil {
+            map["IsPublicChannelBackoff"] = self.isPublicChannelBackoff!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.validationOption != nil {
+            map["ValidationOption"] = self.validationOption?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Id"] as? String {
+            self.id = value
+        }
+        if let value = dict["IpPoolId"] as? String {
+            self.ipPoolId = value
+        }
+        if let value = dict["IsPublicChannelBackoff"] as? Bool {
+            self.isPublicChannelBackoff = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["ValidationOption"] as? [String: Any?] {
+            var model = ConfigSetUpdateRequest.ValidationOption()
+            model.fromMap(value)
+            self.validationOption = model
+        }
+    }
+}
+
+public class ConfigSetUpdateShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var id: String?
+
+    public var ipPoolId: String?
+
+    public var isPublicChannelBackoff: Bool?
+
+    public var name: String?
+
+    public var validationOptionShrink: String?
 
     public override init() {
         super.init()
@@ -2524,6 +2880,9 @@ public class ConfigSetUpdateRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.validationOptionShrink != nil {
+            map["ValidationOption"] = self.validationOptionShrink!
+        }
         return map
     }
 
@@ -2543,6 +2902,9 @@ public class ConfigSetUpdateRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ValidationOption"] as? String {
+            self.validationOptionShrink = value
         }
     }
 }
