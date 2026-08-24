@@ -34,6 +34,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDataAgentMemoryWithOptions(_ request: AddDataAgentMemoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddDataAgentMemoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
+            query["DMSUnit"] = request.DMSUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fromId)) {
+            query["FromId"] = request.fromId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.label)) {
+            query["Label"] = request.label ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.memFrom)) {
+            query["MemFrom"] = request.memFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionUuid)) {
+            query["SessionUuid"] = request.sessionUuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddDataAgentMemory",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddDataAgentMemoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDataAgentMemory(_ request: AddDataAgentMemoryRequest) async throws -> AddDataAgentMemoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addDataAgentMemoryWithOptions(request as! AddDataAgentMemoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addUserToDataAgentWorkspaceWithOptions(_ request: AddUserToDataAgentWorkspaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddUserToDataAgentWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -488,6 +534,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.scheduleTaskConfig)) {
             request.scheduleTaskConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scheduleTaskConfig, "ScheduleTaskConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.userSpecifiedSkillList)) {
+            request.userSpecifiedSkillListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userSpecifiedSkillList, "UserSpecifiedSkillList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callbackConfigShrink)) {
             query["CallbackConfig"] = request.callbackConfigShrink ?? "";
@@ -527,6 +576,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.textReportConfig)) {
             query["TextReportConfig"] = request.textReportConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userSpecifiedSkillListShrink)) {
+            query["UserSpecifiedSkillList"] = request.userSpecifiedSkillListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.webReportConfig)) {
             query["WebReportConfig"] = request.webReportConfig ?? "";
@@ -4169,6 +4221,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.scheduleTaskConfig)) {
             request.scheduleTaskConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scheduleTaskConfig, "ScheduleTaskConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.userSpecifiedSkillList)) {
+            request.userSpecifiedSkillListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userSpecifiedSkillList, "UserSpecifiedSkillList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callbackConfigShrink)) {
             query["CallbackConfig"] = request.callbackConfigShrink ?? "";
@@ -4211,6 +4266,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.textReportConfig)) {
             query["TextReportConfig"] = request.textReportConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userSpecifiedSkillListShrink)) {
+            query["UserSpecifiedSkillList"] = request.userSpecifiedSkillListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.webReportConfig)) {
             query["WebReportConfig"] = request.webReportConfig ?? "";

@@ -5485,6 +5485,231 @@ public class TrialOrderEligibilityVO : Tea.TeaModel {
     }
 }
 
+public class AddDataAgentMemoryRequest : Tea.TeaModel {
+    public var content: String?
+
+    public var DMSUnit: String?
+
+    public var fromId: String?
+
+    public var label: String?
+
+    public var memFrom: String?
+
+    public var sessionUuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.DMSUnit != nil {
+            map["DMSUnit"] = self.DMSUnit!
+        }
+        if self.fromId != nil {
+            map["FromId"] = self.fromId!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
+        if self.memFrom != nil {
+            map["MemFrom"] = self.memFrom!
+        }
+        if self.sessionUuid != nil {
+            map["SessionUuid"] = self.sessionUuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Content"] as? String {
+            self.content = value
+        }
+        if let value = dict["DMSUnit"] as? String {
+            self.DMSUnit = value
+        }
+        if let value = dict["FromId"] as? String {
+            self.fromId = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
+        if let value = dict["MemFrom"] as? String {
+            self.memFrom = value
+        }
+        if let value = dict["SessionUuid"] as? String {
+            self.sessionUuid = value
+        }
+    }
+}
+
+public class AddDataAgentMemoryResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var jobId: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["JobId"] as? String {
+                self.jobId = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var data: AddDataAgentMemoryResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = AddDataAgentMemoryResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddDataAgentMemoryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddDataAgentMemoryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddDataAgentMemoryResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddUserToDataAgentWorkspaceRequest : Tea.TeaModel {
     public var DMSUnit: String?
 
@@ -8578,6 +8803,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public var textReportConfig: String?
 
+    public var userSpecifiedSkillList: [String]?
+
     public var webReportConfig: String?
 
     public var webReportTheme: String?
@@ -8647,6 +8874,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         }
         if self.textReportConfig != nil {
             map["TextReportConfig"] = self.textReportConfig!
+        }
+        if self.userSpecifiedSkillList != nil {
+            map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
         }
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
@@ -8727,6 +8957,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         if let value = dict["TextReportConfig"] as? String {
             self.textReportConfig = value
         }
+        if let value = dict["UserSpecifiedSkillList"] as? [String] {
+            self.userSpecifiedSkillList = value
+        }
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
         }
@@ -8765,6 +8998,8 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
     public var scheduleTaskConfigShrink: String?
 
     public var textReportConfig: String?
+
+    public var userSpecifiedSkillListShrink: String?
 
     public var webReportConfig: String?
 
@@ -8825,6 +9060,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         if self.textReportConfig != nil {
             map["TextReportConfig"] = self.textReportConfig!
         }
+        if self.userSpecifiedSkillListShrink != nil {
+            map["UserSpecifiedSkillList"] = self.userSpecifiedSkillListShrink!
+        }
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
         }
@@ -8877,6 +9115,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TextReportConfig"] as? String {
             self.textReportConfig = value
+        }
+        if let value = dict["UserSpecifiedSkillList"] as? String {
+            self.userSpecifiedSkillListShrink = value
         }
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
@@ -9218,6 +9459,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
 
         public var textReportConfig: String?
 
+        public var userSpecifiedSkillList: [String]?
+
         public var webReportConfig: String?
 
         public var webReportTheme: String?
@@ -9332,6 +9575,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.textReportConfig != nil {
                 map["TextReportConfig"] = self.textReportConfig!
+            }
+            if self.userSpecifiedSkillList != nil {
+                map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
             }
             if self.webReportConfig != nil {
                 map["WebReportConfig"] = self.webReportConfig!
@@ -9456,6 +9702,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["TextReportConfig"] as? String {
                 self.textReportConfig = value
+            }
+            if let value = dict["UserSpecifiedSkillList"] as? [String] {
+                self.userSpecifiedSkillList = value
             }
             if let value = dict["WebReportConfig"] as? String {
                 self.webReportConfig = value
@@ -15354,6 +15603,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
         public var textReportConfig: String?
 
+        public var userSpecifiedSkillList: [String]?
+
         public var webReportConfig: String?
 
         public var webReportTheme: String?
@@ -15471,6 +15722,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.textReportConfig != nil {
                 map["TextReportConfig"] = self.textReportConfig!
+            }
+            if self.userSpecifiedSkillList != nil {
+                map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
             }
             if self.webReportConfig != nil {
                 map["WebReportConfig"] = self.webReportConfig!
@@ -15598,6 +15852,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["TextReportConfig"] as? String {
                 self.textReportConfig = value
+            }
+            if let value = dict["UserSpecifiedSkillList"] as? [String] {
+                self.userSpecifiedSkillList = value
             }
             if let value = dict["WebReportConfig"] as? String {
                 self.webReportConfig = value
@@ -23855,6 +24112,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
             public var textReportConfig: String?
 
+            public var userSpecifiedSkillList: [String]?
+
             public var webReportConfig: String?
 
             public var webReportTheme: String?
@@ -23972,6 +24231,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if self.textReportConfig != nil {
                     map["TextReportConfig"] = self.textReportConfig!
+                }
+                if self.userSpecifiedSkillList != nil {
+                    map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
                 }
                 if self.webReportConfig != nil {
                     map["WebReportConfig"] = self.webReportConfig!
@@ -24099,6 +24361,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TextReportConfig"] as? String {
                     self.textReportConfig = value
+                }
+                if let value = dict["UserSpecifiedSkillList"] as? [String] {
+                    self.userSpecifiedSkillList = value
                 }
                 if let value = dict["WebReportConfig"] as? String {
                     self.webReportConfig = value
@@ -32023,6 +32288,8 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
 
     public var textReportConfig: String?
 
+    public var userSpecifiedSkillList: [String]?
+
     public var webReportConfig: String?
 
     public var webReportTheme: String?
@@ -32095,6 +32362,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
         }
         if self.textReportConfig != nil {
             map["TextReportConfig"] = self.textReportConfig!
+        }
+        if self.userSpecifiedSkillList != nil {
+            map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
         }
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
@@ -32178,6 +32448,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
         if let value = dict["TextReportConfig"] as? String {
             self.textReportConfig = value
         }
+        if let value = dict["UserSpecifiedSkillList"] as? [String] {
+            self.userSpecifiedSkillList = value
+        }
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
         }
@@ -32218,6 +32491,8 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
     public var scheduleTaskConfigShrink: String?
 
     public var textReportConfig: String?
+
+    public var userSpecifiedSkillListShrink: String?
 
     public var webReportConfig: String?
 
@@ -32281,6 +32556,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
         if self.textReportConfig != nil {
             map["TextReportConfig"] = self.textReportConfig!
         }
+        if self.userSpecifiedSkillListShrink != nil {
+            map["UserSpecifiedSkillList"] = self.userSpecifiedSkillListShrink!
+        }
         if self.webReportConfig != nil {
             map["WebReportConfig"] = self.webReportConfig!
         }
@@ -32336,6 +32614,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TextReportConfig"] as? String {
             self.textReportConfig = value
+        }
+        if let value = dict["UserSpecifiedSkillList"] as? String {
+            self.userSpecifiedSkillListShrink = value
         }
         if let value = dict["WebReportConfig"] as? String {
             self.webReportConfig = value
@@ -32677,6 +32958,8 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
 
         public var textReportConfig: String?
 
+        public var userSpecifiedSkillList: [String]?
+
         public var webReportConfig: String?
 
         public var webReportTheme: String?
@@ -32791,6 +33074,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.textReportConfig != nil {
                 map["TextReportConfig"] = self.textReportConfig!
+            }
+            if self.userSpecifiedSkillList != nil {
+                map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
             }
             if self.webReportConfig != nil {
                 map["WebReportConfig"] = self.webReportConfig!
@@ -32915,6 +33201,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["TextReportConfig"] as? String {
                 self.textReportConfig = value
+            }
+            if let value = dict["UserSpecifiedSkillList"] as? [String] {
+                self.userSpecifiedSkillList = value
             }
             if let value = dict["WebReportConfig"] as? String {
                 self.webReportConfig = value
@@ -34894,6 +35183,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var skipWebReportConfirm: Bool?
 
+        public var userSpecifiedSkillList: [String]?
+
         public override init() {
             super.init()
         }
@@ -34947,6 +35238,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if self.skipWebReportConfirm != nil {
                 map["SkipWebReportConfirm"] = self.skipWebReportConfirm!
             }
+            if self.userSpecifiedSkillList != nil {
+                map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
+            }
             return map
         }
 
@@ -34990,6 +35284,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["SkipWebReportConfirm"] as? Bool {
                 self.skipWebReportConfirm = value
+            }
+            if let value = dict["UserSpecifiedSkillList"] as? [String] {
+                self.userSpecifiedSkillList = value
             }
         }
     }
