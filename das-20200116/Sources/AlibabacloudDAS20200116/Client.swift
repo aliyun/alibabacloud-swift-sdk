@@ -10,7 +10,8 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "central"
         self._endpointMap = [
-            "cn-shanghai": "das.cn-shanghai.aliyuncs.com"
+            "cn-shanghai": "das.cn-shanghai.aliyuncs.com",
+            "cn-north-2-gov-1": "das.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("das", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -797,6 +798,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.loadWhiteList)) {
             query["LoadWhiteList"] = request.loadWhiteList!;
+        }
+        if (!TeaUtils.Client.isUnset(request.logQueryOpJson)) {
+            query["LogQueryOpJson"] = request.logQueryOpJson ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.logSource)) {
             query["LogSource"] = request.logSource ?? "";
@@ -3206,6 +3210,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentId)) {
             query["AgentId"] = request.agentId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.reportType)) {
+            query["ReportType"] = request.reportType ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.reportId)) {
             body["ReportId"] = request.reportId ?? "";
@@ -3244,6 +3251,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reportType)) {
+            query["ReportType"] = request.reportType ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.endTime)) {
@@ -4411,6 +4421,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.extraInfo)) {
             query["ExtraInfo"] = request.extraInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageKeys)) {
+            query["ImageKeys"] = request.imageKeys ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.query)) {
             query["Query"] = request.query ?? "";

@@ -3946,6 +3946,8 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
 
     public var loadWhiteList: Bool?
 
+    public var logQueryOpJson: String?
+
     public var logSource: String?
 
     public var operateType: String?
@@ -4023,6 +4025,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if self.loadWhiteList != nil {
             map["LoadWhiteList"] = self.loadWhiteList!
+        }
+        if self.logQueryOpJson != nil {
+            map["LogQueryOpJson"] = self.logQueryOpJson!
         }
         if self.logSource != nil {
             map["LogSource"] = self.logSource!
@@ -4106,6 +4111,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if let value = dict["LoadWhiteList"] as? Bool {
             self.loadWhiteList = value
+        }
+        if let value = dict["LogQueryOpJson"] as? String {
+            self.logQueryOpJson = value
         }
         if let value = dict["LogSource"] as? String {
             self.logSource = value
@@ -14756,6 +14764,8 @@ public class DescribeSqlLogConfigResponseBody : Tea.TeaModel {
 
         public var collectorVersion: String?
 
+        public var enable: Bool?
+
         public var hotEnable: Bool?
 
         public var hotRetention: Int32?
@@ -14781,6 +14791,8 @@ public class DescribeSqlLogConfigResponseBody : Tea.TeaModel {
         public var sqlLogVisibleTime: Int64?
 
         public var supportMigration: Bool?
+
+        public var supportSecurityAudit: Bool?
 
         public var supportVersion: String?
 
@@ -14811,6 +14823,9 @@ public class DescribeSqlLogConfigResponseBody : Tea.TeaModel {
             }
             if self.collectorVersion != nil {
                 map["CollectorVersion"] = self.collectorVersion!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
             }
             if self.hotEnable != nil {
                 map["HotEnable"] = self.hotEnable!
@@ -14851,6 +14866,9 @@ public class DescribeSqlLogConfigResponseBody : Tea.TeaModel {
             if self.supportMigration != nil {
                 map["SupportMigration"] = self.supportMigration!
             }
+            if self.supportSecurityAudit != nil {
+                map["SupportSecurityAudit"] = self.supportSecurityAudit!
+            }
             if self.supportVersion != nil {
                 map["SupportVersion"] = self.supportVersion!
             }
@@ -14873,6 +14891,9 @@ public class DescribeSqlLogConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["CollectorVersion"] as? String {
                 self.collectorVersion = value
+            }
+            if let value = dict["Enable"] as? Bool {
+                self.enable = value
             }
             if let value = dict["HotEnable"] as? Bool {
                 self.hotEnable = value
@@ -14912,6 +14933,9 @@ public class DescribeSqlLogConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["SupportMigration"] as? Bool {
                 self.supportMigration = value
+            }
+            if let value = dict["SupportSecurityAudit"] as? Bool {
+                self.supportSecurityAudit = value
             }
             if let value = dict["SupportVersion"] as? String {
                 self.supportVersion = value
@@ -27496,6 +27520,8 @@ public class GetInstanceGroupInspectReportDetailRequest : Tea.TeaModel {
 
     public var reportId: String?
 
+    public var reportType: String?
+
     public override init() {
         super.init()
     }
@@ -27516,6 +27542,9 @@ public class GetInstanceGroupInspectReportDetailRequest : Tea.TeaModel {
         if self.reportId != nil {
             map["ReportId"] = self.reportId!
         }
+        if self.reportType != nil {
+            map["ReportType"] = self.reportType!
+        }
         return map
     }
 
@@ -27526,6 +27555,9 @@ public class GetInstanceGroupInspectReportDetailRequest : Tea.TeaModel {
         }
         if let value = dict["ReportId"] as? String {
             self.reportId = value
+        }
+        if let value = dict["ReportType"] as? String {
+            self.reportType = value
         }
     }
 }
@@ -27691,6 +27723,8 @@ public class GetInstanceGroupInspectReportListRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var reportType: String?
+
     public var startTime: Int64?
 
     public override init() {
@@ -27716,6 +27750,9 @@ public class GetInstanceGroupInspectReportListRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.reportType != nil {
+            map["ReportType"] = self.reportType!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -27732,6 +27769,9 @@ public class GetInstanceGroupInspectReportListRequest : Tea.TeaModel {
         }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
+        }
+        if let value = dict["ReportType"] as? String {
+            self.reportType = value
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
@@ -38266,6 +38306,8 @@ public class GetStorageAnalysisResultResponse : Tea.TeaModel {
 public class GetYaoChiAgentRequest : Tea.TeaModel {
     public var extraInfo: String?
 
+    public var imageKeys: String?
+
     public var query: String?
 
     public var sessionId: String?
@@ -38289,6 +38331,9 @@ public class GetYaoChiAgentRequest : Tea.TeaModel {
         if self.extraInfo != nil {
             map["ExtraInfo"] = self.extraInfo!
         }
+        if self.imageKeys != nil {
+            map["ImageKeys"] = self.imageKeys!
+        }
         if self.query != nil {
             map["Query"] = self.query!
         }
@@ -38305,6 +38350,9 @@ public class GetYaoChiAgentRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ExtraInfo"] as? String {
             self.extraInfo = value
+        }
+        if let value = dict["ImageKeys"] as? String {
+            self.imageKeys = value
         }
         if let value = dict["Query"] as? String {
             self.query = value
