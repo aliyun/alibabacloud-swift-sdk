@@ -7228,6 +7228,8 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public var engineType: String?
 
+    public var facetType: String?
+
     public var featureType: Int32?
 
     public var fileCategoryCode: Int64?
@@ -7235,6 +7237,8 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
     public var fileType: Int64?
 
     public var instanceId: String?
+
+    public var isRevision: Int32?
 
     public var lang: String?
 
@@ -7316,6 +7320,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         if self.engineType != nil {
             map["EngineType"] = self.engineType!
         }
+        if self.facetType != nil {
+            map["FacetType"] = self.facetType!
+        }
         if self.featureType != nil {
             map["FeatureType"] = self.featureType!
         }
@@ -7327,6 +7334,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.isRevision != nil {
+            map["IsRevision"] = self.isRevision!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -7420,6 +7430,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         if let value = dict["EngineType"] as? String {
             self.engineType = value
         }
+        if let value = dict["FacetType"] as? String {
+            self.facetType = value
+        }
         if let value = dict["FeatureType"] as? Int32 {
             self.featureType = value
         }
@@ -7431,6 +7444,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["IsRevision"] as? Int32 {
+            self.isRevision = value
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
@@ -7979,6 +7995,8 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
 
     public var hasPrevious: Bool?
 
+    public var hitValues: [String]?
+
     public var items: [DescribeDataObjectsResponseBody.Items]?
 
     public var nextCursor: String?
@@ -8021,6 +8039,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
         }
         if self.hasPrevious != nil {
             map["HasPrevious"] = self.hasPrevious!
+        }
+        if self.hitValues != nil {
+            map["HitValues"] = self.hitValues!
         }
         if self.items != nil {
             var tmp : [Any] = []
@@ -8066,6 +8087,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
         }
         if let value = dict["HasPrevious"] as? Bool {
             self.hasPrevious = value
+        }
+        if let value = dict["HitValues"] as? [String] {
+            self.hitValues = value
         }
         if let value = dict["Items"] as? [Any?] {
             var tmp : [DescribeDataObjectsResponseBody.Items] = []
