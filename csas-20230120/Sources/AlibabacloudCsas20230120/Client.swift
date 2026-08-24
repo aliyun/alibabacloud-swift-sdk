@@ -64,6 +64,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addVirusScanAdditionalListsWithOptions(_ request: AddVirusScanAdditionalListsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddVirusScanAdditionalListsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalLists)) {
+            bodyFlat["AdditionalLists"] = request.additionalLists ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.devType)) {
+            body["DevType"] = request.devType ?? "";
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddVirusScanAdditionalLists",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddVirusScanAdditionalListsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addVirusScanAdditionalLists(_ request: AddVirusScanAdditionalListsRequest) async throws -> AddVirusScanAdditionalListsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addVirusScanAdditionalListsWithOptions(request as! AddVirusScanAdditionalListsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func attachApplication2ConnectorWithOptions(_ tmpReq: AttachApplication2ConnectorRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachApplication2ConnectorResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AttachApplication2ConnectorShrinkRequest = AttachApplication2ConnectorShrinkRequest([:])
@@ -281,6 +317,72 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchDeletePrivateAccessPolicy(_ request: BatchDeletePrivateAccessPolicyRequest) async throws -> BatchDeletePrivateAccessPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await batchDeletePrivateAccessPolicyWithOptions(request as! BatchDeletePrivateAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelVirusScanTasksWithOptions(_ request: CancelVirusScanTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelVirusScanTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskIds)) {
+            bodyFlat["TaskIds"] = request.taskIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CancelVirusScanTasks",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelVirusScanTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelVirusScanTasks(_ request: CancelVirusScanTasksRequest) async throws -> CancelVirusScanTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await cancelVirusScanTasksWithOptions(request as! CancelVirusScanTasksRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelVulScanTasksWithOptions(_ request: CancelVulScanTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelVulScanTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskIds)) {
+            bodyFlat["TaskIds"] = request.taskIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CancelVulScanTasks",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelVulScanTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelVulScanTasks(_ request: CancelVulScanTasksRequest) async throws -> CancelVulScanTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await cancelVulScanTasksWithOptions(request as! CancelVulScanTasksRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1285,6 +1387,323 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVirusScanScheduledStrategyWithOptions(_ request: CreateVirusScanScheduledStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVirusScanScheduledStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.highRiskOperation)) {
+            body["HighRiskOperation"] = request.highRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lowRiskOperation)) {
+            body["LowRiskOperation"] = request.lowRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCpuUsage)) {
+            body["MaxCpuUsage"] = request.maxCpuUsage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.midRiskOperation)) {
+            body["MidRiskOperation"] = request.midRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.performanceMode)) {
+            body["PerformanceMode"] = request.performanceMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanBeginTime)) {
+            body["ScanBeginTime"] = request.scanBeginTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanEndTime)) {
+            body["ScanEndTime"] = request.scanEndTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanFrequency)) {
+            body["ScanFrequency"] = request.scanFrequency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanInterval)) {
+            body["ScanInterval"] = request.scanInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanMode)) {
+            body["ScanMode"] = request.scanMode ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scanPath)) {
+            bodyFlat["ScanPath"] = request.scanPath ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.scanTargets)) {
+            bodyFlat["ScanTargets"] = request.scanTargets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyDescription)) {
+            body["StrategyDescription"] = request.strategyDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyName)) {
+            body["StrategyName"] = request.strategyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVirusScanScheduledStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVirusScanScheduledStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVirusScanScheduledStrategy(_ request: CreateVirusScanScheduledStrategyRequest) async throws -> CreateVirusScanScheduledStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createVirusScanScheduledStrategyWithOptions(request as! CreateVirusScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVirusScanTaskWithOptions(_ request: CreateVirusScanTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVirusScanTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.highRiskOperation)) {
+            body["HighRiskOperation"] = request.highRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lowRiskOperation)) {
+            body["LowRiskOperation"] = request.lowRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCpuUsage)) {
+            body["MaxCpuUsage"] = request.maxCpuUsage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.midRiskOperation)) {
+            body["MidRiskOperation"] = request.midRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.performanceMode)) {
+            body["PerformanceMode"] = request.performanceMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanMode)) {
+            body["ScanMode"] = request.scanMode ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scanPath)) {
+            bodyFlat["ScanPath"] = request.scanPath ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.scanTargets)) {
+            bodyFlat["ScanTargets"] = request.scanTargets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.taskDescription)) {
+            body["TaskDescription"] = request.taskDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVirusScanTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVirusScanTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVirusScanTask(_ request: CreateVirusScanTaskRequest) async throws -> CreateVirusScanTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createVirusScanTaskWithOptions(request as! CreateVirusScanTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVulScanScheduledStrategyWithOptions(_ request: CreateVulScanScheduledStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVulScanScheduledStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanBeginTime)) {
+            body["ScanBeginTime"] = request.scanBeginTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanEndTime)) {
+            body["ScanEndTime"] = request.scanEndTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanFrequency)) {
+            body["ScanFrequency"] = request.scanFrequency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanInterval)) {
+            body["ScanInterval"] = request.scanInterval ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyDescription)) {
+            body["StrategyDescription"] = request.strategyDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyName)) {
+            body["StrategyName"] = request.strategyName ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVulScanScheduledStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVulScanScheduledStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVulScanScheduledStrategy(_ request: CreateVulScanScheduledStrategyRequest) async throws -> CreateVulScanScheduledStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createVulScanScheduledStrategyWithOptions(request as! CreateVulScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVulScanTaskWithOptions(_ request: CreateVulScanTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVulScanTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTimestamp)) {
+            body["EndTimestamp"] = request.endTimestamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskDescription)) {
+            body["TaskDescription"] = request.taskDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            body["TaskName"] = request.taskName ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVulScanTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVulScanTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVulScanTask(_ request: CreateVulScanTaskRequest) async throws -> CreateVulScanTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createVulScanTaskWithOptions(request as! CreateVulScanTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVulnerabilityFixTaskWithOptions(_ tmpReq: CreateVulnerabilityFixTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVulnerabilityFixTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateVulnerabilityFixTaskShrinkRequest = CreateVulnerabilityFixTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.wuyingVulFixConfig)) {
+            request.wuyingVulFixConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.wuyingVulFixConfig, "WuyingVulFixConfig", "json")
+        }
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.devTags)) {
+            bodyFlat["DevTags"] = request.devTags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.fixMode)) {
+            body["FixMode"] = request.fixMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxDownloadSpeed)) {
+            body["MaxDownloadSpeed"] = request.maxDownloadSpeed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.updateId)) {
+            body["UpdateId"] = request.updateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wuyingVulFixConfigShrink)) {
+            body["WuyingVulFixConfig"] = request.wuyingVulFixConfigShrink ?? "";
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVulnerabilityFixTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVulnerabilityFixTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVulnerabilityFixTask(_ request: CreateVulnerabilityFixTaskRequest) async throws -> CreateVulnerabilityFixTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createVulnerabilityFixTaskWithOptions(request as! CreateVulnerabilityFixTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createWmBaseImageWithOptions(_ tmpReq: CreateWmBaseImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmBaseImageResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateWmBaseImageShrinkRequest = CreateWmBaseImageShrinkRequest([:])
@@ -1707,6 +2126,42 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteDeviceGroups(_ request: DeleteDeviceGroupsRequest) async throws -> DeleteDeviceGroupsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteDeviceGroupsWithOptions(request as! DeleteDeviceGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDevicesVulnerabilityWithOptions(_ request: DeleteDevicesVulnerabilityRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDevicesVulnerabilityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.devTags)) {
+            bodyFlat["DevTags"] = request.devTags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.updateId)) {
+            body["UpdateId"] = request.updateId ?? "";
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDevicesVulnerability",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDevicesVulnerabilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDevicesVulnerability(_ request: DeleteDevicesVulnerabilityRequest) async throws -> DeleteDevicesVulnerabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDevicesVulnerabilityWithOptions(request as! DeleteDevicesVulnerabilityRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2227,6 +2682,107 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVirusFileWithOptions(_ request: DeleteVirusFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVirusFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.devTag)) {
+            body["DevTag"] = request.devTag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileMd5)) {
+            body["FileMd5"] = request.fileMd5 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            body["FilePath"] = request.filePath ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteVirusFile",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteVirusFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVirusFile(_ request: DeleteVirusFileRequest) async throws -> DeleteVirusFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteVirusFileWithOptions(request as! DeleteVirusFileRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVirusScanScheduledStrategiesWithOptions(_ request: DeleteVirusScanScheduledStrategiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVirusScanScheduledStrategiesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.strategyIds)) {
+            bodyFlat["StrategyIds"] = request.strategyIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteVirusScanScheduledStrategies",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteVirusScanScheduledStrategiesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVirusScanScheduledStrategies(_ request: DeleteVirusScanScheduledStrategiesRequest) async throws -> DeleteVirusScanScheduledStrategiesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteVirusScanScheduledStrategiesWithOptions(request as! DeleteVirusScanScheduledStrategiesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVulScanScheduledStrategyWithOptions(_ request: DeleteVulScanScheduledStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVulScanScheduledStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.strategyId)) {
+            body["StrategyId"] = request.strategyId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteVulScanScheduledStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteVulScanScheduledStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVulScanScheduledStrategy(_ request: DeleteVulScanScheduledStrategyRequest) async throws -> DeleteVulScanScheduledStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteVulScanScheduledStrategyWithOptions(request as! DeleteVulScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func detachApplication2ConnectorWithOptions(_ tmpReq: DetachApplication2ConnectorRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachApplication2ConnectorResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DetachApplication2ConnectorShrinkRequest = DetachApplication2ConnectorShrinkRequest([:])
@@ -2461,6 +3017,31 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getActiveIdpConfig() async throws -> GetActiveIdpConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getActiveIdpConfigWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAntiVirusRealTimeDefenceStrategyWithOptions(_ request: GetAntiVirusRealTimeDefenceStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAntiVirusRealTimeDefenceStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAntiVirusRealTimeDefenceStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAntiVirusRealTimeDefenceStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAntiVirusRealTimeDefenceStrategy(_ request: GetAntiVirusRealTimeDefenceStrategyRequest) async throws -> GetAntiVirusRealTimeDefenceStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAntiVirusRealTimeDefenceStrategyWithOptions(request as! GetAntiVirusRealTimeDefenceStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3102,6 +3683,140 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVirusScanGlobalConfigWithOptions(_ request: GetVirusScanGlobalConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVirusScanGlobalConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVirusScanGlobalConfig",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVirusScanGlobalConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVirusScanGlobalConfig(_ request: GetVirusScanGlobalConfigRequest) async throws -> GetVirusScanGlobalConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVirusScanGlobalConfigWithOptions(request as! GetVirusScanGlobalConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVirusScanScheduledStrategyWithOptions(_ request: GetVirusScanScheduledStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVirusScanScheduledStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVirusScanScheduledStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVirusScanScheduledStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVirusScanScheduledStrategy(_ request: GetVirusScanScheduledStrategyRequest) async throws -> GetVirusScanScheduledStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVirusScanScheduledStrategyWithOptions(request as! GetVirusScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVulScanGlobalConfigWithOptions(_ request: GetVulScanGlobalConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVulScanGlobalConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVulScanGlobalConfig",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVulScanGlobalConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVulScanGlobalConfig(_ request: GetVulScanGlobalConfigRequest) async throws -> GetVulScanGlobalConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVulScanGlobalConfigWithOptions(request as! GetVulScanGlobalConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVulScanScheduledStrategyWithOptions(_ request: GetVulScanScheduledStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVulScanScheduledStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVulScanScheduledStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVulScanScheduledStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVulScanScheduledStrategy(_ request: GetVulScanScheduledStrategyRequest) async throws -> GetVulScanScheduledStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVulScanScheduledStrategyWithOptions(request as! GetVulScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVulnerabilityWithOptions(_ request: GetVulnerabilityRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVulnerabilityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVulnerability",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVulnerabilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVulnerability(_ request: GetVulnerabilityRequest) async throws -> GetVulnerabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVulnerabilityWithOptions(request as! GetVulnerabilityRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getWmEmbedTaskWithOptions(_ request: GetWmEmbedTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWmEmbedTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -3481,6 +4196,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDeviceGroups(_ request: ListDeviceGroupsRequest) async throws -> ListDeviceGroupsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listDeviceGroupsWithOptions(request as! ListDeviceGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDevicesForVulnerabilityWithOptions(_ request: ListDevicesForVulnerabilityRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDevicesForVulnerabilityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDevicesForVulnerability",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDevicesForVulnerabilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDevicesForVulnerability(_ request: ListDevicesForVulnerabilityRequest) async throws -> ListDevicesForVulnerabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDevicesForVulnerabilityWithOptions(request as! ListDevicesForVulnerabilityRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4850,6 +5593,258 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusFileStatusesWithOptions(_ request: ListVirusFileStatusesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVirusFileStatusesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVirusFileStatuses",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVirusFileStatusesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusFileStatuses(_ request: ListVirusFileStatusesRequest) async throws -> ListVirusFileStatusesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVirusFileStatusesWithOptions(request as! ListVirusFileStatusesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanAdditionalListsWithOptions(_ request: ListVirusScanAdditionalListsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVirusScanAdditionalListsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVirusScanAdditionalLists",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVirusScanAdditionalListsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanAdditionalLists(_ request: ListVirusScanAdditionalListsRequest) async throws -> ListVirusScanAdditionalListsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVirusScanAdditionalListsWithOptions(request as! ListVirusScanAdditionalListsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanScheduledStrategiesWithOptions(_ request: ListVirusScanScheduledStrategiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVirusScanScheduledStrategiesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVirusScanScheduledStrategies",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVirusScanScheduledStrategiesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanScheduledStrategies(_ request: ListVirusScanScheduledStrategiesRequest) async throws -> ListVirusScanScheduledStrategiesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVirusScanScheduledStrategiesWithOptions(request as! ListVirusScanScheduledStrategiesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanTaskStatusesWithOptions(_ request: ListVirusScanTaskStatusesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVirusScanTaskStatusesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVirusScanTaskStatuses",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVirusScanTaskStatusesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanTaskStatuses(_ request: ListVirusScanTaskStatusesRequest) async throws -> ListVirusScanTaskStatusesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVirusScanTaskStatusesWithOptions(request as! ListVirusScanTaskStatusesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanTaskSummaryWithOptions(_ request: ListVirusScanTaskSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVirusScanTaskSummaryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVirusScanTaskSummary",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVirusScanTaskSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanTaskSummary(_ request: ListVirusScanTaskSummaryRequest) async throws -> ListVirusScanTaskSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVirusScanTaskSummaryWithOptions(request as! ListVirusScanTaskSummaryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanTasksWithOptions(_ request: ListVirusScanTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVirusScanTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVirusScanTasks",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVirusScanTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVirusScanTasks(_ request: ListVirusScanTasksRequest) async throws -> ListVirusScanTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVirusScanTasksWithOptions(request as! ListVirusScanTasksRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVulScanScheduledStrategiesWithOptions(_ request: ListVulScanScheduledStrategiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVulScanScheduledStrategiesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVulScanScheduledStrategies",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVulScanScheduledStrategiesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVulScanScheduledStrategies(_ request: ListVulScanScheduledStrategiesRequest) async throws -> ListVulScanScheduledStrategiesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVulScanScheduledStrategiesWithOptions(request as! ListVulScanScheduledStrategiesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVulScanTasksWithOptions(_ request: ListVulScanTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVulScanTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVulScanTasks",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVulScanTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVulScanTasks(_ request: ListVulScanTasksRequest) async throws -> ListVulScanTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVulScanTasksWithOptions(request as! ListVulScanTasksRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVulnerabilitiesWithOptions(_ request: ListVulnerabilitiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVulnerabilitiesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVulnerabilities",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVulnerabilitiesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVulnerabilities(_ request: ListVulnerabilitiesRequest) async throws -> ListVulnerabilitiesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVulnerabilitiesWithOptions(request as! ListVulnerabilitiesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func lookupWmInfoMappingWithOptions(_ request: LookupWmInfoMappingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LookupWmInfoMappingResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -5066,6 +6061,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeVirusScanAdditionalListsWithOptions(_ request: RemoveVirusScanAdditionalListsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveVirusScanAdditionalListsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.listIds)) {
+            bodyFlat["ListIds"] = request.listIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveVirusScanAdditionalLists",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveVirusScanAdditionalListsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeVirusScanAdditionalLists(_ request: RemoveVirusScanAdditionalListsRequest) async throws -> RemoveVirusScanAdditionalListsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeVirusScanAdditionalListsWithOptions(request as! RemoveVirusScanAdditionalListsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func revokeUserDeviceSessionWithOptions(_ request: RevokeUserDeviceSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeUserDeviceSessionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -5131,6 +6159,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func revokeUserSession(_ request: RevokeUserSessionRequest) async throws -> RevokeUserSessionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await revokeUserSessionWithOptions(request as! RevokeUserSessionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAntiVirusRealTimeDefenceStrategyWithOptions(_ request: UpdateAntiVirusRealTimeDefenceStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAntiVirusRealTimeDefenceStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.highRiskOperation)) {
+            body["HighRiskOperation"] = request.highRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lowRiskOperation)) {
+            body["LowRiskOperation"] = request.lowRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCpuUsage)) {
+            body["MaxCpuUsage"] = request.maxCpuUsage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.midRiskOperation)) {
+            body["MidRiskOperation"] = request.midRiskOperation ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scanTargets)) {
+            bodyFlat["ScanTargets"] = request.scanTargets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAntiVirusRealTimeDefenceStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAntiVirusRealTimeDefenceStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAntiVirusRealTimeDefenceStrategy(_ request: UpdateAntiVirusRealTimeDefenceStrategyRequest) async throws -> UpdateAntiVirusRealTimeDefenceStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateAntiVirusRealTimeDefenceStrategyWithOptions(request as! UpdateAntiVirusRealTimeDefenceStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6486,5 +7571,285 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateUsersStatus(_ request: UpdateUsersStatusRequest) async throws -> UpdateUsersStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateUsersStatusWithOptions(request as! UpdateUsersStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVirusFileStatusWithOptions(_ request: UpdateVirusFileStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVirusFileStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.devTag)) {
+            body["DevTag"] = request.devTag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileMd5)) {
+            body["FileMd5"] = request.fileMd5 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            body["FilePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            body["Operation"] = request.operation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.virusType)) {
+            body["VirusType"] = request.virusType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVirusFileStatus",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVirusFileStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVirusFileStatus(_ request: UpdateVirusFileStatusRequest) async throws -> UpdateVirusFileStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateVirusFileStatusWithOptions(request as! UpdateVirusFileStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVirusScanGlobalConfigWithOptions(_ request: UpdateVirusScanGlobalConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVirusScanGlobalConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.uploadFileMaxSize)) {
+            body["UploadFileMaxSize"] = request.uploadFileMaxSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadFileMaxSpeed)) {
+            body["UploadFileMaxSpeed"] = request.uploadFileMaxSpeed!;
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.uploadFileSuffixBlacklist)) {
+            bodyFlat["UploadFileSuffixBlacklist"] = request.uploadFileSuffixBlacklist ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.virusFileUpload)) {
+            body["VirusFileUpload"] = request.virusFileUpload!;
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVirusScanGlobalConfig",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVirusScanGlobalConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVirusScanGlobalConfig(_ request: UpdateVirusScanGlobalConfigRequest) async throws -> UpdateVirusScanGlobalConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateVirusScanGlobalConfigWithOptions(request as! UpdateVirusScanGlobalConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVirusScanScheduledStrategyWithOptions(_ request: UpdateVirusScanScheduledStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVirusScanScheduledStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.highRiskOperation)) {
+            body["HighRiskOperation"] = request.highRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lowRiskOperation)) {
+            body["LowRiskOperation"] = request.lowRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCpuUsage)) {
+            body["MaxCpuUsage"] = request.maxCpuUsage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.midRiskOperation)) {
+            body["MidRiskOperation"] = request.midRiskOperation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.performanceMode)) {
+            body["PerformanceMode"] = request.performanceMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanBeginTime)) {
+            body["ScanBeginTime"] = request.scanBeginTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanEndTime)) {
+            body["ScanEndTime"] = request.scanEndTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanFrequency)) {
+            body["ScanFrequency"] = request.scanFrequency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanInterval)) {
+            body["ScanInterval"] = request.scanInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanMode)) {
+            body["ScanMode"] = request.scanMode ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scanPath)) {
+            bodyFlat["ScanPath"] = request.scanPath ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.scanTargets)) {
+            bodyFlat["ScanTargets"] = request.scanTargets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyDescription)) {
+            body["StrategyDescription"] = request.strategyDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyId)) {
+            body["StrategyId"] = request.strategyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyName)) {
+            body["StrategyName"] = request.strategyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVirusScanScheduledStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVirusScanScheduledStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVirusScanScheduledStrategy(_ request: UpdateVirusScanScheduledStrategyRequest) async throws -> UpdateVirusScanScheduledStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateVirusScanScheduledStrategyWithOptions(request as! UpdateVirusScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVulScanGlobalConfigWithOptions(_ tmpReq: UpdateVulScanGlobalConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVulScanGlobalConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateVulScanGlobalConfigShrinkRequest = UpdateVulScanGlobalConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.wuyingVulFixConfig)) {
+            request.wuyingVulFixConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.wuyingVulFixConfig, "WuyingVulFixConfig", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxDownloadSpeed)) {
+            body["MaxDownloadSpeed"] = request.maxDownloadSpeed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wuyingVulFixConfigShrink)) {
+            body["WuyingVulFixConfig"] = request.wuyingVulFixConfigShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVulScanGlobalConfig",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVulScanGlobalConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVulScanGlobalConfig(_ request: UpdateVulScanGlobalConfigRequest) async throws -> UpdateVulScanGlobalConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateVulScanGlobalConfigWithOptions(request as! UpdateVulScanGlobalConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVulScanScheduledStrategyWithOptions(_ request: UpdateVulScanScheduledStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVulScanScheduledStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.matchMode)) {
+            body["MatchMode"] = request.matchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scanBeginTime)) {
+            body["ScanBeginTime"] = request.scanBeginTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanEndTime)) {
+            body["ScanEndTime"] = request.scanEndTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanFrequency)) {
+            body["ScanFrequency"] = request.scanFrequency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scanInterval)) {
+            body["ScanInterval"] = request.scanInterval ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyDescription)) {
+            body["StrategyDescription"] = request.strategyDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyId)) {
+            body["StrategyId"] = request.strategyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyName)) {
+            body["StrategyName"] = request.strategyName ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelist)) {
+            bodyFlat["Whitelist"] = request.whitelist ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVulScanScheduledStrategy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVulScanScheduledStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVulScanScheduledStrategy(_ request: UpdateVulScanScheduledStrategyRequest) async throws -> UpdateVulScanScheduledStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateVulScanScheduledStrategyWithOptions(request as! UpdateVulScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
