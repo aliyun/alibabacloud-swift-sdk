@@ -1028,6 +1028,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOneMetaSqlTemplateWithOptions(_ request: CreateOneMetaSqlTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOneMetaSqlTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expr)) {
+            query["Expr"] = request.expr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlParams)) {
+            query["SqlParams"] = request.sqlParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateOneMetaSqlTemplate",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateOneMetaSqlTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOneMetaSqlTemplate(_ request: CreateOneMetaSqlTemplateRequest) async throws -> CreateOneMetaSqlTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createOneMetaSqlTemplateWithOptions(request as! CreateOneMetaSqlTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAirflowWithOptions(_ request: DeleteAirflowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAirflowResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1604,6 +1656,68 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteFileUpload(_ request: DeleteFileUploadRequest) async throws -> DeleteFileUploadResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteFileUploadWithOptions(request as! DeleteFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOneMetaOssieModelWithOptions(_ request: DeleteOneMetaOssieModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteOneMetaOssieModelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeUuid)) {
+            query["KnowledgeUuid"] = request.knowledgeUuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteOneMetaOssieModel",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteOneMetaOssieModelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOneMetaOssieModel(_ request: DeleteOneMetaOssieModelRequest) async throws -> DeleteOneMetaOssieModelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteOneMetaOssieModelWithOptions(request as! DeleteOneMetaOssieModelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOneMetaSqlTemplateWithOptions(_ request: DeleteOneMetaSqlTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteOneMetaSqlTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeUuid)) {
+            query["KnowledgeUuid"] = request.knowledgeUuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteOneMetaSqlTemplate",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteOneMetaSqlTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOneMetaSqlTemplate(_ request: DeleteOneMetaSqlTemplateRequest) async throws -> DeleteOneMetaSqlTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteOneMetaSqlTemplateWithOptions(request as! DeleteOneMetaSqlTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2566,6 +2680,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getOneMetaOssieModelWithOptions(_ request: GetOneMetaOssieModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOneMetaOssieModelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docFormat)) {
+            body["DocFormat"] = request.docFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeUuid)) {
+            body["KnowledgeUuid"] = request.knowledgeUuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetOneMetaOssieModel",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetOneMetaOssieModelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getOneMetaOssieModel(_ request: GetOneMetaOssieModelRequest) async throws -> GetOneMetaOssieModelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getOneMetaOssieModelWithOptions(request as! GetOneMetaOssieModelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getSqlConsoleOperationLogWithOptions(_ request: GetSqlConsoleOperationLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSqlConsoleOperationLogResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2714,6 +2862,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWorkspaceQuota(_ request: GetWorkspaceQuotaRequest) async throws -> GetWorkspaceQuotaResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getWorkspaceQuotaWithOptions(request as! GetWorkspaceQuotaRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importOneMetaOssieModelWithOptions(_ request: ImportOneMetaOssieModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportOneMetaOssieModelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docFormat)) {
+            query["DocFormat"] = request.docFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.document)) {
+            query["Document"] = request.document ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportOneMetaOssieModel",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportOneMetaOssieModelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importOneMetaOssieModel(_ request: ImportOneMetaOssieModelRequest) async throws -> ImportOneMetaOssieModelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importOneMetaOssieModelWithOptions(request as! ImportOneMetaOssieModelRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4168,6 +4368,107 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOneMetaOssieModelsWithOptions(_ request: ListOneMetaOssieModelsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOneMetaOssieModelsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableVectorSearch)) {
+            query["EnableVectorSearch"] = request.enableVectorSearch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListOneMetaOssieModels",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListOneMetaOssieModelsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOneMetaOssieModels(_ request: ListOneMetaOssieModelsRequest) async throws -> ListOneMetaOssieModelsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listOneMetaOssieModelsWithOptions(request as! ListOneMetaOssieModelsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOneMetaSqlTemplatesWithOptions(_ request: ListOneMetaSqlTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOneMetaSqlTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableVectorSearch)) {
+            query["EnableVectorSearch"] = request.enableVectorSearch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuids)) {
+            query["Uuids"] = request.uuids ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListOneMetaSqlTemplates",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListOneMetaSqlTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOneMetaSqlTemplates(_ request: ListOneMetaSqlTemplatesRequest) async throws -> ListOneMetaSqlTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listOneMetaSqlTemplatesWithOptions(request as! ListOneMetaSqlTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listWorkspaceCodeWithOptions(_ request: ListWorkspaceCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWorkspaceCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5423,6 +5724,110 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateKnowledgeBase(_ request: UpdateKnowledgeBaseRequest) async throws -> UpdateKnowledgeBaseResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateKnowledgeBaseWithOptions(request as! UpdateKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateOneMetaOssieModelWithOptions(_ request: UpdateOneMetaOssieModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateOneMetaOssieModelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docFormat)) {
+            query["DocFormat"] = request.docFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.document)) {
+            query["Document"] = request.document ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeUuid)) {
+            query["KnowledgeUuid"] = request.knowledgeUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateOneMetaOssieModel",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateOneMetaOssieModelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateOneMetaOssieModel(_ request: UpdateOneMetaOssieModelRequest) async throws -> UpdateOneMetaOssieModelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateOneMetaOssieModelWithOptions(request as! UpdateOneMetaOssieModelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateOneMetaSqlTemplateWithOptions(_ request: UpdateOneMetaSqlTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateOneMetaSqlTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expr)) {
+            query["Expr"] = request.expr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeUuid)) {
+            query["KnowledgeUuid"] = request.knowledgeUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlParams)) {
+            query["SqlParams"] = request.sqlParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateOneMetaSqlTemplate",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateOneMetaSqlTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateOneMetaSqlTemplate(_ request: UpdateOneMetaSqlTemplateRequest) async throws -> UpdateOneMetaSqlTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateOneMetaSqlTemplateWithOptions(request as! UpdateOneMetaSqlTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
