@@ -182,6 +182,8 @@ public class AddDocumentsRequest : Tea.TeaModel {
 
     public var dingTalkConfiguration: AddDocumentsRequest.DingTalkConfiguration?
 
+    public var parentId: String?
+
     public override init() {
         super.init()
     }
@@ -223,6 +225,9 @@ public class AddDocumentsRequest : Tea.TeaModel {
         if self.dingTalkConfiguration != nil {
             map["dingTalkConfiguration"] = self.dingTalkConfiguration?.toMap()
         }
+        if self.parentId != nil {
+            map["parentId"] = self.parentId!
+        }
         return map
     }
 
@@ -262,6 +267,9 @@ public class AddDocumentsRequest : Tea.TeaModel {
             var model = AddDocumentsRequest.DingTalkConfiguration()
             model.fromMap(value)
             self.dingTalkConfiguration = model
+        }
+        if let value = dict["parentId"] as? String {
+            self.parentId = value
         }
     }
 }
@@ -1321,6 +1329,8 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
 
         public var parentChunkId: String?
 
+        public var scalarFields: Any?
+
         public var score: Double?
 
         public var scoreDetails: SearchKnowledgeBaseResponseBody.Results.ScoreDetails?
@@ -1376,6 +1386,9 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
             }
             if self.parentChunkId != nil {
                 map["parentChunkId"] = self.parentChunkId!
+            }
+            if self.scalarFields != nil {
+                map["scalarFields"] = self.scalarFields!
             }
             if self.score != nil {
                 map["score"] = self.score!
@@ -1437,6 +1450,9 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
             }
             if let value = dict["parentChunkId"] as? String {
                 self.parentChunkId = value
+            }
+            if let value = dict["scalarFields"] as? Any {
+                self.scalarFields = value
             }
             if let value = dict["score"] as? Double {
                 self.score = value
