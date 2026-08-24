@@ -45,42 +45,43 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhengzhou-nebula-1": "ecs.cn-qingdao-nebula.aliyuncs.com",
             "eu-west-1-oxs": "ecs.cn-shenzhen-cloudstone.aliyuncs.com",
             "rus-west-1-pop": "ecs.aliyuncs.com",
-            "us-west-1": "ecs.us-west-1.aliyuncs.com",
-            "us-southeast-1": "ecs.us-southeast-1.aliyuncs.com",
-            "us-east-1": "ecs.us-east-1.aliyuncs.com",
-            "na-south-1": "ecs.na-south-1.aliyuncs.com",
-            "me-east-1": "ecs.me-east-1.aliyuncs.com",
-            "me-central-1": "ecs.me-central-1.aliyuncs.com",
-            "eu-west-2": "ecs.eu-west-2.aliyuncs.com",
-            "eu-west-1": "ecs.eu-west-1.aliyuncs.com",
-            "eu-central-1": "ecs.eu-central-1.aliyuncs.com",
-            "cn-zhongwei": "ecs.cn-zhongwei.aliyuncs.com",
+            "cn-beijing": "ecs.cn-beijing.aliyuncs.com",
             "cn-zhengzhou-jva": "ecs.cn-zhengzhou-jva.aliyuncs.com",
-            "cn-zhangjiakou": "ecs.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu-gic-1": "ecs.cn-wulanchabu-gic-1.aliyuncs.com",
-            "cn-wulanchabu": "ecs.cn-wulanchabu.aliyuncs.com",
-            "cn-wuhan-lr": "ecs.cn-wuhan-lr.aliyuncs.com",
-            "cn-shenzhen": "ecs.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai": "ecs.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "ecs.cn-qingdao.aliyuncs.com",
-            "cn-nanjing": "ecs.cn-nanjing.aliyuncs.com",
-            "cn-huhehaote": "ecs.cn-huhehaote.aliyuncs.com",
-            "cn-hongkong": "ecs.cn-hongkong.aliyuncs.com",
-            "cn-heyuan-acdr-1": "ecs.cn-heyuan-acdr-1.aliyuncs.com",
             "cn-heyuan": "ecs.cn-heyuan.aliyuncs.com",
-            "cn-guangzhou": "ecs.cn-guangzhou.aliyuncs.com",
+            "cn-zhangjiakou": "ecs.cn-zhangjiakou.aliyuncs.com",
+            "ap-northeast-2": "ecs.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "ecs.ap-northeast-1.aliyuncs.com",
+            "ap-southeast-1": "ecs.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "ecs.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "ecs.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "ecs.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "ecs.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-8": "ecs.ap-southeast-8.aliyuncs.com",
+            "cn-zhongwei": "ecs.cn-zhongwei.aliyuncs.com",
+            "cn-wulanchabu": "ecs.cn-wulanchabu.aliyuncs.com",
+            "cn-qingdao": "ecs.cn-qingdao.aliyuncs.com",
+            "cn-wuhan-lr": "ecs.cn-wuhan-lr.aliyuncs.com",
+            "cn-shanghai": "ecs.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "ecs.cn-hongkong.aliyuncs.com",
+            "cn-shenzhen": "ecs.cn-shenzhen.aliyuncs.com",
+            "cn-nanjing": "ecs.cn-nanjing.aliyuncs.com",
             "cn-fuzhou": "ecs.cn-fuzhou.aliyuncs.com",
             "cn-chengdu": "ecs.cn-chengdu.aliyuncs.com",
-            "cn-beijing-finance-1": "ecs.cn-beijing-finance-1.aliyuncs.com",
-            "cn-beijing": "ecs.cn-beijing.aliyuncs.com",
-            "ap-southeast-8": "ecs.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "ecs.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "ecs.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "ecs.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "ecs.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "ecs.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "ecs.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "ecs.ap-northeast-1.aliyuncs.com"
+            "cn-guangzhou": "ecs.cn-guangzhou.aliyuncs.com",
+            "cn-huhehaote": "ecs.cn-huhehaote.aliyuncs.com",
+            "sa-east-1": "ecs.sa-east-1.aliyuncs.com",
+            "na-south-1": "ecs.na-south-1.aliyuncs.com",
+            "us-west-1": "ecs.us-west-1.aliyuncs.com",
+            "us-east-1": "ecs.us-east-1.aliyuncs.com",
+            "eu-central-1": "ecs.eu-central-1.aliyuncs.com",
+            "eu-west-2": "ecs.eu-west-2.aliyuncs.com",
+            "eu-west-1": "ecs.eu-west-1.aliyuncs.com",
+            "us-southeast-1": "ecs.us-southeast-1.aliyuncs.com",
+            "me-central-1": "ecs.me-central-1.aliyuncs.com",
+            "me-east-1": "ecs.me-east-1.aliyuncs.com",
+            "cn-heyuan-acdr-1": "ecs.cn-heyuan-acdr-1.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "ecs.cn-wulanchabu-gic-1.aliyuncs.com",
+            "cn-beijing-finance-1": "ecs.cn-beijing-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ecs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -22722,6 +22723,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runInstances(_ request: RunInstancesRequest) async throws -> RunInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await runInstancesWithOptions(request as! RunInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendDiagnosticInterruptWithOptions(_ request: SendDiagnosticInterruptRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendDiagnosticInterruptResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendDiagnosticInterrupt",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendDiagnosticInterruptResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendDiagnosticInterrupt(_ request: SendDiagnosticInterruptRequest) async throws -> SendDiagnosticInterruptResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendDiagnosticInterruptWithOptions(request as! SendDiagnosticInterruptRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
