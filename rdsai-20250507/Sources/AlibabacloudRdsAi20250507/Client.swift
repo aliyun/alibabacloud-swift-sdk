@@ -533,8 +533,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createSandboxTemplateWithOptions(_ request: CreateSandboxTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSandboxTemplateResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createSandboxTemplateWithOptions(_ tmpReq: CreateSandboxTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSandboxTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateSandboxTemplateShrinkRequest = CreateSandboxTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.defaultCpu)) {
             query["DefaultCpu"] = request.defaultCpu ?? "";
@@ -545,6 +550,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.image)) {
+            query["Image"] = request.image ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
         }
@@ -553,6 +561,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.replicas)) {
             query["Replicas"] = request.replicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["Tags"] = request.tagsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateName)) {
             query["TemplateName"] = request.templateName ?? "";
@@ -1777,6 +1788,31 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatModelWithOptions(_ request: GetChatModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetChatModelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetChatModel",
+            "version": "2025-05-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetChatModelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatModel(_ request: GetChatModelRequest) async throws -> GetChatModelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getChatModelWithOptions(request as! GetChatModelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getConversationsWithOptions(_ request: GetConversationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConversationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2866,14 +2902,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifySandboxTemplateWithOptions(_ request: ModifySandboxTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySandboxTemplateResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifySandboxTemplateWithOptions(_ tmpReq: ModifySandboxTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySandboxTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifySandboxTemplateShrinkRequest = ModifySandboxTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.defaultCpu)) {
             query["DefaultCpu"] = request.defaultCpu ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.defaultMemory)) {
             query["DefaultMemory"] = request.defaultMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.image)) {
+            query["Image"] = request.image ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
@@ -2883,6 +2927,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.replicas)) {
             query["Replicas"] = request.replicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["Tags"] = request.tagsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";

@@ -3117,11 +3117,15 @@ public class CreateSandboxTemplateRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var image: String?
+
     public var instanceName: String?
 
     public var regionId: String?
 
     public var replicas: Int64?
+
+    public var tags: [String: String]?
 
     public var templateName: String?
 
@@ -3148,6 +3152,9 @@ public class CreateSandboxTemplateRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.image != nil {
+            map["Image"] = self.image!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -3156,6 +3163,9 @@ public class CreateSandboxTemplateRequest : Tea.TeaModel {
         }
         if self.replicas != nil {
             map["Replicas"] = self.replicas!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
         }
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
@@ -3174,6 +3184,9 @@ public class CreateSandboxTemplateRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["Image"] as? String {
+            self.image = value
+        }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
         }
@@ -3182,6 +3195,104 @@ public class CreateSandboxTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Replicas"] as? Int64 {
             self.replicas = value
+        }
+        if let value = dict["Tags"] as? [String: String] {
+            self.tags = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class CreateSandboxTemplateShrinkRequest : Tea.TeaModel {
+    public var defaultCpu: String?
+
+    public var defaultMemory: String?
+
+    public var description_: String?
+
+    public var image: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public var replicas: Int64?
+
+    public var tagsShrink: String?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.defaultCpu != nil {
+            map["DefaultCpu"] = self.defaultCpu!
+        }
+        if self.defaultMemory != nil {
+            map["DefaultMemory"] = self.defaultMemory!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.image != nil {
+            map["Image"] = self.image!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.replicas != nil {
+            map["Replicas"] = self.replicas!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DefaultCpu"] as? String {
+            self.defaultCpu = value
+        }
+        if let value = dict["DefaultMemory"] as? String {
+            self.defaultMemory = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Image"] as? String {
+            self.image = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["Replicas"] as? Int64 {
+            self.replicas = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
         if let value = dict["TemplateName"] as? String {
             self.templateName = value
@@ -9712,9 +9823,13 @@ public class DescribeSandboxTemplatesResponseBody : Tea.TeaModel {
 
         public var enableVpcAccess: String?
 
+        public var image: String?
+
         public var name: String?
 
         public var replicas: Int64?
+
+        public var tags: [String: String]?
 
         public var templateId: String?
 
@@ -9747,11 +9862,17 @@ public class DescribeSandboxTemplatesResponseBody : Tea.TeaModel {
             if self.enableVpcAccess != nil {
                 map["EnableVpcAccess"] = self.enableVpcAccess!
             }
+            if self.image != nil {
+                map["Image"] = self.image!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
             if self.replicas != nil {
                 map["Replicas"] = self.replicas!
+            }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
             }
             if self.templateId != nil {
                 map["TemplateId"] = self.templateId!
@@ -9776,11 +9897,17 @@ public class DescribeSandboxTemplatesResponseBody : Tea.TeaModel {
             if let value = dict["EnableVpcAccess"] as? String {
                 self.enableVpcAccess = value
             }
+            if let value = dict["Image"] as? String {
+                self.image = value
+            }
             if let value = dict["Name"] as? String {
                 self.name = value
             }
             if let value = dict["Replicas"] as? Int64 {
                 self.replicas = value
+            }
+            if let value = dict["Tags"] as? [String: String] {
+                self.tags = value
             }
             if let value = dict["TemplateId"] as? String {
                 self.templateId = value
@@ -10556,6 +10683,195 @@ public class GetAvailableLLMModelsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetAvailableLLMModelsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetChatModelRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetChatModelResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var contextWindow: Int64?
+
+        public var default_: Bool?
+
+        public var features: [String]?
+
+        public var modelId: String?
+
+        public var thinkingLevels: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contextWindow != nil {
+                map["ContextWindow"] = self.contextWindow!
+            }
+            if self.default_ != nil {
+                map["Default"] = self.default_!
+            }
+            if self.features != nil {
+                map["Features"] = self.features!
+            }
+            if self.modelId != nil {
+                map["ModelId"] = self.modelId!
+            }
+            if self.thinkingLevels != nil {
+                map["ThinkingLevels"] = self.thinkingLevels!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContextWindow"] as? Int64 {
+                self.contextWindow = value
+            }
+            if let value = dict["Default"] as? Bool {
+                self.default_ = value
+            }
+            if let value = dict["Features"] as? [String] {
+                self.features = value
+            }
+            if let value = dict["ModelId"] as? String {
+                self.modelId = value
+            }
+            if let value = dict["ThinkingLevels"] as? [String] {
+                self.thinkingLevels = value
+            }
+        }
+    }
+    public var data: [GetChatModelResponseBody.Data]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [GetChatModelResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = GetChatModelResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetChatModelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetChatModelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetChatModelResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -17987,11 +18303,15 @@ public class ModifySandboxTemplateRequest : Tea.TeaModel {
 
     public var defaultMemory: String?
 
+    public var image: String?
+
     public var instanceName: String?
 
     public var regionId: String?
 
     public var replicas: Int64?
+
+    public var tags: [String: String]?
 
     public var templateId: String?
 
@@ -18015,6 +18335,9 @@ public class ModifySandboxTemplateRequest : Tea.TeaModel {
         if self.defaultMemory != nil {
             map["DefaultMemory"] = self.defaultMemory!
         }
+        if self.image != nil {
+            map["Image"] = self.image!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -18023,6 +18346,9 @@ public class ModifySandboxTemplateRequest : Tea.TeaModel {
         }
         if self.replicas != nil {
             map["Replicas"] = self.replicas!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
         }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
@@ -18038,6 +18364,9 @@ public class ModifySandboxTemplateRequest : Tea.TeaModel {
         if let value = dict["DefaultMemory"] as? String {
             self.defaultMemory = value
         }
+        if let value = dict["Image"] as? String {
+            self.image = value
+        }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
         }
@@ -18046,6 +18375,96 @@ public class ModifySandboxTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Replicas"] as? Int64 {
             self.replicas = value
+        }
+        if let value = dict["Tags"] as? [String: String] {
+            self.tags = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+    }
+}
+
+public class ModifySandboxTemplateShrinkRequest : Tea.TeaModel {
+    public var defaultCpu: String?
+
+    public var defaultMemory: String?
+
+    public var image: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public var replicas: Int64?
+
+    public var tagsShrink: String?
+
+    public var templateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.defaultCpu != nil {
+            map["DefaultCpu"] = self.defaultCpu!
+        }
+        if self.defaultMemory != nil {
+            map["DefaultMemory"] = self.defaultMemory!
+        }
+        if self.image != nil {
+            map["Image"] = self.image!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.replicas != nil {
+            map["Replicas"] = self.replicas!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DefaultCpu"] as? String {
+            self.defaultCpu = value
+        }
+        if let value = dict["DefaultMemory"] as? String {
+            self.defaultMemory = value
+        }
+        if let value = dict["Image"] as? String {
+            self.image = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["Replicas"] as? Int64 {
+            self.replicas = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
