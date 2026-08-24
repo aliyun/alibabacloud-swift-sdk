@@ -3890,15 +3890,23 @@ public class AuthorizationResourceInfo : Tea.TeaModel {
 
 public class Backend : Tea.TeaModel {
     public class Services : Tea.TeaModel {
+        public var groupName: String?
+
+        public var httpDubboTranscoder: HttpDubboTranscoder?
+
         public var modelName: String?
 
         public var name: String?
+
+        public var namespace: String?
 
         public var port: Int32?
 
         public var protocol_: String?
 
         public var serviceId: String?
+
+        public var sourceType: String?
 
         public var version: String?
 
@@ -3914,15 +3922,25 @@ public class Backend : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.httpDubboTranscoder?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.groupName != nil {
+                map["groupName"] = self.groupName!
+            }
+            if self.httpDubboTranscoder != nil {
+                map["httpDubboTranscoder"] = self.httpDubboTranscoder?.toMap()
+            }
             if self.modelName != nil {
                 map["modelName"] = self.modelName!
             }
             if self.name != nil {
                 map["name"] = self.name!
+            }
+            if self.namespace != nil {
+                map["namespace"] = self.namespace!
             }
             if self.port != nil {
                 map["port"] = self.port!
@@ -3932,6 +3950,9 @@ public class Backend : Tea.TeaModel {
             }
             if self.serviceId != nil {
                 map["serviceId"] = self.serviceId!
+            }
+            if self.sourceType != nil {
+                map["sourceType"] = self.sourceType!
             }
             if self.version != nil {
                 map["version"] = self.version!
@@ -3944,11 +3965,22 @@ public class Backend : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["groupName"] as? String {
+                self.groupName = value
+            }
+            if let value = dict["httpDubboTranscoder"] as? [String: Any?] {
+                var model = HttpDubboTranscoder()
+                model.fromMap(value)
+                self.httpDubboTranscoder = model
+            }
             if let value = dict["modelName"] as? String {
                 self.modelName = value
             }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["namespace"] as? String {
+                self.namespace = value
             }
             if let value = dict["port"] as? Int32 {
                 self.port = value
@@ -3958,6 +3990,9 @@ public class Backend : Tea.TeaModel {
             }
             if let value = dict["serviceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["sourceType"] as? String {
+                self.sourceType = value
             }
             if let value = dict["version"] as? String {
                 self.version = value
@@ -9960,7 +9995,7 @@ public class HttpApiVersionInfo : Tea.TeaModel {
 }
 
 public class HttpDubboTranscoder : Tea.TeaModel {
-    public class MothedMapList : Tea.TeaModel {
+    public class MethodMapList : Tea.TeaModel {
         public class ParamMapsList : Tea.TeaModel {
             public var extractKey: String?
 
@@ -10007,13 +10042,13 @@ public class HttpDubboTranscoder : Tea.TeaModel {
                 }
             }
         }
-        public var dubboMothedName: String?
+        public var dubboMethodName: String?
 
-        public var httpMothed: String?
+        public var httpMethod: String?
 
-        public var mothedpath: String?
+        public var methodPath: String?
 
-        public var paramMapsList: [HttpDubboTranscoder.MothedMapList.ParamMapsList]?
+        public var paramMapsList: [HttpDubboTranscoder.MethodMapList.ParamMapsList]?
 
         public var passThroughAllHeaders: String?
 
@@ -10033,14 +10068,14 @@ public class HttpDubboTranscoder : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.dubboMothedName != nil {
-                map["dubboMothedName"] = self.dubboMothedName!
+            if self.dubboMethodName != nil {
+                map["dubboMethodName"] = self.dubboMethodName!
             }
-            if self.httpMothed != nil {
-                map["httpMothed"] = self.httpMothed!
+            if self.httpMethod != nil {
+                map["httpMethod"] = self.httpMethod!
             }
-            if self.mothedpath != nil {
-                map["mothedpath"] = self.mothedpath!
+            if self.methodPath != nil {
+                map["methodPath"] = self.methodPath!
             }
             if self.paramMapsList != nil {
                 var tmp : [Any] = []
@@ -10060,20 +10095,20 @@ public class HttpDubboTranscoder : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["dubboMothedName"] as? String {
-                self.dubboMothedName = value
+            if let value = dict["dubboMethodName"] as? String {
+                self.dubboMethodName = value
             }
-            if let value = dict["httpMothed"] as? String {
-                self.httpMothed = value
+            if let value = dict["httpMethod"] as? String {
+                self.httpMethod = value
             }
-            if let value = dict["mothedpath"] as? String {
-                self.mothedpath = value
+            if let value = dict["methodPath"] as? String {
+                self.methodPath = value
             }
             if let value = dict["paramMapsList"] as? [Any?] {
-                var tmp : [HttpDubboTranscoder.MothedMapList.ParamMapsList] = []
+                var tmp : [HttpDubboTranscoder.MethodMapList.ParamMapsList] = []
                 for v in value {
                     if v != nil {
-                        var model = HttpDubboTranscoder.MothedMapList.ParamMapsList()
+                        var model = HttpDubboTranscoder.MethodMapList.ParamMapsList()
                         if v != nil {
                             model.fromMap(v as? [String: Any?])
                         }
@@ -10096,7 +10131,7 @@ public class HttpDubboTranscoder : Tea.TeaModel {
 
     public var dubboServiceVersion: String?
 
-    public var mothedMapList: [HttpDubboTranscoder.MothedMapList]?
+    public var methodMapList: [HttpDubboTranscoder.MethodMapList]?
 
     public override init() {
         super.init()
@@ -10121,12 +10156,12 @@ public class HttpDubboTranscoder : Tea.TeaModel {
         if self.dubboServiceVersion != nil {
             map["dubboServiceVersion"] = self.dubboServiceVersion!
         }
-        if self.mothedMapList != nil {
+        if self.methodMapList != nil {
             var tmp : [Any] = []
-            for k in self.mothedMapList! {
+            for k in self.methodMapList! {
                 tmp.append(k.toMap())
             }
-            map["mothedMapList"] = tmp
+            map["methodMapList"] = tmp
         }
         return map
     }
@@ -10142,18 +10177,18 @@ public class HttpDubboTranscoder : Tea.TeaModel {
         if let value = dict["dubboServiceVersion"] as? String {
             self.dubboServiceVersion = value
         }
-        if let value = dict["mothedMapList"] as? [Any?] {
-            var tmp : [HttpDubboTranscoder.MothedMapList] = []
+        if let value = dict["methodMapList"] as? [Any?] {
+            var tmp : [HttpDubboTranscoder.MethodMapList] = []
             for v in value {
                 if v != nil {
-                    var model = HttpDubboTranscoder.MothedMapList()
+                    var model = HttpDubboTranscoder.MethodMapList()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
                     tmp.append(model)
                 }
             }
-            self.mothedMapList = tmp
+            self.methodMapList = tmp
         }
     }
 }
@@ -19415,13 +19450,21 @@ public class CreateHttpApiOperationResponse : Tea.TeaModel {
 public class CreateHttpApiRouteRequest : Tea.TeaModel {
     public class BackendConfig : Tea.TeaModel {
         public class Services : Tea.TeaModel {
+            public var groupName: String?
+
+            public var httpDubboTranscoder: HttpDubboTranscoder?
+
             public var modelName: String?
+
+            public var namespace: String?
 
             public var port: Int32?
 
             public var protocol_: String?
 
             public var serviceId: String?
+
+            public var sourceType: String?
 
             public var version: String?
 
@@ -19437,12 +19480,22 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.httpDubboTranscoder?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.groupName != nil {
+                    map["groupName"] = self.groupName!
+                }
+                if self.httpDubboTranscoder != nil {
+                    map["httpDubboTranscoder"] = self.httpDubboTranscoder?.toMap()
+                }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.namespace != nil {
+                    map["namespace"] = self.namespace!
                 }
                 if self.port != nil {
                     map["port"] = self.port!
@@ -19452,6 +19505,9 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
                 }
                 if self.serviceId != nil {
                     map["serviceId"] = self.serviceId!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
                 }
                 if self.version != nil {
                     map["version"] = self.version!
@@ -19464,8 +19520,19 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["groupName"] as? String {
+                    self.groupName = value
+                }
+                if let value = dict["httpDubboTranscoder"] as? [String: Any?] {
+                    var model = HttpDubboTranscoder()
+                    model.fromMap(value)
+                    self.httpDubboTranscoder = model
+                }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["namespace"] as? String {
+                    self.namespace = value
                 }
                 if let value = dict["port"] as? Int32 {
                     self.port = value
@@ -19475,6 +19542,9 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
                 }
                 if let value = dict["serviceId"] as? String {
                     self.serviceId = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
                 }
                 if let value = dict["version"] as? String {
                     self.version = value
@@ -52578,13 +52648,21 @@ public class UpdateHttpApiOperationResponse : Tea.TeaModel {
 public class UpdateHttpApiRouteRequest : Tea.TeaModel {
     public class BackendConfig : Tea.TeaModel {
         public class Services : Tea.TeaModel {
+            public var groupName: String?
+
+            public var httpDubboTranscoder: HttpDubboTranscoder?
+
             public var modelName: String?
+
+            public var namespace: String?
 
             public var port: Int32?
 
             public var protocol_: String?
 
             public var serviceId: String?
+
+            public var sourceType: String?
 
             public var version: String?
 
@@ -52600,12 +52678,22 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.httpDubboTranscoder?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.groupName != nil {
+                    map["groupName"] = self.groupName!
+                }
+                if self.httpDubboTranscoder != nil {
+                    map["httpDubboTranscoder"] = self.httpDubboTranscoder?.toMap()
+                }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.namespace != nil {
+                    map["namespace"] = self.namespace!
                 }
                 if self.port != nil {
                     map["port"] = self.port!
@@ -52615,6 +52703,9 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
                 }
                 if self.serviceId != nil {
                     map["serviceId"] = self.serviceId!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
                 }
                 if self.version != nil {
                     map["version"] = self.version!
@@ -52627,8 +52718,19 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["groupName"] as? String {
+                    self.groupName = value
+                }
+                if let value = dict["httpDubboTranscoder"] as? [String: Any?] {
+                    var model = HttpDubboTranscoder()
+                    model.fromMap(value)
+                    self.httpDubboTranscoder = model
+                }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["namespace"] as? String {
+                    self.namespace = value
                 }
                 if let value = dict["port"] as? Int32 {
                     self.port = value
@@ -52638,6 +52740,9 @@ public class UpdateHttpApiRouteRequest : Tea.TeaModel {
                 }
                 if let value = dict["serviceId"] as? String {
                     self.serviceId = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
                 }
                 if let value = dict["version"] as? String {
                     self.version = value
