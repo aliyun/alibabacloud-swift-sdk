@@ -10504,6 +10504,52 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         }
     }
     public class RayConfig : Tea.TeaModel {
+        public class StorageMounts : Tea.TeaModel {
+            public var mountPath: String?
+
+            public var storageId: Int64?
+
+            public var storageName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mountPath != nil {
+                    map["MountPath"] = self.mountPath!
+                }
+                if self.storageId != nil {
+                    map["StorageId"] = self.storageId!
+                }
+                if self.storageName != nil {
+                    map["StorageName"] = self.storageName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MountPath"] as? String {
+                    self.mountPath = value
+                }
+                if let value = dict["StorageId"] as? Int64 {
+                    self.storageId = value
+                }
+                if let value = dict["StorageName"] as? String {
+                    self.storageName = value
+                }
+            }
+        }
         public class WorkerGroups : Tea.TeaModel {
             public var allocateUnit: String?
 
@@ -10594,6 +10640,8 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
 
         public var headSpecType: String?
 
+        public var storageMounts: [CreateDBResourceGroupRequest.RayConfig.StorageMounts]?
+
         public var userDefinedRequirements: String?
 
         public var workerGroups: [CreateDBResourceGroupRequest.RayConfig.WorkerGroups]?
@@ -10630,6 +10678,13 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
             if self.headSpecType != nil {
                 map["HeadSpecType"] = self.headSpecType!
             }
+            if self.storageMounts != nil {
+                var tmp : [Any] = []
+                for k in self.storageMounts! {
+                    tmp.append(k.toMap())
+                }
+                map["StorageMounts"] = tmp
+            }
             if self.userDefinedRequirements != nil {
                 map["UserDefinedRequirements"] = self.userDefinedRequirements!
             }
@@ -10662,6 +10717,19 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["HeadSpecType"] as? String {
                 self.headSpecType = value
+            }
+            if let value = dict["StorageMounts"] as? [Any?] {
+                var tmp : [CreateDBResourceGroupRequest.RayConfig.StorageMounts] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateDBResourceGroupRequest.RayConfig.StorageMounts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.storageMounts = tmp
             }
             if let value = dict["UserDefinedRequirements"] as? String {
                 self.userDefinedRequirements = value
@@ -30232,6 +30300,8 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
 
                 public var storageId: Int64?
 
+                public var storageName: String?
+
                 public override init() {
                     super.init()
                 }
@@ -30252,6 +30322,9 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
                     if self.storageId != nil {
                         map["StorageId"] = self.storageId!
                     }
+                    if self.storageName != nil {
+                        map["StorageName"] = self.storageName!
+                    }
                     return map
                 }
 
@@ -30262,6 +30335,9 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["StorageId"] as? Int64 {
                         self.storageId = value
+                    }
+                    if let value = dict["StorageName"] as? String {
+                        self.storageName = value
                     }
                 }
             }
@@ -62032,6 +62108,8 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
 
             public var storageId: Int64?
 
+            public var storageName: String?
+
             public override init() {
                 super.init()
             }
@@ -62052,6 +62130,9 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
                 if self.storageId != nil {
                     map["StorageId"] = self.storageId!
                 }
+                if self.storageName != nil {
+                    map["StorageName"] = self.storageName!
+                }
                 return map
             }
 
@@ -62062,6 +62143,9 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["StorageId"] as? Int64 {
                     self.storageId = value
+                }
+                if let value = dict["StorageName"] as? String {
+                    self.storageName = value
                 }
             }
         }
