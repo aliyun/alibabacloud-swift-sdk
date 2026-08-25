@@ -10,31 +10,31 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
+            "ap-northeast-2": "selectdb.aliyuncs.com",
+            "ap-southeast-3": "selectdb.aliyuncs.com",
+            "ap-southeast-7": "selectdb.aliyuncs.com",
+            "cn-heyuan": "selectdb.aliyuncs.com",
+            "cn-shenzhen": "selectdb.cn-shenzhen.aliyuncs.com",
+            "cn-wulanchabu": "selectdb.cn-wulanchabu.aliyuncs.com",
+            "cn-beijing": "selectdb.cn-beijing.aliyuncs.com",
+            "ap-northeast-1": "selectdb.ap-northeast-1.aliyuncs.com",
+            "cn-chengdu": "selectdb.cn-chengdu.aliyuncs.com",
+            "cn-qingdao": "selectdb.cn-qingdao.aliyuncs.com",
+            "cn-shanghai": "selectdb.cn-shanghai.aliyuncs.com",
+            "cn-guangzhou": "selectdb.cn-guangzhou.aliyuncs.com",
+            "cn-hongkong": "selectdb.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "selectdb.ap-southeast-1.aliyuncs.com",
+            "cn-huhehaote": "selectdb.cn-huhehaote.aliyuncs.com",
+            "ap-southeast-5": "selectdb.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "selectdb.ap-southeast-6.aliyuncs.com",
+            "cn-zhangjiakou": "selectdb.cn-zhangjiakou.aliyuncs.com",
+            "cn-hangzhou": "selectdb.aliyuncs.com",
             "us-west-1": "selectdb.us-west-1.aliyuncs.com",
             "us-east-1": "selectdb.us-east-1.aliyuncs.com",
-            "na-south-1": "selectdb.na-south-1.aliyuncs.com",
-            "eu-west-1": "selectdb.eu-west-1.aliyuncs.com",
             "eu-central-1": "selectdb.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "selectdb.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "selectdb.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "selectdb.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "selectdb.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "selectdb.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "selectdb.cn-qingdao.aliyuncs.com",
-            "cn-huhehaote": "selectdb.cn-huhehaote.aliyuncs.com",
-            "cn-hongkong": "selectdb.cn-hongkong.aliyuncs.com",
-            "cn-heyuan": "selectdb.aliyuncs.com",
-            "cn-hangzhou": "selectdb.aliyuncs.com",
-            "cn-guangzhou": "selectdb.cn-guangzhou.aliyuncs.com",
-            "cn-chengdu": "selectdb.cn-chengdu.aliyuncs.com",
-            "cn-beijing": "selectdb.cn-beijing.aliyuncs.com",
-            "ap-southeast-7": "selectdb.aliyuncs.com",
-            "ap-southeast-6": "selectdb.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "selectdb.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "selectdb.aliyuncs.com",
-            "ap-southeast-1": "selectdb.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "selectdb.aliyuncs.com",
-            "ap-northeast-1": "selectdb.ap-northeast-1.aliyuncs.com"
+            "eu-west-1": "selectdb.eu-west-1.aliyuncs.com",
+            "na-south-1": "selectdb.na-south-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "selectdb.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("selectdb", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -857,6 +857,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAllDBInstanceClassWithOptions(_ request: DescribeAllDBInstanceClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAllDBInstanceClassResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
