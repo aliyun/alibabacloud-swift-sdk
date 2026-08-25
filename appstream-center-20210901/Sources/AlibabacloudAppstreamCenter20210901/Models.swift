@@ -7195,6 +7195,231 @@ public class GetDebugAppInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class GetFileUploadInfoRequest : Tea.TeaModel {
+    public var fileType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileType != nil {
+            map["FileType"] = self.fileType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileType"] as? String {
+            self.fileType = value
+        }
+    }
+}
+
+public class GetFileUploadInfoResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var accessKeyId: String?
+
+        public var bucketName: String?
+
+        public var expiration: String?
+
+        public var filePath: String?
+
+        public var maxFileSize: Int64?
+
+        public var ossPoint: String?
+
+        public var policy: String?
+
+        public var requestId: String?
+
+        public var signature: String?
+
+        public var stsToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessKeyId != nil {
+                map["AccessKeyId"] = self.accessKeyId!
+            }
+            if self.bucketName != nil {
+                map["BucketName"] = self.bucketName!
+            }
+            if self.expiration != nil {
+                map["Expiration"] = self.expiration!
+            }
+            if self.filePath != nil {
+                map["FilePath"] = self.filePath!
+            }
+            if self.maxFileSize != nil {
+                map["MaxFileSize"] = self.maxFileSize!
+            }
+            if self.ossPoint != nil {
+                map["OssPoint"] = self.ossPoint!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.signature != nil {
+                map["Signature"] = self.signature!
+            }
+            if self.stsToken != nil {
+                map["StsToken"] = self.stsToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessKeyId"] as? String {
+                self.accessKeyId = value
+            }
+            if let value = dict["BucketName"] as? String {
+                self.bucketName = value
+            }
+            if let value = dict["Expiration"] as? String {
+                self.expiration = value
+            }
+            if let value = dict["FilePath"] as? String {
+                self.filePath = value
+            }
+            if let value = dict["MaxFileSize"] as? Int64 {
+                self.maxFileSize = value
+            }
+            if let value = dict["OssPoint"] as? String {
+                self.ossPoint = value
+            }
+            if let value = dict["Policy"] as? String {
+                self.policy = value
+            }
+            if let value = dict["RequestId"] as? String {
+                self.requestId = value
+            }
+            if let value = dict["Signature"] as? String {
+                self.signature = value
+            }
+            if let value = dict["StsToken"] as? String {
+                self.stsToken = value
+            }
+        }
+    }
+    public var data: GetFileUploadInfoResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetFileUploadInfoResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetFileUploadInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetFileUploadInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetFileUploadInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetModelProviderTemplateRequest : Tea.TeaModel {
     public var providerTemplateId: String?
 
