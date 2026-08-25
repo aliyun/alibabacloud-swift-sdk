@@ -14,40 +14,40 @@ open class Client : AlibabacloudOpenApi.Client {
         self._spi = gatewayClient
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-west-1": "kms.us-west-1.aliyuncs.com",
-            "us-east-1": "kms.us-east-1.aliyuncs.com",
-            "na-south-1": "kms.na-south-1.aliyuncs.com",
-            "me-east-1": "kms.me-east-1.aliyuncs.com",
-            "me-central-1": "kms.me-central-1.aliyuncs.com",
-            "eu-west-1": "kms.eu-west-1.aliyuncs.com",
-            "eu-central-1": "kms.eu-central-1.aliyuncs.com",
-            "cn-zhengzhou-jva": "kms.cn-zhengzhou-jva.aliyuncs.com",
-            "cn-zhangjiakou": "kms.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "kms.cn-wulanchabu.aliyuncs.com",
-            "cn-wuhan-lr": "kms.cn-wuhan-lr.aliyuncs.com",
-            "cn-shenzhen-finance-1": "kms.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shenzhen": "kms.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "kms.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "kms.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "kms.cn-qingdao.aliyuncs.com",
-            "cn-huhehaote": "kms.cn-huhehaote.aliyuncs.com",
-            "cn-hongkong": "kms.cn-hongkong.aliyuncs.com",
-            "cn-heyuan-acdr-1": "kms.cn-heyuan-acdr-1.aliyuncs.com",
-            "cn-heyuan": "kms.cn-heyuan.aliyuncs.com",
-            "cn-hangzhou-finance": "kms.cn-hangzhou-finance.aliyuncs.com",
-            "cn-hangzhou": "kms.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "kms.cn-guangzhou.aliyuncs.com",
-            "cn-fuzhou": "kms.cn-fuzhou.aliyuncs.com",
-            "cn-chengdu": "kms.cn-chengdu.aliyuncs.com",
-            "cn-beijing-finance-1": "kms.cn-beijing-finance-1.aliyuncs.com",
-            "cn-beijing": "kms.cn-beijing.aliyuncs.com",
+            "ap-northeast-1": "kms.ap-northeast-1.aliyuncs.com",
+            "ap-northeast-2": "kms.ap-northeast-2.aliyuncs.com",
             "ap-southeast-7": "kms.ap-southeast-7.aliyuncs.com",
             "ap-southeast-6": "kms.ap-southeast-6.aliyuncs.com",
             "ap-southeast-5": "kms.ap-southeast-5.aliyuncs.com",
             "ap-southeast-3": "kms.ap-southeast-3.aliyuncs.com",
             "ap-southeast-1": "kms.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "kms.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "kms.ap-northeast-1.aliyuncs.com"
+            "cn-hongkong": "kms.cn-hongkong.aliyuncs.com",
+            "cn-chengdu": "kms.cn-chengdu.aliyuncs.com",
+            "cn-wulanchabu": "kms.cn-wulanchabu.aliyuncs.com",
+            "cn-huhehaote": "kms.cn-huhehaote.aliyuncs.com",
+            "cn-zhangjiakou": "kms.cn-zhangjiakou.aliyuncs.com",
+            "cn-beijing": "kms.cn-beijing.aliyuncs.com",
+            "cn-qingdao": "kms.cn-qingdao.aliyuncs.com",
+            "cn-guangzhou": "kms.cn-guangzhou.aliyuncs.com",
+            "cn-heyuan": "kms.cn-heyuan.aliyuncs.com",
+            "cn-shenzhen": "kms.cn-shenzhen.aliyuncs.com",
+            "cn-shanghai": "kms.cn-shanghai.aliyuncs.com",
+            "cn-hangzhou": "kms.cn-hangzhou.aliyuncs.com",
+            "cn-fuzhou": "kms.cn-fuzhou.aliyuncs.com",
+            "cn-wuhan-lr": "kms.cn-wuhan-lr.aliyuncs.com",
+            "cn-zhengzhou-jva": "kms.cn-zhengzhou-jva.aliyuncs.com",
+            "na-south-1": "kms.na-south-1.aliyuncs.com",
+            "eu-central-1": "kms.eu-central-1.aliyuncs.com",
+            "eu-west-1": "kms.eu-west-1.aliyuncs.com",
+            "us-west-1": "kms.us-west-1.aliyuncs.com",
+            "us-east-1": "kms.us-east-1.aliyuncs.com",
+            "me-central-1": "kms.me-central-1.aliyuncs.com",
+            "me-east-1": "kms.me-east-1.aliyuncs.com",
+            "cn-heyuan-acdr-1": "kms.cn-heyuan-acdr-1.aliyuncs.com",
+            "cn-hangzhou-finance": "kms.cn-hangzhou-finance.aliyuncs.com",
+            "cn-shanghai-finance-1": "kms.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shenzhen-finance-1": "kms.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-beijing-finance-1": "kms.cn-beijing-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("kms", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -82,8 +82,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keyVersionId)) {
             query["KeyVersionId"] = request.keyVersionId ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.recipient)) {
+            body["Recipient"] = request.recipient ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "AsymmetricDecrypt",
@@ -730,11 +735,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.encryptionContextShrink)) {
             query["EncryptionContext"] = request.encryptionContextShrink ?? "";
         }
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.recipient)) {
-            query["Recipient"] = request.recipient ?? "";
+            body["Recipient"] = request.recipient ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "Decrypt",
@@ -1459,11 +1466,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.numberOfBytes)) {
             query["NumberOfBytes"] = request.numberOfBytes!;
         }
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.recipient)) {
-            query["Recipient"] = request.recipient ?? "";
+            body["Recipient"] = request.recipient ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GenerateDataKey",
@@ -1572,6 +1581,31 @@ open class Client : AlibabacloudOpenApi.Client {
     public func generateMac(_ request: GenerateMacRequest) async throws -> GenerateMacResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await generateMacWithOptions(request as! GenerateMacRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChallengeWithOptions(_ request: GetChallengeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetChallengeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetChallenge",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetChallengeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChallenge(_ request: GetChallengeRequest) async throws -> GetChallengeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getChallengeWithOptions(request as! GetChallengeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1938,8 +1972,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.versionStage)) {
             query["VersionStage"] = request.versionStage ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.recipient)) {
+            body["Recipient"] = request.recipient ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetSecretValue",
