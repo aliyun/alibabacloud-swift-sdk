@@ -10997,6 +10997,328 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class MultiLevelTagResponse : Tea.TeaModel {
+                public class TagList : Tea.TeaModel {
+                    public class Children : Tea.TeaModel {
+                        public class Children : Tea.TeaModel {
+                            public class Children : Tea.TeaModel {
+                                public class Children : Tea.TeaModel {
+                                    public var remarks: String?
+
+                                    public var tagName: String?
+
+                                    public override init() {
+                                        super.init()
+                                    }
+
+                                    public init(_ dict: [String: Any]) {
+                                        super.init()
+                                        self.fromMap(dict)
+                                    }
+
+                                    public override func validate() throws -> Void {
+                                    }
+
+                                    public override func toMap() -> [String : Any] {
+                                        var map = super.toMap()
+                                        if self.remarks != nil {
+                                            map["Remarks"] = self.remarks!
+                                        }
+                                        if self.tagName != nil {
+                                            map["TagName"] = self.tagName!
+                                        }
+                                        return map
+                                    }
+
+                                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                        guard let dict else { return }
+                                        if let value = dict["Remarks"] as? String {
+                                            self.remarks = value
+                                        }
+                                        if let value = dict["TagName"] as? String {
+                                            self.tagName = value
+                                        }
+                                    }
+                                }
+                                public var children: [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children.Children.Children]?
+
+                                public var remarks: String?
+
+                                public var tagName: String?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.children != nil {
+                                        var tmp : [Any] = []
+                                        for k in self.children! {
+                                            tmp.append(k.toMap())
+                                        }
+                                        map["Children"] = tmp
+                                    }
+                                    if self.remarks != nil {
+                                        map["Remarks"] = self.remarks!
+                                    }
+                                    if self.tagName != nil {
+                                        map["TagName"] = self.tagName!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                    guard let dict else { return }
+                                    if let value = dict["Children"] as? [Any?] {
+                                        var tmp : [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children.Children.Children] = []
+                                        for v in value {
+                                            if v != nil {
+                                                var model = GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children.Children.Children()
+                                                if v != nil {
+                                                    model.fromMap(v as? [String: Any?])
+                                                }
+                                                tmp.append(model)
+                                            }
+                                        }
+                                        self.children = tmp
+                                    }
+                                    if let value = dict["Remarks"] as? String {
+                                        self.remarks = value
+                                    }
+                                    if let value = dict["TagName"] as? String {
+                                        self.tagName = value
+                                    }
+                                }
+                            }
+                            public var children: [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children.Children]?
+
+                            public var remarks: String?
+
+                            public var tagName: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.children != nil {
+                                    var tmp : [Any] = []
+                                    for k in self.children! {
+                                        tmp.append(k.toMap())
+                                    }
+                                    map["Children"] = tmp
+                                }
+                                if self.remarks != nil {
+                                    map["Remarks"] = self.remarks!
+                                }
+                                if self.tagName != nil {
+                                    map["TagName"] = self.tagName!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["Children"] as? [Any?] {
+                                    var tmp : [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children.Children] = []
+                                    for v in value {
+                                        if v != nil {
+                                            var model = GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children.Children()
+                                            if v != nil {
+                                                model.fromMap(v as? [String: Any?])
+                                            }
+                                            tmp.append(model)
+                                        }
+                                    }
+                                    self.children = tmp
+                                }
+                                if let value = dict["Remarks"] as? String {
+                                    self.remarks = value
+                                }
+                                if let value = dict["TagName"] as? String {
+                                    self.tagName = value
+                                }
+                            }
+                        }
+                        public var children: [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children]?
+
+                        public var remarks: String?
+
+                        public var tagName: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.children != nil {
+                                var tmp : [Any] = []
+                                for k in self.children! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["Children"] = tmp
+                            }
+                            if self.remarks != nil {
+                                map["Remarks"] = self.remarks!
+                            }
+                            if self.tagName != nil {
+                                map["TagName"] = self.tagName!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Children"] as? [Any?] {
+                                var tmp : [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children.Children()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.children = tmp
+                            }
+                            if let value = dict["Remarks"] as? String {
+                                self.remarks = value
+                            }
+                            if let value = dict["TagName"] as? String {
+                                self.tagName = value
+                            }
+                        }
+                    }
+                    public var children: [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children]?
+
+                    public var remarks: String?
+
+                    public var tagName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.children != nil {
+                            var tmp : [Any] = []
+                            for k in self.children! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Children"] = tmp
+                        }
+                        if self.remarks != nil {
+                            map["Remarks"] = self.remarks!
+                        }
+                        if self.tagName != nil {
+                            map["TagName"] = self.tagName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Children"] as? [Any?] {
+                            var tmp : [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList.Children()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.children = tmp
+                        }
+                        if let value = dict["Remarks"] as? String {
+                            self.remarks = value
+                        }
+                        if let value = dict["TagName"] as? String {
+                            self.tagName = value
+                        }
+                    }
+                }
+                public var tagList: [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagList != nil {
+                        var tmp : [Any] = []
+                        for k in self.tagList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TagList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["TagList"] as? [Any?] {
+                        var tmp : [GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse.TagList()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.tagList = tmp
+                    }
+                }
+            }
             public class ServiceInspectionResponse : Tea.TeaModel {
                 public class ServiceInspectionVoList : Tea.TeaModel {
                     public var dimension: String?
@@ -11468,6 +11790,8 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
 
             public var fieldResponse: GetAgentTaskResultResponseBody.Data.Response.FieldResponse?
 
+            public var multiLevelTagResponse: GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse?
+
             public var serviceInspectionResponse: GetAgentTaskResultResponseBody.Data.Response.ServiceInspectionResponse?
 
             public var tagCategoryResponse: GetAgentTaskResultResponseBody.Data.Response.TagCategoryResponse?
@@ -11486,6 +11810,7 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.customerPromptResponse?.validate()
                 try self.fieldResponse?.validate()
+                try self.multiLevelTagResponse?.validate()
                 try self.serviceInspectionResponse?.validate()
                 try self.tagCategoryResponse?.validate()
                 try self.voiceprintResponse?.validate()
@@ -11498,6 +11823,9 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                 }
                 if self.fieldResponse != nil {
                     map["FieldResponse"] = self.fieldResponse?.toMap()
+                }
+                if self.multiLevelTagResponse != nil {
+                    map["MultiLevelTagResponse"] = self.multiLevelTagResponse?.toMap()
                 }
                 if self.serviceInspectionResponse != nil {
                     map["ServiceInspectionResponse"] = self.serviceInspectionResponse?.toMap()
@@ -11522,6 +11850,11 @@ public class GetAgentTaskResultResponseBody : Tea.TeaModel {
                     var model = GetAgentTaskResultResponseBody.Data.Response.FieldResponse()
                     model.fromMap(value)
                     self.fieldResponse = model
+                }
+                if let value = dict["MultiLevelTagResponse"] as? [String: Any?] {
+                    var model = GetAgentTaskResultResponseBody.Data.Response.MultiLevelTagResponse()
+                    model.fromMap(value)
+                    self.multiLevelTagResponse = model
                 }
                 if let value = dict["ServiceInspectionResponse"] as? [String: Any?] {
                     var model = GetAgentTaskResultResponseBody.Data.Response.ServiceInspectionResponse()
