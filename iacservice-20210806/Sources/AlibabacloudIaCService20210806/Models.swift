@@ -3482,6 +3482,150 @@ public class CreateTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateTaskFromResourceImportRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var exportTaskId: String?
+
+    public var exportVersion: String?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.exportTaskId != nil {
+            map["exportTaskId"] = self.exportTaskId!
+        }
+        if self.exportVersion != nil {
+            map["exportVersion"] = self.exportVersion!
+        }
+        if self.taskName != nil {
+            map["taskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["exportTaskId"] as? String {
+            self.exportTaskId = value
+        }
+        if let value = dict["exportVersion"] as? String {
+            self.exportVersion = value
+        }
+        if let value = dict["taskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class CreateTaskFromResourceImportResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class CreateTaskFromResourceImportResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateTaskFromResourceImportResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateTaskFromResourceImportResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteDetectConfigRequest : Tea.TeaModel {
 
     public override init() {
@@ -4540,6 +4684,7 @@ public class DeleteStackResponse : Tea.TeaModel {
 }
 
 public class DeleteTaskRequest : Tea.TeaModel {
+    public var resourceRetentionPolicy: String?
 
     public override init() {
         super.init()
@@ -4555,11 +4700,17 @@ public class DeleteTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.resourceRetentionPolicy != nil {
+            map["resourceRetentionPolicy"] = self.resourceRetentionPolicy!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["resourceRetentionPolicy"] as? String {
+            self.resourceRetentionPolicy = value
+        }
     }
 }
 
@@ -10880,6 +11031,8 @@ public class GetStackDeploymentsResponseBody : Tea.TeaModel {
 
         public var jobId: String?
 
+        public var logOutputPath: String?
+
         public var outputs: [GetStackDeploymentsResponseBody.Deployments.Outputs]?
 
         public var parameters: [GetStackDeploymentsResponseBody.Deployments.Parameters]?
@@ -10934,6 +11087,9 @@ public class GetStackDeploymentsResponseBody : Tea.TeaModel {
             }
             if self.jobId != nil {
                 map["jobId"] = self.jobId!
+            }
+            if self.logOutputPath != nil {
+                map["logOutputPath"] = self.logOutputPath!
             }
             if self.outputs != nil {
                 var tmp : [Any] = []
@@ -10998,6 +11154,9 @@ public class GetStackDeploymentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["jobId"] as? String {
                 self.jobId = value
+            }
+            if let value = dict["logOutputPath"] as? String {
+                self.logOutputPath = value
             }
             if let value = dict["outputs"] as? [Any?] {
                 var tmp : [GetStackDeploymentsResponseBody.Deployments.Outputs] = []
@@ -17823,6 +17982,8 @@ public class ListResourceExportTaskVersionsResponseBody : Tea.TeaModel {
 
         public var includeRules: [ListResourceExportTaskVersionsResponseBody.ExportTasks.IncludeRules]?
 
+        public var managedTaskId: String?
+
         public var modules: [ListResourceExportTaskVersionsResponseBody.ExportTasks.Modules]?
 
         public var name: String?
@@ -17873,6 +18034,9 @@ public class ListResourceExportTaskVersionsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["includeRules"] = tmp
+            }
+            if self.managedTaskId != nil {
+                map["managedTaskId"] = self.managedTaskId!
             }
             if self.modules != nil {
                 var tmp : [Any] = []
@@ -17934,6 +18098,9 @@ public class ListResourceExportTaskVersionsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.includeRules = tmp
+            }
+            if let value = dict["managedTaskId"] as? String {
+                self.managedTaskId = value
             }
             if let value = dict["modules"] as? [Any?] {
                 var tmp : [ListResourceExportTaskVersionsResponseBody.ExportTasks.Modules] = []
