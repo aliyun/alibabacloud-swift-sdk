@@ -10,12 +10,15 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "cn-shenzhen": "adbai.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai": "adbai.cn-shanghai.aliyuncs.com",
-            "cn-hangzhou": "adbai.cn-hangzhou.aliyuncs.com",
-            "cn-beijing": "adbai.cn-beijing.aliyuncs.com",
+            "ap-northeast-1": "adbai.ap-northeast-1.aliyuncs.com",
             "ap-southeast-1": "adbai.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "adbai.ap-northeast-1.aliyuncs.com"
+            "cn-beijing": "adbai.cn-beijing.aliyuncs.com",
+            "cn-hangzhou": "adbai.cn-hangzhou.aliyuncs.com",
+            "cn-shanghai": "adbai.cn-shanghai.aliyuncs.com",
+            "cn-shenzhen": "adbai.cn-shenzhen.aliyuncs.com",
+            "cn-guangzhou": "adbai.cn-guangzhou.aliyuncs.com",
+            "cn-wulanchabu": "adbai.cn-wulanchabu.aliyuncs.com",
+            "us-west-1": "adbai.us-west-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("adbai", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -134,6 +137,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiModelKnowledgeBaseWithOptions(_ request: CreateMultiModelKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultiModelKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMultiModelKnowledgeBase",
+            "version": "2025-08-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMultiModelKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiModelKnowledgeBase(_ request: CreateMultiModelKnowledgeBaseRequest) async throws -> CreateMultiModelKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createMultiModelKnowledgeBaseWithOptions(request as! CreateMultiModelKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAgentPlatformWithOptions(_ request: DeleteAgentPlatformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAgentPlatformResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -205,6 +242,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteEmbodiedAIPlatform(_ request: DeleteEmbodiedAIPlatformRequest) async throws -> DeleteEmbodiedAIPlatformResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteEmbodiedAIPlatformWithOptions(request as! DeleteEmbodiedAIPlatformRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultiModalKnowledgeBaseWithOptions(_ request: DeleteMultiModalKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMultiModalKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMultiModalKnowledgeBase",
+            "version": "2025-08-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMultiModalKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultiModalKnowledgeBase(_ request: DeleteMultiModalKnowledgeBaseRequest) async throws -> DeleteMultiModalKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteMultiModalKnowledgeBaseWithOptions(request as! DeleteMultiModalKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
