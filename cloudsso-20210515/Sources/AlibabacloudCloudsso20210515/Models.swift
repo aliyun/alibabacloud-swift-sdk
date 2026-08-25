@@ -522,6 +522,8 @@ public class CreateAccessAssignmentRequest : Tea.TeaModel {
 
     public var directoryId: String?
 
+    public var originTargetId: String?
+
     public var principalId: String?
 
     public var principalType: String?
@@ -550,6 +552,9 @@ public class CreateAccessAssignmentRequest : Tea.TeaModel {
         if self.directoryId != nil {
             map["DirectoryId"] = self.directoryId!
         }
+        if self.originTargetId != nil {
+            map["OriginTargetId"] = self.originTargetId!
+        }
         if self.principalId != nil {
             map["PrincipalId"] = self.principalId!
         }
@@ -573,6 +578,9 @@ public class CreateAccessAssignmentRequest : Tea.TeaModel {
         if let value = dict["DirectoryId"] as? String {
             self.directoryId = value
         }
+        if let value = dict["OriginTargetId"] as? String {
+            self.originTargetId = value
+        }
         if let value = dict["PrincipalId"] as? String {
             self.principalId = value
         }
@@ -593,6 +601,8 @@ public class CreateAccessAssignmentResponseBody : Tea.TeaModel {
         public var accessConfigurationId: String?
 
         public var accessConfigurationName: String?
+
+        public var originTargetId: String?
 
         public var principalId: String?
 
@@ -635,6 +645,9 @@ public class CreateAccessAssignmentResponseBody : Tea.TeaModel {
             }
             if self.accessConfigurationName != nil {
                 map["AccessConfigurationName"] = self.accessConfigurationName!
+            }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
             }
             if self.principalId != nil {
                 map["PrincipalId"] = self.principalId!
@@ -679,6 +692,9 @@ public class CreateAccessAssignmentResponseBody : Tea.TeaModel {
             }
             if let value = dict["AccessConfigurationName"] as? String {
                 self.accessConfigurationName = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["PrincipalId"] as? String {
                 self.principalId = value
@@ -2507,6 +2523,8 @@ public class DeleteAccessAssignmentRequest : Tea.TeaModel {
 
     public var directoryId: String?
 
+    public var originTargetId: String?
+
     public var principalId: String?
 
     public var principalType: String?
@@ -2538,6 +2556,9 @@ public class DeleteAccessAssignmentRequest : Tea.TeaModel {
         if self.directoryId != nil {
             map["DirectoryId"] = self.directoryId!
         }
+        if self.originTargetId != nil {
+            map["OriginTargetId"] = self.originTargetId!
+        }
         if self.principalId != nil {
             map["PrincipalId"] = self.principalId!
         }
@@ -2564,6 +2585,9 @@ public class DeleteAccessAssignmentRequest : Tea.TeaModel {
         if let value = dict["DirectoryId"] as? String {
             self.directoryId = value
         }
+        if let value = dict["OriginTargetId"] as? String {
+            self.originTargetId = value
+        }
         if let value = dict["PrincipalId"] as? String {
             self.principalId = value
         }
@@ -2584,6 +2608,8 @@ public class DeleteAccessAssignmentResponseBody : Tea.TeaModel {
         public var accessConfigurationId: String?
 
         public var accessConfigurationName: String?
+
+        public var originTargetId: String?
 
         public var principalId: String?
 
@@ -2626,6 +2652,9 @@ public class DeleteAccessAssignmentResponseBody : Tea.TeaModel {
             }
             if self.accessConfigurationName != nil {
                 map["AccessConfigurationName"] = self.accessConfigurationName!
+            }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
             }
             if self.principalId != nil {
                 map["PrincipalId"] = self.principalId!
@@ -2670,6 +2699,9 @@ public class DeleteAccessAssignmentResponseBody : Tea.TeaModel {
             }
             if let value = dict["AccessConfigurationName"] as? String {
                 self.accessConfigurationName = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["PrincipalId"] as? String {
                 self.principalId = value
@@ -3794,6 +3826,8 @@ public class DeprovisionAccessConfigurationRequest : Tea.TeaModel {
 
     public var directoryId: String?
 
+    public var originTargetId: String?
+
     public var targetId: String?
 
     public var targetType: String?
@@ -3818,6 +3852,9 @@ public class DeprovisionAccessConfigurationRequest : Tea.TeaModel {
         if self.directoryId != nil {
             map["DirectoryId"] = self.directoryId!
         }
+        if self.originTargetId != nil {
+            map["OriginTargetId"] = self.originTargetId!
+        }
         if self.targetId != nil {
             map["TargetId"] = self.targetId!
         }
@@ -3835,6 +3872,9 @@ public class DeprovisionAccessConfigurationRequest : Tea.TeaModel {
         if let value = dict["DirectoryId"] as? String {
             self.directoryId = value
         }
+        if let value = dict["OriginTargetId"] as? String {
+            self.originTargetId = value
+        }
         if let value = dict["TargetId"] as? String {
             self.targetId = value
         }
@@ -3849,6 +3889,8 @@ public class DeprovisionAccessConfigurationResponseBody : Tea.TeaModel {
         public var accessConfigurationId: String?
 
         public var accessConfigurationName: String?
+
+        public var originTargetId: String?
 
         public var status: String?
 
@@ -3886,6 +3928,9 @@ public class DeprovisionAccessConfigurationResponseBody : Tea.TeaModel {
             if self.accessConfigurationName != nil {
                 map["AccessConfigurationName"] = self.accessConfigurationName!
             }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -3920,6 +3965,9 @@ public class DeprovisionAccessConfigurationResponseBody : Tea.TeaModel {
             }
             if let value = dict["AccessConfigurationName"] as? String {
                 self.accessConfigurationName = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -6923,6 +6971,8 @@ public class GetTaskResponseBody : Tea.TeaModel {
 
         public var failureReason: String?
 
+        public var originTargetId: String?
+
         public var principalId: String?
 
         public var principalName: String?
@@ -6972,6 +7022,9 @@ public class GetTaskResponseBody : Tea.TeaModel {
             }
             if self.failureReason != nil {
                 map["FailureReason"] = self.failureReason!
+            }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
             }
             if self.principalId != nil {
                 map["PrincipalId"] = self.principalId!
@@ -7025,6 +7078,9 @@ public class GetTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["FailureReason"] as? String {
                 self.failureReason = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["PrincipalId"] as? String {
                 self.principalId = value
@@ -9216,6 +9272,8 @@ public class ListAccessAssignmentsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var originTargetId: String?
+
     public var principalId: String?
 
     public var principalType: String?
@@ -9250,6 +9308,9 @@ public class ListAccessAssignmentsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.originTargetId != nil {
+            map["OriginTargetId"] = self.originTargetId!
+        }
         if self.principalId != nil {
             map["PrincipalId"] = self.principalId!
         }
@@ -9279,6 +9340,9 @@ public class ListAccessAssignmentsRequest : Tea.TeaModel {
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
+        if let value = dict["OriginTargetId"] as? String {
+            self.originTargetId = value
+        }
         if let value = dict["PrincipalId"] as? String {
             self.principalId = value
         }
@@ -9301,6 +9365,8 @@ public class ListAccessAssignmentsResponseBody : Tea.TeaModel {
         public var accessConfigurationName: String?
 
         public var createTime: String?
+
+        public var originTargetId: String?
 
         public var principalId: String?
 
@@ -9341,6 +9407,9 @@ public class ListAccessAssignmentsResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
+            }
             if self.principalId != nil {
                 map["PrincipalId"] = self.principalId!
             }
@@ -9378,6 +9447,9 @@ public class ListAccessAssignmentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["PrincipalId"] as? String {
                 self.principalId = value
@@ -9548,6 +9620,8 @@ public class ListAccessConfigurationProvisioningsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var originTargetId: String?
+
     public var provisioningStatus: String?
 
     public var targetId: String?
@@ -9580,6 +9654,9 @@ public class ListAccessConfigurationProvisioningsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.originTargetId != nil {
+            map["OriginTargetId"] = self.originTargetId!
+        }
         if self.provisioningStatus != nil {
             map["ProvisioningStatus"] = self.provisioningStatus!
         }
@@ -9606,6 +9683,9 @@ public class ListAccessConfigurationProvisioningsRequest : Tea.TeaModel {
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
+        if let value = dict["OriginTargetId"] as? String {
+            self.originTargetId = value
+        }
         if let value = dict["ProvisioningStatus"] as? String {
             self.provisioningStatus = value
         }
@@ -9625,6 +9705,8 @@ public class ListAccessConfigurationProvisioningsResponseBody : Tea.TeaModel {
         public var accessConfigurationName: String?
 
         public var createTime: String?
+
+        public var originTargetId: String?
 
         public var RAMPolicyNames: [String]?
 
@@ -9669,6 +9751,9 @@ public class ListAccessConfigurationProvisioningsResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
+            }
             if self.RAMPolicyNames != nil {
                 map["RAMPolicyNames"] = self.RAMPolicyNames!
             }
@@ -9712,6 +9797,9 @@ public class ListAccessConfigurationProvisioningsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["RAMPolicyNames"] as? [String] {
                 self.RAMPolicyNames = value
@@ -12277,6 +12365,8 @@ public class ListTasksResponseBody : Tea.TeaModel {
 
         public var failureReason: String?
 
+        public var originTargetId: String?
+
         public var principalId: String?
 
         public var principalName: String?
@@ -12326,6 +12416,9 @@ public class ListTasksResponseBody : Tea.TeaModel {
             }
             if self.failureReason != nil {
                 map["FailureReason"] = self.failureReason!
+            }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
             }
             if self.principalId != nil {
                 map["PrincipalId"] = self.principalId!
@@ -12379,6 +12472,9 @@ public class ListTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["FailureReason"] as? String {
                 self.failureReason = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["PrincipalId"] as? String {
                 self.principalId = value
@@ -13762,6 +13858,8 @@ public class ProvisionAccessConfigurationRequest : Tea.TeaModel {
 
     public var directoryId: String?
 
+    public var originTargetId: String?
+
     public var targetId: String?
 
     public var targetType: String?
@@ -13786,6 +13884,9 @@ public class ProvisionAccessConfigurationRequest : Tea.TeaModel {
         if self.directoryId != nil {
             map["DirectoryId"] = self.directoryId!
         }
+        if self.originTargetId != nil {
+            map["OriginTargetId"] = self.originTargetId!
+        }
         if self.targetId != nil {
             map["TargetId"] = self.targetId!
         }
@@ -13803,6 +13904,9 @@ public class ProvisionAccessConfigurationRequest : Tea.TeaModel {
         if let value = dict["DirectoryId"] as? String {
             self.directoryId = value
         }
+        if let value = dict["OriginTargetId"] as? String {
+            self.originTargetId = value
+        }
         if let value = dict["TargetId"] as? String {
             self.targetId = value
         }
@@ -13817,6 +13921,8 @@ public class ProvisionAccessConfigurationResponseBody : Tea.TeaModel {
         public var accessConfigurationId: String?
 
         public var accessConfigurationName: String?
+
+        public var originTargetId: String?
 
         public var status: String?
 
@@ -13854,6 +13960,9 @@ public class ProvisionAccessConfigurationResponseBody : Tea.TeaModel {
             if self.accessConfigurationName != nil {
                 map["AccessConfigurationName"] = self.accessConfigurationName!
             }
+            if self.originTargetId != nil {
+                map["OriginTargetId"] = self.originTargetId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -13888,6 +13997,9 @@ public class ProvisionAccessConfigurationResponseBody : Tea.TeaModel {
             }
             if let value = dict["AccessConfigurationName"] as? String {
                 self.accessConfigurationName = value
+            }
+            if let value = dict["OriginTargetId"] as? String {
+                self.originTargetId = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value

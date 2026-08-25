@@ -10,12 +10,12 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-west-1": "cloudsso.us-west-1.aliyuncs.com",
-            "eu-central-1": "cloudsso.eu-central-1.aliyuncs.com",
             "cn-shanghai": "cloudsso.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "cloudsso.cn-hongkong.aliyuncs.com",
+            "ap-northeast-2": "cloudsso.ap-northeast-2.aliyuncs.com",
             "ap-southeast-1": "cloudsso.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "cloudsso.ap-northeast-2.aliyuncs.com"
+            "us-west-1": "cloudsso.us-west-1.aliyuncs.com",
+            "eu-central-1": "cloudsso.eu-central-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudsso", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -185,6 +185,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originTargetId)) {
+            query["OriginTargetId"] = request.originTargetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.principalId)) {
             query["PrincipalId"] = request.principalId ?? "";
@@ -486,6 +489,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originTargetId)) {
+            query["OriginTargetId"] = request.originTargetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.principalId)) {
             query["PrincipalId"] = request.principalId ?? "";
@@ -816,6 +822,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originTargetId)) {
+            query["OriginTargetId"] = request.originTargetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.targetId)) {
             query["TargetId"] = request.targetId ?? "";
@@ -1717,6 +1726,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.originTargetId)) {
+            query["OriginTargetId"] = request.originTargetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.principalId)) {
             query["PrincipalId"] = request.principalId ?? "";
         }
@@ -1768,6 +1780,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originTargetId)) {
+            query["OriginTargetId"] = request.originTargetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.provisioningStatus)) {
             query["ProvisioningStatus"] = request.provisioningStatus ?? "";
@@ -2336,6 +2351,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originTargetId)) {
+            query["OriginTargetId"] = request.originTargetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.targetId)) {
             query["TargetId"] = request.targetId ?? "";
