@@ -2706,9 +2706,20 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describePoliciesV2WithOptions(_ request: DescribePoliciesV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePoliciesV2Response {
-        try TeaUtils.Client.validateModel(request)
+    public func describePoliciesV2WithOptions(_ tmpReq: DescribePoliciesV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePoliciesV2Response {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribePoliciesV2ShrinkRequest = DescribePoliciesV2ShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.accounts)) {
+            request.accountsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.accounts, "Accounts", "json")
+        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountScope)) {
+            body["AccountScope"] = request.accountScope ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accountsShrink)) {
+            body["Accounts"] = request.accountsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
         }
@@ -2717,6 +2728,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.policyId)) {
             body["PolicyId"] = request.policyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleScope)) {
+            body["RuleScope"] = request.ruleScope ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)

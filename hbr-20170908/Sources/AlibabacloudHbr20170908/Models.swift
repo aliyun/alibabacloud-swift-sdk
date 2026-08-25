@@ -5,6 +5,53 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class CrossAccountUser : Tea.TeaModel {
+    public var crossAccountRoleName: String?
+
+    public var crossAccountType: String?
+
+    public var crossAccountUserId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.crossAccountRoleName != nil {
+            map["CrossAccountRoleName"] = self.crossAccountRoleName!
+        }
+        if self.crossAccountType != nil {
+            map["CrossAccountType"] = self.crossAccountType!
+        }
+        if self.crossAccountUserId != nil {
+            map["CrossAccountUserId"] = self.crossAccountUserId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CrossAccountRoleName"] as? String {
+            self.crossAccountRoleName = value
+        }
+        if let value = dict["CrossAccountType"] as? String {
+            self.crossAccountType = value
+        }
+        if let value = dict["CrossAccountUserId"] as? Int64 {
+            self.crossAccountUserId = value
+        }
+    }
+}
+
 public class OtsDetail : Tea.TeaModel {
     public var tableNames: [String]?
 
@@ -4864,6 +4911,56 @@ public class CreatePolicyBindingsResponse : Tea.TeaModel {
 public class CreatePolicyV2Request : Tea.TeaModel {
     public class Rules : Tea.TeaModel {
         public class DataSourceFilters : Tea.TeaModel {
+            public class Accounts : Tea.TeaModel {
+                public var crossAccountRoleName: String?
+
+                public var crossAccountType: String?
+
+                public var crossAccountUserId: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.crossAccountRoleName != nil {
+                        map["CrossAccountRoleName"] = self.crossAccountRoleName!
+                    }
+                    if self.crossAccountType != nil {
+                        map["CrossAccountType"] = self.crossAccountType!
+                    }
+                    if self.crossAccountUserId != nil {
+                        map["CrossAccountUserId"] = self.crossAccountUserId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CrossAccountRoleName"] as? String {
+                        self.crossAccountRoleName = value
+                    }
+                    if let value = dict["CrossAccountType"] as? String {
+                        self.crossAccountType = value
+                    }
+                    if let value = dict["CrossAccountUserId"] as? Int64 {
+                        self.crossAccountUserId = value
+                    }
+                }
+            }
+            public var accountScope: String?
+
+            public var accounts: [CreatePolicyV2Request.Rules.DataSourceFilters.Accounts]?
+
             public var dataSourceIds: [String]?
 
             public var sourceType: String?
@@ -4882,6 +4979,16 @@ public class CreatePolicyV2Request : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accountScope != nil {
+                    map["AccountScope"] = self.accountScope!
+                }
+                if self.accounts != nil {
+                    var tmp : [Any] = []
+                    for k in self.accounts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Accounts"] = tmp
+                }
                 if self.dataSourceIds != nil {
                     map["DataSourceIds"] = self.dataSourceIds!
                 }
@@ -4893,6 +5000,22 @@ public class CreatePolicyV2Request : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AccountScope"] as? String {
+                    self.accountScope = value
+                }
+                if let value = dict["Accounts"] as? [Any?] {
+                    var tmp : [CreatePolicyV2Request.Rules.DataSourceFilters.Accounts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreatePolicyV2Request.Rules.DataSourceFilters.Accounts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.accounts = tmp
+                }
                 if let value = dict["DataSourceIds"] as? [String] {
                     self.dataSourceIds = value
                 }
@@ -17043,11 +17166,63 @@ public class DescribeOtsTableSnapshotsResponse : Tea.TeaModel {
 }
 
 public class DescribePoliciesV2Request : Tea.TeaModel {
+    public class Accounts : Tea.TeaModel {
+        public var crossAccountRoleName: String?
+
+        public var crossAccountType: String?
+
+        public var crossAccountUserId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.crossAccountRoleName != nil {
+                map["CrossAccountRoleName"] = self.crossAccountRoleName!
+            }
+            if self.crossAccountType != nil {
+                map["CrossAccountType"] = self.crossAccountType!
+            }
+            if self.crossAccountUserId != nil {
+                map["CrossAccountUserId"] = self.crossAccountUserId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CrossAccountRoleName"] as? String {
+                self.crossAccountRoleName = value
+            }
+            if let value = dict["CrossAccountType"] as? String {
+                self.crossAccountType = value
+            }
+            if let value = dict["CrossAccountUserId"] as? Int64 {
+                self.crossAccountUserId = value
+            }
+        }
+    }
+    public var accountScope: String?
+
+    public var accounts: [DescribePoliciesV2Request.Accounts]?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
 
     public var policyId: String?
+
+    public var ruleScope: String?
 
     public override init() {
         super.init()
@@ -17063,6 +17238,16 @@ public class DescribePoliciesV2Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountScope != nil {
+            map["AccountScope"] = self.accountScope!
+        }
+        if self.accounts != nil {
+            var tmp : [Any] = []
+            for k in self.accounts! {
+                tmp.append(k.toMap())
+            }
+            map["Accounts"] = tmp
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -17072,11 +17257,30 @@ public class DescribePoliciesV2Request : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.ruleScope != nil {
+            map["RuleScope"] = self.ruleScope!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccountScope"] as? String {
+            self.accountScope = value
+        }
+        if let value = dict["Accounts"] as? [Any?] {
+            var tmp : [DescribePoliciesV2Request.Accounts] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribePoliciesV2Request.Accounts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.accounts = tmp
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -17086,6 +17290,80 @@ public class DescribePoliciesV2Request : Tea.TeaModel {
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
         }
+        if let value = dict["RuleScope"] as? String {
+            self.ruleScope = value
+        }
+    }
+}
+
+public class DescribePoliciesV2ShrinkRequest : Tea.TeaModel {
+    public var accountScope: String?
+
+    public var accountsShrink: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var policyId: String?
+
+    public var ruleScope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountScope != nil {
+            map["AccountScope"] = self.accountScope!
+        }
+        if self.accountsShrink != nil {
+            map["Accounts"] = self.accountsShrink!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.policyId != nil {
+            map["PolicyId"] = self.policyId!
+        }
+        if self.ruleScope != nil {
+            map["RuleScope"] = self.ruleScope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccountScope"] as? String {
+            self.accountScope = value
+        }
+        if let value = dict["Accounts"] as? String {
+            self.accountsShrink = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PolicyId"] as? String {
+            self.policyId = value
+        }
+        if let value = dict["RuleScope"] as? String {
+            self.ruleScope = value
+        }
     }
 }
 
@@ -17093,6 +17371,56 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
     public class Policies : Tea.TeaModel {
         public class Rules : Tea.TeaModel {
             public class DataSourceFilters : Tea.TeaModel {
+                public class Accounts : Tea.TeaModel {
+                    public var crossAccountRoleName: String?
+
+                    public var crossAccountType: String?
+
+                    public var crossAccountUserId: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.crossAccountRoleName != nil {
+                            map["CrossAccountRoleName"] = self.crossAccountRoleName!
+                        }
+                        if self.crossAccountType != nil {
+                            map["CrossAccountType"] = self.crossAccountType!
+                        }
+                        if self.crossAccountUserId != nil {
+                            map["CrossAccountUserId"] = self.crossAccountUserId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["CrossAccountRoleName"] as? String {
+                            self.crossAccountRoleName = value
+                        }
+                        if let value = dict["CrossAccountType"] as? String {
+                            self.crossAccountType = value
+                        }
+                        if let value = dict["CrossAccountUserId"] as? Int64 {
+                            self.crossAccountUserId = value
+                        }
+                    }
+                }
+                public var accountScope: String?
+
+                public var accounts: [DescribePoliciesV2ResponseBody.Policies.Rules.DataSourceFilters.Accounts]?
+
                 public var dataSourceIds: [String]?
 
                 public var sourceType: String?
@@ -17111,6 +17439,16 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.accountScope != nil {
+                        map["AccountScope"] = self.accountScope!
+                    }
+                    if self.accounts != nil {
+                        var tmp : [Any] = []
+                        for k in self.accounts! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Accounts"] = tmp
+                    }
                     if self.dataSourceIds != nil {
                         map["DataSourceIds"] = self.dataSourceIds!
                     }
@@ -17122,6 +17460,22 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AccountScope"] as? String {
+                        self.accountScope = value
+                    }
+                    if let value = dict["Accounts"] as? [Any?] {
+                        var tmp : [DescribePoliciesV2ResponseBody.Policies.Rules.DataSourceFilters.Accounts] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribePoliciesV2ResponseBody.Policies.Rules.DataSourceFilters.Accounts()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.accounts = tmp
+                    }
                     if let value = dict["DataSourceIds"] as? [String] {
                         self.dataSourceIds = value
                     }
@@ -28917,6 +29271,56 @@ public class UpdatePolicyBindingResponse : Tea.TeaModel {
 public class UpdatePolicyV2Request : Tea.TeaModel {
     public class Rules : Tea.TeaModel {
         public class DataSourceFilters : Tea.TeaModel {
+            public class Accounts : Tea.TeaModel {
+                public var crossAccountRoleName: String?
+
+                public var crossAccountType: String?
+
+                public var crossAccountUserId: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.crossAccountRoleName != nil {
+                        map["CrossAccountRoleName"] = self.crossAccountRoleName!
+                    }
+                    if self.crossAccountType != nil {
+                        map["CrossAccountType"] = self.crossAccountType!
+                    }
+                    if self.crossAccountUserId != nil {
+                        map["CrossAccountUserId"] = self.crossAccountUserId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CrossAccountRoleName"] as? String {
+                        self.crossAccountRoleName = value
+                    }
+                    if let value = dict["CrossAccountType"] as? String {
+                        self.crossAccountType = value
+                    }
+                    if let value = dict["CrossAccountUserId"] as? Int64 {
+                        self.crossAccountUserId = value
+                    }
+                }
+            }
+            public var accountScope: String?
+
+            public var accounts: [UpdatePolicyV2Request.Rules.DataSourceFilters.Accounts]?
+
             public var dataSourceIds: [String]?
 
             public var sourceType: String?
@@ -28935,6 +29339,16 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accountScope != nil {
+                    map["AccountScope"] = self.accountScope!
+                }
+                if self.accounts != nil {
+                    var tmp : [Any] = []
+                    for k in self.accounts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Accounts"] = tmp
+                }
                 if self.dataSourceIds != nil {
                     map["DataSourceIds"] = self.dataSourceIds!
                 }
@@ -28946,6 +29360,22 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AccountScope"] as? String {
+                    self.accountScope = value
+                }
+                if let value = dict["Accounts"] as? [Any?] {
+                    var tmp : [UpdatePolicyV2Request.Rules.DataSourceFilters.Accounts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdatePolicyV2Request.Rules.DataSourceFilters.Accounts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.accounts = tmp
+                }
                 if let value = dict["DataSourceIds"] as? [String] {
                     self.dataSourceIds = value
                 }
