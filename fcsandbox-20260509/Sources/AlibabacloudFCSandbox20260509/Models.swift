@@ -287,7 +287,49 @@ public class CertConfig : Tea.TeaModel {
 }
 
 public class ContainerConfiguration : Tea.TeaModel {
+    public class RegistryCredential : Tea.TeaModel {
+        public var password: String?
+
+        public var username: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.password != nil {
+                map["password"] = self.password!
+            }
+            if self.username != nil {
+                map["username"] = self.username!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["password"] as? String {
+                self.password = value
+            }
+            if let value = dict["username"] as? String {
+                self.username = value
+            }
+        }
+    }
+    public var acrInstanceId: String?
+
     public var image: String?
+
+    public var registryCredential: ContainerConfiguration.RegistryCredential?
 
     public override init() {
         super.init()
@@ -299,20 +341,35 @@ public class ContainerConfiguration : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.registryCredential?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acrInstanceId != nil {
+            map["acrInstanceId"] = self.acrInstanceId!
+        }
         if self.image != nil {
             map["image"] = self.image!
+        }
+        if self.registryCredential != nil {
+            map["registryCredential"] = self.registryCredential?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["acrInstanceId"] as? String {
+            self.acrInstanceId = value
+        }
         if let value = dict["image"] as? String {
             self.image = value
+        }
+        if let value = dict["registryCredential"] as? [String: Any?] {
+            var model = ContainerConfiguration.RegistryCredential()
+            model.fromMap(value)
+            self.registryCredential = model
         }
     }
 }
@@ -1286,6 +1343,8 @@ public class E2BTeam : Tea.TeaModel {
 
     public var plan: String?
 
+    public var readOnly: Bool?
+
     public var resourceGroupID: String?
 
     public var status: String?
@@ -1322,6 +1381,9 @@ public class E2BTeam : Tea.TeaModel {
         if self.plan != nil {
             map["plan"] = self.plan!
         }
+        if self.readOnly != nil {
+            map["readOnly"] = self.readOnly!
+        }
         if self.resourceGroupID != nil {
             map["resourceGroupID"] = self.resourceGroupID!
         }
@@ -1353,6 +1415,9 @@ public class E2BTeam : Tea.TeaModel {
         }
         if let value = dict["plan"] as? String {
             self.plan = value
+        }
+        if let value = dict["readOnly"] as? Bool {
+            self.readOnly = value
         }
         if let value = dict["resourceGroupID"] as? String {
             self.resourceGroupID = value
