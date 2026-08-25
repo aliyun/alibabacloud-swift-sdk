@@ -1588,7 +1588,47 @@ public class Nodepool : Tea.TeaModel {
     }
     public class NodeComponents : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public class Envs : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var customConfig: [String: Any]?
+
+            public var envs: [Nodepool.NodeComponents.Config.Envs]?
 
             public override init() {
                 super.init()
@@ -1607,6 +1647,13 @@ public class Nodepool : Tea.TeaModel {
                 if self.customConfig != nil {
                     map["custom_config"] = self.customConfig!
                 }
+                if self.envs != nil {
+                    var tmp : [Any] = []
+                    for k in self.envs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["envs"] = tmp
+                }
                 return map
             }
 
@@ -1614,6 +1661,19 @@ public class Nodepool : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
+                }
+                if let value = dict["envs"] as? [Any?] {
+                    var tmp : [Nodepool.NodeComponents.Config.Envs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = Nodepool.NodeComponents.Config.Envs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.envs = tmp
                 }
             }
         }
@@ -7267,7 +7327,47 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
     }
     public class NodeComponents : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public class Envs : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var customConfig: [String: Any]?
+
+            public var envs: [CreateClusterNodePoolRequest.NodeComponents.Config.Envs]?
 
             public override init() {
                 super.init()
@@ -7286,6 +7386,13 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 if self.customConfig != nil {
                     map["custom_config"] = self.customConfig!
                 }
+                if self.envs != nil {
+                    var tmp : [Any] = []
+                    for k in self.envs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["envs"] = tmp
+                }
                 return map
             }
 
@@ -7293,6 +7400,19 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
+                }
+                if let value = dict["envs"] as? [Any?] {
+                    var tmp : [CreateClusterNodePoolRequest.NodeComponents.Config.Envs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateClusterNodePoolRequest.NodeComponents.Config.Envs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.envs = tmp
                 }
             }
         }
@@ -8617,7 +8737,47 @@ public class CreateKubernetesTriggerResponse : Tea.TeaModel {
 public class CreateNodePoolComponentInstancesRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public class Envs : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var customConfig: [String: Any]?
+
+            public var envs: [CreateNodePoolComponentInstancesRequest.Components.Config.Envs]?
 
             public override init() {
                 super.init()
@@ -8636,6 +8796,13 @@ public class CreateNodePoolComponentInstancesRequest : Tea.TeaModel {
                 if self.customConfig != nil {
                     map["custom_config"] = self.customConfig!
                 }
+                if self.envs != nil {
+                    var tmp : [Any] = []
+                    for k in self.envs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["envs"] = tmp
+                }
                 return map
             }
 
@@ -8643,6 +8810,19 @@ public class CreateNodePoolComponentInstancesRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
+                }
+                if let value = dict["envs"] as? [Any?] {
+                    var tmp : [CreateNodePoolComponentInstancesRequest.Components.Config.Envs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateNodePoolComponentInstancesRequest.Components.Config.Envs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.envs = tmp
                 }
             }
         }
@@ -14530,7 +14710,47 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
     }
     public class NodeComponents : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public class Envs : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var customConfig: [String: Any]?
+
+            public var envs: [DescribeClusterNodePoolDetailResponseBody.NodeComponents.Config.Envs]?
 
             public override init() {
                 super.init()
@@ -14549,6 +14769,13 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 if self.customConfig != nil {
                     map["custom_config"] = self.customConfig!
                 }
+                if self.envs != nil {
+                    var tmp : [Any] = []
+                    for k in self.envs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["envs"] = tmp
+                }
                 return map
             }
 
@@ -14556,6 +14783,19 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
+                }
+                if let value = dict["envs"] as? [Any?] {
+                    var tmp : [DescribeClusterNodePoolDetailResponseBody.NodeComponents.Config.Envs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeClusterNodePoolDetailResponseBody.NodeComponents.Config.Envs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.envs = tmp
                 }
             }
         }
@@ -16600,7 +16840,47 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
         }
         public class NodeComponents : Tea.TeaModel {
             public class Config : Tea.TeaModel {
+                public class Envs : Tea.TeaModel {
+                    public var name: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        if self.value != nil {
+                            map["value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
                 public var customConfig: [String: Any]?
+
+                public var envs: [DescribeClusterNodePoolsResponseBody.Nodepools.NodeComponents.Config.Envs]?
 
                 public override init() {
                     super.init()
@@ -16619,6 +16899,13 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     if self.customConfig != nil {
                         map["custom_config"] = self.customConfig!
                     }
+                    if self.envs != nil {
+                        var tmp : [Any] = []
+                        for k in self.envs! {
+                            tmp.append(k.toMap())
+                        }
+                        map["envs"] = tmp
+                    }
                     return map
                 }
 
@@ -16626,6 +16913,19 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["custom_config"] as? [String: Any] {
                         self.customConfig = value
+                    }
+                    if let value = dict["envs"] as? [Any?] {
+                        var tmp : [DescribeClusterNodePoolsResponseBody.Nodepools.NodeComponents.Config.Envs] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeClusterNodePoolsResponseBody.Nodepools.NodeComponents.Config.Envs()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.envs = tmp
                     }
                 }
             }
@@ -27958,7 +28258,47 @@ public class InstallClusterAddonsResponse : Tea.TeaModel {
 public class InstallNodePoolComponentsRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public class Envs : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var customConfig: [String: Any]?
+
+            public var envs: [InstallNodePoolComponentsRequest.Components.Config.Envs]?
 
             public override init() {
                 super.init()
@@ -27977,6 +28317,13 @@ public class InstallNodePoolComponentsRequest : Tea.TeaModel {
                 if self.customConfig != nil {
                     map["customConfig"] = self.customConfig!
                 }
+                if self.envs != nil {
+                    var tmp : [Any] = []
+                    for k in self.envs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["envs"] = tmp
+                }
                 return map
             }
 
@@ -27984,6 +28331,19 @@ public class InstallNodePoolComponentsRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["customConfig"] as? [String: Any] {
                     self.customConfig = value
+                }
+                if let value = dict["envs"] as? [Any?] {
+                    var tmp : [InstallNodePoolComponentsRequest.Components.Config.Envs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = InstallNodePoolComponentsRequest.Components.Config.Envs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.envs = tmp
                 }
             }
         }
@@ -30224,7 +30584,47 @@ public class ListNodePoolComponentInstancesRequest : Tea.TeaModel {
 public class ListNodePoolComponentInstancesResponseBody : Tea.TeaModel {
     public class ComponentInstances : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public class Envs : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var customConfig: [String: Any]?
+
+            public var envs: [ListNodePoolComponentInstancesResponseBody.ComponentInstances.Config.Envs]?
 
             public override init() {
                 super.init()
@@ -30243,6 +30643,13 @@ public class ListNodePoolComponentInstancesResponseBody : Tea.TeaModel {
                 if self.customConfig != nil {
                     map["custom_config"] = self.customConfig!
                 }
+                if self.envs != nil {
+                    var tmp : [Any] = []
+                    for k in self.envs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["envs"] = tmp
+                }
                 return map
             }
 
@@ -30250,6 +30657,19 @@ public class ListNodePoolComponentInstancesResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["custom_config"] as? [String: Any] {
                     self.customConfig = value
+                }
+                if let value = dict["envs"] as? [Any?] {
+                    var tmp : [ListNodePoolComponentInstancesResponseBody.ComponentInstances.Config.Envs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListNodePoolComponentInstancesResponseBody.ComponentInstances.Config.Envs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.envs = tmp
                 }
             }
         }
@@ -38662,7 +39082,47 @@ public class UpdateKMSEncryptionResponse : Tea.TeaModel {
 
 public class UpdateNodePoolComponentRequest : Tea.TeaModel {
     public class Config : Tea.TeaModel {
+        public class Envs : Tea.TeaModel {
+            public var name: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var customConfig: [String: Any]?
+
+        public var envs: [UpdateNodePoolComponentRequest.Config.Envs]?
 
         public override init() {
             super.init()
@@ -38681,6 +39141,13 @@ public class UpdateNodePoolComponentRequest : Tea.TeaModel {
             if self.customConfig != nil {
                 map["customConfig"] = self.customConfig!
             }
+            if self.envs != nil {
+                var tmp : [Any] = []
+                for k in self.envs! {
+                    tmp.append(k.toMap())
+                }
+                map["envs"] = tmp
+            }
             return map
         }
 
@@ -38688,6 +39155,19 @@ public class UpdateNodePoolComponentRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["customConfig"] as? [String: Any] {
                 self.customConfig = value
+            }
+            if let value = dict["envs"] as? [Any?] {
+                var tmp : [UpdateNodePoolComponentRequest.Config.Envs] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateNodePoolComponentRequest.Config.Envs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.envs = tmp
             }
         }
     }
@@ -38920,7 +39400,47 @@ public class UpdateNodePoolComponentResponse : Tea.TeaModel {
 
 public class UpdateNodePoolComponentInstanceRequest : Tea.TeaModel {
     public class Config : Tea.TeaModel {
+        public class Envs : Tea.TeaModel {
+            public var name: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var customConfig: [String: Any]?
+
+        public var envs: [UpdateNodePoolComponentInstanceRequest.Config.Envs]?
 
         public override init() {
             super.init()
@@ -38939,6 +39459,13 @@ public class UpdateNodePoolComponentInstanceRequest : Tea.TeaModel {
             if self.customConfig != nil {
                 map["custom_config"] = self.customConfig!
             }
+            if self.envs != nil {
+                var tmp : [Any] = []
+                for k in self.envs! {
+                    tmp.append(k.toMap())
+                }
+                map["envs"] = tmp
+            }
             return map
         }
 
@@ -38946,6 +39473,19 @@ public class UpdateNodePoolComponentInstanceRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["custom_config"] as? [String: Any] {
                 self.customConfig = value
+            }
+            if let value = dict["envs"] as? [Any?] {
+                var tmp : [UpdateNodePoolComponentInstanceRequest.Config.Envs] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateNodePoolComponentInstanceRequest.Config.Envs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.envs = tmp
             }
         }
     }
