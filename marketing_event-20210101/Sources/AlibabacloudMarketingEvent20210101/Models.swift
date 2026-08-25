@@ -1744,6 +1744,10 @@ public class FindGuestTicketRecordResponseBody : Tea.TeaModel {
 
         public var equityDates: String?
 
+        public var faceFeature: String?
+
+        public var faceFeatureWriteTime: String?
+
         public var healthCommitmentStatus: Int32?
 
         public var idNumber: String?
@@ -1785,6 +1789,12 @@ public class FindGuestTicketRecordResponseBody : Tea.TeaModel {
             }
             if self.equityDates != nil {
                 map["EquityDates"] = self.equityDates!
+            }
+            if self.faceFeature != nil {
+                map["FaceFeature"] = self.faceFeature!
+            }
+            if self.faceFeatureWriteTime != nil {
+                map["FaceFeatureWriteTime"] = self.faceFeatureWriteTime!
             }
             if self.healthCommitmentStatus != nil {
                 map["HealthCommitmentStatus"] = self.healthCommitmentStatus!
@@ -1828,6 +1838,12 @@ public class FindGuestTicketRecordResponseBody : Tea.TeaModel {
             }
             if let value = dict["EquityDates"] as? String {
                 self.equityDates = value
+            }
+            if let value = dict["FaceFeature"] as? String {
+                self.faceFeature = value
+            }
+            if let value = dict["FaceFeatureWriteTime"] as? String {
+                self.faceFeatureWriteTime = value
             }
             if let value = dict["HealthCommitmentStatus"] as? Int32 {
                 self.healthCommitmentStatus = value
