@@ -596,13 +596,23 @@ public class ChatRequest : Tea.TeaModel {
 public class ChatResponseBody : Tea.TeaModel {
     public var activityType: String?
 
+    public var agentId: String?
+
     public var content: String?
 
     public var delta: String?
 
+    public var kind: String?
+
+    public var label: String?
+
     public var messageId: String?
 
     public var name: String?
+
+    public var originatingToolCallId: String?
+
+    public var parentAgentId: String?
 
     public var parentMessageId: String?
 
@@ -612,9 +622,15 @@ public class ChatResponseBody : Tea.TeaModel {
 
     public var stepName: String?
 
+    public var stepStatus: String?
+
     public var taskTrackerId: String?
 
     public var threadId: String?
+
+    public var timestamp: Int64?
+
+    public var toolCallError: String?
 
     public var toolCallId: String?
 
@@ -641,17 +657,32 @@ public class ChatResponseBody : Tea.TeaModel {
         if self.activityType != nil {
             map["ActivityType"] = self.activityType!
         }
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
         if self.delta != nil {
             map["Delta"] = self.delta!
         }
+        if self.kind != nil {
+            map["Kind"] = self.kind!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.messageId != nil {
             map["MessageId"] = self.messageId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.originatingToolCallId != nil {
+            map["OriginatingToolCallId"] = self.originatingToolCallId!
+        }
+        if self.parentAgentId != nil {
+            map["ParentAgentId"] = self.parentAgentId!
         }
         if self.parentMessageId != nil {
             map["ParentMessageId"] = self.parentMessageId!
@@ -665,11 +696,20 @@ public class ChatResponseBody : Tea.TeaModel {
         if self.stepName != nil {
             map["StepName"] = self.stepName!
         }
+        if self.stepStatus != nil {
+            map["StepStatus"] = self.stepStatus!
+        }
         if self.taskTrackerId != nil {
             map["TaskTrackerId"] = self.taskTrackerId!
         }
         if self.threadId != nil {
             map["ThreadId"] = self.threadId!
+        }
+        if self.timestamp != nil {
+            map["Timestamp"] = self.timestamp!
+        }
+        if self.toolCallError != nil {
+            map["ToolCallError"] = self.toolCallError!
         }
         if self.toolCallId != nil {
             map["ToolCallId"] = self.toolCallId!
@@ -691,17 +731,32 @@ public class ChatResponseBody : Tea.TeaModel {
         if let value = dict["ActivityType"] as? String {
             self.activityType = value
         }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
         if let value = dict["Content"] as? String {
             self.content = value
         }
         if let value = dict["Delta"] as? String {
             self.delta = value
         }
+        if let value = dict["Kind"] as? String {
+            self.kind = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
         if let value = dict["MessageId"] as? String {
             self.messageId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["OriginatingToolCallId"] as? String {
+            self.originatingToolCallId = value
+        }
+        if let value = dict["ParentAgentId"] as? String {
+            self.parentAgentId = value
         }
         if let value = dict["ParentMessageId"] as? String {
             self.parentMessageId = value
@@ -715,11 +770,20 @@ public class ChatResponseBody : Tea.TeaModel {
         if let value = dict["StepName"] as? String {
             self.stepName = value
         }
+        if let value = dict["StepStatus"] as? String {
+            self.stepStatus = value
+        }
         if let value = dict["TaskTrackerId"] as? String {
             self.taskTrackerId = value
         }
         if let value = dict["ThreadId"] as? String {
             self.threadId = value
+        }
+        if let value = dict["Timestamp"] as? Int64 {
+            self.timestamp = value
+        }
+        if let value = dict["ToolCallError"] as? String {
+            self.toolCallError = value
         }
         if let value = dict["ToolCallId"] as? String {
             self.toolCallId = value
