@@ -375,6 +375,96 @@ public class AgentInfo : Tea.TeaModel {
                 }
             }
         }
+        public class TagTreeLevelParam : Tea.TeaModel {
+            public class TagTreeLevels : Tea.TeaModel {
+                public var prompt: String?
+
+                public var tagTreeIds: [Int64]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.prompt != nil {
+                        map["Prompt"] = self.prompt!
+                    }
+                    if self.tagTreeIds != nil {
+                        map["TagTreeIds"] = self.tagTreeIds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Prompt"] as? String {
+                        self.prompt = value
+                    }
+                    if let value = dict["TagTreeIds"] as? [Int64] {
+                        self.tagTreeIds = value
+                    }
+                }
+            }
+            public var tagIds: [Int64]?
+
+            public var tagTreeLevels: [AgentInfo.InstructionTypeParam.TagTreeLevelParam.TagTreeLevels]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagIds != nil {
+                    map["TagIds"] = self.tagIds!
+                }
+                if self.tagTreeLevels != nil {
+                    var tmp : [Any] = []
+                    for k in self.tagTreeLevels! {
+                        tmp.append(k.toMap())
+                    }
+                    map["TagTreeLevels"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TagIds"] as? [Int64] {
+                    self.tagIds = value
+                }
+                if let value = dict["TagTreeLevels"] as? [Any?] {
+                    var tmp : [AgentInfo.InstructionTypeParam.TagTreeLevelParam.TagTreeLevels] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AgentInfo.InstructionTypeParam.TagTreeLevelParam.TagTreeLevels()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tagTreeLevels = tmp
+                }
+            }
+        }
         public var customPromptParam: AgentInfo.InstructionTypeParam.CustomPromptParam?
 
         public var fieldsParam: AgentInfo.InstructionTypeParam.FieldsParam?
@@ -382,6 +472,8 @@ public class AgentInfo : Tea.TeaModel {
         public var serviceInspectionParam: AgentInfo.InstructionTypeParam.ServiceInspectionParam?
 
         public var tagCategoryParam: AgentInfo.InstructionTypeParam.TagCategoryParam?
+
+        public var tagTreeLevelParam: AgentInfo.InstructionTypeParam.TagTreeLevelParam?
 
         public override init() {
             super.init()
@@ -397,6 +489,7 @@ public class AgentInfo : Tea.TeaModel {
             try self.fieldsParam?.validate()
             try self.serviceInspectionParam?.validate()
             try self.tagCategoryParam?.validate()
+            try self.tagTreeLevelParam?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -412,6 +505,9 @@ public class AgentInfo : Tea.TeaModel {
             }
             if self.tagCategoryParam != nil {
                 map["TagCategoryParam"] = self.tagCategoryParam?.toMap()
+            }
+            if self.tagTreeLevelParam != nil {
+                map["TagTreeLevelParam"] = self.tagTreeLevelParam?.toMap()
             }
             return map
         }
@@ -437,6 +533,11 @@ public class AgentInfo : Tea.TeaModel {
                 var model = AgentInfo.InstructionTypeParam.TagCategoryParam()
                 model.fromMap(value)
                 self.tagCategoryParam = model
+            }
+            if let value = dict["TagTreeLevelParam"] as? [String: Any?] {
+                var model = AgentInfo.InstructionTypeParam.TagTreeLevelParam()
+                model.fromMap(value)
+                self.tagTreeLevelParam = model
             }
         }
     }
