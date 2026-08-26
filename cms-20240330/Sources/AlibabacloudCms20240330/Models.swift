@@ -5812,6 +5812,8 @@ public class DatasourceConfigUnified : Tea.TeaModel {
 
     public var legacyType: String?
 
+    public var namespace: String?
+
     public var productCategory: String?
 
     public var project: String?
@@ -5819,6 +5821,8 @@ public class DatasourceConfigUnified : Tea.TeaModel {
     public var regionId: String?
 
     public var stores: [Stores]?
+
+    public var tenantId: String?
 
     public var type: String?
 
@@ -5845,6 +5849,9 @@ public class DatasourceConfigUnified : Tea.TeaModel {
         if self.legacyType != nil {
             map["legacyType"] = self.legacyType!
         }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
         if self.productCategory != nil {
             map["productCategory"] = self.productCategory!
         }
@@ -5860,6 +5867,9 @@ public class DatasourceConfigUnified : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["stores"] = tmp
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
         }
         if self.type != nil {
             map["type"] = self.type!
@@ -5877,6 +5887,9 @@ public class DatasourceConfigUnified : Tea.TeaModel {
         }
         if let value = dict["legacyType"] as? String {
             self.legacyType = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["productCategory"] as? String {
             self.productCategory = value
@@ -5899,6 +5912,9 @@ public class DatasourceConfigUnified : Tea.TeaModel {
                 }
             }
             self.stores = tmp
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
         }
         if let value = dict["type"] as? String {
             self.type = value
@@ -12519,6 +12535,37 @@ public class MetricSetTriggerSimpleExpression : Tea.TeaModel {
     }
 }
 
+public class MigrationStatusFilter : Tea.TeaModel {
+    public var isMigrated: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isMigrated != nil {
+            map["isMigrated"] = self.isMigrated!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["isMigrated"] as? Bool {
+            self.isMigrated = value
+        }
+    }
+}
+
 public class ModelParameters : Tea.TeaModel {
     public var frequencyPenalty: Double?
 
@@ -17568,6 +17615,69 @@ public class PartitionKeyFilter : Tea.TeaModel {
     }
 }
 
+public class PrometheusInstanceStoreConfig : Tea.TeaModel {
+    public var parallelCountPerHost: Int32?
+
+    public var parallelEnable: Bool?
+
+    public var parallelMode: String?
+
+    public var queryCacheEnable: Bool?
+
+    public var totalParallelCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.parallelCountPerHost != nil {
+            map["parallelCountPerHost"] = self.parallelCountPerHost!
+        }
+        if self.parallelEnable != nil {
+            map["parallelEnable"] = self.parallelEnable!
+        }
+        if self.parallelMode != nil {
+            map["parallelMode"] = self.parallelMode!
+        }
+        if self.queryCacheEnable != nil {
+            map["queryCacheEnable"] = self.queryCacheEnable!
+        }
+        if self.totalParallelCount != nil {
+            map["totalParallelCount"] = self.totalParallelCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["parallelCountPerHost"] as? Int32 {
+            self.parallelCountPerHost = value
+        }
+        if let value = dict["parallelEnable"] as? Bool {
+            self.parallelEnable = value
+        }
+        if let value = dict["parallelMode"] as? String {
+            self.parallelMode = value
+        }
+        if let value = dict["queryCacheEnable"] as? Bool {
+            self.queryCacheEnable = value
+        }
+        if let value = dict["totalParallelCount"] as? Int32 {
+            self.totalParallelCount = value
+        }
+    }
+}
+
 public class PrometheusManagedInstance : Tea.TeaModel {
     public var createTime: String?
 
@@ -18196,6 +18306,8 @@ public class QueryAlertRulesFilter : Tea.TeaModel {
 
     public var labels: LabelsFilter?
 
+    public var migrationStatus: MigrationStatusFilter?
+
     public var notificationChannels: NotificationChannelsFilter?
 
     public var notifyStrategyId: NotifyStrategyIdFilter?
@@ -18233,6 +18345,7 @@ public class QueryAlertRulesFilter : Tea.TeaModel {
         try self.displayName?.validate()
         try self.enabled?.validate()
         try self.labels?.validate()
+        try self.migrationStatus?.validate()
         try self.notificationChannels?.validate()
         try self.notifyStrategyId?.validate()
         try self.observeResourceConfig?.validate()
@@ -18261,6 +18374,9 @@ public class QueryAlertRulesFilter : Tea.TeaModel {
         }
         if self.labels != nil {
             map["labels"] = self.labels?.toMap()
+        }
+        if self.migrationStatus != nil {
+            map["migrationStatus"] = self.migrationStatus?.toMap()
         }
         if self.notificationChannels != nil {
             map["notificationChannels"] = self.notificationChannels?.toMap()
@@ -18324,6 +18440,11 @@ public class QueryAlertRulesFilter : Tea.TeaModel {
             var model = LabelsFilter()
             model.fromMap(value)
             self.labels = model
+        }
+        if let value = dict["migrationStatus"] as? [String: Any?] {
+            var model = MigrationStatusFilter()
+            model.fromMap(value)
+            self.migrationStatus = model
         }
         if let value = dict["notificationChannels"] as? [String: Any?] {
             var model = NotificationChannelsFilter()
@@ -19791,6 +19912,10 @@ public class SlsJoinCondition : Tea.TeaModel {
 }
 
 public class SlsMultiConditionCaseConfig : Tea.TeaModel {
+    public var condition: String?
+
+    public var countCondition: String?
+
     public var countOperator: String?
 
     public var countThreshold: Int64?
@@ -19800,6 +19925,10 @@ public class SlsMultiConditionCaseConfig : Tea.TeaModel {
     public var matchOperator: String?
 
     public var matchValue: String?
+
+    public var operator_: String?
+
+    public var rawCondition: String?
 
     public var severity: String?
 
@@ -19817,6 +19946,12 @@ public class SlsMultiConditionCaseConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.condition != nil {
+            map["condition"] = self.condition!
+        }
+        if self.countCondition != nil {
+            map["countCondition"] = self.countCondition!
+        }
         if self.countOperator != nil {
             map["countOperator"] = self.countOperator!
         }
@@ -19832,6 +19967,12 @@ public class SlsMultiConditionCaseConfig : Tea.TeaModel {
         if self.matchValue != nil {
             map["matchValue"] = self.matchValue!
         }
+        if self.operator_ != nil {
+            map["operator"] = self.operator_!
+        }
+        if self.rawCondition != nil {
+            map["rawCondition"] = self.rawCondition!
+        }
         if self.severity != nil {
             map["severity"] = self.severity!
         }
@@ -19840,6 +19981,12 @@ public class SlsMultiConditionCaseConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["condition"] as? String {
+            self.condition = value
+        }
+        if let value = dict["countCondition"] as? String {
+            self.countCondition = value
+        }
         if let value = dict["countOperator"] as? String {
             self.countOperator = value
         }
@@ -19854,6 +20001,12 @@ public class SlsMultiConditionCaseConfig : Tea.TeaModel {
         }
         if let value = dict["matchValue"] as? String {
             self.matchValue = value
+        }
+        if let value = dict["operator"] as? String {
+            self.operator_ = value
+        }
+        if let value = dict["rawCondition"] as? String {
+            self.rawCondition = value
         }
         if let value = dict["severity"] as? String {
             self.severity = value
@@ -21931,7 +22084,11 @@ public class TriggerConditions : Tea.TeaModel {
 public class Triggers : Tea.TeaModel {
     public var comparisonOperator: String?
 
+    public var condition: String?
+
     public var conditions: [TriggerConditions]?
+
+    public var countCondition: String?
 
     public var countOperator: String?
 
@@ -21988,12 +22145,18 @@ public class Triggers : Tea.TeaModel {
         if self.comparisonOperator != nil {
             map["comparisonOperator"] = self.comparisonOperator!
         }
+        if self.condition != nil {
+            map["condition"] = self.condition!
+        }
         if self.conditions != nil {
             var tmp : [Any] = []
             for k in self.conditions! {
                 tmp.append(k.toMap())
             }
             map["conditions"] = tmp
+        }
+        if self.countCondition != nil {
+            map["countCondition"] = self.countCondition!
         }
         if self.countOperator != nil {
             map["countOperator"] = self.countOperator!
@@ -22060,6 +22223,9 @@ public class Triggers : Tea.TeaModel {
         if let value = dict["comparisonOperator"] as? String {
             self.comparisonOperator = value
         }
+        if let value = dict["condition"] as? String {
+            self.condition = value
+        }
         if let value = dict["conditions"] as? [Any?] {
             var tmp : [TriggerConditions] = []
             for v in value {
@@ -22072,6 +22238,9 @@ public class Triggers : Tea.TeaModel {
                 }
             }
             self.conditions = tmp
+        }
+        if let value = dict["countCondition"] as? String {
+            self.countCondition = value
         }
         if let value = dict["countOperator"] as? String {
             self.countOperator = value
@@ -42928,6 +43097,8 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
 
         public var storageDuration: Int32?
 
+        public var storeConfig: PrometheusInstanceStoreConfig?
+
         public var supportAuthTypes: [String]?
 
         public var tags: [GetPrometheusInstanceResponseBody.PrometheusInstance.Tags]?
@@ -42948,6 +43119,7 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.storeConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -43059,6 +43231,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             }
             if self.storageDuration != nil {
                 map["storageDuration"] = self.storageDuration!
+            }
+            if self.storeConfig != nil {
+                map["storeConfig"] = self.storeConfig?.toMap()
             }
             if self.supportAuthTypes != nil {
                 map["supportAuthTypes"] = self.supportAuthTypes!
@@ -43191,6 +43366,11 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["storageDuration"] as? Int32 {
                 self.storageDuration = value
+            }
+            if let value = dict["storeConfig"] as? [String: Any?] {
+                var model = PrometheusInstanceStoreConfig()
+                model.fromMap(value)
+                self.storeConfig = model
             }
             if let value = dict["supportAuthTypes"] as? [String] {
                 self.supportAuthTypes = value
@@ -67670,6 +67850,8 @@ public class UpdatePrometheusInstanceRequest : Tea.TeaModel {
 
     public var storageDuration: Int?
 
+    public var storeConfig: PrometheusInstanceStoreConfig?
+
     public var workspace: String?
 
     public override init() {
@@ -67682,6 +67864,7 @@ public class UpdatePrometheusInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.storeConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -67715,6 +67898,9 @@ public class UpdatePrometheusInstanceRequest : Tea.TeaModel {
         }
         if self.storageDuration != nil {
             map["storageDuration"] = self.storageDuration!
+        }
+        if self.storeConfig != nil {
+            map["storeConfig"] = self.storeConfig?.toMap()
         }
         if self.workspace != nil {
             map["workspace"] = self.workspace!
@@ -67753,6 +67939,11 @@ public class UpdatePrometheusInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["storageDuration"] as? Int {
             self.storageDuration = value
+        }
+        if let value = dict["storeConfig"] as? [String: Any?] {
+            var model = PrometheusInstanceStoreConfig()
+            model.fromMap(value)
+            self.storeConfig = model
         }
         if let value = dict["workspace"] as? String {
             self.workspace = value

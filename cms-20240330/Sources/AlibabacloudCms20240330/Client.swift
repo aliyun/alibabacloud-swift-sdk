@@ -6264,6 +6264,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.storageDuration)) {
             body["storageDuration"] = request.storageDuration!;
         }
+        if (!TeaUtils.Client.isUnset(request.storeConfig)) {
+            body["storeConfig"] = request.storeConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.workspace)) {
             body["workspace"] = request.workspace ?? "";
         }
