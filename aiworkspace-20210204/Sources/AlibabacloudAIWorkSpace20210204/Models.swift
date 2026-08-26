@@ -1790,6 +1790,8 @@ public class DatasetVersion : Tea.TeaModel {
 
     public var dataSourceType: String?
 
+    public var datasetTaskRamRole: String?
+
     public var description_: String?
 
     public var gmtCreateTime: String?
@@ -1811,6 +1813,8 @@ public class DatasetVersion : Tea.TeaModel {
     public var sourceType: String?
 
     public var uri: String?
+
+    public var userMetricsEndpoints: [UserMetricsEndpoint]?
 
     public var versionName: String?
 
@@ -1836,6 +1840,9 @@ public class DatasetVersion : Tea.TeaModel {
         }
         if self.dataSourceType != nil {
             map["DataSourceType"] = self.dataSourceType!
+        }
+        if self.datasetTaskRamRole != nil {
+            map["DatasetTaskRamRole"] = self.datasetTaskRamRole!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -1874,6 +1881,13 @@ public class DatasetVersion : Tea.TeaModel {
         if self.uri != nil {
             map["Uri"] = self.uri!
         }
+        if self.userMetricsEndpoints != nil {
+            var tmp : [Any] = []
+            for k in self.userMetricsEndpoints! {
+                tmp.append(k.toMap())
+            }
+            map["UserMetricsEndpoints"] = tmp
+        }
         if self.versionName != nil {
             map["VersionName"] = self.versionName!
         }
@@ -1890,6 +1904,9 @@ public class DatasetVersion : Tea.TeaModel {
         }
         if let value = dict["DataSourceType"] as? String {
             self.dataSourceType = value
+        }
+        if let value = dict["DatasetTaskRamRole"] as? String {
+            self.datasetTaskRamRole = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -1933,6 +1950,19 @@ public class DatasetVersion : Tea.TeaModel {
         }
         if let value = dict["Uri"] as? String {
             self.uri = value
+        }
+        if let value = dict["UserMetricsEndpoints"] as? [Any?] {
+            var tmp : [UserMetricsEndpoint] = []
+            for v in value {
+                if v != nil {
+                    var model = UserMetricsEndpoint()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.userMetricsEndpoints = tmp
         }
         if let value = dict["VersionName"] as? String {
             self.versionName = value
@@ -3516,6 +3546,45 @@ public class TrialLabel : Tea.TeaModel {
     }
 }
 
+public class UserMetricsEndpoint : Tea.TeaModel {
+    public var path: String?
+
+    public var port: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.path != nil {
+            map["Path"] = self.path!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Path"] as? String {
+            self.path = value
+        }
+        if let value = dict["Port"] as? Int32 {
+            self.port = value
+        }
+    }
+}
+
 public class AcceptDataworksEventRequest : Tea.TeaModel {
     public var data: [String: Any]?
 
@@ -4831,6 +4900,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
     public var dataType: String?
 
+    public var datasetTaskRamRole: String?
+
     public var description_: String?
 
     public var edition: String?
@@ -4862,6 +4933,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
     public var uri: String?
 
     public var userId: String?
+
+    public var userMetricsEndpoints: [UserMetricsEndpoint]?
 
     public var versionDescription: String?
 
@@ -4900,6 +4973,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if self.dataType != nil {
             map["DataType"] = self.dataType!
+        }
+        if self.datasetTaskRamRole != nil {
+            map["DatasetTaskRamRole"] = self.datasetTaskRamRole!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -4953,6 +5029,13 @@ public class CreateDatasetRequest : Tea.TeaModel {
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
+        if self.userMetricsEndpoints != nil {
+            var tmp : [Any] = []
+            for k in self.userMetricsEndpoints! {
+                tmp.append(k.toMap())
+            }
+            map["UserMetricsEndpoints"] = tmp
+        }
         if self.versionDescription != nil {
             map["VersionDescription"] = self.versionDescription!
         }
@@ -4988,6 +5071,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["DataType"] as? String {
             self.dataType = value
+        }
+        if let value = dict["DatasetTaskRamRole"] as? String {
+            self.datasetTaskRamRole = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -5046,6 +5132,19 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
+        }
+        if let value = dict["UserMetricsEndpoints"] as? [Any?] {
+            var tmp : [UserMetricsEndpoint] = []
+            for v in value {
+                if v != nil {
+                    var model = UserMetricsEndpoint()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.userMetricsEndpoints = tmp
         }
         if let value = dict["VersionDescription"] as? String {
             self.versionDescription = value
@@ -5789,6 +5888,8 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
 
     public var dataSourceType: String?
 
+    public var datasetTaskRamRole: String?
+
     public var description_: String?
 
     public var importInfo: String?
@@ -5804,6 +5905,8 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var uri: String?
+
+    public var userMetricsEndpoints: [UserMetricsEndpoint]?
 
     public override init() {
         super.init()
@@ -5827,6 +5930,9 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
         }
         if self.dataSourceType != nil {
             map["DataSourceType"] = self.dataSourceType!
+        }
+        if self.datasetTaskRamRole != nil {
+            map["DatasetTaskRamRole"] = self.datasetTaskRamRole!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -5856,6 +5962,13 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
         if self.uri != nil {
             map["Uri"] = self.uri!
         }
+        if self.userMetricsEndpoints != nil {
+            var tmp : [Any] = []
+            for k in self.userMetricsEndpoints! {
+                tmp.append(k.toMap())
+            }
+            map["UserMetricsEndpoints"] = tmp
+        }
         return map
     }
 
@@ -5869,6 +5982,9 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
         }
         if let value = dict["DataSourceType"] as? String {
             self.dataSourceType = value
+        }
+        if let value = dict["DatasetTaskRamRole"] as? String {
+            self.datasetTaskRamRole = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -5903,6 +6019,19 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
         }
         if let value = dict["Uri"] as? String {
             self.uri = value
+        }
+        if let value = dict["UserMetricsEndpoints"] as? [Any?] {
+            var tmp : [UserMetricsEndpoint] = []
+            for v in value {
+                if v != nil {
+                    var model = UserMetricsEndpoint()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.userMetricsEndpoints = tmp
         }
     }
 }
@@ -14034,6 +14163,8 @@ public class GetDatasetVersionResponseBody : Tea.TeaModel {
 
     public var datasetId: String?
 
+    public var datasetTaskRamRole: String?
+
     public var description_: String?
 
     public var gmtCreateTime: String?
@@ -14057,6 +14188,8 @@ public class GetDatasetVersionResponseBody : Tea.TeaModel {
     public var sourceType: String?
 
     public var uri: String?
+
+    public var userMetricsEndpoints: [UserMetricsEndpoint]?
 
     public var versionName: String?
 
@@ -14085,6 +14218,9 @@ public class GetDatasetVersionResponseBody : Tea.TeaModel {
         }
         if self.datasetId != nil {
             map["DatasetId"] = self.datasetId!
+        }
+        if self.datasetTaskRamRole != nil {
+            map["DatasetTaskRamRole"] = self.datasetTaskRamRole!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -14126,6 +14262,13 @@ public class GetDatasetVersionResponseBody : Tea.TeaModel {
         if self.uri != nil {
             map["Uri"] = self.uri!
         }
+        if self.userMetricsEndpoints != nil {
+            var tmp : [Any] = []
+            for k in self.userMetricsEndpoints! {
+                tmp.append(k.toMap())
+            }
+            map["UserMetricsEndpoints"] = tmp
+        }
         if self.versionName != nil {
             map["VersionName"] = self.versionName!
         }
@@ -14145,6 +14288,9 @@ public class GetDatasetVersionResponseBody : Tea.TeaModel {
         }
         if let value = dict["DatasetId"] as? String {
             self.datasetId = value
+        }
+        if let value = dict["DatasetTaskRamRole"] as? String {
+            self.datasetTaskRamRole = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -14191,6 +14337,19 @@ public class GetDatasetVersionResponseBody : Tea.TeaModel {
         }
         if let value = dict["Uri"] as? String {
             self.uri = value
+        }
+        if let value = dict["UserMetricsEndpoints"] as? [Any?] {
+            var tmp : [UserMetricsEndpoint] = []
+            for v in value {
+                if v != nil {
+                    var model = UserMetricsEndpoint()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.userMetricsEndpoints = tmp
         }
         if let value = dict["VersionName"] as? String {
             self.versionName = value
@@ -27462,9 +27621,13 @@ public class UpdateDatasetVersionRequest : Tea.TeaModel {
 
     public var dataSize: Int64?
 
+    public var datasetTaskRamRole: String?
+
     public var description_: String?
 
     public var options: String?
+
+    public var userMetricsEndpoints: [UserMetricsEndpoint]?
 
     public override init() {
         super.init()
@@ -27486,11 +27649,21 @@ public class UpdateDatasetVersionRequest : Tea.TeaModel {
         if self.dataSize != nil {
             map["DataSize"] = self.dataSize!
         }
+        if self.datasetTaskRamRole != nil {
+            map["DatasetTaskRamRole"] = self.datasetTaskRamRole!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
         if self.options != nil {
             map["Options"] = self.options!
+        }
+        if self.userMetricsEndpoints != nil {
+            var tmp : [Any] = []
+            for k in self.userMetricsEndpoints! {
+                tmp.append(k.toMap())
+            }
+            map["UserMetricsEndpoints"] = tmp
         }
         return map
     }
@@ -27503,11 +27676,27 @@ public class UpdateDatasetVersionRequest : Tea.TeaModel {
         if let value = dict["DataSize"] as? Int64 {
             self.dataSize = value
         }
+        if let value = dict["DatasetTaskRamRole"] as? String {
+            self.datasetTaskRamRole = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
         if let value = dict["Options"] as? String {
             self.options = value
+        }
+        if let value = dict["UserMetricsEndpoints"] as? [Any?] {
+            var tmp : [UserMetricsEndpoint] = []
+            for v in value {
+                if v != nil {
+                    var model = UserMetricsEndpoint()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.userMetricsEndpoints = tmp
         }
     }
 }
