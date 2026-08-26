@@ -35946,6 +35946,10 @@ public class ListAppTemplatesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var orderColumn: String?
+
+    public var orderType: String?
+
     public var pageNum: Int32?
 
     public var pageSize: Int32?
@@ -35986,6 +35990,12 @@ public class ListAppTemplatesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.orderColumn != nil {
+            map["OrderColumn"] = self.orderColumn!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
         if self.pageNum != nil {
             map["PageNum"] = self.pageNum!
         }
@@ -36020,6 +36030,12 @@ public class ListAppTemplatesRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["OrderColumn"] as? String {
+            self.orderColumn = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
         }
         if let value = dict["PageNum"] as? Int32 {
             self.pageNum = value
@@ -36060,6 +36076,8 @@ public class ListAppTemplatesResponseBody : Tea.TeaModel {
             public var industry: String?
 
             public var industryName: String?
+
+            public var isRecommended: Bool?
 
             public var lastModifier: String?
 
@@ -36135,6 +36153,9 @@ public class ListAppTemplatesResponseBody : Tea.TeaModel {
                 }
                 if self.industryName != nil {
                     map["IndustryName"] = self.industryName!
+                }
+                if self.isRecommended != nil {
+                    map["IsRecommended"] = self.isRecommended!
                 }
                 if self.lastModifier != nil {
                     map["LastModifier"] = self.lastModifier!
@@ -36216,6 +36237,9 @@ public class ListAppTemplatesResponseBody : Tea.TeaModel {
                 if let value = dict["IndustryName"] as? String {
                     self.industryName = value
                 }
+                if let value = dict["IsRecommended"] as? Bool {
+                    self.isRecommended = value
+                }
                 if let value = dict["LastModifier"] as? String {
                     self.lastModifier = value
                 }
@@ -36282,6 +36306,8 @@ public class ListAppTemplatesResponseBody : Tea.TeaModel {
             public var industry: String?
 
             public var industryName: String?
+
+            public var isRecommended: Bool?
 
             public var lastModifier: String?
 
@@ -36357,6 +36383,9 @@ public class ListAppTemplatesResponseBody : Tea.TeaModel {
                 }
                 if self.industryName != nil {
                     map["IndustryName"] = self.industryName!
+                }
+                if self.isRecommended != nil {
+                    map["IsRecommended"] = self.isRecommended!
                 }
                 if self.lastModifier != nil {
                     map["LastModifier"] = self.lastModifier!
@@ -36437,6 +36466,9 @@ public class ListAppTemplatesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IndustryName"] as? String {
                     self.industryName = value
+                }
+                if let value = dict["IsRecommended"] as? Bool {
+                    self.isRecommended = value
                 }
                 if let value = dict["LastModifier"] as? String {
                     self.lastModifier = value
