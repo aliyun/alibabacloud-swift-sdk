@@ -12397,6 +12397,8 @@ public class CreateLivePrivateLineResponse : Tea.TeaModel {
 }
 
 public class CreateLivePullToPushRequest : Tea.TeaModel {
+    public var authKey: String?
+
     public var callbackUrl: String?
 
     public var dstUrl: String?
@@ -12404,6 +12406,8 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
     public var endTime: String?
 
     public var fileIndex: Int32?
+
+    public var notifyItemSwitch: String?
 
     public var offset: Int32?
 
@@ -12414,6 +12418,8 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var repeatNumber: Int32?
+
+    public var reqAuth: String?
 
     public var retryCount: Int32?
 
@@ -12443,6 +12449,9 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authKey != nil {
+            map["AuthKey"] = self.authKey!
+        }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
         }
@@ -12454,6 +12463,9 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
         }
         if self.fileIndex != nil {
             map["FileIndex"] = self.fileIndex!
+        }
+        if self.notifyItemSwitch != nil {
+            map["NotifyItemSwitch"] = self.notifyItemSwitch!
         }
         if self.offset != nil {
             map["Offset"] = self.offset!
@@ -12469,6 +12481,9 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
         }
         if self.repeatNumber != nil {
             map["RepeatNumber"] = self.repeatNumber!
+        }
+        if self.reqAuth != nil {
+            map["ReqAuth"] = self.reqAuth!
         }
         if self.retryCount != nil {
             map["RetryCount"] = self.retryCount!
@@ -12496,6 +12511,9 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthKey"] as? String {
+            self.authKey = value
+        }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
         }
@@ -12507,6 +12525,9 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
         }
         if let value = dict["FileIndex"] as? Int32 {
             self.fileIndex = value
+        }
+        if let value = dict["NotifyItemSwitch"] as? String {
+            self.notifyItemSwitch = value
         }
         if let value = dict["Offset"] as? Int32 {
             self.offset = value
@@ -12522,6 +12543,9 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
         }
         if let value = dict["RepeatNumber"] as? Int32 {
             self.repeatNumber = value
+        }
+        if let value = dict["ReqAuth"] as? String {
+            self.reqAuth = value
         }
         if let value = dict["RetryCount"] as? Int32 {
             self.retryCount = value
@@ -12548,6 +12572,8 @@ public class CreateLivePullToPushRequest : Tea.TeaModel {
 }
 
 public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
+    public var authKey: String?
+
     public var callbackUrl: String?
 
     public var dstUrl: String?
@@ -12555,6 +12581,8 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
     public var endTime: String?
 
     public var fileIndex: Int32?
+
+    public var notifyItemSwitch: String?
 
     public var offset: Int32?
 
@@ -12565,6 +12593,8 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var repeatNumber: Int32?
+
+    public var reqAuth: String?
 
     public var retryCount: Int32?
 
@@ -12594,6 +12624,9 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authKey != nil {
+            map["AuthKey"] = self.authKey!
+        }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
         }
@@ -12605,6 +12638,9 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
         }
         if self.fileIndex != nil {
             map["FileIndex"] = self.fileIndex!
+        }
+        if self.notifyItemSwitch != nil {
+            map["NotifyItemSwitch"] = self.notifyItemSwitch!
         }
         if self.offset != nil {
             map["Offset"] = self.offset!
@@ -12620,6 +12656,9 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
         }
         if self.repeatNumber != nil {
             map["RepeatNumber"] = self.repeatNumber!
+        }
+        if self.reqAuth != nil {
+            map["ReqAuth"] = self.reqAuth!
         }
         if self.retryCount != nil {
             map["RetryCount"] = self.retryCount!
@@ -12647,6 +12686,9 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthKey"] as? String {
+            self.authKey = value
+        }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
         }
@@ -12658,6 +12700,9 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["FileIndex"] as? Int32 {
             self.fileIndex = value
+        }
+        if let value = dict["NotifyItemSwitch"] as? String {
+            self.notifyItemSwitch = value
         }
         if let value = dict["Offset"] as? Int32 {
             self.offset = value
@@ -12673,6 +12718,9 @@ public class CreateLivePullToPushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RepeatNumber"] as? Int32 {
             self.repeatNumber = value
+        }
+        if let value = dict["ReqAuth"] as? String {
+            self.reqAuth = value
         }
         if let value = dict["RetryCount"] as? Int32 {
             self.retryCount = value
@@ -45497,6 +45545,8 @@ public class DescribeLivePullToPushRequest : Tea.TeaModel {
 
 public class DescribeLivePullToPushResponseBody : Tea.TeaModel {
     public class TaskInfo : Tea.TeaModel {
+        public var authKey: String?
+
         public var callbackURL: String?
 
         public var dstUrl: String?
@@ -45505,9 +45555,13 @@ public class DescribeLivePullToPushResponseBody : Tea.TeaModel {
 
         public var fileIndex: Int32?
 
+        public var notifyItemSwitch: String?
+
         public var offset: Int32?
 
         public var repeatNumber: Int32?
+
+        public var reqAuth: String?
 
         public var retryCount: Int32?
 
@@ -45539,6 +45593,9 @@ public class DescribeLivePullToPushResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authKey != nil {
+                map["AuthKey"] = self.authKey!
+            }
             if self.callbackURL != nil {
                 map["CallbackURL"] = self.callbackURL!
             }
@@ -45551,11 +45608,17 @@ public class DescribeLivePullToPushResponseBody : Tea.TeaModel {
             if self.fileIndex != nil {
                 map["FileIndex"] = self.fileIndex!
             }
+            if self.notifyItemSwitch != nil {
+                map["NotifyItemSwitch"] = self.notifyItemSwitch!
+            }
             if self.offset != nil {
                 map["Offset"] = self.offset!
             }
             if self.repeatNumber != nil {
                 map["RepeatNumber"] = self.repeatNumber!
+            }
+            if self.reqAuth != nil {
+                map["ReqAuth"] = self.reqAuth!
             }
             if self.retryCount != nil {
                 map["RetryCount"] = self.retryCount!
@@ -45586,6 +45649,9 @@ public class DescribeLivePullToPushResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AuthKey"] as? String {
+                self.authKey = value
+            }
             if let value = dict["CallbackURL"] as? String {
                 self.callbackURL = value
             }
@@ -45598,11 +45664,17 @@ public class DescribeLivePullToPushResponseBody : Tea.TeaModel {
             if let value = dict["FileIndex"] as? Int32 {
                 self.fileIndex = value
             }
+            if let value = dict["NotifyItemSwitch"] as? String {
+                self.notifyItemSwitch = value
+            }
             if let value = dict["Offset"] as? Int32 {
                 self.offset = value
             }
             if let value = dict["RepeatNumber"] as? Int32 {
                 self.repeatNumber = value
+            }
+            if let value = dict["ReqAuth"] as? String {
+                self.reqAuth = value
             }
             if let value = dict["RetryCount"] as? Int32 {
                 self.retryCount = value
@@ -45883,6 +45955,8 @@ public class DescribeLivePullToPushListRequest : Tea.TeaModel {
 public class DescribeLivePullToPushListResponseBody : Tea.TeaModel {
     public class TaskList : Tea.TeaModel {
         public class TaskInfo : Tea.TeaModel {
+            public var authKey: String?
+
             public var callbackURL: String?
 
             public var dstUrl: String?
@@ -45891,9 +45965,13 @@ public class DescribeLivePullToPushListResponseBody : Tea.TeaModel {
 
             public var fileIndex: Int32?
 
+            public var notifyItemSwitch: String?
+
             public var offset: Int32?
 
             public var repeatNumber: Int32?
+
+            public var reqAuth: String?
 
             public var retryCount: Int32?
 
@@ -45925,6 +46003,9 @@ public class DescribeLivePullToPushListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.authKey != nil {
+                    map["AuthKey"] = self.authKey!
+                }
                 if self.callbackURL != nil {
                     map["CallbackURL"] = self.callbackURL!
                 }
@@ -45937,11 +46018,17 @@ public class DescribeLivePullToPushListResponseBody : Tea.TeaModel {
                 if self.fileIndex != nil {
                     map["FileIndex"] = self.fileIndex!
                 }
+                if self.notifyItemSwitch != nil {
+                    map["NotifyItemSwitch"] = self.notifyItemSwitch!
+                }
                 if self.offset != nil {
                     map["Offset"] = self.offset!
                 }
                 if self.repeatNumber != nil {
                     map["RepeatNumber"] = self.repeatNumber!
+                }
+                if self.reqAuth != nil {
+                    map["ReqAuth"] = self.reqAuth!
                 }
                 if self.retryCount != nil {
                     map["RetryCount"] = self.retryCount!
@@ -45972,6 +46059,9 @@ public class DescribeLivePullToPushListResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AuthKey"] as? String {
+                    self.authKey = value
+                }
                 if let value = dict["CallbackURL"] as? String {
                     self.callbackURL = value
                 }
@@ -45984,11 +46074,17 @@ public class DescribeLivePullToPushListResponseBody : Tea.TeaModel {
                 if let value = dict["FileIndex"] as? Int32 {
                     self.fileIndex = value
                 }
+                if let value = dict["NotifyItemSwitch"] as? String {
+                    self.notifyItemSwitch = value
+                }
                 if let value = dict["Offset"] as? Int32 {
                     self.offset = value
                 }
                 if let value = dict["RepeatNumber"] as? Int32 {
                     self.repeatNumber = value
+                }
+                if let value = dict["ReqAuth"] as? String {
+                    self.reqAuth = value
                 }
                 if let value = dict["RetryCount"] as? Int32 {
                     self.retryCount = value
@@ -102991,11 +103087,15 @@ public class UpdateLivePullStreamInfoConfigResponse : Tea.TeaModel {
 }
 
 public class UpdateLivePullToPushRequest : Tea.TeaModel {
+    public var authKey: String?
+
     public var callbackUrl: String?
 
     public var endTime: String?
 
     public var fileIndex: Int32?
+
+    public var notifyItemSwitch: String?
 
     public var offset: Int32?
 
@@ -103006,6 +103106,8 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var repeatNumber: Int32?
+
+    public var reqAuth: String?
 
     public var sourceUrls: [String]?
 
@@ -103027,6 +103129,9 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authKey != nil {
+            map["AuthKey"] = self.authKey!
+        }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
         }
@@ -103035,6 +103140,9 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
         }
         if self.fileIndex != nil {
             map["FileIndex"] = self.fileIndex!
+        }
+        if self.notifyItemSwitch != nil {
+            map["NotifyItemSwitch"] = self.notifyItemSwitch!
         }
         if self.offset != nil {
             map["Offset"] = self.offset!
@@ -103051,6 +103159,9 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
         if self.repeatNumber != nil {
             map["RepeatNumber"] = self.repeatNumber!
         }
+        if self.reqAuth != nil {
+            map["ReqAuth"] = self.reqAuth!
+        }
         if self.sourceUrls != nil {
             map["SourceUrls"] = self.sourceUrls!
         }
@@ -103065,6 +103176,9 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthKey"] as? String {
+            self.authKey = value
+        }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
         }
@@ -103073,6 +103187,9 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
         }
         if let value = dict["FileIndex"] as? Int32 {
             self.fileIndex = value
+        }
+        if let value = dict["NotifyItemSwitch"] as? String {
+            self.notifyItemSwitch = value
         }
         if let value = dict["Offset"] as? Int32 {
             self.offset = value
@@ -103089,6 +103206,9 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
         if let value = dict["RepeatNumber"] as? Int32 {
             self.repeatNumber = value
         }
+        if let value = dict["ReqAuth"] as? String {
+            self.reqAuth = value
+        }
         if let value = dict["SourceUrls"] as? [String] {
             self.sourceUrls = value
         }
@@ -103102,11 +103222,15 @@ public class UpdateLivePullToPushRequest : Tea.TeaModel {
 }
 
 public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
+    public var authKey: String?
+
     public var callbackUrl: String?
 
     public var endTime: String?
 
     public var fileIndex: Int32?
+
+    public var notifyItemSwitch: String?
 
     public var offset: Int32?
 
@@ -103117,6 +103241,8 @@ public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var repeatNumber: Int32?
+
+    public var reqAuth: String?
 
     public var sourceUrlsShrink: String?
 
@@ -103138,6 +103264,9 @@ public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authKey != nil {
+            map["AuthKey"] = self.authKey!
+        }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
         }
@@ -103146,6 +103275,9 @@ public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
         }
         if self.fileIndex != nil {
             map["FileIndex"] = self.fileIndex!
+        }
+        if self.notifyItemSwitch != nil {
+            map["NotifyItemSwitch"] = self.notifyItemSwitch!
         }
         if self.offset != nil {
             map["Offset"] = self.offset!
@@ -103162,6 +103294,9 @@ public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
         if self.repeatNumber != nil {
             map["RepeatNumber"] = self.repeatNumber!
         }
+        if self.reqAuth != nil {
+            map["ReqAuth"] = self.reqAuth!
+        }
         if self.sourceUrlsShrink != nil {
             map["SourceUrls"] = self.sourceUrlsShrink!
         }
@@ -103176,6 +103311,9 @@ public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthKey"] as? String {
+            self.authKey = value
+        }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
         }
@@ -103184,6 +103322,9 @@ public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["FileIndex"] as? Int32 {
             self.fileIndex = value
+        }
+        if let value = dict["NotifyItemSwitch"] as? String {
+            self.notifyItemSwitch = value
         }
         if let value = dict["Offset"] as? Int32 {
             self.offset = value
@@ -103199,6 +103340,9 @@ public class UpdateLivePullToPushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RepeatNumber"] as? Int32 {
             self.repeatNumber = value
+        }
+        if let value = dict["ReqAuth"] as? String {
+            self.reqAuth = value
         }
         if let value = dict["SourceUrls"] as? String {
             self.sourceUrlsShrink = value

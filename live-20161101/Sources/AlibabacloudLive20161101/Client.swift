@@ -3140,6 +3140,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.sourceUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceUrls, "SourceUrls", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authKey)) {
+            query["AuthKey"] = request.authKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
         }
@@ -3151,6 +3154,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.fileIndex)) {
             query["FileIndex"] = request.fileIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.notifyItemSwitch)) {
+            query["NotifyItemSwitch"] = request.notifyItemSwitch ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.offset)) {
             query["Offset"] = request.offset!;
@@ -3166,6 +3172,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.repeatNumber)) {
             query["RepeatNumber"] = request.repeatNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reqAuth)) {
+            query["ReqAuth"] = request.reqAuth ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.retryCount)) {
             query["RetryCount"] = request.retryCount!;
