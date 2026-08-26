@@ -3378,6 +3378,8 @@ public class DeleteDeploymentJobResponse : Tea.TeaModel {
 }
 
 public class DeleteInstanceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var instanceId: String?
 
     public override init() {
@@ -3394,6 +3396,9 @@ public class DeleteInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3402,6 +3407,9 @@ public class DeleteInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -3604,6 +3612,8 @@ public class DeletePCACertResponse : Tea.TeaModel {
 public class DeleteUserCertificateRequest : Tea.TeaModel {
     public var certId: Int64?
 
+    public var clientToken: String?
+
     public override init() {
         super.init()
     }
@@ -3621,6 +3631,9 @@ public class DeleteUserCertificateRequest : Tea.TeaModel {
         if self.certId != nil {
             map["CertId"] = self.certId!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         return map
     }
 
@@ -3628,6 +3641,9 @@ public class DeleteUserCertificateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CertId"] as? Int64 {
             self.certId = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
     }
 }
@@ -17461,6 +17477,8 @@ public class UploadUserCertificateRequest : Tea.TeaModel {
     }
     public var cert: String?
 
+    public var clientToken: String?
+
     public var encryptCert: String?
 
     public var encryptPrivateKey: String?
@@ -17493,6 +17511,9 @@ public class UploadUserCertificateRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.cert != nil {
             map["Cert"] = self.cert!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.encryptCert != nil {
             map["EncryptCert"] = self.encryptCert!
@@ -17529,6 +17550,9 @@ public class UploadUserCertificateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Cert"] as? String {
             self.cert = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["EncryptCert"] as? String {
             self.encryptCert = value
