@@ -21672,6 +21672,196 @@ public class GetAIMediaAuditJobResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class GreenEnhancedResult : Tea.TeaModel {
+                    public class CounterList : Tea.TeaModel {
+                        public var count: Int32?
+
+                        public var label: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.count != nil {
+                                map["Count"] = self.count!
+                            }
+                            if self.label != nil {
+                                map["Label"] = self.label!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Count"] as? Int32 {
+                                self.count = value
+                            }
+                            if let value = dict["Label"] as? String {
+                                self.label = value
+                            }
+                        }
+                    }
+                    public class TopList : Tea.TeaModel {
+                        public var label: String?
+
+                        public var score: String?
+
+                        public var timestamp: String?
+
+                        public var url: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.label != nil {
+                                map["Label"] = self.label!
+                            }
+                            if self.score != nil {
+                                map["Score"] = self.score!
+                            }
+                            if self.timestamp != nil {
+                                map["Timestamp"] = self.timestamp!
+                            }
+                            if self.url != nil {
+                                map["Url"] = self.url!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Label"] as? String {
+                                self.label = value
+                            }
+                            if let value = dict["Score"] as? String {
+                                self.score = value
+                            }
+                            if let value = dict["Timestamp"] as? String {
+                                self.timestamp = value
+                            }
+                            if let value = dict["Url"] as? String {
+                                self.url = value
+                            }
+                        }
+                    }
+                    public var averageScore: String?
+
+                    public var counterList: [GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.CounterList]?
+
+                    public var label: String?
+
+                    public var maxScore: String?
+
+                    public var suggestion: String?
+
+                    public var topList: [GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.TopList]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.averageScore != nil {
+                            map["AverageScore"] = self.averageScore!
+                        }
+                        if self.counterList != nil {
+                            var tmp : [Any] = []
+                            for k in self.counterList! {
+                                tmp.append(k.toMap())
+                            }
+                            map["CounterList"] = tmp
+                        }
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        if self.maxScore != nil {
+                            map["MaxScore"] = self.maxScore!
+                        }
+                        if self.suggestion != nil {
+                            map["Suggestion"] = self.suggestion!
+                        }
+                        if self.topList != nil {
+                            var tmp : [Any] = []
+                            for k in self.topList! {
+                                tmp.append(k.toMap())
+                            }
+                            map["TopList"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AverageScore"] as? String {
+                            self.averageScore = value
+                        }
+                        if let value = dict["CounterList"] as? [Any?] {
+                            var tmp : [GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.CounterList] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.CounterList()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.counterList = tmp
+                        }
+                        if let value = dict["Label"] as? String {
+                            self.label = value
+                        }
+                        if let value = dict["MaxScore"] as? String {
+                            self.maxScore = value
+                        }
+                        if let value = dict["Suggestion"] as? String {
+                            self.suggestion = value
+                        }
+                        if let value = dict["TopList"] as? [Any?] {
+                            var tmp : [GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.TopList] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.TopList()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.topList = tmp
+                        }
+                    }
+                }
                 public class LiveResult : Tea.TeaModel {
                     public class CounterList : Tea.TeaModel {
                         public var count: Int32?
@@ -22434,6 +22624,8 @@ public class GetAIMediaAuditJobResponseBody : Tea.TeaModel {
                 }
                 public var adResult: GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.AdResult?
 
+                public var greenEnhancedResult: GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult?
+
                 public var label: String?
 
                 public var liveResult: GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.LiveResult?
@@ -22457,6 +22649,7 @@ public class GetAIMediaAuditJobResponseBody : Tea.TeaModel {
 
                 public override func validate() throws -> Void {
                     try self.adResult?.validate()
+                    try self.greenEnhancedResult?.validate()
                     try self.liveResult?.validate()
                     try self.logoResult?.validate()
                     try self.pornResult?.validate()
@@ -22467,6 +22660,9 @@ public class GetAIMediaAuditJobResponseBody : Tea.TeaModel {
                     var map = super.toMap()
                     if self.adResult != nil {
                         map["AdResult"] = self.adResult?.toMap()
+                    }
+                    if self.greenEnhancedResult != nil {
+                        map["GreenEnhancedResult"] = self.greenEnhancedResult?.toMap()
                     }
                     if self.label != nil {
                         map["Label"] = self.label!
@@ -22495,6 +22691,11 @@ public class GetAIMediaAuditJobResponseBody : Tea.TeaModel {
                         var model = GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.AdResult()
                         model.fromMap(value)
                         self.adResult = model
+                    }
+                    if let value = dict["GreenEnhancedResult"] as? [String: Any?] {
+                        var model = GetAIMediaAuditJobResponseBody.MediaAuditJob.Data.VideoResult.GreenEnhancedResult()
+                        model.fromMap(value)
+                        self.greenEnhancedResult = model
                     }
                     if let value = dict["Label"] as? String {
                         self.label = value
@@ -28539,6 +28740,196 @@ public class GetMediaAuditResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class GreenEnhancedResult : Tea.TeaModel {
+                public class CounterList : Tea.TeaModel {
+                    public var count: Int32?
+
+                    public var label: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.count != nil {
+                            map["Count"] = self.count!
+                        }
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Count"] as? Int32 {
+                            self.count = value
+                        }
+                        if let value = dict["Label"] as? String {
+                            self.label = value
+                        }
+                    }
+                }
+                public class TopList : Tea.TeaModel {
+                    public var label: String?
+
+                    public var score: String?
+
+                    public var timestamp: String?
+
+                    public var url: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        if self.score != nil {
+                            map["Score"] = self.score!
+                        }
+                        if self.timestamp != nil {
+                            map["Timestamp"] = self.timestamp!
+                        }
+                        if self.url != nil {
+                            map["Url"] = self.url!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Label"] as? String {
+                            self.label = value
+                        }
+                        if let value = dict["Score"] as? String {
+                            self.score = value
+                        }
+                        if let value = dict["Timestamp"] as? String {
+                            self.timestamp = value
+                        }
+                        if let value = dict["Url"] as? String {
+                            self.url = value
+                        }
+                    }
+                }
+                public var averageScore: String?
+
+                public var counterList: [GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult.CounterList]?
+
+                public var label: String?
+
+                public var maxScore: String?
+
+                public var suggestion: String?
+
+                public var topList: [GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult.TopList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.averageScore != nil {
+                        map["AverageScore"] = self.averageScore!
+                    }
+                    if self.counterList != nil {
+                        var tmp : [Any] = []
+                        for k in self.counterList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["CounterList"] = tmp
+                    }
+                    if self.label != nil {
+                        map["Label"] = self.label!
+                    }
+                    if self.maxScore != nil {
+                        map["MaxScore"] = self.maxScore!
+                    }
+                    if self.suggestion != nil {
+                        map["Suggestion"] = self.suggestion!
+                    }
+                    if self.topList != nil {
+                        var tmp : [Any] = []
+                        for k in self.topList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TopList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AverageScore"] as? String {
+                        self.averageScore = value
+                    }
+                    if let value = dict["CounterList"] as? [Any?] {
+                        var tmp : [GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult.CounterList] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult.CounterList()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.counterList = tmp
+                    }
+                    if let value = dict["Label"] as? String {
+                        self.label = value
+                    }
+                    if let value = dict["MaxScore"] as? String {
+                        self.maxScore = value
+                    }
+                    if let value = dict["Suggestion"] as? String {
+                        self.suggestion = value
+                    }
+                    if let value = dict["TopList"] as? [Any?] {
+                        var tmp : [GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult.TopList] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult.TopList()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.topList = tmp
+                    }
+                }
+            }
             public class LiveResult : Tea.TeaModel {
                 public class CounterList : Tea.TeaModel {
                     public var count: Int32?
@@ -29301,6 +29692,8 @@ public class GetMediaAuditResultResponseBody : Tea.TeaModel {
             }
             public var adResult: GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.AdResult?
 
+            public var greenEnhancedResult: GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult?
+
             public var label: String?
 
             public var liveResult: GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.LiveResult?
@@ -29324,6 +29717,7 @@ public class GetMediaAuditResultResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.adResult?.validate()
+                try self.greenEnhancedResult?.validate()
                 try self.liveResult?.validate()
                 try self.logoResult?.validate()
                 try self.pornResult?.validate()
@@ -29334,6 +29728,9 @@ public class GetMediaAuditResultResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.adResult != nil {
                     map["AdResult"] = self.adResult?.toMap()
+                }
+                if self.greenEnhancedResult != nil {
+                    map["GreenEnhancedResult"] = self.greenEnhancedResult?.toMap()
                 }
                 if self.label != nil {
                     map["Label"] = self.label!
@@ -29362,6 +29759,11 @@ public class GetMediaAuditResultResponseBody : Tea.TeaModel {
                     var model = GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.AdResult()
                     model.fromMap(value)
                     self.adResult = model
+                }
+                if let value = dict["GreenEnhancedResult"] as? [String: Any?] {
+                    var model = GetMediaAuditResultResponseBody.MediaAuditResult.VideoResult.GreenEnhancedResult()
+                    model.fromMap(value)
+                    self.greenEnhancedResult = model
                 }
                 if let value = dict["Label"] as? String {
                     self.label = value
@@ -44917,6 +45319,10 @@ public class SetVodDomainSSLCertificateResponse : Tea.TeaModel {
 }
 
 public class SubmitAIImageAuditJobRequest : Tea.TeaModel {
+    public var censorProvider: String?
+
+    public var imageService: String?
+
     public var mediaAuditConfiguration: String?
 
     public var mediaId: String?
@@ -44928,6 +45334,8 @@ public class SubmitAIImageAuditJobRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: String?
+
+    public var serviceParameters: String?
 
     public var templateId: String?
 
@@ -44945,6 +45353,12 @@ public class SubmitAIImageAuditJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.censorProvider != nil {
+            map["CensorProvider"] = self.censorProvider!
+        }
+        if self.imageService != nil {
+            map["ImageService"] = self.imageService!
+        }
         if self.mediaAuditConfiguration != nil {
             map["MediaAuditConfiguration"] = self.mediaAuditConfiguration!
         }
@@ -44963,6 +45377,9 @@ public class SubmitAIImageAuditJobRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.serviceParameters != nil {
+            map["ServiceParameters"] = self.serviceParameters!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -44971,6 +45388,12 @@ public class SubmitAIImageAuditJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CensorProvider"] as? String {
+            self.censorProvider = value
+        }
+        if let value = dict["ImageService"] as? String {
+            self.imageService = value
+        }
         if let value = dict["MediaAuditConfiguration"] as? String {
             self.mediaAuditConfiguration = value
         }
@@ -44988,6 +45411,9 @@ public class SubmitAIImageAuditJobRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? String {
             self.resourceOwnerId = value
+        }
+        if let value = dict["ServiceParameters"] as? String {
+            self.serviceParameters = value
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
@@ -45530,15 +45956,23 @@ public class SubmitAIJobResponse : Tea.TeaModel {
 }
 
 public class SubmitAIMediaAuditJobRequest : Tea.TeaModel {
+    public var censorProvider: String?
+
     public var mediaAuditConfiguration: String?
 
     public var mediaId: String?
 
     public var mediaType: String?
 
+    public var serviceParameters: String?
+
     public var templateId: String?
 
     public var userData: String?
+
+    public var videoService: String?
+
+    public var voiceService: String?
 
     public override init() {
         super.init()
@@ -45554,6 +45988,9 @@ public class SubmitAIMediaAuditJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.censorProvider != nil {
+            map["CensorProvider"] = self.censorProvider!
+        }
         if self.mediaAuditConfiguration != nil {
             map["MediaAuditConfiguration"] = self.mediaAuditConfiguration!
         }
@@ -45563,17 +46000,29 @@ public class SubmitAIMediaAuditJobRequest : Tea.TeaModel {
         if self.mediaType != nil {
             map["MediaType"] = self.mediaType!
         }
+        if self.serviceParameters != nil {
+            map["ServiceParameters"] = self.serviceParameters!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
+        if self.videoService != nil {
+            map["VideoService"] = self.videoService!
+        }
+        if self.voiceService != nil {
+            map["VoiceService"] = self.voiceService!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CensorProvider"] as? String {
+            self.censorProvider = value
+        }
         if let value = dict["MediaAuditConfiguration"] as? String {
             self.mediaAuditConfiguration = value
         }
@@ -45583,11 +46032,20 @@ public class SubmitAIMediaAuditJobRequest : Tea.TeaModel {
         if let value = dict["MediaType"] as? String {
             self.mediaType = value
         }
+        if let value = dict["ServiceParameters"] as? String {
+            self.serviceParameters = value
+        }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
+        }
+        if let value = dict["VideoService"] as? String {
+            self.videoService = value
+        }
+        if let value = dict["VoiceService"] as? String {
+            self.voiceService = value
         }
     }
 }

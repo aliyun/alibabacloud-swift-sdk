@@ -6626,6 +6626,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitAIImageAuditJobWithOptions(_ request: SubmitAIImageAuditJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAIImageAuditJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.censorProvider)) {
+            query["CensorProvider"] = request.censorProvider ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageService)) {
+            query["ImageService"] = request.imageService ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mediaAuditConfiguration)) {
             query["MediaAuditConfiguration"] = request.mediaAuditConfiguration ?? "";
         }
@@ -6643,6 +6649,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceParameters)) {
+            query["ServiceParameters"] = request.serviceParameters ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";
@@ -6779,6 +6788,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitAIMediaAuditJobWithOptions(_ request: SubmitAIMediaAuditJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAIMediaAuditJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.censorProvider)) {
+            query["CensorProvider"] = request.censorProvider ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mediaAuditConfiguration)) {
             query["MediaAuditConfiguration"] = request.mediaAuditConfiguration ?? "";
         }
@@ -6788,11 +6800,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mediaType)) {
             query["MediaType"] = request.mediaType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serviceParameters)) {
+            query["ServiceParameters"] = request.serviceParameters ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             query["UserData"] = request.userData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoService)) {
+            query["VideoService"] = request.videoService ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voiceService)) {
+            query["VoiceService"] = request.voiceService ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
