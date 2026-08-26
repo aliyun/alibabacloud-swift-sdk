@@ -46148,6 +46148,289 @@ public class ListRiskItemsResponse : Tea.TeaModel {
     }
 }
 
+public class ListSaseUserTagsRequest : Tea.TeaModel {
+    public var currentPage: Int64?
+
+    public var name: String?
+
+    public var pageSize: Int64?
+
+    public var tagIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.tagIds != nil {
+            map["TagIds"] = self.tagIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int64 {
+            self.currentPage = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["TagIds"] as? [String] {
+            self.tagIds = value
+        }
+    }
+}
+
+public class ListSaseUserTagsShrinkRequest : Tea.TeaModel {
+    public var currentPage: Int64?
+
+    public var name: String?
+
+    public var pageSize: Int64?
+
+    public var tagIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.tagIdsShrink != nil {
+            map["TagIds"] = self.tagIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int64 {
+            self.currentPage = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["TagIds"] as? String {
+            self.tagIdsShrink = value
+        }
+    }
+}
+
+public class ListSaseUserTagsResponseBody : Tea.TeaModel {
+    public class DataList : Tea.TeaModel {
+        public var aliuid: String?
+
+        public var count: Int32?
+
+        public var description_: String?
+
+        public var name: String?
+
+        public var tagId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliuid != nil {
+                map["Aliuid"] = self.aliuid!
+            }
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.tagId != nil {
+                map["TagId"] = self.tagId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Aliuid"] as? String {
+                self.aliuid = value
+            }
+            if let value = dict["Count"] as? Int32 {
+                self.count = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["TagId"] as? String {
+                self.tagId = value
+            }
+        }
+    }
+    public var dataList: [ListSaseUserTagsResponseBody.DataList]?
+
+    public var requestId: String?
+
+    public var totalNum: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataList != nil {
+            var tmp : [Any] = []
+            for k in self.dataList! {
+                tmp.append(k.toMap())
+            }
+            map["DataList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalNum != nil {
+            map["TotalNum"] = self.totalNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataList"] as? [Any?] {
+            var tmp : [ListSaseUserTagsResponseBody.DataList] = []
+            for v in value {
+                if v != nil {
+                    var model = ListSaseUserTagsResponseBody.DataList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalNum"] as? Int32 {
+            self.totalNum = value
+        }
+    }
+}
+
+public class ListSaseUserTagsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSaseUserTagsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListSaseUserTagsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListSoftwareForUserDeviceRequest : Tea.TeaModel {
     public var currentPage: Int64?
 
@@ -46605,6 +46888,8 @@ public class ListSoftwarelibSoftwareResponseBody : Tea.TeaModel {
 
         public var officialDownloadUrl: String?
 
+        public var runAsAccount: String?
+
         public var softwareId: String?
 
         public var softwareName: String?
@@ -46677,6 +46962,9 @@ public class ListSoftwarelibSoftwareResponseBody : Tea.TeaModel {
             }
             if self.officialDownloadUrl != nil {
                 map["OfficialDownloadUrl"] = self.officialDownloadUrl!
+            }
+            if self.runAsAccount != nil {
+                map["RunAsAccount"] = self.runAsAccount!
             }
             if self.softwareId != nil {
                 map["SoftwareId"] = self.softwareId!
@@ -46752,6 +47040,9 @@ public class ListSoftwarelibSoftwareResponseBody : Tea.TeaModel {
             }
             if let value = dict["OfficialDownloadUrl"] as? String {
                 self.officialDownloadUrl = value
+            }
+            if let value = dict["RunAsAccount"] as? String {
+                self.runAsAccount = value
             }
             if let value = dict["SoftwareId"] as? String {
                 self.softwareId = value
