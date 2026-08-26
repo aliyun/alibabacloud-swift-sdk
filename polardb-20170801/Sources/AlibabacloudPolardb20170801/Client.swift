@@ -49,28 +49,28 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhengzhou-nebula-1": "polardb.aliyuncs.com",
             "eu-west-1-oxs": "polardb.aliyuncs.com",
             "rus-west-1-pop": "polardb.aliyuncs.com",
-            "us-west-1": "polardb.us-west-1.aliyuncs.com",
-            "us-east-1": "polardb.us-east-1.aliyuncs.com",
-            "na-south-1": "polardb.na-south-1.aliyuncs.com",
-            "me-east-1": "polardb.me-east-1.aliyuncs.com",
-            "eu-west-1": "polardb.eu-west-1.aliyuncs.com",
-            "eu-central-1": "polardb.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "polardb.cn-zhangjiakou.aliyuncs.com",
-            "cn-shenzhen-finance-1": "polardb.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shenzhen": "polardb.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "polardb.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-huhehaote": "polardb.cn-huhehaote.aliyuncs.com",
             "cn-hongkong": "polardb.cn-hongkong.aliyuncs.com",
-            "cn-guangzhou": "polardb.cn-guangzhou.aliyuncs.com",
-            "cn-chengdu": "polardb.cn-chengdu.aliyuncs.com",
-            "ap-southeast-8": "polardb.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "polardb.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "polardb.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "polardb.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "polardb.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "polardb.ap-southeast-1.aliyuncs.com",
+            "cn-zhangjiakou": "polardb.cn-zhangjiakou.aliyuncs.com",
+            "cn-shenzhen": "polardb.cn-shenzhen.aliyuncs.com",
             "ap-northeast-2": "polardb.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "polardb.ap-northeast-1.aliyuncs.com"
+            "ap-northeast-1": "polardb.ap-northeast-1.aliyuncs.com",
+            "cn-chengdu": "polardb.cn-chengdu.aliyuncs.com",
+            "cn-guangzhou": "polardb.cn-guangzhou.aliyuncs.com",
+            "ap-southeast-1": "polardb.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "polardb.ap-southeast-3.aliyuncs.com",
+            "cn-huhehaote": "polardb.cn-huhehaote.aliyuncs.com",
+            "ap-southeast-5": "polardb.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "polardb.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "polardb.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-8": "polardb.ap-southeast-8.aliyuncs.com",
+            "na-south-1": "polardb.na-south-1.aliyuncs.com",
+            "eu-central-1": "polardb.eu-central-1.aliyuncs.com",
+            "us-west-1": "polardb.us-west-1.aliyuncs.com",
+            "eu-west-1": "polardb.eu-west-1.aliyuncs.com",
+            "us-east-1": "polardb.us-east-1.aliyuncs.com",
+            "me-east-1": "polardb.me-east-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "polardb.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shenzhen-finance-1": "polardb.cn-shenzhen-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("polardb", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -3897,6 +3897,134 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBaseWithOptions(_ request: CreateKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseType)) {
+            query["KnowledgeBaseType"] = request.knowledgeBaseType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeSpaceId)) {
+            query["KnowledgeSpaceId"] = request.knowledgeSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchMode)) {
+            query["SearchMode"] = request.searchMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeBase",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeBase(_ request: CreateKnowledgeBaseRequest) async throws -> CreateKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeBaseWithOptions(request as! CreateKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeSpaceWithOptions(_ request: CreateKnowledgeSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowledgeSpaceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBType)) {
+            query["DBType"] = request.DBType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.embeddingDimension)) {
+            query["EmbeddingDimension"] = request.embeddingDimension!;
+        }
+        if (!TeaUtils.Client.isUnset(request.embeddingModel)) {
+            query["EmbeddingModel"] = request.embeddingModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enforceAcl)) {
+            query["EnforceAcl"] = request.enforceAcl!;
+        }
+        if (!TeaUtils.Client.isUnset(request.LLMModel)) {
+            query["LLMModel"] = request.LLMModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.OSSAccessKey)) {
+            query["OSSAccessKey"] = request.OSSAccessKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.OSSBucket)) {
+            query["OSSBucket"] = request.OSSBucket ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.OSSSecretKey)) {
+            query["OSSSecretKey"] = request.OSSSecretKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rerankModel)) {
+            query["RerankModel"] = request.rerankModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
+            query["SecurityGroupId"] = request.securityGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shardingSize)) {
+            query["ShardingSize"] = request.shardingSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.shardingStrategy)) {
+            query["ShardingStrategy"] = request.shardingStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
+            query["VSwitchId"] = request.vSwitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            query["ZoneId"] = request.zoneId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateKnowledgeSpace",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKnowledgeSpaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createKnowledgeSpace(_ request: CreateKnowledgeSpaceRequest) async throws -> CreateKnowledgeSpaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createKnowledgeSpaceWithOptions(request as! CreateKnowledgeSpaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createLakebaseS3AccountWithOptions(_ request: CreateLakebaseS3AccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLakebaseS3AccountResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3943,6 +4071,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createModelApiWithOptions(_ request: CreateModelApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateModelApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            query["Config"] = request.config ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.forceModel)) {
             query["ForceModel"] = request.forceModel ?? "";
         }
@@ -5082,14 +5213,23 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAgenticDBComputeClusterWithOptions(_ request: DeleteAgenticDBComputeClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAgenticDBComputeClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.branchId)) {
+            query["BranchId"] = request.branchId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.computeClusterId)) {
             query["ComputeClusterId"] = request.computeClusterId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            query["ProjectId"] = request.projectId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["TenantId"] = request.tenantId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -6197,6 +6337,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteGlobalSecurityIPGroup(_ request: DeleteGlobalSecurityIPGroupRequest) async throws -> DeleteGlobalSecurityIPGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteGlobalSecurityIPGroupWithOptions(request as! DeleteGlobalSecurityIPGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeBaseWithOptions(_ request: DeleteKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            query["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteKnowledgeBase",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteKnowledgeBase(_ request: DeleteKnowledgeBaseRequest) async throws -> DeleteKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteKnowledgeBaseWithOptions(request as! DeleteKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -8313,7 +8487,7 @@ open class Client : AlibabacloudOpenApi.Client {
         var request: DescribeApplicationPerformanceShrinkRequest = DescribeApplicationPerformanceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
         if (!TeaUtils.Client.isUnset(tmpReq.filter)) {
-            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "filter", "json")
+            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "Filter", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
@@ -8334,6 +8508,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
+            query["Filter"] = request.filterShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.interval)) {
             query["Interval"] = request.interval ?? "";
         }
@@ -8351,9 +8528,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
-            query["filter"] = request.filterShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -12323,6 +12497,86 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeHistoryTasksStat(_ request: DescribeHistoryTasksStatRequest) async throws -> DescribeHistoryTasksStatResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeHistoryTasksStatWithOptions(request as! DescribeHistoryTasksStatRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKnowledgeBaseAttributeWithOptions(_ request: DescribeKnowledgeBaseAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeKnowledgeBaseAttributeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            query["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeKnowledgeBaseAttribute",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeKnowledgeBaseAttributeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKnowledgeBaseAttribute(_ request: DescribeKnowledgeBaseAttributeRequest) async throws -> DescribeKnowledgeBaseAttributeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeKnowledgeBaseAttributeWithOptions(request as! DescribeKnowledgeBaseAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKnowledgeBasesWithOptions(_ request: DescribeKnowledgeBasesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeKnowledgeBasesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["Keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeSpaceId)) {
+            query["KnowledgeSpaceId"] = request.knowledgeSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeKnowledgeBases",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeKnowledgeBasesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKnowledgeBases(_ request: DescribeKnowledgeBasesRequest) async throws -> DescribeKnowledgeBasesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeKnowledgeBasesWithOptions(request as! DescribeKnowledgeBasesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -19849,6 +20103,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyModelApiWithOptions(_ request: ModifyModelApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyModelApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            query["Config"] = request.config ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gwClusterId)) {
             query["GwClusterId"] = request.gwClusterId ?? "";
         }
