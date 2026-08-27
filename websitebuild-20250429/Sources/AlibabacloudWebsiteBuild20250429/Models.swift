@@ -12515,6 +12515,214 @@ public class DeleteAppPluginResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteAppSceneRecipientRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var recipientId: String?
+
+    public var sceneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.recipientId != nil {
+            map["RecipientId"] = self.recipientId!
+        }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["RecipientId"] as? String {
+            self.recipientId = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
+        }
+    }
+}
+
+public class DeleteAppSceneRecipientResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var allowRetry: Bool?
+
+    public var appName: String?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorArgs: [Any]?
+
+    public var module: Bool?
+
+    public var requestId: String?
+
+    public var rootErrorCode: String?
+
+    public var rootErrorMsg: String?
+
+    public var synchro: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.allowRetry != nil {
+            map["AllowRetry"] = self.allowRetry!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorArgs != nil {
+            map["ErrorArgs"] = self.errorArgs!
+        }
+        if self.module != nil {
+            map["Module"] = self.module!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rootErrorCode != nil {
+            map["RootErrorCode"] = self.rootErrorCode!
+        }
+        if self.rootErrorMsg != nil {
+            map["RootErrorMsg"] = self.rootErrorMsg!
+        }
+        if self.synchro != nil {
+            map["Synchro"] = self.synchro!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["AllowRetry"] as? Bool {
+            self.allowRetry = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["DynamicCode"] as? String {
+            self.dynamicCode = value
+        }
+        if let value = dict["DynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["ErrorArgs"] as? [Any] {
+            self.errorArgs = value
+        }
+        if let value = dict["Module"] as? Bool {
+            self.module = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RootErrorCode"] as? String {
+            self.rootErrorCode = value
+        }
+        if let value = dict["RootErrorMsg"] as? String {
+            self.rootErrorMsg = value
+        }
+        if let value = dict["Synchro"] as? Bool {
+            self.synchro = value
+        }
+    }
+}
+
+public class DeleteAppSceneRecipientResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteAppSceneRecipientResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteAppSceneRecipientResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteAppSupabaseSecretsRequest : Tea.TeaModel {
     public var bizId: String?
 
@@ -31391,6 +31599,8 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var statusQueryMode: String?
+
     public override init() {
         super.init()
     }
@@ -31432,6 +31642,9 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.statusQueryMode != nil {
+            map["StatusQueryMode"] = self.statusQueryMode!
+        }
         return map
     }
 
@@ -31463,6 +31676,9 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["StatusQueryMode"] as? String {
+            self.statusQueryMode = value
         }
     }
 }
@@ -31986,7 +32202,11 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public var domainType: String?
 
+            public var icpFilingStatus: String?
+
             public var migration: ListAppInstanceDomainsResponseBody.Module.Data.Migration?
+
+            public var offline: Bool?
 
             public var overallStatus: String?
 
@@ -32037,8 +32257,14 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if self.domainType != nil {
                     map["DomainType"] = self.domainType!
                 }
+                if self.icpFilingStatus != nil {
+                    map["IcpFilingStatus"] = self.icpFilingStatus!
+                }
                 if self.migration != nil {
                     map["Migration"] = self.migration?.toMap()
+                }
+                if self.offline != nil {
+                    map["Offline"] = self.offline!
                 }
                 if self.overallStatus != nil {
                     map["OverallStatus"] = self.overallStatus!
@@ -32082,10 +32308,16 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if let value = dict["DomainType"] as? String {
                     self.domainType = value
                 }
+                if let value = dict["IcpFilingStatus"] as? String {
+                    self.icpFilingStatus = value
+                }
                 if let value = dict["Migration"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Data.Migration()
                     model.fromMap(value)
                     self.migration = model
+                }
+                if let value = dict["Offline"] as? Bool {
+                    self.offline = value
                 }
                 if let value = dict["OverallStatus"] as? String {
                     self.overallStatus = value
@@ -32613,11 +32845,19 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public var createTime: String?
 
+            public var deployType: String?
+
             public var dnsConflict: ListAppInstanceDomainsResponseBody.Module.Next.DnsConflict?
 
             public var domainName: String?
 
+            public var domainType: String?
+
+            public var icpFilingStatus: String?
+
             public var migration: ListAppInstanceDomainsResponseBody.Module.Next.Migration?
+
+            public var offline: Bool?
 
             public var overallStatus: String?
 
@@ -32656,14 +32896,26 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.deployType != nil {
+                    map["DeployType"] = self.deployType!
+                }
                 if self.dnsConflict != nil {
                     map["DnsConflict"] = self.dnsConflict?.toMap()
                 }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
                 }
+                if self.domainType != nil {
+                    map["DomainType"] = self.domainType!
+                }
+                if self.icpFilingStatus != nil {
+                    map["IcpFilingStatus"] = self.icpFilingStatus!
+                }
                 if self.migration != nil {
                     map["Migration"] = self.migration?.toMap()
+                }
+                if self.offline != nil {
+                    map["Offline"] = self.offline!
                 }
                 if self.overallStatus != nil {
                     map["OverallStatus"] = self.overallStatus!
@@ -32693,6 +32945,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
                 }
+                if let value = dict["DeployType"] as? String {
+                    self.deployType = value
+                }
                 if let value = dict["DnsConflict"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Next.DnsConflict()
                     model.fromMap(value)
@@ -32701,10 +32956,19 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if let value = dict["DomainName"] as? String {
                     self.domainName = value
                 }
+                if let value = dict["DomainType"] as? String {
+                    self.domainType = value
+                }
+                if let value = dict["IcpFilingStatus"] as? String {
+                    self.icpFilingStatus = value
+                }
                 if let value = dict["Migration"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Next.Migration()
                     model.fromMap(value)
                     self.migration = model
+                }
+                if let value = dict["Offline"] as? Bool {
+                    self.offline = value
                 }
                 if let value = dict["OverallStatus"] as? String {
                     self.overallStatus = value
