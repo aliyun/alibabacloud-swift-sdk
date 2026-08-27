@@ -8,7 +8,31 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "central"
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-beijing": "ram.aliyuncs.com",
+            "cn-qingdao": "ram.aliyuncs.com",
+            "cn-shanghai": "ram.aliyuncs.com",
+            "cn-hongkong": "ram.aliyuncs.com",
+            "cn-zhangjiakou": "ram.aliyuncs.com",
+            "cn-shenzhen": "ram.aliyuncs.com",
+            "ap-northeast-1": "ram.aliyuncs.com",
+            "cn-chengdu": "ram.aliyuncs.com",
+            "ap-southeast-1": "ram.aliyuncs.com",
+            "ap-southeast-3": "ram.aliyuncs.com",
+            "cn-huhehaote": "ram.aliyuncs.com",
+            "ap-southeast-5": "ram.aliyuncs.com",
+            "cn-hangzhou": "ram.aliyuncs.com",
+            "us-east-1": "ram.aliyuncs.com",
+            "eu-west-1": "ram.aliyuncs.com",
+            "us-west-1": "ram.aliyuncs.com",
+            "eu-central-1": "ram.aliyuncs.com",
+            "me-east-1": "ram.aliyuncs.com",
+            "cn-shenzhen-finance-1": "ram.aliyuncs.com",
+            "cn-shanghai-finance-1": "ram.aliyuncs.com",
+            "cn-beijing-finance-1": "ram.aliyuncs.com",
+            "cn-hangzhou-finance": "ram.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ram", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -474,6 +498,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowConsoleLogin)) {
+            query["AllowConsoleLogin"] = request.allowConsoleLogin!;
+        }
         if (!TeaUtils.Client.isUnset(request.assumeRolePolicyDocument)) {
             query["AssumeRolePolicyDocument"] = request.assumeRolePolicyDocument ?? "";
         }
@@ -511,6 +538,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createRole(_ request: CreateRoleRequest) async throws -> CreateRoleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createRoleWithOptions(request as! CreateRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceLinkedRoleWithOptions(_ request: CreateServiceLinkedRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceLinkedRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customSuffix)) {
+            query["CustomSuffix"] = request.customSuffix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["ServiceName"] = request.serviceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateServiceLinkedRole",
+            "version": "2015-05-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateServiceLinkedRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceLinkedRole(_ request: CreateServiceLinkedRoleRequest) async throws -> CreateServiceLinkedRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createServiceLinkedRoleWithOptions(request as! CreateServiceLinkedRoleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -811,6 +875,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteRole(_ request: DeleteRoleRequest) async throws -> DeleteRoleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteRoleWithOptions(request as! DeleteRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteServiceLinkedRoleWithOptions(_ request: DeleteServiceLinkedRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteServiceLinkedRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            query["RoleName"] = request.roleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteServiceLinkedRole",
+            "version": "2015-05-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteServiceLinkedRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteServiceLinkedRole(_ request: DeleteServiceLinkedRoleRequest) async throws -> DeleteServiceLinkedRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteServiceLinkedRoleWithOptions(request as! DeleteServiceLinkedRoleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1263,6 +1358,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getSecurityPreference() async throws -> GetSecurityPreferenceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getSecurityPreferenceWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceLinkedRoleTemplateWithOptions(_ request: GetServiceLinkedRoleTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetServiceLinkedRoleTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["ServiceName"] = request.serviceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetServiceLinkedRoleTemplate",
+            "version": "2015-05-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetServiceLinkedRoleTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceLinkedRoleTemplate(_ request: GetServiceLinkedRoleTemplateRequest) async throws -> GetServiceLinkedRoleTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getServiceLinkedRoleTemplateWithOptions(request as! GetServiceLinkedRoleTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2296,6 +2422,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateRoleWithOptions(_ request: UpdateRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRoleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.newAllowConsoleLogin)) {
+            query["NewAllowConsoleLogin"] = request.newAllowConsoleLogin!;
+        }
         if (!TeaUtils.Client.isUnset(request.newAssumeRolePolicyDocument)) {
             query["NewAssumeRolePolicyDocument"] = request.newAssumeRolePolicyDocument ?? "";
         }
