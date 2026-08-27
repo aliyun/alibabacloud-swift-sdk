@@ -13,7 +13,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-beijing": "modelstudio.cn-beijing.aliyuncs.com",
             "cn-hongkong": "modelstudio.cn-hongkong.aliyuncs.com",
             "ap-southeast-1": "modelstudio.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "modelstudio.ap-northeast-1.aliyuncs.com",
             "us-east-1": "modelstudio.us-east-1.aliyuncs.com",
             "eu-central-1": "modelstudio.eu-central-1.aliyuncs.com"
         ]
@@ -435,6 +434,130 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getApiKeyWithOptions(apiKeyId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBillingOverviewWithOptions(_ tmpReq: GetBillingOverviewRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBillingOverviewResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetBillingOverviewShrinkRequest = GetBillingOverviewShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filter)) {
+            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "filter", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.groupBy)) {
+            request.groupByShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.groupBy, "groupBy", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billMonth)) {
+            query["billMonth"] = request.billMonth ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
+            query["filter"] = request.filterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByShrink)) {
+            query["groupBy"] = request.groupByShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.locale)) {
+            query["locale"] = request.locale ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topNum)) {
+            query["topNum"] = request.topNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.zeroFilter)) {
+            query["zeroFilter"] = request.zeroFilter!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetBillingOverview",
+            "version": "2026-02-10",
+            "protocol": "HTTPS",
+            "pathname": "/modelstudio/billing/overview",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetBillingOverviewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBillingOverview(_ request: GetBillingOverviewRequest) async throws -> GetBillingOverviewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getBillingOverviewWithOptions(request as! GetBillingOverviewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBillingTrendWithOptions(_ tmpReq: GetBillingTrendRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBillingTrendResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetBillingTrendShrinkRequest = GetBillingTrendShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filter)) {
+            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "filter", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.groupBy)) {
+            request.groupByShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.groupBy, "groupBy", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.timePeriod)) {
+            request.timePeriodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.timePeriod, "timePeriod", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
+            query["filter"] = request.filterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["granularity"] = request.granularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByShrink)) {
+            query["groupBy"] = request.groupByShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.locale)) {
+            query["locale"] = request.locale ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timePeriodShrink)) {
+            query["timePeriod"] = request.timePeriodShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topNum)) {
+            query["topNum"] = request.topNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.zeroFilter)) {
+            query["zeroFilter"] = request.zeroFilter!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetBillingTrend",
+            "version": "2026-02-10",
+            "protocol": "HTTPS",
+            "pathname": "/modelstudio/billing/trend",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetBillingTrendResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBillingTrend(_ request: GetBillingTrendRequest) async throws -> GetBillingTrendResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getBillingTrendWithOptions(request as! GetBillingTrendRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
