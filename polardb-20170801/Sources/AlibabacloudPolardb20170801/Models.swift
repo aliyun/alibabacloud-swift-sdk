@@ -29001,6 +29001,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var gatewayId: String?
 
+    public var inferenceEngine: String?
+
     public var internalIp: String?
 
     public var KVCacheInstanceId: String?
@@ -29115,6 +29117,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.gatewayId != nil {
             map["GatewayId"] = self.gatewayId!
+        }
+        if self.inferenceEngine != nil {
+            map["InferenceEngine"] = self.inferenceEngine!
         }
         if self.internalIp != nil {
             map["InternalIp"] = self.internalIp!
@@ -29258,6 +29263,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["GatewayId"] as? String {
             self.gatewayId = value
+        }
+        if let value = dict["InferenceEngine"] as? String {
+            self.inferenceEngine = value
         }
         if let value = dict["InternalIp"] as? String {
             self.internalIp = value
@@ -31361,6 +31369,10 @@ public class DescribeAIDBClusterTasksRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
     public var regionId: String?
 
     public var relativeDBClusterId: String?
@@ -31392,6 +31404,12 @@ public class DescribeAIDBClusterTasksRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -31417,6 +31435,12 @@ public class DescribeAIDBClusterTasksRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -31598,11 +31622,19 @@ public class DescribeAIDBClusterTasksResponseBody : Tea.TeaModel {
 
     public var items: [DescribeAIDBClusterTasksResponseBody.Items]?
 
+    public var pageNumber: Int64?
+
+    public var pageRecordCount: String?
+
+    public var pageSize: String?
+
     public var relativeDBClusterId: String?
 
     public var requestId: String?
 
     public var taskType: String?
+
+    public var totalRecordCount: String?
 
     public override init() {
         super.init()
@@ -31631,6 +31663,15 @@ public class DescribeAIDBClusterTasksResponseBody : Tea.TeaModel {
             }
             map["Items"] = tmp
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.relativeDBClusterId != nil {
             map["RelativeDBClusterId"] = self.relativeDBClusterId!
         }
@@ -31639,6 +31680,9 @@ public class DescribeAIDBClusterTasksResponseBody : Tea.TeaModel {
         }
         if self.taskType != nil {
             map["TaskType"] = self.taskType!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
         }
         return map
     }
@@ -31664,6 +31708,15 @@ public class DescribeAIDBClusterTasksResponseBody : Tea.TeaModel {
             }
             self.items = tmp
         }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? String {
+            self.pageRecordCount = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
         if let value = dict["RelativeDBClusterId"] as? String {
             self.relativeDBClusterId = value
         }
@@ -31672,6 +31725,9 @@ public class DescribeAIDBClusterTasksResponseBody : Tea.TeaModel {
         }
         if let value = dict["TaskType"] as? String {
             self.taskType = value
+        }
+        if let value = dict["TotalRecordCount"] as? String {
+            self.totalRecordCount = value
         }
     }
 }
@@ -38476,6 +38532,60 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
     }
     public class MemApplicationAttribute : Tea.TeaModel {
+        public class SessionStore : Tea.TeaModel {
+            public var accountMode: String?
+
+            public var DBClusterId: String?
+
+            public var DBName: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accountMode != nil {
+                    map["AccountMode"] = self.accountMode!
+                }
+                if self.DBClusterId != nil {
+                    map["DBClusterId"] = self.DBClusterId!
+                }
+                if self.DBName != nil {
+                    map["DBName"] = self.DBName!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccountMode"] as? String {
+                    self.accountMode = value
+                }
+                if let value = dict["DBClusterId"] as? String {
+                    self.DBClusterId = value
+                }
+                if let value = dict["DBName"] as? String {
+                    self.DBName = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public var dbName: String?
 
         public var embedderModelName: String?
@@ -38487,6 +38597,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         public var projectName: String?
 
         public var rerankerModelName: String?
+
+        public var sessionStore: DescribeApplicationAttributeResponseBody.MemApplicationAttribute.SessionStore?
 
         public var userName: String?
 
@@ -38500,6 +38612,7 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.sessionStore?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -38521,6 +38634,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
             if self.rerankerModelName != nil {
                 map["RerankerModelName"] = self.rerankerModelName!
+            }
+            if self.sessionStore != nil {
+                map["SessionStore"] = self.sessionStore?.toMap()
             }
             if self.userName != nil {
                 map["UserName"] = self.userName!
@@ -38547,6 +38663,11 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["RerankerModelName"] as? String {
                 self.rerankerModelName = value
+            }
+            if let value = dict["SessionStore"] as? [String: Any?] {
+                var model = DescribeApplicationAttributeResponseBody.MemApplicationAttribute.SessionStore()
+                model.fromMap(value)
+                self.sessionStore = model
             }
             if let value = dict["UserName"] as? String {
                 self.userName = value
@@ -41034,6 +41155,174 @@ public class DescribeApplicationPromptsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeApplicationPromptsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeApplicationSSLRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+    }
+}
+
+public class DescribeApplicationSSLResponseBody : Tea.TeaModel {
+    public var certCommonName: String?
+
+    public var certExpiredTime: String?
+
+    public var certFingerprintSha256Der: String?
+
+    public var certModifiedTime: String?
+
+    public var certSource: String?
+
+    public var requestId: String?
+
+    public var SSLAutoRotate: Bool?
+
+    public var SSLEnabled: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certCommonName != nil {
+            map["CertCommonName"] = self.certCommonName!
+        }
+        if self.certExpiredTime != nil {
+            map["CertExpiredTime"] = self.certExpiredTime!
+        }
+        if self.certFingerprintSha256Der != nil {
+            map["CertFingerprintSha256Der"] = self.certFingerprintSha256Der!
+        }
+        if self.certModifiedTime != nil {
+            map["CertModifiedTime"] = self.certModifiedTime!
+        }
+        if self.certSource != nil {
+            map["CertSource"] = self.certSource!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.SSLAutoRotate != nil {
+            map["SSLAutoRotate"] = self.SSLAutoRotate!
+        }
+        if self.SSLEnabled != nil {
+            map["SSLEnabled"] = self.SSLEnabled!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CertCommonName"] as? String {
+            self.certCommonName = value
+        }
+        if let value = dict["CertExpiredTime"] as? String {
+            self.certExpiredTime = value
+        }
+        if let value = dict["CertFingerprintSha256Der"] as? String {
+            self.certFingerprintSha256Der = value
+        }
+        if let value = dict["CertModifiedTime"] as? String {
+            self.certModifiedTime = value
+        }
+        if let value = dict["CertSource"] as? String {
+            self.certSource = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SSLAutoRotate"] as? Bool {
+            self.SSLAutoRotate = value
+        }
+        if let value = dict["SSLEnabled"] as? Bool {
+            self.SSLEnabled = value
+        }
+    }
+}
+
+public class DescribeApplicationSSLResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationSSLResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApplicationSSLResponseBody()
             model.fromMap(value)
             self.body = model
         }
