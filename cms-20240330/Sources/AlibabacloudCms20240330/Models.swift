@@ -33641,6 +33641,10 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
             }
         }
     }
+    public var aliyunLang: String?
+
+    public var category: String?
+
     public var keywords: String?
 
     public var labels: [DescribeMetricMetaListRequest.Labels]?
@@ -33669,6 +33673,12 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aliyunLang != nil {
+            map["aliyunLang"] = self.aliyunLang!
+        }
+        if self.category != nil {
+            map["category"] = self.category!
+        }
         if self.keywords != nil {
             map["keywords"] = self.keywords!
         }
@@ -33699,6 +33709,12 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["aliyunLang"] as? String {
+            self.aliyunLang = value
+        }
+        if let value = dict["category"] as? String {
+            self.category = value
+        }
         if let value = dict["keywords"] as? String {
             self.keywords = value
         }
@@ -33734,6 +33750,10 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
 }
 
 public class DescribeMetricMetaListShrinkRequest : Tea.TeaModel {
+    public var aliyunLang: String?
+
+    public var category: String?
+
     public var keywords: String?
 
     public var labelsShrink: String?
@@ -33762,6 +33782,12 @@ public class DescribeMetricMetaListShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aliyunLang != nil {
+            map["aliyunLang"] = self.aliyunLang!
+        }
+        if self.category != nil {
+            map["category"] = self.category!
+        }
         if self.keywords != nil {
             map["keywords"] = self.keywords!
         }
@@ -33788,6 +33814,12 @@ public class DescribeMetricMetaListShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["aliyunLang"] as? String {
+            self.aliyunLang = value
+        }
+        if let value = dict["category"] as? String {
+            self.category = value
+        }
         if let value = dict["keywords"] as? String {
             self.keywords = value
         }
@@ -58734,6 +58766,8 @@ public class ListServiceRecordsResponseBody : Tea.TeaModel {
 
         public var serviceId: String?
 
+        public var serviceName: String?
+
         public var workspace: String?
 
         public override init() {
@@ -58759,6 +58793,9 @@ public class ListServiceRecordsResponseBody : Tea.TeaModel {
             if self.serviceId != nil {
                 map["serviceId"] = self.serviceId!
             }
+            if self.serviceName != nil {
+                map["serviceName"] = self.serviceName!
+            }
             if self.workspace != nil {
                 map["workspace"] = self.workspace!
             }
@@ -58775,6 +58812,9 @@ public class ListServiceRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["serviceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["serviceName"] as? String {
+                self.serviceName = value
             }
             if let value = dict["workspace"] as? String {
                 self.workspace = value

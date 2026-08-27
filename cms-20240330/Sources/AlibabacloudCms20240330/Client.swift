@@ -2204,6 +2204,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "labels", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
+            query["aliyunLang"] = request.aliyunLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["category"] = request.category ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keywords)) {
             query["keywords"] = request.keywords ?? "";
         }
