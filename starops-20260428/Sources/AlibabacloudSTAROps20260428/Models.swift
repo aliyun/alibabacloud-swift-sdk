@@ -857,6 +857,10 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var autoPassPolicy: [String]?
+
+            public var denyPolicy: [String]?
+
             public var enable: Bool?
 
             public var statements: [CreateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements]?
@@ -875,6 +879,12 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoPassPolicy != nil {
+                    map["autoPassPolicy"] = self.autoPassPolicy!
+                }
+                if self.denyPolicy != nil {
+                    map["denyPolicy"] = self.denyPolicy!
+                }
                 if self.enable != nil {
                     map["enable"] = self.enable!
                 }
@@ -890,6 +900,12 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["autoPassPolicy"] as? [String] {
+                    self.autoPassPolicy = value
+                }
+                if let value = dict["denyPolicy"] as? [String] {
+                    self.denyPolicy = value
+                }
                 if let value = dict["enable"] as? Bool {
                     self.enable = value
                 }
@@ -3372,6 +3388,10 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var autoPassPolicy: [String]?
+
+            public var denyPolicy: [String]?
+
             public var enable: Bool?
 
             public var statements: [GetDigitalEmployeeResponseBody.ToolPolicy.Aliyun.Statements]?
@@ -3390,6 +3410,12 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoPassPolicy != nil {
+                    map["autoPassPolicy"] = self.autoPassPolicy!
+                }
+                if self.denyPolicy != nil {
+                    map["denyPolicy"] = self.denyPolicy!
+                }
                 if self.enable != nil {
                     map["enable"] = self.enable!
                 }
@@ -3405,6 +3431,12 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["autoPassPolicy"] as? [String] {
+                    self.autoPassPolicy = value
+                }
+                if let value = dict["denyPolicy"] as? [String] {
+                    self.denyPolicy = value
+                }
                 if let value = dict["enable"] as? Bool {
                     self.enable = value
                 }
@@ -7531,6 +7563,10 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var autoPassPolicy: [String]?
+
+            public var denyPolicy: [String]?
+
             public var enable: Bool?
 
             public var statements: [UpdateDigitalEmployeeRequest.ToolPolicy.Aliyun.Statements]?
@@ -7549,6 +7585,12 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoPassPolicy != nil {
+                    map["autoPassPolicy"] = self.autoPassPolicy!
+                }
+                if self.denyPolicy != nil {
+                    map["denyPolicy"] = self.denyPolicy!
+                }
                 if self.enable != nil {
                     map["enable"] = self.enable!
                 }
@@ -7564,6 +7606,12 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["autoPassPolicy"] as? [String] {
+                    self.autoPassPolicy = value
+                }
+                if let value = dict["denyPolicy"] as? [String] {
+                    self.denyPolicy = value
+                }
                 if let value = dict["enable"] as? Bool {
                     self.enable = value
                 }
