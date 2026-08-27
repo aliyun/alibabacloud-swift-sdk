@@ -6656,7 +6656,13 @@ public class CreateChatFlowRequest : Tea.TeaModel {
 
     public var bizExtend: [String: Any]?
 
+    public var createFromFlowCode: String?
+
+    public var createFromFlowVersion: String?
+
     public var flowTriggerType: String?
+
+    public var lifeCycleExtendData: [String: String]?
 
     public var ownerId: Int64?
 
@@ -6688,8 +6694,17 @@ public class CreateChatFlowRequest : Tea.TeaModel {
         if self.bizExtend != nil {
             map["BizExtend"] = self.bizExtend!
         }
+        if self.createFromFlowCode != nil {
+            map["CreateFromFlowCode"] = self.createFromFlowCode!
+        }
+        if self.createFromFlowVersion != nil {
+            map["CreateFromFlowVersion"] = self.createFromFlowVersion!
+        }
         if self.flowTriggerType != nil {
             map["FlowTriggerType"] = self.flowTriggerType!
+        }
+        if self.lifeCycleExtendData != nil {
+            map["LifeCycleExtendData"] = self.lifeCycleExtendData!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -6717,8 +6732,17 @@ public class CreateChatFlowRequest : Tea.TeaModel {
         if let value = dict["BizExtend"] as? [String: Any] {
             self.bizExtend = value
         }
+        if let value = dict["CreateFromFlowCode"] as? String {
+            self.createFromFlowCode = value
+        }
+        if let value = dict["CreateFromFlowVersion"] as? String {
+            self.createFromFlowVersion = value
+        }
         if let value = dict["FlowTriggerType"] as? String {
             self.flowTriggerType = value
+        }
+        if let value = dict["LifeCycleExtendData"] as? [String: String] {
+            self.lifeCycleExtendData = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -6743,7 +6767,13 @@ public class CreateChatFlowShrinkRequest : Tea.TeaModel {
 
     public var bizExtendShrink: String?
 
+    public var createFromFlowCode: String?
+
+    public var createFromFlowVersion: String?
+
     public var flowTriggerType: String?
+
+    public var lifeCycleExtendDataShrink: String?
 
     public var ownerId: Int64?
 
@@ -6775,8 +6805,17 @@ public class CreateChatFlowShrinkRequest : Tea.TeaModel {
         if self.bizExtendShrink != nil {
             map["BizExtend"] = self.bizExtendShrink!
         }
+        if self.createFromFlowCode != nil {
+            map["CreateFromFlowCode"] = self.createFromFlowCode!
+        }
+        if self.createFromFlowVersion != nil {
+            map["CreateFromFlowVersion"] = self.createFromFlowVersion!
+        }
         if self.flowTriggerType != nil {
             map["FlowTriggerType"] = self.flowTriggerType!
+        }
+        if self.lifeCycleExtendDataShrink != nil {
+            map["LifeCycleExtendData"] = self.lifeCycleExtendDataShrink!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -6804,8 +6843,17 @@ public class CreateChatFlowShrinkRequest : Tea.TeaModel {
         if let value = dict["BizExtend"] as? String {
             self.bizExtendShrink = value
         }
+        if let value = dict["CreateFromFlowCode"] as? String {
+            self.createFromFlowCode = value
+        }
+        if let value = dict["CreateFromFlowVersion"] as? String {
+            self.createFromFlowVersion = value
+        }
         if let value = dict["FlowTriggerType"] as? String {
             self.flowTriggerType = value
+        }
+        if let value = dict["LifeCycleExtendData"] as? String {
+            self.lifeCycleExtendDataShrink = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -8211,6 +8259,8 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var productSetId: String?
+
     public var templateType: String?
 
     public override init() {
@@ -8264,6 +8314,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.productSetId != nil {
+            map["ProductSetId"] = self.productSetId!
+        }
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
@@ -8315,6 +8368,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["ProductSetId"] as? String {
+            self.productSetId = value
+        }
         if let value = dict["TemplateType"] as? String {
             self.templateType = value
         }
@@ -8343,6 +8399,8 @@ public class CreateChatappTemplateShrinkRequest : Tea.TeaModel {
     public var messageSendTtlSeconds: Int32?
 
     public var name: String?
+
+    public var productSetId: String?
 
     public var templateType: String?
 
@@ -8393,6 +8451,9 @@ public class CreateChatappTemplateShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.productSetId != nil {
+            map["ProductSetId"] = self.productSetId!
+        }
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
@@ -8433,6 +8494,9 @@ public class CreateChatappTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ProductSetId"] as? String {
+            self.productSetId = value
         }
         if let value = dict["TemplateType"] as? String {
             self.templateType = value
@@ -8489,6 +8553,8 @@ public class CreateChatappTemplateResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public override init() {
         super.init()
     }
@@ -8519,6 +8585,9 @@ public class CreateChatappTemplateResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -8540,6 +8609,9 @@ public class CreateChatappTemplateResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
         }
     }
 }
@@ -14642,6 +14714,52 @@ public class EnableWhatsappROIMetricResponse : Tea.TeaModel {
 }
 
 public class FlowBindPhoneRequest : Tea.TeaModel {
+    public class MultiWabaPhoneNumbers : Tea.TeaModel {
+        public var channelCode: String?
+
+        public var phoneNumbers: [String]?
+
+        public var wabaId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.channelCode != nil {
+                map["ChannelCode"] = self.channelCode!
+            }
+            if self.phoneNumbers != nil {
+                map["PhoneNumbers"] = self.phoneNumbers!
+            }
+            if self.wabaId != nil {
+                map["WabaId"] = self.wabaId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChannelCode"] as? String {
+                self.channelCode = value
+            }
+            if let value = dict["PhoneNumbers"] as? [String] {
+                self.phoneNumbers = value
+            }
+            if let value = dict["WabaId"] as? String {
+                self.wabaId = value
+            }
+        }
+    }
     public var channelCode: String?
 
     public var channelType: String?
@@ -14649,6 +14767,8 @@ public class FlowBindPhoneRequest : Tea.TeaModel {
     public var flowCode: String?
 
     public var flowVersion: String?
+
+    public var multiWabaPhoneNumbers: [FlowBindPhoneRequest.MultiWabaPhoneNumbers]?
 
     public var ownerId: Int64?
 
@@ -14686,6 +14806,13 @@ public class FlowBindPhoneRequest : Tea.TeaModel {
         if self.flowVersion != nil {
             map["FlowVersion"] = self.flowVersion!
         }
+        if self.multiWabaPhoneNumbers != nil {
+            var tmp : [Any] = []
+            for k in self.multiWabaPhoneNumbers! {
+                tmp.append(k.toMap())
+            }
+            map["MultiWabaPhoneNumbers"] = tmp
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -14718,6 +14845,19 @@ public class FlowBindPhoneRequest : Tea.TeaModel {
         if let value = dict["FlowVersion"] as? String {
             self.flowVersion = value
         }
+        if let value = dict["MultiWabaPhoneNumbers"] as? [Any?] {
+            var tmp : [FlowBindPhoneRequest.MultiWabaPhoneNumbers] = []
+            for v in value {
+                if v != nil {
+                    var model = FlowBindPhoneRequest.MultiWabaPhoneNumbers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.multiWabaPhoneNumbers = tmp
+        }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
@@ -14744,6 +14884,8 @@ public class FlowBindPhoneShrinkRequest : Tea.TeaModel {
     public var flowCode: String?
 
     public var flowVersion: String?
+
+    public var multiWabaPhoneNumbersShrink: String?
 
     public var ownerId: Int64?
 
@@ -14781,6 +14923,9 @@ public class FlowBindPhoneShrinkRequest : Tea.TeaModel {
         if self.flowVersion != nil {
             map["FlowVersion"] = self.flowVersion!
         }
+        if self.multiWabaPhoneNumbersShrink != nil {
+            map["MultiWabaPhoneNumbers"] = self.multiWabaPhoneNumbersShrink!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -14812,6 +14957,9 @@ public class FlowBindPhoneShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["FlowVersion"] as? String {
             self.flowVersion = value
+        }
+        if let value = dict["MultiWabaPhoneNumbers"] as? String {
+            self.multiWabaPhoneNumbersShrink = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -14953,6 +15101,52 @@ public class FlowBindPhoneResponse : Tea.TeaModel {
 }
 
 public class FlowRebindPhoneRequest : Tea.TeaModel {
+    public class MultiWabaPhoneNumbers : Tea.TeaModel {
+        public var channelCode: String?
+
+        public var phoneNumbers: [String]?
+
+        public var wabaId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.channelCode != nil {
+                map["ChannelCode"] = self.channelCode!
+            }
+            if self.phoneNumbers != nil {
+                map["PhoneNumbers"] = self.phoneNumbers!
+            }
+            if self.wabaId != nil {
+                map["WabaId"] = self.wabaId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChannelCode"] as? String {
+                self.channelCode = value
+            }
+            if let value = dict["PhoneNumbers"] as? [String] {
+                self.phoneNumbers = value
+            }
+            if let value = dict["WabaId"] as? String {
+                self.wabaId = value
+            }
+        }
+    }
     public var channelCode: String?
 
     public var channelType: String?
@@ -14960,6 +15154,8 @@ public class FlowRebindPhoneRequest : Tea.TeaModel {
     public var flowCode: String?
 
     public var flowVersion: String?
+
+    public var multiWabaPhoneNumbers: [FlowRebindPhoneRequest.MultiWabaPhoneNumbers]?
 
     public var ownerId: Int64?
 
@@ -14997,6 +15193,13 @@ public class FlowRebindPhoneRequest : Tea.TeaModel {
         if self.flowVersion != nil {
             map["FlowVersion"] = self.flowVersion!
         }
+        if self.multiWabaPhoneNumbers != nil {
+            var tmp : [Any] = []
+            for k in self.multiWabaPhoneNumbers! {
+                tmp.append(k.toMap())
+            }
+            map["MultiWabaPhoneNumbers"] = tmp
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -15029,6 +15232,19 @@ public class FlowRebindPhoneRequest : Tea.TeaModel {
         if let value = dict["FlowVersion"] as? String {
             self.flowVersion = value
         }
+        if let value = dict["MultiWabaPhoneNumbers"] as? [Any?] {
+            var tmp : [FlowRebindPhoneRequest.MultiWabaPhoneNumbers] = []
+            for v in value {
+                if v != nil {
+                    var model = FlowRebindPhoneRequest.MultiWabaPhoneNumbers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.multiWabaPhoneNumbers = tmp
+        }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
@@ -15055,6 +15271,8 @@ public class FlowRebindPhoneShrinkRequest : Tea.TeaModel {
     public var flowCode: String?
 
     public var flowVersion: String?
+
+    public var multiWabaPhoneNumbersShrink: String?
 
     public var ownerId: Int64?
 
@@ -15092,6 +15310,9 @@ public class FlowRebindPhoneShrinkRequest : Tea.TeaModel {
         if self.flowVersion != nil {
             map["FlowVersion"] = self.flowVersion!
         }
+        if self.multiWabaPhoneNumbersShrink != nil {
+            map["MultiWabaPhoneNumbers"] = self.multiWabaPhoneNumbersShrink!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -15123,6 +15344,9 @@ public class FlowRebindPhoneShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["FlowVersion"] as? String {
             self.flowVersion = value
+        }
+        if let value = dict["MultiWabaPhoneNumbers"] as? String {
+            self.multiWabaPhoneNumbersShrink = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -18597,6 +18821,8 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var productSetId: String?
+
         public var qualityScore: String?
 
         public var reason: String?
@@ -18649,6 +18875,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.productSetId != nil {
+                map["ProductSetId"] = self.productSetId!
             }
             if self.qualityScore != nil {
                 map["QualityScore"] = self.qualityScore!
@@ -18704,6 +18933,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
             if let value = dict["Name"] as? String {
                 self.name = value
             }
+            if let value = dict["ProductSetId"] as? String {
+                self.productSetId = value
+            }
             if let value = dict["QualityScore"] as? String {
                 self.qualityScore = value
             }
@@ -18727,6 +18959,8 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -18758,6 +18992,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -18779,6 +19016,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
         }
     }
 }
@@ -26829,6 +27069,10 @@ public class ListChatFlowRequest : Tea.TeaModel {
 
     public var bizExtend: [String: Any]?
 
+    public var flowCode: String?
+
+    public var flowStatus: String?
+
     public var flowTriggerType: String?
 
     public var keyword: String?
@@ -26839,6 +27083,8 @@ public class ListChatFlowRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var phoneNumber: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -26846,6 +27092,8 @@ public class ListChatFlowRequest : Tea.TeaModel {
     public var returnWithOnlineVersion: Bool?
 
     public var status: String?
+
+    public var title: String?
 
     public override init() {
         super.init()
@@ -26867,6 +27115,12 @@ public class ListChatFlowRequest : Tea.TeaModel {
         if self.bizExtend != nil {
             map["BizExtend"] = self.bizExtend!
         }
+        if self.flowCode != nil {
+            map["FlowCode"] = self.flowCode!
+        }
+        if self.flowStatus != nil {
+            map["FlowStatus"] = self.flowStatus!
+        }
         if self.flowTriggerType != nil {
             map["FlowTriggerType"] = self.flowTriggerType!
         }
@@ -26882,6 +27136,9 @@ public class ListChatFlowRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.phoneNumber != nil {
+            map["PhoneNumber"] = self.phoneNumber!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -26894,6 +27151,9 @@ public class ListChatFlowRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
         return map
     }
 
@@ -26904,6 +27164,12 @@ public class ListChatFlowRequest : Tea.TeaModel {
         }
         if let value = dict["BizExtend"] as? [String: Any] {
             self.bizExtend = value
+        }
+        if let value = dict["FlowCode"] as? String {
+            self.flowCode = value
+        }
+        if let value = dict["FlowStatus"] as? String {
+            self.flowStatus = value
         }
         if let value = dict["FlowTriggerType"] as? String {
             self.flowTriggerType = value
@@ -26920,6 +27186,9 @@ public class ListChatFlowRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
         }
+        if let value = dict["PhoneNumber"] as? String {
+            self.phoneNumber = value
+        }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
@@ -26932,6 +27201,9 @@ public class ListChatFlowRequest : Tea.TeaModel {
         if let value = dict["Status"] as? String {
             self.status = value
         }
+        if let value = dict["Title"] as? String {
+            self.title = value
+        }
     }
 }
 
@@ -26939,6 +27211,10 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
     public var bizCode: String?
 
     public var bizExtendShrink: String?
+
+    public var flowCode: String?
+
+    public var flowStatus: String?
 
     public var flowTriggerType: String?
 
@@ -26950,6 +27226,8 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var phoneNumber: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -26957,6 +27235,8 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
     public var returnWithOnlineVersion: Bool?
 
     public var status: String?
+
+    public var title: String?
 
     public override init() {
         super.init()
@@ -26978,6 +27258,12 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
         if self.bizExtendShrink != nil {
             map["BizExtend"] = self.bizExtendShrink!
         }
+        if self.flowCode != nil {
+            map["FlowCode"] = self.flowCode!
+        }
+        if self.flowStatus != nil {
+            map["FlowStatus"] = self.flowStatus!
+        }
         if self.flowTriggerType != nil {
             map["FlowTriggerType"] = self.flowTriggerType!
         }
@@ -26993,6 +27279,9 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.phoneNumber != nil {
+            map["PhoneNumber"] = self.phoneNumber!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -27005,6 +27294,9 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
         return map
     }
 
@@ -27015,6 +27307,12 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["BizExtend"] as? String {
             self.bizExtendShrink = value
+        }
+        if let value = dict["FlowCode"] as? String {
+            self.flowCode = value
+        }
+        if let value = dict["FlowStatus"] as? String {
+            self.flowStatus = value
         }
         if let value = dict["FlowTriggerType"] as? String {
             self.flowTriggerType = value
@@ -27031,6 +27329,9 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
         }
+        if let value = dict["PhoneNumber"] as? String {
+            self.phoneNumber = value
+        }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
@@ -27042,6 +27343,9 @@ public class ListChatFlowShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
         }
     }
 }
@@ -32888,6 +33192,8 @@ public class ListInstagramPostsResponse : Tea.TeaModel {
 }
 
 public class ListInstanceRequest : Tea.TeaModel {
+    public var bindId: String?
+
     public var channelType: String?
 
     public var filterStr: String?
@@ -32895,6 +33201,8 @@ public class ListInstanceRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var instanceName: String?
+
+    public var isBind: Bool?
 
     public var pageIndex: Int64?
 
@@ -32918,6 +33226,9 @@ public class ListInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bindId != nil {
+            map["BindId"] = self.bindId!
+        }
         if self.channelType != nil {
             map["ChannelType"] = self.channelType!
         }
@@ -32929,6 +33240,9 @@ public class ListInstanceRequest : Tea.TeaModel {
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.isBind != nil {
+            map["IsBind"] = self.isBind!
         }
         if self.pageIndex != nil {
             map["PageIndex"] = self.pageIndex!
@@ -32947,6 +33261,9 @@ public class ListInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BindId"] as? String {
+            self.bindId = value
+        }
         if let value = dict["ChannelType"] as? String {
             self.channelType = value
         }
@@ -32958,6 +33275,9 @@ public class ListInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["IsBind"] as? Bool {
+            self.isBind = value
         }
         if let value = dict["PageIndex"] as? Int64 {
             self.pageIndex = value
@@ -36813,6 +37133,8 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
 
     public var messageSendTtlSeconds: Int32?
 
+    public var productSetId: String?
+
     public var templateCode: String?
 
     public var templateName: String?
@@ -36863,6 +37185,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
         }
         if self.messageSendTtlSeconds != nil {
             map["MessageSendTtlSeconds"] = self.messageSendTtlSeconds!
+        }
+        if self.productSetId != nil {
+            map["ProductSetId"] = self.productSetId!
         }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
@@ -36915,6 +37240,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
         if let value = dict["MessageSendTtlSeconds"] as? Int32 {
             self.messageSendTtlSeconds = value
         }
+        if let value = dict["ProductSetId"] as? String {
+            self.productSetId = value
+        }
         if let value = dict["TemplateCode"] as? String {
             self.templateCode = value
         }
@@ -36945,6 +37273,8 @@ public class ModifyChatappTemplateShrinkRequest : Tea.TeaModel {
     public var language: String?
 
     public var messageSendTtlSeconds: Int32?
+
+    public var productSetId: String?
 
     public var templateCode: String?
 
@@ -36993,6 +37323,9 @@ public class ModifyChatappTemplateShrinkRequest : Tea.TeaModel {
         if self.messageSendTtlSeconds != nil {
             map["MessageSendTtlSeconds"] = self.messageSendTtlSeconds!
         }
+        if self.productSetId != nil {
+            map["ProductSetId"] = self.productSetId!
+        }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
         }
@@ -37033,6 +37366,9 @@ public class ModifyChatappTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MessageSendTtlSeconds"] as? Int32 {
             self.messageSendTtlSeconds = value
+        }
+        if let value = dict["ProductSetId"] as? String {
+            self.productSetId = value
         }
         if let value = dict["TemplateCode"] as? String {
             self.templateCode = value
@@ -37095,6 +37431,8 @@ public class ModifyChatappTemplateResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public override init() {
         super.init()
     }
@@ -37125,6 +37463,9 @@ public class ModifyChatappTemplateResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -37146,6 +37487,9 @@ public class ModifyChatappTemplateResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
         }
     }
 }
@@ -41835,6 +42179,8 @@ public class ReadFlowVersionRequest : Tea.TeaModel {
 
     public var bizExtend: [String: Any]?
 
+    public var draftVersion: String?
+
     public var flowCode: String?
 
     public var flowVersion: String?
@@ -41867,6 +42213,9 @@ public class ReadFlowVersionRequest : Tea.TeaModel {
         if self.bizExtend != nil {
             map["BizExtend"] = self.bizExtend!
         }
+        if self.draftVersion != nil {
+            map["DraftVersion"] = self.draftVersion!
+        }
         if self.flowCode != nil {
             map["FlowCode"] = self.flowCode!
         }
@@ -41896,6 +42245,9 @@ public class ReadFlowVersionRequest : Tea.TeaModel {
         if let value = dict["BizExtend"] as? [String: Any] {
             self.bizExtend = value
         }
+        if let value = dict["DraftVersion"] as? String {
+            self.draftVersion = value
+        }
         if let value = dict["FlowCode"] as? String {
             self.flowCode = value
         }
@@ -41921,6 +42273,8 @@ public class ReadFlowVersionShrinkRequest : Tea.TeaModel {
     public var bizCode: String?
 
     public var bizExtendShrink: String?
+
+    public var draftVersion: String?
 
     public var flowCode: String?
 
@@ -41954,6 +42308,9 @@ public class ReadFlowVersionShrinkRequest : Tea.TeaModel {
         if self.bizExtendShrink != nil {
             map["BizExtend"] = self.bizExtendShrink!
         }
+        if self.draftVersion != nil {
+            map["DraftVersion"] = self.draftVersion!
+        }
         if self.flowCode != nil {
             map["FlowCode"] = self.flowCode!
         }
@@ -41982,6 +42339,9 @@ public class ReadFlowVersionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["BizExtend"] as? String {
             self.bizExtendShrink = value
+        }
+        if let value = dict["DraftVersion"] as? String {
+            self.draftVersion = value
         }
         if let value = dict["FlowCode"] as? String {
             self.flowCode = value
@@ -48378,6 +48738,8 @@ public class UpdateFlowVersionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -48419,6 +48781,9 @@ public class UpdateFlowVersionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -48451,6 +48816,9 @@ public class UpdateFlowVersionRequest : Tea.TeaModel {
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
         }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
     }
 }
 
@@ -48472,6 +48840,8 @@ public class UpdateFlowVersionShrinkRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var type: String?
 
     public override init() {
         super.init()
@@ -48514,6 +48884,9 @@ public class UpdateFlowVersionShrinkRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -48545,6 +48918,9 @@ public class UpdateFlowVersionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
