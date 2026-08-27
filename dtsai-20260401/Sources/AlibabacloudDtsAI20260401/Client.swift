@@ -122,6 +122,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentName)) {
             query["AgentName"] = request.agentName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.batchSize)) {
+            query["BatchSize"] = request.batchSize ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileFormat)) {
             query["FileFormat"] = request.fileFormat ?? "";
         }

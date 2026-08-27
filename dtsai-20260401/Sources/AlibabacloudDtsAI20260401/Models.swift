@@ -11,6 +11,8 @@ import AlibabacloudEndpointUtil
 public class AuthorizeFileUploadRequest : Tea.TeaModel {
     public var agentName: String?
 
+    public var batchSize: String?
+
     public var fileFormat: String?
 
     public var regionId: String?
@@ -32,6 +34,9 @@ public class AuthorizeFileUploadRequest : Tea.TeaModel {
         if self.agentName != nil {
             map["AgentName"] = self.agentName!
         }
+        if self.batchSize != nil {
+            map["BatchSize"] = self.batchSize!
+        }
         if self.fileFormat != nil {
             map["FileFormat"] = self.fileFormat!
         }
@@ -46,6 +51,9 @@ public class AuthorizeFileUploadRequest : Tea.TeaModel {
         if let value = dict["AgentName"] as? String {
             self.agentName = value
         }
+        if let value = dict["BatchSize"] as? String {
+            self.batchSize = value
+        }
         if let value = dict["FileFormat"] as? String {
             self.fileFormat = value
         }
@@ -56,7 +64,55 @@ public class AuthorizeFileUploadRequest : Tea.TeaModel {
 }
 
 public class AuthorizeFileUploadResponseBody : Tea.TeaModel {
+    public class Authorizations : Tea.TeaModel {
+        public var encodedPolicy: String?
+
+        public var objectKey: String?
+
+        public var signature: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.encodedPolicy != nil {
+                map["EncodedPolicy"] = self.encodedPolicy!
+            }
+            if self.objectKey != nil {
+                map["ObjectKey"] = self.objectKey!
+            }
+            if self.signature != nil {
+                map["Signature"] = self.signature!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EncodedPolicy"] as? String {
+                self.encodedPolicy = value
+            }
+            if let value = dict["ObjectKey"] as? String {
+                self.objectKey = value
+            }
+            if let value = dict["Signature"] as? String {
+                self.signature = value
+            }
+        }
+    }
     public var accessKeyId: String?
+
+    public var authorizations: [AuthorizeFileUploadResponseBody.Authorizations]?
 
     public var bucket: String?
 
@@ -67,6 +123,8 @@ public class AuthorizeFileUploadResponseBody : Tea.TeaModel {
     public var errorCode: String?
 
     public var errorMessage: String?
+
+    public var expireTime: Int64?
 
     public var httpStatusCode: Int32?
 
@@ -97,6 +155,13 @@ public class AuthorizeFileUploadResponseBody : Tea.TeaModel {
         if self.accessKeyId != nil {
             map["AccessKeyId"] = self.accessKeyId!
         }
+        if self.authorizations != nil {
+            var tmp : [Any] = []
+            for k in self.authorizations! {
+                tmp.append(k.toMap())
+            }
+            map["Authorizations"] = tmp
+        }
         if self.bucket != nil {
             map["Bucket"] = self.bucket!
         }
@@ -111,6 +176,9 @@ public class AuthorizeFileUploadResponseBody : Tea.TeaModel {
         }
         if self.errorMessage != nil {
             map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
         }
         if self.httpStatusCode != nil {
             map["HttpStatusCode"] = self.httpStatusCode!
@@ -138,6 +206,19 @@ public class AuthorizeFileUploadResponseBody : Tea.TeaModel {
         if let value = dict["AccessKeyId"] as? String {
             self.accessKeyId = value
         }
+        if let value = dict["Authorizations"] as? [Any?] {
+            var tmp : [AuthorizeFileUploadResponseBody.Authorizations] = []
+            for v in value {
+                if v != nil {
+                    var model = AuthorizeFileUploadResponseBody.Authorizations()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.authorizations = tmp
+        }
         if let value = dict["Bucket"] as? String {
             self.bucket = value
         }
@@ -152,6 +233,9 @@ public class AuthorizeFileUploadResponseBody : Tea.TeaModel {
         }
         if let value = dict["ErrorMessage"] as? String {
             self.errorMessage = value
+        }
+        if let value = dict["ExpireTime"] as? Int64 {
+            self.expireTime = value
         }
         if let value = dict["HttpStatusCode"] as? Int32 {
             self.httpStatusCode = value
