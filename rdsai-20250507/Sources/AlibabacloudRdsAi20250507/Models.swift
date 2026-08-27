@@ -8899,6 +8899,8 @@ public class DescribeMOUsageDetailExportResponse : Tea.TeaModel {
 public class DescribeModelOperatorRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var region: String?
+
     public override init() {
         super.init()
     }
@@ -8916,6 +8918,9 @@ public class DescribeModelOperatorRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
         return map
     }
 
@@ -8923,6 +8928,9 @@ public class DescribeModelOperatorRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["Region"] as? String {
+            self.region = value
         }
     }
 }
@@ -12292,6 +12300,7 @@ public class GetMessagesResponse : Tea.TeaModel {
 }
 
 public class GetModelOperatorOrderRequest : Tea.TeaModel {
+    public var region: String?
 
     public override init() {
         super.init()
@@ -12307,11 +12316,17 @@ public class GetModelOperatorOrderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Region"] as? String {
+            self.region = value
+        }
     }
 }
 
