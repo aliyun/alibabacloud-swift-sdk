@@ -168,6 +168,8 @@ public class AuditTTSVoiceRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var nlsServiceType: String?
+
     public var pitchRate: String?
 
     public var secretKey: String?
@@ -209,6 +211,9 @@ public class AuditTTSVoiceRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.nlsServiceType != nil {
+            map["NlsServiceType"] = self.nlsServiceType!
+        }
         if self.pitchRate != nil {
             map["PitchRate"] = self.pitchRate!
         }
@@ -246,6 +251,9 @@ public class AuditTTSVoiceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["NlsServiceType"] as? String {
+            self.nlsServiceType = value
         }
         if let value = dict["PitchRate"] as? String {
             self.pitchRate = value
