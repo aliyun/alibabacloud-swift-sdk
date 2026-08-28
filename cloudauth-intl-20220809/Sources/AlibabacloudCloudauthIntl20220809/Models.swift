@@ -2217,6 +2217,8 @@ public class CredentialGetResultIntlResponse : Tea.TeaModel {
 }
 
 public class CredentialRecognitionIntlRequest : Tea.TeaModel {
+    public var checkRuleConfig: String?
+
     public var credentialOcrPictureBase64: String?
 
     public var credentialOcrPictureUrl: String?
@@ -2225,7 +2227,13 @@ public class CredentialRecognitionIntlRequest : Tea.TeaModel {
 
     public var fraudCheck: String?
 
+    public var idQuality: String?
+
     public var ocrArea: String?
+
+    public var ocrTranslation: String?
+
+    public var ocrValueStandard: String?
 
     public var productCode: String?
 
@@ -2243,6 +2251,9 @@ public class CredentialRecognitionIntlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkRuleConfig != nil {
+            map["CheckRuleConfig"] = self.checkRuleConfig!
+        }
         if self.credentialOcrPictureBase64 != nil {
             map["CredentialOcrPictureBase64"] = self.credentialOcrPictureBase64!
         }
@@ -2255,8 +2266,17 @@ public class CredentialRecognitionIntlRequest : Tea.TeaModel {
         if self.fraudCheck != nil {
             map["FraudCheck"] = self.fraudCheck!
         }
+        if self.idQuality != nil {
+            map["IdQuality"] = self.idQuality!
+        }
         if self.ocrArea != nil {
             map["OcrArea"] = self.ocrArea!
+        }
+        if self.ocrTranslation != nil {
+            map["OcrTranslation"] = self.ocrTranslation!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
         }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
@@ -2266,6 +2286,9 @@ public class CredentialRecognitionIntlRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CheckRuleConfig"] as? String {
+            self.checkRuleConfig = value
+        }
         if let value = dict["CredentialOcrPictureBase64"] as? String {
             self.credentialOcrPictureBase64 = value
         }
@@ -2278,8 +2301,17 @@ public class CredentialRecognitionIntlRequest : Tea.TeaModel {
         if let value = dict["FraudCheck"] as? String {
             self.fraudCheck = value
         }
+        if let value = dict["IdQuality"] as? String {
+            self.idQuality = value
+        }
         if let value = dict["OcrArea"] as? String {
             self.ocrArea = value
+        }
+        if let value = dict["OcrTranslation"] as? String {
+            self.ocrTranslation = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
         }
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
@@ -2442,6 +2474,8 @@ public class CredentialRecognitionIntlResponse : Tea.TeaModel {
 }
 
 public class CredentialSubmitIntlRequest : Tea.TeaModel {
+    public var checkRuleConfig: String?
+
     public var credentialOcrPictureBase64: String?
 
     public var credentialOcrPictureUrl: String?
@@ -2450,9 +2484,15 @@ public class CredentialSubmitIntlRequest : Tea.TeaModel {
 
     public var fraudCheck: String?
 
+    public var idQuality: String?
+
     public var merchantBizId: String?
 
     public var ocrArea: String?
+
+    public var ocrTranslation: String?
+
+    public var ocrValueStandard: String?
 
     public var productCode: String?
 
@@ -2472,6 +2512,9 @@ public class CredentialSubmitIntlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkRuleConfig != nil {
+            map["CheckRuleConfig"] = self.checkRuleConfig!
+        }
         if self.credentialOcrPictureBase64 != nil {
             map["CredentialOcrPictureBase64"] = self.credentialOcrPictureBase64!
         }
@@ -2484,11 +2527,20 @@ public class CredentialSubmitIntlRequest : Tea.TeaModel {
         if self.fraudCheck != nil {
             map["FraudCheck"] = self.fraudCheck!
         }
+        if self.idQuality != nil {
+            map["IdQuality"] = self.idQuality!
+        }
         if self.merchantBizId != nil {
             map["MerchantBizId"] = self.merchantBizId!
         }
         if self.ocrArea != nil {
             map["OcrArea"] = self.ocrArea!
+        }
+        if self.ocrTranslation != nil {
+            map["OcrTranslation"] = self.ocrTranslation!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
         }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
@@ -2501,6 +2553,9 @@ public class CredentialSubmitIntlRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CheckRuleConfig"] as? String {
+            self.checkRuleConfig = value
+        }
         if let value = dict["CredentialOcrPictureBase64"] as? String {
             self.credentialOcrPictureBase64 = value
         }
@@ -2513,11 +2568,20 @@ public class CredentialSubmitIntlRequest : Tea.TeaModel {
         if let value = dict["FraudCheck"] as? String {
             self.fraudCheck = value
         }
+        if let value = dict["IdQuality"] as? String {
+            self.idQuality = value
+        }
         if let value = dict["MerchantBizId"] as? String {
             self.merchantBizId = value
         }
         if let value = dict["OcrArea"] as? String {
             self.ocrArea = value
+        }
+        if let value = dict["OcrTranslation"] as? String {
+            self.ocrTranslation = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
         }
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
@@ -5797,6 +5861,8 @@ public class EkycVerifyRequest : Tea.TeaModel {
 
     public var idOcrPictureUrl: String?
 
+    public var idSpoof: String?
+
     public var idThreshold: String?
 
     public var merchantBizId: String?
@@ -5849,6 +5915,9 @@ public class EkycVerifyRequest : Tea.TeaModel {
         if self.idOcrPictureUrl != nil {
             map["IdOcrPictureUrl"] = self.idOcrPictureUrl!
         }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
         }
@@ -5895,6 +5964,9 @@ public class EkycVerifyRequest : Tea.TeaModel {
         }
         if let value = dict["IdOcrPictureUrl"] as? String {
             self.idOcrPictureUrl = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
         }
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
@@ -6106,6 +6178,8 @@ public class EkycVerifyV2Request : Tea.TeaModel {
 
     public var idOcrPictureUrl: String?
 
+    public var idSpoof: String?
+
     public var idThreshold: String?
 
     public var merchantBizId: String?
@@ -6164,6 +6238,9 @@ public class EkycVerifyV2Request : Tea.TeaModel {
         if self.idOcrPictureUrl != nil {
             map["IdOcrPictureUrl"] = self.idOcrPictureUrl!
         }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
         }
@@ -6217,6 +6294,9 @@ public class EkycVerifyV2Request : Tea.TeaModel {
         if let value = dict["IdOcrPictureUrl"] as? String {
             self.idOcrPictureUrl = value
         }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
+        }
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
         }
@@ -6256,6 +6336,8 @@ public class EkycVerifyV2AdvanceRequest : Tea.TeaModel {
     public var idOcrPictureFileObject: InputStream?
 
     public var idOcrPictureUrl: String?
+
+    public var idSpoof: String?
 
     public var idThreshold: String?
 
@@ -6315,6 +6397,9 @@ public class EkycVerifyV2AdvanceRequest : Tea.TeaModel {
         if self.idOcrPictureUrl != nil {
             map["IdOcrPictureUrl"] = self.idOcrPictureUrl!
         }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
         }
@@ -6367,6 +6452,9 @@ public class EkycVerifyV2AdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["IdOcrPictureUrl"] as? String {
             self.idOcrPictureUrl = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
         }
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value

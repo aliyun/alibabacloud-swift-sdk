@@ -628,13 +628,25 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
             query["FraudCheck"] = request.fraudCheck ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.idQuality)) {
+            query["IdQuality"] = request.idQuality ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ocrArea)) {
             query["OcrArea"] = request.ocrArea ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrTranslation)) {
+            query["OcrTranslation"] = request.ocrTranslation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkRuleConfig)) {
+            body["CheckRuleConfig"] = request.checkRuleConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.credentialOcrPictureBase64)) {
             body["CredentialOcrPictureBase64"] = request.credentialOcrPictureBase64 ?? "";
         }
@@ -676,11 +688,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
             query["FraudCheck"] = request.fraudCheck ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.idQuality)) {
+            query["IdQuality"] = request.idQuality ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
             query["MerchantBizId"] = request.merchantBizId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ocrArea)) {
             query["OcrArea"] = request.ocrArea ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrTranslation)) {
+            query["OcrTranslation"] = request.ocrTranslation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
@@ -689,6 +710,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["SceneCode"] = request.sceneCode ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkRuleConfig)) {
+            body["CheckRuleConfig"] = request.checkRuleConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.credentialOcrPictureBase64)) {
             body["CredentialOcrPictureBase64"] = request.credentialOcrPictureBase64 ?? "";
         }
@@ -1678,6 +1702,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
             query["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.idSpoof)) {
+            query["IdSpoof"] = request.idSpoof ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.idThreshold)) {
             query["IdThreshold"] = request.idThreshold ?? "";
         }
@@ -1749,6 +1776,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
             query["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idSpoof)) {
+            query["IdSpoof"] = request.idSpoof ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.idThreshold)) {
             query["IdThreshold"] = request.idThreshold ?? "";
