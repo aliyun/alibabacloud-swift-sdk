@@ -3907,6 +3907,56 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodePoolComponentInstanceNodesWithOptions(_ clusterId: String, _ nodepoolId: String, _ name: String, _ tmpReq: ListNodePoolComponentInstanceNodesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodePoolComponentInstanceNodesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListNodePoolComponentInstanceNodesShrinkRequest = ListNodePoolComponentInstanceNodesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.nodeNames)) {
+            request.nodeNamesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeNames, "node_names", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configRevision)) {
+            query["config_revision"] = request.configRevision ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["max_results"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["next_token"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeNamesShrink)) {
+            query["node_names"] = request.nodeNamesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListNodePoolComponentInstanceNodes",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/nodepools/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(nodepoolId)) + "/component_instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/nodes",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListNodePoolComponentInstanceNodesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNodePoolComponentInstanceNodes(_ clusterId: String, _ nodepoolId: String, _ name: String, _ request: ListNodePoolComponentInstanceNodesRequest) async throws -> ListNodePoolComponentInstanceNodesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listNodePoolComponentInstanceNodesWithOptions(clusterId as! String, nodepoolId as! String, name as! String, request as! ListNodePoolComponentInstanceNodesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listNodePoolComponentInstancesWithOptions(_ clusterId: String, _ nodepoolId: String, _ request: ListNodePoolComponentInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodePoolComponentInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
