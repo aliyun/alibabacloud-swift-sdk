@@ -18940,6 +18940,8 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var sessionId: String?
+
     public override init() {
         super.init()
     }
@@ -18971,6 +18973,9 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
         return map
     }
 
@@ -18999,6 +19004,9 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
         }
     }
 }
