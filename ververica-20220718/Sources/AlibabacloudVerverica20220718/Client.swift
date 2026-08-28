@@ -10,24 +10,24 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
+            "cn-qingdao": "ververica.cn-qingdao.aliyuncs.com",
+            "cn-shenzhen": "ververica.cn-shenzhen.aliyuncs.com",
+            "cn-wulanchabu": "ververica.cn-wulanchabu.aliyuncs.com",
+            "cn-beijing": "ververica.cn-beijing.aliyuncs.com",
+            "ap-northeast-1": "ververica.ap-northeast-1.aliyuncs.com",
+            "cn-chengdu": "ververica.cn-chengdu.aliyuncs.com",
+            "cn-shanghai": "ververica.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "ververica.cn-hongkong.aliyuncs.com",
+            "ap-southeast-1": "ververica.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "ververica.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "ververica.ap-southeast-5.aliyuncs.com",
+            "cn-zhangjiakou": "ververica.cn-zhangjiakou.aliyuncs.com",
+            "cn-hangzhou": "ververica.cn-hangzhou.aliyuncs.com",
             "us-west-1": "ververica.us-west-1.aliyuncs.com",
             "us-east-1": "ververica.us-east-1.aliyuncs.com",
-            "eu-west-1": "ververica.eu-west-1.aliyuncs.com",
             "eu-central-1": "ververica.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "ververica.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "ververica.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "ververica.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "ververica.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "ververica.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "ververica.cn-qingdao.aliyuncs.com",
-            "cn-hongkong": "ververica.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "ververica.cn-hangzhou.aliyuncs.com",
-            "cn-chengdu": "ververica.cn-chengdu.aliyuncs.com",
-            "cn-beijing": "ververica.cn-beijing.aliyuncs.com",
-            "ap-southeast-5": "ververica.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "ververica.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "ververica.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "ververica.ap-northeast-1.aliyuncs.com"
+            "eu-west-1": "ververica.eu-west-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "ververica.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ververica", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -2165,6 +2165,87 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPatrolConfigWithOptions(_ namespace: String, _ request: GetPatrolConfigRequest, _ headers: GetPatrolConfigHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPatrolConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPatrolConfig",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/patrol-config",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPatrolConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPatrolConfig(_ namespace: String, _ request: GetPatrolConfigRequest) async throws -> GetPatrolConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetPatrolConfigHeaders = GetPatrolConfigHeaders([:])
+        return try await getPatrolConfigWithOptions(namespace as! String, request as! GetPatrolConfigRequest, headers as! GetPatrolConfigHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPatrolReportDetailWithOptions(_ namespace: String, _ request: GetPatrolReportDetailRequest, _ headers: GetPatrolReportDetailHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPatrolReportDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.date)) {
+            query["date"] = request.date ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reportId)) {
+            query["reportId"] = request.reportId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timezone)) {
+            query["timezone"] = request.timezone ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPatrolReportDetail",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/patrol-reports/details",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPatrolReportDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPatrolReportDetail(_ namespace: String, _ request: GetPatrolReportDetailRequest) async throws -> GetPatrolReportDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetPatrolReportDetailHeaders = GetPatrolReportDetailHeaders([:])
+        return try await getPatrolReportDetailWithOptions(namespace as! String, request as! GetPatrolReportDetailRequest, headers as! GetPatrolReportDetailHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPreSignedUrlForPutObjectWithOptions(_ namespace: String, _ request: GetPreSignedUrlForPutObjectRequest, _ headers: GetPreSignedUrlForPutObjectHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPreSignedUrlForPutObjectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2869,6 +2950,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listPatrolReportsWithOptions(_ namespace: String, _ request: ListPatrolReportsRequest, _ headers: ListPatrolReportsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPatrolReportsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            query["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scopeType)) {
+            query["scopeType"] = request.scopeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            query["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.triggerType)) {
+            query["triggerType"] = request.triggerType ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListPatrolReports",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/patrol-reports",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListPatrolReportsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listPatrolReports(_ namespace: String, _ request: ListPatrolReportsRequest) async throws -> ListPatrolReportsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListPatrolReportsHeaders = ListPatrolReportsHeaders([:])
+        return try await listPatrolReportsWithOptions(namespace as! String, request as! ListPatrolReportsRequest, headers as! ListPatrolReportsHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listSavepointsWithOptions(_ namespace: String, _ request: ListSavepointsRequest, _ headers: ListSavepointsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSavepointsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3492,6 +3631,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerPatrolWithOptions(_ namespace: String, _ request: TriggerPatrolRequest, _ headers: TriggerPatrolHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> TriggerPatrolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scopeConfig)) {
+            body["scopeConfig"] = request.scopeConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scopeType)) {
+            body["scopeType"] = request.scopeType ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TriggerPatrol",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/patrol-reports/trigger",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TriggerPatrolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerPatrol(_ namespace: String, _ request: TriggerPatrolRequest) async throws -> TriggerPatrolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: TriggerPatrolHeaders = TriggerPatrolHeaders([:])
+        return try await triggerPatrolWithOptions(namespace as! String, request as! TriggerPatrolRequest, headers as! TriggerPatrolHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAutopilotPolicyWithOptions(_ namespace: String, _ deploymentId: String, _ request: UpdateAutopilotPolicyRequest, _ headers: UpdateAutopilotPolicyHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAutopilotPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3789,6 +3971,58 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateMemberHeaders = UpdateMemberHeaders([:])
         return try await updateMemberWithOptions(namespace as! String, request as! UpdateMemberRequest, headers as! UpdateMemberHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePatrolConfigWithOptions(_ namespace: String, _ request: UpdatePatrolConfigRequest, _ headers: UpdatePatrolConfigHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePatrolConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cron)) {
+            body["cron"] = request.cron ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scopeConfig)) {
+            body["scopeConfig"] = request.scopeConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scopeType)) {
+            body["scopeType"] = request.scopeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timezone)) {
+            body["timezone"] = request.timezone ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdatePatrolConfig",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/autopilot/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/patrol-config",
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdatePatrolConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePatrolConfig(_ namespace: String, _ request: UpdatePatrolConfigRequest) async throws -> UpdatePatrolConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdatePatrolConfigHeaders = UpdatePatrolConfigHeaders([:])
+        return try await updatePatrolConfigWithOptions(namespace as! String, request as! UpdatePatrolConfigRequest, headers as! UpdatePatrolConfigHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
