@@ -10,6 +10,7 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
+            "cn-hangzhou": "alidns.aliyuncs.com",
             "public": "alidns.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
@@ -1034,11 +1035,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentHost)) {
             query["AgentHost"] = request.agentHost ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agentSubHost)) {
+            query["AgentSubHost"] = request.agentSubHost ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.agentVersion)) {
             query["AgentVersion"] = request.agentVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainMode)) {
+            query["DomainMode"] = request.domainMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endpointsShrink)) {
             query["Endpoints"] = request.endpointsShrink ?? "";
@@ -2209,6 +2216,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trustLevel)) {
+            query["TrustLevel"] = request.trustLevel ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -8871,11 +8881,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentRegisterInfoId)) {
             query["AgentRegisterInfoId"] = request.agentRegisterInfoId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agentSubHost)) {
+            query["AgentSubHost"] = request.agentSubHost ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.agentVersion)) {
             query["AgentVersion"] = request.agentVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainMode)) {
+            query["DomainMode"] = request.domainMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endpointsShrink)) {
             query["Endpoints"] = request.endpointsShrink ?? "";
@@ -11138,6 +11154,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trustLevel)) {
+            query["TrustLevel"] = request.trustLevel ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

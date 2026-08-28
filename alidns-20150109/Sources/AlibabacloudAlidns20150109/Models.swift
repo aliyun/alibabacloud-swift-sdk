@@ -4447,9 +4447,13 @@ public class CreateAtiAgentRegisterInfoRequest : Tea.TeaModel {
 
     public var agentHost: String?
 
+    public var agentSubHost: String?
+
     public var agentVersion: String?
 
     public var clientToken: String?
+
+    public var domainMode: String?
 
     public var endpoints: [CreateAtiAgentRegisterInfoRequest.Endpoints]?
 
@@ -4478,11 +4482,17 @@ public class CreateAtiAgentRegisterInfoRequest : Tea.TeaModel {
         if self.agentHost != nil {
             map["AgentHost"] = self.agentHost!
         }
+        if self.agentSubHost != nil {
+            map["AgentSubHost"] = self.agentSubHost!
+        }
         if self.agentVersion != nil {
             map["AgentVersion"] = self.agentVersion!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.domainMode != nil {
+            map["DomainMode"] = self.domainMode!
         }
         if self.endpoints != nil {
             var tmp : [Any] = []
@@ -4508,11 +4518,17 @@ public class CreateAtiAgentRegisterInfoRequest : Tea.TeaModel {
         if let value = dict["AgentHost"] as? String {
             self.agentHost = value
         }
+        if let value = dict["AgentSubHost"] as? String {
+            self.agentSubHost = value
+        }
         if let value = dict["AgentVersion"] as? String {
             self.agentVersion = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DomainMode"] as? String {
+            self.domainMode = value
         }
         if let value = dict["Endpoints"] as? [Any?] {
             var tmp : [CreateAtiAgentRegisterInfoRequest.Endpoints] = []
@@ -4540,9 +4556,13 @@ public class CreateAtiAgentRegisterInfoShrinkRequest : Tea.TeaModel {
 
     public var agentHost: String?
 
+    public var agentSubHost: String?
+
     public var agentVersion: String?
 
     public var clientToken: String?
+
+    public var domainMode: String?
 
     public var endpointsShrink: String?
 
@@ -4571,11 +4591,17 @@ public class CreateAtiAgentRegisterInfoShrinkRequest : Tea.TeaModel {
         if self.agentHost != nil {
             map["AgentHost"] = self.agentHost!
         }
+        if self.agentSubHost != nil {
+            map["AgentSubHost"] = self.agentSubHost!
+        }
         if self.agentVersion != nil {
             map["AgentVersion"] = self.agentVersion!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.domainMode != nil {
+            map["DomainMode"] = self.domainMode!
         }
         if self.endpointsShrink != nil {
             map["Endpoints"] = self.endpointsShrink!
@@ -4597,11 +4623,17 @@ public class CreateAtiAgentRegisterInfoShrinkRequest : Tea.TeaModel {
         if let value = dict["AgentHost"] as? String {
             self.agentHost = value
         }
+        if let value = dict["AgentSubHost"] as? String {
+            self.agentSubHost = value
+        }
         if let value = dict["AgentVersion"] as? String {
             self.agentVersion = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DomainMode"] as? String {
+            self.domainMode = value
         }
         if let value = dict["Endpoints"] as? String {
             self.endpointsShrink = value
@@ -4932,6 +4964,104 @@ public class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody : Tea.Tea
             }
         }
     }
+    public class Records : Tea.TeaModel {
+        public class Record : Tea.TeaModel {
+            public var domainScope: String?
+
+            public var recordName: String?
+
+            public var recordType: String?
+
+            public var recordValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.domainScope != nil {
+                    map["DomainScope"] = self.domainScope!
+                }
+                if self.recordName != nil {
+                    map["RecordName"] = self.recordName!
+                }
+                if self.recordType != nil {
+                    map["RecordType"] = self.recordType!
+                }
+                if self.recordValue != nil {
+                    map["RecordValue"] = self.recordValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DomainScope"] as? String {
+                    self.domainScope = value
+                }
+                if let value = dict["RecordName"] as? String {
+                    self.recordName = value
+                }
+                if let value = dict["RecordType"] as? String {
+                    self.recordType = value
+                }
+                if let value = dict["RecordValue"] as? String {
+                    self.recordValue = value
+                }
+            }
+        }
+        public var record: [CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody.Records.Record]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.record != nil {
+                var tmp : [Any] = []
+                for k in self.record! {
+                    tmp.append(k.toMap())
+                }
+                map["Record"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Record"] as? [Any?] {
+                var tmp : [CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody.Records.Record] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody.Records.Record()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.record = tmp
+            }
+        }
+    }
     public var accessDeniedDetail: CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody.AccessDeniedDetail?
 
     public var agentRegisterInfoId: String?
@@ -4945,6 +5075,8 @@ public class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody : Tea.Tea
     public var recordType: String?
 
     public var recordValue: String?
+
+    public var records: CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody.Records?
 
     public var requestId: String?
 
@@ -4961,6 +5093,7 @@ public class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody : Tea.Tea
 
     public override func validate() throws -> Void {
         try self.accessDeniedDetail?.validate()
+        try self.records?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4985,6 +5118,9 @@ public class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody : Tea.Tea
         }
         if self.recordValue != nil {
             map["RecordValue"] = self.recordValue!
+        }
+        if self.records != nil {
+            map["Records"] = self.records?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -5019,6 +5155,11 @@ public class CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody : Tea.Tea
         }
         if let value = dict["RecordValue"] as? String {
             self.recordValue = value
+        }
+        if let value = dict["Records"] as? [String: Any?] {
+            var model = CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody.Records()
+            model.fromMap(value)
+            self.records = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -9731,11 +9872,15 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
 
     public var agentRegisterInfoId: String?
 
+    public var agentSubHost: String?
+
     public var agentVersion: String?
 
     public var atiName: String?
 
     public var createTimestamp: Int64?
+
+    public var domainMode: String?
 
     public var endpoints: DescribeAtiAgentRegisterInfoResponseBody.Endpoints?
 
@@ -9756,6 +9901,8 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
     public var trustCard: String?
 
     public var trustCardUrl: String?
+
+    public var trustLevel: String?
 
     public var updateTimestamp: Int64?
 
@@ -9794,6 +9941,9 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
         if self.agentRegisterInfoId != nil {
             map["AgentRegisterInfoId"] = self.agentRegisterInfoId!
         }
+        if self.agentSubHost != nil {
+            map["AgentSubHost"] = self.agentSubHost!
+        }
         if self.agentVersion != nil {
             map["AgentVersion"] = self.agentVersion!
         }
@@ -9802,6 +9952,9 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
         }
         if self.createTimestamp != nil {
             map["CreateTimestamp"] = self.createTimestamp!
+        }
+        if self.domainMode != nil {
+            map["DomainMode"] = self.domainMode!
         }
         if self.endpoints != nil {
             map["Endpoints"] = self.endpoints?.toMap()
@@ -9833,6 +9986,9 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
         if self.trustCardUrl != nil {
             map["TrustCardUrl"] = self.trustCardUrl!
         }
+        if self.trustLevel != nil {
+            map["TrustLevel"] = self.trustLevel!
+        }
         if self.updateTimestamp != nil {
             map["UpdateTimestamp"] = self.updateTimestamp!
         }
@@ -9861,6 +10017,9 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
         if let value = dict["AgentRegisterInfoId"] as? String {
             self.agentRegisterInfoId = value
         }
+        if let value = dict["AgentSubHost"] as? String {
+            self.agentSubHost = value
+        }
         if let value = dict["AgentVersion"] as? String {
             self.agentVersion = value
         }
@@ -9869,6 +10028,9 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreateTimestamp"] as? Int64 {
             self.createTimestamp = value
+        }
+        if let value = dict["DomainMode"] as? String {
+            self.domainMode = value
         }
         if let value = dict["Endpoints"] as? [String: Any?] {
             var model = DescribeAtiAgentRegisterInfoResponseBody.Endpoints()
@@ -9903,6 +10065,9 @@ public class DescribeAtiAgentRegisterInfoResponseBody : Tea.TeaModel {
         }
         if let value = dict["TrustCardUrl"] as? String {
             self.trustCardUrl = value
+        }
+        if let value = dict["TrustLevel"] as? String {
+            self.trustLevel = value
         }
         if let value = dict["UpdateTimestamp"] as? Int64 {
             self.updateTimestamp = value
@@ -9971,6 +10136,8 @@ public class DescribeAtiAgentRegisterInfoMarketRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var trustLevel: String?
+
     public override init() {
         super.init()
     }
@@ -10000,6 +10167,9 @@ public class DescribeAtiAgentRegisterInfoMarketRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.trustLevel != nil {
+            map["TrustLevel"] = self.trustLevel!
+        }
         return map
     }
 
@@ -10019,6 +10189,9 @@ public class DescribeAtiAgentRegisterInfoMarketRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["TrustLevel"] as? String {
+            self.trustLevel = value
         }
     }
 }
@@ -43658,6 +43831,8 @@ public class ListAtiAgentRegisterInfosResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var trustLevel: String?
+
             public var updateTimestamp: String?
 
             public override init() {
@@ -43702,6 +43877,9 @@ public class ListAtiAgentRegisterInfosResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.trustLevel != nil {
+                    map["TrustLevel"] = self.trustLevel!
+                }
                 if self.updateTimestamp != nil {
                     map["UpdateTimestamp"] = self.updateTimestamp!
                 }
@@ -43738,6 +43916,9 @@ public class ListAtiAgentRegisterInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
+                }
+                if let value = dict["TrustLevel"] as? String {
+                    self.trustLevel = value
                 }
                 if let value = dict["UpdateTimestamp"] as? String {
                     self.updateTimestamp = value
@@ -60492,9 +60673,13 @@ public class UpdateAtiAgentRegisterInfoRequest : Tea.TeaModel {
 
     public var agentRegisterInfoId: String?
 
+    public var agentSubHost: String?
+
     public var agentVersion: String?
 
     public var clientToken: String?
+
+    public var domainMode: String?
 
     public var endpoints: [UpdateAtiAgentRegisterInfoRequest.Endpoints]?
 
@@ -60526,11 +60711,17 @@ public class UpdateAtiAgentRegisterInfoRequest : Tea.TeaModel {
         if self.agentRegisterInfoId != nil {
             map["AgentRegisterInfoId"] = self.agentRegisterInfoId!
         }
+        if self.agentSubHost != nil {
+            map["AgentSubHost"] = self.agentSubHost!
+        }
         if self.agentVersion != nil {
             map["AgentVersion"] = self.agentVersion!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.domainMode != nil {
+            map["DomainMode"] = self.domainMode!
         }
         if self.endpoints != nil {
             var tmp : [Any] = []
@@ -60559,11 +60750,17 @@ public class UpdateAtiAgentRegisterInfoRequest : Tea.TeaModel {
         if let value = dict["AgentRegisterInfoId"] as? String {
             self.agentRegisterInfoId = value
         }
+        if let value = dict["AgentSubHost"] as? String {
+            self.agentSubHost = value
+        }
         if let value = dict["AgentVersion"] as? String {
             self.agentVersion = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DomainMode"] as? String {
+            self.domainMode = value
         }
         if let value = dict["Endpoints"] as? [Any?] {
             var tmp : [UpdateAtiAgentRegisterInfoRequest.Endpoints] = []
@@ -60593,9 +60790,13 @@ public class UpdateAtiAgentRegisterInfoShrinkRequest : Tea.TeaModel {
 
     public var agentRegisterInfoId: String?
 
+    public var agentSubHost: String?
+
     public var agentVersion: String?
 
     public var clientToken: String?
+
+    public var domainMode: String?
 
     public var endpointsShrink: String?
 
@@ -60627,11 +60828,17 @@ public class UpdateAtiAgentRegisterInfoShrinkRequest : Tea.TeaModel {
         if self.agentRegisterInfoId != nil {
             map["AgentRegisterInfoId"] = self.agentRegisterInfoId!
         }
+        if self.agentSubHost != nil {
+            map["AgentSubHost"] = self.agentSubHost!
+        }
         if self.agentVersion != nil {
             map["AgentVersion"] = self.agentVersion!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.domainMode != nil {
+            map["DomainMode"] = self.domainMode!
         }
         if self.endpointsShrink != nil {
             map["Endpoints"] = self.endpointsShrink!
@@ -60656,11 +60863,17 @@ public class UpdateAtiAgentRegisterInfoShrinkRequest : Tea.TeaModel {
         if let value = dict["AgentRegisterInfoId"] as? String {
             self.agentRegisterInfoId = value
         }
+        if let value = dict["AgentSubHost"] as? String {
+            self.agentSubHost = value
+        }
         if let value = dict["AgentVersion"] as? String {
             self.agentVersion = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DomainMode"] as? String {
+            self.domainMode = value
         }
         if let value = dict["Endpoints"] as? String {
             self.endpointsShrink = value
@@ -70383,6 +70596,8 @@ public class VerifyAtiAgentDnsRecordsRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var trustLevel: String?
+
     public override init() {
         super.init()
     }
@@ -70403,6 +70618,9 @@ public class VerifyAtiAgentDnsRecordsRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.trustLevel != nil {
+            map["TrustLevel"] = self.trustLevel!
+        }
         return map
     }
 
@@ -70413,6 +70631,9 @@ public class VerifyAtiAgentDnsRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["TrustLevel"] as? String {
+            self.trustLevel = value
         }
     }
 }
