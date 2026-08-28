@@ -7616,6 +7616,270 @@ public class ListOrganizationMembersRequest : Tea.TeaModel {
 
 public class ListOrganizationMembersResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class PackLimitInfo : Tea.TeaModel {
+            public var availableLimit: Double?
+
+            public var cycleEndTime: Int64?
+
+            public var cycleStartTime: Int64?
+
+            public var frozenCredits: Double?
+
+            public var hasShareLimit: Bool?
+
+            public var isAvailable: Bool?
+
+            public var lastConfirmedTime: Int64?
+
+            public var upperLimit: Double?
+
+            public var usedCredits: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.availableLimit != nil {
+                    map["AvailableLimit"] = self.availableLimit!
+                }
+                if self.cycleEndTime != nil {
+                    map["CycleEndTime"] = self.cycleEndTime!
+                }
+                if self.cycleStartTime != nil {
+                    map["CycleStartTime"] = self.cycleStartTime!
+                }
+                if self.frozenCredits != nil {
+                    map["FrozenCredits"] = self.frozenCredits!
+                }
+                if self.hasShareLimit != nil {
+                    map["HasShareLimit"] = self.hasShareLimit!
+                }
+                if self.isAvailable != nil {
+                    map["IsAvailable"] = self.isAvailable!
+                }
+                if self.lastConfirmedTime != nil {
+                    map["LastConfirmedTime"] = self.lastConfirmedTime!
+                }
+                if self.upperLimit != nil {
+                    map["UpperLimit"] = self.upperLimit!
+                }
+                if self.usedCredits != nil {
+                    map["UsedCredits"] = self.usedCredits!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AvailableLimit"] as? Double {
+                    self.availableLimit = value
+                }
+                if let value = dict["CycleEndTime"] as? Int64 {
+                    self.cycleEndTime = value
+                }
+                if let value = dict["CycleStartTime"] as? Int64 {
+                    self.cycleStartTime = value
+                }
+                if let value = dict["FrozenCredits"] as? Double {
+                    self.frozenCredits = value
+                }
+                if let value = dict["HasShareLimit"] as? Bool {
+                    self.hasShareLimit = value
+                }
+                if let value = dict["IsAvailable"] as? Bool {
+                    self.isAvailable = value
+                }
+                if let value = dict["LastConfirmedTime"] as? Int64 {
+                    self.lastConfirmedTime = value
+                }
+                if let value = dict["UpperLimit"] as? Double {
+                    self.upperLimit = value
+                }
+                if let value = dict["UsedCredits"] as? Double {
+                    self.usedCredits = value
+                }
+            }
+        }
+        public class SubscriptionInfo : Tea.TeaModel {
+            public class EquityList : Tea.TeaModel {
+                public var cycleEndTime: Int64?
+
+                public var cycleStartTime: Int64?
+
+                public var cycleSurplusValue: Double?
+
+                public var cycleTotalValue: Double?
+
+                public var equityType: String?
+
+                public var equityUnit: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cycleEndTime != nil {
+                        map["CycleEndTime"] = self.cycleEndTime!
+                    }
+                    if self.cycleStartTime != nil {
+                        map["CycleStartTime"] = self.cycleStartTime!
+                    }
+                    if self.cycleSurplusValue != nil {
+                        map["CycleSurplusValue"] = self.cycleSurplusValue!
+                    }
+                    if self.cycleTotalValue != nil {
+                        map["CycleTotalValue"] = self.cycleTotalValue!
+                    }
+                    if self.equityType != nil {
+                        map["EquityType"] = self.equityType!
+                    }
+                    if self.equityUnit != nil {
+                        map["EquityUnit"] = self.equityUnit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CycleEndTime"] as? Int64 {
+                        self.cycleEndTime = value
+                    }
+                    if let value = dict["CycleStartTime"] as? Int64 {
+                        self.cycleStartTime = value
+                    }
+                    if let value = dict["CycleSurplusValue"] as? Double {
+                        self.cycleSurplusValue = value
+                    }
+                    if let value = dict["CycleTotalValue"] as? Double {
+                        self.cycleTotalValue = value
+                    }
+                    if let value = dict["EquityType"] as? String {
+                        self.equityType = value
+                    }
+                    if let value = dict["EquityUnit"] as? String {
+                        self.equityUnit = value
+                    }
+                }
+            }
+            public var endTime: Int64?
+
+            public var equityList: [ListOrganizationMembersResponseBody.Data.SubscriptionInfo.EquityList]?
+
+            public var instanceCode: String?
+
+            public var payMode: String?
+
+            public var productCode: String?
+
+            public var specType: String?
+
+            public var startTime: Int64?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.equityList != nil {
+                    var tmp : [Any] = []
+                    for k in self.equityList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["EquityList"] = tmp
+                }
+                if self.instanceCode != nil {
+                    map["InstanceCode"] = self.instanceCode!
+                }
+                if self.payMode != nil {
+                    map["PayMode"] = self.payMode!
+                }
+                if self.productCode != nil {
+                    map["ProductCode"] = self.productCode!
+                }
+                if self.specType != nil {
+                    map["SpecType"] = self.specType!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndTime"] as? Int64 {
+                    self.endTime = value
+                }
+                if let value = dict["EquityList"] as? [Any?] {
+                    var tmp : [ListOrganizationMembersResponseBody.Data.SubscriptionInfo.EquityList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListOrganizationMembersResponseBody.Data.SubscriptionInfo.EquityList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.equityList = tmp
+                }
+                if let value = dict["InstanceCode"] as? String {
+                    self.instanceCode = value
+                }
+                if let value = dict["PayMode"] as? String {
+                    self.payMode = value
+                }
+                if let value = dict["ProductCode"] as? String {
+                    self.productCode = value
+                }
+                if let value = dict["SpecType"] as? String {
+                    self.specType = value
+                }
+                if let value = dict["StartTime"] as? Int64 {
+                    self.startTime = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public var accountBizId: String?
 
         public var accountId: String?
@@ -7632,6 +7896,8 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
 
         public var orgId: String?
 
+        public var packLimitInfo: ListOrganizationMembersResponseBody.Data.PackLimitInfo?
+
         public var roles: [String]?
 
         public var seatId: String?
@@ -7639,6 +7905,8 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
         public var specType: String?
 
         public var status: String?
+
+        public var subscriptionInfo: ListOrganizationMembersResponseBody.Data.SubscriptionInfo?
 
         public override init() {
             super.init()
@@ -7650,6 +7918,8 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.packLimitInfo?.validate()
+            try self.subscriptionInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -7678,6 +7948,9 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
             if self.orgId != nil {
                 map["OrgId"] = self.orgId!
             }
+            if self.packLimitInfo != nil {
+                map["PackLimitInfo"] = self.packLimitInfo?.toMap()
+            }
             if self.roles != nil {
                 map["Roles"] = self.roles!
             }
@@ -7689,6 +7962,9 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.subscriptionInfo != nil {
+                map["SubscriptionInfo"] = self.subscriptionInfo?.toMap()
             }
             return map
         }
@@ -7719,6 +7995,11 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
             if let value = dict["OrgId"] as? String {
                 self.orgId = value
             }
+            if let value = dict["PackLimitInfo"] as? [String: Any?] {
+                var model = ListOrganizationMembersResponseBody.Data.PackLimitInfo()
+                model.fromMap(value)
+                self.packLimitInfo = model
+            }
             if let value = dict["Roles"] as? [String] {
                 self.roles = value
             }
@@ -7730,6 +8011,11 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SubscriptionInfo"] as? [String: Any?] {
+                var model = ListOrganizationMembersResponseBody.Data.SubscriptionInfo()
+                model.fromMap(value)
+                self.subscriptionInfo = model
             }
         }
     }
