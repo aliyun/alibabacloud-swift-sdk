@@ -1552,6 +1552,10 @@ public class ListTranslationTasksResponse : Tea.TeaModel {
 
 public class SubmitTranslationTaskRequest : Tea.TeaModel {
     public class Config : Tea.TeaModel {
+        public var agent: String?
+
+        public var agentId: String?
+
         public var font: String?
 
         public var sourceLanguage: String?
@@ -1574,6 +1578,12 @@ public class SubmitTranslationTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agent != nil {
+                map["Agent"] = self.agent!
+            }
+            if self.agentId != nil {
+                map["AgentId"] = self.agentId!
+            }
             if self.font != nil {
                 map["Font"] = self.font!
             }
@@ -1591,6 +1601,12 @@ public class SubmitTranslationTaskRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Agent"] as? String {
+                self.agent = value
+            }
+            if let value = dict["AgentId"] as? String {
+                self.agentId = value
+            }
             if let value = dict["Font"] as? String {
                 self.font = value
             }
