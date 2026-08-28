@@ -71680,6 +71680,8 @@ public class DescribeKnowledgeBasesResponseBody : Tea.TeaModel {
 
         public var knowledgeBaseId: String?
 
+        public var knowledgeBaseType: String?
+
         public var knowledgeSpaceId: String?
 
         public var name: String?
@@ -71716,6 +71718,9 @@ public class DescribeKnowledgeBasesResponseBody : Tea.TeaModel {
             if self.knowledgeBaseId != nil {
                 map["KnowledgeBaseId"] = self.knowledgeBaseId!
             }
+            if self.knowledgeBaseType != nil {
+                map["KnowledgeBaseType"] = self.knowledgeBaseType!
+            }
             if self.knowledgeSpaceId != nil {
                 map["KnowledgeSpaceId"] = self.knowledgeSpaceId!
             }
@@ -71747,6 +71752,9 @@ public class DescribeKnowledgeBasesResponseBody : Tea.TeaModel {
             }
             if let value = dict["KnowledgeBaseId"] as? String {
                 self.knowledgeBaseId = value
+            }
+            if let value = dict["KnowledgeBaseType"] as? String {
+                self.knowledgeBaseType = value
             }
             if let value = dict["KnowledgeSpaceId"] as? String {
                 self.knowledgeSpaceId = value
