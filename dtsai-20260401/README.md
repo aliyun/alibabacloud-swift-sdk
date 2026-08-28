@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudDtsAI20260401` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/dtsai-20260401" "1.1.1"
+github "alibabacloud-sdk-swift/dtsai-20260401" "1.1.2"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudDtsAI20260401` into your Xcode project using [Swift Pa
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/dtsai-20260401.git", from: "1.1.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/dtsai-20260401.git", from: "1.1.2")
 ]
 ```
 
