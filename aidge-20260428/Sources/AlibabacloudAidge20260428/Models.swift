@@ -5442,6 +5442,8 @@ public class ImageTranslationStandardResponse : Tea.TeaModel {
 }
 
 public class LanguageDetectRequest : Tea.TeaModel {
+    public var scene: String?
+
     public var sourceText: String?
 
     public override init() {
@@ -5458,6 +5460,9 @@ public class LanguageDetectRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
         if self.sourceText != nil {
             map["SourceText"] = self.sourceText!
         }
@@ -5466,6 +5471,9 @@ public class LanguageDetectRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Scene"] as? String {
+            self.scene = value
+        }
         if let value = dict["SourceText"] as? String {
             self.sourceText = value
         }

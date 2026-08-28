@@ -732,6 +732,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func languageDetectWithOptions(_ request: LanguageDetectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LanguageDetectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            query["Scene"] = request.scene ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceText)) {
             query["SourceText"] = request.sourceText ?? "";
         }
