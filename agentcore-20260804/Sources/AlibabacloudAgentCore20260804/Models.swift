@@ -23112,7 +23112,11 @@ public class ListMcpToolsResponse : Tea.TeaModel {
 public class ListMcpsRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
+    public var name: String?
+
     public var nextToken: String?
+
+    public var searchType: String?
 
     public override init() {
         super.init()
@@ -23131,8 +23135,14 @@ public class ListMcpsRequest : Tea.TeaModel {
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
+        }
+        if self.searchType != nil {
+            map["searchType"] = self.searchType!
         }
         return map
     }
@@ -23142,8 +23152,14 @@ public class ListMcpsRequest : Tea.TeaModel {
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
         }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["searchType"] as? String {
+            self.searchType = value
         }
     }
 }
@@ -23588,6 +23604,8 @@ public class ListModelConnectionsRequest : Tea.TeaModel {
 
     public var providerType: String?
 
+    public var searchType: String?
+
     public override init() {
         super.init()
     }
@@ -23620,6 +23638,9 @@ public class ListModelConnectionsRequest : Tea.TeaModel {
         if self.providerType != nil {
             map["providerType"] = self.providerType!
         }
+        if self.searchType != nil {
+            map["searchType"] = self.searchType!
+        }
         return map
     }
 
@@ -23642,6 +23663,9 @@ public class ListModelConnectionsRequest : Tea.TeaModel {
         }
         if let value = dict["providerType"] as? String {
             self.providerType = value
+        }
+        if let value = dict["searchType"] as? String {
+            self.searchType = value
         }
     }
 }
