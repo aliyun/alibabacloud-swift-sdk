@@ -320,6 +320,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bindSaseUserTagWithOptions(_ request: BindSaseUserTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BindSaseUserTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.saseUserIds)) {
+            bodyFlat["SaseUserIds"] = request.saseUserIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BindSaseUserTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BindSaseUserTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bindSaseUserTag(_ request: BindSaseUserTagRequest) async throws -> BindSaseUserTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await bindSaseUserTagWithOptions(request as! BindSaseUserTagRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelVirusScanTasksWithOptions(_ request: CancelVirusScanTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelVirusScanTasksResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1345,6 +1381,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createRegistrationPolicy(_ request: CreateRegistrationPolicyRequest) async throws -> CreateRegistrationPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createRegistrationPolicyWithOptions(request as! CreateRegistrationPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSaseUserTagWithOptions(_ request: CreateSaseUserTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSaseUserTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSaseUserTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSaseUserTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSaseUserTag(_ request: CreateSaseUserTagRequest) async throws -> CreateSaseUserTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSaseUserTagWithOptions(request as! CreateSaseUserTagRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2757,6 +2827,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSaseUserTagWithOptions(_ request: DeleteSaseUserTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSaseUserTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSaseUserTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSaseUserTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSaseUserTag(_ request: DeleteSaseUserTagRequest) async throws -> DeleteSaseUserTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteSaseUserTagWithOptions(request as! DeleteSaseUserTagRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteUserDevicesWithOptions(_ request: DeleteUserDevicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteUserDevicesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3726,6 +3829,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSaseUserTagWithOptions(_ request: GetSaseUserTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSaseUserTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tagId)) {
+            body["TagId"] = request.tagId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSaseUserTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSaseUserTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSaseUserTag(_ request: GetSaseUserTagRequest) async throws -> GetSaseUserTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getSaseUserTagWithOptions(request as! GetSaseUserTagRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getUserDeviceWithOptions(_ request: GetUserDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserDeviceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -4363,6 +4497,89 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDevicesForVulnerability(_ request: ListDevicesForVulnerabilityRequest) async throws -> ListDevicesForVulnerabilityResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listDevicesForVulnerabilityWithOptions(request as! ListDevicesForVulnerabilityRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDlpOutboundLogsWithOptions(_ request: ListDlpOutboundLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDlpOutboundLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            body["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.logId)) {
+            body["LogId"] = request.logId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.policyAction)) {
+            body["PolicyAction"] = request.policyAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcFileName)) {
+            body["SrcFileName"] = request.srcFileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.subChannelType)) {
+            body["SubChannelType"] = request.subChannelType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["UserName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDlpOutboundLogs",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDlpOutboundLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDlpOutboundLogs(_ request: ListDlpOutboundLogsRequest) async throws -> ListDlpOutboundLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDlpOutboundLogsWithOptions(request as! ListDlpOutboundLogsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDomainAccessLogsWithOptions(_ request: ListDomainAccessLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDomainAccessLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDomainAccessLogs",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDomainAccessLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDomainAccessLogs(_ request: ListDomainAccessLogsRequest) async throws -> ListDomainAccessLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDomainAccessLogsWithOptions(request as! ListDomainAccessLogsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6453,6 +6670,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unbindSaseUserTagWithOptions(_ request: UnbindSaseUserTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnbindSaseUserTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.saseUserIds)) {
+            bodyFlat["SaseUserIds"] = request.saseUserIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tagIds)) {
+            bodyFlat["TagIds"] = request.tagIds ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnbindSaseUserTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnbindSaseUserTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unbindSaseUserTag(_ request: UnbindSaseUserTagRequest) async throws -> UnbindSaseUserTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await unbindSaseUserTagWithOptions(request as! UnbindSaseUserTagRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAntiVirusRealTimeDefenceStrategyWithOptions(_ request: UpdateAntiVirusRealTimeDefenceStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAntiVirusRealTimeDefenceStrategyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -7678,6 +7931,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateRiskStatus(_ request: UpdateRiskStatusRequest) async throws -> UpdateRiskStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateRiskStatusWithOptions(request as! UpdateRiskStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSaseUserTagWithOptions(_ request: UpdateSaseUserTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSaseUserTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagId)) {
+            body["TagId"] = request.tagId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateSaseUserTag",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateSaseUserTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSaseUserTag(_ request: UpdateSaseUserTagRequest) async throws -> UpdateSaseUserTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateSaseUserTagWithOptions(request as! UpdateSaseUserTagRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
