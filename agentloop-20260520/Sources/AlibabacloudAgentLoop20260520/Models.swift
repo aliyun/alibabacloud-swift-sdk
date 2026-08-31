@@ -341,6 +341,8 @@ public class Evaluator : Tea.TeaModel {
 
     public var type: String?
 
+    public var variableExtractorMapping: [String: EvaluatorVariableExtractorMappingValue]?
+
     public var variableMapping: [String: String]?
 
     public override init() {
@@ -378,6 +380,13 @@ public class Evaluator : Tea.TeaModel {
         if self.type != nil {
             map["type"] = self.type!
         }
+        if self.variableExtractorMapping != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.variableExtractorMapping! {
+                tmp[k] = v.toMap()
+            }
+            map["variableExtractorMapping"] = tmp
+        }
         if self.variableMapping != nil {
             map["variableMapping"] = self.variableMapping!
         }
@@ -406,6 +415,17 @@ public class Evaluator : Tea.TeaModel {
         }
         if let value = dict["type"] as? String {
             self.type = value
+        }
+        if let value = dict["variableExtractorMapping"] as? [String: Any?] {
+            var tmp : [String: EvaluatorVariableExtractorMappingValue] = [:]
+            for (k, v) in value {
+                if v != nil {
+                    var model = EvaluatorVariableExtractorMappingValue()
+                    model.fromMap(v as? [String: Any?])
+                    tmp[k] = model
+                }
+            }
+            self.variableExtractorMapping = tmp
         }
         if let value = dict["variableMapping"] as? [String: String] {
             self.variableMapping = value
@@ -1175,6 +1195,53 @@ public class RunStrategies : Tea.TeaModel {
             var model = ContinuousStrategy()
             model.fromMap(value)
             self.continuous = model
+        }
+    }
+}
+
+public class EvaluatorVariableExtractorMappingValue : Tea.TeaModel {
+    public var originField: String?
+
+    public var type: String?
+
+    public var expression: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.originField != nil {
+            map["originField"] = self.originField!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        if self.expression != nil {
+            map["expression"] = self.expression!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["originField"] as? String {
+            self.originField = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+        if let value = dict["expression"] as? String {
+            self.expression = value
         }
     }
 }
@@ -3453,6 +3520,276 @@ public class CreatePipelineRequest : Tea.TeaModel {
         }
     }
     public class Sink : Tea.TeaModel {
+        public class Condition : Tea.TeaModel {
+            public class DefaultSink : Tea.TeaModel {
+                public class Dataset : Tea.TeaModel {
+                    public var agentSpace: String?
+
+                    public var dataset: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentSpace != nil {
+                            map["agentSpace"] = self.agentSpace!
+                        }
+                        if self.dataset != nil {
+                            map["dataset"] = self.dataset!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentSpace"] as? String {
+                            self.agentSpace = value
+                        }
+                        if let value = dict["dataset"] as? String {
+                            self.dataset = value
+                        }
+                    }
+                }
+                public var dataset: CreatePipelineRequest.Sink.Condition.DefaultSink.Dataset?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.dataset?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dataset != nil {
+                        map["dataset"] = self.dataset?.toMap()
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["dataset"] as? [String: Any?] {
+                        var model = CreatePipelineRequest.Sink.Condition.DefaultSink.Dataset()
+                        model.fromMap(value)
+                        self.dataset = model
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class Routes : Tea.TeaModel {
+                public class Sink : Tea.TeaModel {
+                    public class Dataset : Tea.TeaModel {
+                        public var agentSpace: String?
+
+                        public var dataset: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.agentSpace != nil {
+                                map["agentSpace"] = self.agentSpace!
+                            }
+                            if self.dataset != nil {
+                                map["dataset"] = self.dataset!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["agentSpace"] as? String {
+                                self.agentSpace = value
+                            }
+                            if let value = dict["dataset"] as? String {
+                                self.dataset = value
+                            }
+                        }
+                    }
+                    public var dataset: CreatePipelineRequest.Sink.Condition.Routes.Sink.Dataset?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.dataset?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.dataset != nil {
+                            map["dataset"] = self.dataset?.toMap()
+                        }
+                        if self.type != nil {
+                            map["type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["dataset"] as? [String: Any?] {
+                            var model = CreatePipelineRequest.Sink.Condition.Routes.Sink.Dataset()
+                            model.fromMap(value)
+                            self.dataset = model
+                        }
+                        if let value = dict["type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public var expression: String?
+
+                public var id: String?
+
+                public var sink: CreatePipelineRequest.Sink.Condition.Routes.Sink?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.sink?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expression != nil {
+                        map["expression"] = self.expression!
+                    }
+                    if self.id != nil {
+                        map["id"] = self.id!
+                    }
+                    if self.sink != nil {
+                        map["sink"] = self.sink?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["expression"] as? String {
+                        self.expression = value
+                    }
+                    if let value = dict["id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["sink"] as? [String: Any?] {
+                        var model = CreatePipelineRequest.Sink.Condition.Routes.Sink()
+                        model.fromMap(value)
+                        self.sink = model
+                    }
+                }
+            }
+            public var defaultSink: CreatePipelineRequest.Sink.Condition.DefaultSink?
+
+            public var matchMode: String?
+
+            public var routes: [CreatePipelineRequest.Sink.Condition.Routes]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.defaultSink?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.defaultSink != nil {
+                    map["defaultSink"] = self.defaultSink?.toMap()
+                }
+                if self.matchMode != nil {
+                    map["matchMode"] = self.matchMode!
+                }
+                if self.routes != nil {
+                    var tmp : [Any] = []
+                    for k in self.routes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["routes"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["defaultSink"] as? [String: Any?] {
+                    var model = CreatePipelineRequest.Sink.Condition.DefaultSink()
+                    model.fromMap(value)
+                    self.defaultSink = model
+                }
+                if let value = dict["matchMode"] as? String {
+                    self.matchMode = value
+                }
+                if let value = dict["routes"] as? [Any?] {
+                    var tmp : [CreatePipelineRequest.Sink.Condition.Routes] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreatePipelineRequest.Sink.Condition.Routes()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.routes = tmp
+                }
+            }
+        }
         public class Dataset : Tea.TeaModel {
             public var agentSpace: String?
 
@@ -3491,6 +3828,8 @@ public class CreatePipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public var condition: CreatePipelineRequest.Sink.Condition?
+
         public var dataset: CreatePipelineRequest.Sink.Dataset?
 
         public var type: String?
@@ -3505,11 +3844,15 @@ public class CreatePipelineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.condition?.validate()
             try self.dataset?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.condition != nil {
+                map["condition"] = self.condition?.toMap()
+            }
             if self.dataset != nil {
                 map["dataset"] = self.dataset?.toMap()
             }
@@ -3521,6 +3864,11 @@ public class CreatePipelineRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["condition"] as? [String: Any?] {
+                var model = CreatePipelineRequest.Sink.Condition()
+                model.fromMap(value)
+                self.condition = model
+            }
             if let value = dict["dataset"] as? [String: Any?] {
                 var model = CreatePipelineRequest.Sink.Dataset()
                 model.fromMap(value)
@@ -3532,6 +3880,82 @@ public class CreatePipelineRequest : Tea.TeaModel {
         }
     }
     public class Source : Tea.TeaModel {
+        public class Dataset : Tea.TeaModel {
+            public var dataset: String?
+
+            public var filter: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataset != nil {
+                    map["dataset"] = self.dataset!
+                }
+                if self.filter != nil {
+                    map["filter"] = self.filter!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["dataset"] as? String {
+                    self.dataset = value
+                }
+                if let value = dict["filter"] as? String {
+                    self.filter = value
+                }
+            }
+        }
+        public class InputFields : Tea.TeaModel {
+            public var name: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class Logstore : Tea.TeaModel {
             public var logstore: String?
 
@@ -3578,6 +4002,10 @@ public class CreatePipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public var dataset: CreatePipelineRequest.Source.Dataset?
+
+        public var inputFields: [CreatePipelineRequest.Source.InputFields]?
+
         public var logstore: CreatePipelineRequest.Source.Logstore?
 
         public var type: String?
@@ -3592,11 +4020,22 @@ public class CreatePipelineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataset?.validate()
             try self.logstore?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataset != nil {
+                map["dataset"] = self.dataset?.toMap()
+            }
+            if self.inputFields != nil {
+                var tmp : [Any] = []
+                for k in self.inputFields! {
+                    tmp.append(k.toMap())
+                }
+                map["inputFields"] = tmp
+            }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
             }
@@ -3608,6 +4047,24 @@ public class CreatePipelineRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["dataset"] as? [String: Any?] {
+                var model = CreatePipelineRequest.Source.Dataset()
+                model.fromMap(value)
+                self.dataset = model
+            }
+            if let value = dict["inputFields"] as? [Any?] {
+                var tmp : [CreatePipelineRequest.Source.InputFields] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreatePipelineRequest.Source.InputFields()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.inputFields = tmp
+            }
             if let value = dict["logstore"] as? [String: Any?] {
                 var model = CreatePipelineRequest.Source.Logstore()
                 model.fromMap(value)
@@ -8184,6 +8641,276 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         }
     }
     public class Sink : Tea.TeaModel {
+        public class Condition : Tea.TeaModel {
+            public class DefaultSink : Tea.TeaModel {
+                public class Dataset : Tea.TeaModel {
+                    public var agentSpace: String?
+
+                    public var dataset: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentSpace != nil {
+                            map["agentSpace"] = self.agentSpace!
+                        }
+                        if self.dataset != nil {
+                            map["dataset"] = self.dataset!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentSpace"] as? String {
+                            self.agentSpace = value
+                        }
+                        if let value = dict["dataset"] as? String {
+                            self.dataset = value
+                        }
+                    }
+                }
+                public var dataset: GetPipelineResponseBody.Sink.Condition.DefaultSink.Dataset?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.dataset?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dataset != nil {
+                        map["dataset"] = self.dataset?.toMap()
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["dataset"] as? [String: Any?] {
+                        var model = GetPipelineResponseBody.Sink.Condition.DefaultSink.Dataset()
+                        model.fromMap(value)
+                        self.dataset = model
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class Routes : Tea.TeaModel {
+                public class Sink : Tea.TeaModel {
+                    public class Dataset : Tea.TeaModel {
+                        public var agentSpace: String?
+
+                        public var dataset: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.agentSpace != nil {
+                                map["agentSpace"] = self.agentSpace!
+                            }
+                            if self.dataset != nil {
+                                map["dataset"] = self.dataset!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["agentSpace"] as? String {
+                                self.agentSpace = value
+                            }
+                            if let value = dict["dataset"] as? String {
+                                self.dataset = value
+                            }
+                        }
+                    }
+                    public var dataset: GetPipelineResponseBody.Sink.Condition.Routes.Sink.Dataset?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.dataset?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.dataset != nil {
+                            map["dataset"] = self.dataset?.toMap()
+                        }
+                        if self.type != nil {
+                            map["type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["dataset"] as? [String: Any?] {
+                            var model = GetPipelineResponseBody.Sink.Condition.Routes.Sink.Dataset()
+                            model.fromMap(value)
+                            self.dataset = model
+                        }
+                        if let value = dict["type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public var expression: String?
+
+                public var id: String?
+
+                public var sink: GetPipelineResponseBody.Sink.Condition.Routes.Sink?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.sink?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expression != nil {
+                        map["expression"] = self.expression!
+                    }
+                    if self.id != nil {
+                        map["id"] = self.id!
+                    }
+                    if self.sink != nil {
+                        map["sink"] = self.sink?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["expression"] as? String {
+                        self.expression = value
+                    }
+                    if let value = dict["id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["sink"] as? [String: Any?] {
+                        var model = GetPipelineResponseBody.Sink.Condition.Routes.Sink()
+                        model.fromMap(value)
+                        self.sink = model
+                    }
+                }
+            }
+            public var defaultSink: GetPipelineResponseBody.Sink.Condition.DefaultSink?
+
+            public var matchMode: String?
+
+            public var routes: [GetPipelineResponseBody.Sink.Condition.Routes]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.defaultSink?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.defaultSink != nil {
+                    map["defaultSink"] = self.defaultSink?.toMap()
+                }
+                if self.matchMode != nil {
+                    map["matchMode"] = self.matchMode!
+                }
+                if self.routes != nil {
+                    var tmp : [Any] = []
+                    for k in self.routes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["routes"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["defaultSink"] as? [String: Any?] {
+                    var model = GetPipelineResponseBody.Sink.Condition.DefaultSink()
+                    model.fromMap(value)
+                    self.defaultSink = model
+                }
+                if let value = dict["matchMode"] as? String {
+                    self.matchMode = value
+                }
+                if let value = dict["routes"] as? [Any?] {
+                    var tmp : [GetPipelineResponseBody.Sink.Condition.Routes] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetPipelineResponseBody.Sink.Condition.Routes()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.routes = tmp
+                }
+            }
+        }
         public class Dataset : Tea.TeaModel {
             public var agentSpace: String?
 
@@ -8222,6 +8949,8 @@ public class GetPipelineResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var condition: GetPipelineResponseBody.Sink.Condition?
+
         public var dataset: GetPipelineResponseBody.Sink.Dataset?
 
         public var type: String?
@@ -8236,11 +8965,15 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.condition?.validate()
             try self.dataset?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.condition != nil {
+                map["condition"] = self.condition?.toMap()
+            }
             if self.dataset != nil {
                 map["dataset"] = self.dataset?.toMap()
             }
@@ -8252,6 +8985,11 @@ public class GetPipelineResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["condition"] as? [String: Any?] {
+                var model = GetPipelineResponseBody.Sink.Condition()
+                model.fromMap(value)
+                self.condition = model
+            }
             if let value = dict["dataset"] as? [String: Any?] {
                 var model = GetPipelineResponseBody.Sink.Dataset()
                 model.fromMap(value)
@@ -8263,6 +9001,82 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         }
     }
     public class Source : Tea.TeaModel {
+        public class Dataset : Tea.TeaModel {
+            public var dataset: String?
+
+            public var filter: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataset != nil {
+                    map["dataset"] = self.dataset!
+                }
+                if self.filter != nil {
+                    map["filter"] = self.filter!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["dataset"] as? String {
+                    self.dataset = value
+                }
+                if let value = dict["filter"] as? String {
+                    self.filter = value
+                }
+            }
+        }
+        public class InputFields : Tea.TeaModel {
+            public var name: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class Logstore : Tea.TeaModel {
             public var logstore: String?
 
@@ -8309,6 +9123,10 @@ public class GetPipelineResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var dataset: GetPipelineResponseBody.Source.Dataset?
+
+        public var inputFields: [GetPipelineResponseBody.Source.InputFields]?
+
         public var logstore: GetPipelineResponseBody.Source.Logstore?
 
         public var type: String?
@@ -8323,11 +9141,22 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataset?.validate()
             try self.logstore?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataset != nil {
+                map["dataset"] = self.dataset?.toMap()
+            }
+            if self.inputFields != nil {
+                var tmp : [Any] = []
+                for k in self.inputFields! {
+                    tmp.append(k.toMap())
+                }
+                map["inputFields"] = tmp
+            }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
             }
@@ -8339,6 +9168,24 @@ public class GetPipelineResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["dataset"] as? [String: Any?] {
+                var model = GetPipelineResponseBody.Source.Dataset()
+                model.fromMap(value)
+                self.dataset = model
+            }
+            if let value = dict["inputFields"] as? [Any?] {
+                var tmp : [GetPipelineResponseBody.Source.InputFields] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetPipelineResponseBody.Source.InputFields()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.inputFields = tmp
+            }
             if let value = dict["logstore"] as? [String: Any?] {
                 var model = GetPipelineResponseBody.Source.Logstore()
                 model.fromMap(value)
@@ -12965,6 +13812,82 @@ public class PreviewPipelineRequest : Tea.TeaModel {
         }
     }
     public class Source : Tea.TeaModel {
+        public class Dataset : Tea.TeaModel {
+            public var dataset: String?
+
+            public var filter: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataset != nil {
+                    map["dataset"] = self.dataset!
+                }
+                if self.filter != nil {
+                    map["filter"] = self.filter!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["dataset"] as? String {
+                    self.dataset = value
+                }
+                if let value = dict["filter"] as? String {
+                    self.filter = value
+                }
+            }
+        }
+        public class InputFields : Tea.TeaModel {
+            public var name: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class Logstore : Tea.TeaModel {
             public var logstore: String?
 
@@ -13011,6 +13934,10 @@ public class PreviewPipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public var dataset: PreviewPipelineRequest.Source.Dataset?
+
+        public var inputFields: [PreviewPipelineRequest.Source.InputFields]?
+
         public var logstore: PreviewPipelineRequest.Source.Logstore?
 
         public var type: String?
@@ -13025,11 +13952,22 @@ public class PreviewPipelineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataset?.validate()
             try self.logstore?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataset != nil {
+                map["dataset"] = self.dataset?.toMap()
+            }
+            if self.inputFields != nil {
+                var tmp : [Any] = []
+                for k in self.inputFields! {
+                    tmp.append(k.toMap())
+                }
+                map["inputFields"] = tmp
+            }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
             }
@@ -13041,6 +13979,24 @@ public class PreviewPipelineRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["dataset"] as? [String: Any?] {
+                var model = PreviewPipelineRequest.Source.Dataset()
+                model.fromMap(value)
+                self.dataset = model
+            }
+            if let value = dict["inputFields"] as? [Any?] {
+                var tmp : [PreviewPipelineRequest.Source.InputFields] = []
+                for v in value {
+                    if v != nil {
+                        var model = PreviewPipelineRequest.Source.InputFields()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.inputFields = tmp
+            }
             if let value = dict["logstore"] as? [String: Any?] {
                 var model = PreviewPipelineRequest.Source.Logstore()
                 model.fromMap(value)
@@ -15854,6 +16810,276 @@ public class UpdatePipelineRequest : Tea.TeaModel {
         }
     }
     public class Sink : Tea.TeaModel {
+        public class Condition : Tea.TeaModel {
+            public class DefaultSink : Tea.TeaModel {
+                public class Dataset : Tea.TeaModel {
+                    public var agentSpace: String?
+
+                    public var dataset: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentSpace != nil {
+                            map["agentSpace"] = self.agentSpace!
+                        }
+                        if self.dataset != nil {
+                            map["dataset"] = self.dataset!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentSpace"] as? String {
+                            self.agentSpace = value
+                        }
+                        if let value = dict["dataset"] as? String {
+                            self.dataset = value
+                        }
+                    }
+                }
+                public var dataset: UpdatePipelineRequest.Sink.Condition.DefaultSink.Dataset?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.dataset?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dataset != nil {
+                        map["dataset"] = self.dataset?.toMap()
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["dataset"] as? [String: Any?] {
+                        var model = UpdatePipelineRequest.Sink.Condition.DefaultSink.Dataset()
+                        model.fromMap(value)
+                        self.dataset = model
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class Routes : Tea.TeaModel {
+                public class Sink : Tea.TeaModel {
+                    public class Dataset : Tea.TeaModel {
+                        public var agentSpace: String?
+
+                        public var dataset: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.agentSpace != nil {
+                                map["agentSpace"] = self.agentSpace!
+                            }
+                            if self.dataset != nil {
+                                map["dataset"] = self.dataset!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["agentSpace"] as? String {
+                                self.agentSpace = value
+                            }
+                            if let value = dict["dataset"] as? String {
+                                self.dataset = value
+                            }
+                        }
+                    }
+                    public var dataset: UpdatePipelineRequest.Sink.Condition.Routes.Sink.Dataset?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.dataset?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.dataset != nil {
+                            map["dataset"] = self.dataset?.toMap()
+                        }
+                        if self.type != nil {
+                            map["type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["dataset"] as? [String: Any?] {
+                            var model = UpdatePipelineRequest.Sink.Condition.Routes.Sink.Dataset()
+                            model.fromMap(value)
+                            self.dataset = model
+                        }
+                        if let value = dict["type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public var expression: String?
+
+                public var id: String?
+
+                public var sink: UpdatePipelineRequest.Sink.Condition.Routes.Sink?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.sink?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expression != nil {
+                        map["expression"] = self.expression!
+                    }
+                    if self.id != nil {
+                        map["id"] = self.id!
+                    }
+                    if self.sink != nil {
+                        map["sink"] = self.sink?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["expression"] as? String {
+                        self.expression = value
+                    }
+                    if let value = dict["id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["sink"] as? [String: Any?] {
+                        var model = UpdatePipelineRequest.Sink.Condition.Routes.Sink()
+                        model.fromMap(value)
+                        self.sink = model
+                    }
+                }
+            }
+            public var defaultSink: UpdatePipelineRequest.Sink.Condition.DefaultSink?
+
+            public var matchMode: String?
+
+            public var routes: [UpdatePipelineRequest.Sink.Condition.Routes]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.defaultSink?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.defaultSink != nil {
+                    map["defaultSink"] = self.defaultSink?.toMap()
+                }
+                if self.matchMode != nil {
+                    map["matchMode"] = self.matchMode!
+                }
+                if self.routes != nil {
+                    var tmp : [Any] = []
+                    for k in self.routes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["routes"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["defaultSink"] as? [String: Any?] {
+                    var model = UpdatePipelineRequest.Sink.Condition.DefaultSink()
+                    model.fromMap(value)
+                    self.defaultSink = model
+                }
+                if let value = dict["matchMode"] as? String {
+                    self.matchMode = value
+                }
+                if let value = dict["routes"] as? [Any?] {
+                    var tmp : [UpdatePipelineRequest.Sink.Condition.Routes] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdatePipelineRequest.Sink.Condition.Routes()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.routes = tmp
+                }
+            }
+        }
         public class Dataset : Tea.TeaModel {
             public var agentSpace: String?
 
@@ -15892,6 +17118,8 @@ public class UpdatePipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public var condition: UpdatePipelineRequest.Sink.Condition?
+
         public var dataset: UpdatePipelineRequest.Sink.Dataset?
 
         public var type: String?
@@ -15906,11 +17134,15 @@ public class UpdatePipelineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.condition?.validate()
             try self.dataset?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.condition != nil {
+                map["condition"] = self.condition?.toMap()
+            }
             if self.dataset != nil {
                 map["dataset"] = self.dataset?.toMap()
             }
@@ -15922,6 +17154,11 @@ public class UpdatePipelineRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["condition"] as? [String: Any?] {
+                var model = UpdatePipelineRequest.Sink.Condition()
+                model.fromMap(value)
+                self.condition = model
+            }
             if let value = dict["dataset"] as? [String: Any?] {
                 var model = UpdatePipelineRequest.Sink.Dataset()
                 model.fromMap(value)
@@ -15933,8 +17170,86 @@ public class UpdatePipelineRequest : Tea.TeaModel {
         }
     }
     public class Source : Tea.TeaModel {
+        public class Dataset : Tea.TeaModel {
+            public var dataset: String?
+
+            public var filter: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataset != nil {
+                    map["dataset"] = self.dataset!
+                }
+                if self.filter != nil {
+                    map["filter"] = self.filter!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["dataset"] as? String {
+                    self.dataset = value
+                }
+                if let value = dict["filter"] as? String {
+                    self.filter = value
+                }
+            }
+        }
+        public class InputFields : Tea.TeaModel {
+            public var name: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class Logstore : Tea.TeaModel {
             public var logstore: String?
+
+            public var project: String?
 
             public var query: String?
 
@@ -15955,6 +17270,9 @@ public class UpdatePipelineRequest : Tea.TeaModel {
                 if self.logstore != nil {
                     map["logstore"] = self.logstore!
                 }
+                if self.project != nil {
+                    map["project"] = self.project!
+                }
                 if self.query != nil {
                     map["query"] = self.query!
                 }
@@ -15966,11 +17284,18 @@ public class UpdatePipelineRequest : Tea.TeaModel {
                 if let value = dict["logstore"] as? String {
                     self.logstore = value
                 }
+                if let value = dict["project"] as? String {
+                    self.project = value
+                }
                 if let value = dict["query"] as? String {
                     self.query = value
                 }
             }
         }
+        public var dataset: UpdatePipelineRequest.Source.Dataset?
+
+        public var inputFields: [UpdatePipelineRequest.Source.InputFields]?
+
         public var logstore: UpdatePipelineRequest.Source.Logstore?
 
         public var type: String?
@@ -15985,11 +17310,22 @@ public class UpdatePipelineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataset?.validate()
             try self.logstore?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataset != nil {
+                map["dataset"] = self.dataset?.toMap()
+            }
+            if self.inputFields != nil {
+                var tmp : [Any] = []
+                for k in self.inputFields! {
+                    tmp.append(k.toMap())
+                }
+                map["inputFields"] = tmp
+            }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
             }
@@ -16001,6 +17337,24 @@ public class UpdatePipelineRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["dataset"] as? [String: Any?] {
+                var model = UpdatePipelineRequest.Source.Dataset()
+                model.fromMap(value)
+                self.dataset = model
+            }
+            if let value = dict["inputFields"] as? [Any?] {
+                var tmp : [UpdatePipelineRequest.Source.InputFields] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdatePipelineRequest.Source.InputFields()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.inputFields = tmp
+            }
             if let value = dict["logstore"] as? [String: Any?] {
                 var model = UpdatePipelineRequest.Source.Logstore()
                 model.fromMap(value)
