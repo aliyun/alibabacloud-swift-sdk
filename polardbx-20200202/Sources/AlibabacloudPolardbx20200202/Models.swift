@@ -41940,6 +41940,8 @@ public class EnableSqlAuditResponse : Tea.TeaModel {
 public class ExecuteMetaQueryRequest : Tea.TeaModel {
     public var DBInstanceName: String?
 
+    public var maxResultRows: Int64?
+
     public var regionId: String?
 
     public var sql: String?
@@ -41963,6 +41965,9 @@ public class ExecuteMetaQueryRequest : Tea.TeaModel {
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
+        if self.maxResultRows != nil {
+            map["MaxResultRows"] = self.maxResultRows!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -41979,6 +41984,9 @@ public class ExecuteMetaQueryRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBInstanceName"] as? String {
             self.DBInstanceName = value
+        }
+        if let value = dict["MaxResultRows"] as? Int64 {
+            self.maxResultRows = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -42056,7 +42064,17 @@ public class ExecuteMetaQueryResponseBody : Tea.TeaModel {
         }
     }
     public class Data : Tea.TeaModel {
+        public var appliedOffset: Int64?
+
+        public var appliedRowLimit: Int64?
+
         public var columns: [String]?
+
+        public var hasMore: Bool?
+
+        public var recordsSizeBytes: Int64?
+
+        public var returnedRowCount: Int64?
 
         public var rowCount: Int32?
 
@@ -42076,8 +42094,23 @@ public class ExecuteMetaQueryResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appliedOffset != nil {
+                map["AppliedOffset"] = self.appliedOffset!
+            }
+            if self.appliedRowLimit != nil {
+                map["AppliedRowLimit"] = self.appliedRowLimit!
+            }
             if self.columns != nil {
                 map["Columns"] = self.columns!
+            }
+            if self.hasMore != nil {
+                map["HasMore"] = self.hasMore!
+            }
+            if self.recordsSizeBytes != nil {
+                map["RecordsSizeBytes"] = self.recordsSizeBytes!
+            }
+            if self.returnedRowCount != nil {
+                map["ReturnedRowCount"] = self.returnedRowCount!
             }
             if self.rowCount != nil {
                 map["RowCount"] = self.rowCount!
@@ -42090,8 +42123,23 @@ public class ExecuteMetaQueryResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AppliedOffset"] as? Int64 {
+                self.appliedOffset = value
+            }
+            if let value = dict["AppliedRowLimit"] as? Int64 {
+                self.appliedRowLimit = value
+            }
             if let value = dict["Columns"] as? [String] {
                 self.columns = value
+            }
+            if let value = dict["HasMore"] as? Bool {
+                self.hasMore = value
+            }
+            if let value = dict["RecordsSizeBytes"] as? Int64 {
+                self.recordsSizeBytes = value
+            }
+            if let value = dict["ReturnedRowCount"] as? Int64 {
+                self.returnedRowCount = value
             }
             if let value = dict["RowCount"] as? Int32 {
                 self.rowCount = value
@@ -48493,6 +48541,632 @@ public class PreCheckSqlFlashbackTaskResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = PreCheckSqlFlashbackTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryColumnarLogRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var maxResultRows: Int64?
+
+    public var regionId: String?
+
+    public var SQL: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.maxResultRows != nil {
+            map["MaxResultRows"] = self.maxResultRows!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.SQL != nil {
+            map["SQL"] = self.SQL!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["MaxResultRows"] as? Int64 {
+            self.maxResultRows = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SQL"] as? String {
+            self.SQL = value
+        }
+    }
+}
+
+public class QueryColumnarLogResponseBody : Tea.TeaModel {
+    public class AccessDeniedDetail : Tea.TeaModel {
+        public var authAction: String?
+
+        public var authPrincipalDisplayName: String?
+
+        public var authPrincipalOwnerId: String?
+
+        public var authPrincipalType: String?
+
+        public var encodedDiagnosticMessage: String?
+
+        public var noPermissionType: String?
+
+        public var policyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authAction != nil {
+                map["AuthAction"] = self.authAction!
+            }
+            if self.authPrincipalDisplayName != nil {
+                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
+            }
+            if self.authPrincipalOwnerId != nil {
+                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
+            }
+            if self.authPrincipalType != nil {
+                map["AuthPrincipalType"] = self.authPrincipalType!
+            }
+            if self.encodedDiagnosticMessage != nil {
+                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
+            }
+            if self.noPermissionType != nil {
+                map["NoPermissionType"] = self.noPermissionType!
+            }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthAction"] as? String {
+                self.authAction = value
+            }
+            if let value = dict["AuthPrincipalDisplayName"] as? String {
+                self.authPrincipalDisplayName = value
+            }
+            if let value = dict["AuthPrincipalOwnerId"] as? String {
+                self.authPrincipalOwnerId = value
+            }
+            if let value = dict["AuthPrincipalType"] as? String {
+                self.authPrincipalType = value
+            }
+            if let value = dict["EncodedDiagnosticMessage"] as? String {
+                self.encodedDiagnosticMessage = value
+            }
+            if let value = dict["NoPermissionType"] as? String {
+                self.noPermissionType = value
+            }
+            if let value = dict["PolicyType"] as? String {
+                self.policyType = value
+            }
+        }
+    }
+    public var accessDeniedDetail: QueryColumnarLogResponseBody.AccessDeniedDetail?
+
+    public var appliedOffset: Int64?
+
+    public var appliedRowLimit: Int64?
+
+    public var hasMore: Bool?
+
+    public var queryElapsedTimeMilliseconds: Int64?
+
+    public var queryId: String?
+
+    public var records: [[String: String]]?
+
+    public var recordsSizeBytes: Int64?
+
+    public var requestId: String?
+
+    public var returnedRowCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accessDeniedDetail?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
+        }
+        if self.appliedOffset != nil {
+            map["AppliedOffset"] = self.appliedOffset!
+        }
+        if self.appliedRowLimit != nil {
+            map["AppliedRowLimit"] = self.appliedRowLimit!
+        }
+        if self.hasMore != nil {
+            map["HasMore"] = self.hasMore!
+        }
+        if self.queryElapsedTimeMilliseconds != nil {
+            map["QueryElapsedTimeMilliseconds"] = self.queryElapsedTimeMilliseconds!
+        }
+        if self.queryId != nil {
+            map["QueryId"] = self.queryId!
+        }
+        if self.records != nil {
+            map["Records"] = self.records!
+        }
+        if self.recordsSizeBytes != nil {
+            map["RecordsSizeBytes"] = self.recordsSizeBytes!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.returnedRowCount != nil {
+            map["ReturnedRowCount"] = self.returnedRowCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? [String: Any?] {
+            var model = QueryColumnarLogResponseBody.AccessDeniedDetail()
+            model.fromMap(value)
+            self.accessDeniedDetail = model
+        }
+        if let value = dict["AppliedOffset"] as? Int64 {
+            self.appliedOffset = value
+        }
+        if let value = dict["AppliedRowLimit"] as? Int64 {
+            self.appliedRowLimit = value
+        }
+        if let value = dict["HasMore"] as? Bool {
+            self.hasMore = value
+        }
+        if let value = dict["QueryElapsedTimeMilliseconds"] as? Int64 {
+            self.queryElapsedTimeMilliseconds = value
+        }
+        if let value = dict["QueryId"] as? String {
+            self.queryId = value
+        }
+        if let value = dict["Records"] as? [[String: String]] {
+            self.records = value
+        }
+        if let value = dict["RecordsSizeBytes"] as? Int64 {
+            self.recordsSizeBytes = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ReturnedRowCount"] as? Int64 {
+            self.returnedRowCount = value
+        }
+    }
+}
+
+public class QueryColumnarLogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryColumnarLogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryColumnarLogResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryColumnarLogSSERequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var maxResultRows: Int64?
+
+    public var regionId: String?
+
+    public var SQL: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.maxResultRows != nil {
+            map["MaxResultRows"] = self.maxResultRows!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.SQL != nil {
+            map["SQL"] = self.SQL!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["MaxResultRows"] as? Int64 {
+            self.maxResultRows = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SQL"] as? String {
+            self.SQL = value
+        }
+    }
+}
+
+public class QueryColumnarLogSSEResponseBody : Tea.TeaModel {
+    public class AccessDeniedDetail : Tea.TeaModel {
+        public var authAction: String?
+
+        public var authPrincipalDisplayName: String?
+
+        public var authPrincipalOwnerId: String?
+
+        public var authPrincipalType: String?
+
+        public var encodedDiagnosticMessage: String?
+
+        public var noPermissionType: String?
+
+        public var policyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authAction != nil {
+                map["AuthAction"] = self.authAction!
+            }
+            if self.authPrincipalDisplayName != nil {
+                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
+            }
+            if self.authPrincipalOwnerId != nil {
+                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
+            }
+            if self.authPrincipalType != nil {
+                map["AuthPrincipalType"] = self.authPrincipalType!
+            }
+            if self.encodedDiagnosticMessage != nil {
+                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
+            }
+            if self.noPermissionType != nil {
+                map["NoPermissionType"] = self.noPermissionType!
+            }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthAction"] as? String {
+                self.authAction = value
+            }
+            if let value = dict["AuthPrincipalDisplayName"] as? String {
+                self.authPrincipalDisplayName = value
+            }
+            if let value = dict["AuthPrincipalOwnerId"] as? String {
+                self.authPrincipalOwnerId = value
+            }
+            if let value = dict["AuthPrincipalType"] as? String {
+                self.authPrincipalType = value
+            }
+            if let value = dict["EncodedDiagnosticMessage"] as? String {
+                self.encodedDiagnosticMessage = value
+            }
+            if let value = dict["NoPermissionType"] as? String {
+                self.noPermissionType = value
+            }
+            if let value = dict["PolicyType"] as? String {
+                self.policyType = value
+            }
+        }
+    }
+    public var accessDeniedDetail: QueryColumnarLogSSEResponseBody.AccessDeniedDetail?
+
+    public var appliedOffset: Int64?
+
+    public var appliedRowLimit: Int64?
+
+    public var code: String?
+
+    public var hasMore: Bool?
+
+    public var message: String?
+
+    public var partial: Bool?
+
+    public var queryElapsedTimeMilliseconds: Int64?
+
+    public var queryId: String?
+
+    public var records: [[String: String]]?
+
+    public var recordsSizeBytes: Int64?
+
+    public var requestId: String?
+
+    public var retryable: Bool?
+
+    public var returnedRowCount: Int64?
+
+    public var sequence: Int64?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accessDeniedDetail?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
+        }
+        if self.appliedOffset != nil {
+            map["AppliedOffset"] = self.appliedOffset!
+        }
+        if self.appliedRowLimit != nil {
+            map["AppliedRowLimit"] = self.appliedRowLimit!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.hasMore != nil {
+            map["HasMore"] = self.hasMore!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.partial != nil {
+            map["Partial"] = self.partial!
+        }
+        if self.queryElapsedTimeMilliseconds != nil {
+            map["QueryElapsedTimeMilliseconds"] = self.queryElapsedTimeMilliseconds!
+        }
+        if self.queryId != nil {
+            map["QueryId"] = self.queryId!
+        }
+        if self.records != nil {
+            map["Records"] = self.records!
+        }
+        if self.recordsSizeBytes != nil {
+            map["RecordsSizeBytes"] = self.recordsSizeBytes!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.retryable != nil {
+            map["Retryable"] = self.retryable!
+        }
+        if self.returnedRowCount != nil {
+            map["ReturnedRowCount"] = self.returnedRowCount!
+        }
+        if self.sequence != nil {
+            map["Sequence"] = self.sequence!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? [String: Any?] {
+            var model = QueryColumnarLogSSEResponseBody.AccessDeniedDetail()
+            model.fromMap(value)
+            self.accessDeniedDetail = model
+        }
+        if let value = dict["AppliedOffset"] as? Int64 {
+            self.appliedOffset = value
+        }
+        if let value = dict["AppliedRowLimit"] as? Int64 {
+            self.appliedRowLimit = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["HasMore"] as? Bool {
+            self.hasMore = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["Partial"] as? Bool {
+            self.partial = value
+        }
+        if let value = dict["QueryElapsedTimeMilliseconds"] as? Int64 {
+            self.queryElapsedTimeMilliseconds = value
+        }
+        if let value = dict["QueryId"] as? String {
+            self.queryId = value
+        }
+        if let value = dict["Records"] as? [[String: String]] {
+            self.records = value
+        }
+        if let value = dict["RecordsSizeBytes"] as? Int64 {
+            self.recordsSizeBytes = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Retryable"] as? Bool {
+            self.retryable = value
+        }
+        if let value = dict["ReturnedRowCount"] as? Int64 {
+            self.returnedRowCount = value
+        }
+        if let value = dict["Sequence"] as? Int64 {
+            self.sequence = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class QueryColumnarLogSSEResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryColumnarLogSSEResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryColumnarLogSSEResponseBody()
             model.fromMap(value)
             self.body = model
         }

@@ -5868,6 +5868,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
             query["DBInstanceName"] = request.DBInstanceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxResultRows)) {
+            query["MaxResultRows"] = request.maxResultRows!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -7198,6 +7201,86 @@ open class Client : AlibabacloudOpenApi.Client {
     public func preCheckSqlFlashbackTask(_ request: PreCheckSqlFlashbackTaskRequest) async throws -> PreCheckSqlFlashbackTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await preCheckSqlFlashbackTaskWithOptions(request as! PreCheckSqlFlashbackTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryColumnarLogWithOptions(_ request: QueryColumnarLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryColumnarLogResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResultRows)) {
+            query["MaxResultRows"] = request.maxResultRows!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SQL)) {
+            query["SQL"] = request.SQL ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryColumnarLog",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryColumnarLogResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryColumnarLog(_ request: QueryColumnarLogRequest) async throws -> QueryColumnarLogResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryColumnarLogWithOptions(request as! QueryColumnarLogRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryColumnarLogSSEWithOptions(_ request: QueryColumnarLogSSERequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryColumnarLogSSEResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResultRows)) {
+            query["MaxResultRows"] = request.maxResultRows!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SQL)) {
+            query["SQL"] = request.SQL ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryColumnarLogSSE",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryColumnarLogSSEResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryColumnarLogSSE(_ request: QueryColumnarLogSSERequest) async throws -> QueryColumnarLogSSEResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryColumnarLogSSEWithOptions(request as! QueryColumnarLogSSERequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
