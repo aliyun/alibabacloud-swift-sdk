@@ -24083,6 +24083,8 @@ public class ListDataInsightDirectoriesResponseBody : Tea.TeaModel {
 
             public var fileCountOnline: Int64?
 
+            public var inode: Int64?
+
             public var lastAccessTime: String?
 
             public var updatedAt: String?
@@ -24128,6 +24130,9 @@ public class ListDataInsightDirectoriesResponseBody : Tea.TeaModel {
                 if self.fileCountOnline != nil {
                     map["FileCountOnline"] = self.fileCountOnline!
                 }
+                if self.inode != nil {
+                    map["Inode"] = self.inode!
+                }
                 if self.lastAccessTime != nil {
                     map["LastAccessTime"] = self.lastAccessTime!
                 }
@@ -24166,6 +24171,9 @@ public class ListDataInsightDirectoriesResponseBody : Tea.TeaModel {
                 if let value = dict["FileCountOnline"] as? Int64 {
                     self.fileCountOnline = value
                 }
+                if let value = dict["Inode"] as? Int64 {
+                    self.inode = value
+                }
                 if let value = dict["LastAccessTime"] as? String {
                     self.lastAccessTime = value
                 }
@@ -24185,6 +24193,8 @@ public class ListDataInsightDirectoriesResponseBody : Tea.TeaModel {
         public var fileCountOffline: Int64?
 
         public var fileCountOnline: Int64?
+
+        public var inode: Int64?
 
         public var subDirectories: [ListDataInsightDirectoriesResponseBody.Directory.SubDirectories]?
 
@@ -24220,6 +24230,9 @@ public class ListDataInsightDirectoriesResponseBody : Tea.TeaModel {
             if self.fileCountOnline != nil {
                 map["FileCountOnline"] = self.fileCountOnline!
             }
+            if self.inode != nil {
+                map["Inode"] = self.inode!
+            }
             if self.subDirectories != nil {
                 var tmp : [Any] = []
                 for k in self.subDirectories! {
@@ -24249,6 +24262,9 @@ public class ListDataInsightDirectoriesResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileCountOnline"] as? Int64 {
                 self.fileCountOnline = value
+            }
+            if let value = dict["Inode"] as? Int64 {
+                self.inode = value
             }
             if let value = dict["SubDirectories"] as? [Any?] {
                 var tmp : [ListDataInsightDirectoriesResponseBody.Directory.SubDirectories] = []
