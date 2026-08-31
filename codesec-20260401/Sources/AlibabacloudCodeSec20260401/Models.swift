@@ -1195,6 +1195,8 @@ public class DescribeScansResponseBody : Tea.TeaModel {
 
         public var createdBy: String?
 
+        public var currentPhase: String?
+
         public var engineSnapshot: DescribeScansResponseBody.Items.EngineSnapshot?
 
         public var finishedAt: String?
@@ -1243,6 +1245,9 @@ public class DescribeScansResponseBody : Tea.TeaModel {
             }
             if self.createdBy != nil {
                 map["createdBy"] = self.createdBy!
+            }
+            if self.currentPhase != nil {
+                map["currentPhase"] = self.currentPhase!
             }
             if self.engineSnapshot != nil {
                 map["engineSnapshot"] = self.engineSnapshot?.toMap()
@@ -1293,6 +1298,9 @@ public class DescribeScansResponseBody : Tea.TeaModel {
             }
             if let value = dict["createdBy"] as? String {
                 self.createdBy = value
+            }
+            if let value = dict["currentPhase"] as? String {
+                self.currentPhase = value
             }
             if let value = dict["engineSnapshot"] as? [String: Any?] {
                 var model = DescribeScansResponseBody.Items.EngineSnapshot()
