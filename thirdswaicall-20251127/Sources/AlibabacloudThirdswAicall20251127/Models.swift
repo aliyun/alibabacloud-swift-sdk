@@ -538,6 +538,8 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
 
     public var displayStatusList: [String]?
 
+    public var durationRangeList: [String]?
+
     public var labelTags: [String]?
 
     public var maxResults: Int32?
@@ -591,6 +593,9 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         if self.displayStatusList != nil {
             map["DisplayStatusList"] = self.displayStatusList!
         }
+        if self.durationRangeList != nil {
+            map["DurationRangeList"] = self.durationRangeList!
+        }
         if self.labelTags != nil {
             map["LabelTags"] = self.labelTags!
         }
@@ -641,6 +646,9 @@ public class ReadOutboundTaskCallListRequest : Tea.TeaModel {
         if let value = dict["DisplayStatusList"] as? [String] {
             self.displayStatusList = value
         }
+        if let value = dict["DurationRangeList"] as? [String] {
+            self.durationRangeList = value
+        }
         if let value = dict["LabelTags"] as? [String] {
             self.labelTags = value
         }
@@ -680,6 +688,8 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
     public var customerNameOrPhone: String?
 
     public var displayStatusListShrink: String?
+
+    public var durationRangeListShrink: String?
 
     public var labelTagsShrink: String?
 
@@ -734,6 +744,9 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         if self.displayStatusListShrink != nil {
             map["DisplayStatusList"] = self.displayStatusListShrink!
         }
+        if self.durationRangeListShrink != nil {
+            map["DurationRangeList"] = self.durationRangeListShrink!
+        }
         if self.labelTagsShrink != nil {
             map["LabelTags"] = self.labelTagsShrink!
         }
@@ -783,6 +796,9 @@ public class ReadOutboundTaskCallListShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DisplayStatusList"] as? String {
             self.displayStatusListShrink = value
+        }
+        if let value = dict["DurationRangeList"] as? String {
+            self.durationRangeListShrink = value
         }
         if let value = dict["LabelTags"] as? String {
             self.labelTagsShrink = value

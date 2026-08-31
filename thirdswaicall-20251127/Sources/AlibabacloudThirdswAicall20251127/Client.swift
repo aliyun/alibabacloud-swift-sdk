@@ -126,6 +126,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.displayStatusList)) {
             request.displayStatusListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.displayStatusList, "DisplayStatusList", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.durationRangeList)) {
+            request.durationRangeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.durationRangeList, "DurationRangeList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.labelTags)) {
             request.labelTagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelTags, "LabelTags", "json")
         }
@@ -156,6 +159,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.displayStatusListShrink)) {
             body["DisplayStatusList"] = request.displayStatusListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.durationRangeListShrink)) {
+            body["DurationRangeList"] = request.durationRangeListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.labelTagsShrink)) {
             body["LabelTags"] = request.labelTagsShrink ?? "";
