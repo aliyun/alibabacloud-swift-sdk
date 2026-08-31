@@ -12415,6 +12415,8 @@ public class DescribeComfyTasksRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var taskId: String?
+
     public var taskState: String?
 
     public var workflowId: String?
@@ -12439,6 +12441,9 @@ public class DescribeComfyTasksRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         if self.taskState != nil {
             map["TaskState"] = self.taskState!
         }
@@ -12455,6 +12460,9 @@ public class DescribeComfyTasksRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
         }
         if let value = dict["TaskState"] as? String {
             self.taskState = value
@@ -12473,9 +12481,13 @@ public class DescribeComfyTasksResponseBody : Tea.TeaModel {
 
         public var hiveId: String?
 
+        public var taskErrorMessage: String?
+
         public var taskId: String?
 
         public var taskState: String?
+
+        public var taskStateMessage: String?
 
         public var updatedTime: String?
 
@@ -12504,11 +12516,17 @@ public class DescribeComfyTasksResponseBody : Tea.TeaModel {
             if self.hiveId != nil {
                 map["HiveId"] = self.hiveId!
             }
+            if self.taskErrorMessage != nil {
+                map["TaskErrorMessage"] = self.taskErrorMessage!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
             if self.taskState != nil {
                 map["TaskState"] = self.taskState!
+            }
+            if self.taskStateMessage != nil {
+                map["TaskStateMessage"] = self.taskStateMessage!
             }
             if self.updatedTime != nil {
                 map["UpdatedTime"] = self.updatedTime!
@@ -12530,11 +12548,17 @@ public class DescribeComfyTasksResponseBody : Tea.TeaModel {
             if let value = dict["HiveId"] as? String {
                 self.hiveId = value
             }
+            if let value = dict["TaskErrorMessage"] as? String {
+                self.taskErrorMessage = value
+            }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
             }
             if let value = dict["TaskState"] as? String {
                 self.taskState = value
+            }
+            if let value = dict["TaskStateMessage"] as? String {
+                self.taskStateMessage = value
             }
             if let value = dict["UpdatedTime"] as? String {
                 self.updatedTime = value

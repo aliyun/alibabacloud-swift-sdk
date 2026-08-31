@@ -11,9 +11,9 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-shenzhen": "vs.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai": "vs.cn-shanghai.aliyuncs.com",
             "cn-qingdao": "vs.cn-qingdao.aliyuncs.com",
-            "cn-beijing": "vs.cn-beijing.aliyuncs.com"
+            "cn-beijing": "vs.cn-beijing.aliyuncs.com",
+            "cn-shanghai": "vs.cn-shanghai.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("vs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -2776,6 +2776,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.taskState)) {
             query["TaskState"] = request.taskState ?? "";
