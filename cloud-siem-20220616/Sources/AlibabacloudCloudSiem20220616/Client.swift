@@ -2261,6 +2261,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoSubmit)) {
             body["AutoSubmit"] = request.autoSubmit!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
         }
@@ -3789,6 +3792,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func postEventDisposeAndWhiteruleListWithOptions(_ request: PostEventDisposeAndWhiteruleListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PostEventDisposeAndWhiteruleListResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.disposeStrategyIds)) {
             body["DisposeStrategyIds"] = request.disposeStrategyIds ?? "";
         }

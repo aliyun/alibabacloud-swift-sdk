@@ -14860,6 +14860,8 @@ public class DescribeWhiteRuleListResponse : Tea.TeaModel {
 public class EnableAccessForCloudSiemRequest : Tea.TeaModel {
     public var autoSubmit: Int32?
 
+    public var clientToken: String?
+
     public var regionId: String?
 
     public var roleFor: Int64?
@@ -14883,6 +14885,9 @@ public class EnableAccessForCloudSiemRequest : Tea.TeaModel {
         if self.autoSubmit != nil {
             map["AutoSubmit"] = self.autoSubmit!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -14899,6 +14904,9 @@ public class EnableAccessForCloudSiemRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoSubmit"] as? Int32 {
             self.autoSubmit = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -24790,6 +24798,8 @@ public class PostCustomizeRuleTestResponse : Tea.TeaModel {
 }
 
 public class PostEventDisposeAndWhiteruleListRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var disposeStrategyIds: String?
 
     public var eventDispose: String?
@@ -24828,6 +24838,9 @@ public class PostEventDisposeAndWhiteruleListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.disposeStrategyIds != nil {
             map["DisposeStrategyIds"] = self.disposeStrategyIds!
         }
@@ -24869,6 +24882,9 @@ public class PostEventDisposeAndWhiteruleListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["DisposeStrategyIds"] as? String {
             self.disposeStrategyIds = value
         }
