@@ -869,6 +869,8 @@ public class CustomerNoteListDetailRequest : Tea.TeaModel {
 public class CustomerNoteListDetailResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Attachment : Tea.TeaModel {
+            public var downloadUrl: String?
+
             public var id: Int64?
 
             public var name: String?
@@ -893,6 +895,9 @@ public class CustomerNoteListDetailResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.downloadUrl != nil {
+                    map["DownloadUrl"] = self.downloadUrl!
+                }
                 if self.id != nil {
                     map["Id"] = self.id!
                 }
@@ -913,6 +918,9 @@ public class CustomerNoteListDetailResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["DownloadUrl"] as? String {
+                    self.downloadUrl = value
+                }
                 if let value = dict["Id"] as? Int64 {
                     self.id = value
                 }
