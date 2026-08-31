@@ -3234,6 +3234,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterMiguDownloadSourceWithOptions(_ request: ModelRouterMiguDownloadSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterMiguDownloadSourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.sourceId)) {
+            query["sourceId"] = request.sourceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterMiguDownloadSource",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/pipeline/api/aigc/source/download",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterMiguDownloadSourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterMiguDownloadSource(_ request: ModelRouterMiguDownloadSourceRequest) async throws -> ModelRouterMiguDownloadSourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterMiguDownloadSourceWithOptions(request as! ModelRouterMiguDownloadSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterMiguUploadSourceWithOptions(_ request: ModelRouterMiguUploadSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterMiguUploadSourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileType)) {
+            body["fileType"] = request.fileType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            body["serviceName"] = request.serviceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterMiguUploadSource",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/pipeline/api/aigc/source/upload",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterMiguUploadSourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterMiguUploadSource(_ request: ModelRouterMiguUploadSourceRequest) async throws -> ModelRouterMiguUploadSourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterMiguUploadSourceWithOptions(request as! ModelRouterMiguUploadSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterQueryApiKeyWithOptions(_ id: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryApiKeyResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]

@@ -3591,6 +3591,116 @@ public class MetricValueDTO : Tea.TeaModel {
     }
 }
 
+public class MiguSourceDownloadDTO : Tea.TeaModel {
+    public var downloadUrl: String?
+
+    public var expiresAt: String?
+
+    public var method: String?
+
+    public var sourceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.downloadUrl != nil {
+            map["downloadUrl"] = self.downloadUrl!
+        }
+        if self.expiresAt != nil {
+            map["expiresAt"] = self.expiresAt!
+        }
+        if self.method != nil {
+            map["method"] = self.method!
+        }
+        if self.sourceId != nil {
+            map["sourceId"] = self.sourceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["downloadUrl"] as? String {
+            self.downloadUrl = value
+        }
+        if let value = dict["expiresAt"] as? String {
+            self.expiresAt = value
+        }
+        if let value = dict["method"] as? String {
+            self.method = value
+        }
+        if let value = dict["sourceId"] as? String {
+            self.sourceId = value
+        }
+    }
+}
+
+public class MiguSourceUploadDTO : Tea.TeaModel {
+    public var expiresAt: String?
+
+    public var fileType: String?
+
+    public var sourceId: String?
+
+    public var uploadUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expiresAt != nil {
+            map["expiresAt"] = self.expiresAt!
+        }
+        if self.fileType != nil {
+            map["fileType"] = self.fileType!
+        }
+        if self.sourceId != nil {
+            map["sourceId"] = self.sourceId!
+        }
+        if self.uploadUrl != nil {
+            map["uploadUrl"] = self.uploadUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expiresAt"] as? String {
+            self.expiresAt = value
+        }
+        if let value = dict["fileType"] as? String {
+            self.fileType = value
+        }
+        if let value = dict["sourceId"] as? String {
+            self.sourceId = value
+        }
+        if let value = dict["uploadUrl"] as? String {
+            self.uploadUrl = value
+        }
+    }
+}
+
 public class ModelCreateCmd : Tea.TeaModel {
     public var apiKey: String?
 
@@ -26934,6 +27044,324 @@ public class ModelRouterListSubscriptionsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModelRouterListSubscriptionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModelRouterMiguDownloadSourceRequest : Tea.TeaModel {
+    public var sourceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sourceId != nil {
+            map["sourceId"] = self.sourceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sourceId"] as? String {
+            self.sourceId = value
+        }
+    }
+}
+
+public class ModelRouterMiguDownloadSourceResponseBody : Tea.TeaModel {
+    public var data: MiguSourceDownloadDTO?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = MiguSourceDownloadDTO()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ModelRouterMiguDownloadSourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModelRouterMiguDownloadSourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModelRouterMiguDownloadSourceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModelRouterMiguUploadSourceRequest : Tea.TeaModel {
+    public var fileType: String?
+
+    public var serviceName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileType != nil {
+            map["fileType"] = self.fileType!
+        }
+        if self.serviceName != nil {
+            map["serviceName"] = self.serviceName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["fileType"] as? String {
+            self.fileType = value
+        }
+        if let value = dict["serviceName"] as? String {
+            self.serviceName = value
+        }
+    }
+}
+
+public class ModelRouterMiguUploadSourceResponseBody : Tea.TeaModel {
+    public var data: MiguSourceUploadDTO?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = MiguSourceUploadDTO()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ModelRouterMiguUploadSourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModelRouterMiguUploadSourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModelRouterMiguUploadSourceResponseBody()
             model.fromMap(value)
             self.body = model
         }
