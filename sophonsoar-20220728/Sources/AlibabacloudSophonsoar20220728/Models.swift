@@ -6376,6 +6376,10 @@ public class DescribePopApiResponse : Tea.TeaModel {
 public class DescribeProcessStatisticsRequest : Tea.TeaModel {
     public var lang: String?
 
+    public var processActionEnd: Int64?
+
+    public var processActionStart: Int64?
+
     public var roleFor: String?
 
     public var roleType: String?
@@ -6397,6 +6401,12 @@ public class DescribeProcessStatisticsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.processActionEnd != nil {
+            map["ProcessActionEnd"] = self.processActionEnd!
+        }
+        if self.processActionStart != nil {
+            map["ProcessActionStart"] = self.processActionStart!
+        }
         if self.roleFor != nil {
             map["RoleFor"] = self.roleFor!
         }
@@ -6410,6 +6420,12 @@ public class DescribeProcessStatisticsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["ProcessActionEnd"] as? Int64 {
+            self.processActionEnd = value
+        }
+        if let value = dict["ProcessActionStart"] as? Int64 {
+            self.processActionStart = value
         }
         if let value = dict["RoleFor"] as? String {
             self.roleFor = value
@@ -6763,6 +6779,8 @@ public class DescribeProcessTaskCountResponse : Tea.TeaModel {
 }
 
 public class DescribeProcessTasksRequest : Tea.TeaModel {
+    public var alertId: String?
+
     public var direction: String?
 
     public var entityName: String?
@@ -6772,6 +6790,8 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
     public var entityUuid: String?
 
     public var eventUuid: String?
+
+    public var executeUuid: String?
 
     public var orderField: String?
 
@@ -6792,6 +6812,8 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
     public var processStrategyUuid: String?
 
     public var reqUuid: String?
+
+    public var responseRuleId: String?
 
     public var sceneCode: String?
 
@@ -6821,6 +6843,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.alertId != nil {
+            map["AlertId"] = self.alertId!
+        }
         if self.direction != nil {
             map["Direction"] = self.direction!
         }
@@ -6835,6 +6860,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
         }
         if self.eventUuid != nil {
             map["EventUuid"] = self.eventUuid!
+        }
+        if self.executeUuid != nil {
+            map["ExecuteUuid"] = self.executeUuid!
         }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
@@ -6866,6 +6894,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
         if self.reqUuid != nil {
             map["ReqUuid"] = self.reqUuid!
         }
+        if self.responseRuleId != nil {
+            map["ResponseRuleId"] = self.responseRuleId!
+        }
         if self.sceneCode != nil {
             map["SceneCode"] = self.sceneCode!
         }
@@ -6892,6 +6923,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AlertId"] as? String {
+            self.alertId = value
+        }
         if let value = dict["Direction"] as? String {
             self.direction = value
         }
@@ -6906,6 +6940,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
         }
         if let value = dict["EventUuid"] as? String {
             self.eventUuid = value
+        }
+        if let value = dict["ExecuteUuid"] as? String {
+            self.executeUuid = value
         }
         if let value = dict["OrderField"] as? String {
             self.orderField = value
@@ -6936,6 +6973,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
         }
         if let value = dict["ReqUuid"] as? String {
             self.reqUuid = value
+        }
+        if let value = dict["ResponseRuleId"] as? String {
+            self.responseRuleId = value
         }
         if let value = dict["SceneCode"] as? String {
             self.sceneCode = value
@@ -11239,6 +11279,8 @@ public class TriggerProcessTaskResponse : Tea.TeaModel {
 }
 
 public class TriggerSophonPlaybookRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var commandName: String?
 
     public var inputParams: String?
@@ -11263,6 +11305,9 @@ public class TriggerSophonPlaybookRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandName != nil {
             map["CommandName"] = self.commandName!
         }
@@ -11283,6 +11328,9 @@ public class TriggerSophonPlaybookRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["CommandName"] as? String {
             self.commandName = value
         }

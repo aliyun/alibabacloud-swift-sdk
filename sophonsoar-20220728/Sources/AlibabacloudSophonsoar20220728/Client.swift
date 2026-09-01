@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "ap-southeast-1": "sophonsoar.ap-southeast-1.aliyuncs.com",
+            "public": "sophonsoar.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("sophonsoar", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1023,6 +1027,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeProcessTasksWithOptions(_ request: DescribeProcessTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeProcessTasksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertId)) {
+            query["AlertId"] = request.alertId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.direction)) {
             query["Direction"] = request.direction ?? "";
         }
@@ -1037,6 +1044,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.eventUuid)) {
             query["EventUuid"] = request.eventUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executeUuid)) {
+            query["ExecuteUuid"] = request.executeUuid ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.orderField)) {
             query["OrderField"] = request.orderField ?? "";
@@ -1067,6 +1077,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.reqUuid)) {
             query["ReqUuid"] = request.reqUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRuleId)) {
+            query["ResponseRuleId"] = request.responseRuleId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sceneCode)) {
             query["SceneCode"] = request.sceneCode ?? "";
@@ -1860,6 +1873,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func triggerSophonPlaybookWithOptions(_ request: TriggerSophonPlaybookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TriggerSophonPlaybookResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.commandName)) {
             query["CommandName"] = request.commandName ?? "";
         }
