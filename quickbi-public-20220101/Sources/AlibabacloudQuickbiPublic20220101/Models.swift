@@ -20478,6 +20478,100 @@ public class QueryOrganizationWorkspaceListRequest : Tea.TeaModel {
 public class QueryOrganizationWorkspaceListResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public class Data : Tea.TeaModel {
+            public class WorkspaceExportConfig : Tea.TeaModel {
+                public var allowExcelImageFile: Bool?
+
+                public var dataExport: Bool?
+
+                public var defaultExportType: Bool?
+
+                public var exportMainSwitch: Bool?
+
+                public var exportToLocal: Bool?
+
+                public var exportToPublicWork: Bool?
+
+                public var exportToServer: Bool?
+
+                public var imageExport: Bool?
+
+                public var pdfExport: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowExcelImageFile != nil {
+                        map["AllowExcelImageFile"] = self.allowExcelImageFile!
+                    }
+                    if self.dataExport != nil {
+                        map["DataExport"] = self.dataExport!
+                    }
+                    if self.defaultExportType != nil {
+                        map["DefaultExportType"] = self.defaultExportType!
+                    }
+                    if self.exportMainSwitch != nil {
+                        map["ExportMainSwitch"] = self.exportMainSwitch!
+                    }
+                    if self.exportToLocal != nil {
+                        map["ExportToLocal"] = self.exportToLocal!
+                    }
+                    if self.exportToPublicWork != nil {
+                        map["ExportToPublicWork"] = self.exportToPublicWork!
+                    }
+                    if self.exportToServer != nil {
+                        map["ExportToServer"] = self.exportToServer!
+                    }
+                    if self.imageExport != nil {
+                        map["ImageExport"] = self.imageExport!
+                    }
+                    if self.pdfExport != nil {
+                        map["PdfExport"] = self.pdfExport!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AllowExcelImageFile"] as? Bool {
+                        self.allowExcelImageFile = value
+                    }
+                    if let value = dict["DataExport"] as? Bool {
+                        self.dataExport = value
+                    }
+                    if let value = dict["DefaultExportType"] as? Bool {
+                        self.defaultExportType = value
+                    }
+                    if let value = dict["ExportMainSwitch"] as? Bool {
+                        self.exportMainSwitch = value
+                    }
+                    if let value = dict["ExportToLocal"] as? Bool {
+                        self.exportToLocal = value
+                    }
+                    if let value = dict["ExportToPublicWork"] as? Bool {
+                        self.exportToPublicWork = value
+                    }
+                    if let value = dict["ExportToServer"] as? Bool {
+                        self.exportToServer = value
+                    }
+                    if let value = dict["ImageExport"] as? Bool {
+                        self.imageExport = value
+                    }
+                    if let value = dict["PdfExport"] as? Bool {
+                        self.pdfExport = value
+                    }
+                }
+            }
             public var allowPublishOperation: Bool?
 
             public var allowShareOperation: Bool?
@@ -20504,6 +20598,8 @@ public class QueryOrganizationWorkspaceListResponseBody : Tea.TeaModel {
 
             public var workspaceDescription: String?
 
+            public var workspaceExportConfig: QueryOrganizationWorkspaceListResponseBody.Result.Data.WorkspaceExportConfig?
+
             public var workspaceId: String?
 
             public var workspaceName: String?
@@ -20518,6 +20614,7 @@ public class QueryOrganizationWorkspaceListResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.workspaceExportConfig?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -20560,6 +20657,9 @@ public class QueryOrganizationWorkspaceListResponseBody : Tea.TeaModel {
                 }
                 if self.workspaceDescription != nil {
                     map["WorkspaceDescription"] = self.workspaceDescription!
+                }
+                if self.workspaceExportConfig != nil {
+                    map["WorkspaceExportConfig"] = self.workspaceExportConfig?.toMap()
                 }
                 if self.workspaceId != nil {
                     map["WorkspaceId"] = self.workspaceId!
@@ -20610,6 +20710,11 @@ public class QueryOrganizationWorkspaceListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["WorkspaceDescription"] as? String {
                     self.workspaceDescription = value
+                }
+                if let value = dict["WorkspaceExportConfig"] as? [String: Any?] {
+                    var model = QueryOrganizationWorkspaceListResponseBody.Result.Data.WorkspaceExportConfig()
+                    model.fromMap(value)
+                    self.workspaceExportConfig = model
                 }
                 if let value = dict["WorkspaceId"] as? String {
                     self.workspaceId = value
@@ -23568,6 +23673,8 @@ public class QueryUserInfoByAccountResponseBody : Tea.TeaModel {
 
         public var email: String?
 
+        public var isDeleted: Bool?
+
         public var nickName: String?
 
         public var phone: String?
@@ -23610,6 +23717,9 @@ public class QueryUserInfoByAccountResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["Email"] = self.email!
             }
+            if self.isDeleted != nil {
+                map["IsDeleted"] = self.isDeleted!
+            }
             if self.nickName != nil {
                 map["NickName"] = self.nickName!
             }
@@ -23647,6 +23757,9 @@ public class QueryUserInfoByAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["Email"] as? String {
                 self.email = value
+            }
+            if let value = dict["IsDeleted"] as? Bool {
+                self.isDeleted = value
             }
             if let value = dict["NickName"] as? String {
                 self.nickName = value
@@ -23809,6 +23922,8 @@ public class QueryUserInfoByUserIdResponseBody : Tea.TeaModel {
 
         public var email: String?
 
+        public var isDeleted: Bool?
+
         public var nickName: String?
 
         public var phone: String?
@@ -23851,6 +23966,9 @@ public class QueryUserInfoByUserIdResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["Email"] = self.email!
             }
+            if self.isDeleted != nil {
+                map["IsDeleted"] = self.isDeleted!
+            }
             if self.nickName != nil {
                 map["NickName"] = self.nickName!
             }
@@ -23888,6 +24006,9 @@ public class QueryUserInfoByUserIdResponseBody : Tea.TeaModel {
             }
             if let value = dict["Email"] as? String {
                 self.email = value
+            }
+            if let value = dict["IsDeleted"] as? Bool {
+                self.isDeleted = value
             }
             if let value = dict["NickName"] as? String {
                 self.nickName = value
@@ -24963,11 +25084,67 @@ public class QueryWorksResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class GlobalParamVoList : Tea.TeaModel {
+            public var dataType: String?
+
+            public var paramAlias: String?
+
+            public var paramName: String?
+
+            public var required_: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataType != nil {
+                    map["DataType"] = self.dataType!
+                }
+                if self.paramAlias != nil {
+                    map["ParamAlias"] = self.paramAlias!
+                }
+                if self.paramName != nil {
+                    map["ParamName"] = self.paramName!
+                }
+                if self.required_ != nil {
+                    map["Required"] = self.required_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataType"] as? String {
+                    self.dataType = value
+                }
+                if let value = dict["ParamAlias"] as? String {
+                    self.paramAlias = value
+                }
+                if let value = dict["ParamName"] as? String {
+                    self.paramName = value
+                }
+                if let value = dict["Required"] as? Bool {
+                    self.required_ = value
+                }
+            }
+        }
         public var auth3rdFlag: Int32?
 
         public var description_: String?
 
         public var directory: QueryWorksResponseBody.Result.Directory?
+
+        public var globalParamVoList: [QueryWorksResponseBody.Result.GlobalParamVoList]?
 
         public var gmtCreate: String?
 
@@ -25020,6 +25197,13 @@ public class QueryWorksResponseBody : Tea.TeaModel {
             }
             if self.directory != nil {
                 map["Directory"] = self.directory?.toMap()
+            }
+            if self.globalParamVoList != nil {
+                var tmp : [Any] = []
+                for k in self.globalParamVoList! {
+                    tmp.append(k.toMap())
+                }
+                map["GlobalParamVoList"] = tmp
             }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
@@ -25078,6 +25262,19 @@ public class QueryWorksResponseBody : Tea.TeaModel {
                 var model = QueryWorksResponseBody.Result.Directory()
                 model.fromMap(value)
                 self.directory = model
+            }
+            if let value = dict["GlobalParamVoList"] as? [Any?] {
+                var tmp : [QueryWorksResponseBody.Result.GlobalParamVoList] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryWorksResponseBody.Result.GlobalParamVoList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.globalParamVoList = tmp
             }
             if let value = dict["GmtCreate"] as? String {
                 self.gmtCreate = value

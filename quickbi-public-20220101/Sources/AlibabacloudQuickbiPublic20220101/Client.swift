@@ -10,16 +10,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-east-1": "quickbi-public.us-east-1.aliyuncs.com",
-            "me-central-1": "quickbi-public.me-central-1.aliyuncs.com",
-            "eu-central-1": "quickbi-public.eu-central-1.aliyuncs.com",
-            "cn-shanghai-finance-1": "quickbi-public.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-hongkong": "quickbi-public.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "quickbi-public.cn-hangzhou.aliyuncs.com",
-            "ap-southeast-5": "quickbi-public.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "quickbi-public.ap-southeast-3.aliyuncs.com",
+            "ap-northeast-1": "quickbi-public.ap-northeast-1.aliyuncs.com",
             "ap-southeast-1": "quickbi-public.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "quickbi-public.ap-northeast-1.aliyuncs.com"
+            "ap-southeast-3": "quickbi-public.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "quickbi-public.ap-southeast-5.aliyuncs.com",
+            "cn-hangzhou": "quickbi-public.cn-hangzhou.aliyuncs.com",
+            "cn-hongkong": "quickbi-public.cn-hongkong.aliyuncs.com",
+            "us-east-1": "quickbi-public.us-east-1.aliyuncs.com",
+            "eu-central-1": "quickbi-public.eu-central-1.aliyuncs.com",
+            "me-central-1": "quickbi-public.me-central-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "quickbi-public.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("quickbi-public", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
