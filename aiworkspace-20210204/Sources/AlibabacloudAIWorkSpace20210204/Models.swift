@@ -20312,6 +20312,8 @@ public class ListImagesRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var options: String?
+
     public var order: String?
 
     public var pageNumber: Int32?
@@ -20352,6 +20354,9 @@ public class ListImagesRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.options != nil {
+            map["Options"] = self.options!
+        }
         if self.order != nil {
             map["Order"] = self.order!
         }
@@ -20389,6 +20394,9 @@ public class ListImagesRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["Options"] as? String {
+            self.options = value
         }
         if let value = dict["Order"] as? String {
             self.order = value
