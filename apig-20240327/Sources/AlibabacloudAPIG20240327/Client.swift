@@ -3892,6 +3892,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumerGroupQuotaRulesWithOptions(_ consumerGroupId: String, _ request: ListConsumerGroupQuotaRulesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumerGroupQuotaRulesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["gatewayId"] = request.gatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListConsumerGroupQuotaRules",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/consumer-groups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(consumerGroupId)) + "/quota-rules",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListConsumerGroupQuotaRulesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumerGroupQuotaRules(_ consumerGroupId: String, _ request: ListConsumerGroupQuotaRulesRequest) async throws -> ListConsumerGroupQuotaRulesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listConsumerGroupQuotaRulesWithOptions(consumerGroupId as! String, request as! ListConsumerGroupQuotaRulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listConsumerGroupsWithOptions(_ request: ListConsumerGroupsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumerGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
