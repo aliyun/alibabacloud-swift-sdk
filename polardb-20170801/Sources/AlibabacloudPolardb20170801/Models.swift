@@ -15407,7 +15407,11 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
 
     public var linkName: String?
 
+    public var mcpEndpoint: String?
+
     public var regionId: String?
+
+    public var sheetMcpEndpoint: String?
 
     public var sourceDir: String?
 
@@ -15416,6 +15420,8 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
     public var syncIntervalMinutes: Int32?
 
     public var tenantId: String?
+
+    public var userId: String?
 
     public override init() {
         super.init()
@@ -15446,8 +15452,14 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         if self.linkName != nil {
             map["LinkName"] = self.linkName!
         }
+        if self.mcpEndpoint != nil {
+            map["McpEndpoint"] = self.mcpEndpoint!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.sheetMcpEndpoint != nil {
+            map["SheetMcpEndpoint"] = self.sheetMcpEndpoint!
         }
         if self.sourceDir != nil {
             map["SourceDir"] = self.sourceDir!
@@ -15460,6 +15472,9 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
         }
         return map
     }
@@ -15481,8 +15496,14 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         if let value = dict["LinkName"] as? String {
             self.linkName = value
         }
+        if let value = dict["McpEndpoint"] as? String {
+            self.mcpEndpoint = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SheetMcpEndpoint"] as? String {
+            self.sheetMcpEndpoint = value
         }
         if let value = dict["SourceDir"] as? String {
             self.sourceDir = value
@@ -15495,6 +15516,9 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         }
         if let value = dict["TenantId"] as? String {
             self.tenantId = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
         }
     }
 }
@@ -121216,13 +121240,25 @@ public class UpdateExtensionsResponse : Tea.TeaModel {
 }
 
 public class UpdateKBSyncLinkRequest : Tea.TeaModel {
+    public var clientId: String?
+
+    public var clientSecret: String?
+
     public var knowledgeBaseId: String?
 
     public var linkId: String?
 
+    public var mcpEndpoint: String?
+
     public var regionId: String?
 
+    public var sheetMcpEndpoint: String?
+
+    public var syncEnabled: Bool?
+
     public var syncIntervalMinutes: Int32?
+
+    public var userId: String?
 
     public override init() {
         super.init()
@@ -121238,34 +121274,70 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["ClientSecret"] = self.clientSecret!
+        }
         if self.knowledgeBaseId != nil {
             map["KnowledgeBaseId"] = self.knowledgeBaseId!
         }
         if self.linkId != nil {
             map["LinkId"] = self.linkId!
         }
+        if self.mcpEndpoint != nil {
+            map["McpEndpoint"] = self.mcpEndpoint!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.sheetMcpEndpoint != nil {
+            map["SheetMcpEndpoint"] = self.sheetMcpEndpoint!
+        }
+        if self.syncEnabled != nil {
+            map["SyncEnabled"] = self.syncEnabled!
+        }
         if self.syncIntervalMinutes != nil {
             map["SyncIntervalMinutes"] = self.syncIntervalMinutes!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientId"] as? String {
+            self.clientId = value
+        }
+        if let value = dict["ClientSecret"] as? String {
+            self.clientSecret = value
+        }
         if let value = dict["KnowledgeBaseId"] as? String {
             self.knowledgeBaseId = value
         }
         if let value = dict["LinkId"] as? String {
             self.linkId = value
         }
+        if let value = dict["McpEndpoint"] as? String {
+            self.mcpEndpoint = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["SheetMcpEndpoint"] as? String {
+            self.sheetMcpEndpoint = value
+        }
+        if let value = dict["SyncEnabled"] as? Bool {
+            self.syncEnabled = value
+        }
         if let value = dict["SyncIntervalMinutes"] as? Int32 {
             self.syncIntervalMinutes = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
         }
     }
 }

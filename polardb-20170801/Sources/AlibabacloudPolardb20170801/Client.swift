@@ -3976,8 +3976,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.linkName)) {
             query["LinkName"] = request.linkName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mcpEndpoint)) {
+            query["McpEndpoint"] = request.mcpEndpoint ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetMcpEndpoint)) {
+            query["SheetMcpEndpoint"] = request.sheetMcpEndpoint ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceDir)) {
             query["SourceDir"] = request.sourceDir ?? "";
@@ -3990,6 +3996,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["TenantId"] = request.tenantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -22882,17 +22891,35 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateKBSyncLinkWithOptions(_ request: UpdateKBSyncLinkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKBSyncLinkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["ClientId"] = request.clientId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientSecret)) {
+            query["ClientSecret"] = request.clientSecret ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
             query["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.linkId)) {
             query["LinkId"] = request.linkId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mcpEndpoint)) {
+            query["McpEndpoint"] = request.mcpEndpoint ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sheetMcpEndpoint)) {
+            query["SheetMcpEndpoint"] = request.sheetMcpEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.syncEnabled)) {
+            query["SyncEnabled"] = request.syncEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.syncIntervalMinutes)) {
             query["SyncIntervalMinutes"] = request.syncIntervalMinutes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
