@@ -775,6 +775,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataAgentSkillMetaWithOptions(_ request: CreateDataAgentSkillMetaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataAgentSkillMetaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillName)) {
+            query["SkillName"] = request.skillName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadLocation)) {
+            query["UploadLocation"] = request.uploadLocation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDataAgentSkillMeta",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDataAgentSkillMetaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataAgentSkillMeta(_ request: CreateDataAgentSkillMetaRequest) async throws -> CreateDataAgentSkillMetaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createDataAgentSkillMetaWithOptions(request as! CreateDataAgentSkillMetaRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDataAgentThemeWithOptions(_ request: CreateDataAgentThemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataAgentThemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1375,6 +1415,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteDataAgentMemory(_ request: DeleteDataAgentMemoryRequest) async throws -> DeleteDataAgentMemoryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteDataAgentMemoryWithOptions(request as! DeleteDataAgentMemoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataAgentSkillMetaWithOptions(_ request: DeleteDataAgentSkillMetaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDataAgentSkillMetaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.skillId)) {
+            query["SkillId"] = request.skillId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDataAgentSkillMeta",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDataAgentSkillMetaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataAgentSkillMeta(_ request: DeleteDataAgentSkillMetaRequest) async throws -> DeleteDataAgentSkillMetaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDataAgentSkillMetaWithOptions(request as! DeleteDataAgentSkillMetaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2082,6 +2156,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSkillFileUploadSignatureWithOptions(_ request: DescribeSkillFileUploadSignatureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSkillFileUploadSignatureResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSkillFileUploadSignature",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSkillFileUploadSignatureResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSkillFileUploadSignature(_ request: DescribeSkillFileUploadSignatureRequest) async throws -> DescribeSkillFileUploadSignatureResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSkillFileUploadSignatureWithOptions(request as! DescribeSkillFileUploadSignatureRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func fileUploadCallbackWithOptions(_ request: FileUploadCallbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FileUploadCallbackResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2304,8 +2409,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDataAgentTaskModelUsageWithOptions(_ request: GetDataAgentTaskModelUsageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDataAgentTaskModelUsageResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getDataAgentTaskModelUsageWithOptions(_ tmpReq: GetDataAgentTaskModelUsageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDataAgentTaskModelUsageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetDataAgentTaskModelUsageShrinkRequest = GetDataAgentTaskModelUsageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceIds)) {
+            request.instanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceIds, "InstanceIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.beginTime)) {
             query["BeginTime"] = request.beginTime!;
@@ -2315,6 +2425,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
+            query["InstanceIds"] = request.instanceIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.payLevel)) {
             query["PayLevel"] = request.payLevel ?? "";
@@ -2347,8 +2460,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDataAgentTaskModelUsageMetricsWithOptions(_ request: GetDataAgentTaskModelUsageMetricsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDataAgentTaskModelUsageMetricsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getDataAgentTaskModelUsageMetricsWithOptions(_ tmpReq: GetDataAgentTaskModelUsageMetricsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDataAgentTaskModelUsageMetricsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetDataAgentTaskModelUsageMetricsShrinkRequest = GetDataAgentTaskModelUsageMetricsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceIds)) {
+            request.instanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceIds, "InstanceIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.beginTime)) {
             query["BeginTime"] = request.beginTime ?? "";
@@ -2358,6 +2476,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
+            query["InstanceIds"] = request.instanceIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.payLevel)) {
             query["PayLevel"] = request.payLevel ?? "";
@@ -3558,6 +3679,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDataAgentSession(_ request: ListDataAgentSessionRequest) async throws -> ListDataAgentSessionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listDataAgentSessionWithOptions(request as! ListDataAgentSessionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentSkillMetaWithOptions(_ request: ListDataAgentSkillMetaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataAgentSkillMetaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchKey)) {
+            query["SearchKey"] = request.searchKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillFrom)) {
+            query["SkillFrom"] = request.skillFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillId)) {
+            query["SkillId"] = request.skillId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillName)) {
+            query["SkillName"] = request.skillName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDataAgentSkillMeta",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDataAgentSkillMetaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataAgentSkillMeta(_ request: ListDataAgentSkillMetaRequest) async throws -> ListDataAgentSkillMetaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDataAgentSkillMetaWithOptions(request as! ListDataAgentSkillMetaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
