@@ -684,6 +684,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataAgentFeedbackWithOptions(_ request: CreateDataAgentFeedbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataAgentFeedbackResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
+            query["DMSUnit"] = request.DMSUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.feedbackContent)) {
+            query["FeedbackContent"] = request.feedbackContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.feedbackType)) {
+            query["FeedbackType"] = request.feedbackType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.likeValue)) {
+            query["LikeValue"] = request.likeValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetId)) {
+            query["TargetId"] = request.targetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDataAgentFeedback",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDataAgentFeedbackResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataAgentFeedback(_ request: CreateDataAgentFeedbackRequest) async throws -> CreateDataAgentFeedbackResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createDataAgentFeedbackWithOptions(request as! CreateDataAgentFeedbackRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDataAgentKnowledgeBaseWithOptions(_ request: CreateDataAgentKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataAgentKnowledgeBaseResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

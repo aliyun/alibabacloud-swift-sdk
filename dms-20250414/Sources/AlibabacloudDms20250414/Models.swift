@@ -10296,6 +10296,303 @@ public class CreateDataAgentAccuracyTestResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDataAgentFeedbackRequest : Tea.TeaModel {
+    public var DMSUnit: String?
+
+    public var feedbackContent: String?
+
+    public var feedbackType: String?
+
+    public var likeValue: Int32?
+
+    public var sessionId: String?
+
+    public var targetId: String?
+
+    public var targetType: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DMSUnit != nil {
+            map["DMSUnit"] = self.DMSUnit!
+        }
+        if self.feedbackContent != nil {
+            map["FeedbackContent"] = self.feedbackContent!
+        }
+        if self.feedbackType != nil {
+            map["FeedbackType"] = self.feedbackType!
+        }
+        if self.likeValue != nil {
+            map["LikeValue"] = self.likeValue!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.targetId != nil {
+            map["TargetId"] = self.targetId!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DMSUnit"] as? String {
+            self.DMSUnit = value
+        }
+        if let value = dict["FeedbackContent"] as? String {
+            self.feedbackContent = value
+        }
+        if let value = dict["FeedbackType"] as? String {
+            self.feedbackType = value
+        }
+        if let value = dict["LikeValue"] as? Int32 {
+            self.likeValue = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["TargetId"] as? String {
+            self.targetId = value
+        }
+        if let value = dict["TargetType"] as? String {
+            self.targetType = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class CreateDataAgentFeedbackResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var feedbackContent: String?
+
+        public var feedbackType: String?
+
+        public var likeValue: Int32?
+
+        public var regionId: String?
+
+        public var sessionId: String?
+
+        public var targetId: String?
+
+        public var targetType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.feedbackContent != nil {
+                map["FeedbackContent"] = self.feedbackContent!
+            }
+            if self.feedbackType != nil {
+                map["FeedbackType"] = self.feedbackType!
+            }
+            if self.likeValue != nil {
+                map["LikeValue"] = self.likeValue!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
+            }
+            if self.targetType != nil {
+                map["TargetType"] = self.targetType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FeedbackContent"] as? String {
+                self.feedbackContent = value
+            }
+            if let value = dict["FeedbackType"] as? String {
+                self.feedbackType = value
+            }
+            if let value = dict["LikeValue"] as? Int32 {
+                self.likeValue = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["SessionId"] as? String {
+                self.sessionId = value
+            }
+            if let value = dict["TargetId"] as? String {
+                self.targetId = value
+            }
+            if let value = dict["TargetType"] as? String {
+                self.targetType = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateDataAgentFeedbackResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CreateDataAgentFeedbackResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CreateDataAgentFeedbackResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDataAgentFeedbackResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateDataAgentFeedbackResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateDataAgentKnowledgeBaseRequest : Tea.TeaModel {
     public var DMSUnit: String?
 
