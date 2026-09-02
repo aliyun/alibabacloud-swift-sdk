@@ -1291,7 +1291,96 @@ public class CreateTemplateVPCConfig : Tea.TeaModel {
 }
 
 public class CreateVolumeInput : Tea.TeaModel {
+    public class MountConfig : Tea.TeaModel {
+        public class VpcConfig : Tea.TeaModel {
+            public var securityGroupId: String?
+
+            public var vSwitchIds: [String]?
+
+            public var vpcId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityGroupId != nil {
+                    map["securityGroupId"] = self.securityGroupId!
+                }
+                if self.vSwitchIds != nil {
+                    map["vSwitchIds"] = self.vSwitchIds!
+                }
+                if self.vpcId != nil {
+                    map["vpcId"] = self.vpcId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["securityGroupId"] as? String {
+                    self.securityGroupId = value
+                }
+                if let value = dict["vSwitchIds"] as? [String] {
+                    self.vSwitchIds = value
+                }
+                if let value = dict["vpcId"] as? String {
+                    self.vpcId = value
+                }
+            }
+        }
+        public var role: String?
+
+        public var vpcConfig: CreateVolumeInput.MountConfig.VpcConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.vpcConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            if self.vpcConfig != nil {
+                map["vpcConfig"] = self.vpcConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["role"] as? String {
+                self.role = value
+            }
+            if let value = dict["vpcConfig"] as? [String: Any?] {
+                var model = CreateVolumeInput.MountConfig.VpcConfig()
+                model.fromMap(value)
+                self.vpcConfig = model
+            }
+        }
+    }
     public var agenticFSVolumeConfig: AgenticFSVolumeConfig?
+
+    public var mountConfig: CreateVolumeInput.MountConfig?
 
     public var ossVolumeConfig: OSSVolumeConfig?
 
@@ -1310,6 +1399,7 @@ public class CreateVolumeInput : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.agenticFSVolumeConfig?.validate()
+        try self.mountConfig?.validate()
         try self.ossVolumeConfig?.validate()
     }
 
@@ -1317,6 +1407,9 @@ public class CreateVolumeInput : Tea.TeaModel {
         var map = super.toMap()
         if self.agenticFSVolumeConfig != nil {
             map["agenticFSVolumeConfig"] = self.agenticFSVolumeConfig?.toMap()
+        }
+        if self.mountConfig != nil {
+            map["mountConfig"] = self.mountConfig?.toMap()
         }
         if self.ossVolumeConfig != nil {
             map["ossVolumeConfig"] = self.ossVolumeConfig?.toMap()
@@ -1336,6 +1429,11 @@ public class CreateVolumeInput : Tea.TeaModel {
             var model = AgenticFSVolumeConfig()
             model.fromMap(value)
             self.agenticFSVolumeConfig = model
+        }
+        if let value = dict["mountConfig"] as? [String: Any?] {
+            var model = CreateVolumeInput.MountConfig()
+            model.fromMap(value)
+            self.mountConfig = model
         }
         if let value = dict["ossVolumeConfig"] as? [String: Any?] {
             var model = OSSVolumeConfig()
@@ -2487,9 +2585,98 @@ public class E2BTemplateTag : Tea.TeaModel {
 }
 
 public class E2BVolume : Tea.TeaModel {
+    public class MountConfig : Tea.TeaModel {
+        public class VpcConfig : Tea.TeaModel {
+            public var securityGroupId: String?
+
+            public var vSwitchIds: [String]?
+
+            public var vpcId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityGroupId != nil {
+                    map["securityGroupId"] = self.securityGroupId!
+                }
+                if self.vSwitchIds != nil {
+                    map["vSwitchIds"] = self.vSwitchIds!
+                }
+                if self.vpcId != nil {
+                    map["vpcId"] = self.vpcId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["securityGroupId"] as? String {
+                    self.securityGroupId = value
+                }
+                if let value = dict["vSwitchIds"] as? [String] {
+                    self.vSwitchIds = value
+                }
+                if let value = dict["vpcId"] as? String {
+                    self.vpcId = value
+                }
+            }
+        }
+        public var role: String?
+
+        public var vpcConfig: E2BVolume.MountConfig.VpcConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.vpcConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            if self.vpcConfig != nil {
+                map["vpcConfig"] = self.vpcConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["role"] as? String {
+                self.role = value
+            }
+            if let value = dict["vpcConfig"] as? [String: Any?] {
+                var model = E2BVolume.MountConfig.VpcConfig()
+                model.fromMap(value)
+                self.vpcConfig = model
+            }
+        }
+    }
     public var agenticFSVolumeConfig: AgenticFSVolumeConfig?
 
     public var createdAt: String?
+
+    public var mountConfig: E2BVolume.MountConfig?
 
     public var ossVolumeConfig: OSSVolumeConfig?
 
@@ -2522,6 +2709,7 @@ public class E2BVolume : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.agenticFSVolumeConfig?.validate()
+        try self.mountConfig?.validate()
         try self.ossVolumeConfig?.validate()
     }
 
@@ -2532,6 +2720,9 @@ public class E2BVolume : Tea.TeaModel {
         }
         if self.createdAt != nil {
             map["createdAt"] = self.createdAt!
+        }
+        if self.mountConfig != nil {
+            map["mountConfig"] = self.mountConfig?.toMap()
         }
         if self.ossVolumeConfig != nil {
             map["ossVolumeConfig"] = self.ossVolumeConfig?.toMap()
@@ -2575,6 +2766,11 @@ public class E2BVolume : Tea.TeaModel {
         }
         if let value = dict["createdAt"] as? String {
             self.createdAt = value
+        }
+        if let value = dict["mountConfig"] as? [String: Any?] {
+            var model = E2BVolume.MountConfig()
+            model.fromMap(value)
+            self.mountConfig = model
         }
         if let value = dict["ossVolumeConfig"] as? [String: Any?] {
             var model = OSSVolumeConfig()
