@@ -11005,6 +11005,8 @@ public class CreateBackupPolicyRequest : Tea.TeaModel {
 
     public var policyVersion: String?
 
+    public var selectType: String?
+
     public var uuidList: [String]?
 
     public override init() {
@@ -11033,6 +11035,9 @@ public class CreateBackupPolicyRequest : Tea.TeaModel {
         if self.policyVersion != nil {
             map["PolicyVersion"] = self.policyVersion!
         }
+        if self.selectType != nil {
+            map["SelectType"] = self.selectType!
+        }
         if self.uuidList != nil {
             map["UuidList"] = self.uuidList!
         }
@@ -11053,6 +11058,9 @@ public class CreateBackupPolicyRequest : Tea.TeaModel {
         if let value = dict["PolicyVersion"] as? String {
             self.policyVersion = value
         }
+        if let value = dict["SelectType"] as? String {
+            self.selectType = value
+        }
         if let value = dict["UuidList"] as? [String] {
             self.uuidList = value
         }
@@ -11067,6 +11075,8 @@ public class CreateBackupPolicyShrinkRequest : Tea.TeaModel {
     public var policyRegionId: String?
 
     public var policyVersion: String?
+
+    public var selectType: String?
 
     public var uuidList: [String]?
 
@@ -11096,6 +11106,9 @@ public class CreateBackupPolicyShrinkRequest : Tea.TeaModel {
         if self.policyVersion != nil {
             map["PolicyVersion"] = self.policyVersion!
         }
+        if self.selectType != nil {
+            map["SelectType"] = self.selectType!
+        }
         if self.uuidList != nil {
             map["UuidList"] = self.uuidList!
         }
@@ -11115,6 +11128,9 @@ public class CreateBackupPolicyShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyVersion"] as? String {
             self.policyVersion = value
+        }
+        if let value = dict["SelectType"] as? String {
+            self.selectType = value
         }
         if let value = dict["UuidList"] as? [String] {
             self.uuidList = value
@@ -37717,6 +37733,8 @@ public class DescribeBackupPoliciesResponseBody : Tea.TeaModel {
 
         public var remarkedUuidList: [String]?
 
+        public var selectType: String?
+
         public var serverType: String?
 
         public var serviceErrorCount: Int32?
@@ -37782,6 +37800,9 @@ public class DescribeBackupPoliciesResponseBody : Tea.TeaModel {
             if self.remarkedUuidList != nil {
                 map["RemarkedUuidList"] = self.remarkedUuidList!
             }
+            if self.selectType != nil {
+                map["SelectType"] = self.selectType!
+            }
             if self.serverType != nil {
                 map["ServerType"] = self.serverType!
             }
@@ -37843,6 +37864,9 @@ public class DescribeBackupPoliciesResponseBody : Tea.TeaModel {
             }
             if let value = dict["RemarkedUuidList"] as? [String] {
                 self.remarkedUuidList = value
+            }
+            if let value = dict["SelectType"] as? String {
+                self.selectType = value
             }
             if let value = dict["ServerType"] as? String {
                 self.serverType = value
@@ -201747,6 +201771,8 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
 
     public var policyVersion: String?
 
+    public var selectType: String?
+
     public var uuidList: [String]?
 
     public override init() {
@@ -201778,6 +201804,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         if self.policyVersion != nil {
             map["PolicyVersion"] = self.policyVersion!
         }
+        if self.selectType != nil {
+            map["SelectType"] = self.selectType!
+        }
         if self.uuidList != nil {
             map["UuidList"] = self.uuidList!
         }
@@ -201801,6 +201830,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         if let value = dict["PolicyVersion"] as? String {
             self.policyVersion = value
         }
+        if let value = dict["SelectType"] as? String {
+            self.selectType = value
+        }
         if let value = dict["UuidList"] as? [String] {
             self.uuidList = value
         }
@@ -201817,6 +201849,8 @@ public class ModifyBackupPolicyShrinkRequest : Tea.TeaModel {
     public var policyRegionId: String?
 
     public var policyVersion: String?
+
+    public var selectType: String?
 
     public var uuidList: [String]?
 
@@ -201849,6 +201883,9 @@ public class ModifyBackupPolicyShrinkRequest : Tea.TeaModel {
         if self.policyVersion != nil {
             map["PolicyVersion"] = self.policyVersion!
         }
+        if self.selectType != nil {
+            map["SelectType"] = self.selectType!
+        }
         if self.uuidList != nil {
             map["UuidList"] = self.uuidList!
         }
@@ -201871,6 +201908,9 @@ public class ModifyBackupPolicyShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyVersion"] as? String {
             self.policyVersion = value
+        }
+        if let value = dict["SelectType"] as? String {
+            self.selectType = value
         }
         if let value = dict["UuidList"] as? [String] {
             self.uuidList = value
