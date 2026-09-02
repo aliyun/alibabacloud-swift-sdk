@@ -14130,6 +14130,8 @@ public class ListAgentsResponseBody : Tea.TeaModel {
 
         public var characterAgeStage: String?
 
+        public var characterGender: String?
+
         public var characterName: String?
 
         public var charactersDescription: String?
@@ -14178,6 +14180,9 @@ public class ListAgentsResponseBody : Tea.TeaModel {
             }
             if self.characterAgeStage != nil {
                 map["characterAgeStage"] = self.characterAgeStage!
+            }
+            if self.characterGender != nil {
+                map["characterGender"] = self.characterGender!
             }
             if self.characterName != nil {
                 map["characterName"] = self.characterName!
@@ -14228,6 +14233,9 @@ public class ListAgentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["characterAgeStage"] as? String {
                 self.characterAgeStage = value
+            }
+            if let value = dict["characterGender"] as? String {
+                self.characterGender = value
             }
             if let value = dict["characterName"] as? String {
                 self.characterName = value
