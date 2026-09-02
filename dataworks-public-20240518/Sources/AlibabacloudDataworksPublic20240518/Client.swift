@@ -5822,6 +5822,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchChangeTableOwnerStatusWithOptions(_ request: GetBatchChangeTableOwnerStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBatchChangeTableOwnerStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batchId)) {
+            query["BatchId"] = request.batchId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetBatchChangeTableOwnerStatus",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetBatchChangeTableOwnerStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchChangeTableOwnerStatus(_ request: GetBatchChangeTableOwnerStatusRequest) async throws -> GetBatchChangeTableOwnerStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getBatchChangeTableOwnerStatusWithOptions(request as! GetBatchChangeTableOwnerStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getBusinessWithOptions(_ request: GetBusinessRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBusinessResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -13269,6 +13300,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopWorkflowInstances(_ request: StopWorkflowInstancesRequest) async throws -> StopWorkflowInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await stopWorkflowInstancesWithOptions(request as! StopWorkflowInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitBatchChangeTableOwnerWithOptions(_ tmpReq: SubmitBatchChangeTableOwnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitBatchChangeTableOwnerResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitBatchChangeTableOwnerShrinkRequest = SubmitBatchChangeTableOwnerShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tableMetaEntityIds)) {
+            request.tableMetaEntityIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tableMetaEntityIds, "TableMetaEntityIds", "simple")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableCrossTenant)) {
+            body["EnableCrossTenant"] = request.enableCrossTenant!;
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            body["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableMetaEntityIdsShrink)) {
+            body["TableMetaEntityIds"] = request.tableMetaEntityIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitBatchChangeTableOwner",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitBatchChangeTableOwnerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitBatchChangeTableOwner(_ request: SubmitBatchChangeTableOwnerRequest) async throws -> SubmitBatchChangeTableOwnerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitBatchChangeTableOwnerWithOptions(request as! SubmitBatchChangeTableOwnerRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

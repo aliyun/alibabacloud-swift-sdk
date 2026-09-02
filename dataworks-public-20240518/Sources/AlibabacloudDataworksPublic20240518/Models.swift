@@ -37123,6 +37123,275 @@ public class GetApplicationContentsResponse : Tea.TeaModel {
     }
 }
 
+public class GetBatchChangeTableOwnerStatusRequest : Tea.TeaModel {
+    public var batchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.batchId != nil {
+            map["BatchId"] = self.batchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BatchId"] as? String {
+            self.batchId = value
+        }
+    }
+}
+
+public class GetBatchChangeTableOwnerStatusResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Details : Tea.TeaModel {
+            public var errorMessage: String?
+
+            public var status: String?
+
+            public var tableMetaEntityId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.tableMetaEntityId != nil {
+                    map["TableMetaEntityId"] = self.tableMetaEntityId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["TableMetaEntityId"] as? String {
+                    self.tableMetaEntityId = value
+                }
+            }
+        }
+        public var batchId: String?
+
+        public var details: [GetBatchChangeTableOwnerStatusResponseBody.Data.Details]?
+
+        public var failedCount: Int32?
+
+        public var ongoingCount: Int32?
+
+        public var status: String?
+
+        public var successCount: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.batchId != nil {
+                map["BatchId"] = self.batchId!
+            }
+            if self.details != nil {
+                var tmp : [Any] = []
+                for k in self.details! {
+                    tmp.append(k.toMap())
+                }
+                map["Details"] = tmp
+            }
+            if self.failedCount != nil {
+                map["FailedCount"] = self.failedCount!
+            }
+            if self.ongoingCount != nil {
+                map["OngoingCount"] = self.ongoingCount!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.successCount != nil {
+                map["SuccessCount"] = self.successCount!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BatchId"] as? String {
+                self.batchId = value
+            }
+            if let value = dict["Details"] as? [Any?] {
+                var tmp : [GetBatchChangeTableOwnerStatusResponseBody.Data.Details] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetBatchChangeTableOwnerStatusResponseBody.Data.Details()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.details = tmp
+            }
+            if let value = dict["FailedCount"] as? Int32 {
+                self.failedCount = value
+            }
+            if let value = dict["OngoingCount"] as? Int32 {
+                self.ongoingCount = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SuccessCount"] as? Int32 {
+                self.successCount = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var data: GetBatchChangeTableOwnerStatusResponseBody.Data?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetBatchChangeTableOwnerStatusResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetBatchChangeTableOwnerStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetBatchChangeTableOwnerStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetBatchChangeTableOwnerStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetBusinessRequest : Tea.TeaModel {
     public var businessId: Int64?
 
@@ -113538,6 +113807,246 @@ public class StopWorkflowInstancesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = StopWorkflowInstancesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SubmitBatchChangeTableOwnerRequest : Tea.TeaModel {
+    public var enableCrossTenant: Bool?
+
+    public var owner: String?
+
+    public var tableMetaEntityIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableCrossTenant != nil {
+            map["EnableCrossTenant"] = self.enableCrossTenant!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.tableMetaEntityIds != nil {
+            map["TableMetaEntityIds"] = self.tableMetaEntityIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableCrossTenant"] as? Bool {
+            self.enableCrossTenant = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["TableMetaEntityIds"] as? [String] {
+            self.tableMetaEntityIds = value
+        }
+    }
+}
+
+public class SubmitBatchChangeTableOwnerShrinkRequest : Tea.TeaModel {
+    public var enableCrossTenant: Bool?
+
+    public var owner: String?
+
+    public var tableMetaEntityIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableCrossTenant != nil {
+            map["EnableCrossTenant"] = self.enableCrossTenant!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.tableMetaEntityIdsShrink != nil {
+            map["TableMetaEntityIds"] = self.tableMetaEntityIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableCrossTenant"] as? Bool {
+            self.enableCrossTenant = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["TableMetaEntityIds"] as? String {
+            self.tableMetaEntityIdsShrink = value
+        }
+    }
+}
+
+public class SubmitBatchChangeTableOwnerResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var batchId: String?
+
+        public var status: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.batchId != nil {
+                map["BatchId"] = self.batchId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BatchId"] as? String {
+                self.batchId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var data: SubmitBatchChangeTableOwnerResponseBody.Data?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = SubmitBatchChangeTableOwnerResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SubmitBatchChangeTableOwnerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitBatchChangeTableOwnerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SubmitBatchChangeTableOwnerResponseBody()
             model.fromMap(value)
             self.body = model
         }
