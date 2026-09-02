@@ -36,6 +36,109 @@ public class QueryIncidentTracingSubNodesCountRequest : Tea.TeaModel {
     }
 }
 
+public class DataValue : Tea.TeaModel {
+    public var cveNum: Int32?
+
+    public var emgNum: Int32?
+
+    public var sysNum: Int32?
+
+    public var cmsNum: Int32?
+
+    public var appNum: Int32?
+
+    public var scaNum: Int32?
+
+    public var vulAsapSum: Int32?
+
+    public var vulLaterSum: Int32?
+
+    public var vulNntfSum: Int32?
+
+    public var sysAsapNum: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cveNum != nil {
+            map["CveNum"] = self.cveNum!
+        }
+        if self.emgNum != nil {
+            map["EmgNum"] = self.emgNum!
+        }
+        if self.sysNum != nil {
+            map["SysNum"] = self.sysNum!
+        }
+        if self.cmsNum != nil {
+            map["CmsNum"] = self.cmsNum!
+        }
+        if self.appNum != nil {
+            map["AppNum"] = self.appNum!
+        }
+        if self.scaNum != nil {
+            map["ScaNum"] = self.scaNum!
+        }
+        if self.vulAsapSum != nil {
+            map["VulAsapSum"] = self.vulAsapSum!
+        }
+        if self.vulLaterSum != nil {
+            map["VulLaterSum"] = self.vulLaterSum!
+        }
+        if self.vulNntfSum != nil {
+            map["VulNntfSum"] = self.vulNntfSum!
+        }
+        if self.sysAsapNum != nil {
+            map["SysAsapNum"] = self.sysAsapNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CveNum"] as? Int32 {
+            self.cveNum = value
+        }
+        if let value = dict["EmgNum"] as? Int32 {
+            self.emgNum = value
+        }
+        if let value = dict["SysNum"] as? Int32 {
+            self.sysNum = value
+        }
+        if let value = dict["CmsNum"] as? Int32 {
+            self.cmsNum = value
+        }
+        if let value = dict["AppNum"] as? Int32 {
+            self.appNum = value
+        }
+        if let value = dict["ScaNum"] as? Int32 {
+            self.scaNum = value
+        }
+        if let value = dict["VulAsapSum"] as? Int32 {
+            self.vulAsapSum = value
+        }
+        if let value = dict["VulLaterSum"] as? Int32 {
+            self.vulLaterSum = value
+        }
+        if let value = dict["VulNntfSum"] as? Int32 {
+            self.vulNntfSum = value
+        }
+        if let value = dict["SysAsapNum"] as? Int32 {
+            self.sysAsapNum = value
+        }
+    }
+}
+
 public class AddAssetSelectionCriteriaRequest : Tea.TeaModel {
     public class TargetOperationList : Tea.TeaModel {
         public var operation: String?
@@ -106790,6 +106893,146 @@ public class DescribeUserSettingResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeUuidVulNumClassifyStatisticRequest : Tea.TeaModel {
+    public var imageVul: Bool?
+
+    public var uuids: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageVul != nil {
+            map["ImageVul"] = self.imageVul!
+        }
+        if self.uuids != nil {
+            map["Uuids"] = self.uuids!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ImageVul"] as? Bool {
+            self.imageVul = value
+        }
+        if let value = dict["Uuids"] as? String {
+            self.uuids = value
+        }
+    }
+}
+
+public class DescribeUuidVulNumClassifyStatisticResponseBody : Tea.TeaModel {
+    public var data: [String: DataValue]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.data! {
+                tmp[k] = v.toMap()
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var tmp : [String: DataValue] = [:]
+            for (k, v) in value {
+                if v != nil {
+                    var model = DataValue()
+                    model.fromMap(v as? [String: Any?])
+                    tmp[k] = model
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeUuidVulNumClassifyStatisticResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeUuidVulNumClassifyStatisticResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeUuidVulNumClassifyStatisticResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeUuidsByVulNamesRequest : Tea.TeaModel {
     public var dealed: String?
 
@@ -107397,6 +107640,8 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
 
     public var sasScreen: Int32?
 
+    public var sdkAiPostPaidGray: Int32?
+
     public var sdkCapacity: Int64?
 
     public var slsCapacity: Int64?
@@ -107584,6 +107829,9 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
         }
         if self.sasScreen != nil {
             map["SasScreen"] = self.sasScreen!
+        }
+        if self.sdkAiPostPaidGray != nil {
+            map["SdkAiPostPaidGray"] = self.sdkAiPostPaidGray!
         }
         if self.sdkCapacity != nil {
             map["SdkCapacity"] = self.sdkCapacity!
@@ -107779,6 +108027,9 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["SasScreen"] as? Int32 {
             self.sasScreen = value
+        }
+        if let value = dict["SdkAiPostPaidGray"] as? Int32 {
+            self.sdkAiPostPaidGray = value
         }
         if let value = dict["SdkCapacity"] as? Int64 {
             self.sdkCapacity = value
@@ -187626,6 +187877,8 @@ public class ListMultiUserInstancesResponse : Tea.TeaModel {
 }
 
 public class ListObjectScanEventRequest : Tea.TeaModel {
+    public var aiDetect: Bool?
+
     public var batchType: String?
 
     public var bucketName: String?
@@ -187670,6 +187923,9 @@ public class ListObjectScanEventRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aiDetect != nil {
+            map["AiDetect"] = self.aiDetect!
+        }
         if self.batchType != nil {
             map["BatchType"] = self.batchType!
         }
@@ -187720,6 +187976,9 @@ public class ListObjectScanEventRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AiDetect"] as? Bool {
+            self.aiDetect = value
+        }
         if let value = dict["BatchType"] as? String {
             self.batchType = value
         }
@@ -187832,6 +188091,8 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aiDetect: Bool?
+
         public var bucketName: String?
 
         public var details: [ListObjectScanEventResponseBody.Data.Details]?
@@ -187886,6 +188147,9 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiDetect != nil {
+                map["AiDetect"] = self.aiDetect!
+            }
             if self.bucketName != nil {
                 map["BucketName"] = self.bucketName!
             }
@@ -187955,6 +188219,9 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiDetect"] as? Bool {
+                self.aiDetect = value
+            }
             if let value = dict["BucketName"] as? String {
                 self.bucketName = value
             }

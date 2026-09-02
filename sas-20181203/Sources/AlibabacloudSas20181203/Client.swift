@@ -17595,6 +17595,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeUuidVulNumClassifyStatisticWithOptions(_ request: DescribeUuidVulNumClassifyStatisticRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUuidVulNumClassifyStatisticResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageVul)) {
+            query["ImageVul"] = request.imageVul!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uuids)) {
+            query["Uuids"] = request.uuids ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeUuidVulNumClassifyStatistic",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeUuidVulNumClassifyStatisticResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeUuidVulNumClassifyStatistic(_ request: DescribeUuidVulNumClassifyStatisticRequest) async throws -> DescribeUuidVulNumClassifyStatisticResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeUuidVulNumClassifyStatisticWithOptions(request as! DescribeUuidVulNumClassifyStatisticRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeUuidsByVulNamesWithOptions(_ request: DescribeUuidsByVulNamesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUuidsByVulNamesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -28441,6 +28475,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listObjectScanEventWithOptions(_ request: ListObjectScanEventRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListObjectScanEventResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiDetect)) {
+            query["AiDetect"] = request.aiDetect!;
+        }
         if (!TeaUtils.Client.isUnset(request.batchType)) {
             query["BatchType"] = request.batchType ?? "";
         }
