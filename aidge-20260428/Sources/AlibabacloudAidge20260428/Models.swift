@@ -2159,6 +2159,401 @@ public class DocumentTranslateResponse : Tea.TeaModel {
     }
 }
 
+public class EcomVideoRecreationRequest : Tea.TeaModel {
+    public class Input : Tea.TeaModel {
+        public class ProductInfo : Tea.TeaModel {
+            public var category: String?
+
+            public var detail: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
+                if self.detail != nil {
+                    map["Detail"] = self.detail!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Category"] as? String {
+                    self.category = value
+                }
+                if let value = dict["Detail"] as? String {
+                    self.detail = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public var changeDescription: String?
+
+        public var mode: String?
+
+        public var personReferenceImageUrls: [String]?
+
+        public var productImageUrls: [String]?
+
+        public var productInfo: EcomVideoRecreationRequest.Input.ProductInfo?
+
+        public var sourceVideoUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.productInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.changeDescription != nil {
+                map["ChangeDescription"] = self.changeDescription!
+            }
+            if self.mode != nil {
+                map["Mode"] = self.mode!
+            }
+            if self.personReferenceImageUrls != nil {
+                map["PersonReferenceImageUrls"] = self.personReferenceImageUrls!
+            }
+            if self.productImageUrls != nil {
+                map["ProductImageUrls"] = self.productImageUrls!
+            }
+            if self.productInfo != nil {
+                map["ProductInfo"] = self.productInfo?.toMap()
+            }
+            if self.sourceVideoUrl != nil {
+                map["SourceVideoUrl"] = self.sourceVideoUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChangeDescription"] as? String {
+                self.changeDescription = value
+            }
+            if let value = dict["Mode"] as? String {
+                self.mode = value
+            }
+            if let value = dict["PersonReferenceImageUrls"] as? [String] {
+                self.personReferenceImageUrls = value
+            }
+            if let value = dict["ProductImageUrls"] as? [String] {
+                self.productImageUrls = value
+            }
+            if let value = dict["ProductInfo"] as? [String: Any?] {
+                var model = EcomVideoRecreationRequest.Input.ProductInfo()
+                model.fromMap(value)
+                self.productInfo = model
+            }
+            if let value = dict["SourceVideoUrl"] as? String {
+                self.sourceVideoUrl = value
+            }
+        }
+    }
+    public class Output : Tea.TeaModel {
+        public var duration: Int32?
+
+        public var quality: String?
+
+        public var ratio: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.quality != nil {
+                map["Quality"] = self.quality!
+            }
+            if self.ratio != nil {
+                map["Ratio"] = self.ratio!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Duration"] as? Int32 {
+                self.duration = value
+            }
+            if let value = dict["Quality"] as? String {
+                self.quality = value
+            }
+            if let value = dict["Ratio"] as? String {
+                self.ratio = value
+            }
+        }
+    }
+    public var input: EcomVideoRecreationRequest.Input?
+
+    public var output: EcomVideoRecreationRequest.Output?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.input?.validate()
+        try self.output?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.input != nil {
+            map["Input"] = self.input?.toMap()
+        }
+        if self.output != nil {
+            map["Output"] = self.output?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Input"] as? [String: Any?] {
+            var model = EcomVideoRecreationRequest.Input()
+            model.fromMap(value)
+            self.input = model
+        }
+        if let value = dict["Output"] as? [String: Any?] {
+            var model = EcomVideoRecreationRequest.Output()
+            model.fromMap(value)
+            self.output = model
+        }
+    }
+}
+
+public class EcomVideoRecreationShrinkRequest : Tea.TeaModel {
+    public var inputShrink: String?
+
+    public var outputShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inputShrink != nil {
+            map["Input"] = self.inputShrink!
+        }
+        if self.outputShrink != nil {
+            map["Output"] = self.outputShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Input"] as? String {
+            self.inputShrink = value
+        }
+        if let value = dict["Output"] as? String {
+            self.outputShrink = value
+        }
+    }
+}
+
+public class EcomVideoRecreationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: EcomVideoRecreationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = EcomVideoRecreationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class EcomVideoRecreationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EcomVideoRecreationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EcomVideoRecreationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ImageCroppingRequest : Tea.TeaModel {
     public var imageUrl: String?
 
