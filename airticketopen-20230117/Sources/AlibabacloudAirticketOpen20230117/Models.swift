@@ -32447,6 +32447,8 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
 
                 public var name: String?
 
+                public var subItems: [Any]?
+
                 public var type: String?
 
                 public override init() {
@@ -32469,6 +32471,9 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
+                    if self.subItems != nil {
+                        map["SubItems"] = self.subItems!
+                    }
                     if self.type != nil {
                         map["Type"] = self.type!
                     }
@@ -32482,6 +32487,9 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Name"] as? String {
                         self.name = value
+                    }
+                    if let value = dict["SubItems"] as? [Any] {
+                        self.subItems = value
                     }
                     if let value = dict["Type"] as? String {
                         self.type = value
@@ -32689,12 +32697,70 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
                 }
             }
             public class RoomTypes : Tea.TeaModel {
-                public class BedType : Tea.TeaModel {
-                    public var bedCount: Int32?
+                public class BedGroups : Tea.TeaModel {
+                    public class BedInfos : Tea.TeaModel {
+                        public var bedCount: Int32?
 
-                    public var bedSize: String?
+                        public var bedNameCn: String?
 
-                    public var bedType: String?
+                        public var bedNameEn: String?
+
+                        public var bedSize: String?
+
+                        public var bedType: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.bedCount != nil {
+                                map["BedCount"] = self.bedCount!
+                            }
+                            if self.bedNameCn != nil {
+                                map["BedNameCn"] = self.bedNameCn!
+                            }
+                            if self.bedNameEn != nil {
+                                map["BedNameEn"] = self.bedNameEn!
+                            }
+                            if self.bedSize != nil {
+                                map["BedSize"] = self.bedSize!
+                            }
+                            if self.bedType != nil {
+                                map["BedType"] = self.bedType!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["BedCount"] as? Int32 {
+                                self.bedCount = value
+                            }
+                            if let value = dict["BedNameCn"] as? String {
+                                self.bedNameCn = value
+                            }
+                            if let value = dict["BedNameEn"] as? String {
+                                self.bedNameEn = value
+                            }
+                            if let value = dict["BedSize"] as? String {
+                                self.bedSize = value
+                            }
+                            if let value = dict["BedType"] as? String {
+                                self.bedType = value
+                            }
+                        }
+                    }
+                    public var bedInfos: [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedGroups.BedInfos]?
 
                     public override init() {
                         super.init()
@@ -32710,28 +32776,84 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
-                        if self.bedCount != nil {
-                            map["BedCount"] = self.bedCount!
-                        }
-                        if self.bedSize != nil {
-                            map["BedSize"] = self.bedSize!
-                        }
-                        if self.bedType != nil {
-                            map["BedType"] = self.bedType!
+                        if self.bedInfos != nil {
+                            var tmp : [Any] = []
+                            for k in self.bedInfos! {
+                                tmp.append(k.toMap())
+                            }
+                            map["BedInfos"] = tmp
                         }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
-                        if let value = dict["BedCount"] as? Int32 {
-                            self.bedCount = value
+                        if let value = dict["BedInfos"] as? [Any?] {
+                            var tmp : [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedGroups.BedInfos] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedGroups.BedInfos()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.bedInfos = tmp
                         }
-                        if let value = dict["BedSize"] as? String {
-                            self.bedSize = value
+                    }
+                }
+                public class Facilities : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var name: String?
+
+                    public var subItems: [Any]?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
                         }
-                        if let value = dict["BedType"] as? String {
-                            self.bedType = value
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.subItems != nil {
+                            map["SubItems"] = self.subItems!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["SubItems"] as? [Any] {
+                            self.subItems = value
+                        }
+                        if let value = dict["Type"] as? String {
+                            self.type = value
                         }
                     }
                 }
@@ -32821,7 +32943,9 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var bedType: [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedType]?
+                public var bedGroups: [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedGroups]?
+
+                public var facilities: [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.Facilities]?
 
                 public var pictures: [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.Pictures]?
 
@@ -32853,12 +32977,19 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
-                    if self.bedType != nil {
+                    if self.bedGroups != nil {
                         var tmp : [Any] = []
-                        for k in self.bedType! {
+                        for k in self.bedGroups! {
                             tmp.append(k.toMap())
                         }
-                        map["BedType"] = tmp
+                        map["BedGroups"] = tmp
+                    }
+                    if self.facilities != nil {
+                        var tmp : [Any] = []
+                        for k in self.facilities! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Facilities"] = tmp
                     }
                     if self.pictures != nil {
                         var tmp : [Any] = []
@@ -32893,18 +33024,31 @@ public class GlobalHotelBatchGetHotelDetailResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["BedType"] as? [Any?] {
-                        var tmp : [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedType] = []
+                    if let value = dict["BedGroups"] as? [Any?] {
+                        var tmp : [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedGroups] = []
                         for v in value {
                             if v != nil {
-                                var model = GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedType()
+                                var model = GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.BedGroups()
                                 if v != nil {
                                     model.fromMap(v as? [String: Any?])
                                 }
                                 tmp.append(model)
                             }
                         }
-                        self.bedType = tmp
+                        self.bedGroups = tmp
+                    }
+                    if let value = dict["Facilities"] as? [Any?] {
+                        var tmp : [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.Facilities] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.Facilities()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.facilities = tmp
                     }
                     if let value = dict["Pictures"] as? [Any?] {
                         var tmp : [GlobalHotelBatchGetHotelDetailResponseBody.Data.Hotels.RoomTypes.Pictures] = []
