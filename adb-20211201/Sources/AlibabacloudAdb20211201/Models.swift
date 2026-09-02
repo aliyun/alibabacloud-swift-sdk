@@ -3749,6 +3749,8 @@ public class AddKnowledgeFileRequest : Tea.TeaModel {
 
     public var isDir: Bool?
 
+    public var priority: String?
+
     public var tags: String?
 
     public var uploadUser: String?
@@ -3779,6 +3781,9 @@ public class AddKnowledgeFileRequest : Tea.TeaModel {
         if self.isDir != nil {
             map["IsDir"] = self.isDir!
         }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
@@ -3801,6 +3806,9 @@ public class AddKnowledgeFileRequest : Tea.TeaModel {
         }
         if let value = dict["IsDir"] as? Bool {
             self.isDir = value
+        }
+        if let value = dict["Priority"] as? String {
+            self.priority = value
         }
         if let value = dict["Tags"] as? String {
             self.tags = value
