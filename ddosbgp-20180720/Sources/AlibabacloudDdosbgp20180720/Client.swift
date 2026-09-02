@@ -29,11 +29,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-finance": "ddosbgp.aliyuncs.com",
             "cn-shenzhen-finance-1": "ddosbgp.aliyuncs.com",
             "cn-shanghai-finance-1": "ddosbgp.aliyuncs.com",
-            "cn-north-2-gov-1": "ddosbgp.aliyuncs.com",
-            "cn-hongkong": "ddosbgp.cn-hongkong.aliyuncs.com",
-            "ap-southeast-1": "ddosbgp.ap-southeast-1.aliyuncs.com",
-            "us-west-1": "ddosbgp.us-west-1.aliyuncs.com",
-            "us-east-1": "ddosbgp.us-east-1.aliyuncs.com"
+            "cn-north-2-gov-1": "ddosbgp.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ddosbgp", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")

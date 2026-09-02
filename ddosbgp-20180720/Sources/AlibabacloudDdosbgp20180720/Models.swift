@@ -6689,6 +6689,8 @@ public class ListPolicyResponseBody : Tea.TeaModel {
     public class PolicyList : Tea.TeaModel {
         public class Content : Tea.TeaModel {
             public class FingerPrintRuleList : Tea.TeaModel {
+                public var comment: String?
+
                 public var dstPortEnd: Int32?
 
                 public var dstPortStart: Int32?
@@ -6701,6 +6703,8 @@ public class ListPolicyResponseBody : Tea.TeaModel {
 
                 public var minPktLen: Int32?
 
+                public var mode: Int32?
+
                 public var offset: Int32?
 
                 public var payloadBytes: String?
@@ -6709,11 +6713,15 @@ public class ListPolicyResponseBody : Tea.TeaModel {
 
                 public var rateValue: Int32?
 
+                public var rule: String?
+
                 public var seqNo: Int32?
 
                 public var srcPortEnd: Int32?
 
                 public var srcPortStart: Int32?
+
+                public var type: Int32?
 
                 public override init() {
                     super.init()
@@ -6729,6 +6737,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.comment != nil {
+                        map["Comment"] = self.comment!
+                    }
                     if self.dstPortEnd != nil {
                         map["DstPortEnd"] = self.dstPortEnd!
                     }
@@ -6747,6 +6758,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     if self.minPktLen != nil {
                         map["MinPktLen"] = self.minPktLen!
                     }
+                    if self.mode != nil {
+                        map["Mode"] = self.mode!
+                    }
                     if self.offset != nil {
                         map["Offset"] = self.offset!
                     }
@@ -6759,6 +6773,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     if self.rateValue != nil {
                         map["RateValue"] = self.rateValue!
                     }
+                    if self.rule != nil {
+                        map["Rule"] = self.rule!
+                    }
                     if self.seqNo != nil {
                         map["SeqNo"] = self.seqNo!
                     }
@@ -6768,11 +6785,17 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     if self.srcPortStart != nil {
                         map["SrcPortStart"] = self.srcPortStart!
                     }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["Comment"] as? String {
+                        self.comment = value
+                    }
                     if let value = dict["DstPortEnd"] as? Int32 {
                         self.dstPortEnd = value
                     }
@@ -6791,6 +6814,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     if let value = dict["MinPktLen"] as? Int32 {
                         self.minPktLen = value
                     }
+                    if let value = dict["Mode"] as? Int32 {
+                        self.mode = value
+                    }
                     if let value = dict["Offset"] as? Int32 {
                         self.offset = value
                     }
@@ -6803,6 +6829,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     if let value = dict["RateValue"] as? Int32 {
                         self.rateValue = value
                     }
+                    if let value = dict["Rule"] as? String {
+                        self.rule = value
+                    }
                     if let value = dict["SeqNo"] as? Int32 {
                         self.seqNo = value
                     }
@@ -6811,6 +6840,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["SrcPortStart"] as? Int32 {
                         self.srcPortStart = value
+                    }
+                    if let value = dict["Type"] as? Int32 {
+                        self.type = value
                     }
                 }
             }
@@ -8681,6 +8713,8 @@ public class ListTagResourcesResponse : Tea.TeaModel {
 public class ModifyPolicyRequest : Tea.TeaModel {
     public class Content : Tea.TeaModel {
         public class FingerPrintRuleList : Tea.TeaModel {
+            public var comment: String?
+
             public var dstPortEnd: Int32?
 
             public var dstPortStart: Int32?
@@ -8693,6 +8727,8 @@ public class ModifyPolicyRequest : Tea.TeaModel {
 
             public var minPktLen: Int32?
 
+            public var mode: Int32?
+
             public var offset: Int32?
 
             public var payloadBytes: String?
@@ -8701,11 +8737,15 @@ public class ModifyPolicyRequest : Tea.TeaModel {
 
             public var rateValue: Int32?
 
+            public var rule: String?
+
             public var seqNo: Int32?
 
             public var srcPortEnd: Int32?
 
             public var srcPortStart: Int32?
+
+            public var type: Int32?
 
             public override init() {
                 super.init()
@@ -8721,6 +8761,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.comment != nil {
+                    map["Comment"] = self.comment!
+                }
                 if self.dstPortEnd != nil {
                     map["DstPortEnd"] = self.dstPortEnd!
                 }
@@ -8739,6 +8782,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 if self.minPktLen != nil {
                     map["MinPktLen"] = self.minPktLen!
                 }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
                 if self.offset != nil {
                     map["Offset"] = self.offset!
                 }
@@ -8751,6 +8797,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 if self.rateValue != nil {
                     map["RateValue"] = self.rateValue!
                 }
+                if self.rule != nil {
+                    map["Rule"] = self.rule!
+                }
                 if self.seqNo != nil {
                     map["SeqNo"] = self.seqNo!
                 }
@@ -8760,11 +8809,17 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 if self.srcPortStart != nil {
                     map["SrcPortStart"] = self.srcPortStart!
                 }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Comment"] as? String {
+                    self.comment = value
+                }
                 if let value = dict["DstPortEnd"] as? Int32 {
                     self.dstPortEnd = value
                 }
@@ -8783,6 +8838,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 if let value = dict["MinPktLen"] as? Int32 {
                     self.minPktLen = value
                 }
+                if let value = dict["Mode"] as? Int32 {
+                    self.mode = value
+                }
                 if let value = dict["Offset"] as? Int32 {
                     self.offset = value
                 }
@@ -8795,6 +8853,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 if let value = dict["RateValue"] as? Int32 {
                     self.rateValue = value
                 }
+                if let value = dict["Rule"] as? String {
+                    self.rule = value
+                }
                 if let value = dict["SeqNo"] as? Int32 {
                     self.seqNo = value
                 }
@@ -8803,6 +8864,9 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 }
                 if let value = dict["SrcPortStart"] as? Int32 {
                     self.srcPortStart = value
+                }
+                if let value = dict["Type"] as? Int32 {
+                    self.type = value
                 }
             }
         }
@@ -9736,6 +9800,8 @@ public class ModifyPolicyResponse : Tea.TeaModel {
 public class ModifyPolicyContentRequest : Tea.TeaModel {
     public class Content : Tea.TeaModel {
         public class FingerPrintRuleList : Tea.TeaModel {
+            public var comment: String?
+
             public var dstPortEnd: Int32?
 
             public var dstPortStart: Int32?
@@ -9748,6 +9814,8 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
 
             public var minPktLen: Int32?
 
+            public var mode: Int32?
+
             public var offset: Int32?
 
             public var payloadBytes: String?
@@ -9756,11 +9824,15 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
 
             public var rateValue: Int32?
 
+            public var rule: String?
+
             public var seqNo: Int32?
 
             public var srcPortEnd: Int32?
 
             public var srcPortStart: Int32?
+
+            public var type: Int32?
 
             public override init() {
                 super.init()
@@ -9776,6 +9848,9 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.comment != nil {
+                    map["Comment"] = self.comment!
+                }
                 if self.dstPortEnd != nil {
                     map["DstPortEnd"] = self.dstPortEnd!
                 }
@@ -9794,6 +9869,9 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 if self.minPktLen != nil {
                     map["MinPktLen"] = self.minPktLen!
                 }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
                 if self.offset != nil {
                     map["Offset"] = self.offset!
                 }
@@ -9806,6 +9884,9 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 if self.rateValue != nil {
                     map["RateValue"] = self.rateValue!
                 }
+                if self.rule != nil {
+                    map["Rule"] = self.rule!
+                }
                 if self.seqNo != nil {
                     map["SeqNo"] = self.seqNo!
                 }
@@ -9815,11 +9896,17 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 if self.srcPortStart != nil {
                     map["SrcPortStart"] = self.srcPortStart!
                 }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Comment"] as? String {
+                    self.comment = value
+                }
                 if let value = dict["DstPortEnd"] as? Int32 {
                     self.dstPortEnd = value
                 }
@@ -9838,6 +9925,9 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 if let value = dict["MinPktLen"] as? Int32 {
                     self.minPktLen = value
                 }
+                if let value = dict["Mode"] as? Int32 {
+                    self.mode = value
+                }
                 if let value = dict["Offset"] as? Int32 {
                     self.offset = value
                 }
@@ -9850,6 +9940,9 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 if let value = dict["RateValue"] as? Int32 {
                     self.rateValue = value
                 }
+                if let value = dict["Rule"] as? String {
+                    self.rule = value
+                }
                 if let value = dict["SeqNo"] as? Int32 {
                     self.seqNo = value
                 }
@@ -9858,6 +9951,9 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 }
                 if let value = dict["SrcPortStart"] as? Int32 {
                     self.srcPortStart = value
+                }
+                if let value = dict["Type"] as? Int32 {
+                    self.type = value
                 }
             }
         }
