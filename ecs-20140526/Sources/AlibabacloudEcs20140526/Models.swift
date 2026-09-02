@@ -43214,6 +43214,8 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
             public class HostDetailInfo : Tea.TeaModel {
                 public var serialNumber: String?
 
+                public var vgpuVersion: String?
+
                 public override init() {
                     super.init()
                 }
@@ -43231,6 +43233,9 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
                     if self.serialNumber != nil {
                         map["SerialNumber"] = self.serialNumber!
                     }
+                    if self.vgpuVersion != nil {
+                        map["VgpuVersion"] = self.vgpuVersion!
+                    }
                     return map
                 }
 
@@ -43238,6 +43243,9 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["SerialNumber"] as? String {
                         self.serialNumber = value
+                    }
+                    if let value = dict["VgpuVersion"] as? String {
+                        self.vgpuVersion = value
                     }
                 }
             }
