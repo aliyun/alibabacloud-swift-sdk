@@ -12,10 +12,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "ap-southeast-1": "esa.ap-southeast-1.aliyuncs.com",
-            "cn-hangzhou": "esa.cn-hangzhou.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("esa", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -228,6 +224,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func applyCertificateWithOptions(_ request: ApplyCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyCertificateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.algType)) {
+            query["AlgType"] = request.algType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.domains)) {
             query["Domains"] = request.domains ?? "";
         }
@@ -10682,6 +10681,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.siteId)) {
             query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.validOnly)) {
             query["ValidOnly"] = request.validOnly!;

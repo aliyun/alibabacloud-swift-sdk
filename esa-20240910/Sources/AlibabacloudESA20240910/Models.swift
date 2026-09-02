@@ -3324,6 +3324,8 @@ public class AddUserBusinessFormResponse : Tea.TeaModel {
 }
 
 public class ApplyCertificateRequest : Tea.TeaModel {
+    public var algType: String?
+
     public var domains: String?
 
     public var siteId: Int64?
@@ -3344,6 +3346,9 @@ public class ApplyCertificateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.algType != nil {
+            map["AlgType"] = self.algType!
+        }
         if self.domains != nil {
             map["Domains"] = self.domains!
         }
@@ -3358,6 +3363,9 @@ public class ApplyCertificateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AlgType"] as? String {
+            self.algType = value
+        }
         if let value = dict["Domains"] as? String {
             self.domains = value
         }
@@ -64991,6 +64999,8 @@ public class ListCertificatesRequest : Tea.TeaModel {
 
     public var siteId: Int64?
 
+    public var type: String?
+
     public var validOnly: Bool?
 
     public override init() {
@@ -65019,6 +65029,9 @@ public class ListCertificatesRequest : Tea.TeaModel {
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         if self.validOnly != nil {
             map["ValidOnly"] = self.validOnly!
         }
@@ -65038,6 +65051,9 @@ public class ListCertificatesRequest : Tea.TeaModel {
         }
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
         if let value = dict["ValidOnly"] as? Bool {
             self.validOnly = value
