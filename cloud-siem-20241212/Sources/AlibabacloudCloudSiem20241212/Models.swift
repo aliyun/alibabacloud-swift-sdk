@@ -16208,6 +16208,8 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
     public class Incidents : Tea.TeaModel {
         public var alertInfos: String?
 
+        public var alertSources: [String]?
+
         public var attckTactics: String?
 
         public var createTime: Int64?
@@ -16232,11 +16234,15 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
 
         public var owner: String?
 
+        public var ownerName: String?
+
         public var relateAlertCount: Int32?
 
         public var relateAssetCount: Int32?
 
         public var responseTime: Int64?
+
+        public var responseTypes: [String]?
 
         public var threatLevel: String?
 
@@ -16258,6 +16264,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.alertInfos != nil {
                 map["AlertInfos"] = self.alertInfos!
+            }
+            if self.alertSources != nil {
+                map["AlertSources"] = self.alertSources!
             }
             if self.attckTactics != nil {
                 map["AttckTactics"] = self.attckTactics!
@@ -16295,6 +16304,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             if self.owner != nil {
                 map["Owner"] = self.owner!
             }
+            if self.ownerName != nil {
+                map["OwnerName"] = self.ownerName!
+            }
             if self.relateAlertCount != nil {
                 map["RelateAlertCount"] = self.relateAlertCount!
             }
@@ -16303,6 +16315,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             }
             if self.responseTime != nil {
                 map["ResponseTime"] = self.responseTime!
+            }
+            if self.responseTypes != nil {
+                map["ResponseTypes"] = self.responseTypes!
             }
             if self.threatLevel != nil {
                 map["ThreatLevel"] = self.threatLevel!
@@ -16317,6 +16332,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AlertInfos"] as? String {
                 self.alertInfos = value
+            }
+            if let value = dict["AlertSources"] as? [String] {
+                self.alertSources = value
             }
             if let value = dict["AttckTactics"] as? String {
                 self.attckTactics = value
@@ -16354,6 +16372,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             if let value = dict["Owner"] as? String {
                 self.owner = value
             }
+            if let value = dict["OwnerName"] as? String {
+                self.ownerName = value
+            }
             if let value = dict["RelateAlertCount"] as? Int32 {
                 self.relateAlertCount = value
             }
@@ -16362,6 +16383,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResponseTime"] as? Int64 {
                 self.responseTime = value
+            }
+            if let value = dict["ResponseTypes"] as? [String] {
+                self.responseTypes = value
             }
             if let value = dict["ThreatLevel"] as? String {
                 self.threatLevel = value
