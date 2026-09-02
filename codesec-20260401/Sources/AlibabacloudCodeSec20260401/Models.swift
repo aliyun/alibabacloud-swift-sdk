@@ -12,6 +12,10 @@ public class DescribeProjectsRequest : Tea.TeaModel {
 
     public var query: String?
 
+    public var sortBy: String?
+
+    public var sortOrder: String?
+
     public override init() {
         super.init()
     }
@@ -35,6 +39,12 @@ public class DescribeProjectsRequest : Tea.TeaModel {
         if self.query != nil {
             map["query"] = self.query!
         }
+        if self.sortBy != nil {
+            map["sortBy"] = self.sortBy!
+        }
+        if self.sortOrder != nil {
+            map["sortOrder"] = self.sortOrder!
+        }
         return map
     }
 
@@ -48,6 +58,12 @@ public class DescribeProjectsRequest : Tea.TeaModel {
         }
         if let value = dict["query"] as? String {
             self.query = value
+        }
+        if let value = dict["sortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["sortOrder"] as? String {
+            self.sortOrder = value
         }
     }
 }
@@ -136,6 +152,8 @@ public class DescribeProjectsResponseBody : Tea.TeaModel {
 
         public var instructionPrompt: String?
 
+        public var lastScanTime: String?
+
         public var name: String?
 
         public var source: DescribeProjectsResponseBody.Items.Source?
@@ -179,6 +197,9 @@ public class DescribeProjectsResponseBody : Tea.TeaModel {
             if self.instructionPrompt != nil {
                 map["instructionPrompt"] = self.instructionPrompt!
             }
+            if self.lastScanTime != nil {
+                map["lastScanTime"] = self.lastScanTime!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
@@ -215,6 +236,9 @@ public class DescribeProjectsResponseBody : Tea.TeaModel {
             }
             if let value = dict["instructionPrompt"] as? String {
                 self.instructionPrompt = value
+            }
+            if let value = dict["lastScanTime"] as? String {
+                self.lastScanTime = value
             }
             if let value = dict["name"] as? String {
                 self.name = value
