@@ -1273,6 +1273,52 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class MediaTimeline : Tea.TeaModel {
+            public var endMs: Int64?
+
+            public var startMs: Int64?
+
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endMs != nil {
+                    map["endMs"] = self.endMs!
+                }
+                if self.startMs != nil {
+                    map["startMs"] = self.startMs!
+                }
+                if self.text != nil {
+                    map["text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["endMs"] as? Int64 {
+                    self.endMs = value
+                }
+                if let value = dict["startMs"] as? Int64 {
+                    self.startMs = value
+                }
+                if let value = dict["text"] as? String {
+                    self.text = value
+                }
+            }
+        }
         public class ScoreDetails : Tea.TeaModel {
             public var keywordScore: Double?
 
@@ -1326,6 +1372,12 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
         public var knowledgeBaseId: String?
 
         public var locations: [SearchKnowledgeBaseResponseBody.Results.Locations]?
+
+        public var mediaEndMs: Int64?
+
+        public var mediaStartMs: Int64?
+
+        public var mediaTimeline: [SearchKnowledgeBaseResponseBody.Results.MediaTimeline]?
 
         public var parentChunkId: String?
 
@@ -1383,6 +1435,19 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["locations"] = tmp
+            }
+            if self.mediaEndMs != nil {
+                map["mediaEndMs"] = self.mediaEndMs!
+            }
+            if self.mediaStartMs != nil {
+                map["mediaStartMs"] = self.mediaStartMs!
+            }
+            if self.mediaTimeline != nil {
+                var tmp : [Any] = []
+                for k in self.mediaTimeline! {
+                    tmp.append(k.toMap())
+                }
+                map["mediaTimeline"] = tmp
             }
             if self.parentChunkId != nil {
                 map["parentChunkId"] = self.parentChunkId!
@@ -1447,6 +1512,25 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
                     }
                 }
                 self.locations = tmp
+            }
+            if let value = dict["mediaEndMs"] as? Int64 {
+                self.mediaEndMs = value
+            }
+            if let value = dict["mediaStartMs"] as? Int64 {
+                self.mediaStartMs = value
+            }
+            if let value = dict["mediaTimeline"] as? [Any?] {
+                var tmp : [SearchKnowledgeBaseResponseBody.Results.MediaTimeline] = []
+                for v in value {
+                    if v != nil {
+                        var model = SearchKnowledgeBaseResponseBody.Results.MediaTimeline()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mediaTimeline = tmp
             }
             if let value = dict["parentChunkId"] as? String {
                 self.parentChunkId = value
