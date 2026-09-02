@@ -9,17 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-shenzhen": "agentloop.cn-shenzhen.aliyuncs.com",
-            "cn-beijing": "agentloop.cn-beijing.aliyuncs.com",
-            "cn-shanghai": "agentloop.cn-shanghai.aliyuncs.com",
-            "cn-guangzhou": "agentloop.cn-guangzhou.aliyuncs.com",
-            "cn-hongkong": "agentloop.cn-hongkong.aliyuncs.com",
-            "ap-southeast-1": "agentloop.ap-southeast-1.aliyuncs.com",
-            "cn-zhangjiakou": "agentloop.cn-zhangjiakou.aliyuncs.com",
-            "cn-hangzhou": "agentloop.cn-hangzhou.aliyuncs.com",
-            "cn-chengdu": "agentloop.cn-chengdu.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("agentloop", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1009,6 +998,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func executeQueryWithOptions(_ agentSpace: String, _ datasetName: String, _ request: ExecuteQueryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteQueryResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.annotationFilter)) {
+            body["annotationFilter"] = request.annotationFilter!;
+        }
         if (!TeaUtils.Client.isUnset(request.from)) {
             body["from"] = request.from!;
         }

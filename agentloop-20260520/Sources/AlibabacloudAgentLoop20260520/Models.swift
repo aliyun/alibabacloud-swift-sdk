@@ -5675,6 +5675,98 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 }
 
 public class ExecuteQueryRequest : Tea.TeaModel {
+    public class AnnotationFilter : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var key: String?
+
+            public var operator_: String?
+
+            public var value: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["key"] = self.key!
+                }
+                if self.operator_ != nil {
+                    map["operator"] = self.operator_!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["operator"] as? String {
+                    self.operator_ = value
+                }
+                if let value = dict["value"] as? Any {
+                    self.value = value
+                }
+            }
+        }
+        public var conditions: [ExecuteQueryRequest.AnnotationFilter.Conditions]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["conditions"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["conditions"] as? [Any?] {
+                var tmp : [ExecuteQueryRequest.AnnotationFilter.Conditions] = []
+                for v in value {
+                    if v != nil {
+                        var model = ExecuteQueryRequest.AnnotationFilter.Conditions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.conditions = tmp
+            }
+        }
+    }
+    public var annotationFilter: ExecuteQueryRequest.AnnotationFilter?
+
     public var from: Int32?
 
     public var length: Int32?
@@ -5701,10 +5793,14 @@ public class ExecuteQueryRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.annotationFilter?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.annotationFilter != nil {
+            map["annotationFilter"] = self.annotationFilter?.toMap()
+        }
         if self.from != nil {
             map["from"] = self.from!
         }
@@ -5734,6 +5830,11 @@ public class ExecuteQueryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["annotationFilter"] as? [String: Any?] {
+            var model = ExecuteQueryRequest.AnnotationFilter()
+            model.fromMap(value)
+            self.annotationFilter = model
+        }
         if let value = dict["from"] as? Int32 {
             self.from = value
         }
