@@ -3954,6 +3954,8 @@ public class DeleteEndpointResponse : Tea.TeaModel {
 }
 
 public class DeleteLangfuseInstanceRequest : Tea.TeaModel {
+    public var confirmDeleteAiGateway: Bool?
+
     public var DBInstanceId: String?
 
     public var regionId: String?
@@ -3972,6 +3974,9 @@ public class DeleteLangfuseInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.confirmDeleteAiGateway != nil {
+            map["ConfirmDeleteAiGateway"] = self.confirmDeleteAiGateway!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -3983,6 +3988,9 @@ public class DeleteLangfuseInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ConfirmDeleteAiGateway"] as? Bool {
+            self.confirmDeleteAiGateway = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
