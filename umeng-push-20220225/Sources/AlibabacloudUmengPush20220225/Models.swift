@@ -188,17 +188,31 @@ public class AndroidShortPayload : Tea.TeaModel {
 public class Aps : Tea.TeaModel {
     public var alert: Alert?
 
+    public var attributes: String?
+
+    public var attributesType: String?
+
     public var badge: String?
 
     public var category: String?
 
     public var contentAvailable: Int32?
 
+    public var contentState: String?
+
+    public var dismissalDate: Int32?
+
+    public var event: String?
+
     public var interruptionLevel: String?
+
+    public var mutableContent: Int32?
 
     public var sound: String?
 
     public var threadID: String?
+
+    public var timestamp: Int32?
 
     public override init() {
         super.init()
@@ -218,6 +232,12 @@ public class Aps : Tea.TeaModel {
         if self.alert != nil {
             map["alert"] = self.alert?.toMap()
         }
+        if self.attributes != nil {
+            map["attributes"] = self.attributes!
+        }
+        if self.attributesType != nil {
+            map["attributesType"] = self.attributesType!
+        }
         if self.badge != nil {
             map["badge"] = self.badge!
         }
@@ -227,14 +247,29 @@ public class Aps : Tea.TeaModel {
         if self.contentAvailable != nil {
             map["contentAvailable"] = self.contentAvailable!
         }
+        if self.contentState != nil {
+            map["contentState"] = self.contentState!
+        }
+        if self.dismissalDate != nil {
+            map["dismissalDate"] = self.dismissalDate!
+        }
+        if self.event != nil {
+            map["event"] = self.event!
+        }
         if self.interruptionLevel != nil {
             map["interruptionLevel"] = self.interruptionLevel!
+        }
+        if self.mutableContent != nil {
+            map["mutableContent"] = self.mutableContent!
         }
         if self.sound != nil {
             map["sound"] = self.sound!
         }
         if self.threadID != nil {
             map["threadID"] = self.threadID!
+        }
+        if self.timestamp != nil {
+            map["timestamp"] = self.timestamp!
         }
         return map
     }
@@ -246,6 +281,12 @@ public class Aps : Tea.TeaModel {
             model.fromMap(value)
             self.alert = model
         }
+        if let value = dict["attributes"] as? String {
+            self.attributes = value
+        }
+        if let value = dict["attributesType"] as? String {
+            self.attributesType = value
+        }
         if let value = dict["badge"] as? String {
             self.badge = value
         }
@@ -255,14 +296,29 @@ public class Aps : Tea.TeaModel {
         if let value = dict["contentAvailable"] as? Int32 {
             self.contentAvailable = value
         }
+        if let value = dict["contentState"] as? String {
+            self.contentState = value
+        }
+        if let value = dict["dismissalDate"] as? Int32 {
+            self.dismissalDate = value
+        }
+        if let value = dict["event"] as? String {
+            self.event = value
+        }
         if let value = dict["interruptionLevel"] as? String {
             self.interruptionLevel = value
+        }
+        if let value = dict["mutableContent"] as? Int32 {
+            self.mutableContent = value
         }
         if let value = dict["sound"] as? String {
             self.sound = value
         }
         if let value = dict["threadID"] as? String {
             self.threadID = value
+        }
+        if let value = dict["timestamp"] as? Int32 {
+            self.timestamp = value
         }
     }
 }
