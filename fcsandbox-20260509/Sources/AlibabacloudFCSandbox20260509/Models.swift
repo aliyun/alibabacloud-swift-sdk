@@ -2846,6 +2846,45 @@ public class E2BVolumeMount : Tea.TeaModel {
     }
 }
 
+public class EffectivePermissions : Tea.TeaModel {
+    public var actions: [String]?
+
+    public var capabilities: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actions != nil {
+            map["actions"] = self.actions!
+        }
+        if self.capabilities != nil {
+            map["capabilities"] = self.capabilities!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["actions"] as? [String] {
+            self.actions = value
+        }
+        if let value = dict["capabilities"] as? [String] {
+            self.capabilities = value
+        }
+    }
+}
+
 public class IPConfig : Tea.TeaModel {
     public var description_: String?
 
@@ -3085,6 +3124,143 @@ public class OSSVolumeConfig : Tea.TeaModel {
         }
         if let value = dict["readOnly"] as? Bool {
             self.readOnly = value
+        }
+    }
+}
+
+public class PermissionPolicy : Tea.TeaModel {
+    public class Allow : Tea.TeaModel {
+        public var actions: [String]?
+
+        public var capabilities: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actions != nil {
+                map["actions"] = self.actions!
+            }
+            if self.capabilities != nil {
+                map["capabilities"] = self.capabilities!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["actions"] as? [String] {
+                self.actions = value
+            }
+            if let value = dict["capabilities"] as? [String] {
+                self.capabilities = value
+            }
+        }
+    }
+    public class Deny : Tea.TeaModel {
+        public var actions: [String]?
+
+        public var capabilities: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actions != nil {
+                map["actions"] = self.actions!
+            }
+            if self.capabilities != nil {
+                map["capabilities"] = self.capabilities!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["actions"] as? [String] {
+                self.actions = value
+            }
+            if let value = dict["capabilities"] as? [String] {
+                self.capabilities = value
+            }
+        }
+    }
+    public var allow: PermissionPolicy.Allow?
+
+    public var catalogVersion: Int64?
+
+    public var deny: PermissionPolicy.Deny?
+
+    public var schemaVersion: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.allow?.validate()
+        try self.deny?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allow != nil {
+            map["allow"] = self.allow?.toMap()
+        }
+        if self.catalogVersion != nil {
+            map["catalogVersion"] = self.catalogVersion!
+        }
+        if self.deny != nil {
+            map["deny"] = self.deny?.toMap()
+        }
+        if self.schemaVersion != nil {
+            map["schemaVersion"] = self.schemaVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["allow"] as? [String: Any?] {
+            var model = PermissionPolicy.Allow()
+            model.fromMap(value)
+            self.allow = model
+        }
+        if let value = dict["catalogVersion"] as? Int64 {
+            self.catalogVersion = value
+        }
+        if let value = dict["deny"] as? [String: Any?] {
+            var model = PermissionPolicy.Deny()
+            model.fromMap(value)
+            self.deny = model
+        }
+        if let value = dict["schemaVersion"] as? Int64 {
+            self.schemaVersion = value
         }
     }
 }
@@ -5276,11 +5452,15 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var effectivePermissions: EffectivePermissions?
+
     public var ipBlacklist: [IPConfig]?
 
     public var ipWhitelist: [IPConfig]?
 
     public var message: String?
+
+    public var permissionPolicy: PermissionPolicy?
 
     public var requestId: String?
 
@@ -5295,6 +5475,8 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.apiKey?.validate()
+        try self.effectivePermissions?.validate()
+        try self.permissionPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5304,6 +5486,9 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
         }
         if self.code != nil {
             map["code"] = self.code!
+        }
+        if self.effectivePermissions != nil {
+            map["effectivePermissions"] = self.effectivePermissions?.toMap()
         }
         if self.ipBlacklist != nil {
             var tmp : [Any] = []
@@ -5322,6 +5507,9 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["message"] = self.message!
         }
+        if self.permissionPolicy != nil {
+            map["permissionPolicy"] = self.permissionPolicy?.toMap()
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -5337,6 +5525,11 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["effectivePermissions"] as? [String: Any?] {
+            var model = EffectivePermissions()
+            model.fromMap(value)
+            self.effectivePermissions = model
         }
         if let value = dict["ipBlacklist"] as? [Any?] {
             var tmp : [IPConfig] = []
@@ -5366,6 +5559,11 @@ public class DescribeApiKeyResponseBody : Tea.TeaModel {
         }
         if let value = dict["message"] as? String {
             self.message = value
+        }
+        if let value = dict["permissionPolicy"] as? [String: Any?] {
+            var model = PermissionPolicy()
+            model.fromMap(value)
+            self.permissionPolicy = model
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
