@@ -8086,6 +8086,44 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public class DnatEntries : Tea.TeaModel {
+        public var frontPort: Int32?
+
+        public var portName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.frontPort != nil {
+                map["FrontPort"] = self.frontPort!
+            }
+            if self.portName != nil {
+                map["PortName"] = self.portName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FrontPort"] as? Int32 {
+                self.frontPort = value
+            }
+            if let value = dict["PortName"] as? String {
+                self.portName = value
+            }
+        }
+    }
     public class Endpoints : Tea.TeaModel {
         public var description_: String?
 
@@ -8372,6 +8410,10 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dnatEntries: [CreateApplicationRequest.DnatEntries]?
+
+    public var dnatIpAddress: String?
+
     public var dryRun: Bool?
 
     public var endpoints: [CreateApplicationRequest.Endpoints]?
@@ -8423,6 +8465,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var vSwitchId: String?
 
     public var vpcId: String?
+
+    public var vpcNatGatewayId: String?
 
     public var zoneId: String?
 
@@ -8481,6 +8525,16 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dnatEntries != nil {
+            var tmp : [Any] = []
+            for k in self.dnatEntries! {
+                tmp.append(k.toMap())
+            }
+            map["DnatEntries"] = tmp
+        }
+        if self.dnatIpAddress != nil {
+            map["DnatIpAddress"] = self.dnatIpAddress!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -8572,6 +8626,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
+        if self.vpcNatGatewayId != nil {
+            map["VpcNatGatewayId"] = self.vpcNatGatewayId!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -8625,6 +8682,22 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DnatEntries"] as? [Any?] {
+            var tmp : [CreateApplicationRequest.DnatEntries] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationRequest.DnatEntries()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dnatEntries = tmp
+        }
+        if let value = dict["DnatIpAddress"] as? String {
+            self.dnatIpAddress = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
@@ -8738,6 +8811,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
         }
+        if let value = dict["VpcNatGatewayId"] as? String {
+            self.vpcNatGatewayId = value
+        }
         if let value = dict["ZoneId"] as? String {
             self.zoneId = value
         }
@@ -8807,6 +8883,10 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dnatEntriesShrink: String?
+
+    public var dnatIpAddress: String?
+
     public var dryRun: Bool?
 
     public var endpointsShrink: String?
@@ -8859,6 +8939,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var vpcId: String?
 
+    public var vpcNatGatewayId: String?
+
     public var zoneId: String?
 
     public override init() {
@@ -8910,6 +8992,12 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dnatEntriesShrink != nil {
+            map["DnatEntries"] = self.dnatEntriesShrink!
+        }
+        if self.dnatIpAddress != nil {
+            map["DnatIpAddress"] = self.dnatIpAddress!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -8993,6 +9081,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
+        if self.vpcNatGatewayId != nil {
+            map["VpcNatGatewayId"] = self.vpcNatGatewayId!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -9036,6 +9127,12 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DnatEntries"] as? String {
+            self.dnatEntriesShrink = value
+        }
+        if let value = dict["DnatIpAddress"] as? String {
+            self.dnatIpAddress = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
@@ -9124,6 +9221,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
+        }
+        if let value = dict["VpcNatGatewayId"] as? String {
+            self.vpcNatGatewayId = value
         }
         if let value = dict["ZoneId"] as? String {
             self.zoneId = value
@@ -39197,6 +39297,76 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class DnatMappings : Tea.TeaModel {
+        public var accessAddress: String?
+
+        public var backendPort: Int32?
+
+        public var entryId: String?
+
+        public var frontPort: Int32?
+
+        public var portName: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessAddress != nil {
+                map["AccessAddress"] = self.accessAddress!
+            }
+            if self.backendPort != nil {
+                map["BackendPort"] = self.backendPort!
+            }
+            if self.entryId != nil {
+                map["EntryId"] = self.entryId!
+            }
+            if self.frontPort != nil {
+                map["FrontPort"] = self.frontPort!
+            }
+            if self.portName != nil {
+                map["PortName"] = self.portName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessAddress"] as? String {
+                self.accessAddress = value
+            }
+            if let value = dict["BackendPort"] as? Int32 {
+                self.backendPort = value
+            }
+            if let value = dict["EntryId"] as? String {
+                self.entryId = value
+            }
+            if let value = dict["FrontPort"] as? Int32 {
+                self.frontPort = value
+            }
+            if let value = dict["PortName"] as? String {
+                self.portName = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public class Endpoints : Tea.TeaModel {
         public var description_: String?
 
@@ -39650,6 +39820,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dnatMappings: [DescribeApplicationAttributeResponseBody.DnatMappings]?
+
     public var endpoints: [DescribeApplicationAttributeResponseBody.Endpoints]?
 
     public var expireTime: String?
@@ -39671,6 +39843,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public var minorVersion: String?
 
     public var natGatewayId: String?
+
+    public var natMappingSnatIpAddress: String?
 
     public var payType: String?
 
@@ -39701,6 +39875,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public var vSwitchId: String?
 
     public var version: String?
+
+    public var vpcNatGatewayId: String?
 
     public var zoneId: String?
 
@@ -39748,6 +39924,13 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.dnatMappings != nil {
+            var tmp : [Any] = []
+            for k in self.dnatMappings! {
+                tmp.append(k.toMap())
+            }
+            map["DnatMappings"] = tmp
+        }
         if self.endpoints != nil {
             var tmp : [Any] = []
             for k in self.endpoints! {
@@ -39784,6 +39967,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.natMappingSnatIpAddress != nil {
+            map["NatMappingSnatIpAddress"] = self.natMappingSnatIpAddress!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -39842,6 +40028,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if self.version != nil {
             map["Version"] = self.version!
         }
+        if self.vpcNatGatewayId != nil {
+            map["VpcNatGatewayId"] = self.vpcNatGatewayId!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -39883,6 +40072,19 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DnatMappings"] as? [Any?] {
+            var tmp : [DescribeApplicationAttributeResponseBody.DnatMappings] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationAttributeResponseBody.DnatMappings()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dnatMappings = tmp
         }
         if let value = dict["Endpoints"] as? [Any?] {
             var tmp : [DescribeApplicationAttributeResponseBody.Endpoints] = []
@@ -39928,6 +40130,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["NatGatewayId"] as? String {
             self.natGatewayId = value
+        }
+        if let value = dict["NatMappingSnatIpAddress"] as? String {
+            self.natMappingSnatIpAddress = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
@@ -40005,6 +40210,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Version"] as? String {
             self.version = value
+        }
+        if let value = dict["VpcNatGatewayId"] as? String {
+            self.vpcNatGatewayId = value
         }
         if let value = dict["ZoneId"] as? String {
             self.zoneId = value
