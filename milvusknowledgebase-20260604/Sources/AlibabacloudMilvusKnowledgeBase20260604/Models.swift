@@ -51,6 +51,8 @@ public class AddDocumentsRequest : Tea.TeaModel {
 
         public var size: Int64?
 
+        public var strategyId: String?
+
         public override init() {
             super.init()
         }
@@ -74,6 +76,9 @@ public class AddDocumentsRequest : Tea.TeaModel {
             if self.size != nil {
                 map["Size"] = self.size!
             }
+            if self.strategyId != nil {
+                map["StrategyId"] = self.strategyId!
+            }
             return map
         }
 
@@ -87,6 +92,9 @@ public class AddDocumentsRequest : Tea.TeaModel {
             }
             if let value = dict["Size"] as? Int64 {
                 self.size = value
+            }
+            if let value = dict["StrategyId"] as? String {
+                self.strategyId = value
             }
         }
     }
