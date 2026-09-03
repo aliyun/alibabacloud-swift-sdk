@@ -9,14 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-shanghai": "cloudsso.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "cloudsso.cn-hongkong.aliyuncs.com",
-            "ap-northeast-2": "cloudsso.ap-northeast-2.aliyuncs.com",
-            "ap-southeast-1": "cloudsso.ap-southeast-1.aliyuncs.com",
-            "us-west-1": "cloudsso.us-west-1.aliyuncs.com",
-            "eu-central-1": "cloudsso.eu-central-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudsso", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -998,6 +990,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAccessConfiguration(_ request: GetAccessConfigurationRequest) async throws -> GetAccessConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getAccessConfigurationWithOptions(request as! GetAccessConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAttributePassingSettingWithOptions(_ request: GetAttributePassingSettingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAttributePassingSettingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directoryId)) {
+            query["DirectoryId"] = request.directoryId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAttributePassingSetting",
+            "version": "2021-05-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAttributePassingSettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAttributePassingSetting(_ request: GetAttributePassingSettingRequest) async throws -> GetAttributePassingSettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAttributePassingSettingWithOptions(request as! GetAttributePassingSettingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2823,6 +2846,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateAccessConfiguration(_ request: UpdateAccessConfigurationRequest) async throws -> UpdateAccessConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateAccessConfigurationWithOptions(request as! UpdateAccessConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAttributePassingSettingWithOptions(_ request: UpdateAttributePassingSettingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAttributePassingSettingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directoryId)) {
+            query["DirectoryId"] = request.directoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIdentityPassing)) {
+            query["SourceIdentityPassing"] = request.sourceIdentityPassing ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAttributePassingSetting",
+            "version": "2021-05-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAttributePassingSettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAttributePassingSetting(_ request: UpdateAttributePassingSettingRequest) async throws -> UpdateAttributePassingSettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateAttributePassingSettingWithOptions(request as! UpdateAttributePassingSettingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
