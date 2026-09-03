@@ -7781,6 +7781,12 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var portProxy: String?
 
+    public var printerAlert: String?
+
+    public var printerAlertContent: String?
+
+    public var printerAlertTitle: String?
+
     public var printerRedirect: String?
 
     public var qualityEnhancement: String?
@@ -7850,6 +7856,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var targetFps: Int32?
 
     public var taskbar: String?
+
+    public var threeScreen: String?
 
     public var usbRedirect: String?
 
@@ -8180,6 +8188,15 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.portProxy != nil {
             map["PortProxy"] = self.portProxy!
         }
+        if self.printerAlert != nil {
+            map["PrinterAlert"] = self.printerAlert!
+        }
+        if self.printerAlertContent != nil {
+            map["PrinterAlertContent"] = self.printerAlertContent!
+        }
+        if self.printerAlertTitle != nil {
+            map["PrinterAlertTitle"] = self.printerAlertTitle!
+        }
         if self.printerRedirect != nil {
             map["PrinterRedirect"] = self.printerRedirect!
         }
@@ -8288,6 +8305,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.taskbar != nil {
             map["Taskbar"] = self.taskbar!
+        }
+        if self.threeScreen != nil {
+            map["ThreeScreen"] = self.threeScreen!
         }
         if self.usbRedirect != nil {
             map["UsbRedirect"] = self.usbRedirect!
@@ -8687,6 +8707,15 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["PortProxy"] as? String {
             self.portProxy = value
         }
+        if let value = dict["PrinterAlert"] as? String {
+            self.printerAlert = value
+        }
+        if let value = dict["PrinterAlertContent"] as? String {
+            self.printerAlertContent = value
+        }
+        if let value = dict["PrinterAlertTitle"] as? String {
+            self.printerAlertTitle = value
+        }
         if let value = dict["PrinterRedirect"] as? String {
             self.printerRedirect = value
         }
@@ -8801,6 +8830,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Taskbar"] as? String {
             self.taskbar = value
+        }
+        if let value = dict["ThreeScreen"] as? String {
+            self.threeScreen = value
         }
         if let value = dict["UsbRedirect"] as? String {
             self.usbRedirect = value
@@ -11369,6 +11401,36 @@ public class CreateDesktopsRequest : Tea.TeaModel {
             }
         }
     }
+    public class DesktopNameModel : Tea.TeaModel {
+        public var desktopNameIsSuffix: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopNameIsSuffix != nil {
+                map["DesktopNameIsSuffix"] = self.desktopNameIsSuffix!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DesktopNameIsSuffix"] as? Bool {
+                self.desktopNameIsSuffix = value
+            }
+        }
+    }
     public class DesktopTimers : Tea.TeaModel {
         public var allowClientSetting: Bool?
 
@@ -11494,6 +11556,12 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
     }
     public class PurchaseOptions : Tea.TeaModel {
+        public var creditPackageAmountSpec: Int32?
+
+        public var creditPackagePeriod: Int32?
+
+        public var creditPackagePeriodUnit: String?
+
         public var monthlyCredits: Int32?
 
         public override init() {
@@ -11510,6 +11578,15 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.creditPackageAmountSpec != nil {
+                map["CreditPackageAmountSpec"] = self.creditPackageAmountSpec!
+            }
+            if self.creditPackagePeriod != nil {
+                map["CreditPackagePeriod"] = self.creditPackagePeriod!
+            }
+            if self.creditPackagePeriodUnit != nil {
+                map["CreditPackagePeriodUnit"] = self.creditPackagePeriodUnit!
+            }
             if self.monthlyCredits != nil {
                 map["MonthlyCredits"] = self.monthlyCredits!
             }
@@ -11518,6 +11595,15 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CreditPackageAmountSpec"] as? Int32 {
+                self.creditPackageAmountSpec = value
+            }
+            if let value = dict["CreditPackagePeriod"] as? Int32 {
+                self.creditPackagePeriod = value
+            }
+            if let value = dict["CreditPackagePeriodUnit"] as? String {
+                self.creditPackagePeriodUnit = value
+            }
             if let value = dict["MonthlyCredits"] as? Int32 {
                 self.monthlyCredits = value
             }
@@ -11629,6 +11715,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var desktopName: String?
 
+    public var desktopNameModel: CreateDesktopsRequest.DesktopNameModel?
+
     public var desktopNameSuffix: Bool?
 
     public var desktopTimers: [CreateDesktopsRequest.DesktopTimers]?
@@ -11702,6 +11790,7 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.desktopAttachment?.validate()
+        try self.desktopNameModel?.validate()
         try self.monthDesktopSetting?.validate()
         try self.purchaseOptions?.validate()
     }
@@ -11744,6 +11833,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.desktopName != nil {
             map["DesktopName"] = self.desktopName!
+        }
+        if self.desktopNameModel != nil {
+            map["DesktopNameModel"] = self.desktopNameModel?.toMap()
         }
         if self.desktopNameSuffix != nil {
             map["DesktopNameSuffix"] = self.desktopNameSuffix!
@@ -11899,6 +11991,11 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if let value = dict["DesktopName"] as? String {
             self.desktopName = value
+        }
+        if let value = dict["DesktopNameModel"] as? [String: Any?] {
+            var model = CreateDesktopsRequest.DesktopNameModel()
+            model.fromMap(value)
+            self.desktopNameModel = model
         }
         if let value = dict["DesktopNameSuffix"] as? Bool {
             self.desktopNameSuffix = value
@@ -12339,6 +12436,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var desktopName: String?
 
+    public var desktopNameModelShrink: String?
+
     public var desktopNameSuffix: Bool?
 
     public var desktopTimers: [CreateDesktopsShrinkRequest.DesktopTimers]?
@@ -12452,6 +12551,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if self.desktopName != nil {
             map["DesktopName"] = self.desktopName!
+        }
+        if self.desktopNameModelShrink != nil {
+            map["DesktopNameModel"] = self.desktopNameModelShrink!
         }
         if self.desktopNameSuffix != nil {
             map["DesktopNameSuffix"] = self.desktopNameSuffix!
@@ -12605,6 +12707,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DesktopName"] as? String {
             self.desktopName = value
+        }
+        if let value = dict["DesktopNameModel"] as? String {
+            self.desktopNameModelShrink = value
         }
         if let value = dict["DesktopNameSuffix"] as? Bool {
             self.desktopNameSuffix = value
@@ -24272,6 +24377,12 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var portProxy: String?
 
+        public var printerAlert: String?
+
+        public var printerAlertContent: String?
+
+        public var printerAlertTitle: String?
+
         public var printerRedirection: String?
 
         public var qualityEnhancement: String?
@@ -24335,6 +24446,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var targetFps: Int32?
 
         public var taskbar: String?
+
+        public var threeScreen: String?
 
         public var usbRedirect: String?
 
@@ -24698,6 +24811,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.portProxy != nil {
                 map["PortProxy"] = self.portProxy!
             }
+            if self.printerAlert != nil {
+                map["PrinterAlert"] = self.printerAlert!
+            }
+            if self.printerAlertContent != nil {
+                map["PrinterAlertContent"] = self.printerAlertContent!
+            }
+            if self.printerAlertTitle != nil {
+                map["PrinterAlertTitle"] = self.printerAlertTitle!
+            }
             if self.printerRedirection != nil {
                 map["PrinterRedirection"] = self.printerRedirection!
             }
@@ -24793,6 +24915,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.taskbar != nil {
                 map["Taskbar"] = self.taskbar!
+            }
+            if self.threeScreen != nil {
+                map["ThreeScreen"] = self.threeScreen!
             }
             if self.usbRedirect != nil {
                 map["UsbRedirect"] = self.usbRedirect!
@@ -25218,6 +25343,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["PortProxy"] as? String {
                 self.portProxy = value
             }
+            if let value = dict["PrinterAlert"] as? String {
+                self.printerAlert = value
+            }
+            if let value = dict["PrinterAlertContent"] as? String {
+                self.printerAlertContent = value
+            }
+            if let value = dict["PrinterAlertTitle"] as? String {
+                self.printerAlertTitle = value
+            }
             if let value = dict["PrinterRedirection"] as? String {
                 self.printerRedirection = value
             }
@@ -25313,6 +25447,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["Taskbar"] as? String {
                 self.taskbar = value
+            }
+            if let value = dict["ThreeScreen"] as? String {
+                self.threeScreen = value
             }
             if let value = dict["UsbRedirect"] as? String {
                 self.usbRedirect = value
@@ -31833,6 +31970,8 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
 
         public var memorySize: String?
 
+        public var saleTypes: [String]?
+
         public var scopes: [String]?
 
         public var stockState: String?
@@ -31892,6 +32031,9 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
+            if self.saleTypes != nil {
+                map["SaleTypes"] = self.saleTypes!
+            }
             if self.scopes != nil {
                 map["Scopes"] = self.scopes!
             }
@@ -31944,6 +32086,9 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             }
             if let value = dict["MemorySize"] as? String {
                 self.memorySize = value
+            }
+            if let value = dict["SaleTypes"] as? [String] {
+                self.saleTypes = value
             }
             if let value = dict["Scopes"] as? [String] {
                 self.scopes = value
@@ -32139,6 +32284,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public var multiResource: Bool?
 
+    public var networkInterfaceIp: String?
+
     public var nextToken: String?
 
     public var officeSiteId: String?
@@ -32156,6 +32303,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
     public var policyGroupId: String?
 
     public var protocolType: String?
+
+    public var publicIp: String?
 
     public var qosRuleId: String?
 
@@ -32250,6 +32399,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if self.multiResource != nil {
             map["MultiResource"] = self.multiResource!
         }
+        if self.networkInterfaceIp != nil {
+            map["NetworkInterfaceIp"] = self.networkInterfaceIp!
+        }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
@@ -32276,6 +32428,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if self.protocolType != nil {
             map["ProtocolType"] = self.protocolType!
+        }
+        if self.publicIp != nil {
+            map["PublicIp"] = self.publicIp!
         }
         if self.qosRuleId != nil {
             map["QosRuleId"] = self.qosRuleId!
@@ -32373,6 +32528,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if let value = dict["MultiResource"] as? Bool {
             self.multiResource = value
         }
+        if let value = dict["NetworkInterfaceIp"] as? String {
+            self.networkInterfaceIp = value
+        }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
@@ -32399,6 +32557,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if let value = dict["ProtocolType"] as? String {
             self.protocolType = value
+        }
+        if let value = dict["PublicIp"] as? String {
+            self.publicIp = value
         }
         if let value = dict["QosRuleId"] as? String {
             self.qosRuleId = value
@@ -43016,6 +43177,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var bandwidth: Int32?
 
+        public var basicInternetType: String?
+
         public var cenAttachStatus: String?
 
         public var cenId: String?
@@ -43176,6 +43339,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.bandwidth != nil {
                 map["Bandwidth"] = self.bandwidth!
+            }
+            if self.basicInternetType != nil {
+                map["BasicInternetType"] = self.basicInternetType!
             }
             if self.cenAttachStatus != nil {
                 map["CenAttachStatus"] = self.cenAttachStatus!
@@ -43400,6 +43566,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Bandwidth"] as? Int32 {
                 self.bandwidth = value
+            }
+            if let value = dict["BasicInternetType"] as? String {
+                self.basicInternetType = value
             }
             if let value = dict["CenAttachStatus"] as? String {
                 self.cenAttachStatus = value
@@ -44634,6 +44803,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var preemptLoginUsers: [String]?
 
+        public var printerAlert: String?
+
+        public var printerAlertContent: String?
+
+        public var printerAlertTitle: String?
+
         public var printerRedirection: String?
 
         public var qualityEnhancement: String?
@@ -44701,6 +44876,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var streamingMode: String?
 
         public var targetFps: Int32?
+
+        public var threeScreen: String?
 
         public var usbRedirect: String?
 
@@ -45060,6 +45237,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.preemptLoginUsers != nil {
                 map["PreemptLoginUsers"] = self.preemptLoginUsers!
             }
+            if self.printerAlert != nil {
+                map["PrinterAlert"] = self.printerAlert!
+            }
+            if self.printerAlertContent != nil {
+                map["PrinterAlertContent"] = self.printerAlertContent!
+            }
+            if self.printerAlertTitle != nil {
+                map["PrinterAlertTitle"] = self.printerAlertTitle!
+            }
             if self.printerRedirection != nil {
                 map["PrinterRedirection"] = self.printerRedirection!
             }
@@ -45165,6 +45351,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.targetFps != nil {
                 map["TargetFps"] = self.targetFps!
+            }
+            if self.threeScreen != nil {
+                map["ThreeScreen"] = self.threeScreen!
             }
             if self.usbRedirect != nil {
                 map["UsbRedirect"] = self.usbRedirect!
@@ -45587,6 +45776,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["PreemptLoginUsers"] as? [String] {
                 self.preemptLoginUsers = value
             }
+            if let value = dict["PrinterAlert"] as? String {
+                self.printerAlert = value
+            }
+            if let value = dict["PrinterAlertContent"] as? String {
+                self.printerAlertContent = value
+            }
+            if let value = dict["PrinterAlertTitle"] as? String {
+                self.printerAlertTitle = value
+            }
             if let value = dict["PrinterRedirection"] as? String {
                 self.printerRedirection = value
             }
@@ -45698,6 +45896,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["TargetFps"] as? Int32 {
                 self.targetFps = value
+            }
+            if let value = dict["ThreeScreen"] as? String {
+                self.threeScreen = value
             }
             if let value = dict["UsbRedirect"] as? String {
                 self.usbRedirect = value
@@ -46986,6 +47187,370 @@ public class DescribePriceForRenewDesktopOversoldGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribePriceForRenewDesktopOversoldGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribePrinterEventsRequest : Tea.TeaModel {
+    public var desktopId: String?
+
+    public var desktopName: String?
+
+    public var endTime: String?
+
+    public var endUserId: String?
+
+    public var endUserIds: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var printerDriver: String?
+
+    public var printerName: String?
+
+    public var printerRedirType: Int32?
+
+    public var regionId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
+        if self.desktopName != nil {
+            map["DesktopName"] = self.desktopName!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.endUserIds != nil {
+            map["EndUserIds"] = self.endUserIds!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.printerDriver != nil {
+            map["PrinterDriver"] = self.printerDriver!
+        }
+        if self.printerName != nil {
+            map["PrinterName"] = self.printerName!
+        }
+        if self.printerRedirType != nil {
+            map["PrinterRedirType"] = self.printerRedirType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DesktopId"] as? String {
+            self.desktopId = value
+        }
+        if let value = dict["DesktopName"] as? String {
+            self.desktopName = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["EndUserIds"] as? [String] {
+            self.endUserIds = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PrinterDriver"] as? String {
+            self.printerDriver = value
+        }
+        if let value = dict["PrinterName"] as? String {
+            self.printerName = value
+        }
+        if let value = dict["PrinterRedirType"] as? Int32 {
+            self.printerRedirType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribePrinterEventsResponseBody : Tea.TeaModel {
+    public class Events : Tea.TeaModel {
+        public var desktopId: String?
+
+        public var desktopName: String?
+
+        public var endUserId: String?
+
+        public var eventId: String?
+
+        public var printerDriver: String?
+
+        public var printerJobCopies: Int32?
+
+        public var printerJobName: String?
+
+        public var printerJobPages: Int32?
+
+        public var printerJobPrintedPages: Int32?
+
+        public var printerJobSize: Int64?
+
+        public var printerJobTime: Int64?
+
+        public var printerName: String?
+
+        public var printerPort: String?
+
+        public var printerRedirType: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.desktopName != nil {
+                map["DesktopName"] = self.desktopName!
+            }
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            if self.eventId != nil {
+                map["EventId"] = self.eventId!
+            }
+            if self.printerDriver != nil {
+                map["PrinterDriver"] = self.printerDriver!
+            }
+            if self.printerJobCopies != nil {
+                map["PrinterJobCopies"] = self.printerJobCopies!
+            }
+            if self.printerJobName != nil {
+                map["PrinterJobName"] = self.printerJobName!
+            }
+            if self.printerJobPages != nil {
+                map["PrinterJobPages"] = self.printerJobPages!
+            }
+            if self.printerJobPrintedPages != nil {
+                map["PrinterJobPrintedPages"] = self.printerJobPrintedPages!
+            }
+            if self.printerJobSize != nil {
+                map["PrinterJobSize"] = self.printerJobSize!
+            }
+            if self.printerJobTime != nil {
+                map["PrinterJobTime"] = self.printerJobTime!
+            }
+            if self.printerName != nil {
+                map["PrinterName"] = self.printerName!
+            }
+            if self.printerPort != nil {
+                map["PrinterPort"] = self.printerPort!
+            }
+            if self.printerRedirType != nil {
+                map["PrinterRedirType"] = self.printerRedirType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DesktopId"] as? String {
+                self.desktopId = value
+            }
+            if let value = dict["DesktopName"] as? String {
+                self.desktopName = value
+            }
+            if let value = dict["EndUserId"] as? String {
+                self.endUserId = value
+            }
+            if let value = dict["EventId"] as? String {
+                self.eventId = value
+            }
+            if let value = dict["PrinterDriver"] as? String {
+                self.printerDriver = value
+            }
+            if let value = dict["PrinterJobCopies"] as? Int32 {
+                self.printerJobCopies = value
+            }
+            if let value = dict["PrinterJobName"] as? String {
+                self.printerJobName = value
+            }
+            if let value = dict["PrinterJobPages"] as? Int32 {
+                self.printerJobPages = value
+            }
+            if let value = dict["PrinterJobPrintedPages"] as? Int32 {
+                self.printerJobPrintedPages = value
+            }
+            if let value = dict["PrinterJobSize"] as? Int64 {
+                self.printerJobSize = value
+            }
+            if let value = dict["PrinterJobTime"] as? Int64 {
+                self.printerJobTime = value
+            }
+            if let value = dict["PrinterName"] as? String {
+                self.printerName = value
+            }
+            if let value = dict["PrinterPort"] as? String {
+                self.printerPort = value
+            }
+            if let value = dict["PrinterRedirType"] as? Int32 {
+                self.printerRedirType = value
+            }
+        }
+    }
+    public var events: [DescribePrinterEventsResponseBody.Events]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.events != nil {
+            var tmp : [Any] = []
+            for k in self.events! {
+                tmp.append(k.toMap())
+            }
+            map["Events"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Events"] as? [Any?] {
+            var tmp : [DescribePrinterEventsResponseBody.Events] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribePrinterEventsResponseBody.Events()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.events = tmp
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribePrinterEventsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePrinterEventsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribePrinterEventsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -63906,6 +64471,12 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var portProxy: String?
 
+    public var printerAlert: String?
+
+    public var printerAlertContent: String?
+
+    public var printerAlertTitle: String?
+
     public var printerRedirect: String?
 
     public var qualityEnhancement: String?
@@ -63979,6 +64550,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var targetFps: Int32?
 
     public var taskbar: String?
+
+    public var threeScreen: String?
 
     public var usbRedirect: String?
 
@@ -64309,6 +64882,15 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.portProxy != nil {
             map["PortProxy"] = self.portProxy!
         }
+        if self.printerAlert != nil {
+            map["PrinterAlert"] = self.printerAlert!
+        }
+        if self.printerAlertContent != nil {
+            map["PrinterAlertContent"] = self.printerAlertContent!
+        }
+        if self.printerAlertTitle != nil {
+            map["PrinterAlertTitle"] = self.printerAlertTitle!
+        }
         if self.printerRedirect != nil {
             map["PrinterRedirect"] = self.printerRedirect!
         }
@@ -64431,6 +65013,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.taskbar != nil {
             map["Taskbar"] = self.taskbar!
+        }
+        if self.threeScreen != nil {
+            map["ThreeScreen"] = self.threeScreen!
         }
         if self.usbRedirect != nil {
             map["UsbRedirect"] = self.usbRedirect!
@@ -64830,6 +65415,15 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["PortProxy"] as? String {
             self.portProxy = value
         }
+        if let value = dict["PrinterAlert"] as? String {
+            self.printerAlert = value
+        }
+        if let value = dict["PrinterAlertContent"] as? String {
+            self.printerAlertContent = value
+        }
+        if let value = dict["PrinterAlertTitle"] as? String {
+            self.printerAlertTitle = value
+        }
         if let value = dict["PrinterRedirect"] as? String {
             self.printerRedirect = value
         }
@@ -64970,6 +65564,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Taskbar"] as? String {
             self.taskbar = value
+        }
+        if let value = dict["ThreeScreen"] as? String {
+            self.threeScreen = value
         }
         if let value = dict["UsbRedirect"] as? String {
             self.usbRedirect = value
@@ -72995,6 +73592,8 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
         public class SegmentTimers : Tea.TeaModel {
             public var appointmentTimer: Int64?
 
+            public var createSnapshot: Bool?
+
             public var endCronExpression: String?
 
             public var enforce: Bool?
@@ -73043,6 +73642,9 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
                 var map = super.toMap()
                 if self.appointmentTimer != nil {
                     map["AppointmentTimer"] = self.appointmentTimer!
+                }
+                if self.createSnapshot != nil {
+                    map["CreateSnapshot"] = self.createSnapshot!
                 }
                 if self.endCronExpression != nil {
                     map["EndCronExpression"] = self.endCronExpression!
@@ -73099,6 +73701,9 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AppointmentTimer"] as? Int64 {
                     self.appointmentTimer = value
+                }
+                if let value = dict["CreateSnapshot"] as? Bool {
+                    self.createSnapshot = value
                 }
                 if let value = dict["EndCronExpression"] as? String {
                     self.endCronExpression = value

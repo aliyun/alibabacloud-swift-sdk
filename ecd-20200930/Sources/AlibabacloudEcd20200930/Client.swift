@@ -9,32 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "us-west-1": "ecd.us-west-1.aliyuncs.com",
-            "us-east-1": "ecd.us-east-1.aliyuncs.com",
-            "me-east-1": "ecd.me-east-1.aliyuncs.com",
-            "me-central-1": "ecd.me-central-1.aliyuncs.com",
-            "eu-west-1": "ecd.eu-west-1.aliyuncs.com",
-            "eu-central-1": "ecd.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "ecd.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu": "ecd.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "ecd.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "ecd.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "ecd.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "ecd.cn-qingdao.aliyuncs.com",
-            "cn-nanjing": "ecd.cn-nanjing.aliyuncs.com",
-            "cn-hongkong": "ecd.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou-finance": "ecd.cn-hangzhou-finance.aliyuncs.com",
-            "cn-hangzhou": "ecd.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "ecd.cn-guangzhou.aliyuncs.com",
-            "cn-chengdu": "ecd.cn-chengdu.aliyuncs.com",
-            "cn-beijing": "ecd.cn-beijing.aliyuncs.com",
-            "ap-southeast-7": "ecd.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "ecd.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "ecd.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-1": "ecd.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "ecd.ap-northeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ecd", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1997,6 +1971,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.portProxy)) {
             query["PortProxy"] = request.portProxy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.printerAlert)) {
+            query["PrinterAlert"] = request.printerAlert ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.printerAlertContent)) {
+            query["PrinterAlertContent"] = request.printerAlertContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.printerAlertTitle)) {
+            query["PrinterAlertTitle"] = request.printerAlertTitle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.printerRedirect)) {
             query["PrinterRedirect"] = request.printerRedirect ?? "";
         }
@@ -2101,6 +2084,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taskbar)) {
             query["Taskbar"] = request.taskbar ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threeScreen)) {
+            query["ThreeScreen"] = request.threeScreen ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.usbRedirect)) {
             query["UsbRedirect"] = request.usbRedirect ?? "";
@@ -2710,6 +2696,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.desktopAttachment)) {
             request.desktopAttachmentShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.desktopAttachment, "DesktopAttachment", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.desktopNameModel)) {
+            request.desktopNameModelShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.desktopNameModel, "DesktopNameModel", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.purchaseOptions)) {
             request.purchaseOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.purchaseOptions, "PurchaseOptions", "json")
         }
@@ -2746,6 +2735,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.desktopName)) {
             query["DesktopName"] = request.desktopName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.desktopNameModelShrink)) {
+            query["DesktopNameModel"] = request.desktopNameModelShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.desktopNameSuffix)) {
             query["DesktopNameSuffix"] = request.desktopNameSuffix!;
@@ -6492,6 +6484,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.multiResource)) {
             query["MultiResource"] = request.multiResource!;
         }
+        if (!TeaUtils.Client.isUnset(request.networkInterfaceIp)) {
+            query["NetworkInterfaceIp"] = request.networkInterfaceIp ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
@@ -6518,6 +6513,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.protocolType)) {
             query["ProtocolType"] = request.protocolType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.publicIp)) {
+            query["PublicIp"] = request.publicIp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.qosRuleId)) {
             query["QosRuleId"] = request.qosRuleId ?? "";
@@ -8132,6 +8130,70 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describePriceForRenewDesktopOversoldGroup(_ request: DescribePriceForRenewDesktopOversoldGroupRequest) async throws -> DescribePriceForRenewDesktopOversoldGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describePriceForRenewDesktopOversoldGroupWithOptions(request as! DescribePriceForRenewDesktopOversoldGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePrinterEventsWithOptions(_ request: DescribePrinterEventsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePrinterEventsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.desktopId)) {
+            query["DesktopId"] = request.desktopId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.desktopName)) {
+            query["DesktopName"] = request.desktopName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            query["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endUserIds)) {
+            query["EndUserIds"] = request.endUserIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.printerDriver)) {
+            query["PrinterDriver"] = request.printerDriver ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.printerName)) {
+            query["PrinterName"] = request.printerName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.printerRedirType)) {
+            query["PrinterRedirType"] = request.printerRedirType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePrinterEvents",
+            "version": "2020-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePrinterEventsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePrinterEvents(_ request: DescribePrinterEventsRequest) async throws -> DescribePrinterEventsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePrinterEventsWithOptions(request as! DescribePrinterEventsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -11207,6 +11269,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.portProxy)) {
             query["PortProxy"] = request.portProxy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.printerAlert)) {
+            query["PrinterAlert"] = request.printerAlert ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.printerAlertContent)) {
+            query["PrinterAlertContent"] = request.printerAlertContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.printerAlertTitle)) {
+            query["PrinterAlertTitle"] = request.printerAlertTitle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.printerRedirect)) {
             query["PrinterRedirect"] = request.printerRedirect ?? "";
         }
@@ -11317,6 +11388,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taskbar)) {
             query["Taskbar"] = request.taskbar ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threeScreen)) {
+            query["ThreeScreen"] = request.threeScreen ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.usbRedirect)) {
             query["UsbRedirect"] = request.usbRedirect ?? "";
