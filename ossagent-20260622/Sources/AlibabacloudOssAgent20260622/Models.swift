@@ -313,6 +313,254 @@ public class ConfirmResponse : Tea.TeaModel {
     }
 }
 
+public class GetSessionContentRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class GetSessionContentResponseBody : Tea.TeaModel {
+    public class Content : Tea.TeaModel {
+        public class AgentContents : Tea.TeaModel {
+            public var agentContent: String?
+
+            public var timestamp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentContent != nil {
+                    map["agentContent"] = self.agentContent!
+                }
+                if self.timestamp != nil {
+                    map["timestamp"] = self.timestamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["agentContent"] as? String {
+                    self.agentContent = value
+                }
+                if let value = dict["timestamp"] as? String {
+                    self.timestamp = value
+                }
+            }
+        }
+        public var agentContents: [GetSessionContentResponseBody.Content.AgentContents]?
+
+        public var timestamp: String?
+
+        public var toolConfirm: Bool?
+
+        public var userContent: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentContents != nil {
+                var tmp : [Any] = []
+                for k in self.agentContents! {
+                    tmp.append(k.toMap())
+                }
+                map["agentContents"] = tmp
+            }
+            if self.timestamp != nil {
+                map["timestamp"] = self.timestamp!
+            }
+            if self.toolConfirm != nil {
+                map["toolConfirm"] = self.toolConfirm!
+            }
+            if self.userContent != nil {
+                map["userContent"] = self.userContent!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["agentContents"] as? [Any?] {
+                var tmp : [GetSessionContentResponseBody.Content.AgentContents] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetSessionContentResponseBody.Content.AgentContents()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.agentContents = tmp
+            }
+            if let value = dict["timestamp"] as? String {
+                self.timestamp = value
+            }
+            if let value = dict["toolConfirm"] as? Bool {
+                self.toolConfirm = value
+            }
+            if let value = dict["userContent"] as? String {
+                self.userContent = value
+            }
+        }
+    }
+    public var content: [GetSessionContentResponseBody.Content]?
+
+    public var requestId: String?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            var tmp : [Any] = []
+            for k in self.content! {
+                tmp.append(k.toMap())
+            }
+            map["content"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["content"] as? [Any?] {
+            var tmp : [GetSessionContentResponseBody.Content] = []
+            for v in value {
+                if v != nil {
+                    var model = GetSessionContentResponseBody.Content()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.content = tmp
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class GetSessionContentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSessionContentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetSessionContentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class InterruptRequest : Tea.TeaModel {
 
     public override init() {
