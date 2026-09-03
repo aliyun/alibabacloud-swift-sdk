@@ -1303,6 +1303,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func virtualTryOnWithOptions(_ request: VirtualTryOnRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VirtualTryOnResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clothImageUrl)) {
+            query["ClothImageUrl"] = request.clothImageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clothType)) {
+            query["ClothType"] = request.clothType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelImageUrl)) {
+            query["ModelImageUrl"] = request.modelImageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["Resolution"] = request.resolution ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VirtualTryOn",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VirtualTryOnResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func virtualTryOn(_ request: VirtualTryOnRequest) async throws -> VirtualTryOnResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await virtualTryOnWithOptions(request as! VirtualTryOnRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func visionFlowWithOptions(_ tmpReq: VisionFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VisionFlowResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: VisionFlowShrinkRequest = VisionFlowShrinkRequest([:])
