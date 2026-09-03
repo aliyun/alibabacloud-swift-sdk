@@ -9,10 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-hangzhou": "voicenavigator.cn-hangzhou.aliyuncs.com",
-            "cn-shanghai": "voicenavigator.cn-shanghai.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("voicenavigator", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1166,6 +1162,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.asrOverrides)) {
             query["AsrOverrides"] = request.asrOverrides ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.asrOverridesUuid)) {
+            query["AsrOverridesUuid"] = request.asrOverridesUuid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.asrVocabularyId)) {
             query["AsrVocabularyId"] = request.asrVocabularyId ?? "";
         }
@@ -1174,6 +1173,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.engine)) {
             query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engineXunfei)) {
+            query["EngineXunfei"] = request.engineXunfei ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.entryId)) {
             query["EntryId"] = request.entryId ?? "";
@@ -1376,6 +1378,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ttsOverrides)) {
             query["TtsOverrides"] = request.ttsOverrides ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsOverridesUuid)) {
+            query["TtsOverridesUuid"] = request.ttsOverridesUuid ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.voice)) {
             query["Voice"] = request.voice ?? "";

@@ -3162,6 +3162,8 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
 
     public var ttsOverrides: String?
 
+    public var ttsOverridesUuid: String?
+
     public var voice: String?
 
     public var volume: Int32?
@@ -3213,6 +3215,9 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
         if self.ttsOverrides != nil {
             map["TtsOverrides"] = self.ttsOverrides!
         }
+        if self.ttsOverridesUuid != nil {
+            map["TtsOverridesUuid"] = self.ttsOverridesUuid!
+        }
         if self.voice != nil {
             map["Voice"] = self.voice!
         }
@@ -3256,6 +3261,9 @@ public class DescribeTTSConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["TtsOverrides"] as? String {
             self.ttsOverrides = value
+        }
+        if let value = dict["TtsOverridesUuid"] as? String {
+            self.ttsOverridesUuid = value
         }
         if let value = dict["Voice"] as? String {
             self.voice = value
@@ -4287,6 +4295,8 @@ public class GetAsrConfigResponseBody : Tea.TeaModel {
 
         public var asrOverrides: String?
 
+        public var asrOverridesUuid: String?
+
         public var asrVocabularyId: String?
 
         public var engine: String?
@@ -4324,6 +4334,9 @@ public class GetAsrConfigResponseBody : Tea.TeaModel {
             if self.asrOverrides != nil {
                 map["AsrOverrides"] = self.asrOverrides!
             }
+            if self.asrOverridesUuid != nil {
+                map["AsrOverridesUuid"] = self.asrOverridesUuid!
+            }
             if self.asrVocabularyId != nil {
                 map["AsrVocabularyId"] = self.asrVocabularyId!
             }
@@ -4355,6 +4368,9 @@ public class GetAsrConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["AsrOverrides"] as? String {
                 self.asrOverrides = value
+            }
+            if let value = dict["AsrOverridesUuid"] as? String {
+                self.asrOverridesUuid = value
             }
             if let value = dict["AsrVocabularyId"] as? String {
                 self.asrVocabularyId = value
@@ -6233,11 +6249,15 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
 
     public var asrOverrides: String?
 
+    public var asrOverridesUuid: String?
+
     public var asrVocabularyId: String?
 
     public var configLevel: Int32?
 
     public var engine: String?
+
+    public var engineXunfei: String?
 
     public var entryId: String?
 
@@ -6272,6 +6292,9 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
         if self.asrOverrides != nil {
             map["AsrOverrides"] = self.asrOverrides!
         }
+        if self.asrOverridesUuid != nil {
+            map["AsrOverridesUuid"] = self.asrOverridesUuid!
+        }
         if self.asrVocabularyId != nil {
             map["AsrVocabularyId"] = self.asrVocabularyId!
         }
@@ -6280,6 +6303,9 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
         }
         if self.engine != nil {
             map["Engine"] = self.engine!
+        }
+        if self.engineXunfei != nil {
+            map["EngineXunfei"] = self.engineXunfei!
         }
         if self.entryId != nil {
             map["EntryId"] = self.entryId!
@@ -6307,6 +6333,9 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
         if let value = dict["AsrOverrides"] as? String {
             self.asrOverrides = value
         }
+        if let value = dict["AsrOverridesUuid"] as? String {
+            self.asrOverridesUuid = value
+        }
         if let value = dict["AsrVocabularyId"] as? String {
             self.asrVocabularyId = value
         }
@@ -6315,6 +6344,9 @@ public class ModifyAsrConfigRequest : Tea.TeaModel {
         }
         if let value = dict["Engine"] as? String {
             self.engine = value
+        }
+        if let value = dict["EngineXunfei"] as? String {
+            self.engineXunfei = value
         }
         if let value = dict["EntryId"] as? String {
             self.entryId = value
@@ -6950,6 +6982,8 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
 
     public var ttsOverrides: String?
 
+    public var ttsOverridesUuid: String?
+
     public var voice: String?
 
     public var volume: String?
@@ -7001,6 +7035,9 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
         if self.ttsOverrides != nil {
             map["TtsOverrides"] = self.ttsOverrides!
         }
+        if self.ttsOverridesUuid != nil {
+            map["TtsOverridesUuid"] = self.ttsOverridesUuid!
+        }
         if self.voice != nil {
             map["Voice"] = self.voice!
         }
@@ -7044,6 +7081,9 @@ public class ModifyTTSConfigRequest : Tea.TeaModel {
         }
         if let value = dict["TtsOverrides"] as? String {
             self.ttsOverrides = value
+        }
+        if let value = dict["TtsOverridesUuid"] as? String {
+            self.ttsOverridesUuid = value
         }
         if let value = dict["Voice"] as? String {
             self.voice = value
