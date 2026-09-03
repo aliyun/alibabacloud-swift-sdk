@@ -9,17 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "ap-northeast-1": "adbai.ap-northeast-1.aliyuncs.com",
-            "ap-southeast-1": "adbai.ap-southeast-1.aliyuncs.com",
-            "cn-beijing": "adbai.cn-beijing.aliyuncs.com",
-            "cn-hangzhou": "adbai.cn-hangzhou.aliyuncs.com",
-            "cn-shanghai": "adbai.cn-shanghai.aliyuncs.com",
-            "cn-shenzhen": "adbai.cn-shenzhen.aliyuncs.com",
-            "cn-guangzhou": "adbai.cn-guangzhou.aliyuncs.com",
-            "cn-wulanchabu": "adbai.cn-wulanchabu.aliyuncs.com",
-            "us-west-1": "adbai.us-west-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("adbai", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -140,11 +129,35 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createMultiModelKnowledgeBaseWithOptions(_ request: CreateMultiModelKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultiModelKnowledgeBaseResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adbInstanceName)) {
+            query["AdbInstanceName"] = request.adbInstanceName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dbClusterAcu)) {
+            query["DbClusterAcu"] = request.dbClusterAcu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lakeStorageBucketName)) {
+            query["LakeStorageBucketName"] = request.lakeStorageBucketName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceAcuMax)) {
+            query["ResourceAcuMax"] = request.resourceAcuMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceAcuMin)) {
+            query["ResourceAcuMin"] = request.resourceAcuMin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
+            query["VSwitchId"] = request.vSwitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            query["ZoneId"] = request.zoneId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -250,6 +263,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mmkbName)) {
+            query["MmkbName"] = request.mmkbName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";

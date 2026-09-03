@@ -841,9 +841,25 @@ public class CreateEmbodiedAIPlatformResponse : Tea.TeaModel {
 }
 
 public class CreateMultiModelKnowledgeBaseRequest : Tea.TeaModel {
+    public var adbInstanceName: String?
+
     public var DBClusterId: String?
 
+    public var dbClusterAcu: Int32?
+
+    public var lakeStorageBucketName: String?
+
     public var regionId: String?
+
+    public var resourceAcuMax: Int32?
+
+    public var resourceAcuMin: Int32?
+
+    public var vSwitchId: String?
+
+    public var vpcId: String?
+
+    public var zoneId: String?
 
     public override init() {
         super.init()
@@ -859,27 +875,79 @@ public class CreateMultiModelKnowledgeBaseRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adbInstanceName != nil {
+            map["AdbInstanceName"] = self.adbInstanceName!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.dbClusterAcu != nil {
+            map["DbClusterAcu"] = self.dbClusterAcu!
+        }
+        if self.lakeStorageBucketName != nil {
+            map["LakeStorageBucketName"] = self.lakeStorageBucketName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceAcuMax != nil {
+            map["ResourceAcuMax"] = self.resourceAcuMax!
+        }
+        if self.resourceAcuMin != nil {
+            map["ResourceAcuMin"] = self.resourceAcuMin!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdbInstanceName"] as? String {
+            self.adbInstanceName = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["DbClusterAcu"] as? Int32 {
+            self.dbClusterAcu = value
+        }
+        if let value = dict["LakeStorageBucketName"] as? String {
+            self.lakeStorageBucketName = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceAcuMax"] as? Int32 {
+            self.resourceAcuMax = value
+        }
+        if let value = dict["ResourceAcuMin"] as? Int32 {
+            self.resourceAcuMin = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
         }
     }
 }
 
 public class CreateMultiModelKnowledgeBaseResponseBody : Tea.TeaModel {
+    public var dbClusterId: String?
+
+    public var mmkbName: String?
+
     public var requestId: String?
 
     public override init() {
@@ -896,6 +964,12 @@ public class CreateMultiModelKnowledgeBaseResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dbClusterId != nil {
+            map["DbClusterId"] = self.dbClusterId!
+        }
+        if self.mmkbName != nil {
+            map["MmkbName"] = self.mmkbName!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -904,6 +978,12 @@ public class CreateMultiModelKnowledgeBaseResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DbClusterId"] as? String {
+            self.dbClusterId = value
+        }
+        if let value = dict["MmkbName"] as? String {
+            self.mmkbName = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -1219,6 +1299,8 @@ public class DeleteEmbodiedAIPlatformResponse : Tea.TeaModel {
 public class DeleteMultiModalKnowledgeBaseRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var mmkbName: String?
+
     public var regionId: String?
 
     public override init() {
@@ -1238,6 +1320,9 @@ public class DeleteMultiModalKnowledgeBaseRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.mmkbName != nil {
+            map["MmkbName"] = self.mmkbName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1248,6 +1333,9 @@ public class DeleteMultiModalKnowledgeBaseRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["MmkbName"] as? String {
+            self.mmkbName = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
