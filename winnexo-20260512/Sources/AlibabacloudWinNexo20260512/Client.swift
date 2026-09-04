@@ -12,11 +12,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-shanghai": "winnexo.cn-shanghai.aliyuncs.com",
-            "cn-zhangjiakou": "winnexo.cn-zhangjiakou.aliyuncs.com",
-            "cn-hangzhou": "winnexo.cn-hangzhou.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("winnexo", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -164,6 +159,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchRemoveOperatingObjectFavoritesWithOptions(_ tmpReq: BatchRemoveOperatingObjectFavoritesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchRemoveOperatingObjectFavoritesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchRemoveOperatingObjectFavoritesShrinkRequest = BatchRemoveOperatingObjectFavoritesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.objectIds)) {
+            request.objectIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.objectIds, "objectIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.graphName)) {
+            body["graphName"] = request.graphName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectIdsShrink)) {
+            body["objectIds"] = request.objectIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectType)) {
+            body["objectType"] = request.objectType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatingObjectName)) {
+            body["operatingObjectName"] = request.operatingObjectName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchRemoveOperatingObjectFavorites",
+            "version": "2026-05-12",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/batchRemoveOperatingObjectFavorites",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchRemoveOperatingObjectFavoritesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchRemoveOperatingObjectFavorites(_ request: BatchRemoveOperatingObjectFavoritesRequest) async throws -> BatchRemoveOperatingObjectFavoritesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchRemoveOperatingObjectFavoritesWithOptions(request as! BatchRemoveOperatingObjectFavoritesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkHealthWithOptions(_ request: CheckHealthRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckHealthResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -194,6 +241,50 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await checkHealthWithOptions(request as! CheckHealthRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clearOperatingObjectFavoritesWithOptions(_ request: ClearOperatingObjectFavoritesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ClearOperatingObjectFavoritesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.graphName)) {
+            body["graphName"] = request.graphName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectType)) {
+            body["objectType"] = request.objectType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatingObjectName)) {
+            body["operatingObjectName"] = request.operatingObjectName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClearOperatingObjectFavorites",
+            "version": "2026-05-12",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/clearOperatingObjectFavorites",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClearOperatingObjectFavoritesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clearOperatingObjectFavorites(_ request: ClearOperatingObjectFavoritesRequest) async throws -> ClearOperatingObjectFavoritesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await clearOperatingObjectFavoritesWithOptions(request as! ClearOperatingObjectFavoritesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1839,6 +1930,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.roleCodesShrink)) {
             body["roleCodes"] = request.roleCodesShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ssoProvider)) {
+            body["ssoProvider"] = request.ssoProvider ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.wnAccountId)) {
             body["wnAccountId"] = request.wnAccountId ?? "";
         }
@@ -3391,6 +3485,56 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listKnowledgeBaseDirectoriesWithOptions(request as! ListKnowledgeBaseDirectoriesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOperatingObjectFavoritesWithOptions(_ request: ListOperatingObjectFavoritesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOperatingObjectFavoritesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.graphName)) {
+            body["graphName"] = request.graphName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectType)) {
+            body["objectType"] = request.objectType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatingObjectName)) {
+            body["operatingObjectName"] = request.operatingObjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListOperatingObjectFavorites",
+            "version": "2026-05-12",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/listOperatingObjectFavorites",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListOperatingObjectFavoritesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOperatingObjectFavorites(_ request: ListOperatingObjectFavoritesRequest) async throws -> ListOperatingObjectFavoritesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listOperatingObjectFavoritesWithOptions(request as! ListOperatingObjectFavoritesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
