@@ -1164,6 +1164,8 @@ public class ListSkillsRequest : Tea.TeaModel {
 
     public var supplierType: String?
 
+    public var tagCodes: [String]?
+
     public override init() {
         super.init()
     }
@@ -1193,6 +1195,9 @@ public class ListSkillsRequest : Tea.TeaModel {
         if self.supplierType != nil {
             map["SupplierType"] = self.supplierType!
         }
+        if self.tagCodes != nil {
+            map["TagCodes"] = self.tagCodes!
+        }
         return map
     }
 
@@ -1212,6 +1217,9 @@ public class ListSkillsRequest : Tea.TeaModel {
         }
         if let value = dict["SupplierType"] as? String {
             self.supplierType = value
+        }
+        if let value = dict["TagCodes"] as? [String] {
+            self.tagCodes = value
         }
     }
 }
@@ -1623,6 +1631,810 @@ public class ListSkillsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListSkillsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListTenantAppRequest : Tea.TeaModel {
+    public var keyName: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyName != nil {
+            map["KeyName"] = self.keyName!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["KeyName"] as? String {
+            self.keyName = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["SourceType"] as? String {
+            self.sourceType = value
+        }
+    }
+}
+
+public class ListTenantAppResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var adminTag: [String]?
+
+        public var appAdminTag: String?
+
+        public var appRegInfo: String?
+
+        public var appTag: [String]?
+
+        public var appUid: String?
+
+        public var authType: String?
+
+        public var autoDeleteFlag: Bool?
+
+        public var autoInstallFlag: Bool?
+
+        public var autoInstallType: String?
+
+        public var autoInstallmentType: Int32?
+
+        public var cateId: Int32?
+
+        public var cateName: String?
+
+        public var clusterUid: String?
+
+        public var description_: String?
+
+        public var developer: String?
+
+        public var discountPrice: Double?
+
+        public var distributeType: String?
+
+        public var expireTime: String?
+
+        public var extend: String?
+
+        public var fileName: String?
+
+        public var filePath: String?
+
+        public var fileRealName: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var hasCert: Bool?
+
+        public var iconUrl: String?
+
+        public var iconUrlInternal: String?
+
+        public var id: Int32?
+
+        public var install: Bool?
+
+        public var installMode: Int32?
+
+        public var isAdmin: Bool?
+
+        public var isFree: String?
+
+        public var isGame: Bool?
+
+        public var isWhiteList: Int32?
+
+        public var itemCode: String?
+
+        public var labels: String?
+
+        public var licenseType: String?
+
+        public var manageCateEnName: String?
+
+        public var manageCateId: Int32?
+
+        public var manageCateName: String?
+
+        public var name: String?
+
+        public var originAppType: String?
+
+        public var originalPrice: Double?
+
+        public var osType: String?
+
+        public var ownerOs: String?
+
+        public var paymentType: Int32?
+
+        public var price: String?
+
+        public var priority: Int32?
+
+        public var publishDate: String?
+
+        public var publishType: String?
+
+        public var sandboxMode: Int32?
+
+        public var searchTag: String?
+
+        public var silenceDeleteFlag: Int32?
+
+        public var silenceDeleteParam: String?
+
+        public var silenceFlag: Int32?
+
+        public var silenceParam: String?
+
+        public var size: Int64?
+
+        public var sourceType: String?
+
+        public var startTime: String?
+
+        public var status: String?
+
+        public var subAppType: String?
+
+        public var subSourceType: String?
+
+        public var subscribeCount: Int64?
+
+        public var supplierId: Int64?
+
+        public var userTag: [String]?
+
+        public var version: String?
+
+        public var versionName: String?
+
+        public var wamFileName: String?
+
+        public var wamFilePath: String?
+
+        public var wamFileRealName: String?
+
+        public var wamFileSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.adminTag != nil {
+                map["AdminTag"] = self.adminTag!
+            }
+            if self.appAdminTag != nil {
+                map["AppAdminTag"] = self.appAdminTag!
+            }
+            if self.appRegInfo != nil {
+                map["AppRegInfo"] = self.appRegInfo!
+            }
+            if self.appTag != nil {
+                map["AppTag"] = self.appTag!
+            }
+            if self.appUid != nil {
+                map["AppUid"] = self.appUid!
+            }
+            if self.authType != nil {
+                map["AuthType"] = self.authType!
+            }
+            if self.autoDeleteFlag != nil {
+                map["AutoDeleteFlag"] = self.autoDeleteFlag!
+            }
+            if self.autoInstallFlag != nil {
+                map["AutoInstallFlag"] = self.autoInstallFlag!
+            }
+            if self.autoInstallType != nil {
+                map["AutoInstallType"] = self.autoInstallType!
+            }
+            if self.autoInstallmentType != nil {
+                map["AutoInstallmentType"] = self.autoInstallmentType!
+            }
+            if self.cateId != nil {
+                map["CateId"] = self.cateId!
+            }
+            if self.cateName != nil {
+                map["CateName"] = self.cateName!
+            }
+            if self.clusterUid != nil {
+                map["ClusterUid"] = self.clusterUid!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.developer != nil {
+                map["Developer"] = self.developer!
+            }
+            if self.discountPrice != nil {
+                map["DiscountPrice"] = self.discountPrice!
+            }
+            if self.distributeType != nil {
+                map["DistributeType"] = self.distributeType!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
+            if self.extend != nil {
+                map["Extend"] = self.extend!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.filePath != nil {
+                map["FilePath"] = self.filePath!
+            }
+            if self.fileRealName != nil {
+                map["FileRealName"] = self.fileRealName!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.hasCert != nil {
+                map["HasCert"] = self.hasCert!
+            }
+            if self.iconUrl != nil {
+                map["IconUrl"] = self.iconUrl!
+            }
+            if self.iconUrlInternal != nil {
+                map["IconUrlInternal"] = self.iconUrlInternal!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.install != nil {
+                map["Install"] = self.install!
+            }
+            if self.installMode != nil {
+                map["InstallMode"] = self.installMode!
+            }
+            if self.isAdmin != nil {
+                map["IsAdmin"] = self.isAdmin!
+            }
+            if self.isFree != nil {
+                map["IsFree"] = self.isFree!
+            }
+            if self.isGame != nil {
+                map["IsGame"] = self.isGame!
+            }
+            if self.isWhiteList != nil {
+                map["IsWhiteList"] = self.isWhiteList!
+            }
+            if self.itemCode != nil {
+                map["ItemCode"] = self.itemCode!
+            }
+            if self.labels != nil {
+                map["Labels"] = self.labels!
+            }
+            if self.licenseType != nil {
+                map["LicenseType"] = self.licenseType!
+            }
+            if self.manageCateEnName != nil {
+                map["ManageCateEnName"] = self.manageCateEnName!
+            }
+            if self.manageCateId != nil {
+                map["ManageCateId"] = self.manageCateId!
+            }
+            if self.manageCateName != nil {
+                map["ManageCateName"] = self.manageCateName!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.originAppType != nil {
+                map["OriginAppType"] = self.originAppType!
+            }
+            if self.originalPrice != nil {
+                map["OriginalPrice"] = self.originalPrice!
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.ownerOs != nil {
+                map["OwnerOs"] = self.ownerOs!
+            }
+            if self.paymentType != nil {
+                map["PaymentType"] = self.paymentType!
+            }
+            if self.price != nil {
+                map["Price"] = self.price!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.publishDate != nil {
+                map["PublishDate"] = self.publishDate!
+            }
+            if self.publishType != nil {
+                map["PublishType"] = self.publishType!
+            }
+            if self.sandboxMode != nil {
+                map["SandboxMode"] = self.sandboxMode!
+            }
+            if self.searchTag != nil {
+                map["SearchTag"] = self.searchTag!
+            }
+            if self.silenceDeleteFlag != nil {
+                map["SilenceDeleteFlag"] = self.silenceDeleteFlag!
+            }
+            if self.silenceDeleteParam != nil {
+                map["SilenceDeleteParam"] = self.silenceDeleteParam!
+            }
+            if self.silenceFlag != nil {
+                map["SilenceFlag"] = self.silenceFlag!
+            }
+            if self.silenceParam != nil {
+                map["SilenceParam"] = self.silenceParam!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.sourceType != nil {
+                map["SourceType"] = self.sourceType!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.subAppType != nil {
+                map["SubAppType"] = self.subAppType!
+            }
+            if self.subSourceType != nil {
+                map["SubSourceType"] = self.subSourceType!
+            }
+            if self.subscribeCount != nil {
+                map["SubscribeCount"] = self.subscribeCount!
+            }
+            if self.supplierId != nil {
+                map["SupplierId"] = self.supplierId!
+            }
+            if self.userTag != nil {
+                map["UserTag"] = self.userTag!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            if self.versionName != nil {
+                map["VersionName"] = self.versionName!
+            }
+            if self.wamFileName != nil {
+                map["WamFileName"] = self.wamFileName!
+            }
+            if self.wamFilePath != nil {
+                map["WamFilePath"] = self.wamFilePath!
+            }
+            if self.wamFileRealName != nil {
+                map["WamFileRealName"] = self.wamFileRealName!
+            }
+            if self.wamFileSize != nil {
+                map["WamFileSize"] = self.wamFileSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AdminTag"] as? [String] {
+                self.adminTag = value
+            }
+            if let value = dict["AppAdminTag"] as? String {
+                self.appAdminTag = value
+            }
+            if let value = dict["AppRegInfo"] as? String {
+                self.appRegInfo = value
+            }
+            if let value = dict["AppTag"] as? [String] {
+                self.appTag = value
+            }
+            if let value = dict["AppUid"] as? String {
+                self.appUid = value
+            }
+            if let value = dict["AuthType"] as? String {
+                self.authType = value
+            }
+            if let value = dict["AutoDeleteFlag"] as? Bool {
+                self.autoDeleteFlag = value
+            }
+            if let value = dict["AutoInstallFlag"] as? Bool {
+                self.autoInstallFlag = value
+            }
+            if let value = dict["AutoInstallType"] as? String {
+                self.autoInstallType = value
+            }
+            if let value = dict["AutoInstallmentType"] as? Int32 {
+                self.autoInstallmentType = value
+            }
+            if let value = dict["CateId"] as? Int32 {
+                self.cateId = value
+            }
+            if let value = dict["CateName"] as? String {
+                self.cateName = value
+            }
+            if let value = dict["ClusterUid"] as? String {
+                self.clusterUid = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Developer"] as? String {
+                self.developer = value
+            }
+            if let value = dict["DiscountPrice"] as? Double {
+                self.discountPrice = value
+            }
+            if let value = dict["DistributeType"] as? String {
+                self.distributeType = value
+            }
+            if let value = dict["ExpireTime"] as? String {
+                self.expireTime = value
+            }
+            if let value = dict["Extend"] as? String {
+                self.extend = value
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["FilePath"] as? String {
+                self.filePath = value
+            }
+            if let value = dict["FileRealName"] as? String {
+                self.fileRealName = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
+            if let value = dict["HasCert"] as? Bool {
+                self.hasCert = value
+            }
+            if let value = dict["IconUrl"] as? String {
+                self.iconUrl = value
+            }
+            if let value = dict["IconUrlInternal"] as? String {
+                self.iconUrlInternal = value
+            }
+            if let value = dict["Id"] as? Int32 {
+                self.id = value
+            }
+            if let value = dict["Install"] as? Bool {
+                self.install = value
+            }
+            if let value = dict["InstallMode"] as? Int32 {
+                self.installMode = value
+            }
+            if let value = dict["IsAdmin"] as? Bool {
+                self.isAdmin = value
+            }
+            if let value = dict["IsFree"] as? String {
+                self.isFree = value
+            }
+            if let value = dict["IsGame"] as? Bool {
+                self.isGame = value
+            }
+            if let value = dict["IsWhiteList"] as? Int32 {
+                self.isWhiteList = value
+            }
+            if let value = dict["ItemCode"] as? String {
+                self.itemCode = value
+            }
+            if let value = dict["Labels"] as? String {
+                self.labels = value
+            }
+            if let value = dict["LicenseType"] as? String {
+                self.licenseType = value
+            }
+            if let value = dict["ManageCateEnName"] as? String {
+                self.manageCateEnName = value
+            }
+            if let value = dict["ManageCateId"] as? Int32 {
+                self.manageCateId = value
+            }
+            if let value = dict["ManageCateName"] as? String {
+                self.manageCateName = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["OriginAppType"] as? String {
+                self.originAppType = value
+            }
+            if let value = dict["OriginalPrice"] as? Double {
+                self.originalPrice = value
+            }
+            if let value = dict["OsType"] as? String {
+                self.osType = value
+            }
+            if let value = dict["OwnerOs"] as? String {
+                self.ownerOs = value
+            }
+            if let value = dict["PaymentType"] as? Int32 {
+                self.paymentType = value
+            }
+            if let value = dict["Price"] as? String {
+                self.price = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
+            }
+            if let value = dict["PublishDate"] as? String {
+                self.publishDate = value
+            }
+            if let value = dict["PublishType"] as? String {
+                self.publishType = value
+            }
+            if let value = dict["SandboxMode"] as? Int32 {
+                self.sandboxMode = value
+            }
+            if let value = dict["SearchTag"] as? String {
+                self.searchTag = value
+            }
+            if let value = dict["SilenceDeleteFlag"] as? Int32 {
+                self.silenceDeleteFlag = value
+            }
+            if let value = dict["SilenceDeleteParam"] as? String {
+                self.silenceDeleteParam = value
+            }
+            if let value = dict["SilenceFlag"] as? Int32 {
+                self.silenceFlag = value
+            }
+            if let value = dict["SilenceParam"] as? String {
+                self.silenceParam = value
+            }
+            if let value = dict["Size"] as? Int64 {
+                self.size = value
+            }
+            if let value = dict["SourceType"] as? String {
+                self.sourceType = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SubAppType"] as? String {
+                self.subAppType = value
+            }
+            if let value = dict["SubSourceType"] as? String {
+                self.subSourceType = value
+            }
+            if let value = dict["SubscribeCount"] as? Int64 {
+                self.subscribeCount = value
+            }
+            if let value = dict["SupplierId"] as? Int64 {
+                self.supplierId = value
+            }
+            if let value = dict["UserTag"] as? [String] {
+                self.userTag = value
+            }
+            if let value = dict["Version"] as? String {
+                self.version = value
+            }
+            if let value = dict["VersionName"] as? String {
+                self.versionName = value
+            }
+            if let value = dict["WamFileName"] as? String {
+                self.wamFileName = value
+            }
+            if let value = dict["WamFilePath"] as? String {
+                self.wamFilePath = value
+            }
+            if let value = dict["WamFileRealName"] as? String {
+                self.wamFileRealName = value
+            }
+            if let value = dict["WamFileSize"] as? Int64 {
+                self.wamFileSize = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [ListTenantAppResponseBody.Data]?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [ListTenantAppResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListTenantAppResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListTenantAppResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListTenantAppResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListTenantAppResponseBody()
             model.fromMap(value)
             self.body = model
         }
