@@ -1258,6 +1258,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGrafanaWorkspaceAccountWithOptions(_ request: CreateGrafanaWorkspaceAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGrafanaWorkspaceAccountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountNotes)) {
+            query["AccountNotes"] = request.accountNotes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accountPassword)) {
+            query["AccountPassword"] = request.accountPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
+            query["AliyunLang"] = request.aliyunLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aliyunUid)) {
+            query["AliyunUid"] = request.aliyunUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grafanaWorkspaceId)) {
+            query["GrafanaWorkspaceId"] = request.grafanaWorkspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.role)) {
+            query["Role"] = request.role ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGrafanaWorkspaceAccount",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGrafanaWorkspaceAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGrafanaWorkspaceAccount(_ request: CreateGrafanaWorkspaceAccountRequest) async throws -> CreateGrafanaWorkspaceAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGrafanaWorkspaceAccountWithOptions(request as! CreateGrafanaWorkspaceAccountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createIntegrationWithOptions(_ request: CreateIntegrationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIntegrationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3060,6 +3112,83 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteGrafanaWorkspace(_ request: DeleteGrafanaWorkspaceRequest) async throws -> DeleteGrafanaWorkspaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteGrafanaWorkspaceWithOptions(request as! DeleteGrafanaWorkspaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGrafanaWorkspaceAccountWithOptions(_ request: DeleteGrafanaWorkspaceAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGrafanaWorkspaceAccountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.grafanaWorkspaceId)) {
+            query["GrafanaWorkspaceId"] = request.grafanaWorkspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGrafanaWorkspaceAccount",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGrafanaWorkspaceAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGrafanaWorkspaceAccount(_ request: DeleteGrafanaWorkspaceAccountRequest) async throws -> DeleteGrafanaWorkspaceAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGrafanaWorkspaceAccountWithOptions(request as! DeleteGrafanaWorkspaceAccountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGrafanaWorkspaceAccountRoleWithOptions(_ request: DeleteGrafanaWorkspaceAccountRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGrafanaWorkspaceAccountRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.grafanaWorkspaceId)) {
+            query["GrafanaWorkspaceId"] = request.grafanaWorkspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGrafanaWorkspaceAccountRole",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGrafanaWorkspaceAccountRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGrafanaWorkspaceAccountRole(_ request: DeleteGrafanaWorkspaceAccountRoleRequest) async throws -> DeleteGrafanaWorkspaceAccountRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGrafanaWorkspaceAccountRoleWithOptions(request as! DeleteGrafanaWorkspaceAccountRoleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5974,6 +6103,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grafanaWorkspaceHttpApiProxyWithOptions(_ request: GrafanaWorkspaceHttpApiProxyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GrafanaWorkspaceHttpApiProxyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.grafanaWorkspaceId)) {
+            query["GrafanaWorkspaceId"] = request.grafanaWorkspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bodyStr)) {
+            body["BodyStr"] = request.bodyStr ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GrafanaWorkspaceHttpApiProxy",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GrafanaWorkspaceHttpApiProxyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grafanaWorkspaceHttpApiProxy(_ request: GrafanaWorkspaceHttpApiProxyRequest) async throws -> GrafanaWorkspaceHttpApiProxyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await grafanaWorkspaceHttpApiProxyWithOptions(request as! GrafanaWorkspaceHttpApiProxyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func importAppAlertRulesWithOptions(_ request: ImportAppAlertRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportAppAlertRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -7218,6 +7389,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listGrafanaWorkspace(_ request: ListGrafanaWorkspaceRequest) async throws -> ListGrafanaWorkspaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listGrafanaWorkspaceWithOptions(request as! ListGrafanaWorkspaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGrafanaWorkspaceAccountWithOptions(_ request: ListGrafanaWorkspaceAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGrafanaWorkspaceAccountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
+            query["AliyunLang"] = request.aliyunLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grafanaWorkspaceId)) {
+            query["GrafanaWorkspaceId"] = request.grafanaWorkspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGrafanaWorkspaceAccount",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGrafanaWorkspaceAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGrafanaWorkspaceAccount(_ request: ListGrafanaWorkspaceAccountRequest) async throws -> ListGrafanaWorkspaceAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGrafanaWorkspaceAccountWithOptions(request as! ListGrafanaWorkspaceAccountRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -9876,6 +10084,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateGrafanaWorkspace(_ request: UpdateGrafanaWorkspaceRequest) async throws -> UpdateGrafanaWorkspaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateGrafanaWorkspaceWithOptions(request as! UpdateGrafanaWorkspaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGrafanaWorkspaceAccountRoleWithOptions(_ request: UpdateGrafanaWorkspaceAccountRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGrafanaWorkspaceAccountRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.grafanaWorkspaceId)) {
+            query["GrafanaWorkspaceId"] = request.grafanaWorkspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.role)) {
+            query["Role"] = request.role ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGrafanaWorkspaceAccountRole",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGrafanaWorkspaceAccountRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGrafanaWorkspaceAccountRole(_ request: UpdateGrafanaWorkspaceAccountRoleRequest) async throws -> UpdateGrafanaWorkspaceAccountRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGrafanaWorkspaceAccountRoleWithOptions(request as! UpdateGrafanaWorkspaceAccountRoleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
