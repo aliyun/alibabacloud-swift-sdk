@@ -487,6 +487,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoDetextJobWithOptions(_ request: GetVideoDetextJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoDetextJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            body["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVideoDetextJob",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVideoDetextJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoDetextJob(_ request: GetVideoDetextJobRequest) async throws -> GetVideoDetextJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVideoDetextJobWithOptions(request as! GetVideoDetextJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getVideoGenerationJobWithOptions(_ request: GetVideoGenerationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoGenerationJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -976,6 +1007,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitRemakeScriptJob(_ request: SubmitRemakeScriptJobRequest) async throws -> SubmitRemakeScriptJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitRemakeScriptJobWithOptions(request as! SubmitRemakeScriptJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoDetextJobWithOptions(_ request: SubmitVideoDetextJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVideoDetextJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            body["Input"] = request.input ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobParameters)) {
+            body["JobParameters"] = request.jobParameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.output)) {
+            body["Output"] = request.output ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            body["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitVideoDetextJob",
+            "version": "2026-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitVideoDetextJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoDetextJob(_ request: SubmitVideoDetextJobRequest) async throws -> SubmitVideoDetextJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitVideoDetextJobWithOptions(request as! SubmitVideoDetextJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
