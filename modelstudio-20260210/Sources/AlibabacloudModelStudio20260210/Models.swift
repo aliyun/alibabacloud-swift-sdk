@@ -2232,6 +2232,8 @@ public class GetApiKeyResponseBody : Tea.TeaModel {
 
         public var workspaceId: String?
 
+        public var workspaceName: String?
+
         public override init() {
             super.init()
         }
@@ -2271,6 +2273,9 @@ public class GetApiKeyResponseBody : Tea.TeaModel {
             if self.workspaceId != nil {
                 map["workspaceId"] = self.workspaceId!
             }
+            if self.workspaceName != nil {
+                map["workspaceName"] = self.workspaceName!
+            }
             return map
         }
 
@@ -2301,6 +2306,9 @@ public class GetApiKeyResponseBody : Tea.TeaModel {
             }
             if let value = dict["workspaceId"] as? String {
                 self.workspaceId = value
+            }
+            if let value = dict["workspaceName"] as? String {
+                self.workspaceName = value
             }
         }
     }
@@ -5840,6 +5848,8 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
 
         public var workspaceId: String?
 
+        public var workspaceName: String?
+
         public override init() {
             super.init()
         }
@@ -5879,6 +5889,9 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
             if self.workspaceId != nil {
                 map["workspaceId"] = self.workspaceId!
             }
+            if self.workspaceName != nil {
+                map["workspaceName"] = self.workspaceName!
+            }
             return map
         }
 
@@ -5909,6 +5922,9 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
             }
             if let value = dict["workspaceId"] as? String {
                 self.workspaceId = value
+            }
+            if let value = dict["workspaceName"] as? String {
+                self.workspaceName = value
             }
         }
     }
