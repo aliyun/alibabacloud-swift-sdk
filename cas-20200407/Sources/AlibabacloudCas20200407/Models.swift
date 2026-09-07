@@ -7164,6 +7164,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
     }
     public var autoReissue: String?
 
+    public var autoReissueFlag: Int32?
+
     public var averageWaitingTime: String?
 
     public var brand: String?
@@ -7194,6 +7196,10 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
     public var csr: String?
 
+    public var deploymentResourceCount: Int32?
+
+    public var deploymentUseCount: Int32?
+
     public var dingGroupList: [GetInstanceDetailResponseBody.DingGroupList]?
 
     public var domain: String?
@@ -7214,6 +7220,10 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
     public var keyAlgorithm: String?
 
+    public var monitorExpandFlag: Int32?
+
+    public var monitorUseCount: Int32?
+
     public var orderEndTime: Int64?
 
     public var orderStartTime: Int64?
@@ -7232,9 +7242,15 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
     public var tags: [GetInstanceDetailResponseBody.Tags]?
 
+    public var totalDeploymentCount: Int32?
+
+    public var totalMonitorCount: Int32?
+
     public var upgradeStatus: String?
 
     public var validationMethod: String?
+
+    public var versionType: String?
 
     public var wildcardDomainCount: Int32?
 
@@ -7254,6 +7270,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.autoReissue != nil {
             map["AutoReissue"] = self.autoReissue!
+        }
+        if self.autoReissueFlag != nil {
+            map["AutoReissueFlag"] = self.autoReissueFlag!
         }
         if self.averageWaitingTime != nil {
             map["AverageWaitingTime"] = self.averageWaitingTime!
@@ -7300,6 +7319,12 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         if self.csr != nil {
             map["Csr"] = self.csr!
         }
+        if self.deploymentResourceCount != nil {
+            map["DeploymentResourceCount"] = self.deploymentResourceCount!
+        }
+        if self.deploymentUseCount != nil {
+            map["DeploymentUseCount"] = self.deploymentUseCount!
+        }
         if self.dingGroupList != nil {
             var tmp : [Any] = []
             for k in self.dingGroupList! {
@@ -7338,6 +7363,12 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         if self.keyAlgorithm != nil {
             map["KeyAlgorithm"] = self.keyAlgorithm!
         }
+        if self.monitorExpandFlag != nil {
+            map["MonitorExpandFlag"] = self.monitorExpandFlag!
+        }
+        if self.monitorUseCount != nil {
+            map["MonitorUseCount"] = self.monitorUseCount!
+        }
         if self.orderEndTime != nil {
             map["OrderEndTime"] = self.orderEndTime!
         }
@@ -7369,11 +7400,20 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             map["Tags"] = tmp
         }
+        if self.totalDeploymentCount != nil {
+            map["TotalDeploymentCount"] = self.totalDeploymentCount!
+        }
+        if self.totalMonitorCount != nil {
+            map["TotalMonitorCount"] = self.totalMonitorCount!
+        }
         if self.upgradeStatus != nil {
             map["UpgradeStatus"] = self.upgradeStatus!
         }
         if self.validationMethod != nil {
             map["ValidationMethod"] = self.validationMethod!
+        }
+        if self.versionType != nil {
+            map["VersionType"] = self.versionType!
         }
         if self.wildcardDomainCount != nil {
             map["WildcardDomainCount"] = self.wildcardDomainCount!
@@ -7385,6 +7425,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoReissue"] as? String {
             self.autoReissue = value
+        }
+        if let value = dict["AutoReissueFlag"] as? Int32 {
+            self.autoReissueFlag = value
         }
         if let value = dict["AverageWaitingTime"] as? String {
             self.averageWaitingTime = value
@@ -7430,6 +7473,12 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["Csr"] as? String {
             self.csr = value
+        }
+        if let value = dict["DeploymentResourceCount"] as? Int32 {
+            self.deploymentResourceCount = value
+        }
+        if let value = dict["DeploymentUseCount"] as? Int32 {
+            self.deploymentUseCount = value
         }
         if let value = dict["DingGroupList"] as? [Any?] {
             var tmp : [GetInstanceDetailResponseBody.DingGroupList] = []
@@ -7481,6 +7530,12 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         if let value = dict["KeyAlgorithm"] as? String {
             self.keyAlgorithm = value
         }
+        if let value = dict["MonitorExpandFlag"] as? Int32 {
+            self.monitorExpandFlag = value
+        }
+        if let value = dict["MonitorUseCount"] as? Int32 {
+            self.monitorUseCount = value
+        }
         if let value = dict["OrderEndTime"] as? Int64 {
             self.orderEndTime = value
         }
@@ -7518,11 +7573,20 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             self.tags = tmp
         }
+        if let value = dict["TotalDeploymentCount"] as? Int32 {
+            self.totalDeploymentCount = value
+        }
+        if let value = dict["TotalMonitorCount"] as? Int32 {
+            self.totalMonitorCount = value
+        }
         if let value = dict["UpgradeStatus"] as? String {
             self.upgradeStatus = value
         }
         if let value = dict["ValidationMethod"] as? String {
             self.validationMethod = value
+        }
+        if let value = dict["VersionType"] as? String {
+            self.versionType = value
         }
         if let value = dict["WildcardDomainCount"] as? Int32 {
             self.wildcardDomainCount = value
@@ -12541,6 +12605,8 @@ public class ListDeploymentJobResourceResponse : Tea.TeaModel {
 }
 
 public class ListInstancesRequest : Tea.TeaModel {
+    public var autoReissueFlag: Int32?
+
     public var brand: String?
 
     public var certificateStatus: String?
@@ -12554,6 +12620,8 @@ public class ListInstancesRequest : Tea.TeaModel {
     public var keyword: String?
 
     public var resourceGroupId: String?
+
+    public var serverDeployFlag: Int32?
 
     public var showSize: Int32?
 
@@ -12573,6 +12641,9 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoReissueFlag != nil {
+            map["AutoReissueFlag"] = self.autoReissueFlag!
+        }
         if self.brand != nil {
             map["Brand"] = self.brand!
         }
@@ -12594,6 +12665,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.serverDeployFlag != nil {
+            map["ServerDeployFlag"] = self.serverDeployFlag!
+        }
         if self.showSize != nil {
             map["ShowSize"] = self.showSize!
         }
@@ -12605,6 +12679,9 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoReissueFlag"] as? Int32 {
+            self.autoReissueFlag = value
+        }
         if let value = dict["Brand"] as? String {
             self.brand = value
         }
@@ -12625,6 +12702,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["ServerDeployFlag"] as? Int32 {
+            self.serverDeployFlag = value
         }
         if let value = dict["ShowSize"] as? Int32 {
             self.showSize = value
@@ -12686,6 +12766,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var usingProductList: [String]?
+
+        public var versionType: String?
 
         public var wildcardDomainCount: Int32?
 
@@ -12778,6 +12860,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if self.usingProductList != nil {
                 map["UsingProductList"] = self.usingProductList!
             }
+            if self.versionType != nil {
+                map["VersionType"] = self.versionType!
+            }
             if self.wildcardDomainCount != nil {
                 map["WildcardDomainCount"] = self.wildcardDomainCount!
             }
@@ -12861,12 +12946,19 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if let value = dict["UsingProductList"] as? [String] {
                 self.usingProductList = value
             }
+            if let value = dict["VersionType"] as? String {
+                self.versionType = value
+            }
             if let value = dict["WildcardDomainCount"] as? Int32 {
                 self.wildcardDomainCount = value
             }
         }
     }
     public var currentPage: Int32?
+
+    public var disableReissueCount: Int64?
+
+    public var enableReissueCount: Int64?
 
     public var instanceList: [ListInstancesResponseBody.InstanceList]?
 
@@ -12893,6 +12985,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.disableReissueCount != nil {
+            map["DisableReissueCount"] = self.disableReissueCount!
+        }
+        if self.enableReissueCount != nil {
+            map["EnableReissueCount"] = self.enableReissueCount!
+        }
         if self.instanceList != nil {
             var tmp : [Any] = []
             for k in self.instanceList! {
@@ -12916,6 +13014,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["DisableReissueCount"] as? Int64 {
+            self.disableReissueCount = value
+        }
+        if let value = dict["EnableReissueCount"] as? Int64 {
+            self.enableReissueCount = value
         }
         if let value = dict["InstanceList"] as? [Any?] {
             var tmp : [ListInstancesResponseBody.InstanceList] = []
