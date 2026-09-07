@@ -9,9 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-hangzhou": "qualitycheck.cn-hangzhou.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("qualitycheck", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1419,6 +1416,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentMJobInfoWithOptions(_ request: GetAgentMJobInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentMJobInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            body["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jsonStr)) {
+            body["JsonStr"] = request.jsonStr ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAgentMJobInfo",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAgentMJobInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentMJobInfo(_ request: GetAgentMJobInfoRequest) async throws -> GetAgentMJobInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAgentMJobInfoWithOptions(request as! GetAgentMJobInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAgentTaskResultWithOptions(_ request: GetAgentTaskResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentTaskResultResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2305,6 +2336,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func invalidRule(_ request: InvalidRuleRequest) async throws -> InvalidRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await invalidRuleWithOptions(request as! InvalidRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgentMJobInfoWithOptions(_ request: ListAgentMJobInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgentMJobInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            body["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jsonStr)) {
+            body["JsonStr"] = request.jsonStr ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAgentMJobInfo",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAgentMJobInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgentMJobInfo(_ request: ListAgentMJobInfoRequest) async throws -> ListAgentMJobInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAgentMJobInfoWithOptions(request as! ListAgentMJobInfoRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
