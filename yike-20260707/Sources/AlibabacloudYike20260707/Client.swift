@@ -9,10 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-shanghai": "yike.cn-shanghai.aliyuncs.com",
-            "ap-southeast-1": "yike.ap-southeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("yike", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -34,8 +30,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authTimeout)) {
             query["AuthTimeout"] = request.authTimeout!;
         }
+        if (!TeaUtils.Client.isUnset(request.bizConfig)) {
+            query["BizConfig"] = request.bizConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mediaIds)) {
             query["MediaIds"] = request.mediaIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnDynamicMeta)) {
+            query["ReturnDynamicMeta"] = request.returnDynamicMeta!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -201,6 +203,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMediasWithOptions(_ request: DeleteMediasRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMediasResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizConfig)) {
+            query["BizConfig"] = request.bizConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deletePhysicalFiles)) {
             query["DeletePhysicalFiles"] = request.deletePhysicalFiles!;
         }
@@ -385,6 +390,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.authTimeout)) {
             query["AuthTimeout"] = request.authTimeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bizConfig)) {
+            query["BizConfig"] = request.bizConfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.inputURL)) {
             query["InputURL"] = request.inputURL ?? "";
@@ -634,6 +642,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func importMediaWithOptions(_ request: ImportMediaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportMediaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizConfig)) {
+            query["BizConfig"] = request.bizConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.categoryId)) {
             query["CategoryId"] = request.categoryId!;
         }
@@ -672,6 +683,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             query["UserData"] = request.userData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.yikeAssetConfig)) {
+            query["YikeAssetConfig"] = request.yikeAssetConfig ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -784,6 +798,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchMediaWithOptions(_ request: SearchMediaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchMediaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizConfig)) {
+            query["BizConfig"] = request.bizConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.categoryId)) {
             query["CategoryId"] = request.categoryId!;
         }
@@ -1191,6 +1208,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appendTags)) {
             query["AppendTags"] = request.appendTags!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bizConfig)) {
+            query["BizConfig"] = request.bizConfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.categoryId)) {
             query["CategoryId"] = request.categoryId!;

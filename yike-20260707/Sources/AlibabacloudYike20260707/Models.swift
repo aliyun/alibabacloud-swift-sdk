@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 public class BatchGetMediasRequest : Tea.TeaModel {
     public var authTimeout: Int64?
 
+    public var bizConfig: String?
+
     public var mediaIds: String?
+
+    public var returnDynamicMeta: Bool?
 
     public override init() {
         super.init()
@@ -27,8 +31,14 @@ public class BatchGetMediasRequest : Tea.TeaModel {
         if self.authTimeout != nil {
             map["AuthTimeout"] = self.authTimeout!
         }
+        if self.bizConfig != nil {
+            map["BizConfig"] = self.bizConfig!
+        }
         if self.mediaIds != nil {
             map["MediaIds"] = self.mediaIds!
+        }
+        if self.returnDynamicMeta != nil {
+            map["ReturnDynamicMeta"] = self.returnDynamicMeta!
         }
         return map
     }
@@ -38,8 +48,14 @@ public class BatchGetMediasRequest : Tea.TeaModel {
         if let value = dict["AuthTimeout"] as? Int64 {
             self.authTimeout = value
         }
+        if let value = dict["BizConfig"] as? String {
+            self.bizConfig = value
+        }
         if let value = dict["MediaIds"] as? String {
             self.mediaIds = value
+        }
+        if let value = dict["ReturnDynamicMeta"] as? Bool {
+            self.returnDynamicMeta = value
         }
     }
 }
@@ -1695,6 +1711,8 @@ public class DeleteInfiniteCanvasResponse : Tea.TeaModel {
 }
 
 public class DeleteMediasRequest : Tea.TeaModel {
+    public var bizConfig: String?
+
     public var deletePhysicalFiles: Bool?
 
     public var inputURLs: String?
@@ -1715,6 +1733,9 @@ public class DeleteMediasRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizConfig != nil {
+            map["BizConfig"] = self.bizConfig!
+        }
         if self.deletePhysicalFiles != nil {
             map["DeletePhysicalFiles"] = self.deletePhysicalFiles!
         }
@@ -1729,6 +1750,9 @@ public class DeleteMediasRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizConfig"] as? String {
+            self.bizConfig = value
+        }
         if let value = dict["DeletePhysicalFiles"] as? Bool {
             self.deletePhysicalFiles = value
         }
@@ -2744,6 +2768,8 @@ public class GetInfiniteCanvasResponse : Tea.TeaModel {
 public class GetMediaRequest : Tea.TeaModel {
     public var authTimeout: Int64?
 
+    public var bizConfig: String?
+
     public var inputURL: String?
 
     public var mediaId: String?
@@ -2765,6 +2791,9 @@ public class GetMediaRequest : Tea.TeaModel {
         if self.authTimeout != nil {
             map["AuthTimeout"] = self.authTimeout!
         }
+        if self.bizConfig != nil {
+            map["BizConfig"] = self.bizConfig!
+        }
         if self.inputURL != nil {
             map["InputURL"] = self.inputURL!
         }
@@ -2778,6 +2807,9 @@ public class GetMediaRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AuthTimeout"] as? Int64 {
             self.authTimeout = value
+        }
+        if let value = dict["BizConfig"] as? String {
+            self.bizConfig = value
         }
         if let value = dict["InputURL"] as? String {
             self.inputURL = value
@@ -5468,6 +5500,8 @@ public class GetYikeJobCreditResponse : Tea.TeaModel {
 }
 
 public class ImportMediaRequest : Tea.TeaModel {
+    public var bizConfig: String?
+
     public var categoryId: Int64?
 
     public var coverURL: String?
@@ -5494,6 +5528,8 @@ public class ImportMediaRequest : Tea.TeaModel {
 
     public var userData: String?
 
+    public var yikeAssetConfig: String?
+
     public override init() {
         super.init()
     }
@@ -5508,6 +5544,9 @@ public class ImportMediaRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizConfig != nil {
+            map["BizConfig"] = self.bizConfig!
+        }
         if self.categoryId != nil {
             map["CategoryId"] = self.categoryId!
         }
@@ -5547,11 +5586,17 @@ public class ImportMediaRequest : Tea.TeaModel {
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
+        if self.yikeAssetConfig != nil {
+            map["YikeAssetConfig"] = self.yikeAssetConfig!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizConfig"] as? String {
+            self.bizConfig = value
+        }
         if let value = dict["CategoryId"] as? Int64 {
             self.categoryId = value
         }
@@ -5590,6 +5635,9 @@ public class ImportMediaRequest : Tea.TeaModel {
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
+        }
+        if let value = dict["YikeAssetConfig"] as? String {
+            self.yikeAssetConfig = value
         }
     }
 }
@@ -6164,6 +6212,8 @@ public class ListInfiniteCanvasesResponse : Tea.TeaModel {
 }
 
 public class SearchMediaRequest : Tea.TeaModel {
+    public var bizConfig: String?
+
     public var categoryId: Int64?
 
     public var match: String?
@@ -6190,6 +6240,9 @@ public class SearchMediaRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizConfig != nil {
+            map["BizConfig"] = self.bizConfig!
+        }
         if self.categoryId != nil {
             map["CategoryId"] = self.categoryId!
         }
@@ -6213,6 +6266,9 @@ public class SearchMediaRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizConfig"] as? String {
+            self.bizConfig = value
+        }
         if let value = dict["CategoryId"] as? Int64 {
             self.categoryId = value
         }
@@ -8138,6 +8194,8 @@ public class UpdateInfiniteCanvasResponse : Tea.TeaModel {
 public class UpdateMediaRequest : Tea.TeaModel {
     public var appendTags: Bool?
 
+    public var bizConfig: String?
+
     public var categoryId: Int64?
 
     public var coverURL: String?
@@ -8173,6 +8231,9 @@ public class UpdateMediaRequest : Tea.TeaModel {
         if self.appendTags != nil {
             map["AppendTags"] = self.appendTags!
         }
+        if self.bizConfig != nil {
+            map["BizConfig"] = self.bizConfig!
+        }
         if self.categoryId != nil {
             map["CategoryId"] = self.categoryId!
         }
@@ -8207,6 +8268,9 @@ public class UpdateMediaRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppendTags"] as? Bool {
             self.appendTags = value
+        }
+        if let value = dict["BizConfig"] as? String {
+            self.bizConfig = value
         }
         if let value = dict["CategoryId"] as? Int64 {
             self.categoryId = value
