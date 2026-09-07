@@ -3020,11 +3020,15 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var downloadNeedApproval: Bool?
+
         public var groupId: String?
 
         public var groupName: String?
 
         public var transferFileNeedApproval: Bool?
+
+        public var uploadNeedApproval: Bool?
 
         public var userCount: Int32?
 
@@ -3055,6 +3059,9 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.downloadNeedApproval != nil {
+                map["DownloadNeedApproval"] = self.downloadNeedApproval!
+            }
             if self.groupId != nil {
                 map["GroupId"] = self.groupId!
             }
@@ -3063,6 +3070,9 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
             }
             if self.transferFileNeedApproval != nil {
                 map["TransferFileNeedApproval"] = self.transferFileNeedApproval!
+            }
+            if self.uploadNeedApproval != nil {
+                map["UploadNeedApproval"] = self.uploadNeedApproval!
             }
             if self.userCount != nil {
                 map["UserCount"] = self.userCount!
@@ -3086,6 +3096,9 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["DownloadNeedApproval"] as? Bool {
+                self.downloadNeedApproval = value
+            }
             if let value = dict["GroupId"] as? String {
                 self.groupId = value
             }
@@ -3094,6 +3107,9 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["TransferFileNeedApproval"] as? Bool {
                 self.transferFileNeedApproval = value
+            }
+            if let value = dict["UploadNeedApproval"] as? Bool {
+                self.uploadNeedApproval = value
             }
             if let value = dict["UserCount"] as? Int32 {
                 self.userCount = value
@@ -7241,6 +7257,142 @@ public class FilterUsersResponse : Tea.TeaModel {
     }
 }
 
+public class GetAdUsersCountRequest : Tea.TeaModel {
+    public var bizType: String?
+
+    public var businessChannel: String?
+
+    public var solutionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        if self.solutionId != nil {
+            map["SolutionId"] = self.solutionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizType"] as? String {
+            self.bizType = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
+        if let value = dict["SolutionId"] as? String {
+            self.solutionId = value
+        }
+    }
+}
+
+public class GetAdUsersCountResponseBody : Tea.TeaModel {
+    public var adUserCount: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adUserCount != nil {
+            map["AdUserCount"] = self.adUserCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdUserCount"] as? Int32 {
+            self.adUserCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetAdUsersCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAdUsersCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAdUsersCountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetManagerInfoByAuthCodeRequest : Tea.TeaModel {
     public var authCode: String?
 
@@ -7387,6 +7539,166 @@ public class GetManagerInfoByAuthCodeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetManagerInfoByAuthCodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetUsersCountRequest : Tea.TeaModel {
+    public var bizType: String?
+
+    public var businessChannel: String?
+
+    public var solutionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        if self.solutionId != nil {
+            map["SolutionId"] = self.solutionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizType"] as? String {
+            self.bizType = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
+        if let value = dict["SolutionId"] as? String {
+            self.solutionId = value
+        }
+    }
+}
+
+public class GetUsersCountResponseBody : Tea.TeaModel {
+    public var groupCount: Int32?
+
+    public var maxUserNumber: Int32?
+
+    public var orgCount: Int32?
+
+    public var requestId: String?
+
+    public var userCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupCount != nil {
+            map["GroupCount"] = self.groupCount!
+        }
+        if self.maxUserNumber != nil {
+            map["MaxUserNumber"] = self.maxUserNumber!
+        }
+        if self.orgCount != nil {
+            map["OrgCount"] = self.orgCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.userCount != nil {
+            map["UserCount"] = self.userCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GroupCount"] as? Int32 {
+            self.groupCount = value
+        }
+        if let value = dict["MaxUserNumber"] as? Int32 {
+            self.maxUserNumber = value
+        }
+        if let value = dict["OrgCount"] as? Int32 {
+            self.orgCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["UserCount"] as? Int32 {
+            self.userCount = value
+        }
+    }
+}
+
+public class GetUsersCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetUsersCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetUsersCountResponseBody()
             model.fromMap(value)
             self.body = model
         }
