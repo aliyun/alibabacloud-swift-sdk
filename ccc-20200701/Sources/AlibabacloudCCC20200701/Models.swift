@@ -36513,6 +36513,8 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var accessChannelId: String?
+
             public var accessChannelName: String?
 
             public var accessChannelType: String?
@@ -36651,6 +36653,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accessChannelId != nil {
+                    map["AccessChannelId"] = self.accessChannelId!
+                }
                 if self.accessChannelName != nil {
                     map["AccessChannelName"] = self.accessChannelName!
                 }
@@ -36839,6 +36844,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AccessChannelId"] as? String {
+                    self.accessChannelId = value
+                }
                 if let value = dict["AccessChannelName"] as? String {
                     self.accessChannelName = value
                 }
