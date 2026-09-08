@@ -52,25 +52,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "pai-dlc.aliyuncs.com",
             "eu-west-1-oxs": "pai-dlc.aliyuncs.com",
             "me-east-1": "pai-dlc.aliyuncs.com",
-            "rus-west-1-pop": "pai-dlc.aliyuncs.com",
-            "cn-wulanchabu": "pai-dlc.cn-wulanchabu.aliyuncs.com",
-            "cn-beijing": "pai-dlc.cn-beijing.aliyuncs.com",
-            "cn-shanghai": "pai-dlc.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "pai-dlc.cn-hongkong.aliyuncs.com",
-            "cn-shenzhen": "pai-dlc.cn-shenzhen.aliyuncs.com",
-            "ap-northeast-1": "pai-dlc.ap-northeast-1.aliyuncs.com",
-            "cn-guangzhou": "pai-dlc.cn-guangzhou.aliyuncs.com",
-            "ap-southeast-1": "pai-dlc.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-3": "pai-dlc.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-5": "pai-dlc.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-7": "pai-dlc.ap-southeast-7.aliyuncs.com",
-            "cn-hangzhou": "pai-dlc.cn-hangzhou.aliyuncs.com",
-            "ap-southeast-8": "pai-dlc.ap-southeast-8.aliyuncs.com",
-            "us-east-1": "pai-dlc.us-east-1.aliyuncs.com",
-            "us-southeast-1": "pai-dlc.us-southeast-1.aliyuncs.com",
-            "us-west-1": "pai-dlc.us-west-1.aliyuncs.com",
-            "eu-central-1": "pai-dlc.eu-central-1.aliyuncs.com",
-            "cn-shanghai-finance-1": "pai-dlc.cn-shanghai-finance-1.aliyuncs.com"
+            "rus-west-1-pop": "pai-dlc.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pai-dlc", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -866,6 +848,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPodLogsWithOptions(_ JobId: String, _ PodId: String, _ request: GetPodLogsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPodLogsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.containers)) {
+            query["Containers"] = request.containers ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.downloadToFile)) {
             query["DownloadToFile"] = request.downloadToFile!;
         }
@@ -1946,6 +1931,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.priority)) {
             body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userCommand)) {
+            body["UserCommand"] = request.userCommand ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

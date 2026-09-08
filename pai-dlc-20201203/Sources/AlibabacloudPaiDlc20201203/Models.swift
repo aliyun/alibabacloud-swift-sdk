@@ -509,6 +509,45 @@ public class CodeSourceItem : Tea.TeaModel {
     }
 }
 
+public class ContainerInfo : Tea.TeaModel {
+    public var mainContainer: String?
+
+    public var sidecarContainers: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mainContainer != nil {
+            map["MainContainer"] = self.mainContainer!
+        }
+        if self.sidecarContainers != nil {
+            map["SidecarContainers"] = self.sidecarContainers!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MainContainer"] as? String {
+            self.mainContainer = value
+        }
+        if let value = dict["SidecarContainers"] as? [String] {
+            self.sidecarContainers = value
+        }
+    }
+}
+
 public class ContainerSpec : Tea.TeaModel {
     public var args: [String]?
 
@@ -3724,6 +3763,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var useSpotInstance: Bool?
 
+    public var userCommand: String?
+
     public override init() {
         super.init()
     }
@@ -3830,6 +3871,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.useSpotInstance != nil {
             map["UseSpotInstance"] = self.useSpotInstance!
+        }
+        if self.userCommand != nil {
+            map["UserCommand"] = self.userCommand!
         }
         return map
     }
@@ -3955,6 +3999,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if let value = dict["UseSpotInstance"] as? Bool {
             self.useSpotInstance = value
+        }
+        if let value = dict["UserCommand"] as? String {
+            self.userCommand = value
         }
     }
 }
@@ -5056,6 +5103,2100 @@ public class QuotaDetail : Tea.TeaModel {
         }
         if let value = dict["Memory"] as? String {
             self.memory = value
+        }
+    }
+}
+
+public class RLFlowFunnelStage : Tea.TeaModel {
+    public var count: Int32?
+
+    public var key: String?
+
+    public var label: String?
+
+    public var pct: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
+        if self.pct != nil {
+            map["Pct"] = self.pct!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Key"] as? String {
+            self.key = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
+        if let value = dict["Pct"] as? Double {
+            self.pct = value
+        }
+    }
+}
+
+public class RLFlowMilestoneCount : Tea.TeaModel {
+    public var count: Int32?
+
+    public var milestone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.milestone != nil {
+            map["Milestone"] = self.milestone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Milestone"] as? String {
+            self.milestone = value
+        }
+    }
+}
+
+public class RLFlowSankey : Tea.TeaModel {
+    public var columns: [RLFlowSankeyColumn]?
+
+    public var exits: [RLFlowSankeyExit]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.columns != nil {
+            var tmp : [Any] = []
+            for k in self.columns! {
+                tmp.append(k.toMap())
+            }
+            map["Columns"] = tmp
+        }
+        if self.exits != nil {
+            var tmp : [Any] = []
+            for k in self.exits! {
+                tmp.append(k.toMap())
+            }
+            map["Exits"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Columns"] as? [Any?] {
+            var tmp : [RLFlowSankeyColumn] = []
+            for v in value {
+                if v != nil {
+                    var model = RLFlowSankeyColumn()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.columns = tmp
+        }
+        if let value = dict["Exits"] as? [Any?] {
+            var tmp : [RLFlowSankeyExit] = []
+            for v in value {
+                if v != nil {
+                    var model = RLFlowSankeyExit()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.exits = tmp
+        }
+    }
+}
+
+public class RLFlowSankeyColumn : Tea.TeaModel {
+    public var count: Int32?
+
+    public var key: String?
+
+    public var label: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Key"] as? String {
+            self.key = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
+    }
+}
+
+public class RLFlowSankeyExit : Tea.TeaModel {
+    public var count: Int32?
+
+    public var from: String?
+
+    public var fromIdx: Int32?
+
+    public var label: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.from != nil {
+            map["From"] = self.from!
+        }
+        if self.fromIdx != nil {
+            map["FromIdx"] = self.fromIdx!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["From"] as? String {
+            self.from = value
+        }
+        if let value = dict["FromIdx"] as? Int32 {
+            self.fromIdx = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
+    }
+}
+
+public class RLFlowSlowestItem : Tea.TeaModel {
+    public var promptUid: String?
+
+    public var sampleIndex: String?
+
+    public var sec: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.promptUid != nil {
+            map["PromptUid"] = self.promptUid!
+        }
+        if self.sampleIndex != nil {
+            map["SampleIndex"] = self.sampleIndex!
+        }
+        if self.sec != nil {
+            map["Sec"] = self.sec!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PromptUid"] as? String {
+            self.promptUid = value
+        }
+        if let value = dict["SampleIndex"] as? String {
+            self.sampleIndex = value
+        }
+        if let value = dict["Sec"] as? Double {
+            self.sec = value
+        }
+    }
+}
+
+public class RLFlowStep : Tea.TeaModel {
+    public var bufferWaitP50: Double?
+
+    public var gapSec: Double?
+
+    public var idleSec: Double?
+
+    public var NSamples: Int32?
+
+    public var NTrajs: Int32?
+
+    public var prodEndMs: Int64?
+
+    public var prodStartMs: Int64?
+
+    public var rolloutP50: Double?
+
+    public var rolloutSec: Double?
+
+    public var step: Int64?
+
+    public var TFwdStartMs: Int64?
+
+    public var TOptEndMs: Int64?
+
+    public var TRolloutEndMs: Int64?
+
+    public var TRolloutStartMs: Int64?
+
+    public var TTrainEndMs: Int64?
+
+    public var TTrainStartMs: Int64?
+
+    public var TUpdateMs: Int64?
+
+    public var trainSec: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bufferWaitP50 != nil {
+            map["BufferWaitP50"] = self.bufferWaitP50!
+        }
+        if self.gapSec != nil {
+            map["GapSec"] = self.gapSec!
+        }
+        if self.idleSec != nil {
+            map["IdleSec"] = self.idleSec!
+        }
+        if self.NSamples != nil {
+            map["NSamples"] = self.NSamples!
+        }
+        if self.NTrajs != nil {
+            map["NTrajs"] = self.NTrajs!
+        }
+        if self.prodEndMs != nil {
+            map["ProdEndMs"] = self.prodEndMs!
+        }
+        if self.prodStartMs != nil {
+            map["ProdStartMs"] = self.prodStartMs!
+        }
+        if self.rolloutP50 != nil {
+            map["RolloutP50"] = self.rolloutP50!
+        }
+        if self.rolloutSec != nil {
+            map["RolloutSec"] = self.rolloutSec!
+        }
+        if self.step != nil {
+            map["Step"] = self.step!
+        }
+        if self.TFwdStartMs != nil {
+            map["TFwdStartMs"] = self.TFwdStartMs!
+        }
+        if self.TOptEndMs != nil {
+            map["TOptEndMs"] = self.TOptEndMs!
+        }
+        if self.TRolloutEndMs != nil {
+            map["TRolloutEndMs"] = self.TRolloutEndMs!
+        }
+        if self.TRolloutStartMs != nil {
+            map["TRolloutStartMs"] = self.TRolloutStartMs!
+        }
+        if self.TTrainEndMs != nil {
+            map["TTrainEndMs"] = self.TTrainEndMs!
+        }
+        if self.TTrainStartMs != nil {
+            map["TTrainStartMs"] = self.TTrainStartMs!
+        }
+        if self.TUpdateMs != nil {
+            map["TUpdateMs"] = self.TUpdateMs!
+        }
+        if self.trainSec != nil {
+            map["TrainSec"] = self.trainSec!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BufferWaitP50"] as? Double {
+            self.bufferWaitP50 = value
+        }
+        if let value = dict["GapSec"] as? Double {
+            self.gapSec = value
+        }
+        if let value = dict["IdleSec"] as? Double {
+            self.idleSec = value
+        }
+        if let value = dict["NSamples"] as? Int32 {
+            self.NSamples = value
+        }
+        if let value = dict["NTrajs"] as? Int32 {
+            self.NTrajs = value
+        }
+        if let value = dict["ProdEndMs"] as? Int64 {
+            self.prodEndMs = value
+        }
+        if let value = dict["ProdStartMs"] as? Int64 {
+            self.prodStartMs = value
+        }
+        if let value = dict["RolloutP50"] as? Double {
+            self.rolloutP50 = value
+        }
+        if let value = dict["RolloutSec"] as? Double {
+            self.rolloutSec = value
+        }
+        if let value = dict["Step"] as? Int64 {
+            self.step = value
+        }
+        if let value = dict["TFwdStartMs"] as? Int64 {
+            self.TFwdStartMs = value
+        }
+        if let value = dict["TOptEndMs"] as? Int64 {
+            self.TOptEndMs = value
+        }
+        if let value = dict["TRolloutEndMs"] as? Int64 {
+            self.TRolloutEndMs = value
+        }
+        if let value = dict["TRolloutStartMs"] as? Int64 {
+            self.TRolloutStartMs = value
+        }
+        if let value = dict["TTrainEndMs"] as? Int64 {
+            self.TTrainEndMs = value
+        }
+        if let value = dict["TTrainStartMs"] as? Int64 {
+            self.TTrainStartMs = value
+        }
+        if let value = dict["TUpdateMs"] as? Int64 {
+            self.TUpdateMs = value
+        }
+        if let value = dict["TrainSec"] as? Double {
+            self.trainSec = value
+        }
+    }
+}
+
+public class RLFlowStuckItem : Tea.TeaModel {
+    public var idleSec: Int64?
+
+    public var lastTsMs: Int64?
+
+    public var milestone: String?
+
+    public var NTurns: Int32?
+
+    public var promptUid: String?
+
+    public var sampleIndex: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.idleSec != nil {
+            map["IdleSec"] = self.idleSec!
+        }
+        if self.lastTsMs != nil {
+            map["LastTsMs"] = self.lastTsMs!
+        }
+        if self.milestone != nil {
+            map["Milestone"] = self.milestone!
+        }
+        if self.NTurns != nil {
+            map["NTurns"] = self.NTurns!
+        }
+        if self.promptUid != nil {
+            map["PromptUid"] = self.promptUid!
+        }
+        if self.sampleIndex != nil {
+            map["SampleIndex"] = self.sampleIndex!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IdleSec"] as? Int64 {
+            self.idleSec = value
+        }
+        if let value = dict["LastTsMs"] as? Int64 {
+            self.lastTsMs = value
+        }
+        if let value = dict["Milestone"] as? String {
+            self.milestone = value
+        }
+        if let value = dict["NTurns"] as? Int32 {
+            self.NTurns = value
+        }
+        if let value = dict["PromptUid"] as? String {
+            self.promptUid = value
+        }
+        if let value = dict["SampleIndex"] as? String {
+            self.sampleIndex = value
+        }
+    }
+}
+
+public class RLFlowTotals : Tea.TeaModel {
+    public var inflight: Int32?
+
+    public var rewarded: Int32?
+
+    public var sampled: Int32?
+
+    public var trained: Int32?
+
+    public var trajs: Int32?
+
+    public var uids: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inflight != nil {
+            map["Inflight"] = self.inflight!
+        }
+        if self.rewarded != nil {
+            map["Rewarded"] = self.rewarded!
+        }
+        if self.sampled != nil {
+            map["Sampled"] = self.sampled!
+        }
+        if self.trained != nil {
+            map["Trained"] = self.trained!
+        }
+        if self.trajs != nil {
+            map["Trajs"] = self.trajs!
+        }
+        if self.uids != nil {
+            map["Uids"] = self.uids!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Inflight"] as? Int32 {
+            self.inflight = value
+        }
+        if let value = dict["Rewarded"] as? Int32 {
+            self.rewarded = value
+        }
+        if let value = dict["Sampled"] as? Int32 {
+            self.sampled = value
+        }
+        if let value = dict["Trained"] as? Int32 {
+            self.trained = value
+        }
+        if let value = dict["Trajs"] as? Int32 {
+            self.trajs = value
+        }
+        if let value = dict["Uids"] as? Int32 {
+            self.uids = value
+        }
+    }
+}
+
+public class RLFlowTransition : Tea.TeaModel {
+    public var avg: Double?
+
+    public var count: Int32?
+
+    public var key: String?
+
+    public var label: String?
+
+    public var max: Double?
+
+    public var p50: Double?
+
+    public var p90: Double?
+
+    public var p99: Double?
+
+    public var slowest: [RLFlowSlowestItem]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.avg != nil {
+            map["Avg"] = self.avg!
+        }
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
+        if self.max != nil {
+            map["Max"] = self.max!
+        }
+        if self.p50 != nil {
+            map["P50"] = self.p50!
+        }
+        if self.p90 != nil {
+            map["P90"] = self.p90!
+        }
+        if self.p99 != nil {
+            map["P99"] = self.p99!
+        }
+        if self.slowest != nil {
+            var tmp : [Any] = []
+            for k in self.slowest! {
+                tmp.append(k.toMap())
+            }
+            map["Slowest"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Avg"] as? Double {
+            self.avg = value
+        }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Key"] as? String {
+            self.key = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
+        if let value = dict["Max"] as? Double {
+            self.max = value
+        }
+        if let value = dict["P50"] as? Double {
+            self.p50 = value
+        }
+        if let value = dict["P90"] as? Double {
+            self.p90 = value
+        }
+        if let value = dict["P99"] as? Double {
+            self.p99 = value
+        }
+        if let value = dict["Slowest"] as? [Any?] {
+            var tmp : [RLFlowSlowestItem] = []
+            for v in value {
+                if v != nil {
+                    var model = RLFlowSlowestItem()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.slowest = tmp
+        }
+    }
+}
+
+public class RLFlowTurns : Tea.TeaModel {
+    public var avg: Double?
+
+    public var count: Int32?
+
+    public var max: Int32?
+
+    public var p50: Int32?
+
+    public var p90: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.avg != nil {
+            map["Avg"] = self.avg!
+        }
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.max != nil {
+            map["Max"] = self.max!
+        }
+        if self.p50 != nil {
+            map["P50"] = self.p50!
+        }
+        if self.p90 != nil {
+            map["P90"] = self.p90!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Avg"] as? Double {
+            self.avg = value
+        }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Max"] as? Int32 {
+            self.max = value
+        }
+        if let value = dict["P50"] as? Int32 {
+            self.p50 = value
+        }
+        if let value = dict["P90"] as? Int32 {
+            self.p90 = value
+        }
+    }
+}
+
+public class RLFlowWaste : Tea.TeaModel {
+    public var usefulSec: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.usefulSec != nil {
+            map["UsefulSec"] = self.usefulSec!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["UsefulSec"] as? Int64 {
+            self.usefulSec = value
+        }
+    }
+}
+
+public class RLLogContextLine : Tea.TeaModel {
+    public var message: String?
+
+    public var timestampMs: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.timestampMs != nil {
+            map["TimestampMs"] = self.timestampMs!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["TimestampMs"] as? Int64 {
+            self.timestampMs = value
+        }
+    }
+}
+
+public class RLProgressBuffer : Tea.TeaModel {
+    public var consumed: Int32?
+
+    public var detail: [RLProgressBufferDetail]?
+
+    public var etaSec: Int64?
+
+    public var fillRatePerMin: Double?
+
+    public var finished: Int32?
+
+    public var pct: Double?
+
+    public var ready: Int32?
+
+    public var target: Int32?
+
+    public var trainBatchSize: Int32?
+
+    public var training: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.consumed != nil {
+            map["Consumed"] = self.consumed!
+        }
+        if self.detail != nil {
+            var tmp : [Any] = []
+            for k in self.detail! {
+                tmp.append(k.toMap())
+            }
+            map["Detail"] = tmp
+        }
+        if self.etaSec != nil {
+            map["EtaSec"] = self.etaSec!
+        }
+        if self.fillRatePerMin != nil {
+            map["FillRatePerMin"] = self.fillRatePerMin!
+        }
+        if self.finished != nil {
+            map["Finished"] = self.finished!
+        }
+        if self.pct != nil {
+            map["Pct"] = self.pct!
+        }
+        if self.ready != nil {
+            map["Ready"] = self.ready!
+        }
+        if self.target != nil {
+            map["Target"] = self.target!
+        }
+        if self.trainBatchSize != nil {
+            map["TrainBatchSize"] = self.trainBatchSize!
+        }
+        if self.training != nil {
+            map["Training"] = self.training!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Consumed"] as? Int32 {
+            self.consumed = value
+        }
+        if let value = dict["Detail"] as? [Any?] {
+            var tmp : [RLProgressBufferDetail] = []
+            for v in value {
+                if v != nil {
+                    var model = RLProgressBufferDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.detail = tmp
+        }
+        if let value = dict["EtaSec"] as? Int64 {
+            self.etaSec = value
+        }
+        if let value = dict["FillRatePerMin"] as? Double {
+            self.fillRatePerMin = value
+        }
+        if let value = dict["Finished"] as? Int32 {
+            self.finished = value
+        }
+        if let value = dict["Pct"] as? Double {
+            self.pct = value
+        }
+        if let value = dict["Ready"] as? Int32 {
+            self.ready = value
+        }
+        if let value = dict["Target"] as? Int32 {
+            self.target = value
+        }
+        if let value = dict["TrainBatchSize"] as? Int32 {
+            self.trainBatchSize = value
+        }
+        if let value = dict["Training"] as? Bool {
+            self.training = value
+        }
+    }
+}
+
+public class RLProgressBufferDetail : Tea.TeaModel {
+    public var consumed: Int32?
+
+    public var finished: Int32?
+
+    public var ready: Int32?
+
+    public var tag: Int32?
+
+    public var total: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.consumed != nil {
+            map["Consumed"] = self.consumed!
+        }
+        if self.finished != nil {
+            map["Finished"] = self.finished!
+        }
+        if self.ready != nil {
+            map["Ready"] = self.ready!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Consumed"] as? Int32 {
+            self.consumed = value
+        }
+        if let value = dict["Finished"] as? Int32 {
+            self.finished = value
+        }
+        if let value = dict["Ready"] as? Int32 {
+            self.ready = value
+        }
+        if let value = dict["Tag"] as? Int32 {
+            self.tag = value
+        }
+        if let value = dict["Total"] as? Int32 {
+            self.total = value
+        }
+    }
+}
+
+public class RLProgressConfig : Tea.TeaModel {
+    public var numMinibatches: Int32?
+
+    public var ppoMiniBatchSize: Int32?
+
+    public var rolloutN: Int32?
+
+    public var totalSteps: Int32?
+
+    public var trainBatchSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.numMinibatches != nil {
+            map["NumMinibatches"] = self.numMinibatches!
+        }
+        if self.ppoMiniBatchSize != nil {
+            map["PpoMiniBatchSize"] = self.ppoMiniBatchSize!
+        }
+        if self.rolloutN != nil {
+            map["RolloutN"] = self.rolloutN!
+        }
+        if self.totalSteps != nil {
+            map["TotalSteps"] = self.totalSteps!
+        }
+        if self.trainBatchSize != nil {
+            map["TrainBatchSize"] = self.trainBatchSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NumMinibatches"] as? Int32 {
+            self.numMinibatches = value
+        }
+        if let value = dict["PpoMiniBatchSize"] as? Int32 {
+            self.ppoMiniBatchSize = value
+        }
+        if let value = dict["RolloutN"] as? Int32 {
+            self.rolloutN = value
+        }
+        if let value = dict["TotalSteps"] as? Int32 {
+            self.totalSteps = value
+        }
+        if let value = dict["TrainBatchSize"] as? Int32 {
+            self.trainBatchSize = value
+        }
+    }
+}
+
+public class RLProgressEval : Tea.TeaModel {
+    public var done: Bool?
+
+    public var finished: Int32?
+
+    public var pct: Double?
+
+    public var progress: Int32?
+
+    public var ready: Int32?
+
+    public var total: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.done != nil {
+            map["Done"] = self.done!
+        }
+        if self.finished != nil {
+            map["Finished"] = self.finished!
+        }
+        if self.pct != nil {
+            map["Pct"] = self.pct!
+        }
+        if self.progress != nil {
+            map["Progress"] = self.progress!
+        }
+        if self.ready != nil {
+            map["Ready"] = self.ready!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Done"] as? Bool {
+            self.done = value
+        }
+        if let value = dict["Finished"] as? Int32 {
+            self.finished = value
+        }
+        if let value = dict["Pct"] as? Double {
+            self.pct = value
+        }
+        if let value = dict["Progress"] as? Int32 {
+            self.progress = value
+        }
+        if let value = dict["Ready"] as? Int32 {
+            self.ready = value
+        }
+        if let value = dict["Total"] as? Int32 {
+            self.total = value
+        }
+    }
+}
+
+public class RLProgressFatal : Tea.TeaModel {
+    public var collectNs: String?
+
+    public var message: String?
+
+    public var rawMessage: String?
+
+    public var subsecNs: Int64?
+
+    public var time: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.collectNs != nil {
+            map["CollectNs"] = self.collectNs!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.rawMessage != nil {
+            map["RawMessage"] = self.rawMessage!
+        }
+        if self.subsecNs != nil {
+            map["SubsecNs"] = self.subsecNs!
+        }
+        if self.time != nil {
+            map["Time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CollectNs"] as? String {
+            self.collectNs = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RawMessage"] as? String {
+            self.rawMessage = value
+        }
+        if let value = dict["SubsecNs"] as? Int64 {
+            self.subsecNs = value
+        }
+        if let value = dict["Time"] as? Int64 {
+            self.time = value
+        }
+    }
+}
+
+public class RLProgressMicro : Tea.TeaModel {
+    public var current: Int32?
+
+    public var total: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.current != nil {
+            map["Current"] = self.current!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Current"] as? Int32 {
+            self.current = value
+        }
+        if let value = dict["Total"] as? Int32 {
+            self.total = value
+        }
+    }
+}
+
+public class RLProgressProcessed : Tea.TeaModel {
+    public var done: Int32?
+
+    public var total: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.done != nil {
+            map["Done"] = self.done!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Done"] as? Int32 {
+            self.done = value
+        }
+        if let value = dict["Total"] as? Int32 {
+            self.total = value
+        }
+    }
+}
+
+public class RLProgressRollout : Tea.TeaModel {
+    public var finished: Int32?
+
+    public var processed: RLProgressProcessed?
+
+    public var ratePerMin: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.processed?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.finished != nil {
+            map["Finished"] = self.finished!
+        }
+        if self.processed != nil {
+            map["Processed"] = self.processed?.toMap()
+        }
+        if self.ratePerMin != nil {
+            map["RatePerMin"] = self.ratePerMin!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Finished"] as? Int32 {
+            self.finished = value
+        }
+        if let value = dict["Processed"] as? [String: Any?] {
+            var model = RLProgressProcessed()
+            model.fromMap(value)
+            self.processed = model
+        }
+        if let value = dict["RatePerMin"] as? Double {
+            self.ratePerMin = value
+        }
+    }
+}
+
+public class RLProgressSlow : Tea.TeaModel {
+    public var details: [RLProgressSlowDetail]?
+
+    public var elapsed: Double?
+
+    public var time: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.details != nil {
+            var tmp : [Any] = []
+            for k in self.details! {
+                tmp.append(k.toMap())
+            }
+            map["Details"] = tmp
+        }
+        if self.elapsed != nil {
+            map["Elapsed"] = self.elapsed!
+        }
+        if self.time != nil {
+            map["Time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Details"] as? [Any?] {
+            var tmp : [RLProgressSlowDetail] = []
+            for v in value {
+                if v != nil {
+                    var model = RLProgressSlowDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.details = tmp
+        }
+        if let value = dict["Elapsed"] as? Double {
+            self.elapsed = value
+        }
+        if let value = dict["Time"] as? Int64 {
+            self.time = value
+        }
+    }
+}
+
+public class RLProgressSlowDetail : Tea.TeaModel {
+    public var elapsed: Double?
+
+    public var ip: String?
+
+    public var ipc: String?
+
+    public var isPause: String?
+
+    public var message: String?
+
+    public var outQueue: String?
+
+    public var pod: String?
+
+    public var rank: Int32?
+
+    public var rid: String?
+
+    public var statePresent: String?
+
+    public var time: Int64?
+
+    public var tokenizerPid: String?
+
+    public var workerPid: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.elapsed != nil {
+            map["Elapsed"] = self.elapsed!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.ipc != nil {
+            map["Ipc"] = self.ipc!
+        }
+        if self.isPause != nil {
+            map["IsPause"] = self.isPause!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.outQueue != nil {
+            map["OutQueue"] = self.outQueue!
+        }
+        if self.pod != nil {
+            map["Pod"] = self.pod!
+        }
+        if self.rank != nil {
+            map["Rank"] = self.rank!
+        }
+        if self.rid != nil {
+            map["Rid"] = self.rid!
+        }
+        if self.statePresent != nil {
+            map["StatePresent"] = self.statePresent!
+        }
+        if self.time != nil {
+            map["Time"] = self.time!
+        }
+        if self.tokenizerPid != nil {
+            map["TokenizerPid"] = self.tokenizerPid!
+        }
+        if self.workerPid != nil {
+            map["WorkerPid"] = self.workerPid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Elapsed"] as? Double {
+            self.elapsed = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
+        }
+        if let value = dict["Ipc"] as? String {
+            self.ipc = value
+        }
+        if let value = dict["IsPause"] as? String {
+            self.isPause = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["OutQueue"] as? String {
+            self.outQueue = value
+        }
+        if let value = dict["Pod"] as? String {
+            self.pod = value
+        }
+        if let value = dict["Rank"] as? Int32 {
+            self.rank = value
+        }
+        if let value = dict["Rid"] as? String {
+            self.rid = value
+        }
+        if let value = dict["StatePresent"] as? String {
+            self.statePresent = value
+        }
+        if let value = dict["Time"] as? Int64 {
+            self.time = value
+        }
+        if let value = dict["TokenizerPid"] as? String {
+            self.tokenizerPid = value
+        }
+        if let value = dict["WorkerPid"] as? Int32 {
+            self.workerPid = value
+        }
+    }
+}
+
+public class RLProgressStage : Tea.TeaModel {
+    public var duration: Double?
+
+    public var endTime: Int64?
+
+    public var key: String?
+
+    public var label: String?
+
+    public var marker: String?
+
+    public var optional_: Bool?
+
+    public var startTime: Int64?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
+        if self.marker != nil {
+            map["Marker"] = self.marker!
+        }
+        if self.optional_ != nil {
+            map["Optional"] = self.optional_!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Duration"] as? Double {
+            self.duration = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Key"] as? String {
+            self.key = value
+        }
+        if let value = dict["Label"] as? String {
+            self.label = value
+        }
+        if let value = dict["Marker"] as? String {
+            self.marker = value
+        }
+        if let value = dict["Optional"] as? Bool {
+            self.optional_ = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class RLProgressStages : Tea.TeaModel {
+    public var currentIndex: Int32?
+
+    public var mode: String?
+
+    public var stages: [RLProgressStage]?
+
+    public var stepDone: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentIndex != nil {
+            map["CurrentIndex"] = self.currentIndex!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.stages != nil {
+            var tmp : [Any] = []
+            for k in self.stages! {
+                tmp.append(k.toMap())
+            }
+            map["Stages"] = tmp
+        }
+        if self.stepDone != nil {
+            map["StepDone"] = self.stepDone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentIndex"] as? Int32 {
+            self.currentIndex = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["Stages"] as? [Any?] {
+            var tmp : [RLProgressStage] = []
+            for v in value {
+                if v != nil {
+                    var model = RLProgressStage()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.stages = tmp
+        }
+        if let value = dict["StepDone"] as? Bool {
+            self.stepDone = value
+        }
+    }
+}
+
+public class RLProgressStep : Tea.TeaModel {
+    public var current: Int32?
+
+    public var etaSec: Int64?
+
+    public var paceSec: Double?
+
+    public var pct: Double?
+
+    public var time: Int64?
+
+    public var total: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.current != nil {
+            map["Current"] = self.current!
+        }
+        if self.etaSec != nil {
+            map["EtaSec"] = self.etaSec!
+        }
+        if self.paceSec != nil {
+            map["PaceSec"] = self.paceSec!
+        }
+        if self.pct != nil {
+            map["Pct"] = self.pct!
+        }
+        if self.time != nil {
+            map["Time"] = self.time!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Current"] as? Int32 {
+            self.current = value
+        }
+        if let value = dict["EtaSec"] as? Int64 {
+            self.etaSec = value
+        }
+        if let value = dict["PaceSec"] as? Double {
+            self.paceSec = value
+        }
+        if let value = dict["Pct"] as? Double {
+            self.pct = value
+        }
+        if let value = dict["Time"] as? Int64 {
+            self.time = value
+        }
+        if let value = dict["Total"] as? Int32 {
+            self.total = value
+        }
+    }
+}
+
+public class RLProgressSync : Tea.TeaModel {
+    public var cost: Double?
+
+    public var state: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["Cost"] = self.cost!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Cost"] as? Double {
+            self.cost = value
+        }
+        if let value = dict["State"] as? String {
+            self.state = value
+        }
+    }
+}
+
+public class RLProgressTrainer : Tea.TeaModel {
+    public var micro: RLProgressMicro?
+
+    public var miniIdx: Int32?
+
+    public var numMinibatches: Int32?
+
+    public var sync: RLProgressSync?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.micro?.validate()
+        try self.sync?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.micro != nil {
+            map["Micro"] = self.micro?.toMap()
+        }
+        if self.miniIdx != nil {
+            map["MiniIdx"] = self.miniIdx!
+        }
+        if self.numMinibatches != nil {
+            map["NumMinibatches"] = self.numMinibatches!
+        }
+        if self.sync != nil {
+            map["Sync"] = self.sync?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Micro"] as? [String: Any?] {
+            var model = RLProgressMicro()
+            model.fromMap(value)
+            self.micro = model
+        }
+        if let value = dict["MiniIdx"] as? Int32 {
+            self.miniIdx = value
+        }
+        if let value = dict["NumMinibatches"] as? Int32 {
+            self.numMinibatches = value
+        }
+        if let value = dict["Sync"] as? [String: Any?] {
+            var model = RLProgressSync()
+            model.fromMap(value)
+            self.sync = model
+        }
+    }
+}
+
+public class RLSample : Tea.TeaModel {
+    public var latestDetail: String?
+
+    public var latestStage: String?
+
+    public var latestStatus: String?
+
+    public var latestTimestampMs: Int64?
+
+    public var promptUid: String?
+
+    public var sampleIndex: String?
+
+    public var terminalState: String?
+
+    public var traceCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.latestDetail != nil {
+            map["LatestDetail"] = self.latestDetail!
+        }
+        if self.latestStage != nil {
+            map["LatestStage"] = self.latestStage!
+        }
+        if self.latestStatus != nil {
+            map["LatestStatus"] = self.latestStatus!
+        }
+        if self.latestTimestampMs != nil {
+            map["LatestTimestampMs"] = self.latestTimestampMs!
+        }
+        if self.promptUid != nil {
+            map["PromptUid"] = self.promptUid!
+        }
+        if self.sampleIndex != nil {
+            map["SampleIndex"] = self.sampleIndex!
+        }
+        if self.terminalState != nil {
+            map["TerminalState"] = self.terminalState!
+        }
+        if self.traceCount != nil {
+            map["TraceCount"] = self.traceCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["LatestDetail"] as? String {
+            self.latestDetail = value
+        }
+        if let value = dict["LatestStage"] as? String {
+            self.latestStage = value
+        }
+        if let value = dict["LatestStatus"] as? String {
+            self.latestStatus = value
+        }
+        if let value = dict["LatestTimestampMs"] as? Int64 {
+            self.latestTimestampMs = value
+        }
+        if let value = dict["PromptUid"] as? String {
+            self.promptUid = value
+        }
+        if let value = dict["SampleIndex"] as? String {
+            self.sampleIndex = value
+        }
+        if let value = dict["TerminalState"] as? String {
+            self.terminalState = value
+        }
+        if let value = dict["TraceCount"] as? Int64 {
+            self.traceCount = value
+        }
+    }
+}
+
+public class RLSampleEvent : Tea.TeaModel {
+    public var detail: String?
+
+    public var from: String?
+
+    public var globalStep: String?
+
+    public var stage: String?
+
+    public var timestampMs: Int64?
+
+    public var to: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.detail != nil {
+            map["Detail"] = self.detail!
+        }
+        if self.from != nil {
+            map["From"] = self.from!
+        }
+        if self.globalStep != nil {
+            map["GlobalStep"] = self.globalStep!
+        }
+        if self.stage != nil {
+            map["Stage"] = self.stage!
+        }
+        if self.timestampMs != nil {
+            map["TimestampMs"] = self.timestampMs!
+        }
+        if self.to != nil {
+            map["To"] = self.to!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Detail"] as? String {
+            self.detail = value
+        }
+        if let value = dict["From"] as? String {
+            self.from = value
+        }
+        if let value = dict["GlobalStep"] as? String {
+            self.globalStep = value
+        }
+        if let value = dict["Stage"] as? String {
+            self.stage = value
+        }
+        if let value = dict["TimestampMs"] as? Int64 {
+            self.timestampMs = value
+        }
+        if let value = dict["To"] as? String {
+            self.to = value
+        }
+    }
+}
+
+public class RLTrajectory : Tea.TeaModel {
+    public var latestTimestampMs: Int64?
+
+    public var sampleIndex: String?
+
+    public var terminalState: String?
+
+    public var traceCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.latestTimestampMs != nil {
+            map["LatestTimestampMs"] = self.latestTimestampMs!
+        }
+        if self.sampleIndex != nil {
+            map["SampleIndex"] = self.sampleIndex!
+        }
+        if self.terminalState != nil {
+            map["TerminalState"] = self.terminalState!
+        }
+        if self.traceCount != nil {
+            map["TraceCount"] = self.traceCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["LatestTimestampMs"] as? Int64 {
+            self.latestTimestampMs = value
+        }
+        if let value = dict["SampleIndex"] as? String {
+            self.sampleIndex = value
+        }
+        if let value = dict["TerminalState"] as? String {
+            self.terminalState = value
+        }
+        if let value = dict["TraceCount"] as? Int64 {
+            self.traceCount = value
         }
     }
 }
@@ -11187,6 +13328,8 @@ public class GetPodEventsResponse : Tea.TeaModel {
 }
 
 public class GetPodLogsRequest : Tea.TeaModel {
+    public var containers: String?
+
     public var downloadToFile: Bool?
 
     public var endTime: String?
@@ -11211,6 +13354,9 @@ public class GetPodLogsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.containers != nil {
+            map["Containers"] = self.containers!
+        }
         if self.downloadToFile != nil {
             map["DownloadToFile"] = self.downloadToFile!
         }
@@ -11231,6 +13377,9 @@ public class GetPodLogsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Containers"] as? String {
+            self.containers = value
+        }
         if let value = dict["DownloadToFile"] as? Bool {
             self.downloadToFile = value
         }
@@ -11250,6 +13399,10 @@ public class GetPodLogsRequest : Tea.TeaModel {
 }
 
 public class GetPodLogsResponseBody : Tea.TeaModel {
+    public var containerInfo: ContainerInfo?
+
+    public var containers: String?
+
     public var jobId: String?
 
     public var logs: [String]?
@@ -11270,10 +13423,17 @@ public class GetPodLogsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.containerInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.containerInfo != nil {
+            map["ContainerInfo"] = self.containerInfo?.toMap()
+        }
+        if self.containers != nil {
+            map["Containers"] = self.containers!
+        }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
@@ -11294,6 +13454,14 @@ public class GetPodLogsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ContainerInfo"] as? [String: Any?] {
+            var model = ContainerInfo()
+            model.fromMap(value)
+            self.containerInfo = model
+        }
+        if let value = dict["Containers"] as? String {
+            self.containers = value
+        }
         if let value = dict["JobId"] as? String {
             self.jobId = value
         }
@@ -15947,6 +18115,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var priority: Int32?
 
+    public var userCommand: String?
+
     public override init() {
         super.init()
     }
@@ -15977,6 +18147,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
+        if self.userCommand != nil {
+            map["UserCommand"] = self.userCommand!
+        }
         return map
     }
 
@@ -16003,6 +18176,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if let value = dict["Priority"] as? Int32 {
             self.priority = value
+        }
+        if let value = dict["UserCommand"] as? String {
+            self.userCommand = value
         }
     }
 }
