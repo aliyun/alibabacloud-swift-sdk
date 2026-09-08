@@ -2271,6 +2271,53 @@ public class GPUMetric : Tea.TeaModel {
     }
 }
 
+public class GlobalSpotPriceItem : Tea.TeaModel {
+    public var effectiveAt: String?
+
+    public var instanceType: String?
+
+    public var spotDiscount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.effectiveAt != nil {
+            map["effectiveAt"] = self.effectiveAt!
+        }
+        if self.instanceType != nil {
+            map["instanceType"] = self.instanceType!
+        }
+        if self.spotDiscount != nil {
+            map["spotDiscount"] = self.spotDiscount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["effectiveAt"] as? String {
+            self.effectiveAt = value
+        }
+        if let value = dict["instanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["spotDiscount"] as? String {
+            self.spotDiscount = value
+        }
+    }
+}
+
 public class HyperParameterDefinition : Tea.TeaModel {
     public var defaultValue: String?
 
@@ -3236,6 +3283,10 @@ public class Node : Tea.TeaModel {
 
     public var memory: String?
 
+    public var nodeGPUMemory: String?
+
+    public var nodeGPUMemoryBytes: Int64?
+
     public var nodeName: String?
 
     public var nodeStatus: String?
@@ -3364,6 +3415,12 @@ public class Node : Tea.TeaModel {
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
+        }
+        if self.nodeGPUMemory != nil {
+            map["NodeGPUMemory"] = self.nodeGPUMemory!
+        }
+        if self.nodeGPUMemoryBytes != nil {
+            map["NodeGPUMemoryBytes"] = self.nodeGPUMemoryBytes!
         }
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
@@ -3512,6 +3569,12 @@ public class Node : Tea.TeaModel {
         }
         if let value = dict["Memory"] as? String {
             self.memory = value
+        }
+        if let value = dict["NodeGPUMemory"] as? String {
+            self.nodeGPUMemory = value
+        }
+        if let value = dict["NodeGPUMemoryBytes"] as? Int64 {
+            self.nodeGPUMemoryBytes = value
         }
         if let value = dict["NodeName"] as? String {
             self.nodeName = value
@@ -3849,6 +3912,8 @@ public class NodeOperationParameters : Tea.TeaModel {
 
     public var drainParameters: NodeDrainParameters?
 
+    public var resizeDiskParameters: ResizeDiskParameters?
+
     public var uncordonParameters: NodeUncordonParameters?
 
     public override init() {
@@ -3863,6 +3928,7 @@ public class NodeOperationParameters : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.cordonParameters?.validate()
         try self.drainParameters?.validate()
+        try self.resizeDiskParameters?.validate()
         try self.uncordonParameters?.validate()
     }
 
@@ -3873,6 +3939,9 @@ public class NodeOperationParameters : Tea.TeaModel {
         }
         if self.drainParameters != nil {
             map["DrainParameters"] = self.drainParameters?.toMap()
+        }
+        if self.resizeDiskParameters != nil {
+            map["ResizeDiskParameters"] = self.resizeDiskParameters?.toMap()
         }
         if self.uncordonParameters != nil {
             map["UncordonParameters"] = self.uncordonParameters?.toMap()
@@ -3891,6 +3960,11 @@ public class NodeOperationParameters : Tea.TeaModel {
             var model = NodeDrainParameters()
             model.fromMap(value)
             self.drainParameters = model
+        }
+        if let value = dict["ResizeDiskParameters"] as? [String: Any?] {
+            var model = ResizeDiskParameters()
+            model.fromMap(value)
+            self.resizeDiskParameters = model
         }
         if let value = dict["UncordonParameters"] as? [String: Any?] {
             var model = NodeUncordonParameters()
@@ -6930,10 +7004,45 @@ public class QuotaUserViewMetric : Tea.TeaModel {
     }
 }
 
+public class ResizeDiskParameters : Tea.TeaModel {
+    public var newDiskSize: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.newDiskSize != nil {
+            map["NewDiskSize"] = self.newDiskSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NewDiskSize"] as? String {
+            self.newDiskSize = value
+        }
+    }
+}
+
 public class ResourceAmount : Tea.TeaModel {
     public var CPU: String?
 
     public var GPU: String?
+
+    public var GPUMemory: String?
+
+    public var GPUMemoryBytes: Int64?
 
     public var GPUType: String?
 
@@ -6959,6 +7068,12 @@ public class ResourceAmount : Tea.TeaModel {
         if self.GPU != nil {
             map["GPU"] = self.GPU!
         }
+        if self.GPUMemory != nil {
+            map["GPUMemory"] = self.GPUMemory!
+        }
+        if self.GPUMemoryBytes != nil {
+            map["GPUMemoryBytes"] = self.GPUMemoryBytes!
+        }
         if self.GPUType != nil {
             map["GPUType"] = self.GPUType!
         }
@@ -6975,6 +7090,12 @@ public class ResourceAmount : Tea.TeaModel {
         }
         if let value = dict["GPU"] as? String {
             self.GPU = value
+        }
+        if let value = dict["GPUMemory"] as? String {
+            self.GPUMemory = value
+        }
+        if let value = dict["GPUMemoryBytes"] as? Int64 {
+            self.GPUMemoryBytes = value
         }
         if let value = dict["GPUType"] as? String {
             self.GPUType = value
@@ -12668,6 +12789,8 @@ public class GetQuotaResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var GPUType: String?
+
     public var gmtCreatedTime: String?
 
     public var gmtModifiedTime: String?
@@ -12738,6 +12861,9 @@ public class GetQuotaResponseBody : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.GPUType != nil {
+            map["GPUType"] = self.GPUType!
         }
         if self.gmtCreatedTime != nil {
             map["GmtCreatedTime"] = self.gmtCreatedTime!
@@ -12830,6 +12956,9 @@ public class GetQuotaResponseBody : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["GPUType"] as? String {
+            self.GPUType = value
         }
         if let value = dict["GmtCreatedTime"] as? String {
             self.gmtCreatedTime = value

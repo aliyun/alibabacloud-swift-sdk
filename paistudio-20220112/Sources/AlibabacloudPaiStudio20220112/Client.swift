@@ -29,11 +29,11 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shanghai-finance-1": "pai.cn-shanghai-finance-1.aliyuncs.com",
             "cn-wulanchabu": "pai.cn-wulanchabu.aliyuncs.com",
             "cn-zhangjiakou": "pai.cn-zhangjiakou.aliyuncs.com",
-            "us-southeast-1": "pai.us-southeast-1.aliyuncs.com",
             "cn-zhongwei": "pai.cn-zhongwei.aliyuncs.com",
+            "ap-northeast-2": "pai.ap-northeast-2.aliyuncs.com",
             "cn-guangzhou": "pai.cn-guangzhou.aliyuncs.com",
             "ap-southeast-8": "pai.ap-southeast-8.aliyuncs.com",
-            "ap-northeast-2": "pai.ap-northeast-2.aliyuncs.com"
+            "us-southeast-1": "pai.us-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("paistudio", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
