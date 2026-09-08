@@ -10,32 +10,32 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-west-1": "eventbridge-console.us-west-1.aliyuncs.com",
-            "us-east-1": "eventbridge-console.us-east-1.aliyuncs.com",
-            "eu-west-1": "eventbridge-console.eu-west-1.aliyuncs.com",
-            "eu-central-1": "eventbridge-console.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "eventbridge-console.cn-zhangjiakou.aliyuncs.com",
             "cn-wulanchabu": "eventbridge-console.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen-finance-1": "eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shenzhen": "eventbridge-console.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "eventbridge-console.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "eventbridge-console.cn-shanghai.aliyuncs.com",
+            "cn-beijing": "eventbridge-console.cn-beijing.aliyuncs.com",
             "cn-qingdao": "eventbridge-console.cn-qingdao.aliyuncs.com",
-            "cn-huhehaote": "eventbridge-console.cn-huhehaote.aliyuncs.com",
+            "cn-shanghai": "eventbridge-console.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "eventbridge-console.cn-hongkong.aliyuncs.com",
             "cn-heyuan": "eventbridge-console.cn-heyuan.aliyuncs.com",
-            "cn-hangzhou": "eventbridge-console.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "eventbridge-console.cn-guangzhou.aliyuncs.com",
-            "cn-chengdu": "eventbridge-console.cn-chengdu.aliyuncs.com",
-            "cn-beijing-finance-1": "eventbridge-console.cn-beijing-finance-1.aliyuncs.com",
-            "cn-beijing": "eventbridge-console.cn-beijing.aliyuncs.com",
-            "ap-southeast-7": "eventbridge-console.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "eventbridge-console.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "eventbridge-console.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "eventbridge-console.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "eventbridge-console.ap-southeast-1.aliyuncs.com",
+            "cn-zhangjiakou": "eventbridge-console.cn-zhangjiakou.aliyuncs.com",
+            "cn-shenzhen": "eventbridge-console.cn-shenzhen.aliyuncs.com",
             "ap-northeast-2": "eventbridge-console.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "eventbridge-console.ap-northeast-1.aliyuncs.com"
+            "ap-northeast-1": "eventbridge-console.ap-northeast-1.aliyuncs.com",
+            "cn-chengdu": "eventbridge-console.cn-chengdu.aliyuncs.com",
+            "cn-guangzhou": "eventbridge-console.cn-guangzhou.aliyuncs.com",
+            "ap-southeast-1": "eventbridge-console.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "eventbridge-console.ap-southeast-3.aliyuncs.com",
+            "cn-huhehaote": "eventbridge-console.cn-huhehaote.aliyuncs.com",
+            "ap-southeast-5": "eventbridge-console.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "eventbridge-console.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "eventbridge-console.ap-southeast-7.aliyuncs.com",
+            "cn-hangzhou": "eventbridge-console.cn-hangzhou.aliyuncs.com",
+            "us-east-1": "eventbridge-console.us-east-1.aliyuncs.com",
+            "eu-west-1": "eventbridge-console.eu-west-1.aliyuncs.com",
+            "us-west-1": "eventbridge-console.us-west-1.aliyuncs.com",
+            "eu-central-1": "eventbridge-console.eu-central-1.aliyuncs.com",
+            "cn-shenzhen-finance-1": "eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-beijing-finance-1": "eventbridge-console.cn-beijing-finance-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "eventbridge-console.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eventbridge", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -884,6 +884,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.eventStreamingName)) {
             body["EventStreamingName"] = request.eventStreamingName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            body["Force"] = request.force!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
@@ -1217,6 +1220,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateAgentDataSemanticsWithOptions(_ request: GenerateAgentDataSemanticsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateAgentDataSemanticsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            body["AgentName"] = request.agentName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateAgentDataSemantics",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateAgentDataSemanticsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateAgentDataSemantics(_ request: GenerateAgentDataSemanticsRequest) async throws -> GenerateAgentDataSemanticsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generateAgentDataSemanticsWithOptions(request as! GenerateAgentDataSemanticsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAgentWithOptions(_ request: GetAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1245,6 +1279,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAgent(_ request: GetAgentRequest) async throws -> GetAgentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getAgentWithOptions(request as! GetAgentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentDataSemanticsWithOptions(_ request: GetAgentDataSemanticsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentDataSemanticsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            body["AgentName"] = request.agentName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAgentDataSemantics",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAgentDataSemanticsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentDataSemantics(_ request: GetAgentDataSemanticsRequest) async throws -> GetAgentDataSemanticsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAgentDataSemanticsWithOptions(request as! GetAgentDataSemanticsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1436,6 +1501,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getEventStreaming(_ request: GetEventStreamingRequest) async throws -> GetEventStreamingResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getEventStreamingWithOptions(request as! GetEventStreamingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGenerateAgentDataSemanticsProgressWithOptions(_ request: GetGenerateAgentDataSemanticsProgressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGenerateAgentDataSemanticsProgressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            body["AgentName"] = request.agentName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGenerateAgentDataSemanticsProgress",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGenerateAgentDataSemanticsProgressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGenerateAgentDataSemanticsProgress(_ request: GetGenerateAgentDataSemanticsProgressRequest) async throws -> GetGenerateAgentDataSemanticsProgressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getGenerateAgentDataSemanticsProgressWithOptions(request as! GetGenerateAgentDataSemanticsProgressRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2111,6 +2207,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putEventsWithOptions(_ tmpReq: PutEventsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutEventsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PutEventsShrinkRequest = PutEventsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.eventList)) {
+            request.eventListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.eventList, "EventList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eventBusName)) {
+            body["EventBusName"] = request.eventBusName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventListShrink)) {
+            body["EventList"] = request.eventListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PutEvents",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PutEventsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putEvents(_ request: PutEventsRequest) async throws -> PutEventsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await putEventsWithOptions(request as! PutEventsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func putTargetsWithOptions(_ tmpReq: PutTargetsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutTargetsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: PutTargetsShrinkRequest = PutTargetsShrinkRequest([:])
@@ -2261,6 +2396,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryEventHouseWithTimeRangeWithOptions(_ request: QueryEventHouseWithTimeRangeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryEventHouseWithTimeRangeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.beginTime)) {
+            query["BeginTime"] = request.beginTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryEventHouseWithTimeRange",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryEventHouseWithTimeRangeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryEventHouseWithTimeRange(_ request: QueryEventHouseWithTimeRangeRequest) async throws -> QueryEventHouseWithTimeRangeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryEventHouseWithTimeRangeWithOptions(request as! QueryEventHouseWithTimeRangeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryEventTracesWithOptions(_ request: QueryEventTracesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryEventTracesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2384,6 +2559,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryTracedEvents(_ request: QueryTracedEventsRequest) async throws -> QueryTracedEventsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryTracedEventsWithOptions(request as! QueryTracedEventsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveAgentDataSemanticsWithOptions(_ tmpReq: SaveAgentDataSemanticsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveAgentDataSemanticsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SaveAgentDataSemanticsShrinkRequest = SaveAgentDataSemanticsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.examples)) {
+            request.examplesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.examples, "Examples", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.joins)) {
+            request.joinsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.joins, "Joins", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.metrics)) {
+            request.metricsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.metrics, "Metrics", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.text)) {
+            request.textShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.text, "Text", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentName)) {
+            body["AgentName"] = request.agentName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.examplesShrink)) {
+            body["Examples"] = request.examplesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.joinsShrink)) {
+            body["Joins"] = request.joinsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metricsShrink)) {
+            body["Metrics"] = request.metricsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textShrink)) {
+            body["Text"] = request.textShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveAgentDataSemantics",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveAgentDataSemanticsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveAgentDataSemantics(_ request: SaveAgentDataSemanticsRequest) async throws -> SaveAgentDataSemanticsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await saveAgentDataSemanticsWithOptions(request as! SaveAgentDataSemanticsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
