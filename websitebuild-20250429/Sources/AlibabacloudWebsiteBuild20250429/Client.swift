@@ -6104,6 +6104,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func reportChannelPublishResultWithOptions(_ request: ReportChannelPublishResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReportChannelPublishResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelAccountName)) {
+            query["ChannelAccountName"] = request.channelAccountName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.draftId)) {
             query["DraftId"] = request.draftId ?? "";
         }
@@ -6435,11 +6438,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adaptedTitle)) {
             query["AdaptedTitle"] = request.adaptedTitle ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.channelAccountName)) {
+            query["ChannelAccountName"] = request.channelAccountName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.coverImagesShrink)) {
             query["CoverImages"] = request.coverImagesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.draftId)) {
             query["DraftId"] = request.draftId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.websiteNavName)) {
+            query["WebsiteNavName"] = request.websiteNavName ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

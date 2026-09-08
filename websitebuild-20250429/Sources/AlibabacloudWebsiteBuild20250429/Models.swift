@@ -10063,6 +10063,8 @@ public class CreateDistributionResponseBody : Tea.TeaModel {
 
             public var channelAccount: String?
 
+            public var channelAccountName: String?
+
             public var channelName: String?
 
             public var channelType: String?
@@ -10111,6 +10113,9 @@ public class CreateDistributionResponseBody : Tea.TeaModel {
                 }
                 if self.channelAccount != nil {
                     map["ChannelAccount"] = self.channelAccount!
+                }
+                if self.channelAccountName != nil {
+                    map["ChannelAccountName"] = self.channelAccountName!
                 }
                 if self.channelName != nil {
                     map["ChannelName"] = self.channelName!
@@ -10165,6 +10170,9 @@ public class CreateDistributionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ChannelAccount"] as? String {
                     self.channelAccount = value
+                }
+                if let value = dict["ChannelAccountName"] as? String {
+                    self.channelAccountName = value
                 }
                 if let value = dict["ChannelName"] as? String {
                     self.channelName = value
@@ -53158,6 +53166,8 @@ public class RenewAppSandboxResponse : Tea.TeaModel {
 }
 
 public class ReportChannelPublishResultRequest : Tea.TeaModel {
+    public var channelAccountName: String?
+
     public var draftId: String?
 
     public var externalId: String?
@@ -53182,6 +53192,9 @@ public class ReportChannelPublishResultRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelAccountName != nil {
+            map["ChannelAccountName"] = self.channelAccountName!
+        }
         if self.draftId != nil {
             map["DraftId"] = self.draftId!
         }
@@ -53202,6 +53215,9 @@ public class ReportChannelPublishResultRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChannelAccountName"] as? String {
+            self.channelAccountName = value
+        }
         if let value = dict["DraftId"] as? String {
             self.draftId = value
         }
@@ -53919,6 +53935,8 @@ public class RewriteChannelTitleResponseBody : Tea.TeaModel {
 
         public var channelAccount: String?
 
+        public var channelAccountName: String?
+
         public var channelName: String?
 
         public var channelType: String?
@@ -53967,6 +53985,9 @@ public class RewriteChannelTitleResponseBody : Tea.TeaModel {
             }
             if self.channelAccount != nil {
                 map["ChannelAccount"] = self.channelAccount!
+            }
+            if self.channelAccountName != nil {
+                map["ChannelAccountName"] = self.channelAccountName!
             }
             if self.channelName != nil {
                 map["ChannelName"] = self.channelName!
@@ -54021,6 +54042,9 @@ public class RewriteChannelTitleResponseBody : Tea.TeaModel {
             }
             if let value = dict["ChannelAccount"] as? String {
                 self.channelAccount = value
+            }
+            if let value = dict["ChannelAccountName"] as? String {
+                self.channelAccountName = value
             }
             if let value = dict["ChannelName"] as? String {
                 self.channelName = value
@@ -55417,9 +55441,13 @@ public class SaveChannelDraftRequest : Tea.TeaModel {
 
     public var adaptedTitle: String?
 
+    public var channelAccountName: String?
+
     public var coverImages: [SaveChannelDraftRequest.CoverImages]?
 
     public var draftId: String?
+
+    public var websiteNavName: String?
 
     public override init() {
         super.init()
@@ -55441,6 +55469,9 @@ public class SaveChannelDraftRequest : Tea.TeaModel {
         if self.adaptedTitle != nil {
             map["AdaptedTitle"] = self.adaptedTitle!
         }
+        if self.channelAccountName != nil {
+            map["ChannelAccountName"] = self.channelAccountName!
+        }
         if self.coverImages != nil {
             var tmp : [Any] = []
             for k in self.coverImages! {
@@ -55450,6 +55481,9 @@ public class SaveChannelDraftRequest : Tea.TeaModel {
         }
         if self.draftId != nil {
             map["DraftId"] = self.draftId!
+        }
+        if self.websiteNavName != nil {
+            map["WebsiteNavName"] = self.websiteNavName!
         }
         return map
     }
@@ -55461,6 +55495,9 @@ public class SaveChannelDraftRequest : Tea.TeaModel {
         }
         if let value = dict["AdaptedTitle"] as? String {
             self.adaptedTitle = value
+        }
+        if let value = dict["ChannelAccountName"] as? String {
+            self.channelAccountName = value
         }
         if let value = dict["CoverImages"] as? [Any?] {
             var tmp : [SaveChannelDraftRequest.CoverImages] = []
@@ -55478,6 +55515,9 @@ public class SaveChannelDraftRequest : Tea.TeaModel {
         if let value = dict["DraftId"] as? String {
             self.draftId = value
         }
+        if let value = dict["WebsiteNavName"] as? String {
+            self.websiteNavName = value
+        }
     }
 }
 
@@ -55486,9 +55526,13 @@ public class SaveChannelDraftShrinkRequest : Tea.TeaModel {
 
     public var adaptedTitle: String?
 
+    public var channelAccountName: String?
+
     public var coverImagesShrink: String?
 
     public var draftId: String?
+
+    public var websiteNavName: String?
 
     public override init() {
         super.init()
@@ -55510,11 +55554,17 @@ public class SaveChannelDraftShrinkRequest : Tea.TeaModel {
         if self.adaptedTitle != nil {
             map["AdaptedTitle"] = self.adaptedTitle!
         }
+        if self.channelAccountName != nil {
+            map["ChannelAccountName"] = self.channelAccountName!
+        }
         if self.coverImagesShrink != nil {
             map["CoverImages"] = self.coverImagesShrink!
         }
         if self.draftId != nil {
             map["DraftId"] = self.draftId!
+        }
+        if self.websiteNavName != nil {
+            map["WebsiteNavName"] = self.websiteNavName!
         }
         return map
     }
@@ -55527,11 +55577,17 @@ public class SaveChannelDraftShrinkRequest : Tea.TeaModel {
         if let value = dict["AdaptedTitle"] as? String {
             self.adaptedTitle = value
         }
+        if let value = dict["ChannelAccountName"] as? String {
+            self.channelAccountName = value
+        }
         if let value = dict["CoverImages"] as? String {
             self.coverImagesShrink = value
         }
         if let value = dict["DraftId"] as? String {
             self.draftId = value
+        }
+        if let value = dict["WebsiteNavName"] as? String {
+            self.websiteNavName = value
         }
     }
 }
@@ -58140,6 +58196,8 @@ public class TranslateChannelDraftResponseBody : Tea.TeaModel {
 
         public var channelAccount: String?
 
+        public var channelAccountName: String?
+
         public var channelName: String?
 
         public var channelType: String?
@@ -58188,6 +58246,9 @@ public class TranslateChannelDraftResponseBody : Tea.TeaModel {
             }
             if self.channelAccount != nil {
                 map["ChannelAccount"] = self.channelAccount!
+            }
+            if self.channelAccountName != nil {
+                map["ChannelAccountName"] = self.channelAccountName!
             }
             if self.channelName != nil {
                 map["ChannelName"] = self.channelName!
@@ -58242,6 +58303,9 @@ public class TranslateChannelDraftResponseBody : Tea.TeaModel {
             }
             if let value = dict["ChannelAccount"] as? String {
                 self.channelAccount = value
+            }
+            if let value = dict["ChannelAccountName"] as? String {
+                self.channelAccountName = value
             }
             if let value = dict["ChannelName"] as? String {
                 self.channelName = value
