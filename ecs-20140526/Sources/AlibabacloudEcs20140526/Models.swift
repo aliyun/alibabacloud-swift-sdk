@@ -42690,6 +42690,8 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
 
     public var maxResults: Int32?
 
+    public var needHostDetail: String?
+
     public var nextToken: String?
 
     public var ownerAccount: String?
@@ -42749,6 +42751,9 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
+        }
+        if self.needHostDetail != nil {
+            map["NeedHostDetail"] = self.needHostDetail!
         }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
@@ -42818,6 +42823,9 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
+        }
+        if let value = dict["NeedHostDetail"] as? String {
+            self.needHostDetail = value
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
@@ -121893,231 +121901,6 @@ public class OpenSnapshotServiceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = OpenSnapshotServiceResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
-public class PurchaseElasticityAssuranceRequest : Tea.TeaModel {
-    public class PrivatePoolOptions : Tea.TeaModel {
-        public var id: String?
-
-        public var matchCriteria: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.id != nil {
-                map["Id"] = self.id!
-            }
-            if self.matchCriteria != nil {
-                map["MatchCriteria"] = self.matchCriteria!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["Id"] as? String {
-                self.id = value
-            }
-            if let value = dict["MatchCriteria"] as? String {
-                self.matchCriteria = value
-            }
-        }
-    }
-    public var privatePoolOptions: PurchaseElasticityAssuranceRequest.PrivatePoolOptions?
-
-    public var clientToken: String?
-
-    public var ownerAccount: String?
-
-    public var ownerId: Int64?
-
-    public var period: Int32?
-
-    public var periodUnit: String?
-
-    public var regionId: String?
-
-    public var resourceOwnerAccount: String?
-
-    public var resourceOwnerId: Int64?
-
-    public var startTime: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.privatePoolOptions?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.privatePoolOptions != nil {
-            map["PrivatePoolOptions"] = self.privatePoolOptions?.toMap()
-        }
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
-        if self.ownerAccount != nil {
-            map["OwnerAccount"] = self.ownerAccount!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.period != nil {
-            map["Period"] = self.period!
-        }
-        if self.periodUnit != nil {
-            map["PeriodUnit"] = self.periodUnit!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.resourceOwnerAccount != nil {
-            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
-        }
-        if self.resourceOwnerId != nil {
-            map["ResourceOwnerId"] = self.resourceOwnerId!
-        }
-        if self.startTime != nil {
-            map["StartTime"] = self.startTime!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["PrivatePoolOptions"] as? [String: Any?] {
-            var model = PurchaseElasticityAssuranceRequest.PrivatePoolOptions()
-            model.fromMap(value)
-            self.privatePoolOptions = model
-        }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
-        if let value = dict["OwnerAccount"] as? String {
-            self.ownerAccount = value
-        }
-        if let value = dict["OwnerId"] as? Int64 {
-            self.ownerId = value
-        }
-        if let value = dict["Period"] as? Int32 {
-            self.period = value
-        }
-        if let value = dict["PeriodUnit"] as? String {
-            self.periodUnit = value
-        }
-        if let value = dict["RegionId"] as? String {
-            self.regionId = value
-        }
-        if let value = dict["ResourceOwnerAccount"] as? String {
-            self.resourceOwnerAccount = value
-        }
-        if let value = dict["ResourceOwnerId"] as? Int64 {
-            self.resourceOwnerId = value
-        }
-        if let value = dict["StartTime"] as? String {
-            self.startTime = value
-        }
-    }
-}
-
-public class PurchaseElasticityAssuranceResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-    }
-}
-
-public class PurchaseElasticityAssuranceResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: PurchaseElasticityAssuranceResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = PurchaseElasticityAssuranceResponseBody()
             model.fromMap(value)
             self.body = model
         }
