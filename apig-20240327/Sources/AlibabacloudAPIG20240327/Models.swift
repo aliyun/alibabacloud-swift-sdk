@@ -33276,11 +33276,15 @@ public class GetGatewayQuotaRuleResponse : Tea.TeaModel {
 }
 
 public class GetGatewayQuotaRuleSubjectUsageRequest : Tea.TeaModel {
+    public var endTime: Int64?
+
     public var filterFailedRequests: Bool?
 
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var startTime: Int64?
 
     public override init() {
         super.init()
@@ -33296,6 +33300,9 @@ public class GetGatewayQuotaRuleSubjectUsageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
         if self.filterFailedRequests != nil {
             map["filterFailedRequests"] = self.filterFailedRequests!
         }
@@ -33305,11 +33312,17 @@ public class GetGatewayQuotaRuleSubjectUsageRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["endTime"] as? Int64 {
+            self.endTime = value
+        }
         if let value = dict["filterFailedRequests"] as? Bool {
             self.filterFailedRequests = value
         }
@@ -33318,6 +33331,9 @@ public class GetGatewayQuotaRuleSubjectUsageRequest : Tea.TeaModel {
         }
         if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["startTime"] as? Int64 {
+            self.startTime = value
         }
     }
 }
@@ -33328,19 +33344,27 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
             public class Items : Tea.TeaModel {
                 public var cachedAmount: Int64?
 
+                public var cachedAmountDecimal: Double?
+
                 public var consumer: String?
 
                 public var inputAmount: Int64?
 
+                public var inputAmountDecimal: Double?
+
                 public var model: String?
 
                 public var outputAmount: Int64?
+
+                public var outputAmountDecimal: Double?
 
                 public var requestId: String?
 
                 public var startTime: String?
 
                 public var usedAmount: Int64?
+
+                public var usedAmountDecimal: Double?
 
                 public override init() {
                     super.init()
@@ -33359,17 +33383,26 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
                     if self.cachedAmount != nil {
                         map["cachedAmount"] = self.cachedAmount!
                     }
+                    if self.cachedAmountDecimal != nil {
+                        map["cachedAmountDecimal"] = self.cachedAmountDecimal!
+                    }
                     if self.consumer != nil {
                         map["consumer"] = self.consumer!
                     }
                     if self.inputAmount != nil {
                         map["inputAmount"] = self.inputAmount!
                     }
+                    if self.inputAmountDecimal != nil {
+                        map["inputAmountDecimal"] = self.inputAmountDecimal!
+                    }
                     if self.model != nil {
                         map["model"] = self.model!
                     }
                     if self.outputAmount != nil {
                         map["outputAmount"] = self.outputAmount!
+                    }
+                    if self.outputAmountDecimal != nil {
+                        map["outputAmountDecimal"] = self.outputAmountDecimal!
                     }
                     if self.requestId != nil {
                         map["requestId"] = self.requestId!
@@ -33380,6 +33413,9 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
                     if self.usedAmount != nil {
                         map["usedAmount"] = self.usedAmount!
                     }
+                    if self.usedAmountDecimal != nil {
+                        map["usedAmountDecimal"] = self.usedAmountDecimal!
+                    }
                     return map
                 }
 
@@ -33388,17 +33424,26 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
                     if let value = dict["cachedAmount"] as? Int64 {
                         self.cachedAmount = value
                     }
+                    if let value = dict["cachedAmountDecimal"] as? Double {
+                        self.cachedAmountDecimal = value
+                    }
                     if let value = dict["consumer"] as? String {
                         self.consumer = value
                     }
                     if let value = dict["inputAmount"] as? Int64 {
                         self.inputAmount = value
                     }
+                    if let value = dict["inputAmountDecimal"] as? Double {
+                        self.inputAmountDecimal = value
+                    }
                     if let value = dict["model"] as? String {
                         self.model = value
                     }
                     if let value = dict["outputAmount"] as? Int64 {
                         self.outputAmount = value
+                    }
+                    if let value = dict["outputAmountDecimal"] as? Double {
+                        self.outputAmountDecimal = value
                     }
                     if let value = dict["requestId"] as? String {
                         self.requestId = value
@@ -33408,6 +33453,9 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["usedAmount"] as? Int64 {
                         self.usedAmount = value
+                    }
+                    if let value = dict["usedAmountDecimal"] as? Double {
+                        self.usedAmountDecimal = value
                     }
                 }
             }
@@ -33480,19 +33528,29 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
         }
         public var cachedAmount: Int64?
 
+        public var cachedAmountDecimal: Double?
+
         public var details: GetGatewayQuotaRuleSubjectUsageResponseBody.Data.Details?
 
         public var inputAmount: Int64?
 
+        public var inputAmountDecimal: Double?
+
         public var outputAmount: Int64?
 
+        public var outputAmountDecimal: Double?
+
         public var overLimit: Bool?
+
+        public var quotaDimension: String?
 
         public var subjectType: String?
 
         public var totalQuota: Int64?
 
         public var usedAmount: Int64?
+
+        public var usedAmountDecimal: Double?
 
         public override init() {
             super.init()
@@ -33512,17 +33570,29 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
             if self.cachedAmount != nil {
                 map["cachedAmount"] = self.cachedAmount!
             }
+            if self.cachedAmountDecimal != nil {
+                map["cachedAmountDecimal"] = self.cachedAmountDecimal!
+            }
             if self.details != nil {
                 map["details"] = self.details?.toMap()
             }
             if self.inputAmount != nil {
                 map["inputAmount"] = self.inputAmount!
             }
+            if self.inputAmountDecimal != nil {
+                map["inputAmountDecimal"] = self.inputAmountDecimal!
+            }
             if self.outputAmount != nil {
                 map["outputAmount"] = self.outputAmount!
             }
+            if self.outputAmountDecimal != nil {
+                map["outputAmountDecimal"] = self.outputAmountDecimal!
+            }
             if self.overLimit != nil {
                 map["overLimit"] = self.overLimit!
+            }
+            if self.quotaDimension != nil {
+                map["quotaDimension"] = self.quotaDimension!
             }
             if self.subjectType != nil {
                 map["subjectType"] = self.subjectType!
@@ -33533,6 +33603,9 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
             if self.usedAmount != nil {
                 map["usedAmount"] = self.usedAmount!
             }
+            if self.usedAmountDecimal != nil {
+                map["usedAmountDecimal"] = self.usedAmountDecimal!
+            }
             return map
         }
 
@@ -33540,6 +33613,9 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cachedAmount"] as? Int64 {
                 self.cachedAmount = value
+            }
+            if let value = dict["cachedAmountDecimal"] as? Double {
+                self.cachedAmountDecimal = value
             }
             if let value = dict["details"] as? [String: Any?] {
                 var model = GetGatewayQuotaRuleSubjectUsageResponseBody.Data.Details()
@@ -33549,11 +33625,20 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
             if let value = dict["inputAmount"] as? Int64 {
                 self.inputAmount = value
             }
+            if let value = dict["inputAmountDecimal"] as? Double {
+                self.inputAmountDecimal = value
+            }
             if let value = dict["outputAmount"] as? Int64 {
                 self.outputAmount = value
             }
+            if let value = dict["outputAmountDecimal"] as? Double {
+                self.outputAmountDecimal = value
+            }
             if let value = dict["overLimit"] as? Bool {
                 self.overLimit = value
+            }
+            if let value = dict["quotaDimension"] as? String {
+                self.quotaDimension = value
             }
             if let value = dict["subjectType"] as? String {
                 self.subjectType = value
@@ -33563,6 +33648,9 @@ public class GetGatewayQuotaRuleSubjectUsageResponseBody : Tea.TeaModel {
             }
             if let value = dict["usedAmount"] as? Int64 {
                 self.usedAmount = value
+            }
+            if let value = dict["usedAmountDecimal"] as? Double {
+                self.usedAmountDecimal = value
             }
         }
     }
