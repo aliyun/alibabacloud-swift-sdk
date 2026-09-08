@@ -39505,13 +39505,13 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var customAgentStage: String?
 
-        public var enableSearch: String?
+        public var enableSearch: Bool?
 
-        public var kbUuidList: String?
+        public var kbUuidList: [String]?
 
         public var language: String?
 
-        public var mcpServerIds: String?
+        public var mcpServerIds: [String]?
 
         public var mode: String?
 
@@ -39602,16 +39602,16 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if let value = dict["CustomAgentStage"] as? String {
                 self.customAgentStage = value
             }
-            if let value = dict["EnableSearch"] as? String {
+            if let value = dict["EnableSearch"] as? Bool {
                 self.enableSearch = value
             }
-            if let value = dict["KbUuidList"] as? String {
+            if let value = dict["KbUuidList"] as? [String] {
                 self.kbUuidList = value
             }
             if let value = dict["Language"] as? String {
                 self.language = value
             }
-            if let value = dict["McpServerIds"] as? String {
+            if let value = dict["McpServerIds"] as? [String] {
                 self.mcpServerIds = value
             }
             if let value = dict["Mode"] as? String {
