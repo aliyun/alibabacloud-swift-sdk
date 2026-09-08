@@ -778,6 +778,8 @@ public class CreateAPIKeyCredentialProviderResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var sourcePlatform: String?
+
         public var tokenVaultName: String?
 
         public override init() {
@@ -806,6 +808,9 @@ public class CreateAPIKeyCredentialProviderResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.sourcePlatform != nil {
+                map["SourcePlatform"] = self.sourcePlatform!
+            }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
             }
@@ -825,6 +830,9 @@ public class CreateAPIKeyCredentialProviderResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["SourcePlatform"] as? String {
+                self.sourcePlatform = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -1590,6 +1598,8 @@ public class CreateOAuth2CredentialProviderResponseBody : Tea.TeaModel {
 
         public var OAuthType: String?
 
+        public var sourcePlatform: String?
+
         public var tokenVaultName: String?
 
         public var updateTime: String?
@@ -1633,6 +1643,9 @@ public class CreateOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             if self.OAuthType != nil {
                 map["OAuthType"] = self.OAuthType!
             }
+            if self.sourcePlatform != nil {
+                map["SourcePlatform"] = self.sourcePlatform!
+            }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
             }
@@ -1669,6 +1682,9 @@ public class CreateOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             }
             if let value = dict["OAuthType"] as? String {
                 self.OAuthType = value
+            }
+            if let value = dict["SourcePlatform"] as? String {
+                self.sourcePlatform = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -3268,6 +3284,10 @@ public class CreateUserPoolResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var OIDCDiscoveryURL: String?
+
+        public var signinBaseURL: String?
+
         public var sourcePlatform: String?
 
         public var updateTime: String?
@@ -3296,6 +3316,12 @@ public class CreateUserPoolResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.OIDCDiscoveryURL != nil {
+                map["OIDCDiscoveryURL"] = self.OIDCDiscoveryURL!
+            }
+            if self.signinBaseURL != nil {
+                map["SigninBaseURL"] = self.signinBaseURL!
+            }
             if self.sourcePlatform != nil {
                 map["SourcePlatform"] = self.sourcePlatform!
             }
@@ -3318,6 +3344,12 @@ public class CreateUserPoolResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["OIDCDiscoveryURL"] as? String {
+                self.OIDCDiscoveryURL = value
+            }
+            if let value = dict["SigninBaseURL"] as? String {
+                self.signinBaseURL = value
             }
             if let value = dict["SourcePlatform"] as? String {
                 self.sourcePlatform = value
@@ -3845,6 +3877,8 @@ public class CreateUserPoolClientResponse : Tea.TeaModel {
 }
 
 public class CreateWorkloadIdentityRequest : Tea.TeaModel {
+    public var allowedConsentCallbackURLs: [String]?
+
     public var allowedResourceOAuth2ReturnURLs: [String]?
 
     public var createRAMRole: Bool?
@@ -3877,6 +3911,9 @@ public class CreateWorkloadIdentityRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowedConsentCallbackURLs != nil {
+            map["AllowedConsentCallbackURLs"] = self.allowedConsentCallbackURLs!
+        }
         if self.allowedResourceOAuth2ReturnURLs != nil {
             map["AllowedResourceOAuth2ReturnURLs"] = self.allowedResourceOAuth2ReturnURLs!
         }
@@ -3909,6 +3946,9 @@ public class CreateWorkloadIdentityRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowedConsentCallbackURLs"] as? [String] {
+            self.allowedConsentCallbackURLs = value
+        }
         if let value = dict["AllowedResourceOAuth2ReturnURLs"] as? [String] {
             self.allowedResourceOAuth2ReturnURLs = value
         }
@@ -3940,6 +3980,8 @@ public class CreateWorkloadIdentityRequest : Tea.TeaModel {
 }
 
 public class CreateWorkloadIdentityShrinkRequest : Tea.TeaModel {
+    public var allowedConsentCallbackURLsShrink: String?
+
     public var allowedResourceOAuth2ReturnURLsShrink: String?
 
     public var createRAMRole: Bool?
@@ -3972,6 +4014,9 @@ public class CreateWorkloadIdentityShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowedConsentCallbackURLsShrink != nil {
+            map["AllowedConsentCallbackURLs"] = self.allowedConsentCallbackURLsShrink!
+        }
         if self.allowedResourceOAuth2ReturnURLsShrink != nil {
             map["AllowedResourceOAuth2ReturnURLs"] = self.allowedResourceOAuth2ReturnURLsShrink!
         }
@@ -4004,6 +4049,9 @@ public class CreateWorkloadIdentityShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowedConsentCallbackURLs"] as? String {
+            self.allowedConsentCallbackURLsShrink = value
+        }
         if let value = dict["AllowedResourceOAuth2ReturnURLs"] as? String {
             self.allowedResourceOAuth2ReturnURLsShrink = value
         }
@@ -4036,6 +4084,8 @@ public class CreateWorkloadIdentityShrinkRequest : Tea.TeaModel {
 
 public class CreateWorkloadIdentityResponseBody : Tea.TeaModel {
     public class WorkloadIdentity : Tea.TeaModel {
+        public var allowedConsentCallbackURLs: [String]?
+
         public var allowedResourceOAuth2ReturnURLs: [String]?
 
         public var createTime: String?
@@ -4072,6 +4122,9 @@ public class CreateWorkloadIdentityResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowedConsentCallbackURLs != nil {
+                map["AllowedConsentCallbackURLs"] = self.allowedConsentCallbackURLs!
+            }
             if self.allowedResourceOAuth2ReturnURLs != nil {
                 map["AllowedResourceOAuth2ReturnURLs"] = self.allowedResourceOAuth2ReturnURLs!
             }
@@ -4110,6 +4163,9 @@ public class CreateWorkloadIdentityResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllowedConsentCallbackURLs"] as? [String] {
+                self.allowedConsentCallbackURLs = value
+            }
             if let value = dict["AllowedResourceOAuth2ReturnURLs"] as? [String] {
                 self.allowedResourceOAuth2ReturnURLs = value
             }
@@ -6085,6 +6141,8 @@ public class GetAPIKeyCredentialProviderResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var sourcePlatform: String?
+
         public var tokenVaultName: String?
 
         public var updateTime: String?
@@ -6115,6 +6173,9 @@ public class GetAPIKeyCredentialProviderResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.sourcePlatform != nil {
+                map["SourcePlatform"] = self.sourcePlatform!
+            }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
             }
@@ -6137,6 +6198,9 @@ public class GetAPIKeyCredentialProviderResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["SourcePlatform"] as? String {
+                self.sourcePlatform = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -6924,11 +6988,21 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var IDaaSInstanceId: String?
+
         public var OAuth2CredentialProviderName: String?
 
         public var OAuth2ProviderConfig: OAuth2ProviderConfig?
 
         public var OAuthType: String?
+
+        public var outboundApplicationId: String?
+
+        public var outboundAudience: String?
+
+        public var outboundClientId: String?
+
+        public var sourcePlatform: String?
 
         public var tokenVaultName: String?
 
@@ -6964,6 +7038,9 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.IDaaSInstanceId != nil {
+                map["IDaaSInstanceId"] = self.IDaaSInstanceId!
+            }
             if self.OAuth2CredentialProviderName != nil {
                 map["OAuth2CredentialProviderName"] = self.OAuth2CredentialProviderName!
             }
@@ -6972,6 +7049,18 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             }
             if self.OAuthType != nil {
                 map["OAuthType"] = self.OAuthType!
+            }
+            if self.outboundApplicationId != nil {
+                map["OutboundApplicationId"] = self.outboundApplicationId!
+            }
+            if self.outboundAudience != nil {
+                map["OutboundAudience"] = self.outboundAudience!
+            }
+            if self.outboundClientId != nil {
+                map["OutboundClientId"] = self.outboundClientId!
+            }
+            if self.sourcePlatform != nil {
+                map["SourcePlatform"] = self.sourcePlatform!
             }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
@@ -6999,6 +7088,9 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["IDaaSInstanceId"] as? String {
+                self.IDaaSInstanceId = value
+            }
             if let value = dict["OAuth2CredentialProviderName"] as? String {
                 self.OAuth2CredentialProviderName = value
             }
@@ -7009,6 +7101,18 @@ public class GetOAuth2CredentialProviderResponseBody : Tea.TeaModel {
             }
             if let value = dict["OAuthType"] as? String {
                 self.OAuthType = value
+            }
+            if let value = dict["OutboundApplicationId"] as? String {
+                self.outboundApplicationId = value
+            }
+            if let value = dict["OutboundAudience"] as? String {
+                self.outboundAudience = value
+            }
+            if let value = dict["OutboundClientId"] as? String {
+                self.outboundClientId = value
+            }
+            if let value = dict["SourcePlatform"] as? String {
+                self.sourcePlatform = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -8834,6 +8938,10 @@ public class GetUserPoolResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var OIDCDiscoveryURL: String?
+
+        public var signinBaseURL: String?
+
         public var sourcePlatform: String?
 
         public var updateTime: String?
@@ -8862,6 +8970,12 @@ public class GetUserPoolResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.OIDCDiscoveryURL != nil {
+                map["OIDCDiscoveryURL"] = self.OIDCDiscoveryURL!
+            }
+            if self.signinBaseURL != nil {
+                map["SigninBaseURL"] = self.signinBaseURL!
+            }
             if self.sourcePlatform != nil {
                 map["SourcePlatform"] = self.sourcePlatform!
             }
@@ -8884,6 +8998,12 @@ public class GetUserPoolResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["OIDCDiscoveryURL"] as? String {
+                self.OIDCDiscoveryURL = value
+            }
+            if let value = dict["SigninBaseURL"] as? String {
+                self.signinBaseURL = value
             }
             if let value = dict["SourcePlatform"] as? String {
                 self.sourcePlatform = value
@@ -9598,6 +9718,8 @@ public class GetWorkloadIdentityRequest : Tea.TeaModel {
 
 public class GetWorkloadIdentityResponseBody : Tea.TeaModel {
     public class WorkloadIdentity : Tea.TeaModel {
+        public var allowedConsentCallbackURLs: [String]?
+
         public var allowedResourceOAuth2ReturnURLs: [String]?
 
         public var createTime: String?
@@ -9634,6 +9756,9 @@ public class GetWorkloadIdentityResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowedConsentCallbackURLs != nil {
+                map["AllowedConsentCallbackURLs"] = self.allowedConsentCallbackURLs!
+            }
             if self.allowedResourceOAuth2ReturnURLs != nil {
                 map["AllowedResourceOAuth2ReturnURLs"] = self.allowedResourceOAuth2ReturnURLs!
             }
@@ -9672,6 +9797,9 @@ public class GetWorkloadIdentityResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllowedConsentCallbackURLs"] as? [String] {
+                self.allowedConsentCallbackURLs = value
+            }
             if let value = dict["AllowedResourceOAuth2ReturnURLs"] as? [String] {
                 self.allowedResourceOAuth2ReturnURLs = value
             }
@@ -9855,6 +9983,8 @@ public class ListAPIKeyCredentialProvidersResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var sourcePlatform: String?
+
         public var tokenVaultName: String?
 
         public var updateTime: String?
@@ -9885,6 +10015,9 @@ public class ListAPIKeyCredentialProvidersResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.sourcePlatform != nil {
+                map["SourcePlatform"] = self.sourcePlatform!
+            }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
             }
@@ -9907,6 +10040,9 @@ public class ListAPIKeyCredentialProvidersResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["SourcePlatform"] as? String {
+                self.sourcePlatform = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -10549,11 +10685,21 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var IDaaSInstanceId: String?
+
         public var OAuth2CredentialProviderName: String?
 
         public var OAuth2ProviderConfig: OAuth2ProviderConfig?
 
         public var OAuthType: String?
+
+        public var outboundApplicationId: String?
+
+        public var outboundAudience: String?
+
+        public var outboundClientId: String?
+
+        public var sourcePlatform: String?
 
         public var tokenVaultName: String?
 
@@ -10589,6 +10735,9 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.IDaaSInstanceId != nil {
+                map["IDaaSInstanceId"] = self.IDaaSInstanceId!
+            }
             if self.OAuth2CredentialProviderName != nil {
                 map["OAuth2CredentialProviderName"] = self.OAuth2CredentialProviderName!
             }
@@ -10597,6 +10746,18 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
             }
             if self.OAuthType != nil {
                 map["OAuthType"] = self.OAuthType!
+            }
+            if self.outboundApplicationId != nil {
+                map["OutboundApplicationId"] = self.outboundApplicationId!
+            }
+            if self.outboundAudience != nil {
+                map["OutboundAudience"] = self.outboundAudience!
+            }
+            if self.outboundClientId != nil {
+                map["OutboundClientId"] = self.outboundClientId!
+            }
+            if self.sourcePlatform != nil {
+                map["SourcePlatform"] = self.sourcePlatform!
             }
             if self.tokenVaultName != nil {
                 map["TokenVaultName"] = self.tokenVaultName!
@@ -10624,6 +10785,9 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["IDaaSInstanceId"] as? String {
+                self.IDaaSInstanceId = value
+            }
             if let value = dict["OAuth2CredentialProviderName"] as? String {
                 self.OAuth2CredentialProviderName = value
             }
@@ -10634,6 +10798,18 @@ public class ListOAuth2CredentialProvidersResponseBody : Tea.TeaModel {
             }
             if let value = dict["OAuthType"] as? String {
                 self.OAuthType = value
+            }
+            if let value = dict["OutboundApplicationId"] as? String {
+                self.outboundApplicationId = value
+            }
+            if let value = dict["OutboundAudience"] as? String {
+                self.outboundAudience = value
+            }
+            if let value = dict["OutboundClientId"] as? String {
+                self.outboundClientId = value
+            }
+            if let value = dict["SourcePlatform"] as? String {
+                self.sourcePlatform = value
             }
             if let value = dict["TokenVaultName"] as? String {
                 self.tokenVaultName = value
@@ -13179,6 +13355,10 @@ public class ListUserPoolsResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var OIDCDiscoveryURL: String?
+
+        public var signinBaseURL: String?
+
         public var sourcePlatform: String?
 
         public var updateTime: String?
@@ -13207,6 +13387,12 @@ public class ListUserPoolsResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.OIDCDiscoveryURL != nil {
+                map["OIDCDiscoveryURL"] = self.OIDCDiscoveryURL!
+            }
+            if self.signinBaseURL != nil {
+                map["SigninBaseURL"] = self.signinBaseURL!
+            }
             if self.sourcePlatform != nil {
                 map["SourcePlatform"] = self.sourcePlatform!
             }
@@ -13229,6 +13415,12 @@ public class ListUserPoolsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["OIDCDiscoveryURL"] as? String {
+                self.OIDCDiscoveryURL = value
+            }
+            if let value = dict["SigninBaseURL"] as? String {
+                self.signinBaseURL = value
             }
             if let value = dict["SourcePlatform"] as? String {
                 self.sourcePlatform = value
@@ -13679,6 +13871,8 @@ public class ListWorkloadIdentitiesRequest : Tea.TeaModel {
 
 public class ListWorkloadIdentitiesResponseBody : Tea.TeaModel {
     public class WorkloadIdentities : Tea.TeaModel {
+        public var allowedConsentCallbackURLs: [String]?
+
         public var allowedResourceOAuth2ReturnURLs: [String]?
 
         public var createTime: String?
@@ -13715,6 +13909,9 @@ public class ListWorkloadIdentitiesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowedConsentCallbackURLs != nil {
+                map["AllowedConsentCallbackURLs"] = self.allowedConsentCallbackURLs!
+            }
             if self.allowedResourceOAuth2ReturnURLs != nil {
                 map["AllowedResourceOAuth2ReturnURLs"] = self.allowedResourceOAuth2ReturnURLs!
             }
@@ -13753,6 +13950,9 @@ public class ListWorkloadIdentitiesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllowedConsentCallbackURLs"] as? [String] {
+                self.allowedConsentCallbackURLs = value
+            }
             if let value = dict["AllowedResourceOAuth2ReturnURLs"] as? [String] {
                 self.allowedResourceOAuth2ReturnURLs = value
             }
@@ -15318,6 +15518,8 @@ public class UpdateLoginPreferenceRequest : Tea.TeaModel {
             }
         }
     }
+    public var allowedPostLogoutRedirectUris: [String]?
+
     public var loginPreference: UpdateLoginPreferenceRequest.LoginPreference?
 
     public var userPoolName: String?
@@ -15337,6 +15539,9 @@ public class UpdateLoginPreferenceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowedPostLogoutRedirectUris != nil {
+            map["AllowedPostLogoutRedirectUris"] = self.allowedPostLogoutRedirectUris!
+        }
         if self.loginPreference != nil {
             map["LoginPreference"] = self.loginPreference?.toMap()
         }
@@ -15348,6 +15553,9 @@ public class UpdateLoginPreferenceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowedPostLogoutRedirectUris"] as? [String] {
+            self.allowedPostLogoutRedirectUris = value
+        }
         if let value = dict["LoginPreference"] as? [String: Any?] {
             var model = UpdateLoginPreferenceRequest.LoginPreference()
             model.fromMap(value)
@@ -15360,6 +15568,8 @@ public class UpdateLoginPreferenceRequest : Tea.TeaModel {
 }
 
 public class UpdateLoginPreferenceShrinkRequest : Tea.TeaModel {
+    public var allowedPostLogoutRedirectUrisShrink: String?
+
     public var loginPreferenceShrink: String?
 
     public var userPoolName: String?
@@ -15378,6 +15588,9 @@ public class UpdateLoginPreferenceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowedPostLogoutRedirectUrisShrink != nil {
+            map["AllowedPostLogoutRedirectUris"] = self.allowedPostLogoutRedirectUrisShrink!
+        }
         if self.loginPreferenceShrink != nil {
             map["LoginPreference"] = self.loginPreferenceShrink!
         }
@@ -15389,6 +15602,9 @@ public class UpdateLoginPreferenceShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowedPostLogoutRedirectUris"] as? String {
+            self.allowedPostLogoutRedirectUrisShrink = value
+        }
         if let value = dict["LoginPreference"] as? String {
             self.loginPreferenceShrink = value
         }
@@ -16892,6 +17108,8 @@ public class UpdateUserPoolClientResponse : Tea.TeaModel {
 }
 
 public class UpdateWorkloadIdentityRequest : Tea.TeaModel {
+    public var allowedConsentCallbackURLs: [String]?
+
     public var allowedResourceOAuth2ReturnURLs: [String]?
 
     public var description_: String?
@@ -16918,6 +17136,9 @@ public class UpdateWorkloadIdentityRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowedConsentCallbackURLs != nil {
+            map["AllowedConsentCallbackURLs"] = self.allowedConsentCallbackURLs!
+        }
         if self.allowedResourceOAuth2ReturnURLs != nil {
             map["AllowedResourceOAuth2ReturnURLs"] = self.allowedResourceOAuth2ReturnURLs!
         }
@@ -16941,6 +17162,9 @@ public class UpdateWorkloadIdentityRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowedConsentCallbackURLs"] as? [String] {
+            self.allowedConsentCallbackURLs = value
+        }
         if let value = dict["AllowedResourceOAuth2ReturnURLs"] as? [String] {
             self.allowedResourceOAuth2ReturnURLs = value
         }
@@ -16963,6 +17187,8 @@ public class UpdateWorkloadIdentityRequest : Tea.TeaModel {
 }
 
 public class UpdateWorkloadIdentityShrinkRequest : Tea.TeaModel {
+    public var allowedConsentCallbackURLsShrink: String?
+
     public var allowedResourceOAuth2ReturnURLsShrink: String?
 
     public var description_: String?
@@ -16989,6 +17215,9 @@ public class UpdateWorkloadIdentityShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowedConsentCallbackURLsShrink != nil {
+            map["AllowedConsentCallbackURLs"] = self.allowedConsentCallbackURLsShrink!
+        }
         if self.allowedResourceOAuth2ReturnURLsShrink != nil {
             map["AllowedResourceOAuth2ReturnURLs"] = self.allowedResourceOAuth2ReturnURLsShrink!
         }
@@ -17012,6 +17241,9 @@ public class UpdateWorkloadIdentityShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowedConsentCallbackURLs"] as? String {
+            self.allowedConsentCallbackURLsShrink = value
+        }
         if let value = dict["AllowedResourceOAuth2ReturnURLs"] as? String {
             self.allowedResourceOAuth2ReturnURLsShrink = value
         }

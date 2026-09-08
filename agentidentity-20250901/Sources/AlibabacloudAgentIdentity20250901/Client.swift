@@ -613,10 +613,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateWorkloadIdentityShrinkRequest = CreateWorkloadIdentityShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.allowedConsentCallbackURLs)) {
+            request.allowedConsentCallbackURLsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.allowedConsentCallbackURLs, "AllowedConsentCallbackURLs", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.allowedResourceOAuth2ReturnURLs)) {
             request.allowedResourceOAuth2ReturnURLsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.allowedResourceOAuth2ReturnURLs, "AllowedResourceOAuth2ReturnURLs", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowedConsentCallbackURLsShrink)) {
+            body["AllowedConsentCallbackURLs"] = request.allowedConsentCallbackURLsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.allowedResourceOAuth2ReturnURLsShrink)) {
             body["AllowedResourceOAuth2ReturnURLs"] = request.allowedResourceOAuth2ReturnURLsShrink ?? "";
         }
@@ -2619,10 +2625,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateLoginPreferenceShrinkRequest = UpdateLoginPreferenceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.allowedPostLogoutRedirectUris)) {
+            request.allowedPostLogoutRedirectUrisShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.allowedPostLogoutRedirectUris, "AllowedPostLogoutRedirectUris", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.loginPreference)) {
             request.loginPreferenceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.loginPreference, "LoginPreference", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowedPostLogoutRedirectUrisShrink)) {
+            query["AllowedPostLogoutRedirectUris"] = request.allowedPostLogoutRedirectUrisShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.loginPreferenceShrink)) {
             query["LoginPreference"] = request.loginPreferenceShrink ?? "";
         }
@@ -2998,10 +3010,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateWorkloadIdentityShrinkRequest = UpdateWorkloadIdentityShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.allowedConsentCallbackURLs)) {
+            request.allowedConsentCallbackURLsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.allowedConsentCallbackURLs, "AllowedConsentCallbackURLs", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.allowedResourceOAuth2ReturnURLs)) {
             request.allowedResourceOAuth2ReturnURLsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.allowedResourceOAuth2ReturnURLs, "AllowedResourceOAuth2ReturnURLs", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowedConsentCallbackURLsShrink)) {
+            body["AllowedConsentCallbackURLs"] = request.allowedConsentCallbackURLsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.allowedResourceOAuth2ReturnURLsShrink)) {
             body["AllowedResourceOAuth2ReturnURLs"] = request.allowedResourceOAuth2ReturnURLsShrink ?? "";
         }
