@@ -80507,6 +80507,8 @@ public class DescribePriceRequest : Tea.TeaModel {
 
         public var provisionedIops: Int64?
 
+        public var storageClusterId: String?
+
         public override init() {
             super.init()
         }
@@ -80533,6 +80535,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             if self.provisionedIops != nil {
                 map["ProvisionedIops"] = self.provisionedIops!
             }
+            if self.storageClusterId != nil {
+                map["StorageClusterId"] = self.storageClusterId!
+            }
             return map
         }
 
@@ -80549,6 +80554,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             }
             if let value = dict["ProvisionedIops"] as? Int64 {
                 self.provisionedIops = value
+            }
+            if let value = dict["StorageClusterId"] as? String {
+                self.storageClusterId = value
             }
         }
     }
@@ -80597,6 +80605,8 @@ public class DescribePriceRequest : Tea.TeaModel {
 
         public var size: Int32?
 
+        public var storageClusterId: String?
+
         public override init() {
             super.init()
         }
@@ -80620,6 +80630,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             if self.size != nil {
                 map["Size"] = self.size!
             }
+            if self.storageClusterId != nil {
+                map["StorageClusterId"] = self.storageClusterId!
+            }
             return map
         }
 
@@ -80633,6 +80646,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             }
             if let value = dict["Size"] as? Int32 {
                 self.size = value
+            }
+            if let value = dict["StorageClusterId"] as? String {
+                self.storageClusterId = value
             }
         }
     }
