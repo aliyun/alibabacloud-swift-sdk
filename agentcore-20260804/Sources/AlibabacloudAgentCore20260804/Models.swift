@@ -21565,6 +21565,8 @@ public class ListCredentialsRequest : Tea.TeaModel {
 
     public var maxResults: Int32?
 
+    public var name: String?
+
     public var nameLike: String?
 
     public var nextToken: String?
@@ -21589,6 +21591,9 @@ public class ListCredentialsRequest : Tea.TeaModel {
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
         if self.nameLike != nil {
             map["nameLike"] = self.nameLike!
         }
@@ -21605,6 +21610,9 @@ public class ListCredentialsRequest : Tea.TeaModel {
         }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
         }
         if let value = dict["nameLike"] as? String {
             self.nameLike = value

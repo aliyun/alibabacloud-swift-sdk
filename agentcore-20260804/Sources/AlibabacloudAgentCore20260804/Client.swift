@@ -2127,6 +2127,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nameLike)) {
             query["nameLike"] = request.nameLike ?? "";
         }
