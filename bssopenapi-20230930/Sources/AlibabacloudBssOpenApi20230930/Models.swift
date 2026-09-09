@@ -20952,6 +20952,8 @@ public class SaveCostCenterShareRuleResponse : Tea.TeaModel {
 }
 
 public class SetFundAccountCreditAmountRequest : Tea.TeaModel {
+    public var cancelCredit: String?
+
     public var creditAmount: String?
 
     public var currency: String?
@@ -20972,6 +20974,9 @@ public class SetFundAccountCreditAmountRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cancelCredit != nil {
+            map["CancelCredit"] = self.cancelCredit!
+        }
         if self.creditAmount != nil {
             map["CreditAmount"] = self.creditAmount!
         }
@@ -20986,6 +20991,9 @@ public class SetFundAccountCreditAmountRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CancelCredit"] as? String {
+            self.cancelCredit = value
+        }
         if let value = dict["CreditAmount"] as? String {
             self.creditAmount = value
         }

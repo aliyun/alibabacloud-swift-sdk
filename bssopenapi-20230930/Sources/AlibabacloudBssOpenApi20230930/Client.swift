@@ -2550,6 +2550,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setFundAccountCreditAmountWithOptions(_ request: SetFundAccountCreditAmountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetFundAccountCreditAmountResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cancelCredit)) {
+            body["CancelCredit"] = request.cancelCredit ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.creditAmount)) {
             body["CreditAmount"] = request.creditAmount ?? "";
         }
