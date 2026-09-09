@@ -558,6 +558,8 @@ public class ClearMajorProtectionBlackIpResponse : Tea.TeaModel {
 }
 
 public class CopyDefenseTemplateRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -580,6 +582,9 @@ public class CopyDefenseTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -597,6 +602,9 @@ public class CopyDefenseTemplateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -2474,6 +2482,8 @@ public class CreateDefenseRuleRequest : Tea.TeaModel {
 
     public var defenseType: String?
 
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -2506,6 +2516,9 @@ public class CreateDefenseRuleRequest : Tea.TeaModel {
         if self.defenseType != nil {
             map["DefenseType"] = self.defenseType!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2534,6 +2547,9 @@ public class CreateDefenseRuleRequest : Tea.TeaModel {
         }
         if let value = dict["DefenseType"] as? String {
             self.defenseType = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -2652,6 +2668,10 @@ public class CreateDefenseTemplateRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var detail: String?
+
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -2693,6 +2713,12 @@ public class CreateDefenseTemplateRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.detail != nil {
+            map["Detail"] = self.detail!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2733,6 +2759,12 @@ public class CreateDefenseTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Detail"] as? String {
+            self.detail = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -6322,6 +6354,8 @@ public class DeleteDefenseResourceGroupResponse : Tea.TeaModel {
 public class DeleteDefenseRuleRequest : Tea.TeaModel {
     public var defenseType: String?
 
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -6351,6 +6385,9 @@ public class DeleteDefenseRuleRequest : Tea.TeaModel {
         if self.defenseType != nil {
             map["DefenseType"] = self.defenseType!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6376,6 +6413,9 @@ public class DeleteDefenseRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DefenseType"] as? String {
             self.defenseType = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -6624,6 +6664,8 @@ public class DeleteDefenseRuleBlockIpResponse : Tea.TeaModel {
 }
 
 public class DeleteDefenseTemplateRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -6646,6 +6688,9 @@ public class DeleteDefenseTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6663,6 +6708,9 @@ public class DeleteDefenseTemplateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -20820,6 +20868,8 @@ public class DescribeDefenseResourceTemplatesResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var detail: [String: Any]?
+
         public var gmtModified: Int64?
 
         public var templateId: Int64?
@@ -20855,6 +20905,9 @@ public class DescribeDefenseResourceTemplatesResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.detail != nil {
+                map["Detail"] = self.detail!
+            }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
@@ -20886,6 +20939,9 @@ public class DescribeDefenseResourceTemplatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["Detail"] as? [String: Any] {
+                self.detail = value
             }
             if let value = dict["GmtModified"] as? Int64 {
                 self.gmtModified = value
@@ -22565,6 +22621,8 @@ public class DescribeDefenseTemplateResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var detail: [String: Any]?
+
         public var gmtModified: Int64?
 
         public var templateId: Int64?
@@ -22600,6 +22658,9 @@ public class DescribeDefenseTemplateResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.detail != nil {
+                map["Detail"] = self.detail!
+            }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
@@ -22631,6 +22692,9 @@ public class DescribeDefenseTemplateResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["Detail"] as? [String: Any] {
+                self.detail = value
             }
             if let value = dict["GmtModified"] as? Int64 {
                 self.gmtModified = value
@@ -23246,6 +23310,8 @@ public class DescribeDefenseTemplatesResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var detail: [String: Any]?
+
         public var gmtModified: Int64?
 
         public var templateId: Int64?
@@ -23281,6 +23347,9 @@ public class DescribeDefenseTemplatesResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.detail != nil {
+                map["Detail"] = self.detail!
+            }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
@@ -23312,6 +23381,9 @@ public class DescribeDefenseTemplatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["Detail"] as? [String: Any] {
+                self.detail = value
             }
             if let value = dict["GmtModified"] as? Int64 {
                 self.gmtModified = value
@@ -52052,6 +52124,8 @@ public class ModifyDefenseRuleRequest : Tea.TeaModel {
 
     public var defenseType: String?
 
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -52084,6 +52158,9 @@ public class ModifyDefenseRuleRequest : Tea.TeaModel {
         if self.defenseType != nil {
             map["DefenseType"] = self.defenseType!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -52112,6 +52189,9 @@ public class ModifyDefenseRuleRequest : Tea.TeaModel {
         }
         if let value = dict["DefenseType"] as? String {
             self.defenseType = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -52362,6 +52442,8 @@ public class ModifyDefenseRuleCacheResponse : Tea.TeaModel {
 public class ModifyDefenseRuleStatusRequest : Tea.TeaModel {
     public var defenseType: String?
 
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -52391,6 +52473,9 @@ public class ModifyDefenseRuleStatusRequest : Tea.TeaModel {
         if self.defenseType != nil {
             map["DefenseType"] = self.defenseType!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -52416,6 +52501,9 @@ public class ModifyDefenseRuleStatusRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DefenseType"] as? String {
             self.defenseType = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -52674,6 +52762,10 @@ public class ModifyDefenseSceneConfigResponse : Tea.TeaModel {
 public class ModifyDefenseTemplateRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var detail: String?
+
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -52701,6 +52793,12 @@ public class ModifyDefenseTemplateRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.detail != nil {
+            map["Detail"] = self.detail!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -52723,6 +52821,12 @@ public class ModifyDefenseTemplateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Detail"] as? String {
+            self.detail = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -52824,6 +52928,8 @@ public class ModifyDefenseTemplateResponse : Tea.TeaModel {
 }
 
 public class ModifyDefenseTemplateStatusRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -52848,6 +52954,9 @@ public class ModifyDefenseTemplateStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -52868,6 +52977,9 @@ public class ModifyDefenseTemplateStatusRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -56408,6 +56520,8 @@ public class ModifyResourceLogStatusRequest : Tea.TeaModel {
             }
         }
     }
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -56437,6 +56551,9 @@ public class ModifyResourceLogStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -56463,6 +56580,9 @@ public class ModifyResourceLogStatusRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -56490,6 +56610,8 @@ public class ModifyResourceLogStatusRequest : Tea.TeaModel {
 }
 
 public class ModifyResourceLogStatusShrinkRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -56518,6 +56640,9 @@ public class ModifyResourceLogStatusShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -56544,6 +56669,9 @@ public class ModifyResourceLogStatusShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -56664,6 +56792,8 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
 
     public var bindResources: [String]?
 
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -56701,6 +56831,9 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
         if self.bindResources != nil {
             map["BindResources"] = self.bindResources!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -56735,6 +56868,9 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
         }
         if let value = dict["BindResources"] as? [String] {
             self.bindResources = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
