@@ -10122,15 +10122,11 @@ public class InvokeAnomalyDiagnosisResponse : Tea.TeaModel {
 }
 
 public class InvokeDiagnosisRequest : Tea.TeaModel {
-    public var xDebugId: String?
-
     public var channel: String?
 
     public var params: String?
 
     public var serviceName: String?
-
-    public var xSysomInvokeSource: String?
 
     public override init() {
         super.init()
@@ -10146,9 +10142,6 @@ public class InvokeDiagnosisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.xDebugId != nil {
-            map["X-Debug-Id"] = self.xDebugId!
-        }
         if self.channel != nil {
             map["channel"] = self.channel!
         }
@@ -10158,17 +10151,11 @@ public class InvokeDiagnosisRequest : Tea.TeaModel {
         if self.serviceName != nil {
             map["service_name"] = self.serviceName!
         }
-        if self.xSysomInvokeSource != nil {
-            map["x-sysom-invoke-source"] = self.xSysomInvokeSource!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["X-Debug-Id"] as? String {
-            self.xDebugId = value
-        }
         if let value = dict["channel"] as? String {
             self.channel = value
         }
@@ -10177,9 +10164,6 @@ public class InvokeDiagnosisRequest : Tea.TeaModel {
         }
         if let value = dict["service_name"] as? String {
             self.serviceName = value
-        }
-        if let value = dict["x-sysom-invoke-source"] as? String {
-            self.xSysomInvokeSource = value
         }
     }
 }
