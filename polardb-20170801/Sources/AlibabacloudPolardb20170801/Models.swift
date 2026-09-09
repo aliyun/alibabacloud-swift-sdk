@@ -7984,6 +7984,76 @@ public class CreateAgenticDBTenantApiKeyResponse : Tea.TeaModel {
 }
 
 public class CreateApplicationRequest : Tea.TeaModel {
+    public class AgenticDBBranchSpec : Tea.TeaModel {
+        public var branchId: String?
+
+        public var DBClusterId: String?
+
+        public var forkFromApplicationId: String?
+
+        public var forkFromBranch: Bool?
+
+        public var projectId: String?
+
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.branchId != nil {
+                map["BranchId"] = self.branchId!
+            }
+            if self.DBClusterId != nil {
+                map["DBClusterId"] = self.DBClusterId!
+            }
+            if self.forkFromApplicationId != nil {
+                map["ForkFromApplicationId"] = self.forkFromApplicationId!
+            }
+            if self.forkFromBranch != nil {
+                map["ForkFromBranch"] = self.forkFromBranch!
+            }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.tenantId != nil {
+                map["TenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BranchId"] as? String {
+                self.branchId = value
+            }
+            if let value = dict["DBClusterId"] as? String {
+                self.DBClusterId = value
+            }
+            if let value = dict["ForkFromApplicationId"] as? String {
+                self.forkFromApplicationId = value
+            }
+            if let value = dict["ForkFromBranch"] as? Bool {
+                self.forkFromBranch = value
+            }
+            if let value = dict["ProjectId"] as? String {
+                self.projectId = value
+            }
+            if let value = dict["TenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
     public class Components : Tea.TeaModel {
         public var componentClass: String?
 
@@ -8348,6 +8418,92 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public class Storages : Tea.TeaModel {
+        public var containerMountPath: String?
+
+        public var endpointId: String?
+
+        public var mountPath: String?
+
+        public var storageCapacity: String?
+
+        public var storageEndpoint: String?
+
+        public var storageInstanceId: String?
+
+        public var storagePerformanceLevel: String?
+
+        public var storageType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.containerMountPath != nil {
+                map["ContainerMountPath"] = self.containerMountPath!
+            }
+            if self.endpointId != nil {
+                map["EndpointId"] = self.endpointId!
+            }
+            if self.mountPath != nil {
+                map["MountPath"] = self.mountPath!
+            }
+            if self.storageCapacity != nil {
+                map["StorageCapacity"] = self.storageCapacity!
+            }
+            if self.storageEndpoint != nil {
+                map["StorageEndpoint"] = self.storageEndpoint!
+            }
+            if self.storageInstanceId != nil {
+                map["StorageInstanceId"] = self.storageInstanceId!
+            }
+            if self.storagePerformanceLevel != nil {
+                map["StoragePerformanceLevel"] = self.storagePerformanceLevel!
+            }
+            if self.storageType != nil {
+                map["StorageType"] = self.storageType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContainerMountPath"] as? String {
+                self.containerMountPath = value
+            }
+            if let value = dict["EndpointId"] as? String {
+                self.endpointId = value
+            }
+            if let value = dict["MountPath"] as? String {
+                self.mountPath = value
+            }
+            if let value = dict["StorageCapacity"] as? String {
+                self.storageCapacity = value
+            }
+            if let value = dict["StorageEndpoint"] as? String {
+                self.storageEndpoint = value
+            }
+            if let value = dict["StorageInstanceId"] as? String {
+                self.storageInstanceId = value
+            }
+            if let value = dict["StoragePerformanceLevel"] as? String {
+                self.storagePerformanceLevel = value
+            }
+            if let value = dict["StorageType"] as? String {
+                self.storageType = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -8387,6 +8543,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
     }
     public var AIDBClusterId: String?
+
+    public var agenticDBBranchSpec: CreateApplicationRequest.AgenticDBBranchSpec?
 
     public var applicationType: String?
 
@@ -8456,6 +8614,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var skillTemplateId: String?
 
+    public var storages: [CreateApplicationRequest.Storages]?
+
     public var tag: [CreateApplicationRequest.Tag]?
 
     public var targetVersion: String?
@@ -8480,6 +8640,7 @@ public class CreateApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.agenticDBBranchSpec?.validate()
         try self.knowledgeApplicationSpec?.validate()
         try self.memApplicationSpec?.validate()
     }
@@ -8488,6 +8649,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.AIDBClusterId != nil {
             map["AIDBClusterId"] = self.AIDBClusterId!
+        }
+        if self.agenticDBBranchSpec != nil {
+            map["AgenticDBBranchSpec"] = self.agenticDBBranchSpec?.toMap()
         }
         if self.applicationType != nil {
             map["ApplicationType"] = self.applicationType!
@@ -8607,6 +8771,13 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.skillTemplateId != nil {
             map["SkillTemplateId"] = self.skillTemplateId!
         }
+        if self.storages != nil {
+            var tmp : [Any] = []
+            for k in self.storages! {
+                tmp.append(k.toMap())
+            }
+            map["Storages"] = tmp
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -8639,6 +8810,11 @@ public class CreateApplicationRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AIDBClusterId"] as? String {
             self.AIDBClusterId = value
+        }
+        if let value = dict["AgenticDBBranchSpec"] as? [String: Any?] {
+            var model = CreateApplicationRequest.AgenticDBBranchSpec()
+            model.fromMap(value)
+            self.agenticDBBranchSpec = model
         }
         if let value = dict["ApplicationType"] as? String {
             self.applicationType = value
@@ -8786,6 +8962,19 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["SkillTemplateId"] as? String {
             self.skillTemplateId = value
         }
+        if let value = dict["Storages"] as? [Any?] {
+            var tmp : [CreateApplicationRequest.Storages] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationRequest.Storages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.storages = tmp
+        }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateApplicationRequest.Tag] = []
             for v in value {
@@ -8861,6 +9050,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     }
     public var AIDBClusterId: String?
 
+    public var agenticDBBranchSpecShrink: String?
+
     public var applicationType: String?
 
     public var architecture: String?
@@ -8929,6 +9120,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var skillTemplateId: String?
 
+    public var storagesShrink: String?
+
     public var tag: [CreateApplicationShrinkRequest.Tag]?
 
     public var targetVersion: String?
@@ -8959,6 +9152,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.AIDBClusterId != nil {
             map["AIDBClusterId"] = self.AIDBClusterId!
+        }
+        if self.agenticDBBranchSpecShrink != nil {
+            map["AgenticDBBranchSpec"] = self.agenticDBBranchSpecShrink!
         }
         if self.applicationType != nil {
             map["ApplicationType"] = self.applicationType!
@@ -9062,6 +9258,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.skillTemplateId != nil {
             map["SkillTemplateId"] = self.skillTemplateId!
         }
+        if self.storagesShrink != nil {
+            map["Storages"] = self.storagesShrink!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -9094,6 +9293,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AIDBClusterId"] as? String {
             self.AIDBClusterId = value
+        }
+        if let value = dict["AgenticDBBranchSpec"] as? String {
+            self.agenticDBBranchSpecShrink = value
         }
         if let value = dict["ApplicationType"] as? String {
             self.applicationType = value
@@ -9196,6 +9398,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SkillTemplateId"] as? String {
             self.skillTemplateId = value
+        }
+        if let value = dict["Storages"] as? String {
+            self.storagesShrink = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateApplicationShrinkRequest.Tag] = []
@@ -45350,6 +45555,10 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
     public var dataLevel2BackupRetentionPeriod: String?
 
+    public var enableCrossRegionImmutableBackup: Bool?
+
+    public var enableImmutableBackup: Bool?
+
     public var preferredBackupPeriod: String?
 
     public var preferredBackupTime: String?
@@ -45412,6 +45621,12 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         if self.dataLevel2BackupRetentionPeriod != nil {
             map["DataLevel2BackupRetentionPeriod"] = self.dataLevel2BackupRetentionPeriod!
         }
+        if self.enableCrossRegionImmutableBackup != nil {
+            map["EnableCrossRegionImmutableBackup"] = self.enableCrossRegionImmutableBackup!
+        }
+        if self.enableImmutableBackup != nil {
+            map["EnableImmutableBackup"] = self.enableImmutableBackup!
+        }
         if self.preferredBackupPeriod != nil {
             map["PreferredBackupPeriod"] = self.preferredBackupPeriod!
         }
@@ -45469,6 +45684,12 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if let value = dict["DataLevel2BackupRetentionPeriod"] as? String {
             self.dataLevel2BackupRetentionPeriod = value
+        }
+        if let value = dict["EnableCrossRegionImmutableBackup"] as? Bool {
+            self.enableCrossRegionImmutableBackup = value
+        }
+        if let value = dict["EnableImmutableBackup"] as? Bool {
+            self.enableImmutableBackup = value
         }
         if let value = dict["PreferredBackupPeriod"] as? String {
             self.preferredBackupPeriod = value

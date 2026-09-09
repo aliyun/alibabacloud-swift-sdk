@@ -2106,6 +2106,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateApplicationShrinkRequest = CreateApplicationShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.agenticDBBranchSpec)) {
+            request.agenticDBBranchSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.agenticDBBranchSpec, "AgenticDBBranchSpec", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.components)) {
             request.componentsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.components, "Components", "json")
         }
@@ -2124,9 +2127,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
             request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.storages)) {
+            request.storagesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.storages, "Storages", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.AIDBClusterId)) {
             query["AIDBClusterId"] = request.AIDBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agenticDBBranchSpecShrink)) {
+            query["AgenticDBBranchSpec"] = request.agenticDBBranchSpecShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.applicationType)) {
             query["ApplicationType"] = request.applicationType ?? "";
@@ -2229,6 +2238,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.skillTemplateId)) {
             query["SkillTemplateId"] = request.skillTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storagesShrink)) {
+            query["Storages"] = request.storagesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
