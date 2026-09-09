@@ -9473,6 +9473,8 @@ public class CreateJobTemplateResponseBody : Tea.TeaModel {
 
     public var gmtModifyTime: String?
 
+    public var lastUsedTime: String?
+
     public var metadata: [String: Any]?
 
     public var requestId: String?
@@ -9515,6 +9517,9 @@ public class CreateJobTemplateResponseBody : Tea.TeaModel {
         if self.gmtModifyTime != nil {
             map["GmtModifyTime"] = self.gmtModifyTime!
         }
+        if self.lastUsedTime != nil {
+            map["LastUsedTime"] = self.lastUsedTime!
+        }
         if self.metadata != nil {
             map["Metadata"] = self.metadata!
         }
@@ -9555,6 +9560,9 @@ public class CreateJobTemplateResponseBody : Tea.TeaModel {
         }
         if let value = dict["GmtModifyTime"] as? String {
             self.gmtModifyTime = value
+        }
+        if let value = dict["LastUsedTime"] as? String {
+            self.lastUsedTime = value
         }
         if let value = dict["Metadata"] as? [String: Any] {
             self.metadata = value
@@ -12737,6 +12745,8 @@ public class GetJobTemplateResponseBody : Tea.TeaModel {
 
     public var gmtModifyTime: String?
 
+    public var lastUsedTime: String?
+
     public var metadata: [String: Any]?
 
     public var modifiedBy: String?
@@ -12782,6 +12792,9 @@ public class GetJobTemplateResponseBody : Tea.TeaModel {
         }
         if self.gmtModifyTime != nil {
             map["GmtModifyTime"] = self.gmtModifyTime!
+        }
+        if self.lastUsedTime != nil {
+            map["LastUsedTime"] = self.lastUsedTime!
         }
         if self.metadata != nil {
             map["Metadata"] = self.metadata!
@@ -12833,6 +12846,9 @@ public class GetJobTemplateResponseBody : Tea.TeaModel {
         }
         if let value = dict["GmtModifyTime"] as? String {
             self.gmtModifyTime = value
+        }
+        if let value = dict["LastUsedTime"] as? String {
+            self.lastUsedTime = value
         }
         if let value = dict["Metadata"] as? [String: Any] {
             self.metadata = value
@@ -14942,6 +14958,8 @@ public class ListJobSanityCheckResultsResponse : Tea.TeaModel {
 }
 
 public class ListJobTemplatesRequest : Tea.TeaModel {
+    public var description_: String?
+
     public var order: String?
 
     public var pageNumber: Int32?
@@ -14972,6 +14990,9 @@ public class ListJobTemplatesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.order != nil {
             map["Order"] = self.order!
         }
@@ -15001,6 +15022,9 @@ public class ListJobTemplatesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["Order"] as? String {
             self.order = value
         }
@@ -15037,6 +15061,8 @@ public class ListJobTemplatesResponseBody : Tea.TeaModel {
         public var gmtCreateTime: String?
 
         public var gmtModifyTime: String?
+
+        public var lastUsedTime: String?
 
         public var metadata: [String: Any]?
 
@@ -15078,6 +15104,9 @@ public class ListJobTemplatesResponseBody : Tea.TeaModel {
             if self.gmtModifyTime != nil {
                 map["GmtModifyTime"] = self.gmtModifyTime!
             }
+            if self.lastUsedTime != nil {
+                map["LastUsedTime"] = self.lastUsedTime!
+            }
             if self.metadata != nil {
                 map["Metadata"] = self.metadata!
             }
@@ -15115,6 +15144,9 @@ public class ListJobTemplatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["GmtModifyTime"] as? String {
                 self.gmtModifyTime = value
+            }
+            if let value = dict["LastUsedTime"] as? String {
+                self.lastUsedTime = value
             }
             if let value = dict["Metadata"] as? [String: Any] {
                 self.metadata = value
