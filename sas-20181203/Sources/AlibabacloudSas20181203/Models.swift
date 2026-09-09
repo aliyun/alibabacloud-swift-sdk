@@ -9585,6 +9585,68 @@ public class CopyCustomizeReportConfigResponse : Tea.TeaModel {
 }
 
 public class CreateAgentlessScanTaskRequest : Tea.TeaModel {
+    public class Targets : Tea.TeaModel {
+        public var imageId: String?
+
+        public var originImageName: String?
+
+        public var outputImageName: String?
+
+        public var regionId: String?
+
+        public var vulnerabilityIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.originImageName != nil {
+                map["OriginImageName"] = self.originImageName!
+            }
+            if self.outputImageName != nil {
+                map["OutputImageName"] = self.outputImageName!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.vulnerabilityIds != nil {
+                map["VulnerabilityIds"] = self.vulnerabilityIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ImageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["OriginImageName"] as? String {
+                self.originImageName = value
+            }
+            if let value = dict["OutputImageName"] as? String {
+                self.outputImageName = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["VulnerabilityIds"] as? [String] {
+                self.vulnerabilityIds = value
+            }
+        }
+    }
     public var assetSelectionType: String?
 
     public var autoDeleteDays: Int32?
@@ -9598,6 +9660,8 @@ public class CreateAgentlessScanTaskRequest : Tea.TeaModel {
     public var scanDataDisk: Bool?
 
     public var targetType: Int32?
+
+    public var targets: [CreateAgentlessScanTaskRequest.Targets]?
 
     public var uuidList: [String]?
 
@@ -9636,6 +9700,13 @@ public class CreateAgentlessScanTaskRequest : Tea.TeaModel {
         if self.targetType != nil {
             map["TargetType"] = self.targetType!
         }
+        if self.targets != nil {
+            var tmp : [Any] = []
+            for k in self.targets! {
+                tmp.append(k.toMap())
+            }
+            map["Targets"] = tmp
+        }
         if self.uuidList != nil {
             map["UuidList"] = self.uuidList!
         }
@@ -9664,6 +9735,19 @@ public class CreateAgentlessScanTaskRequest : Tea.TeaModel {
         }
         if let value = dict["TargetType"] as? Int32 {
             self.targetType = value
+        }
+        if let value = dict["Targets"] as? [Any?] {
+            var tmp : [CreateAgentlessScanTaskRequest.Targets] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateAgentlessScanTaskRequest.Targets()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.targets = tmp
         }
         if let value = dict["UuidList"] as? [String] {
             self.uuidList = value
@@ -70096,6 +70180,8 @@ public class DescribeImageFixTaskResponse : Tea.TeaModel {
 }
 
 public class DescribeImageGroupedVulListRequest : Tea.TeaModel {
+    public var agentlessCanFix: Bool?
+
     public var aliasName: String?
 
     public var clusterId: String?
@@ -70158,6 +70244,9 @@ public class DescribeImageGroupedVulListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentlessCanFix != nil {
+            map["AgentlessCanFix"] = self.agentlessCanFix!
+        }
         if self.aliasName != nil {
             map["AliasName"] = self.aliasName!
         }
@@ -70235,6 +70324,9 @@ public class DescribeImageGroupedVulListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentlessCanFix"] as? Bool {
+            self.agentlessCanFix = value
+        }
         if let value = dict["AliasName"] as? String {
             self.aliasName = value
         }
@@ -70312,11 +70404,15 @@ public class DescribeImageGroupedVulListRequest : Tea.TeaModel {
 
 public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
     public class GroupedVulItems : Tea.TeaModel {
+        public var agentlessCanFix: String?
+
         public var aliasName: String?
 
         public var asapCount: Int32?
 
         public var canFix: String?
+
+        public var cveScore: String?
 
         public var gmtLast: Int64?
 
@@ -70327,6 +70423,8 @@ public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var nntfCount: Int32?
+
+        public var related: String?
 
         public var ruleTag: String?
 
@@ -70350,6 +70448,9 @@ public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentlessCanFix != nil {
+                map["AgentlessCanFix"] = self.agentlessCanFix!
+            }
             if self.aliasName != nil {
                 map["AliasName"] = self.aliasName!
             }
@@ -70358,6 +70459,9 @@ public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
             }
             if self.canFix != nil {
                 map["CanFix"] = self.canFix!
+            }
+            if self.cveScore != nil {
+                map["CveScore"] = self.cveScore!
             }
             if self.gmtLast != nil {
                 map["GmtLast"] = self.gmtLast!
@@ -70373,6 +70477,9 @@ public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
             }
             if self.nntfCount != nil {
                 map["NntfCount"] = self.nntfCount!
+            }
+            if self.related != nil {
+                map["Related"] = self.related!
             }
             if self.ruleTag != nil {
                 map["RuleTag"] = self.ruleTag!
@@ -70391,6 +70498,9 @@ public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentlessCanFix"] as? String {
+                self.agentlessCanFix = value
+            }
             if let value = dict["AliasName"] as? String {
                 self.aliasName = value
             }
@@ -70399,6 +70509,9 @@ public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
             }
             if let value = dict["CanFix"] as? String {
                 self.canFix = value
+            }
+            if let value = dict["CveScore"] as? String {
+                self.cveScore = value
             }
             if let value = dict["GmtLast"] as? Int64 {
                 self.gmtLast = value
@@ -70414,6 +70527,9 @@ public class DescribeImageGroupedVulListResponseBody : Tea.TeaModel {
             }
             if let value = dict["NntfCount"] as? Int32 {
                 self.nntfCount = value
+            }
+            if let value = dict["Related"] as? String {
+                self.related = value
             }
             if let value = dict["RuleTag"] as? String {
                 self.ruleTag = value
@@ -75741,6 +75857,8 @@ public class DescribeImageVulListRequest : Tea.TeaModel {
 
     public var digest: String?
 
+    public var groupByAsset: Bool?
+
     public var image: String?
 
     public var instanceId: String?
@@ -75817,6 +75935,9 @@ public class DescribeImageVulListRequest : Tea.TeaModel {
         }
         if self.digest != nil {
             map["Digest"] = self.digest!
+        }
+        if self.groupByAsset != nil {
+            map["GroupByAsset"] = self.groupByAsset!
         }
         if self.image != nil {
             map["Image"] = self.image!
@@ -75906,6 +76027,9 @@ public class DescribeImageVulListRequest : Tea.TeaModel {
         }
         if let value = dict["Digest"] as? String {
             self.digest = value
+        }
+        if let value = dict["GroupByAsset"] as? Bool {
+            self.groupByAsset = value
         }
         if let value = dict["Image"] as? String {
             self.image = value
@@ -76121,6 +76245,8 @@ public class DescribeImageVulListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var agentlessCanFix: Bool?
+
         public var aliasName: String?
 
         public var canFix: String?
@@ -76204,6 +76330,9 @@ public class DescribeImageVulListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentlessCanFix != nil {
+                map["AgentlessCanFix"] = self.agentlessCanFix!
+            }
             if self.aliasName != nil {
                 map["AliasName"] = self.aliasName!
             }
@@ -76311,6 +76440,9 @@ public class DescribeImageVulListResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentlessCanFix"] as? Bool {
+                self.agentlessCanFix = value
+            }
             if let value = dict["AliasName"] as? String {
                 self.aliasName = value
             }
@@ -160735,6 +160867,8 @@ public class ListAgentlessTaskResponseBody : Tea.TeaModel {
     public class List : Tea.TeaModel {
         public var endTime: Int64?
 
+        public var extension_: [String: String]?
+
         public var instanceId: String?
 
         public var instanceName: String?
@@ -160785,6 +160919,9 @@ public class ListAgentlessTaskResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
+            }
+            if self.extension_ != nil {
+                map["Extension"] = self.extension_!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -160844,6 +160981,9 @@ public class ListAgentlessTaskResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["EndTime"] as? Int64 {
                 self.endTime = value
+            }
+            if let value = dict["Extension"] as? [String: String] {
+                self.extension_ = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value

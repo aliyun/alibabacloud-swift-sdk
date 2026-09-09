@@ -1926,6 +1926,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetType)) {
             query["TargetType"] = request.targetType!;
         }
+        if (!TeaUtils.Client.isUnset(request.targets)) {
+            query["Targets"] = request.targets ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.uuidList)) {
             query["UuidList"] = request.uuidList ?? [];
         }
@@ -12374,6 +12377,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeImageGroupedVulListWithOptions(_ request: DescribeImageGroupedVulListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeImageGroupedVulListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentlessCanFix)) {
+            query["AgentlessCanFix"] = request.agentlessCanFix!;
+        }
         if (!TeaUtils.Client.isUnset(request.aliasName)) {
             query["AliasName"] = request.aliasName ?? "";
         }
@@ -13166,6 +13172,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.digest)) {
             query["Digest"] = request.digest ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByAsset)) {
+            query["GroupByAsset"] = request.groupByAsset!;
         }
         if (!TeaUtils.Client.isUnset(request.image)) {
             query["Image"] = request.image ?? "";
