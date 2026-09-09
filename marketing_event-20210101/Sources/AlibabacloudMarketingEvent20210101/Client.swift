@@ -24,6 +24,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addAgendaSumRecordFlowPopWithOptions(_ request: AddAgendaSumRecordFlowPopRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddAgendaSumRecordFlowPopResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activeNum)) {
+            query["ActiveNum"] = request.activeNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.agendaId)) {
+            query["AgendaId"] = request.agendaId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.attendancePercent)) {
+            query["AttendancePercent"] = request.attendancePercent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flowTime)) {
+            query["FlowTime"] = request.flowTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionName)) {
+            query["SessionName"] = request.sessionName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.totalPv)) {
+            query["TotalPv"] = request.totalPv!;
+        }
+        if (!TeaUtils.Client.isUnset(request.totalUv)) {
+            query["TotalUv"] = request.totalUv!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddAgendaSumRecordFlowPop",
+            "version": "2021-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddAgendaSumRecordFlowPopResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addAgendaSumRecordFlowPop(_ request: AddAgendaSumRecordFlowPopRequest) async throws -> AddAgendaSumRecordFlowPopResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addAgendaSumRecordFlowPopWithOptions(request as! AddAgendaSumRecordFlowPopRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addSumRecordFlowPopWithOptions(_ request: AddSumRecordFlowPopRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddSumRecordFlowPopResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

@@ -5,6 +5,214 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AddAgendaSumRecordFlowPopRequest : Tea.TeaModel {
+    public var activeNum: Int32?
+
+    public var agendaId: Int64?
+
+    public var attendancePercent: String?
+
+    public var flowTime: Int64?
+
+    public var sessionName: String?
+
+    public var totalPv: Int32?
+
+    public var totalUv: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.activeNum != nil {
+            map["ActiveNum"] = self.activeNum!
+        }
+        if self.agendaId != nil {
+            map["AgendaId"] = self.agendaId!
+        }
+        if self.attendancePercent != nil {
+            map["AttendancePercent"] = self.attendancePercent!
+        }
+        if self.flowTime != nil {
+            map["FlowTime"] = self.flowTime!
+        }
+        if self.sessionName != nil {
+            map["SessionName"] = self.sessionName!
+        }
+        if self.totalPv != nil {
+            map["TotalPv"] = self.totalPv!
+        }
+        if self.totalUv != nil {
+            map["TotalUv"] = self.totalUv!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActiveNum"] as? Int32 {
+            self.activeNum = value
+        }
+        if let value = dict["AgendaId"] as? Int64 {
+            self.agendaId = value
+        }
+        if let value = dict["AttendancePercent"] as? String {
+            self.attendancePercent = value
+        }
+        if let value = dict["FlowTime"] as? Int64 {
+            self.flowTime = value
+        }
+        if let value = dict["SessionName"] as? String {
+            self.sessionName = value
+        }
+        if let value = dict["TotalPv"] as? Int32 {
+            self.totalPv = value
+        }
+        if let value = dict["TotalUv"] as? Int32 {
+            self.totalUv = value
+        }
+    }
+}
+
+public class AddAgendaSumRecordFlowPopResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var data: Bool?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddAgendaSumRecordFlowPopResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddAgendaSumRecordFlowPopResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddAgendaSumRecordFlowPopResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddSumRecordFlowPopRequest : Tea.TeaModel {
     public var activityId: String?
 
