@@ -8781,6 +8781,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
 
             public var enableAutoMv: Bool?
 
+            public var enableDataMasking: Bool?
+
             public var enableDecimal2: Bool?
 
             public var enableDr: Bool?
@@ -8843,6 +8845,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 }
                 if self.enableAutoMv != nil {
                     map["enableAutoMv"] = self.enableAutoMv!
+                }
+                if self.enableDataMasking != nil {
+                    map["enableDataMasking"] = self.enableDataMasking!
                 }
                 if self.enableDecimal2 != nil {
                     map["enableDecimal2"] = self.enableDecimal2!
@@ -8908,6 +8913,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["enableAutoMv"] as? Bool {
                     self.enableAutoMv = value
+                }
+                if let value = dict["enableDataMasking"] as? Bool {
+                    self.enableDataMasking = value
                 }
                 if let value = dict["enableDecimal2"] as? Bool {
                     self.enableDecimal2 = value
@@ -17481,6 +17489,8 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
 
             public var region: String?
 
+            public var roleSessionName: String?
+
             public var runningAtTime: Int64?
 
             public var runningTime: Int64?
@@ -17578,6 +17588,9 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
                 }
                 if self.region != nil {
                     map["region"] = self.region!
+                }
+                if self.roleSessionName != nil {
+                    map["roleSessionName"] = self.roleSessionName!
                 }
                 if self.runningAtTime != nil {
                     map["runningAtTime"] = self.runningAtTime!
@@ -17683,6 +17696,9 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["region"] as? String {
                     self.region = value
+                }
+                if let value = dict["roleSessionName"] as? String {
+                    self.roleSessionName = value
                 }
                 if let value = dict["runningAtTime"] as? Int64 {
                     self.runningAtTime = value
@@ -24184,6 +24200,10 @@ public class ListProjectsRequest : Tea.TeaModel {
 
     public var saleTags: String?
 
+    public var sortBy: String?
+
+    public var sortOrder: String?
+
     public var tenantId: String?
 
     public var type: String?
@@ -24226,6 +24246,12 @@ public class ListProjectsRequest : Tea.TeaModel {
         if self.saleTags != nil {
             map["saleTags"] = self.saleTags!
         }
+        if self.sortBy != nil {
+            map["sortBy"] = self.sortBy!
+        }
+        if self.sortOrder != nil {
+            map["sortOrder"] = self.sortOrder!
+        }
         if self.tenantId != nil {
             map["tenantId"] = self.tenantId!
         }
@@ -24260,6 +24286,12 @@ public class ListProjectsRequest : Tea.TeaModel {
         }
         if let value = dict["saleTags"] as? String {
             self.saleTags = value
+        }
+        if let value = dict["sortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["sortOrder"] as? String {
+            self.sortOrder = value
         }
         if let value = dict["tenantId"] as? String {
             self.tenantId = value
@@ -37816,6 +37848,8 @@ public class UpdateProjectBasicMetaRequest : Tea.TeaModel {
         }
         public var allowFullScan: Bool?
 
+        public var enableDataMasking: Bool?
+
         public var enableDecimal2: Bool?
 
         public var enableDr: Bool?
@@ -37855,6 +37889,9 @@ public class UpdateProjectBasicMetaRequest : Tea.TeaModel {
             if self.allowFullScan != nil {
                 map["allowFullScan"] = self.allowFullScan!
             }
+            if self.enableDataMasking != nil {
+                map["enableDataMasking"] = self.enableDataMasking!
+            }
             if self.enableDecimal2 != nil {
                 map["enableDecimal2"] = self.enableDecimal2!
             }
@@ -37892,6 +37929,9 @@ public class UpdateProjectBasicMetaRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["allowFullScan"] as? Bool {
                 self.allowFullScan = value
+            }
+            if let value = dict["enableDataMasking"] as? Bool {
+                self.enableDataMasking = value
             }
             if let value = dict["enableDecimal2"] as? Bool {
                 self.enableDecimal2 = value

@@ -2883,6 +2883,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.saleTags)) {
             query["saleTags"] = request.saleTags ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["sortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["sortOrder"] = request.sortOrder ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["tenantId"] = request.tenantId ?? "";
         }
