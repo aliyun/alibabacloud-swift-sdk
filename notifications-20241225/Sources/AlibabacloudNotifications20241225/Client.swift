@@ -1740,6 +1740,102 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateUserSubscriptionWithOptions(_ tmpReq: UpdateUserSubscriptionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateUserSubscriptionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateUserSubscriptionShrinkRequest = UpdateUserSubscriptionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.categoryCodes)) {
+            request.categoryCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.categoryCodes, "CategoryCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.channelConfigs)) {
+            request.channelConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.channelConfigs, "ChannelConfigs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.commonContacts)) {
+            request.commonContactsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.commonContacts, "CommonContacts", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.receiveTimeList)) {
+            request.receiveTimeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.receiveTimeList, "ReceiveTimeList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.webhookContacts)) {
+            request.webhookContactsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.webhookContacts, "WebhookContacts", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            body["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizName)) {
+            body["BizName"] = request.bizName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callerProtocol)) {
+            body["CallerProtocol"] = request.callerProtocol ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.categoryCodesShrink)) {
+            body["CategoryCodes"] = request.categoryCodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channelConfigsShrink)) {
+            body["ChannelConfigs"] = request.channelConfigsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channelGroupCode)) {
+            body["ChannelGroupCode"] = request.channelGroupCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientSource)) {
+            body["ClientSource"] = request.clientSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commonContactsShrink)) {
+            body["CommonContacts"] = request.commonContactsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cookies)) {
+            body["Cookies"] = request.cookies ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationItemCode)) {
+            body["OperationItemCode"] = request.operationItemCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.receiveTimeListShrink)) {
+            body["ReceiveTimeList"] = request.receiveTimeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remarks)) {
+            body["Remarks"] = request.remarks ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcUrl)) {
+            body["SrcUrl"] = request.srcUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantCode)) {
+            body["TenantCode"] = request.tenantCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uidType)) {
+            body["UidType"] = request.uidType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.webhookContactsShrink)) {
+            body["WebhookContacts"] = request.webhookContactsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateUserSubscription",
+            "version": "2024-12-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateUserSubscriptionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateUserSubscription(_ request: UpdateUserSubscriptionRequest) async throws -> UpdateUserSubscriptionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateUserSubscriptionWithOptions(request as! UpdateUserSubscriptionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateWebhookContactWithOptions(_ request: UpdateWebhookContactRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWebhookContactResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

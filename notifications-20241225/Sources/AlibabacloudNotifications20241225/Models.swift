@@ -8739,6 +8739,763 @@ public class UpdateMessageLanguageResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateUserSubscriptionRequest : Tea.TeaModel {
+    public class ChannelConfigs : Tea.TeaModel {
+        public var channelType: String?
+
+        public var checkedState: String?
+
+        public var fatigueDayLimit: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.channelType != nil {
+                map["ChannelType"] = self.channelType!
+            }
+            if self.checkedState != nil {
+                map["CheckedState"] = self.checkedState!
+            }
+            if self.fatigueDayLimit != nil {
+                map["FatigueDayLimit"] = self.fatigueDayLimit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChannelType"] as? String {
+                self.channelType = value
+            }
+            if let value = dict["CheckedState"] as? String {
+                self.checkedState = value
+            }
+            if let value = dict["FatigueDayLimit"] as? Int32 {
+                self.fatigueDayLimit = value
+            }
+        }
+    }
+    public class CommonContacts : Tea.TeaModel {
+        public class MessageSource : Tea.TeaModel {
+            public var keywordBlacklist: [String]?
+
+            public var keywordWhitelist: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.keywordBlacklist != nil {
+                    map["KeywordBlacklist"] = self.keywordBlacklist!
+                }
+                if self.keywordWhitelist != nil {
+                    map["KeywordWhitelist"] = self.keywordWhitelist!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["KeywordBlacklist"] as? [String] {
+                    self.keywordBlacklist = value
+                }
+                if let value = dict["KeywordWhitelist"] as? [String] {
+                    self.keywordWhitelist = value
+                }
+            }
+        }
+        public var aliUid: Int64?
+
+        public var contactEmail: String?
+
+        public var contactId: Int64?
+
+        public var contactMobile: String?
+
+        public var contactName: String?
+
+        public var emailConfirmed: Bool?
+
+        public var messageSource: UpdateUserSubscriptionRequest.CommonContacts.MessageSource?
+
+        public var mobileConfirmed: Bool?
+
+        public var position: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.messageSource?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliUid != nil {
+                map["AliUid"] = self.aliUid!
+            }
+            if self.contactEmail != nil {
+                map["ContactEmail"] = self.contactEmail!
+            }
+            if self.contactId != nil {
+                map["ContactId"] = self.contactId!
+            }
+            if self.contactMobile != nil {
+                map["ContactMobile"] = self.contactMobile!
+            }
+            if self.contactName != nil {
+                map["ContactName"] = self.contactName!
+            }
+            if self.emailConfirmed != nil {
+                map["EmailConfirmed"] = self.emailConfirmed!
+            }
+            if self.messageSource != nil {
+                map["MessageSource"] = self.messageSource?.toMap()
+            }
+            if self.mobileConfirmed != nil {
+                map["MobileConfirmed"] = self.mobileConfirmed!
+            }
+            if self.position != nil {
+                map["Position"] = self.position!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AliUid"] as? Int64 {
+                self.aliUid = value
+            }
+            if let value = dict["ContactEmail"] as? String {
+                self.contactEmail = value
+            }
+            if let value = dict["ContactId"] as? Int64 {
+                self.contactId = value
+            }
+            if let value = dict["ContactMobile"] as? String {
+                self.contactMobile = value
+            }
+            if let value = dict["ContactName"] as? String {
+                self.contactName = value
+            }
+            if let value = dict["EmailConfirmed"] as? Bool {
+                self.emailConfirmed = value
+            }
+            if let value = dict["MessageSource"] as? [String: Any?] {
+                var model = UpdateUserSubscriptionRequest.CommonContacts.MessageSource()
+                model.fromMap(value)
+                self.messageSource = model
+            }
+            if let value = dict["MobileConfirmed"] as? Bool {
+                self.mobileConfirmed = value
+            }
+            if let value = dict["Position"] as? String {
+                self.position = value
+            }
+        }
+    }
+    public class WebhookContacts : Tea.TeaModel {
+        public class MessageSource : Tea.TeaModel {
+            public var keywordBlacklist: [String]?
+
+            public var keywordWhitelist: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.keywordBlacklist != nil {
+                    map["KeywordBlacklist"] = self.keywordBlacklist!
+                }
+                if self.keywordWhitelist != nil {
+                    map["KeywordWhitelist"] = self.keywordWhitelist!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["KeywordBlacklist"] as? [String] {
+                    self.keywordBlacklist = value
+                }
+                if let value = dict["KeywordWhitelist"] as? [String] {
+                    self.keywordWhitelist = value
+                }
+            }
+        }
+        public var contactId: Int64?
+
+        public var contactName: String?
+
+        public var messageSource: UpdateUserSubscriptionRequest.WebhookContacts.MessageSource?
+
+        public var securityToken: String?
+
+        public var serverUrl: String?
+
+        public var webhookType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.messageSource?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contactId != nil {
+                map["ContactId"] = self.contactId!
+            }
+            if self.contactName != nil {
+                map["ContactName"] = self.contactName!
+            }
+            if self.messageSource != nil {
+                map["MessageSource"] = self.messageSource?.toMap()
+            }
+            if self.securityToken != nil {
+                map["SecurityToken"] = self.securityToken!
+            }
+            if self.serverUrl != nil {
+                map["ServerUrl"] = self.serverUrl!
+            }
+            if self.webhookType != nil {
+                map["WebhookType"] = self.webhookType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContactId"] as? Int64 {
+                self.contactId = value
+            }
+            if let value = dict["ContactName"] as? String {
+                self.contactName = value
+            }
+            if let value = dict["MessageSource"] as? [String: Any?] {
+                var model = UpdateUserSubscriptionRequest.WebhookContacts.MessageSource()
+                model.fromMap(value)
+                self.messageSource = model
+            }
+            if let value = dict["SecurityToken"] as? String {
+                self.securityToken = value
+            }
+            if let value = dict["ServerUrl"] as? String {
+                self.serverUrl = value
+            }
+            if let value = dict["WebhookType"] as? String {
+                self.webhookType = value
+            }
+        }
+    }
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var callerProtocol: String?
+
+    public var categoryCodes: [String]?
+
+    public var channelConfigs: [UpdateUserSubscriptionRequest.ChannelConfigs]?
+
+    public var channelGroupCode: String?
+
+    public var clientSource: String?
+
+    public var commonContacts: [UpdateUserSubscriptionRequest.CommonContacts]?
+
+    public var cookies: String?
+
+    public var operationItemCode: String?
+
+    public var receiveTimeList: [Int32]?
+
+    public var remarks: String?
+
+    public var srcUrl: String?
+
+    public var tenantCode: String?
+
+    public var uidType: String?
+
+    public var webhookContacts: [UpdateUserSubscriptionRequest.WebhookContacts]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.callerProtocol != nil {
+            map["CallerProtocol"] = self.callerProtocol!
+        }
+        if self.categoryCodes != nil {
+            map["CategoryCodes"] = self.categoryCodes!
+        }
+        if self.channelConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.channelConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ChannelConfigs"] = tmp
+        }
+        if self.channelGroupCode != nil {
+            map["ChannelGroupCode"] = self.channelGroupCode!
+        }
+        if self.clientSource != nil {
+            map["ClientSource"] = self.clientSource!
+        }
+        if self.commonContacts != nil {
+            var tmp : [Any] = []
+            for k in self.commonContacts! {
+                tmp.append(k.toMap())
+            }
+            map["CommonContacts"] = tmp
+        }
+        if self.cookies != nil {
+            map["Cookies"] = self.cookies!
+        }
+        if self.operationItemCode != nil {
+            map["OperationItemCode"] = self.operationItemCode!
+        }
+        if self.receiveTimeList != nil {
+            map["ReceiveTimeList"] = self.receiveTimeList!
+        }
+        if self.remarks != nil {
+            map["Remarks"] = self.remarks!
+        }
+        if self.srcUrl != nil {
+            map["SrcUrl"] = self.srcUrl!
+        }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
+        if self.uidType != nil {
+            map["UidType"] = self.uidType!
+        }
+        if self.webhookContacts != nil {
+            var tmp : [Any] = []
+            for k in self.webhookContacts! {
+                tmp.append(k.toMap())
+            }
+            map["WebhookContacts"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["CallerProtocol"] as? String {
+            self.callerProtocol = value
+        }
+        if let value = dict["CategoryCodes"] as? [String] {
+            self.categoryCodes = value
+        }
+        if let value = dict["ChannelConfigs"] as? [Any?] {
+            var tmp : [UpdateUserSubscriptionRequest.ChannelConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateUserSubscriptionRequest.ChannelConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.channelConfigs = tmp
+        }
+        if let value = dict["ChannelGroupCode"] as? String {
+            self.channelGroupCode = value
+        }
+        if let value = dict["ClientSource"] as? String {
+            self.clientSource = value
+        }
+        if let value = dict["CommonContacts"] as? [Any?] {
+            var tmp : [UpdateUserSubscriptionRequest.CommonContacts] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateUserSubscriptionRequest.CommonContacts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.commonContacts = tmp
+        }
+        if let value = dict["Cookies"] as? String {
+            self.cookies = value
+        }
+        if let value = dict["OperationItemCode"] as? String {
+            self.operationItemCode = value
+        }
+        if let value = dict["ReceiveTimeList"] as? [Int32] {
+            self.receiveTimeList = value
+        }
+        if let value = dict["Remarks"] as? String {
+            self.remarks = value
+        }
+        if let value = dict["SrcUrl"] as? String {
+            self.srcUrl = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
+        }
+        if let value = dict["UidType"] as? String {
+            self.uidType = value
+        }
+        if let value = dict["WebhookContacts"] as? [Any?] {
+            var tmp : [UpdateUserSubscriptionRequest.WebhookContacts] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateUserSubscriptionRequest.WebhookContacts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.webhookContacts = tmp
+        }
+    }
+}
+
+public class UpdateUserSubscriptionShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var bizName: String?
+
+    public var callerProtocol: String?
+
+    public var categoryCodesShrink: String?
+
+    public var channelConfigsShrink: String?
+
+    public var channelGroupCode: String?
+
+    public var clientSource: String?
+
+    public var commonContactsShrink: String?
+
+    public var cookies: String?
+
+    public var operationItemCode: String?
+
+    public var receiveTimeListShrink: String?
+
+    public var remarks: String?
+
+    public var srcUrl: String?
+
+    public var tenantCode: String?
+
+    public var uidType: String?
+
+    public var webhookContactsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.bizName != nil {
+            map["BizName"] = self.bizName!
+        }
+        if self.callerProtocol != nil {
+            map["CallerProtocol"] = self.callerProtocol!
+        }
+        if self.categoryCodesShrink != nil {
+            map["CategoryCodes"] = self.categoryCodesShrink!
+        }
+        if self.channelConfigsShrink != nil {
+            map["ChannelConfigs"] = self.channelConfigsShrink!
+        }
+        if self.channelGroupCode != nil {
+            map["ChannelGroupCode"] = self.channelGroupCode!
+        }
+        if self.clientSource != nil {
+            map["ClientSource"] = self.clientSource!
+        }
+        if self.commonContactsShrink != nil {
+            map["CommonContacts"] = self.commonContactsShrink!
+        }
+        if self.cookies != nil {
+            map["Cookies"] = self.cookies!
+        }
+        if self.operationItemCode != nil {
+            map["OperationItemCode"] = self.operationItemCode!
+        }
+        if self.receiveTimeListShrink != nil {
+            map["ReceiveTimeList"] = self.receiveTimeListShrink!
+        }
+        if self.remarks != nil {
+            map["Remarks"] = self.remarks!
+        }
+        if self.srcUrl != nil {
+            map["SrcUrl"] = self.srcUrl!
+        }
+        if self.tenantCode != nil {
+            map["TenantCode"] = self.tenantCode!
+        }
+        if self.uidType != nil {
+            map["UidType"] = self.uidType!
+        }
+        if self.webhookContactsShrink != nil {
+            map["WebhookContacts"] = self.webhookContactsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["BizName"] as? String {
+            self.bizName = value
+        }
+        if let value = dict["CallerProtocol"] as? String {
+            self.callerProtocol = value
+        }
+        if let value = dict["CategoryCodes"] as? String {
+            self.categoryCodesShrink = value
+        }
+        if let value = dict["ChannelConfigs"] as? String {
+            self.channelConfigsShrink = value
+        }
+        if let value = dict["ChannelGroupCode"] as? String {
+            self.channelGroupCode = value
+        }
+        if let value = dict["ClientSource"] as? String {
+            self.clientSource = value
+        }
+        if let value = dict["CommonContacts"] as? String {
+            self.commonContactsShrink = value
+        }
+        if let value = dict["Cookies"] as? String {
+            self.cookies = value
+        }
+        if let value = dict["OperationItemCode"] as? String {
+            self.operationItemCode = value
+        }
+        if let value = dict["ReceiveTimeList"] as? String {
+            self.receiveTimeListShrink = value
+        }
+        if let value = dict["Remarks"] as? String {
+            self.remarks = value
+        }
+        if let value = dict["SrcUrl"] as? String {
+            self.srcUrl = value
+        }
+        if let value = dict["TenantCode"] as? String {
+            self.tenantCode = value
+        }
+        if let value = dict["UidType"] as? String {
+            self.uidType = value
+        }
+        if let value = dict["WebhookContacts"] as? String {
+            self.webhookContactsShrink = value
+        }
+    }
+}
+
+public class UpdateUserSubscriptionResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateUserSubscriptionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateUserSubscriptionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateUserSubscriptionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateWebhookContactRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
