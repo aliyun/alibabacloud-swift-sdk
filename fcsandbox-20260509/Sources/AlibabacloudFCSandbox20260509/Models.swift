@@ -5,6 +5,69 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AgenticBucketVolumeConfig : Tea.TeaModel {
+    public var agenticBucket: String?
+
+    public var bucketName: String?
+
+    public var bucketPath: String?
+
+    public var endpoint: String?
+
+    public var readOnly: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agenticBucket != nil {
+            map["agenticBucket"] = self.agenticBucket!
+        }
+        if self.bucketName != nil {
+            map["bucketName"] = self.bucketName!
+        }
+        if self.bucketPath != nil {
+            map["bucketPath"] = self.bucketPath!
+        }
+        if self.endpoint != nil {
+            map["endpoint"] = self.endpoint!
+        }
+        if self.readOnly != nil {
+            map["readOnly"] = self.readOnly!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["agenticBucket"] as? String {
+            self.agenticBucket = value
+        }
+        if let value = dict["bucketName"] as? String {
+            self.bucketName = value
+        }
+        if let value = dict["bucketPath"] as? String {
+            self.bucketPath = value
+        }
+        if let value = dict["endpoint"] as? String {
+            self.endpoint = value
+        }
+        if let value = dict["readOnly"] as? Bool {
+            self.readOnly = value
+        }
+    }
+}
+
 public class AgenticFSVolumeConfig : Tea.TeaModel {
     public var groupID: Int32?
 
@@ -1378,6 +1441,8 @@ public class CreateVolumeInput : Tea.TeaModel {
             }
         }
     }
+    public var agenticBucketVolumeConfig: AgenticBucketVolumeConfig?
+
     public var agenticFSVolumeConfig: AgenticFSVolumeConfig?
 
     public var mountConfig: CreateVolumeInput.MountConfig?
@@ -1398,6 +1463,7 @@ public class CreateVolumeInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.agenticBucketVolumeConfig?.validate()
         try self.agenticFSVolumeConfig?.validate()
         try self.mountConfig?.validate()
         try self.ossVolumeConfig?.validate()
@@ -1405,6 +1471,9 @@ public class CreateVolumeInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agenticBucketVolumeConfig != nil {
+            map["agenticBucketVolumeConfig"] = self.agenticBucketVolumeConfig?.toMap()
+        }
         if self.agenticFSVolumeConfig != nil {
             map["agenticFSVolumeConfig"] = self.agenticFSVolumeConfig?.toMap()
         }
@@ -1425,6 +1494,11 @@ public class CreateVolumeInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["agenticBucketVolumeConfig"] as? [String: Any?] {
+            var model = AgenticBucketVolumeConfig()
+            model.fromMap(value)
+            self.agenticBucketVolumeConfig = model
+        }
         if let value = dict["agenticFSVolumeConfig"] as? [String: Any?] {
             var model = AgenticFSVolumeConfig()
             model.fromMap(value)
@@ -2672,6 +2746,8 @@ public class E2BVolume : Tea.TeaModel {
             }
         }
     }
+    public var agenticBucketVolumeConfig: AgenticBucketVolumeConfig?
+
     public var agenticFSVolumeConfig: AgenticFSVolumeConfig?
 
     public var createdAt: String?
@@ -2708,6 +2784,7 @@ public class E2BVolume : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.agenticBucketVolumeConfig?.validate()
         try self.agenticFSVolumeConfig?.validate()
         try self.mountConfig?.validate()
         try self.ossVolumeConfig?.validate()
@@ -2715,6 +2792,9 @@ public class E2BVolume : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agenticBucketVolumeConfig != nil {
+            map["agenticBucketVolumeConfig"] = self.agenticBucketVolumeConfig?.toMap()
+        }
         if self.agenticFSVolumeConfig != nil {
             map["agenticFSVolumeConfig"] = self.agenticFSVolumeConfig?.toMap()
         }
@@ -2759,6 +2839,11 @@ public class E2BVolume : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["agenticBucketVolumeConfig"] as? [String: Any?] {
+            var model = AgenticBucketVolumeConfig()
+            model.fromMap(value)
+            self.agenticBucketVolumeConfig = model
+        }
         if let value = dict["agenticFSVolumeConfig"] as? [String: Any?] {
             var model = AgenticFSVolumeConfig()
             model.fromMap(value)
