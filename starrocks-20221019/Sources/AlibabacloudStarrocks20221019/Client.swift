@@ -9,21 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "ap-southeast-1": "starrocks.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-5": "starrocks.ap-southeast-5.aliyuncs.com",
-            "cn-beijing": "starrocks.cn-beijing.aliyuncs.com",
-            "cn-hangzhou": "starrocks.cn-hangzhou.aliyuncs.com",
-            "cn-hongkong": "starrocks.cn-hongkong.aliyuncs.com",
-            "cn-qingdao": "starrocks.cn-qingdao.aliyuncs.com",
-            "cn-shanghai": "starrocks.cn-shanghai.aliyuncs.com",
-            "cn-shenzhen": "starrocks.cn-shenzhen.aliyuncs.com",
-            "cn-wulanchabu": "starrocks.cn-wulanchabu.aliyuncs.com",
-            "cn-zhangjiakou": "starrocks.cn-zhangjiakou.aliyuncs.com",
-            "us-west-1": "starrocks.us-west-1.aliyuncs.com",
-            "us-east-1": "starrocks.us-east-1.aliyuncs.com",
-            "eu-central-1": "starrocks.eu-central-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("starrocks", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1738,6 +1723,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyCuWithOptions(_ request: ModifyCuRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCuResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.fastMode)) {
             query["FastMode"] = request.fastMode!;
         }
@@ -1822,6 +1810,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDiskNumberWithOptions(_ request: ModifyDiskNumberRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskNumberResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.fastMode)) {
             query["FastMode"] = request.fastMode!;
         }
@@ -1867,6 +1858,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDiskPerformanceLevelWithOptions(_ request: ModifyDiskPerformanceLevelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskPerformanceLevelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -1909,6 +1903,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDiskSizeWithOptions(_ request: ModifyDiskSizeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskSizeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.fastMode)) {
             query["FastMode"] = request.fastMode!;
         }
@@ -1954,6 +1951,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDiskTypeWithOptions(_ request: ModifyDiskTypeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -2179,6 +2179,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyNodeNumberWithOptions(_ request: ModifyNodeNumberRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNodeNumberResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -2311,6 +2314,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifySpecTypeWithOptions(_ request: ModifySpecTypeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySpecTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.fastMode)) {
             query["FastMode"] = request.fastMode!;
         }

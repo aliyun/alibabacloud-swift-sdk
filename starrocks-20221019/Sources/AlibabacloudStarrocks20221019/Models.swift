@@ -6418,6 +6418,10 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         }
         public var aclId: String?
 
+        public var aiFunctionClusterId: String?
+
+        public var aiFunctionEndpoint: String?
+
         public var aiFunctionInstanceId: String?
 
         public var architecture: String?
@@ -6496,6 +6500,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.aclId != nil {
                 map["AclId"] = self.aclId!
+            }
+            if self.aiFunctionClusterId != nil {
+                map["AiFunctionClusterId"] = self.aiFunctionClusterId!
+            }
+            if self.aiFunctionEndpoint != nil {
+                map["AiFunctionEndpoint"] = self.aiFunctionEndpoint!
             }
             if self.aiFunctionInstanceId != nil {
                 map["AiFunctionInstanceId"] = self.aiFunctionInstanceId!
@@ -6605,6 +6615,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AclId"] as? String {
                 self.aclId = value
+            }
+            if let value = dict["AiFunctionClusterId"] as? String {
+                self.aiFunctionClusterId = value
+            }
+            if let value = dict["AiFunctionEndpoint"] as? String {
+                self.aiFunctionEndpoint = value
             }
             if let value = dict["AiFunctionInstanceId"] as? String {
                 self.aiFunctionInstanceId = value
@@ -12467,6 +12483,8 @@ public class ModifyChargeTypeResponse : Tea.TeaModel {
 }
 
 public class ModifyCuRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var fastMode: Bool?
 
     public var instanceId: String?
@@ -12491,6 +12509,9 @@ public class ModifyCuRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.fastMode != nil {
             map["FastMode"] = self.fastMode!
         }
@@ -12511,6 +12532,9 @@ public class ModifyCuRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["FastMode"] as? Bool {
             self.fastMode = value
         }
@@ -12876,6 +12900,8 @@ public class ModifyCuPreCheckResponse : Tea.TeaModel {
 }
 
 public class ModifyDiskNumberRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var fastMode: Bool?
 
     public var instanceId: String?
@@ -12900,6 +12926,9 @@ public class ModifyDiskNumberRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.fastMode != nil {
             map["FastMode"] = self.fastMode!
         }
@@ -12920,6 +12949,9 @@ public class ModifyDiskNumberRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["FastMode"] as? Bool {
             self.fastMode = value
         }
@@ -13068,6 +13100,8 @@ public class ModifyDiskNumberResponse : Tea.TeaModel {
 }
 
 public class ModifyDiskPerformanceLevelRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var instanceId: String?
 
     public var nodeGroupId: String?
@@ -13090,6 +13124,9 @@ public class ModifyDiskPerformanceLevelRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -13107,6 +13144,9 @@ public class ModifyDiskPerformanceLevelRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -13252,6 +13292,8 @@ public class ModifyDiskPerformanceLevelResponse : Tea.TeaModel {
 }
 
 public class ModifyDiskSizeRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var fastMode: Bool?
 
     public var instanceId: String?
@@ -13276,6 +13318,9 @@ public class ModifyDiskSizeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.fastMode != nil {
             map["FastMode"] = self.fastMode!
         }
@@ -13296,6 +13341,9 @@ public class ModifyDiskSizeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["FastMode"] as? Bool {
             self.fastMode = value
         }
@@ -13444,6 +13492,8 @@ public class ModifyDiskSizeResponse : Tea.TeaModel {
 }
 
 public class ModifyDiskTypeRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var instanceId: String?
 
     public var nodeGroupId: String?
@@ -13468,6 +13518,9 @@ public class ModifyDiskTypeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -13488,6 +13541,9 @@ public class ModifyDiskTypeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -14516,6 +14572,8 @@ public class ModifyMaintainableTimeResponse : Tea.TeaModel {
 }
 
 public class ModifyNodeNumberRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var instanceId: String?
 
     public var nodeGroupId: String?
@@ -14542,6 +14600,9 @@ public class ModifyNodeNumberRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -14565,6 +14626,9 @@ public class ModifyNodeNumberRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -15125,6 +15189,8 @@ public class ModifyScalingRuleResponse : Tea.TeaModel {
 }
 
 public class ModifySpecTypeRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var fastMode: Bool?
 
     public var instanceId: String?
@@ -15149,6 +15215,9 @@ public class ModifySpecTypeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.fastMode != nil {
             map["FastMode"] = self.fastMode!
         }
@@ -15169,6 +15238,9 @@ public class ModifySpecTypeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["FastMode"] as? Bool {
             self.fastMode = value
         }
