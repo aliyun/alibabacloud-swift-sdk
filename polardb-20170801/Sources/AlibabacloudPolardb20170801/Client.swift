@@ -12750,6 +12750,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
             query["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -21227,6 +21233,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func refreshDBClusterStorageUsage(_ request: RefreshDBClusterStorageUsageRequest) async throws -> RefreshDBClusterStorageUsageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await refreshDBClusterStorageUsageWithOptions(request as! RefreshDBClusterStorageUsageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func registerKnowledgeBaseFileWithOptions(_ request: RegisterKnowledgeBaseFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RegisterKnowledgeBaseFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            query["FilePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeBaseId)) {
+            query["KnowledgeBaseId"] = request.knowledgeBaseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RegisterKnowledgeBaseFile",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RegisterKnowledgeBaseFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func registerKnowledgeBaseFile(_ request: RegisterKnowledgeBaseFileRequest) async throws -> RegisterKnowledgeBaseFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await registerKnowledgeBaseFileWithOptions(request as! RegisterKnowledgeBaseFileRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

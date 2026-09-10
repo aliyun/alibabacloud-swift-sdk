@@ -72561,6 +72561,10 @@ public class DescribeKBSyncLinksRequest : Tea.TeaModel {
 
     public var knowledgeBaseId: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var regionId: String?
 
     public override init() {
@@ -72583,6 +72587,12 @@ public class DescribeKBSyncLinksRequest : Tea.TeaModel {
         if self.knowledgeBaseId != nil {
             map["KnowledgeBaseId"] = self.knowledgeBaseId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -72596,6 +72606,12 @@ public class DescribeKBSyncLinksRequest : Tea.TeaModel {
         }
         if let value = dict["KnowledgeBaseId"] as? String {
             self.knowledgeBaseId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -72700,7 +72716,13 @@ public class DescribeKBSyncLinksResponseBody : Tea.TeaModel {
     }
     public var items: [DescribeKBSyncLinksResponseBody.Items]?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var requestId: String?
+
+    public var totalRecordCount: Int32?
 
     public override init() {
         super.init()
@@ -72723,8 +72745,17 @@ public class DescribeKBSyncLinksResponseBody : Tea.TeaModel {
             }
             map["Items"] = tmp
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
         }
         return map
     }
@@ -72744,8 +72775,17 @@ public class DescribeKBSyncLinksResponseBody : Tea.TeaModel {
             }
             self.items = tmp
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TotalRecordCount"] as? Int32 {
+            self.totalRecordCount = value
         }
     }
 }
@@ -114850,6 +114890,174 @@ public class RefreshDBClusterStorageUsageResponse : Tea.TeaModel {
     }
 }
 
+public class RegisterKnowledgeBaseFileRequest : Tea.TeaModel {
+    public var filePath: String?
+
+    public var knowledgeBaseId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.knowledgeBaseId != nil {
+            map["KnowledgeBaseId"] = self.knowledgeBaseId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FilePath"] as? String {
+            self.filePath = value
+        }
+        if let value = dict["KnowledgeBaseId"] as? String {
+            self.knowledgeBaseId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class RegisterKnowledgeBaseFileResponseBody : Tea.TeaModel {
+    public var fileId: String?
+
+    public var fileName: String?
+
+    public var filePath: String?
+
+    public var idempotent: Bool?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.idempotent != nil {
+            map["Idempotent"] = self.idempotent!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
+        }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["FilePath"] as? String {
+            self.filePath = value
+        }
+        if let value = dict["Idempotent"] as? Bool {
+            self.idempotent = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class RegisterKnowledgeBaseFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RegisterKnowledgeBaseFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RegisterKnowledgeBaseFileResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class RejectPolarClawDevicePairRequest : Tea.TeaModel {
     public var applicationId: String?
 
@@ -117786,11 +117994,79 @@ public class RetrievalKnowledgeBaseRequest : Tea.TeaModel {
 
 public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
     public class Results : Tea.TeaModel {
+        public class ImageResources : Tea.TeaModel {
+            public var documentIndex: Int32?
+
+            public var id: String?
+
+            public var itemRef: String?
+
+            public var mimeType: String?
+
+            public var uri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.documentIndex != nil {
+                    map["DocumentIndex"] = self.documentIndex!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.itemRef != nil {
+                    map["ItemRef"] = self.itemRef!
+                }
+                if self.mimeType != nil {
+                    map["MimeType"] = self.mimeType!
+                }
+                if self.uri != nil {
+                    map["Uri"] = self.uri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DocumentIndex"] as? Int32 {
+                    self.documentIndex = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["ItemRef"] as? String {
+                    self.itemRef = value
+                }
+                if let value = dict["MimeType"] as? String {
+                    self.mimeType = value
+                }
+                if let value = dict["Uri"] as? String {
+                    self.uri = value
+                }
+            }
+        }
+        public var captions: [String]?
+
+        public var docItems: [String]?
+
         public var fileId: String?
 
         public var fileName: String?
 
         public var headings: [String]?
+
+        public var imageResources: [RetrievalKnowledgeBaseResponseBody.Results.ImageResources]?
 
         public var metadata: String?
 
@@ -117816,6 +118092,12 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.captions != nil {
+                map["Captions"] = self.captions!
+            }
+            if self.docItems != nil {
+                map["DocItems"] = self.docItems!
+            }
             if self.fileId != nil {
                 map["FileId"] = self.fileId!
             }
@@ -117824,6 +118106,13 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
             }
             if self.headings != nil {
                 map["Headings"] = self.headings!
+            }
+            if self.imageResources != nil {
+                var tmp : [Any] = []
+                for k in self.imageResources! {
+                    tmp.append(k.toMap())
+                }
+                map["ImageResources"] = tmp
             }
             if self.metadata != nil {
                 map["Metadata"] = self.metadata!
@@ -117845,6 +118134,12 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Captions"] as? [String] {
+                self.captions = value
+            }
+            if let value = dict["DocItems"] as? [String] {
+                self.docItems = value
+            }
             if let value = dict["FileId"] as? String {
                 self.fileId = value
             }
@@ -117853,6 +118148,19 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
             }
             if let value = dict["Headings"] as? [String] {
                 self.headings = value
+            }
+            if let value = dict["ImageResources"] as? [Any?] {
+                var tmp : [RetrievalKnowledgeBaseResponseBody.Results.ImageResources] = []
+                for v in value {
+                    if v != nil {
+                        var model = RetrievalKnowledgeBaseResponseBody.Results.ImageResources()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.imageResources = tmp
             }
             if let value = dict["Metadata"] as? String {
                 self.metadata = value
