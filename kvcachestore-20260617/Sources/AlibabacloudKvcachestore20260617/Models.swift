@@ -2190,6 +2190,270 @@ public class ListKVCacheStoreAvailableHpnZonesResponse : Tea.TeaModel {
     }
 }
 
+public class ListKVCacheStoreAvailableVscsRequest : Tea.TeaModel {
+    public class Arns : Tea.TeaModel {
+        public var assumeRoleFor: String?
+
+        public var roleArn: String?
+
+        public var roleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assumeRoleFor != nil {
+                map["AssumeRoleFor"] = self.assumeRoleFor!
+            }
+            if self.roleArn != nil {
+                map["RoleArn"] = self.roleArn!
+            }
+            if self.roleType != nil {
+                map["RoleType"] = self.roleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssumeRoleFor"] as? String {
+                self.assumeRoleFor = value
+            }
+            if let value = dict["RoleArn"] as? String {
+                self.roleArn = value
+            }
+            if let value = dict["RoleType"] as? String {
+                self.roleType = value
+            }
+        }
+    }
+    public var arns: [ListKVCacheStoreAvailableVscsRequest.Arns]?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var kvcsId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.arns != nil {
+            var tmp : [Any] = []
+            for k in self.arns! {
+                tmp.append(k.toMap())
+            }
+            map["Arns"] = tmp
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.kvcsId != nil {
+            map["KvcsId"] = self.kvcsId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Arns"] as? [Any?] {
+            var tmp : [ListKVCacheStoreAvailableVscsRequest.Arns] = []
+            for v in value {
+                if v != nil {
+                    var model = ListKVCacheStoreAvailableVscsRequest.Arns()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.arns = tmp
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["KvcsId"] as? String {
+            self.kvcsId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ListKVCacheStoreAvailableVscsResponseBody : Tea.TeaModel {
+    public class Vscs : Tea.TeaModel {
+        public var vscId: String?
+
+        public var vscStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vscId != nil {
+                map["VscId"] = self.vscId!
+            }
+            if self.vscStatus != nil {
+                map["VscStatus"] = self.vscStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VscId"] as? String {
+                self.vscId = value
+            }
+            if let value = dict["VscStatus"] as? String {
+                self.vscStatus = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var vscs: [ListKVCacheStoreAvailableVscsResponseBody.Vscs]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.vscs != nil {
+            var tmp : [Any] = []
+            for k in self.vscs! {
+                tmp.append(k.toMap())
+            }
+            map["Vscs"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Vscs"] as? [Any?] {
+            var tmp : [ListKVCacheStoreAvailableVscsResponseBody.Vscs] = []
+            for v in value {
+                if v != nil {
+                    var model = ListKVCacheStoreAvailableVscsResponseBody.Vscs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.vscs = tmp
+        }
+    }
+}
+
+public class ListKVCacheStoreAvailableVscsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListKVCacheStoreAvailableVscsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListKVCacheStoreAvailableVscsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListKVCacheStoresRequest : Tea.TeaModel {
     public var kvcsIds: String?
 

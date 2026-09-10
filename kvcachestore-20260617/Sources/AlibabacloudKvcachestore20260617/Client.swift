@@ -9,11 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-beijing": "kvcachestore.cn-beijing.aliyuncs.com",
-            "cn-shanghai": "kvcachestore.cn-shanghai.aliyuncs.com",
-            "ap-southeast-1": "kvcachestore.ap-southeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("kvcachestore", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -371,6 +366,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listKVCacheStoreAvailableHpnZones(_ request: ListKVCacheStoreAvailableHpnZonesRequest) async throws -> ListKVCacheStoreAvailableHpnZonesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listKVCacheStoreAvailableHpnZonesWithOptions(request as! ListKVCacheStoreAvailableHpnZonesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKVCacheStoreAvailableVscsWithOptions(_ request: ListKVCacheStoreAvailableVscsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKVCacheStoreAvailableVscsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.arns)) {
+            query["Arns"] = request.arns ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kvcsId)) {
+            query["KvcsId"] = request.kvcsId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKVCacheStoreAvailableVscs",
+            "version": "2026-06-17",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKVCacheStoreAvailableVscsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKVCacheStoreAvailableVscs(_ request: ListKVCacheStoreAvailableVscsRequest) async throws -> ListKVCacheStoreAvailableVscsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listKVCacheStoreAvailableVscsWithOptions(request as! ListKVCacheStoreAvailableVscsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

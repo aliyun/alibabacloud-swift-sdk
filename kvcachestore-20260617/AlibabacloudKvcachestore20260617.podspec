@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudKvcachestore20260617"
-  spec.version      = "1.0.0"
+  spec.version      = "1.1.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Kvcachestore (20260617) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/kvcachestore-20260617" 
