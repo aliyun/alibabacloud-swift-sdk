@@ -9,20 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "us-west-1": "dlfnext.us-west-1.aliyuncs.com",
-            "us-east-1": "dlfnext.us-east-1.aliyuncs.com",
-            "eu-central-1": "dlfnext.eu-central-1.aliyuncs.com",
-            "cn-wulanchabu": "dlfnext.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "dlfnext.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai": "dlfnext.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "dlfnext.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "dlfnext.cn-hangzhou.aliyuncs.com",
-            "cn-beijing": "dlfnext.cn-beijing.aliyuncs.com",
-            "ap-southeast-5": "dlfnext.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-1": "dlfnext.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-1": "dlfnext.ap-northeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dlfnext", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -420,7 +406,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "json",
-            "bodyType": "none"
+            "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(CreateCatalogResponse(), tmp)
