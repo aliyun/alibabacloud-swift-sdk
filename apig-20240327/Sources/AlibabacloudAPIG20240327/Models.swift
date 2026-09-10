@@ -24595,6 +24595,8 @@ public class DeleteGatewaySecurityGroupRuleResponse : Tea.TeaModel {
 }
 
 public class DeleteHttpApiRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public override init() {
@@ -24611,6 +24613,9 @@ public class DeleteHttpApiRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["dryRun"] = self.dryRun!
         }
@@ -24619,6 +24624,9 @@ public class DeleteHttpApiRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["dryRun"] as? Bool {
             self.dryRun = value
         }
