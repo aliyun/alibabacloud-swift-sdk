@@ -9160,6 +9160,8 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
 
         public var authorizeCallbackDomain: String?
 
+        public var contactSecret: String?
+
         public var corpId: String?
 
         public var corpSecret: String?
@@ -9186,6 +9188,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             if self.authorizeCallbackDomain != nil {
                 map["AuthorizeCallbackDomain"] = self.authorizeCallbackDomain!
             }
+            if self.contactSecret != nil {
+                map["ContactSecret"] = self.contactSecret!
+            }
             if self.corpId != nil {
                 map["CorpId"] = self.corpId!
             }
@@ -9205,6 +9210,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             }
             if let value = dict["AuthorizeCallbackDomain"] as? String {
                 self.authorizeCallbackDomain = value
+            }
+            if let value = dict["ContactSecret"] as? String {
+                self.contactSecret = value
             }
             if let value = dict["CorpId"] as? String {
                 self.corpId = value
@@ -25771,6 +25779,8 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
 
             public var samlMetaEndpoint: String?
 
+            public var samlSloEndpoint: String?
+
             public var samlSsoEndpoint: String?
 
             public override init() {
@@ -25814,6 +25824,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 if self.samlMetaEndpoint != nil {
                     map["SamlMetaEndpoint"] = self.samlMetaEndpoint!
                 }
+                if self.samlSloEndpoint != nil {
+                    map["SamlSloEndpoint"] = self.samlSloEndpoint!
+                }
                 if self.samlSsoEndpoint != nil {
                     map["SamlSsoEndpoint"] = self.samlSsoEndpoint!
                 }
@@ -25848,6 +25861,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SamlMetaEndpoint"] as? String {
                     self.samlMetaEndpoint = value
+                }
+                if let value = dict["SamlSloEndpoint"] as? String {
+                    self.samlSloEndpoint = value
                 }
                 if let value = dict["SamlSsoEndpoint"] as? String {
                     self.samlSsoEndpoint = value
@@ -25945,11 +25961,17 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
 
             public var optionalRelayStates: [GetApplicationSsoConfigResponseBody.ApplicationSsoConfig.SamlSsoConfig.OptionalRelayStates]?
 
+            public var requireAuthnRequestSigned: Bool?
+
             public var responseSigned: Bool?
 
             public var signatureAlgorithm: String?
 
             public var spEntityId: String?
+
+            public var spSigningCertificates: [String]?
+
+            public var spSloResponseUrl: String?
 
             public var spSsoAcsUrl: String?
 
@@ -25996,6 +26018,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                     }
                     map["OptionalRelayStates"] = tmp
                 }
+                if self.requireAuthnRequestSigned != nil {
+                    map["RequireAuthnRequestSigned"] = self.requireAuthnRequestSigned!
+                }
                 if self.responseSigned != nil {
                     map["ResponseSigned"] = self.responseSigned!
                 }
@@ -26004,6 +26029,12 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 }
                 if self.spEntityId != nil {
                     map["SpEntityId"] = self.spEntityId!
+                }
+                if self.spSigningCertificates != nil {
+                    map["SpSigningCertificates"] = self.spSigningCertificates!
+                }
+                if self.spSloResponseUrl != nil {
+                    map["SpSloResponseUrl"] = self.spSloResponseUrl!
                 }
                 if self.spSsoAcsUrl != nil {
                     map["SpSsoAcsUrl"] = self.spSsoAcsUrl!
@@ -26054,6 +26085,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                     }
                     self.optionalRelayStates = tmp
                 }
+                if let value = dict["RequireAuthnRequestSigned"] as? Bool {
+                    self.requireAuthnRequestSigned = value
+                }
                 if let value = dict["ResponseSigned"] as? Bool {
                     self.responseSigned = value
                 }
@@ -26062,6 +26096,12 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SpEntityId"] as? String {
                     self.spEntityId = value
+                }
+                if let value = dict["SpSigningCertificates"] as? [String] {
+                    self.spSigningCertificates = value
+                }
+                if let value = dict["SpSloResponseUrl"] as? String {
+                    self.spSloResponseUrl = value
                 }
                 if let value = dict["SpSsoAcsUrl"] as? String {
                     self.spSsoAcsUrl = value
@@ -27414,7 +27454,11 @@ public class GetBrandResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var smsGatewayId: String?
+
         public var status: String?
+
+        public var systemNotificationStatus: String?
 
         public override init() {
             super.init()
@@ -27442,8 +27486,14 @@ public class GetBrandResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.smsGatewayId != nil {
+                map["SmsGatewayId"] = self.smsGatewayId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.systemNotificationStatus != nil {
+                map["SystemNotificationStatus"] = self.systemNotificationStatus!
             }
             return map
         }
@@ -27462,8 +27512,14 @@ public class GetBrandResponseBody : Tea.TeaModel {
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
+            if let value = dict["SmsGatewayId"] as? String {
+                self.smsGatewayId = value
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SystemNotificationStatus"] as? String {
+                self.systemNotificationStatus = value
             }
         }
     }
@@ -33271,6 +33327,8 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
 
             public var authorizeCallbackDomain: String?
 
+            public var contactSecret: String?
+
             public var corpId: String?
 
             public var corpSecret: String?
@@ -33297,6 +33355,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 if self.authorizeCallbackDomain != nil {
                     map["AuthorizeCallbackDomain"] = self.authorizeCallbackDomain!
                 }
+                if self.contactSecret != nil {
+                    map["ContactSecret"] = self.contactSecret!
+                }
                 if self.corpId != nil {
                     map["CorpId"] = self.corpId!
                 }
@@ -33316,6 +33377,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AuthorizeCallbackDomain"] as? String {
                     self.authorizeCallbackDomain = value
+                }
+                if let value = dict["ContactSecret"] as? String {
+                    self.contactSecret = value
                 }
                 if let value = dict["CorpId"] as? String {
                     self.corpId = value
@@ -48745,7 +48809,11 @@ public class ListBrandsResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var smsGatewayId: String?
+
         public var status: String?
+
+        public var systemNotificationStatus: String?
 
         public override init() {
             super.init()
@@ -48773,8 +48841,14 @@ public class ListBrandsResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.smsGatewayId != nil {
+                map["SmsGatewayId"] = self.smsGatewayId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.systemNotificationStatus != nil {
+                map["SystemNotificationStatus"] = self.systemNotificationStatus!
             }
             return map
         }
@@ -48793,8 +48867,14 @@ public class ListBrandsResponseBody : Tea.TeaModel {
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
+            if let value = dict["SmsGatewayId"] as? String {
+                self.smsGatewayId = value
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SystemNotificationStatus"] as? String {
+                self.systemNotificationStatus = value
             }
         }
     }
@@ -70437,11 +70517,17 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
 
         public var optionalRelayStates: [SetApplicationSsoConfigRequest.SamlSsoConfig.OptionalRelayStates]?
 
+        public var requireAuthnRequestSigned: Bool?
+
         public var responseSigned: Bool?
 
         public var signatureAlgorithm: String?
 
         public var spEntityId: String?
+
+        public var spSigningCertificates: [String]?
+
+        public var spSloResponseUrl: String?
 
         public var spSsoAcsUrl: String?
 
@@ -70488,6 +70574,9 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
                 }
                 map["OptionalRelayStates"] = tmp
             }
+            if self.requireAuthnRequestSigned != nil {
+                map["RequireAuthnRequestSigned"] = self.requireAuthnRequestSigned!
+            }
             if self.responseSigned != nil {
                 map["ResponseSigned"] = self.responseSigned!
             }
@@ -70496,6 +70585,12 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
             }
             if self.spEntityId != nil {
                 map["SpEntityId"] = self.spEntityId!
+            }
+            if self.spSigningCertificates != nil {
+                map["SpSigningCertificates"] = self.spSigningCertificates!
+            }
+            if self.spSloResponseUrl != nil {
+                map["SpSloResponseUrl"] = self.spSloResponseUrl!
             }
             if self.spSsoAcsUrl != nil {
                 map["SpSsoAcsUrl"] = self.spSsoAcsUrl!
@@ -70546,6 +70641,9 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
                 }
                 self.optionalRelayStates = tmp
             }
+            if let value = dict["RequireAuthnRequestSigned"] as? Bool {
+                self.requireAuthnRequestSigned = value
+            }
             if let value = dict["ResponseSigned"] as? Bool {
                 self.responseSigned = value
             }
@@ -70554,6 +70652,12 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
             }
             if let value = dict["SpEntityId"] as? String {
                 self.spEntityId = value
+            }
+            if let value = dict["SpSigningCertificates"] as? [String] {
+                self.spSigningCertificates = value
+            }
+            if let value = dict["SpSloResponseUrl"] as? String {
+                self.spSloResponseUrl = value
             }
             if let value = dict["SpSsoAcsUrl"] as? String {
                 self.spSsoAcsUrl = value
@@ -81067,6 +81171,8 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
 
         public var authorizeCallbackDomain: String?
 
+        public var contactSecret: String?
+
         public var corpSecret: String?
 
         public var trustableDomain: String?
@@ -81091,6 +81197,9 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             if self.authorizeCallbackDomain != nil {
                 map["AuthorizeCallbackDomain"] = self.authorizeCallbackDomain!
             }
+            if self.contactSecret != nil {
+                map["ContactSecret"] = self.contactSecret!
+            }
             if self.corpSecret != nil {
                 map["CorpSecret"] = self.corpSecret!
             }
@@ -81107,6 +81216,9 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             }
             if let value = dict["AuthorizeCallbackDomain"] as? String {
                 self.authorizeCallbackDomain = value
+            }
+            if let value = dict["ContactSecret"] as? String {
+                self.contactSecret = value
             }
             if let value = dict["CorpSecret"] as? String {
                 self.corpSecret = value

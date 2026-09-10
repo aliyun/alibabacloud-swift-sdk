@@ -9,15 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-hongkong": "eiam.cn-hongkong.aliyuncs.com",
-            "ap-northeast-2": "eiam.ap-northeast-2.aliyuncs.com",
-            "ap-southeast-1": "eiam.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-5": "eiam.ap-southeast-5.aliyuncs.com",
-            "cn-hangzhou": "eiam.cn-hangzhou.aliyuncs.com",
-            "cn-beijing": "eiam.cn-beijing.aliyuncs.com",
-            "eu-central-1": "eiam.eu-central-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eiam", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
