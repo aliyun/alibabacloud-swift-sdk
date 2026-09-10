@@ -337,6 +337,135 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downloadResourceControlEventsWithOptions(_ tmpReq: DownloadResourceControlEventsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DownloadResourceControlEventsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DownloadResourceControlEventsShrinkRequest = DownloadResourceControlEventsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.actionCodes)) {
+            request.actionCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.actionCodes, "ActionCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.caseCodesPrefix)) {
+            request.caseCodesPrefixShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.caseCodesPrefix, "CaseCodesPrefix", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.eventCodes)) {
+            request.eventCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.eventCodes, "EventCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.excludeActionCodes)) {
+            request.excludeActionCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeActionCodes, "ExcludeActionCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.excludeEventCodes)) {
+            request.excludeEventCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeEventCodes, "ExcludeEventCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.excludeReasons)) {
+            request.excludeReasonsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeReasons, "ExcludeReasons", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.includeReasons)) {
+            request.includeReasonsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.includeReasons, "IncludeReasons", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sourceCodes)) {
+            request.sourceCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceCodes, "SourceCodes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.statusList)) {
+            request.statusListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statusList, "StatusList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actionCode)) {
+            query["ActionCode"] = request.actionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.actionCodesShrink)) {
+            query["ActionCodes"] = request.actionCodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
+            query["AliyunLang"] = request.aliyunLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessCode)) {
+            query["BusinessCode"] = request.businessCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.caseCodesPrefixShrink)) {
+            query["CaseCodesPrefix"] = request.caseCodesPrefixShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.current)) {
+            query["Current"] = request.current!;
+        }
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventCode)) {
+            query["EventCode"] = request.eventCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventCodesShrink)) {
+            query["EventCodes"] = request.eventCodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventId)) {
+            query["EventId"] = request.eventId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.excludeActionCodesShrink)) {
+            query["ExcludeActionCodes"] = request.excludeActionCodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.excludeEventCodesShrink)) {
+            query["ExcludeEventCodes"] = request.excludeEventCodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.excludeReasonsShrink)) {
+            query["ExcludeReasons"] = request.excludeReasonsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeReasonsShrink)) {
+            query["IncludeReasons"] = request.includeReasonsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ip)) {
+            query["Ip"] = request.ip ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.punishEndTime)) {
+            query["PunishEndTime"] = request.punishEndTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.punishStartTime)) {
+            query["PunishStartTime"] = request.punishStartTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            query["Reason"] = request.reason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCodesShrink)) {
+            query["SourceCodes"] = request.sourceCodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusListShrink)) {
+            query["StatusList"] = request.statusListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            query["Url"] = request.url ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DownloadResourceControlEvents",
+            "version": "2026-04-24",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DownloadResourceControlEventsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downloadResourceControlEvents(_ request: DownloadResourceControlEventsRequest) async throws -> DownloadResourceControlEventsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await downloadResourceControlEventsWithOptions(request as! DownloadResourceControlEventsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAlertRecordAnalysisResultWithOptions(_ tmpReq: GetAlertRecordAnalysisResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAlertRecordAnalysisResultResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetAlertRecordAnalysisResultShrinkRequest = GetAlertRecordAnalysisResultShrinkRequest([:])

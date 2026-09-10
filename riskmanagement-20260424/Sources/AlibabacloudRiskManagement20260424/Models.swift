@@ -4547,6 +4547,549 @@ public class DescribeVersionConfigResponse : Tea.TeaModel {
     }
 }
 
+public class DownloadResourceControlEventsRequest : Tea.TeaModel {
+    public var actionCode: String?
+
+    public var actionCodes: [String]?
+
+    public var aliyunLang: String?
+
+    public var businessCode: String?
+
+    public var caseCodesPrefix: [String]?
+
+    public var current: Int32?
+
+    public var domain: String?
+
+    public var eventCode: String?
+
+    public var eventCodes: [String]?
+
+    public var eventId: String?
+
+    public var excludeActionCodes: [String]?
+
+    public var excludeEventCodes: [String]?
+
+    public var excludeReasons: [String]?
+
+    public var includeReasons: [String]?
+
+    public var instanceId: String?
+
+    public var ip: String?
+
+    public var pageSize: Int32?
+
+    public var punishEndTime: String?
+
+    public var punishStartTime: String?
+
+    public var reason: String?
+
+    public var sourceCodes: [String]?
+
+    public var status: String?
+
+    public var statusList: [String]?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionCode != nil {
+            map["ActionCode"] = self.actionCode!
+        }
+        if self.actionCodes != nil {
+            map["ActionCodes"] = self.actionCodes!
+        }
+        if self.aliyunLang != nil {
+            map["AliyunLang"] = self.aliyunLang!
+        }
+        if self.businessCode != nil {
+            map["BusinessCode"] = self.businessCode!
+        }
+        if self.caseCodesPrefix != nil {
+            map["CaseCodesPrefix"] = self.caseCodesPrefix!
+        }
+        if self.current != nil {
+            map["Current"] = self.current!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.eventCode != nil {
+            map["EventCode"] = self.eventCode!
+        }
+        if self.eventCodes != nil {
+            map["EventCodes"] = self.eventCodes!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.excludeActionCodes != nil {
+            map["ExcludeActionCodes"] = self.excludeActionCodes!
+        }
+        if self.excludeEventCodes != nil {
+            map["ExcludeEventCodes"] = self.excludeEventCodes!
+        }
+        if self.excludeReasons != nil {
+            map["ExcludeReasons"] = self.excludeReasons!
+        }
+        if self.includeReasons != nil {
+            map["IncludeReasons"] = self.includeReasons!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.punishEndTime != nil {
+            map["PunishEndTime"] = self.punishEndTime!
+        }
+        if self.punishStartTime != nil {
+            map["PunishStartTime"] = self.punishStartTime!
+        }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
+        if self.sourceCodes != nil {
+            map["SourceCodes"] = self.sourceCodes!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.statusList != nil {
+            map["StatusList"] = self.statusList!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionCode"] as? String {
+            self.actionCode = value
+        }
+        if let value = dict["ActionCodes"] as? [String] {
+            self.actionCodes = value
+        }
+        if let value = dict["AliyunLang"] as? String {
+            self.aliyunLang = value
+        }
+        if let value = dict["BusinessCode"] as? String {
+            self.businessCode = value
+        }
+        if let value = dict["CaseCodesPrefix"] as? [String] {
+            self.caseCodesPrefix = value
+        }
+        if let value = dict["Current"] as? Int32 {
+            self.current = value
+        }
+        if let value = dict["Domain"] as? String {
+            self.domain = value
+        }
+        if let value = dict["EventCode"] as? String {
+            self.eventCode = value
+        }
+        if let value = dict["EventCodes"] as? [String] {
+            self.eventCodes = value
+        }
+        if let value = dict["EventId"] as? String {
+            self.eventId = value
+        }
+        if let value = dict["ExcludeActionCodes"] as? [String] {
+            self.excludeActionCodes = value
+        }
+        if let value = dict["ExcludeEventCodes"] as? [String] {
+            self.excludeEventCodes = value
+        }
+        if let value = dict["ExcludeReasons"] as? [String] {
+            self.excludeReasons = value
+        }
+        if let value = dict["IncludeReasons"] as? [String] {
+            self.includeReasons = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["PunishEndTime"] as? String {
+            self.punishEndTime = value
+        }
+        if let value = dict["PunishStartTime"] as? String {
+            self.punishStartTime = value
+        }
+        if let value = dict["Reason"] as? String {
+            self.reason = value
+        }
+        if let value = dict["SourceCodes"] as? [String] {
+            self.sourceCodes = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["StatusList"] as? [String] {
+            self.statusList = value
+        }
+        if let value = dict["Url"] as? String {
+            self.url = value
+        }
+    }
+}
+
+public class DownloadResourceControlEventsShrinkRequest : Tea.TeaModel {
+    public var actionCode: String?
+
+    public var actionCodesShrink: String?
+
+    public var aliyunLang: String?
+
+    public var businessCode: String?
+
+    public var caseCodesPrefixShrink: String?
+
+    public var current: Int32?
+
+    public var domain: String?
+
+    public var eventCode: String?
+
+    public var eventCodesShrink: String?
+
+    public var eventId: String?
+
+    public var excludeActionCodesShrink: String?
+
+    public var excludeEventCodesShrink: String?
+
+    public var excludeReasonsShrink: String?
+
+    public var includeReasonsShrink: String?
+
+    public var instanceId: String?
+
+    public var ip: String?
+
+    public var pageSize: Int32?
+
+    public var punishEndTime: String?
+
+    public var punishStartTime: String?
+
+    public var reason: String?
+
+    public var sourceCodesShrink: String?
+
+    public var status: String?
+
+    public var statusListShrink: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionCode != nil {
+            map["ActionCode"] = self.actionCode!
+        }
+        if self.actionCodesShrink != nil {
+            map["ActionCodes"] = self.actionCodesShrink!
+        }
+        if self.aliyunLang != nil {
+            map["AliyunLang"] = self.aliyunLang!
+        }
+        if self.businessCode != nil {
+            map["BusinessCode"] = self.businessCode!
+        }
+        if self.caseCodesPrefixShrink != nil {
+            map["CaseCodesPrefix"] = self.caseCodesPrefixShrink!
+        }
+        if self.current != nil {
+            map["Current"] = self.current!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.eventCode != nil {
+            map["EventCode"] = self.eventCode!
+        }
+        if self.eventCodesShrink != nil {
+            map["EventCodes"] = self.eventCodesShrink!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.excludeActionCodesShrink != nil {
+            map["ExcludeActionCodes"] = self.excludeActionCodesShrink!
+        }
+        if self.excludeEventCodesShrink != nil {
+            map["ExcludeEventCodes"] = self.excludeEventCodesShrink!
+        }
+        if self.excludeReasonsShrink != nil {
+            map["ExcludeReasons"] = self.excludeReasonsShrink!
+        }
+        if self.includeReasonsShrink != nil {
+            map["IncludeReasons"] = self.includeReasonsShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.punishEndTime != nil {
+            map["PunishEndTime"] = self.punishEndTime!
+        }
+        if self.punishStartTime != nil {
+            map["PunishStartTime"] = self.punishStartTime!
+        }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
+        if self.sourceCodesShrink != nil {
+            map["SourceCodes"] = self.sourceCodesShrink!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.statusListShrink != nil {
+            map["StatusList"] = self.statusListShrink!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionCode"] as? String {
+            self.actionCode = value
+        }
+        if let value = dict["ActionCodes"] as? String {
+            self.actionCodesShrink = value
+        }
+        if let value = dict["AliyunLang"] as? String {
+            self.aliyunLang = value
+        }
+        if let value = dict["BusinessCode"] as? String {
+            self.businessCode = value
+        }
+        if let value = dict["CaseCodesPrefix"] as? String {
+            self.caseCodesPrefixShrink = value
+        }
+        if let value = dict["Current"] as? Int32 {
+            self.current = value
+        }
+        if let value = dict["Domain"] as? String {
+            self.domain = value
+        }
+        if let value = dict["EventCode"] as? String {
+            self.eventCode = value
+        }
+        if let value = dict["EventCodes"] as? String {
+            self.eventCodesShrink = value
+        }
+        if let value = dict["EventId"] as? String {
+            self.eventId = value
+        }
+        if let value = dict["ExcludeActionCodes"] as? String {
+            self.excludeActionCodesShrink = value
+        }
+        if let value = dict["ExcludeEventCodes"] as? String {
+            self.excludeEventCodesShrink = value
+        }
+        if let value = dict["ExcludeReasons"] as? String {
+            self.excludeReasonsShrink = value
+        }
+        if let value = dict["IncludeReasons"] as? String {
+            self.includeReasonsShrink = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["PunishEndTime"] as? String {
+            self.punishEndTime = value
+        }
+        if let value = dict["PunishStartTime"] as? String {
+            self.punishStartTime = value
+        }
+        if let value = dict["Reason"] as? String {
+            self.reason = value
+        }
+        if let value = dict["SourceCodes"] as? String {
+            self.sourceCodesShrink = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["StatusList"] as? String {
+            self.statusListShrink = value
+        }
+        if let value = dict["Url"] as? String {
+            self.url = value
+        }
+    }
+}
+
+public class DownloadResourceControlEventsResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DownloadResourceControlEventsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DownloadResourceControlEventsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DownloadResourceControlEventsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetAlertRecordAnalysisResultRequest : Tea.TeaModel {
     public class UniqueTagList : Tea.TeaModel {
         public var alarmUniqueInfo: String?
