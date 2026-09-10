@@ -227,11 +227,203 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                 }
             }
             public class TextResult : Tea.TeaModel {
+                public class Result : Tea.TeaModel {
+                    public class CustomizedHit : Tea.TeaModel {
+                        public var keyWords: String?
+
+                        public var libName: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.keyWords != nil {
+                                map["KeyWords"] = self.keyWords!
+                            }
+                            if self.libName != nil {
+                                map["LibName"] = self.libName!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["KeyWords"] as? String {
+                                self.keyWords = value
+                            }
+                            if let value = dict["LibName"] as? String {
+                                self.libName = value
+                            }
+                        }
+                    }
+                    public class RiskPositions : Tea.TeaModel {
+                        public var endPos: Int64?
+
+                        public var riskWord: String?
+
+                        public var startPos: Int64?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.endPos != nil {
+                                map["EndPos"] = self.endPos!
+                            }
+                            if self.riskWord != nil {
+                                map["RiskWord"] = self.riskWord!
+                            }
+                            if self.startPos != nil {
+                                map["StartPos"] = self.startPos!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["EndPos"] as? Int64 {
+                                self.endPos = value
+                            }
+                            if let value = dict["RiskWord"] as? String {
+                                self.riskWord = value
+                            }
+                            if let value = dict["StartPos"] as? Int64 {
+                                self.startPos = value
+                            }
+                        }
+                    }
+                    public var confidence: Double?
+
+                    public var customizedHit: [DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result.CustomizedHit]?
+
+                    public var description_: String?
+
+                    public var label: String?
+
+                    public var riskLevel: String?
+
+                    public var riskPositions: [DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result.RiskPositions]?
+
+                    public var riskWords: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.customizedHit != nil {
+                            var tmp : [Any] = []
+                            for k in self.customizedHit! {
+                                tmp.append(k.toMap())
+                            }
+                            map["CustomizedHit"] = tmp
+                        }
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        if self.riskLevel != nil {
+                            map["RiskLevel"] = self.riskLevel!
+                        }
+                        if self.riskPositions != nil {
+                            var tmp : [Any] = []
+                            for k in self.riskPositions! {
+                                tmp.append(k.toMap())
+                            }
+                            map["RiskPositions"] = tmp
+                        }
+                        if self.riskWords != nil {
+                            map["RiskWords"] = self.riskWords!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Confidence"] as? Double {
+                            self.confidence = value
+                        }
+                        if let value = dict["CustomizedHit"] as? [Any?] {
+                            var tmp : [DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result.CustomizedHit] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result.CustomizedHit()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.customizedHit = tmp
+                        }
+                        if let value = dict["Description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["Label"] as? String {
+                            self.label = value
+                        }
+                        if let value = dict["RiskLevel"] as? String {
+                            self.riskLevel = value
+                        }
+                        if let value = dict["RiskPositions"] as? [Any?] {
+                            var tmp : [DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result.RiskPositions] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result.RiskPositions()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.riskPositions = tmp
+                        }
+                        if let value = dict["RiskWords"] as? String {
+                            self.riskWords = value
+                        }
+                    }
+                }
                 public var description_: String?
 
                 public var descriptions: String?
 
                 public var labels: String?
+
+                public var result: [DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result]?
 
                 public var riskLevel: String?
 
@@ -268,6 +460,13 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     if self.labels != nil {
                         map["Labels"] = self.labels!
                     }
+                    if self.result != nil {
+                        var tmp : [Any] = []
+                        for k in self.result! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Result"] = tmp
+                    }
                     if self.riskLevel != nil {
                         map["RiskLevel"] = self.riskLevel!
                     }
@@ -299,6 +498,19 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Labels"] as? String {
                         self.labels = value
+                    }
+                    if let value = dict["Result"] as? [Any?] {
+                        var tmp : [DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeFileModerationResultResponseBody.Data.PageResult.TextResult.Result()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.result = tmp
                     }
                     if let value = dict["RiskLevel"] as? String {
                         self.riskLevel = value
@@ -6915,6 +7127,8 @@ public class MultiModalAgentResponseBody : Tea.TeaModel {
 
             public var contentLength: Int64?
 
+            public var credits: Double?
+
             public var promptLength: Int64?
 
             public override init() {
@@ -6937,6 +7151,9 @@ public class MultiModalAgentResponseBody : Tea.TeaModel {
                 if self.contentLength != nil {
                     map["ContentLength"] = self.contentLength!
                 }
+                if self.credits != nil {
+                    map["Credits"] = self.credits!
+                }
                 if self.promptLength != nil {
                     map["PromptLength"] = self.promptLength!
                 }
@@ -6950,6 +7167,9 @@ public class MultiModalAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ContentLength"] as? Int64 {
                     self.contentLength = value
+                }
+                if let value = dict["Credits"] as? Double {
+                    self.credits = value
                 }
                 if let value = dict["PromptLength"] as? Int64 {
                     self.promptLength = value
