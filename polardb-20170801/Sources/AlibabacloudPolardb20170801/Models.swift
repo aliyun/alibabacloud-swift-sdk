@@ -43848,6 +43848,8 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
 
             public var applicationType: String?
 
+            public var branchId: String?
+
             public var creationTime: String?
 
             public var DBClusterId: String?
@@ -43895,6 +43897,9 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
                 }
                 if self.applicationType != nil {
                     map["ApplicationType"] = self.applicationType!
+                }
+                if self.branchId != nil {
+                    map["BranchId"] = self.branchId!
                 }
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
@@ -43945,6 +43950,9 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ApplicationType"] as? String {
                     self.applicationType = value
+                }
+                if let value = dict["BranchId"] as? String {
+                    self.branchId = value
                 }
                 if let value = dict["CreationTime"] as? String {
                     self.creationTime = value
