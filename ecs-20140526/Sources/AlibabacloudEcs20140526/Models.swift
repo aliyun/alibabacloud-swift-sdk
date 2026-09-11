@@ -16052,6 +16052,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var keyPairName: String?
 
+    public var managedHostId: String?
+
     public var nodeControllerId: String?
 
     public var ownerAccount: String?
@@ -16231,6 +16233,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
+        }
+        if self.managedHostId != nil {
+            map["ManagedHostId"] = self.managedHostId!
         }
         if self.nodeControllerId != nil {
             map["NodeControllerId"] = self.nodeControllerId!
@@ -16449,6 +16454,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["KeyPairName"] as? String {
             self.keyPairName = value
+        }
+        if let value = dict["ManagedHostId"] as? String {
+            self.managedHostId = value
         }
         if let value = dict["NodeControllerId"] as? String {
             self.nodeControllerId = value
@@ -65382,6 +65390,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             public class AdditionalInfo : Tea.TeaModel {
                 public var enableHighDensityMode: Bool?
 
+                public var managedHostId: String?
+
                 public var nodeSerialNumber: String?
 
                 public override init() {
@@ -65401,6 +65411,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     if self.enableHighDensityMode != nil {
                         map["EnableHighDensityMode"] = self.enableHighDensityMode!
                     }
+                    if self.managedHostId != nil {
+                        map["ManagedHostId"] = self.managedHostId!
+                    }
                     if self.nodeSerialNumber != nil {
                         map["NodeSerialNumber"] = self.nodeSerialNumber!
                     }
@@ -65411,6 +65424,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["EnableHighDensityMode"] as? Bool {
                         self.enableHighDensityMode = value
+                    }
+                    if let value = dict["ManagedHostId"] as? String {
+                        self.managedHostId = value
                     }
                     if let value = dict["NodeSerialNumber"] as? String {
                         self.nodeSerialNumber = value
@@ -129997,6 +130013,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var launchTemplateVersion: Int64?
 
+    public var managedHostId: String?
+
     public var minAmount: Int32?
 
     public var networkInterface: [RunInstancesRequest.NetworkInterface]?
@@ -130230,6 +130248,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if self.launchTemplateVersion != nil {
             map["LaunchTemplateVersion"] = self.launchTemplateVersion!
+        }
+        if self.managedHostId != nil {
+            map["ManagedHostId"] = self.managedHostId!
         }
         if self.minAmount != nil {
             map["MinAmount"] = self.minAmount!
@@ -130513,6 +130534,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["LaunchTemplateVersion"] as? Int64 {
             self.launchTemplateVersion = value
+        }
+        if let value = dict["ManagedHostId"] as? String {
+            self.managedHostId = value
         }
         if let value = dict["MinAmount"] as? Int32 {
             self.minAmount = value
