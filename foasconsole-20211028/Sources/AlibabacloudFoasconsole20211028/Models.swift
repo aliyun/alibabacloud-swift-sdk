@@ -1375,6 +1375,82 @@ public class ConvertPrepayInstanceResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class DefaultHaNamespaceResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Cpu"] as? Int32 {
+                self.cpu = value
+            }
+            if let value = dict["MemoryGB"] as? Int32 {
+                self.memoryGB = value
+            }
+        }
+    }
+    public class DefaultNamespaceResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Cpu"] as? Int32 {
+                self.cpu = value
+            }
+            if let value = dict["MemoryGB"] as? Int32 {
+                self.memoryGB = value
+            }
+        }
+    }
     public class HaResourceSpec : Tea.TeaModel {
         public var cpu: Int32?
 
@@ -1566,6 +1642,10 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var defaultHaNamespaceResourceSpec: CreateInstanceRequest.DefaultHaNamespaceResourceSpec?
+
+    public var defaultNamespaceResourceSpec: CreateInstanceRequest.DefaultNamespaceResourceSpec?
+
     public var duration: Int32?
 
     public var extra: String?
@@ -1610,6 +1690,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.defaultHaNamespaceResourceSpec?.validate()
+        try self.defaultNamespaceResourceSpec?.validate()
         try self.haResourceSpec?.validate()
         try self.resourceSpec?.validate()
         try self.storage?.validate()
@@ -1625,6 +1707,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.defaultHaNamespaceResourceSpec != nil {
+            map["DefaultHaNamespaceResourceSpec"] = self.defaultHaNamespaceResourceSpec?.toMap()
+        }
+        if self.defaultNamespaceResourceSpec != nil {
+            map["DefaultNamespaceResourceSpec"] = self.defaultNamespaceResourceSpec?.toMap()
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
@@ -1694,6 +1782,16 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
+        }
+        if let value = dict["DefaultHaNamespaceResourceSpec"] as? [String: Any?] {
+            var model = CreateInstanceRequest.DefaultHaNamespaceResourceSpec()
+            model.fromMap(value)
+            self.defaultHaNamespaceResourceSpec = model
+        }
+        if let value = dict["DefaultNamespaceResourceSpec"] as? [String: Any?] {
+            var model = CreateInstanceRequest.DefaultNamespaceResourceSpec()
+            model.fromMap(value)
+            self.defaultNamespaceResourceSpec = model
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
@@ -1772,6 +1870,10 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var defaultHaNamespaceResourceSpecShrink: String?
+
+    public var defaultNamespaceResourceSpecShrink: String?
+
     public var duration: Int32?
 
     public var extra: String?
@@ -1828,6 +1930,12 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.defaultHaNamespaceResourceSpecShrink != nil {
+            map["DefaultHaNamespaceResourceSpec"] = self.defaultHaNamespaceResourceSpecShrink!
+        }
+        if self.defaultNamespaceResourceSpecShrink != nil {
+            map["DefaultNamespaceResourceSpec"] = self.defaultNamespaceResourceSpecShrink!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
@@ -1893,6 +2001,12 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
+        }
+        if let value = dict["DefaultHaNamespaceResourceSpec"] as? String {
+            self.defaultHaNamespaceResourceSpecShrink = value
+        }
+        if let value = dict["DefaultNamespaceResourceSpec"] as? String {
+            self.defaultNamespaceResourceSpecShrink = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
@@ -4003,6 +4117,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var clusterUsedStorage: DescribeInstancesResponseBody.Instances.ClusterUsedStorage?
 
+        public var deletionProtection: Bool?
+
         public var elastic: Bool?
 
         public var elasticInstanceId: String?
@@ -4109,6 +4225,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.clusterUsedStorage != nil {
                 map["ClusterUsedStorage"] = self.clusterUsedStorage?.toMap()
+            }
+            if self.deletionProtection != nil {
+                map["DeletionProtection"] = self.deletionProtection!
             }
             if self.elastic != nil {
                 map["Elastic"] = self.elastic!
@@ -4250,6 +4369,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 var model = DescribeInstancesResponseBody.Instances.ClusterUsedStorage()
                 model.fromMap(value)
                 self.clusterUsedStorage = model
+            }
+            if let value = dict["DeletionProtection"] as? Bool {
+                self.deletionProtection = value
             }
             if let value = dict["Elastic"] as? Bool {
                 self.elastic = value

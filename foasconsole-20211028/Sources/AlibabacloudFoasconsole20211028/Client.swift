@@ -8,11 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "regional"
+        self._endpointRule = "central"
         self._endpointMap = [
-            "cn-qingdao": "foasconsole.cn-qingdao.aliyuncs.com",
             "cn-wulanchabu": "foasconsole.cn-wulanchabu.aliyuncs.com",
             "cn-beijing": "foasconsole.cn-beijing.aliyuncs.com",
+            "cn-qingdao": "foasconsole.cn-qingdao.aliyuncs.com",
             "cn-shanghai": "foasconsole.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "foasconsole.cn-hongkong.aliyuncs.com",
             "cn-zhangjiakou": "foasconsole.cn-zhangjiakou.aliyuncs.com",
@@ -27,8 +27,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "us-west-1": "foasconsole.us-west-1.aliyuncs.com",
             "eu-central-1": "foasconsole.eu-central-1.aliyuncs.com",
             "cn-shenzhen-finance-1": "foasconsole.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shanghai-finance-1": "foasconsole.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-north-2-gov-1": "foasconsole.aliyuncs.com"
+            "cn-shanghai-finance-1": "foasconsole.cn-shanghai-finance-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("foasconsole", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -213,6 +212,12 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateInstanceShrinkRequest = CreateInstanceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.defaultHaNamespaceResourceSpec)) {
+            request.defaultHaNamespaceResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.defaultHaNamespaceResourceSpec, "DefaultHaNamespaceResourceSpec", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.defaultNamespaceResourceSpec)) {
+            request.defaultNamespaceResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.defaultNamespaceResourceSpec, "DefaultNamespaceResourceSpec", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.haResourceSpec)) {
             request.haResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haResourceSpec, "HaResourceSpec", "json")
         }
@@ -240,6 +245,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             body["ChargeType"] = request.chargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultHaNamespaceResourceSpecShrink)) {
+            body["DefaultHaNamespaceResourceSpec"] = request.defaultHaNamespaceResourceSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultNamespaceResourceSpecShrink)) {
+            body["DefaultNamespaceResourceSpec"] = request.defaultNamespaceResourceSpecShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.duration)) {
             body["Duration"] = request.duration!;
