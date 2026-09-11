@@ -10385,6 +10385,8 @@ public class EnrichResponseBody : Tea.TeaModel {
 
                     public var equipType: String?
 
+                    public var fareBasis: String?
+
                     public var flightDuration: Int32?
 
                     public var marketingAirline: String?
@@ -10456,6 +10458,9 @@ public class EnrichResponseBody : Tea.TeaModel {
                         if self.equipType != nil {
                             map["equip_type"] = self.equipType!
                         }
+                        if self.fareBasis != nil {
+                            map["fare_basis"] = self.fareBasis!
+                        }
                         if self.flightDuration != nil {
                             map["flight_duration"] = self.flightDuration!
                         }
@@ -10526,6 +10531,9 @@ public class EnrichResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["equip_type"] as? String {
                             self.equipType = value
+                        }
+                        if let value = dict["fare_basis"] as? String {
+                            self.fareBasis = value
                         }
                         if let value = dict["flight_duration"] as? Int32 {
                             self.flightDuration = value
@@ -15251,6 +15259,8 @@ public class PricingResponseBody : Tea.TeaModel {
 
                     public var equipType: String?
 
+                    public var fareBasis: String?
+
                     public var flightDuration: Int32?
 
                     public var marketingAirline: String?
@@ -15322,6 +15332,9 @@ public class PricingResponseBody : Tea.TeaModel {
                         if self.equipType != nil {
                             map["equip_type"] = self.equipType!
                         }
+                        if self.fareBasis != nil {
+                            map["fare_basis"] = self.fareBasis!
+                        }
                         if self.flightDuration != nil {
                             map["flight_duration"] = self.flightDuration!
                         }
@@ -15392,6 +15405,9 @@ public class PricingResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["equip_type"] as? String {
                             self.equipType = value
+                        }
+                        if let value = dict["fare_basis"] as? String {
+                            self.fareBasis = value
                         }
                         if let value = dict["flight_duration"] as? Int32 {
                             self.flightDuration = value
@@ -18492,6 +18508,8 @@ public class SearchResponseBody : Tea.TeaModel {
 
                     public var equipType: String?
 
+                    public var fareBasis: String?
+
                     public var flightDuration: Int32?
 
                     public var marketingAirline: String?
@@ -18563,6 +18581,9 @@ public class SearchResponseBody : Tea.TeaModel {
                         if self.equipType != nil {
                             map["equip_type"] = self.equipType!
                         }
+                        if self.fareBasis != nil {
+                            map["fare_basis"] = self.fareBasis!
+                        }
                         if self.flightDuration != nil {
                             map["flight_duration"] = self.flightDuration!
                         }
@@ -18633,6 +18654,9 @@ public class SearchResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["equip_type"] as? String {
                             self.equipType = value
+                        }
+                        if let value = dict["fare_basis"] as? String {
+                            self.fareBasis = value
                         }
                         if let value = dict["flight_duration"] as? Int32 {
                             self.flightDuration = value
@@ -19626,6 +19650,8 @@ public class StandardSearchResponseBody : Tea.TeaModel {
 
                     public var equipType: String?
 
+                    public var fareBasis: String?
+
                     public var flightDuration: Int32?
 
                     public var marketingAirline: String?
@@ -19697,6 +19723,9 @@ public class StandardSearchResponseBody : Tea.TeaModel {
                         if self.equipType != nil {
                             map["equip_type"] = self.equipType!
                         }
+                        if self.fareBasis != nil {
+                            map["fare_basis"] = self.fareBasis!
+                        }
                         if self.flightDuration != nil {
                             map["flight_duration"] = self.flightDuration!
                         }
@@ -19767,6 +19796,9 @@ public class StandardSearchResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["equip_type"] as? String {
                             self.equipType = value
+                        }
+                        if let value = dict["fare_basis"] as? String {
+                            self.fareBasis = value
                         }
                         if let value = dict["flight_duration"] as? Int32 {
                             self.flightDuration = value
