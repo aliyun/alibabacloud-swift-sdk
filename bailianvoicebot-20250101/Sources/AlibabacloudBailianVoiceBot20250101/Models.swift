@@ -472,7 +472,115 @@ public class CreateApplicationResponse : Tea.TeaModel {
 
 public class CreateApplicationVersionRequest : Tea.TeaModel {
     public class InteractionConfig : Tea.TeaModel {
+        public class EndConversationConfig : Tea.TeaModel {
+            public class Triggers : Tea.TeaModel {
+                public var closingStatement: String?
+
+                public var keyWords: [String]?
+
+                public var triggerType: String?
+
+                public var turnLimit: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.closingStatement != nil {
+                        map["ClosingStatement"] = self.closingStatement!
+                    }
+                    if self.keyWords != nil {
+                        map["KeyWords"] = self.keyWords!
+                    }
+                    if self.triggerType != nil {
+                        map["TriggerType"] = self.triggerType!
+                    }
+                    if self.turnLimit != nil {
+                        map["TurnLimit"] = self.turnLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ClosingStatement"] as? String {
+                        self.closingStatement = value
+                    }
+                    if let value = dict["KeyWords"] as? [String] {
+                        self.keyWords = value
+                    }
+                    if let value = dict["TriggerType"] as? String {
+                        self.triggerType = value
+                    }
+                    if let value = dict["TurnLimit"] as? Int32 {
+                        self.turnLimit = value
+                    }
+                }
+            }
+            public var delay: Int32?
+
+            public var triggers: [CreateApplicationVersionRequest.InteractionConfig.EndConversationConfig.Triggers]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.delay != nil {
+                    map["Delay"] = self.delay!
+                }
+                if self.triggers != nil {
+                    var tmp : [Any] = []
+                    for k in self.triggers! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Triggers"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Delay"] as? Int32 {
+                    self.delay = value
+                }
+                if let value = dict["Triggers"] as? [Any?] {
+                    var tmp : [CreateApplicationVersionRequest.InteractionConfig.EndConversationConfig.Triggers] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateApplicationVersionRequest.InteractionConfig.EndConversationConfig.Triggers()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.triggers = tmp
+                }
+            }
+        }
         public class SilenceDetectionConfig : Tea.TeaModel {
+            public var maxRepeats: Int32?
+
             public var timeout: Int32?
 
             public override init() {
@@ -489,6 +597,9 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.maxRepeats != nil {
+                    map["MaxRepeats"] = self.maxRepeats!
+                }
                 if self.timeout != nil {
                     map["Timeout"] = self.timeout!
                 }
@@ -497,11 +608,20 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["MaxRepeats"] as? Int32 {
+                    self.maxRepeats = value
+                }
                 if let value = dict["Timeout"] as? Int32 {
                     self.timeout = value
                 }
             }
         }
+        public var backgroundMusicId: String?
+
+        public var endConversationConfig: CreateApplicationVersionRequest.InteractionConfig.EndConversationConfig?
+
+        public var initialGreetingDelayMilliseconds: Int32?
+
         public var silenceDetectionConfig: CreateApplicationVersionRequest.InteractionConfig.SilenceDetectionConfig?
 
         public override init() {
@@ -514,11 +634,21 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.endConversationConfig?.validate()
             try self.silenceDetectionConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgroundMusicId != nil {
+                map["BackgroundMusicId"] = self.backgroundMusicId!
+            }
+            if self.endConversationConfig != nil {
+                map["EndConversationConfig"] = self.endConversationConfig?.toMap()
+            }
+            if self.initialGreetingDelayMilliseconds != nil {
+                map["InitialGreetingDelayMilliseconds"] = self.initialGreetingDelayMilliseconds!
+            }
             if self.silenceDetectionConfig != nil {
                 map["SilenceDetectionConfig"] = self.silenceDetectionConfig?.toMap()
             }
@@ -527,10 +657,67 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BackgroundMusicId"] as? String {
+                self.backgroundMusicId = value
+            }
+            if let value = dict["EndConversationConfig"] as? [String: Any?] {
+                var model = CreateApplicationVersionRequest.InteractionConfig.EndConversationConfig()
+                model.fromMap(value)
+                self.endConversationConfig = model
+            }
+            if let value = dict["InitialGreetingDelayMilliseconds"] as? Int32 {
+                self.initialGreetingDelayMilliseconds = value
+            }
             if let value = dict["SilenceDetectionConfig"] as? [String: Any?] {
                 var model = CreateApplicationVersionRequest.InteractionConfig.SilenceDetectionConfig()
                 model.fromMap(value)
                 self.silenceDetectionConfig = model
+            }
+        }
+    }
+    public class LabelConfig : Tea.TeaModel {
+        public var candidateValues: [String]?
+
+        public var description_: String?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.candidateValues != nil {
+                map["CandidateValues"] = self.candidateValues!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CandidateValues"] as? [String] {
+                self.candidateValues = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
         }
     }
@@ -651,9 +838,113 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
                 }
             }
         }
+        public class FunctionMeta : Tea.TeaModel {
+            public var functionId: String?
+
+            public var functionName: String?
+
+            public var httpTriggerName: String?
+
+            public var httpTriggerUrl: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.functionId != nil {
+                    map["FunctionId"] = self.functionId!
+                }
+                if self.functionName != nil {
+                    map["FunctionName"] = self.functionName!
+                }
+                if self.httpTriggerName != nil {
+                    map["HttpTriggerName"] = self.httpTriggerName!
+                }
+                if self.httpTriggerUrl != nil {
+                    map["HttpTriggerUrl"] = self.httpTriggerUrl!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FunctionId"] as? String {
+                    self.functionId = value
+                }
+                if let value = dict["FunctionName"] as? String {
+                    self.functionName = value
+                }
+                if let value = dict["HttpTriggerName"] as? String {
+                    self.httpTriggerName = value
+                }
+                if let value = dict["HttpTriggerUrl"] as? String {
+                    self.httpTriggerUrl = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+            }
+        }
+        public class NluAccessProfile : Tea.TeaModel {
+            public var accessProfileId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessProfileId != nil {
+                    map["AccessProfileId"] = self.accessProfileId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessProfileId"] as? String {
+                    self.accessProfileId = value
+                }
+            }
+        }
+        public var agentKey: String?
+
         public var agentProfile: CreateApplicationVersionRequest.ScriptProfile.AgentProfile?
 
+        public var chatbotId: String?
+
+        public var functionMeta: CreateApplicationVersionRequest.ScriptProfile.FunctionMeta?
+
         public var model: String?
+
+        public var nluAccessProfile: CreateApplicationVersionRequest.ScriptProfile.NluAccessProfile?
+
+        public var nluAccessType: String?
+
+        public var omniModel: Bool?
 
         public override init() {
             super.init()
@@ -666,28 +957,70 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.agentProfile?.validate()
+            try self.functionMeta?.validate()
+            try self.nluAccessProfile?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentKey != nil {
+                map["AgentKey"] = self.agentKey!
+            }
             if self.agentProfile != nil {
                 map["AgentProfile"] = self.agentProfile?.toMap()
             }
+            if self.chatbotId != nil {
+                map["ChatbotId"] = self.chatbotId!
+            }
+            if self.functionMeta != nil {
+                map["FunctionMeta"] = self.functionMeta?.toMap()
+            }
             if self.model != nil {
                 map["Model"] = self.model!
+            }
+            if self.nluAccessProfile != nil {
+                map["NluAccessProfile"] = self.nluAccessProfile?.toMap()
+            }
+            if self.nluAccessType != nil {
+                map["NluAccessType"] = self.nluAccessType!
+            }
+            if self.omniModel != nil {
+                map["OmniModel"] = self.omniModel!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentKey"] as? String {
+                self.agentKey = value
+            }
             if let value = dict["AgentProfile"] as? [String: Any?] {
                 var model = CreateApplicationVersionRequest.ScriptProfile.AgentProfile()
                 model.fromMap(value)
                 self.agentProfile = model
             }
+            if let value = dict["ChatbotId"] as? String {
+                self.chatbotId = value
+            }
+            if let value = dict["FunctionMeta"] as? [String: Any?] {
+                var model = CreateApplicationVersionRequest.ScriptProfile.FunctionMeta()
+                model.fromMap(value)
+                self.functionMeta = model
+            }
             if let value = dict["Model"] as? String {
                 self.model = value
+            }
+            if let value = dict["NluAccessProfile"] as? [String: Any?] {
+                var model = CreateApplicationVersionRequest.ScriptProfile.NluAccessProfile()
+                model.fromMap(value)
+                self.nluAccessProfile = model
+            }
+            if let value = dict["NluAccessType"] as? String {
+                self.nluAccessType = value
+            }
+            if let value = dict["OmniModel"] as? Bool {
+                self.omniModel = value
             }
         }
     }
@@ -1145,6 +1478,8 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
 
     public var interactionConfig: CreateApplicationVersionRequest.InteractionConfig?
 
+    public var labelConfig: [CreateApplicationVersionRequest.LabelConfig]?
+
     public var ragConfig: CreateApplicationVersionRequest.RagConfig?
 
     public var scriptProfile: CreateApplicationVersionRequest.ScriptProfile?
@@ -1186,6 +1521,13 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         if self.interactionConfig != nil {
             map["InteractionConfig"] = self.interactionConfig?.toMap()
         }
+        if self.labelConfig != nil {
+            var tmp : [Any] = []
+            for k in self.labelConfig! {
+                tmp.append(k.toMap())
+            }
+            map["LabelConfig"] = tmp
+        }
         if self.ragConfig != nil {
             map["RagConfig"] = self.ragConfig?.toMap()
         }
@@ -1219,6 +1561,19 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
             var model = CreateApplicationVersionRequest.InteractionConfig()
             model.fromMap(value)
             self.interactionConfig = model
+        }
+        if let value = dict["LabelConfig"] as? [Any?] {
+            var tmp : [CreateApplicationVersionRequest.LabelConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationVersionRequest.LabelConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.labelConfig = tmp
         }
         if let value = dict["RagConfig"] as? [String: Any?] {
             var model = CreateApplicationVersionRequest.RagConfig()
@@ -1258,6 +1613,8 @@ public class CreateApplicationVersionShrinkRequest : Tea.TeaModel {
 
     public var interactionConfigShrink: String?
 
+    public var labelConfigShrink: String?
+
     public var ragConfigShrink: String?
 
     public var scriptProfileShrink: String?
@@ -1293,6 +1650,9 @@ public class CreateApplicationVersionShrinkRequest : Tea.TeaModel {
         if self.interactionConfigShrink != nil {
             map["InteractionConfig"] = self.interactionConfigShrink!
         }
+        if self.labelConfigShrink != nil {
+            map["LabelConfig"] = self.labelConfigShrink!
+        }
         if self.ragConfigShrink != nil {
             map["RagConfig"] = self.ragConfigShrink!
         }
@@ -1324,6 +1684,9 @@ public class CreateApplicationVersionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InteractionConfig"] as? String {
             self.interactionConfigShrink = value
+        }
+        if let value = dict["LabelConfig"] as? String {
+            self.labelConfigShrink = value
         }
         if let value = dict["RagConfig"] as? String {
             self.ragConfigShrink = value
@@ -3830,7 +4193,115 @@ public class GetApplicationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class DraftVersion : Tea.TeaModel {
             public class InteractionConfig : Tea.TeaModel {
+                public class EndConversationConfig : Tea.TeaModel {
+                    public class Triggers : Tea.TeaModel {
+                        public var closingStatement: String?
+
+                        public var keyWords: [String]?
+
+                        public var triggerType: String?
+
+                        public var turnLimit: Int32?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.closingStatement != nil {
+                                map["ClosingStatement"] = self.closingStatement!
+                            }
+                            if self.keyWords != nil {
+                                map["KeyWords"] = self.keyWords!
+                            }
+                            if self.triggerType != nil {
+                                map["TriggerType"] = self.triggerType!
+                            }
+                            if self.turnLimit != nil {
+                                map["TurnLimit"] = self.turnLimit!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["ClosingStatement"] as? String {
+                                self.closingStatement = value
+                            }
+                            if let value = dict["KeyWords"] as? [String] {
+                                self.keyWords = value
+                            }
+                            if let value = dict["TriggerType"] as? String {
+                                self.triggerType = value
+                            }
+                            if let value = dict["TurnLimit"] as? Int32 {
+                                self.turnLimit = value
+                            }
+                        }
+                    }
+                    public var delay: Int32?
+
+                    public var triggers: [GetApplicationResponseBody.Data.DraftVersion.InteractionConfig.EndConversationConfig.Triggers]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.delay != nil {
+                            map["Delay"] = self.delay!
+                        }
+                        if self.triggers != nil {
+                            var tmp : [Any] = []
+                            for k in self.triggers! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Triggers"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Delay"] as? Int32 {
+                            self.delay = value
+                        }
+                        if let value = dict["Triggers"] as? [Any?] {
+                            var tmp : [GetApplicationResponseBody.Data.DraftVersion.InteractionConfig.EndConversationConfig.Triggers] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetApplicationResponseBody.Data.DraftVersion.InteractionConfig.EndConversationConfig.Triggers()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.triggers = tmp
+                        }
+                    }
+                }
                 public class SilenceDetectionConfig : Tea.TeaModel {
+                    public var maxRepeats: Int32?
+
                     public var timeout: Int32?
 
                     public override init() {
@@ -3847,6 +4318,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.maxRepeats != nil {
+                            map["MaxRepeats"] = self.maxRepeats!
+                        }
                         if self.timeout != nil {
                             map["Timeout"] = self.timeout!
                         }
@@ -3855,11 +4329,20 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["MaxRepeats"] as? Int32 {
+                            self.maxRepeats = value
+                        }
                         if let value = dict["Timeout"] as? Int32 {
                             self.timeout = value
                         }
                     }
                 }
+                public var backgroundMusicId: String?
+
+                public var endConversationConfig: GetApplicationResponseBody.Data.DraftVersion.InteractionConfig.EndConversationConfig?
+
+                public var initialGreetingDelayMilliseconds: Int32?
+
                 public var silenceDetectionConfig: GetApplicationResponseBody.Data.DraftVersion.InteractionConfig.SilenceDetectionConfig?
 
                 public override init() {
@@ -3872,11 +4355,21 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.endConversationConfig?.validate()
                     try self.silenceDetectionConfig?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.backgroundMusicId != nil {
+                        map["BackgroundMusicId"] = self.backgroundMusicId!
+                    }
+                    if self.endConversationConfig != nil {
+                        map["EndConversationConfig"] = self.endConversationConfig?.toMap()
+                    }
+                    if self.initialGreetingDelayMilliseconds != nil {
+                        map["InitialGreetingDelayMilliseconds"] = self.initialGreetingDelayMilliseconds!
+                    }
                     if self.silenceDetectionConfig != nil {
                         map["SilenceDetectionConfig"] = self.silenceDetectionConfig?.toMap()
                     }
@@ -3885,10 +4378,67 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["BackgroundMusicId"] as? String {
+                        self.backgroundMusicId = value
+                    }
+                    if let value = dict["EndConversationConfig"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.DraftVersion.InteractionConfig.EndConversationConfig()
+                        model.fromMap(value)
+                        self.endConversationConfig = model
+                    }
+                    if let value = dict["InitialGreetingDelayMilliseconds"] as? Int32 {
+                        self.initialGreetingDelayMilliseconds = value
+                    }
                     if let value = dict["SilenceDetectionConfig"] as? [String: Any?] {
                         var model = GetApplicationResponseBody.Data.DraftVersion.InteractionConfig.SilenceDetectionConfig()
                         model.fromMap(value)
                         self.silenceDetectionConfig = model
+                    }
+                }
+            }
+            public class LabelConfig : Tea.TeaModel {
+                public var candidateValues: [String]?
+
+                public var description_: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.candidateValues != nil {
+                        map["CandidateValues"] = self.candidateValues!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CandidateValues"] as? [String] {
+                        self.candidateValues = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
                     }
                 }
             }
@@ -3960,6 +4510,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                     public var description_: String?
 
+                    public var name: String?
+
                     public var promptsJson: String?
 
                     public var scriptProfileTemplateId: String?
@@ -3984,6 +4536,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         if self.description_ != nil {
                             map["Description"] = self.description_!
                         }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
                         if self.promptsJson != nil {
                             map["PromptsJson"] = self.promptsJson!
                         }
@@ -4001,6 +4556,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         if let value = dict["Description"] as? String {
                             self.description_ = value
                         }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
                         if let value = dict["PromptsJson"] as? String {
                             self.promptsJson = value
                         }
@@ -4009,9 +4567,115 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class FunctionMeta : Tea.TeaModel {
+                    public var functionId: String?
+
+                    public var functionName: String?
+
+                    public var httpTriggerName: String?
+
+                    public var httpTriggerUrl: String?
+
+                    public var regionId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.functionId != nil {
+                            map["FunctionId"] = self.functionId!
+                        }
+                        if self.functionName != nil {
+                            map["FunctionName"] = self.functionName!
+                        }
+                        if self.httpTriggerName != nil {
+                            map["HttpTriggerName"] = self.httpTriggerName!
+                        }
+                        if self.httpTriggerUrl != nil {
+                            map["HttpTriggerUrl"] = self.httpTriggerUrl!
+                        }
+                        if self.regionId != nil {
+                            map["RegionId"] = self.regionId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["FunctionId"] as? String {
+                            self.functionId = value
+                        }
+                        if let value = dict["FunctionName"] as? String {
+                            self.functionName = value
+                        }
+                        if let value = dict["HttpTriggerName"] as? String {
+                            self.httpTriggerName = value
+                        }
+                        if let value = dict["HttpTriggerUrl"] as? String {
+                            self.httpTriggerUrl = value
+                        }
+                        if let value = dict["RegionId"] as? String {
+                            self.regionId = value
+                        }
+                    }
+                }
+                public class NluAccessProfile : Tea.TeaModel {
+                    public var accessProfileId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessProfileId != nil {
+                            map["AccessProfileId"] = self.accessProfileId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AccessProfileId"] as? String {
+                            self.accessProfileId = value
+                        }
+                    }
+                }
+                public var agentKey: String?
+
                 public var agentProfile: GetApplicationResponseBody.Data.DraftVersion.ScriptProfile.AgentProfile?
 
+                public var chatbotId: String?
+
+                public var functionMeta: GetApplicationResponseBody.Data.DraftVersion.ScriptProfile.FunctionMeta?
+
                 public var model: String?
+
+                public var nluAccessProfile: GetApplicationResponseBody.Data.DraftVersion.ScriptProfile.NluAccessProfile?
+
+                public var nluAccessType: String?
+
+                public var nluEngine: String?
+
+                public var omniModel: Bool?
 
                 public var temperature: String?
 
@@ -4028,15 +4692,38 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func validate() throws -> Void {
                     try self.agentProfile?.validate()
+                    try self.functionMeta?.validate()
+                    try self.nluAccessProfile?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.agentKey != nil {
+                        map["AgentKey"] = self.agentKey!
+                    }
                     if self.agentProfile != nil {
                         map["AgentProfile"] = self.agentProfile?.toMap()
                     }
+                    if self.chatbotId != nil {
+                        map["ChatbotId"] = self.chatbotId!
+                    }
+                    if self.functionMeta != nil {
+                        map["FunctionMeta"] = self.functionMeta?.toMap()
+                    }
                     if self.model != nil {
                         map["Model"] = self.model!
+                    }
+                    if self.nluAccessProfile != nil {
+                        map["NluAccessProfile"] = self.nluAccessProfile?.toMap()
+                    }
+                    if self.nluAccessType != nil {
+                        map["NluAccessType"] = self.nluAccessType!
+                    }
+                    if self.nluEngine != nil {
+                        map["NluEngine"] = self.nluEngine!
+                    }
+                    if self.omniModel != nil {
+                        map["OmniModel"] = self.omniModel!
                     }
                     if self.temperature != nil {
                         map["Temperature"] = self.temperature!
@@ -4049,13 +4736,38 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AgentKey"] as? String {
+                        self.agentKey = value
+                    }
                     if let value = dict["AgentProfile"] as? [String: Any?] {
                         var model = GetApplicationResponseBody.Data.DraftVersion.ScriptProfile.AgentProfile()
                         model.fromMap(value)
                         self.agentProfile = model
                     }
+                    if let value = dict["ChatbotId"] as? String {
+                        self.chatbotId = value
+                    }
+                    if let value = dict["FunctionMeta"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.DraftVersion.ScriptProfile.FunctionMeta()
+                        model.fromMap(value)
+                        self.functionMeta = model
+                    }
                     if let value = dict["Model"] as? String {
                         self.model = value
+                    }
+                    if let value = dict["NluAccessProfile"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.DraftVersion.ScriptProfile.NluAccessProfile()
+                        model.fromMap(value)
+                        self.nluAccessProfile = model
+                    }
+                    if let value = dict["NluAccessType"] as? String {
+                        self.nluAccessType = value
+                    }
+                    if let value = dict["NluEngine"] as? String {
+                        self.nluEngine = value
+                    }
+                    if let value = dict["OmniModel"] as? Bool {
+                        self.omniModel = value
                     }
                     if let value = dict["Temperature"] as? String {
                         self.temperature = value
@@ -4515,6 +5227,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             public var interactionConfig: GetApplicationResponseBody.Data.DraftVersion.InteractionConfig?
 
+            public var labelConfig: [GetApplicationResponseBody.Data.DraftVersion.LabelConfig]?
+
             public var ragConfig: GetApplicationResponseBody.Data.DraftVersion.RagConfig?
 
             public var scriptProfile: GetApplicationResponseBody.Data.DraftVersion.ScriptProfile?
@@ -4550,6 +5264,13 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 if self.interactionConfig != nil {
                     map["InteractionConfig"] = self.interactionConfig?.toMap()
                 }
+                if self.labelConfig != nil {
+                    var tmp : [Any] = []
+                    for k in self.labelConfig! {
+                        tmp.append(k.toMap())
+                    }
+                    map["LabelConfig"] = tmp
+                }
                 if self.ragConfig != nil {
                     map["RagConfig"] = self.ragConfig?.toMap()
                 }
@@ -4577,6 +5298,19 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     var model = GetApplicationResponseBody.Data.DraftVersion.InteractionConfig()
                     model.fromMap(value)
                     self.interactionConfig = model
+                }
+                if let value = dict["LabelConfig"] as? [Any?] {
+                    var tmp : [GetApplicationResponseBody.Data.DraftVersion.LabelConfig] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApplicationResponseBody.Data.DraftVersion.LabelConfig()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.labelConfig = tmp
                 }
                 if let value = dict["RagConfig"] as? [String: Any?] {
                     var model = GetApplicationResponseBody.Data.DraftVersion.RagConfig()
@@ -4610,7 +5344,115 @@ public class GetApplicationResponseBody : Tea.TeaModel {
         }
         public class PublishedVersion : Tea.TeaModel {
             public class InteractionConfig : Tea.TeaModel {
+                public class EndConversationConfig : Tea.TeaModel {
+                    public class Triggers : Tea.TeaModel {
+                        public var closingStatement: String?
+
+                        public var keyWords: [String]?
+
+                        public var triggerType: String?
+
+                        public var turnLimit: Int32?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.closingStatement != nil {
+                                map["ClosingStatement"] = self.closingStatement!
+                            }
+                            if self.keyWords != nil {
+                                map["KeyWords"] = self.keyWords!
+                            }
+                            if self.triggerType != nil {
+                                map["TriggerType"] = self.triggerType!
+                            }
+                            if self.turnLimit != nil {
+                                map["TurnLimit"] = self.turnLimit!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["ClosingStatement"] as? String {
+                                self.closingStatement = value
+                            }
+                            if let value = dict["KeyWords"] as? [String] {
+                                self.keyWords = value
+                            }
+                            if let value = dict["TriggerType"] as? String {
+                                self.triggerType = value
+                            }
+                            if let value = dict["TurnLimit"] as? Int32 {
+                                self.turnLimit = value
+                            }
+                        }
+                    }
+                    public var delay: Int32?
+
+                    public var triggers: [GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig.EndConversationConfig.Triggers]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.delay != nil {
+                            map["Delay"] = self.delay!
+                        }
+                        if self.triggers != nil {
+                            var tmp : [Any] = []
+                            for k in self.triggers! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Triggers"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Delay"] as? Int32 {
+                            self.delay = value
+                        }
+                        if let value = dict["Triggers"] as? [Any?] {
+                            var tmp : [GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig.EndConversationConfig.Triggers] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig.EndConversationConfig.Triggers()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.triggers = tmp
+                        }
+                    }
+                }
                 public class SilenceDetectionConfig : Tea.TeaModel {
+                    public var maxRepeats: Int32?
+
                     public var timeout: Int32?
 
                     public override init() {
@@ -4627,6 +5469,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.maxRepeats != nil {
+                            map["MaxRepeats"] = self.maxRepeats!
+                        }
                         if self.timeout != nil {
                             map["Timeout"] = self.timeout!
                         }
@@ -4635,11 +5480,20 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["MaxRepeats"] as? Int32 {
+                            self.maxRepeats = value
+                        }
                         if let value = dict["Timeout"] as? Int32 {
                             self.timeout = value
                         }
                     }
                 }
+                public var backgroundMusicId: String?
+
+                public var endConversationConfig: GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig.EndConversationConfig?
+
+                public var initialGreetingDelayMilliseconds: Int32?
+
                 public var silenceDetectionConfig: GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig.SilenceDetectionConfig?
 
                 public override init() {
@@ -4652,11 +5506,21 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.endConversationConfig?.validate()
                     try self.silenceDetectionConfig?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.backgroundMusicId != nil {
+                        map["BackgroundMusicId"] = self.backgroundMusicId!
+                    }
+                    if self.endConversationConfig != nil {
+                        map["EndConversationConfig"] = self.endConversationConfig?.toMap()
+                    }
+                    if self.initialGreetingDelayMilliseconds != nil {
+                        map["InitialGreetingDelayMilliseconds"] = self.initialGreetingDelayMilliseconds!
+                    }
                     if self.silenceDetectionConfig != nil {
                         map["SilenceDetectionConfig"] = self.silenceDetectionConfig?.toMap()
                     }
@@ -4665,10 +5529,67 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["BackgroundMusicId"] as? String {
+                        self.backgroundMusicId = value
+                    }
+                    if let value = dict["EndConversationConfig"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig.EndConversationConfig()
+                        model.fromMap(value)
+                        self.endConversationConfig = model
+                    }
+                    if let value = dict["InitialGreetingDelayMilliseconds"] as? Int32 {
+                        self.initialGreetingDelayMilliseconds = value
+                    }
                     if let value = dict["SilenceDetectionConfig"] as? [String: Any?] {
                         var model = GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig.SilenceDetectionConfig()
                         model.fromMap(value)
                         self.silenceDetectionConfig = model
+                    }
+                }
+            }
+            public class LabelConfig : Tea.TeaModel {
+                public var candidateValues: [String]?
+
+                public var description_: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.candidateValues != nil {
+                        map["CandidateValues"] = self.candidateValues!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CandidateValues"] as? [String] {
+                        self.candidateValues = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
                     }
                 }
             }
@@ -4740,6 +5661,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                     public var description_: String?
 
+                    public var name: String?
+
                     public var promptsJson: String?
 
                     public var scriptProfileTemplateId: String?
@@ -4764,6 +5687,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         if self.description_ != nil {
                             map["Description"] = self.description_!
                         }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
                         if self.promptsJson != nil {
                             map["PromptsJson"] = self.promptsJson!
                         }
@@ -4781,6 +5707,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         if let value = dict["Description"] as? String {
                             self.description_ = value
                         }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
                         if let value = dict["PromptsJson"] as? String {
                             self.promptsJson = value
                         }
@@ -4789,9 +5718,115 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class FunctionMeta : Tea.TeaModel {
+                    public var functionId: String?
+
+                    public var functionName: String?
+
+                    public var httpTriggerName: String?
+
+                    public var httpTriggerUrl: String?
+
+                    public var regionId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.functionId != nil {
+                            map["FunctionId"] = self.functionId!
+                        }
+                        if self.functionName != nil {
+                            map["FunctionName"] = self.functionName!
+                        }
+                        if self.httpTriggerName != nil {
+                            map["HttpTriggerName"] = self.httpTriggerName!
+                        }
+                        if self.httpTriggerUrl != nil {
+                            map["HttpTriggerUrl"] = self.httpTriggerUrl!
+                        }
+                        if self.regionId != nil {
+                            map["RegionId"] = self.regionId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["FunctionId"] as? String {
+                            self.functionId = value
+                        }
+                        if let value = dict["FunctionName"] as? String {
+                            self.functionName = value
+                        }
+                        if let value = dict["HttpTriggerName"] as? String {
+                            self.httpTriggerName = value
+                        }
+                        if let value = dict["HttpTriggerUrl"] as? String {
+                            self.httpTriggerUrl = value
+                        }
+                        if let value = dict["RegionId"] as? String {
+                            self.regionId = value
+                        }
+                    }
+                }
+                public class NluAccessProfile : Tea.TeaModel {
+                    public var accessProfileId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessProfileId != nil {
+                            map["AccessProfileId"] = self.accessProfileId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AccessProfileId"] as? String {
+                            self.accessProfileId = value
+                        }
+                    }
+                }
+                public var agentKey: String?
+
                 public var agentProfile: GetApplicationResponseBody.Data.PublishedVersion.ScriptProfile.AgentProfile?
 
+                public var chatbotId: String?
+
+                public var functionMeta: GetApplicationResponseBody.Data.PublishedVersion.ScriptProfile.FunctionMeta?
+
                 public var model: String?
+
+                public var nluAccessProfile: GetApplicationResponseBody.Data.PublishedVersion.ScriptProfile.NluAccessProfile?
+
+                public var nluAccessType: String?
+
+                public var nluEngine: String?
+
+                public var omniModel: Bool?
 
                 public var temperature: String?
 
@@ -4808,15 +5843,38 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func validate() throws -> Void {
                     try self.agentProfile?.validate()
+                    try self.functionMeta?.validate()
+                    try self.nluAccessProfile?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.agentKey != nil {
+                        map["AgentKey"] = self.agentKey!
+                    }
                     if self.agentProfile != nil {
                         map["AgentProfile"] = self.agentProfile?.toMap()
                     }
+                    if self.chatbotId != nil {
+                        map["ChatbotId"] = self.chatbotId!
+                    }
+                    if self.functionMeta != nil {
+                        map["FunctionMeta"] = self.functionMeta?.toMap()
+                    }
                     if self.model != nil {
                         map["Model"] = self.model!
+                    }
+                    if self.nluAccessProfile != nil {
+                        map["NluAccessProfile"] = self.nluAccessProfile?.toMap()
+                    }
+                    if self.nluAccessType != nil {
+                        map["NluAccessType"] = self.nluAccessType!
+                    }
+                    if self.nluEngine != nil {
+                        map["NluEngine"] = self.nluEngine!
+                    }
+                    if self.omniModel != nil {
+                        map["OmniModel"] = self.omniModel!
                     }
                     if self.temperature != nil {
                         map["Temperature"] = self.temperature!
@@ -4829,13 +5887,38 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AgentKey"] as? String {
+                        self.agentKey = value
+                    }
                     if let value = dict["AgentProfile"] as? [String: Any?] {
                         var model = GetApplicationResponseBody.Data.PublishedVersion.ScriptProfile.AgentProfile()
                         model.fromMap(value)
                         self.agentProfile = model
                     }
+                    if let value = dict["ChatbotId"] as? String {
+                        self.chatbotId = value
+                    }
+                    if let value = dict["FunctionMeta"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.PublishedVersion.ScriptProfile.FunctionMeta()
+                        model.fromMap(value)
+                        self.functionMeta = model
+                    }
                     if let value = dict["Model"] as? String {
                         self.model = value
+                    }
+                    if let value = dict["NluAccessProfile"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.PublishedVersion.ScriptProfile.NluAccessProfile()
+                        model.fromMap(value)
+                        self.nluAccessProfile = model
+                    }
+                    if let value = dict["NluAccessType"] as? String {
+                        self.nluAccessType = value
+                    }
+                    if let value = dict["NluEngine"] as? String {
+                        self.nluEngine = value
+                    }
+                    if let value = dict["OmniModel"] as? Bool {
+                        self.omniModel = value
                     }
                     if let value = dict["Temperature"] as? String {
                         self.temperature = value
@@ -5295,6 +6378,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             public var interactionConfig: GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig?
 
+            public var labelConfig: [GetApplicationResponseBody.Data.PublishedVersion.LabelConfig]?
+
             public var ragConfig: GetApplicationResponseBody.Data.PublishedVersion.RagConfig?
 
             public var scriptProfile: GetApplicationResponseBody.Data.PublishedVersion.ScriptProfile?
@@ -5330,6 +6415,13 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 if self.interactionConfig != nil {
                     map["InteractionConfig"] = self.interactionConfig?.toMap()
                 }
+                if self.labelConfig != nil {
+                    var tmp : [Any] = []
+                    for k in self.labelConfig! {
+                        tmp.append(k.toMap())
+                    }
+                    map["LabelConfig"] = tmp
+                }
                 if self.ragConfig != nil {
                     map["RagConfig"] = self.ragConfig?.toMap()
                 }
@@ -5357,6 +6449,19 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     var model = GetApplicationResponseBody.Data.PublishedVersion.InteractionConfig()
                     model.fromMap(value)
                     self.interactionConfig = model
+                }
+                if let value = dict["LabelConfig"] as? [Any?] {
+                    var tmp : [GetApplicationResponseBody.Data.PublishedVersion.LabelConfig] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApplicationResponseBody.Data.PublishedVersion.LabelConfig()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.labelConfig = tmp
                 }
                 if let value = dict["RagConfig"] as? [String: Any?] {
                     var model = GetApplicationResponseBody.Data.PublishedVersion.RagConfig()
@@ -5406,6 +6511,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var publishedVersion: GetApplicationResponseBody.Data.PublishedVersion?
 
+        public var status: String?
+
         public var updatedTime: Int64?
 
         public override init() {
@@ -5451,6 +6558,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.publishedVersion != nil {
                 map["PublishedVersion"] = self.publishedVersion?.toMap()
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.updatedTime != nil {
                 map["UpdatedTime"] = self.updatedTime!
             }
@@ -5490,6 +6600,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.publishedVersion = model
             }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
             if let value = dict["UpdatedTime"] as? Int64 {
                 self.updatedTime = value
             }
@@ -5502,6 +6615,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
     public var httpStatusCode: Int32?
 
     public var message: String?
+
+    public var params: [String]?
 
     public var requestId: String?
 
@@ -5532,6 +6647,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["Message"] = self.message!
         }
+        if self.params != nil {
+            map["Params"] = self.params!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -5553,6 +6671,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
         }
         if let value = dict["Message"] as? String {
             self.message = value
+        }
+        if let value = dict["Params"] as? [String] {
+            self.params = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -10381,7 +11502,115 @@ public class UpdateApplicationResponse : Tea.TeaModel {
 
 public class UpdateApplicationVersionRequest : Tea.TeaModel {
     public class InteractionConfig : Tea.TeaModel {
+        public class EndConversationConfig : Tea.TeaModel {
+            public class Triggers : Tea.TeaModel {
+                public var closingStatement: String?
+
+                public var keyWords: [String]?
+
+                public var triggerType: String?
+
+                public var turnLimit: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.closingStatement != nil {
+                        map["ClosingStatement"] = self.closingStatement!
+                    }
+                    if self.keyWords != nil {
+                        map["KeyWords"] = self.keyWords!
+                    }
+                    if self.triggerType != nil {
+                        map["TriggerType"] = self.triggerType!
+                    }
+                    if self.turnLimit != nil {
+                        map["TurnLimit"] = self.turnLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ClosingStatement"] as? String {
+                        self.closingStatement = value
+                    }
+                    if let value = dict["KeyWords"] as? [String] {
+                        self.keyWords = value
+                    }
+                    if let value = dict["TriggerType"] as? String {
+                        self.triggerType = value
+                    }
+                    if let value = dict["TurnLimit"] as? Int32 {
+                        self.turnLimit = value
+                    }
+                }
+            }
+            public var delay: Int32?
+
+            public var triggers: [UpdateApplicationVersionRequest.InteractionConfig.EndConversationConfig.Triggers]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.delay != nil {
+                    map["Delay"] = self.delay!
+                }
+                if self.triggers != nil {
+                    var tmp : [Any] = []
+                    for k in self.triggers! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Triggers"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Delay"] as? Int32 {
+                    self.delay = value
+                }
+                if let value = dict["Triggers"] as? [Any?] {
+                    var tmp : [UpdateApplicationVersionRequest.InteractionConfig.EndConversationConfig.Triggers] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApplicationVersionRequest.InteractionConfig.EndConversationConfig.Triggers()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.triggers = tmp
+                }
+            }
+        }
         public class SilenceDetectionConfig : Tea.TeaModel {
+            public var maxRepeats: Int32?
+
             public var timeout: Int32?
 
             public override init() {
@@ -10398,6 +11627,9 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.maxRepeats != nil {
+                    map["MaxRepeats"] = self.maxRepeats!
+                }
                 if self.timeout != nil {
                     map["Timeout"] = self.timeout!
                 }
@@ -10406,11 +11638,20 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["MaxRepeats"] as? Int32 {
+                    self.maxRepeats = value
+                }
                 if let value = dict["Timeout"] as? Int32 {
                     self.timeout = value
                 }
             }
         }
+        public var backgroundMusicId: String?
+
+        public var endConversationConfig: UpdateApplicationVersionRequest.InteractionConfig.EndConversationConfig?
+
+        public var initialGreetingDelayMilliseconds: Int32?
+
         public var silenceDetectionConfig: UpdateApplicationVersionRequest.InteractionConfig.SilenceDetectionConfig?
 
         public override init() {
@@ -10423,11 +11664,21 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.endConversationConfig?.validate()
             try self.silenceDetectionConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgroundMusicId != nil {
+                map["BackgroundMusicId"] = self.backgroundMusicId!
+            }
+            if self.endConversationConfig != nil {
+                map["EndConversationConfig"] = self.endConversationConfig?.toMap()
+            }
+            if self.initialGreetingDelayMilliseconds != nil {
+                map["InitialGreetingDelayMilliseconds"] = self.initialGreetingDelayMilliseconds!
+            }
             if self.silenceDetectionConfig != nil {
                 map["SilenceDetectionConfig"] = self.silenceDetectionConfig?.toMap()
             }
@@ -10436,10 +11687,67 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BackgroundMusicId"] as? String {
+                self.backgroundMusicId = value
+            }
+            if let value = dict["EndConversationConfig"] as? [String: Any?] {
+                var model = UpdateApplicationVersionRequest.InteractionConfig.EndConversationConfig()
+                model.fromMap(value)
+                self.endConversationConfig = model
+            }
+            if let value = dict["InitialGreetingDelayMilliseconds"] as? Int32 {
+                self.initialGreetingDelayMilliseconds = value
+            }
             if let value = dict["SilenceDetectionConfig"] as? [String: Any?] {
                 var model = UpdateApplicationVersionRequest.InteractionConfig.SilenceDetectionConfig()
                 model.fromMap(value)
                 self.silenceDetectionConfig = model
+            }
+        }
+    }
+    public class LabelConfig : Tea.TeaModel {
+        public var candidateValues: [String]?
+
+        public var description_: String?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.candidateValues != nil {
+                map["CandidateValues"] = self.candidateValues!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CandidateValues"] as? [String] {
+                self.candidateValues = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
         }
     }
@@ -10560,9 +11868,113 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
                 }
             }
         }
+        public class FunctionMeta : Tea.TeaModel {
+            public var functionId: String?
+
+            public var functionName: String?
+
+            public var httpTriggerName: String?
+
+            public var httpTriggerUrl: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.functionId != nil {
+                    map["FunctionId"] = self.functionId!
+                }
+                if self.functionName != nil {
+                    map["FunctionName"] = self.functionName!
+                }
+                if self.httpTriggerName != nil {
+                    map["HttpTriggerName"] = self.httpTriggerName!
+                }
+                if self.httpTriggerUrl != nil {
+                    map["HttpTriggerUrl"] = self.httpTriggerUrl!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FunctionId"] as? String {
+                    self.functionId = value
+                }
+                if let value = dict["FunctionName"] as? String {
+                    self.functionName = value
+                }
+                if let value = dict["HttpTriggerName"] as? String {
+                    self.httpTriggerName = value
+                }
+                if let value = dict["HttpTriggerUrl"] as? String {
+                    self.httpTriggerUrl = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+            }
+        }
+        public class NluAccessProfile : Tea.TeaModel {
+            public var accessProfileId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessProfileId != nil {
+                    map["AccessProfileId"] = self.accessProfileId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessProfileId"] as? String {
+                    self.accessProfileId = value
+                }
+            }
+        }
+        public var agentKey: String?
+
         public var agentProfile: UpdateApplicationVersionRequest.ScriptProfile.AgentProfile?
 
+        public var chatbotId: String?
+
+        public var functionMeta: UpdateApplicationVersionRequest.ScriptProfile.FunctionMeta?
+
         public var model: String?
+
+        public var nluAccessProfile: UpdateApplicationVersionRequest.ScriptProfile.NluAccessProfile?
+
+        public var nluAccessType: String?
+
+        public var omniModel: Bool?
 
         public override init() {
             super.init()
@@ -10575,28 +11987,70 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.agentProfile?.validate()
+            try self.functionMeta?.validate()
+            try self.nluAccessProfile?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentKey != nil {
+                map["AgentKey"] = self.agentKey!
+            }
             if self.agentProfile != nil {
                 map["AgentProfile"] = self.agentProfile?.toMap()
             }
+            if self.chatbotId != nil {
+                map["ChatbotId"] = self.chatbotId!
+            }
+            if self.functionMeta != nil {
+                map["FunctionMeta"] = self.functionMeta?.toMap()
+            }
             if self.model != nil {
                 map["Model"] = self.model!
+            }
+            if self.nluAccessProfile != nil {
+                map["NluAccessProfile"] = self.nluAccessProfile?.toMap()
+            }
+            if self.nluAccessType != nil {
+                map["NluAccessType"] = self.nluAccessType!
+            }
+            if self.omniModel != nil {
+                map["OmniModel"] = self.omniModel!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentKey"] as? String {
+                self.agentKey = value
+            }
             if let value = dict["AgentProfile"] as? [String: Any?] {
                 var model = UpdateApplicationVersionRequest.ScriptProfile.AgentProfile()
                 model.fromMap(value)
                 self.agentProfile = model
             }
+            if let value = dict["ChatbotId"] as? String {
+                self.chatbotId = value
+            }
+            if let value = dict["FunctionMeta"] as? [String: Any?] {
+                var model = UpdateApplicationVersionRequest.ScriptProfile.FunctionMeta()
+                model.fromMap(value)
+                self.functionMeta = model
+            }
             if let value = dict["Model"] as? String {
                 self.model = value
+            }
+            if let value = dict["NluAccessProfile"] as? [String: Any?] {
+                var model = UpdateApplicationVersionRequest.ScriptProfile.NluAccessProfile()
+                model.fromMap(value)
+                self.nluAccessProfile = model
+            }
+            if let value = dict["NluAccessType"] as? String {
+                self.nluAccessType = value
+            }
+            if let value = dict["OmniModel"] as? Bool {
+                self.omniModel = value
             }
         }
     }
@@ -11054,6 +12508,8 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
 
     public var interactionConfig: UpdateApplicationVersionRequest.InteractionConfig?
 
+    public var labelConfig: [UpdateApplicationVersionRequest.LabelConfig]?
+
     public var ragConfig: UpdateApplicationVersionRequest.RagConfig?
 
     public var scriptProfile: UpdateApplicationVersionRequest.ScriptProfile?
@@ -11095,6 +12551,13 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         if self.interactionConfig != nil {
             map["InteractionConfig"] = self.interactionConfig?.toMap()
         }
+        if self.labelConfig != nil {
+            var tmp : [Any] = []
+            for k in self.labelConfig! {
+                tmp.append(k.toMap())
+            }
+            map["LabelConfig"] = tmp
+        }
         if self.ragConfig != nil {
             map["RagConfig"] = self.ragConfig?.toMap()
         }
@@ -11128,6 +12591,19 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
             var model = UpdateApplicationVersionRequest.InteractionConfig()
             model.fromMap(value)
             self.interactionConfig = model
+        }
+        if let value = dict["LabelConfig"] as? [Any?] {
+            var tmp : [UpdateApplicationVersionRequest.LabelConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateApplicationVersionRequest.LabelConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.labelConfig = tmp
         }
         if let value = dict["RagConfig"] as? [String: Any?] {
             var model = UpdateApplicationVersionRequest.RagConfig()
@@ -11167,6 +12643,8 @@ public class UpdateApplicationVersionShrinkRequest : Tea.TeaModel {
 
     public var interactionConfigShrink: String?
 
+    public var labelConfigShrink: String?
+
     public var ragConfigShrink: String?
 
     public var scriptProfileShrink: String?
@@ -11202,6 +12680,9 @@ public class UpdateApplicationVersionShrinkRequest : Tea.TeaModel {
         if self.interactionConfigShrink != nil {
             map["InteractionConfig"] = self.interactionConfigShrink!
         }
+        if self.labelConfigShrink != nil {
+            map["LabelConfig"] = self.labelConfigShrink!
+        }
         if self.ragConfigShrink != nil {
             map["RagConfig"] = self.ragConfigShrink!
         }
@@ -11233,6 +12714,9 @@ public class UpdateApplicationVersionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InteractionConfig"] as? String {
             self.interactionConfigShrink = value
+        }
+        if let value = dict["LabelConfig"] as? String {
+            self.labelConfigShrink = value
         }
         if let value = dict["RagConfig"] as? String {
             self.ragConfigShrink = value

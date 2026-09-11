@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("bailianvoicebot", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -129,6 +129,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.interactionConfig)) {
             request.interactionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.interactionConfig, "InteractionConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.labelConfig)) {
+            request.labelConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelConfig, "LabelConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.ragConfig)) {
             request.ragConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ragConfig, "RagConfig", "json")
         }
@@ -153,6 +156,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.interactionConfigShrink)) {
             query["InteractionConfig"] = request.interactionConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelConfigShrink)) {
+            query["LabelConfig"] = request.labelConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ragConfigShrink)) {
             query["RagConfig"] = request.ragConfigShrink ?? "";
@@ -1322,6 +1328,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.interactionConfig)) {
             request.interactionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.interactionConfig, "InteractionConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.labelConfig)) {
+            request.labelConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelConfig, "LabelConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.ragConfig)) {
             request.ragConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ragConfig, "RagConfig", "json")
         }
@@ -1346,6 +1355,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.interactionConfigShrink)) {
             query["InteractionConfig"] = request.interactionConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelConfigShrink)) {
+            query["LabelConfig"] = request.labelConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ragConfigShrink)) {
             query["RagConfig"] = request.ragConfigShrink ?? "";
