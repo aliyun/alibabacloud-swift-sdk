@@ -9688,6 +9688,8 @@ public class GetResourceExportTaskResponseBody : Tea.TeaModel {
 
         public var includeRules: [GetResourceExportTaskResponseBody.Task.IncludeRules]?
 
+        public var modifyTime: String?
+
         public var modules: [GetResourceExportTaskResponseBody.Task.Modules]?
 
         public var name: String?
@@ -9750,6 +9752,9 @@ public class GetResourceExportTaskResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["includeRules"] = tmp
+            }
+            if self.modifyTime != nil {
+                map["modifyTime"] = self.modifyTime!
             }
             if self.modules != nil {
                 var tmp : [Any] = []
@@ -9829,6 +9834,9 @@ public class GetResourceExportTaskResponseBody : Tea.TeaModel {
                     }
                 }
                 self.includeRules = tmp
+            }
+            if let value = dict["modifyTime"] as? String {
+                self.modifyTime = value
             }
             if let value = dict["modules"] as? [Any?] {
                 var tmp : [GetResourceExportTaskResponseBody.Task.Modules] = []
@@ -17990,6 +17998,8 @@ public class ListResourceExportTaskVersionsResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var terraformProviderVersion: String?
+
         public var variables: [ListResourceExportTaskVersionsResponseBody.ExportTasks.Variables]?
 
         public override init() {
@@ -18050,6 +18060,9 @@ public class ListResourceExportTaskVersionsResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["status"] = self.status!
+            }
+            if self.terraformProviderVersion != nil {
+                map["terraformProviderVersion"] = self.terraformProviderVersion!
             }
             if self.variables != nil {
                 var tmp : [Any] = []
@@ -18120,6 +18133,9 @@ public class ListResourceExportTaskVersionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["status"] as? String {
                 self.status = value
+            }
+            if let value = dict["terraformProviderVersion"] as? String {
+                self.terraformProviderVersion = value
             }
             if let value = dict["variables"] as? [Any?] {
                 var tmp : [ListResourceExportTaskVersionsResponseBody.ExportTasks.Variables] = []
