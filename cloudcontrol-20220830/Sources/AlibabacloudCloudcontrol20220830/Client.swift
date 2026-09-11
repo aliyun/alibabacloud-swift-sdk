@@ -8,7 +8,37 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "ap-northeast-1": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "ap-northeast-2": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-2": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-5": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-6": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-7": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "cn-beijing": "cloudcontrol.aliyuncs.com",
+            "cn-chengdu": "cloudcontrol.aliyuncs.com",
+            "cn-fuzhou": "cloudcontrol.aliyuncs.com",
+            "cn-guangzhou": "cloudcontrol.aliyuncs.com",
+            "cn-hangzhou": "cloudcontrol.aliyuncs.com",
+            "cn-heyuan": "cloudcontrol.aliyuncs.com",
+            "cn-hongkong": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "cn-huhehaote": "cloudcontrol.aliyuncs.com",
+            "cn-nanjing": "cloudcontrol.aliyuncs.com",
+            "cn-qingdao": "cloudcontrol.aliyuncs.com",
+            "cn-shanghai": "cloudcontrol.aliyuncs.com",
+            "cn-shenzhen": "cloudcontrol.aliyuncs.com",
+            "cn-wulanchabu": "cloudcontrol.aliyuncs.com",
+            "cn-zhangjiakou": "cloudcontrol.aliyuncs.com",
+            "us-west-1": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "us-east-1": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "eu-west-1": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "eu-central-1": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "me-east-1": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "me-central-1": "cloudcontrol.ap-southeast-1.aliyuncs.com",
+            "ap-south-1": "cloudcontrol.ap-southeast-1.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudcontrol", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -129,6 +159,35 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteResourceWithOptions(requestPath as! String, request as! DeleteResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getApiPriceWithOptions(_ request: GetApiPriceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetApiPriceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetApiPrice",
+            "version": "2022-08-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/price/quote",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetApiPriceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getApiPrice(_ request: GetApiPriceRequest) async throws -> GetApiPriceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getApiPriceWithOptions(request as! GetApiPriceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -281,6 +340,35 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTerraformPricingMappingsWithOptions(_ request: GetTerraformPricingMappingsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTerraformPricingMappingsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTerraformPricingMappings",
+            "version": "2022-08-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/price/terraform-mappings",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTerraformPricingMappingsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTerraformPricingMappings(_ request: GetTerraformPricingMappingsRequest) async throws -> GetTerraformPricingMappingsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getTerraformPricingMappingsWithOptions(request as! GetTerraformPricingMappingsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDataSourcesWithOptions(_ requestPath: String, _ tmpReq: ListDataSourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataSourcesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListDataSourcesShrinkRequest = ListDataSourcesShrinkRequest([:])
@@ -413,6 +501,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ListResourceTypesHeaders = ListResourceTypesHeaders([:])
         return try await listResourceTypesWithOptions(provider as! String, product as! String, request as! ListResourceTypesRequest, headers as! ListResourceTypesHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSupportedPricingApisWithOptions(_ request: ListSupportedPricingApisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSupportedPricingApisResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSupportedPricingApis",
+            "version": "2022-08-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/price/supported-apis",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSupportedPricingApisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSupportedPricingApis(_ request: ListSupportedPricingApisRequest) async throws -> ListSupportedPricingApisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listSupportedPricingApisWithOptions(request as! ListSupportedPricingApisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
