@@ -7230,8 +7230,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateDeviceGroupWithOptions(_ request: UpdateDeviceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDeviceGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateDeviceGroupWithOptions(_ tmpReq: UpdateDeviceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDeviceGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateDeviceGroupShrinkRequest = UpdateDeviceGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dynamicRule)) {
+            request.dynamicRuleShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dynamicRule, "DynamicRule", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
@@ -7241,6 +7246,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dynamicOperator)) {
             body["DynamicOperator"] = request.dynamicOperator ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dynamicRuleShrink)) {
+            body["DynamicRule"] = request.dynamicRuleShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";

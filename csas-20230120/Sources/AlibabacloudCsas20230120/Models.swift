@@ -63293,6 +63293,74 @@ public class UpdateDeviceGroupRequest : Tea.TeaModel {
 
     public var dynamicOperator: String?
 
+    public var dynamicRule: Rule?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dynamicRule?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.deviceGroupId != nil {
+            map["DeviceGroupId"] = self.deviceGroupId!
+        }
+        if self.dynamicOperator != nil {
+            map["DynamicOperator"] = self.dynamicOperator!
+        }
+        if self.dynamicRule != nil {
+            map["DynamicRule"] = self.dynamicRule?.toMap()
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DeviceGroupId"] as? String {
+            self.deviceGroupId = value
+        }
+        if let value = dict["DynamicOperator"] as? String {
+            self.dynamicOperator = value
+        }
+        if let value = dict["DynamicRule"] as? [String: Any?] {
+            var model = Rule()
+            model.fromMap(value)
+            self.dynamicRule = model
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class UpdateDeviceGroupShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var deviceGroupId: String?
+
+    public var dynamicOperator: String?
+
+    public var dynamicRuleShrink: String?
+
     public var name: String?
 
     public override init() {
@@ -63318,6 +63386,9 @@ public class UpdateDeviceGroupRequest : Tea.TeaModel {
         if self.dynamicOperator != nil {
             map["DynamicOperator"] = self.dynamicOperator!
         }
+        if self.dynamicRuleShrink != nil {
+            map["DynamicRule"] = self.dynamicRuleShrink!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -63334,6 +63405,9 @@ public class UpdateDeviceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["DynamicOperator"] as? String {
             self.dynamicOperator = value
+        }
+        if let value = dict["DynamicRule"] as? String {
+            self.dynamicRuleShrink = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
