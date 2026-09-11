@@ -67,16 +67,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhangjiakou-na62-a01": "dts.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "dts.aliyuncs.com",
             "eu-west-1-oxs": "dts.aliyuncs.com",
-            "rus-west-1-pop": "dts.aliyuncs.com",
-            "ap-northeast-1": "dts.ap-northeast-1.aliyuncs.com",
-            "ap-northeast-2": "dts.ap-northeast-2.aliyuncs.com",
-            "ap-southeast-6": "dts.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-7": "dts.ap-southeast-7.aliyuncs.com",
-            "cn-guangzhou": "dts.cn-guangzhou.aliyuncs.com",
-            "cn-heyuan": "dts.cn-heyuan.aliyuncs.com",
-            "cn-wuhan-lr": "dts.cn-wuhan-lr.aliyuncs.com",
-            "cn-zhengzhou-jva": "dts.cn-zhengzhou-jva.aliyuncs.com",
-            "me-central-1": "dts.me-central-1.aliyuncs.com"
+            "rus-west-1-pop": "dts.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dts", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -5251,8 +5242,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endpointPort)) {
             query["EndpointPort"] = request.endpointPort ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.endpointPrimaryVswId)) {
+            query["EndpointPrimaryVswId"] = request.endpointPrimaryVswId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endpointRegionId)) {
             query["EndpointRegionId"] = request.endpointRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endpointSecondaryVswId)) {
+            query["EndpointSecondaryVswId"] = request.endpointSecondaryVswId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endpointVpcId)) {
+            query["EndpointVpcId"] = request.endpointVpcId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.modifyAccount)) {
             query["ModifyAccount"] = request.modifyAccount!;

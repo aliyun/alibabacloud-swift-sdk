@@ -43280,7 +43280,13 @@ public class ModifyDtsJobEndpointRequest : Tea.TeaModel {
 
     public var endpointPort: String?
 
+    public var endpointPrimaryVswId: String?
+
     public var endpointRegionId: String?
+
+    public var endpointSecondaryVswId: String?
+
+    public var endpointVpcId: String?
 
     public var modifyAccount: Bool?
 
@@ -43346,8 +43352,17 @@ public class ModifyDtsJobEndpointRequest : Tea.TeaModel {
         if self.endpointPort != nil {
             map["EndpointPort"] = self.endpointPort!
         }
+        if self.endpointPrimaryVswId != nil {
+            map["EndpointPrimaryVswId"] = self.endpointPrimaryVswId!
+        }
         if self.endpointRegionId != nil {
             map["EndpointRegionId"] = self.endpointRegionId!
+        }
+        if self.endpointSecondaryVswId != nil {
+            map["EndpointSecondaryVswId"] = self.endpointSecondaryVswId!
+        }
+        if self.endpointVpcId != nil {
+            map["EndpointVpcId"] = self.endpointVpcId!
         }
         if self.modifyAccount != nil {
             map["ModifyAccount"] = self.modifyAccount!
@@ -43414,8 +43429,17 @@ public class ModifyDtsJobEndpointRequest : Tea.TeaModel {
         if let value = dict["EndpointPort"] as? String {
             self.endpointPort = value
         }
+        if let value = dict["EndpointPrimaryVswId"] as? String {
+            self.endpointPrimaryVswId = value
+        }
         if let value = dict["EndpointRegionId"] as? String {
             self.endpointRegionId = value
+        }
+        if let value = dict["EndpointSecondaryVswId"] as? String {
+            self.endpointSecondaryVswId = value
+        }
+        if let value = dict["EndpointVpcId"] as? String {
+            self.endpointVpcId = value
         }
         if let value = dict["ModifyAccount"] as? Bool {
             self.modifyAccount = value
