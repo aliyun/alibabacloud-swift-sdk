@@ -39196,6 +39196,235 @@ public class GetComputeResourceResponse : Tea.TeaModel {
     }
 }
 
+public class GetComputeResourceAuthUserMappingsRequest : Tea.TeaModel {
+    public var computeResourceId: Int64?
+
+    public var projectId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.computeResourceId != nil {
+            map["ComputeResourceId"] = self.computeResourceId!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ComputeResourceId"] as? Int64 {
+            self.computeResourceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
+    }
+}
+
+public class GetComputeResourceAuthUserMappingsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Accounts : Tea.TeaModel {
+            public var userId: String?
+
+            public var username: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                if self.username != nil {
+                    map["Username"] = self.username!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+                if let value = dict["Username"] as? String {
+                    self.username = value
+                }
+            }
+        }
+        public var accounts: [GetComputeResourceAuthUserMappingsResponseBody.Data.Accounts]?
+
+        public var hadoopAuthType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accounts != nil {
+                var tmp : [Any] = []
+                for k in self.accounts! {
+                    tmp.append(k.toMap())
+                }
+                map["Accounts"] = tmp
+            }
+            if self.hadoopAuthType != nil {
+                map["HadoopAuthType"] = self.hadoopAuthType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Accounts"] as? [Any?] {
+                var tmp : [GetComputeResourceAuthUserMappingsResponseBody.Data.Accounts] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetComputeResourceAuthUserMappingsResponseBody.Data.Accounts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.accounts = tmp
+            }
+            if let value = dict["HadoopAuthType"] as? String {
+                self.hadoopAuthType = value
+            }
+        }
+    }
+    public var data: GetComputeResourceAuthUserMappingsResponseBody.Data?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetComputeResourceAuthUserMappingsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetComputeResourceAuthUserMappingsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetComputeResourceAuthUserMappingsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetComputeResourceAuthUserMappingsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetCrawlerRequest : Tea.TeaModel {
     public var id: Int64?
 
@@ -119398,6 +119627,314 @@ public class UpdateComputeResourceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateComputeResourceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateComputeResourceAuthUserMappingsRequest : Tea.TeaModel {
+    public class Upserts : Tea.TeaModel {
+        public var password: String?
+
+        public var userId: String?
+
+        public var username: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.password != nil {
+                map["Password"] = self.password!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            if self.username != nil {
+                map["Username"] = self.username!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Password"] as? String {
+                self.password = value
+            }
+            if let value = dict["UserId"] as? String {
+                self.userId = value
+            }
+            if let value = dict["Username"] as? String {
+                self.username = value
+            }
+        }
+    }
+    public var computeResourceId: Int64?
+
+    public var projectId: Int64?
+
+    public var removeUserIds: [String]?
+
+    public var upserts: [UpdateComputeResourceAuthUserMappingsRequest.Upserts]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.computeResourceId != nil {
+            map["ComputeResourceId"] = self.computeResourceId!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.removeUserIds != nil {
+            map["RemoveUserIds"] = self.removeUserIds!
+        }
+        if self.upserts != nil {
+            var tmp : [Any] = []
+            for k in self.upserts! {
+                tmp.append(k.toMap())
+            }
+            map["Upserts"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ComputeResourceId"] as? Int64 {
+            self.computeResourceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
+        if let value = dict["RemoveUserIds"] as? [String] {
+            self.removeUserIds = value
+        }
+        if let value = dict["Upserts"] as? [Any?] {
+            var tmp : [UpdateComputeResourceAuthUserMappingsRequest.Upserts] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateComputeResourceAuthUserMappingsRequest.Upserts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.upserts = tmp
+        }
+    }
+}
+
+public class UpdateComputeResourceAuthUserMappingsShrinkRequest : Tea.TeaModel {
+    public var computeResourceId: Int64?
+
+    public var projectId: Int64?
+
+    public var removeUserIdsShrink: String?
+
+    public var upsertsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.computeResourceId != nil {
+            map["ComputeResourceId"] = self.computeResourceId!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.removeUserIdsShrink != nil {
+            map["RemoveUserIds"] = self.removeUserIdsShrink!
+        }
+        if self.upsertsShrink != nil {
+            map["Upserts"] = self.upsertsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ComputeResourceId"] as? Int64 {
+            self.computeResourceId = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
+        if let value = dict["RemoveUserIds"] as? String {
+            self.removeUserIdsShrink = value
+        }
+        if let value = dict["Upserts"] as? String {
+            self.upsertsShrink = value
+        }
+    }
+}
+
+public class UpdateComputeResourceAuthUserMappingsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var changeRecordId: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.changeRecordId != nil {
+                map["ChangeRecordId"] = self.changeRecordId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChangeRecordId"] as? Int64 {
+                self.changeRecordId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var data: UpdateComputeResourceAuthUserMappingsResponseBody.Data?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = UpdateComputeResourceAuthUserMappingsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateComputeResourceAuthUserMappingsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateComputeResourceAuthUserMappingsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateComputeResourceAuthUserMappingsResponseBody()
             model.fromMap(value)
             self.body = model
         }

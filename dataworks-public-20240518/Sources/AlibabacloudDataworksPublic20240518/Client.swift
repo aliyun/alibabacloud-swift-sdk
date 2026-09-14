@@ -6161,6 +6161,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getComputeResourceAuthUserMappingsWithOptions(_ request: GetComputeResourceAuthUserMappingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetComputeResourceAuthUserMappingsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computeResourceId)) {
+            query["ComputeResourceId"] = request.computeResourceId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            query["ProjectId"] = request.projectId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetComputeResourceAuthUserMappings",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetComputeResourceAuthUserMappingsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getComputeResourceAuthUserMappings(_ request: GetComputeResourceAuthUserMappingsRequest) async throws -> GetComputeResourceAuthUserMappingsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getComputeResourceAuthUserMappingsWithOptions(request as! GetComputeResourceAuthUserMappingsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCrawlerWithOptions(_ request: GetCrawlerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCrawlerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -14212,6 +14246,54 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateComputeResource(_ request: UpdateComputeResourceRequest) async throws -> UpdateComputeResourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateComputeResourceWithOptions(request as! UpdateComputeResourceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateComputeResourceAuthUserMappingsWithOptions(_ tmpReq: UpdateComputeResourceAuthUserMappingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateComputeResourceAuthUserMappingsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateComputeResourceAuthUserMappingsShrinkRequest = UpdateComputeResourceAuthUserMappingsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.removeUserIds)) {
+            request.removeUserIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.removeUserIds, "RemoveUserIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.upserts)) {
+            request.upsertsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.upserts, "Upserts", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computeResourceId)) {
+            body["ComputeResourceId"] = request.computeResourceId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            body["ProjectId"] = request.projectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.removeUserIdsShrink)) {
+            body["RemoveUserIds"] = request.removeUserIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.upsertsShrink)) {
+            body["Upserts"] = request.upsertsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateComputeResourceAuthUserMappings",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateComputeResourceAuthUserMappingsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateComputeResourceAuthUserMappings(_ request: UpdateComputeResourceAuthUserMappingsRequest) async throws -> UpdateComputeResourceAuthUserMappingsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateComputeResourceAuthUserMappingsWithOptions(request as! UpdateComputeResourceAuthUserMappingsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
