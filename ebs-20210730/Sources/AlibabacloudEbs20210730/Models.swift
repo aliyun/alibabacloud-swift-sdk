@@ -8153,6 +8153,8 @@ public class DescribeLensMonitorDisksRequest : Tea.TeaModel {
 
     public var diskIds: [String]?
 
+    public var ecsInstanceId: String?
+
     public var lensTags: [String]?
 
     public var maxResults: Int32?
@@ -8184,6 +8186,9 @@ public class DescribeLensMonitorDisksRequest : Tea.TeaModel {
         if self.diskIds != nil {
             map["DiskIds"] = self.diskIds!
         }
+        if self.ecsInstanceId != nil {
+            map["EcsInstanceId"] = self.ecsInstanceId!
+        }
         if self.lensTags != nil {
             map["LensTags"] = self.lensTags!
         }
@@ -8209,6 +8214,9 @@ public class DescribeLensMonitorDisksRequest : Tea.TeaModel {
         }
         if let value = dict["DiskIds"] as? [String] {
             self.diskIds = value
+        }
+        if let value = dict["EcsInstanceId"] as? String {
+            self.ecsInstanceId = value
         }
         if let value = dict["LensTags"] as? [String] {
             self.lensTags = value

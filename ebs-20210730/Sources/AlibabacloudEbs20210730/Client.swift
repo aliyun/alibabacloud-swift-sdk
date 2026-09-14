@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ebs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1342,6 +1342,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.diskIds)) {
             query["DiskIds"] = request.diskIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ecsInstanceId)) {
+            query["EcsInstanceId"] = request.ecsInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lensTags)) {
             query["LensTags"] = request.lensTags ?? [];
