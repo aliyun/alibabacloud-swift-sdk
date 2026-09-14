@@ -5888,6 +5888,8 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
 
             public var alertSrcProdModule: String?
 
+            public var alertStatus: String?
+
             public var alertTitle: String?
 
             public var alertTitleEn: String?
@@ -5994,6 +5996,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 }
                 if self.alertSrcProdModule != nil {
                     map["AlertSrcProdModule"] = self.alertSrcProdModule!
+                }
+                if self.alertStatus != nil {
+                    map["AlertStatus"] = self.alertStatus!
                 }
                 if self.alertTitle != nil {
                     map["AlertTitle"] = self.alertTitle!
@@ -6126,6 +6131,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AlertSrcProdModule"] as? String {
                     self.alertSrcProdModule = value
+                }
+                if let value = dict["AlertStatus"] as? String {
+                    self.alertStatus = value
                 }
                 if let value = dict["AlertTitle"] as? String {
                     self.alertTitle = value
@@ -13946,6 +13954,319 @@ public class DescribeUserBuyStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeUserBuyStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeUserSiemOrderStatusRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+    }
+}
+
+public class DescribeUserSiemOrderStatusResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var asocInstanceId: String?
+
+        public var asocSubscriptionInstanceEndTime: Int64?
+
+        public var asocSubscriptionInstanceStartTime: Int64?
+
+        public var canBuy: Bool?
+
+        public var capacity: Int32?
+
+        public var capacityOrderFrom: String?
+
+        public var deliveryCapacity: Int32?
+
+        public var durationDays: Int64?
+
+        public var endTime: Int64?
+
+        public var flowCapacity: Int32?
+
+        public var mainUserId: Int64?
+
+        public var masterUserId: Int64?
+
+        public var rdId: String?
+
+        public var rdOrder: Int32?
+
+        public var sasInstanceId: String?
+
+        public var siemOrderFrom: String?
+
+        public var siemOrderStatus: Int32?
+
+        public var subUserId: Int64?
+
+        public var userType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.asocInstanceId != nil {
+                map["AsocInstanceId"] = self.asocInstanceId!
+            }
+            if self.asocSubscriptionInstanceEndTime != nil {
+                map["AsocSubscriptionInstanceEndTime"] = self.asocSubscriptionInstanceEndTime!
+            }
+            if self.asocSubscriptionInstanceStartTime != nil {
+                map["AsocSubscriptionInstanceStartTime"] = self.asocSubscriptionInstanceStartTime!
+            }
+            if self.canBuy != nil {
+                map["CanBuy"] = self.canBuy!
+            }
+            if self.capacity != nil {
+                map["Capacity"] = self.capacity!
+            }
+            if self.capacityOrderFrom != nil {
+                map["CapacityOrderFrom"] = self.capacityOrderFrom!
+            }
+            if self.deliveryCapacity != nil {
+                map["DeliveryCapacity"] = self.deliveryCapacity!
+            }
+            if self.durationDays != nil {
+                map["DurationDays"] = self.durationDays!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.flowCapacity != nil {
+                map["FlowCapacity"] = self.flowCapacity!
+            }
+            if self.mainUserId != nil {
+                map["MainUserId"] = self.mainUserId!
+            }
+            if self.masterUserId != nil {
+                map["MasterUserId"] = self.masterUserId!
+            }
+            if self.rdId != nil {
+                map["RdId"] = self.rdId!
+            }
+            if self.rdOrder != nil {
+                map["RdOrder"] = self.rdOrder!
+            }
+            if self.sasInstanceId != nil {
+                map["SasInstanceId"] = self.sasInstanceId!
+            }
+            if self.siemOrderFrom != nil {
+                map["SiemOrderFrom"] = self.siemOrderFrom!
+            }
+            if self.siemOrderStatus != nil {
+                map["SiemOrderStatus"] = self.siemOrderStatus!
+            }
+            if self.subUserId != nil {
+                map["SubUserId"] = self.subUserId!
+            }
+            if self.userType != nil {
+                map["UserType"] = self.userType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AsocInstanceId"] as? String {
+                self.asocInstanceId = value
+            }
+            if let value = dict["AsocSubscriptionInstanceEndTime"] as? Int64 {
+                self.asocSubscriptionInstanceEndTime = value
+            }
+            if let value = dict["AsocSubscriptionInstanceStartTime"] as? Int64 {
+                self.asocSubscriptionInstanceStartTime = value
+            }
+            if let value = dict["CanBuy"] as? Bool {
+                self.canBuy = value
+            }
+            if let value = dict["Capacity"] as? Int32 {
+                self.capacity = value
+            }
+            if let value = dict["CapacityOrderFrom"] as? String {
+                self.capacityOrderFrom = value
+            }
+            if let value = dict["DeliveryCapacity"] as? Int32 {
+                self.deliveryCapacity = value
+            }
+            if let value = dict["DurationDays"] as? Int64 {
+                self.durationDays = value
+            }
+            if let value = dict["EndTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["FlowCapacity"] as? Int32 {
+                self.flowCapacity = value
+            }
+            if let value = dict["MainUserId"] as? Int64 {
+                self.mainUserId = value
+            }
+            if let value = dict["MasterUserId"] as? Int64 {
+                self.masterUserId = value
+            }
+            if let value = dict["RdId"] as? String {
+                self.rdId = value
+            }
+            if let value = dict["RdOrder"] as? Int32 {
+                self.rdOrder = value
+            }
+            if let value = dict["SasInstanceId"] as? String {
+                self.sasInstanceId = value
+            }
+            if let value = dict["SiemOrderFrom"] as? String {
+                self.siemOrderFrom = value
+            }
+            if let value = dict["SiemOrderStatus"] as? Int32 {
+                self.siemOrderStatus = value
+            }
+            if let value = dict["SubUserId"] as? Int64 {
+                self.subUserId = value
+            }
+            if let value = dict["UserType"] as? String {
+                self.userType = value
+            }
+        }
+    }
+    public var data: DescribeUserSiemOrderStatusResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeUserSiemOrderStatusResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeUserSiemOrderStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeUserSiemOrderStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeUserSiemOrderStatusResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -24822,6 +25143,8 @@ public class PostEventDisposeAndWhiteruleListRequest : Tea.TeaModel {
 
     public var status: Int32?
 
+    public var syncAlertStatus: Bool?
+
     public var threatLevel: String?
 
     public override init() {
@@ -24874,6 +25197,9 @@ public class PostEventDisposeAndWhiteruleListRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.syncAlertStatus != nil {
+            map["SyncAlertStatus"] = self.syncAlertStatus!
+        }
         if self.threatLevel != nil {
             map["ThreatLevel"] = self.threatLevel!
         }
@@ -24917,6 +25243,9 @@ public class PostEventDisposeAndWhiteruleListRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? Int32 {
             self.status = value
+        }
+        if let value = dict["SyncAlertStatus"] as? Bool {
+            self.syncAlertStatus = value
         }
         if let value = dict["ThreatLevel"] as? String {
             self.threatLevel = value
