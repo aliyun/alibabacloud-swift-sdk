@@ -23244,6 +23244,8 @@ public class CreateSimulatedSystemEventsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var triggerRealOps: Bool?
+
     public override init() {
         super.init()
     }
@@ -23282,6 +23284,9 @@ public class CreateSimulatedSystemEventsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.triggerRealOps != nil {
+            map["TriggerRealOps"] = self.triggerRealOps!
+        }
         return map
     }
 
@@ -23310,6 +23315,9 @@ public class CreateSimulatedSystemEventsRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["TriggerRealOps"] as? Bool {
+            self.triggerRealOps = value
         }
     }
 }
