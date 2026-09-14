@@ -42595,6 +42595,8 @@ public class GetSupabaseProjectRequest : Tea.TeaModel {
 }
 
 public class GetSupabaseProjectResponseBody : Tea.TeaModel {
+    public var appliedIdleTimeHours: String?
+
     public var autoScale: String?
 
     public var createTime: String?
@@ -42663,6 +42665,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appliedIdleTimeHours != nil {
+            map["AppliedIdleTimeHours"] = self.appliedIdleTimeHours!
+        }
         if self.autoScale != nil {
             map["AutoScale"] = self.autoScale!
         }
@@ -42749,6 +42754,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppliedIdleTimeHours"] as? String {
+            self.appliedIdleTimeHours = value
+        }
         if let value = dict["AutoScale"] as? String {
             self.autoScale = value
         }
@@ -59537,6 +59545,8 @@ public class ModifyStreamingJobResponse : Tea.TeaModel {
 public class ModifySupabaseAutoScalePolicyRequest : Tea.TeaModel {
     public var autoScale: Bool?
 
+    public var idleTimeHours: String?
+
     public var projectId: String?
 
     public var regionId: String?
@@ -59558,6 +59568,9 @@ public class ModifySupabaseAutoScalePolicyRequest : Tea.TeaModel {
         if self.autoScale != nil {
             map["AutoScale"] = self.autoScale!
         }
+        if self.idleTimeHours != nil {
+            map["IdleTimeHours"] = self.idleTimeHours!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -59571,6 +59584,9 @@ public class ModifySupabaseAutoScalePolicyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoScale"] as? Bool {
             self.autoScale = value
+        }
+        if let value = dict["IdleTimeHours"] as? String {
+            self.idleTimeHours = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
@@ -65454,6 +65470,8 @@ public class ResetIMVMonitorDataResponse : Tea.TeaModel {
 public class ResetSupabaseProjectPasswordRequest : Tea.TeaModel {
     public var accountPassword: String?
 
+    public var dashboardPassword: String?
+
     public var projectId: String?
 
     public var regionId: String?
@@ -65475,6 +65493,9 @@ public class ResetSupabaseProjectPasswordRequest : Tea.TeaModel {
         if self.accountPassword != nil {
             map["AccountPassword"] = self.accountPassword!
         }
+        if self.dashboardPassword != nil {
+            map["DashboardPassword"] = self.dashboardPassword!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -65488,6 +65509,9 @@ public class ResetSupabaseProjectPasswordRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountPassword"] as? String {
             self.accountPassword = value
+        }
+        if let value = dict["DashboardPassword"] as? String {
+            self.dashboardPassword = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value

@@ -48,31 +48,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhangjiakou-na62-a01": "gpdb.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "gpdb.aliyuncs.com",
             "eu-west-1-oxs": "gpdb.aliyuncs.com",
-            "rus-west-1-pop": "gpdb.aliyuncs.com",
-            "cn-wulanchabu": "gpdb.cn-wulanchabu.aliyuncs.com",
-            "cn-beijing": "gpdb.cn-beijing.aliyuncs.com",
-            "cn-qingdao": "gpdb.cn-qingdao.aliyuncs.com",
-            "cn-shanghai": "gpdb.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "gpdb.cn-hongkong.aliyuncs.com",
-            "cn-zhangjiakou": "gpdb.cn-zhangjiakou.aliyuncs.com",
-            "cn-shenzhen": "gpdb.cn-shenzhen.aliyuncs.com",
-            "ap-northeast-2": "gpdb.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "gpdb.ap-northeast-1.aliyuncs.com",
-            "cn-chengdu": "gpdb.cn-chengdu.aliyuncs.com",
-            "ap-southeast-1": "gpdb.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-3": "gpdb.ap-southeast-3.aliyuncs.com",
-            "cn-huhehaote": "gpdb.cn-huhehaote.aliyuncs.com",
-            "ap-southeast-5": "gpdb.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-7": "gpdb.ap-southeast-7.aliyuncs.com",
-            "us-east-1": "gpdb.us-east-1.aliyuncs.com",
-            "eu-west-1": "gpdb.eu-west-1.aliyuncs.com",
-            "us-west-1": "gpdb.us-west-1.aliyuncs.com",
-            "eu-central-1": "gpdb.eu-central-1.aliyuncs.com",
-            "me-east-1": "gpdb.me-east-1.aliyuncs.com",
-            "me-central-1": "gpdb.me-central-1.aliyuncs.com",
-            "cn-shenzhen-finance-1": "gpdb.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shanghai-finance-1": "gpdb.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-north-2-gov-1": "gpdb.cn-north-2-gov-1.aliyuncs.com"
+            "rus-west-1-pop": "gpdb.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("gpdb", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -11156,6 +11132,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoScale)) {
             query["AutoScale"] = request.autoScale!;
         }
+        if (!TeaUtils.Client.isUnset(request.idleTimeHours)) {
+            query["IdleTimeHours"] = request.idleTimeHours ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             query["ProjectId"] = request.projectId ?? "";
         }
@@ -12114,6 +12093,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountPassword)) {
             query["AccountPassword"] = request.accountPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dashboardPassword)) {
+            query["DashboardPassword"] = request.dashboardPassword ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             query["ProjectId"] = request.projectId ?? "";
