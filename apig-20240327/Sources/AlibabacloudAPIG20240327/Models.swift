@@ -7648,6 +7648,8 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
         }
+        public var capabilityTier: String?
+
         public var gatewayServiceId: String?
 
         public var intentCode: String?
@@ -7690,6 +7692,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.capabilityTier != nil {
+                map["capabilityTier"] = self.capabilityTier!
+            }
             if self.gatewayServiceId != nil {
                 map["gatewayServiceId"] = self.gatewayServiceId!
             }
@@ -7734,6 +7739,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["capabilityTier"] as? String {
+                self.capabilityTier = value
+            }
             if let value = dict["gatewayServiceId"] as? String {
                 self.gatewayServiceId = value
             }
@@ -7869,6 +7877,8 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
     public var subDomains: [HttpApiDeployConfig.SubDomains]?
 
+    public var systemModelTiers: [String]?
+
     public override init() {
         super.init()
     }
@@ -7959,6 +7969,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["subDomains"] = tmp
+        }
+        if self.systemModelTiers != nil {
+            map["systemModelTiers"] = self.systemModelTiers!
         }
         return map
     }
@@ -8074,6 +8087,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
             self.subDomains = tmp
+        }
+        if let value = dict["systemModelTiers"] as? [String] {
+            self.systemModelTiers = value
         }
     }
 }
@@ -17065,6 +17081,10 @@ public class CreateConsumerRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public override init() {
         super.init()
     }
@@ -17106,6 +17126,12 @@ public class CreateConsumerRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
         return map
     }
 
@@ -17145,6 +17171,12 @@ public class CreateConsumerRequest : Tea.TeaModel {
         }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
     }
 }
