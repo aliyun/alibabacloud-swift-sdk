@@ -1622,6 +1622,8 @@ public class Task : Tea.TeaModel {
 
         public var enableAutoScaling: Bool?
 
+        public var env: String?
+
         public var gpuSpec: String?
 
         public var idleTimeoutSeconds: Int64?
@@ -1629,6 +1631,10 @@ public class Task : Tea.TeaModel {
         public var memory: String?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
+
+        public var rayVersion: String?
 
         public var replica: Int32?
 
@@ -1652,6 +1658,9 @@ public class Task : Tea.TeaModel {
             if self.enableAutoScaling != nil {
                 map["enableAutoScaling"] = self.enableAutoScaling!
             }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -1663,6 +1672,12 @@ public class Task : Tea.TeaModel {
             }
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
+            }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
+            if self.rayVersion != nil {
+                map["rayVersion"] = self.rayVersion!
             }
             if self.replica != nil {
                 map["replica"] = self.replica!
@@ -1678,6 +1693,9 @@ public class Task : Tea.TeaModel {
             if let value = dict["enableAutoScaling"] as? Bool {
                 self.enableAutoScaling = value
             }
+            if let value = dict["env"] as? String {
+                self.env = value
+            }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
             }
@@ -1690,6 +1708,12 @@ public class Task : Tea.TeaModel {
             if let value = dict["queueName"] as? String {
                 self.queueName = value
             }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
+            }
+            if let value = dict["rayVersion"] as? String {
+                self.rayVersion = value
+            }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
             }
@@ -1697,6 +1721,8 @@ public class Task : Tea.TeaModel {
     }
     public class RayWorkerSpec : Tea.TeaModel {
         public var cpu: String?
+
+        public var env: String?
 
         public var gpuSpec: String?
 
@@ -1709,6 +1735,10 @@ public class Task : Tea.TeaModel {
         public var minReplica: Int32?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
+
+        public var rayVersion: String?
 
         public var replica: Int32?
 
@@ -1729,6 +1759,9 @@ public class Task : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -1747,6 +1780,12 @@ public class Task : Tea.TeaModel {
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
             }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
+            if self.rayVersion != nil {
+                map["rayVersion"] = self.rayVersion!
+            }
             if self.replica != nil {
                 map["replica"] = self.replica!
             }
@@ -1757,6 +1796,9 @@ public class Task : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cpu"] as? String {
                 self.cpu = value
+            }
+            if let value = dict["env"] as? String {
+                self.env = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -1775,6 +1817,12 @@ public class Task : Tea.TeaModel {
             }
             if let value = dict["queueName"] as? String {
                 self.queueName = value
+            }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
+            }
+            if let value = dict["rayVersion"] as? String {
+                self.rayVersion = value
             }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
@@ -5800,9 +5848,63 @@ public class CreateProcessDefinitionWithScheduleResponse : Tea.TeaModel {
 
 public class CreateRayClusterRequest : Tea.TeaModel {
     public class HeadSpec : Tea.TeaModel {
+        public class GftConfig : Tea.TeaModel {
+            public var redisPassword: String?
+
+            public var redisUrl: String?
+
+            public var redisUsername: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.redisPassword != nil {
+                    map["redisPassword"] = self.redisPassword!
+                }
+                if self.redisUrl != nil {
+                    map["redisUrl"] = self.redisUrl!
+                }
+                if self.redisUsername != nil {
+                    map["redisUsername"] = self.redisUsername!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["redisPassword"] as? String {
+                    self.redisPassword = value
+                }
+                if let value = dict["redisUrl"] as? String {
+                    self.redisUrl = value
+                }
+                if let value = dict["redisUsername"] as? String {
+                    self.redisUsername = value
+                }
+            }
+        }
         public var cpu: String?
 
+        public var displayReleaseVersion: String?
+
         public var enableAutoScaling: Bool?
+
+        public var env: String?
+
+        public var gftConfig: CreateRayClusterRequest.HeadSpec.GftConfig?
+
+        public var gftEnabled: Bool?
 
         public var gpuSpec: String?
 
@@ -5811,6 +5913,8 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         public var memory: String?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
 
         public override init() {
             super.init()
@@ -5822,6 +5926,7 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.gftConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -5829,8 +5934,20 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.enableAutoScaling != nil {
                 map["enableAutoScaling"] = self.enableAutoScaling!
+            }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
+            if self.gftConfig != nil {
+                map["gftConfig"] = self.gftConfig?.toMap()
+            }
+            if self.gftEnabled != nil {
+                map["gftEnabled"] = self.gftEnabled!
             }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
@@ -5844,6 +5961,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
             }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
             return map
         }
 
@@ -5852,8 +5972,22 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if let value = dict["cpu"] as? String {
                 self.cpu = value
             }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
             if let value = dict["enableAutoScaling"] as? Bool {
                 self.enableAutoScaling = value
+            }
+            if let value = dict["env"] as? String {
+                self.env = value
+            }
+            if let value = dict["gftConfig"] as? [String: Any?] {
+                var model = CreateRayClusterRequest.HeadSpec.GftConfig()
+                model.fromMap(value)
+                self.gftConfig = model
+            }
+            if let value = dict["gftEnabled"] as? Bool {
+                self.gftEnabled = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -5867,10 +6001,17 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if let value = dict["queueName"] as? String {
                 self.queueName = value
             }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
+            }
         }
     }
     public class WorkerSpec : Tea.TeaModel {
         public var cpu: String?
+
+        public var displayReleaseVersion: String?
+
+        public var env: String?
 
         public var gpuSpec: String?
 
@@ -5883,6 +6024,8 @@ public class CreateRayClusterRequest : Tea.TeaModel {
         public var minReplica: Int32?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
 
         public var replica: Int32?
 
@@ -5905,6 +6048,12 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -5923,6 +6072,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
             }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
             if self.replica != nil {
                 map["replica"] = self.replica!
             }
@@ -5936,6 +6088,12 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cpu"] as? String {
                 self.cpu = value
+            }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
+            if let value = dict["env"] as? String {
+                self.env = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -5954,6 +6112,9 @@ public class CreateRayClusterRequest : Tea.TeaModel {
             }
             if let value = dict["queueName"] as? String {
                 self.queueName = value
+            }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
             }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
@@ -7776,6 +7937,8 @@ public class EditWorkspaceQueueRequest : Tea.TeaModel {
             }
         }
     }
+    public var description_: String?
+
     public var environments: [String]?
 
     public var gpuSpec: [String]?
@@ -7805,6 +7968,9 @@ public class EditWorkspaceQueueRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
         if self.environments != nil {
             map["environments"] = self.environments!
         }
@@ -7831,6 +7997,9 @@ public class EditWorkspaceQueueRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["environments"] as? [String] {
             self.environments = value
         }
@@ -8827,6 +8996,8 @@ public class GetJobRunResponseBody : Tea.TeaModel {
 
         public var tags: [Tag]?
 
+        public var totalTokens: Int64?
+
         public var webUI: String?
 
         public var workspaceId: String?
@@ -8912,6 +9083,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["tags"] = tmp
+            }
+            if self.totalTokens != nil {
+                map["totalTokens"] = self.totalTokens!
             }
             if self.webUI != nil {
                 map["webUI"] = self.webUI!
@@ -9001,6 +9175,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["totalTokens"] as? Int64 {
+                self.totalTokens = value
             }
             if let value = dict["webUI"] as? String {
                 self.webUI = value
@@ -10255,9 +10432,63 @@ public class GetLivyComputeTokenResponse : Tea.TeaModel {
 
 public class GetRayClusterResponseBody : Tea.TeaModel {
     public class HeadSpec : Tea.TeaModel {
+        public class GftConfig : Tea.TeaModel {
+            public var redisPassword: String?
+
+            public var redisUrl: String?
+
+            public var redisUsername: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.redisPassword != nil {
+                    map["redisPassword"] = self.redisPassword!
+                }
+                if self.redisUrl != nil {
+                    map["redisUrl"] = self.redisUrl!
+                }
+                if self.redisUsername != nil {
+                    map["redisUsername"] = self.redisUsername!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["redisPassword"] as? String {
+                    self.redisPassword = value
+                }
+                if let value = dict["redisUrl"] as? String {
+                    self.redisUrl = value
+                }
+                if let value = dict["redisUsername"] as? String {
+                    self.redisUsername = value
+                }
+            }
+        }
         public var cpu: String?
 
+        public var displayReleaseVersion: String?
+
         public var enableAutoScaling: Bool?
+
+        public var env: String?
+
+        public var gftConfig: GetRayClusterResponseBody.HeadSpec.GftConfig?
+
+        public var gftEnabled: Bool?
 
         public var gpuSpec: String?
 
@@ -10266,6 +10497,8 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
         public var memory: String?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
 
         public var replica: Int32?
 
@@ -10279,6 +10512,7 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.gftConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -10286,8 +10520,20 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.enableAutoScaling != nil {
                 map["enableAutoScaling"] = self.enableAutoScaling!
+            }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
+            if self.gftConfig != nil {
+                map["gftConfig"] = self.gftConfig?.toMap()
+            }
+            if self.gftEnabled != nil {
+                map["gftEnabled"] = self.gftEnabled!
             }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
@@ -10301,6 +10547,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
             }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
             if self.replica != nil {
                 map["replica"] = self.replica!
             }
@@ -10312,8 +10561,22 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if let value = dict["cpu"] as? String {
                 self.cpu = value
             }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
             if let value = dict["enableAutoScaling"] as? Bool {
                 self.enableAutoScaling = value
+            }
+            if let value = dict["env"] as? String {
+                self.env = value
+            }
+            if let value = dict["gftConfig"] as? [String: Any?] {
+                var model = GetRayClusterResponseBody.HeadSpec.GftConfig()
+                model.fromMap(value)
+                self.gftConfig = model
+            }
+            if let value = dict["gftEnabled"] as? Bool {
+                self.gftEnabled = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -10326,6 +10589,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             }
             if let value = dict["queueName"] as? String {
                 self.queueName = value
+            }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
             }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
@@ -10445,6 +10711,10 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
     public class WorkerSpec : Tea.TeaModel {
         public var cpu: String?
 
+        public var displayReleaseVersion: String?
+
+        public var env: String?
+
         public var gpuSpec: String?
 
         public var groupName: String?
@@ -10456,6 +10726,8 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
         public var minReplica: Int32?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
 
         public var replica: Int32?
 
@@ -10478,6 +10750,12 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -10496,6 +10774,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
             }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
             if self.replica != nil {
                 map["replica"] = self.replica!
             }
@@ -10509,6 +10790,12 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cpu"] as? String {
                 self.cpu = value
+            }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
+            if let value = dict["env"] as? String {
+                self.env = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -10527,6 +10814,9 @@ public class GetRayClusterResponseBody : Tea.TeaModel {
             }
             if let value = dict["queueName"] as? String {
                 self.queueName = value
+            }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
             }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
@@ -10929,6 +11219,8 @@ public class GetRayJobResponseBody : Tea.TeaModel {
     public class HeadSpec : Tea.TeaModel {
         public var cpu: String?
 
+        public var displayReleaseVersion: String?
+
         public var enableAutoScaling: Bool?
 
         public var gpuSpec: String?
@@ -10958,6 +11250,9 @@ public class GetRayJobResponseBody : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.enableAutoScaling != nil {
                 map["enableAutoScaling"] = self.enableAutoScaling!
             }
@@ -10984,6 +11279,9 @@ public class GetRayJobResponseBody : Tea.TeaModel {
             if let value = dict["cpu"] as? String {
                 self.cpu = value
             }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
             if let value = dict["enableAutoScaling"] as? Bool {
                 self.enableAutoScaling = value
             }
@@ -11006,6 +11304,8 @@ public class GetRayJobResponseBody : Tea.TeaModel {
     }
     public class WorkerSpecs : Tea.TeaModel {
         public var cpu: String?
+
+        public var displayReleaseVersion: String?
 
         public var gpuSpec: String?
 
@@ -11038,6 +11338,9 @@ public class GetRayJobResponseBody : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -11066,6 +11369,9 @@ public class GetRayJobResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cpu"] as? String {
                 self.cpu = value
+            }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -14826,6 +15132,37 @@ public class ListJobRunsResponse : Tea.TeaModel {
     }
 }
 
+public class ListKyuubiServicesRequest : Tea.TeaModel {
+    public var token: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["token"] as? String {
+            self.token = value
+        }
+    }
+}
+
 public class ListKyuubiServicesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class KyuubiServices : Tea.TeaModel {
@@ -14858,6 +15195,8 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
             public var startTime: String?
 
             public var state: String?
+
+            public var webUi: String?
 
             public override init() {
                 super.init()
@@ -14918,6 +15257,9 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
                 if self.state != nil {
                     map["state"] = self.state!
                 }
+                if self.webUi != nil {
+                    map["webUi"] = self.webUi!
+                }
                 return map
             }
 
@@ -14967,6 +15309,9 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["state"] as? String {
                     self.state = value
+                }
+                if let value = dict["webUi"] as? String {
+                    self.webUi = value
                 }
             }
         }
@@ -19319,6 +19664,8 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
 
         public var iaasType: String?
 
+        public var isCustom: Bool?
+
         public var releaseVersion: String?
 
         public var scalaVersion: String?
@@ -19359,6 +19706,9 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
             if self.iaasType != nil {
                 map["iaasType"] = self.iaasType!
             }
+            if self.isCustom != nil {
+                map["isCustom"] = self.isCustom!
+            }
             if self.releaseVersion != nil {
                 map["releaseVersion"] = self.releaseVersion!
             }
@@ -19393,6 +19743,9 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["iaasType"] as? String {
                 self.iaasType = value
+            }
+            if let value = dict["isCustom"] as? Bool {
+                self.isCustom = value
             }
             if let value = dict["releaseVersion"] as? String {
                 self.releaseVersion = value
@@ -20589,6 +20942,8 @@ public class ListWorkspaceQueuesResponseBody : Tea.TeaModel {
 
         public var creator: String?
 
+        public var description_: String?
+
         public var environments: [String]?
 
         public var gpuMachineNum: Int32?
@@ -20649,6 +21004,9 @@ public class ListWorkspaceQueuesResponseBody : Tea.TeaModel {
             }
             if self.creator != nil {
                 map["creator"] = self.creator!
+            }
+            if self.description_ != nil {
+                map["description"] = self.description_!
             }
             if self.environments != nil {
                 map["environments"] = self.environments!
@@ -20724,6 +21082,9 @@ public class ListWorkspaceQueuesResponseBody : Tea.TeaModel {
             }
             if let value = dict["creator"] as? String {
                 self.creator = value
+            }
+            if let value = dict["description"] as? String {
+                self.description_ = value
             }
             if let value = dict["environments"] as? [String] {
                 self.environments = value
@@ -21817,6 +22178,423 @@ public class ListWorkspacesResponse : Tea.TeaModel {
     }
 }
 
+public class QueryApmGrafanaDataRequest : Tea.TeaModel {
+    public class QueryParams : Tea.TeaModel {
+        public var panelId: Int64?
+
+        public var refId: String?
+
+        public var variableName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.panelId != nil {
+                map["panelId"] = self.panelId!
+            }
+            if self.refId != nil {
+                map["refId"] = self.refId!
+            }
+            if self.variableName != nil {
+                map["variableName"] = self.variableName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["panelId"] as? Int64 {
+                self.panelId = value
+            }
+            if let value = dict["refId"] as? String {
+                self.refId = value
+            }
+            if let value = dict["variableName"] as? String {
+                self.variableName = value
+            }
+        }
+    }
+    public var componentName: String?
+
+    public var dashboardId: String?
+
+    public var end: String?
+
+    public var provider: String?
+
+    public var query: String?
+
+    public var queryParams: QueryApmGrafanaDataRequest.QueryParams?
+
+    public var queryUrl: String?
+
+    public var regionId: String?
+
+    public var start: String?
+
+    public var step: String?
+
+    public var time: String?
+
+    public var variables: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.queryParams?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentName != nil {
+            map["componentName"] = self.componentName!
+        }
+        if self.dashboardId != nil {
+            map["dashboardId"] = self.dashboardId!
+        }
+        if self.end != nil {
+            map["end"] = self.end!
+        }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        if self.queryParams != nil {
+            map["queryParams"] = self.queryParams?.toMap()
+        }
+        if self.queryUrl != nil {
+            map["queryUrl"] = self.queryUrl!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.start != nil {
+            map["start"] = self.start!
+        }
+        if self.step != nil {
+            map["step"] = self.step!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        if self.variables != nil {
+            map["variables"] = self.variables!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["componentName"] as? String {
+            self.componentName = value
+        }
+        if let value = dict["dashboardId"] as? String {
+            self.dashboardId = value
+        }
+        if let value = dict["end"] as? String {
+            self.end = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
+        }
+        if let value = dict["query"] as? String {
+            self.query = value
+        }
+        if let value = dict["queryParams"] as? [String: Any?] {
+            var model = QueryApmGrafanaDataRequest.QueryParams()
+            model.fromMap(value)
+            self.queryParams = model
+        }
+        if let value = dict["queryUrl"] as? String {
+            self.queryUrl = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["start"] as? String {
+            self.start = value
+        }
+        if let value = dict["step"] as? String {
+            self.step = value
+        }
+        if let value = dict["time"] as? String {
+            self.time = value
+        }
+        if let value = dict["variables"] as? String {
+            self.variables = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class QueryApmGrafanaDataShrinkRequest : Tea.TeaModel {
+    public var componentName: String?
+
+    public var dashboardId: String?
+
+    public var end: String?
+
+    public var provider: String?
+
+    public var query: String?
+
+    public var queryParamsShrink: String?
+
+    public var queryUrl: String?
+
+    public var regionId: String?
+
+    public var start: String?
+
+    public var step: String?
+
+    public var time: String?
+
+    public var variables: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentName != nil {
+            map["componentName"] = self.componentName!
+        }
+        if self.dashboardId != nil {
+            map["dashboardId"] = self.dashboardId!
+        }
+        if self.end != nil {
+            map["end"] = self.end!
+        }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        if self.queryParamsShrink != nil {
+            map["queryParams"] = self.queryParamsShrink!
+        }
+        if self.queryUrl != nil {
+            map["queryUrl"] = self.queryUrl!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.start != nil {
+            map["start"] = self.start!
+        }
+        if self.step != nil {
+            map["step"] = self.step!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        if self.variables != nil {
+            map["variables"] = self.variables!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["componentName"] as? String {
+            self.componentName = value
+        }
+        if let value = dict["dashboardId"] as? String {
+            self.dashboardId = value
+        }
+        if let value = dict["end"] as? String {
+            self.end = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
+        }
+        if let value = dict["query"] as? String {
+            self.query = value
+        }
+        if let value = dict["queryParams"] as? String {
+            self.queryParamsShrink = value
+        }
+        if let value = dict["queryUrl"] as? String {
+            self.queryUrl = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["start"] as? String {
+            self.start = value
+        }
+        if let value = dict["step"] as? String {
+            self.step = value
+        }
+        if let value = dict["time"] as? String {
+            self.time = value
+        }
+        if let value = dict["variables"] as? String {
+            self.variables = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class QueryApmGrafanaDataResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var data: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                map["data"] = self.data!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["data"] as? String {
+                self.data = value
+            }
+        }
+    }
+    public var data: QueryApmGrafanaDataResponseBody.Data?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = QueryApmGrafanaDataResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+    }
+}
+
+public class QueryApmGrafanaDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryApmGrafanaDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryApmGrafanaDataResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class RefreshLivyComputeTokenRequest : Tea.TeaModel {
     public class AutoExpireConfiguration : Tea.TeaModel {
         public var enable: Bool?
@@ -22672,6 +23450,8 @@ public class StartProcessInstanceRequest : Tea.TeaModel {
 
     public var email: String?
 
+    public var expectedParallelismNumber: Int32?
+
     public var interval: String?
 
     public var isProd: Bool?
@@ -22681,6 +23461,8 @@ public class StartProcessInstanceRequest : Tea.TeaModel {
     public var productNamespace: String?
 
     public var regionId: String?
+
+    public var runMode: String?
 
     public var runtimeQueue: String?
 
@@ -22711,6 +23493,9 @@ public class StartProcessInstanceRequest : Tea.TeaModel {
         if self.email != nil {
             map["email"] = self.email!
         }
+        if self.expectedParallelismNumber != nil {
+            map["expectedParallelismNumber"] = self.expectedParallelismNumber!
+        }
         if self.interval != nil {
             map["interval"] = self.interval!
         }
@@ -22725,6 +23510,9 @@ public class StartProcessInstanceRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
+        }
+        if self.runMode != nil {
+            map["runMode"] = self.runMode!
         }
         if self.runtimeQueue != nil {
             map["runtimeQueue"] = self.runtimeQueue!
@@ -22749,6 +23537,9 @@ public class StartProcessInstanceRequest : Tea.TeaModel {
         if let value = dict["email"] as? String {
             self.email = value
         }
+        if let value = dict["expectedParallelismNumber"] as? Int32 {
+            self.expectedParallelismNumber = value
+        }
         if let value = dict["interval"] as? String {
             self.interval = value
         }
@@ -22763,6 +23554,9 @@ public class StartProcessInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["runMode"] as? String {
+            self.runMode = value
         }
         if let value = dict["runtimeQueue"] as? String {
             self.runtimeQueue = value
@@ -23734,6 +24528,8 @@ public class SubmitRayJobRequest : Tea.TeaModel {
     public class HeadSpec : Tea.TeaModel {
         public var cpu: String?
 
+        public var displayReleaseVersion: String?
+
         public var enableAutoScaling: Bool?
 
         public var gpuSpec: String?
@@ -23761,6 +24557,9 @@ public class SubmitRayJobRequest : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.enableAutoScaling != nil {
                 map["enableAutoScaling"] = self.enableAutoScaling!
             }
@@ -23783,6 +24582,9 @@ public class SubmitRayJobRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cpu"] as? String {
                 self.cpu = value
+            }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
             }
             if let value = dict["enableAutoScaling"] as? Bool {
                 self.enableAutoScaling = value
@@ -23842,6 +24644,8 @@ public class SubmitRayJobRequest : Tea.TeaModel {
     public class WorkerSpec : Tea.TeaModel {
         public var cpu: String?
 
+        public var displayReleaseVersion: String?
+
         public var gpuSpec: String?
 
         public var groupName: String?
@@ -23875,6 +24679,9 @@ public class SubmitRayJobRequest : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -23907,6 +24714,9 @@ public class SubmitRayJobRequest : Tea.TeaModel {
             if let value = dict["cpu"] as? String {
                 self.cpu = value
             }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
             }
@@ -23934,6 +24744,8 @@ public class SubmitRayJobRequest : Tea.TeaModel {
         }
     }
     public var activeDeadlineSeconds: Int32?
+
+    public var clusterId: String?
 
     public var displayReleaseVersion: String?
 
@@ -23990,6 +24802,9 @@ public class SubmitRayJobRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.activeDeadlineSeconds != nil {
             map["activeDeadlineSeconds"] = self.activeDeadlineSeconds!
+        }
+        if self.clusterId != nil {
+            map["clusterId"] = self.clusterId!
         }
         if self.displayReleaseVersion != nil {
             map["displayReleaseVersion"] = self.displayReleaseVersion!
@@ -24063,6 +24878,9 @@ public class SubmitRayJobRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["activeDeadlineSeconds"] as? Int32 {
             self.activeDeadlineSeconds = value
+        }
+        if let value = dict["clusterId"] as? String {
+            self.clusterId = value
         }
         if let value = dict["displayReleaseVersion"] as? String {
             self.displayReleaseVersion = value
@@ -26294,9 +27112,63 @@ public class UpdateProcessDefinitionWithScheduleResponse : Tea.TeaModel {
 
 public class UpdateRayClusterRequest : Tea.TeaModel {
     public class HeadSpec : Tea.TeaModel {
+        public class GftConfig : Tea.TeaModel {
+            public var redisPassword: String?
+
+            public var redisUrl: String?
+
+            public var redisUsername: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.redisPassword != nil {
+                    map["redisPassword"] = self.redisPassword!
+                }
+                if self.redisUrl != nil {
+                    map["redisUrl"] = self.redisUrl!
+                }
+                if self.redisUsername != nil {
+                    map["redisUsername"] = self.redisUsername!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["redisPassword"] as? String {
+                    self.redisPassword = value
+                }
+                if let value = dict["redisUrl"] as? String {
+                    self.redisUrl = value
+                }
+                if let value = dict["redisUsername"] as? String {
+                    self.redisUsername = value
+                }
+            }
+        }
         public var cpu: String?
 
+        public var displayReleaseVersion: String?
+
         public var enableAutoScaling: Bool?
+
+        public var env: String?
+
+        public var gftConfig: UpdateRayClusterRequest.HeadSpec.GftConfig?
+
+        public var gftEnabled: Bool?
 
         public var gpuSpec: String?
 
@@ -26305,6 +27177,8 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         public var memory: String?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
 
         public override init() {
             super.init()
@@ -26316,6 +27190,7 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.gftConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -26323,8 +27198,20 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.enableAutoScaling != nil {
                 map["enableAutoScaling"] = self.enableAutoScaling!
+            }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
+            if self.gftConfig != nil {
+                map["gftConfig"] = self.gftConfig?.toMap()
+            }
+            if self.gftEnabled != nil {
+                map["gftEnabled"] = self.gftEnabled!
             }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
@@ -26338,6 +27225,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
             }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
             return map
         }
 
@@ -26346,8 +27236,22 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if let value = dict["cpu"] as? String {
                 self.cpu = value
             }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
             if let value = dict["enableAutoScaling"] as? Bool {
                 self.enableAutoScaling = value
+            }
+            if let value = dict["env"] as? String {
+                self.env = value
+            }
+            if let value = dict["gftConfig"] as? [String: Any?] {
+                var model = UpdateRayClusterRequest.HeadSpec.GftConfig()
+                model.fromMap(value)
+                self.gftConfig = model
+            }
+            if let value = dict["gftEnabled"] as? Bool {
+                self.gftEnabled = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -26361,10 +27265,17 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if let value = dict["queueName"] as? String {
                 self.queueName = value
             }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
+            }
         }
     }
     public class WorkerSpec : Tea.TeaModel {
         public var cpu: String?
+
+        public var displayReleaseVersion: String?
+
+        public var env: String?
 
         public var gpuSpec: String?
 
@@ -26377,6 +27288,8 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
         public var minReplica: Int32?
 
         public var queueName: String?
+
+        public var rayStartParams: String?
 
         public var replica: Int32?
 
@@ -26399,6 +27312,12 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if self.cpu != nil {
                 map["cpu"] = self.cpu!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
+            if self.env != nil {
+                map["env"] = self.env!
+            }
             if self.gpuSpec != nil {
                 map["gpuSpec"] = self.gpuSpec!
             }
@@ -26417,6 +27336,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
             }
+            if self.rayStartParams != nil {
+                map["rayStartParams"] = self.rayStartParams!
+            }
             if self.replica != nil {
                 map["replica"] = self.replica!
             }
@@ -26430,6 +27352,12 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cpu"] as? String {
                 self.cpu = value
+            }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
+            if let value = dict["env"] as? String {
+                self.env = value
             }
             if let value = dict["gpuSpec"] as? String {
                 self.gpuSpec = value
@@ -26448,6 +27376,9 @@ public class UpdateRayClusterRequest : Tea.TeaModel {
             }
             if let value = dict["queueName"] as? String {
                 self.queueName = value
+            }
+            if let value = dict["rayStartParams"] as? String {
+                self.rayStartParams = value
             }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
