@@ -4497,7 +4497,69 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         }
     }
     public class MultimediaParameters : Tea.TeaModel {
+        public class FrameExtraction : Tea.TeaModel {
+            public var frameRate: Double?
+
+            public var mode: String?
+
+            public var outputImageHeight: Int64?
+
+            public var outputImageWidth: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.frameRate != nil {
+                    map["FrameRate"] = self.frameRate!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.outputImageHeight != nil {
+                    map["OutputImageHeight"] = self.outputImageHeight!
+                }
+                if self.outputImageWidth != nil {
+                    map["OutputImageWidth"] = self.outputImageWidth!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FrameRate"] as? Double {
+                    self.frameRate = value
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["OutputImageHeight"] as? Int64 {
+                    self.outputImageHeight = value
+                }
+                if let value = dict["OutputImageWidth"] as? Int64 {
+                    self.outputImageWidth = value
+                }
+            }
+        }
+        public var enableDiarization: Bool?
+
         public var enableSynopsisParse: Bool?
+
+        public var enableSynopsisSegments: Bool?
+
+        public var enableSynopsisSummary: Bool?
+
+        public var frameExtraction: SubmitDocParserJobRequest.MultimediaParameters.FrameExtraction?
 
         public var vlParsePrompt: String?
 
@@ -4511,12 +4573,25 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.frameExtraction?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableDiarization != nil {
+                map["EnableDiarization"] = self.enableDiarization!
+            }
             if self.enableSynopsisParse != nil {
                 map["EnableSynopsisParse"] = self.enableSynopsisParse!
+            }
+            if self.enableSynopsisSegments != nil {
+                map["EnableSynopsisSegments"] = self.enableSynopsisSegments!
+            }
+            if self.enableSynopsisSummary != nil {
+                map["EnableSynopsisSummary"] = self.enableSynopsisSummary!
+            }
+            if self.frameExtraction != nil {
+                map["FrameExtraction"] = self.frameExtraction?.toMap()
             }
             if self.vlParsePrompt != nil {
                 map["VlParsePrompt"] = self.vlParsePrompt!
@@ -4526,8 +4601,22 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EnableDiarization"] as? Bool {
+                self.enableDiarization = value
+            }
             if let value = dict["EnableSynopsisParse"] as? Bool {
                 self.enableSynopsisParse = value
+            }
+            if let value = dict["EnableSynopsisSegments"] as? Bool {
+                self.enableSynopsisSegments = value
+            }
+            if let value = dict["EnableSynopsisSummary"] as? Bool {
+                self.enableSynopsisSummary = value
+            }
+            if let value = dict["FrameExtraction"] as? [String: Any?] {
+                var model = SubmitDocParserJobRequest.MultimediaParameters.FrameExtraction()
+                model.fromMap(value)
+                self.frameExtraction = model
             }
             if let value = dict["VlParsePrompt"] as? String {
                 self.vlParsePrompt = value
@@ -4787,7 +4876,69 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         }
     }
     public class MultimediaParameters : Tea.TeaModel {
+        public class FrameExtraction : Tea.TeaModel {
+            public var frameRate: Double?
+
+            public var mode: String?
+
+            public var outputImageHeight: Int64?
+
+            public var outputImageWidth: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.frameRate != nil {
+                    map["FrameRate"] = self.frameRate!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.outputImageHeight != nil {
+                    map["OutputImageHeight"] = self.outputImageHeight!
+                }
+                if self.outputImageWidth != nil {
+                    map["OutputImageWidth"] = self.outputImageWidth!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FrameRate"] as? Double {
+                    self.frameRate = value
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["OutputImageHeight"] as? Int64 {
+                    self.outputImageHeight = value
+                }
+                if let value = dict["OutputImageWidth"] as? Int64 {
+                    self.outputImageWidth = value
+                }
+            }
+        }
+        public var enableDiarization: Bool?
+
         public var enableSynopsisParse: Bool?
+
+        public var enableSynopsisSegments: Bool?
+
+        public var enableSynopsisSummary: Bool?
+
+        public var frameExtraction: SubmitDocParserJobAdvanceRequest.MultimediaParameters.FrameExtraction?
 
         public var vlParsePrompt: String?
 
@@ -4801,12 +4952,25 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.frameExtraction?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableDiarization != nil {
+                map["EnableDiarization"] = self.enableDiarization!
+            }
             if self.enableSynopsisParse != nil {
                 map["EnableSynopsisParse"] = self.enableSynopsisParse!
+            }
+            if self.enableSynopsisSegments != nil {
+                map["EnableSynopsisSegments"] = self.enableSynopsisSegments!
+            }
+            if self.enableSynopsisSummary != nil {
+                map["EnableSynopsisSummary"] = self.enableSynopsisSummary!
+            }
+            if self.frameExtraction != nil {
+                map["FrameExtraction"] = self.frameExtraction?.toMap()
             }
             if self.vlParsePrompt != nil {
                 map["VlParsePrompt"] = self.vlParsePrompt!
@@ -4816,8 +4980,22 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EnableDiarization"] as? Bool {
+                self.enableDiarization = value
+            }
             if let value = dict["EnableSynopsisParse"] as? Bool {
                 self.enableSynopsisParse = value
+            }
+            if let value = dict["EnableSynopsisSegments"] as? Bool {
+                self.enableSynopsisSegments = value
+            }
+            if let value = dict["EnableSynopsisSummary"] as? Bool {
+                self.enableSynopsisSummary = value
+            }
+            if let value = dict["FrameExtraction"] as? [String: Any?] {
+                var model = SubmitDocParserJobAdvanceRequest.MultimediaParameters.FrameExtraction()
+                model.fromMap(value)
+                self.frameExtraction = model
             }
             if let value = dict["VlParsePrompt"] as? String {
                 self.vlParsePrompt = value
