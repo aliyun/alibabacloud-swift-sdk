@@ -19164,6 +19164,8 @@ public class CreateHttpApiRequest : Tea.TeaModel {
 
     public var versionConfig: HttpApiVersionConfig?
 
+    public var clientToken: String?
+
     public override init() {
         super.init()
     }
@@ -19242,6 +19244,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         if self.versionConfig != nil {
             map["versionConfig"] = self.versionConfig?.toMap()
         }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
         return map
     }
 
@@ -19319,6 +19324,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
             var model = HttpApiVersionConfig()
             model.fromMap(value)
             self.versionConfig = model
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
         }
     }
 }
