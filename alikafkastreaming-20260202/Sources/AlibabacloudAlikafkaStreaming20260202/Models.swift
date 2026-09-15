@@ -305,8 +305,6 @@ public class CreateComputeInstanceRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
-    public var resourceType: String?
-
     public override init() {
         super.init()
     }
@@ -330,9 +328,6 @@ public class CreateComputeInstanceRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
-        if self.resourceType != nil {
-            map["ResourceType"] = self.resourceType!
-        }
         return map
     }
 
@@ -346,9 +341,6 @@ public class CreateComputeInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
-        }
-        if let value = dict["ResourceType"] as? String {
-            self.resourceType = value
         }
     }
 }
@@ -500,27 +492,17 @@ public class CreateComputeInstanceResponse : Tea.TeaModel {
 }
 
 public class CreateComputeJobRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var cuLimit: Double?
 
     public var cuReserved: Double?
 
-    public var draftSql: String?
-
     public var instanceId: String?
-
-    public var jobConfig: String?
 
     public var jobName: String?
 
     public var regionId: String?
 
     public var remark: String?
-
-    public var upgradeMode: String?
-
-    public var userId: String?
 
     public override init() {
         super.init()
@@ -536,23 +518,14 @@ public class CreateComputeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.cuLimit != nil {
             map["CuLimit"] = self.cuLimit!
         }
         if self.cuReserved != nil {
             map["CuReserved"] = self.cuReserved!
         }
-        if self.draftSql != nil {
-            map["DraftSql"] = self.draftSql!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
-        }
-        if self.jobConfig != nil {
-            map["JobConfig"] = self.jobConfig!
         }
         if self.jobName != nil {
             map["JobName"] = self.jobName!
@@ -563,34 +536,19 @@ public class CreateComputeJobRequest : Tea.TeaModel {
         if self.remark != nil {
             map["Remark"] = self.remark!
         }
-        if self.upgradeMode != nil {
-            map["UpgradeMode"] = self.upgradeMode!
-        }
-        if self.userId != nil {
-            map["UserId"] = self.userId!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["CuLimit"] as? Double {
             self.cuLimit = value
         }
         if let value = dict["CuReserved"] as? Double {
             self.cuReserved = value
         }
-        if let value = dict["DraftSql"] as? String {
-            self.draftSql = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
-        }
-        if let value = dict["JobConfig"] as? String {
-            self.jobConfig = value
         }
         if let value = dict["JobName"] as? String {
             self.jobName = value
@@ -600,12 +558,6 @@ public class CreateComputeJobRequest : Tea.TeaModel {
         }
         if let value = dict["Remark"] as? String {
             self.remark = value
-        }
-        if let value = dict["UpgradeMode"] as? String {
-            self.upgradeMode = value
-        }
-        if let value = dict["UserId"] as? String {
-            self.userId = value
         }
     }
 }
@@ -720,8 +672,6 @@ public class DeleteComputeInstanceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
-    public var resourceType: String?
-
     public override init() {
         super.init()
     }
@@ -742,9 +692,6 @@ public class DeleteComputeInstanceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
-        if self.resourceType != nil {
-            map["ResourceType"] = self.resourceType!
-        }
         return map
     }
 
@@ -755,9 +702,6 @@ public class DeleteComputeInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
-        }
-        if let value = dict["ResourceType"] as? String {
-            self.resourceType = value
         }
     }
 }
@@ -1022,8 +966,6 @@ public class DeleteComputeJobResponse : Tea.TeaModel {
 public class GetComputeInstanceRequest : Tea.TeaModel {
     public var instanceId: String?
 
-    public var orderId: String?
-
     public var regionId: String?
 
     public override init() {
@@ -1043,9 +985,6 @@ public class GetComputeInstanceRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
-        if self.orderId != nil {
-            map["OrderId"] = self.orderId!
-        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1056,9 +995,6 @@ public class GetComputeInstanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
-        }
-        if let value = dict["OrderId"] as? String {
-            self.orderId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -1084,13 +1020,9 @@ public class GetComputeInstanceResponseBody : Tea.TeaModel {
 
         public var instanceName: String?
 
-        public var orderId: String?
-
         public var regionId: String?
 
         public var serviceStatus: String?
-
-        public var serviceVersion: String?
 
         public var totalJobs: Int64?
 
@@ -1138,17 +1070,11 @@ public class GetComputeInstanceResponseBody : Tea.TeaModel {
             if self.instanceName != nil {
                 map["InstanceName"] = self.instanceName!
             }
-            if self.orderId != nil {
-                map["OrderId"] = self.orderId!
-            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
             if self.serviceStatus != nil {
                 map["ServiceStatus"] = self.serviceStatus!
-            }
-            if self.serviceVersion != nil {
-                map["ServiceVersion"] = self.serviceVersion!
             }
             if self.totalJobs != nil {
                 map["TotalJobs"] = self.totalJobs!
@@ -1191,17 +1117,11 @@ public class GetComputeInstanceResponseBody : Tea.TeaModel {
             if let value = dict["InstanceName"] as? String {
                 self.instanceName = value
             }
-            if let value = dict["OrderId"] as? String {
-                self.orderId = value
-            }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
             }
             if let value = dict["ServiceStatus"] as? String {
                 self.serviceStatus = value
-            }
-            if let value = dict["ServiceVersion"] as? String {
-                self.serviceVersion = value
             }
             if let value = dict["TotalJobs"] as? Int64 {
                 self.totalJobs = value
@@ -1387,11 +1307,11 @@ public class GetComputeJobResponseBody : Tea.TeaModel {
 
         public var draftSql: String?
 
-        public var historyInfos: String?
+        public var errorMsg: String?
+
+        public var expirationTime: String?
 
         public var instanceId: String?
-
-        public var jobConfig: String?
 
         public var jobName: String?
 
@@ -1440,14 +1360,14 @@ public class GetComputeJobResponseBody : Tea.TeaModel {
             if self.draftSql != nil {
                 map["DraftSql"] = self.draftSql!
             }
-            if self.historyInfos != nil {
-                map["HistoryInfos"] = self.historyInfos!
+            if self.errorMsg != nil {
+                map["ErrorMsg"] = self.errorMsg!
+            }
+            if self.expirationTime != nil {
+                map["ExpirationTime"] = self.expirationTime!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
-            }
-            if self.jobConfig != nil {
-                map["JobConfig"] = self.jobConfig!
             }
             if self.jobName != nil {
                 map["JobName"] = self.jobName!
@@ -1493,14 +1413,14 @@ public class GetComputeJobResponseBody : Tea.TeaModel {
             if let value = dict["DraftSql"] as? String {
                 self.draftSql = value
             }
-            if let value = dict["HistoryInfos"] as? String {
-                self.historyInfos = value
+            if let value = dict["ErrorMsg"] as? String {
+                self.errorMsg = value
+            }
+            if let value = dict["ExpirationTime"] as? String {
+                self.expirationTime = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
-            }
-            if let value = dict["JobConfig"] as? String {
-                self.jobConfig = value
             }
             if let value = dict["JobName"] as? String {
                 self.jobName = value
@@ -2328,15 +2248,13 @@ public class ListComputeInstancesResponse : Tea.TeaModel {
 public class ListComputeInstancesInPageRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
-    public var instanceId: String?
-
     public var instanceIds: [String]?
-
-    public var orderId: String?
 
     public var pageSize: Int32?
 
     public var regionId: String?
+
+    public var resourceGroupId: String?
 
     public override init() {
         super.init()
@@ -2355,20 +2273,17 @@ public class ListComputeInstancesInPageRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
-        }
-        if self.orderId != nil {
-            map["OrderId"] = self.orderId!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         return map
     }
@@ -2378,20 +2293,17 @@ public class ListComputeInstancesInPageRequest : Tea.TeaModel {
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
         }
-        if let value = dict["InstanceId"] as? String {
-            self.instanceId = value
-        }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
-        }
-        if let value = dict["OrderId"] as? String {
-            self.orderId = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -2399,15 +2311,13 @@ public class ListComputeInstancesInPageRequest : Tea.TeaModel {
 public class ListComputeInstancesInPageShrinkRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
-    public var instanceId: String?
-
     public var instanceIdsShrink: String?
-
-    public var orderId: String?
 
     public var pageSize: Int32?
 
     public var regionId: String?
+
+    public var resourceGroupId: String?
 
     public override init() {
         super.init()
@@ -2426,20 +2336,17 @@ public class ListComputeInstancesInPageShrinkRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
         if self.instanceIdsShrink != nil {
             map["InstanceIds"] = self.instanceIdsShrink!
-        }
-        if self.orderId != nil {
-            map["OrderId"] = self.orderId!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         return map
     }
@@ -2449,20 +2356,17 @@ public class ListComputeInstancesInPageShrinkRequest : Tea.TeaModel {
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
         }
-        if let value = dict["InstanceId"] as? String {
-            self.instanceId = value
-        }
         if let value = dict["InstanceIds"] as? String {
             self.instanceIdsShrink = value
-        }
-        if let value = dict["OrderId"] as? String {
-            self.orderId = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -2473,11 +2377,7 @@ public class ListComputeInstancesInPageResponseBody : Tea.TeaModel {
 
         public var chargeType: String?
 
-        public var commodityCode: String?
-
         public var createTime: String?
-
-        public var cu: Int32?
 
         public var cuLimitSum: Double?
 
@@ -2503,8 +2403,6 @@ public class ListComputeInstancesInPageResponseBody : Tea.TeaModel {
 
         public var vSwitchIds: [String]?
 
-        public var version: String?
-
         public var vpcId: String?
 
         public override init() {
@@ -2527,14 +2425,8 @@ public class ListComputeInstancesInPageResponseBody : Tea.TeaModel {
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
-            if self.commodityCode != nil {
-                map["CommodityCode"] = self.commodityCode!
-            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
-            }
-            if self.cu != nil {
-                map["Cu"] = self.cu!
             }
             if self.cuLimitSum != nil {
                 map["CuLimitSum"] = self.cuLimitSum!
@@ -2572,9 +2464,6 @@ public class ListComputeInstancesInPageResponseBody : Tea.TeaModel {
             if self.vSwitchIds != nil {
                 map["VSwitchIds"] = self.vSwitchIds!
             }
-            if self.version != nil {
-                map["Version"] = self.version!
-            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -2589,14 +2478,8 @@ public class ListComputeInstancesInPageResponseBody : Tea.TeaModel {
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
             }
-            if let value = dict["CommodityCode"] as? String {
-                self.commodityCode = value
-            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
-            }
-            if let value = dict["Cu"] as? Int32 {
-                self.cu = value
             }
             if let value = dict["CuLimitSum"] as? Double {
                 self.cuLimitSum = value
@@ -2633,9 +2516,6 @@ public class ListComputeInstancesInPageResponseBody : Tea.TeaModel {
             }
             if let value = dict["VSwitchIds"] as? [String] {
                 self.vSwitchIds = value
-            }
-            if let value = dict["Version"] as? String {
-                self.version = value
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value
@@ -2785,15 +2665,11 @@ public class ListComputeInstancesInPageResponse : Tea.TeaModel {
 }
 
 public class ListComputeJobsRequest : Tea.TeaModel {
-    public var currentPage: Int64?
-
     public var instanceId: String?
 
     public var maxResults: Int32?
 
     public var nextToken: String?
-
-    public var pageSize: Int64?
 
     public var regionId: String?
 
@@ -2817,9 +2693,6 @@ public class ListComputeJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.currentPage != nil {
-            map["CurrentPage"] = self.currentPage!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2828,9 +2701,6 @@ public class ListComputeJobsRequest : Tea.TeaModel {
         }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -2849,9 +2719,6 @@ public class ListComputeJobsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["CurrentPage"] as? Int64 {
-            self.currentPage = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -2860,9 +2727,6 @@ public class ListComputeJobsRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
-        }
-        if let value = dict["PageSize"] as? Int64 {
-            self.pageSize = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -3377,8 +3241,6 @@ public class ListSupportedConnectorsResponse : Tea.TeaModel {
 }
 
 public class ReopenComputeInstanceRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var instanceId: String?
 
     public var regionId: String?
@@ -3397,9 +3259,6 @@ public class ReopenComputeInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3411,9 +3270,6 @@ public class ReopenComputeInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -3689,17 +3545,11 @@ public class RestartComputeJobResponse : Tea.TeaModel {
 }
 
 public class StartComputeInstanceRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var instanceId: String?
 
     public var instanceName: String?
 
     public var regionId: String?
-
-    public var selectedZones: String?
-
-    public var serviceVersion: String?
 
     public var vSwitchIds: [String]?
 
@@ -3719,9 +3569,6 @@ public class StartComputeInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3730,12 +3577,6 @@ public class StartComputeInstanceRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
-        }
-        if self.selectedZones != nil {
-            map["SelectedZones"] = self.selectedZones!
-        }
-        if self.serviceVersion != nil {
-            map["ServiceVersion"] = self.serviceVersion!
         }
         if self.vSwitchIds != nil {
             map["VSwitchIds"] = self.vSwitchIds!
@@ -3748,9 +3589,6 @@ public class StartComputeInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -3759,12 +3597,6 @@ public class StartComputeInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
-        }
-        if let value = dict["SelectedZones"] as? String {
-            self.selectedZones = value
-        }
-        if let value = dict["ServiceVersion"] as? String {
-            self.serviceVersion = value
         }
         if let value = dict["VSwitchIds"] as? [String] {
             self.vSwitchIds = value
@@ -3776,17 +3608,11 @@ public class StartComputeInstanceRequest : Tea.TeaModel {
 }
 
 public class StartComputeInstanceShrinkRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var instanceId: String?
 
     public var instanceName: String?
 
     public var regionId: String?
-
-    public var selectedZones: String?
-
-    public var serviceVersion: String?
 
     public var vSwitchIdsShrink: String?
 
@@ -3806,9 +3632,6 @@ public class StartComputeInstanceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3817,12 +3640,6 @@ public class StartComputeInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
-        }
-        if self.selectedZones != nil {
-            map["SelectedZones"] = self.selectedZones!
-        }
-        if self.serviceVersion != nil {
-            map["ServiceVersion"] = self.serviceVersion!
         }
         if self.vSwitchIdsShrink != nil {
             map["VSwitchIds"] = self.vSwitchIdsShrink!
@@ -3835,9 +3652,6 @@ public class StartComputeInstanceShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -3846,12 +3660,6 @@ public class StartComputeInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
-        }
-        if let value = dict["SelectedZones"] as? String {
-            self.selectedZones = value
-        }
-        if let value = dict["ServiceVersion"] as? String {
-            self.serviceVersion = value
         }
         if let value = dict["VSwitchIds"] as? String {
             self.vSwitchIdsShrink = value
@@ -3968,15 +3776,11 @@ public class StartComputeInstanceResponse : Tea.TeaModel {
 }
 
 public class StartComputeJobRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var cuLimit: Double?
 
     public var cuReserved: Double?
 
     public var draftSql: String?
-
-    public var draftSqlStart: Bool?
 
     public var instanceId: String?
 
@@ -4000,9 +3804,6 @@ public class StartComputeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.cuLimit != nil {
             map["CuLimit"] = self.cuLimit!
         }
@@ -4011,9 +3812,6 @@ public class StartComputeJobRequest : Tea.TeaModel {
         }
         if self.draftSql != nil {
             map["DraftSql"] = self.draftSql!
-        }
-        if self.draftSqlStart != nil {
-            map["DraftSqlStart"] = self.draftSqlStart!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -4032,9 +3830,6 @@ public class StartComputeJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["CuLimit"] as? Double {
             self.cuLimit = value
         }
@@ -4043,9 +3838,6 @@ public class StartComputeJobRequest : Tea.TeaModel {
         }
         if let value = dict["DraftSql"] as? String {
             self.draftSql = value
-        }
-        if let value = dict["DraftSqlStart"] as? Bool {
-            self.draftSqlStart = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -4168,8 +3960,6 @@ public class StartComputeJobResponse : Tea.TeaModel {
 }
 
 public class StopComputeInstanceRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var instanceId: String?
 
     public var regionId: String?
@@ -4188,9 +3978,6 @@ public class StopComputeInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -4202,9 +3989,6 @@ public class StopComputeInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -4320,8 +4104,6 @@ public class StopComputeInstanceResponse : Tea.TeaModel {
 }
 
 public class StopComputeJobRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var instanceId: String?
 
     public var jobName: String?
@@ -4342,9 +4124,6 @@ public class StopComputeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -4359,9 +4138,6 @@ public class StopComputeJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -4480,8 +4256,6 @@ public class StopComputeJobResponse : Tea.TeaModel {
 }
 
 public class UpdateComputeInstanceNameRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var instanceId: String?
 
     public var instanceName: String?
@@ -4502,9 +4276,6 @@ public class UpdateComputeInstanceNameRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -4519,9 +4290,6 @@ public class UpdateComputeInstanceNameRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -4640,8 +4408,6 @@ public class UpdateComputeInstanceNameResponse : Tea.TeaModel {
 }
 
 public class UpdateComputeJobRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var instanceId: String?
 
     public var jobName: String?
@@ -4649,8 +4415,6 @@ public class UpdateComputeJobRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var remark: String?
-
-    public var upgradeMode: String?
 
     public override init() {
         super.init()
@@ -4666,9 +4430,6 @@ public class UpdateComputeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -4681,17 +4442,11 @@ public class UpdateComputeJobRequest : Tea.TeaModel {
         if self.remark != nil {
             map["Remark"] = self.remark!
         }
-        if self.upgradeMode != nil {
-            map["UpgradeMode"] = self.upgradeMode!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -4703,9 +4458,6 @@ public class UpdateComputeJobRequest : Tea.TeaModel {
         }
         if let value = dict["Remark"] as? String {
             self.remark = value
-        }
-        if let value = dict["UpgradeMode"] as? String {
-            self.upgradeMode = value
         }
     }
 }
@@ -4816,8 +4568,6 @@ public class UpdateComputeJobResponse : Tea.TeaModel {
 }
 
 public class UpdateComputeJobCuRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var cuLimit: Double?
 
     public var cuReserved: Double?
@@ -4842,9 +4592,6 @@ public class UpdateComputeJobCuRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.cuLimit != nil {
             map["CuLimit"] = self.cuLimit!
         }
@@ -4865,9 +4612,6 @@ public class UpdateComputeJobCuRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["CuLimit"] as? Double {
             self.cuLimit = value
         }
@@ -4992,8 +4736,6 @@ public class UpdateComputeJobCuResponse : Tea.TeaModel {
 }
 
 public class UpdateComputeJobDraftSqlRequest : Tea.TeaModel {
-    public var clientToken: String?
-
     public var draftSql: String?
 
     public var instanceId: String?
@@ -5016,9 +4758,6 @@ public class UpdateComputeJobDraftSqlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
         if self.draftSql != nil {
             map["DraftSql"] = self.draftSql!
         }
@@ -5036,9 +4775,6 @@ public class UpdateComputeJobDraftSqlRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
         if let value = dict["DraftSql"] as? String {
             self.draftSql = value
         }
