@@ -8082,6 +8082,8 @@ public class ChangeCheckScopeConfigInstanceRequest : Tea.TeaModel {
 
     public var deleteAssetUuids: [String]?
 
+    public var selectionKey: String?
+
     public override init() {
         super.init()
     }
@@ -8105,6 +8107,9 @@ public class ChangeCheckScopeConfigInstanceRequest : Tea.TeaModel {
         if self.deleteAssetUuids != nil {
             map["DeleteAssetUuids"] = self.deleteAssetUuids!
         }
+        if self.selectionKey != nil {
+            map["SelectionKey"] = self.selectionKey!
+        }
         return map
     }
 
@@ -8118,6 +8123,9 @@ public class ChangeCheckScopeConfigInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["DeleteAssetUuids"] as? [String] {
             self.deleteAssetUuids = value
+        }
+        if let value = dict["SelectionKey"] as? String {
+            self.selectionKey = value
         }
     }
 }
@@ -9653,9 +9661,13 @@ public class CreateAgentlessScanTaskRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var from: String?
+
     public var regionId: String?
 
     public var releaseAfterScan: Bool?
+
+    public var resourceRegionId: String?
 
     public var scanDataDisk: Bool?
 
@@ -9688,11 +9700,17 @@ public class CreateAgentlessScanTaskRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.from != nil {
+            map["From"] = self.from!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
         if self.releaseAfterScan != nil {
             map["ReleaseAfterScan"] = self.releaseAfterScan!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
         }
         if self.scanDataDisk != nil {
             map["ScanDataDisk"] = self.scanDataDisk!
@@ -9724,11 +9742,17 @@ public class CreateAgentlessScanTaskRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["From"] as? String {
+            self.from = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
         if let value = dict["ReleaseAfterScan"] as? Bool {
             self.releaseAfterScan = value
+        }
+        if let value = dict["ResourceRegionId"] as? String {
+            self.resourceRegionId = value
         }
         if let value = dict["ScanDataDisk"] as? Bool {
             self.scanDataDisk = value

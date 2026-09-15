@@ -1600,6 +1600,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deleteAssetUuids)) {
             query["DeleteAssetUuids"] = request.deleteAssetUuids ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.selectionKey)) {
+            query["SelectionKey"] = request.selectionKey ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1914,11 +1917,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.from)) {
+            query["From"] = request.from ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.releaseAfterScan)) {
             query["ReleaseAfterScan"] = request.releaseAfterScan!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceRegionId)) {
+            query["ResourceRegionId"] = request.resourceRegionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.scanDataDisk)) {
             query["ScanDataDisk"] = request.scanDataDisk!;
