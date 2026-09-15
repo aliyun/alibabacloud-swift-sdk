@@ -3511,9 +3511,65 @@ public class CreateCredentialResponse : Tea.TeaModel {
 public class CreateExternalAgentRequest : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var periodType: String?
+
+                public var usageLimit: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: CreateExternalAgentRequest.Body.Model.Quota?
 
             public override init() {
                 super.init()
@@ -3525,6 +3581,7 @@ public class CreateExternalAgentRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -3534,6 +3591,9 @@ public class CreateExternalAgentRequest : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -3545,6 +3605,11 @@ public class CreateExternalAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = CreateExternalAgentRequest.Body.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -3959,9 +4024,89 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var overLimit: Bool?
+
+                public var periodType: String?
+
+                public var ruleStatus: String?
+
+                public var usageLimit: Int64?
+
+                public var usedAmount: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.overLimit != nil {
+                        map["overLimit"] = self.overLimit!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.ruleStatus != nil {
+                        map["ruleStatus"] = self.ruleStatus!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    if self.usedAmount != nil {
+                        map["usedAmount"] = self.usedAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["overLimit"] as? Bool {
+                        self.overLimit = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["ruleStatus"] as? String {
+                        self.ruleStatus = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                    if let value = dict["usedAmount"] as? Int64 {
+                        self.usedAmount = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: CreateExternalAgentResponseBody.Data.Model.Quota?
 
             public override init() {
                 super.init()
@@ -3973,6 +4118,7 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -3982,6 +4128,9 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -3993,6 +4142,11 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = CreateExternalAgentResponseBody.Data.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -5352,9 +5506,65 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var periodType: String?
+
+                public var usageLimit: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: CreateManagedAgentRequest.Body.Model.Quota?
 
             public override init() {
                 super.init()
@@ -5366,6 +5576,7 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -5375,6 +5586,9 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -5386,6 +5600,11 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = CreateManagedAgentRequest.Body.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -6412,9 +6631,89 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var overLimit: Bool?
+
+                public var periodType: String?
+
+                public var ruleStatus: String?
+
+                public var usageLimit: Int64?
+
+                public var usedAmount: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.overLimit != nil {
+                        map["overLimit"] = self.overLimit!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.ruleStatus != nil {
+                        map["ruleStatus"] = self.ruleStatus!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    if self.usedAmount != nil {
+                        map["usedAmount"] = self.usedAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["overLimit"] as? Bool {
+                        self.overLimit = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["ruleStatus"] as? String {
+                        self.ruleStatus = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                    if let value = dict["usedAmount"] as? Int64 {
+                        self.usedAmount = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: CreateManagedAgentResponseBody.Data.Model.Quota?
 
             public override init() {
                 super.init()
@@ -6426,6 +6725,7 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -6435,6 +6735,9 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -6446,6 +6749,11 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = CreateManagedAgentResponseBody.Data.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -18911,9 +19219,89 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var overLimit: Bool?
+
+                public var periodType: String?
+
+                public var ruleStatus: String?
+
+                public var usageLimit: Int64?
+
+                public var usedAmount: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.overLimit != nil {
+                        map["overLimit"] = self.overLimit!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.ruleStatus != nil {
+                        map["ruleStatus"] = self.ruleStatus!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    if self.usedAmount != nil {
+                        map["usedAmount"] = self.usedAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["overLimit"] as? Bool {
+                        self.overLimit = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["ruleStatus"] as? String {
+                        self.ruleStatus = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                    if let value = dict["usedAmount"] as? Int64 {
+                        self.usedAmount = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: GetExternalAgentResponseBody.Data.Model.Quota?
 
             public override init() {
                 super.init()
@@ -18925,6 +19313,7 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -18934,6 +19323,9 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -18945,6 +19337,11 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = GetExternalAgentResponseBody.Data.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -20221,9 +20618,89 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var overLimit: Bool?
+
+                public var periodType: String?
+
+                public var ruleStatus: String?
+
+                public var usageLimit: Int64?
+
+                public var usedAmount: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.overLimit != nil {
+                        map["overLimit"] = self.overLimit!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.ruleStatus != nil {
+                        map["ruleStatus"] = self.ruleStatus!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    if self.usedAmount != nil {
+                        map["usedAmount"] = self.usedAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["overLimit"] as? Bool {
+                        self.overLimit = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["ruleStatus"] as? String {
+                        self.ruleStatus = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                    if let value = dict["usedAmount"] as? Int64 {
+                        self.usedAmount = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: GetManagedAgentResponseBody.Data.Model.Quota?
 
             public override init() {
                 super.init()
@@ -20235,6 +20712,7 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -20244,6 +20722,9 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -20255,6 +20736,11 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = GetManagedAgentResponseBody.Data.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -42963,9 +43449,65 @@ public class UpdateCredentialResponse : Tea.TeaModel {
 public class UpdateExternalAgentRequest : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var periodType: String?
+
+                public var usageLimit: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: UpdateExternalAgentRequest.Body.Model.Quota?
 
             public override init() {
                 super.init()
@@ -42977,6 +43519,7 @@ public class UpdateExternalAgentRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -42986,6 +43529,9 @@ public class UpdateExternalAgentRequest : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -42997,6 +43543,11 @@ public class UpdateExternalAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = UpdateExternalAgentRequest.Body.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -43411,9 +43962,89 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var overLimit: Bool?
+
+                public var periodType: String?
+
+                public var ruleStatus: String?
+
+                public var usageLimit: Int64?
+
+                public var usedAmount: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.overLimit != nil {
+                        map["overLimit"] = self.overLimit!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.ruleStatus != nil {
+                        map["ruleStatus"] = self.ruleStatus!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    if self.usedAmount != nil {
+                        map["usedAmount"] = self.usedAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["overLimit"] as? Bool {
+                        self.overLimit = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["ruleStatus"] as? String {
+                        self.ruleStatus = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                    if let value = dict["usedAmount"] as? Int64 {
+                        self.usedAmount = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: UpdateExternalAgentResponseBody.Data.Model.Quota?
 
             public override init() {
                 super.init()
@@ -43425,6 +44056,7 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -43434,6 +44066,9 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -43445,6 +44080,11 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = UpdateExternalAgentResponseBody.Data.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -44522,9 +45162,65 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var periodType: String?
+
+                public var usageLimit: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: UpdateManagedAgentRequest.Body.Model.Quota?
 
             public override init() {
                 super.init()
@@ -44536,6 +45232,7 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -44545,6 +45242,9 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -44556,6 +45256,11 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = UpdateManagedAgentRequest.Body.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
@@ -45582,9 +46287,89 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Model : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var limitType: String?
+
+                public var overLimit: Bool?
+
+                public var periodType: String?
+
+                public var ruleStatus: String?
+
+                public var usageLimit: Int64?
+
+                public var usedAmount: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.overLimit != nil {
+                        map["overLimit"] = self.overLimit!
+                    }
+                    if self.periodType != nil {
+                        map["periodType"] = self.periodType!
+                    }
+                    if self.ruleStatus != nil {
+                        map["ruleStatus"] = self.ruleStatus!
+                    }
+                    if self.usageLimit != nil {
+                        map["usageLimit"] = self.usageLimit!
+                    }
+                    if self.usedAmount != nil {
+                        map["usedAmount"] = self.usedAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["overLimit"] as? Bool {
+                        self.overLimit = value
+                    }
+                    if let value = dict["periodType"] as? String {
+                        self.periodType = value
+                    }
+                    if let value = dict["ruleStatus"] as? String {
+                        self.ruleStatus = value
+                    }
+                    if let value = dict["usageLimit"] as? Int64 {
+                        self.usageLimit = value
+                    }
+                    if let value = dict["usedAmount"] as? Int64 {
+                        self.usedAmount = value
+                    }
+                }
+            }
             public var modelConnectionId: String?
 
             public var modelName: String?
+
+            public var quota: UpdateManagedAgentResponseBody.Data.Model.Quota?
 
             public override init() {
                 super.init()
@@ -45596,6 +46381,7 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -45605,6 +46391,9 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if self.modelName != nil {
                     map["modelName"] = self.modelName!
+                }
+                if self.quota != nil {
+                    map["quota"] = self.quota?.toMap()
                 }
                 return map
             }
@@ -45616,6 +46405,11 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["modelName"] as? String {
                     self.modelName = value
+                }
+                if let value = dict["quota"] as? [String: Any?] {
+                    var model = UpdateManagedAgentResponseBody.Data.Model.Quota()
+                    model.fromMap(value)
+                    self.quota = model
                 }
             }
         }
