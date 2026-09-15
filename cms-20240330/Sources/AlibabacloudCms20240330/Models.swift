@@ -4066,6 +4066,8 @@ public class AlertRuleV2 : Tea.TeaModel {
 
     public var labels: [String: String]?
 
+    public var managedBy: String?
+
     public var notifyConfig: NotifyConfigUnified?
 
     public var notifyStrategyId: String?
@@ -4156,6 +4158,9 @@ public class AlertRuleV2 : Tea.TeaModel {
         }
         if self.labels != nil {
             map["labels"] = self.labels!
+        }
+        if self.managedBy != nil {
+            map["managedBy"] = self.managedBy!
         }
         if self.notifyConfig != nil {
             map["notifyConfig"] = self.notifyConfig?.toMap()
@@ -4253,6 +4258,9 @@ public class AlertRuleV2 : Tea.TeaModel {
         }
         if let value = dict["labels"] as? [String: String] {
             self.labels = value
+        }
+        if let value = dict["managedBy"] as? String {
+            self.managedBy = value
         }
         if let value = dict["notifyConfig"] as? [String: Any?] {
             var model = NotifyConfigUnified()
@@ -58142,6 +58150,8 @@ public class ListPrometheusDashboardsRequest : Tea.TeaModel {
 
 public class ListPrometheusDashboardsResponseBody : Tea.TeaModel {
     public class PrometheusDashboards : Tea.TeaModel {
+        public var folderUid: String?
+
         public var id: String?
 
         public var name: String?
@@ -58168,6 +58178,9 @@ public class ListPrometheusDashboardsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.folderUid != nil {
+                map["folderUid"] = self.folderUid!
+            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -58191,6 +58204,9 @@ public class ListPrometheusDashboardsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["folderUid"] as? String {
+                self.folderUid = value
+            }
             if let value = dict["id"] as? String {
                 self.id = value
             }
