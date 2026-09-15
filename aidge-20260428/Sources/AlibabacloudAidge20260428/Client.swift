@@ -1122,6 +1122,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitProductMatchWithOptions(_ request: SubmitProductMatchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitProductMatchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.brandName)) {
+            query["BrandName"] = request.brandName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["Category"] = request.category ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemId)) {
+            query["ItemId"] = request.itemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productUrl)) {
+            query["ProductUrl"] = request.productUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shopName)) {
+            query["ShopName"] = request.shopName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitProductMatch",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitProductMatchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitProductMatch(_ request: SubmitProductMatchRequest) async throws -> SubmitProductMatchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitProductMatchWithOptions(request as! SubmitProductMatchRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func textCorrectWithOptions(_ request: TextCorrectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TextCorrectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
