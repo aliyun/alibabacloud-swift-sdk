@@ -1047,6 +1047,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var dispatcherSize: Int32?
 
+    public var endTime: Int64?
+
     public var executeMode: String?
 
     public var failEnable: Bool?
@@ -1149,6 +1151,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.dispatcherSize != nil {
             map["DispatcherSize"] = self.dispatcherSize!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
         }
         if self.executeMode != nil {
             map["ExecuteMode"] = self.executeMode!
@@ -1278,6 +1283,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if let value = dict["DispatcherSize"] as? Int32 {
             self.dispatcherSize = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
         }
         if let value = dict["ExecuteMode"] as? String {
             self.executeMode = value
@@ -6171,6 +6179,8 @@ public class GetJobInfoResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var endTime: Int64?
+
             public var executeMode: String?
 
             public var jarUrl: String?
@@ -6225,6 +6235,9 @@ public class GetJobInfoResponseBody : Tea.TeaModel {
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
                 }
                 if self.executeMode != nil {
                     map["ExecuteMode"] = self.executeMode!
@@ -6281,6 +6294,9 @@ public class GetJobInfoResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["EndTime"] as? Int64 {
+                    self.endTime = value
                 }
                 if let value = dict["ExecuteMode"] as? String {
                     self.executeMode = value
@@ -10122,6 +10138,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var endTime: Int64?
+
             public var executeMode: String?
 
             public var jarUrl: String?
@@ -10178,6 +10196,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
                 }
                 if self.executeMode != nil {
                     map["ExecuteMode"] = self.executeMode!
@@ -10237,6 +10258,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["EndTime"] as? Int64 {
+                    self.endTime = value
                 }
                 if let value = dict["ExecuteMode"] as? String {
                     self.executeMode = value
@@ -15493,6 +15517,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var dispatcherSize: Int32?
 
+    public var endTime: Int64?
+
     public var executeMode: String?
 
     public var failEnable: Bool?
@@ -15597,6 +15623,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.dispatcherSize != nil {
             map["DispatcherSize"] = self.dispatcherSize!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
         }
         if self.executeMode != nil {
             map["ExecuteMode"] = self.executeMode!
@@ -15729,6 +15758,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if let value = dict["DispatcherSize"] as? Int32 {
             self.dispatcherSize = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
         }
         if let value = dict["ExecuteMode"] as? String {
             self.executeMode = value
