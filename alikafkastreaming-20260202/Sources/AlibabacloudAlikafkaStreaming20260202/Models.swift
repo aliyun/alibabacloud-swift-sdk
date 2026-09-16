@@ -1022,6 +1022,8 @@ public class GetComputeInstanceResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var serviceStatus: String?
 
         public var totalJobs: Int64?
@@ -1073,6 +1075,9 @@ public class GetComputeInstanceResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.serviceStatus != nil {
                 map["ServiceStatus"] = self.serviceStatus!
             }
@@ -1119,6 +1124,9 @@ public class GetComputeInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
             if let value = dict["ServiceStatus"] as? String {
                 self.serviceStatus = value
