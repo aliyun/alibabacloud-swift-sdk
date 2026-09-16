@@ -30026,6 +30026,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var creationTime: String?
 
+    public var customOssPath: String?
+
     public var DBClusterDescription: String?
 
     public var DBClusterId: String?
@@ -30071,6 +30073,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
     public var modelType: String?
 
     public var payType: String?
+
+    public var previousCustomOssPath: String?
 
     public var publicIp: String?
 
@@ -30122,6 +30126,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.creationTime != nil {
             map["CreationTime"] = self.creationTime!
+        }
+        if self.customOssPath != nil {
+            map["CustomOssPath"] = self.customOssPath!
         }
         if self.DBClusterDescription != nil {
             map["DBClusterDescription"] = self.DBClusterDescription!
@@ -30200,6 +30207,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
+        if self.previousCustomOssPath != nil {
+            map["PreviousCustomOssPath"] = self.previousCustomOssPath!
+        }
         if self.publicIp != nil {
             map["PublicIp"] = self.publicIp!
         }
@@ -30256,6 +30266,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreationTime"] as? String {
             self.creationTime = value
+        }
+        if let value = dict["CustomOssPath"] as? String {
+            self.customOssPath = value
         }
         if let value = dict["DBClusterDescription"] as? String {
             self.DBClusterDescription = value
@@ -30345,6 +30358,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
+        }
+        if let value = dict["PreviousCustomOssPath"] as? String {
+            self.previousCustomOssPath = value
         }
         if let value = dict["PublicIp"] as? String {
             self.publicIp = value
@@ -44645,6 +44661,8 @@ public class DescribeAvailableCrossRegionsResponse : Tea.TeaModel {
 public class DescribeAvailableModelsRequest : Tea.TeaModel {
     public var kubeType: String?
 
+    public var modelType: String?
+
     public var regionId: String?
 
     public override init() {
@@ -44664,6 +44682,9 @@ public class DescribeAvailableModelsRequest : Tea.TeaModel {
         if self.kubeType != nil {
             map["KubeType"] = self.kubeType!
         }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -44674,6 +44695,9 @@ public class DescribeAvailableModelsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["KubeType"] as? String {
             self.kubeType = value
+        }
+        if let value = dict["ModelType"] as? String {
+            self.modelType = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -44721,6 +44745,12 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var customModelName: String?
+
+        public var displayModelName: String?
+
+        public var gmtModified: String?
+
         public var gpuRequired: [DescribeAvailableModelsResponseBody.Items.GpuRequired]?
 
         public var minimumCpu: Int64?
@@ -44730,6 +44760,10 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
         public var modelName: String?
 
         public var modelSeries: String?
+
+        public var modelType: String?
+
+        public var ossPath: String?
 
         public var supportedGpuModels: [String]?
 
@@ -44749,6 +44783,15 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.customModelName != nil {
+                map["CustomModelName"] = self.customModelName!
+            }
+            if self.displayModelName != nil {
+                map["DisplayModelName"] = self.displayModelName!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
             if self.gpuRequired != nil {
                 var tmp : [Any] = []
                 for k in self.gpuRequired! {
@@ -44768,6 +44811,12 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
             if self.modelSeries != nil {
                 map["ModelSeries"] = self.modelSeries!
             }
+            if self.modelType != nil {
+                map["ModelType"] = self.modelType!
+            }
+            if self.ossPath != nil {
+                map["OssPath"] = self.ossPath!
+            }
             if self.supportedGpuModels != nil {
                 map["SupportedGpuModels"] = self.supportedGpuModels!
             }
@@ -44779,6 +44828,15 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CustomModelName"] as? String {
+                self.customModelName = value
+            }
+            if let value = dict["DisplayModelName"] as? String {
+                self.displayModelName = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
             if let value = dict["GpuRequired"] as? [Any?] {
                 var tmp : [DescribeAvailableModelsResponseBody.Items.GpuRequired] = []
                 for v in value {
@@ -44804,6 +44862,12 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
             if let value = dict["ModelSeries"] as? String {
                 self.modelSeries = value
             }
+            if let value = dict["ModelType"] as? String {
+                self.modelType = value
+            }
+            if let value = dict["OssPath"] as? String {
+                self.ossPath = value
+            }
             if let value = dict["SupportedGpuModels"] as? [String] {
                 self.supportedGpuModels = value
             }
@@ -44818,7 +44882,11 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
 
     public var items: [DescribeAvailableModelsResponseBody.Items]?
 
+    public var modelType: String?
+
     public var requestId: String?
+
+    public var tuneArch: String?
 
     public override init() {
         super.init()
@@ -44847,8 +44915,14 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
             }
             map["Items"] = tmp
         }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.tuneArch != nil {
+            map["TuneArch"] = self.tuneArch!
         }
         return map
     }
@@ -44874,8 +44948,14 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
             }
             self.items = tmp
         }
+        if let value = dict["ModelType"] as? String {
+            self.modelType = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TuneArch"] as? String {
+            self.tuneArch = value
         }
     }
 }

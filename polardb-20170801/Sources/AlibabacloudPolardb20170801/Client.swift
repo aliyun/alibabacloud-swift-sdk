@@ -9108,6 +9108,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.kubeType)) {
             query["KubeType"] = request.kubeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelType)) {
+            query["ModelType"] = request.modelType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
