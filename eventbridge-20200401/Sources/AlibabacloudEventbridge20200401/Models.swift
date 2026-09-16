@@ -10,6 +10,10 @@ public class Agent : Tea.TeaModel {
 
     public var description_: String?
 
+    public var mcpServerId: String?
+
+    public var mcpServerName: String?
+
     public var metadata: Metadata?
 
     public var name: String?
@@ -39,6 +43,12 @@ public class Agent : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.mcpServerId != nil {
+            map["McpServerId"] = self.mcpServerId!
+        }
+        if self.mcpServerName != nil {
+            map["McpServerName"] = self.mcpServerName!
+        }
         if self.metadata != nil {
             map["Metadata"] = self.metadata?.toMap()
         }
@@ -61,6 +71,12 @@ public class Agent : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["McpServerId"] as? String {
+            self.mcpServerId = value
+        }
+        if let value = dict["McpServerName"] as? String {
+            self.mcpServerName = value
         }
         if let value = dict["Metadata"] as? [String: Any?] {
             var model = Metadata()
@@ -794,6 +810,625 @@ public class AguiMessage : Tea.TeaModel {
                 }
             }
             self.toolCalls = tmp
+        }
+    }
+}
+
+public class AiChunkTransformParameters : Tea.TeaModel {
+    public var chunkingType: String?
+
+    public var inputField: AiTransformField?
+
+    public var maxOverlapSize: Int32?
+
+    public var maxSegmentSize: Int32?
+
+    public var stepName: String?
+
+    public var unpack: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chunkingType != nil {
+            map["ChunkingType"] = self.chunkingType!
+        }
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.maxOverlapSize != nil {
+            map["MaxOverlapSize"] = self.maxOverlapSize!
+        }
+        if self.maxSegmentSize != nil {
+            map["MaxSegmentSize"] = self.maxSegmentSize!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        if self.unpack != nil {
+            map["Unpack"] = self.unpack!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChunkingType"] as? String {
+            self.chunkingType = value
+        }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["MaxOverlapSize"] as? Int32 {
+            self.maxOverlapSize = value
+        }
+        if let value = dict["MaxSegmentSize"] as? Int32 {
+            self.maxSegmentSize = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+        if let value = dict["Unpack"] as? Bool {
+            self.unpack = value
+        }
+    }
+}
+
+public class AiClassifyTransformParameters : Tea.TeaModel {
+    public var inputField: AiTransformField?
+
+    public var instruction: String?
+
+    public var labels: [String]?
+
+    public var outputMode: String?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.instruction != nil {
+            map["Instruction"] = self.instruction!
+        }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
+        }
+        if self.outputMode != nil {
+            map["OutputMode"] = self.outputMode!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["Instruction"] as? String {
+            self.instruction = value
+        }
+        if let value = dict["Labels"] as? [String] {
+            self.labels = value
+        }
+        if let value = dict["OutputMode"] as? String {
+            self.outputMode = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiEmbedTransformParameters : Tea.TeaModel {
+    public var dimension: Int32?
+
+    public var inputField: AiTransformField?
+
+    public var model: String?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dimension != nil {
+            map["Dimension"] = self.dimension!
+        }
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Dimension"] as? Int32 {
+            self.dimension = value
+        }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiExtractTransformParameters : Tea.TeaModel {
+    public var extractSchema: String?
+
+    public var inputField: AiTransformField?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.extractSchema != nil {
+            map["ExtractSchema"] = self.extractSchema!
+        }
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ExtractSchema"] as? String {
+            self.extractSchema = value
+        }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiFilterTransformParameters : Tea.TeaModel {
+    public var condition: String?
+
+    public var inputField: AiTransformField?
+
+    public var onMismatch: String?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.condition != nil {
+            map["Condition"] = self.condition!
+        }
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.onMismatch != nil {
+            map["OnMismatch"] = self.onMismatch!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Condition"] as? String {
+            self.condition = value
+        }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["OnMismatch"] as? String {
+            self.onMismatch = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiPrepSearchTransformParameters : Tea.TeaModel {
+    public var inputField: AiTransformField?
+
+    public var maxChunkSize: Int32?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.maxChunkSize != nil {
+            map["MaxChunkSize"] = self.maxChunkSize!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["MaxChunkSize"] as? Int32 {
+            self.maxChunkSize = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiRedactTransformParameters : Tea.TeaModel {
+    public var entities: [String]?
+
+    public var inputField: AiTransformField?
+
+    public var maskChar: String?
+
+    public var mode: String?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.entities != nil {
+            map["Entities"] = self.entities!
+        }
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.maskChar != nil {
+            map["MaskChar"] = self.maskChar!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Entities"] as? [String] {
+            self.entities = value
+        }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["MaskChar"] as? String {
+            self.maskChar = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiSentimentAnalysisTransformParameters : Tea.TeaModel {
+    public var aspects: [String]?
+
+    public var inputField: AiTransformField?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aspects != nil {
+            map["Aspects"] = self.aspects!
+        }
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Aspects"] as? [String] {
+            self.aspects = value
+        }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiSummarizeTransformParameters : Tea.TeaModel {
+    public var inputField: AiTransformField?
+
+    public var maxLength: Int32?
+
+    public var stepName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.maxLength != nil {
+            map["MaxLength"] = self.maxLength!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["MaxLength"] as? Int32 {
+            self.maxLength = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+    }
+}
+
+public class AiTransformField : Tea.TeaModel {
+    public var form: String?
+
+    public var value: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.form != nil {
+            map["Form"] = self.form!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Form"] as? String {
+            self.form = value
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+    }
+}
+
+public class AiTranslateTransformParameters : Tea.TeaModel {
+    public var inputField: AiTransformField?
+
+    public var sourceLanguage: String?
+
+    public var stepName: String?
+
+    public var targetLanguage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.inputField?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inputField != nil {
+            map["InputField"] = self.inputField?.toMap()
+        }
+        if self.sourceLanguage != nil {
+            map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        if self.targetLanguage != nil {
+            map["TargetLanguage"] = self.targetLanguage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InputField"] as? [String: Any?] {
+            var model = AiTransformField()
+            model.fromMap(value)
+            self.inputField = model
+        }
+        if let value = dict["SourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["StepName"] as? String {
+            self.stepName = value
+        }
+        if let value = dict["TargetLanguage"] as? String {
+            self.targetLanguage = value
         }
     }
 }
@@ -18756,6 +19391,26 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
         }
     }
     public class Transforms : Tea.TeaModel {
+        public var aiChunkTransformParameters: AiChunkTransformParameters?
+
+        public var aiClassifyTransformParameters: AiClassifyTransformParameters?
+
+        public var aiEmbedTransformParameters: AiEmbedTransformParameters?
+
+        public var aiExtractTransformParameters: AiExtractTransformParameters?
+
+        public var aiFilterTransformParameters: AiFilterTransformParameters?
+
+        public var aiPrepSearchTransformParameters: AiPrepSearchTransformParameters?
+
+        public var aiRedactTransformParameters: AiRedactTransformParameters?
+
+        public var aiSentimentAnalysisTransformParameters: AiSentimentAnalysisTransformParameters?
+
+        public var aiSummarizeTransformParameters: AiSummarizeTransformParameters?
+
+        public var aiTranslateTransformParameters: AiTranslateTransformParameters?
+
         public var arn: String?
 
         public var baiLianAgentTransformParameters: BaiLianAgentTransformParameters?
@@ -18774,6 +19429,16 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aiChunkTransformParameters?.validate()
+            try self.aiClassifyTransformParameters?.validate()
+            try self.aiEmbedTransformParameters?.validate()
+            try self.aiExtractTransformParameters?.validate()
+            try self.aiFilterTransformParameters?.validate()
+            try self.aiPrepSearchTransformParameters?.validate()
+            try self.aiRedactTransformParameters?.validate()
+            try self.aiSentimentAnalysisTransformParameters?.validate()
+            try self.aiSummarizeTransformParameters?.validate()
+            try self.aiTranslateTransformParameters?.validate()
             try self.baiLianAgentTransformParameters?.validate()
             try self.dashScopeTransformParameters?.validate()
             try self.embeddingTransformParameters?.validate()
@@ -18781,6 +19446,36 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiChunkTransformParameters != nil {
+                map["AiChunkTransformParameters"] = self.aiChunkTransformParameters?.toMap()
+            }
+            if self.aiClassifyTransformParameters != nil {
+                map["AiClassifyTransformParameters"] = self.aiClassifyTransformParameters?.toMap()
+            }
+            if self.aiEmbedTransformParameters != nil {
+                map["AiEmbedTransformParameters"] = self.aiEmbedTransformParameters?.toMap()
+            }
+            if self.aiExtractTransformParameters != nil {
+                map["AiExtractTransformParameters"] = self.aiExtractTransformParameters?.toMap()
+            }
+            if self.aiFilterTransformParameters != nil {
+                map["AiFilterTransformParameters"] = self.aiFilterTransformParameters?.toMap()
+            }
+            if self.aiPrepSearchTransformParameters != nil {
+                map["AiPrepSearchTransformParameters"] = self.aiPrepSearchTransformParameters?.toMap()
+            }
+            if self.aiRedactTransformParameters != nil {
+                map["AiRedactTransformParameters"] = self.aiRedactTransformParameters?.toMap()
+            }
+            if self.aiSentimentAnalysisTransformParameters != nil {
+                map["AiSentimentAnalysisTransformParameters"] = self.aiSentimentAnalysisTransformParameters?.toMap()
+            }
+            if self.aiSummarizeTransformParameters != nil {
+                map["AiSummarizeTransformParameters"] = self.aiSummarizeTransformParameters?.toMap()
+            }
+            if self.aiTranslateTransformParameters != nil {
+                map["AiTranslateTransformParameters"] = self.aiTranslateTransformParameters?.toMap()
+            }
             if self.arn != nil {
                 map["Arn"] = self.arn!
             }
@@ -18798,6 +19493,56 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiChunkTransformParameters"] as? [String: Any?] {
+                var model = AiChunkTransformParameters()
+                model.fromMap(value)
+                self.aiChunkTransformParameters = model
+            }
+            if let value = dict["AiClassifyTransformParameters"] as? [String: Any?] {
+                var model = AiClassifyTransformParameters()
+                model.fromMap(value)
+                self.aiClassifyTransformParameters = model
+            }
+            if let value = dict["AiEmbedTransformParameters"] as? [String: Any?] {
+                var model = AiEmbedTransformParameters()
+                model.fromMap(value)
+                self.aiEmbedTransformParameters = model
+            }
+            if let value = dict["AiExtractTransformParameters"] as? [String: Any?] {
+                var model = AiExtractTransformParameters()
+                model.fromMap(value)
+                self.aiExtractTransformParameters = model
+            }
+            if let value = dict["AiFilterTransformParameters"] as? [String: Any?] {
+                var model = AiFilterTransformParameters()
+                model.fromMap(value)
+                self.aiFilterTransformParameters = model
+            }
+            if let value = dict["AiPrepSearchTransformParameters"] as? [String: Any?] {
+                var model = AiPrepSearchTransformParameters()
+                model.fromMap(value)
+                self.aiPrepSearchTransformParameters = model
+            }
+            if let value = dict["AiRedactTransformParameters"] as? [String: Any?] {
+                var model = AiRedactTransformParameters()
+                model.fromMap(value)
+                self.aiRedactTransformParameters = model
+            }
+            if let value = dict["AiSentimentAnalysisTransformParameters"] as? [String: Any?] {
+                var model = AiSentimentAnalysisTransformParameters()
+                model.fromMap(value)
+                self.aiSentimentAnalysisTransformParameters = model
+            }
+            if let value = dict["AiSummarizeTransformParameters"] as? [String: Any?] {
+                var model = AiSummarizeTransformParameters()
+                model.fromMap(value)
+                self.aiSummarizeTransformParameters = model
+            }
+            if let value = dict["AiTranslateTransformParameters"] as? [String: Any?] {
+                var model = AiTranslateTransformParameters()
+                model.fromMap(value)
+                self.aiTranslateTransformParameters = model
+            }
             if let value = dict["Arn"] as? String {
                 self.arn = value
             }
@@ -34843,6 +35588,26 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
             }
         }
         public class Transforms : Tea.TeaModel {
+            public var aiChunkTransformParameters: AiChunkTransformParameters?
+
+            public var aiClassifyTransformParameters: AiClassifyTransformParameters?
+
+            public var aiEmbedTransformParameters: AiEmbedTransformParameters?
+
+            public var aiExtractTransformParameters: AiExtractTransformParameters?
+
+            public var aiFilterTransformParameters: AiFilterTransformParameters?
+
+            public var aiPrepSearchTransformParameters: AiPrepSearchTransformParameters?
+
+            public var aiRedactTransformParameters: AiRedactTransformParameters?
+
+            public var aiSentimentAnalysisTransformParameters: AiSentimentAnalysisTransformParameters?
+
+            public var aiSummarizeTransformParameters: AiSummarizeTransformParameters?
+
+            public var aiTranslateTransformParameters: AiTranslateTransformParameters?
+
             public var arn: String?
 
             public var baiLianAgentTransformParameters: BaiLianAgentTransformParameters?
@@ -34859,12 +35624,52 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.aiChunkTransformParameters?.validate()
+                try self.aiClassifyTransformParameters?.validate()
+                try self.aiEmbedTransformParameters?.validate()
+                try self.aiExtractTransformParameters?.validate()
+                try self.aiFilterTransformParameters?.validate()
+                try self.aiPrepSearchTransformParameters?.validate()
+                try self.aiRedactTransformParameters?.validate()
+                try self.aiSentimentAnalysisTransformParameters?.validate()
+                try self.aiSummarizeTransformParameters?.validate()
+                try self.aiTranslateTransformParameters?.validate()
                 try self.baiLianAgentTransformParameters?.validate()
                 try self.dashScopeTransformParameters?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.aiChunkTransformParameters != nil {
+                    map["AiChunkTransformParameters"] = self.aiChunkTransformParameters?.toMap()
+                }
+                if self.aiClassifyTransformParameters != nil {
+                    map["AiClassifyTransformParameters"] = self.aiClassifyTransformParameters?.toMap()
+                }
+                if self.aiEmbedTransformParameters != nil {
+                    map["AiEmbedTransformParameters"] = self.aiEmbedTransformParameters?.toMap()
+                }
+                if self.aiExtractTransformParameters != nil {
+                    map["AiExtractTransformParameters"] = self.aiExtractTransformParameters?.toMap()
+                }
+                if self.aiFilterTransformParameters != nil {
+                    map["AiFilterTransformParameters"] = self.aiFilterTransformParameters?.toMap()
+                }
+                if self.aiPrepSearchTransformParameters != nil {
+                    map["AiPrepSearchTransformParameters"] = self.aiPrepSearchTransformParameters?.toMap()
+                }
+                if self.aiRedactTransformParameters != nil {
+                    map["AiRedactTransformParameters"] = self.aiRedactTransformParameters?.toMap()
+                }
+                if self.aiSentimentAnalysisTransformParameters != nil {
+                    map["AiSentimentAnalysisTransformParameters"] = self.aiSentimentAnalysisTransformParameters?.toMap()
+                }
+                if self.aiSummarizeTransformParameters != nil {
+                    map["AiSummarizeTransformParameters"] = self.aiSummarizeTransformParameters?.toMap()
+                }
+                if self.aiTranslateTransformParameters != nil {
+                    map["AiTranslateTransformParameters"] = self.aiTranslateTransformParameters?.toMap()
+                }
                 if self.arn != nil {
                     map["Arn"] = self.arn!
                 }
@@ -34879,6 +35684,56 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AiChunkTransformParameters"] as? [String: Any?] {
+                    var model = AiChunkTransformParameters()
+                    model.fromMap(value)
+                    self.aiChunkTransformParameters = model
+                }
+                if let value = dict["AiClassifyTransformParameters"] as? [String: Any?] {
+                    var model = AiClassifyTransformParameters()
+                    model.fromMap(value)
+                    self.aiClassifyTransformParameters = model
+                }
+                if let value = dict["AiEmbedTransformParameters"] as? [String: Any?] {
+                    var model = AiEmbedTransformParameters()
+                    model.fromMap(value)
+                    self.aiEmbedTransformParameters = model
+                }
+                if let value = dict["AiExtractTransformParameters"] as? [String: Any?] {
+                    var model = AiExtractTransformParameters()
+                    model.fromMap(value)
+                    self.aiExtractTransformParameters = model
+                }
+                if let value = dict["AiFilterTransformParameters"] as? [String: Any?] {
+                    var model = AiFilterTransformParameters()
+                    model.fromMap(value)
+                    self.aiFilterTransformParameters = model
+                }
+                if let value = dict["AiPrepSearchTransformParameters"] as? [String: Any?] {
+                    var model = AiPrepSearchTransformParameters()
+                    model.fromMap(value)
+                    self.aiPrepSearchTransformParameters = model
+                }
+                if let value = dict["AiRedactTransformParameters"] as? [String: Any?] {
+                    var model = AiRedactTransformParameters()
+                    model.fromMap(value)
+                    self.aiRedactTransformParameters = model
+                }
+                if let value = dict["AiSentimentAnalysisTransformParameters"] as? [String: Any?] {
+                    var model = AiSentimentAnalysisTransformParameters()
+                    model.fromMap(value)
+                    self.aiSentimentAnalysisTransformParameters = model
+                }
+                if let value = dict["AiSummarizeTransformParameters"] as? [String: Any?] {
+                    var model = AiSummarizeTransformParameters()
+                    model.fromMap(value)
+                    self.aiSummarizeTransformParameters = model
+                }
+                if let value = dict["AiTranslateTransformParameters"] as? [String: Any?] {
+                    var model = AiTranslateTransformParameters()
+                    model.fromMap(value)
+                    self.aiTranslateTransformParameters = model
+                }
                 if let value = dict["Arn"] as? String {
                     self.arn = value
                 }
@@ -38641,6 +39496,8 @@ public class ListCatalogsResponse : Tea.TeaModel {
 public class ListConnectionsRequest : Tea.TeaModel {
     public var connectionNamePrefix: String?
 
+    public var excludeType: String?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -38664,6 +39521,9 @@ public class ListConnectionsRequest : Tea.TeaModel {
         if self.connectionNamePrefix != nil {
             map["ConnectionNamePrefix"] = self.connectionNamePrefix!
         }
+        if self.excludeType != nil {
+            map["ExcludeType"] = self.excludeType!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -38680,6 +39540,9 @@ public class ListConnectionsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ConnectionNamePrefix"] as? String {
             self.connectionNamePrefix = value
+        }
+        if let value = dict["ExcludeType"] as? String {
+            self.excludeType = value
         }
         if let value = dict["MaxResults"] as? Int64 {
             self.maxResults = value
@@ -47836,6 +48699,26 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                 }
             }
             public class Transforms : Tea.TeaModel {
+                public var aiChunkTransformParameters: AiChunkTransformParameters?
+
+                public var aiClassifyTransformParameters: AiClassifyTransformParameters?
+
+                public var aiEmbedTransformParameters: AiEmbedTransformParameters?
+
+                public var aiExtractTransformParameters: AiExtractTransformParameters?
+
+                public var aiFilterTransformParameters: AiFilterTransformParameters?
+
+                public var aiPrepSearchTransformParameters: AiPrepSearchTransformParameters?
+
+                public var aiRedactTransformParameters: AiRedactTransformParameters?
+
+                public var aiSentimentAnalysisTransformParameters: AiSentimentAnalysisTransformParameters?
+
+                public var aiSummarizeTransformParameters: AiSummarizeTransformParameters?
+
+                public var aiTranslateTransformParameters: AiTranslateTransformParameters?
+
                 public var arn: String?
 
                 public var baiLianAgentTransformParameters: BaiLianAgentTransformParameters?
@@ -47852,12 +48735,52 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.aiChunkTransformParameters?.validate()
+                    try self.aiClassifyTransformParameters?.validate()
+                    try self.aiEmbedTransformParameters?.validate()
+                    try self.aiExtractTransformParameters?.validate()
+                    try self.aiFilterTransformParameters?.validate()
+                    try self.aiPrepSearchTransformParameters?.validate()
+                    try self.aiRedactTransformParameters?.validate()
+                    try self.aiSentimentAnalysisTransformParameters?.validate()
+                    try self.aiSummarizeTransformParameters?.validate()
+                    try self.aiTranslateTransformParameters?.validate()
                     try self.baiLianAgentTransformParameters?.validate()
                     try self.dashScopeTransformParameters?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.aiChunkTransformParameters != nil {
+                        map["AiChunkTransformParameters"] = self.aiChunkTransformParameters?.toMap()
+                    }
+                    if self.aiClassifyTransformParameters != nil {
+                        map["AiClassifyTransformParameters"] = self.aiClassifyTransformParameters?.toMap()
+                    }
+                    if self.aiEmbedTransformParameters != nil {
+                        map["AiEmbedTransformParameters"] = self.aiEmbedTransformParameters?.toMap()
+                    }
+                    if self.aiExtractTransformParameters != nil {
+                        map["AiExtractTransformParameters"] = self.aiExtractTransformParameters?.toMap()
+                    }
+                    if self.aiFilterTransformParameters != nil {
+                        map["AiFilterTransformParameters"] = self.aiFilterTransformParameters?.toMap()
+                    }
+                    if self.aiPrepSearchTransformParameters != nil {
+                        map["AiPrepSearchTransformParameters"] = self.aiPrepSearchTransformParameters?.toMap()
+                    }
+                    if self.aiRedactTransformParameters != nil {
+                        map["AiRedactTransformParameters"] = self.aiRedactTransformParameters?.toMap()
+                    }
+                    if self.aiSentimentAnalysisTransformParameters != nil {
+                        map["AiSentimentAnalysisTransformParameters"] = self.aiSentimentAnalysisTransformParameters?.toMap()
+                    }
+                    if self.aiSummarizeTransformParameters != nil {
+                        map["AiSummarizeTransformParameters"] = self.aiSummarizeTransformParameters?.toMap()
+                    }
+                    if self.aiTranslateTransformParameters != nil {
+                        map["AiTranslateTransformParameters"] = self.aiTranslateTransformParameters?.toMap()
+                    }
                     if self.arn != nil {
                         map["Arn"] = self.arn!
                     }
@@ -47872,6 +48795,56 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AiChunkTransformParameters"] as? [String: Any?] {
+                        var model = AiChunkTransformParameters()
+                        model.fromMap(value)
+                        self.aiChunkTransformParameters = model
+                    }
+                    if let value = dict["AiClassifyTransformParameters"] as? [String: Any?] {
+                        var model = AiClassifyTransformParameters()
+                        model.fromMap(value)
+                        self.aiClassifyTransformParameters = model
+                    }
+                    if let value = dict["AiEmbedTransformParameters"] as? [String: Any?] {
+                        var model = AiEmbedTransformParameters()
+                        model.fromMap(value)
+                        self.aiEmbedTransformParameters = model
+                    }
+                    if let value = dict["AiExtractTransformParameters"] as? [String: Any?] {
+                        var model = AiExtractTransformParameters()
+                        model.fromMap(value)
+                        self.aiExtractTransformParameters = model
+                    }
+                    if let value = dict["AiFilterTransformParameters"] as? [String: Any?] {
+                        var model = AiFilterTransformParameters()
+                        model.fromMap(value)
+                        self.aiFilterTransformParameters = model
+                    }
+                    if let value = dict["AiPrepSearchTransformParameters"] as? [String: Any?] {
+                        var model = AiPrepSearchTransformParameters()
+                        model.fromMap(value)
+                        self.aiPrepSearchTransformParameters = model
+                    }
+                    if let value = dict["AiRedactTransformParameters"] as? [String: Any?] {
+                        var model = AiRedactTransformParameters()
+                        model.fromMap(value)
+                        self.aiRedactTransformParameters = model
+                    }
+                    if let value = dict["AiSentimentAnalysisTransformParameters"] as? [String: Any?] {
+                        var model = AiSentimentAnalysisTransformParameters()
+                        model.fromMap(value)
+                        self.aiSentimentAnalysisTransformParameters = model
+                    }
+                    if let value = dict["AiSummarizeTransformParameters"] as? [String: Any?] {
+                        var model = AiSummarizeTransformParameters()
+                        model.fromMap(value)
+                        self.aiSummarizeTransformParameters = model
+                    }
+                    if let value = dict["AiTranslateTransformParameters"] as? [String: Any?] {
+                        var model = AiTranslateTransformParameters()
+                        model.fromMap(value)
+                        self.aiTranslateTransformParameters = model
+                    }
                     if let value = dict["Arn"] as? String {
                         self.arn = value
                     }
@@ -48180,6 +49153,10 @@ public class ListEventStreamingsResponse : Tea.TeaModel {
 public class ListLumaCatalogsRequest : Tea.TeaModel {
     public var agentName: String?
 
+    public var limit: Int32?
+
+    public var nextToken: String?
+
     public override init() {
         super.init()
     }
@@ -48197,6 +49174,12 @@ public class ListLumaCatalogsRequest : Tea.TeaModel {
         if self.agentName != nil {
             map["AgentName"] = self.agentName!
         }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         return map
     }
 
@@ -48205,12 +49188,24 @@ public class ListLumaCatalogsRequest : Tea.TeaModel {
         if let value = dict["AgentName"] as? String {
             self.agentName = value
         }
+        if let value = dict["Limit"] as? Int32 {
+            self.limit = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
     }
 }
 
 public class ListLumaCatalogsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var catalogs: [Catalog]?
+
+        public var limit: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
 
         public override init() {
             super.init()
@@ -48233,6 +49228,15 @@ public class ListLumaCatalogsResponseBody : Tea.TeaModel {
                 }
                 map["Catalogs"] = tmp
             }
+            if self.limit != nil {
+                map["Limit"] = self.limit!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
             return map
         }
 
@@ -48250,6 +49254,15 @@ public class ListLumaCatalogsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.catalogs = tmp
+            }
+            if let value = dict["Limit"] as? Int32 {
+                self.limit = value
+            }
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
             }
         }
     }
@@ -48907,7 +49920,11 @@ public class ListLumaKnowledgeBasesRequest : Tea.TeaModel {
 
     public var catalog: String?
 
+    public var maxResults: Int32?
+
     public var namespace: String?
+
+    public var nextToken: String?
 
     public override init() {
         super.init()
@@ -48929,8 +49946,14 @@ public class ListLumaKnowledgeBasesRequest : Tea.TeaModel {
         if self.catalog != nil {
             map["Catalog"] = self.catalog!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         return map
     }
@@ -48943,8 +49966,14 @@ public class ListLumaKnowledgeBasesRequest : Tea.TeaModel {
         if let value = dict["Catalog"] as? String {
             self.catalog = value
         }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
         if let value = dict["Namespace"] as? String {
             self.namespace = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
     }
 }
@@ -48952,6 +49981,12 @@ public class ListLumaKnowledgeBasesRequest : Tea.TeaModel {
 public class ListLumaKnowledgeBasesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var knowledgeBases: [KnowledgeBase]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
 
         public override init() {
             super.init()
@@ -48974,6 +50009,15 @@ public class ListLumaKnowledgeBasesResponseBody : Tea.TeaModel {
                 }
                 map["KnowledgeBases"] = tmp
             }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
             return map
         }
 
@@ -48991,6 +50035,15 @@ public class ListLumaKnowledgeBasesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.knowledgeBases = tmp
+            }
+            if let value = dict["MaxResults"] as? Int32 {
+                self.maxResults = value
+            }
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
             }
         }
     }
@@ -49114,6 +50167,10 @@ public class ListLumaNamespacesRequest : Tea.TeaModel {
 
     public var catalog: String?
 
+    public var limit: Int32?
+
+    public var nextToken: String?
+
     public override init() {
         super.init()
     }
@@ -49134,6 +50191,12 @@ public class ListLumaNamespacesRequest : Tea.TeaModel {
         if self.catalog != nil {
             map["Catalog"] = self.catalog!
         }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         return map
     }
 
@@ -49145,12 +50208,24 @@ public class ListLumaNamespacesRequest : Tea.TeaModel {
         if let value = dict["Catalog"] as? String {
             self.catalog = value
         }
+        if let value = dict["Limit"] as? Int32 {
+            self.limit = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
     }
 }
 
 public class ListLumaNamespacesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var limit: Int32?
+
         public var namespaces: [Namespace]?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
 
         public override init() {
             super.init()
@@ -49166,6 +50241,9 @@ public class ListLumaNamespacesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.limit != nil {
+                map["Limit"] = self.limit!
+            }
             if self.namespaces != nil {
                 var tmp : [Any] = []
                 for k in self.namespaces! {
@@ -49173,11 +50251,20 @@ public class ListLumaNamespacesResponseBody : Tea.TeaModel {
                 }
                 map["Namespaces"] = tmp
             }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Limit"] as? Int32 {
+                self.limit = value
+            }
             if let value = dict["Namespaces"] as? [Any?] {
                 var tmp : [Namespace] = []
                 for v in value {
@@ -49190,6 +50277,12 @@ public class ListLumaNamespacesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.namespaces = tmp
+            }
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
             }
         }
     }
@@ -49313,7 +50406,11 @@ public class ListLumaTablesRequest : Tea.TeaModel {
 
     public var catalog: String?
 
+    public var limit: Int32?
+
     public var namespace: String?
+
+    public var nextToken: String?
 
     public override init() {
         super.init()
@@ -49335,8 +50432,14 @@ public class ListLumaTablesRequest : Tea.TeaModel {
         if self.catalog != nil {
             map["Catalog"] = self.catalog!
         }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         return map
     }
@@ -49349,15 +50452,27 @@ public class ListLumaTablesRequest : Tea.TeaModel {
         if let value = dict["Catalog"] as? String {
             self.catalog = value
         }
+        if let value = dict["Limit"] as? Int32 {
+            self.limit = value
+        }
         if let value = dict["Namespace"] as? String {
             self.namespace = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
     }
 }
 
 public class ListLumaTablesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var limit: Int32?
+
+        public var nextToken: String?
+
         public var tables: [LumaTable]?
+
+        public var totalCount: Int32?
 
         public override init() {
             super.init()
@@ -49373,6 +50488,12 @@ public class ListLumaTablesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.limit != nil {
+                map["Limit"] = self.limit!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
             if self.tables != nil {
                 var tmp : [Any] = []
                 for k in self.tables! {
@@ -49380,11 +50501,20 @@ public class ListLumaTablesResponseBody : Tea.TeaModel {
                 }
                 map["Tables"] = tmp
             }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Limit"] as? Int32 {
+                self.limit = value
+            }
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
+            }
             if let value = dict["Tables"] as? [Any?] {
                 var tmp : [LumaTable] = []
                 for v in value {
@@ -49397,6 +50527,9 @@ public class ListLumaTablesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tables = tmp
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
             }
         }
     }
@@ -56190,6 +57323,10 @@ public class UpdateAgentRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var mcpServerId: String?
+
+    public var mcpServerName: String?
+
     public var metadata: UpdateAgentRequest.Metadata?
 
     public var name: String?
@@ -56217,6 +57354,12 @@ public class UpdateAgentRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.mcpServerId != nil {
+            map["McpServerId"] = self.mcpServerId!
+        }
+        if self.mcpServerName != nil {
+            map["McpServerName"] = self.mcpServerName!
+        }
         if self.metadata != nil {
             map["Metadata"] = self.metadata?.toMap()
         }
@@ -56237,6 +57380,12 @@ public class UpdateAgentRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["McpServerId"] as? String {
+            self.mcpServerId = value
+        }
+        if let value = dict["McpServerName"] as? String {
+            self.mcpServerName = value
+        }
         if let value = dict["Metadata"] as? [String: Any?] {
             var model = UpdateAgentRequest.Metadata()
             model.fromMap(value)
@@ -56255,6 +57404,10 @@ public class UpdateAgentShrinkRequest : Tea.TeaModel {
     public var clientToken: String?
 
     public var description_: String?
+
+    public var mcpServerId: String?
+
+    public var mcpServerName: String?
 
     public var metadataShrink: String?
 
@@ -56282,6 +57435,12 @@ public class UpdateAgentShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.mcpServerId != nil {
+            map["McpServerId"] = self.mcpServerId!
+        }
+        if self.mcpServerName != nil {
+            map["McpServerName"] = self.mcpServerName!
+        }
         if self.metadataShrink != nil {
             map["Metadata"] = self.metadataShrink!
         }
@@ -56301,6 +57460,12 @@ public class UpdateAgentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["McpServerId"] as? String {
+            self.mcpServerId = value
+        }
+        if let value = dict["McpServerName"] as? String {
+            self.mcpServerName = value
         }
         if let value = dict["Metadata"] as? String {
             self.metadataShrink = value
@@ -68168,6 +69333,26 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
         }
     }
     public class Transforms : Tea.TeaModel {
+        public var aiChunkTransformParameters: AiChunkTransformParameters?
+
+        public var aiClassifyTransformParameters: AiClassifyTransformParameters?
+
+        public var aiEmbedTransformParameters: AiEmbedTransformParameters?
+
+        public var aiExtractTransformParameters: AiExtractTransformParameters?
+
+        public var aiFilterTransformParameters: AiFilterTransformParameters?
+
+        public var aiPrepSearchTransformParameters: AiPrepSearchTransformParameters?
+
+        public var aiRedactTransformParameters: AiRedactTransformParameters?
+
+        public var aiSentimentAnalysisTransformParameters: AiSentimentAnalysisTransformParameters?
+
+        public var aiSummarizeTransformParameters: AiSummarizeTransformParameters?
+
+        public var aiTranslateTransformParameters: AiTranslateTransformParameters?
+
         public var arn: String?
 
         public var baiLianAgentTransformParameters: BaiLianAgentTransformParameters?
@@ -68184,12 +69369,52 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aiChunkTransformParameters?.validate()
+            try self.aiClassifyTransformParameters?.validate()
+            try self.aiEmbedTransformParameters?.validate()
+            try self.aiExtractTransformParameters?.validate()
+            try self.aiFilterTransformParameters?.validate()
+            try self.aiPrepSearchTransformParameters?.validate()
+            try self.aiRedactTransformParameters?.validate()
+            try self.aiSentimentAnalysisTransformParameters?.validate()
+            try self.aiSummarizeTransformParameters?.validate()
+            try self.aiTranslateTransformParameters?.validate()
             try self.baiLianAgentTransformParameters?.validate()
             try self.dashScopeTransformParameters?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiChunkTransformParameters != nil {
+                map["AiChunkTransformParameters"] = self.aiChunkTransformParameters?.toMap()
+            }
+            if self.aiClassifyTransformParameters != nil {
+                map["AiClassifyTransformParameters"] = self.aiClassifyTransformParameters?.toMap()
+            }
+            if self.aiEmbedTransformParameters != nil {
+                map["AiEmbedTransformParameters"] = self.aiEmbedTransformParameters?.toMap()
+            }
+            if self.aiExtractTransformParameters != nil {
+                map["AiExtractTransformParameters"] = self.aiExtractTransformParameters?.toMap()
+            }
+            if self.aiFilterTransformParameters != nil {
+                map["AiFilterTransformParameters"] = self.aiFilterTransformParameters?.toMap()
+            }
+            if self.aiPrepSearchTransformParameters != nil {
+                map["AiPrepSearchTransformParameters"] = self.aiPrepSearchTransformParameters?.toMap()
+            }
+            if self.aiRedactTransformParameters != nil {
+                map["AiRedactTransformParameters"] = self.aiRedactTransformParameters?.toMap()
+            }
+            if self.aiSentimentAnalysisTransformParameters != nil {
+                map["AiSentimentAnalysisTransformParameters"] = self.aiSentimentAnalysisTransformParameters?.toMap()
+            }
+            if self.aiSummarizeTransformParameters != nil {
+                map["AiSummarizeTransformParameters"] = self.aiSummarizeTransformParameters?.toMap()
+            }
+            if self.aiTranslateTransformParameters != nil {
+                map["AiTranslateTransformParameters"] = self.aiTranslateTransformParameters?.toMap()
+            }
             if self.arn != nil {
                 map["Arn"] = self.arn!
             }
@@ -68204,6 +69429,56 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiChunkTransformParameters"] as? [String: Any?] {
+                var model = AiChunkTransformParameters()
+                model.fromMap(value)
+                self.aiChunkTransformParameters = model
+            }
+            if let value = dict["AiClassifyTransformParameters"] as? [String: Any?] {
+                var model = AiClassifyTransformParameters()
+                model.fromMap(value)
+                self.aiClassifyTransformParameters = model
+            }
+            if let value = dict["AiEmbedTransformParameters"] as? [String: Any?] {
+                var model = AiEmbedTransformParameters()
+                model.fromMap(value)
+                self.aiEmbedTransformParameters = model
+            }
+            if let value = dict["AiExtractTransformParameters"] as? [String: Any?] {
+                var model = AiExtractTransformParameters()
+                model.fromMap(value)
+                self.aiExtractTransformParameters = model
+            }
+            if let value = dict["AiFilterTransformParameters"] as? [String: Any?] {
+                var model = AiFilterTransformParameters()
+                model.fromMap(value)
+                self.aiFilterTransformParameters = model
+            }
+            if let value = dict["AiPrepSearchTransformParameters"] as? [String: Any?] {
+                var model = AiPrepSearchTransformParameters()
+                model.fromMap(value)
+                self.aiPrepSearchTransformParameters = model
+            }
+            if let value = dict["AiRedactTransformParameters"] as? [String: Any?] {
+                var model = AiRedactTransformParameters()
+                model.fromMap(value)
+                self.aiRedactTransformParameters = model
+            }
+            if let value = dict["AiSentimentAnalysisTransformParameters"] as? [String: Any?] {
+                var model = AiSentimentAnalysisTransformParameters()
+                model.fromMap(value)
+                self.aiSentimentAnalysisTransformParameters = model
+            }
+            if let value = dict["AiSummarizeTransformParameters"] as? [String: Any?] {
+                var model = AiSummarizeTransformParameters()
+                model.fromMap(value)
+                self.aiSummarizeTransformParameters = model
+            }
+            if let value = dict["AiTranslateTransformParameters"] as? [String: Any?] {
+                var model = AiTranslateTransformParameters()
+                model.fromMap(value)
+                self.aiTranslateTransformParameters = model
+            }
             if let value = dict["Arn"] as? String {
                 self.arn = value
             }
