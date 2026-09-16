@@ -61558,6 +61558,8 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
 
     public var versionConfig: HttpApiVersionConfig?
 
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public override init() {
@@ -61619,6 +61621,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
         }
         if self.versionConfig != nil {
             map["versionConfig"] = self.versionConfig?.toMap()
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
         }
         if self.dryRun != nil {
             map["dryRun"] = self.dryRun!
@@ -61682,6 +61687,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
             var model = HttpApiVersionConfig()
             model.fromMap(value)
             self.versionConfig = model
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["dryRun"] as? Bool {
             self.dryRun = value
