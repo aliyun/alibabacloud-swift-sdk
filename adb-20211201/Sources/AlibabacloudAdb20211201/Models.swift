@@ -50524,7 +50524,11 @@ public class GetFormationCrawlerResponse : Tea.TeaModel {
 public class GetKnowledgeRecallRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var path: String?
+
     public var question: String?
+
+    public var tags: String?
 
     public var topk: Int32?
 
@@ -50547,8 +50551,14 @@ public class GetKnowledgeRecallRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.path != nil {
+            map["Path"] = self.path!
+        }
         if self.question != nil {
             map["Question"] = self.question!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
         }
         if self.topk != nil {
             map["Topk"] = self.topk!
@@ -50564,8 +50574,14 @@ public class GetKnowledgeRecallRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["Path"] as? String {
+            self.path = value
+        }
         if let value = dict["Question"] as? String {
             self.question = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tags = value
         }
         if let value = dict["Topk"] as? Int32 {
             self.topk = value
@@ -67492,6 +67508,199 @@ public class RemoveKnowledgeTagsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RemoveKnowledgeTagsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RemoveKnowledgeUploadUserRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var fileLocation: String?
+
+    public var users: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.fileLocation != nil {
+            map["FileLocation"] = self.fileLocation!
+        }
+        if self.users != nil {
+            map["Users"] = self.users!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["FileLocation"] as? String {
+            self.fileLocation = value
+        }
+        if let value = dict["Users"] as? String {
+            self.users = value
+        }
+    }
+}
+
+public class RemoveKnowledgeUploadUserResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var fileLocation: String?
+
+        public var message: String?
+
+        public var removed: Int32?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileLocation != nil {
+                map["FileLocation"] = self.fileLocation!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.removed != nil {
+                map["Removed"] = self.removed!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileLocation"] as? String {
+                self.fileLocation = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["Removed"] as? Int32 {
+                self.removed = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var data: RemoveKnowledgeUploadUserResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = RemoveKnowledgeUploadUserResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class RemoveKnowledgeUploadUserResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RemoveKnowledgeUploadUserResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RemoveKnowledgeUploadUserResponseBody()
             model.fromMap(value)
             self.body = model
         }

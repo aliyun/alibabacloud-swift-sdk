@@ -7723,8 +7723,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            query["Path"] = request.path ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.question)) {
             query["Question"] = request.question ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.topk)) {
             query["Topk"] = request.topk!;
@@ -11024,6 +11030,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func removeKnowledgeTags(_ request: RemoveKnowledgeTagsRequest) async throws -> RemoveKnowledgeTagsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await removeKnowledgeTagsWithOptions(request as! RemoveKnowledgeTagsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeKnowledgeUploadUserWithOptions(_ request: RemoveKnowledgeUploadUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveKnowledgeUploadUserResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileLocation)) {
+            query["FileLocation"] = request.fileLocation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.users)) {
+            query["Users"] = request.users ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveKnowledgeUploadUser",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveKnowledgeUploadUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeKnowledgeUploadUser(_ request: RemoveKnowledgeUploadUserRequest) async throws -> RemoveKnowledgeUploadUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeKnowledgeUploadUserWithOptions(request as! RemoveKnowledgeUploadUserRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
