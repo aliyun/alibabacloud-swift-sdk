@@ -2234,6 +2234,8 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
     }
     public var attributes: [String: String]?
 
+    public var channel: String?
+
     public var defaultRule: String?
 
     public var description_: String?
@@ -2273,6 +2275,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.attributes != nil {
             map["attributes"] = self.attributes!
+        }
+        if self.channel != nil {
+            map["channel"] = self.channel!
         }
         if self.defaultRule != nil {
             map["defaultRule"] = self.defaultRule!
@@ -2315,6 +2320,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["attributes"] as? [String: String] {
             self.attributes = value
+        }
+        if let value = dict["channel"] as? String {
+            self.channel = value
         }
         if let value = dict["defaultRule"] as? String {
             self.defaultRule = value

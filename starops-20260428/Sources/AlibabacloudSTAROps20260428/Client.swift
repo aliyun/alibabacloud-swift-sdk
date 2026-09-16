@@ -108,6 +108,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.attributes)) {
             body["attributes"] = request.attributes ?? [:];
         }
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            body["channel"] = request.channel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.defaultRule)) {
             body["defaultRule"] = request.defaultRule ?? "";
         }
