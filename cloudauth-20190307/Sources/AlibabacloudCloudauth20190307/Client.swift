@@ -11,32 +11,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "regional"
+        self._endpointRule = "central"
         self._endpointMap = [
-            "us-west-1": "cloudauth.aliyuncs.com",
-            "us-east-1": "cloudauth.aliyuncs.com",
-            "me-east-1": "cloudauth.aliyuncs.com",
-            "eu-west-1": "cloudauth.aliyuncs.com",
-            "eu-central-1": "cloudauth.aliyuncs.com",
-            "cn-zhangjiakou": "cloudauth.aliyuncs.com",
-            "cn-shenzhen-finance-1": "cloudauth.aliyuncs.com",
-            "cn-shenzhen": "cloudauth.aliyuncs.com",
-            "cn-shanghai-finance-1": "cloudauth.aliyuncs.com",
-            "cn-shanghai": "cloudauth.aliyuncs.com",
-            "cn-qingdao": "cloudauth.cn-qingdao.aliyuncs.com",
-            "cn-north-2-gov-1": "cloudauth.aliyuncs.com",
-            "cn-huhehaote": "cloudauth.aliyuncs.com",
-            "cn-hongkong": "cloudauth.aliyuncs.com",
-            "cn-hangzhou-finance": "cloudauth.aliyuncs.com",
-            "cn-hangzhou": "cloudauth.aliyuncs.com",
-            "cn-chengdu": "cloudauth.aliyuncs.com",
-            "cn-beijing": "cloudauth.cn-beijing.aliyuncs.com",
-            "ap-southeast-5": "cloudauth.aliyuncs.com",
-            "ap-southeast-3": "cloudauth.aliyuncs.com",
-            "ap-southeast-2": "cloudauth.aliyuncs.com",
-            "ap-southeast-1": "cloudauth.aliyuncs.com",
-            "ap-south-1": "cloudauth.aliyuncs.com",
-            "ap-northeast-1": "cloudauth.aliyuncs.com"
+            "cn-beijing": "cloudauth.cn-beijing.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudauth", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -535,6 +512,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkFileName)) {
             query["CheckFileName"] = request.checkFileName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.degradeAppScheme)) {
+            query["DegradeAppScheme"] = request.degradeAppScheme ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.degradeSubCodes)) {
+            query["DegradeSubCodes"] = request.degradeSubCodes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.degradeType)) {
+            query["DegradeType"] = request.degradeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deviceRiskPlus)) {
             query["DeviceRiskPlus"] = request.deviceRiskPlus ?? "";
         }
@@ -555,6 +541,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.storeImage)) {
             query["StoreImage"] = request.storeImage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useDegrade)) {
+            query["UseDegrade"] = request.useDegrade ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -3376,6 +3365,147 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id3MetaVerifyPROWithOptions(_ request: Id3MetaVerifyPRORequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Id3MetaVerifyPROResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableFallback)) {
+            query["EnableFallback"] = request.enableFallback ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.crop)) {
+            body["Crop"] = request.crop ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceFile)) {
+            body["FaceFile"] = request.faceFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.facePicture)) {
+            body["FacePicture"] = request.facePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceUrl)) {
+            body["FaceUrl"] = request.faceUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.identifyNum)) {
+            body["IdentifyNum"] = request.identifyNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.livenessCheck)) {
+            body["LivenessCheck"] = request.livenessCheck ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            body["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["UserName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Id3MetaVerifyPRO",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(Id3MetaVerifyPROResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id3MetaVerifyPRO(_ request: Id3MetaVerifyPRORequest) async throws -> Id3MetaVerifyPROResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await id3MetaVerifyPROWithOptions(request as! Id3MetaVerifyPRORequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id3MetaVerifyPROAdvance(_ request: Id3MetaVerifyPROAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Id3MetaVerifyPROResponse {
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "Cloudauth",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
+        ])
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var authResponse: [String: Any] = [:]
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
+        var id3MetaVerifyPROReq: Id3MetaVerifyPRORequest = Id3MetaVerifyPRORequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, id3MetaVerifyPROReq)
+        if (!TeaUtils.Client.isUnset(request.faceFileObject)) {
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.faceFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            id3MetaVerifyPROReq.faceFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        var id3MetaVerifyPROResp: Id3MetaVerifyPROResponse = try await id3MetaVerifyPROWithOptions(id3MetaVerifyPROReq as! Id3MetaVerifyPRORequest, runtime as! TeaUtils.RuntimeOptions)
+        return id3MetaVerifyPROResp as! Id3MetaVerifyPROResponse
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func id3MetaVerifyWithOCRWithOptions(_ request: Id3MetaVerifyWithOCRRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Id3MetaVerifyWithOCRResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4756,6 +4886,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkFileName)) {
             query["CheckFileName"] = request.checkFileName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.degradeAppScheme)) {
+            query["DegradeAppScheme"] = request.degradeAppScheme ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.degradeSubCodes)) {
+            query["DegradeSubCodes"] = request.degradeSubCodes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.degradeType)) {
+            query["DegradeType"] = request.degradeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deviceRiskPlus)) {
             query["DeviceRiskPlus"] = request.deviceRiskPlus ?? "";
         }
@@ -4782,6 +4921,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.storeImage)) {
             query["StoreImage"] = request.storeImage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useDegrade)) {
+            query["UseDegrade"] = request.useDegrade ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

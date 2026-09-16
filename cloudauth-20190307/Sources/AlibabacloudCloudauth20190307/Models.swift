@@ -1499,6 +1499,12 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
 
     public var checkFileName: String?
 
+    public var degradeAppScheme: String?
+
+    public var degradeSubCodes: String?
+
+    public var degradeType: String?
+
     public var deviceRiskPlus: String?
 
     public var miniProgramName: String?
@@ -1512,6 +1518,8 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
     public var sceneName: String?
 
     public var storeImage: String?
+
+    public var useDegrade: String?
 
     public override init() {
         super.init()
@@ -1536,6 +1544,15 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
         if self.checkFileName != nil {
             map["CheckFileName"] = self.checkFileName!
         }
+        if self.degradeAppScheme != nil {
+            map["DegradeAppScheme"] = self.degradeAppScheme!
+        }
+        if self.degradeSubCodes != nil {
+            map["DegradeSubCodes"] = self.degradeSubCodes!
+        }
+        if self.degradeType != nil {
+            map["DegradeType"] = self.degradeType!
+        }
         if self.deviceRiskPlus != nil {
             map["DeviceRiskPlus"] = self.deviceRiskPlus!
         }
@@ -1557,6 +1574,9 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
         if self.storeImage != nil {
             map["StoreImage"] = self.storeImage!
         }
+        if self.useDegrade != nil {
+            map["UseDegrade"] = self.useDegrade!
+        }
         return map
     }
 
@@ -1570,6 +1590,15 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
         }
         if let value = dict["CheckFileName"] as? String {
             self.checkFileName = value
+        }
+        if let value = dict["DegradeAppScheme"] as? String {
+            self.degradeAppScheme = value
+        }
+        if let value = dict["DegradeSubCodes"] as? String {
+            self.degradeSubCodes = value
+        }
+        if let value = dict["DegradeType"] as? String {
+            self.degradeType = value
         }
         if let value = dict["DeviceRiskPlus"] as? String {
             self.deviceRiskPlus = value
@@ -1591,6 +1620,9 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
         }
         if let value = dict["StoreImage"] as? String {
             self.storeImage = value
+        }
+        if let value = dict["UseDegrade"] as? String {
+            self.useDegrade = value
         }
     }
 }
@@ -6945,6 +6977,8 @@ public class DescribeFaceVerifyRequest : Tea.TeaModel {
 
 public class DescribeFaceVerifyResponseBody : Tea.TeaModel {
     public class ResultObject : Tea.TeaModel {
+        public var degradeInfo: String?
+
         public var deviceRisk: String?
 
         public var deviceToken: String?
@@ -6975,6 +7009,9 @@ public class DescribeFaceVerifyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.degradeInfo != nil {
+                map["DegradeInfo"] = self.degradeInfo!
+            }
             if self.deviceRisk != nil {
                 map["DeviceRisk"] = self.deviceRisk!
             }
@@ -7004,6 +7041,9 @@ public class DescribeFaceVerifyResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["DegradeInfo"] as? String {
+                self.degradeInfo = value
+            }
             if let value = dict["DeviceRisk"] as? String {
                 self.deviceRisk = value
             }
@@ -7486,6 +7526,12 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
 
         public var creator: String?
 
+        public var degradeAppScheme: String?
+
+        public var degradeSubCodes: String?
+
+        public var degradeType: String?
+
         public var deviceRiskPlus: String?
 
         public var domain: String?
@@ -7509,6 +7555,8 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
         public var storeImage: String?
 
         public var updateTime: String?
+
+        public var useDegrade: String?
 
         public override init() {
             super.init()
@@ -7535,6 +7583,15 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
             }
             if self.creator != nil {
                 map["Creator"] = self.creator!
+            }
+            if self.degradeAppScheme != nil {
+                map["DegradeAppScheme"] = self.degradeAppScheme!
+            }
+            if self.degradeSubCodes != nil {
+                map["DegradeSubCodes"] = self.degradeSubCodes!
+            }
+            if self.degradeType != nil {
+                map["DegradeType"] = self.degradeType!
             }
             if self.deviceRiskPlus != nil {
                 map["DeviceRiskPlus"] = self.deviceRiskPlus!
@@ -7572,6 +7629,9 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
+            if self.useDegrade != nil {
+                map["UseDegrade"] = self.useDegrade!
+            }
             return map
         }
 
@@ -7588,6 +7648,15 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Creator"] as? String {
                 self.creator = value
+            }
+            if let value = dict["DegradeAppScheme"] as? String {
+                self.degradeAppScheme = value
+            }
+            if let value = dict["DegradeSubCodes"] as? String {
+                self.degradeSubCodes = value
+            }
+            if let value = dict["DegradeType"] as? String {
+                self.degradeType = value
             }
             if let value = dict["DeviceRiskPlus"] as? String {
                 self.deviceRiskPlus = value
@@ -7624,6 +7693,9 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
+            }
+            if let value = dict["UseDegrade"] as? String {
+                self.useDegrade = value
             }
         }
     }
@@ -16769,6 +16841,358 @@ public class Id3MetaVerifyResponse : Tea.TeaModel {
     }
 }
 
+public class Id3MetaVerifyPRORequest : Tea.TeaModel {
+    public var crop: String?
+
+    public var enableFallback: String?
+
+    public var faceFile: String?
+
+    public var facePicture: String?
+
+    public var faceUrl: String?
+
+    public var identifyNum: String?
+
+    public var livenessCheck: String?
+
+    public var paramType: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.crop != nil {
+            map["Crop"] = self.crop!
+        }
+        if self.enableFallback != nil {
+            map["EnableFallback"] = self.enableFallback!
+        }
+        if self.faceFile != nil {
+            map["FaceFile"] = self.faceFile!
+        }
+        if self.facePicture != nil {
+            map["FacePicture"] = self.facePicture!
+        }
+        if self.faceUrl != nil {
+            map["FaceUrl"] = self.faceUrl!
+        }
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.livenessCheck != nil {
+            map["LivenessCheck"] = self.livenessCheck!
+        }
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Crop"] as? String {
+            self.crop = value
+        }
+        if let value = dict["EnableFallback"] as? String {
+            self.enableFallback = value
+        }
+        if let value = dict["FaceFile"] as? String {
+            self.faceFile = value
+        }
+        if let value = dict["FacePicture"] as? String {
+            self.facePicture = value
+        }
+        if let value = dict["FaceUrl"] as? String {
+            self.faceUrl = value
+        }
+        if let value = dict["IdentifyNum"] as? String {
+            self.identifyNum = value
+        }
+        if let value = dict["LivenessCheck"] as? String {
+            self.livenessCheck = value
+        }
+        if let value = dict["ParamType"] as? String {
+            self.paramType = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
+        }
+    }
+}
+
+public class Id3MetaVerifyPROAdvanceRequest : Tea.TeaModel {
+    public var crop: String?
+
+    public var enableFallback: String?
+
+    public var faceFileObject: InputStream?
+
+    public var facePicture: String?
+
+    public var faceUrl: String?
+
+    public var identifyNum: String?
+
+    public var livenessCheck: String?
+
+    public var paramType: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.crop != nil {
+            map["Crop"] = self.crop!
+        }
+        if self.enableFallback != nil {
+            map["EnableFallback"] = self.enableFallback!
+        }
+        if self.faceFileObject != nil {
+            map["FaceFile"] = self.faceFileObject!
+        }
+        if self.facePicture != nil {
+            map["FacePicture"] = self.facePicture!
+        }
+        if self.faceUrl != nil {
+            map["FaceUrl"] = self.faceUrl!
+        }
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.livenessCheck != nil {
+            map["LivenessCheck"] = self.livenessCheck!
+        }
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Crop"] as? String {
+            self.crop = value
+        }
+        if let value = dict["EnableFallback"] as? String {
+            self.enableFallback = value
+        }
+        if let value = dict["FaceFile"] as? InputStream {
+            self.faceFileObject = value
+        }
+        if let value = dict["FacePicture"] as? String {
+            self.facePicture = value
+        }
+        if let value = dict["FaceUrl"] as? String {
+            self.faceUrl = value
+        }
+        if let value = dict["IdentifyNum"] as? String {
+            self.identifyNum = value
+        }
+        if let value = dict["LivenessCheck"] as? String {
+            self.livenessCheck = value
+        }
+        if let value = dict["ParamType"] as? String {
+            self.paramType = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
+        }
+    }
+}
+
+public class Id3MetaVerifyPROResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public var faceDetail: String?
+
+        public var hitWhitelist: String?
+
+        public var subCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            if self.faceDetail != nil {
+                map["FaceDetail"] = self.faceDetail!
+            }
+            if self.hitWhitelist != nil {
+                map["HitWhitelist"] = self.hitWhitelist!
+            }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BizCode"] as? String {
+                self.bizCode = value
+            }
+            if let value = dict["FaceDetail"] as? String {
+                self.faceDetail = value
+            }
+            if let value = dict["HitWhitelist"] as? String {
+                self.hitWhitelist = value
+            }
+            if let value = dict["SubCode"] as? String {
+                self.subCode = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: Id3MetaVerifyPROResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResultObject"] as? [String: Any?] {
+            var model = Id3MetaVerifyPROResponseBody.ResultObject()
+            model.fromMap(value)
+            self.resultObject = model
+        }
+    }
+}
+
+public class Id3MetaVerifyPROResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: Id3MetaVerifyPROResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = Id3MetaVerifyPROResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class Id3MetaVerifyWithOCRRequest : Tea.TeaModel {
     public var certFile: String?
 
@@ -23682,6 +24106,12 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
 
     public var checkFileName: String?
 
+    public var degradeAppScheme: String?
+
+    public var degradeSubCodes: String?
+
+    public var degradeType: String?
+
     public var deviceRiskPlus: String?
 
     public var miniProgramName: String?
@@ -23699,6 +24129,8 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
     public var status: Int32?
 
     public var storeImage: String?
+
+    public var useDegrade: String?
 
     public override init() {
         super.init()
@@ -23722,6 +24154,15 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
         }
         if self.checkFileName != nil {
             map["CheckFileName"] = self.checkFileName!
+        }
+        if self.degradeAppScheme != nil {
+            map["DegradeAppScheme"] = self.degradeAppScheme!
+        }
+        if self.degradeSubCodes != nil {
+            map["DegradeSubCodes"] = self.degradeSubCodes!
+        }
+        if self.degradeType != nil {
+            map["DegradeType"] = self.degradeType!
         }
         if self.deviceRiskPlus != nil {
             map["DeviceRiskPlus"] = self.deviceRiskPlus!
@@ -23750,6 +24191,9 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
         if self.storeImage != nil {
             map["StoreImage"] = self.storeImage!
         }
+        if self.useDegrade != nil {
+            map["UseDegrade"] = self.useDegrade!
+        }
         return map
     }
 
@@ -23763,6 +24207,15 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
         }
         if let value = dict["CheckFileName"] as? String {
             self.checkFileName = value
+        }
+        if let value = dict["DegradeAppScheme"] as? String {
+            self.degradeAppScheme = value
+        }
+        if let value = dict["DegradeSubCodes"] as? String {
+            self.degradeSubCodes = value
+        }
+        if let value = dict["DegradeType"] as? String {
+            self.degradeType = value
         }
         if let value = dict["DeviceRiskPlus"] as? String {
             self.deviceRiskPlus = value
@@ -23790,6 +24243,9 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
         }
         if let value = dict["StoreImage"] as? String {
             self.storeImage = value
+        }
+        if let value = dict["UseDegrade"] as? String {
+            self.useDegrade = value
         }
     }
 }
