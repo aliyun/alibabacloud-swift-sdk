@@ -56420,6 +56420,363 @@ public class ListApsWebhookResponse : Tea.TeaModel {
     }
 }
 
+public class ListKnowledgeFilesRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var fileIds: String?
+
+    public var page: String?
+
+    public var pageSize: String?
+
+    public var status: String?
+
+    public var user: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.fileIds != nil {
+            map["FileIds"] = self.fileIds!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.user != nil {
+            map["User"] = self.user!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["FileIds"] as? String {
+            self.fileIds = value
+        }
+        if let value = dict["Page"] as? String {
+            self.page = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["User"] as? String {
+            self.user = value
+        }
+    }
+}
+
+public class ListKnowledgeFilesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Files : Tea.TeaModel {
+            public var createdAt: String?
+
+            public var fileId: Int64?
+
+            public var fileSizeBytes: Int64?
+
+            public var fileUrl: String?
+
+            public var format: String?
+
+            public var isDirectory: Bool?
+
+            public var ownerFileId: Int64?
+
+            public var pageCount: Int32?
+
+            public var processMessage: String?
+
+            public var processStatus: String?
+
+            public var updatedAt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createdAt != nil {
+                    map["CreatedAt"] = self.createdAt!
+                }
+                if self.fileId != nil {
+                    map["FileId"] = self.fileId!
+                }
+                if self.fileSizeBytes != nil {
+                    map["FileSizeBytes"] = self.fileSizeBytes!
+                }
+                if self.fileUrl != nil {
+                    map["FileUrl"] = self.fileUrl!
+                }
+                if self.format != nil {
+                    map["Format"] = self.format!
+                }
+                if self.isDirectory != nil {
+                    map["IsDirectory"] = self.isDirectory!
+                }
+                if self.ownerFileId != nil {
+                    map["OwnerFileId"] = self.ownerFileId!
+                }
+                if self.pageCount != nil {
+                    map["PageCount"] = self.pageCount!
+                }
+                if self.processMessage != nil {
+                    map["ProcessMessage"] = self.processMessage!
+                }
+                if self.processStatus != nil {
+                    map["ProcessStatus"] = self.processStatus!
+                }
+                if self.updatedAt != nil {
+                    map["UpdatedAt"] = self.updatedAt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreatedAt"] as? String {
+                    self.createdAt = value
+                }
+                if let value = dict["FileId"] as? Int64 {
+                    self.fileId = value
+                }
+                if let value = dict["FileSizeBytes"] as? Int64 {
+                    self.fileSizeBytes = value
+                }
+                if let value = dict["FileUrl"] as? String {
+                    self.fileUrl = value
+                }
+                if let value = dict["Format"] as? String {
+                    self.format = value
+                }
+                if let value = dict["IsDirectory"] as? Bool {
+                    self.isDirectory = value
+                }
+                if let value = dict["OwnerFileId"] as? Int64 {
+                    self.ownerFileId = value
+                }
+                if let value = dict["PageCount"] as? Int32 {
+                    self.pageCount = value
+                }
+                if let value = dict["ProcessMessage"] as? String {
+                    self.processMessage = value
+                }
+                if let value = dict["ProcessStatus"] as? String {
+                    self.processStatus = value
+                }
+                if let value = dict["UpdatedAt"] as? String {
+                    self.updatedAt = value
+                }
+            }
+        }
+        public var files: [ListKnowledgeFilesResponseBody.Data.Files]?
+
+        public var message: String?
+
+        public var page: Int32?
+
+        public var pageSize: Int32?
+
+        public var success: Bool?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.files != nil {
+                var tmp : [Any] = []
+                for k in self.files! {
+                    tmp.append(k.toMap())
+                }
+                map["Files"] = tmp
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.page != nil {
+                map["Page"] = self.page!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Files"] as? [Any?] {
+                var tmp : [ListKnowledgeFilesResponseBody.Data.Files] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListKnowledgeFilesResponseBody.Data.Files()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.files = tmp
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["Page"] as? Int32 {
+                self.page = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+            if let value = dict["Total"] as? Int64 {
+                self.total = value
+            }
+        }
+    }
+    public var data: ListKnowledgeFilesResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListKnowledgeFilesResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListKnowledgeFilesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListKnowledgeFilesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListKnowledgeFilesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListKnowledgeTagsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
