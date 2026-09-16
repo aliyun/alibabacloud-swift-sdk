@@ -20668,11 +20668,15 @@ public class CreateVSwitchRequest : Tea.TeaModel {
     }
     public var cidrBlock: String?
 
+    public var cidrMask: Int32?
+
     public var clientToken: String?
 
     public var description_: String?
 
     public var ipv6CidrBlock: Int32?
+
+    public var ipv6CidrMask: Int32?
 
     public var ownerAccount: String?
 
@@ -20711,6 +20715,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         if self.cidrBlock != nil {
             map["CidrBlock"] = self.cidrBlock!
         }
+        if self.cidrMask != nil {
+            map["CidrMask"] = self.cidrMask!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -20719,6 +20726,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         }
         if self.ipv6CidrBlock != nil {
             map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+        }
+        if self.ipv6CidrMask != nil {
+            map["Ipv6CidrMask"] = self.ipv6CidrMask!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -20762,6 +20772,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         if let value = dict["CidrBlock"] as? String {
             self.cidrBlock = value
         }
+        if let value = dict["CidrMask"] as? Int32 {
+            self.cidrMask = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -20770,6 +20783,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         }
         if let value = dict["Ipv6CidrBlock"] as? Int32 {
             self.ipv6CidrBlock = value
+        }
+        if let value = dict["Ipv6CidrMask"] as? Int32 {
+            self.ipv6CidrMask = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -56092,6 +56108,8 @@ public class DescribeRouteEntryListResponseBody : Tea.TeaModel {
 
     public var routeEntrys: DescribeRouteEntryListResponseBody.RouteEntrys?
 
+    public var totalCount: Int32?
+
     public override init() {
         super.init()
     }
@@ -56116,6 +56134,9 @@ public class DescribeRouteEntryListResponseBody : Tea.TeaModel {
         if self.routeEntrys != nil {
             map["RouteEntrys"] = self.routeEntrys?.toMap()
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -56131,6 +56152,9 @@ public class DescribeRouteEntryListResponseBody : Tea.TeaModel {
             var model = DescribeRouteEntryListResponseBody.RouteEntrys()
             model.fromMap(value)
             self.routeEntrys = model
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
@@ -80218,6 +80242,8 @@ public class GetVpcPrefixListAssociationsResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var suppressedList: String?
+
         public override init() {
             super.init()
         }
@@ -80259,6 +80285,9 @@ public class GetVpcPrefixListAssociationsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.suppressedList != nil {
+                map["SuppressedList"] = self.suppressedList!
+            }
             return map
         }
 
@@ -80290,6 +80319,9 @@ public class GetVpcPrefixListAssociationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SuppressedList"] as? String {
+                self.suppressedList = value
             }
         }
     }
@@ -101174,6 +101206,8 @@ public class ModifyVSwitchAttributeRequest : Tea.TeaModel {
 
     public var ipv6CidrBlock: Int32?
 
+    public var ipv6CidrMask: Int32?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -101213,6 +101247,9 @@ public class ModifyVSwitchAttributeRequest : Tea.TeaModel {
         if self.ipv6CidrBlock != nil {
             map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
         }
+        if self.ipv6CidrMask != nil {
+            map["Ipv6CidrMask"] = self.ipv6CidrMask!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -101250,6 +101287,9 @@ public class ModifyVSwitchAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["Ipv6CidrBlock"] as? Int32 {
             self.ipv6CidrBlock = value
+        }
+        if let value = dict["Ipv6CidrMask"] as? Int32 {
+            self.ipv6CidrMask = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
