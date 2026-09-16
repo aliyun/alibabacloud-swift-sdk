@@ -404,7 +404,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteDigitalEmployeeUmodelCommonSchemaRef",
             "version": "2026-04-28",
             "protocol": "HTTPS",
-            "pathname": "/digital-employee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel/common-schema-refs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(group)),
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel/commonSchemaRefs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(group)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -642,7 +642,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetDigitalEmployeeEntityData",
             "version": "2026-04-28",
             "protocol": "HTTPS",
-            "pathname": "/digital-employee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/entities/query",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/entities/query",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -703,7 +703,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetDigitalEmployeeUmodel",
             "version": "2026-04-28",
             "protocol": "HTTPS",
-            "pathname": "/digital-employee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -928,6 +928,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["channel"] = request.channel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             query["displayName"] = request.displayName ?? "";
         }
@@ -1178,7 +1181,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateDigitalEmployeeUmodel",
             "version": "2026-04-28",
             "protocol": "HTTPS",
-            "pathname": "/digital-employee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -1298,7 +1301,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpsertDigitalEmployeeUmodelCommonSchemaRef",
             "version": "2026-04-28",
             "protocol": "HTTPS",
-            "pathname": "/digital-employee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel/common-schema-refs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(group)),
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/umodel/commonSchemaRefs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(group)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
