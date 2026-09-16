@@ -12392,6 +12392,7 @@ public class GetFeatureConfigResponse : Tea.TeaModel {
 }
 
 public class GetGuardLogStatsRequest : Tea.TeaModel {
+    public var commodityCode: String?
 
     public override init() {
         super.init()
@@ -12407,11 +12408,17 @@ public class GetGuardLogStatsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CommodityCode"] as? String {
+            self.commodityCode = value
+        }
     }
 }
 
@@ -31575,6 +31582,10 @@ public class UpdateScanResultFeedbackResponse : Tea.TeaModel {
 }
 
 public class UpdateServiceConfigRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var fileConfig: String?
 
     public var keywordFilterLibs: String?
@@ -31611,6 +31622,12 @@ public class UpdateServiceConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.fileConfig != nil {
             map["FileConfig"] = self.fileConfig!
         }
@@ -31649,6 +31666,12 @@ public class UpdateServiceConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["FileConfig"] as? String {
             self.fileConfig = value
         }

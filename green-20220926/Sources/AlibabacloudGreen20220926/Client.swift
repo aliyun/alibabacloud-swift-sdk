@@ -2376,7 +2376,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getGuardLogStatsWithOptions(_ request: GetGuardLogStatsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGuardLogStatsResponse {
         try TeaUtils.Client.validateModel(request)
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
+            query["CommodityCode"] = request.commodityCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetGuardLogStats",
             "version": "2022-09-26",
@@ -5343,6 +5349,12 @@ open class Client : AlibabacloudOpenApi.Client {
             query["RegionId"] = request.regionId ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileConfig)) {
             body["FileConfig"] = request.fileConfig ?? "";
         }
