@@ -2455,6 +2455,8 @@ public class Partition : Tea.TeaModel {
 
     public var lastFileCreationTime: Int64?
 
+    public var options: [String: String]?
+
     public var recordCount: Int64?
 
     public var spec: [String: Any]?
@@ -2503,6 +2505,9 @@ public class Partition : Tea.TeaModel {
         if self.lastFileCreationTime != nil {
             map["lastFileCreationTime"] = self.lastFileCreationTime!
         }
+        if self.options != nil {
+            map["options"] = self.options!
+        }
         if self.recordCount != nil {
             map["recordCount"] = self.recordCount!
         }
@@ -2549,6 +2554,9 @@ public class Partition : Tea.TeaModel {
         }
         if let value = dict["lastFileCreationTime"] as? Int64 {
             self.lastFileCreationTime = value
+        }
+        if let value = dict["options"] as? [String: String] {
+            self.options = value
         }
         if let value = dict["recordCount"] as? Int64 {
             self.recordCount = value
