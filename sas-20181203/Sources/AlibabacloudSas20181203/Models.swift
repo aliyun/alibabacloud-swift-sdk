@@ -184,6 +184,8 @@ public class AddAssetSelectionCriteriaRequest : Tea.TeaModel {
 
     public var criteriaOperation: String?
 
+    public var dryRun: Bool?
+
     public var selectionKey: String?
 
     public var targetOperationList: [AddAssetSelectionCriteriaRequest.TargetOperationList]?
@@ -211,6 +213,9 @@ public class AddAssetSelectionCriteriaRequest : Tea.TeaModel {
         if self.criteriaOperation != nil {
             map["CriteriaOperation"] = self.criteriaOperation!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.selectionKey != nil {
             map["SelectionKey"] = self.selectionKey!
         }
@@ -234,6 +239,9 @@ public class AddAssetSelectionCriteriaRequest : Tea.TeaModel {
         }
         if let value = dict["CriteriaOperation"] as? String {
             self.criteriaOperation = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["SelectionKey"] as? String {
             self.selectionKey = value
@@ -613,6 +621,8 @@ public class AddCheckInstanceResultWhiteListRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var instanceIds: [String]?
 
     public var instanceList: [AddCheckInstanceResultWhiteListRequest.InstanceList]?
@@ -644,6 +654,9 @@ public class AddCheckInstanceResultWhiteListRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -673,6 +686,9 @@ public class AddCheckInstanceResultWhiteListRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
@@ -801,6 +817,8 @@ public class AddCheckResultWhiteListRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var instanceIds: [String]?
 
     public var remark: String?
@@ -827,6 +845,9 @@ public class AddCheckResultWhiteListRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -846,6 +867,9 @@ public class AddCheckResultWhiteListRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
@@ -6355,6 +6379,8 @@ public class BindAuthToMachineRequest : Tea.TeaModel {
 
     public var criteria: String?
 
+    public var dryRun: Bool?
+
     public var isPreBind: Int32?
 
     public var logicalExp: String?
@@ -6401,6 +6427,9 @@ public class BindAuthToMachineRequest : Tea.TeaModel {
         if self.criteria != nil {
             map["Criteria"] = self.criteria!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.isPreBind != nil {
             map["IsPreBind"] = self.isPreBind!
         }
@@ -6444,6 +6473,9 @@ public class BindAuthToMachineRequest : Tea.TeaModel {
         }
         if let value = dict["Criteria"] as? String {
             self.criteria = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["IsPreBind"] as? Int32 {
             self.isPreBind = value
@@ -7199,6 +7231,8 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
 
     public var cycleDays: [Int32]?
 
+    public var dryRun: Bool?
+
     public var enableAddCheck: Bool?
 
     public var enableAutoCheck: Bool?
@@ -7256,6 +7290,9 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         }
         if self.cycleDays != nil {
             map["CycleDays"] = self.cycleDays!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.enableAddCheck != nil {
             map["EnableAddCheck"] = self.enableAddCheck!
@@ -7327,6 +7364,9 @@ public class ChangeCheckConfigRequest : Tea.TeaModel {
         }
         if let value = dict["CycleDays"] as? [Int32] {
             self.cycleDays = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EnableAddCheck"] as? Bool {
             self.enableAddCheck = value
@@ -7460,6 +7500,8 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
 
     public var cycleDays: [Int32]?
 
+    public var dryRun: Bool?
+
     public var enableAddCheck: Bool?
 
     public var enableAutoCheck: Bool?
@@ -7515,6 +7557,9 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         }
         if self.cycleDays != nil {
             map["CycleDays"] = self.cycleDays!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.enableAddCheck != nil {
             map["EnableAddCheck"] = self.enableAddCheck!
@@ -7582,6 +7627,9 @@ public class ChangeCheckConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CycleDays"] as? [Int32] {
             self.cycleDays = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EnableAddCheck"] as? Bool {
             self.enableAddCheck = value
@@ -10234,6 +10282,8 @@ public class CreateAssetSelectionConfigRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var platform: String?
 
     public var targetType: String?
@@ -10258,6 +10308,9 @@ public class CreateAssetSelectionConfigRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.platform != nil {
             map["Platform"] = self.platform!
         }
@@ -10274,6 +10327,9 @@ public class CreateAssetSelectionConfigRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Platform"] as? String {
             self.platform = value
@@ -13270,6 +13326,8 @@ public class CreateCustomizedDictResponse : Tea.TeaModel {
 public class CreateCycleTaskRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var enable: Int32?
 
     public var firstDateStr: Int64?
@@ -13306,6 +13364,9 @@ public class CreateCycleTaskRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.enable != nil {
             map["Enable"] = self.enable!
@@ -13344,6 +13405,9 @@ public class CreateCycleTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Enable"] as? Int32 {
             self.enable = value
@@ -19750,6 +19814,8 @@ public class CreateOssScanConfigRequest : Tea.TeaModel {
 
     public var decryptionList: [String]?
 
+    public var dryRun: Bool?
+
     public var enable: Int32?
 
     public var endTime: String?
@@ -19804,6 +19870,9 @@ public class CreateOssScanConfigRequest : Tea.TeaModel {
         }
         if self.decryptionList != nil {
             map["DecryptionList"] = self.decryptionList!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.enable != nil {
             map["Enable"] = self.enable!
@@ -19860,6 +19929,9 @@ public class CreateOssScanConfigRequest : Tea.TeaModel {
         }
         if let value = dict["DecryptionList"] as? [String] {
             self.decryptionList = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Enable"] as? Int32 {
             self.enable = value
@@ -20296,6 +20368,8 @@ public class CreateSasTrialRequest : Tea.TeaModel {
     }
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var fromEcs: Bool?
 
     public var lang: String?
@@ -20324,6 +20398,9 @@ public class CreateSasTrialRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.fromEcs != nil {
             map["FromEcs"] = self.fromEcs!
         }
@@ -20347,6 +20424,9 @@ public class CreateSasTrialRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["FromEcs"] as? Bool {
             self.fromEcs = value
         }
@@ -20369,6 +20449,8 @@ public class CreateSasTrialRequest : Tea.TeaModel {
 
 public class CreateSasTrialShrinkRequest : Tea.TeaModel {
     public var clientToken: String?
+
+    public var dryRun: Bool?
 
     public var fromEcs: Bool?
 
@@ -20397,6 +20479,9 @@ public class CreateSasTrialShrinkRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.fromEcs != nil {
             map["FromEcs"] = self.fromEcs!
         }
@@ -20419,6 +20504,9 @@ public class CreateSasTrialShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["FromEcs"] as? Bool {
             self.fromEcs = value
@@ -20522,6 +20610,8 @@ public class CreateSasTrialResponse : Tea.TeaModel {
 public class CreateServiceLinkedRoleRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var serviceLinkedRole: String?
 
     public override init() {
@@ -20541,6 +20631,9 @@ public class CreateServiceLinkedRoleRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.serviceLinkedRole != nil {
             map["ServiceLinkedRole"] = self.serviceLinkedRole!
         }
@@ -20551,6 +20644,9 @@ public class CreateServiceLinkedRoleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["ServiceLinkedRole"] as? String {
             self.serviceLinkedRole = value
@@ -20754,6 +20850,8 @@ public class CreateServiceTrailResponse : Tea.TeaModel {
 public class CreateSimilarSecurityEventsQueryTaskRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var resourceDirectoryAccountId: Int64?
 
     public var resourceOwnerId: Int64?
@@ -20781,6 +20879,9 @@ public class CreateSimilarSecurityEventsQueryTaskRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.resourceDirectoryAccountId != nil {
             map["ResourceDirectoryAccountId"] = self.resourceDirectoryAccountId!
         }
@@ -20803,6 +20904,9 @@ public class CreateSimilarSecurityEventsQueryTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["ResourceDirectoryAccountId"] as? Int64 {
             self.resourceDirectoryAccountId = value
@@ -22026,6 +22130,8 @@ public class CreateUserSettingResponse : Tea.TeaModel {
 public class CreateVirusScanOnceTaskRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var param: String?
 
     public var scanPath: [String]?
@@ -22051,6 +22157,9 @@ public class CreateVirusScanOnceTaskRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.param != nil {
             map["Param"] = self.param!
         }
@@ -22070,6 +22179,9 @@ public class CreateVirusScanOnceTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Param"] as? String {
             self.param = value
@@ -197598,6 +197710,8 @@ public class ListUnknownThreatDetectProcessRequest : Tea.TeaModel {
 
     public var sha256: String?
 
+    public var tag: String?
+
     public var uuid: String?
 
     public override init() {
@@ -197644,6 +197758,9 @@ public class ListUnknownThreatDetectProcessRequest : Tea.TeaModel {
         if self.sha256 != nil {
             map["Sha256"] = self.sha256!
         }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
         if self.uuid != nil {
             map["Uuid"] = self.uuid!
         }
@@ -197682,6 +197799,9 @@ public class ListUnknownThreatDetectProcessRequest : Tea.TeaModel {
         if let value = dict["Sha256"] as? String {
             self.sha256 = value
         }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
+        }
         if let value = dict["Uuid"] as? String {
             self.uuid = value
         }
@@ -197690,6 +197810,44 @@ public class ListUnknownThreatDetectProcessRequest : Tea.TeaModel {
 
 public class ListUnknownThreatDetectProcessResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagEn: String?
+
+            public var tagZh: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagEn != nil {
+                    map["TagEn"] = self.tagEn!
+                }
+                if self.tagZh != nil {
+                    map["TagZh"] = self.tagZh!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TagEn"] as? String {
+                    self.tagEn = value
+                }
+                if let value = dict["TagZh"] as? String {
+                    self.tagZh = value
+                }
+            }
+        }
         public var analyzeResult: String?
 
         public var explanationEn: String?
@@ -197707,6 +197865,8 @@ public class ListUnknownThreatDetectProcessResponseBody : Tea.TeaModel {
         public var remark: String?
 
         public var sha256: String?
+
+        public var tags: [ListUnknownThreatDetectProcessResponseBody.Data.Tags]?
 
         public override init() {
             super.init()
@@ -197749,6 +197909,13 @@ public class ListUnknownThreatDetectProcessResponseBody : Tea.TeaModel {
             if self.sha256 != nil {
                 map["Sha256"] = self.sha256!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -197780,6 +197947,19 @@ public class ListUnknownThreatDetectProcessResponseBody : Tea.TeaModel {
             }
             if let value = dict["Sha256"] as? String {
                 self.sha256 = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [ListUnknownThreatDetectProcessResponseBody.Data.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListUnknownThreatDetectProcessResponseBody.Data.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
         }
     }
@@ -205164,6 +205344,8 @@ public class ModifyContainerScanConfigResponse : Tea.TeaModel {
 public class ModifyCreateVulWhitelistRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var reason: String?
 
     public var resourceDirectoryAccountId: Int64?
@@ -205189,6 +205371,9 @@ public class ModifyCreateVulWhitelistRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.reason != nil {
             map["Reason"] = self.reason!
         }
@@ -205208,6 +205393,9 @@ public class ModifyCreateVulWhitelistRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Reason"] as? String {
             self.reason = value
@@ -205797,6 +205985,8 @@ public class ModifyDingTalkStatusResponse : Tea.TeaModel {
 public class ModifyEmgVulSubmitRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var lang: String?
 
     public var name: String?
@@ -205822,6 +206012,9 @@ public class ModifyEmgVulSubmitRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -205841,6 +206034,9 @@ public class ModifyEmgVulSubmitRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
@@ -207934,6 +208130,8 @@ public class ModifyNoticeConfigRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var focusLevel: String?
 
     public var project: String?
@@ -207964,6 +208162,9 @@ public class ModifyNoticeConfigRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.focusLevel != nil {
             map["FocusLevel"] = self.focusLevel!
         }
@@ -207989,6 +208190,9 @@ public class ModifyNoticeConfigRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["FocusLevel"] as? String {
             self.focusLevel = value
@@ -208212,6 +208416,8 @@ public class ModifyOpenLogShipperResponse : Tea.TeaModel {
 public class ModifyOperateVulRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var from: String?
 
     public var info: String?
@@ -208241,6 +208447,9 @@ public class ModifyOperateVulRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.from != nil {
             map["From"] = self.from!
         }
@@ -208266,6 +208475,9 @@ public class ModifyOperateVulRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["From"] as? String {
             self.from = value
@@ -208536,6 +208748,8 @@ public class ModifyPostPayModuleSwitchRequest : Tea.TeaModel {
     }
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var edrModuleSwitch: ModifyPostPayModuleSwitchRequest.EdrModuleSwitch?
 
     public var postPaidHostAutoBind: Int32?
@@ -208567,6 +208781,9 @@ public class ModifyPostPayModuleSwitchRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.edrModuleSwitch != nil {
             map["EdrModuleSwitch"] = self.edrModuleSwitch?.toMap()
         }
@@ -208592,6 +208809,9 @@ public class ModifyPostPayModuleSwitchRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EdrModuleSwitch"] as? [String: Any?] {
             var model = ModifyPostPayModuleSwitchRequest.EdrModuleSwitch()
@@ -208620,6 +208840,8 @@ public class ModifyPostPayModuleSwitchRequest : Tea.TeaModel {
 
 public class ModifyPostPayModuleSwitchShrinkRequest : Tea.TeaModel {
     public var clientToken: String?
+
+    public var dryRun: Bool?
 
     public var edrModuleSwitchShrink: String?
 
@@ -208650,6 +208872,9 @@ public class ModifyPostPayModuleSwitchShrinkRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.edrModuleSwitchShrink != nil {
             map["EdrModuleSwitch"] = self.edrModuleSwitchShrink!
         }
@@ -208675,6 +208900,9 @@ public class ModifyPostPayModuleSwitchShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EdrModuleSwitch"] as? String {
             self.edrModuleSwitchShrink = value
@@ -210230,6 +210458,8 @@ public class ModifyServerlessAuthToMachineRequest : Tea.TeaModel {
 
     public var criteria: String?
 
+    public var dryRun: Bool?
+
     public var logicalExp: String?
 
     public var ntmVersion: String?
@@ -210285,6 +210515,9 @@ public class ModifyServerlessAuthToMachineRequest : Tea.TeaModel {
         if self.criteria != nil {
             map["Criteria"] = self.criteria!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.logicalExp != nil {
             map["LogicalExp"] = self.logicalExp!
         }
@@ -210337,6 +210570,9 @@ public class ModifyServerlessAuthToMachineRequest : Tea.TeaModel {
         }
         if let value = dict["Criteria"] as? String {
             self.criteria = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["LogicalExp"] as? String {
             self.logicalExp = value
@@ -210607,6 +210843,8 @@ public class ModifySoarStrategySubscribeResponse : Tea.TeaModel {
 public class ModifyStartVulScanRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var resourceDirectoryAccountId: Int64?
 
     public var types: String?
@@ -210630,6 +210868,9 @@ public class ModifyStartVulScanRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.resourceDirectoryAccountId != nil {
             map["ResourceDirectoryAccountId"] = self.resourceDirectoryAccountId!
         }
@@ -210646,6 +210887,9 @@ public class ModifyStartVulScanRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["ResourceDirectoryAccountId"] as? Int64 {
             self.resourceDirectoryAccountId = value
@@ -211665,6 +211909,8 @@ public class ModifyVulConfigRequest : Tea.TeaModel {
 
     public var config: String?
 
+    public var dryRun: Bool?
+
     public var type: String?
 
     public override init() {
@@ -211687,6 +211933,9 @@ public class ModifyVulConfigRequest : Tea.TeaModel {
         if self.config != nil {
             map["Config"] = self.config!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -211700,6 +211949,9 @@ public class ModifyVulConfigRequest : Tea.TeaModel {
         }
         if let value = dict["Config"] as? String {
             self.config = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
@@ -214522,6 +214774,8 @@ public class OperateCommonOverallConfigRequest : Tea.TeaModel {
 
     public var config: String?
 
+    public var dryRun: Bool?
+
     public var noTargetAsOn: Bool?
 
     public var sourceIp: String?
@@ -214548,6 +214802,9 @@ public class OperateCommonOverallConfigRequest : Tea.TeaModel {
         if self.config != nil {
             map["Config"] = self.config!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.noTargetAsOn != nil {
             map["NoTargetAsOn"] = self.noTargetAsOn!
         }
@@ -214567,6 +214824,9 @@ public class OperateCommonOverallConfigRequest : Tea.TeaModel {
         }
         if let value = dict["Config"] as? String {
             self.config = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["NoTargetAsOn"] as? Bool {
             self.noTargetAsOn = value
@@ -233312,6 +233572,8 @@ public class UpdatePostPaidBindRelRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var productCode: String?
 
     public var updateIfNecessary: Bool?
@@ -233346,6 +233608,9 @@ public class UpdatePostPaidBindRelRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
@@ -233378,6 +233643,9 @@ public class UpdatePostPaidBindRelRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
@@ -233994,6 +234262,8 @@ public class UpdateSelectionKeyByTypeRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var selectionKey: String?
 
     public override init() {
@@ -234016,6 +234286,9 @@ public class UpdateSelectionKeyByTypeRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.selectionKey != nil {
             map["SelectionKey"] = self.selectionKey!
         }
@@ -234029,6 +234302,9 @@ public class UpdateSelectionKeyByTypeRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["SelectionKey"] as? String {
             self.selectionKey = value
@@ -236610,6 +236886,8 @@ public class VerifyCheckInstanceResultRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var instanceIds: [String]?
 
     public var taskSource: String?
@@ -236637,6 +236915,9 @@ public class VerifyCheckInstanceResultRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -236656,6 +236937,9 @@ public class VerifyCheckInstanceResultRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
