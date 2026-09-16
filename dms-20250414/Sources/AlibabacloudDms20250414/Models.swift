@@ -11214,6 +11214,96 @@ public class CreateDataAgentKnowledgeBaseResponse : Tea.TeaModel {
 
 public class CreateDataAgentSessionRequest : Tea.TeaModel {
     public class SessionConfig : Tea.TeaModel {
+        public class McpHeaders : Tea.TeaModel {
+            public class McpHeader : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var mcpHeader: [CreateDataAgentSessionRequest.SessionConfig.McpHeaders.McpHeader]?
+
+            public var mcpServerId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mcpHeader != nil {
+                    var tmp : [Any] = []
+                    for k in self.mcpHeader! {
+                        tmp.append(k.toMap())
+                    }
+                    map["McpHeader"] = tmp
+                }
+                if self.mcpServerId != nil {
+                    map["McpServerId"] = self.mcpServerId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["McpHeader"] as? [Any?] {
+                    var tmp : [CreateDataAgentSessionRequest.SessionConfig.McpHeaders.McpHeader] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateDataAgentSessionRequest.SessionConfig.McpHeaders.McpHeader()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.mcpHeader = tmp
+                }
+                if let value = dict["McpServerId"] as? String {
+                    self.mcpServerId = value
+                }
+            }
+        }
         public var customAgentId: String?
 
         public var customAgentStage: String?
@@ -11227,6 +11317,8 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
         public var kbUuidList: [String]?
 
         public var language: String?
+
+        public var mcpHeaders: [CreateDataAgentSessionRequest.SessionConfig.McpHeaders]?
 
         public var mcpServerIds: [String]?
 
@@ -11273,6 +11365,13 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             if self.language != nil {
                 map["Language"] = self.language!
             }
+            if self.mcpHeaders != nil {
+                var tmp : [Any] = []
+                for k in self.mcpHeaders! {
+                    tmp.append(k.toMap())
+                }
+                map["McpHeaders"] = tmp
+            }
             if self.mcpServerIds != nil {
                 map["McpServerIds"] = self.mcpServerIds!
             }
@@ -11313,6 +11412,19 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             }
             if let value = dict["Language"] as? String {
                 self.language = value
+            }
+            if let value = dict["McpHeaders"] as? [Any?] {
+                var tmp : [CreateDataAgentSessionRequest.SessionConfig.McpHeaders] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateDataAgentSessionRequest.SessionConfig.McpHeaders()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mcpHeaders = tmp
             }
             if let value = dict["McpServerIds"] as? [String] {
                 self.mcpServerIds = value
