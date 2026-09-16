@@ -2791,6 +2791,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var multiZoneMode: String?
 
+    public var nodeType: String?
+
     public var paymentDuration: Int32?
 
     public var paymentDurationUnit: String?
@@ -2880,6 +2882,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.multiZoneMode != nil {
             map["multiZoneMode"] = self.multiZoneMode!
+        }
+        if self.nodeType != nil {
+            map["nodeType"] = self.nodeType!
         }
         if self.paymentDuration != nil {
             map["paymentDuration"] = self.paymentDuration!
@@ -2986,6 +2991,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["multiZoneMode"] as? String {
             self.multiZoneMode = value
+        }
+        if let value = dict["nodeType"] as? String {
+            self.nodeType = value
         }
         if let value = dict["paymentDuration"] as? Int32 {
             self.paymentDuration = value
@@ -4028,6 +4036,10 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             public var attuPort: Int32?
 
+            public var caCertUrl: String?
+
+            public var certificateTrust: String?
+
             public var internetUrl: String?
 
             public var intranetUrl: String?
@@ -4039,6 +4051,12 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             public var ossStorageTimestamp: Int64?
 
             public var proxyPort: Int32?
+
+            public var secureInternetUrl: String?
+
+            public var secureIntranetUrl: String?
+
+            public var secureProxyPort: Int32?
 
             public var totalCuNum: Int32?
 
@@ -4060,6 +4078,12 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.attuPort != nil {
                     map["AttuPort"] = self.attuPort!
+                }
+                if self.caCertUrl != nil {
+                    map["CaCertUrl"] = self.caCertUrl!
+                }
+                if self.certificateTrust != nil {
+                    map["CertificateTrust"] = self.certificateTrust!
                 }
                 if self.internetUrl != nil {
                     map["InternetUrl"] = self.internetUrl!
@@ -4083,6 +4107,15 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 if self.proxyPort != nil {
                     map["ProxyPort"] = self.proxyPort!
                 }
+                if self.secureInternetUrl != nil {
+                    map["SecureInternetUrl"] = self.secureInternetUrl!
+                }
+                if self.secureIntranetUrl != nil {
+                    map["SecureIntranetUrl"] = self.secureIntranetUrl!
+                }
+                if self.secureProxyPort != nil {
+                    map["SecureProxyPort"] = self.secureProxyPort!
+                }
                 if self.totalCuNum != nil {
                     map["TotalCuNum"] = self.totalCuNum!
                 }
@@ -4096,6 +4129,12 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AttuPort"] as? Int32 {
                     self.attuPort = value
+                }
+                if let value = dict["CaCertUrl"] as? String {
+                    self.caCertUrl = value
+                }
+                if let value = dict["CertificateTrust"] as? String {
+                    self.certificateTrust = value
                 }
                 if let value = dict["InternetUrl"] as? String {
                     self.internetUrl = value
@@ -4124,6 +4163,15 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ProxyPort"] as? Int32 {
                     self.proxyPort = value
+                }
+                if let value = dict["SecureInternetUrl"] as? String {
+                    self.secureInternetUrl = value
+                }
+                if let value = dict["SecureIntranetUrl"] as? String {
+                    self.secureIntranetUrl = value
+                }
+                if let value = dict["SecureProxyPort"] as? Int32 {
+                    self.secureProxyPort = value
                 }
                 if let value = dict["TotalCuNum"] as? Int32 {
                     self.totalCuNum = value
