@@ -1236,7 +1236,11 @@ public class CreateArtifactBuildRuleResponse : Tea.TeaModel {
 public class CreateArtifactLifecycleRuleRequest : Tea.TeaModel {
     public var auto: Bool?
 
+    public var dryRun: Bool?
+
     public var enableDeleteTag: Bool?
+
+    public var enableDeleteUntaggedManifest: Bool?
 
     public var instanceId: String?
 
@@ -1269,8 +1273,14 @@ public class CreateArtifactLifecycleRuleRequest : Tea.TeaModel {
         if self.auto != nil {
             map["Auto"] = self.auto!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.enableDeleteTag != nil {
             map["EnableDeleteTag"] = self.enableDeleteTag!
+        }
+        if self.enableDeleteUntaggedManifest != nil {
+            map["EnableDeleteUntaggedManifest"] = self.enableDeleteUntaggedManifest!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -1301,8 +1311,14 @@ public class CreateArtifactLifecycleRuleRequest : Tea.TeaModel {
         if let value = dict["Auto"] as? Bool {
             self.auto = value
         }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["EnableDeleteTag"] as? Bool {
             self.enableDeleteTag = value
+        }
+        if let value = dict["EnableDeleteUntaggedManifest"] as? Bool {
+            self.enableDeleteUntaggedManifest = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -8276,6 +8292,8 @@ public class GetArtifactBuildRuleResponseBody : Tea.TeaModel {
     public class Parameters : Tea.TeaModel {
         public var imageIndexOnly: Bool?
 
+        public var priority: Int32?
+
         public var priorityFile: String?
 
         public override init() {
@@ -8295,6 +8313,9 @@ public class GetArtifactBuildRuleResponseBody : Tea.TeaModel {
             if self.imageIndexOnly != nil {
                 map["ImageIndexOnly"] = self.imageIndexOnly!
             }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
             if self.priorityFile != nil {
                 map["PriorityFile"] = self.priorityFile!
             }
@@ -8305,6 +8326,9 @@ public class GetArtifactBuildRuleResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ImageIndexOnly"] as? Bool {
                 self.imageIndexOnly = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
             }
             if let value = dict["PriorityFile"] as? String {
                 self.priorityFile = value
@@ -8490,10 +8514,60 @@ public class GetArtifactBuildTaskRequest : Tea.TeaModel {
 }
 
 public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
+    public class ArtifactCompression : Tea.TeaModel {
+        public var platform: String?
+
+        public var squashKeepLayers: Int32?
+
+        public var startLayerDigest: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.platform != nil {
+                map["Platform"] = self.platform!
+            }
+            if self.squashKeepLayers != nil {
+                map["SquashKeepLayers"] = self.squashKeepLayers!
+            }
+            if self.startLayerDigest != nil {
+                map["StartLayerDigest"] = self.startLayerDigest!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Platform"] as? String {
+                self.platform = value
+            }
+            if let value = dict["SquashKeepLayers"] as? Int32 {
+                self.squashKeepLayers = value
+            }
+            if let value = dict["StartLayerDigest"] as? String {
+                self.startLayerDigest = value
+            }
+        }
+    }
     public class SourceArtifact : Tea.TeaModel {
         public var artifactType: String?
 
+        public var layerCount: Int32?
+
         public var repoId: String?
+
+        public var size: Int64?
 
         public var version: String?
 
@@ -8514,8 +8588,14 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
             if self.artifactType != nil {
                 map["ArtifactType"] = self.artifactType!
             }
+            if self.layerCount != nil {
+                map["LayerCount"] = self.layerCount!
+            }
             if self.repoId != nil {
                 map["RepoId"] = self.repoId!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
             }
             if self.version != nil {
                 map["Version"] = self.version!
@@ -8528,8 +8608,14 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
             if let value = dict["ArtifactType"] as? String {
                 self.artifactType = value
             }
+            if let value = dict["LayerCount"] as? Int32 {
+                self.layerCount = value
+            }
             if let value = dict["RepoId"] as? String {
                 self.repoId = value
+            }
+            if let value = dict["Size"] as? Int64 {
+                self.size = value
             }
             if let value = dict["Version"] as? String {
                 self.version = value
@@ -8539,7 +8625,11 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
     public class TargetArtifact : Tea.TeaModel {
         public var artifactType: String?
 
+        public var layerCount: Int32?
+
         public var repoId: String?
+
+        public var size: Int64?
 
         public var version: String?
 
@@ -8560,8 +8650,14 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
             if self.artifactType != nil {
                 map["ArtifactType"] = self.artifactType!
             }
+            if self.layerCount != nil {
+                map["LayerCount"] = self.layerCount!
+            }
             if self.repoId != nil {
                 map["RepoId"] = self.repoId!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
             }
             if self.version != nil {
                 map["Version"] = self.version!
@@ -8574,8 +8670,14 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
             if let value = dict["ArtifactType"] as? String {
                 self.artifactType = value
             }
+            if let value = dict["LayerCount"] as? Int32 {
+                self.layerCount = value
+            }
             if let value = dict["RepoId"] as? String {
                 self.repoId = value
+            }
+            if let value = dict["Size"] as? Int64 {
+                self.size = value
             }
             if let value = dict["Version"] as? String {
                 self.version = value
@@ -8583,6 +8685,8 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
         }
     }
     public var artifactBuildType: String?
+
+    public var artifactCompression: GetArtifactBuildTaskResponseBody.ArtifactCompression?
 
     public var buildTaskId: String?
 
@@ -8593,6 +8697,8 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
     public var instructions: [String]?
 
     public var isSuccess: Bool?
+
+    public var priority: Int32?
 
     public var requestId: String?
 
@@ -8614,6 +8720,7 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.artifactCompression?.validate()
         try self.sourceArtifact?.validate()
         try self.targetArtifact?.validate()
     }
@@ -8622,6 +8729,9 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.artifactBuildType != nil {
             map["ArtifactBuildType"] = self.artifactBuildType!
+        }
+        if self.artifactCompression != nil {
+            map["ArtifactCompression"] = self.artifactCompression?.toMap()
         }
         if self.buildTaskId != nil {
             map["BuildTaskId"] = self.buildTaskId!
@@ -8637,6 +8747,9 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
         }
         if self.isSuccess != nil {
             map["IsSuccess"] = self.isSuccess!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -8661,6 +8774,11 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
         if let value = dict["ArtifactBuildType"] as? String {
             self.artifactBuildType = value
         }
+        if let value = dict["ArtifactCompression"] as? [String: Any?] {
+            var model = GetArtifactBuildTaskResponseBody.ArtifactCompression()
+            model.fromMap(value)
+            self.artifactCompression = model
+        }
         if let value = dict["BuildTaskId"] as? String {
             self.buildTaskId = value
         }
@@ -8675,6 +8793,9 @@ public class GetArtifactBuildTaskResponseBody : Tea.TeaModel {
         }
         if let value = dict["IsSuccess"] as? Bool {
             self.isSuccess = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -8922,7 +9043,11 @@ public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
 
     public var createTime: Int64?
 
+    public var dryRun: Bool?
+
     public var enableDeleteTag: Bool?
+
+    public var enableDeleteUntaggedManifest: Bool?
 
     public var instanceId: String?
 
@@ -8973,8 +9098,14 @@ public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.enableDeleteTag != nil {
             map["EnableDeleteTag"] = self.enableDeleteTag!
+        }
+        if self.enableDeleteUntaggedManifest != nil {
+            map["EnableDeleteUntaggedManifest"] = self.enableDeleteUntaggedManifest!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -9033,8 +9164,14 @@ public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
         if let value = dict["CreateTime"] as? Int64 {
             self.createTime = value
         }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["EnableDeleteTag"] as? Bool {
             self.enableDeleteTag = value
+        }
+        if let value = dict["EnableDeleteUntaggedManifest"] as? Bool {
+            self.enableDeleteUntaggedManifest = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -12040,6 +12177,8 @@ public class GetInstanceUsageResponseBody : Tea.TeaModel {
 
     public var namespaceUsage: String?
 
+    public var performanceUnits: Int32?
+
     public var repoQuota: String?
 
     public var repoUsage: String?
@@ -12088,6 +12227,9 @@ public class GetInstanceUsageResponseBody : Tea.TeaModel {
         if self.namespaceUsage != nil {
             map["NamespaceUsage"] = self.namespaceUsage!
         }
+        if self.performanceUnits != nil {
+            map["PerformanceUnits"] = self.performanceUnits!
+        }
         if self.repoQuota != nil {
             map["RepoQuota"] = self.repoQuota!
         }
@@ -12131,6 +12273,9 @@ public class GetInstanceUsageResponseBody : Tea.TeaModel {
         }
         if let value = dict["NamespaceUsage"] as? String {
             self.namespaceUsage = value
+        }
+        if let value = dict["PerformanceUnits"] as? Int32 {
+            self.performanceUnits = value
         }
         if let value = dict["RepoQuota"] as? String {
             self.repoQuota = value
@@ -15390,7 +15535,11 @@ public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
 
         public var createTime: Int64?
 
+        public var dryRun: Bool?
+
         public var enableDeleteTag: Bool?
+
+        public var enableDeleteUntaggedManifest: Bool?
 
         public var instanceId: String?
 
@@ -15434,8 +15583,14 @@ public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.dryRun != nil {
+                map["DryRun"] = self.dryRun!
+            }
             if self.enableDeleteTag != nil {
                 map["EnableDeleteTag"] = self.enableDeleteTag!
+            }
+            if self.enableDeleteUntaggedManifest != nil {
+                map["EnableDeleteUntaggedManifest"] = self.enableDeleteUntaggedManifest!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -15485,8 +15640,14 @@ public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
+            if let value = dict["DryRun"] as? Bool {
+                self.dryRun = value
+            }
             if let value = dict["EnableDeleteTag"] as? Bool {
                 self.enableDeleteTag = value
+            }
+            if let value = dict["EnableDeleteUntaggedManifest"] as? Bool {
+                self.enableDeleteUntaggedManifest = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -24478,7 +24639,11 @@ public class UntagResourcesResponse : Tea.TeaModel {
 public class UpdateArtifactLifecycleRuleRequest : Tea.TeaModel {
     public var auto: Bool?
 
+    public var dryRun: Bool?
+
     public var enableDeleteTag: Bool?
+
+    public var enableDeleteUntaggedManifest: Bool?
 
     public var instanceId: String?
 
@@ -24513,8 +24678,14 @@ public class UpdateArtifactLifecycleRuleRequest : Tea.TeaModel {
         if self.auto != nil {
             map["Auto"] = self.auto!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.enableDeleteTag != nil {
             map["EnableDeleteTag"] = self.enableDeleteTag!
+        }
+        if self.enableDeleteUntaggedManifest != nil {
+            map["EnableDeleteUntaggedManifest"] = self.enableDeleteUntaggedManifest!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -24548,8 +24719,14 @@ public class UpdateArtifactLifecycleRuleRequest : Tea.TeaModel {
         if let value = dict["Auto"] as? Bool {
             self.auto = value
         }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["EnableDeleteTag"] as? Bool {
             self.enableDeleteTag = value
+        }
+        if let value = dict["EnableDeleteUntaggedManifest"] as? Bool {
+            self.enableDeleteUntaggedManifest = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value

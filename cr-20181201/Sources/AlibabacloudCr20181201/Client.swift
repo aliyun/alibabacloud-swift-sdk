@@ -9,49 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "us-west-1": "cr.us-west-1.aliyuncs.com",
-            "us-southeast-1": "cr.us-southeast-1.aliyuncs.com",
-            "us-east-1": "cr.us-east-1.aliyuncs.com",
-            "na-south-1": "cr.na-south-1.aliyuncs.com",
-            "me-east-1": "cr.me-east-1.aliyuncs.com",
-            "me-central-1": "cr.me-central-1.aliyuncs.com",
-            "eu-west-2": "cr.eu-west-2.aliyuncs.com",
-            "eu-west-1": "cr.eu-west-1.aliyuncs.com",
-            "eu-central-1": "cr.eu-central-1.aliyuncs.com",
-            "cn-zhongwei": "cr.cn-zhongwei.aliyuncs.com",
-            "cn-zhengzhou-jva": "cr.cn-zhengzhou-jva.aliyuncs.com",
-            "cn-zhangjiakou": "cr.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu-gic-1": "cr.cn-wulanchabu-gic-1.aliyuncs.com",
-            "cn-wulanchabu": "cr.cn-wulanchabu.aliyuncs.com",
-            "cn-wuhan-lr": "cr.cn-wuhan-lr.aliyuncs.com",
-            "cn-shenzhen-finance-1": "cr.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shenzhen": "cr.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "cr.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "cr.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "cr.cn-qingdao.aliyuncs.com",
-            "cn-north-2-gov-1": "cr.cn-north-2-gov-1.aliyuncs.com",
-            "cn-nanjing": "cr.cn-nanjing.aliyuncs.com",
-            "cn-huhehaote": "cr.cn-huhehaote.aliyuncs.com",
-            "cn-hongkong": "cr.cn-hongkong.aliyuncs.com",
-            "cn-heyuan-acdr-1": "cr.cn-heyuan-acdr-1.aliyuncs.com",
-            "cn-heyuan": "cr.cn-heyuan.aliyuncs.com",
-            "cn-hangzhou-finance": "cr.cn-hangzhou-finance.aliyuncs.com",
-            "cn-hangzhou": "cr.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "cr.cn-guangzhou.aliyuncs.com",
-            "cn-fuzhou": "cr.cn-fuzhou.aliyuncs.com",
-            "cn-chengdu": "cr.cn-chengdu.aliyuncs.com",
-            "cn-beijing-finance-1": "cr.cn-beijing-finance-1.aliyuncs.com",
-            "cn-beijing": "cr.cn-beijing.aliyuncs.com",
-            "ap-southeast-8": "cr.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "cr.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "cr.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "cr.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "cr.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "cr.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "cr.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "cr.ap-northeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cr", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -263,8 +220,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.auto)) {
             query["Auto"] = request.auto!;
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableDeleteTag)) {
             query["EnableDeleteTag"] = request.enableDeleteTag!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableDeleteUntaggedManifest)) {
+            query["EnableDeleteUntaggedManifest"] = request.enableDeleteUntaggedManifest!;
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -4136,8 +4099,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.auto)) {
             query["Auto"] = request.auto!;
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableDeleteTag)) {
             query["EnableDeleteTag"] = request.enableDeleteTag!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableDeleteUntaggedManifest)) {
+            query["EnableDeleteUntaggedManifest"] = request.enableDeleteUntaggedManifest!;
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
