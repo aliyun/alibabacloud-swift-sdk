@@ -12,12 +12,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-hongkong": "cloudauth-intl.cn-hongkong.aliyuncs.com",
-            "ap-southeast-5": "cloudauth-intl.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "cloudauth-intl.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "cloudauth-intl.ap-southeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudauth-intl", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -625,6 +619,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.docType)) {
             query["DocType"] = request.docType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.fileInputType)) {
+            query["FileInputType"] = request.fileInputType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
             query["FraudCheck"] = request.fraudCheck ?? "";
         }
@@ -679,11 +676,164 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialRecognitionIntlV2WithOptions(_ request: CredentialRecognitionIntlV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialRecognitionIntlV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureFile)) {
+            query["CredentialOcrPictureFile"] = request.credentialOcrPictureFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            query["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileInputType)) {
+            query["FileInputType"] = request.fileInputType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
+            query["FraudCheck"] = request.fraudCheck ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idQuality)) {
+            query["IdQuality"] = request.idQuality ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrArea)) {
+            query["OcrArea"] = request.ocrArea ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrTranslation)) {
+            query["OcrTranslation"] = request.ocrTranslation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkRuleConfig)) {
+            body["CheckRuleConfig"] = request.checkRuleConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureBase64)) {
+            body["CredentialOcrPictureBase64"] = request.credentialOcrPictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureUrl)) {
+            body["CredentialOcrPictureUrl"] = request.credentialOcrPictureUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CredentialRecognitionIntlV2",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CredentialRecognitionIntlV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialRecognitionIntlV2(_ request: CredentialRecognitionIntlV2Request) async throws -> CredentialRecognitionIntlV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await credentialRecognitionIntlV2WithOptions(request as! CredentialRecognitionIntlV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialRecognitionIntlV2Advance(_ request: CredentialRecognitionIntlV2AdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialRecognitionIntlV2Response {
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "Cloudauth-intl",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
+        ])
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var authResponse: [String: Any] = [:]
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
+        var credentialRecognitionIntlV2Req: CredentialRecognitionIntlV2Request = CredentialRecognitionIntlV2Request([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, credentialRecognitionIntlV2Req)
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureFileObject)) {
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.credentialOcrPictureFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            credentialRecognitionIntlV2Req.credentialOcrPictureFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        var credentialRecognitionIntlV2Resp: CredentialRecognitionIntlV2Response = try await credentialRecognitionIntlV2WithOptions(credentialRecognitionIntlV2Req as! CredentialRecognitionIntlV2Request, runtime as! TeaUtils.RuntimeOptions)
+        return credentialRecognitionIntlV2Resp as! CredentialRecognitionIntlV2Response
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func credentialSubmitIntlWithOptions(_ request: CredentialSubmitIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialSubmitIntlResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.docType)) {
             query["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileInputType)) {
+            query["FileInputType"] = request.fileInputType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
             query["FraudCheck"] = request.fraudCheck ?? "";
@@ -742,6 +892,162 @@ open class Client : AlibabacloudOpenApi.Client {
     public func credentialSubmitIntl(_ request: CredentialSubmitIntlRequest) async throws -> CredentialSubmitIntlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await credentialSubmitIntlWithOptions(request as! CredentialSubmitIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialSubmitIntlV2WithOptions(_ request: CredentialSubmitIntlV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialSubmitIntlV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureFile)) {
+            query["CredentialOcrPictureFile"] = request.credentialOcrPictureFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            query["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileInputType)) {
+            query["FileInputType"] = request.fileInputType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
+            query["FraudCheck"] = request.fraudCheck ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idQuality)) {
+            query["IdQuality"] = request.idQuality ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            query["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrArea)) {
+            query["OcrArea"] = request.ocrArea ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrTranslation)) {
+            query["OcrTranslation"] = request.ocrTranslation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            query["SceneCode"] = request.sceneCode ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkRuleConfig)) {
+            body["CheckRuleConfig"] = request.checkRuleConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureBase64)) {
+            body["CredentialOcrPictureBase64"] = request.credentialOcrPictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureUrl)) {
+            body["CredentialOcrPictureUrl"] = request.credentialOcrPictureUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CredentialSubmitIntlV2",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CredentialSubmitIntlV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialSubmitIntlV2(_ request: CredentialSubmitIntlV2Request) async throws -> CredentialSubmitIntlV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await credentialSubmitIntlV2WithOptions(request as! CredentialSubmitIntlV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialSubmitIntlV2Advance(_ request: CredentialSubmitIntlV2AdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialSubmitIntlV2Response {
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "Cloudauth-intl",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
+        ])
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var authResponse: [String: Any] = [:]
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
+        var credentialSubmitIntlV2Req: CredentialSubmitIntlV2Request = CredentialSubmitIntlV2Request([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, credentialSubmitIntlV2Req)
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureFileObject)) {
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.credentialOcrPictureFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            credentialSubmitIntlV2Req.credentialOcrPictureFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        var credentialSubmitIntlV2Resp: CredentialSubmitIntlV2Response = try await credentialSubmitIntlV2WithOptions(credentialSubmitIntlV2Req as! CredentialSubmitIntlV2Request, runtime as! TeaUtils.RuntimeOptions)
+        return credentialSubmitIntlV2Resp as! CredentialSubmitIntlV2Response
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
