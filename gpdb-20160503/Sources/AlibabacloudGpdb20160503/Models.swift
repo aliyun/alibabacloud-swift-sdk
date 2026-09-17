@@ -57819,6 +57819,8 @@ public class ModifyMasterSpecRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var effectiveTime: String?
+
     public var masterAISpec: String?
 
     public var masterCU: Int32?
@@ -57845,6 +57847,9 @@ public class ModifyMasterSpecRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.masterAISpec != nil {
             map["MasterAISpec"] = self.masterAISpec!
         }
@@ -57864,6 +57869,9 @@ public class ModifyMasterSpecRequest : Tea.TeaModel {
         }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
+        }
+        if let value = dict["EffectiveTime"] as? String {
+            self.effectiveTime = value
         }
         if let value = dict["MasterAISpec"] as? String {
             self.masterAISpec = value
@@ -69841,6 +69849,8 @@ public class UpgradeDBInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var effectiveTime: String?
+
     public var instanceSpec: String?
 
     public var masterNodeNum: String?
@@ -69890,6 +69900,9 @@ public class UpgradeDBInstanceRequest : Tea.TeaModel {
         }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
         }
         if self.instanceSpec != nil {
             map["InstanceSpec"] = self.instanceSpec!
@@ -69943,6 +69956,9 @@ public class UpgradeDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
+        }
+        if let value = dict["EffectiveTime"] as? String {
+            self.effectiveTime = value
         }
         if let value = dict["InstanceSpec"] as? String {
             self.instanceSpec = value
@@ -70083,6 +70099,8 @@ public class UpgradeDBInstanceResponse : Tea.TeaModel {
 public class UpgradeDBVersionRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var effectiveTime: String?
+
     public var majorVersion: String?
 
     public var minorVersion: String?
@@ -70112,6 +70130,9 @@ public class UpgradeDBVersionRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.majorVersion != nil {
             map["MajorVersion"] = self.majorVersion!
         }
@@ -70137,6 +70158,9 @@ public class UpgradeDBVersionRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
+        }
+        if let value = dict["EffectiveTime"] as? String {
+            self.effectiveTime = value
         }
         if let value = dict["MajorVersion"] as? String {
             self.majorVersion = value
