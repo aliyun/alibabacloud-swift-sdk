@@ -7232,6 +7232,247 @@ public class CreateWorkspaceResponse : Tea.TeaModel {
     }
 }
 
+public class CreateWorkspaceQueueRequest : Tea.TeaModel {
+    public class ResourceSpec : Tea.TeaModel {
+        public var cu: Int64?
+
+        public var gpu: Int32?
+
+        public var gpuMachineNum: Int32?
+
+        public var maxCu: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cu != nil {
+                map["cu"] = self.cu!
+            }
+            if self.gpu != nil {
+                map["gpu"] = self.gpu!
+            }
+            if self.gpuMachineNum != nil {
+                map["gpuMachineNum"] = self.gpuMachineNum!
+            }
+            if self.maxCu != nil {
+                map["maxCu"] = self.maxCu!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cu"] as? Int64 {
+                self.cu = value
+            }
+            if let value = dict["gpu"] as? Int32 {
+                self.gpu = value
+            }
+            if let value = dict["gpuMachineNum"] as? Int32 {
+                self.gpuMachineNum = value
+            }
+            if let value = dict["maxCu"] as? Int64 {
+                self.maxCu = value
+            }
+        }
+    }
+    public var description_: String?
+
+    public var gpuSpec: [String]?
+
+    public var instanceId: String?
+
+    public var paymentType: String?
+
+    public var preheat: Bool?
+
+    public var queueCategory: String?
+
+    public var resourceSpec: CreateWorkspaceQueueRequest.ResourceSpec?
+
+    public var workspaceId: String?
+
+    public var workspaceQueueName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resourceSpec?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.gpuSpec != nil {
+            map["gpuSpec"] = self.gpuSpec!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.paymentType != nil {
+            map["paymentType"] = self.paymentType!
+        }
+        if self.preheat != nil {
+            map["preheat"] = self.preheat!
+        }
+        if self.queueCategory != nil {
+            map["queueCategory"] = self.queueCategory!
+        }
+        if self.resourceSpec != nil {
+            map["resourceSpec"] = self.resourceSpec?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        if self.workspaceQueueName != nil {
+            map["workspaceQueueName"] = self.workspaceQueueName!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["gpuSpec"] as? [String] {
+            self.gpuSpec = value
+        }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["paymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["preheat"] as? Bool {
+            self.preheat = value
+        }
+        if let value = dict["queueCategory"] as? String {
+            self.queueCategory = value
+        }
+        if let value = dict["resourceSpec"] as? [String: Any?] {
+            var model = CreateWorkspaceQueueRequest.ResourceSpec()
+            model.fromMap(value)
+            self.resourceSpec = model
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+        if let value = dict["workspaceQueueName"] as? String {
+            self.workspaceQueueName = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateWorkspaceQueueResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateWorkspaceQueueResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWorkspaceQueueResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateWorkspaceQueueResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteKyuubiServiceResponseBody : Tea.TeaModel {
     public var data: Any?
 
