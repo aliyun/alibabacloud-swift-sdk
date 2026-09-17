@@ -6017,6 +6017,8 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
 
     public var csr: String?
 
+    public var deploymentDesc: String?
+
     public var domain: String?
 
     public var existPrivateKey: Bool?
@@ -6093,6 +6095,9 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.csr != nil {
             map["Csr"] = self.csr!
+        }
+        if self.deploymentDesc != nil {
+            map["DeploymentDesc"] = self.deploymentDesc!
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -6184,6 +6189,9 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["Csr"] as? String {
             self.csr = value
+        }
+        if let value = dict["DeploymentDesc"] as? String {
+            self.deploymentDesc = value
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
@@ -9800,6 +9808,8 @@ public class ListCertificatesResponseBody : Tea.TeaModel {
 
         public var commonName: String?
 
+        public var deploymentDesc: String?
+
         public var domain: String?
 
         public var existPrivateKey: Bool?
@@ -9856,6 +9866,9 @@ public class ListCertificatesResponseBody : Tea.TeaModel {
             }
             if self.commonName != nil {
                 map["CommonName"] = self.commonName!
+            }
+            if self.deploymentDesc != nil {
+                map["DeploymentDesc"] = self.deploymentDesc!
             }
             if self.domain != nil {
                 map["Domain"] = self.domain!
@@ -9915,6 +9928,9 @@ public class ListCertificatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CommonName"] as? String {
                 self.commonName = value
+            }
+            if let value = dict["DeploymentDesc"] as? String {
+                self.deploymentDesc = value
             }
             if let value = dict["Domain"] as? String {
                 self.domain = value
