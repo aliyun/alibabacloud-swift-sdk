@@ -18974,6 +18974,8 @@ public class ModifyMessagesFeedbacksRequest : Tea.TeaModel {
 
     public var rating: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -18997,6 +18999,9 @@ public class ModifyMessagesFeedbacksRequest : Tea.TeaModel {
         if self.rating != nil {
             map["Rating"] = self.rating!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -19010,6 +19015,9 @@ public class ModifyMessagesFeedbacksRequest : Tea.TeaModel {
         }
         if let value = dict["Rating"] as? String {
             self.rating = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
