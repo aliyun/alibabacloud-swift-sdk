@@ -13014,6 +13014,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func replyAgentSessionWithOptions(_ tmpReq: ReplyAgentSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReplyAgentSessionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ReplyAgentSessionShrinkRequest = ReplyAgentSessionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.params)) {
+            request.paramsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.params, "Params", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jsonrpc)) {
+            body["Jsonrpc"] = request.jsonrpc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramsShrink)) {
+            body["Params"] = request.paramsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReplyAgentSession",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReplyAgentSessionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func replyAgentSession(_ request: ReplyAgentSessionRequest) async throws -> ReplyAgentSessionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await replyAgentSessionWithOptions(request as! ReplyAgentSessionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func rerunTaskInstancesWithOptions(_ tmpReq: RerunTaskInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RerunTaskInstancesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RerunTaskInstancesShrinkRequest = RerunTaskInstancesShrinkRequest([:])
