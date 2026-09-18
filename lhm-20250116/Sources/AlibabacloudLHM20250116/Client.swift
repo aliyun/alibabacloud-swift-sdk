@@ -2382,6 +2382,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveSkillAuditRecordWithOptions(_ request: SaveSkillAuditRecordRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveSkillAuditRecordResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batchId)) {
+            body["batchId"] = request.batchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cid)) {
+            body["cid"] = request.cid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRunStatus)) {
+            body["dryRunStatus"] = request.dryRunStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extInfo)) {
+            body["extInfo"] = request.extInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordType)) {
+            body["recordType"] = request.recordType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scriptTransformResult)) {
+            body["scriptTransformResult"] = request.scriptTransformResult ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scriptTransformStatus)) {
+            body["scriptTransformStatus"] = request.scriptTransformStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDialect)) {
+            body["sourceDialect"] = request.sourceDialect ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceSqlScript)) {
+            body["sourceSqlScript"] = request.sourceSqlScript ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetDialect)) {
+            body["targetDialect"] = request.targetDialect ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveSkillAuditRecord",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/bigdata/sql-translator/open/skill-audit/save",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveSkillAuditRecordResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveSkillAuditRecord(_ request: SaveSkillAuditRecordRequest) async throws -> SaveSkillAuditRecordResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await saveSkillAuditRecordWithOptions(request as! SaveSkillAuditRecordRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func singleSqlDryRunWithOptions(_ request: SingleSqlDryRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SingleSqlDryRunResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

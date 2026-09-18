@@ -16690,6 +16690,222 @@ public class PostInnerUploadConvertPackageResponse : Tea.TeaModel {
     }
 }
 
+public class SaveSkillAuditRecordRequest : Tea.TeaModel {
+    public var batchId: String?
+
+    public var cid: String?
+
+    public var dryRunStatus: String?
+
+    public var extInfo: String?
+
+    public var recordType: String?
+
+    public var scriptTransformResult: String?
+
+    public var scriptTransformStatus: String?
+
+    public var sourceDialect: String?
+
+    public var sourceSqlScript: String?
+
+    public var targetDialect: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.batchId != nil {
+            map["batchId"] = self.batchId!
+        }
+        if self.cid != nil {
+            map["cid"] = self.cid!
+        }
+        if self.dryRunStatus != nil {
+            map["dryRunStatus"] = self.dryRunStatus!
+        }
+        if self.extInfo != nil {
+            map["extInfo"] = self.extInfo!
+        }
+        if self.recordType != nil {
+            map["recordType"] = self.recordType!
+        }
+        if self.scriptTransformResult != nil {
+            map["scriptTransformResult"] = self.scriptTransformResult!
+        }
+        if self.scriptTransformStatus != nil {
+            map["scriptTransformStatus"] = self.scriptTransformStatus!
+        }
+        if self.sourceDialect != nil {
+            map["sourceDialect"] = self.sourceDialect!
+        }
+        if self.sourceSqlScript != nil {
+            map["sourceSqlScript"] = self.sourceSqlScript!
+        }
+        if self.targetDialect != nil {
+            map["targetDialect"] = self.targetDialect!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["batchId"] as? String {
+            self.batchId = value
+        }
+        if let value = dict["cid"] as? String {
+            self.cid = value
+        }
+        if let value = dict["dryRunStatus"] as? String {
+            self.dryRunStatus = value
+        }
+        if let value = dict["extInfo"] as? String {
+            self.extInfo = value
+        }
+        if let value = dict["recordType"] as? String {
+            self.recordType = value
+        }
+        if let value = dict["scriptTransformResult"] as? String {
+            self.scriptTransformResult = value
+        }
+        if let value = dict["scriptTransformStatus"] as? String {
+            self.scriptTransformStatus = value
+        }
+        if let value = dict["sourceDialect"] as? String {
+            self.sourceDialect = value
+        }
+        if let value = dict["sourceSqlScript"] as? String {
+            self.sourceSqlScript = value
+        }
+        if let value = dict["targetDialect"] as? String {
+            self.targetDialect = value
+        }
+    }
+}
+
+public class SaveSkillAuditRecordResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SaveSkillAuditRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SaveSkillAuditRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SaveSkillAuditRecordResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SingleSqlDryRunRequest : Tea.TeaModel {
     public var datasourceName: String?
 
