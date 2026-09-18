@@ -11652,7 +11652,13 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var reasonMessage: String?
 
+    public var requestCPU: Int32?
+
+    public var requestGPU: Double?
+
     public var requestId: String?
+
+    public var requestMemory: Double?
 
     public var resourceId: String?
 
@@ -11814,8 +11820,17 @@ public class GetJobResponseBody : Tea.TeaModel {
         if self.reasonMessage != nil {
             map["ReasonMessage"] = self.reasonMessage!
         }
+        if self.requestCPU != nil {
+            map["RequestCPU"] = self.requestCPU!
+        }
+        if self.requestGPU != nil {
+            map["RequestGPU"] = self.requestGPU!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.requestMemory != nil {
+            map["RequestMemory"] = self.requestMemory!
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
@@ -12027,8 +12042,17 @@ public class GetJobResponseBody : Tea.TeaModel {
         if let value = dict["ReasonMessage"] as? String {
             self.reasonMessage = value
         }
+        if let value = dict["RequestCPU"] as? Int32 {
+            self.requestCPU = value
+        }
+        if let value = dict["RequestGPU"] as? Double {
+            self.requestGPU = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["RequestMemory"] as? Double {
+            self.requestMemory = value
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
