@@ -14944,6 +14944,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var cleanMode: String?
 
+            public var createTime: Int64?
+
             public var creator: String?
 
             public var currentExecuteStatus: Int32?
@@ -15000,6 +15002,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var timezone: String?
 
+            public var updateTime: Int64?
+
             public var updater: String?
 
             public var weight: Int32?
@@ -15039,6 +15043,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if self.cleanMode != nil {
                     map["CleanMode"] = self.cleanMode!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
                 }
                 if self.creator != nil {
                     map["Creator"] = self.creator!
@@ -15124,6 +15131,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 if self.timezone != nil {
                     map["Timezone"] = self.timezone!
                 }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
                 if self.updater != nil {
                     map["Updater"] = self.updater!
                 }
@@ -15158,6 +15168,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CleanMode"] as? String {
                     self.cleanMode = value
+                }
+                if let value = dict["CreateTime"] as? Int64 {
+                    self.createTime = value
                 }
                 if let value = dict["Creator"] as? String {
                     self.creator = value
@@ -15242,6 +15255,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Timezone"] as? String {
                     self.timezone = value
+                }
+                if let value = dict["UpdateTime"] as? Int64 {
+                    self.updateTime = value
                 }
                 if let value = dict["Updater"] as? String {
                     self.updater = value
