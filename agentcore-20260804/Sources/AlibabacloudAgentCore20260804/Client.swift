@@ -2037,6 +2037,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkspaceAcrRamAuthorizeUrlWithOptions(_ workspaceId: String, _ request: GetWorkspaceAcrRamAuthorizeUrlRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkspaceAcrRamAuthorizeUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acrInstanceId)) {
+            query["acrInstanceId"] = request.acrInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repository)) {
+            query["repository"] = request.repository ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWorkspaceAcrRamAuthorizeUrl",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/acr/authorize",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWorkspaceAcrRamAuthorizeUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkspaceAcrRamAuthorizeUrl(_ workspaceId: String, _ request: GetWorkspaceAcrRamAuthorizeUrlRequest) async throws -> GetWorkspaceAcrRamAuthorizeUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getWorkspaceAcrRamAuthorizeUrlWithOptions(workspaceId as! String, request as! GetWorkspaceAcrRamAuthorizeUrlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getWorkspacePluginWithOptions(_ workspaceId: String, _ pluginName: String, _ request: GetWorkspacePluginRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkspacePluginResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -4268,6 +4307,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await verifyConnectorWithOptions(workspaceId as! String, connectorName as! String, request as! VerifyConnectorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyWorkspaceAcrRamAuthorizationWithOptions(_ workspaceId: String, _ request: VerifyWorkspaceAcrRamAuthorizationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyWorkspaceAcrRamAuthorizationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acrInstanceId)) {
+            query["acrInstanceId"] = request.acrInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repository)) {
+            query["repository"] = request.repository ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VerifyWorkspaceAcrRamAuthorization",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/acr/authorize/verify",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VerifyWorkspaceAcrRamAuthorizationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyWorkspaceAcrRamAuthorization(_ workspaceId: String, _ request: VerifyWorkspaceAcrRamAuthorizationRequest) async throws -> VerifyWorkspaceAcrRamAuthorizationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await verifyWorkspaceAcrRamAuthorizationWithOptions(workspaceId as! String, request as! VerifyWorkspaceAcrRamAuthorizationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

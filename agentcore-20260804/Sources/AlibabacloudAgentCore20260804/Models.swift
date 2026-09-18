@@ -26845,6 +26845,239 @@ public class GetWorkspaceResponse : Tea.TeaModel {
     }
 }
 
+public class GetWorkspaceAcrRamAuthorizeUrlRequest : Tea.TeaModel {
+    public var acrInstanceId: String?
+
+    public var namespace: String?
+
+    public var repository: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acrInstanceId != nil {
+            map["acrInstanceId"] = self.acrInstanceId!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.repository != nil {
+            map["repository"] = self.repository!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["acrInstanceId"] as? String {
+            self.acrInstanceId = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["repository"] as? String {
+            self.repository = value
+        }
+    }
+}
+
+public class GetWorkspaceAcrRamAuthorizeUrlResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var acrInstanceId: String?
+
+        public var authorizeUrl: String?
+
+        public var roleName: String?
+
+        public var roleSource: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acrInstanceId != nil {
+                map["acrInstanceId"] = self.acrInstanceId!
+            }
+            if self.authorizeUrl != nil {
+                map["authorizeUrl"] = self.authorizeUrl!
+            }
+            if self.roleName != nil {
+                map["roleName"] = self.roleName!
+            }
+            if self.roleSource != nil {
+                map["roleSource"] = self.roleSource!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["acrInstanceId"] as? String {
+                self.acrInstanceId = value
+            }
+            if let value = dict["authorizeUrl"] as? String {
+                self.authorizeUrl = value
+            }
+            if let value = dict["roleName"] as? String {
+                self.roleName = value
+            }
+            if let value = dict["roleSource"] as? String {
+                self.roleSource = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetWorkspaceAcrRamAuthorizeUrlResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetWorkspaceAcrRamAuthorizeUrlResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetWorkspaceAcrRamAuthorizeUrlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetWorkspaceAcrRamAuthorizeUrlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetWorkspaceAcrRamAuthorizeUrlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetWorkspacePluginRequest : Tea.TeaModel {
 
     public override init() {
@@ -55267,6 +55500,263 @@ public class VerifyConnectorResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = VerifyConnectorResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class VerifyWorkspaceAcrRamAuthorizationRequest : Tea.TeaModel {
+    public var acrInstanceId: String?
+
+    public var namespace: String?
+
+    public var repository: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acrInstanceId != nil {
+            map["acrInstanceId"] = self.acrInstanceId!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.repository != nil {
+            map["repository"] = self.repository!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["acrInstanceId"] as? String {
+            self.acrInstanceId = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["repository"] as? String {
+            self.repository = value
+        }
+    }
+}
+
+public class VerifyWorkspaceAcrRamAuthorizationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var acrInstanceId: String?
+
+        public var authorizationStatus: String?
+
+        public var eligibilityStatus: String?
+
+        public var reasonCode: String?
+
+        public var reasonMessage: String?
+
+        public var roleName: String?
+
+        public var roleSource: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acrInstanceId != nil {
+                map["acrInstanceId"] = self.acrInstanceId!
+            }
+            if self.authorizationStatus != nil {
+                map["authorizationStatus"] = self.authorizationStatus!
+            }
+            if self.eligibilityStatus != nil {
+                map["eligibilityStatus"] = self.eligibilityStatus!
+            }
+            if self.reasonCode != nil {
+                map["reasonCode"] = self.reasonCode!
+            }
+            if self.reasonMessage != nil {
+                map["reasonMessage"] = self.reasonMessage!
+            }
+            if self.roleName != nil {
+                map["roleName"] = self.roleName!
+            }
+            if self.roleSource != nil {
+                map["roleSource"] = self.roleSource!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["acrInstanceId"] as? String {
+                self.acrInstanceId = value
+            }
+            if let value = dict["authorizationStatus"] as? String {
+                self.authorizationStatus = value
+            }
+            if let value = dict["eligibilityStatus"] as? String {
+                self.eligibilityStatus = value
+            }
+            if let value = dict["reasonCode"] as? String {
+                self.reasonCode = value
+            }
+            if let value = dict["reasonMessage"] as? String {
+                self.reasonMessage = value
+            }
+            if let value = dict["roleName"] as? String {
+                self.roleName = value
+            }
+            if let value = dict["roleSource"] as? String {
+                self.roleSource = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: VerifyWorkspaceAcrRamAuthorizationResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = VerifyWorkspaceAcrRamAuthorizationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class VerifyWorkspaceAcrRamAuthorizationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VerifyWorkspaceAcrRamAuthorizationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = VerifyWorkspaceAcrRamAuthorizationResponseBody()
             model.fromMap(value)
             self.body = model
         }
