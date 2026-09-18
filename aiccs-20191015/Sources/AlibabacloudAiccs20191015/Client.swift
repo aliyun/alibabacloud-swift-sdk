@@ -8,33 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "regional"
-        self._endpointMap = [
-            "us-west-1": "aiccs.aliyuncs.com",
-            "us-east-1": "aiccs.aliyuncs.com",
-            "me-east-1": "aiccs.aliyuncs.com",
-            "eu-west-1": "aiccs.aliyuncs.com",
-            "eu-central-1": "aiccs.aliyuncs.com",
-            "cn-zhangjiakou": "aiccs.aliyuncs.com",
-            "cn-wulanchabu": "aiccs.aliyuncs.com",
-            "cn-shenzhen-finance-1": "aiccs.aliyuncs.com",
-            "cn-shenzhen": "aiccs.aliyuncs.com",
-            "cn-shanghai-finance-1": "aiccs.aliyuncs.com",
-            "cn-shanghai": "aiccs.aliyuncs.com",
-            "cn-qingdao": "aiccs.aliyuncs.com",
-            "cn-north-2-gov-1": "aiccs.aliyuncs.com",
-            "cn-huhehaote": "aiccs.aliyuncs.com",
-            "cn-hongkong": "aiccs.aliyuncs.com",
-            "cn-hangzhou-finance": "aiccs.aliyuncs.com",
-            "cn-hangzhou": "aiccs.aliyuncs.com",
-            "cn-chengdu": "aiccs.aliyuncs.com",
-            "cn-beijing-finance-1": "aiccs.aliyuncs.com",
-            "cn-beijing": "aiccs.aliyuncs.com",
-            "ap-southeast-5": "aiccs.aliyuncs.com",
-            "ap-southeast-3": "aiccs.aliyuncs.com",
-            "ap-southeast-1": "aiccs.aliyuncs.com",
-            "ap-northeast-1": "aiccs.aliyuncs.com"
-        ]
+        self._endpointRule = "central"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("aiccs", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -4400,6 +4374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.encryptionType)) {
             query["EncryptionType"] = request.encryptionType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extension_)) {
+            query["Extension"] = request.extension_ ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.outId)) {
             query["OutId"] = request.outId ?? "";

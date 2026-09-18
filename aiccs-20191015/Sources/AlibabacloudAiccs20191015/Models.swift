@@ -27033,6 +27033,8 @@ public class HotlineSessionQueryResponse : Tea.TeaModel {
 public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
     public var encryptionType: Int64?
 
+    public var extension_: String?
+
     public var outId: String?
 
     public var ownerId: Int64?
@@ -27064,6 +27066,9 @@ public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
         if self.encryptionType != nil {
             map["EncryptionType"] = self.encryptionType!
         }
+        if self.extension_ != nil {
+            map["Extension"] = self.extension_!
+        }
         if self.outId != nil {
             map["OutId"] = self.outId!
         }
@@ -27093,6 +27098,9 @@ public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
         if let value = dict["EncryptionType"] as? Int64 {
             self.encryptionType = value
         }
+        if let value = dict["Extension"] as? String {
+            self.extension_ = value
+        }
         if let value = dict["OutId"] as? String {
             self.outId = value
         }
@@ -27119,6 +27127,8 @@ public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
 
 public class ImportOneTaskPhoneNumberShrinkRequest : Tea.TeaModel {
     public var encryptionType: Int64?
+
+    public var extension_: String?
 
     public var outId: String?
 
@@ -27151,6 +27161,9 @@ public class ImportOneTaskPhoneNumberShrinkRequest : Tea.TeaModel {
         if self.encryptionType != nil {
             map["EncryptionType"] = self.encryptionType!
         }
+        if self.extension_ != nil {
+            map["Extension"] = self.extension_!
+        }
         if self.outId != nil {
             map["OutId"] = self.outId!
         }
@@ -27179,6 +27192,9 @@ public class ImportOneTaskPhoneNumberShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["EncryptionType"] as? Int64 {
             self.encryptionType = value
+        }
+        if let value = dict["Extension"] as? String {
+            self.extension_ = value
         }
         if let value = dict["OutId"] as? String {
             self.outId = value
