@@ -817,6 +817,92 @@ public class AppInstanceAggregate : Tea.TeaModel {
 }
 
 public class AppInstanceProfile : Tea.TeaModel {
+    public class IndependentDeployment : Tea.TeaModel {
+        public var canRetry: Bool?
+
+        public var deployArea: String?
+
+        public var dnsRecordType: String?
+
+        public var eligibility: String?
+
+        public var enableStatus: String?
+
+        public var independentIp: String?
+
+        public var serverSpec: String?
+
+        public var taskId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.canRetry != nil {
+                map["CanRetry"] = self.canRetry!
+            }
+            if self.deployArea != nil {
+                map["DeployArea"] = self.deployArea!
+            }
+            if self.dnsRecordType != nil {
+                map["DnsRecordType"] = self.dnsRecordType!
+            }
+            if self.eligibility != nil {
+                map["Eligibility"] = self.eligibility!
+            }
+            if self.enableStatus != nil {
+                map["EnableStatus"] = self.enableStatus!
+            }
+            if self.independentIp != nil {
+                map["IndependentIp"] = self.independentIp!
+            }
+            if self.serverSpec != nil {
+                map["ServerSpec"] = self.serverSpec!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CanRetry"] as? Bool {
+                self.canRetry = value
+            }
+            if let value = dict["DeployArea"] as? String {
+                self.deployArea = value
+            }
+            if let value = dict["DnsRecordType"] as? String {
+                self.dnsRecordType = value
+            }
+            if let value = dict["Eligibility"] as? String {
+                self.eligibility = value
+            }
+            if let value = dict["EnableStatus"] as? String {
+                self.enableStatus = value
+            }
+            if let value = dict["IndependentIp"] as? String {
+                self.independentIp = value
+            }
+            if let value = dict["ServerSpec"] as? String {
+                self.serverSpec = value
+            }
+            if let value = dict["TaskId"] as? Int64 {
+                self.taskId = value
+            }
+        }
+    }
     public var applicationType: String?
 
     public var applicationTypeText: String?
@@ -834,6 +920,8 @@ public class AppInstanceProfile : Tea.TeaModel {
     public var deployArea: String?
 
     public var icpbaNo: String?
+
+    public var independentDeployment: AppInstanceProfile.IndependentDeployment?
 
     public var instanceId: String?
 
@@ -871,6 +959,7 @@ public class AppInstanceProfile : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.independentDeployment?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -901,6 +990,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if self.icpbaNo != nil {
             map["IcpbaNo"] = self.icpbaNo!
+        }
+        if self.independentDeployment != nil {
+            map["IndependentDeployment"] = self.independentDeployment?.toMap()
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -972,6 +1064,11 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["IcpbaNo"] as? String {
             self.icpbaNo = value
+        }
+        if let value = dict["IndependentDeployment"] as? [String: Any?] {
+            var model = AppInstanceProfile.IndependentDeployment()
+            model.fromMap(value)
+            self.independentDeployment = model
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -4799,6 +4896,8 @@ public class BatchCheckResourceMeasureResponse : Tea.TeaModel {
 public class BindAppDomainRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var deployType: String?
+
     public var domainName: String?
 
     public var domainType: String?
@@ -4824,6 +4923,9 @@ public class BindAppDomainRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.deployType != nil {
+            map["DeployType"] = self.deployType!
+        }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
@@ -4843,6 +4945,9 @@ public class BindAppDomainRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["DeployType"] as? String {
+            self.deployType = value
         }
         if let value = dict["DomainName"] as? String {
             self.domainName = value

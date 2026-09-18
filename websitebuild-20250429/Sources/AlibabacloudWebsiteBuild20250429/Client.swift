@@ -194,6 +194,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deployType)) {
+            query["DeployType"] = request.deployType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
         }
