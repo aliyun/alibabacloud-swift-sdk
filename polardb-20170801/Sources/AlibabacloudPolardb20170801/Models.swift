@@ -15726,6 +15726,8 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
 
     public var tenantId: String?
 
+    public var userAccessToken: String?
+
     public var userId: String?
 
     public override init() {
@@ -15778,6 +15780,9 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
+        if self.userAccessToken != nil {
+            map["UserAccessToken"] = self.userAccessToken!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -15821,6 +15826,9 @@ public class CreateKBSyncLinkRequest : Tea.TeaModel {
         }
         if let value = dict["TenantId"] as? String {
             self.tenantId = value
+        }
+        if let value = dict["UserAccessToken"] as? String {
+            self.userAccessToken = value
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
@@ -73129,11 +73137,75 @@ public class DescribeKnowledgeBaseAnswerRequest : Tea.TeaModel {
 
 public class DescribeKnowledgeBaseAnswerResponseBody : Tea.TeaModel {
     public class Sources : Tea.TeaModel {
+        public class ImageResources : Tea.TeaModel {
+            public var documentIndex: Int32?
+
+            public var id: String?
+
+            public var itemRef: String?
+
+            public var mimeType: String?
+
+            public var uri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.documentIndex != nil {
+                    map["DocumentIndex"] = self.documentIndex!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.itemRef != nil {
+                    map["ItemRef"] = self.itemRef!
+                }
+                if self.mimeType != nil {
+                    map["MimeType"] = self.mimeType!
+                }
+                if self.uri != nil {
+                    map["Uri"] = self.uri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DocumentIndex"] as? Int32 {
+                    self.documentIndex = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["ItemRef"] as? String {
+                    self.itemRef = value
+                }
+                if let value = dict["MimeType"] as? String {
+                    self.mimeType = value
+                }
+                if let value = dict["Uri"] as? String {
+                    self.uri = value
+                }
+            }
+        }
         public var chunkMetadata: [String: Any]?
 
         public var fileId: String?
 
         public var fileName: String?
+
+        public var imageResources: [DescribeKnowledgeBaseAnswerResponseBody.Sources.ImageResources]?
 
         public var knowledgeBaseId: String?
 
@@ -73172,6 +73244,13 @@ public class DescribeKnowledgeBaseAnswerResponseBody : Tea.TeaModel {
             if self.fileName != nil {
                 map["FileName"] = self.fileName!
             }
+            if self.imageResources != nil {
+                var tmp : [Any] = []
+                for k in self.imageResources! {
+                    tmp.append(k.toMap())
+                }
+                map["ImageResources"] = tmp
+            }
             if self.knowledgeBaseId != nil {
                 map["KnowledgeBaseId"] = self.knowledgeBaseId!
             }
@@ -73206,6 +73285,19 @@ public class DescribeKnowledgeBaseAnswerResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileName"] as? String {
                 self.fileName = value
+            }
+            if let value = dict["ImageResources"] as? [Any?] {
+                var tmp : [DescribeKnowledgeBaseAnswerResponseBody.Sources.ImageResources] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeKnowledgeBaseAnswerResponseBody.Sources.ImageResources()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.imageResources = tmp
             }
             if let value = dict["KnowledgeBaseId"] as? String {
                 self.knowledgeBaseId = value
@@ -73685,7 +73777,75 @@ public class DescribeKnowledgeBaseFileShardsRequest : Tea.TeaModel {
 
 public class DescribeKnowledgeBaseFileShardsResponseBody : Tea.TeaModel {
     public class Shards : Tea.TeaModel {
+        public class ImageResources : Tea.TeaModel {
+            public var documentIndex: Int32?
+
+            public var id: String?
+
+            public var itemRef: String?
+
+            public var mimeType: String?
+
+            public var uri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.documentIndex != nil {
+                    map["DocumentIndex"] = self.documentIndex!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.itemRef != nil {
+                    map["ItemRef"] = self.itemRef!
+                }
+                if self.mimeType != nil {
+                    map["MimeType"] = self.mimeType!
+                }
+                if self.uri != nil {
+                    map["Uri"] = self.uri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DocumentIndex"] as? Int32 {
+                    self.documentIndex = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["ItemRef"] as? String {
+                    self.itemRef = value
+                }
+                if let value = dict["MimeType"] as? String {
+                    self.mimeType = value
+                }
+                if let value = dict["Uri"] as? String {
+                    self.uri = value
+                }
+            }
+        }
+        public var captions: [String]?
+
+        public var docItems: [String]?
+
         public var headings: [String]?
+
+        public var imageResources: [DescribeKnowledgeBaseFileShardsResponseBody.Shards.ImageResources]?
 
         public var pageNumbers: [String]?
 
@@ -73707,8 +73867,21 @@ public class DescribeKnowledgeBaseFileShardsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.captions != nil {
+                map["Captions"] = self.captions!
+            }
+            if self.docItems != nil {
+                map["DocItems"] = self.docItems!
+            }
             if self.headings != nil {
                 map["Headings"] = self.headings!
+            }
+            if self.imageResources != nil {
+                var tmp : [Any] = []
+                for k in self.imageResources! {
+                    tmp.append(k.toMap())
+                }
+                map["ImageResources"] = tmp
             }
             if self.pageNumbers != nil {
                 map["PageNumbers"] = self.pageNumbers!
@@ -73724,8 +73897,27 @@ public class DescribeKnowledgeBaseFileShardsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Captions"] as? [String] {
+                self.captions = value
+            }
+            if let value = dict["DocItems"] as? [String] {
+                self.docItems = value
+            }
             if let value = dict["Headings"] as? [String] {
                 self.headings = value
+            }
+            if let value = dict["ImageResources"] as? [Any?] {
+                var tmp : [DescribeKnowledgeBaseFileShardsResponseBody.Shards.ImageResources] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeKnowledgeBaseFileShardsResponseBody.Shards.ImageResources()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.imageResources = tmp
             }
             if let value = dict["PageNumbers"] as? [String] {
                 self.pageNumbers = value
@@ -100202,6 +100394,10 @@ public class ModifyAIDBClusterModelRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var restartMode: String?
+
+    public var workerBatchSize: Int64?
+
     public override init() {
         super.init()
     }
@@ -100231,6 +100427,12 @@ public class ModifyAIDBClusterModelRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.restartMode != nil {
+            map["RestartMode"] = self.restartMode!
+        }
+        if self.workerBatchSize != nil {
+            map["WorkerBatchSize"] = self.workerBatchSize!
+        }
         return map
     }
 
@@ -100250,6 +100452,12 @@ public class ModifyAIDBClusterModelRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["RestartMode"] as? String {
+            self.restartMode = value
+        }
+        if let value = dict["WorkerBatchSize"] as? Int64 {
+            self.workerBatchSize = value
         }
     }
 }
@@ -122643,6 +122851,8 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
 
     public var syncIntervalMinutes: Int32?
 
+    public var userAccessToken: String?
+
     public var userId: String?
 
     public override init() {
@@ -122686,6 +122896,9 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
         if self.syncIntervalMinutes != nil {
             map["SyncIntervalMinutes"] = self.syncIntervalMinutes!
         }
+        if self.userAccessToken != nil {
+            map["UserAccessToken"] = self.userAccessToken!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -122720,6 +122933,9 @@ public class UpdateKBSyncLinkRequest : Tea.TeaModel {
         }
         if let value = dict["SyncIntervalMinutes"] as? Int32 {
             self.syncIntervalMinutes = value
+        }
+        if let value = dict["UserAccessToken"] as? String {
+            self.userAccessToken = value
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
