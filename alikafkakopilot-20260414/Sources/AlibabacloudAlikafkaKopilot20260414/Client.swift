@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("alikafkakopilot", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func kopilotChatStreamWithOptions(_ request: KopilotChatStreamRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> KopilotChatStreamResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.message)) {
             query["Message"] = request.message ?? "";
         }
@@ -119,6 +122,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.taskCursor)) {
+            query["TaskCursor"] = request.taskCursor ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskPageSize)) {
+            query["TaskPageSize"] = request.taskPageSize!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -147,6 +156,15 @@ open class Client : AlibabacloudOpenApi.Client {
     public func kopilotListConversationsWithOptions(_ request: KopilotListConversationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> KopilotListConversationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destinationCursor)) {
+            query["DestinationCursor"] = request.destinationCursor ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationPageSize)) {
+            query["DestinationPageSize"] = request.destinationPageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.includeAutomationOverview)) {
+            query["IncludeAutomationOverview"] = request.includeAutomationOverview!;
+        }
         if (!TeaUtils.Client.isUnset(request.page)) {
             query["Page"] = request.page!;
         }
@@ -155,6 +173,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.size)) {
             query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskCursor)) {
+            query["TaskCursor"] = request.taskCursor ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskPageSize)) {
+            query["TaskPageSize"] = request.taskPageSize!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
