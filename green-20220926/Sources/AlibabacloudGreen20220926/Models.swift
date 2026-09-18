@@ -23102,6 +23102,8 @@ public class ListAppConfigsResponseBody : Tea.TeaModel {
 
         public var customConfig: [String: Any]?
 
+        public var customOrderNum: Int32?
+
         public var deployStatus: String?
 
         public var gmtModified: String?
@@ -23139,6 +23141,9 @@ public class ListAppConfigsResponseBody : Tea.TeaModel {
             if self.customConfig != nil {
                 map["CustomConfig"] = self.customConfig!
             }
+            if self.customOrderNum != nil {
+                map["CustomOrderNum"] = self.customOrderNum!
+            }
             if self.deployStatus != nil {
                 map["DeployStatus"] = self.deployStatus!
             }
@@ -23173,6 +23178,9 @@ public class ListAppConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CustomConfig"] as? [String: Any] {
                 self.customConfig = value
+            }
+            if let value = dict["CustomOrderNum"] as? Int32 {
+                self.customOrderNum = value
             }
             if let value = dict["DeployStatus"] as? String {
                 self.deployStatus = value
@@ -26862,6 +26870,8 @@ public class ModifyAppAgentResponse : Tea.TeaModel {
 public class ModifyAppInfoRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var customOrderNum: Int32?
+
     public var name: String?
 
     public var regionId: String?
@@ -26885,6 +26895,9 @@ public class ModifyAppInfoRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.customOrderNum != nil {
+            map["CustomOrderNum"] = self.customOrderNum!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -26901,6 +26914,9 @@ public class ModifyAppInfoRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppId"] as? String {
             self.appId = value
+        }
+        if let value = dict["CustomOrderNum"] as? Int32 {
+            self.customOrderNum = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
