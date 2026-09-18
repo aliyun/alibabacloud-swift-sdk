@@ -474,6 +474,8 @@ public class ExperimentConfig : Tea.TeaModel {
 
     public var requestBodyTemplate: String?
 
+    public var requestHeaderTemplate: String?
+
     public var requestMethod: String?
 
     public override init() {
@@ -519,6 +521,9 @@ public class ExperimentConfig : Tea.TeaModel {
         if self.requestBodyTemplate != nil {
             map["requestBodyTemplate"] = self.requestBodyTemplate!
         }
+        if self.requestHeaderTemplate != nil {
+            map["requestHeaderTemplate"] = self.requestHeaderTemplate!
+        }
         if self.requestMethod != nil {
             map["requestMethod"] = self.requestMethod!
         }
@@ -562,6 +567,9 @@ public class ExperimentConfig : Tea.TeaModel {
         }
         if let value = dict["requestBodyTemplate"] as? String {
             self.requestBodyTemplate = value
+        }
+        if let value = dict["requestHeaderTemplate"] as? String {
+            self.requestHeaderTemplate = value
         }
         if let value = dict["requestMethod"] as? String {
             self.requestMethod = value
@@ -949,6 +957,8 @@ public class IndexJsonKey : Tea.TeaModel {
 public class IndexKey : Tea.TeaModel {
     public var chn: Bool?
 
+    public var description_: String?
+
     public var embedding: String?
 
     public var jsonKeys: [String: IndexJsonKey]?
@@ -972,6 +982,9 @@ public class IndexKey : Tea.TeaModel {
         if self.chn != nil {
             map["chn"] = self.chn!
         }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
         if self.embedding != nil {
             map["embedding"] = self.embedding!
         }
@@ -992,6 +1005,9 @@ public class IndexKey : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["chn"] as? Bool {
             self.chn = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
         if let value = dict["embedding"] as? String {
             self.embedding = value
