@@ -4395,6 +4395,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.stopped)) {
             body["stopped"] = request.stopped!;
         }
+        if (!TeaUtils.Client.isUnset(request.tableBlackList)) {
+            body["tableBlackList"] = request.tableBlackList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tableWhiteList)) {
+            body["tableWhiteList"] = request.tableWhiteList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.value)) {
             body["value"] = request.value ?? "";
         }

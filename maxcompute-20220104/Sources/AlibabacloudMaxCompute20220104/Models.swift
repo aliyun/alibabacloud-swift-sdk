@@ -37509,6 +37509,10 @@ public class UpdateMmsTimerRequest : Tea.TeaModel {
 
     public var stopped: Bool?
 
+    public var tableBlackList: [String]?
+
+    public var tableWhiteList: [String]?
+
     public var value: String?
 
     public override init() {
@@ -37531,6 +37535,12 @@ public class UpdateMmsTimerRequest : Tea.TeaModel {
         if self.stopped != nil {
             map["stopped"] = self.stopped!
         }
+        if self.tableBlackList != nil {
+            map["tableBlackList"] = self.tableBlackList!
+        }
+        if self.tableWhiteList != nil {
+            map["tableWhiteList"] = self.tableWhiteList!
+        }
         if self.value != nil {
             map["value"] = self.value!
         }
@@ -37544,6 +37554,12 @@ public class UpdateMmsTimerRequest : Tea.TeaModel {
         }
         if let value = dict["stopped"] as? Bool {
             self.stopped = value
+        }
+        if let value = dict["tableBlackList"] as? [String] {
+            self.tableBlackList = value
+        }
+        if let value = dict["tableWhiteList"] as? [String] {
+            self.tableWhiteList = value
         }
         if let value = dict["value"] as? String {
             self.value = value
