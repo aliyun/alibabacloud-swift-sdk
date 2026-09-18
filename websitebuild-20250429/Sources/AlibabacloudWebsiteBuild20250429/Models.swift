@@ -909,6 +909,10 @@ public class AppInstanceProfile : Tea.TeaModel {
 
     public var bizId: String?
 
+    public var caseAuditStatus: String?
+
+    public var caseShelfStatus: String?
+
     public var chatbiTaskId: String?
 
     public var chatbiTaskStatus: String?
@@ -972,6 +976,12 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if self.bizId != nil {
             map["BizId"] = self.bizId!
+        }
+        if self.caseAuditStatus != nil {
+            map["CaseAuditStatus"] = self.caseAuditStatus!
+        }
+        if self.caseShelfStatus != nil {
+            map["CaseShelfStatus"] = self.caseShelfStatus!
         }
         if self.chatbiTaskId != nil {
             map["ChatbiTaskId"] = self.chatbiTaskId!
@@ -1046,6 +1056,12 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["CaseAuditStatus"] as? String {
+            self.caseAuditStatus = value
+        }
+        if let value = dict["CaseShelfStatus"] as? String {
+            self.caseShelfStatus = value
         }
         if let value = dict["ChatbiTaskId"] as? String {
             self.chatbiTaskId = value
@@ -9183,6 +9199,10 @@ public class CreateAppLlmApiKeyForPartnerResponse : Tea.TeaModel {
 public class CreateAppNotificationSceneRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var butlerChannelTypesJson: String?
+
+    public var butlerFieldsJson: String?
+
     public var channelsJson: String?
 
     public var description_: String?
@@ -9221,6 +9241,12 @@ public class CreateAppNotificationSceneRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizId != nil {
             map["BizId"] = self.bizId!
+        }
+        if self.butlerChannelTypesJson != nil {
+            map["ButlerChannelTypesJson"] = self.butlerChannelTypesJson!
+        }
+        if self.butlerFieldsJson != nil {
+            map["ButlerFieldsJson"] = self.butlerFieldsJson!
         }
         if self.channelsJson != nil {
             map["ChannelsJson"] = self.channelsJson!
@@ -9262,6 +9288,12 @@ public class CreateAppNotificationSceneRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["ButlerChannelTypesJson"] as? String {
+            self.butlerChannelTypesJson = value
+        }
+        if let value = dict["ButlerFieldsJson"] as? String {
+            self.butlerFieldsJson = value
         }
         if let value = dict["ChannelsJson"] as? String {
             self.channelsJson = value
@@ -12085,6 +12117,8 @@ public class DeleteAppDomainCertificateResponse : Tea.TeaModel {
 public class DeleteAppDomainRedirectRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var domainName: String?
+
     public var recordId: Int64?
 
     public override init() {
@@ -12104,6 +12138,9 @@ public class DeleteAppDomainRedirectRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
         if self.recordId != nil {
             map["RecordId"] = self.recordId!
         }
@@ -12114,6 +12151,9 @@ public class DeleteAppDomainRedirectRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["DomainName"] as? String {
+            self.domainName = value
         }
         if let value = dict["RecordId"] as? Int64 {
             self.recordId = value
@@ -32847,6 +32887,8 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public var qualification: ListAppInstanceDomainsResponseBody.Module.Data.Qualification?
 
+            public var redirectDomain: String?
+
             public var resolution: ListAppInstanceDomainsResponseBody.Module.Data.Resolution?
 
             public var verification: ListAppInstanceDomainsResponseBody.Module.Data.Verification?
@@ -32908,6 +32950,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 if self.qualification != nil {
                     map["Qualification"] = self.qualification?.toMap()
                 }
+                if self.redirectDomain != nil {
+                    map["RedirectDomain"] = self.redirectDomain!
+                }
                 if self.resolution != nil {
                     map["Resolution"] = self.resolution?.toMap()
                 }
@@ -32964,6 +33009,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     var model = ListAppInstanceDomainsResponseBody.Module.Data.Qualification()
                     model.fromMap(value)
                     self.qualification = model
+                }
+                if let value = dict["RedirectDomain"] as? String {
+                    self.redirectDomain = value
                 }
                 if let value = dict["Resolution"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Data.Resolution()
