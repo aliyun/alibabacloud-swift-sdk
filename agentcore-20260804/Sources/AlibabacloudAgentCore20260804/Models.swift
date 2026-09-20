@@ -60,6 +60,100 @@ public class DataResourceValue : Tea.TeaModel {
     }
 }
 
+public class DataI18nValue : Tea.TeaModel {
+    public var description_: String?
+
+    public var name: String?
+
+    public var readme: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.readme != nil {
+            map["readme"] = self.readme!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["readme"] as? String {
+            self.readme = value
+        }
+    }
+}
+
+public class ItemsI18nValue : Tea.TeaModel {
+    public var description_: String?
+
+    public var name: String?
+
+    public var readme: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.readme != nil {
+            map["readme"] = self.readme!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["readme"] as? String {
+            self.readme = value
+        }
+    }
+}
+
 public class BatchDeleteModelsRequest : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public var modelIds: [String]?
@@ -23439,6 +23533,8 @@ public class GetMcpMarketItemResponseBody : Tea.TeaModel {
 
         public var displayMetadata: [String: Any]?
 
+        public var i18n: [String: DataI18nValue]?
+
         public var iconUrl: String?
 
         public var installCount: Int64?
@@ -23483,6 +23579,13 @@ public class GetMcpMarketItemResponseBody : Tea.TeaModel {
             }
             if self.displayMetadata != nil {
                 map["displayMetadata"] = self.displayMetadata!
+            }
+            if self.i18n != nil {
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.i18n! {
+                    tmp[k] = v.toMap()
+                }
+                map["i18n"] = tmp
             }
             if self.iconUrl != nil {
                 map["iconUrl"] = self.iconUrl!
@@ -23530,6 +23633,17 @@ public class GetMcpMarketItemResponseBody : Tea.TeaModel {
             }
             if let value = dict["displayMetadata"] as? [String: Any] {
                 self.displayMetadata = value
+            }
+            if let value = dict["i18n"] as? [String: Any?] {
+                var tmp : [String: DataI18nValue] = [:]
+                for (k, v) in value {
+                    if v != nil {
+                        var model = DataI18nValue()
+                        model.fromMap(v as? [String: Any?])
+                        tmp[k] = model
+                    }
+                }
+                self.i18n = tmp
             }
             if let value = dict["iconUrl"] as? String {
                 self.iconUrl = value
@@ -28741,6 +28855,8 @@ public class InstallMcpMarketItemRequest : Tea.TeaModel {
 
         public var auth: InstallMcpMarketItemRequest.Body.Auth?
 
+        public var customTags: [String]?
+
         public var deploymentConfig: InstallMcpMarketItemRequest.Body.DeploymentConfig?
 
         public var description_: String?
@@ -28775,6 +28891,9 @@ public class InstallMcpMarketItemRequest : Tea.TeaModel {
             if self.auth != nil {
                 map["auth"] = self.auth?.toMap()
             }
+            if self.customTags != nil {
+                map["customTags"] = self.customTags!
+            }
             if self.deploymentConfig != nil {
                 map["deploymentConfig"] = self.deploymentConfig?.toMap()
             }
@@ -28805,6 +28924,9 @@ public class InstallMcpMarketItemRequest : Tea.TeaModel {
                 var model = InstallMcpMarketItemRequest.Body.Auth()
                 model.fromMap(value)
                 self.auth = model
+            }
+            if let value = dict["customTags"] as? [String] {
+                self.customTags = value
             }
             if let value = dict["deploymentConfig"] as? [String: Any?] {
                 var model = InstallMcpMarketItemRequest.Body.DeploymentConfig()
@@ -34076,6 +34198,8 @@ public class ListMcpMarketItemsResponseBody : Tea.TeaModel {
 
         public var displayMetadata: [String: Any]?
 
+        public var i18n: [String: ItemsI18nValue]?
+
         public var iconUrl: String?
 
         public var installCount: Int64?
@@ -34120,6 +34244,13 @@ public class ListMcpMarketItemsResponseBody : Tea.TeaModel {
             }
             if self.displayMetadata != nil {
                 map["displayMetadata"] = self.displayMetadata!
+            }
+            if self.i18n != nil {
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.i18n! {
+                    tmp[k] = v.toMap()
+                }
+                map["i18n"] = tmp
             }
             if self.iconUrl != nil {
                 map["iconUrl"] = self.iconUrl!
@@ -34167,6 +34298,17 @@ public class ListMcpMarketItemsResponseBody : Tea.TeaModel {
             }
             if let value = dict["displayMetadata"] as? [String: Any] {
                 self.displayMetadata = value
+            }
+            if let value = dict["i18n"] as? [String: Any?] {
+                var tmp : [String: ItemsI18nValue] = [:]
+                for (k, v) in value {
+                    if v != nil {
+                        var model = ItemsI18nValue()
+                        model.fromMap(v as? [String: Any?])
+                        tmp[k] = model
+                    }
+                }
+                self.i18n = tmp
             }
             if let value = dict["iconUrl"] as? String {
                 self.iconUrl = value
@@ -34614,6 +34756,8 @@ public class ListMcpToolsResponse : Tea.TeaModel {
 }
 
 public class ListMcpsRequest : Tea.TeaModel {
+    public var customTag: String?
+
     public var maxResults: Int32?
 
     public var name: String?
@@ -34640,6 +34784,9 @@ public class ListMcpsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customTag != nil {
+            map["customTag"] = self.customTag!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -34663,6 +34810,9 @@ public class ListMcpsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["customTag"] as? String {
+            self.customTag = value
+        }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
         }

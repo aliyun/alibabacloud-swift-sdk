@@ -2642,6 +2642,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listMcpsWithOptions(_ workspaceId: String, _ request: ListMcpsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMcpsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customTag)) {
+            query["customTag"] = request.customTag ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }
