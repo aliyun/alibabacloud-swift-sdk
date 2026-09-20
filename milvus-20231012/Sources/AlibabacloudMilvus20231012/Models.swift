@@ -5387,6 +5387,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var proxyPort: Int32?
 
+            public var resourceOwnerId: String?
+
             public var totalCuNum: Int32?
 
             public var totalDiskSize: Int32?
@@ -5424,6 +5426,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.proxyPort != nil {
                     map["ProxyPort"] = self.proxyPort!
                 }
+                if self.resourceOwnerId != nil {
+                    map["ResourceOwnerId"] = self.resourceOwnerId!
+                }
                 if self.totalCuNum != nil {
                     map["TotalCuNum"] = self.totalCuNum!
                 }
@@ -5459,6 +5464,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ProxyPort"] as? Int32 {
                     self.proxyPort = value
+                }
+                if let value = dict["ResourceOwnerId"] as? String {
+                    self.resourceOwnerId = value
                 }
                 if let value = dict["TotalCuNum"] as? Int32 {
                     self.totalCuNum = value
@@ -5534,6 +5542,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var resourceOwnerId: String?
+
         public var runningTime: Int32?
 
         public var sgId: String?
@@ -5606,6 +5616,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceOwnerId != nil {
+                map["ResourceOwnerId"] = self.resourceOwnerId!
             }
             if self.runningTime != nil {
                 map["RunningTime"] = self.runningTime!
@@ -5683,6 +5696,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceGroupId"] as? String {
                 self.resourceGroupId = value
+            }
+            if let value = dict["ResourceOwnerId"] as? String {
+                self.resourceOwnerId = value
             }
             if let value = dict["RunningTime"] as? Int32 {
                 self.runningTime = value
