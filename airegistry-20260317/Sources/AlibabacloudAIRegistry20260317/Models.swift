@@ -1418,11 +1418,17 @@ public class GetNamespaceResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var ipWhitelist: String?
+
         public var name: String?
 
         public var namespaceId: String?
 
         public var promptCount: Int32?
+
+        public var publicAccessEnabled: Bool?
+
+        public var publicDomain: String?
 
         public var scanPolicy: String?
 
@@ -1454,6 +1460,9 @@ public class GetNamespaceResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.ipWhitelist != nil {
+                map["IpWhitelist"] = self.ipWhitelist!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -1462,6 +1471,12 @@ public class GetNamespaceResponseBody : Tea.TeaModel {
             }
             if self.promptCount != nil {
                 map["PromptCount"] = self.promptCount!
+            }
+            if self.publicAccessEnabled != nil {
+                map["PublicAccessEnabled"] = self.publicAccessEnabled!
+            }
+            if self.publicDomain != nil {
+                map["PublicDomain"] = self.publicDomain!
             }
             if self.scanPolicy != nil {
                 map["ScanPolicy"] = self.scanPolicy!
@@ -1489,6 +1504,9 @@ public class GetNamespaceResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["IpWhitelist"] as? String {
+                self.ipWhitelist = value
+            }
             if let value = dict["Name"] as? String {
                 self.name = value
             }
@@ -1497,6 +1515,12 @@ public class GetNamespaceResponseBody : Tea.TeaModel {
             }
             if let value = dict["PromptCount"] as? Int32 {
                 self.promptCount = value
+            }
+            if let value = dict["PublicAccessEnabled"] as? Bool {
+                self.publicAccessEnabled = value
+            }
+            if let value = dict["PublicDomain"] as? String {
+                self.publicDomain = value
             }
             if let value = dict["ScanPolicy"] as? String {
                 self.scanPolicy = value
@@ -2373,6 +2397,8 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
 
         public var downloadCount: Int64?
 
+        public var draftMode: String?
+
         public var editingVersion: String?
 
         public var enable: Bool?
@@ -2421,6 +2447,9 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
             }
             if self.downloadCount != nil {
                 map["DownloadCount"] = self.downloadCount!
+            }
+            if self.draftMode != nil {
+                map["DraftMode"] = self.draftMode!
             }
             if self.editingVersion != nil {
                 map["EditingVersion"] = self.editingVersion!
@@ -2478,6 +2507,9 @@ public class GetSkillDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["DownloadCount"] as? Int64 {
                 self.downloadCount = value
+            }
+            if let value = dict["DraftMode"] as? String {
+                self.draftMode = value
             }
             if let value = dict["EditingVersion"] as? String {
                 self.editingVersion = value
@@ -3081,11 +3113,17 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var ipWhitelist: String?
+
             public var name: String?
 
             public var namespaceId: String?
 
             public var promptCount: Int32?
+
+            public var publicAccessEnabled: Bool?
+
+            public var publicDomain: String?
 
             public var skillCount: Int32?
 
@@ -3115,6 +3153,9 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.ipWhitelist != nil {
+                    map["IpWhitelist"] = self.ipWhitelist!
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -3123,6 +3164,12 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
                 }
                 if self.promptCount != nil {
                     map["PromptCount"] = self.promptCount!
+                }
+                if self.publicAccessEnabled != nil {
+                    map["PublicAccessEnabled"] = self.publicAccessEnabled!
+                }
+                if self.publicDomain != nil {
+                    map["PublicDomain"] = self.publicDomain!
                 }
                 if self.skillCount != nil {
                     map["SkillCount"] = self.skillCount!
@@ -3147,6 +3194,9 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
                 if let value = dict["Description"] as? String {
                     self.description_ = value
                 }
+                if let value = dict["IpWhitelist"] as? String {
+                    self.ipWhitelist = value
+                }
                 if let value = dict["Name"] as? String {
                     self.name = value
                 }
@@ -3155,6 +3205,12 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["PromptCount"] as? Int32 {
                     self.promptCount = value
+                }
+                if let value = dict["PublicAccessEnabled"] as? Bool {
+                    self.publicAccessEnabled = value
+                }
+                if let value = dict["PublicDomain"] as? String {
+                    self.publicDomain = value
                 }
                 if let value = dict["SkillCount"] as? Int32 {
                     self.skillCount = value
@@ -4042,6 +4098,8 @@ public class ListSkillsResponseBody : Tea.TeaModel {
 
             public var downloadCount: Int64?
 
+            public var draftMode: String?
+
             public var editingVersion: String?
 
             public var enable: Bool?
@@ -4088,6 +4146,9 @@ public class ListSkillsResponseBody : Tea.TeaModel {
                 }
                 if self.downloadCount != nil {
                     map["DownloadCount"] = self.downloadCount!
+                }
+                if self.draftMode != nil {
+                    map["DraftMode"] = self.draftMode!
                 }
                 if self.editingVersion != nil {
                     map["EditingVersion"] = self.editingVersion!
@@ -4138,6 +4199,9 @@ public class ListSkillsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DownloadCount"] as? Int64 {
                     self.downloadCount = value
+                }
+                if let value = dict["DraftMode"] as? String {
+                    self.draftMode = value
                 }
                 if let value = dict["EditingVersion"] as? String {
                     self.editingVersion = value
@@ -6063,6 +6127,8 @@ public class UploadSkillViaOssRequest : Tea.TeaModel {
 
     public var overwrite: Bool?
 
+    public var targetVersion: String?
+
     public override init() {
         super.init()
     }
@@ -6089,6 +6155,9 @@ public class UploadSkillViaOssRequest : Tea.TeaModel {
         if self.overwrite != nil {
             map["Overwrite"] = self.overwrite!
         }
+        if self.targetVersion != nil {
+            map["TargetVersion"] = self.targetVersion!
+        }
         return map
     }
 
@@ -6105,6 +6174,9 @@ public class UploadSkillViaOssRequest : Tea.TeaModel {
         }
         if let value = dict["Overwrite"] as? Bool {
             self.overwrite = value
+        }
+        if let value = dict["TargetVersion"] as? String {
+            self.targetVersion = value
         }
     }
 }
