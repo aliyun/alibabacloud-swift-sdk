@@ -8831,6 +8831,60 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SingleZoneRiskAlert : Tea.TeaModel {
+        public var confirmDate: String?
+
+        public var dispositionType: String?
+
+        public var needAlert: Bool?
+
+        public var plannedCompletionDate: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.confirmDate != nil {
+                map["ConfirmDate"] = self.confirmDate!
+            }
+            if self.dispositionType != nil {
+                map["DispositionType"] = self.dispositionType!
+            }
+            if self.needAlert != nil {
+                map["NeedAlert"] = self.needAlert!
+            }
+            if self.plannedCompletionDate != nil {
+                map["PlannedCompletionDate"] = self.plannedCompletionDate!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfirmDate"] as? String {
+                self.confirmDate = value
+            }
+            if let value = dict["DispositionType"] as? String {
+                self.dispositionType = value
+            }
+            if let value = dict["NeedAlert"] as? Bool {
+                self.needAlert = value
+            }
+            if let value = dict["PlannedCompletionDate"] as? String {
+                self.plannedCompletionDate = value
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public class Tag : Tea.TeaModel {
             public var key: String?
@@ -8957,6 +9011,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
     public var expireTimeUTC: String?
 
+    public var initialRootPassword: String?
+
     public var instanceId: String?
 
     public var instanceName: String?
@@ -9007,6 +9063,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var singleZoneRiskAlert: DescribeInstanceResponseBody.SingleZoneRiskAlert?
+
     public var status: String?
 
     public var tags: DescribeInstanceResponseBody.Tags?
@@ -9032,6 +9090,7 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.needUpgradeComps?.validate()
+        try self.singleZoneRiskAlert?.validate()
         try self.tags?.validate()
     }
 
@@ -9102,6 +9161,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         }
         if self.expireTimeUTC != nil {
             map["ExpireTimeUTC"] = self.expireTimeUTC!
+        }
+        if self.initialRootPassword != nil {
+            map["InitialRootPassword"] = self.initialRootPassword!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -9177,6 +9239,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.singleZoneRiskAlert != nil {
+            map["SingleZoneRiskAlert"] = self.singleZoneRiskAlert?.toMap()
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -9270,6 +9335,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         if let value = dict["ExpireTimeUTC"] as? String {
             self.expireTimeUTC = value
         }
+        if let value = dict["InitialRootPassword"] as? String {
+            self.initialRootPassword = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -9346,6 +9414,11 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SingleZoneRiskAlert"] as? [String: Any?] {
+            var model = DescribeInstanceResponseBody.SingleZoneRiskAlert()
+            model.fromMap(value)
+            self.singleZoneRiskAlert = model
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -12115,6 +12188,8 @@ public class DescribeMultiZoneClusterResponseBody : Tea.TeaModel {
 
     public var expireTimeUTC: String?
 
+    public var initialRootPassword: String?
+
     public var instanceId: String?
 
     public var instanceName: String?
@@ -12255,6 +12330,9 @@ public class DescribeMultiZoneClusterResponseBody : Tea.TeaModel {
         }
         if self.expireTimeUTC != nil {
             map["ExpireTimeUTC"] = self.expireTimeUTC!
+        }
+        if self.initialRootPassword != nil {
+            map["InitialRootPassword"] = self.initialRootPassword!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -12419,6 +12497,9 @@ public class DescribeMultiZoneClusterResponseBody : Tea.TeaModel {
         }
         if let value = dict["ExpireTimeUTC"] as? String {
             self.expireTimeUTC = value
+        }
+        if let value = dict["InitialRootPassword"] as? String {
+            self.initialRootPassword = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
