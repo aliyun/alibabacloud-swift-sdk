@@ -14737,7 +14737,75 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class FeatureStoreInfo : Tea.TeaModel {
+        public var featureDBStatus: String?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.featureDBStatus != nil {
+                map["FeatureDBStatus"] = self.featureDBStatus!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FeatureDBStatus"] as? String {
+                self.featureDBStatus = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+        }
+    }
     public class OperatingTool : Tea.TeaModel {
+        public var isEnable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isEnable != nil {
+                map["IsEnable"] = self.isEnable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["IsEnable"] as? Bool {
+                self.isEnable = value
+            }
+        }
+    }
+    public class RecommendCustomization : Tea.TeaModel {
         public var isEnable: Bool?
 
         public override init() {
@@ -14775,6 +14843,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var expiredTime: String?
 
+    public var featureStoreInfo: GetInstanceResponseBody.FeatureStoreInfo?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -14782,6 +14852,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public var instanceId: String?
 
     public var operatingTool: GetInstanceResponseBody.OperatingTool?
+
+    public var recommendCustomization: GetInstanceResponseBody.RecommendCustomization?
 
     public var regionId: String?
 
@@ -14802,7 +14874,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.config?.validate()
+        try self.featureStoreInfo?.validate()
         try self.operatingTool?.validate()
+        try self.recommendCustomization?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -14819,6 +14893,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         if self.expiredTime != nil {
             map["ExpiredTime"] = self.expiredTime!
         }
+        if self.featureStoreInfo != nil {
+            map["FeatureStoreInfo"] = self.featureStoreInfo?.toMap()
+        }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
@@ -14830,6 +14907,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.operatingTool != nil {
             map["OperatingTool"] = self.operatingTool?.toMap()
+        }
+        if self.recommendCustomization != nil {
+            map["RecommendCustomization"] = self.recommendCustomization?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -14862,6 +14942,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         if let value = dict["ExpiredTime"] as? String {
             self.expiredTime = value
         }
+        if let value = dict["FeatureStoreInfo"] as? [String: Any?] {
+            var model = GetInstanceResponseBody.FeatureStoreInfo()
+            model.fromMap(value)
+            self.featureStoreInfo = model
+        }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
         }
@@ -14875,6 +14960,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             var model = GetInstanceResponseBody.OperatingTool()
             model.fromMap(value)
             self.operatingTool = model
+        }
+        if let value = dict["RecommendCustomization"] as? [String: Any?] {
+            var model = GetInstanceResponseBody.RecommendCustomization()
+            model.fromMap(value)
+            self.recommendCustomization = model
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
