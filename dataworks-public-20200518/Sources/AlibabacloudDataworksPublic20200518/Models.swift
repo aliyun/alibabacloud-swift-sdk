@@ -24751,6 +24751,44 @@ public class GetBaselineResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class TopicSlowConfig : Tea.TeaModel {
+                public var minOver: Int32?
+
+                public var overFactor: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.minOver != nil {
+                        map["MinOver"] = self.minOver!
+                    }
+                    if self.overFactor != nil {
+                        map["OverFactor"] = self.overFactor!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MinOver"] as? Int32 {
+                        self.minOver = value
+                    }
+                    if let value = dict["OverFactor"] as? Double {
+                        self.overFactor = value
+                    }
+                }
+            }
             public var alertInterval: Int32?
 
             public var alertMaximum: Int32?
@@ -24771,6 +24809,8 @@ public class GetBaselineResponseBody : Tea.TeaModel {
 
             public var silenceStartTime: String?
 
+            public var topicSlowConfig: GetBaselineResponseBody.Data.AlertSettings.TopicSlowConfig?
+
             public var topicTypes: [String]?
 
             public var webhooks: [String]?
@@ -24785,6 +24825,7 @@ public class GetBaselineResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.topicSlowConfig?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -24822,6 +24863,9 @@ public class GetBaselineResponseBody : Tea.TeaModel {
                 }
                 if self.silenceStartTime != nil {
                     map["SilenceStartTime"] = self.silenceStartTime!
+                }
+                if self.topicSlowConfig != nil {
+                    map["TopicSlowConfig"] = self.topicSlowConfig?.toMap()
                 }
                 if self.topicTypes != nil {
                     map["TopicTypes"] = self.topicTypes!
@@ -24873,6 +24917,11 @@ public class GetBaselineResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SilenceStartTime"] as? String {
                     self.silenceStartTime = value
+                }
+                if let value = dict["TopicSlowConfig"] as? [String: Any?] {
+                    var model = GetBaselineResponseBody.Data.AlertSettings.TopicSlowConfig()
+                    model.fromMap(value)
+                    self.topicSlowConfig = model
                 }
                 if let value = dict["TopicTypes"] as? [String] {
                     self.topicTypes = value
@@ -84106,6 +84155,44 @@ public class UpdateBaselineRequest : Tea.TeaModel {
                 }
             }
         }
+        public class TopicSlowConfig : Tea.TeaModel {
+            public var minOver: Int32?
+
+            public var overFactor: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.minOver != nil {
+                    map["MinOver"] = self.minOver!
+                }
+                if self.overFactor != nil {
+                    map["OverFactor"] = self.overFactor!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MinOver"] as? Int32 {
+                    self.minOver = value
+                }
+                if let value = dict["OverFactor"] as? Double {
+                    self.overFactor = value
+                }
+            }
+        }
         public var alertInterval: Int32?
 
         public var alertMaximum: Int32?
@@ -84126,6 +84213,8 @@ public class UpdateBaselineRequest : Tea.TeaModel {
 
         public var silenceStartTime: String?
 
+        public var topicSlowConfig: UpdateBaselineRequest.AlertSettings.TopicSlowConfig?
+
         public var topicTypes: [String]?
 
         public var webhooks: [String]?
@@ -84140,6 +84229,7 @@ public class UpdateBaselineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.topicSlowConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -84177,6 +84267,9 @@ public class UpdateBaselineRequest : Tea.TeaModel {
             }
             if self.silenceStartTime != nil {
                 map["SilenceStartTime"] = self.silenceStartTime!
+            }
+            if self.topicSlowConfig != nil {
+                map["TopicSlowConfig"] = self.topicSlowConfig?.toMap()
             }
             if self.topicTypes != nil {
                 map["TopicTypes"] = self.topicTypes!
@@ -84228,6 +84321,11 @@ public class UpdateBaselineRequest : Tea.TeaModel {
             }
             if let value = dict["SilenceStartTime"] as? String {
                 self.silenceStartTime = value
+            }
+            if let value = dict["TopicSlowConfig"] as? [String: Any?] {
+                var model = UpdateBaselineRequest.AlertSettings.TopicSlowConfig()
+                model.fromMap(value)
+                self.topicSlowConfig = model
             }
             if let value = dict["TopicTypes"] as? [String] {
                 self.topicTypes = value
