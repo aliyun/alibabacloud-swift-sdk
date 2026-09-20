@@ -9056,6 +9056,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
             }
             public var enableDownloadPrivilege: Bool?
 
+            public var enableNamespacePrivilege: Bool?
+
             public var labelSecurity: Bool?
 
             public var objectCreatorHasAccessPermission: Bool?
@@ -9086,6 +9088,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 if self.enableDownloadPrivilege != nil {
                     map["enableDownloadPrivilege"] = self.enableDownloadPrivilege!
                 }
+                if self.enableNamespacePrivilege != nil {
+                    map["enableNamespacePrivilege"] = self.enableNamespacePrivilege!
+                }
                 if self.labelSecurity != nil {
                     map["labelSecurity"] = self.labelSecurity!
                 }
@@ -9111,6 +9116,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["enableDownloadPrivilege"] as? Bool {
                     self.enableDownloadPrivilege = value
+                }
+                if let value = dict["enableNamespacePrivilege"] as? Bool {
+                    self.enableNamespacePrivilege = value
                 }
                 if let value = dict["labelSecurity"] as? Bool {
                     self.labelSecurity = value
