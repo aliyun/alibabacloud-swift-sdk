@@ -825,6 +825,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public var outputLevel: Int32?
 
+            public var phrase: [String: Any]?
+
             public var phraseId: String?
 
             public var profanityFilterEnabled: Bool?
@@ -867,6 +869,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 if self.outputLevel != nil {
                     map["OutputLevel"] = self.outputLevel!
                 }
+                if self.phrase != nil {
+                    map["Phrase"] = self.phrase!
+                }
                 if self.phraseId != nil {
                     map["PhraseId"] = self.phraseId!
                 }
@@ -903,6 +908,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
                 if let value = dict["OutputLevel"] as? Int32 {
                     self.outputLevel = value
+                }
+                if let value = dict["Phrase"] as? [String: Any] {
+                    self.phrase = value
                 }
                 if let value = dict["PhraseId"] as? String {
                     self.phraseId = value
