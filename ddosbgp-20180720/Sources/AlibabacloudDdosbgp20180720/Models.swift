@@ -4068,6 +4068,8 @@ public class DescribeNetworkLayerInterceptsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var interceptModule: String?
+
     public var networkProtocol: String?
 
     public var page: Int64?
@@ -4108,6 +4110,9 @@ public class DescribeNetworkLayerInterceptsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.interceptModule != nil {
+            map["InterceptModule"] = self.interceptModule!
+        }
         if self.networkProtocol != nil {
             map["NetworkProtocol"] = self.networkProtocol!
         }
@@ -4145,6 +4150,9 @@ public class DescribeNetworkLayerInterceptsRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["InterceptModule"] as? String {
+            self.interceptModule = value
         }
         if let value = dict["NetworkProtocol"] as? String {
             self.networkProtocol = value
@@ -7970,6 +7978,8 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
 
         public var region: String?
 
+        public var status: String?
+
         public override init() {
             super.init()
         }
@@ -8014,6 +8024,9 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
             if self.region != nil {
                 map["Region"] = self.region!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             return map
         }
 
@@ -8048,6 +8061,9 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
             }
             if let value = dict["Region"] as? String {
                 self.region = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
         }
     }
