@@ -334,6 +334,8 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
     }
     public var appInstanceGroupId: String?
 
+    public var appInstanceGroupSetId: String?
+
     public var appInstancePersistentId: String?
 
     public var authorizeUserGroupIds: [String]?
@@ -368,6 +370,9 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
         if self.appInstanceGroupId != nil {
             map["AppInstanceGroupId"] = self.appInstanceGroupId!
         }
+        if self.appInstanceGroupSetId != nil {
+            map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+        }
         if self.appInstancePersistentId != nil {
             map["AppInstancePersistentId"] = self.appInstancePersistentId!
         }
@@ -400,6 +405,9 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
         if let value = dict["AppInstanceGroupId"] as? String {
             self.appInstanceGroupId = value
         }
+        if let value = dict["AppInstanceGroupSetId"] as? String {
+            self.appInstanceGroupSetId = value
+        }
         if let value = dict["AppInstancePersistentId"] as? String {
             self.appInstancePersistentId = value
         }
@@ -431,6 +439,8 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
 
 public class AuthorizeInstanceGroupShrinkRequest : Tea.TeaModel {
     public var appInstanceGroupId: String?
+
+    public var appInstanceGroupSetId: String?
 
     public var appInstancePersistentId: String?
 
@@ -465,6 +475,9 @@ public class AuthorizeInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.appInstanceGroupId != nil {
             map["AppInstanceGroupId"] = self.appInstanceGroupId!
         }
+        if self.appInstanceGroupSetId != nil {
+            map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+        }
         if self.appInstancePersistentId != nil {
             map["AppInstancePersistentId"] = self.appInstancePersistentId!
         }
@@ -496,6 +509,9 @@ public class AuthorizeInstanceGroupShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppInstanceGroupId"] as? String {
             self.appInstanceGroupId = value
+        }
+        if let value = dict["AppInstanceGroupSetId"] as? String {
+            self.appInstanceGroupSetId = value
         }
         if let value = dict["AppInstancePersistentId"] as? String {
             self.appInstancePersistentId = value
@@ -599,6 +615,270 @@ public class AuthorizeInstanceGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = AuthorizeInstanceGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class AuthorizeUsersForAppRequest : Tea.TeaModel {
+    public class UserMeta : Tea.TeaModel {
+        public var adDomain: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.adDomain != nil {
+                map["AdDomain"] = self.adDomain!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AdDomain"] as? String {
+                self.adDomain = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var appId: String?
+
+    public var appInstanceGroupId: String?
+
+    public var authorizeUserIds: [String]?
+
+    public var productType: String?
+
+    public var unAuthorizeUserIds: [String]?
+
+    public var userMeta: AuthorizeUsersForAppRequest.UserMeta?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.userMeta?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.authorizeUserIds != nil {
+            map["AuthorizeUserIds"] = self.authorizeUserIds!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.unAuthorizeUserIds != nil {
+            map["UnAuthorizeUserIds"] = self.unAuthorizeUserIds!
+        }
+        if self.userMeta != nil {
+            map["UserMeta"] = self.userMeta?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["AppInstanceGroupId"] as? String {
+            self.appInstanceGroupId = value
+        }
+        if let value = dict["AuthorizeUserIds"] as? [String] {
+            self.authorizeUserIds = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+        if let value = dict["UnAuthorizeUserIds"] as? [String] {
+            self.unAuthorizeUserIds = value
+        }
+        if let value = dict["UserMeta"] as? [String: Any?] {
+            var model = AuthorizeUsersForAppRequest.UserMeta()
+            model.fromMap(value)
+            self.userMeta = model
+        }
+    }
+}
+
+public class AuthorizeUsersForAppShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var appInstanceGroupId: String?
+
+    public var authorizeUserIds: [String]?
+
+    public var productType: String?
+
+    public var unAuthorizeUserIds: [String]?
+
+    public var userMetaShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.authorizeUserIds != nil {
+            map["AuthorizeUserIds"] = self.authorizeUserIds!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.unAuthorizeUserIds != nil {
+            map["UnAuthorizeUserIds"] = self.unAuthorizeUserIds!
+        }
+        if self.userMetaShrink != nil {
+            map["UserMeta"] = self.userMetaShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["AppInstanceGroupId"] as? String {
+            self.appInstanceGroupId = value
+        }
+        if let value = dict["AuthorizeUserIds"] as? [String] {
+            self.authorizeUserIds = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+        if let value = dict["UnAuthorizeUserIds"] as? [String] {
+            self.unAuthorizeUserIds = value
+        }
+        if let value = dict["UserMeta"] as? String {
+            self.userMetaShrink = value
+        }
+    }
+}
+
+public class AuthorizeUsersForAppResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AuthorizeUsersForAppResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AuthorizeUsersForAppResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AuthorizeUsersForAppResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -2835,6 +3115,1661 @@ public class CreateAppInstanceGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CreateBrowserInstanceGroupRequest : Tea.TeaModel {
+    public class BrowserConfig : Tea.TeaModel {
+        public class Bookmarks : Tea.TeaModel {
+            public var bookmarkFolder: String?
+
+            public var bookmarkName: String?
+
+            public var bookmarkURL: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bookmarkFolder != nil {
+                    map["BookmarkFolder"] = self.bookmarkFolder!
+                }
+                if self.bookmarkName != nil {
+                    map["BookmarkName"] = self.bookmarkName!
+                }
+                if self.bookmarkURL != nil {
+                    map["BookmarkURL"] = self.bookmarkURL!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BookmarkFolder"] as? String {
+                    self.bookmarkFolder = value
+                }
+                if let value = dict["BookmarkName"] as? String {
+                    self.bookmarkName = value
+                }
+                if let value = dict["BookmarkURL"] as? String {
+                    self.bookmarkURL = value
+                }
+            }
+        }
+        public var bookmarks: [CreateBrowserInstanceGroupRequest.BrowserConfig.Bookmarks]?
+
+        public var bookmarksFilePath: String?
+
+        public var browserParam: String?
+
+        public var cookiesSync: Bool?
+
+        public var homepage: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bookmarks != nil {
+                var tmp : [Any] = []
+                for k in self.bookmarks! {
+                    tmp.append(k.toMap())
+                }
+                map["Bookmarks"] = tmp
+            }
+            if self.bookmarksFilePath != nil {
+                map["BookmarksFilePath"] = self.bookmarksFilePath!
+            }
+            if self.browserParam != nil {
+                map["BrowserParam"] = self.browserParam!
+            }
+            if self.cookiesSync != nil {
+                map["CookiesSync"] = self.cookiesSync!
+            }
+            if self.homepage != nil {
+                map["Homepage"] = self.homepage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bookmarks"] as? [Any?] {
+                var tmp : [CreateBrowserInstanceGroupRequest.BrowserConfig.Bookmarks] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateBrowserInstanceGroupRequest.BrowserConfig.Bookmarks()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.bookmarks = tmp
+            }
+            if let value = dict["BookmarksFilePath"] as? String {
+                self.bookmarksFilePath = value
+            }
+            if let value = dict["BrowserParam"] as? String {
+                self.browserParam = value
+            }
+            if let value = dict["CookiesSync"] as? Bool {
+                self.cookiesSync = value
+            }
+            if let value = dict["Homepage"] as? String {
+                self.homepage = value
+            }
+        }
+    }
+    public class Network : Tea.TeaModel {
+        public class RestrictedURLs : Tea.TeaModel {
+            public var URL: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.URL != nil {
+                    map["URL"] = self.URL!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["URL"] as? String {
+                    self.URL = value
+                }
+            }
+        }
+        public var accessRestriction: String?
+
+        public var officeSiteId: String?
+
+        public var restrictedURLs: [CreateBrowserInstanceGroupRequest.Network.RestrictedURLs]?
+
+        public var restrictedURLsFilePath: String?
+
+        public var vSwitchIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessRestriction != nil {
+                map["AccessRestriction"] = self.accessRestriction!
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.restrictedURLs != nil {
+                var tmp : [Any] = []
+                for k in self.restrictedURLs! {
+                    tmp.append(k.toMap())
+                }
+                map["RestrictedURLs"] = tmp
+            }
+            if self.restrictedURLsFilePath != nil {
+                map["RestrictedURLsFilePath"] = self.restrictedURLsFilePath!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessRestriction"] as? String {
+                self.accessRestriction = value
+            }
+            if let value = dict["OfficeSiteId"] as? String {
+                self.officeSiteId = value
+            }
+            if let value = dict["RestrictedURLs"] as? [Any?] {
+                var tmp : [CreateBrowserInstanceGroupRequest.Network.RestrictedURLs] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateBrowserInstanceGroupRequest.Network.RestrictedURLs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.restrictedURLs = tmp
+            }
+            if let value = dict["RestrictedURLsFilePath"] as? String {
+                self.restrictedURLsFilePath = value
+            }
+            if let value = dict["VSwitchIds"] as? [String] {
+                self.vSwitchIds = value
+            }
+        }
+    }
+    public class NodePool : Tea.TeaModel {
+        public var nodeAmount: Int32?
+
+        public var nodeInstanceType: String?
+
+        public var strategyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nodeAmount != nil {
+                map["NodeAmount"] = self.nodeAmount!
+            }
+            if self.nodeInstanceType != nil {
+                map["NodeInstanceType"] = self.nodeInstanceType!
+            }
+            if self.strategyType != nil {
+                map["StrategyType"] = self.strategyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NodeAmount"] as? Int32 {
+                self.nodeAmount = value
+            }
+            if let value = dict["NodeInstanceType"] as? String {
+                self.nodeInstanceType = value
+            }
+            if let value = dict["StrategyType"] as? String {
+                self.strategyType = value
+            }
+        }
+    }
+    public class Policy : Tea.TeaModel {
+        public class AuthorizeAccessPolicyRules : Tea.TeaModel {
+            public var cidrIp: String?
+
+            public var description_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidrIp != nil {
+                    map["CidrIp"] = self.cidrIp!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CidrIp"] as? String {
+                    self.cidrIp = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+            }
+        }
+        public class ClientTypes : Tea.TeaModel {
+            public var clientType: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clientType != nil {
+                    map["ClientType"] = self.clientType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ClientType"] as? String {
+                    self.clientType = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
+        public class ClipboardPolicy : Tea.TeaModel {
+            public var clipboard: String?
+
+            public var clipboardReadLimit: Int32?
+
+            public var clipboardScope: String?
+
+            public var clipboardSizeUnit: String?
+
+            public var clipboardWriteLimit: Int32?
+
+            public var fileClipboard: String?
+
+            public var richTextClipboard: String?
+
+            public var richTextClipboardLimit: Int32?
+
+            public var richTextClipboardReadLimit: Int32?
+
+            public var richTextClipboardReadSizeUnit: String?
+
+            public var richTextClipboardSizeUnit: String?
+
+            public var richTextClipboardWriteLimit: Int32?
+
+            public var richTextClipboardWriteSizeUnit: String?
+
+            public var textClipboard: String?
+
+            public var textClipboardReadLimit: Int32?
+
+            public var textClipboardReadSizeUnit: String?
+
+            public var textClipboardWriteLimit: Int32?
+
+            public var textClipboardWriteSizeUnit: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clipboard != nil {
+                    map["Clipboard"] = self.clipboard!
+                }
+                if self.clipboardReadLimit != nil {
+                    map["ClipboardReadLimit"] = self.clipboardReadLimit!
+                }
+                if self.clipboardScope != nil {
+                    map["ClipboardScope"] = self.clipboardScope!
+                }
+                if self.clipboardSizeUnit != nil {
+                    map["ClipboardSizeUnit"] = self.clipboardSizeUnit!
+                }
+                if self.clipboardWriteLimit != nil {
+                    map["ClipboardWriteLimit"] = self.clipboardWriteLimit!
+                }
+                if self.fileClipboard != nil {
+                    map["FileClipboard"] = self.fileClipboard!
+                }
+                if self.richTextClipboard != nil {
+                    map["RichTextClipboard"] = self.richTextClipboard!
+                }
+                if self.richTextClipboardLimit != nil {
+                    map["RichTextClipboardLimit"] = self.richTextClipboardLimit!
+                }
+                if self.richTextClipboardReadLimit != nil {
+                    map["RichTextClipboardReadLimit"] = self.richTextClipboardReadLimit!
+                }
+                if self.richTextClipboardReadSizeUnit != nil {
+                    map["RichTextClipboardReadSizeUnit"] = self.richTextClipboardReadSizeUnit!
+                }
+                if self.richTextClipboardSizeUnit != nil {
+                    map["RichTextClipboardSizeUnit"] = self.richTextClipboardSizeUnit!
+                }
+                if self.richTextClipboardWriteLimit != nil {
+                    map["RichTextClipboardWriteLimit"] = self.richTextClipboardWriteLimit!
+                }
+                if self.richTextClipboardWriteSizeUnit != nil {
+                    map["RichTextClipboardWriteSizeUnit"] = self.richTextClipboardWriteSizeUnit!
+                }
+                if self.textClipboard != nil {
+                    map["TextClipboard"] = self.textClipboard!
+                }
+                if self.textClipboardReadLimit != nil {
+                    map["TextClipboardReadLimit"] = self.textClipboardReadLimit!
+                }
+                if self.textClipboardReadSizeUnit != nil {
+                    map["TextClipboardReadSizeUnit"] = self.textClipboardReadSizeUnit!
+                }
+                if self.textClipboardWriteLimit != nil {
+                    map["TextClipboardWriteLimit"] = self.textClipboardWriteLimit!
+                }
+                if self.textClipboardWriteSizeUnit != nil {
+                    map["TextClipboardWriteSizeUnit"] = self.textClipboardWriteSizeUnit!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Clipboard"] as? String {
+                    self.clipboard = value
+                }
+                if let value = dict["ClipboardReadLimit"] as? Int32 {
+                    self.clipboardReadLimit = value
+                }
+                if let value = dict["ClipboardScope"] as? String {
+                    self.clipboardScope = value
+                }
+                if let value = dict["ClipboardSizeUnit"] as? String {
+                    self.clipboardSizeUnit = value
+                }
+                if let value = dict["ClipboardWriteLimit"] as? Int32 {
+                    self.clipboardWriteLimit = value
+                }
+                if let value = dict["FileClipboard"] as? String {
+                    self.fileClipboard = value
+                }
+                if let value = dict["RichTextClipboard"] as? String {
+                    self.richTextClipboard = value
+                }
+                if let value = dict["RichTextClipboardLimit"] as? Int32 {
+                    self.richTextClipboardLimit = value
+                }
+                if let value = dict["RichTextClipboardReadLimit"] as? Int32 {
+                    self.richTextClipboardReadLimit = value
+                }
+                if let value = dict["RichTextClipboardReadSizeUnit"] as? String {
+                    self.richTextClipboardReadSizeUnit = value
+                }
+                if let value = dict["RichTextClipboardSizeUnit"] as? String {
+                    self.richTextClipboardSizeUnit = value
+                }
+                if let value = dict["RichTextClipboardWriteLimit"] as? Int32 {
+                    self.richTextClipboardWriteLimit = value
+                }
+                if let value = dict["RichTextClipboardWriteSizeUnit"] as? String {
+                    self.richTextClipboardWriteSizeUnit = value
+                }
+                if let value = dict["TextClipboard"] as? String {
+                    self.textClipboard = value
+                }
+                if let value = dict["TextClipboardReadLimit"] as? Int32 {
+                    self.textClipboardReadLimit = value
+                }
+                if let value = dict["TextClipboardReadSizeUnit"] as? String {
+                    self.textClipboardReadSizeUnit = value
+                }
+                if let value = dict["TextClipboardWriteLimit"] as? Int32 {
+                    self.textClipboardWriteLimit = value
+                }
+                if let value = dict["TextClipboardWriteSizeUnit"] as? String {
+                    self.textClipboardWriteSizeUnit = value
+                }
+            }
+        }
+        public class VideoPolicy : Tea.TeaModel {
+            public var frameRate: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.frameRate != nil {
+                    map["FrameRate"] = self.frameRate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FrameRate"] as? Int32 {
+                    self.frameRate = value
+                }
+            }
+        }
+        public class WatermarkPolicy : Tea.TeaModel {
+            public var watermarkSwitch: String?
+
+            public var watermarkTypes: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.watermarkSwitch != nil {
+                    map["WatermarkSwitch"] = self.watermarkSwitch!
+                }
+                if self.watermarkTypes != nil {
+                    map["WatermarkTypes"] = self.watermarkTypes!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["WatermarkSwitch"] as? String {
+                    self.watermarkSwitch = value
+                }
+                if let value = dict["WatermarkTypes"] as? [String] {
+                    self.watermarkTypes = value
+                }
+            }
+        }
+        public var appContentProtection: String?
+
+        public var authorizeAccessPolicyRules: [CreateBrowserInstanceGroupRequest.Policy.AuthorizeAccessPolicyRules]?
+
+        public var clientTypes: [CreateBrowserInstanceGroupRequest.Policy.ClientTypes]?
+
+        public var clipboardPolicy: CreateBrowserInstanceGroupRequest.Policy.ClipboardPolicy?
+
+        public var disconnectKeepSession: String?
+
+        public var disconnectKeepSessionTime: Int32?
+
+        public var fileManager: String?
+
+        public var html5FileTransfer: String?
+
+        public var noOperationDisconnect: String?
+
+        public var noOperationDisconnectTime: Int32?
+
+        public var policyVersion: String?
+
+        public var videoPolicy: CreateBrowserInstanceGroupRequest.Policy.VideoPolicy?
+
+        public var watermarkPolicy: CreateBrowserInstanceGroupRequest.Policy.WatermarkPolicy?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.clipboardPolicy?.validate()
+            try self.videoPolicy?.validate()
+            try self.watermarkPolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appContentProtection != nil {
+                map["AppContentProtection"] = self.appContentProtection!
+            }
+            if self.authorizeAccessPolicyRules != nil {
+                var tmp : [Any] = []
+                for k in self.authorizeAccessPolicyRules! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthorizeAccessPolicyRules"] = tmp
+            }
+            if self.clientTypes != nil {
+                var tmp : [Any] = []
+                for k in self.clientTypes! {
+                    tmp.append(k.toMap())
+                }
+                map["ClientTypes"] = tmp
+            }
+            if self.clipboardPolicy != nil {
+                map["ClipboardPolicy"] = self.clipboardPolicy?.toMap()
+            }
+            if self.disconnectKeepSession != nil {
+                map["DisconnectKeepSession"] = self.disconnectKeepSession!
+            }
+            if self.disconnectKeepSessionTime != nil {
+                map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
+            }
+            if self.fileManager != nil {
+                map["FileManager"] = self.fileManager!
+            }
+            if self.html5FileTransfer != nil {
+                map["Html5FileTransfer"] = self.html5FileTransfer!
+            }
+            if self.noOperationDisconnect != nil {
+                map["NoOperationDisconnect"] = self.noOperationDisconnect!
+            }
+            if self.noOperationDisconnectTime != nil {
+                map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+            }
+            if self.policyVersion != nil {
+                map["PolicyVersion"] = self.policyVersion!
+            }
+            if self.videoPolicy != nil {
+                map["VideoPolicy"] = self.videoPolicy?.toMap()
+            }
+            if self.watermarkPolicy != nil {
+                map["WatermarkPolicy"] = self.watermarkPolicy?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AppContentProtection"] as? String {
+                self.appContentProtection = value
+            }
+            if let value = dict["AuthorizeAccessPolicyRules"] as? [Any?] {
+                var tmp : [CreateBrowserInstanceGroupRequest.Policy.AuthorizeAccessPolicyRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateBrowserInstanceGroupRequest.Policy.AuthorizeAccessPolicyRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.authorizeAccessPolicyRules = tmp
+            }
+            if let value = dict["ClientTypes"] as? [Any?] {
+                var tmp : [CreateBrowserInstanceGroupRequest.Policy.ClientTypes] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateBrowserInstanceGroupRequest.Policy.ClientTypes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.clientTypes = tmp
+            }
+            if let value = dict["ClipboardPolicy"] as? [String: Any?] {
+                var model = CreateBrowserInstanceGroupRequest.Policy.ClipboardPolicy()
+                model.fromMap(value)
+                self.clipboardPolicy = model
+            }
+            if let value = dict["DisconnectKeepSession"] as? String {
+                self.disconnectKeepSession = value
+            }
+            if let value = dict["DisconnectKeepSessionTime"] as? Int32 {
+                self.disconnectKeepSessionTime = value
+            }
+            if let value = dict["FileManager"] as? String {
+                self.fileManager = value
+            }
+            if let value = dict["Html5FileTransfer"] as? String {
+                self.html5FileTransfer = value
+            }
+            if let value = dict["NoOperationDisconnect"] as? String {
+                self.noOperationDisconnect = value
+            }
+            if let value = dict["NoOperationDisconnectTime"] as? Int32 {
+                self.noOperationDisconnectTime = value
+            }
+            if let value = dict["PolicyVersion"] as? String {
+                self.policyVersion = value
+            }
+            if let value = dict["VideoPolicy"] as? [String: Any?] {
+                var model = CreateBrowserInstanceGroupRequest.Policy.VideoPolicy()
+                model.fromMap(value)
+                self.videoPolicy = model
+            }
+            if let value = dict["WatermarkPolicy"] as? [String: Any?] {
+                var model = CreateBrowserInstanceGroupRequest.Policy.WatermarkPolicy()
+                model.fromMap(value)
+                self.watermarkPolicy = model
+            }
+        }
+    }
+    public class SecurityPolicy : Tea.TeaModel {
+        public var skipUserAuthCheck: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.skipUserAuthCheck != nil {
+                map["SkipUserAuthCheck"] = self.skipUserAuthCheck!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SkipUserAuthCheck"] as? Bool {
+                self.skipUserAuthCheck = value
+            }
+        }
+    }
+    public class StoragePolicy : Tea.TeaModel {
+        public class UserProfile : Tea.TeaModel {
+            public var userProfileSize: Int64?
+
+            public var userProfileSwitch: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userProfileSize != nil {
+                    map["UserProfileSize"] = self.userProfileSize!
+                }
+                if self.userProfileSwitch != nil {
+                    map["UserProfileSwitch"] = self.userProfileSwitch!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserProfileSize"] as? Int64 {
+                    self.userProfileSize = value
+                }
+                if let value = dict["UserProfileSwitch"] as? Bool {
+                    self.userProfileSwitch = value
+                }
+            }
+        }
+        public var userProfile: CreateBrowserInstanceGroupRequest.StoragePolicy.UserProfile?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.userProfile?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.userProfile != nil {
+                map["UserProfile"] = self.userProfile?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["UserProfile"] as? [String: Any?] {
+                var model = CreateBrowserInstanceGroupRequest.StoragePolicy.UserProfile()
+                model.fromMap(value)
+                self.userProfile = model
+            }
+        }
+    }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class Timers : Tea.TeaModel {
+        public var interval: Int32?
+
+        public var timerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.interval != nil {
+                map["Interval"] = self.interval!
+            }
+            if self.timerType != nil {
+                map["TimerType"] = self.timerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Interval"] as? Int32 {
+                self.interval = value
+            }
+            if let value = dict["TimerType"] as? String {
+                self.timerType = value
+            }
+        }
+    }
+    public class UserInfo : Tea.TeaModel {
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public class Users : Tea.TeaModel {
+        public var endUserId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndUserId"] as? String {
+                self.endUserId = value
+            }
+        }
+    }
+    public var appPackageType: String?
+
+    public var authNotificationEnabled: Bool?
+
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
+    public var bizRegionId: String?
+
+    public var browserConfig: CreateBrowserInstanceGroupRequest.BrowserConfig?
+
+    public var chargeResourceMode: String?
+
+    public var chargeType: String?
+
+    public var cloudBrowserName: String?
+
+    public var imageId: String?
+
+    public var instanceType: String?
+
+    public var maxAmount: Int32?
+
+    public var network: CreateBrowserInstanceGroupRequest.Network?
+
+    public var nodePool: CreateBrowserInstanceGroupRequest.NodePool?
+
+    public var osType: String?
+
+    public var period: Int32?
+
+    public var periodUnit: String?
+
+    public var policy: CreateBrowserInstanceGroupRequest.Policy?
+
+    public var promotionId: String?
+
+    public var securityPolicy: CreateBrowserInstanceGroupRequest.SecurityPolicy?
+
+    public var storagePolicy: CreateBrowserInstanceGroupRequest.StoragePolicy?
+
+    public var subPayType: String?
+
+    public var tag: [CreateBrowserInstanceGroupRequest.Tag]?
+
+    public var timers: [CreateBrowserInstanceGroupRequest.Timers]?
+
+    public var userGroupIds: [String]?
+
+    public var userInfo: CreateBrowserInstanceGroupRequest.UserInfo?
+
+    public var users: [CreateBrowserInstanceGroupRequest.Users]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.browserConfig?.validate()
+        try self.network?.validate()
+        try self.nodePool?.validate()
+        try self.policy?.validate()
+        try self.securityPolicy?.validate()
+        try self.storagePolicy?.validate()
+        try self.userInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appPackageType != nil {
+            map["AppPackageType"] = self.appPackageType!
+        }
+        if self.authNotificationEnabled != nil {
+            map["AuthNotificationEnabled"] = self.authNotificationEnabled!
+        }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.browserConfig != nil {
+            map["BrowserConfig"] = self.browserConfig?.toMap()
+        }
+        if self.chargeResourceMode != nil {
+            map["ChargeResourceMode"] = self.chargeResourceMode!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.cloudBrowserName != nil {
+            map["CloudBrowserName"] = self.cloudBrowserName!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.maxAmount != nil {
+            map["MaxAmount"] = self.maxAmount!
+        }
+        if self.network != nil {
+            map["Network"] = self.network?.toMap()
+        }
+        if self.nodePool != nil {
+            map["NodePool"] = self.nodePool?.toMap()
+        }
+        if self.osType != nil {
+            map["OsType"] = self.osType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.policy != nil {
+            map["Policy"] = self.policy?.toMap()
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
+        if self.securityPolicy != nil {
+            map["SecurityPolicy"] = self.securityPolicy?.toMap()
+        }
+        if self.storagePolicy != nil {
+            map["StoragePolicy"] = self.storagePolicy?.toMap()
+        }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.timers != nil {
+            var tmp : [Any] = []
+            for k in self.timers! {
+                tmp.append(k.toMap())
+            }
+            map["Timers"] = tmp
+        }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
+        if self.userInfo != nil {
+            map["UserInfo"] = self.userInfo?.toMap()
+        }
+        if self.users != nil {
+            var tmp : [Any] = []
+            for k in self.users! {
+                tmp.append(k.toMap())
+            }
+            map["Users"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppPackageType"] as? String {
+            self.appPackageType = value
+        }
+        if let value = dict["AuthNotificationEnabled"] as? Bool {
+            self.authNotificationEnabled = value
+        }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
+        }
+        if let value = dict["BrowserConfig"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupRequest.BrowserConfig()
+            model.fromMap(value)
+            self.browserConfig = model
+        }
+        if let value = dict["ChargeResourceMode"] as? String {
+            self.chargeResourceMode = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
+        if let value = dict["CloudBrowserName"] as? String {
+            self.cloudBrowserName = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["MaxAmount"] as? Int32 {
+            self.maxAmount = value
+        }
+        if let value = dict["Network"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupRequest.Network()
+            model.fromMap(value)
+            self.network = model
+        }
+        if let value = dict["NodePool"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupRequest.NodePool()
+            model.fromMap(value)
+            self.nodePool = model
+        }
+        if let value = dict["OsType"] as? String {
+            self.osType = value
+        }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["PeriodUnit"] as? String {
+            self.periodUnit = value
+        }
+        if let value = dict["Policy"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupRequest.Policy()
+            model.fromMap(value)
+            self.policy = model
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
+        }
+        if let value = dict["SecurityPolicy"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupRequest.SecurityPolicy()
+            model.fromMap(value)
+            self.securityPolicy = model
+        }
+        if let value = dict["StoragePolicy"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupRequest.StoragePolicy()
+            model.fromMap(value)
+            self.storagePolicy = model
+        }
+        if let value = dict["SubPayType"] as? String {
+            self.subPayType = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateBrowserInstanceGroupRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateBrowserInstanceGroupRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["Timers"] as? [Any?] {
+            var tmp : [CreateBrowserInstanceGroupRequest.Timers] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateBrowserInstanceGroupRequest.Timers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.timers = tmp
+        }
+        if let value = dict["UserGroupIds"] as? [String] {
+            self.userGroupIds = value
+        }
+        if let value = dict["UserInfo"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupRequest.UserInfo()
+            model.fromMap(value)
+            self.userInfo = model
+        }
+        if let value = dict["Users"] as? [Any?] {
+            var tmp : [CreateBrowserInstanceGroupRequest.Users] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateBrowserInstanceGroupRequest.Users()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.users = tmp
+        }
+    }
+}
+
+public class CreateBrowserInstanceGroupShrinkRequest : Tea.TeaModel {
+    public var appPackageType: String?
+
+    public var authNotificationEnabled: Bool?
+
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
+    public var bizRegionId: String?
+
+    public var browserConfigShrink: String?
+
+    public var chargeResourceMode: String?
+
+    public var chargeType: String?
+
+    public var cloudBrowserName: String?
+
+    public var imageId: String?
+
+    public var instanceType: String?
+
+    public var maxAmount: Int32?
+
+    public var networkShrink: String?
+
+    public var nodePoolShrink: String?
+
+    public var osType: String?
+
+    public var period: Int32?
+
+    public var periodUnit: String?
+
+    public var policyShrink: String?
+
+    public var promotionId: String?
+
+    public var securityPolicyShrink: String?
+
+    public var storagePolicyShrink: String?
+
+    public var subPayType: String?
+
+    public var tagShrink: String?
+
+    public var timersShrink: String?
+
+    public var userGroupIds: [String]?
+
+    public var userInfoShrink: String?
+
+    public var usersShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appPackageType != nil {
+            map["AppPackageType"] = self.appPackageType!
+        }
+        if self.authNotificationEnabled != nil {
+            map["AuthNotificationEnabled"] = self.authNotificationEnabled!
+        }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.browserConfigShrink != nil {
+            map["BrowserConfig"] = self.browserConfigShrink!
+        }
+        if self.chargeResourceMode != nil {
+            map["ChargeResourceMode"] = self.chargeResourceMode!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.cloudBrowserName != nil {
+            map["CloudBrowserName"] = self.cloudBrowserName!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.maxAmount != nil {
+            map["MaxAmount"] = self.maxAmount!
+        }
+        if self.networkShrink != nil {
+            map["Network"] = self.networkShrink!
+        }
+        if self.nodePoolShrink != nil {
+            map["NodePool"] = self.nodePoolShrink!
+        }
+        if self.osType != nil {
+            map["OsType"] = self.osType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.policyShrink != nil {
+            map["Policy"] = self.policyShrink!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
+        if self.securityPolicyShrink != nil {
+            map["SecurityPolicy"] = self.securityPolicyShrink!
+        }
+        if self.storagePolicyShrink != nil {
+            map["StoragePolicy"] = self.storagePolicyShrink!
+        }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        if self.timersShrink != nil {
+            map["Timers"] = self.timersShrink!
+        }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
+        if self.userInfoShrink != nil {
+            map["UserInfo"] = self.userInfoShrink!
+        }
+        if self.usersShrink != nil {
+            map["Users"] = self.usersShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppPackageType"] as? String {
+            self.appPackageType = value
+        }
+        if let value = dict["AuthNotificationEnabled"] as? Bool {
+            self.authNotificationEnabled = value
+        }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
+        }
+        if let value = dict["BrowserConfig"] as? String {
+            self.browserConfigShrink = value
+        }
+        if let value = dict["ChargeResourceMode"] as? String {
+            self.chargeResourceMode = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
+        if let value = dict["CloudBrowserName"] as? String {
+            self.cloudBrowserName = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["MaxAmount"] as? Int32 {
+            self.maxAmount = value
+        }
+        if let value = dict["Network"] as? String {
+            self.networkShrink = value
+        }
+        if let value = dict["NodePool"] as? String {
+            self.nodePoolShrink = value
+        }
+        if let value = dict["OsType"] as? String {
+            self.osType = value
+        }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["PeriodUnit"] as? String {
+            self.periodUnit = value
+        }
+        if let value = dict["Policy"] as? String {
+            self.policyShrink = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
+        }
+        if let value = dict["SecurityPolicy"] as? String {
+            self.securityPolicyShrink = value
+        }
+        if let value = dict["StoragePolicy"] as? String {
+            self.storagePolicyShrink = value
+        }
+        if let value = dict["SubPayType"] as? String {
+            self.subPayType = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tagShrink = value
+        }
+        if let value = dict["Timers"] as? String {
+            self.timersShrink = value
+        }
+        if let value = dict["UserGroupIds"] as? [String] {
+            self.userGroupIds = value
+        }
+        if let value = dict["UserInfo"] as? String {
+            self.userInfoShrink = value
+        }
+        if let value = dict["Users"] as? String {
+            self.usersShrink = value
+        }
+    }
+}
+
+public class CreateBrowserInstanceGroupResponseBody : Tea.TeaModel {
+    public class BrowserInstanceGroupModel : Tea.TeaModel {
+        public var browserInstanceGroupId: String?
+
+        public var orderId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.browserInstanceGroupId != nil {
+                map["BrowserInstanceGroupId"] = self.browserInstanceGroupId!
+            }
+            if self.orderId != nil {
+                map["OrderId"] = self.orderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BrowserInstanceGroupId"] as? String {
+                self.browserInstanceGroupId = value
+            }
+            if let value = dict["OrderId"] as? String {
+                self.orderId = value
+            }
+        }
+    }
+    public var browserInstanceGroupModel: CreateBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.browserInstanceGroupModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.browserInstanceGroupModel != nil {
+            map["BrowserInstanceGroupModel"] = self.browserInstanceGroupModel?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrowserInstanceGroupModel"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel()
+            model.fromMap(value)
+            self.browserInstanceGroupModel = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateBrowserInstanceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateBrowserInstanceGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateBrowserInstanceGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateImageByInstanceRequest : Tea.TeaModel {
     public class TagList : Tea.TeaModel {
         public var key: String?
@@ -3775,6 +5710,10 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
 
     public var dataDisk: [CreateWuyingServerRequest.DataDisk]?
 
+    public var erdmaEnabled: Bool?
+
+    public var gpuDriverVersion: String?
+
     public var hostName: String?
 
     public var idempotenceToken: String?
@@ -3853,6 +5792,12 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisk"] = tmp
+        }
+        if self.erdmaEnabled != nil {
+            map["ErdmaEnabled"] = self.erdmaEnabled!
+        }
+        if self.gpuDriverVersion != nil {
+            map["GpuDriverVersion"] = self.gpuDriverVersion!
         }
         if self.hostName != nil {
             map["HostName"] = self.hostName!
@@ -3949,6 +5894,12 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
                 }
             }
             self.dataDisk = tmp
+        }
+        if let value = dict["ErdmaEnabled"] as? Bool {
+            self.erdmaEnabled = value
+        }
+        if let value = dict["GpuDriverVersion"] as? String {
+            self.gpuDriverVersion = value
         }
         if let value = dict["HostName"] as? String {
             self.hostName = value
@@ -5356,6 +7307,8 @@ public class DescribeWuyingServerResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var supportASP: Bool?
+
         public var systemDiskCategory: String?
 
         public var systemDiskSize: Int32?
@@ -5426,6 +7379,9 @@ public class DescribeWuyingServerResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.supportASP != nil {
+                map["SupportASP"] = self.supportASP!
             }
             if self.systemDiskCategory != nil {
                 map["SystemDiskCategory"] = self.systemDiskCategory!
@@ -5498,6 +7454,9 @@ public class DescribeWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SupportASP"] as? Bool {
+                self.supportASP = value
             }
             if let value = dict["SystemDiskCategory"] as? String {
                 self.systemDiskCategory = value
@@ -6739,12 +8698,1393 @@ public class GetAppInstanceGroupResponse : Tea.TeaModel {
     }
 }
 
+public class GetBrowserInstanceGroupRequest : Tea.TeaModel {
+    public var browserInstanceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.browserInstanceGroupId != nil {
+            map["BrowserInstanceGroupId"] = self.browserInstanceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrowserInstanceGroupId"] as? String {
+            self.browserInstanceGroupId = value
+        }
+    }
+}
+
+public class GetBrowserInstanceGroupResponseBody : Tea.TeaModel {
+    public class BrowserInstanceGroupModel : Tea.TeaModel {
+        public class AuthorizedUserInfo : Tea.TeaModel {
+            public var totalCount: Int32?
+
+            public var totalUserGroupCount: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.totalCount != nil {
+                    map["TotalCount"] = self.totalCount!
+                }
+                if self.totalUserGroupCount != nil {
+                    map["TotalUserGroupCount"] = self.totalUserGroupCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TotalCount"] as? Int32 {
+                    self.totalCount = value
+                }
+                if let value = dict["TotalUserGroupCount"] as? Int32 {
+                    self.totalUserGroupCount = value
+                }
+            }
+        }
+        public class BrowserConfig : Tea.TeaModel {
+            public class Bookmarks : Tea.TeaModel {
+                public var bookmarkFolder: String?
+
+                public var bookmarkId: String?
+
+                public var bookmarkName: String?
+
+                public var bookmarkURL: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bookmarkFolder != nil {
+                        map["BookmarkFolder"] = self.bookmarkFolder!
+                    }
+                    if self.bookmarkId != nil {
+                        map["BookmarkId"] = self.bookmarkId!
+                    }
+                    if self.bookmarkName != nil {
+                        map["BookmarkName"] = self.bookmarkName!
+                    }
+                    if self.bookmarkURL != nil {
+                        map["BookmarkURL"] = self.bookmarkURL!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["BookmarkFolder"] as? String {
+                        self.bookmarkFolder = value
+                    }
+                    if let value = dict["BookmarkId"] as? String {
+                        self.bookmarkId = value
+                    }
+                    if let value = dict["BookmarkName"] as? String {
+                        self.bookmarkName = value
+                    }
+                    if let value = dict["BookmarkURL"] as? String {
+                        self.bookmarkURL = value
+                    }
+                }
+            }
+            public var bookmarks: [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.BrowserConfig.Bookmarks]?
+
+            public var browserParam: String?
+
+            public var cookiesSync: String?
+
+            public var homepage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bookmarks != nil {
+                    var tmp : [Any] = []
+                    for k in self.bookmarks! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Bookmarks"] = tmp
+                }
+                if self.browserParam != nil {
+                    map["BrowserParam"] = self.browserParam!
+                }
+                if self.cookiesSync != nil {
+                    map["CookiesSync"] = self.cookiesSync!
+                }
+                if self.homepage != nil {
+                    map["Homepage"] = self.homepage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Bookmarks"] as? [Any?] {
+                    var tmp : [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.BrowserConfig.Bookmarks] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.BrowserConfig.Bookmarks()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.bookmarks = tmp
+                }
+                if let value = dict["BrowserParam"] as? String {
+                    self.browserParam = value
+                }
+                if let value = dict["CookiesSync"] as? String {
+                    self.cookiesSync = value
+                }
+                if let value = dict["Homepage"] as? String {
+                    self.homepage = value
+                }
+            }
+        }
+        public class Duration : Tea.TeaModel {
+            public var currentPayStage: String?
+
+            public var periodEndTime: String?
+
+            public var periodStartTime: String?
+
+            public var totalDuration: Int32?
+
+            public var usedDuration: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.currentPayStage != nil {
+                    map["CurrentPayStage"] = self.currentPayStage!
+                }
+                if self.periodEndTime != nil {
+                    map["PeriodEndTime"] = self.periodEndTime!
+                }
+                if self.periodStartTime != nil {
+                    map["PeriodStartTime"] = self.periodStartTime!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.usedDuration != nil {
+                    map["UsedDuration"] = self.usedDuration!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CurrentPayStage"] as? String {
+                    self.currentPayStage = value
+                }
+                if let value = dict["PeriodEndTime"] as? String {
+                    self.periodEndTime = value
+                }
+                if let value = dict["PeriodStartTime"] as? String {
+                    self.periodStartTime = value
+                }
+                if let value = dict["TotalDuration"] as? Int32 {
+                    self.totalDuration = value
+                }
+                if let value = dict["UsedDuration"] as? Int32 {
+                    self.usedDuration = value
+                }
+            }
+        }
+        public class Network : Tea.TeaModel {
+            public class RestrictedURLs : Tea.TeaModel {
+                public var restrictedURLId: String?
+
+                public var URL: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.restrictedURLId != nil {
+                        map["RestrictedURLId"] = self.restrictedURLId!
+                    }
+                    if self.URL != nil {
+                        map["URL"] = self.URL!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["RestrictedURLId"] as? String {
+                        self.restrictedURLId = value
+                    }
+                    if let value = dict["URL"] as? String {
+                        self.URL = value
+                    }
+                }
+            }
+            public var accessRestriction: String?
+
+            public var officeSiteId: String?
+
+            public var restrictedURLs: [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Network.RestrictedURLs]?
+
+            public var vSwitchIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessRestriction != nil {
+                    map["AccessRestriction"] = self.accessRestriction!
+                }
+                if self.officeSiteId != nil {
+                    map["OfficeSiteId"] = self.officeSiteId!
+                }
+                if self.restrictedURLs != nil {
+                    var tmp : [Any] = []
+                    for k in self.restrictedURLs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RestrictedURLs"] = tmp
+                }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessRestriction"] as? String {
+                    self.accessRestriction = value
+                }
+                if let value = dict["OfficeSiteId"] as? String {
+                    self.officeSiteId = value
+                }
+                if let value = dict["RestrictedURLs"] as? [Any?] {
+                    var tmp : [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Network.RestrictedURLs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Network.RestrictedURLs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.restrictedURLs = tmp
+                }
+                if let value = dict["VSwitchIds"] as? [String] {
+                    self.vSwitchIds = value
+                }
+            }
+        }
+        public class NodeInstanceType : Tea.TeaModel {
+            public var cpu: String?
+
+            public var memory: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu!
+                }
+                if self.memory != nil {
+                    map["Memory"] = self.memory!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cpu"] as? String {
+                    self.cpu = value
+                }
+                if let value = dict["Memory"] as? Int32 {
+                    self.memory = value
+                }
+            }
+        }
+        public class NodePool : Tea.TeaModel {
+            public var nodeAmount: String?
+
+            public var nodeUsed: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nodeAmount != nil {
+                    map["NodeAmount"] = self.nodeAmount!
+                }
+                if self.nodeUsed != nil {
+                    map["NodeUsed"] = self.nodeUsed!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["NodeAmount"] as? String {
+                    self.nodeAmount = value
+                }
+                if let value = dict["NodeUsed"] as? String {
+                    self.nodeUsed = value
+                }
+            }
+        }
+        public class Policy : Tea.TeaModel {
+            public class AuthorizeAccessPolicyRules : Tea.TeaModel {
+                public var cidrIp: String?
+
+                public var description_: String?
+
+                public var policy: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidrIp != nil {
+                        map["CidrIp"] = self.cidrIp!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.policy != nil {
+                        map["Policy"] = self.policy!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CidrIp"] as? String {
+                        self.cidrIp = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Policy"] as? String {
+                        self.policy = value
+                    }
+                }
+            }
+            public class ClientTypes : Tea.TeaModel {
+                public var clientType: String?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clientType != nil {
+                        map["ClientType"] = self.clientType!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ClientType"] as? String {
+                        self.clientType = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                }
+            }
+            public class ClipboardPolicy : Tea.TeaModel {
+                public var clipboard: String?
+
+                public var clipboardReadLimit: Int32?
+
+                public var clipboardScope: String?
+
+                public var clipboardSizeUnit: String?
+
+                public var clipboardWriteLimit: Int32?
+
+                public var fileClipboard: String?
+
+                public var richTextClipboard: String?
+
+                public var richTextClipboardLimit: Int32?
+
+                public var richTextClipboardReadLimit: Int32?
+
+                public var richTextClipboardReadSizeUnit: String?
+
+                public var richTextClipboardSizeUnit: String?
+
+                public var richTextClipboardWriteLimit: Int32?
+
+                public var richTextClipboardWriteSizeUnit: String?
+
+                public var textClipboard: String?
+
+                public var textClipboardReadLimit: Int32?
+
+                public var textClipboardReadSizeUnit: String?
+
+                public var textClipboardWriteLimit: Int32?
+
+                public var textClipboardWriteSizeUnit: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clipboard != nil {
+                        map["Clipboard"] = self.clipboard!
+                    }
+                    if self.clipboardReadLimit != nil {
+                        map["ClipboardReadLimit"] = self.clipboardReadLimit!
+                    }
+                    if self.clipboardScope != nil {
+                        map["ClipboardScope"] = self.clipboardScope!
+                    }
+                    if self.clipboardSizeUnit != nil {
+                        map["ClipboardSizeUnit"] = self.clipboardSizeUnit!
+                    }
+                    if self.clipboardWriteLimit != nil {
+                        map["ClipboardWriteLimit"] = self.clipboardWriteLimit!
+                    }
+                    if self.fileClipboard != nil {
+                        map["FileClipboard"] = self.fileClipboard!
+                    }
+                    if self.richTextClipboard != nil {
+                        map["RichTextClipboard"] = self.richTextClipboard!
+                    }
+                    if self.richTextClipboardLimit != nil {
+                        map["RichTextClipboardLimit"] = self.richTextClipboardLimit!
+                    }
+                    if self.richTextClipboardReadLimit != nil {
+                        map["RichTextClipboardReadLimit"] = self.richTextClipboardReadLimit!
+                    }
+                    if self.richTextClipboardReadSizeUnit != nil {
+                        map["RichTextClipboardReadSizeUnit"] = self.richTextClipboardReadSizeUnit!
+                    }
+                    if self.richTextClipboardSizeUnit != nil {
+                        map["RichTextClipboardSizeUnit"] = self.richTextClipboardSizeUnit!
+                    }
+                    if self.richTextClipboardWriteLimit != nil {
+                        map["RichTextClipboardWriteLimit"] = self.richTextClipboardWriteLimit!
+                    }
+                    if self.richTextClipboardWriteSizeUnit != nil {
+                        map["RichTextClipboardWriteSizeUnit"] = self.richTextClipboardWriteSizeUnit!
+                    }
+                    if self.textClipboard != nil {
+                        map["TextClipboard"] = self.textClipboard!
+                    }
+                    if self.textClipboardReadLimit != nil {
+                        map["TextClipboardReadLimit"] = self.textClipboardReadLimit!
+                    }
+                    if self.textClipboardReadSizeUnit != nil {
+                        map["TextClipboardReadSizeUnit"] = self.textClipboardReadSizeUnit!
+                    }
+                    if self.textClipboardWriteLimit != nil {
+                        map["TextClipboardWriteLimit"] = self.textClipboardWriteLimit!
+                    }
+                    if self.textClipboardWriteSizeUnit != nil {
+                        map["TextClipboardWriteSizeUnit"] = self.textClipboardWriteSizeUnit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Clipboard"] as? String {
+                        self.clipboard = value
+                    }
+                    if let value = dict["ClipboardReadLimit"] as? Int32 {
+                        self.clipboardReadLimit = value
+                    }
+                    if let value = dict["ClipboardScope"] as? String {
+                        self.clipboardScope = value
+                    }
+                    if let value = dict["ClipboardSizeUnit"] as? String {
+                        self.clipboardSizeUnit = value
+                    }
+                    if let value = dict["ClipboardWriteLimit"] as? Int32 {
+                        self.clipboardWriteLimit = value
+                    }
+                    if let value = dict["FileClipboard"] as? String {
+                        self.fileClipboard = value
+                    }
+                    if let value = dict["RichTextClipboard"] as? String {
+                        self.richTextClipboard = value
+                    }
+                    if let value = dict["RichTextClipboardLimit"] as? Int32 {
+                        self.richTextClipboardLimit = value
+                    }
+                    if let value = dict["RichTextClipboardReadLimit"] as? Int32 {
+                        self.richTextClipboardReadLimit = value
+                    }
+                    if let value = dict["RichTextClipboardReadSizeUnit"] as? String {
+                        self.richTextClipboardReadSizeUnit = value
+                    }
+                    if let value = dict["RichTextClipboardSizeUnit"] as? String {
+                        self.richTextClipboardSizeUnit = value
+                    }
+                    if let value = dict["RichTextClipboardWriteLimit"] as? Int32 {
+                        self.richTextClipboardWriteLimit = value
+                    }
+                    if let value = dict["RichTextClipboardWriteSizeUnit"] as? String {
+                        self.richTextClipboardWriteSizeUnit = value
+                    }
+                    if let value = dict["TextClipboard"] as? String {
+                        self.textClipboard = value
+                    }
+                    if let value = dict["TextClipboardReadLimit"] as? Int32 {
+                        self.textClipboardReadLimit = value
+                    }
+                    if let value = dict["TextClipboardReadSizeUnit"] as? String {
+                        self.textClipboardReadSizeUnit = value
+                    }
+                    if let value = dict["TextClipboardWriteLimit"] as? Int32 {
+                        self.textClipboardWriteLimit = value
+                    }
+                    if let value = dict["TextClipboardWriteSizeUnit"] as? String {
+                        self.textClipboardWriteSizeUnit = value
+                    }
+                }
+            }
+            public class VideoPolicy : Tea.TeaModel {
+                public var frameRate: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.frameRate != nil {
+                        map["FrameRate"] = self.frameRate!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["FrameRate"] as? Int32 {
+                        self.frameRate = value
+                    }
+                }
+            }
+            public class WatermarkPolicy : Tea.TeaModel {
+                public var watermarkSwitch: String?
+
+                public var watermarkTypes: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.watermarkSwitch != nil {
+                        map["WatermarkSwitch"] = self.watermarkSwitch!
+                    }
+                    if self.watermarkTypes != nil {
+                        map["WatermarkTypes"] = self.watermarkTypes!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["WatermarkSwitch"] as? String {
+                        self.watermarkSwitch = value
+                    }
+                    if let value = dict["WatermarkTypes"] as? [String] {
+                        self.watermarkTypes = value
+                    }
+                }
+            }
+            public var appContentProtection: String?
+
+            public var authorizeAccessPolicyRules: [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.AuthorizeAccessPolicyRules]?
+
+            public var clientTypes: [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.ClientTypes]?
+
+            public var clipboardPolicy: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.ClipboardPolicy?
+
+            public var disconnectKeepSession: String?
+
+            public var disconnectKeepSessionTime: Int32?
+
+            public var fileManager: String?
+
+            public var html5FileTransfer: String?
+
+            public var noOperationDisconnect: String?
+
+            public var noOperationDisconnectTime: Int32?
+
+            public var policyId: String?
+
+            public var policyVersion: String?
+
+            public var videoPolicy: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.VideoPolicy?
+
+            public var watermarkPolicy: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.WatermarkPolicy?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.clipboardPolicy?.validate()
+                try self.videoPolicy?.validate()
+                try self.watermarkPolicy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appContentProtection != nil {
+                    map["AppContentProtection"] = self.appContentProtection!
+                }
+                if self.authorizeAccessPolicyRules != nil {
+                    var tmp : [Any] = []
+                    for k in self.authorizeAccessPolicyRules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AuthorizeAccessPolicyRules"] = tmp
+                }
+                if self.clientTypes != nil {
+                    var tmp : [Any] = []
+                    for k in self.clientTypes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ClientTypes"] = tmp
+                }
+                if self.clipboardPolicy != nil {
+                    map["ClipboardPolicy"] = self.clipboardPolicy?.toMap()
+                }
+                if self.disconnectKeepSession != nil {
+                    map["DisconnectKeepSession"] = self.disconnectKeepSession!
+                }
+                if self.disconnectKeepSessionTime != nil {
+                    map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
+                }
+                if self.fileManager != nil {
+                    map["FileManager"] = self.fileManager!
+                }
+                if self.html5FileTransfer != nil {
+                    map["Html5FileTransfer"] = self.html5FileTransfer!
+                }
+                if self.noOperationDisconnect != nil {
+                    map["NoOperationDisconnect"] = self.noOperationDisconnect!
+                }
+                if self.noOperationDisconnectTime != nil {
+                    map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+                }
+                if self.policyId != nil {
+                    map["PolicyId"] = self.policyId!
+                }
+                if self.policyVersion != nil {
+                    map["PolicyVersion"] = self.policyVersion!
+                }
+                if self.videoPolicy != nil {
+                    map["VideoPolicy"] = self.videoPolicy?.toMap()
+                }
+                if self.watermarkPolicy != nil {
+                    map["WatermarkPolicy"] = self.watermarkPolicy?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AppContentProtection"] as? String {
+                    self.appContentProtection = value
+                }
+                if let value = dict["AuthorizeAccessPolicyRules"] as? [Any?] {
+                    var tmp : [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.AuthorizeAccessPolicyRules] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.AuthorizeAccessPolicyRules()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.authorizeAccessPolicyRules = tmp
+                }
+                if let value = dict["ClientTypes"] as? [Any?] {
+                    var tmp : [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.ClientTypes] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.ClientTypes()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.clientTypes = tmp
+                }
+                if let value = dict["ClipboardPolicy"] as? [String: Any?] {
+                    var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.ClipboardPolicy()
+                    model.fromMap(value)
+                    self.clipboardPolicy = model
+                }
+                if let value = dict["DisconnectKeepSession"] as? String {
+                    self.disconnectKeepSession = value
+                }
+                if let value = dict["DisconnectKeepSessionTime"] as? Int32 {
+                    self.disconnectKeepSessionTime = value
+                }
+                if let value = dict["FileManager"] as? String {
+                    self.fileManager = value
+                }
+                if let value = dict["Html5FileTransfer"] as? String {
+                    self.html5FileTransfer = value
+                }
+                if let value = dict["NoOperationDisconnect"] as? String {
+                    self.noOperationDisconnect = value
+                }
+                if let value = dict["NoOperationDisconnectTime"] as? Int32 {
+                    self.noOperationDisconnectTime = value
+                }
+                if let value = dict["PolicyId"] as? String {
+                    self.policyId = value
+                }
+                if let value = dict["PolicyVersion"] as? String {
+                    self.policyVersion = value
+                }
+                if let value = dict["VideoPolicy"] as? [String: Any?] {
+                    var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.VideoPolicy()
+                    model.fromMap(value)
+                    self.videoPolicy = model
+                }
+                if let value = dict["WatermarkPolicy"] as? [String: Any?] {
+                    var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy.WatermarkPolicy()
+                    model.fromMap(value)
+                    self.watermarkPolicy = model
+                }
+            }
+        }
+        public class Timers : Tea.TeaModel {
+            public var interval: Int32?
+
+            public var timerType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.interval != nil {
+                    map["Interval"] = self.interval!
+                }
+                if self.timerType != nil {
+                    map["TimerType"] = self.timerType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Interval"] as? Int32 {
+                    self.interval = value
+                }
+                if let value = dict["TimerType"] as? String {
+                    self.timerType = value
+                }
+            }
+        }
+        public class UserLimit : Tea.TeaModel {
+            public var userQuota: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userQuota != nil {
+                    map["UserQuota"] = self.userQuota!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserQuota"] as? Int32 {
+                    self.userQuota = value
+                }
+            }
+        }
+        public var authNotificationEnabled: Bool?
+
+        public var authorizedUserInfo: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.AuthorizedUserInfo?
+
+        public var bizRegionId: String?
+
+        public var browserConfig: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.BrowserConfig?
+
+        public var browserInstanceGroupId: String?
+
+        public var browserInstanceGroupName: String?
+
+        public var browserInstanceGroupSetId: String?
+
+        public var chargeType: String?
+
+        public var defaultAccessUrl: String?
+
+        public var duration: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Duration?
+
+        public var expiredTime: String?
+
+        public var gmtCreate: String?
+
+        public var homepage: String?
+
+        public var imageId: String?
+
+        public var instanceType: String?
+
+        public var maxAmount: Int32?
+
+        public var network: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Network?
+
+        public var nodeInstanceType: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.NodeInstanceType?
+
+        public var nodePool: [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.NodePool]?
+
+        public var osType: String?
+
+        public var policy: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy?
+
+        public var status: String?
+
+        public var subPayType: String?
+
+        public var supportUserGroupMixedAuth: Bool?
+
+        public var tier: String?
+
+        public var timers: [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Timers]?
+
+        public var userGroupAuthMode: String?
+
+        public var userLimit: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.UserLimit?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.authorizedUserInfo?.validate()
+            try self.browserConfig?.validate()
+            try self.duration?.validate()
+            try self.network?.validate()
+            try self.nodeInstanceType?.validate()
+            try self.policy?.validate()
+            try self.userLimit?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authNotificationEnabled != nil {
+                map["AuthNotificationEnabled"] = self.authNotificationEnabled!
+            }
+            if self.authorizedUserInfo != nil {
+                map["AuthorizedUserInfo"] = self.authorizedUserInfo?.toMap()
+            }
+            if self.bizRegionId != nil {
+                map["BizRegionId"] = self.bizRegionId!
+            }
+            if self.browserConfig != nil {
+                map["BrowserConfig"] = self.browserConfig?.toMap()
+            }
+            if self.browserInstanceGroupId != nil {
+                map["BrowserInstanceGroupId"] = self.browserInstanceGroupId!
+            }
+            if self.browserInstanceGroupName != nil {
+                map["BrowserInstanceGroupName"] = self.browserInstanceGroupName!
+            }
+            if self.browserInstanceGroupSetId != nil {
+                map["BrowserInstanceGroupSetId"] = self.browserInstanceGroupSetId!
+            }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
+            if self.defaultAccessUrl != nil {
+                map["DefaultAccessUrl"] = self.defaultAccessUrl!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration?.toMap()
+            }
+            if self.expiredTime != nil {
+                map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.homepage != nil {
+                map["Homepage"] = self.homepage!
+            }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.maxAmount != nil {
+                map["MaxAmount"] = self.maxAmount!
+            }
+            if self.network != nil {
+                map["Network"] = self.network?.toMap()
+            }
+            if self.nodeInstanceType != nil {
+                map["NodeInstanceType"] = self.nodeInstanceType?.toMap()
+            }
+            if self.nodePool != nil {
+                var tmp : [Any] = []
+                for k in self.nodePool! {
+                    tmp.append(k.toMap())
+                }
+                map["NodePool"] = tmp
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy?.toMap()
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.subPayType != nil {
+                map["SubPayType"] = self.subPayType!
+            }
+            if self.supportUserGroupMixedAuth != nil {
+                map["SupportUserGroupMixedAuth"] = self.supportUserGroupMixedAuth!
+            }
+            if self.tier != nil {
+                map["Tier"] = self.tier!
+            }
+            if self.timers != nil {
+                var tmp : [Any] = []
+                for k in self.timers! {
+                    tmp.append(k.toMap())
+                }
+                map["Timers"] = tmp
+            }
+            if self.userGroupAuthMode != nil {
+                map["UserGroupAuthMode"] = self.userGroupAuthMode!
+            }
+            if self.userLimit != nil {
+                map["UserLimit"] = self.userLimit?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthNotificationEnabled"] as? Bool {
+                self.authNotificationEnabled = value
+            }
+            if let value = dict["AuthorizedUserInfo"] as? [String: Any?] {
+                var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.AuthorizedUserInfo()
+                model.fromMap(value)
+                self.authorizedUserInfo = model
+            }
+            if let value = dict["BizRegionId"] as? String {
+                self.bizRegionId = value
+            }
+            if let value = dict["BrowserConfig"] as? [String: Any?] {
+                var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.BrowserConfig()
+                model.fromMap(value)
+                self.browserConfig = model
+            }
+            if let value = dict["BrowserInstanceGroupId"] as? String {
+                self.browserInstanceGroupId = value
+            }
+            if let value = dict["BrowserInstanceGroupName"] as? String {
+                self.browserInstanceGroupName = value
+            }
+            if let value = dict["BrowserInstanceGroupSetId"] as? String {
+                self.browserInstanceGroupSetId = value
+            }
+            if let value = dict["ChargeType"] as? String {
+                self.chargeType = value
+            }
+            if let value = dict["DefaultAccessUrl"] as? String {
+                self.defaultAccessUrl = value
+            }
+            if let value = dict["Duration"] as? [String: Any?] {
+                var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Duration()
+                model.fromMap(value)
+                self.duration = model
+            }
+            if let value = dict["ExpiredTime"] as? String {
+                self.expiredTime = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["Homepage"] as? String {
+                self.homepage = value
+            }
+            if let value = dict["ImageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["InstanceType"] as? String {
+                self.instanceType = value
+            }
+            if let value = dict["MaxAmount"] as? Int32 {
+                self.maxAmount = value
+            }
+            if let value = dict["Network"] as? [String: Any?] {
+                var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Network()
+                model.fromMap(value)
+                self.network = model
+            }
+            if let value = dict["NodeInstanceType"] as? [String: Any?] {
+                var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.NodeInstanceType()
+                model.fromMap(value)
+                self.nodeInstanceType = model
+            }
+            if let value = dict["NodePool"] as? [Any?] {
+                var tmp : [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.NodePool] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.NodePool()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.nodePool = tmp
+            }
+            if let value = dict["OsType"] as? String {
+                self.osType = value
+            }
+            if let value = dict["Policy"] as? [String: Any?] {
+                var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Policy()
+                model.fromMap(value)
+                self.policy = model
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SubPayType"] as? String {
+                self.subPayType = value
+            }
+            if let value = dict["SupportUserGroupMixedAuth"] as? Bool {
+                self.supportUserGroupMixedAuth = value
+            }
+            if let value = dict["Tier"] as? String {
+                self.tier = value
+            }
+            if let value = dict["Timers"] as? [Any?] {
+                var tmp : [GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Timers] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.Timers()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.timers = tmp
+            }
+            if let value = dict["UserGroupAuthMode"] as? String {
+                self.userGroupAuthMode = value
+            }
+            if let value = dict["UserLimit"] as? [String: Any?] {
+                var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel.UserLimit()
+                model.fromMap(value)
+                self.userLimit = model
+            }
+        }
+    }
+    public var browserInstanceGroupModel: GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.browserInstanceGroupModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.browserInstanceGroupModel != nil {
+            map["BrowserInstanceGroupModel"] = self.browserInstanceGroupModel?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrowserInstanceGroupModel"] as? [String: Any?] {
+            var model = GetBrowserInstanceGroupResponseBody.BrowserInstanceGroupModel()
+            model.fromMap(value)
+            self.browserInstanceGroupModel = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetBrowserInstanceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetBrowserInstanceGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetBrowserInstanceGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetConnectionTicketRequest : Tea.TeaModel {
     public var accessType: String?
 
     public var appId: String?
 
     public var appInstanceGroupIdList: [String]?
+
+    public var appInstanceGroupSetId: String?
 
     public var appInstanceId: String?
 
@@ -6789,6 +10129,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         if self.appInstanceGroupIdList != nil {
             map["AppInstanceGroupIdList"] = self.appInstanceGroupIdList!
         }
+        if self.appInstanceGroupSetId != nil {
+            map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+        }
         if self.appInstanceId != nil {
             map["AppInstanceId"] = self.appInstanceId!
         }
@@ -6832,6 +10175,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         }
         if let value = dict["AppInstanceGroupIdList"] as? [String] {
             self.appInstanceGroupIdList = value
+        }
+        if let value = dict["AppInstanceGroupSetId"] as? String {
+            self.appInstanceGroupSetId = value
         }
         if let value = dict["AppInstanceId"] as? String {
             self.appInstanceId = value
@@ -11139,8 +14485,394 @@ public class ListAppInstancesResponse : Tea.TeaModel {
     }
 }
 
+public class ListAuthorizedAppInstanceGroupByUserRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var appInstanceGroupId: String?
+
+    public var appInstanceGroupName: String?
+
+    public var appName: String?
+
+    public var endUserId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var productType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.appInstanceGroupName != nil {
+            map["AppInstanceGroupName"] = self.appInstanceGroupName!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["AppInstanceGroupId"] as? String {
+            self.appInstanceGroupId = value
+        }
+        if let value = dict["AppInstanceGroupName"] as? String {
+            self.appInstanceGroupName = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+    }
+}
+
+public class ListAuthorizedAppInstanceGroupByUserResponseBody : Tea.TeaModel {
+    public class AppInstanceGroupModels : Tea.TeaModel {
+        public class Apps : Tea.TeaModel {
+            public var appIcon: String?
+
+            public var appId: String?
+
+            public var appName: String?
+
+            public var appVersion: String?
+
+            public var appVersionName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appIcon != nil {
+                    map["AppIcon"] = self.appIcon!
+                }
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.appName != nil {
+                    map["AppName"] = self.appName!
+                }
+                if self.appVersion != nil {
+                    map["AppVersion"] = self.appVersion!
+                }
+                if self.appVersionName != nil {
+                    map["AppVersionName"] = self.appVersionName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AppIcon"] as? String {
+                    self.appIcon = value
+                }
+                if let value = dict["AppId"] as? String {
+                    self.appId = value
+                }
+                if let value = dict["AppName"] as? String {
+                    self.appName = value
+                }
+                if let value = dict["AppVersion"] as? String {
+                    self.appVersion = value
+                }
+                if let value = dict["AppVersionName"] as? String {
+                    self.appVersionName = value
+                }
+            }
+        }
+        public var appCenterImageId: String?
+
+        public var appInstanceGroupId: String?
+
+        public var appInstanceGroupName: String?
+
+        public var appInstanceType: String?
+
+        public var apps: [ListAuthorizedAppInstanceGroupByUserResponseBody.AppInstanceGroupModels.Apps]?
+
+        public var expiredTime: String?
+
+        public var gmtCreate: String?
+
+        public var regionId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appCenterImageId != nil {
+                map["AppCenterImageId"] = self.appCenterImageId!
+            }
+            if self.appInstanceGroupId != nil {
+                map["AppInstanceGroupId"] = self.appInstanceGroupId!
+            }
+            if self.appInstanceGroupName != nil {
+                map["AppInstanceGroupName"] = self.appInstanceGroupName!
+            }
+            if self.appInstanceType != nil {
+                map["AppInstanceType"] = self.appInstanceType!
+            }
+            if self.apps != nil {
+                var tmp : [Any] = []
+                for k in self.apps! {
+                    tmp.append(k.toMap())
+                }
+                map["Apps"] = tmp
+            }
+            if self.expiredTime != nil {
+                map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AppCenterImageId"] as? String {
+                self.appCenterImageId = value
+            }
+            if let value = dict["AppInstanceGroupId"] as? String {
+                self.appInstanceGroupId = value
+            }
+            if let value = dict["AppInstanceGroupName"] as? String {
+                self.appInstanceGroupName = value
+            }
+            if let value = dict["AppInstanceType"] as? String {
+                self.appInstanceType = value
+            }
+            if let value = dict["Apps"] as? [Any?] {
+                var tmp : [ListAuthorizedAppInstanceGroupByUserResponseBody.AppInstanceGroupModels.Apps] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListAuthorizedAppInstanceGroupByUserResponseBody.AppInstanceGroupModels.Apps()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.apps = tmp
+            }
+            if let value = dict["ExpiredTime"] as? String {
+                self.expiredTime = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var appInstanceGroupModels: [ListAuthorizedAppInstanceGroupByUserResponseBody.AppInstanceGroupModels]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appInstanceGroupModels != nil {
+            var tmp : [Any] = []
+            for k in self.appInstanceGroupModels! {
+                tmp.append(k.toMap())
+            }
+            map["AppInstanceGroupModels"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppInstanceGroupModels"] as? [Any?] {
+            var tmp : [ListAuthorizedAppInstanceGroupByUserResponseBody.AppInstanceGroupModels] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAuthorizedAppInstanceGroupByUserResponseBody.AppInstanceGroupModels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.appInstanceGroupModels = tmp
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAuthorizedAppInstanceGroupByUserResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAuthorizedAppInstanceGroupByUserResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAuthorizedAppInstanceGroupByUserResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListAuthorizedUserGroupsRequest : Tea.TeaModel {
     public var appInstanceGroupId: String?
+
+    public var appInstanceGroupSetId: String?
 
     public var groupId: String?
 
@@ -11169,6 +14901,9 @@ public class ListAuthorizedUserGroupsRequest : Tea.TeaModel {
         if self.appInstanceGroupId != nil {
             map["AppInstanceGroupId"] = self.appInstanceGroupId!
         }
+        if self.appInstanceGroupSetId != nil {
+            map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
@@ -11192,6 +14927,9 @@ public class ListAuthorizedUserGroupsRequest : Tea.TeaModel {
         if let value = dict["AppInstanceGroupId"] as? String {
             self.appInstanceGroupId = value
         }
+        if let value = dict["AppInstanceGroupSetId"] as? String {
+            self.appInstanceGroupSetId = value
+        }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
         }
@@ -11213,6 +14951,8 @@ public class ListAuthorizedUserGroupsRequest : Tea.TeaModel {
 public class ListAuthorizedUserGroupsResponseBody : Tea.TeaModel {
     public class UserGroups : Tea.TeaModel {
         public var appInstanceGroupId: String?
+
+        public var appInstanceGroupSetId: String?
 
         public var authMode: String?
 
@@ -11237,6 +14977,9 @@ public class ListAuthorizedUserGroupsResponseBody : Tea.TeaModel {
             if self.appInstanceGroupId != nil {
                 map["AppInstanceGroupId"] = self.appInstanceGroupId!
             }
+            if self.appInstanceGroupSetId != nil {
+                map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+            }
             if self.authMode != nil {
                 map["AuthMode"] = self.authMode!
             }
@@ -11253,6 +14996,9 @@ public class ListAuthorizedUserGroupsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AppInstanceGroupId"] as? String {
                 self.appInstanceGroupId = value
+            }
+            if let value = dict["AppInstanceGroupSetId"] as? String {
+                self.appInstanceGroupSetId = value
             }
             if let value = dict["AuthMode"] as? String {
                 self.authMode = value
@@ -11385,6 +15131,330 @@ public class ListAuthorizedUserGroupsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListAuthorizedUserGroupsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListAuthorizedUsersRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var appInstanceGroupId: String?
+
+    public var appInstanceGroupSetId: String?
+
+    public var appInstancePersistentId: String?
+
+    public var endUserId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var productType: String?
+
+    public var userIdFuzzy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.appInstanceGroupSetId != nil {
+            map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+        }
+        if self.appInstancePersistentId != nil {
+            map["AppInstancePersistentId"] = self.appInstancePersistentId!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.userIdFuzzy != nil {
+            map["UserIdFuzzy"] = self.userIdFuzzy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["AppInstanceGroupId"] as? String {
+            self.appInstanceGroupId = value
+        }
+        if let value = dict["AppInstanceGroupSetId"] as? String {
+            self.appInstanceGroupSetId = value
+        }
+        if let value = dict["AppInstancePersistentId"] as? String {
+            self.appInstancePersistentId = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+        if let value = dict["UserIdFuzzy"] as? String {
+            self.userIdFuzzy = value
+        }
+    }
+}
+
+public class ListAuthorizedUsersResponseBody : Tea.TeaModel {
+    public class Users : Tea.TeaModel {
+        public var accountType: String?
+
+        public var appId: String?
+
+        public var appInstanceGroupId: String?
+
+        public var appInstanceGroupSetId: String?
+
+        public var appInstancePersistentIds: [String]?
+
+        public var authMode: String?
+
+        public var email: String?
+
+        public var endUserId: String?
+
+        public var isAuthAllApps: String?
+
+        public var phone: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountType != nil {
+                map["AccountType"] = self.accountType!
+            }
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            if self.appInstanceGroupId != nil {
+                map["AppInstanceGroupId"] = self.appInstanceGroupId!
+            }
+            if self.appInstanceGroupSetId != nil {
+                map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+            }
+            if self.appInstancePersistentIds != nil {
+                map["AppInstancePersistentIds"] = self.appInstancePersistentIds!
+            }
+            if self.authMode != nil {
+                map["AuthMode"] = self.authMode!
+            }
+            if self.email != nil {
+                map["Email"] = self.email!
+            }
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            if self.isAuthAllApps != nil {
+                map["IsAuthAllApps"] = self.isAuthAllApps!
+            }
+            if self.phone != nil {
+                map["Phone"] = self.phone!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountType"] as? String {
+                self.accountType = value
+            }
+            if let value = dict["AppId"] as? String {
+                self.appId = value
+            }
+            if let value = dict["AppInstanceGroupId"] as? String {
+                self.appInstanceGroupId = value
+            }
+            if let value = dict["AppInstanceGroupSetId"] as? String {
+                self.appInstanceGroupSetId = value
+            }
+            if let value = dict["AppInstancePersistentIds"] as? [String] {
+                self.appInstancePersistentIds = value
+            }
+            if let value = dict["AuthMode"] as? String {
+                self.authMode = value
+            }
+            if let value = dict["Email"] as? String {
+                self.email = value
+            }
+            if let value = dict["EndUserId"] as? String {
+                self.endUserId = value
+            }
+            if let value = dict["IsAuthAllApps"] as? String {
+                self.isAuthAllApps = value
+            }
+            if let value = dict["Phone"] as? String {
+                self.phone = value
+            }
+        }
+    }
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var users: [ListAuthorizedUsersResponseBody.Users]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.users != nil {
+            var tmp : [Any] = []
+            for k in self.users! {
+                tmp.append(k.toMap())
+            }
+            map["Users"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+        if let value = dict["Users"] as? [Any?] {
+            var tmp : [ListAuthorizedUsersResponseBody.Users] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAuthorizedUsersResponseBody.Users()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.users = tmp
+        }
+    }
+}
+
+public class ListAuthorizedUsersResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAuthorizedUsersResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAuthorizedUsersResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -11685,6 +15755,1175 @@ public class ListBindInfoResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListBindInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListBrowserInstanceGroupRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var appInstanceGroupSetId: String?
+
+    public var bizRegionId: String?
+
+    public var browserInstanceGroupId: String?
+
+    public var browserInstanceGroupName: String?
+
+    public var cloudBrowserName: String?
+
+    public var excludedUserGroupIds: [String]?
+
+    public var officeSiteId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var status: [String]?
+
+    public var tag: [ListBrowserInstanceGroupRequest.Tag]?
+
+    public var tier: String?
+
+    public var userGroupIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appInstanceGroupSetId != nil {
+            map["AppInstanceGroupSetId"] = self.appInstanceGroupSetId!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.browserInstanceGroupId != nil {
+            map["BrowserInstanceGroupId"] = self.browserInstanceGroupId!
+        }
+        if self.browserInstanceGroupName != nil {
+            map["BrowserInstanceGroupName"] = self.browserInstanceGroupName!
+        }
+        if self.cloudBrowserName != nil {
+            map["CloudBrowserName"] = self.cloudBrowserName!
+        }
+        if self.excludedUserGroupIds != nil {
+            map["ExcludedUserGroupIds"] = self.excludedUserGroupIds!
+        }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.tier != nil {
+            map["Tier"] = self.tier!
+        }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppInstanceGroupSetId"] as? String {
+            self.appInstanceGroupSetId = value
+        }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
+        }
+        if let value = dict["BrowserInstanceGroupId"] as? String {
+            self.browserInstanceGroupId = value
+        }
+        if let value = dict["BrowserInstanceGroupName"] as? String {
+            self.browserInstanceGroupName = value
+        }
+        if let value = dict["CloudBrowserName"] as? String {
+            self.cloudBrowserName = value
+        }
+        if let value = dict["ExcludedUserGroupIds"] as? [String] {
+            self.excludedUserGroupIds = value
+        }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Status"] as? [String] {
+            self.status = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [ListBrowserInstanceGroupRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = ListBrowserInstanceGroupRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["Tier"] as? String {
+            self.tier = value
+        }
+        if let value = dict["UserGroupIds"] as? [String] {
+            self.userGroupIds = value
+        }
+    }
+}
+
+public class ListBrowserInstanceGroupResponseBody : Tea.TeaModel {
+    public class BrowserInstanceGroupModels : Tea.TeaModel {
+        public class AuthorizedUserInfo : Tea.TeaModel {
+            public var totalCount: Int32?
+
+            public var totalUserGroupCount: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.totalCount != nil {
+                    map["TotalCount"] = self.totalCount!
+                }
+                if self.totalUserGroupCount != nil {
+                    map["TotalUserGroupCount"] = self.totalUserGroupCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TotalCount"] as? Int32 {
+                    self.totalCount = value
+                }
+                if let value = dict["TotalUserGroupCount"] as? Int32 {
+                    self.totalUserGroupCount = value
+                }
+            }
+        }
+        public class BrowserConfig : Tea.TeaModel {
+            public var browserParam: String?
+
+            public var cookiesSync: String?
+
+            public var homepage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.browserParam != nil {
+                    map["BrowserParam"] = self.browserParam!
+                }
+                if self.cookiesSync != nil {
+                    map["CookiesSync"] = self.cookiesSync!
+                }
+                if self.homepage != nil {
+                    map["Homepage"] = self.homepage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BrowserParam"] as? String {
+                    self.browserParam = value
+                }
+                if let value = dict["CookiesSync"] as? String {
+                    self.cookiesSync = value
+                }
+                if let value = dict["Homepage"] as? String {
+                    self.homepage = value
+                }
+            }
+        }
+        public class Duration : Tea.TeaModel {
+            public var currentPayStage: String?
+
+            public var periodEndTime: String?
+
+            public var periodStartTime: String?
+
+            public var totalDuration: Int32?
+
+            public var usedDuration: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.currentPayStage != nil {
+                    map["CurrentPayStage"] = self.currentPayStage!
+                }
+                if self.periodEndTime != nil {
+                    map["PeriodEndTime"] = self.periodEndTime!
+                }
+                if self.periodStartTime != nil {
+                    map["PeriodStartTime"] = self.periodStartTime!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.usedDuration != nil {
+                    map["UsedDuration"] = self.usedDuration!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CurrentPayStage"] as? String {
+                    self.currentPayStage = value
+                }
+                if let value = dict["PeriodEndTime"] as? String {
+                    self.periodEndTime = value
+                }
+                if let value = dict["PeriodStartTime"] as? String {
+                    self.periodStartTime = value
+                }
+                if let value = dict["TotalDuration"] as? Int32 {
+                    self.totalDuration = value
+                }
+                if let value = dict["UsedDuration"] as? Int32 {
+                    self.usedDuration = value
+                }
+            }
+        }
+        public class Network : Tea.TeaModel {
+            public var accessRestriction: String?
+
+            public var officeSiteId: String?
+
+            public var vSwitchIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessRestriction != nil {
+                    map["AccessRestriction"] = self.accessRestriction!
+                }
+                if self.officeSiteId != nil {
+                    map["OfficeSiteId"] = self.officeSiteId!
+                }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessRestriction"] as? String {
+                    self.accessRestriction = value
+                }
+                if let value = dict["OfficeSiteId"] as? String {
+                    self.officeSiteId = value
+                }
+                if let value = dict["VSwitchIds"] as? [String] {
+                    self.vSwitchIds = value
+                }
+            }
+        }
+        public class Policy : Tea.TeaModel {
+            public class AuthorizeAccessPolicyRules : Tea.TeaModel {
+                public var cidrIp: String?
+
+                public var description_: String?
+
+                public var policy: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidrIp != nil {
+                        map["CidrIp"] = self.cidrIp!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.policy != nil {
+                        map["Policy"] = self.policy!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CidrIp"] as? String {
+                        self.cidrIp = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Policy"] as? String {
+                        self.policy = value
+                    }
+                }
+            }
+            public class ClientTypes : Tea.TeaModel {
+                public var clientType: String?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clientType != nil {
+                        map["ClientType"] = self.clientType!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ClientType"] as? String {
+                        self.clientType = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                }
+            }
+            public class ClipboardPolicy : Tea.TeaModel {
+                public var clipboard: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clipboard != nil {
+                        map["Clipboard"] = self.clipboard!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Clipboard"] as? String {
+                        self.clipboard = value
+                    }
+                }
+            }
+            public class VideoPolicy : Tea.TeaModel {
+                public var frameRate: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.frameRate != nil {
+                        map["FrameRate"] = self.frameRate!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["FrameRate"] as? Int32 {
+                        self.frameRate = value
+                    }
+                }
+            }
+            public class WatermarkPolicy : Tea.TeaModel {
+                public var watermarkSwitch: String?
+
+                public var watermarkTypes: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.watermarkSwitch != nil {
+                        map["WatermarkSwitch"] = self.watermarkSwitch!
+                    }
+                    if self.watermarkTypes != nil {
+                        map["WatermarkTypes"] = self.watermarkTypes!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["WatermarkSwitch"] as? String {
+                        self.watermarkSwitch = value
+                    }
+                    if let value = dict["WatermarkTypes"] as? [String] {
+                        self.watermarkTypes = value
+                    }
+                }
+            }
+            public var appContentProtection: String?
+
+            public var authorizeAccessPolicyRules: [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.AuthorizeAccessPolicyRules]?
+
+            public var clientTypes: [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.ClientTypes]?
+
+            public var clipboardPolicy: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.ClipboardPolicy?
+
+            public var videoPolicy: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.VideoPolicy?
+
+            public var watermarkPolicy: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.WatermarkPolicy?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.clipboardPolicy?.validate()
+                try self.videoPolicy?.validate()
+                try self.watermarkPolicy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appContentProtection != nil {
+                    map["AppContentProtection"] = self.appContentProtection!
+                }
+                if self.authorizeAccessPolicyRules != nil {
+                    var tmp : [Any] = []
+                    for k in self.authorizeAccessPolicyRules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AuthorizeAccessPolicyRules"] = tmp
+                }
+                if self.clientTypes != nil {
+                    var tmp : [Any] = []
+                    for k in self.clientTypes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ClientTypes"] = tmp
+                }
+                if self.clipboardPolicy != nil {
+                    map["ClipboardPolicy"] = self.clipboardPolicy?.toMap()
+                }
+                if self.videoPolicy != nil {
+                    map["VideoPolicy"] = self.videoPolicy?.toMap()
+                }
+                if self.watermarkPolicy != nil {
+                    map["WatermarkPolicy"] = self.watermarkPolicy?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AppContentProtection"] as? String {
+                    self.appContentProtection = value
+                }
+                if let value = dict["AuthorizeAccessPolicyRules"] as? [Any?] {
+                    var tmp : [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.AuthorizeAccessPolicyRules] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.AuthorizeAccessPolicyRules()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.authorizeAccessPolicyRules = tmp
+                }
+                if let value = dict["ClientTypes"] as? [Any?] {
+                    var tmp : [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.ClientTypes] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.ClientTypes()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.clientTypes = tmp
+                }
+                if let value = dict["ClipboardPolicy"] as? [String: Any?] {
+                    var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.ClipboardPolicy()
+                    model.fromMap(value)
+                    self.clipboardPolicy = model
+                }
+                if let value = dict["VideoPolicy"] as? [String: Any?] {
+                    var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.VideoPolicy()
+                    model.fromMap(value)
+                    self.videoPolicy = model
+                }
+                if let value = dict["WatermarkPolicy"] as? [String: Any?] {
+                    var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.WatermarkPolicy()
+                    model.fromMap(value)
+                    self.watermarkPolicy = model
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public class Timers : Tea.TeaModel {
+            public var interval: Int32?
+
+            public var timerType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.interval != nil {
+                    map["Interval"] = self.interval!
+                }
+                if self.timerType != nil {
+                    map["TimerType"] = self.timerType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Interval"] as? Int32 {
+                    self.interval = value
+                }
+                if let value = dict["TimerType"] as? String {
+                    self.timerType = value
+                }
+            }
+        }
+        public class UserLimit : Tea.TeaModel {
+            public var userQuota: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userQuota != nil {
+                    map["UserQuota"] = self.userQuota!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserQuota"] as? Int32 {
+                    self.userQuota = value
+                }
+            }
+        }
+        public var authNotificationEnabled: Bool?
+
+        public var authorizedUserInfo: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.AuthorizedUserInfo?
+
+        public var bizRegionId: String?
+
+        public var browserConfig: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.BrowserConfig?
+
+        public var browserInstanceGroupId: String?
+
+        public var browserInstanceGroupName: String?
+
+        public var browserInstanceGroupSetId: String?
+
+        public var chargeType: String?
+
+        public var defaultAccessUrl: String?
+
+        public var duration: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Duration?
+
+        public var expiredTime: String?
+
+        public var gmtCreate: String?
+
+        public var homepage: String?
+
+        public var imageId: String?
+
+        public var instanceType: String?
+
+        public var network: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Network?
+
+        public var osType: String?
+
+        public var policy: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy?
+
+        public var status: String?
+
+        public var subPayType: String?
+
+        public var supportUserGroupMixedAuth: Bool?
+
+        public var tags: [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Tags]?
+
+        public var tier: String?
+
+        public var timers: [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Timers]?
+
+        public var userGroupAuthMode: String?
+
+        public var userLimit: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.UserLimit?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.authorizedUserInfo?.validate()
+            try self.browserConfig?.validate()
+            try self.duration?.validate()
+            try self.network?.validate()
+            try self.policy?.validate()
+            try self.userLimit?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authNotificationEnabled != nil {
+                map["AuthNotificationEnabled"] = self.authNotificationEnabled!
+            }
+            if self.authorizedUserInfo != nil {
+                map["AuthorizedUserInfo"] = self.authorizedUserInfo?.toMap()
+            }
+            if self.bizRegionId != nil {
+                map["BizRegionId"] = self.bizRegionId!
+            }
+            if self.browserConfig != nil {
+                map["BrowserConfig"] = self.browserConfig?.toMap()
+            }
+            if self.browserInstanceGroupId != nil {
+                map["BrowserInstanceGroupId"] = self.browserInstanceGroupId!
+            }
+            if self.browserInstanceGroupName != nil {
+                map["BrowserInstanceGroupName"] = self.browserInstanceGroupName!
+            }
+            if self.browserInstanceGroupSetId != nil {
+                map["BrowserInstanceGroupSetId"] = self.browserInstanceGroupSetId!
+            }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
+            if self.defaultAccessUrl != nil {
+                map["DefaultAccessUrl"] = self.defaultAccessUrl!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration?.toMap()
+            }
+            if self.expiredTime != nil {
+                map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.homepage != nil {
+                map["Homepage"] = self.homepage!
+            }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.network != nil {
+                map["Network"] = self.network?.toMap()
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy?.toMap()
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.subPayType != nil {
+                map["SubPayType"] = self.subPayType!
+            }
+            if self.supportUserGroupMixedAuth != nil {
+                map["SupportUserGroupMixedAuth"] = self.supportUserGroupMixedAuth!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.tier != nil {
+                map["Tier"] = self.tier!
+            }
+            if self.timers != nil {
+                var tmp : [Any] = []
+                for k in self.timers! {
+                    tmp.append(k.toMap())
+                }
+                map["Timers"] = tmp
+            }
+            if self.userGroupAuthMode != nil {
+                map["UserGroupAuthMode"] = self.userGroupAuthMode!
+            }
+            if self.userLimit != nil {
+                map["UserLimit"] = self.userLimit?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthNotificationEnabled"] as? Bool {
+                self.authNotificationEnabled = value
+            }
+            if let value = dict["AuthorizedUserInfo"] as? [String: Any?] {
+                var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.AuthorizedUserInfo()
+                model.fromMap(value)
+                self.authorizedUserInfo = model
+            }
+            if let value = dict["BizRegionId"] as? String {
+                self.bizRegionId = value
+            }
+            if let value = dict["BrowserConfig"] as? [String: Any?] {
+                var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.BrowserConfig()
+                model.fromMap(value)
+                self.browserConfig = model
+            }
+            if let value = dict["BrowserInstanceGroupId"] as? String {
+                self.browserInstanceGroupId = value
+            }
+            if let value = dict["BrowserInstanceGroupName"] as? String {
+                self.browserInstanceGroupName = value
+            }
+            if let value = dict["BrowserInstanceGroupSetId"] as? String {
+                self.browserInstanceGroupSetId = value
+            }
+            if let value = dict["ChargeType"] as? String {
+                self.chargeType = value
+            }
+            if let value = dict["DefaultAccessUrl"] as? String {
+                self.defaultAccessUrl = value
+            }
+            if let value = dict["Duration"] as? [String: Any?] {
+                var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Duration()
+                model.fromMap(value)
+                self.duration = model
+            }
+            if let value = dict["ExpiredTime"] as? String {
+                self.expiredTime = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["Homepage"] as? String {
+                self.homepage = value
+            }
+            if let value = dict["ImageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["InstanceType"] as? String {
+                self.instanceType = value
+            }
+            if let value = dict["Network"] as? [String: Any?] {
+                var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Network()
+                model.fromMap(value)
+                self.network = model
+            }
+            if let value = dict["OsType"] as? String {
+                self.osType = value
+            }
+            if let value = dict["Policy"] as? [String: Any?] {
+                var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy()
+                model.fromMap(value)
+                self.policy = model
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SubPayType"] as? String {
+                self.subPayType = value
+            }
+            if let value = dict["SupportUserGroupMixedAuth"] as? Bool {
+                self.supportUserGroupMixedAuth = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+            if let value = dict["Tier"] as? String {
+                self.tier = value
+            }
+            if let value = dict["Timers"] as? [Any?] {
+                var tmp : [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Timers] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Timers()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.timers = tmp
+            }
+            if let value = dict["UserGroupAuthMode"] as? String {
+                self.userGroupAuthMode = value
+            }
+            if let value = dict["UserLimit"] as? [String: Any?] {
+                var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.UserLimit()
+                model.fromMap(value)
+                self.userLimit = model
+            }
+        }
+    }
+    public var browserInstanceGroupModels: [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.browserInstanceGroupModels != nil {
+            var tmp : [Any] = []
+            for k in self.browserInstanceGroupModels! {
+                tmp.append(k.toMap())
+            }
+            map["BrowserInstanceGroupModels"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrowserInstanceGroupModels"] as? [Any?] {
+            var tmp : [ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels] = []
+            for v in value {
+                if v != nil {
+                    var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.browserInstanceGroupModels = tmp
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListBrowserInstanceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListBrowserInstanceGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListBrowserInstanceGroupResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -17730,6 +22969,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var eniPrivateIpAddressQuantity: Int32?
 
+        public var erdmaStatus: String?
+
         public var expiredTime: String?
 
         public var fotaVersion: String?
@@ -17767,6 +23008,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var subPayType: String?
+
+        public var supportASP: Bool?
 
         public var systemDiskCategory: String?
 
@@ -17837,6 +23080,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if self.eniPrivateIpAddressQuantity != nil {
                 map["EniPrivateIpAddressQuantity"] = self.eniPrivateIpAddressQuantity!
             }
+            if self.erdmaStatus != nil {
+                map["ErdmaStatus"] = self.erdmaStatus!
+            }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
             }
@@ -17905,6 +23151,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if self.subPayType != nil {
                 map["SubPayType"] = self.subPayType!
+            }
+            if self.supportASP != nil {
+                map["SupportASP"] = self.supportASP!
             }
             if self.systemDiskCategory != nil {
                 map["SystemDiskCategory"] = self.systemDiskCategory!
@@ -17983,6 +23232,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["EniPrivateIpAddressQuantity"] as? Int32 {
                 self.eniPrivateIpAddressQuantity = value
+            }
+            if let value = dict["ErdmaStatus"] as? String {
+                self.erdmaStatus = value
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
@@ -18072,6 +23324,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubPayType"] as? String {
                 self.subPayType = value
+            }
+            if let value = dict["SupportASP"] as? Bool {
+                self.supportASP = value
             }
             if let value = dict["SystemDiskCategory"] as? String {
                 self.systemDiskCategory = value
@@ -20136,6 +25391,8 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public var authNotificationEnabled: Bool?
+
     public var browserConfig: ModifyBrowserInstanceGroupRequest.BrowserConfig?
 
     public var browserInstanceGroupId: String?
@@ -20170,6 +25427,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authNotificationEnabled != nil {
+            map["AuthNotificationEnabled"] = self.authNotificationEnabled!
+        }
         if self.browserConfig != nil {
             map["BrowserConfig"] = self.browserConfig?.toMap()
         }
@@ -20203,6 +25463,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthNotificationEnabled"] as? Bool {
+            self.authNotificationEnabled = value
+        }
         if let value = dict["BrowserConfig"] as? [String: Any?] {
             var model = ModifyBrowserInstanceGroupRequest.BrowserConfig()
             model.fromMap(value)
@@ -20249,6 +25512,8 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 }
 
 public class ModifyBrowserInstanceGroupShrinkRequest : Tea.TeaModel {
+    public var authNotificationEnabled: Bool?
+
     public var browserConfigShrink: String?
 
     public var browserInstanceGroupId: String?
@@ -20279,6 +25544,9 @@ public class ModifyBrowserInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authNotificationEnabled != nil {
+            map["AuthNotificationEnabled"] = self.authNotificationEnabled!
+        }
         if self.browserConfigShrink != nil {
             map["BrowserConfig"] = self.browserConfigShrink!
         }
@@ -20308,6 +25576,9 @@ public class ModifyBrowserInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthNotificationEnabled"] as? Bool {
+            self.authNotificationEnabled = value
+        }
         if let value = dict["BrowserConfig"] as? String {
             self.browserConfigShrink = value
         }
@@ -21250,6 +26521,8 @@ public class ModifyTenantConfigResponse : Tea.TeaModel {
 }
 
 public class ModifyWuyingServerAttributeRequest : Tea.TeaModel {
+    public var erdmaEnabled: Bool?
+
     public var password: String?
 
     public var productType: String?
@@ -21272,6 +26545,9 @@ public class ModifyWuyingServerAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.erdmaEnabled != nil {
+            map["ErdmaEnabled"] = self.erdmaEnabled!
+        }
         if self.password != nil {
             map["Password"] = self.password!
         }
@@ -21289,6 +26565,9 @@ public class ModifyWuyingServerAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ErdmaEnabled"] as? Bool {
+            self.erdmaEnabled = value
+        }
         if let value = dict["Password"] as? String {
             self.password = value
         }
