@@ -1103,6 +1103,8 @@ public class CloneEngineConfigRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var sceneId: String?
+
     public override init() {
         super.init()
     }
@@ -1129,6 +1131,9 @@ public class CloneEngineConfigRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         return map
     }
 
@@ -1145,6 +1150,9 @@ public class CloneEngineConfigRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
     }
 }
@@ -3065,6 +3073,8 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var sceneId: String?
+
     public var type: String?
 
     public override init() {
@@ -3096,6 +3106,9 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -3118,6 +3131,9 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
@@ -13126,6 +13142,8 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var sceneId: String?
+
     public var status: String?
 
     public var type: String?
@@ -13168,6 +13186,9 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -13202,6 +13223,9 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -19027,6 +19051,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var sceneId: String?
+
     public var serviceConfig: String?
 
     public var serviceResourceUri: String?
@@ -19079,6 +19105,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         if self.serviceConfig != nil {
             map["ServiceConfig"] = self.serviceConfig!
         }
@@ -19124,6 +19153,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
         if let value = dict["ServiceConfig"] as? String {
             self.serviceConfig = value
@@ -23938,6 +23970,8 @@ public class ListEngineConfigsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sceneId: String?
+
     public var status: String?
 
     public var version: String?
@@ -23971,6 +24005,9 @@ public class ListEngineConfigsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -23996,6 +24033,9 @@ public class ListEngineConfigsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -24023,6 +24063,8 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
         public var gmtReleasedTime: String?
 
         public var name: String?
+
+        public var sceneId: String?
 
         public var status: String?
 
@@ -24068,6 +24110,9 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.sceneId != nil {
+                map["SceneId"] = self.sceneId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -24105,6 +24150,9 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["SceneId"] as? String {
+                self.sceneId = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -24916,6 +24964,8 @@ public class ListFeatureConsistencyCheckJobConfigsRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var sceneId: String?
+
     public var sortBy: String?
 
     public override init() {
@@ -24944,6 +24994,9 @@ public class ListFeatureConsistencyCheckJobConfigsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -24963,6 +25016,9 @@ public class ListFeatureConsistencyCheckJobConfigsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
@@ -30179,6 +30235,8 @@ public class ListSampleConsistencyJobsRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var sceneId: String?
+
     public var sortBy: String?
 
     public override init() {
@@ -30207,6 +30265,9 @@ public class ListSampleConsistencyJobsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -30226,6 +30287,9 @@ public class ListSampleConsistencyJobsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
@@ -36374,6 +36438,8 @@ public class ShoppingAssistantResponseBody : Tea.TeaModel {
 
     public var conversationId: String?
 
+    public var enableSuggestion: Bool?
+
     public var errorCode: String?
 
     public var event: String?
@@ -36411,6 +36477,9 @@ public class ShoppingAssistantResponseBody : Tea.TeaModel {
         if self.conversationId != nil {
             map["ConversationId"] = self.conversationId!
         }
+        if self.enableSuggestion != nil {
+            map["EnableSuggestion"] = self.enableSuggestion!
+        }
         if self.errorCode != nil {
             map["ErrorCode"] = self.errorCode!
         }
@@ -36444,6 +36513,9 @@ public class ShoppingAssistantResponseBody : Tea.TeaModel {
         }
         if let value = dict["ConversationId"] as? String {
             self.conversationId = value
+        }
+        if let value = dict["EnableSuggestion"] as? Bool {
+            self.enableSuggestion = value
         }
         if let value = dict["ErrorCode"] as? String {
             self.errorCode = value
@@ -38401,6 +38473,8 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var sceneId: String?
+
     public var type: String?
 
     public override init() {
@@ -38432,6 +38506,9 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -38454,6 +38531,9 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["SceneId"] as? String {
+            self.sceneId = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
