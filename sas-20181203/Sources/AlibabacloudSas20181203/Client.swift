@@ -20378,6 +20378,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentlessTaskCountBatchWithOptions(_ request: GetAgentlessTaskCountBatchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentlessTaskCountBatchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.uuidList)) {
+            body["UuidList"] = request.uuidList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAgentlessTaskCountBatch",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAgentlessTaskCountBatchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAgentlessTaskCountBatch(_ request: GetAgentlessTaskCountBatchRequest) async throws -> GetAgentlessTaskCountBatchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAgentlessTaskCountBatchWithOptions(request as! GetAgentlessTaskCountBatchRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAgentlessTaskUsedSizeEstimateWithOptions(_ request: GetAgentlessTaskUsedSizeEstimateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentlessTaskUsedSizeEstimateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

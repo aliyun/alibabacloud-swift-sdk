@@ -37,6 +37,28 @@ public class QueryIncidentTracingSubNodesCountRequest : Tea.TeaModel {
 }
 
 public class DataValue : Tea.TeaModel {
+    public var riskMachine: Int32?
+
+    public var scanMachine: Int32?
+
+    public var maliciousFile: Int32?
+
+    public var vulnerability: Int32?
+
+    public var lastTaskTime: Int64?
+
+    public var baselineCheckCount: Int32?
+
+    public var scaVulCount: Int32?
+
+    public var cveVulCount: Int32?
+
+    public var sysVulCount: Int32?
+
+    public var sensitiveFileCount: Int32?
+
+    public var estimateUsedSize: Int64?
+
     public var cveNum: Int32?
 
     public var emgNum: Int32?
@@ -71,6 +93,39 @@ public class DataValue : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.riskMachine != nil {
+            map["RiskMachine"] = self.riskMachine!
+        }
+        if self.scanMachine != nil {
+            map["ScanMachine"] = self.scanMachine!
+        }
+        if self.maliciousFile != nil {
+            map["MaliciousFile"] = self.maliciousFile!
+        }
+        if self.vulnerability != nil {
+            map["Vulnerability"] = self.vulnerability!
+        }
+        if self.lastTaskTime != nil {
+            map["LastTaskTime"] = self.lastTaskTime!
+        }
+        if self.baselineCheckCount != nil {
+            map["BaselineCheckCount"] = self.baselineCheckCount!
+        }
+        if self.scaVulCount != nil {
+            map["ScaVulCount"] = self.scaVulCount!
+        }
+        if self.cveVulCount != nil {
+            map["CveVulCount"] = self.cveVulCount!
+        }
+        if self.sysVulCount != nil {
+            map["SysVulCount"] = self.sysVulCount!
+        }
+        if self.sensitiveFileCount != nil {
+            map["SensitiveFileCount"] = self.sensitiveFileCount!
+        }
+        if self.estimateUsedSize != nil {
+            map["EstimateUsedSize"] = self.estimateUsedSize!
+        }
         if self.cveNum != nil {
             map["CveNum"] = self.cveNum!
         }
@@ -106,6 +161,39 @@ public class DataValue : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["RiskMachine"] as? Int32 {
+            self.riskMachine = value
+        }
+        if let value = dict["ScanMachine"] as? Int32 {
+            self.scanMachine = value
+        }
+        if let value = dict["MaliciousFile"] as? Int32 {
+            self.maliciousFile = value
+        }
+        if let value = dict["Vulnerability"] as? Int32 {
+            self.vulnerability = value
+        }
+        if let value = dict["LastTaskTime"] as? Int64 {
+            self.lastTaskTime = value
+        }
+        if let value = dict["BaselineCheckCount"] as? Int32 {
+            self.baselineCheckCount = value
+        }
+        if let value = dict["ScaVulCount"] as? Int32 {
+            self.scaVulCount = value
+        }
+        if let value = dict["CveVulCount"] as? Int32 {
+            self.cveVulCount = value
+        }
+        if let value = dict["SysVulCount"] as? Int32 {
+            self.sysVulCount = value
+        }
+        if let value = dict["SensitiveFileCount"] as? Int32 {
+            self.sensitiveFileCount = value
+        }
+        if let value = dict["EstimateUsedSize"] as? Int64 {
+            self.estimateUsedSize = value
+        }
         if let value = dict["CveNum"] as? Int32 {
             self.cveNum = value
         }
@@ -122682,6 +122770,146 @@ public class GetAgentlessTaskCountResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetAgentlessTaskCountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetAgentlessTaskCountBatchRequest : Tea.TeaModel {
+    public var targetType: Int32?
+
+    public var uuidList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        if self.uuidList != nil {
+            map["UuidList"] = self.uuidList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TargetType"] as? Int32 {
+            self.targetType = value
+        }
+        if let value = dict["UuidList"] as? [String] {
+            self.uuidList = value
+        }
+    }
+}
+
+public class GetAgentlessTaskCountBatchResponseBody : Tea.TeaModel {
+    public var data: [String: DataValue]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.data! {
+                tmp[k] = v.toMap()
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var tmp : [String: DataValue] = [:]
+            for (k, v) in value {
+                if v != nil {
+                    var model = DataValue()
+                    model.fromMap(v as? [String: Any?])
+                    tmp[k] = model
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetAgentlessTaskCountBatchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAgentlessTaskCountBatchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAgentlessTaskCountBatchResponseBody()
             model.fromMap(value)
             self.body = model
         }
