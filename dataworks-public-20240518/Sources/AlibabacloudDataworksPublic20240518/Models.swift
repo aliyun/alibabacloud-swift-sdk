@@ -8299,6 +8299,8 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
 
                 public var mode: String?
 
+                public var projectId: String?
+
                 public var resourceGroupId: String?
 
                 public var skills: String?
@@ -8323,6 +8325,9 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
                     if self.mode != nil {
                         map["Mode"] = self.mode!
                     }
+                    if self.projectId != nil {
+                        map["ProjectId"] = self.projectId!
+                    }
                     if self.resourceGroupId != nil {
                         map["ResourceGroupId"] = self.resourceGroupId!
                     }
@@ -8339,6 +8344,9 @@ public class CreateAgentSessionRequest : Tea.TeaModel {
                     }
                     if let value = dict["Mode"] as? String {
                         self.mode = value
+                    }
+                    if let value = dict["ProjectId"] as? String {
+                        self.projectId = value
                     }
                     if let value = dict["ResourceGroupId"] as? String {
                         self.resourceGroupId = value
