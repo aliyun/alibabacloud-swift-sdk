@@ -2309,6 +2309,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.renames)) {
+            body["renames"] = request.renames ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.schema)) {
             body["schema"] = request.schema ?? [:];
         }

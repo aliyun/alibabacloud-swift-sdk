@@ -16005,7 +16005,47 @@ public class UpdateContextStoreResponse : Tea.TeaModel {
 }
 
 public class UpdateDatasetRequest : Tea.TeaModel {
+    public class Renames : Tea.TeaModel {
+        public var newName: String?
+
+        public var oldName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.newName != nil {
+                map["newName"] = self.newName!
+            }
+            if self.oldName != nil {
+                map["oldName"] = self.oldName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["newName"] as? String {
+                self.newName = value
+            }
+            if let value = dict["oldName"] as? String {
+                self.oldName = value
+            }
+        }
+    }
     public var description_: String?
+
+    public var renames: [UpdateDatasetRequest.Renames]?
 
     public var schema: [String: IndexKey]?
 
@@ -16028,6 +16068,13 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.renames != nil {
+            var tmp : [Any] = []
+            for k in self.renames! {
+                tmp.append(k.toMap())
+            }
+            map["renames"] = tmp
+        }
         if self.schema != nil {
             var tmp : [String: Any] = [:]
             for (k, v) in self.schema! {
@@ -16045,6 +16092,19 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["renames"] as? [Any?] {
+            var tmp : [UpdateDatasetRequest.Renames] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateDatasetRequest.Renames()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.renames = tmp
         }
         if let value = dict["schema"] as? [String: Any?] {
             var tmp : [String: IndexKey] = [:]
