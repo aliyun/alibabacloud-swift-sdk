@@ -1343,6 +1343,8 @@ public class WafRuleMatch : Tea.TeaModel {
 
     public var negate: Bool?
 
+    public var parent: String?
+
     public override init() {
         super.init()
     }
@@ -1382,6 +1384,9 @@ public class WafRuleMatch : Tea.TeaModel {
         if self.negate != nil {
             map["Negate"] = self.negate!
         }
+        if self.parent != nil {
+            map["Parent"] = self.parent!
+        }
         return map
     }
 
@@ -1417,6 +1422,9 @@ public class WafRuleMatch : Tea.TeaModel {
         }
         if let value = dict["Negate"] as? Bool {
             self.negate = value
+        }
+        if let value = dict["Parent"] as? String {
+            self.parent = value
         }
     }
 }
@@ -61911,6 +61919,247 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Subs : Tea.TeaModel {
+                public class Logics : Tea.TeaModel {
+                    public class Validator : Tea.TeaModel {
+                        public var errMsg: String?
+
+                        public var length: WafQuotaInteger?
+
+                        public var pattern: String?
+
+                        public var range: WafQuotaInteger?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.length?.validate()
+                            try self.range?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.errMsg != nil {
+                                map["ErrMsg"] = self.errMsg!
+                            }
+                            if self.length != nil {
+                                map["Length"] = self.length?.toMap()
+                            }
+                            if self.pattern != nil {
+                                map["Pattern"] = self.pattern!
+                            }
+                            if self.range != nil {
+                                map["Range"] = self.range?.toMap()
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["ErrMsg"] as? String {
+                                self.errMsg = value
+                            }
+                            if let value = dict["Length"] as? [String: Any?] {
+                                var model = WafQuotaInteger()
+                                model.fromMap(value)
+                                self.length = model
+                            }
+                            if let value = dict["Pattern"] as? String {
+                                self.pattern = value
+                            }
+                            if let value = dict["Range"] as? [String: Any?] {
+                                var model = WafQuotaInteger()
+                                model.fromMap(value)
+                                self.range = model
+                            }
+                        }
+                    }
+                    public var attributes: Int32?
+
+                    public var enable: Bool?
+
+                    public var kind: String?
+
+                    public var minPlan: String?
+
+                    public var negative: Bool?
+
+                    public var operator_: String?
+
+                    public var symbol: String?
+
+                    public var tip: String?
+
+                    public var type: String?
+
+                    public var validator: GetWafFilterResponseBody.Filter.Fields.Subs.Logics.Validator?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.validator?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.attributes != nil {
+                            map["Attributes"] = self.attributes!
+                        }
+                        if self.enable != nil {
+                            map["Enable"] = self.enable!
+                        }
+                        if self.kind != nil {
+                            map["Kind"] = self.kind!
+                        }
+                        if self.minPlan != nil {
+                            map["MinPlan"] = self.minPlan!
+                        }
+                        if self.negative != nil {
+                            map["Negative"] = self.negative!
+                        }
+                        if self.operator_ != nil {
+                            map["Operator"] = self.operator_!
+                        }
+                        if self.symbol != nil {
+                            map["Symbol"] = self.symbol!
+                        }
+                        if self.tip != nil {
+                            map["Tip"] = self.tip!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        if self.validator != nil {
+                            map["Validator"] = self.validator?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Attributes"] as? Int32 {
+                            self.attributes = value
+                        }
+                        if let value = dict["Enable"] as? Bool {
+                            self.enable = value
+                        }
+                        if let value = dict["Kind"] as? String {
+                            self.kind = value
+                        }
+                        if let value = dict["MinPlan"] as? String {
+                            self.minPlan = value
+                        }
+                        if let value = dict["Negative"] as? Bool {
+                            self.negative = value
+                        }
+                        if let value = dict["Operator"] as? String {
+                            self.operator_ = value
+                        }
+                        if let value = dict["Symbol"] as? String {
+                            self.symbol = value
+                        }
+                        if let value = dict["Tip"] as? String {
+                            self.tip = value
+                        }
+                        if let value = dict["Type"] as? String {
+                            self.type = value
+                        }
+                        if let value = dict["Validator"] as? [String: Any?] {
+                            var model = GetWafFilterResponseBody.Filter.Fields.Subs.Logics.Validator()
+                            model.fromMap(value)
+                            self.validator = model
+                        }
+                    }
+                }
+                public var enable: Bool?
+
+                public var key: String?
+
+                public var label: String?
+
+                public var logics: [GetWafFilterResponseBody.Filter.Fields.Subs.Logics]?
+
+                public var minPlan: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enable != nil {
+                        map["Enable"] = self.enable!
+                    }
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.label != nil {
+                        map["Label"] = self.label!
+                    }
+                    if self.logics != nil {
+                        var tmp : [Any] = []
+                        for k in self.logics! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Logics"] = tmp
+                    }
+                    if self.minPlan != nil {
+                        map["MinPlan"] = self.minPlan!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Enable"] as? Bool {
+                        self.enable = value
+                    }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Label"] as? String {
+                        self.label = value
+                    }
+                    if let value = dict["Logics"] as? [Any?] {
+                        var tmp : [GetWafFilterResponseBody.Filter.Fields.Subs.Logics] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetWafFilterResponseBody.Filter.Fields.Subs.Logics()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.logics = tmp
+                    }
+                    if let value = dict["MinPlan"] as? String {
+                        self.minPlan = value
+                    }
+                }
+            }
             public var enable: Bool?
 
             public var key: String?
@@ -61926,6 +62175,8 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
             public var sub: Bool?
 
             public var subTip: String?
+
+            public var subs: [GetWafFilterResponseBody.Filter.Fields.Subs]?
 
             public override init() {
                 super.init()
@@ -61970,6 +62221,13 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                 if self.subTip != nil {
                     map["SubTip"] = self.subTip!
                 }
+                if self.subs != nil {
+                    var tmp : [Any] = []
+                    for k in self.subs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Subs"] = tmp
+                }
                 return map
             }
 
@@ -62010,6 +62268,19 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SubTip"] as? String {
                     self.subTip = value
+                }
+                if let value = dict["Subs"] as? [Any?] {
+                    var tmp : [GetWafFilterResponseBody.Filter.Fields.Subs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetWafFilterResponseBody.Filter.Fields.Subs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.subs = tmp
                 }
             }
         }
