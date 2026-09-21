@@ -2137,6 +2137,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agenticDBBranchSpecShrink)) {
             query["AgenticDBBranchSpec"] = request.agenticDBBranchSpecShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agenticDBClusterId)) {
+            query["AgenticDBClusterId"] = request.agenticDBClusterId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.applicationType)) {
             query["ApplicationType"] = request.applicationType ?? "";
         }

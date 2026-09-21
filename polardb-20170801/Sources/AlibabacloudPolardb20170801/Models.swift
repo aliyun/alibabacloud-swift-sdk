@@ -8546,6 +8546,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var agenticDBBranchSpec: CreateApplicationRequest.AgenticDBBranchSpec?
 
+    public var agenticDBClusterId: String?
+
     public var applicationType: String?
 
     public var architecture: String?
@@ -8652,6 +8654,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.agenticDBBranchSpec != nil {
             map["AgenticDBBranchSpec"] = self.agenticDBBranchSpec?.toMap()
+        }
+        if self.agenticDBClusterId != nil {
+            map["AgenticDBClusterId"] = self.agenticDBClusterId!
         }
         if self.applicationType != nil {
             map["ApplicationType"] = self.applicationType!
@@ -8815,6 +8820,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
             var model = CreateApplicationRequest.AgenticDBBranchSpec()
             model.fromMap(value)
             self.agenticDBBranchSpec = model
+        }
+        if let value = dict["AgenticDBClusterId"] as? String {
+            self.agenticDBClusterId = value
         }
         if let value = dict["ApplicationType"] as? String {
             self.applicationType = value
@@ -9052,6 +9060,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var agenticDBBranchSpecShrink: String?
 
+    public var agenticDBClusterId: String?
+
     public var applicationType: String?
 
     public var architecture: String?
@@ -9155,6 +9165,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.agenticDBBranchSpecShrink != nil {
             map["AgenticDBBranchSpec"] = self.agenticDBBranchSpecShrink!
+        }
+        if self.agenticDBClusterId != nil {
+            map["AgenticDBClusterId"] = self.agenticDBClusterId!
         }
         if self.applicationType != nil {
             map["ApplicationType"] = self.applicationType!
@@ -9296,6 +9309,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AgenticDBBranchSpec"] as? String {
             self.agenticDBBranchSpecShrink = value
+        }
+        if let value = dict["AgenticDBClusterId"] as? String {
+            self.agenticDBClusterId = value
         }
         if let value = dict["ApplicationType"] as? String {
             self.applicationType = value
