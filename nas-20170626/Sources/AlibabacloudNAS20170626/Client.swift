@@ -4699,10 +4699,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyFileSystemShrinkRequest = ModifyFileSystemShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.autoUpgradeConfig)) {
+            request.autoUpgradeConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.autoUpgradeConfig, "AutoUpgradeConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.options)) {
             request.optionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.options, "Options", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUpgradeConfigShrink)) {
+            query["AutoUpgradeConfig"] = request.autoUpgradeConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }

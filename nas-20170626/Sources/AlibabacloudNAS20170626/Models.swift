@@ -14548,6 +14548,60 @@ public class DescribeFileSystemsRequest : Tea.TeaModel {
 public class DescribeFileSystemsResponseBody : Tea.TeaModel {
     public class FileSystems : Tea.TeaModel {
         public class FileSystem : Tea.TeaModel {
+            public class AutoUpgradeConfig : Tea.TeaModel {
+                public var capacityUsedRatio: Int32?
+
+                public var enabled: Bool?
+
+                public var step: Int32?
+
+                public var time: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.capacityUsedRatio != nil {
+                        map["capacityUsedRatio"] = self.capacityUsedRatio!
+                    }
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.step != nil {
+                        map["step"] = self.step!
+                    }
+                    if self.time != nil {
+                        map["time"] = self.time!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["capacityUsedRatio"] as? Int32 {
+                        self.capacityUsedRatio = value
+                    }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                    if let value = dict["step"] as? Int32 {
+                        self.step = value
+                    }
+                    if let value = dict["time"] as? Int32 {
+                        self.time = value
+                    }
+                }
+            }
             public class Ldap : Tea.TeaModel {
                 public var bindDN: String?
 
@@ -15246,6 +15300,8 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
             public var autoSnapshotPolicyId: String?
 
+            public var autoUpgradeConfig: DescribeFileSystemsResponseBody.FileSystems.FileSystem.AutoUpgradeConfig?
+
             public var bandwidth: Int64?
 
             public var capacity: Int64?
@@ -15320,6 +15376,7 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.autoUpgradeConfig?.validate()
                 try self.ldap?.validate()
                 try self.mountTargets?.validate()
                 try self.options?.validate()
@@ -15337,6 +15394,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
                 if self.autoSnapshotPolicyId != nil {
                     map["AutoSnapshotPolicyId"] = self.autoSnapshotPolicyId!
+                }
+                if self.autoUpgradeConfig != nil {
+                    map["AutoUpgradeConfig"] = self.autoUpgradeConfig?.toMap()
                 }
                 if self.bandwidth != nil {
                     map["Bandwidth"] = self.bandwidth!
@@ -15444,6 +15504,11 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AutoSnapshotPolicyId"] as? String {
                     self.autoSnapshotPolicyId = value
+                }
+                if let value = dict["AutoUpgradeConfig"] as? [String: Any?] {
+                    var model = DescribeFileSystemsResponseBody.FileSystems.FileSystem.AutoUpgradeConfig()
+                    model.fromMap(value)
+                    self.autoUpgradeConfig = model
                 }
                 if let value = dict["Bandwidth"] as? Int64 {
                     self.bandwidth = value
@@ -27414,6 +27479,60 @@ public class ModifyDataFlowAutoRefreshResponse : Tea.TeaModel {
 }
 
 public class ModifyFileSystemRequest : Tea.TeaModel {
+    public class AutoUpgradeConfig : Tea.TeaModel {
+        public var capacityUsedRatio: Int32?
+
+        public var enabled: Bool?
+
+        public var step: Int32?
+
+        public var time: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUsedRatio != nil {
+                map["capacityUsedRatio"] = self.capacityUsedRatio!
+            }
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.step != nil {
+                map["step"] = self.step!
+            }
+            if self.time != nil {
+                map["time"] = self.time!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["capacityUsedRatio"] as? Int32 {
+                self.capacityUsedRatio = value
+            }
+            if let value = dict["enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["step"] as? Int32 {
+                self.step = value
+            }
+            if let value = dict["time"] as? Int32 {
+                self.time = value
+            }
+        }
+    }
     public class Options : Tea.TeaModel {
         public var enableABE: Bool?
 
@@ -27460,6 +27579,8 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoUpgradeConfig: ModifyFileSystemRequest.AutoUpgradeConfig?
+
     public var description_: String?
 
     public var fileSystemId: String?
@@ -27476,11 +27597,15 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.autoUpgradeConfig?.validate()
         try self.options?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUpgradeConfig != nil {
+            map["AutoUpgradeConfig"] = self.autoUpgradeConfig?.toMap()
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -27495,6 +27620,11 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUpgradeConfig"] as? [String: Any?] {
+            var model = ModifyFileSystemRequest.AutoUpgradeConfig()
+            model.fromMap(value)
+            self.autoUpgradeConfig = model
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -27510,6 +27640,8 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
 }
 
 public class ModifyFileSystemShrinkRequest : Tea.TeaModel {
+    public var autoUpgradeConfigShrink: String?
+
     public var description_: String?
 
     public var fileSystemId: String?
@@ -27530,6 +27662,9 @@ public class ModifyFileSystemShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUpgradeConfigShrink != nil {
+            map["AutoUpgradeConfig"] = self.autoUpgradeConfigShrink!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -27544,6 +27679,9 @@ public class ModifyFileSystemShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUpgradeConfig"] as? String {
+            self.autoUpgradeConfigShrink = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
