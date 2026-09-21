@@ -10835,6 +10835,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeContainerWithOptions(_ request: InvokeContainerRequest, _ tmpHeader: InvokeContainerHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InvokeContainerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: InvokeContainerShrinkHeaders = InvokeContainerShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "accountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.operationId)) {
+            body["operationId"] = request.operationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["params"] = request.params ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["accountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InvokeContainer",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/spi/ai/v1/container/invoke",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InvokeContainerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeContainer(_ request: InvokeContainerRequest) async throws -> InvokeContainerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: InvokeContainerHeaders = InvokeContainerHeaders([:])
+        return try await invokeContainerWithOptions(request as! InvokeContainerRequest, headers as! InvokeContainerHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func invokeSkillWithOptions(_ tmpReq: InvokeSkillRequest, _ tmpHeader: InvokeSkillHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InvokeSkillResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: InvokeSkillShrinkRequest = InvokeSkillShrinkRequest([:])

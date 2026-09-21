@@ -83968,6 +83968,289 @@ public class InvokeAssistantRequest : Tea.TeaModel {
 public class InvokeAssistantResponseBody : Tea.TeaModel {
     public class Messages : Tea.TeaModel {
         public class Content : Tea.TeaModel {
+            public class A2uiMessages : Tea.TeaModel {
+                public class AppendDataModel : Tea.TeaModel {
+                    public var path: String?
+
+                    public var surfaceId: String?
+
+                    public var value: Any?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.path != nil {
+                            map["path"] = self.path!
+                        }
+                        if self.surfaceId != nil {
+                            map["surfaceId"] = self.surfaceId!
+                        }
+                        if self.value != nil {
+                            map["value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["path"] as? String {
+                            self.path = value
+                        }
+                        if let value = dict["surfaceId"] as? String {
+                            self.surfaceId = value
+                        }
+                        if let value = dict["value"] as? Any {
+                            self.value = value
+                        }
+                    }
+                }
+                public class CreateSurface : Tea.TeaModel {
+                    public var surfaceId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.surfaceId != nil {
+                            map["surfaceId"] = self.surfaceId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["surfaceId"] as? String {
+                            self.surfaceId = value
+                        }
+                    }
+                }
+                public class DeleteSurface : Tea.TeaModel {
+                    public var surfaceId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.surfaceId != nil {
+                            map["surfaceId"] = self.surfaceId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["surfaceId"] as? String {
+                            self.surfaceId = value
+                        }
+                    }
+                }
+                public class UpdateComponents : Tea.TeaModel {
+                    public var components: [Any]?
+
+                    public var surfaceId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.components != nil {
+                            map["components"] = self.components!
+                        }
+                        if self.surfaceId != nil {
+                            map["surfaceId"] = self.surfaceId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["components"] as? [Any] {
+                            self.components = value
+                        }
+                        if let value = dict["surfaceId"] as? String {
+                            self.surfaceId = value
+                        }
+                    }
+                }
+                public class UpdateDataModel : Tea.TeaModel {
+                    public var path: String?
+
+                    public var surfaceId: String?
+
+                    public var value: Any?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.path != nil {
+                            map["path"] = self.path!
+                        }
+                        if self.surfaceId != nil {
+                            map["surfaceId"] = self.surfaceId!
+                        }
+                        if self.value != nil {
+                            map["value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["path"] as? String {
+                            self.path = value
+                        }
+                        if let value = dict["surfaceId"] as? String {
+                            self.surfaceId = value
+                        }
+                        if let value = dict["value"] as? Any {
+                            self.value = value
+                        }
+                    }
+                }
+                public var appendDataModel: InvokeAssistantResponseBody.Messages.Content.A2uiMessages.AppendDataModel?
+
+                public var createSurface: InvokeAssistantResponseBody.Messages.Content.A2uiMessages.CreateSurface?
+
+                public var deleteSurface: InvokeAssistantResponseBody.Messages.Content.A2uiMessages.DeleteSurface?
+
+                public var profile: String?
+
+                public var updateComponents: InvokeAssistantResponseBody.Messages.Content.A2uiMessages.UpdateComponents?
+
+                public var updateDataModel: InvokeAssistantResponseBody.Messages.Content.A2uiMessages.UpdateDataModel?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.appendDataModel?.validate()
+                    try self.createSurface?.validate()
+                    try self.deleteSurface?.validate()
+                    try self.updateComponents?.validate()
+                    try self.updateDataModel?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.appendDataModel != nil {
+                        map["appendDataModel"] = self.appendDataModel?.toMap()
+                    }
+                    if self.createSurface != nil {
+                        map["createSurface"] = self.createSurface?.toMap()
+                    }
+                    if self.deleteSurface != nil {
+                        map["deleteSurface"] = self.deleteSurface?.toMap()
+                    }
+                    if self.profile != nil {
+                        map["profile"] = self.profile!
+                    }
+                    if self.updateComponents != nil {
+                        map["updateComponents"] = self.updateComponents?.toMap()
+                    }
+                    if self.updateDataModel != nil {
+                        map["updateDataModel"] = self.updateDataModel?.toMap()
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["appendDataModel"] as? [String: Any?] {
+                        var model = InvokeAssistantResponseBody.Messages.Content.A2uiMessages.AppendDataModel()
+                        model.fromMap(value)
+                        self.appendDataModel = model
+                    }
+                    if let value = dict["createSurface"] as? [String: Any?] {
+                        var model = InvokeAssistantResponseBody.Messages.Content.A2uiMessages.CreateSurface()
+                        model.fromMap(value)
+                        self.createSurface = model
+                    }
+                    if let value = dict["deleteSurface"] as? [String: Any?] {
+                        var model = InvokeAssistantResponseBody.Messages.Content.A2uiMessages.DeleteSurface()
+                        model.fromMap(value)
+                        self.deleteSurface = model
+                    }
+                    if let value = dict["profile"] as? String {
+                        self.profile = value
+                    }
+                    if let value = dict["updateComponents"] as? [String: Any?] {
+                        var model = InvokeAssistantResponseBody.Messages.Content.A2uiMessages.UpdateComponents()
+                        model.fromMap(value)
+                        self.updateComponents = model
+                    }
+                    if let value = dict["updateDataModel"] as? [String: Any?] {
+                        var model = InvokeAssistantResponseBody.Messages.Content.A2uiMessages.UpdateDataModel()
+                        model.fromMap(value)
+                        self.updateDataModel = model
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                }
+            }
             public class AguiContent : Tea.TeaModel {
                 public class AguiEventList : Tea.TeaModel {
                     public var activityType: String?
@@ -84942,6 +85225,8 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var a2uiMessages: [InvokeAssistantResponseBody.Messages.Content.A2uiMessages]?
+
             public var aguiContent: InvokeAssistantResponseBody.Messages.Content.AguiContent?
 
             public var cardCallback: InvokeAssistantResponseBody.Messages.Content.CardCallback?
@@ -84979,6 +85264,13 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.a2uiMessages != nil {
+                    var tmp : [Any] = []
+                    for k in self.a2uiMessages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["a2uiMessages"] = tmp
+                }
                 if self.aguiContent != nil {
                     map["aguiContent"] = self.aguiContent?.toMap()
                 }
@@ -85008,6 +85300,19 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["a2uiMessages"] as? [Any?] {
+                    var tmp : [InvokeAssistantResponseBody.Messages.Content.A2uiMessages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = InvokeAssistantResponseBody.Messages.Content.A2uiMessages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.a2uiMessages = tmp
+                }
                 if let value = dict["aguiContent"] as? [String: Any?] {
                     var model = InvokeAssistantResponseBody.Messages.Content.AguiContent()
                     model.fromMap(value)
@@ -85763,6 +86068,285 @@ public class InvokeAssistantResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = InvokeAssistantResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class InvokeContainerHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public var alidingSsoTicket: String?
+
+        public var ssoTicket: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            if self.alidingSsoTicket != nil {
+                map["alidingSsoTicket"] = self.alidingSsoTicket!
+            }
+            if self.ssoTicket != nil {
+                map["ssoTicket"] = self.ssoTicket!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+            if let value = dict["alidingSsoTicket"] as? String {
+                self.alidingSsoTicket = value
+            }
+            if let value = dict["ssoTicket"] as? String {
+                self.ssoTicket = value
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: InvokeContainerHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["accountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["accountContext"] as? [String: Any?] {
+            var model = InvokeContainerHeaders.AccountContext()
+            model.fromMap(value)
+            self.accountContext = model
+        }
+    }
+}
+
+public class InvokeContainerShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["accountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["accountContext"] as? String {
+            self.accountContextShrink = value
+        }
+    }
+}
+
+public class InvokeContainerRequest : Tea.TeaModel {
+    public var operationId: String?
+
+    public var params: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationId != nil {
+            map["operationId"] = self.operationId!
+        }
+        if self.params != nil {
+            map["params"] = self.params!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["operationId"] as? String {
+            self.operationId = value
+        }
+        if let value = dict["params"] as? String {
+            self.params = value
+        }
+    }
+}
+
+public class InvokeContainerResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["errorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["errorMsg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class InvokeContainerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InvokeContainerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InvokeContainerResponseBody()
             model.fromMap(value)
             self.body = model
         }
