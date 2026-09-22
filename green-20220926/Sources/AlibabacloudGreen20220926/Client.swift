@@ -1447,6 +1447,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.label)) {
             body["Label"] = request.label ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["Query"] = request.query ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             body["ResourceType"] = request.resourceType ?? "";
         }
