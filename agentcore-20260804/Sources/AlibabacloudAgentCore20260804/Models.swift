@@ -6195,9 +6195,49 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
             }
         }
         public class SubAgents : Tea.TeaModel {
+            public class Skills : Tea.TeaModel {
+                public var name: String?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                }
+            }
             public var instruction: String?
 
             public var name: String?
+
+            public var skills: [CreateManagedAgentRequest.Body.SubAgents.Skills]?
 
             public override init() {
                 super.init()
@@ -6219,6 +6259,13 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.skills != nil {
+                    var tmp : [Any] = []
+                    for k in self.skills! {
+                        tmp.append(k.toMap())
+                    }
+                    map["skills"] = tmp
+                }
                 return map
             }
 
@@ -6229,6 +6276,19 @@ public class CreateManagedAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["skills"] as? [Any?] {
+                    var tmp : [CreateManagedAgentRequest.Body.SubAgents.Skills] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateManagedAgentRequest.Body.SubAgents.Skills()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.skills = tmp
                 }
             }
         }
@@ -7596,9 +7656,49 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
             }
         }
         public class SubAgents : Tea.TeaModel {
+            public class Skills : Tea.TeaModel {
+                public var name: String?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                }
+            }
             public var instruction: String?
 
             public var name: String?
+
+            public var skills: [CreateManagedAgentResponseBody.Data.SubAgents.Skills]?
 
             public override init() {
                 super.init()
@@ -7620,6 +7720,13 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.skills != nil {
+                    var tmp : [Any] = []
+                    for k in self.skills! {
+                        tmp.append(k.toMap())
+                    }
+                    map["skills"] = tmp
+                }
                 return map
             }
 
@@ -7630,6 +7737,19 @@ public class CreateManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["skills"] as? [Any?] {
+                    var tmp : [CreateManagedAgentResponseBody.Data.SubAgents.Skills] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateManagedAgentResponseBody.Data.SubAgents.Skills()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.skills = tmp
                 }
             }
         }
@@ -21922,9 +22042,49 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
             }
         }
         public class SubAgents : Tea.TeaModel {
+            public class Skills : Tea.TeaModel {
+                public var name: String?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                }
+            }
             public var instruction: String?
 
             public var name: String?
+
+            public var skills: [GetManagedAgentResponseBody.Data.SubAgents.Skills]?
 
             public override init() {
                 super.init()
@@ -21946,6 +22106,13 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.skills != nil {
+                    var tmp : [Any] = []
+                    for k in self.skills! {
+                        tmp.append(k.toMap())
+                    }
+                    map["skills"] = tmp
+                }
                 return map
             }
 
@@ -21956,6 +22123,19 @@ public class GetManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["skills"] as? [Any?] {
+                    var tmp : [GetManagedAgentResponseBody.Data.SubAgents.Skills] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetManagedAgentResponseBody.Data.SubAgents.Skills()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.skills = tmp
                 }
             }
         }
@@ -47493,9 +47673,49 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
             }
         }
         public class SubAgents : Tea.TeaModel {
+            public class Skills : Tea.TeaModel {
+                public var name: String?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                }
+            }
             public var instruction: String?
 
             public var name: String?
+
+            public var skills: [UpdateManagedAgentRequest.Body.SubAgents.Skills]?
 
             public override init() {
                 super.init()
@@ -47517,6 +47737,13 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.skills != nil {
+                    var tmp : [Any] = []
+                    for k in self.skills! {
+                        tmp.append(k.toMap())
+                    }
+                    map["skills"] = tmp
+                }
                 return map
             }
 
@@ -47527,6 +47754,19 @@ public class UpdateManagedAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["skills"] as? [Any?] {
+                    var tmp : [UpdateManagedAgentRequest.Body.SubAgents.Skills] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateManagedAgentRequest.Body.SubAgents.Skills()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.skills = tmp
                 }
             }
         }
@@ -48894,9 +49134,49 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
             }
         }
         public class SubAgents : Tea.TeaModel {
+            public class Skills : Tea.TeaModel {
+                public var name: String?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                }
+            }
             public var instruction: String?
 
             public var name: String?
+
+            public var skills: [UpdateManagedAgentResponseBody.Data.SubAgents.Skills]?
 
             public override init() {
                 super.init()
@@ -48918,6 +49198,13 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.skills != nil {
+                    var tmp : [Any] = []
+                    for k in self.skills! {
+                        tmp.append(k.toMap())
+                    }
+                    map["skills"] = tmp
+                }
                 return map
             }
 
@@ -48928,6 +49215,19 @@ public class UpdateManagedAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["skills"] as? [Any?] {
+                    var tmp : [UpdateManagedAgentResponseBody.Data.SubAgents.Skills] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateManagedAgentResponseBody.Data.SubAgents.Skills()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.skills = tmp
                 }
             }
         }
