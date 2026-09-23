@@ -17026,6 +17026,8 @@ public class CreateNetworkChannelRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var securityGroupId: String?
+
     public var targetDBClusterId: String?
 
     public var targetIp: String?
@@ -17078,6 +17080,9 @@ public class CreateNetworkChannelRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
         if self.targetDBClusterId != nil {
             map["TargetDBClusterId"] = self.targetDBClusterId!
         }
@@ -17124,6 +17129,9 @@ public class CreateNetworkChannelRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
         }
         if let value = dict["TargetDBClusterId"] as? String {
             self.targetDBClusterId = value
@@ -78435,6 +78443,8 @@ public class DescribeNetworkChannelResponseBody : Tea.TeaModel {
 
         public var DBClusterId: String?
 
+        public var eniId: String?
+
         public var notes: String?
 
         public var regionId: String?
@@ -78469,6 +78479,9 @@ public class DescribeNetworkChannelResponseBody : Tea.TeaModel {
             if self.DBClusterId != nil {
                 map["DBClusterId"] = self.DBClusterId!
             }
+            if self.eniId != nil {
+                map["EniId"] = self.eniId!
+            }
             if self.notes != nil {
                 map["Notes"] = self.notes!
             }
@@ -78500,6 +78513,9 @@ public class DescribeNetworkChannelResponseBody : Tea.TeaModel {
             }
             if let value = dict["DBClusterId"] as? String {
                 self.DBClusterId = value
+            }
+            if let value = dict["EniId"] as? String {
+                self.eniId = value
             }
             if let value = dict["Notes"] as? String {
                 self.notes = value
