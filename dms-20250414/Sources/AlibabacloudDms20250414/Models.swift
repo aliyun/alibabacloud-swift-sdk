@@ -15819,6 +15819,371 @@ public class DescribeCustomAgentResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeCustomAgentMonitorMetricsRequest : Tea.TeaModel {
+    public var customAgentId: String?
+
+    public var endTime: Int64?
+
+    public var granularity: String?
+
+    public var queryType: String?
+
+    public var startTime: Int64?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customAgentId != nil {
+            map["CustomAgentId"] = self.customAgentId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.granularity != nil {
+            map["Granularity"] = self.granularity!
+        }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomAgentId"] as? String {
+            self.customAgentId = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Granularity"] as? String {
+            self.granularity = value
+        }
+        if let value = dict["QueryType"] as? String {
+            self.queryType = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class DescribeCustomAgentMonitorMetricsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Trend : Tea.TeaModel {
+            public var activeUserCount: Int64?
+
+            public var dislikeCount: Int64?
+
+            public var likeCount: Int64?
+
+            public var sessionCount: Int64?
+
+            public var statTime: String?
+
+            public var timestamp: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.activeUserCount != nil {
+                    map["ActiveUserCount"] = self.activeUserCount!
+                }
+                if self.dislikeCount != nil {
+                    map["DislikeCount"] = self.dislikeCount!
+                }
+                if self.likeCount != nil {
+                    map["LikeCount"] = self.likeCount!
+                }
+                if self.sessionCount != nil {
+                    map["SessionCount"] = self.sessionCount!
+                }
+                if self.statTime != nil {
+                    map["StatTime"] = self.statTime!
+                }
+                if self.timestamp != nil {
+                    map["Timestamp"] = self.timestamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ActiveUserCount"] as? Int64 {
+                    self.activeUserCount = value
+                }
+                if let value = dict["DislikeCount"] as? Int64 {
+                    self.dislikeCount = value
+                }
+                if let value = dict["LikeCount"] as? Int64 {
+                    self.likeCount = value
+                }
+                if let value = dict["SessionCount"] as? Int64 {
+                    self.sessionCount = value
+                }
+                if let value = dict["StatTime"] as? String {
+                    self.statTime = value
+                }
+                if let value = dict["Timestamp"] as? Int64 {
+                    self.timestamp = value
+                }
+            }
+        }
+        public var activeUserCount: Int64?
+
+        public var customAgentId: String?
+
+        public var dislikeCount: Int64?
+
+        public var endTime: Int64?
+
+        public var granularity: String?
+
+        public var likeCount: Int64?
+
+        public var sessionCount: Int64?
+
+        public var startTime: Int64?
+
+        public var trend: [DescribeCustomAgentMonitorMetricsResponseBody.Data.Trend]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.activeUserCount != nil {
+                map["ActiveUserCount"] = self.activeUserCount!
+            }
+            if self.customAgentId != nil {
+                map["CustomAgentId"] = self.customAgentId!
+            }
+            if self.dislikeCount != nil {
+                map["DislikeCount"] = self.dislikeCount!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.granularity != nil {
+                map["Granularity"] = self.granularity!
+            }
+            if self.likeCount != nil {
+                map["LikeCount"] = self.likeCount!
+            }
+            if self.sessionCount != nil {
+                map["SessionCount"] = self.sessionCount!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.trend != nil {
+                var tmp : [Any] = []
+                for k in self.trend! {
+                    tmp.append(k.toMap())
+                }
+                map["Trend"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActiveUserCount"] as? Int64 {
+                self.activeUserCount = value
+            }
+            if let value = dict["CustomAgentId"] as? String {
+                self.customAgentId = value
+            }
+            if let value = dict["DislikeCount"] as? Int64 {
+                self.dislikeCount = value
+            }
+            if let value = dict["EndTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["Granularity"] as? String {
+                self.granularity = value
+            }
+            if let value = dict["LikeCount"] as? Int64 {
+                self.likeCount = value
+            }
+            if let value = dict["SessionCount"] as? Int64 {
+                self.sessionCount = value
+            }
+            if let value = dict["StartTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["Trend"] as? [Any?] {
+                var tmp : [DescribeCustomAgentMonitorMetricsResponseBody.Data.Trend] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCustomAgentMonitorMetricsResponseBody.Data.Trend()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.trend = tmp
+            }
+        }
+    }
+    public var data: DescribeCustomAgentMonitorMetricsResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeCustomAgentMonitorMetricsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DescribeCustomAgentMonitorMetricsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCustomAgentMonitorMetricsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeCustomAgentMonitorMetricsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDataAgentMetricsRequest : Tea.TeaModel {
     public var endTime: Int64?
 
@@ -24754,6 +25119,387 @@ public class ListCustomAgentResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListCustomAgentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListCustomAgentMonitorSessionsRequest : Tea.TeaModel {
+    public var customAgentId: String?
+
+    public var endTime: Int64?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryType: String?
+
+    public var startTime: Int64?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customAgentId != nil {
+            map["CustomAgentId"] = self.customAgentId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomAgentId"] as? String {
+            self.customAgentId = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["QueryType"] as? String {
+            self.queryType = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class ListCustomAgentMonitorSessionsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Content : Tea.TeaModel {
+            public var aliyunUid: String?
+
+            public var creatorUserName: String?
+
+            public var customAgentId: String?
+
+            public var dislikeCount: Int64?
+
+            public var gmtCreated: String?
+
+            public var gmtModified: String?
+
+            public var likeCount: Int64?
+
+            public var sessionId: String?
+
+            public var state: String?
+
+            public var title: String?
+
+            public var turnCount: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aliyunUid != nil {
+                    map["AliyunUid"] = self.aliyunUid!
+                }
+                if self.creatorUserName != nil {
+                    map["CreatorUserName"] = self.creatorUserName!
+                }
+                if self.customAgentId != nil {
+                    map["CustomAgentId"] = self.customAgentId!
+                }
+                if self.dislikeCount != nil {
+                    map["DislikeCount"] = self.dislikeCount!
+                }
+                if self.gmtCreated != nil {
+                    map["GmtCreated"] = self.gmtCreated!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.likeCount != nil {
+                    map["LikeCount"] = self.likeCount!
+                }
+                if self.sessionId != nil {
+                    map["SessionId"] = self.sessionId!
+                }
+                if self.state != nil {
+                    map["State"] = self.state!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                if self.turnCount != nil {
+                    map["TurnCount"] = self.turnCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AliyunUid"] as? String {
+                    self.aliyunUid = value
+                }
+                if let value = dict["CreatorUserName"] as? String {
+                    self.creatorUserName = value
+                }
+                if let value = dict["CustomAgentId"] as? String {
+                    self.customAgentId = value
+                }
+                if let value = dict["DislikeCount"] as? Int64 {
+                    self.dislikeCount = value
+                }
+                if let value = dict["GmtCreated"] as? String {
+                    self.gmtCreated = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["LikeCount"] as? Int64 {
+                    self.likeCount = value
+                }
+                if let value = dict["SessionId"] as? String {
+                    self.sessionId = value
+                }
+                if let value = dict["State"] as? String {
+                    self.state = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+                if let value = dict["TurnCount"] as? Int64 {
+                    self.turnCount = value
+                }
+            }
+        }
+        public var content: [ListCustomAgentMonitorSessionsResponseBody.Data.Content]?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public var totalElements: Int64?
+
+        public var totalPages: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                var tmp : [Any] = []
+                for k in self.content! {
+                    tmp.append(k.toMap())
+                }
+                map["Content"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalElements != nil {
+                map["TotalElements"] = self.totalElements!
+            }
+            if self.totalPages != nil {
+                map["TotalPages"] = self.totalPages!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Content"] as? [Any?] {
+                var tmp : [ListCustomAgentMonitorSessionsResponseBody.Data.Content] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListCustomAgentMonitorSessionsResponseBody.Data.Content()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.content = tmp
+            }
+            if let value = dict["PageNumber"] as? Int64 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalElements"] as? Int64 {
+                self.totalElements = value
+            }
+            if let value = dict["TotalPages"] as? Int64 {
+                self.totalPages = value
+            }
+        }
+    }
+    public var data: ListCustomAgentMonitorSessionsResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListCustomAgentMonitorSessionsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListCustomAgentMonitorSessionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCustomAgentMonitorSessionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListCustomAgentMonitorSessionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
