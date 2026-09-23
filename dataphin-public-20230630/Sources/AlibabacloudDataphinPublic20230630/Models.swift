@@ -74621,6 +74621,174 @@ public class GetSecuritySecretKeyResponse : Tea.TeaModel {
     }
 }
 
+public class GetServerVersionRequest : Tea.TeaModel {
+    public var env: String?
+
+    public var opTenantId: Int64?
+
+    public var opUserId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.opTenantId != nil {
+            map["OpTenantId"] = self.opTenantId!
+        }
+        if self.opUserId != nil {
+            map["OpUserId"] = self.opUserId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Env"] as? String {
+            self.env = value
+        }
+        if let value = dict["OpTenantId"] as? Int64 {
+            self.opTenantId = value
+        }
+        if let value = dict["OpUserId"] as? String {
+            self.opUserId = value
+        }
+    }
+}
+
+public class GetServerVersionResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetServerVersionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetServerVersionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetServerVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetSparkLocalClientInfoRequest : Tea.TeaModel {
     public var envEnum: String?
 
@@ -134261,6 +134429,8 @@ public class SyncDepartmentUserRequest : Tea.TeaModel {
         public class DeptUserMapping : Tea.TeaModel {
             public var departmentIdList: [String]?
 
+            public var sourceType: String?
+
             public var sourceUserId: String?
 
             public override init() {
@@ -134280,6 +134450,9 @@ public class SyncDepartmentUserRequest : Tea.TeaModel {
                 if self.departmentIdList != nil {
                     map["DepartmentIdList"] = self.departmentIdList!
                 }
+                if self.sourceType != nil {
+                    map["SourceType"] = self.sourceType!
+                }
                 if self.sourceUserId != nil {
                     map["SourceUserId"] = self.sourceUserId!
                 }
@@ -134290,6 +134463,9 @@ public class SyncDepartmentUserRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["DepartmentIdList"] as? [String] {
                     self.departmentIdList = value
+                }
+                if let value = dict["SourceType"] as? String {
+                    self.sourceType = value
                 }
                 if let value = dict["SourceUserId"] as? String {
                     self.sourceUserId = value
