@@ -7362,15 +7362,21 @@ public class GetApplicationProvisionInfoResponseBody : Tea.TeaModel {
         }
         public var accountId: String?
 
+        public var appCategory: String?
+
         public var appId: String?
 
         public var appName: String?
+
+        public var assignmentType: String?
 
         public var createDate: String?
 
         public var delegatedScope: GetApplicationProvisionInfoResponseBody.ApplicationProvisionInfo.DelegatedScope?
 
         public var displayName: String?
+
+        public var needPrincipalConsent: Bool?
 
         public var updateDate: String?
 
@@ -7392,11 +7398,17 @@ public class GetApplicationProvisionInfoResponseBody : Tea.TeaModel {
             if self.accountId != nil {
                 map["AccountId"] = self.accountId!
             }
+            if self.appCategory != nil {
+                map["AppCategory"] = self.appCategory!
+            }
             if self.appId != nil {
                 map["AppId"] = self.appId!
             }
             if self.appName != nil {
                 map["AppName"] = self.appName!
+            }
+            if self.assignmentType != nil {
+                map["AssignmentType"] = self.assignmentType!
             }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
@@ -7406,6 +7418,9 @@ public class GetApplicationProvisionInfoResponseBody : Tea.TeaModel {
             }
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
+            }
+            if self.needPrincipalConsent != nil {
+                map["NeedPrincipalConsent"] = self.needPrincipalConsent!
             }
             if self.updateDate != nil {
                 map["UpdateDate"] = self.updateDate!
@@ -7418,11 +7433,17 @@ public class GetApplicationProvisionInfoResponseBody : Tea.TeaModel {
             if let value = dict["AccountId"] as? String {
                 self.accountId = value
             }
+            if let value = dict["AppCategory"] as? String {
+                self.appCategory = value
+            }
             if let value = dict["AppId"] as? String {
                 self.appId = value
             }
             if let value = dict["AppName"] as? String {
                 self.appName = value
+            }
+            if let value = dict["AssignmentType"] as? String {
+                self.assignmentType = value
             }
             if let value = dict["CreateDate"] as? String {
                 self.createDate = value
@@ -7434,6 +7455,9 @@ public class GetApplicationProvisionInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["DisplayName"] as? String {
                 self.displayName = value
+            }
+            if let value = dict["NeedPrincipalConsent"] as? Bool {
+                self.needPrincipalConsent = value
             }
             if let value = dict["UpdateDate"] as? String {
                 self.updateDate = value
@@ -12196,15 +12220,21 @@ public class ListApplicationProvisionInfosResponseBody : Tea.TeaModel {
             }
             public var accountId: String?
 
+            public var appCategory: String?
+
             public var appId: String?
 
             public var appName: String?
+
+            public var assignmentType: String?
 
             public var createDate: String?
 
             public var delegatedScope: ListApplicationProvisionInfosResponseBody.ApplicationProvisionInfos.ApplicationProvisionInfo.DelegatedScope?
 
             public var displayName: String?
+
+            public var needPrincipalConsent: Bool?
 
             public var updateDate: String?
 
@@ -12226,11 +12256,17 @@ public class ListApplicationProvisionInfosResponseBody : Tea.TeaModel {
                 if self.accountId != nil {
                     map["AccountId"] = self.accountId!
                 }
+                if self.appCategory != nil {
+                    map["AppCategory"] = self.appCategory!
+                }
                 if self.appId != nil {
                     map["AppId"] = self.appId!
                 }
                 if self.appName != nil {
                     map["AppName"] = self.appName!
+                }
+                if self.assignmentType != nil {
+                    map["AssignmentType"] = self.assignmentType!
                 }
                 if self.createDate != nil {
                     map["CreateDate"] = self.createDate!
@@ -12240,6 +12276,9 @@ public class ListApplicationProvisionInfosResponseBody : Tea.TeaModel {
                 }
                 if self.displayName != nil {
                     map["DisplayName"] = self.displayName!
+                }
+                if self.needPrincipalConsent != nil {
+                    map["NeedPrincipalConsent"] = self.needPrincipalConsent!
                 }
                 if self.updateDate != nil {
                     map["UpdateDate"] = self.updateDate!
@@ -12252,11 +12291,17 @@ public class ListApplicationProvisionInfosResponseBody : Tea.TeaModel {
                 if let value = dict["AccountId"] as? String {
                     self.accountId = value
                 }
+                if let value = dict["AppCategory"] as? String {
+                    self.appCategory = value
+                }
                 if let value = dict["AppId"] as? String {
                     self.appId = value
                 }
                 if let value = dict["AppName"] as? String {
                     self.appName = value
+                }
+                if let value = dict["AssignmentType"] as? String {
+                    self.assignmentType = value
                 }
                 if let value = dict["CreateDate"] as? String {
                     self.createDate = value
@@ -12268,6 +12313,9 @@ public class ListApplicationProvisionInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DisplayName"] as? String {
                     self.displayName = value
+                }
+                if let value = dict["NeedPrincipalConsent"] as? Bool {
+                    self.needPrincipalConsent = value
                 }
                 if let value = dict["UpdateDate"] as? String {
                     self.updateDate = value
