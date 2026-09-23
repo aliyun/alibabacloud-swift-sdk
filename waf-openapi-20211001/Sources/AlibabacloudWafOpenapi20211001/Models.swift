@@ -9809,6 +9809,8 @@ public class DescribeApisecApiResourcesRequest : Tea.TeaModel {
 
     public var apiId: String?
 
+    public var apiIds: [String]?
+
     public var apiMethod: String?
 
     public var apiStatus: String?
@@ -9870,6 +9872,9 @@ public class DescribeApisecApiResourcesRequest : Tea.TeaModel {
         }
         if self.apiId != nil {
             map["ApiId"] = self.apiId!
+        }
+        if self.apiIds != nil {
+            map["ApiIds"] = self.apiIds!
         }
         if self.apiMethod != nil {
             map["ApiMethod"] = self.apiMethod!
@@ -9944,6 +9949,9 @@ public class DescribeApisecApiResourcesRequest : Tea.TeaModel {
         }
         if let value = dict["ApiId"] as? String {
             self.apiId = value
+        }
+        if let value = dict["ApiIds"] as? [String] {
+            self.apiIds = value
         }
         if let value = dict["ApiMethod"] as? String {
             self.apiMethod = value
