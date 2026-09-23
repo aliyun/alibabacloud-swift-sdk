@@ -9,14 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "eu-central-1": "eiam-developerapi.eu-central-1.aliyuncs.com",
-            "cn-hongkong": "eiam-developerapi.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou": "eiam-developerapi.cn-hangzhou.aliyuncs.com",
-            "ap-southeast-5": "eiam-developerapi.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-1": "eiam-developerapi.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "eiam-developerapi.ap-northeast-2.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eiam-developerapi", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1780,6 +1772,46 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: PatchOrganizationalUnitHeaders = PatchOrganizationalUnitHeaders([:])
         return try await patchOrganizationalUnitWithOptions(instanceId as! String, applicationId as! String, organizationalUnitId as! String, request as! PatchOrganizationalUnitRequest, headers as! PatchOrganizationalUnitHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func patchOrganizationalUnitParentIdWithOptions(_ instanceId: String, _ applicationId: String, _ organizationalUnitId: String, _ request: PatchOrganizationalUnitParentIdRequest, _ headers: PatchOrganizationalUnitParentIdHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> PatchOrganizationalUnitParentIdResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.parentId)) {
+            body["parentId"] = request.parentId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.authorization)) {
+            realHeaders["Authorization"] = TeaUtils.Client.toJSONString(headers.authorization);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PatchOrganizationalUnitParentId",
+            "version": "2022-02-25",
+            "protocol": "HTTPS",
+            "pathname": "/v2/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(applicationId)) + "/organizationalUnits/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(organizationalUnitId)) + "/parentId",
+            "method": "PATCH",
+            "authType": "Anonymous",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await doROARequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.pathname ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PatchOrganizationalUnitParentIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func patchOrganizationalUnitParentId(_ instanceId: String, _ applicationId: String, _ organizationalUnitId: String, _ request: PatchOrganizationalUnitParentIdRequest) async throws -> PatchOrganizationalUnitParentIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: PatchOrganizationalUnitParentIdHeaders = PatchOrganizationalUnitParentIdHeaders([:])
+        return try await patchOrganizationalUnitParentIdWithOptions(instanceId as! String, applicationId as! String, organizationalUnitId as! String, request as! PatchOrganizationalUnitParentIdRequest, headers as! PatchOrganizationalUnitParentIdHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
