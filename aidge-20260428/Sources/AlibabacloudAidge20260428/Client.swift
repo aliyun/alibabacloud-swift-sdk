@@ -339,6 +339,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func diduiAreaDeductionProWithOptions(_ request: DiduiAreaDeductionProRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DiduiAreaDeductionProResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ragId)) {
+            query["RagId"] = request.ragId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DiduiAreaDeductionPro",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DiduiAreaDeductionProResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func diduiAreaDeductionPro(_ request: DiduiAreaDeductionProRequest) async throws -> DiduiAreaDeductionProResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await diduiAreaDeductionProWithOptions(request as! DiduiAreaDeductionProRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func documentTranslateWithOptions(_ request: DocumentTranslateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocumentTranslateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -418,6 +452,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func ecomVideoRecreation(_ request: EcomVideoRecreationRequest) async throws -> EcomVideoRecreationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await ecomVideoRecreationWithOptions(request as! EcomVideoRecreationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generalRephotographyDetectionWithOptions(_ request: GeneralRephotographyDetectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GeneralRephotographyDetectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GeneralRephotographyDetection",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GeneralRephotographyDetectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generalRephotographyDetection(_ request: GeneralRephotographyDetectionRequest) async throws -> GeneralRephotographyDetectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generalRephotographyDetectionWithOptions(request as! GeneralRephotographyDetectionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -928,6 +993,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func merchandisePlacementDetectionProWithOptions(_ request: MerchandisePlacementDetectionProRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MerchandisePlacementDetectionProResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rule)) {
+            query["Rule"] = request.rule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MerchandisePlacementDetectionPro",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MerchandisePlacementDetectionProResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func merchandisePlacementDetectionPro(_ request: MerchandisePlacementDetectionProRequest) async throws -> MerchandisePlacementDetectionProResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await merchandisePlacementDetectionProWithOptions(request as! MerchandisePlacementDetectionProRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func packageWeightSizeCheckWithOptions(_ request: PackageWeightSizeCheckRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PackageWeightSizeCheckResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -959,6 +1061,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func packageWeightSizeCheck(_ request: PackageWeightSizeCheckRequest) async throws -> PackageWeightSizeCheckResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await packageWeightSizeCheckWithOptions(request as! PackageWeightSizeCheckRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func petHealthAnalysisWithOptions(_ tmpReq: PetHealthAnalysisRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PetHealthAnalysisResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PetHealthAnalysisShrinkRequest = PetHealthAnalysisShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.imageUrl)) {
+            request.imageUrlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageUrl, "ImageUrl", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrlShrink)) {
+            query["ImageUrl"] = request.imageUrlShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemPrompt)) {
+            query["SystemPrompt"] = request.systemPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userPrompt)) {
+            query["UserPrompt"] = request.userPrompt ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PetHealthAnalysis",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PetHealthAnalysisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func petHealthAnalysis(_ request: PetHealthAnalysisRequest) async throws -> PetHealthAnalysisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await petHealthAnalysisWithOptions(request as! PetHealthAnalysisRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
