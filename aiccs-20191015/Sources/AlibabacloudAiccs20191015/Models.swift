@@ -34502,6 +34502,8 @@ public class PageQueryAgentListNewRequest : Tea.TeaModel {
 
     public var agentName: String?
 
+    public var inboundConfigurableOnly: Bool?
+
     public var isAvailable: Bool?
 
     public var pageIndex: Int64?
@@ -34509,6 +34511,10 @@ public class PageQueryAgentListNewRequest : Tea.TeaModel {
     public var pageNo: Int64?
 
     public var pageSize: Int64?
+
+    public var serviceDirection: String?
+
+    public var templateId: Int64?
 
     public override init() {
         super.init()
@@ -34530,6 +34536,9 @@ public class PageQueryAgentListNewRequest : Tea.TeaModel {
         if self.agentName != nil {
             map["AgentName"] = self.agentName!
         }
+        if self.inboundConfigurableOnly != nil {
+            map["InboundConfigurableOnly"] = self.inboundConfigurableOnly!
+        }
         if self.isAvailable != nil {
             map["IsAvailable"] = self.isAvailable!
         }
@@ -34542,6 +34551,12 @@ public class PageQueryAgentListNewRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.serviceDirection != nil {
+            map["ServiceDirection"] = self.serviceDirection!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
         return map
     }
 
@@ -34552,6 +34567,9 @@ public class PageQueryAgentListNewRequest : Tea.TeaModel {
         }
         if let value = dict["AgentName"] as? String {
             self.agentName = value
+        }
+        if let value = dict["InboundConfigurableOnly"] as? Bool {
+            self.inboundConfigurableOnly = value
         }
         if let value = dict["IsAvailable"] as? Bool {
             self.isAvailable = value
@@ -34564,6 +34582,12 @@ public class PageQueryAgentListNewRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["ServiceDirection"] as? String {
+            self.serviceDirection = value
+        }
+        if let value = dict["TemplateId"] as? Int64 {
+            self.templateId = value
         }
     }
 }
@@ -34598,6 +34622,12 @@ public class PageQueryAgentListNewResponseBody : Tea.TeaModel {
             public var modifyTime: String?
 
             public var scene: String?
+
+            public var serviceDirection: String?
+
+            public var templateId: Int64?
+
+            public var templateName: String?
 
             public override init() {
                 super.init()
@@ -34655,6 +34685,15 @@ public class PageQueryAgentListNewResponseBody : Tea.TeaModel {
                 if self.scene != nil {
                     map["Scene"] = self.scene!
                 }
+                if self.serviceDirection != nil {
+                    map["ServiceDirection"] = self.serviceDirection!
+                }
+                if self.templateId != nil {
+                    map["TemplateId"] = self.templateId!
+                }
+                if self.templateName != nil {
+                    map["TemplateName"] = self.templateName!
+                }
                 return map
             }
 
@@ -34701,6 +34740,15 @@ public class PageQueryAgentListNewResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Scene"] as? String {
                     self.scene = value
+                }
+                if let value = dict["ServiceDirection"] as? String {
+                    self.serviceDirection = value
+                }
+                if let value = dict["TemplateId"] as? Int64 {
+                    self.templateId = value
+                }
+                if let value = dict["TemplateName"] as? String {
+                    self.templateName = value
                 }
             }
         }
@@ -39166,6 +39214,8 @@ public class QueryAiVoiceAgentDetailNewResponseBody : Tea.TeaModel {
 
         public var scene: String?
 
+        public var serviceDirection: String?
+
         public var summaryConfig: QueryAiVoiceAgentDetailNewResponseBody.Data.SummaryConfig?
 
         public var versionDesc: String?
@@ -39238,6 +39288,9 @@ public class QueryAiVoiceAgentDetailNewResponseBody : Tea.TeaModel {
             }
             if self.scene != nil {
                 map["Scene"] = self.scene!
+            }
+            if self.serviceDirection != nil {
+                map["ServiceDirection"] = self.serviceDirection!
             }
             if self.summaryConfig != nil {
                 map["SummaryConfig"] = self.summaryConfig?.toMap()
@@ -39316,6 +39369,9 @@ public class QueryAiVoiceAgentDetailNewResponseBody : Tea.TeaModel {
             }
             if let value = dict["Scene"] as? String {
                 self.scene = value
+            }
+            if let value = dict["ServiceDirection"] as? String {
+                self.serviceDirection = value
             }
             if let value = dict["SummaryConfig"] as? [String: Any?] {
                 var model = QueryAiVoiceAgentDetailNewResponseBody.Data.SummaryConfig()
