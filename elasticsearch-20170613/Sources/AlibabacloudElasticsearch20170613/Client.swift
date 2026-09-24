@@ -9,33 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "us-west-1": "elasticsearch.us-west-1.aliyuncs.com",
-            "us-east-1": "elasticsearch.us-east-1.aliyuncs.com",
-            "na-south-1": "elasticsearch.na-south-1.aliyuncs.com",
-            "eu-west-1": "elasticsearch.eu-west-1.aliyuncs.com",
-            "eu-central-1": "elasticsearch.eu-central-1.aliyuncs.com",
-            "cn-zhangjiakou": "elasticsearch.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu-gic-1": "elasticsearch.cn-wulanchabu-gic-1.aliyuncs.com",
-            "cn-wulanchabu": "elasticsearch.cn-wulanchabu.aliyuncs.com",
-            "cn-shenzhen": "elasticsearch.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "elasticsearch.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "elasticsearch.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "elasticsearch.cn-qingdao.aliyuncs.com",
-            "cn-north-2-gov-1": "elasticsearch.cn-north-2-gov-1.aliyuncs.com",
-            "cn-hongkong": "elasticsearch.cn-hongkong.aliyuncs.com",
-            "cn-hangzhou-finance": "elasticsearch.cn-hangzhou-finance.aliyuncs.com",
-            "cn-hangzhou": "elasticsearch.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "elasticsearch.cn-guangzhou.aliyuncs.com",
-            "cn-chengdu": "elasticsearch.cn-chengdu.aliyuncs.com",
-            "cn-beijing": "elasticsearch.cn-beijing.aliyuncs.com",
-            "ap-southeast-7": "elasticsearch.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-5": "elasticsearch.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "elasticsearch.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "elasticsearch.ap-southeast-1.aliyuncs.com",
-            "ap-northeast-2": "elasticsearch.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "elasticsearch.ap-northeast-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("elasticsearch", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -2731,6 +2704,82 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeEsAgentWithOptions(_ request: InvokeEsAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> InvokeEsAgentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.body)) {
+            body["body"] = request.body ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InvokeEsAgent",
+            "version": "2017-06-13",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/agent/acp",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InvokeEsAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeEsAgent(_ request: InvokeEsAgentRequest) async throws -> InvokeEsAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await invokeEsAgentWithOptions(request as! InvokeEsAgentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeEsRequestWithOptions(_ instanceId: String, _ request: InvokeEsRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> InvokeEsRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialId)) {
+            query["credentialId"] = request.credentialId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.method)) {
+            query["method"] = request.method ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            query["path"] = request.path ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.system)) {
+            query["system"] = request.system!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body ?? ""
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InvokeEsRequest",
+            "version": "2017-06-13",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/es-request",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InvokeEsRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeEsRequest(_ instanceId: String, _ request: InvokeEsRequestRequest) async throws -> InvokeEsRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await invokeEsRequestWithOptions(instanceId as! String, request as! InvokeEsRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAckClustersWithOptions(_ request: ListAckClustersRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAckClustersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3348,6 +3397,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.level)) {
+            query["level"] = request.level ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
