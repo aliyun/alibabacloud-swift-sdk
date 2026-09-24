@@ -897,6 +897,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ragId)) {
             query["RagId"] = request.ragId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.rule)) {
+            query["Rule"] = request.rule ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
         }

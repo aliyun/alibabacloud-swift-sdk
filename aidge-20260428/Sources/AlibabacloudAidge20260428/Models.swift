@@ -6636,6 +6636,8 @@ public class MerchandisePlacementDetectionRequest : Tea.TeaModel {
 
     public var ragId: String?
 
+    public var rule: String?
+
     public var type: String?
 
     public override init() {
@@ -6661,6 +6663,9 @@ public class MerchandisePlacementDetectionRequest : Tea.TeaModel {
         if self.ragId != nil {
             map["RagId"] = self.ragId!
         }
+        if self.rule != nil {
+            map["Rule"] = self.rule!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -6677,6 +6682,9 @@ public class MerchandisePlacementDetectionRequest : Tea.TeaModel {
         }
         if let value = dict["RagId"] as? String {
             self.ragId = value
+        }
+        if let value = dict["Rule"] as? String {
+            self.rule = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
