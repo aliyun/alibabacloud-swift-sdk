@@ -22940,6 +22940,44 @@ public class TicketPageQueryProductResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SellerAgent : Tea.TeaModel {
+                public var agentName: String?
+
+                public var agentType: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.agentName != nil {
+                        map["AgentName"] = self.agentName!
+                    }
+                    if self.agentType != nil {
+                        map["AgentType"] = self.agentType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AgentName"] as? String {
+                        self.agentName = value
+                    }
+                    if let value = dict["AgentType"] as? Int32 {
+                        self.agentType = value
+                    }
+                }
+            }
             public class Session : Tea.TeaModel {
                 public var sessionEndTime: String?
 
@@ -23630,13 +23668,13 @@ public class TicketPageQueryProductResponseBody : Tea.TeaModel {
 
             public var scenicId: Int64?
 
+            public var sellerAgent: TicketPageQueryProductResponseBody.Data.Products.SellerAgent?
+
             public var session: TicketPageQueryProductResponseBody.Data.Products.Session?
 
             public var settlePriceCalculateType: Int32?
 
             public var spu: TicketPageQueryProductResponseBody.Data.Products.Spu?
-
-            public var supplierName: String?
 
             public var ticketKind: TicketPageQueryProductResponseBody.Data.Products.TicketKind?
 
@@ -23655,6 +23693,7 @@ public class TicketPageQueryProductResponseBody : Tea.TeaModel {
                 try self.buyRule?.validate()
                 try self.refundRule?.validate()
                 try self.region?.validate()
+                try self.sellerAgent?.validate()
                 try self.session?.validate()
                 try self.spu?.validate()
                 try self.ticketKind?.validate()
@@ -23699,6 +23738,9 @@ public class TicketPageQueryProductResponseBody : Tea.TeaModel {
                 if self.scenicId != nil {
                     map["ScenicId"] = self.scenicId!
                 }
+                if self.sellerAgent != nil {
+                    map["SellerAgent"] = self.sellerAgent?.toMap()
+                }
                 if self.session != nil {
                     map["Session"] = self.session?.toMap()
                 }
@@ -23707,9 +23749,6 @@ public class TicketPageQueryProductResponseBody : Tea.TeaModel {
                 }
                 if self.spu != nil {
                     map["Spu"] = self.spu?.toMap()
-                }
-                if self.supplierName != nil {
-                    map["SupplierName"] = self.supplierName!
                 }
                 if self.ticketKind != nil {
                     map["TicketKind"] = self.ticketKind?.toMap()
@@ -23764,6 +23803,11 @@ public class TicketPageQueryProductResponseBody : Tea.TeaModel {
                 if let value = dict["ScenicId"] as? Int64 {
                     self.scenicId = value
                 }
+                if let value = dict["SellerAgent"] as? [String: Any?] {
+                    var model = TicketPageQueryProductResponseBody.Data.Products.SellerAgent()
+                    model.fromMap(value)
+                    self.sellerAgent = model
+                }
                 if let value = dict["Session"] as? [String: Any?] {
                     var model = TicketPageQueryProductResponseBody.Data.Products.Session()
                     model.fromMap(value)
@@ -23776,9 +23820,6 @@ public class TicketPageQueryProductResponseBody : Tea.TeaModel {
                     var model = TicketPageQueryProductResponseBody.Data.Products.Spu()
                     model.fromMap(value)
                     self.spu = model
-                }
-                if let value = dict["SupplierName"] as? String {
-                    self.supplierName = value
                 }
                 if let value = dict["TicketKind"] as? [String: Any?] {
                     var model = TicketPageQueryProductResponseBody.Data.Products.TicketKind()
@@ -26393,6 +26434,44 @@ public class TicketQueryProductResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SellerAgent : Tea.TeaModel {
+                public var agentName: String?
+
+                public var agentType: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.agentName != nil {
+                        map["AgentName"] = self.agentName!
+                    }
+                    if self.agentType != nil {
+                        map["AgentType"] = self.agentType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AgentName"] as? String {
+                        self.agentName = value
+                    }
+                    if let value = dict["AgentType"] as? Int32 {
+                        self.agentType = value
+                    }
+                }
+            }
             public class Session : Tea.TeaModel {
                 public var sessionEndTime: String?
 
@@ -27083,13 +27162,13 @@ public class TicketQueryProductResponseBody : Tea.TeaModel {
 
             public var scenicId: Int64?
 
+            public var sellerAgent: TicketQueryProductResponseBody.Data.Product.SellerAgent?
+
             public var session: TicketQueryProductResponseBody.Data.Product.Session?
 
             public var settlePriceCalculateType: Int32?
 
             public var spu: TicketQueryProductResponseBody.Data.Product.Spu?
-
-            public var supplierName: String?
 
             public var ticketKind: TicketQueryProductResponseBody.Data.Product.TicketKind?
 
@@ -27108,6 +27187,7 @@ public class TicketQueryProductResponseBody : Tea.TeaModel {
                 try self.buyRule?.validate()
                 try self.refundRule?.validate()
                 try self.region?.validate()
+                try self.sellerAgent?.validate()
                 try self.session?.validate()
                 try self.spu?.validate()
                 try self.ticketKind?.validate()
@@ -27152,6 +27232,9 @@ public class TicketQueryProductResponseBody : Tea.TeaModel {
                 if self.scenicId != nil {
                     map["ScenicId"] = self.scenicId!
                 }
+                if self.sellerAgent != nil {
+                    map["SellerAgent"] = self.sellerAgent?.toMap()
+                }
                 if self.session != nil {
                     map["Session"] = self.session?.toMap()
                 }
@@ -27160,9 +27243,6 @@ public class TicketQueryProductResponseBody : Tea.TeaModel {
                 }
                 if self.spu != nil {
                     map["Spu"] = self.spu?.toMap()
-                }
-                if self.supplierName != nil {
-                    map["SupplierName"] = self.supplierName!
                 }
                 if self.ticketKind != nil {
                     map["TicketKind"] = self.ticketKind?.toMap()
@@ -27217,6 +27297,11 @@ public class TicketQueryProductResponseBody : Tea.TeaModel {
                 if let value = dict["ScenicId"] as? Int64 {
                     self.scenicId = value
                 }
+                if let value = dict["SellerAgent"] as? [String: Any?] {
+                    var model = TicketQueryProductResponseBody.Data.Product.SellerAgent()
+                    model.fromMap(value)
+                    self.sellerAgent = model
+                }
                 if let value = dict["Session"] as? [String: Any?] {
                     var model = TicketQueryProductResponseBody.Data.Product.Session()
                     model.fromMap(value)
@@ -27229,9 +27314,6 @@ public class TicketQueryProductResponseBody : Tea.TeaModel {
                     var model = TicketQueryProductResponseBody.Data.Product.Spu()
                     model.fromMap(value)
                     self.spu = model
-                }
-                if let value = dict["SupplierName"] as? String {
-                    self.supplierName = value
                 }
                 if let value = dict["TicketKind"] as? [String: Any?] {
                     var model = TicketQueryProductResponseBody.Data.Product.TicketKind()
