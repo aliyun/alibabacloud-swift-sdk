@@ -5089,6 +5089,8 @@ public class ImageInsight : Tea.TeaModel {
 
     public var description_: String?
 
+    public var multilingualContent: [String: MultilingualContentEntry]?
+
     public override init() {
         super.init()
     }
@@ -5109,6 +5111,13 @@ public class ImageInsight : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.multilingualContent != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.multilingualContent! {
+                tmp[k] = v.toMap()
+            }
+            map["MultilingualContent"] = tmp
+        }
         return map
     }
 
@@ -5119,6 +5128,17 @@ public class ImageInsight : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["MultilingualContent"] as? [String: Any?] {
+            var tmp : [String: MultilingualContentEntry] = [:]
+            for (k, v) in value {
+                if v != nil {
+                    var model = MultilingualContentEntry()
+                    model.fromMap(v as? [String: Any?])
+                    tmp[k] = model
+                }
+            }
+            self.multilingualContent = tmp
         }
     }
 }
@@ -6362,6 +6382,45 @@ public class ModelSpecification : Tea.TeaModel {
             var model = Spec()
             model.fromMap(value)
             self.spec = model
+        }
+    }
+}
+
+public class MultilingualContentEntry : Tea.TeaModel {
+    public var caption: String?
+
+    public var description_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caption != nil {
+            map["Caption"] = self.caption!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Caption"] as? String {
+            self.caption = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
     }
 }
@@ -10223,6 +10282,8 @@ public class VideoInsight : Tea.TeaModel {
 
     public var description_: String?
 
+    public var multilingualContent: [String: MultilingualContentEntry]?
+
     public override init() {
         super.init()
     }
@@ -10243,6 +10304,13 @@ public class VideoInsight : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.multilingualContent != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.multilingualContent! {
+                tmp[k] = v.toMap()
+            }
+            map["MultilingualContent"] = tmp
+        }
         return map
     }
 
@@ -10253,6 +10321,17 @@ public class VideoInsight : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["MultilingualContent"] as? [String: Any?] {
+            var tmp : [String: MultilingualContentEntry] = [:]
+            for (k, v) in value {
+                if v != nil {
+                    var model = MultilingualContentEntry()
+                    model.fromMap(v as? [String: Any?])
+                    tmp[k] = model
+                }
+            }
+            self.multilingualContent = tmp
         }
     }
 }
@@ -17648,6 +17727,8 @@ public class CreateHighlightTaskRequest : Tea.TeaModel {
 
         public var speed: Double?
 
+        public var targetDuration: Double?
+
         public var URI: String?
 
         public var video: TargetVideo?
@@ -17684,6 +17765,9 @@ public class CreateHighlightTaskRequest : Tea.TeaModel {
             if self.speed != nil {
                 map["Speed"] = self.speed!
             }
+            if self.targetDuration != nil {
+                map["TargetDuration"] = self.targetDuration!
+            }
             if self.URI != nil {
                 map["URI"] = self.URI!
             }
@@ -17713,6 +17797,9 @@ public class CreateHighlightTaskRequest : Tea.TeaModel {
             }
             if let value = dict["Speed"] as? Double {
                 self.speed = value
+            }
+            if let value = dict["TargetDuration"] as? Double {
+                self.targetDuration = value
             }
             if let value = dict["URI"] as? String {
                 self.URI = value
