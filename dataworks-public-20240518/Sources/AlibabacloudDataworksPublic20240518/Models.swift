@@ -105966,11 +105966,15 @@ public class ListTaskOperationLogsResponseBody : Tea.TeaModel {
         public class OperationLogs : Tea.TeaModel {
             public var createTime: Int64?
 
+            public var objectType: String?
+
             public var operationContent: String?
 
             public var operationSeq: Int64?
 
             public var taskId: Int64?
+
+            public var taskInstanceId: Int64?
 
             public var user: String?
 
@@ -105991,6 +105995,9 @@ public class ListTaskOperationLogsResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.objectType != nil {
+                    map["ObjectType"] = self.objectType!
+                }
                 if self.operationContent != nil {
                     map["OperationContent"] = self.operationContent!
                 }
@@ -105999,6 +106006,9 @@ public class ListTaskOperationLogsResponseBody : Tea.TeaModel {
                 }
                 if self.taskId != nil {
                     map["TaskId"] = self.taskId!
+                }
+                if self.taskInstanceId != nil {
+                    map["TaskInstanceId"] = self.taskInstanceId!
                 }
                 if self.user != nil {
                     map["User"] = self.user!
@@ -106011,6 +106021,9 @@ public class ListTaskOperationLogsResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
                 }
+                if let value = dict["ObjectType"] as? String {
+                    self.objectType = value
+                }
                 if let value = dict["OperationContent"] as? String {
                     self.operationContent = value
                 }
@@ -106019,6 +106032,9 @@ public class ListTaskOperationLogsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TaskId"] as? Int64 {
                     self.taskId = value
+                }
+                if let value = dict["TaskInstanceId"] as? Int64 {
+                    self.taskInstanceId = value
                 }
                 if let value = dict["User"] as? String {
                     self.user = value
