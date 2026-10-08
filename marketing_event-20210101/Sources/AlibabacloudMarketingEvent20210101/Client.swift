@@ -343,6 +343,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mosCheckInWithOptions(_ request: MosCheckInRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MosCheckInResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activityId)) {
+            body["ActivityId"] = request.activityId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extParam)) {
+            body["ExtParam"] = request.extParam ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.qrCode)) {
+            body["QrCode"] = request.qrCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MosCheckIn",
+            "version": "2021-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MosCheckInResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mosCheckIn(_ request: MosCheckInRequest) async throws -> MosCheckInResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await mosCheckInWithOptions(request as! MosCheckInRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryAllActivityInfoWithOptions(_ request: QueryAllActivityInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAllActivityInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
