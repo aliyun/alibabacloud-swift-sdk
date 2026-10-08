@@ -33657,6 +33657,199 @@ public class ListVpcResponse : Tea.TeaModel {
     }
 }
 
+public class MigrateApplicationRequest : Tea.TeaModel {
+    public var appIds: [String]?
+
+    public var cmd: String?
+
+    public var config: String?
+
+    public var rawData: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appIds != nil {
+            map["appIds"] = self.appIds!
+        }
+        if self.cmd != nil {
+            map["cmd"] = self.cmd!
+        }
+        if self.config != nil {
+            map["config"] = self.config!
+        }
+        if self.rawData != nil {
+            map["rawData"] = self.rawData!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["appIds"] as? [String] {
+            self.appIds = value
+        }
+        if let value = dict["cmd"] as? String {
+            self.cmd = value
+        }
+        if let value = dict["config"] as? String {
+            self.config = value
+        }
+        if let value = dict["rawData"] as? String {
+            self.rawData = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class MigrateApplicationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var migrationId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.migrationId != nil {
+                map["migrationId"] = self.migrationId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["migrationId"] as? String {
+                self.migrationId = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var message: String?
+
+    public var data: MigrateApplicationResponseBody.Data?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = MigrateApplicationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+    }
+}
+
+public class MigrateApplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MigrateApplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MigrateApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class MigrateEcuRequest : Tea.TeaModel {
     public var instanceIds: String?
 
