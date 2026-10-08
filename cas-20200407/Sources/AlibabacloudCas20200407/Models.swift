@@ -7234,6 +7234,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
     public var orderEndTime: Int64?
 
+    public var orderProgress: String?
+
     public var orderStartTime: Int64?
 
     public var pendingResult: String?
@@ -7379,6 +7381,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         }
         if self.orderEndTime != nil {
             map["OrderEndTime"] = self.orderEndTime!
+        }
+        if self.orderProgress != nil {
+            map["OrderProgress"] = self.orderProgress!
         }
         if self.orderStartTime != nil {
             map["OrderStartTime"] = self.orderStartTime!
@@ -7546,6 +7551,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["OrderEndTime"] as? Int64 {
             self.orderEndTime = value
+        }
+        if let value = dict["OrderProgress"] as? String {
+            self.orderProgress = value
         }
         if let value = dict["OrderStartTime"] as? Int64 {
             self.orderStartTime = value
@@ -12643,6 +12651,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var versionType: String?
+
     public override init() {
         super.init()
     }
@@ -12690,6 +12700,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.versionType != nil {
+            map["VersionType"] = self.versionType!
+        }
         return map
     }
 
@@ -12727,6 +12740,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["VersionType"] as? String {
+            self.versionType = value
         }
     }
 }
