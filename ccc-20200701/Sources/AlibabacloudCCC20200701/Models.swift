@@ -46054,6 +46054,8 @@ public class ListHistoricalSkillGroupReportRequest : Tea.TeaModel {
 
     public var startTime: Int64?
 
+    public var summarizeByInstanceId: Bool?
+
     public override init() {
         super.init()
     }
@@ -46089,6 +46091,9 @@ public class ListHistoricalSkillGroupReportRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.summarizeByInstanceId != nil {
+            map["SummarizeByInstanceId"] = self.summarizeByInstanceId!
+        }
         return map
     }
 
@@ -46114,6 +46119,9 @@ public class ListHistoricalSkillGroupReportRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
+        }
+        if let value = dict["SummarizeByInstanceId"] as? Bool {
+            self.summarizeByInstanceId = value
         }
     }
 }

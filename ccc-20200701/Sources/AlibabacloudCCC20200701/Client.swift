@@ -5934,6 +5934,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
         }
+        if (!TeaUtils.Client.isUnset(request.summarizeByInstanceId)) {
+            query["SummarizeByInstanceId"] = request.summarizeByInstanceId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.skillGroupIdList)) {
             body["SkillGroupIdList"] = request.skillGroupIdList ?? "";
