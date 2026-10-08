@@ -9,6 +9,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "central"
+        self._endpointMap = [
+            "ap-southeast-1": "domain-intl.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("domain", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -748,6 +751,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteRegistrantProfile(_ request: DeleteRegistrantProfileRequest) async throws -> DeleteRegistrantProfileResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteRegistrantProfileWithOptions(request as! DeleteRegistrantProfileRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func domainKnowledgeRetrieveWithOptions(_ request: DomainKnowledgeRetrieveRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DomainKnowledgeRetrieveResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.globalTopN)) {
+            query["GlobalTopN"] = request.globalTopN!;
+        }
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["Keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.site)) {
+            query["Site"] = request.site ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DomainKnowledgeRetrieve",
+            "version": "2018-01-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DomainKnowledgeRetrieveResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func domainKnowledgeRetrieve(_ request: DomainKnowledgeRetrieveRequest) async throws -> DomainKnowledgeRetrieveResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await domainKnowledgeRetrieveWithOptions(request as! DomainKnowledgeRetrieveRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4127,6 +4167,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableDomainProxy)) {
             query["EnableDomainProxy"] = request.enableDomainProxy!;
+        }
+        if (!TeaUtils.Client.isUnset(request.expectedPunycode)) {
+            query["ExpectedPunycode"] = request.expectedPunycode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";

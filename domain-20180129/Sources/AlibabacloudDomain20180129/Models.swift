@@ -3280,6 +3280,202 @@ public class DeleteRegistrantProfileResponse : Tea.TeaModel {
     }
 }
 
+public class DomainKnowledgeRetrieveRequest : Tea.TeaModel {
+    public var globalTopN: Int32?
+
+    public var keyword: String?
+
+    public var site: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.globalTopN != nil {
+            map["GlobalTopN"] = self.globalTopN!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.site != nil {
+            map["Site"] = self.site!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GlobalTopN"] as? Int32 {
+            self.globalTopN = value
+        }
+        if let value = dict["Keyword"] as? String {
+            self.keyword = value
+        }
+        if let value = dict["Site"] as? String {
+            self.site = value
+        }
+    }
+}
+
+public class DomainKnowledgeRetrieveResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var score: Double?
+
+        public var source: String?
+
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.score != nil {
+                map["Score"] = self.score!
+            }
+            if self.source != nil {
+                map["Source"] = self.source!
+            }
+            if self.text != nil {
+                map["Text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Score"] as? Double {
+                self.score = value
+            }
+            if let value = dict["Source"] as? String {
+                self.source = value
+            }
+            if let value = dict["Text"] as? String {
+                self.text = value
+            }
+        }
+    }
+    public var data: [DomainKnowledgeRetrieveResponseBody.Data]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [DomainKnowledgeRetrieveResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = DomainKnowledgeRetrieveResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DomainKnowledgeRetrieveResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DomainKnowledgeRetrieveResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DomainKnowledgeRetrieveResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DomainSpecialBizCancelRequest : Tea.TeaModel {
     public var bizId: Int64?
 
@@ -19976,6 +20172,8 @@ public class SaveBatchTaskForCreatingOrderActivateRequest : Tea.TeaModel {
 
         public var enableDomainProxy: Bool?
 
+        public var expectedPunycode: String?
+
         public var permitPremiumActivation: Bool?
 
         public var postalCode: String?
@@ -20052,6 +20250,9 @@ public class SaveBatchTaskForCreatingOrderActivateRequest : Tea.TeaModel {
             }
             if self.enableDomainProxy != nil {
                 map["EnableDomainProxy"] = self.enableDomainProxy!
+            }
+            if self.expectedPunycode != nil {
+                map["ExpectedPunycode"] = self.expectedPunycode!
             }
             if self.permitPremiumActivation != nil {
                 map["PermitPremiumActivation"] = self.permitPremiumActivation!
@@ -20138,6 +20339,9 @@ public class SaveBatchTaskForCreatingOrderActivateRequest : Tea.TeaModel {
             }
             if let value = dict["EnableDomainProxy"] as? Bool {
                 self.enableDomainProxy = value
+            }
+            if let value = dict["ExpectedPunycode"] as? String {
+                self.expectedPunycode = value
             }
             if let value = dict["PermitPremiumActivation"] as? Bool {
                 self.permitPremiumActivation = value
@@ -24464,6 +24668,8 @@ public class SaveSingleTaskForCreatingOrderActivateRequest : Tea.TeaModel {
 
     public var enableDomainProxy: Bool?
 
+    public var expectedPunycode: String?
+
     public var lang: String?
 
     public var permitPremiumActivation: Bool?
@@ -24553,6 +24759,9 @@ public class SaveSingleTaskForCreatingOrderActivateRequest : Tea.TeaModel {
         }
         if self.enableDomainProxy != nil {
             map["EnableDomainProxy"] = self.enableDomainProxy!
+        }
+        if self.expectedPunycode != nil {
+            map["ExpectedPunycode"] = self.expectedPunycode!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -24657,6 +24866,9 @@ public class SaveSingleTaskForCreatingOrderActivateRequest : Tea.TeaModel {
         }
         if let value = dict["EnableDomainProxy"] as? Bool {
             self.enableDomainProxy = value
+        }
+        if let value = dict["ExpectedPunycode"] as? String {
+            self.expectedPunycode = value
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
