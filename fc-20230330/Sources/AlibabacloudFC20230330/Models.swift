@@ -6673,6 +6673,8 @@ public class PolarFsConfig : Tea.TeaModel {
 }
 
 public class PolarFsMountConfig : Tea.TeaModel {
+    public var extraOptions: String?
+
     public var instanceId: String?
 
     public var mountDir: String?
@@ -6695,6 +6697,9 @@ public class PolarFsMountConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.extraOptions != nil {
+            map["extraOptions"] = self.extraOptions!
+        }
         if self.instanceId != nil {
             map["instanceId"] = self.instanceId!
         }
@@ -6712,6 +6717,9 @@ public class PolarFsMountConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["extraOptions"] as? String {
+            self.extraOptions = value
+        }
         if let value = dict["instanceId"] as? String {
             self.instanceId = value
         }
