@@ -8876,6 +8876,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public var options: String?
 
+        public var roleArn: String?
+
         public var roleChain: String?
 
         public var uri: String?
@@ -8915,6 +8917,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.options != nil {
                 map["Options"] = self.options!
             }
+            if self.roleArn != nil {
+                map["RoleArn"] = self.roleArn!
+            }
             if self.roleChain != nil {
                 map["RoleChain"] = self.roleChain!
             }
@@ -8946,6 +8951,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
             if let value = dict["Options"] as? String {
                 self.options = value
+            }
+            if let value = dict["RoleArn"] as? String {
+                self.roleArn = value
             }
             if let value = dict["RoleChain"] as? String {
                 self.roleChain = value
