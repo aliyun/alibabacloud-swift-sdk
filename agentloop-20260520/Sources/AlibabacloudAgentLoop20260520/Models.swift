@@ -1286,6 +1286,37 @@ public class EvaluatorVariableExtractorMappingValue : Tea.TeaModel {
     }
 }
 
+public class MetaSchemaValue : Tea.TeaModel {
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+    }
+}
+
 public class AddDatasetDataRequest : Tea.TeaModel {
     public var dataArray: [[String: Any]]?
 
@@ -3342,6 +3373,36 @@ public class CreateExperimentRunResponse : Tea.TeaModel {
 
 public class CreatePipelineRequest : Tea.TeaModel {
     public class ExecutePolicy : Tea.TeaModel {
+        public class Continuous : Tea.TeaModel {
+            public var fromTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fromTime != nil {
+                    map["fromTime"] = self.fromTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["fromTime"] as? Int64 {
+                    self.fromTime = value
+                }
+            }
+        }
         public class RunOnce : Tea.TeaModel {
             public var fromTime: Int64?
 
@@ -3418,6 +3479,8 @@ public class CreatePipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public var continuous: CreatePipelineRequest.ExecutePolicy.Continuous?
+
         public var mode: String?
 
         public var runOnce: CreatePipelineRequest.ExecutePolicy.RunOnce?
@@ -3434,12 +3497,16 @@ public class CreatePipelineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.continuous?.validate()
             try self.runOnce?.validate()
             try self.scheduled?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.continuous != nil {
+                map["continuous"] = self.continuous?.toMap()
+            }
             if self.mode != nil {
                 map["mode"] = self.mode!
             }
@@ -3454,6 +3521,11 @@ public class CreatePipelineRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["continuous"] as? [String: Any?] {
+                var model = CreatePipelineRequest.ExecutePolicy.Continuous()
+                model.fromMap(value)
+                self.continuous = model
+            }
             if let value = dict["mode"] as? String {
                 self.mode = value
             }
@@ -4042,11 +4114,84 @@ public class CreatePipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Trajectory : Tea.TeaModel {
+            public class Enrich : Tea.TeaModel {
+                public var columns: [String]?
+
+                public var enabled: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.columns != nil {
+                        map["columns"] = self.columns!
+                    }
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["columns"] as? [String] {
+                        self.columns = value
+                    }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                }
+            }
+            public var enrich: CreatePipelineRequest.Source.Trajectory.Enrich?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.enrich?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enrich != nil {
+                    map["enrich"] = self.enrich?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enrich"] as? [String: Any?] {
+                    var model = CreatePipelineRequest.Source.Trajectory.Enrich()
+                    model.fromMap(value)
+                    self.enrich = model
+                }
+            }
+        }
         public var dataset: CreatePipelineRequest.Source.Dataset?
 
         public var inputFields: [CreatePipelineRequest.Source.InputFields]?
 
         public var logstore: CreatePipelineRequest.Source.Logstore?
+
+        public var trajectory: CreatePipelineRequest.Source.Trajectory?
 
         public var type: String?
 
@@ -4062,6 +4207,7 @@ public class CreatePipelineRequest : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.dataset?.validate()
             try self.logstore?.validate()
+            try self.trajectory?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -4078,6 +4224,9 @@ public class CreatePipelineRequest : Tea.TeaModel {
             }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
+            }
+            if self.trajectory != nil {
+                map["trajectory"] = self.trajectory?.toMap()
             }
             if self.type != nil {
                 map["type"] = self.type!
@@ -4109,6 +4258,11 @@ public class CreatePipelineRequest : Tea.TeaModel {
                 var model = CreatePipelineRequest.Source.Logstore()
                 model.fromMap(value)
                 self.logstore = model
+            }
+            if let value = dict["trajectory"] as? [String: Any?] {
+                var model = CreatePipelineRequest.Source.Trajectory()
+                model.fromMap(value)
+                self.trajectory = model
             }
             if let value = dict["type"] as? String {
                 self.type = value
@@ -8564,6 +8718,36 @@ public class GetPipelineRequest : Tea.TeaModel {
 
 public class GetPipelineResponseBody : Tea.TeaModel {
     public class ExecutePolicy : Tea.TeaModel {
+        public class Continuous : Tea.TeaModel {
+            public var fromTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fromTime != nil {
+                    map["fromTime"] = self.fromTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["fromTime"] as? Int64 {
+                    self.fromTime = value
+                }
+            }
+        }
         public class RunOnce : Tea.TeaModel {
             public var fromTime: Int64?
 
@@ -8640,6 +8824,8 @@ public class GetPipelineResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var continuous: GetPipelineResponseBody.ExecutePolicy.Continuous?
+
         public var mode: String?
 
         public var runOnce: GetPipelineResponseBody.ExecutePolicy.RunOnce?
@@ -8656,12 +8842,16 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.continuous?.validate()
             try self.runOnce?.validate()
             try self.scheduled?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.continuous != nil {
+                map["continuous"] = self.continuous?.toMap()
+            }
             if self.mode != nil {
                 map["mode"] = self.mode!
             }
@@ -8676,6 +8866,11 @@ public class GetPipelineResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["continuous"] as? [String: Any?] {
+                var model = GetPipelineResponseBody.ExecutePolicy.Continuous()
+                model.fromMap(value)
+                self.continuous = model
+            }
             if let value = dict["mode"] as? String {
                 self.mode = value
             }
@@ -9264,11 +9459,84 @@ public class GetPipelineResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Trajectory : Tea.TeaModel {
+            public class Enrich : Tea.TeaModel {
+                public var columns: [String]?
+
+                public var enabled: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.columns != nil {
+                        map["columns"] = self.columns!
+                    }
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["columns"] as? [String] {
+                        self.columns = value
+                    }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                }
+            }
+            public var enrich: GetPipelineResponseBody.Source.Trajectory.Enrich?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.enrich?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enrich != nil {
+                    map["enrich"] = self.enrich?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enrich"] as? [String: Any?] {
+                    var model = GetPipelineResponseBody.Source.Trajectory.Enrich()
+                    model.fromMap(value)
+                    self.enrich = model
+                }
+            }
+        }
         public var dataset: GetPipelineResponseBody.Source.Dataset?
 
         public var inputFields: [GetPipelineResponseBody.Source.InputFields]?
 
         public var logstore: GetPipelineResponseBody.Source.Logstore?
+
+        public var trajectory: GetPipelineResponseBody.Source.Trajectory?
 
         public var type: String?
 
@@ -9284,6 +9552,7 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.dataset?.validate()
             try self.logstore?.validate()
+            try self.trajectory?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -9300,6 +9569,9 @@ public class GetPipelineResponseBody : Tea.TeaModel {
             }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
+            }
+            if self.trajectory != nil {
+                map["trajectory"] = self.trajectory?.toMap()
             }
             if self.type != nil {
                 map["type"] = self.type!
@@ -9332,6 +9604,11 @@ public class GetPipelineResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.logstore = model
             }
+            if let value = dict["trajectory"] as? [String: Any?] {
+                var model = GetPipelineResponseBody.Source.Trajectory()
+                model.fromMap(value)
+                self.trajectory = model
+            }
             if let value = dict["type"] as? String {
                 self.type = value
             }
@@ -9356,6 +9633,8 @@ public class GetPipelineResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var scheduleStatus: String?
+
+    public var scheduleType: String?
 
     public var sink: GetPipelineResponseBody.Sink?
 
@@ -9413,6 +9692,9 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         if self.scheduleStatus != nil {
             map["scheduleStatus"] = self.scheduleStatus!
         }
+        if self.scheduleType != nil {
+            map["scheduleType"] = self.scheduleType!
+        }
         if self.sink != nil {
             map["sink"] = self.sink?.toMap()
         }
@@ -9463,6 +9745,9 @@ public class GetPipelineResponseBody : Tea.TeaModel {
         }
         if let value = dict["scheduleStatus"] as? String {
             self.scheduleStatus = value
+        }
+        if let value = dict["scheduleType"] as? String {
+            self.scheduleType = value
         }
         if let value = dict["sink"] as? [String: Any?] {
             var model = GetPipelineResponseBody.Sink()
@@ -13368,6 +13653,36 @@ public class ListPipelinesRequest : Tea.TeaModel {
 public class ListPipelinesResponseBody : Tea.TeaModel {
     public class Pipelines : Tea.TeaModel {
         public class ExecutePolicy : Tea.TeaModel {
+            public class Continuous : Tea.TeaModel {
+                public var fromTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.fromTime != nil {
+                        map["fromTime"] = self.fromTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["fromTime"] as? Int64 {
+                        self.fromTime = value
+                    }
+                }
+            }
             public class RunOnce : Tea.TeaModel {
                 public var fromTime: Int64?
 
@@ -13444,6 +13759,8 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var continuous: ListPipelinesResponseBody.Pipelines.ExecutePolicy.Continuous?
+
             public var mode: String?
 
             public var runOnce: ListPipelinesResponseBody.Pipelines.ExecutePolicy.RunOnce?
@@ -13460,12 +13777,16 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.continuous?.validate()
                 try self.runOnce?.validate()
                 try self.scheduled?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.continuous != nil {
+                    map["continuous"] = self.continuous?.toMap()
+                }
                 if self.mode != nil {
                     map["mode"] = self.mode!
                 }
@@ -13480,6 +13801,11 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["continuous"] as? [String: Any?] {
+                    var model = ListPipelinesResponseBody.Pipelines.ExecutePolicy.Continuous()
+                    model.fromMap(value)
+                    self.continuous = model
+                }
                 if let value = dict["mode"] as? String {
                     self.mode = value
                 }
@@ -13894,6 +14220,44 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class InputFields : Tea.TeaModel {
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
             public class Logstore : Tea.TeaModel {
                 public var logstore: String?
 
@@ -13940,9 +14304,84 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Trajectory : Tea.TeaModel {
+                public class Enrich : Tea.TeaModel {
+                    public var columns: [String]?
+
+                    public var enabled: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.columns != nil {
+                            map["columns"] = self.columns!
+                        }
+                        if self.enabled != nil {
+                            map["enabled"] = self.enabled!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["columns"] as? [String] {
+                            self.columns = value
+                        }
+                        if let value = dict["enabled"] as? Bool {
+                            self.enabled = value
+                        }
+                    }
+                }
+                public var enrich: ListPipelinesResponseBody.Pipelines.Source.Trajectory.Enrich?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.enrich?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enrich != nil {
+                        map["enrich"] = self.enrich?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enrich"] as? [String: Any?] {
+                        var model = ListPipelinesResponseBody.Pipelines.Source.Trajectory.Enrich()
+                        model.fromMap(value)
+                        self.enrich = model
+                    }
+                }
+            }
             public var dataset: ListPipelinesResponseBody.Pipelines.Source.Dataset?
 
+            public var inputFields: [ListPipelinesResponseBody.Pipelines.Source.InputFields]?
+
             public var logstore: ListPipelinesResponseBody.Pipelines.Source.Logstore?
+
+            public var trajectory: ListPipelinesResponseBody.Pipelines.Source.Trajectory?
 
             public var type: String?
 
@@ -13958,6 +14397,7 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.dataset?.validate()
                 try self.logstore?.validate()
+                try self.trajectory?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -13965,8 +14405,18 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
                 if self.dataset != nil {
                     map["dataset"] = self.dataset?.toMap()
                 }
+                if self.inputFields != nil {
+                    var tmp : [Any] = []
+                    for k in self.inputFields! {
+                        tmp.append(k.toMap())
+                    }
+                    map["inputFields"] = tmp
+                }
                 if self.logstore != nil {
                     map["logstore"] = self.logstore?.toMap()
+                }
+                if self.trajectory != nil {
+                    map["trajectory"] = self.trajectory?.toMap()
                 }
                 if self.type != nil {
                     map["type"] = self.type!
@@ -13981,10 +14431,28 @@ public class ListPipelinesResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.dataset = model
                 }
+                if let value = dict["inputFields"] as? [Any?] {
+                    var tmp : [ListPipelinesResponseBody.Pipelines.Source.InputFields] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListPipelinesResponseBody.Pipelines.Source.InputFields()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.inputFields = tmp
+                }
                 if let value = dict["logstore"] as? [String: Any?] {
                     var model = ListPipelinesResponseBody.Pipelines.Source.Logstore()
                     model.fromMap(value)
                     self.logstore = model
+                }
+                if let value = dict["trajectory"] as? [String: Any?] {
+                    var model = ListPipelinesResponseBody.Pipelines.Source.Trajectory()
+                    model.fromMap(value)
+                    self.trajectory = model
                 }
                 if let value = dict["type"] as? String {
                     self.type = value
@@ -14601,11 +15069,84 @@ public class PreviewPipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Trajectory : Tea.TeaModel {
+            public class Enrich : Tea.TeaModel {
+                public var columns: [String]?
+
+                public var enabled: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.columns != nil {
+                        map["columns"] = self.columns!
+                    }
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["columns"] as? [String] {
+                        self.columns = value
+                    }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                }
+            }
+            public var enrich: PreviewPipelineRequest.Source.Trajectory.Enrich?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.enrich?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enrich != nil {
+                    map["enrich"] = self.enrich?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enrich"] as? [String: Any?] {
+                    var model = PreviewPipelineRequest.Source.Trajectory.Enrich()
+                    model.fromMap(value)
+                    self.enrich = model
+                }
+            }
+        }
         public var dataset: PreviewPipelineRequest.Source.Dataset?
 
         public var inputFields: [PreviewPipelineRequest.Source.InputFields]?
 
         public var logstore: PreviewPipelineRequest.Source.Logstore?
+
+        public var trajectory: PreviewPipelineRequest.Source.Trajectory?
 
         public var type: String?
 
@@ -14621,6 +15162,7 @@ public class PreviewPipelineRequest : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.dataset?.validate()
             try self.logstore?.validate()
+            try self.trajectory?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -14637,6 +15179,9 @@ public class PreviewPipelineRequest : Tea.TeaModel {
             }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
+            }
+            if self.trajectory != nil {
+                map["trajectory"] = self.trajectory?.toMap()
             }
             if self.type != nil {
                 map["type"] = self.type!
@@ -14668,6 +15213,11 @@ public class PreviewPipelineRequest : Tea.TeaModel {
                 var model = PreviewPipelineRequest.Source.Logstore()
                 model.fromMap(value)
                 self.logstore = model
+            }
+            if let value = dict["trajectory"] as? [String: Any?] {
+                var model = PreviewPipelineRequest.Source.Trajectory()
+                model.fromMap(value)
+                self.trajectory = model
             }
             if let value = dict["type"] as? String {
                 self.type = value
@@ -14766,6 +15316,8 @@ public class PreviewPipelineResponseBody : Tea.TeaModel {
 
         public var scanBytes: Int64?
 
+        public var schema: [String: MetaSchemaValue]?
+
         public var terms: [[String: Any]]?
 
         public var whereQuery: String?
@@ -14829,6 +15381,13 @@ public class PreviewPipelineResponseBody : Tea.TeaModel {
             if self.scanBytes != nil {
                 map["scanBytes"] = self.scanBytes!
             }
+            if self.schema != nil {
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.schema! {
+                    tmp[k] = v.toMap()
+                }
+                map["schema"] = tmp
+            }
             if self.terms != nil {
                 map["terms"] = self.terms!
             }
@@ -14884,6 +15443,17 @@ public class PreviewPipelineResponseBody : Tea.TeaModel {
             }
             if let value = dict["scanBytes"] as? Int64 {
                 self.scanBytes = value
+            }
+            if let value = dict["schema"] as? [String: Any?] {
+                var tmp : [String: MetaSchemaValue] = [:]
+                for (k, v) in value {
+                    if v != nil {
+                        var model = MetaSchemaValue()
+                        model.fromMap(v as? [String: Any?])
+                        tmp[k] = model
+                    }
+                }
+                self.schema = tmp
             }
             if let value = dict["terms"] as? [[String: Any]] {
                 self.terms = value
@@ -17319,6 +17889,36 @@ public class UpdateExperimentRunResponse : Tea.TeaModel {
 
 public class UpdatePipelineRequest : Tea.TeaModel {
     public class ExecutePolicy : Tea.TeaModel {
+        public class Continuous : Tea.TeaModel {
+            public var fromTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fromTime != nil {
+                    map["fromTime"] = self.fromTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["fromTime"] as? Int64 {
+                    self.fromTime = value
+                }
+            }
+        }
         public class RunOnce : Tea.TeaModel {
             public var fromTime: Int64?
 
@@ -17395,6 +17995,8 @@ public class UpdatePipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public var continuous: UpdatePipelineRequest.ExecutePolicy.Continuous?
+
         public var mode: String?
 
         public var runOnce: UpdatePipelineRequest.ExecutePolicy.RunOnce?
@@ -17411,12 +18013,16 @@ public class UpdatePipelineRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.continuous?.validate()
             try self.runOnce?.validate()
             try self.scheduled?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.continuous != nil {
+                map["continuous"] = self.continuous?.toMap()
+            }
             if self.mode != nil {
                 map["mode"] = self.mode!
             }
@@ -17431,6 +18037,11 @@ public class UpdatePipelineRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["continuous"] as? [String: Any?] {
+                var model = UpdatePipelineRequest.ExecutePolicy.Continuous()
+                model.fromMap(value)
+                self.continuous = model
+            }
             if let value = dict["mode"] as? String {
                 self.mode = value
             }
@@ -18019,11 +18630,84 @@ public class UpdatePipelineRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Trajectory : Tea.TeaModel {
+            public class Enrich : Tea.TeaModel {
+                public var columns: [String]?
+
+                public var enabled: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.columns != nil {
+                        map["columns"] = self.columns!
+                    }
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["columns"] as? [String] {
+                        self.columns = value
+                    }
+                    if let value = dict["enabled"] as? Bool {
+                        self.enabled = value
+                    }
+                }
+            }
+            public var enrich: UpdatePipelineRequest.Source.Trajectory.Enrich?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.enrich?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enrich != nil {
+                    map["enrich"] = self.enrich?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enrich"] as? [String: Any?] {
+                    var model = UpdatePipelineRequest.Source.Trajectory.Enrich()
+                    model.fromMap(value)
+                    self.enrich = model
+                }
+            }
+        }
         public var dataset: UpdatePipelineRequest.Source.Dataset?
 
         public var inputFields: [UpdatePipelineRequest.Source.InputFields]?
 
         public var logstore: UpdatePipelineRequest.Source.Logstore?
+
+        public var trajectory: UpdatePipelineRequest.Source.Trajectory?
 
         public var type: String?
 
@@ -18039,6 +18723,7 @@ public class UpdatePipelineRequest : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.dataset?.validate()
             try self.logstore?.validate()
+            try self.trajectory?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -18055,6 +18740,9 @@ public class UpdatePipelineRequest : Tea.TeaModel {
             }
             if self.logstore != nil {
                 map["logstore"] = self.logstore?.toMap()
+            }
+            if self.trajectory != nil {
+                map["trajectory"] = self.trajectory?.toMap()
             }
             if self.type != nil {
                 map["type"] = self.type!
@@ -18086,6 +18774,11 @@ public class UpdatePipelineRequest : Tea.TeaModel {
                 var model = UpdatePipelineRequest.Source.Logstore()
                 model.fromMap(value)
                 self.logstore = model
+            }
+            if let value = dict["trajectory"] as? [String: Any?] {
+                var model = UpdatePipelineRequest.Source.Trajectory()
+                model.fromMap(value)
+                self.trajectory = model
             }
             if let value = dict["type"] as? String {
                 self.type = value
