@@ -6,6 +6,8 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class AssignCertificateCountRequest : Tea.TeaModel {
+    public var caIdentifier: String?
+
     public var certTotalCount: Int32?
 
     public var id: Int64?
@@ -24,6 +26,9 @@ public class AssignCertificateCountRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.caIdentifier != nil {
+            map["CaIdentifier"] = self.caIdentifier!
+        }
         if self.certTotalCount != nil {
             map["CertTotalCount"] = self.certTotalCount!
         }
@@ -35,6 +40,9 @@ public class AssignCertificateCountRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CaIdentifier"] as? String {
+            self.caIdentifier = value
+        }
         if let value = dict["CertTotalCount"] as? Int32 {
             self.certTotalCount = value
         }
