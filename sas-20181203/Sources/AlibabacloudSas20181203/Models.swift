@@ -37,27 +37,27 @@ public class QueryIncidentTracingSubNodesCountRequest : Tea.TeaModel {
 }
 
 public class DataValue : Tea.TeaModel {
-    public var riskMachine: Int32?
-
-    public var scanMachine: Int32?
-
-    public var maliciousFile: Int32?
-
-    public var vulnerability: Int32?
-
-    public var lastTaskTime: Int64?
-
     public var baselineCheckCount: Int32?
-
-    public var scaVulCount: Int32?
 
     public var cveVulCount: Int32?
 
-    public var sysVulCount: Int32?
+    public var estimateUsedSize: Int64?
+
+    public var lastTaskTime: Int64?
+
+    public var maliciousFile: Int32?
+
+    public var riskMachine: Int32?
+
+    public var scaVulCount: Int32?
+
+    public var scanMachine: Int32?
 
     public var sensitiveFileCount: Int32?
 
-    public var estimateUsedSize: Int64?
+    public var sysVulCount: Int32?
+
+    public var vulnerability: Int32?
 
     public var cveNum: Int32?
 
@@ -93,38 +93,38 @@ public class DataValue : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.riskMachine != nil {
-            map["RiskMachine"] = self.riskMachine!
-        }
-        if self.scanMachine != nil {
-            map["ScanMachine"] = self.scanMachine!
-        }
-        if self.maliciousFile != nil {
-            map["MaliciousFile"] = self.maliciousFile!
-        }
-        if self.vulnerability != nil {
-            map["Vulnerability"] = self.vulnerability!
-        }
-        if self.lastTaskTime != nil {
-            map["LastTaskTime"] = self.lastTaskTime!
-        }
         if self.baselineCheckCount != nil {
             map["BaselineCheckCount"] = self.baselineCheckCount!
-        }
-        if self.scaVulCount != nil {
-            map["ScaVulCount"] = self.scaVulCount!
         }
         if self.cveVulCount != nil {
             map["CveVulCount"] = self.cveVulCount!
         }
-        if self.sysVulCount != nil {
-            map["SysVulCount"] = self.sysVulCount!
+        if self.estimateUsedSize != nil {
+            map["EstimateUsedSize"] = self.estimateUsedSize!
+        }
+        if self.lastTaskTime != nil {
+            map["LastTaskTime"] = self.lastTaskTime!
+        }
+        if self.maliciousFile != nil {
+            map["MaliciousFile"] = self.maliciousFile!
+        }
+        if self.riskMachine != nil {
+            map["RiskMachine"] = self.riskMachine!
+        }
+        if self.scaVulCount != nil {
+            map["ScaVulCount"] = self.scaVulCount!
+        }
+        if self.scanMachine != nil {
+            map["ScanMachine"] = self.scanMachine!
         }
         if self.sensitiveFileCount != nil {
             map["SensitiveFileCount"] = self.sensitiveFileCount!
         }
-        if self.estimateUsedSize != nil {
-            map["EstimateUsedSize"] = self.estimateUsedSize!
+        if self.sysVulCount != nil {
+            map["SysVulCount"] = self.sysVulCount!
+        }
+        if self.vulnerability != nil {
+            map["Vulnerability"] = self.vulnerability!
         }
         if self.cveNum != nil {
             map["CveNum"] = self.cveNum!
@@ -161,38 +161,38 @@ public class DataValue : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["RiskMachine"] as? Int32 {
-            self.riskMachine = value
-        }
-        if let value = dict["ScanMachine"] as? Int32 {
-            self.scanMachine = value
-        }
-        if let value = dict["MaliciousFile"] as? Int32 {
-            self.maliciousFile = value
-        }
-        if let value = dict["Vulnerability"] as? Int32 {
-            self.vulnerability = value
-        }
-        if let value = dict["LastTaskTime"] as? Int64 {
-            self.lastTaskTime = value
-        }
         if let value = dict["BaselineCheckCount"] as? Int32 {
             self.baselineCheckCount = value
-        }
-        if let value = dict["ScaVulCount"] as? Int32 {
-            self.scaVulCount = value
         }
         if let value = dict["CveVulCount"] as? Int32 {
             self.cveVulCount = value
         }
-        if let value = dict["SysVulCount"] as? Int32 {
-            self.sysVulCount = value
+        if let value = dict["EstimateUsedSize"] as? Int64 {
+            self.estimateUsedSize = value
+        }
+        if let value = dict["LastTaskTime"] as? Int64 {
+            self.lastTaskTime = value
+        }
+        if let value = dict["MaliciousFile"] as? Int32 {
+            self.maliciousFile = value
+        }
+        if let value = dict["RiskMachine"] as? Int32 {
+            self.riskMachine = value
+        }
+        if let value = dict["ScaVulCount"] as? Int32 {
+            self.scaVulCount = value
+        }
+        if let value = dict["ScanMachine"] as? Int32 {
+            self.scanMachine = value
         }
         if let value = dict["SensitiveFileCount"] as? Int32 {
             self.sensitiveFileCount = value
         }
-        if let value = dict["EstimateUsedSize"] as? Int64 {
-            self.estimateUsedSize = value
+        if let value = dict["SysVulCount"] as? Int32 {
+            self.sysVulCount = value
+        }
+        if let value = dict["Vulnerability"] as? Int32 {
+            self.vulnerability = value
         }
         if let value = dict["CveNum"] as? Int32 {
             self.cveNum = value
@@ -161113,6 +161113,8 @@ public class ListAgentlessTaskRequest : Tea.TeaModel {
 
     public var taskId: String?
 
+    public var taskIdList: [String]?
+
     public var uuid: String?
 
     public override init() {
@@ -161171,6 +161173,9 @@ public class ListAgentlessTaskRequest : Tea.TeaModel {
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
+        if self.taskIdList != nil {
+            map["TaskIdList"] = self.taskIdList!
+        }
         if self.uuid != nil {
             map["Uuid"] = self.uuid!
         }
@@ -161220,6 +161225,160 @@ public class ListAgentlessTaskRequest : Tea.TeaModel {
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
+        }
+        if let value = dict["TaskIdList"] as? [String] {
+            self.taskIdList = value
+        }
+        if let value = dict["Uuid"] as? String {
+            self.uuid = value
+        }
+    }
+}
+
+public class ListAgentlessTaskShrinkRequest : Tea.TeaModel {
+    public var currentPage: Int32?
+
+    public var endTime: Int64?
+
+    public var internetIp: String?
+
+    public var intranetIp: String?
+
+    public var lang: String?
+
+    public var machineName: String?
+
+    public var pageSize: Int32?
+
+    public var rootTask: Bool?
+
+    public var rootTaskId: String?
+
+    public var startTime: Int64?
+
+    public var status: Int32?
+
+    public var targetName: String?
+
+    public var targetType: Int32?
+
+    public var taskId: String?
+
+    public var taskIdListShrink: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.internetIp != nil {
+            map["InternetIp"] = self.internetIp!
+        }
+        if self.intranetIp != nil {
+            map["IntranetIp"] = self.intranetIp!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.machineName != nil {
+            map["MachineName"] = self.machineName!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.rootTask != nil {
+            map["RootTask"] = self.rootTask!
+        }
+        if self.rootTaskId != nil {
+            map["RootTaskId"] = self.rootTaskId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.targetName != nil {
+            map["TargetName"] = self.targetName!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.taskIdListShrink != nil {
+            map["TaskIdList"] = self.taskIdListShrink!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["InternetIp"] as? String {
+            self.internetIp = value
+        }
+        if let value = dict["IntranetIp"] as? String {
+            self.intranetIp = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MachineName"] as? String {
+            self.machineName = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RootTask"] as? Bool {
+            self.rootTask = value
+        }
+        if let value = dict["RootTaskId"] as? String {
+            self.rootTaskId = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
+        }
+        if let value = dict["TargetName"] as? String {
+            self.targetName = value
+        }
+        if let value = dict["TargetType"] as? Int32 {
+            self.targetType = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["TaskIdList"] as? String {
+            self.taskIdListShrink = value
         }
         if let value = dict["Uuid"] as? String {
             self.uuid = value

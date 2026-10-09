@@ -25453,8 +25453,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listAgentlessTaskWithOptions(_ request: ListAgentlessTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgentlessTaskResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listAgentlessTaskWithOptions(_ tmpReq: ListAgentlessTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgentlessTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListAgentlessTaskShrinkRequest = ListAgentlessTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.taskIdList)) {
+            request.taskIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskIdList, "TaskIdList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
@@ -25497,6 +25502,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskIdListShrink)) {
+            query["TaskIdList"] = request.taskIdListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.uuid)) {
             query["Uuid"] = request.uuid ?? "";
