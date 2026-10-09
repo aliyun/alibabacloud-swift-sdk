@@ -892,6 +892,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func redraftSkillVersionWithOptions(_ request: RedraftSkillVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RedraftSkillVersionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.namespaceId)) {
+            query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillName)) {
+            query["SkillName"] = request.skillName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillVersion)) {
+            query["SkillVersion"] = request.skillVersion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RedraftSkillVersion",
+            "version": "2026-03-17",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RedraftSkillVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func redraftSkillVersion(_ request: RedraftSkillVersionRequest) async throws -> RedraftSkillVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await redraftSkillVersionWithOptions(request as! RedraftSkillVersionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitPromptVersionWithOptions(_ request: SubmitPromptVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitPromptVersionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
