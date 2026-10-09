@@ -12,30 +12,7 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointMap = [
             "ap-southeast-1": "cloudfw.ap-southeast-1.aliyuncs.com",
             "cn-hangzhou": "cloudfw.cn-hangzhou.aliyuncs.com",
-            "cn-qingdao": "cloudfw.aliyuncs.com",
-            "cn-zhangjiakou": "cloudfw.aliyuncs.com",
-            "cn-huhehaote": "cloudfw.aliyuncs.com",
-            "cn-wulanchabu": "cloudfw.aliyuncs.com",
-            "cn-heyuan": "cloudfw.aliyuncs.com",
-            "cn-chengdu": "cloudfw.aliyuncs.com",
-            "ap-northeast-1": "cloudfw.aliyuncs.com",
-            "ap-southeast-5": "cloudfw.aliyuncs.com",
-            "ap-southeast-3": "cloudfw.ap-southeast-1.aliyuncs.com",
-            "cn-shenzhen": "cloudfw.aliyuncs.com",
-            "cn-beijing": "cloudfw.aliyuncs.com",
-            "cn-shanghai": "cloudfw.aliyuncs.com",
-            "cn-guangzhou": "cloudfw.aliyuncs.com",
-            "cn-hongkong": "cloudfw.aliyuncs.com",
-            "us-east-1": "cloudfw.aliyuncs.com",
-            "us-west-1": "cloudfw.aliyuncs.com",
-            "eu-west-1": "cloudfw.aliyuncs.com",
-            "eu-central-1": "cloudfw.aliyuncs.com",
-            "me-east-1": "cloudfw.aliyuncs.com",
-            "cn-shenzhen-finance-1": "cloudfw.aliyuncs.com",
-            "cn-shanghai-finance-1": "cloudfw.aliyuncs.com",
-            "cn-hangzhou-finance": "cloudfw.aliyuncs.com",
-            "cn-beijing-finance-1": "cloudfw.aliyuncs.com",
-            "cn-north-2-gov-1": "cloudfw.aliyuncs.com"
+            "ap-southeast-3": "cloudfw.ap-southeast-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cloudfw", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1713,8 +1690,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aclUuid)) {
             query["AclUuid"] = request.aclUuid ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.direction)) {
             query["Direction"] = request.direction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";

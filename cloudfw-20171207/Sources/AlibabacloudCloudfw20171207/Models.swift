@@ -6670,7 +6670,11 @@ public class DeleteAddressBookResponse : Tea.TeaModel {
 public class DeleteControlPolicyRequest : Tea.TeaModel {
     public var aclUuid: String?
 
+    public var clientToken: String?
+
     public var direction: String?
+
+    public var dryRun: Bool?
 
     public var lang: String?
 
@@ -6693,8 +6697,14 @@ public class DeleteControlPolicyRequest : Tea.TeaModel {
         if self.aclUuid != nil {
             map["AclUuid"] = self.aclUuid!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.direction != nil {
             map["Direction"] = self.direction!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -6710,8 +6720,14 @@ public class DeleteControlPolicyRequest : Tea.TeaModel {
         if let value = dict["AclUuid"] as? String {
             self.aclUuid = value
         }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Direction"] as? String {
             self.direction = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
@@ -6723,6 +6739,8 @@ public class DeleteControlPolicyRequest : Tea.TeaModel {
 }
 
 public class DeleteControlPolicyResponseBody : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var requestId: String?
 
     public override init() {
@@ -6739,6 +6757,9 @@ public class DeleteControlPolicyResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -6747,6 +6768,9 @@ public class DeleteControlPolicyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -62253,6 +62277,8 @@ public class ListTlsInspectCACertificatesResponseBody : Tea.TeaModel {
 
         public var caCertType: String?
 
+        public var certChainExpirationTime: Int64?
+
         public var expirationTime: Int64?
 
         public var keySize: Int32?
@@ -62289,6 +62315,9 @@ public class ListTlsInspectCACertificatesResponseBody : Tea.TeaModel {
             if self.caCertType != nil {
                 map["CaCertType"] = self.caCertType!
             }
+            if self.certChainExpirationTime != nil {
+                map["CertChainExpirationTime"] = self.certChainExpirationTime!
+            }
             if self.expirationTime != nil {
                 map["ExpirationTime"] = self.expirationTime!
             }
@@ -62320,6 +62349,9 @@ public class ListTlsInspectCACertificatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CaCertType"] as? String {
                 self.caCertType = value
+            }
+            if let value = dict["CertChainExpirationTime"] as? Int64 {
+                self.certChainExpirationTime = value
             }
             if let value = dict["ExpirationTime"] as? Int64 {
                 self.expirationTime = value
