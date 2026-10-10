@@ -1728,10 +1728,12 @@ public class CreateAgentSpaceResponse : Tea.TeaModel {
 
 public class CreateContextStoreRequest : Tea.TeaModel {
     public class Config : Tea.TeaModel {
-        public class Source : Tea.TeaModel {
-            public var agentSpace: String?
+        public class Audit : Tea.TeaModel {
+            public var droppedCandidates: Bool?
 
-            public var startTime: String?
+            public var queryMode: String?
+
+            public var retentionDays: Int32?
 
             public override init() {
                 super.init()
@@ -1747,11 +1749,609 @@ public class CreateContextStoreRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.droppedCandidates != nil {
+                    map["droppedCandidates"] = self.droppedCandidates!
+                }
+                if self.queryMode != nil {
+                    map["queryMode"] = self.queryMode!
+                }
+                if self.retentionDays != nil {
+                    map["retentionDays"] = self.retentionDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["droppedCandidates"] as? Bool {
+                    self.droppedCandidates = value
+                }
+                if let value = dict["queryMode"] as? String {
+                    self.queryMode = value
+                }
+                if let value = dict["retentionDays"] as? Int32 {
+                    self.retentionDays = value
+                }
+            }
+        }
+        public class ExtractionPolicy : Tea.TeaModel {
+            public class Model : Tea.TeaModel {
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var categories: [String]?
+
+            public var customInstructions: String?
+
+            public var excludeRules: [String]?
+
+            public var model: CreateContextStoreRequest.Config.ExtractionPolicy.Model?
+
+            public var preset: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.model?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.categories != nil {
+                    map["categories"] = self.categories!
+                }
+                if self.customInstructions != nil {
+                    map["customInstructions"] = self.customInstructions!
+                }
+                if self.excludeRules != nil {
+                    map["excludeRules"] = self.excludeRules!
+                }
+                if self.model != nil {
+                    map["model"] = self.model?.toMap()
+                }
+                if self.preset != nil {
+                    map["preset"] = self.preset!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["categories"] as? [String] {
+                    self.categories = value
+                }
+                if let value = dict["customInstructions"] as? String {
+                    self.customInstructions = value
+                }
+                if let value = dict["excludeRules"] as? [String] {
+                    self.excludeRules = value
+                }
+                if let value = dict["model"] as? [String: Any?] {
+                    var model = CreateContextStoreRequest.Config.ExtractionPolicy.Model()
+                    model.fromMap(value)
+                    self.model = model
+                }
+                if let value = dict["preset"] as? String {
+                    self.preset = value
+                }
+            }
+        }
+        public class ScopePolicy : Tea.TeaModel {
+            public var requiredAnyOf: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.requiredAnyOf != nil {
+                    map["requiredAnyOf"] = self.requiredAnyOf!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["requiredAnyOf"] as? [String] {
+                    self.requiredAnyOf = value
+                }
+            }
+        }
+        public class Source : Tea.TeaModel {
+            public class Dataset : Tea.TeaModel {
+                public class CustomFields : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var sensitive: Bool?
+
+                    public var sourceField: String?
+
+                    public var target: String?
+
+                    public var usage: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["description"] = self.description_!
+                        }
+                        if self.sensitive != nil {
+                            map["sensitive"] = self.sensitive!
+                        }
+                        if self.sourceField != nil {
+                            map["sourceField"] = self.sourceField!
+                        }
+                        if self.target != nil {
+                            map["target"] = self.target!
+                        }
+                        if self.usage != nil {
+                            map["usage"] = self.usage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["sensitive"] as? Bool {
+                            self.sensitive = value
+                        }
+                        if let value = dict["sourceField"] as? String {
+                            self.sourceField = value
+                        }
+                        if let value = dict["target"] as? String {
+                            self.target = value
+                        }
+                        if let value = dict["usage"] as? String {
+                            self.usage = value
+                        }
+                    }
+                }
+                public class Filter : Tea.TeaModel {
+                    public var where_: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.where_ != nil {
+                            map["where"] = self.where_!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["where"] as? String {
+                            self.where_ = value
+                        }
+                    }
+                }
+                public class VersionPolicy : Tea.TeaModel {
+                    public var mode: String?
+
+                    public var startSeq: Int64?
+
+                    public var version: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.mode != nil {
+                            map["mode"] = self.mode!
+                        }
+                        if self.startSeq != nil {
+                            map["startSeq"] = self.startSeq!
+                        }
+                        if self.version != nil {
+                            map["version"] = self.version!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["mode"] as? String {
+                            self.mode = value
+                        }
+                        if let value = dict["startSeq"] as? Int64 {
+                            self.startSeq = value
+                        }
+                        if let value = dict["version"] as? String {
+                            self.version = value
+                        }
+                    }
+                }
+                public var customFields: [CreateContextStoreRequest.Config.Source.Dataset.CustomFields]?
+
+                public var datasetName: String?
+
+                public var filter: CreateContextStoreRequest.Config.Source.Dataset.Filter?
+
+                public var pollIntervalSeconds: Int32?
+
+                public var schemaContract: String?
+
+                public var versionPolicy: CreateContextStoreRequest.Config.Source.Dataset.VersionPolicy?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.filter?.validate()
+                    try self.versionPolicy?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.customFields != nil {
+                        var tmp : [Any] = []
+                        for k in self.customFields! {
+                            tmp.append(k.toMap())
+                        }
+                        map["customFields"] = tmp
+                    }
+                    if self.datasetName != nil {
+                        map["datasetName"] = self.datasetName!
+                    }
+                    if self.filter != nil {
+                        map["filter"] = self.filter?.toMap()
+                    }
+                    if self.pollIntervalSeconds != nil {
+                        map["pollIntervalSeconds"] = self.pollIntervalSeconds!
+                    }
+                    if self.schemaContract != nil {
+                        map["schemaContract"] = self.schemaContract!
+                    }
+                    if self.versionPolicy != nil {
+                        map["versionPolicy"] = self.versionPolicy?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["customFields"] as? [Any?] {
+                        var tmp : [CreateContextStoreRequest.Config.Source.Dataset.CustomFields] = []
+                        for v in value {
+                            if v != nil {
+                                var model = CreateContextStoreRequest.Config.Source.Dataset.CustomFields()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.customFields = tmp
+                    }
+                    if let value = dict["datasetName"] as? String {
+                        self.datasetName = value
+                    }
+                    if let value = dict["filter"] as? [String: Any?] {
+                        var model = CreateContextStoreRequest.Config.Source.Dataset.Filter()
+                        model.fromMap(value)
+                        self.filter = model
+                    }
+                    if let value = dict["pollIntervalSeconds"] as? Int32 {
+                        self.pollIntervalSeconds = value
+                    }
+                    if let value = dict["schemaContract"] as? String {
+                        self.schemaContract = value
+                    }
+                    if let value = dict["versionPolicy"] as? [String: Any?] {
+                        var model = CreateContextStoreRequest.Config.Source.Dataset.VersionPolicy()
+                        model.fromMap(value)
+                        self.versionPolicy = model
+                    }
+                }
+            }
+            public class Trajectory : Tea.TeaModel {
+                public class Filter : Tea.TeaModel {
+                    public var agentNames: [String]?
+
+                    public var excludeDegraded: Bool?
+
+                    public var minStepCount: Int32?
+
+                    public var query: String?
+
+                    public var serviceNames: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentNames != nil {
+                            map["agentNames"] = self.agentNames!
+                        }
+                        if self.excludeDegraded != nil {
+                            map["excludeDegraded"] = self.excludeDegraded!
+                        }
+                        if self.minStepCount != nil {
+                            map["minStepCount"] = self.minStepCount!
+                        }
+                        if self.query != nil {
+                            map["query"] = self.query!
+                        }
+                        if self.serviceNames != nil {
+                            map["serviceNames"] = self.serviceNames!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentNames"] as? [String] {
+                            self.agentNames = value
+                        }
+                        if let value = dict["excludeDegraded"] as? Bool {
+                            self.excludeDegraded = value
+                        }
+                        if let value = dict["minStepCount"] as? Int32 {
+                            self.minStepCount = value
+                        }
+                        if let value = dict["query"] as? String {
+                            self.query = value
+                        }
+                        if let value = dict["serviceNames"] as? [String] {
+                            self.serviceNames = value
+                        }
+                    }
+                }
+                public class ScopeMapping : Tea.TeaModel {
+                    public var agentId: String?
+
+                    public var appId: String?
+
+                    public var runId: String?
+
+                    public var userId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentId != nil {
+                            map["agentId"] = self.agentId!
+                        }
+                        if self.appId != nil {
+                            map["appId"] = self.appId!
+                        }
+                        if self.runId != nil {
+                            map["runId"] = self.runId!
+                        }
+                        if self.userId != nil {
+                            map["userId"] = self.userId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentId"] as? String {
+                            self.agentId = value
+                        }
+                        if let value = dict["appId"] as? String {
+                            self.appId = value
+                        }
+                        if let value = dict["runId"] as? String {
+                            self.runId = value
+                        }
+                        if let value = dict["userId"] as? String {
+                            self.userId = value
+                        }
+                    }
+                }
+                public var filter: CreateContextStoreRequest.Config.Source.Trajectory.Filter?
+
+                public var logstore: String?
+
+                public var pollIntervalSeconds: Int32?
+
+                public var scopeMapping: CreateContextStoreRequest.Config.Source.Trajectory.ScopeMapping?
+
+                public var startTime: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.filter?.validate()
+                    try self.scopeMapping?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.filter != nil {
+                        map["filter"] = self.filter?.toMap()
+                    }
+                    if self.logstore != nil {
+                        map["logstore"] = self.logstore!
+                    }
+                    if self.pollIntervalSeconds != nil {
+                        map["pollIntervalSeconds"] = self.pollIntervalSeconds!
+                    }
+                    if self.scopeMapping != nil {
+                        map["scopeMapping"] = self.scopeMapping?.toMap()
+                    }
+                    if self.startTime != nil {
+                        map["startTime"] = self.startTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["filter"] as? [String: Any?] {
+                        var model = CreateContextStoreRequest.Config.Source.Trajectory.Filter()
+                        model.fromMap(value)
+                        self.filter = model
+                    }
+                    if let value = dict["logstore"] as? String {
+                        self.logstore = value
+                    }
+                    if let value = dict["pollIntervalSeconds"] as? Int32 {
+                        self.pollIntervalSeconds = value
+                    }
+                    if let value = dict["scopeMapping"] as? [String: Any?] {
+                        var model = CreateContextStoreRequest.Config.Source.Trajectory.ScopeMapping()
+                        model.fromMap(value)
+                        self.scopeMapping = model
+                    }
+                    if let value = dict["startTime"] as? String {
+                        self.startTime = value
+                    }
+                }
+            }
+            public var agentSpace: String?
+
+            public var dataset: CreateContextStoreRequest.Config.Source.Dataset?
+
+            public var startTime: String?
+
+            public var trajectory: CreateContextStoreRequest.Config.Source.Trajectory?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.dataset?.validate()
+                try self.trajectory?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
                 if self.agentSpace != nil {
                     map["agentSpace"] = self.agentSpace!
                 }
+                if self.dataset != nil {
+                    map["dataset"] = self.dataset?.toMap()
+                }
                 if self.startTime != nil {
                     map["startTime"] = self.startTime!
+                }
+                if self.trajectory != nil {
+                    map["trajectory"] = self.trajectory?.toMap()
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
                 }
                 return map
             }
@@ -1761,18 +2361,117 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 if let value = dict["agentSpace"] as? String {
                     self.agentSpace = value
                 }
+                if let value = dict["dataset"] as? [String: Any?] {
+                    var model = CreateContextStoreRequest.Config.Source.Dataset()
+                    model.fromMap(value)
+                    self.dataset = model
+                }
                 if let value = dict["startTime"] as? String {
                     self.startTime = value
                 }
+                if let value = dict["trajectory"] as? [String: Any?] {
+                    var model = CreateContextStoreRequest.Config.Source.Trajectory()
+                    model.fromMap(value)
+                    self.trajectory = model
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
             }
         }
+        public class StoragePolicy : Tea.TeaModel {
+            public var allowedActions: [String]?
+
+            public var dedupe: Bool?
+
+            public var humanEditProtection: Bool?
+
+            public var mergeKey: String?
+
+            public var mode: String?
+
+            public var similarityThreshold: Double?
+
+            public var ttlDays: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowedActions != nil {
+                    map["allowedActions"] = self.allowedActions!
+                }
+                if self.dedupe != nil {
+                    map["dedupe"] = self.dedupe!
+                }
+                if self.humanEditProtection != nil {
+                    map["humanEditProtection"] = self.humanEditProtection!
+                }
+                if self.mergeKey != nil {
+                    map["mergeKey"] = self.mergeKey!
+                }
+                if self.mode != nil {
+                    map["mode"] = self.mode!
+                }
+                if self.similarityThreshold != nil {
+                    map["similarityThreshold"] = self.similarityThreshold!
+                }
+                if self.ttlDays != nil {
+                    map["ttlDays"] = self.ttlDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["allowedActions"] as? [String] {
+                    self.allowedActions = value
+                }
+                if let value = dict["dedupe"] as? Bool {
+                    self.dedupe = value
+                }
+                if let value = dict["humanEditProtection"] as? Bool {
+                    self.humanEditProtection = value
+                }
+                if let value = dict["mergeKey"] as? String {
+                    self.mergeKey = value
+                }
+                if let value = dict["mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["similarityThreshold"] as? Double {
+                    self.similarityThreshold = value
+                }
+                if let value = dict["ttlDays"] as? Int32 {
+                    self.ttlDays = value
+                }
+            }
+        }
+        public var audit: CreateContextStoreRequest.Config.Audit?
+
+        public var extractionPolicy: CreateContextStoreRequest.Config.ExtractionPolicy?
+
         public var metadataField: [String: String]?
 
         public var miningInterval: String?
 
+        public var scopePolicy: CreateContextStoreRequest.Config.ScopePolicy?
+
         public var serviceNames: [String]?
 
         public var source: CreateContextStoreRequest.Config.Source?
+
+        public var storagePolicy: CreateContextStoreRequest.Config.StoragePolicy?
 
         public override init() {
             super.init()
@@ -1784,16 +2483,29 @@ public class CreateContextStoreRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.audit?.validate()
+            try self.extractionPolicy?.validate()
+            try self.scopePolicy?.validate()
             try self.source?.validate()
+            try self.storagePolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.audit != nil {
+                map["audit"] = self.audit?.toMap()
+            }
+            if self.extractionPolicy != nil {
+                map["extractionPolicy"] = self.extractionPolicy?.toMap()
+            }
             if self.metadataField != nil {
                 map["metadataField"] = self.metadataField!
             }
             if self.miningInterval != nil {
                 map["miningInterval"] = self.miningInterval!
+            }
+            if self.scopePolicy != nil {
+                map["scopePolicy"] = self.scopePolicy?.toMap()
             }
             if self.serviceNames != nil {
                 map["serviceNames"] = self.serviceNames!
@@ -1801,16 +2513,34 @@ public class CreateContextStoreRequest : Tea.TeaModel {
             if self.source != nil {
                 map["source"] = self.source?.toMap()
             }
+            if self.storagePolicy != nil {
+                map["storagePolicy"] = self.storagePolicy?.toMap()
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["audit"] as? [String: Any?] {
+                var model = CreateContextStoreRequest.Config.Audit()
+                model.fromMap(value)
+                self.audit = model
+            }
+            if let value = dict["extractionPolicy"] as? [String: Any?] {
+                var model = CreateContextStoreRequest.Config.ExtractionPolicy()
+                model.fromMap(value)
+                self.extractionPolicy = model
+            }
             if let value = dict["metadataField"] as? [String: String] {
                 self.metadataField = value
             }
             if let value = dict["miningInterval"] as? String {
                 self.miningInterval = value
+            }
+            if let value = dict["scopePolicy"] as? [String: Any?] {
+                var model = CreateContextStoreRequest.Config.ScopePolicy()
+                model.fromMap(value)
+                self.scopePolicy = model
             }
             if let value = dict["serviceNames"] as? [String] {
                 self.serviceNames = value
@@ -1819,6 +2549,11 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 var model = CreateContextStoreRequest.Config.Source()
                 model.fromMap(value)
                 self.source = model
+            }
+            if let value = dict["storagePolicy"] as? [String: Any?] {
+                var model = CreateContextStoreRequest.Config.StoragePolicy()
+                model.fromMap(value)
+                self.storagePolicy = model
             }
         }
     }
@@ -1890,6 +2625,8 @@ public class CreateContextStoreRequest : Tea.TeaModel {
 public class CreateContextStoreResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var strategyVersion: Int32?
+
     public override init() {
         super.init()
     }
@@ -1907,6 +2644,9 @@ public class CreateContextStoreResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.strategyVersion != nil {
+            map["strategyVersion"] = self.strategyVersion!
+        }
         return map
     }
 
@@ -1914,6 +2654,9 @@ public class CreateContextStoreResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["strategyVersion"] as? Int32 {
+            self.strategyVersion = value
         }
     }
 }
@@ -4569,6 +5312,7 @@ public class DeleteAgentSpaceResponse : Tea.TeaModel {
 }
 
 public class DeleteContextStoreRequest : Tea.TeaModel {
+    public var deleteOutputDataset: Bool?
 
     public override init() {
         super.init()
@@ -4584,11 +5328,17 @@ public class DeleteContextStoreRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteOutputDataset != nil {
+            map["deleteOutputDataset"] = self.deleteOutputDataset!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["deleteOutputDataset"] as? Bool {
+            self.deleteOutputDataset = value
+        }
     }
 }
 
@@ -6527,10 +7277,239 @@ public class GetContextStoreRequest : Tea.TeaModel {
 
 public class GetContextStoreResponseBody : Tea.TeaModel {
     public class Config : Tea.TeaModel {
-        public class Source : Tea.TeaModel {
+        public class Audit : Tea.TeaModel {
+            public var droppedCandidates: Bool?
+
+            public var queryMode: String?
+
+            public var retentionDays: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.droppedCandidates != nil {
+                    map["droppedCandidates"] = self.droppedCandidates!
+                }
+                if self.queryMode != nil {
+                    map["queryMode"] = self.queryMode!
+                }
+                if self.retentionDays != nil {
+                    map["retentionDays"] = self.retentionDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["droppedCandidates"] as? Bool {
+                    self.droppedCandidates = value
+                }
+                if let value = dict["queryMode"] as? String {
+                    self.queryMode = value
+                }
+                if let value = dict["retentionDays"] as? Int32 {
+                    self.retentionDays = value
+                }
+            }
+        }
+        public class ExtractionPolicy : Tea.TeaModel {
+            public class Model : Tea.TeaModel {
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var categories: [String]?
+
+            public var customInstructions: String?
+
+            public var excludeRules: [String]?
+
+            public var model: GetContextStoreResponseBody.Config.ExtractionPolicy.Model?
+
+            public var preset: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.model?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.categories != nil {
+                    map["categories"] = self.categories!
+                }
+                if self.customInstructions != nil {
+                    map["customInstructions"] = self.customInstructions!
+                }
+                if self.excludeRules != nil {
+                    map["excludeRules"] = self.excludeRules!
+                }
+                if self.model != nil {
+                    map["model"] = self.model?.toMap()
+                }
+                if self.preset != nil {
+                    map["preset"] = self.preset!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["categories"] as? [String] {
+                    self.categories = value
+                }
+                if let value = dict["customInstructions"] as? String {
+                    self.customInstructions = value
+                }
+                if let value = dict["excludeRules"] as? [String] {
+                    self.excludeRules = value
+                }
+                if let value = dict["model"] as? [String: Any?] {
+                    var model = GetContextStoreResponseBody.Config.ExtractionPolicy.Model()
+                    model.fromMap(value)
+                    self.model = model
+                }
+                if let value = dict["preset"] as? String {
+                    self.preset = value
+                }
+            }
+        }
+        public class InnerSource : Tea.TeaModel {
+            public var logstore: String?
+
+            public var project: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logstore != nil {
+                    map["logstore"] = self.logstore!
+                }
+                if self.project != nil {
+                    map["project"] = self.project!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["logstore"] as? String {
+                    self.logstore = value
+                }
+                if let value = dict["project"] as? String {
+                    self.project = value
+                }
+            }
+        }
+        public class Observability : Tea.TeaModel {
+            public var auditLogstore: String?
+
+            public var eventsLogstore: String?
+
+            public var project: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.auditLogstore != nil {
+                    map["auditLogstore"] = self.auditLogstore!
+                }
+                if self.eventsLogstore != nil {
+                    map["eventsLogstore"] = self.eventsLogstore!
+                }
+                if self.project != nil {
+                    map["project"] = self.project!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["auditLogstore"] as? String {
+                    self.auditLogstore = value
+                }
+                if let value = dict["eventsLogstore"] as? String {
+                    self.eventsLogstore = value
+                }
+                if let value = dict["project"] as? String {
+                    self.project = value
+                }
+            }
+        }
+        public class OutputDataset : Tea.TeaModel {
             public var agentSpace: String?
 
-            public var startTime: String?
+            public var datasetName: String?
+
+            public var schemaContract: String?
+
+            public var schemaVersion: Int32?
 
             public override init() {
                 super.init()
@@ -6549,8 +7528,14 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if self.agentSpace != nil {
                     map["agentSpace"] = self.agentSpace!
                 }
-                if self.startTime != nil {
-                    map["startTime"] = self.startTime!
+                if self.datasetName != nil {
+                    map["datasetName"] = self.datasetName!
+                }
+                if self.schemaContract != nil {
+                    map["schemaContract"] = self.schemaContract!
+                }
+                if self.schemaVersion != nil {
+                    map["schemaVersion"] = self.schemaVersion!
                 }
                 return map
             }
@@ -6560,18 +7545,692 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if let value = dict["agentSpace"] as? String {
                     self.agentSpace = value
                 }
-                if let value = dict["startTime"] as? String {
-                    self.startTime = value
+                if let value = dict["datasetName"] as? String {
+                    self.datasetName = value
+                }
+                if let value = dict["schemaContract"] as? String {
+                    self.schemaContract = value
+                }
+                if let value = dict["schemaVersion"] as? Int32 {
+                    self.schemaVersion = value
                 }
             }
         }
+        public class ScopePolicy : Tea.TeaModel {
+            public var requiredAnyOf: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.requiredAnyOf != nil {
+                    map["requiredAnyOf"] = self.requiredAnyOf!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["requiredAnyOf"] as? [String] {
+                    self.requiredAnyOf = value
+                }
+            }
+        }
+        public class Source : Tea.TeaModel {
+            public class Dataset : Tea.TeaModel {
+                public class CustomFields : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var sensitive: Bool?
+
+                    public var sourceField: String?
+
+                    public var target: String?
+
+                    public var usage: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["description"] = self.description_!
+                        }
+                        if self.sensitive != nil {
+                            map["sensitive"] = self.sensitive!
+                        }
+                        if self.sourceField != nil {
+                            map["sourceField"] = self.sourceField!
+                        }
+                        if self.target != nil {
+                            map["target"] = self.target!
+                        }
+                        if self.usage != nil {
+                            map["usage"] = self.usage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["sensitive"] as? Bool {
+                            self.sensitive = value
+                        }
+                        if let value = dict["sourceField"] as? String {
+                            self.sourceField = value
+                        }
+                        if let value = dict["target"] as? String {
+                            self.target = value
+                        }
+                        if let value = dict["usage"] as? String {
+                            self.usage = value
+                        }
+                    }
+                }
+                public class Filter : Tea.TeaModel {
+                    public var where_: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.where_ != nil {
+                            map["where"] = self.where_!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["where"] as? String {
+                            self.where_ = value
+                        }
+                    }
+                }
+                public class VersionPolicy : Tea.TeaModel {
+                    public var mode: String?
+
+                    public var startSeq: Int64?
+
+                    public var version: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.mode != nil {
+                            map["mode"] = self.mode!
+                        }
+                        if self.startSeq != nil {
+                            map["startSeq"] = self.startSeq!
+                        }
+                        if self.version != nil {
+                            map["version"] = self.version!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["mode"] as? String {
+                            self.mode = value
+                        }
+                        if let value = dict["startSeq"] as? Int64 {
+                            self.startSeq = value
+                        }
+                        if let value = dict["version"] as? String {
+                            self.version = value
+                        }
+                    }
+                }
+                public var customFields: [GetContextStoreResponseBody.Config.Source.Dataset.CustomFields]?
+
+                public var datasetName: String?
+
+                public var filter: GetContextStoreResponseBody.Config.Source.Dataset.Filter?
+
+                public var pollIntervalSeconds: Int32?
+
+                public var schemaContract: String?
+
+                public var versionPolicy: GetContextStoreResponseBody.Config.Source.Dataset.VersionPolicy?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.filter?.validate()
+                    try self.versionPolicy?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.customFields != nil {
+                        var tmp : [Any] = []
+                        for k in self.customFields! {
+                            tmp.append(k.toMap())
+                        }
+                        map["customFields"] = tmp
+                    }
+                    if self.datasetName != nil {
+                        map["datasetName"] = self.datasetName!
+                    }
+                    if self.filter != nil {
+                        map["filter"] = self.filter?.toMap()
+                    }
+                    if self.pollIntervalSeconds != nil {
+                        map["pollIntervalSeconds"] = self.pollIntervalSeconds!
+                    }
+                    if self.schemaContract != nil {
+                        map["schemaContract"] = self.schemaContract!
+                    }
+                    if self.versionPolicy != nil {
+                        map["versionPolicy"] = self.versionPolicy?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["customFields"] as? [Any?] {
+                        var tmp : [GetContextStoreResponseBody.Config.Source.Dataset.CustomFields] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetContextStoreResponseBody.Config.Source.Dataset.CustomFields()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.customFields = tmp
+                    }
+                    if let value = dict["datasetName"] as? String {
+                        self.datasetName = value
+                    }
+                    if let value = dict["filter"] as? [String: Any?] {
+                        var model = GetContextStoreResponseBody.Config.Source.Dataset.Filter()
+                        model.fromMap(value)
+                        self.filter = model
+                    }
+                    if let value = dict["pollIntervalSeconds"] as? Int32 {
+                        self.pollIntervalSeconds = value
+                    }
+                    if let value = dict["schemaContract"] as? String {
+                        self.schemaContract = value
+                    }
+                    if let value = dict["versionPolicy"] as? [String: Any?] {
+                        var model = GetContextStoreResponseBody.Config.Source.Dataset.VersionPolicy()
+                        model.fromMap(value)
+                        self.versionPolicy = model
+                    }
+                }
+            }
+            public class Trajectory : Tea.TeaModel {
+                public class Filter : Tea.TeaModel {
+                    public var agentNames: [String]?
+
+                    public var excludeDegraded: Bool?
+
+                    public var minStepCount: Int32?
+
+                    public var query: String?
+
+                    public var serviceNames: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentNames != nil {
+                            map["agentNames"] = self.agentNames!
+                        }
+                        if self.excludeDegraded != nil {
+                            map["excludeDegraded"] = self.excludeDegraded!
+                        }
+                        if self.minStepCount != nil {
+                            map["minStepCount"] = self.minStepCount!
+                        }
+                        if self.query != nil {
+                            map["query"] = self.query!
+                        }
+                        if self.serviceNames != nil {
+                            map["serviceNames"] = self.serviceNames!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentNames"] as? [String] {
+                            self.agentNames = value
+                        }
+                        if let value = dict["excludeDegraded"] as? Bool {
+                            self.excludeDegraded = value
+                        }
+                        if let value = dict["minStepCount"] as? Int32 {
+                            self.minStepCount = value
+                        }
+                        if let value = dict["query"] as? String {
+                            self.query = value
+                        }
+                        if let value = dict["serviceNames"] as? [String] {
+                            self.serviceNames = value
+                        }
+                    }
+                }
+                public class ScopeMapping : Tea.TeaModel {
+                    public var agentId: String?
+
+                    public var appId: String?
+
+                    public var runId: String?
+
+                    public var userId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentId != nil {
+                            map["agentId"] = self.agentId!
+                        }
+                        if self.appId != nil {
+                            map["appId"] = self.appId!
+                        }
+                        if self.runId != nil {
+                            map["runId"] = self.runId!
+                        }
+                        if self.userId != nil {
+                            map["userId"] = self.userId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentId"] as? String {
+                            self.agentId = value
+                        }
+                        if let value = dict["appId"] as? String {
+                            self.appId = value
+                        }
+                        if let value = dict["runId"] as? String {
+                            self.runId = value
+                        }
+                        if let value = dict["userId"] as? String {
+                            self.userId = value
+                        }
+                    }
+                }
+                public var filter: GetContextStoreResponseBody.Config.Source.Trajectory.Filter?
+
+                public var logstore: String?
+
+                public var pollIntervalSeconds: Int32?
+
+                public var scopeMapping: GetContextStoreResponseBody.Config.Source.Trajectory.ScopeMapping?
+
+                public var startTime: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.filter?.validate()
+                    try self.scopeMapping?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.filter != nil {
+                        map["filter"] = self.filter?.toMap()
+                    }
+                    if self.logstore != nil {
+                        map["logstore"] = self.logstore!
+                    }
+                    if self.pollIntervalSeconds != nil {
+                        map["pollIntervalSeconds"] = self.pollIntervalSeconds!
+                    }
+                    if self.scopeMapping != nil {
+                        map["scopeMapping"] = self.scopeMapping?.toMap()
+                    }
+                    if self.startTime != nil {
+                        map["startTime"] = self.startTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["filter"] as? [String: Any?] {
+                        var model = GetContextStoreResponseBody.Config.Source.Trajectory.Filter()
+                        model.fromMap(value)
+                        self.filter = model
+                    }
+                    if let value = dict["logstore"] as? String {
+                        self.logstore = value
+                    }
+                    if let value = dict["pollIntervalSeconds"] as? Int32 {
+                        self.pollIntervalSeconds = value
+                    }
+                    if let value = dict["scopeMapping"] as? [String: Any?] {
+                        var model = GetContextStoreResponseBody.Config.Source.Trajectory.ScopeMapping()
+                        model.fromMap(value)
+                        self.scopeMapping = model
+                    }
+                    if let value = dict["startTime"] as? String {
+                        self.startTime = value
+                    }
+                }
+            }
+            public var agentSpace: String?
+
+            public var dataset: GetContextStoreResponseBody.Config.Source.Dataset?
+
+            public var startTime: String?
+
+            public var trajectory: GetContextStoreResponseBody.Config.Source.Trajectory?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.dataset?.validate()
+                try self.trajectory?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentSpace != nil {
+                    map["agentSpace"] = self.agentSpace!
+                }
+                if self.dataset != nil {
+                    map["dataset"] = self.dataset?.toMap()
+                }
+                if self.startTime != nil {
+                    map["startTime"] = self.startTime!
+                }
+                if self.trajectory != nil {
+                    map["trajectory"] = self.trajectory?.toMap()
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["agentSpace"] as? String {
+                    self.agentSpace = value
+                }
+                if let value = dict["dataset"] as? [String: Any?] {
+                    var model = GetContextStoreResponseBody.Config.Source.Dataset()
+                    model.fromMap(value)
+                    self.dataset = model
+                }
+                if let value = dict["startTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["trajectory"] as? [String: Any?] {
+                    var model = GetContextStoreResponseBody.Config.Source.Trajectory()
+                    model.fromMap(value)
+                    self.trajectory = model
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public class SourceStatus : Tea.TeaModel {
+            public var checkpoint: [String: Any]?
+
+            public var lastError: String?
+
+            public var lastWindowAt: String?
+
+            public var retryCount: Int32?
+
+            public var state: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.checkpoint != nil {
+                    map["checkpoint"] = self.checkpoint!
+                }
+                if self.lastError != nil {
+                    map["lastError"] = self.lastError!
+                }
+                if self.lastWindowAt != nil {
+                    map["lastWindowAt"] = self.lastWindowAt!
+                }
+                if self.retryCount != nil {
+                    map["retryCount"] = self.retryCount!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["checkpoint"] as? [String: Any] {
+                    self.checkpoint = value
+                }
+                if let value = dict["lastError"] as? String {
+                    self.lastError = value
+                }
+                if let value = dict["lastWindowAt"] as? String {
+                    self.lastWindowAt = value
+                }
+                if let value = dict["retryCount"] as? Int32 {
+                    self.retryCount = value
+                }
+                if let value = dict["state"] as? String {
+                    self.state = value
+                }
+            }
+        }
+        public class StoragePolicy : Tea.TeaModel {
+            public var allowedActions: [String]?
+
+            public var dedupe: Bool?
+
+            public var humanEditProtection: Bool?
+
+            public var mergeKey: String?
+
+            public var mode: String?
+
+            public var similarityThreshold: Double?
+
+            public var ttlDays: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowedActions != nil {
+                    map["allowedActions"] = self.allowedActions!
+                }
+                if self.dedupe != nil {
+                    map["dedupe"] = self.dedupe!
+                }
+                if self.humanEditProtection != nil {
+                    map["humanEditProtection"] = self.humanEditProtection!
+                }
+                if self.mergeKey != nil {
+                    map["mergeKey"] = self.mergeKey!
+                }
+                if self.mode != nil {
+                    map["mode"] = self.mode!
+                }
+                if self.similarityThreshold != nil {
+                    map["similarityThreshold"] = self.similarityThreshold!
+                }
+                if self.ttlDays != nil {
+                    map["ttlDays"] = self.ttlDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["allowedActions"] as? [String] {
+                    self.allowedActions = value
+                }
+                if let value = dict["dedupe"] as? Bool {
+                    self.dedupe = value
+                }
+                if let value = dict["humanEditProtection"] as? Bool {
+                    self.humanEditProtection = value
+                }
+                if let value = dict["mergeKey"] as? String {
+                    self.mergeKey = value
+                }
+                if let value = dict["mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["similarityThreshold"] as? Double {
+                    self.similarityThreshold = value
+                }
+                if let value = dict["ttlDays"] as? Int32 {
+                    self.ttlDays = value
+                }
+            }
+        }
+        public var audit: GetContextStoreResponseBody.Config.Audit?
+
+        public var extractionPolicy: GetContextStoreResponseBody.Config.ExtractionPolicy?
+
+        public var innerSource: GetContextStoreResponseBody.Config.InnerSource?
+
         public var metadataField: [String: String]?
 
         public var miningInterval: String?
 
+        public var observability: GetContextStoreResponseBody.Config.Observability?
+
+        public var outputDataset: GetContextStoreResponseBody.Config.OutputDataset?
+
+        public var scopePolicy: GetContextStoreResponseBody.Config.ScopePolicy?
+
         public var serviceNames: [String]?
 
         public var source: GetContextStoreResponseBody.Config.Source?
+
+        public var sourceStatus: GetContextStoreResponseBody.Config.SourceStatus?
+
+        public var storagePolicy: GetContextStoreResponseBody.Config.StoragePolicy?
+
+        public var strategyVersion: Int32?
 
         public override init() {
             super.init()
@@ -6583,16 +8242,42 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.audit?.validate()
+            try self.extractionPolicy?.validate()
+            try self.innerSource?.validate()
+            try self.observability?.validate()
+            try self.outputDataset?.validate()
+            try self.scopePolicy?.validate()
             try self.source?.validate()
+            try self.sourceStatus?.validate()
+            try self.storagePolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.audit != nil {
+                map["audit"] = self.audit?.toMap()
+            }
+            if self.extractionPolicy != nil {
+                map["extractionPolicy"] = self.extractionPolicy?.toMap()
+            }
+            if self.innerSource != nil {
+                map["innerSource"] = self.innerSource?.toMap()
+            }
             if self.metadataField != nil {
                 map["metadataField"] = self.metadataField!
             }
             if self.miningInterval != nil {
                 map["miningInterval"] = self.miningInterval!
+            }
+            if self.observability != nil {
+                map["observability"] = self.observability?.toMap()
+            }
+            if self.outputDataset != nil {
+                map["outputDataset"] = self.outputDataset?.toMap()
+            }
+            if self.scopePolicy != nil {
+                map["scopePolicy"] = self.scopePolicy?.toMap()
             }
             if self.serviceNames != nil {
                 map["serviceNames"] = self.serviceNames!
@@ -6600,16 +8285,55 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             if self.source != nil {
                 map["source"] = self.source?.toMap()
             }
+            if self.sourceStatus != nil {
+                map["sourceStatus"] = self.sourceStatus?.toMap()
+            }
+            if self.storagePolicy != nil {
+                map["storagePolicy"] = self.storagePolicy?.toMap()
+            }
+            if self.strategyVersion != nil {
+                map["strategyVersion"] = self.strategyVersion!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["audit"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.Audit()
+                model.fromMap(value)
+                self.audit = model
+            }
+            if let value = dict["extractionPolicy"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.ExtractionPolicy()
+                model.fromMap(value)
+                self.extractionPolicy = model
+            }
+            if let value = dict["innerSource"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.InnerSource()
+                model.fromMap(value)
+                self.innerSource = model
+            }
             if let value = dict["metadataField"] as? [String: String] {
                 self.metadataField = value
             }
             if let value = dict["miningInterval"] as? String {
                 self.miningInterval = value
+            }
+            if let value = dict["observability"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.Observability()
+                model.fromMap(value)
+                self.observability = model
+            }
+            if let value = dict["outputDataset"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.OutputDataset()
+                model.fromMap(value)
+                self.outputDataset = model
+            }
+            if let value = dict["scopePolicy"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.ScopePolicy()
+                model.fromMap(value)
+                self.scopePolicy = model
             }
             if let value = dict["serviceNames"] as? [String] {
                 self.serviceNames = value
@@ -6618,6 +8342,19 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 var model = GetContextStoreResponseBody.Config.Source()
                 model.fromMap(value)
                 self.source = model
+            }
+            if let value = dict["sourceStatus"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.SourceStatus()
+                model.fromMap(value)
+                self.sourceStatus = model
+            }
+            if let value = dict["storagePolicy"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.StoragePolicy()
+                model.fromMap(value)
+                self.storagePolicy = model
+            }
+            if let value = dict["strategyVersion"] as? Int32 {
+                self.strategyVersion = value
             }
         }
     }
@@ -11010,6 +12747,8 @@ public class ListContextStoresRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var sourceType: String?
+
     public override init() {
         super.init()
     }
@@ -11036,6 +12775,9 @@ public class ListContextStoresRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.sourceType != nil {
+            map["sourceType"] = self.sourceType!
+        }
         return map
     }
 
@@ -11052,6 +12794,9 @@ public class ListContextStoresRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["sourceType"] as? String {
+            self.sourceType = value
         }
     }
 }
@@ -11072,7 +12817,11 @@ public class ListContextStoresResponseBody : Tea.TeaModel {
 
         public var serviceNames: [String]?
 
+        public var sourceType: String?
+
         public var status: String?
+
+        public var storageMode: String?
 
         public var updateTime: String?
 
@@ -11111,8 +12860,14 @@ public class ListContextStoresResponseBody : Tea.TeaModel {
             if self.serviceNames != nil {
                 map["serviceNames"] = self.serviceNames!
             }
+            if self.sourceType != nil {
+                map["sourceType"] = self.sourceType!
+            }
             if self.status != nil {
                 map["status"] = self.status!
+            }
+            if self.storageMode != nil {
+                map["storageMode"] = self.storageMode!
             }
             if self.updateTime != nil {
                 map["updateTime"] = self.updateTime!
@@ -11143,8 +12898,14 @@ public class ListContextStoresResponseBody : Tea.TeaModel {
             if let value = dict["serviceNames"] as? [String] {
                 self.serviceNames = value
             }
+            if let value = dict["sourceType"] as? String {
+                self.sourceType = value
+            }
             if let value = dict["status"] as? String {
                 self.status = value
+            }
+            if let value = dict["storageMode"] as? String {
+                self.storageMode = value
             }
             if let value = dict["updateTime"] as? String {
                 self.updateTime = value
@@ -15909,15 +17670,73 @@ public class RunPipelineResponse : Tea.TeaModel {
 }
 
 public class SearchContextRequest : Tea.TeaModel {
+    public class Scope : Tea.TeaModel {
+        public var agentId: String?
+
+        public var appId: String?
+
+        public var runId: String?
+
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentId != nil {
+                map["agentId"] = self.agentId!
+            }
+            if self.appId != nil {
+                map["appId"] = self.appId!
+            }
+            if self.runId != nil {
+                map["runId"] = self.runId!
+            }
+            if self.userId != nil {
+                map["userId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["agentId"] as? String {
+                self.agentId = value
+            }
+            if let value = dict["appId"] as? String {
+                self.appId = value
+            }
+            if let value = dict["runId"] as? String {
+                self.runId = value
+            }
+            if let value = dict["userId"] as? String {
+                self.userId = value
+            }
+        }
+    }
     public var filter: [String: Any]?
 
     public var formatted: Bool?
+
+    public var includeInactive: Bool?
 
     public var limit: Int32?
 
     public var query: String?
 
     public var retrievalOption: String?
+
+    public var scope: SearchContextRequest.Scope?
 
     public var threshold: Double?
 
@@ -15931,6 +17750,7 @@ public class SearchContextRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.scope?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -15941,6 +17761,9 @@ public class SearchContextRequest : Tea.TeaModel {
         if self.formatted != nil {
             map["formatted"] = self.formatted!
         }
+        if self.includeInactive != nil {
+            map["includeInactive"] = self.includeInactive!
+        }
         if self.limit != nil {
             map["limit"] = self.limit!
         }
@@ -15949,6 +17772,9 @@ public class SearchContextRequest : Tea.TeaModel {
         }
         if self.retrievalOption != nil {
             map["retrievalOption"] = self.retrievalOption!
+        }
+        if self.scope != nil {
+            map["scope"] = self.scope?.toMap()
         }
         if self.threshold != nil {
             map["threshold"] = self.threshold!
@@ -15964,6 +17790,9 @@ public class SearchContextRequest : Tea.TeaModel {
         if let value = dict["formatted"] as? Bool {
             self.formatted = value
         }
+        if let value = dict["includeInactive"] as? Bool {
+            self.includeInactive = value
+        }
         if let value = dict["limit"] as? Int32 {
             self.limit = value
         }
@@ -15973,6 +17802,11 @@ public class SearchContextRequest : Tea.TeaModel {
         if let value = dict["retrievalOption"] as? String {
             self.retrievalOption = value
         }
+        if let value = dict["scope"] as? [String: Any?] {
+            var model = SearchContextRequest.Scope()
+            model.fromMap(value)
+            self.scope = model
+        }
         if let value = dict["threshold"] as? Double {
             self.threshold = value
         }
@@ -15980,6 +17814,10 @@ public class SearchContextRequest : Tea.TeaModel {
 }
 
 public class SearchContextResponseBody : Tea.TeaModel {
+    public var auditStatus: String?
+
+    public var recallEventId: String?
+
     public var requestId: String?
 
     public var results: [[String: Any]]?
@@ -15998,6 +17836,12 @@ public class SearchContextResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.auditStatus != nil {
+            map["auditStatus"] = self.auditStatus!
+        }
+        if self.recallEventId != nil {
+            map["recallEventId"] = self.recallEventId!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -16009,6 +17853,12 @@ public class SearchContextResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["auditStatus"] as? String {
+            self.auditStatus = value
+        }
+        if let value = dict["recallEventId"] as? String {
+            self.recallEventId = value
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
@@ -16350,10 +18200,12 @@ public class UpdateAgentSpaceResponse : Tea.TeaModel {
 
 public class UpdateContextStoreRequest : Tea.TeaModel {
     public class Config : Tea.TeaModel {
-        public class Source : Tea.TeaModel {
-            public var agentSpace: String?
+        public class Audit : Tea.TeaModel {
+            public var droppedCandidates: Bool?
 
-            public var startTime: String?
+            public var queryMode: String?
+
+            public var retentionDays: Int32?
 
             public override init() {
                 super.init()
@@ -16369,11 +18221,523 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.droppedCandidates != nil {
+                    map["droppedCandidates"] = self.droppedCandidates!
+                }
+                if self.queryMode != nil {
+                    map["queryMode"] = self.queryMode!
+                }
+                if self.retentionDays != nil {
+                    map["retentionDays"] = self.retentionDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["droppedCandidates"] as? Bool {
+                    self.droppedCandidates = value
+                }
+                if let value = dict["queryMode"] as? String {
+                    self.queryMode = value
+                }
+                if let value = dict["retentionDays"] as? Int32 {
+                    self.retentionDays = value
+                }
+            }
+        }
+        public class ExtractionPolicy : Tea.TeaModel {
+            public class Model : Tea.TeaModel {
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var categories: [String]?
+
+            public var customInstructions: String?
+
+            public var excludeRules: [String]?
+
+            public var model: UpdateContextStoreRequest.Config.ExtractionPolicy.Model?
+
+            public var preset: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.model?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.categories != nil {
+                    map["categories"] = self.categories!
+                }
+                if self.customInstructions != nil {
+                    map["customInstructions"] = self.customInstructions!
+                }
+                if self.excludeRules != nil {
+                    map["excludeRules"] = self.excludeRules!
+                }
+                if self.model != nil {
+                    map["model"] = self.model?.toMap()
+                }
+                if self.preset != nil {
+                    map["preset"] = self.preset!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["categories"] as? [String] {
+                    self.categories = value
+                }
+                if let value = dict["customInstructions"] as? String {
+                    self.customInstructions = value
+                }
+                if let value = dict["excludeRules"] as? [String] {
+                    self.excludeRules = value
+                }
+                if let value = dict["model"] as? [String: Any?] {
+                    var model = UpdateContextStoreRequest.Config.ExtractionPolicy.Model()
+                    model.fromMap(value)
+                    self.model = model
+                }
+                if let value = dict["preset"] as? String {
+                    self.preset = value
+                }
+            }
+        }
+        public class ScopePolicy : Tea.TeaModel {
+            public var requiredAnyOf: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.requiredAnyOf != nil {
+                    map["requiredAnyOf"] = self.requiredAnyOf!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["requiredAnyOf"] as? [String] {
+                    self.requiredAnyOf = value
+                }
+            }
+        }
+        public class Source : Tea.TeaModel {
+            public class Dataset : Tea.TeaModel {
+                public class CustomFields : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var sensitive: Bool?
+
+                    public var sourceField: String?
+
+                    public var target: String?
+
+                    public var usage: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["description"] = self.description_!
+                        }
+                        if self.sensitive != nil {
+                            map["sensitive"] = self.sensitive!
+                        }
+                        if self.sourceField != nil {
+                            map["sourceField"] = self.sourceField!
+                        }
+                        if self.target != nil {
+                            map["target"] = self.target!
+                        }
+                        if self.usage != nil {
+                            map["usage"] = self.usage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["sensitive"] as? Bool {
+                            self.sensitive = value
+                        }
+                        if let value = dict["sourceField"] as? String {
+                            self.sourceField = value
+                        }
+                        if let value = dict["target"] as? String {
+                            self.target = value
+                        }
+                        if let value = dict["usage"] as? String {
+                            self.usage = value
+                        }
+                    }
+                }
+                public class Filter : Tea.TeaModel {
+                    public var where_: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.where_ != nil {
+                            map["where"] = self.where_!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["where"] as? String {
+                            self.where_ = value
+                        }
+                    }
+                }
+                public var customFields: [UpdateContextStoreRequest.Config.Source.Dataset.CustomFields]?
+
+                public var filter: UpdateContextStoreRequest.Config.Source.Dataset.Filter?
+
+                public var pollIntervalSeconds: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.filter?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.customFields != nil {
+                        var tmp : [Any] = []
+                        for k in self.customFields! {
+                            tmp.append(k.toMap())
+                        }
+                        map["customFields"] = tmp
+                    }
+                    if self.filter != nil {
+                        map["filter"] = self.filter?.toMap()
+                    }
+                    if self.pollIntervalSeconds != nil {
+                        map["pollIntervalSeconds"] = self.pollIntervalSeconds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["customFields"] as? [Any?] {
+                        var tmp : [UpdateContextStoreRequest.Config.Source.Dataset.CustomFields] = []
+                        for v in value {
+                            if v != nil {
+                                var model = UpdateContextStoreRequest.Config.Source.Dataset.CustomFields()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.customFields = tmp
+                    }
+                    if let value = dict["filter"] as? [String: Any?] {
+                        var model = UpdateContextStoreRequest.Config.Source.Dataset.Filter()
+                        model.fromMap(value)
+                        self.filter = model
+                    }
+                    if let value = dict["pollIntervalSeconds"] as? Int32 {
+                        self.pollIntervalSeconds = value
+                    }
+                }
+            }
+            public class Trajectory : Tea.TeaModel {
+                public class Filter : Tea.TeaModel {
+                    public var agentNames: [String]?
+
+                    public var excludeDegraded: Bool?
+
+                    public var minStepCount: Int32?
+
+                    public var query: String?
+
+                    public var serviceNames: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentNames != nil {
+                            map["agentNames"] = self.agentNames!
+                        }
+                        if self.excludeDegraded != nil {
+                            map["excludeDegraded"] = self.excludeDegraded!
+                        }
+                        if self.minStepCount != nil {
+                            map["minStepCount"] = self.minStepCount!
+                        }
+                        if self.query != nil {
+                            map["query"] = self.query!
+                        }
+                        if self.serviceNames != nil {
+                            map["serviceNames"] = self.serviceNames!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentNames"] as? [String] {
+                            self.agentNames = value
+                        }
+                        if let value = dict["excludeDegraded"] as? Bool {
+                            self.excludeDegraded = value
+                        }
+                        if let value = dict["minStepCount"] as? Int32 {
+                            self.minStepCount = value
+                        }
+                        if let value = dict["query"] as? String {
+                            self.query = value
+                        }
+                        if let value = dict["serviceNames"] as? [String] {
+                            self.serviceNames = value
+                        }
+                    }
+                }
+                public class ScopeMapping : Tea.TeaModel {
+                    public var agentId: String?
+
+                    public var appId: String?
+
+                    public var runId: String?
+
+                    public var userId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.agentId != nil {
+                            map["agentId"] = self.agentId!
+                        }
+                        if self.appId != nil {
+                            map["appId"] = self.appId!
+                        }
+                        if self.runId != nil {
+                            map["runId"] = self.runId!
+                        }
+                        if self.userId != nil {
+                            map["userId"] = self.userId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["agentId"] as? String {
+                            self.agentId = value
+                        }
+                        if let value = dict["appId"] as? String {
+                            self.appId = value
+                        }
+                        if let value = dict["runId"] as? String {
+                            self.runId = value
+                        }
+                        if let value = dict["userId"] as? String {
+                            self.userId = value
+                        }
+                    }
+                }
+                public var filter: UpdateContextStoreRequest.Config.Source.Trajectory.Filter?
+
+                public var logstore: String?
+
+                public var pollIntervalSeconds: Int32?
+
+                public var scopeMapping: UpdateContextStoreRequest.Config.Source.Trajectory.ScopeMapping?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.filter?.validate()
+                    try self.scopeMapping?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.filter != nil {
+                        map["filter"] = self.filter?.toMap()
+                    }
+                    if self.logstore != nil {
+                        map["logstore"] = self.logstore!
+                    }
+                    if self.pollIntervalSeconds != nil {
+                        map["pollIntervalSeconds"] = self.pollIntervalSeconds!
+                    }
+                    if self.scopeMapping != nil {
+                        map["scopeMapping"] = self.scopeMapping?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["filter"] as? [String: Any?] {
+                        var model = UpdateContextStoreRequest.Config.Source.Trajectory.Filter()
+                        model.fromMap(value)
+                        self.filter = model
+                    }
+                    if let value = dict["logstore"] as? String {
+                        self.logstore = value
+                    }
+                    if let value = dict["pollIntervalSeconds"] as? Int32 {
+                        self.pollIntervalSeconds = value
+                    }
+                    if let value = dict["scopeMapping"] as? [String: Any?] {
+                        var model = UpdateContextStoreRequest.Config.Source.Trajectory.ScopeMapping()
+                        model.fromMap(value)
+                        self.scopeMapping = model
+                    }
+                }
+            }
+            public var agentSpace: String?
+
+            public var dataset: UpdateContextStoreRequest.Config.Source.Dataset?
+
+            public var startTime: String?
+
+            public var trajectory: UpdateContextStoreRequest.Config.Source.Trajectory?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.dataset?.validate()
+                try self.trajectory?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
                 if self.agentSpace != nil {
                     map["agentSpace"] = self.agentSpace!
                 }
+                if self.dataset != nil {
+                    map["dataset"] = self.dataset?.toMap()
+                }
                 if self.startTime != nil {
                     map["startTime"] = self.startTime!
+                }
+                if self.trajectory != nil {
+                    map["trajectory"] = self.trajectory?.toMap()
                 }
                 return map
             }
@@ -16383,14 +18747,110 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                 if let value = dict["agentSpace"] as? String {
                     self.agentSpace = value
                 }
+                if let value = dict["dataset"] as? [String: Any?] {
+                    var model = UpdateContextStoreRequest.Config.Source.Dataset()
+                    model.fromMap(value)
+                    self.dataset = model
+                }
                 if let value = dict["startTime"] as? String {
                     self.startTime = value
                 }
+                if let value = dict["trajectory"] as? [String: Any?] {
+                    var model = UpdateContextStoreRequest.Config.Source.Trajectory()
+                    model.fromMap(value)
+                    self.trajectory = model
+                }
             }
         }
+        public class StoragePolicy : Tea.TeaModel {
+            public var allowedActions: [String]?
+
+            public var dedupe: Bool?
+
+            public var humanEditProtection: Bool?
+
+            public var mergeKey: String?
+
+            public var mode: String?
+
+            public var similarityThreshold: Double?
+
+            public var ttlDays: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowedActions != nil {
+                    map["allowedActions"] = self.allowedActions!
+                }
+                if self.dedupe != nil {
+                    map["dedupe"] = self.dedupe!
+                }
+                if self.humanEditProtection != nil {
+                    map["humanEditProtection"] = self.humanEditProtection!
+                }
+                if self.mergeKey != nil {
+                    map["mergeKey"] = self.mergeKey!
+                }
+                if self.mode != nil {
+                    map["mode"] = self.mode!
+                }
+                if self.similarityThreshold != nil {
+                    map["similarityThreshold"] = self.similarityThreshold!
+                }
+                if self.ttlDays != nil {
+                    map["ttlDays"] = self.ttlDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["allowedActions"] as? [String] {
+                    self.allowedActions = value
+                }
+                if let value = dict["dedupe"] as? Bool {
+                    self.dedupe = value
+                }
+                if let value = dict["humanEditProtection"] as? Bool {
+                    self.humanEditProtection = value
+                }
+                if let value = dict["mergeKey"] as? String {
+                    self.mergeKey = value
+                }
+                if let value = dict["mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["similarityThreshold"] as? Double {
+                    self.similarityThreshold = value
+                }
+                if let value = dict["ttlDays"] as? Int32 {
+                    self.ttlDays = value
+                }
+            }
+        }
+        public var audit: UpdateContextStoreRequest.Config.Audit?
+
+        public var extractionPolicy: UpdateContextStoreRequest.Config.ExtractionPolicy?
+
         public var metadataField: [String: String]?
 
+        public var scopePolicy: UpdateContextStoreRequest.Config.ScopePolicy?
+
         public var source: UpdateContextStoreRequest.Config.Source?
+
+        public var storagePolicy: UpdateContextStoreRequest.Config.StoragePolicy?
 
         public override init() {
             super.init()
@@ -16402,32 +18862,70 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.audit?.validate()
+            try self.extractionPolicy?.validate()
+            try self.scopePolicy?.validate()
             try self.source?.validate()
+            try self.storagePolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.audit != nil {
+                map["audit"] = self.audit?.toMap()
+            }
+            if self.extractionPolicy != nil {
+                map["extractionPolicy"] = self.extractionPolicy?.toMap()
+            }
             if self.metadataField != nil {
                 map["metadataField"] = self.metadataField!
             }
+            if self.scopePolicy != nil {
+                map["scopePolicy"] = self.scopePolicy?.toMap()
+            }
             if self.source != nil {
                 map["source"] = self.source?.toMap()
+            }
+            if self.storagePolicy != nil {
+                map["storagePolicy"] = self.storagePolicy?.toMap()
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["audit"] as? [String: Any?] {
+                var model = UpdateContextStoreRequest.Config.Audit()
+                model.fromMap(value)
+                self.audit = model
+            }
+            if let value = dict["extractionPolicy"] as? [String: Any?] {
+                var model = UpdateContextStoreRequest.Config.ExtractionPolicy()
+                model.fromMap(value)
+                self.extractionPolicy = model
+            }
             if let value = dict["metadataField"] as? [String: String] {
                 self.metadataField = value
+            }
+            if let value = dict["scopePolicy"] as? [String: Any?] {
+                var model = UpdateContextStoreRequest.Config.ScopePolicy()
+                model.fromMap(value)
+                self.scopePolicy = model
             }
             if let value = dict["source"] as? [String: Any?] {
                 var model = UpdateContextStoreRequest.Config.Source()
                 model.fromMap(value)
                 self.source = model
             }
+            if let value = dict["storagePolicy"] as? [String: Any?] {
+                var model = UpdateContextStoreRequest.Config.StoragePolicy()
+                model.fromMap(value)
+                self.storagePolicy = model
+            }
         }
     }
+    public var changeNote: String?
+
     public var config: UpdateContextStoreRequest.Config?
 
     public var contextType: String?
@@ -16453,6 +18951,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.changeNote != nil {
+            map["changeNote"] = self.changeNote!
+        }
         if self.config != nil {
             map["config"] = self.config?.toMap()
         }
@@ -16473,6 +18974,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["changeNote"] as? String {
+            self.changeNote = value
+        }
         if let value = dict["config"] as? [String: Any?] {
             var model = UpdateContextStoreRequest.Config()
             model.fromMap(value)
@@ -16496,6 +19000,8 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 public class UpdateContextStoreResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var strategyVersion: Int32?
+
     public override init() {
         super.init()
     }
@@ -16513,6 +19019,9 @@ public class UpdateContextStoreResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.strategyVersion != nil {
+            map["strategyVersion"] = self.strategyVersion!
+        }
         return map
     }
 
@@ -16520,6 +19029,9 @@ public class UpdateContextStoreResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["strategyVersion"] as? Int32 {
+            self.strategyVersion = value
         }
     }
 }

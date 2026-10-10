@@ -668,8 +668,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteContextStoreWithOptions(_ agentSpace: String, _ contextStoreName: String, _ request: DeleteContextStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteContextStoreResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deleteOutputDataset)) {
+            query["deleteOutputDataset"] = request.deleteOutputDataset!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DeleteContextStore",
@@ -1533,6 +1538,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceType)) {
+            query["sourceType"] = request.sourceType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2139,6 +2147,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.formatted)) {
             body["formatted"] = request.formatted!;
         }
+        if (!TeaUtils.Client.isUnset(request.includeInactive)) {
+            body["includeInactive"] = request.includeInactive!;
+        }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             body["limit"] = request.limit!;
         }
@@ -2147,6 +2158,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.retrievalOption)) {
             body["retrievalOption"] = request.retrievalOption ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scope)) {
+            body["scope"] = request.scope!;
         }
         if (!TeaUtils.Client.isUnset(request.threshold)) {
             body["threshold"] = request.threshold!;
@@ -2259,6 +2273,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["clientToken"] = request.clientToken ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.changeNote)) {
+            body["changeNote"] = request.changeNote ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.config)) {
             body["config"] = request.config!;
         }
