@@ -12005,9 +12005,13 @@ public class ListScriptProfileTemplatesResponse : Tea.TeaModel {
 }
 
 public class ListScriptsRequest : Tea.TeaModel {
+    public var builderType: String?
+
     public var instanceId: String?
 
     public var name: String?
+
+    public var nluEngine: String?
 
     public var pageNumber: Int32?
 
@@ -12031,11 +12035,17 @@ public class ListScriptsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.builderType != nil {
+            map["BuilderType"] = self.builderType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.nluEngine != nil {
+            map["NluEngine"] = self.nluEngine!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -12054,11 +12064,17 @@ public class ListScriptsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BuilderType"] as? String {
+            self.builderType = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NluEngine"] as? String {
+            self.nluEngine = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -12076,9 +12092,13 @@ public class ListScriptsRequest : Tea.TeaModel {
 }
 
 public class ListScriptsShrinkRequest : Tea.TeaModel {
+    public var builderType: String?
+
     public var instanceId: String?
 
     public var name: String?
+
+    public var nluEngine: String?
 
     public var pageNumber: Int32?
 
@@ -12102,11 +12122,17 @@ public class ListScriptsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.builderType != nil {
+            map["BuilderType"] = self.builderType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.nluEngine != nil {
+            map["NluEngine"] = self.nluEngine!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -12125,11 +12151,17 @@ public class ListScriptsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BuilderType"] as? String {
+            self.builderType = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NluEngine"] as? String {
+            self.nluEngine = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -12149,6 +12181,10 @@ public class ListScriptsShrinkRequest : Tea.TeaModel {
 public class ListScriptsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Scripts : Tea.TeaModel {
+            public var builderType: String?
+
+            public var chatbotId: String?
+
             public var concurrency: Int32?
 
             public var createdTime: Int64?
@@ -12187,6 +12223,12 @@ public class ListScriptsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.builderType != nil {
+                    map["BuilderType"] = self.builderType!
+                }
+                if self.chatbotId != nil {
+                    map["ChatbotId"] = self.chatbotId!
+                }
                 if self.concurrency != nil {
                     map["Concurrency"] = self.concurrency!
                 }
@@ -12228,6 +12270,12 @@ public class ListScriptsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BuilderType"] as? String {
+                    self.builderType = value
+                }
+                if let value = dict["ChatbotId"] as? String {
+                    self.chatbotId = value
+                }
                 if let value = dict["Concurrency"] as? Int32 {
                     self.concurrency = value
                 }
