@@ -5965,6 +5965,10 @@ public class ImageModerationResponseBody : Tea.TeaModel {
 
         public var ext: ImageModerationResponseBody.Data.Ext?
 
+        public var frame: String?
+
+        public var frameNum: Int32?
+
         public var manualTaskId: String?
 
         public var result: [ImageModerationResponseBody.Data.Result]?
@@ -5995,6 +5999,12 @@ public class ImageModerationResponseBody : Tea.TeaModel {
             if self.ext != nil {
                 map["Ext"] = self.ext?.toMap()
             }
+            if self.frame != nil {
+                map["Frame"] = self.frame!
+            }
+            if self.frameNum != nil {
+                map["FrameNum"] = self.frameNum!
+            }
             if self.manualTaskId != nil {
                 map["ManualTaskId"] = self.manualTaskId!
             }
@@ -6023,6 +6033,12 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                 var model = ImageModerationResponseBody.Data.Ext()
                 model.fromMap(value)
                 self.ext = model
+            }
+            if let value = dict["Frame"] as? String {
+                self.frame = value
+            }
+            if let value = dict["FrameNum"] as? Int32 {
+                self.frameNum = value
             }
             if let value = dict["ManualTaskId"] as? String {
                 self.manualTaskId = value
