@@ -1750,6 +1750,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterBatchRenewMemberApiKeysWithOptions(_ id: String, _ request: ModelRouterBatchRenewMemberApiKeysRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterBatchRenewMemberApiKeysResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expireAt)) {
+            body["expireAt"] = request.expireAt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userIds)) {
+            body["userIds"] = request.userIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterBatchRenewMemberApiKeys",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/clients/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/member-apikeys/renew",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterBatchRenewMemberApiKeysResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterBatchRenewMemberApiKeys(_ id: String, _ request: ModelRouterBatchRenewMemberApiKeysRequest) async throws -> ModelRouterBatchRenewMemberApiKeysResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterBatchRenewMemberApiKeysWithOptions(id as! String, request as! ModelRouterBatchRenewMemberApiKeysRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterBatchResetMemberAuthorizationWithOptions(_ id: String, _ request: ModelRouterBatchResetMemberAuthorizationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterBatchResetMemberAuthorizationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4803,6 +4839,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterQueryUserListWithOptions(request as! ModelRouterQueryUserListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterRenewApiKeyWithOptions(_ id: String, _ request: ModelRouterRenewApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterRenewApiKeyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expireAt)) {
+            body["expireAt"] = request.expireAt ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterRenewApiKey",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/apikeys/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/renew",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterRenewApiKeyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterRenewApiKey(_ id: String, _ request: ModelRouterRenewApiKeyRequest) async throws -> ModelRouterRenewApiKeyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterRenewApiKeyWithOptions(id as! String, request as! ModelRouterRenewApiKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -19652,6 +19652,169 @@ public class ModelRouterBatchDisableMemberApiKeysResponse : Tea.TeaModel {
     }
 }
 
+public class ModelRouterBatchRenewMemberApiKeysRequest : Tea.TeaModel {
+    public var expireAt: String?
+
+    public var userIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expireAt != nil {
+            map["expireAt"] = self.expireAt!
+        }
+        if self.userIds != nil {
+            map["userIds"] = self.userIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expireAt"] as? String {
+            self.expireAt = value
+        }
+        if let value = dict["userIds"] as? [Int64] {
+            self.userIds = value
+        }
+    }
+}
+
+public class ModelRouterBatchRenewMemberApiKeysResponseBody : Tea.TeaModel {
+    public var data: BatchOpResultDTO?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = BatchOpResultDTO()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ModelRouterBatchRenewMemberApiKeysResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModelRouterBatchRenewMemberApiKeysResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModelRouterBatchRenewMemberApiKeysResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModelRouterBatchResetMemberAuthorizationRequest : Tea.TeaModel {
     public var userIds: [Int64]?
 
@@ -34930,6 +35093,207 @@ public class ModelRouterQueryUserListResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModelRouterQueryUserListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModelRouterRenewApiKeyRequest : Tea.TeaModel {
+    public var expireAt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expireAt != nil {
+            map["expireAt"] = self.expireAt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expireAt"] as? String {
+            self.expireAt = value
+        }
+    }
+}
+
+public class ModelRouterRenewApiKeyResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var expireAt: String?
+
+        public var id: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.expireAt != nil {
+                map["expireAt"] = self.expireAt!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["expireAt"] as? String {
+                self.expireAt = value
+            }
+            if let value = dict["id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var data: ModelRouterRenewApiKeyResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ModelRouterRenewApiKeyResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ModelRouterRenewApiKeyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModelRouterRenewApiKeyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModelRouterRenewApiKeyResponseBody()
             model.fromMap(value)
             self.body = model
         }
