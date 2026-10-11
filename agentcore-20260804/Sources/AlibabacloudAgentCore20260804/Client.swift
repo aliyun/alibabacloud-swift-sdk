@@ -300,6 +300,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomAgentWithOptions(_ workspaceId: String, _ tmpReq: CreateCustomAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCustomAgentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateCustomAgentShrinkRequest = CreateCustomAgentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.body)) {
+            request.bodyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.body, "body", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bodyShrink)) {
+            body["body"] = request.bodyShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCustomAgent",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/custom-agents",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCustomAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomAgent(_ workspaceId: String, _ request: CreateCustomAgentRequest) async throws -> CreateCustomAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createCustomAgentWithOptions(workspaceId as! String, request as! CreateCustomAgentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createExternalAgentWithOptions(_ workspaceId: String, _ tmpReq: CreateExternalAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateExternalAgentResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateExternalAgentShrinkRequest = CreateExternalAgentShrinkRequest([:])
@@ -910,6 +953,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteCredentialWithOptions(workspaceId as! String, credentialId as! String, request as! DeleteCredentialRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomAgentWithOptions(_ workspaceId: String, _ agentId: String, _ request: DeleteCustomAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCustomAgentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCustomAgent",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/custom-agents/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCustomAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomAgent(_ workspaceId: String, _ agentId: String, _ request: DeleteCustomAgentRequest) async throws -> DeleteCustomAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteCustomAgentWithOptions(workspaceId as! String, agentId as! String, request as! DeleteCustomAgentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1581,6 +1652,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getCredentialWithOptions(workspaceId as! String, credentialId as! String, request as! GetCredentialRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomAgentWithOptions(_ workspaceId: String, _ agentId: String, _ request: GetCustomAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCustomAgentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCustomAgent",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/custom-agents/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCustomAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomAgent(_ workspaceId: String, _ agentId: String, _ request: GetCustomAgentRequest) async throws -> GetCustomAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getCustomAgentWithOptions(workspaceId as! String, agentId as! String, request as! GetCustomAgentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2486,6 +2585,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listCredentialsWithOptions(workspaceId as! String, request as! ListCredentialsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCustomAgentsWithOptions(_ workspaceId: String, _ request: ListCustomAgentsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCustomAgentsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCustomAgents",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/custom-agents",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCustomAgentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCustomAgents(_ workspaceId: String, _ request: ListCustomAgentsRequest) async throws -> ListCustomAgentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listCustomAgentsWithOptions(workspaceId as! String, request as! ListCustomAgentsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3735,6 +3870,49 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateCredentialWithOptions(workspaceId as! String, credentialId as! String, request as! UpdateCredentialRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomAgentWithOptions(_ workspaceId: String, _ agentId: String, _ tmpReq: UpdateCustomAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCustomAgentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateCustomAgentShrinkRequest = UpdateCustomAgentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.body)) {
+            request.bodyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.body, "body", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bodyShrink)) {
+            body["body"] = request.bodyShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCustomAgent",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/custom-agents/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(agentId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCustomAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomAgent(_ workspaceId: String, _ agentId: String, _ request: UpdateCustomAgentRequest) async throws -> UpdateCustomAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateCustomAgentWithOptions(workspaceId as! String, agentId as! String, request as! UpdateCustomAgentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
