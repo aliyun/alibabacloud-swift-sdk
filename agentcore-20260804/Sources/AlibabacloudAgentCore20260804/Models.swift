@@ -6186,9 +6186,51 @@ public class CreateExternalAgentRequest : Tea.TeaModel {
             }
         }
         public class Skills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var name: String?
 
+            public var sourceType: String?
+
             public var version: String?
+
+            public var versionSelector: CreateExternalAgentRequest.Body.Skills.VersionSelector?
 
             public override init() {
                 super.init()
@@ -6200,6 +6242,7 @@ public class CreateExternalAgentRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -6207,8 +6250,14 @@ public class CreateExternalAgentRequest : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
                 if self.version != nil {
                     map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
                 }
                 return map
             }
@@ -6218,8 +6267,16 @@ public class CreateExternalAgentRequest : Tea.TeaModel {
                 if let value = dict["name"] as? String {
                     self.name = value
                 }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
                 if let value = dict["version"] as? String {
                     self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = CreateExternalAgentRequest.Body.Skills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
                 }
             }
         }
@@ -6533,6 +6590,101 @@ public class CreateExternalAgentShrinkRequest : Tea.TeaModel {
 
 public class CreateExternalAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class ConfiguredSkills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var name: String?
+
+            public var sourceType: String?
+
+            public var version: String?
+
+            public var versionSelector: CreateExternalAgentResponseBody.Data.ConfiguredSkills.VersionSelector?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = CreateExternalAgentResponseBody.Data.ConfiguredSkills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
+                }
+            }
+        }
         public class ExternalAgentStatus : Tea.TeaModel {
             public var heartbeatStatus: String?
 
@@ -6723,9 +6875,57 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Skills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var appliedVersion: String?
+
+            public var fromTemplate: Bool?
+
             public var name: String?
 
+            public var resolvedVersion: String?
+
+            public var sourceType: String?
+
             public var version: String?
+
+            public var versionSelector: CreateExternalAgentResponseBody.Data.Skills.VersionSelector?
 
             public override init() {
                 super.init()
@@ -6737,26 +6937,59 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appliedVersion != nil {
+                    map["appliedVersion"] = self.appliedVersion!
+                }
+                if self.fromTemplate != nil {
+                    map["fromTemplate"] = self.fromTemplate!
+                }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.resolvedVersion != nil {
+                    map["resolvedVersion"] = self.resolvedVersion!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
                 if self.version != nil {
                     map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["appliedVersion"] as? String {
+                    self.appliedVersion = value
+                }
+                if let value = dict["fromTemplate"] as? Bool {
+                    self.fromTemplate = value
+                }
                 if let value = dict["name"] as? String {
                     self.name = value
                 }
+                if let value = dict["resolvedVersion"] as? String {
+                    self.resolvedVersion = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
                 if let value = dict["version"] as? String {
                     self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = CreateExternalAgentResponseBody.Data.Skills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
                 }
             }
         }
@@ -6871,6 +7104,8 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
         }
         public var agentId: String?
 
+        public var configuredSkills: [CreateExternalAgentResponseBody.Data.ConfiguredSkills]?
+
         public var createMode: String?
 
         public var createdAt: String?
@@ -6928,6 +7163,13 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.agentId != nil {
                 map["agentId"] = self.agentId!
+            }
+            if self.configuredSkills != nil {
+                var tmp : [Any] = []
+                for k in self.configuredSkills! {
+                    tmp.append(k.toMap())
+                }
+                map["configuredSkills"] = tmp
             }
             if self.createMode != nil {
                 map["createMode"] = self.createMode!
@@ -7001,6 +7243,19 @@ public class CreateExternalAgentResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["agentId"] as? String {
                 self.agentId = value
+            }
+            if let value = dict["configuredSkills"] as? [Any?] {
+                var tmp : [CreateExternalAgentResponseBody.Data.ConfiguredSkills] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateExternalAgentResponseBody.Data.ConfiguredSkills()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.configuredSkills = tmp
             }
             if let value = dict["createMode"] as? String {
                 self.createMode = value
@@ -23935,6 +24190,101 @@ public class GetExternalAgentRequest : Tea.TeaModel {
 
 public class GetExternalAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class ConfiguredSkills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var name: String?
+
+            public var sourceType: String?
+
+            public var version: String?
+
+            public var versionSelector: GetExternalAgentResponseBody.Data.ConfiguredSkills.VersionSelector?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = GetExternalAgentResponseBody.Data.ConfiguredSkills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
+                }
+            }
+        }
         public class ExternalAgentStatus : Tea.TeaModel {
             public var heartbeatStatus: String?
 
@@ -24125,9 +24475,57 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Skills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var appliedVersion: String?
+
+            public var fromTemplate: Bool?
+
             public var name: String?
 
+            public var resolvedVersion: String?
+
+            public var sourceType: String?
+
             public var version: String?
+
+            public var versionSelector: GetExternalAgentResponseBody.Data.Skills.VersionSelector?
 
             public override init() {
                 super.init()
@@ -24139,26 +24537,59 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appliedVersion != nil {
+                    map["appliedVersion"] = self.appliedVersion!
+                }
+                if self.fromTemplate != nil {
+                    map["fromTemplate"] = self.fromTemplate!
+                }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.resolvedVersion != nil {
+                    map["resolvedVersion"] = self.resolvedVersion!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
                 if self.version != nil {
                     map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["appliedVersion"] as? String {
+                    self.appliedVersion = value
+                }
+                if let value = dict["fromTemplate"] as? Bool {
+                    self.fromTemplate = value
+                }
                 if let value = dict["name"] as? String {
                     self.name = value
                 }
+                if let value = dict["resolvedVersion"] as? String {
+                    self.resolvedVersion = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
                 if let value = dict["version"] as? String {
                     self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = GetExternalAgentResponseBody.Data.Skills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
                 }
             }
         }
@@ -24273,6 +24704,8 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
         }
         public var agentId: String?
 
+        public var configuredSkills: [GetExternalAgentResponseBody.Data.ConfiguredSkills]?
+
         public var createMode: String?
 
         public var createdAt: String?
@@ -24330,6 +24763,13 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.agentId != nil {
                 map["agentId"] = self.agentId!
+            }
+            if self.configuredSkills != nil {
+                var tmp : [Any] = []
+                for k in self.configuredSkills! {
+                    tmp.append(k.toMap())
+                }
+                map["configuredSkills"] = tmp
             }
             if self.createMode != nil {
                 map["createMode"] = self.createMode!
@@ -24403,6 +24843,19 @@ public class GetExternalAgentResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["agentId"] as? String {
                 self.agentId = value
+            }
+            if let value = dict["configuredSkills"] as? [Any?] {
+                var tmp : [GetExternalAgentResponseBody.Data.ConfiguredSkills] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetExternalAgentResponseBody.Data.ConfiguredSkills()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.configuredSkills = tmp
             }
             if let value = dict["createMode"] as? String {
                 self.createMode = value
@@ -45755,6 +46208,8 @@ public class ListTeamsResponse : Tea.TeaModel {
 }
 
 public class ListUsersRequest : Tea.TeaModel {
+    public var email: String?
+
     public var maxResults: Int32?
 
     public var name: String?
@@ -45777,6 +46232,9 @@ public class ListUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.email != nil {
+            map["email"] = self.email!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -45794,6 +46252,9 @@ public class ListUsersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["email"] as? String {
+            self.email = value
+        }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -52467,9 +52928,51 @@ public class UpdateExternalAgentRequest : Tea.TeaModel {
             }
         }
         public class Skills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var name: String?
 
+            public var sourceType: String?
+
             public var version: String?
+
+            public var versionSelector: UpdateExternalAgentRequest.Body.Skills.VersionSelector?
 
             public override init() {
                 super.init()
@@ -52481,6 +52984,7 @@ public class UpdateExternalAgentRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -52488,8 +52992,14 @@ public class UpdateExternalAgentRequest : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
                 if self.version != nil {
                     map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
                 }
                 return map
             }
@@ -52499,8 +53009,16 @@ public class UpdateExternalAgentRequest : Tea.TeaModel {
                 if let value = dict["name"] as? String {
                     self.name = value
                 }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
                 if let value = dict["version"] as? String {
                     self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = UpdateExternalAgentRequest.Body.Skills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
                 }
             }
         }
@@ -52814,6 +53332,101 @@ public class UpdateExternalAgentShrinkRequest : Tea.TeaModel {
 
 public class UpdateExternalAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class ConfiguredSkills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var name: String?
+
+            public var sourceType: String?
+
+            public var version: String?
+
+            public var versionSelector: UpdateExternalAgentResponseBody.Data.ConfiguredSkills.VersionSelector?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = UpdateExternalAgentResponseBody.Data.ConfiguredSkills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
+                }
+            }
+        }
         public class ExternalAgentStatus : Tea.TeaModel {
             public var heartbeatStatus: String?
 
@@ -53004,9 +53617,57 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
             }
         }
         public class Skills : Tea.TeaModel {
+            public class VersionSelector : Tea.TeaModel {
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var appliedVersion: String?
+
+            public var fromTemplate: Bool?
+
             public var name: String?
 
+            public var resolvedVersion: String?
+
+            public var sourceType: String?
+
             public var version: String?
+
+            public var versionSelector: UpdateExternalAgentResponseBody.Data.Skills.VersionSelector?
 
             public override init() {
                 super.init()
@@ -53018,26 +53679,59 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.versionSelector?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appliedVersion != nil {
+                    map["appliedVersion"] = self.appliedVersion!
+                }
+                if self.fromTemplate != nil {
+                    map["fromTemplate"] = self.fromTemplate!
+                }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.resolvedVersion != nil {
+                    map["resolvedVersion"] = self.resolvedVersion!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
                 if self.version != nil {
                     map["version"] = self.version!
+                }
+                if self.versionSelector != nil {
+                    map["versionSelector"] = self.versionSelector?.toMap()
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["appliedVersion"] as? String {
+                    self.appliedVersion = value
+                }
+                if let value = dict["fromTemplate"] as? Bool {
+                    self.fromTemplate = value
+                }
                 if let value = dict["name"] as? String {
                     self.name = value
                 }
+                if let value = dict["resolvedVersion"] as? String {
+                    self.resolvedVersion = value
+                }
+                if let value = dict["sourceType"] as? String {
+                    self.sourceType = value
+                }
                 if let value = dict["version"] as? String {
                     self.version = value
+                }
+                if let value = dict["versionSelector"] as? [String: Any?] {
+                    var model = UpdateExternalAgentResponseBody.Data.Skills.VersionSelector()
+                    model.fromMap(value)
+                    self.versionSelector = model
                 }
             }
         }
@@ -53152,6 +53846,8 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
         }
         public var agentId: String?
 
+        public var configuredSkills: [UpdateExternalAgentResponseBody.Data.ConfiguredSkills]?
+
         public var createMode: String?
 
         public var createdAt: String?
@@ -53209,6 +53905,13 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.agentId != nil {
                 map["agentId"] = self.agentId!
+            }
+            if self.configuredSkills != nil {
+                var tmp : [Any] = []
+                for k in self.configuredSkills! {
+                    tmp.append(k.toMap())
+                }
+                map["configuredSkills"] = tmp
             }
             if self.createMode != nil {
                 map["createMode"] = self.createMode!
@@ -53282,6 +53985,19 @@ public class UpdateExternalAgentResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["agentId"] as? String {
                 self.agentId = value
+            }
+            if let value = dict["configuredSkills"] as? [Any?] {
+                var tmp : [UpdateExternalAgentResponseBody.Data.ConfiguredSkills] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateExternalAgentResponseBody.Data.ConfiguredSkills()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.configuredSkills = tmp
             }
             if let value = dict["createMode"] as? String {
                 self.createMode = value

@@ -3286,6 +3286,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listUsersWithOptions(_ workspaceId: String, _ request: ListUsersRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            query["email"] = request.email ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }
