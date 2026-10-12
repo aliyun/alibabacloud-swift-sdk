@@ -4904,6 +4904,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var edition: String?
 
     public var importInfo: String?
@@ -4979,6 +4981,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.edition != nil {
             map["Edition"] = self.edition!
@@ -5077,6 +5082,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Edition"] as? String {
             self.edition = value
@@ -5892,6 +5900,8 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var importInfo: String?
 
     public var labels: [Label]?
@@ -5936,6 +5946,9 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.importInfo != nil {
             map["ImportInfo"] = self.importInfo!
@@ -5988,6 +6001,9 @@ public class CreateDatasetVersionRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["ImportInfo"] as? String {
             self.importInfo = value
