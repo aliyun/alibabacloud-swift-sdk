@@ -541,6 +541,8 @@ public class AddHDMInstanceResponse : Tea.TeaModel {
 public class ChatRequest : Tea.TeaModel {
     public var agentId: String?
 
+    public var forwardedProps: String?
+
     public var message: String?
 
     public var resume: String?
@@ -566,6 +568,9 @@ public class ChatRequest : Tea.TeaModel {
         if self.agentId != nil {
             map["AgentId"] = self.agentId!
         }
+        if self.forwardedProps != nil {
+            map["ForwardedProps"] = self.forwardedProps!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -585,6 +590,9 @@ public class ChatRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AgentId"] as? String {
             self.agentId = value
+        }
+        if let value = dict["ForwardedProps"] as? String {
+            self.forwardedProps = value
         }
         if let value = dict["Message"] as? String {
             self.message = value

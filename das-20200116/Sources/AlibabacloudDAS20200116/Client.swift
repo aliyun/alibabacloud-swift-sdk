@@ -100,6 +100,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentId)) {
             query["AgentId"] = request.agentId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.forwardedProps)) {
+            query["ForwardedProps"] = request.forwardedProps ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.message)) {
             query["Message"] = request.message ?? "";
         }
