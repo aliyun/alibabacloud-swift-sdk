@@ -5298,6 +5298,8 @@ public class ListConversationsResponseBody : Tea.TeaModel {
 
         public var startTime: Int64?
 
+        public var voice: String?
+
         public override init() {
             super.init()
         }
@@ -5354,6 +5356,9 @@ public class ListConversationsResponseBody : Tea.TeaModel {
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
+            if self.voice != nil {
+                map["Voice"] = self.voice!
+            }
             return map
         }
 
@@ -5400,6 +5405,9 @@ public class ListConversationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["StartTime"] as? Int64 {
                 self.startTime = value
+            }
+            if let value = dict["Voice"] as? String {
+                self.voice = value
             }
         }
     }
