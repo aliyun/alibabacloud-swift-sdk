@@ -2717,6 +2717,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createFileDeepAnalyzeWithOptions(_ request: CreateFileDeepAnalyzeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFileDeepAnalyzeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.context)) {
+            query["Context"] = request.context ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventId)) {
+            query["EventId"] = request.eventId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hash)) {
+            query["Hash"] = request.hash ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIp)) {
+            query["SourceIp"] = request.sourceIp ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateFileDeepAnalyze",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateFileDeepAnalyzeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createFileDeepAnalyze(_ request: CreateFileDeepAnalyzeRequest) async throws -> CreateFileDeepAnalyzeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createFileDeepAnalyzeWithOptions(request as! CreateFileDeepAnalyzeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createFileDetectWithOptions(_ request: CreateFileDetectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFileDetectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
