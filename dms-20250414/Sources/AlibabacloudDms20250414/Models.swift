@@ -1137,7 +1137,19 @@ public class AgenticKnowledgeView : Tea.TeaModel {
 }
 
 public class AgenticResourceOwner : Tea.TeaModel {
+    public var catalogAlias: String?
+
+    public var catalogDataSourceType: String?
+
+    public var catalogEnvType: String?
+
+    public var catalogHost: String?
+
+    public var catalogPort: String?
+
     public var catalogUuid: String?
+
+    public var dataSourceUuid: String?
 
     public var databaseQualifiedName: String?
 
@@ -1167,8 +1179,26 @@ public class AgenticResourceOwner : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.catalogAlias != nil {
+            map["CatalogAlias"] = self.catalogAlias!
+        }
+        if self.catalogDataSourceType != nil {
+            map["CatalogDataSourceType"] = self.catalogDataSourceType!
+        }
+        if self.catalogEnvType != nil {
+            map["CatalogEnvType"] = self.catalogEnvType!
+        }
+        if self.catalogHost != nil {
+            map["CatalogHost"] = self.catalogHost!
+        }
+        if self.catalogPort != nil {
+            map["CatalogPort"] = self.catalogPort!
+        }
         if self.catalogUuid != nil {
             map["CatalogUuid"] = self.catalogUuid!
+        }
+        if self.dataSourceUuid != nil {
+            map["DataSourceUuid"] = self.dataSourceUuid!
         }
         if self.databaseQualifiedName != nil {
             map["DatabaseQualifiedName"] = self.databaseQualifiedName!
@@ -1196,8 +1226,26 @@ public class AgenticResourceOwner : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CatalogAlias"] as? String {
+            self.catalogAlias = value
+        }
+        if let value = dict["CatalogDataSourceType"] as? String {
+            self.catalogDataSourceType = value
+        }
+        if let value = dict["CatalogEnvType"] as? String {
+            self.catalogEnvType = value
+        }
+        if let value = dict["CatalogHost"] as? String {
+            self.catalogHost = value
+        }
+        if let value = dict["CatalogPort"] as? String {
+            self.catalogPort = value
+        }
         if let value = dict["CatalogUuid"] as? String {
             self.catalogUuid = value
+        }
+        if let value = dict["DataSourceUuid"] as? String {
+            self.dataSourceUuid = value
         }
         if let value = dict["DatabaseQualifiedName"] as? String {
             self.databaseQualifiedName = value
@@ -25661,7 +25709,11 @@ public class ListDataAgentAccuracyTestInstancesResponseBody : Tea.TeaModel {
 
         public var creator: String?
 
+        public var datasetId: String?
+
         public var datasource: String?
+
+        public var description_: String?
 
         public var fileId: String?
 
@@ -25704,8 +25756,14 @@ public class ListDataAgentAccuracyTestInstancesResponseBody : Tea.TeaModel {
             if self.creator != nil {
                 map["Creator"] = self.creator!
             }
+            if self.datasetId != nil {
+                map["DatasetId"] = self.datasetId!
+            }
             if self.datasource != nil {
                 map["Datasource"] = self.datasource!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.fileId != nil {
                 map["FileId"] = self.fileId!
@@ -25748,8 +25806,14 @@ public class ListDataAgentAccuracyTestInstancesResponseBody : Tea.TeaModel {
             if let value = dict["Creator"] as? String {
                 self.creator = value
             }
+            if let value = dict["DatasetId"] as? String {
+                self.datasetId = value
+            }
             if let value = dict["Datasource"] as? String {
                 self.datasource = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
             }
             if let value = dict["FileId"] as? String {
                 self.fileId = value
@@ -28767,6 +28831,8 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
             public var creatorName: String?
 
+            public var customAgentCount: Int32?
+
             public var description_: String?
 
             public var isSessionShareEnabled: Bool?
@@ -28811,6 +28877,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
                 }
                 if self.creatorName != nil {
                     map["CreatorName"] = self.creatorName!
+                }
+                if self.customAgentCount != nil {
+                    map["CustomAgentCount"] = self.customAgentCount!
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
@@ -28858,6 +28927,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreatorName"] as? String {
                     self.creatorName = value
+                }
+                if let value = dict["CustomAgentCount"] as? Int32 {
+                    self.customAgentCount = value
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
