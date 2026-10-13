@@ -4832,6 +4832,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyLifecyclePolicyWithOptions(_ request: ModifyLifecyclePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyLifecyclePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
         }

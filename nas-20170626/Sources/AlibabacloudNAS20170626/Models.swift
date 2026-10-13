@@ -28064,6 +28064,8 @@ public class ModifyLDAPConfigResponse : Tea.TeaModel {
 }
 
 public class ModifyLifecyclePolicyRequest : Tea.TeaModel {
+    public var description_: String?
+
     public var fileSystemId: String?
 
     public var lifecyclePolicyId: String?
@@ -28090,6 +28092,9 @@ public class ModifyLifecyclePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
@@ -28113,6 +28118,9 @@ public class ModifyLifecyclePolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["FileSystemId"] as? String {
             self.fileSystemId = value
         }
