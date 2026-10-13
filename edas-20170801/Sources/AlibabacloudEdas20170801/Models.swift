@@ -15207,6 +15207,388 @@ public class GetK8sServicesResponse : Tea.TeaModel {
     }
 }
 
+public class GetMigrateApplicationRequest : Tea.TeaModel {
+    public var migrationId: String?
+
+    public var migrationType: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.migrationId != nil {
+            map["migrationId"] = self.migrationId!
+        }
+        if self.migrationType != nil {
+            map["migrationType"] = self.migrationType!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["migrationId"] as? String {
+            self.migrationId = value
+        }
+        if let value = dict["migrationType"] as? Int64 {
+            self.migrationType = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetMigrateApplicationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class ExtraInfo : Tea.TeaModel {
+                public var appJsonFile: String?
+
+                public var errorMsg: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.appJsonFile != nil {
+                        map["appJsonFile"] = self.appJsonFile!
+                    }
+                    if self.errorMsg != nil {
+                        map["errorMsg"] = self.errorMsg!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["appJsonFile"] as? String {
+                        self.appJsonFile = value
+                    }
+                    if let value = dict["errorMsg"] as? String {
+                        self.errorMsg = value
+                    }
+                }
+            }
+            public var appDetailState: String?
+
+            public var binaryCleaned: Int64?
+
+            public var createTime: Int64?
+
+            public var extraInfo: GetMigrateApplicationResponseBody.Data.Result.ExtraInfo?
+
+            public var migrationId: String?
+
+            public var migrationType: Int64?
+
+            public var owner: String?
+
+            public var regionId: String?
+
+            public var state: String?
+
+            public var statePercent: String?
+
+            public var updateTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.extraInfo?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appDetailState != nil {
+                    map["appDetailState"] = self.appDetailState!
+                }
+                if self.binaryCleaned != nil {
+                    map["binaryCleaned"] = self.binaryCleaned!
+                }
+                if self.createTime != nil {
+                    map["createTime"] = self.createTime!
+                }
+                if self.extraInfo != nil {
+                    map["extraInfo"] = self.extraInfo?.toMap()
+                }
+                if self.migrationId != nil {
+                    map["migrationId"] = self.migrationId!
+                }
+                if self.migrationType != nil {
+                    map["migrationType"] = self.migrationType!
+                }
+                if self.owner != nil {
+                    map["owner"] = self.owner!
+                }
+                if self.regionId != nil {
+                    map["regionId"] = self.regionId!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.statePercent != nil {
+                    map["statePercent"] = self.statePercent!
+                }
+                if self.updateTime != nil {
+                    map["updateTime"] = self.updateTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["appDetailState"] as? String {
+                    self.appDetailState = value
+                }
+                if let value = dict["binaryCleaned"] as? Int64 {
+                    self.binaryCleaned = value
+                }
+                if let value = dict["createTime"] as? Int64 {
+                    self.createTime = value
+                }
+                if let value = dict["extraInfo"] as? [String: Any?] {
+                    var model = GetMigrateApplicationResponseBody.Data.Result.ExtraInfo()
+                    model.fromMap(value)
+                    self.extraInfo = model
+                }
+                if let value = dict["migrationId"] as? String {
+                    self.migrationId = value
+                }
+                if let value = dict["migrationType"] as? Int64 {
+                    self.migrationType = value
+                }
+                if let value = dict["owner"] as? String {
+                    self.owner = value
+                }
+                if let value = dict["regionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["state"] as? String {
+                    self.state = value
+                }
+                if let value = dict["statePercent"] as? String {
+                    self.statePercent = value
+                }
+                if let value = dict["updateTime"] as? Int64 {
+                    self.updateTime = value
+                }
+            }
+        }
+        public var currentPage: Int64?
+
+        public var pageSize: Int64?
+
+        public var result: [GetMigrateApplicationResponseBody.Data.Result]?
+
+        public var totalSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.currentPage != nil {
+                map["currentPage"] = self.currentPage!
+            }
+            if self.pageSize != nil {
+                map["pageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["result"] = tmp
+            }
+            if self.totalSize != nil {
+                map["totalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["currentPage"] as? Int64 {
+                self.currentPage = value
+            }
+            if let value = dict["pageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["result"] as? [Any?] {
+                var tmp : [GetMigrateApplicationResponseBody.Data.Result] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetMigrateApplicationResponseBody.Data.Result()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.result = tmp
+            }
+            if let value = dict["totalSize"] as? Int64 {
+                self.totalSize = value
+            }
+        }
+    }
+    public var code: Int64?
+
+    public var data: GetMigrateApplicationResponseBody.Data?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? Int64 {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetMigrateApplicationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["traceId"] as? String {
+            self.traceId = value
+        }
+    }
+}
+
+public class GetMigrateApplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetMigrateApplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetMigrateApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetPackageStorageCredentialResponseBody : Tea.TeaModel {
     public class Credential : Tea.TeaModel {
         public var accessKeyId: String?
@@ -33658,7 +34040,7 @@ public class ListVpcResponse : Tea.TeaModel {
 }
 
 public class MigrateApplicationRequest : Tea.TeaModel {
-    public var appIds: [String]?
+    public var appIds: String?
 
     public var cmd: String?
 
@@ -33702,7 +34084,7 @@ public class MigrateApplicationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["appIds"] as? [String] {
+        if let value = dict["appIds"] as? String {
             self.appIds = value
         }
         if let value = dict["cmd"] as? String {
