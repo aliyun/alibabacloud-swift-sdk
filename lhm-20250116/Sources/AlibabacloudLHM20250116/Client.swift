@@ -888,6 +888,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func execMetaProfilingSkillJobDisableWithOptions(_ request: ExecMetaProfilingSkillJobDisableRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecMetaProfilingSkillJobDisableResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dsId)) {
+            body["dsId"] = request.dsId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecMetaProfilingSkillJobDisable",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/skill/profiling/job/disable",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecMetaProfilingSkillJobDisableResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func execMetaProfilingSkillJobDisable(_ request: ExecMetaProfilingSkillJobDisableRequest) async throws -> ExecMetaProfilingSkillJobDisableResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await execMetaProfilingSkillJobDisableWithOptions(request as! ExecMetaProfilingSkillJobDisableRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func execMetaProfilingTaskRunWithOptions(_ request: ExecMetaProfilingTaskRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecMetaProfilingTaskRunResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batchNo)) {
+            body["batchNo"] = request.batchNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.componentId)) {
+            body["componentId"] = request.componentId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecMetaProfilingTaskRun",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/profiling/task/runNow",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecMetaProfilingTaskRunResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func execMetaProfilingTaskRun(_ request: ExecMetaProfilingTaskRunRequest) async throws -> ExecMetaProfilingTaskRunResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await execMetaProfilingTaskRunWithOptions(request as! ExecMetaProfilingTaskRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func execSqlTransSingleScriptTranslateWithOptions(_ request: ExecSqlTransSingleScriptTranslateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecSqlTransSingleScriptTranslateResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1676,6 +1745,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMetaCompareIncrementDbOverviewWithOptions(_ request: GetMetaCompareIncrementDbOverviewRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMetaCompareIncrementDbOverviewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogName)) {
+            body["catalogName"] = request.catalogName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dbName)) {
+            body["dbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isSummary)) {
+            body["isSummary"] = request.isSummary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMetaCompareIncrementDbOverview",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/profiling/result/databases/overviewOfCompareIncrement",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMetaCompareIncrementDbOverviewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMetaCompareIncrementDbOverview(_ request: GetMetaCompareIncrementDbOverviewRequest) async throws -> GetMetaCompareIncrementDbOverviewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMetaCompareIncrementDbOverviewWithOptions(request as! GetMetaCompareIncrementDbOverviewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getMetaOssTempKeyWithOptions(_ request: GetMetaOssTempKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMetaOssTempKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -1701,6 +1812,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getMetaOssTempKeyWithOptions(request as! GetMetaOssTempKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMetaProfilingResultDbOverviewWithOptions(_ request: GetMetaProfilingResultDbOverviewRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMetaProfilingResultDbOverviewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isSummary)) {
+            query["isSummary"] = request.isSummary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["taskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMetaProfilingResultDbOverview",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/profiling/result/databases/overviewOfTaskDimension",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMetaProfilingResultDbOverviewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMetaProfilingResultDbOverview(_ request: GetMetaProfilingResultDbOverviewRequest) async throws -> GetMetaProfilingResultDbOverviewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMetaProfilingResultDbOverviewWithOptions(request as! GetMetaProfilingResultDbOverviewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2268,6 +2415,279 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingResultCatalogPageWithOptions(_ request: ListMetaProfilingResultCatalogPageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMetaProfilingResultCatalogPageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogName)) {
+            body["catalogName"] = request.catalogName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dbName)) {
+            body["dbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupBy)) {
+            body["groupBy"] = request.groupBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needTotalCount)) {
+            body["needTotalCount"] = request.needTotalCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            body["orderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderDirection)) {
+            body["orderDirection"] = request.orderDirection ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            body["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMetaProfilingResultCatalogPage",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/profiling/result/catalogs/pageOfTaskDimension",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMetaProfilingResultCatalogPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingResultCatalogPage(_ request: ListMetaProfilingResultCatalogPageRequest) async throws -> ListMetaProfilingResultCatalogPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMetaProfilingResultCatalogPageWithOptions(request as! ListMetaProfilingResultCatalogPageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingResultTablePageWithOptions(_ request: ListMetaProfilingResultTablePageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMetaProfilingResultTablePageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.componentType)) {
+            body["componentType"] = request.componentType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataRange)) {
+            body["dataRange"] = request.dataRange ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSize)) {
+            body["dataSize"] = request.dataSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataUnit)) {
+            body["dataUnit"] = request.dataUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dbName)) {
+            body["dbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupBy)) {
+            body["groupBy"] = request.groupBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isPartitioned)) {
+            body["isPartitioned"] = request.isPartitioned!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isSummary)) {
+            body["isSummary"] = request.isSummary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.migrationStatus)) {
+            body["migrationStatus"] = request.migrationStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needTotalCount)) {
+            body["needTotalCount"] = request.needTotalCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            body["orderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderDirection)) {
+            body["orderDirection"] = request.orderDirection ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            body["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tableName)) {
+            body["tableName"] = request.tableName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMetaProfilingResultTablePage",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/profiling/result/tables/pageOfTaskDimension",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMetaProfilingResultTablePageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingResultTablePage(_ request: ListMetaProfilingResultTablePageRequest) async throws -> ListMetaProfilingResultTablePageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMetaProfilingResultTablePageWithOptions(request as! ListMetaProfilingResultTablePageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingResultUdfPageWithOptions(_ request: ListMetaProfilingResultUdfPageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMetaProfilingResultUdfPageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.catalogName)) {
+            body["catalogName"] = request.catalogName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.componentType)) {
+            body["componentType"] = request.componentType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dbName)) {
+            body["dbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.funcName)) {
+            body["funcName"] = request.funcName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupBy)) {
+            body["groupBy"] = request.groupBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isSummary)) {
+            body["isSummary"] = request.isSummary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.needTotalCount)) {
+            body["needTotalCount"] = request.needTotalCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            body["orderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderDirection)) {
+            body["orderDirection"] = request.orderDirection ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            body["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMetaProfilingResultUdfPage",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/profiling/result/udf/pageOfTaskDimension",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMetaProfilingResultUdfPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingResultUdfPage(_ request: ListMetaProfilingResultUdfPageRequest) async throws -> ListMetaProfilingResultUdfPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMetaProfilingResultUdfPageWithOptions(request as! ListMetaProfilingResultUdfPageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingSkillJobPageWithOptions(_ request: ListMetaProfilingSkillJobPageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMetaProfilingSkillJobPageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.componentIds)) {
+            body["componentIds"] = request.componentIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dsId)) {
+            body["dsId"] = request.dsId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dsName)) {
+            body["dsName"] = request.dsName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dsType)) {
+            body["dsType"] = request.dsType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupBy)) {
+            body["groupBy"] = request.groupBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isDisplaySystemTask)) {
+            body["isDisplaySystemTask"] = request.isDisplaySystemTask!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            body["jobId"] = request.jobId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jobName)) {
+            body["jobName"] = request.jobName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needTotalCount)) {
+            body["needTotalCount"] = request.needTotalCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            body["orderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderDirection)) {
+            body["orderDirection"] = request.orderDirection ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            body["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMetaProfilingSkillJobPage",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/skill/profiling/job/page",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMetaProfilingSkillJobPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMetaProfilingSkillJobPage(_ request: ListMetaProfilingSkillJobPageRequest) async throws -> ListMetaProfilingSkillJobPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMetaProfilingSkillJobPageWithOptions(request as! ListMetaProfilingSkillJobPageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func postInnerConvertWithOptions(_ request: PostInnerConvertRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PostInnerConvertResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2475,6 +2895,69 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await singleSqlDryRunWithOptions(request as! SingleSqlDryRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func skillAddMetaProfilingJobWithOptions(_ request: SkillAddMetaProfilingJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SkillAddMetaProfilingJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.componentId)) {
+            body["componentId"] = request.componentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jobDesc)) {
+            body["jobDesc"] = request.jobDesc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            body["jobId"] = request.jobId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jobName)) {
+            body["jobName"] = request.jobName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metaIds)) {
+            body["metaIds"] = request.metaIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginId)) {
+            body["pluginId"] = request.pluginId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.profilingFlag)) {
+            body["profilingFlag"] = request.profilingFlag!;
+        }
+        if (!TeaUtils.Client.isUnset(request.profilingPermission)) {
+            body["profilingPermission"] = request.profilingPermission!;
+        }
+        if (!TeaUtils.Client.isUnset(request.profilingRule)) {
+            body["profilingRule"] = request.profilingRule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.profilingSchemaList)) {
+            body["profilingSchemaList"] = request.profilingSchemaList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.profilingType)) {
+            body["profilingType"] = request.profilingType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SkillAddMetaProfilingJob",
+            "version": "2025-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/meta/skill/profiling/job",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SkillAddMetaProfilingJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func skillAddMetaProfilingJob(_ request: SkillAddMetaProfilingJobRequest) async throws -> SkillAddMetaProfilingJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await skillAddMetaProfilingJobWithOptions(request as! SkillAddMetaProfilingJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

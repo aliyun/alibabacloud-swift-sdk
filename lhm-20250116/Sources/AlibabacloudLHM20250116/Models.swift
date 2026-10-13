@@ -4746,6 +4746,286 @@ public class ExecMetaDataComponentNameResponse : Tea.TeaModel {
     }
 }
 
+public class ExecMetaProfilingSkillJobDisableRequest : Tea.TeaModel {
+    public var dsId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dsId != nil {
+            map["dsId"] = self.dsId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dsId"] as? Int64 {
+            self.dsId = value
+        }
+    }
+}
+
+public class ExecMetaProfilingSkillJobDisableResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ExecMetaProfilingSkillJobDisableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecMetaProfilingSkillJobDisableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ExecMetaProfilingSkillJobDisableResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ExecMetaProfilingTaskRunRequest : Tea.TeaModel {
+    public var batchNo: String?
+
+    public var componentId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.batchNo != nil {
+            map["batchNo"] = self.batchNo!
+        }
+        if self.componentId != nil {
+            map["componentId"] = self.componentId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["batchNo"] as? String {
+            self.batchNo = value
+        }
+        if let value = dict["componentId"] as? Int64 {
+            self.componentId = value
+        }
+    }
+}
+
+public class ExecMetaProfilingTaskRunResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ExecMetaProfilingTaskRunResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecMetaProfilingTaskRunResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ExecMetaProfilingTaskRunResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ExecSqlTransSingleScriptTranslateRequest : Tea.TeaModel {
     public var sourceDialect: String?
 
@@ -11179,6 +11459,279 @@ public class GetLhmDWResourceGroupStatusResponse : Tea.TeaModel {
     }
 }
 
+public class GetMetaCompareIncrementDbOverviewRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dbName: String?
+
+    public var isSummary: Bool?
+
+    public var taskId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["catalogName"] = self.catalogName!
+        }
+        if self.dbName != nil {
+            map["dbName"] = self.dbName!
+        }
+        if self.isSummary != nil {
+            map["isSummary"] = self.isSummary!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["catalogName"] as? String {
+            self.catalogName = value
+        }
+        if let value = dict["dbName"] as? String {
+            self.dbName = value
+        }
+        if let value = dict["isSummary"] as? Bool {
+            self.isSummary = value
+        }
+        if let value = dict["taskId"] as? Int64 {
+            self.taskId = value
+        }
+    }
+}
+
+public class GetMetaCompareIncrementDbOverviewResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var compareJobId: Int64?
+
+        public var curVersionTime: String?
+
+        public var diffAddPartitionNum: Int64?
+
+        public var diffAddTableNum: Int64?
+
+        public var diffDelPartitionNum: Int64?
+
+        public var diffDelTableNum: Int64?
+
+        public var diffModifyPartitionNum: Int64?
+
+        public var diffModifyTableNum: Int64?
+
+        public var diffPartitionNum: Int64?
+
+        public var diffTableNum: Int64?
+
+        public var prevVersionTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.compareJobId != nil {
+                map["compareJobId"] = self.compareJobId!
+            }
+            if self.curVersionTime != nil {
+                map["curVersionTime"] = self.curVersionTime!
+            }
+            if self.diffAddPartitionNum != nil {
+                map["diffAddPartitionNum"] = self.diffAddPartitionNum!
+            }
+            if self.diffAddTableNum != nil {
+                map["diffAddTableNum"] = self.diffAddTableNum!
+            }
+            if self.diffDelPartitionNum != nil {
+                map["diffDelPartitionNum"] = self.diffDelPartitionNum!
+            }
+            if self.diffDelTableNum != nil {
+                map["diffDelTableNum"] = self.diffDelTableNum!
+            }
+            if self.diffModifyPartitionNum != nil {
+                map["diffModifyPartitionNum"] = self.diffModifyPartitionNum!
+            }
+            if self.diffModifyTableNum != nil {
+                map["diffModifyTableNum"] = self.diffModifyTableNum!
+            }
+            if self.diffPartitionNum != nil {
+                map["diffPartitionNum"] = self.diffPartitionNum!
+            }
+            if self.diffTableNum != nil {
+                map["diffTableNum"] = self.diffTableNum!
+            }
+            if self.prevVersionTime != nil {
+                map["prevVersionTime"] = self.prevVersionTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["compareJobId"] as? Int64 {
+                self.compareJobId = value
+            }
+            if let value = dict["curVersionTime"] as? String {
+                self.curVersionTime = value
+            }
+            if let value = dict["diffAddPartitionNum"] as? Int64 {
+                self.diffAddPartitionNum = value
+            }
+            if let value = dict["diffAddTableNum"] as? Int64 {
+                self.diffAddTableNum = value
+            }
+            if let value = dict["diffDelPartitionNum"] as? Int64 {
+                self.diffDelPartitionNum = value
+            }
+            if let value = dict["diffDelTableNum"] as? Int64 {
+                self.diffDelTableNum = value
+            }
+            if let value = dict["diffModifyPartitionNum"] as? Int64 {
+                self.diffModifyPartitionNum = value
+            }
+            if let value = dict["diffModifyTableNum"] as? Int64 {
+                self.diffModifyTableNum = value
+            }
+            if let value = dict["diffPartitionNum"] as? Int64 {
+                self.diffPartitionNum = value
+            }
+            if let value = dict["diffTableNum"] as? Int64 {
+                self.diffTableNum = value
+            }
+            if let value = dict["prevVersionTime"] as? String {
+                self.prevVersionTime = value
+            }
+        }
+    }
+    public var data: GetMetaCompareIncrementDbOverviewResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetMetaCompareIncrementDbOverviewResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetMetaCompareIncrementDbOverviewResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetMetaCompareIncrementDbOverviewResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetMetaCompareIncrementDbOverviewResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetMetaOssTempKeyRequest : Tea.TeaModel {
 
     public override init() {
@@ -11391,6 +11944,327 @@ public class GetMetaOssTempKeyResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetMetaOssTempKeyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetMetaProfilingResultDbOverviewRequest : Tea.TeaModel {
+    public var isSummary: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isSummary != nil {
+            map["isSummary"] = self.isSummary!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["isSummary"] as? String {
+            self.isSummary = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class GetMetaProfilingResultDbOverviewResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var catalogCount: Int32?
+
+        public var componentId: Int64?
+
+        public var componentType: Int32?
+
+        public var dsName: String?
+
+        public var dsVersion: String?
+
+        public var etTableCount: Int32?
+
+        public var funcCount: Int32?
+
+        public var gmtCreate: String?
+
+        public var lastModified: String?
+
+        public var noPtTableCount: Int32?
+
+        public var partitionCount: Int32?
+
+        public var ptTableCount: Int32?
+
+        public var recordCount: Int64?
+
+        public var schemaCount: Int32?
+
+        public var storageSize: String?
+
+        public var tableCount: Int32?
+
+        public var transactionalCount: Int32?
+
+        public var viewCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.catalogCount != nil {
+                map["catalogCount"] = self.catalogCount!
+            }
+            if self.componentId != nil {
+                map["componentId"] = self.componentId!
+            }
+            if self.componentType != nil {
+                map["componentType"] = self.componentType!
+            }
+            if self.dsName != nil {
+                map["dsName"] = self.dsName!
+            }
+            if self.dsVersion != nil {
+                map["dsVersion"] = self.dsVersion!
+            }
+            if self.etTableCount != nil {
+                map["etTableCount"] = self.etTableCount!
+            }
+            if self.funcCount != nil {
+                map["funcCount"] = self.funcCount!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
+            }
+            if self.lastModified != nil {
+                map["lastModified"] = self.lastModified!
+            }
+            if self.noPtTableCount != nil {
+                map["noPtTableCount"] = self.noPtTableCount!
+            }
+            if self.partitionCount != nil {
+                map["partitionCount"] = self.partitionCount!
+            }
+            if self.ptTableCount != nil {
+                map["ptTableCount"] = self.ptTableCount!
+            }
+            if self.recordCount != nil {
+                map["recordCount"] = self.recordCount!
+            }
+            if self.schemaCount != nil {
+                map["schemaCount"] = self.schemaCount!
+            }
+            if self.storageSize != nil {
+                map["storageSize"] = self.storageSize!
+            }
+            if self.tableCount != nil {
+                map["tableCount"] = self.tableCount!
+            }
+            if self.transactionalCount != nil {
+                map["transactionalCount"] = self.transactionalCount!
+            }
+            if self.viewCount != nil {
+                map["viewCount"] = self.viewCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["catalogCount"] as? Int32 {
+                self.catalogCount = value
+            }
+            if let value = dict["componentId"] as? Int64 {
+                self.componentId = value
+            }
+            if let value = dict["componentType"] as? Int32 {
+                self.componentType = value
+            }
+            if let value = dict["dsName"] as? String {
+                self.dsName = value
+            }
+            if let value = dict["dsVersion"] as? String {
+                self.dsVersion = value
+            }
+            if let value = dict["etTableCount"] as? Int32 {
+                self.etTableCount = value
+            }
+            if let value = dict["funcCount"] as? Int32 {
+                self.funcCount = value
+            }
+            if let value = dict["gmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["lastModified"] as? String {
+                self.lastModified = value
+            }
+            if let value = dict["noPtTableCount"] as? Int32 {
+                self.noPtTableCount = value
+            }
+            if let value = dict["partitionCount"] as? Int32 {
+                self.partitionCount = value
+            }
+            if let value = dict["ptTableCount"] as? Int32 {
+                self.ptTableCount = value
+            }
+            if let value = dict["recordCount"] as? Int64 {
+                self.recordCount = value
+            }
+            if let value = dict["schemaCount"] as? Int32 {
+                self.schemaCount = value
+            }
+            if let value = dict["storageSize"] as? String {
+                self.storageSize = value
+            }
+            if let value = dict["tableCount"] as? Int32 {
+                self.tableCount = value
+            }
+            if let value = dict["transactionalCount"] as? Int32 {
+                self.transactionalCount = value
+            }
+            if let value = dict["viewCount"] as? Int32 {
+                self.viewCount = value
+            }
+        }
+    }
+    public var data: GetMetaProfilingResultDbOverviewResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetMetaProfilingResultDbOverviewResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetMetaProfilingResultDbOverviewResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetMetaProfilingResultDbOverviewResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetMetaProfilingResultDbOverviewResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -16185,6 +17059,1854 @@ public class ListMetaDataComponentPageResponse : Tea.TeaModel {
     }
 }
 
+public class ListMetaProfilingResultCatalogPageRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dbName: String?
+
+    public var groupBy: String?
+
+    public var needTotalCount: Bool?
+
+    public var orderBy: String?
+
+    public var orderDirection: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var taskId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["catalogName"] = self.catalogName!
+        }
+        if self.dbName != nil {
+            map["dbName"] = self.dbName!
+        }
+        if self.groupBy != nil {
+            map["groupBy"] = self.groupBy!
+        }
+        if self.needTotalCount != nil {
+            map["needTotalCount"] = self.needTotalCount!
+        }
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
+        if self.orderDirection != nil {
+            map["orderDirection"] = self.orderDirection!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["catalogName"] as? String {
+            self.catalogName = value
+        }
+        if let value = dict["dbName"] as? String {
+            self.dbName = value
+        }
+        if let value = dict["groupBy"] as? String {
+            self.groupBy = value
+        }
+        if let value = dict["needTotalCount"] as? Bool {
+            self.needTotalCount = value
+        }
+        if let value = dict["orderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["orderDirection"] as? String {
+            self.orderDirection = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["taskId"] as? Int64 {
+            self.taskId = value
+        }
+    }
+}
+
+public class ListMetaProfilingResultCatalogPageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var catalogName: String?
+
+        public var created: String?
+
+        public var jobId: Int64?
+
+        public var lastModified: String?
+
+        public var metaDatasourceId: Int64?
+
+        public var metaDatasourceType: String?
+
+        public var migrationProgress: Double?
+
+        public var migrationStatus: String?
+
+        public var partitionCount: Int32?
+
+        public var ptTableCount: Int32?
+
+        public var recordCount: Int64?
+
+        public var schemaCount: Int32?
+
+        public var storageSize: String?
+
+        public var tableCount: Int32?
+
+        public var viewCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.catalogName != nil {
+                map["catalogName"] = self.catalogName!
+            }
+            if self.created != nil {
+                map["created"] = self.created!
+            }
+            if self.jobId != nil {
+                map["jobId"] = self.jobId!
+            }
+            if self.lastModified != nil {
+                map["lastModified"] = self.lastModified!
+            }
+            if self.metaDatasourceId != nil {
+                map["metaDatasourceId"] = self.metaDatasourceId!
+            }
+            if self.metaDatasourceType != nil {
+                map["metaDatasourceType"] = self.metaDatasourceType!
+            }
+            if self.migrationProgress != nil {
+                map["migrationProgress"] = self.migrationProgress!
+            }
+            if self.migrationStatus != nil {
+                map["migrationStatus"] = self.migrationStatus!
+            }
+            if self.partitionCount != nil {
+                map["partitionCount"] = self.partitionCount!
+            }
+            if self.ptTableCount != nil {
+                map["ptTableCount"] = self.ptTableCount!
+            }
+            if self.recordCount != nil {
+                map["recordCount"] = self.recordCount!
+            }
+            if self.schemaCount != nil {
+                map["schemaCount"] = self.schemaCount!
+            }
+            if self.storageSize != nil {
+                map["storageSize"] = self.storageSize!
+            }
+            if self.tableCount != nil {
+                map["tableCount"] = self.tableCount!
+            }
+            if self.viewCount != nil {
+                map["viewCount"] = self.viewCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["catalogName"] as? String {
+                self.catalogName = value
+            }
+            if let value = dict["created"] as? String {
+                self.created = value
+            }
+            if let value = dict["jobId"] as? Int64 {
+                self.jobId = value
+            }
+            if let value = dict["lastModified"] as? String {
+                self.lastModified = value
+            }
+            if let value = dict["metaDatasourceId"] as? Int64 {
+                self.metaDatasourceId = value
+            }
+            if let value = dict["metaDatasourceType"] as? String {
+                self.metaDatasourceType = value
+            }
+            if let value = dict["migrationProgress"] as? Double {
+                self.migrationProgress = value
+            }
+            if let value = dict["migrationStatus"] as? String {
+                self.migrationStatus = value
+            }
+            if let value = dict["partitionCount"] as? Int32 {
+                self.partitionCount = value
+            }
+            if let value = dict["ptTableCount"] as? Int32 {
+                self.ptTableCount = value
+            }
+            if let value = dict["recordCount"] as? Int64 {
+                self.recordCount = value
+            }
+            if let value = dict["schemaCount"] as? Int32 {
+                self.schemaCount = value
+            }
+            if let value = dict["storageSize"] as? String {
+                self.storageSize = value
+            }
+            if let value = dict["tableCount"] as? Int32 {
+                self.tableCount = value
+            }
+            if let value = dict["viewCount"] as? Int32 {
+                self.viewCount = value
+            }
+        }
+    }
+    public var data: [ListMetaProfilingResultCatalogPageResponseBody.Data]?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [ListMetaProfilingResultCatalogPageResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListMetaProfilingResultCatalogPageResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListMetaProfilingResultCatalogPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMetaProfilingResultCatalogPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMetaProfilingResultCatalogPageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListMetaProfilingResultTablePageRequest : Tea.TeaModel {
+    public var componentType: Int32?
+
+    public var dataRange: String?
+
+    public var dataSize: Double?
+
+    public var dataUnit: String?
+
+    public var dbName: String?
+
+    public var groupBy: String?
+
+    public var isPartitioned: Int32?
+
+    public var isSummary: Bool?
+
+    public var migrationStatus: String?
+
+    public var needTotalCount: Bool?
+
+    public var orderBy: String?
+
+    public var orderDirection: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var tableName: String?
+
+    public var taskId: Int64?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentType != nil {
+            map["componentType"] = self.componentType!
+        }
+        if self.dataRange != nil {
+            map["dataRange"] = self.dataRange!
+        }
+        if self.dataSize != nil {
+            map["dataSize"] = self.dataSize!
+        }
+        if self.dataUnit != nil {
+            map["dataUnit"] = self.dataUnit!
+        }
+        if self.dbName != nil {
+            map["dbName"] = self.dbName!
+        }
+        if self.groupBy != nil {
+            map["groupBy"] = self.groupBy!
+        }
+        if self.isPartitioned != nil {
+            map["isPartitioned"] = self.isPartitioned!
+        }
+        if self.isSummary != nil {
+            map["isSummary"] = self.isSummary!
+        }
+        if self.migrationStatus != nil {
+            map["migrationStatus"] = self.migrationStatus!
+        }
+        if self.needTotalCount != nil {
+            map["needTotalCount"] = self.needTotalCount!
+        }
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
+        if self.orderDirection != nil {
+            map["orderDirection"] = self.orderDirection!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.tableName != nil {
+            map["tableName"] = self.tableName!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["componentType"] as? Int32 {
+            self.componentType = value
+        }
+        if let value = dict["dataRange"] as? String {
+            self.dataRange = value
+        }
+        if let value = dict["dataSize"] as? Double {
+            self.dataSize = value
+        }
+        if let value = dict["dataUnit"] as? String {
+            self.dataUnit = value
+        }
+        if let value = dict["dbName"] as? String {
+            self.dbName = value
+        }
+        if let value = dict["groupBy"] as? String {
+            self.groupBy = value
+        }
+        if let value = dict["isPartitioned"] as? Int32 {
+            self.isPartitioned = value
+        }
+        if let value = dict["isSummary"] as? Bool {
+            self.isSummary = value
+        }
+        if let value = dict["migrationStatus"] as? String {
+            self.migrationStatus = value
+        }
+        if let value = dict["needTotalCount"] as? Bool {
+            self.needTotalCount = value
+        }
+        if let value = dict["orderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["orderDirection"] as? String {
+            self.orderDirection = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["tableName"] as? String {
+            self.tableName = value
+        }
+        if let value = dict["taskId"] as? Int64 {
+            self.taskId = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class ListMetaProfilingResultTablePageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var averageFileSize: String?
+
+        public var averagePartitionSize: String?
+
+        public var created: String?
+
+        public var dbName: String?
+
+        public var ds: String?
+
+        public var engine: String?
+
+        public var fileNum: Int32?
+
+        public var isExternal: Int32?
+
+        public var isPtTable: Int32?
+
+        public var isTransactional: Int32?
+
+        public var lastAccessed: String?
+
+        public var lastModified: String?
+
+        public var maxPtCrtTime: String?
+
+        public var maximumPartitionList: [String]?
+
+        public var migrationProcess: Double?
+
+        public var migrationStatus: String?
+
+        public var minPtCrtTime: String?
+
+        public var minimumPartitionList: [String]?
+
+        public var newAdded: Int32?
+
+        public var partitionFieldNameList: [String]?
+
+        public var partitionNum: Int32?
+
+        public var recordCount: Int64?
+
+        public var storageSize: String?
+
+        public var tableComment: String?
+
+        public var tableId: String?
+
+        public var tableModTime: String?
+
+        public var tableName: String?
+
+        public var tableType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.averageFileSize != nil {
+                map["averageFileSize"] = self.averageFileSize!
+            }
+            if self.averagePartitionSize != nil {
+                map["averagePartitionSize"] = self.averagePartitionSize!
+            }
+            if self.created != nil {
+                map["created"] = self.created!
+            }
+            if self.dbName != nil {
+                map["dbName"] = self.dbName!
+            }
+            if self.ds != nil {
+                map["ds"] = self.ds!
+            }
+            if self.engine != nil {
+                map["engine"] = self.engine!
+            }
+            if self.fileNum != nil {
+                map["fileNum"] = self.fileNum!
+            }
+            if self.isExternal != nil {
+                map["isExternal"] = self.isExternal!
+            }
+            if self.isPtTable != nil {
+                map["isPtTable"] = self.isPtTable!
+            }
+            if self.isTransactional != nil {
+                map["isTransactional"] = self.isTransactional!
+            }
+            if self.lastAccessed != nil {
+                map["lastAccessed"] = self.lastAccessed!
+            }
+            if self.lastModified != nil {
+                map["lastModified"] = self.lastModified!
+            }
+            if self.maxPtCrtTime != nil {
+                map["maxPtCrtTime"] = self.maxPtCrtTime!
+            }
+            if self.maximumPartitionList != nil {
+                map["maximumPartitionList"] = self.maximumPartitionList!
+            }
+            if self.migrationProcess != nil {
+                map["migrationProcess"] = self.migrationProcess!
+            }
+            if self.migrationStatus != nil {
+                map["migrationStatus"] = self.migrationStatus!
+            }
+            if self.minPtCrtTime != nil {
+                map["minPtCrtTime"] = self.minPtCrtTime!
+            }
+            if self.minimumPartitionList != nil {
+                map["minimumPartitionList"] = self.minimumPartitionList!
+            }
+            if self.newAdded != nil {
+                map["newAdded"] = self.newAdded!
+            }
+            if self.partitionFieldNameList != nil {
+                map["partitionFieldNameList"] = self.partitionFieldNameList!
+            }
+            if self.partitionNum != nil {
+                map["partitionNum"] = self.partitionNum!
+            }
+            if self.recordCount != nil {
+                map["recordCount"] = self.recordCount!
+            }
+            if self.storageSize != nil {
+                map["storageSize"] = self.storageSize!
+            }
+            if self.tableComment != nil {
+                map["tableComment"] = self.tableComment!
+            }
+            if self.tableId != nil {
+                map["tableId"] = self.tableId!
+            }
+            if self.tableModTime != nil {
+                map["tableModTime"] = self.tableModTime!
+            }
+            if self.tableName != nil {
+                map["tableName"] = self.tableName!
+            }
+            if self.tableType != nil {
+                map["tableType"] = self.tableType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["averageFileSize"] as? String {
+                self.averageFileSize = value
+            }
+            if let value = dict["averagePartitionSize"] as? String {
+                self.averagePartitionSize = value
+            }
+            if let value = dict["created"] as? String {
+                self.created = value
+            }
+            if let value = dict["dbName"] as? String {
+                self.dbName = value
+            }
+            if let value = dict["ds"] as? String {
+                self.ds = value
+            }
+            if let value = dict["engine"] as? String {
+                self.engine = value
+            }
+            if let value = dict["fileNum"] as? Int32 {
+                self.fileNum = value
+            }
+            if let value = dict["isExternal"] as? Int32 {
+                self.isExternal = value
+            }
+            if let value = dict["isPtTable"] as? Int32 {
+                self.isPtTable = value
+            }
+            if let value = dict["isTransactional"] as? Int32 {
+                self.isTransactional = value
+            }
+            if let value = dict["lastAccessed"] as? String {
+                self.lastAccessed = value
+            }
+            if let value = dict["lastModified"] as? String {
+                self.lastModified = value
+            }
+            if let value = dict["maxPtCrtTime"] as? String {
+                self.maxPtCrtTime = value
+            }
+            if let value = dict["maximumPartitionList"] as? [String] {
+                self.maximumPartitionList = value
+            }
+            if let value = dict["migrationProcess"] as? Double {
+                self.migrationProcess = value
+            }
+            if let value = dict["migrationStatus"] as? String {
+                self.migrationStatus = value
+            }
+            if let value = dict["minPtCrtTime"] as? String {
+                self.minPtCrtTime = value
+            }
+            if let value = dict["minimumPartitionList"] as? [String] {
+                self.minimumPartitionList = value
+            }
+            if let value = dict["newAdded"] as? Int32 {
+                self.newAdded = value
+            }
+            if let value = dict["partitionFieldNameList"] as? [String] {
+                self.partitionFieldNameList = value
+            }
+            if let value = dict["partitionNum"] as? Int32 {
+                self.partitionNum = value
+            }
+            if let value = dict["recordCount"] as? Int64 {
+                self.recordCount = value
+            }
+            if let value = dict["storageSize"] as? String {
+                self.storageSize = value
+            }
+            if let value = dict["tableComment"] as? String {
+                self.tableComment = value
+            }
+            if let value = dict["tableId"] as? String {
+                self.tableId = value
+            }
+            if let value = dict["tableModTime"] as? String {
+                self.tableModTime = value
+            }
+            if let value = dict["tableName"] as? String {
+                self.tableName = value
+            }
+            if let value = dict["tableType"] as? String {
+                self.tableType = value
+            }
+        }
+    }
+    public var data: [ListMetaProfilingResultTablePageResponseBody.Data]?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [ListMetaProfilingResultTablePageResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListMetaProfilingResultTablePageResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListMetaProfilingResultTablePageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMetaProfilingResultTablePageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMetaProfilingResultTablePageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListMetaProfilingResultUdfPageRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var componentType: Int32?
+
+    public var dbName: String?
+
+    public var funcName: String?
+
+    public var groupBy: String?
+
+    public var isSummary: Bool?
+
+    public var needTotalCount: Bool?
+
+    public var orderBy: String?
+
+    public var orderDirection: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var taskId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["catalogName"] = self.catalogName!
+        }
+        if self.componentType != nil {
+            map["componentType"] = self.componentType!
+        }
+        if self.dbName != nil {
+            map["dbName"] = self.dbName!
+        }
+        if self.funcName != nil {
+            map["funcName"] = self.funcName!
+        }
+        if self.groupBy != nil {
+            map["groupBy"] = self.groupBy!
+        }
+        if self.isSummary != nil {
+            map["isSummary"] = self.isSummary!
+        }
+        if self.needTotalCount != nil {
+            map["needTotalCount"] = self.needTotalCount!
+        }
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
+        if self.orderDirection != nil {
+            map["orderDirection"] = self.orderDirection!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["catalogName"] as? String {
+            self.catalogName = value
+        }
+        if let value = dict["componentType"] as? Int32 {
+            self.componentType = value
+        }
+        if let value = dict["dbName"] as? String {
+            self.dbName = value
+        }
+        if let value = dict["funcName"] as? String {
+            self.funcName = value
+        }
+        if let value = dict["groupBy"] as? String {
+            self.groupBy = value
+        }
+        if let value = dict["isSummary"] as? Bool {
+            self.isSummary = value
+        }
+        if let value = dict["needTotalCount"] as? Bool {
+            self.needTotalCount = value
+        }
+        if let value = dict["orderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["orderDirection"] as? String {
+            self.orderDirection = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["taskId"] as? Int64 {
+            self.taskId = value
+        }
+    }
+}
+
+public class ListMetaProfilingResultUdfPageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var catalogName: String?
+
+        public var className: String?
+
+        public var dbName: String?
+
+        public var dsType: String?
+
+        public var funcComment: String?
+
+        public var funcCrtTime: String?
+
+        public var funcId: String?
+
+        public var funcModTime: String?
+
+        public var funcName: String?
+
+        public var funcType: String?
+
+        public var id: Int64?
+
+        public var migrationStatus: String?
+
+        public var owner: String?
+
+        public var resourceLocation: String?
+
+        public var resourceType: String?
+
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.catalogName != nil {
+                map["catalogName"] = self.catalogName!
+            }
+            if self.className != nil {
+                map["className"] = self.className!
+            }
+            if self.dbName != nil {
+                map["dbName"] = self.dbName!
+            }
+            if self.dsType != nil {
+                map["dsType"] = self.dsType!
+            }
+            if self.funcComment != nil {
+                map["funcComment"] = self.funcComment!
+            }
+            if self.funcCrtTime != nil {
+                map["funcCrtTime"] = self.funcCrtTime!
+            }
+            if self.funcId != nil {
+                map["funcId"] = self.funcId!
+            }
+            if self.funcModTime != nil {
+                map["funcModTime"] = self.funcModTime!
+            }
+            if self.funcName != nil {
+                map["funcName"] = self.funcName!
+            }
+            if self.funcType != nil {
+                map["funcType"] = self.funcType!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.migrationStatus != nil {
+                map["migrationStatus"] = self.migrationStatus!
+            }
+            if self.owner != nil {
+                map["owner"] = self.owner!
+            }
+            if self.resourceLocation != nil {
+                map["resourceLocation"] = self.resourceLocation!
+            }
+            if self.resourceType != nil {
+                map["resourceType"] = self.resourceType!
+            }
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["catalogName"] as? String {
+                self.catalogName = value
+            }
+            if let value = dict["className"] as? String {
+                self.className = value
+            }
+            if let value = dict["dbName"] as? String {
+                self.dbName = value
+            }
+            if let value = dict["dsType"] as? String {
+                self.dsType = value
+            }
+            if let value = dict["funcComment"] as? String {
+                self.funcComment = value
+            }
+            if let value = dict["funcCrtTime"] as? String {
+                self.funcCrtTime = value
+            }
+            if let value = dict["funcId"] as? String {
+                self.funcId = value
+            }
+            if let value = dict["funcModTime"] as? String {
+                self.funcModTime = value
+            }
+            if let value = dict["funcName"] as? String {
+                self.funcName = value
+            }
+            if let value = dict["funcType"] as? String {
+                self.funcType = value
+            }
+            if let value = dict["id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["migrationStatus"] as? String {
+                self.migrationStatus = value
+            }
+            if let value = dict["owner"] as? String {
+                self.owner = value
+            }
+            if let value = dict["resourceLocation"] as? String {
+                self.resourceLocation = value
+            }
+            if let value = dict["resourceType"] as? String {
+                self.resourceType = value
+            }
+            if let value = dict["tenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
+    public var data: [ListMetaProfilingResultUdfPageResponseBody.Data]?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [ListMetaProfilingResultUdfPageResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListMetaProfilingResultUdfPageResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListMetaProfilingResultUdfPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMetaProfilingResultUdfPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMetaProfilingResultUdfPageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListMetaProfilingSkillJobPageRequest : Tea.TeaModel {
+    public var componentIds: [Int64]?
+
+    public var dsId: Int64?
+
+    public var dsName: String?
+
+    public var dsType: String?
+
+    public var groupBy: String?
+
+    public var isDisplaySystemTask: Bool?
+
+    public var jobId: Int64?
+
+    public var jobName: String?
+
+    public var needTotalCount: Bool?
+
+    public var orderBy: String?
+
+    public var orderDirection: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentIds != nil {
+            map["componentIds"] = self.componentIds!
+        }
+        if self.dsId != nil {
+            map["dsId"] = self.dsId!
+        }
+        if self.dsName != nil {
+            map["dsName"] = self.dsName!
+        }
+        if self.dsType != nil {
+            map["dsType"] = self.dsType!
+        }
+        if self.groupBy != nil {
+            map["groupBy"] = self.groupBy!
+        }
+        if self.isDisplaySystemTask != nil {
+            map["isDisplaySystemTask"] = self.isDisplaySystemTask!
+        }
+        if self.jobId != nil {
+            map["jobId"] = self.jobId!
+        }
+        if self.jobName != nil {
+            map["jobName"] = self.jobName!
+        }
+        if self.needTotalCount != nil {
+            map["needTotalCount"] = self.needTotalCount!
+        }
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
+        if self.orderDirection != nil {
+            map["orderDirection"] = self.orderDirection!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["componentIds"] as? [Int64] {
+            self.componentIds = value
+        }
+        if let value = dict["dsId"] as? Int64 {
+            self.dsId = value
+        }
+        if let value = dict["dsName"] as? String {
+            self.dsName = value
+        }
+        if let value = dict["dsType"] as? String {
+            self.dsType = value
+        }
+        if let value = dict["groupBy"] as? String {
+            self.groupBy = value
+        }
+        if let value = dict["isDisplaySystemTask"] as? Bool {
+            self.isDisplaySystemTask = value
+        }
+        if let value = dict["jobId"] as? Int64 {
+            self.jobId = value
+        }
+        if let value = dict["jobName"] as? String {
+            self.jobName = value
+        }
+        if let value = dict["needTotalCount"] as? Bool {
+            self.needTotalCount = value
+        }
+        if let value = dict["orderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["orderDirection"] as? String {
+            self.orderDirection = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListMetaProfilingSkillJobPageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var componentId: Int64?
+
+        public var currentTaskStatus: Int32?
+
+        public var dcName: String?
+
+        public var dcStatus: Int32?
+
+        public var dcType: String?
+
+        public var diffNodeNum: Int32?
+
+        public var diffPartitionNum: Int32?
+
+        public var diffTableNum: Int32?
+
+        public var diffWorkflowNum: Int32?
+
+        public var dsCategoryType: String?
+
+        public var gmtCreate: String?
+
+        public var hasIncrementChanges: Bool?
+
+        public var id: Int64?
+
+        public var jobDesc: String?
+
+        public var jobName: String?
+
+        public var jobStatus: Int32?
+
+        public var lastBatchId: String?
+
+        public var lastTaskId: Int64?
+
+        public var nextCronTime: String?
+
+        public var profilingEnable: Int32?
+
+        public var profilingSchemaList: [String]?
+
+        public var taskExecResult: Int32?
+
+        public var taskFinishTime: String?
+
+        public var taskType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentId != nil {
+                map["componentId"] = self.componentId!
+            }
+            if self.currentTaskStatus != nil {
+                map["currentTaskStatus"] = self.currentTaskStatus!
+            }
+            if self.dcName != nil {
+                map["dcName"] = self.dcName!
+            }
+            if self.dcStatus != nil {
+                map["dcStatus"] = self.dcStatus!
+            }
+            if self.dcType != nil {
+                map["dcType"] = self.dcType!
+            }
+            if self.diffNodeNum != nil {
+                map["diffNodeNum"] = self.diffNodeNum!
+            }
+            if self.diffPartitionNum != nil {
+                map["diffPartitionNum"] = self.diffPartitionNum!
+            }
+            if self.diffTableNum != nil {
+                map["diffTableNum"] = self.diffTableNum!
+            }
+            if self.diffWorkflowNum != nil {
+                map["diffWorkflowNum"] = self.diffWorkflowNum!
+            }
+            if self.dsCategoryType != nil {
+                map["dsCategoryType"] = self.dsCategoryType!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
+            }
+            if self.hasIncrementChanges != nil {
+                map["hasIncrementChanges"] = self.hasIncrementChanges!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.jobDesc != nil {
+                map["jobDesc"] = self.jobDesc!
+            }
+            if self.jobName != nil {
+                map["jobName"] = self.jobName!
+            }
+            if self.jobStatus != nil {
+                map["jobStatus"] = self.jobStatus!
+            }
+            if self.lastBatchId != nil {
+                map["lastBatchId"] = self.lastBatchId!
+            }
+            if self.lastTaskId != nil {
+                map["lastTaskId"] = self.lastTaskId!
+            }
+            if self.nextCronTime != nil {
+                map["nextCronTime"] = self.nextCronTime!
+            }
+            if self.profilingEnable != nil {
+                map["profilingEnable"] = self.profilingEnable!
+            }
+            if self.profilingSchemaList != nil {
+                map["profilingSchemaList"] = self.profilingSchemaList!
+            }
+            if self.taskExecResult != nil {
+                map["taskExecResult"] = self.taskExecResult!
+            }
+            if self.taskFinishTime != nil {
+                map["taskFinishTime"] = self.taskFinishTime!
+            }
+            if self.taskType != nil {
+                map["taskType"] = self.taskType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["componentId"] as? Int64 {
+                self.componentId = value
+            }
+            if let value = dict["currentTaskStatus"] as? Int32 {
+                self.currentTaskStatus = value
+            }
+            if let value = dict["dcName"] as? String {
+                self.dcName = value
+            }
+            if let value = dict["dcStatus"] as? Int32 {
+                self.dcStatus = value
+            }
+            if let value = dict["dcType"] as? String {
+                self.dcType = value
+            }
+            if let value = dict["diffNodeNum"] as? Int32 {
+                self.diffNodeNum = value
+            }
+            if let value = dict["diffPartitionNum"] as? Int32 {
+                self.diffPartitionNum = value
+            }
+            if let value = dict["diffTableNum"] as? Int32 {
+                self.diffTableNum = value
+            }
+            if let value = dict["diffWorkflowNum"] as? Int32 {
+                self.diffWorkflowNum = value
+            }
+            if let value = dict["dsCategoryType"] as? String {
+                self.dsCategoryType = value
+            }
+            if let value = dict["gmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["hasIncrementChanges"] as? Bool {
+                self.hasIncrementChanges = value
+            }
+            if let value = dict["id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["jobDesc"] as? String {
+                self.jobDesc = value
+            }
+            if let value = dict["jobName"] as? String {
+                self.jobName = value
+            }
+            if let value = dict["jobStatus"] as? Int32 {
+                self.jobStatus = value
+            }
+            if let value = dict["lastBatchId"] as? String {
+                self.lastBatchId = value
+            }
+            if let value = dict["lastTaskId"] as? Int64 {
+                self.lastTaskId = value
+            }
+            if let value = dict["nextCronTime"] as? String {
+                self.nextCronTime = value
+            }
+            if let value = dict["profilingEnable"] as? Int32 {
+                self.profilingEnable = value
+            }
+            if let value = dict["profilingSchemaList"] as? [String] {
+                self.profilingSchemaList = value
+            }
+            if let value = dict["taskExecResult"] as? Int32 {
+                self.taskExecResult = value
+            }
+            if let value = dict["taskFinishTime"] as? String {
+                self.taskFinishTime = value
+            }
+            if let value = dict["taskType"] as? String {
+                self.taskType = value
+            }
+        }
+    }
+    public var data: [ListMetaProfilingSkillJobPageResponseBody.Data]?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.pageIndex != nil {
+            map["pageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [ListMetaProfilingSkillJobPageResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListMetaProfilingSkillJobPageResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["pageIndex"] as? Int32 {
+            self.pageIndex = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListMetaProfilingSkillJobPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMetaProfilingSkillJobPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMetaProfilingSkillJobPageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class PostInnerConvertRequest : Tea.TeaModel {
     public var sqlConvertMap: [String: Any]?
 
@@ -17052,6 +19774,230 @@ public class SingleSqlDryRunResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SingleSqlDryRunResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SkillAddMetaProfilingJobRequest : Tea.TeaModel {
+    public var componentId: Int64?
+
+    public var jobDesc: String?
+
+    public var jobId: Int64?
+
+    public var jobName: String?
+
+    public var metaIds: [String]?
+
+    public var pluginId: String?
+
+    public var profilingFlag: Int32?
+
+    public var profilingPermission: Int32?
+
+    public var profilingRule: String?
+
+    public var profilingSchemaList: [String]?
+
+    public var profilingType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentId != nil {
+            map["componentId"] = self.componentId!
+        }
+        if self.jobDesc != nil {
+            map["jobDesc"] = self.jobDesc!
+        }
+        if self.jobId != nil {
+            map["jobId"] = self.jobId!
+        }
+        if self.jobName != nil {
+            map["jobName"] = self.jobName!
+        }
+        if self.metaIds != nil {
+            map["metaIds"] = self.metaIds!
+        }
+        if self.pluginId != nil {
+            map["pluginId"] = self.pluginId!
+        }
+        if self.profilingFlag != nil {
+            map["profilingFlag"] = self.profilingFlag!
+        }
+        if self.profilingPermission != nil {
+            map["profilingPermission"] = self.profilingPermission!
+        }
+        if self.profilingRule != nil {
+            map["profilingRule"] = self.profilingRule!
+        }
+        if self.profilingSchemaList != nil {
+            map["profilingSchemaList"] = self.profilingSchemaList!
+        }
+        if self.profilingType != nil {
+            map["profilingType"] = self.profilingType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["componentId"] as? Int64 {
+            self.componentId = value
+        }
+        if let value = dict["jobDesc"] as? String {
+            self.jobDesc = value
+        }
+        if let value = dict["jobId"] as? Int64 {
+            self.jobId = value
+        }
+        if let value = dict["jobName"] as? String {
+            self.jobName = value
+        }
+        if let value = dict["metaIds"] as? [String] {
+            self.metaIds = value
+        }
+        if let value = dict["pluginId"] as? String {
+            self.pluginId = value
+        }
+        if let value = dict["profilingFlag"] as? Int32 {
+            self.profilingFlag = value
+        }
+        if let value = dict["profilingPermission"] as? Int32 {
+            self.profilingPermission = value
+        }
+        if let value = dict["profilingRule"] as? String {
+            self.profilingRule = value
+        }
+        if let value = dict["profilingSchemaList"] as? [String] {
+            self.profilingSchemaList = value
+        }
+        if let value = dict["profilingType"] as? Int32 {
+            self.profilingType = value
+        }
+    }
+}
+
+public class SkillAddMetaProfilingJobResponseBody : Tea.TeaModel {
+    public var data: Int64?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Int64 {
+            self.data = value
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["errMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SkillAddMetaProfilingJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SkillAddMetaProfilingJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SkillAddMetaProfilingJobResponseBody()
             model.fromMap(value)
             self.body = model
         }
