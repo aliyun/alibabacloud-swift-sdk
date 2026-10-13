@@ -11665,6 +11665,8 @@ public class CreateMigrateTaskRequest : Tea.TeaModel {
 
     public var isOnlineDB: String?
 
+    public var keepCDC: Bool?
+
     public var migrateTaskId: String?
 
     public var OSSUrls: String?
@@ -11706,6 +11708,9 @@ public class CreateMigrateTaskRequest : Tea.TeaModel {
         if self.isOnlineDB != nil {
             map["IsOnlineDB"] = self.isOnlineDB!
         }
+        if self.keepCDC != nil {
+            map["KeepCDC"] = self.keepCDC!
+        }
         if self.migrateTaskId != nil {
             map["MigrateTaskId"] = self.migrateTaskId!
         }
@@ -11743,6 +11748,9 @@ public class CreateMigrateTaskRequest : Tea.TeaModel {
         }
         if let value = dict["IsOnlineDB"] as? String {
             self.isOnlineDB = value
+        }
+        if let value = dict["KeepCDC"] as? Bool {
+            self.keepCDC = value
         }
         if let value = dict["MigrateTaskId"] as? String {
             self.migrateTaskId = value
@@ -11895,6 +11903,8 @@ public class CreateOnlineDatabaseTaskRequest : Tea.TeaModel {
 
     public var DBName: String?
 
+    public var keepCDC: Bool?
+
     public var migrateTaskId: String?
 
     public var ownerAccount: String?
@@ -11931,6 +11941,9 @@ public class CreateOnlineDatabaseTaskRequest : Tea.TeaModel {
         if self.DBName != nil {
             map["DBName"] = self.DBName!
         }
+        if self.keepCDC != nil {
+            map["KeepCDC"] = self.keepCDC!
+        }
         if self.migrateTaskId != nil {
             map["MigrateTaskId"] = self.migrateTaskId!
         }
@@ -11962,6 +11975,9 @@ public class CreateOnlineDatabaseTaskRequest : Tea.TeaModel {
         }
         if let value = dict["DBName"] as? String {
             self.DBName = value
+        }
+        if let value = dict["KeepCDC"] as? Bool {
+            self.keepCDC = value
         }
         if let value = dict["MigrateTaskId"] as? String {
             self.migrateTaskId = value
