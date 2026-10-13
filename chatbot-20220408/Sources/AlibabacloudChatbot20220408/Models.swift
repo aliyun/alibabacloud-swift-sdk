@@ -18690,6 +18690,44 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
         }
         public class MessageBody : Tea.TeaModel {
             public class DirectMessageBody : Tea.TeaModel {
+                public class RtDetail : Tea.TeaModel {
+                    public var sentenceRtList: Any?
+
+                    public var transitionRtList: Any?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.sentenceRtList != nil {
+                            map["SentenceRtList"] = self.sentenceRtList!
+                        }
+                        if self.transitionRtList != nil {
+                            map["TransitionRtList"] = self.transitionRtList!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["SentenceRtList"] as? Any {
+                            self.sentenceRtList = value
+                        }
+                        if let value = dict["TransitionRtList"] as? Any {
+                            self.transitionRtList = value
+                        }
+                    }
+                }
                 public class SentenceList : Tea.TeaModel {
                     public var content: String?
 
@@ -18730,6 +18768,10 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
                 }
                 public var contentType: String?
 
+                public var hitSystemAskConfig: String?
+
+                public var rtDetail: TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody.DirectMessageBody.RtDetail?
+
                 public var transitionList: [String]?
 
                 public var relatedQuestionList: [String]?
@@ -18746,12 +18788,19 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.rtDetail?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
                     if self.contentType != nil {
                         map["ContentType"] = self.contentType!
+                    }
+                    if self.hitSystemAskConfig != nil {
+                        map["HitSystemAskConfig"] = self.hitSystemAskConfig!
+                    }
+                    if self.rtDetail != nil {
+                        map["RtDetail"] = self.rtDetail?.toMap()
                     }
                     if self.transitionList != nil {
                         map["TransitionList"] = self.transitionList!
@@ -18773,6 +18822,14 @@ public class TongyiChatDebugInfoResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["ContentType"] as? String {
                         self.contentType = value
+                    }
+                    if let value = dict["HitSystemAskConfig"] as? String {
+                        self.hitSystemAskConfig = value
+                    }
+                    if let value = dict["RtDetail"] as? [String: Any?] {
+                        var model = TongyiChatDebugInfoResponseBody.AnswerInfo.MessageBody.DirectMessageBody.RtDetail()
+                        model.fromMap(value)
+                        self.rtDetail = model
                     }
                     if let value = dict["TransitionList"] as? [String] {
                         self.transitionList = value
