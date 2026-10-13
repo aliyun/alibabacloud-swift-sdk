@@ -9,26 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-wulanchabu": "eflo-controller.cn-wulanchabu.aliyuncs.com",
-            "cn-beijing": "eflo-controller.cn-beijing.aliyuncs.com",
-            "cn-shanghai": "eflo-controller.cn-shanghai.aliyuncs.com",
-            "cn-hongkong": "eflo-controller.cn-hongkong.aliyuncs.com",
-            "cn-heyuan": "eflo-controller.cn-heyuan.aliyuncs.com",
-            "cn-zhangjiakou": "eflo-controller.cn-zhangjiakou.aliyuncs.com",
-            "cn-shenzhen": "eflo-controller.cn-shenzhen.aliyuncs.com",
-            "ap-northeast-1": "eflo-controller.ap-northeast-1.aliyuncs.com",
-            "cn-guangzhou": "eflo-controller.cn-guangzhou.aliyuncs.com",
-            "ap-southeast-1": "eflo-controller.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-3": "eflo-controller.ap-southeast-3.aliyuncs.com",
-            "cn-huhehaote": "eflo-controller.cn-huhehaote.aliyuncs.com",
-            "ap-southeast-7": "eflo-controller.ap-southeast-7.aliyuncs.com",
-            "cn-hangzhou": "eflo-controller.cn-hangzhou.aliyuncs.com",
-            "ap-southeast-8": "eflo-controller.ap-southeast-8.aliyuncs.com",
-            "eu-central-1": "eflo-controller.eu-central-1.aliyuncs.com",
-            "me-east-1": "eflo-controller.me-east-1.aliyuncs.com",
-            "cn-shanghai-finance-1": "eflo-controller.cn-shanghai-finance-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eflo-controller", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -781,6 +761,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFaultReportWithOptions(_ request: DescribeFaultReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFaultReportResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.reportId)) {
+            body["ReportId"] = request.reportId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeFaultReport",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeFaultReportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFaultReport(_ request: DescribeFaultReportRequest) async throws -> DescribeFaultReportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeFaultReportWithOptions(request as! DescribeFaultReportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeHyperNodeWithOptions(_ request: DescribeHyperNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeHyperNodeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1414,6 +1425,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDiagnosticResults(_ request: ListDiagnosticResultsRequest) async throws -> ListDiagnosticResultsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listDiagnosticResultsWithOptions(request as! ListDiagnosticResultsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFaultReportsWithOptions(_ tmpReq: ListFaultReportsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFaultReportsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListFaultReportsShrinkRequest = ListFaultReportsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.nodes)) {
+            request.nodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodes, "Nodes", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodesShrink)) {
+            body["Nodes"] = request.nodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListFaultReports",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListFaultReportsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFaultReports(_ request: ListFaultReportsRequest) async throws -> ListFaultReportsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listFaultReportsWithOptions(request as! ListFaultReportsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2166,6 +2222,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reportNodeStatusWithOptions(_ request: ReportNodeStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReportNodeStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diagnosisType)) {
+            body["DiagnosisType"] = request.diagnosisType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            body["NodeId"] = request.nodeId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReportNodeStatus",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReportNodeStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reportNodeStatus(_ request: ReportNodeStatusRequest) async throws -> ReportNodeStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await reportNodeStatusWithOptions(request as! ReportNodeStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func reportNodesStatusWithOptions(_ tmpReq: ReportNodesStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReportNodesStatusResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ReportNodesStatusShrinkRequest = ReportNodesStatusShrinkRequest([:])
@@ -2445,6 +2538,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopInvocation(_ request: StopInvocationRequest) async throws -> StopInvocationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await stopInvocationWithOptions(request as! StopInvocationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopNodeDiagnosticWithOptions(_ request: StopNodeDiagnosticRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopNodeDiagnosticResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.reportId)) {
+            body["ReportId"] = request.reportId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopNodeDiagnostic",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopNodeDiagnosticResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopNodeDiagnostic(_ request: StopNodeDiagnosticRequest) async throws -> StopNodeDiagnosticResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await stopNodeDiagnosticWithOptions(request as! StopNodeDiagnosticRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
