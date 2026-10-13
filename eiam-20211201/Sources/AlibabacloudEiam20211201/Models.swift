@@ -28081,8 +28081,6 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
 
         public var cloudAccountProviderName: String?
 
-        public var cloudAccountRoleCreationType: String?
-
         public var cloudAccountSite: String?
 
         public var cloudAccountVendorType: String?
@@ -28140,9 +28138,6 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             }
             if self.cloudAccountProviderName != nil {
                 map["CloudAccountProviderName"] = self.cloudAccountProviderName!
-            }
-            if self.cloudAccountRoleCreationType != nil {
-                map["CloudAccountRoleCreationType"] = self.cloudAccountRoleCreationType!
             }
             if self.cloudAccountSite != nil {
                 map["CloudAccountSite"] = self.cloudAccountSite!
@@ -28203,9 +28198,6 @@ public class GetCloudAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["CloudAccountProviderName"] as? String {
                 self.cloudAccountProviderName = value
-            }
-            if let value = dict["CloudAccountRoleCreationType"] as? String {
-                self.cloudAccountRoleCreationType = value
             }
             if let value = dict["CloudAccountSite"] as? String {
                 self.cloudAccountSite = value
