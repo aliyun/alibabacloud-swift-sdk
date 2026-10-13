@@ -1106,6 +1106,8 @@ public class GetTicketResponseBody : Tea.TeaModel {
 
         public var creatorId: String?
 
+        public var creatorName: String?
+
         public var description_: String?
 
         public var severity: GetTicketResponseBody.Data.Severity?
@@ -1141,6 +1143,9 @@ public class GetTicketResponseBody : Tea.TeaModel {
             if self.creatorId != nil {
                 map["CreatorId"] = self.creatorId!
             }
+            if self.creatorName != nil {
+                map["CreatorName"] = self.creatorName!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -1169,6 +1174,9 @@ public class GetTicketResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreatorId"] as? String {
                 self.creatorId = value
+            }
+            if let value = dict["CreatorName"] as? String {
+                self.creatorName = value
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
