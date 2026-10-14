@@ -39421,6 +39421,60 @@ public class GetBatchTaskInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PythonModuleList : Tea.TeaModel {
+            public var moduleId: Int64?
+
+            public var name: String?
+
+            public var pythonVersion: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.moduleId != nil {
+                    map["ModuleId"] = self.moduleId!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.pythonVersion != nil {
+                    map["PythonVersion"] = self.pythonVersion!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ModuleId"] as? Int64 {
+                    self.moduleId = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["PythonVersion"] as? String {
+                    self.pythonVersion = value
+                }
+                if let value = dict["Version"] as? String {
+                    self.version = value
+                }
+            }
+        }
         public class SparkClientInfo : Tea.TeaModel {
             public var sparkClientVersion: String?
 
@@ -39690,6 +39744,10 @@ public class GetBatchTaskInfoResponseBody : Tea.TeaModel {
 
         public var published: Bool?
 
+        public var pythonModuleList: [GetBatchTaskInfoResponseBody.TaskInfo.PythonModuleList]?
+
+        public var pythonVersion: String?
+
         public var remark: String?
 
         public var rerunable: Bool?
@@ -39875,6 +39933,16 @@ public class GetBatchTaskInfoResponseBody : Tea.TeaModel {
             }
             if self.published != nil {
                 map["Published"] = self.published!
+            }
+            if self.pythonModuleList != nil {
+                var tmp : [Any] = []
+                for k in self.pythonModuleList! {
+                    tmp.append(k.toMap())
+                }
+                map["PythonModuleList"] = tmp
+            }
+            if self.pythonVersion != nil {
+                map["PythonVersion"] = self.pythonVersion!
             }
             if self.remark != nil {
                 map["Remark"] = self.remark!
@@ -40087,6 +40155,22 @@ public class GetBatchTaskInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Published"] as? Bool {
                 self.published = value
+            }
+            if let value = dict["PythonModuleList"] as? [Any?] {
+                var tmp : [GetBatchTaskInfoResponseBody.TaskInfo.PythonModuleList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetBatchTaskInfoResponseBody.TaskInfo.PythonModuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.pythonModuleList = tmp
+            }
+            if let value = dict["PythonVersion"] as? String {
+                self.pythonVersion = value
             }
             if let value = dict["Remark"] as? String {
                 self.remark = value
@@ -40429,6 +40513,60 @@ public class GetBatchTaskInfoByVersionResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PythonModuleList : Tea.TeaModel {
+            public var moduleId: Int64?
+
+            public var name: String?
+
+            public var pythonVersion: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.moduleId != nil {
+                    map["ModuleId"] = self.moduleId!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.pythonVersion != nil {
+                    map["PythonVersion"] = self.pythonVersion!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ModuleId"] as? Int64 {
+                    self.moduleId = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["PythonVersion"] as? String {
+                    self.pythonVersion = value
+                }
+                if let value = dict["Version"] as? String {
+                    self.version = value
+                }
+            }
+        }
         public class SparkClientInfo : Tea.TeaModel {
             public var sparkClientVersion: String?
 
@@ -40668,6 +40806,10 @@ public class GetBatchTaskInfoByVersionResponseBody : Tea.TeaModel {
 
         public var published: Bool?
 
+        public var pythonModuleList: [GetBatchTaskInfoByVersionResponseBody.TaskInfo.PythonModuleList]?
+
+        public var pythonVersion: String?
+
         public var remark: String?
 
         public var rerunable: Bool?
@@ -40790,6 +40932,16 @@ public class GetBatchTaskInfoByVersionResponseBody : Tea.TeaModel {
             }
             if self.published != nil {
                 map["Published"] = self.published!
+            }
+            if self.pythonModuleList != nil {
+                var tmp : [Any] = []
+                for k in self.pythonModuleList! {
+                    tmp.append(k.toMap())
+                }
+                map["PythonModuleList"] = tmp
+            }
+            if self.pythonVersion != nil {
+                map["PythonVersion"] = self.pythonVersion!
             }
             if self.remark != nil {
                 map["Remark"] = self.remark!
@@ -40922,6 +41074,22 @@ public class GetBatchTaskInfoByVersionResponseBody : Tea.TeaModel {
             }
             if let value = dict["Published"] as? Bool {
                 self.published = value
+            }
+            if let value = dict["PythonModuleList"] as? [Any?] {
+                var tmp : [GetBatchTaskInfoByVersionResponseBody.TaskInfo.PythonModuleList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetBatchTaskInfoByVersionResponseBody.TaskInfo.PythonModuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.pythonModuleList = tmp
+            }
+            if let value = dict["PythonVersion"] as? String {
+                self.pythonVersion = value
             }
             if let value = dict["Remark"] as? String {
                 self.remark = value
