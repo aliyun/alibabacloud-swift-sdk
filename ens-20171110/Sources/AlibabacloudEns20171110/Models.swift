@@ -5958,11 +5958,15 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var ensRegionId: String?
 
+    public var isp: String?
+
     public var kubernetesVersion: String?
 
     public var loadBalancerId: String?
 
     public var name: String?
+
+    public var natGatewayId: String?
 
     public var podVswitchIds: [String]?
 
@@ -6003,6 +6007,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
+        if self.isp != nil {
+            map["Isp"] = self.isp!
+        }
         if self.kubernetesVersion != nil {
             map["KubernetesVersion"] = self.kubernetesVersion!
         }
@@ -6011,6 +6018,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
         }
         if self.podVswitchIds != nil {
             map["PodVswitchIds"] = self.podVswitchIds!
@@ -6049,6 +6059,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
         }
+        if let value = dict["Isp"] as? String {
+            self.isp = value
+        }
         if let value = dict["KubernetesVersion"] as? String {
             self.kubernetesVersion = value
         }
@@ -6057,6 +6070,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
         }
         if let value = dict["PodVswitchIds"] as? [String] {
             self.podVswitchIds = value
@@ -6088,11 +6104,15 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
 
     public var ensRegionId: String?
 
+    public var isp: String?
+
     public var kubernetesVersion: String?
 
     public var loadBalancerId: String?
 
     public var name: String?
+
+    public var natGatewayId: String?
 
     public var podVswitchIdsShrink: String?
 
@@ -6132,6 +6152,9 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
+        if self.isp != nil {
+            map["Isp"] = self.isp!
+        }
         if self.kubernetesVersion != nil {
             map["KubernetesVersion"] = self.kubernetesVersion!
         }
@@ -6140,6 +6163,9 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
         }
         if self.podVswitchIdsShrink != nil {
             map["PodVswitchIds"] = self.podVswitchIdsShrink!
@@ -6176,6 +6202,9 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
         }
+        if let value = dict["Isp"] as? String {
+            self.isp = value
+        }
         if let value = dict["KubernetesVersion"] as? String {
             self.kubernetesVersion = value
         }
@@ -6184,6 +6213,9 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
         }
         if let value = dict["PodVswitchIds"] as? String {
             self.podVswitchIdsShrink = value
@@ -11604,7 +11636,11 @@ public class CreateNetworkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableIpv6: Bool?
+
     public var ensRegionId: String?
+
+    public var ipv6Isp: String?
 
     public var networkName: String?
 
@@ -11630,8 +11666,14 @@ public class CreateNetworkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableIpv6 != nil {
+            map["EnableIpv6"] = self.enableIpv6!
+        }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.ipv6Isp != nil {
+            map["Ipv6Isp"] = self.ipv6Isp!
         }
         if self.networkName != nil {
             map["NetworkName"] = self.networkName!
@@ -11654,8 +11696,14 @@ public class CreateNetworkRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EnableIpv6"] as? Bool {
+            self.enableIpv6 = value
+        }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
+        }
+        if let value = dict["Ipv6Isp"] as? String {
+            self.ipv6Isp = value
         }
         if let value = dict["NetworkName"] as? String {
             self.networkName = value
@@ -13978,6 +14026,8 @@ public class CreateVSwitchRequest : Tea.TeaModel {
 
     public var ensRegionId: String?
 
+    public var ipv6CidrBlock: String?
+
     public var networkId: String?
 
     public var tag: [CreateVSwitchRequest.Tag]?
@@ -14007,6 +14057,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
+        if self.ipv6CidrBlock != nil {
+            map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+        }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
         }
@@ -14033,6 +14086,9 @@ public class CreateVSwitchRequest : Tea.TeaModel {
         }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
+        }
+        if let value = dict["Ipv6CidrBlock"] as? String {
+            self.ipv6CidrBlock = value
         }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
@@ -23526,6 +23582,221 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ControlPlaneMeta : Tea.TeaModel {
+        public class MasterInstances : Tea.TeaModel {
+            public var instanceId: String?
+
+            public var ip: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.ip != nil {
+                    map["Ip"] = self.ip!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["Ip"] as? String {
+                    self.ip = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+            }
+        }
+        public class MasterUrl : Tea.TeaModel {
+            public var privateUrl: String?
+
+            public var publicUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.privateUrl != nil {
+                    map["PrivateUrl"] = self.privateUrl!
+                }
+                if self.publicUrl != nil {
+                    map["PublicUrl"] = self.publicUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PrivateUrl"] as? String {
+                    self.privateUrl = value
+                }
+                if let value = dict["PublicUrl"] as? String {
+                    self.publicUrl = value
+                }
+            }
+        }
+        public var masterInstances: [DescribeClusterDetailResponseBody.ControlPlaneMeta.MasterInstances]?
+
+        public var masterUrl: DescribeClusterDetailResponseBody.ControlPlaneMeta.MasterUrl?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.masterUrl?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.masterInstances != nil {
+                var tmp : [Any] = []
+                for k in self.masterInstances! {
+                    tmp.append(k.toMap())
+                }
+                map["MasterInstances"] = tmp
+            }
+            if self.masterUrl != nil {
+                map["MasterUrl"] = self.masterUrl?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MasterInstances"] as? [Any?] {
+                var tmp : [DescribeClusterDetailResponseBody.ControlPlaneMeta.MasterInstances] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeClusterDetailResponseBody.ControlPlaneMeta.MasterInstances()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.masterInstances = tmp
+            }
+            if let value = dict["MasterUrl"] as? [String: Any?] {
+                var model = DescribeClusterDetailResponseBody.ControlPlaneMeta.MasterUrl()
+                model.fromMap(value)
+                self.masterUrl = model
+            }
+        }
+    }
+    public class NodeCount : Tea.TeaModel {
+        public var ready: Int32?
+
+        public var total: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ready != nil {
+                map["Ready"] = self.ready!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ready"] as? Int32 {
+                self.ready = value
+            }
+            if let value = dict["Total"] as? Int32 {
+                self.total = value
+            }
+        }
+    }
+    public class PodStatus : Tea.TeaModel {
+        public var running: Int32?
+
+        public var total: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.running != nil {
+                map["Running"] = self.running!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Running"] as? Int32 {
+                self.running = value
+            }
+            if let value = dict["Total"] as? Int32 {
+                self.total = value
+            }
+        }
+    }
     public var aliUid: String?
 
     public var clusterId: String?
@@ -23536,7 +23807,13 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var controlPlaneConfig: DescribeClusterDetailResponseBody.ControlPlaneConfig?
 
+    public var controlPlaneMeta: DescribeClusterDetailResponseBody.ControlPlaneMeta?
+
+    public var created: String?
+
     public var ensRegionId: String?
+
+    public var isp: String?
 
     public var joinToken: String?
 
@@ -23545,6 +23822,12 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     public var loadBalancerId: String?
 
     public var name: String?
+
+    public var natGatewayId: String?
+
+    public var nodeCount: DescribeClusterDetailResponseBody.NodeCount?
+
+    public var podStatus: DescribeClusterDetailResponseBody.PodStatus?
 
     public var podVswitchIds: [String]?
 
@@ -23571,6 +23854,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.controlPlaneConfig?.validate()
+        try self.controlPlaneMeta?.validate()
+        try self.nodeCount?.validate()
+        try self.podStatus?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -23590,8 +23876,17 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         if self.controlPlaneConfig != nil {
             map["ControlPlaneConfig"] = self.controlPlaneConfig?.toMap()
         }
+        if self.controlPlaneMeta != nil {
+            map["ControlPlaneMeta"] = self.controlPlaneMeta?.toMap()
+        }
+        if self.created != nil {
+            map["Created"] = self.created!
+        }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.isp != nil {
+            map["Isp"] = self.isp!
         }
         if self.joinToken != nil {
             map["JoinToken"] = self.joinToken!
@@ -23604,6 +23899,15 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount?.toMap()
+        }
+        if self.podStatus != nil {
+            map["PodStatus"] = self.podStatus?.toMap()
         }
         if self.podVswitchIds != nil {
             map["PodVswitchIds"] = self.podVswitchIds!
@@ -23648,8 +23952,19 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             model.fromMap(value)
             self.controlPlaneConfig = model
         }
+        if let value = dict["ControlPlaneMeta"] as? [String: Any?] {
+            var model = DescribeClusterDetailResponseBody.ControlPlaneMeta()
+            model.fromMap(value)
+            self.controlPlaneMeta = model
+        }
+        if let value = dict["Created"] as? String {
+            self.created = value
+        }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
+        }
+        if let value = dict["Isp"] as? String {
+            self.isp = value
         }
         if let value = dict["JoinToken"] as? String {
             self.joinToken = value
@@ -23662,6 +23977,19 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["NodeCount"] as? [String: Any?] {
+            var model = DescribeClusterDetailResponseBody.NodeCount()
+            model.fromMap(value)
+            self.nodeCount = model
+        }
+        if let value = dict["PodStatus"] as? [String: Any?] {
+            var model = DescribeClusterDetailResponseBody.PodStatus()
+            model.fromMap(value)
+            self.podStatus = model
         }
         if let value = dict["PodVswitchIds"] as? [String] {
             self.podVswitchIds = value
@@ -24224,6 +24552,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
         }
         public var clusterId: String?
 
+        public var created: String?
+
         public var kubernetesConfig: DescribeClusterNodePoolsResponseBody.NodePools.KubernetesConfig?
 
         public var nodepoolInfo: DescribeClusterNodePoolsResponseBody.NodePools.NodepoolInfo?
@@ -24253,6 +24583,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             if self.clusterId != nil {
                 map["ClusterId"] = self.clusterId!
             }
+            if self.created != nil {
+                map["Created"] = self.created!
+            }
             if self.kubernetesConfig != nil {
                 map["KubernetesConfig"] = self.kubernetesConfig?.toMap()
             }
@@ -24272,6 +24605,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ClusterId"] as? String {
                 self.clusterId = value
+            }
+            if let value = dict["Created"] as? String {
+                self.created = value
             }
             if let value = dict["KubernetesConfig"] as? [String: Any?] {
                 var model = DescribeClusterNodePoolsResponseBody.NodePools.KubernetesConfig()
@@ -24511,6 +24847,52 @@ public class DescribeClusterNodesRequest : Tea.TeaModel {
 
 public class DescribeClusterNodesResponseBody : Tea.TeaModel {
     public class Nodes : Tea.TeaModel {
+        public class NodeInfo : Tea.TeaModel {
+            public var containerRuntimeVersion: String?
+
+            public var kubeletVersion: String?
+
+            public var osImage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.containerRuntimeVersion != nil {
+                    map["ContainerRuntimeVersion"] = self.containerRuntimeVersion!
+                }
+                if self.kubeletVersion != nil {
+                    map["KubeletVersion"] = self.kubeletVersion!
+                }
+                if self.osImage != nil {
+                    map["OsImage"] = self.osImage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ContainerRuntimeVersion"] as? String {
+                    self.containerRuntimeVersion = value
+                }
+                if let value = dict["KubeletVersion"] as? String {
+                    self.kubeletVersion = value
+                }
+                if let value = dict["OsImage"] as? String {
+                    self.osImage = value
+                }
+            }
+        }
         public var clusterId: String?
 
         public var ensRegionId: String?
@@ -24520,6 +24902,8 @@ public class DescribeClusterNodesResponseBody : Tea.TeaModel {
         public var instanceId: String?
 
         public var ipAddress: [String]?
+
+        public var nodeInfo: DescribeClusterNodesResponseBody.Nodes.NodeInfo?
 
         public var nodepoolId: String?
 
@@ -24537,6 +24921,7 @@ public class DescribeClusterNodesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.nodeInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -24555,6 +24940,9 @@ public class DescribeClusterNodesResponseBody : Tea.TeaModel {
             }
             if self.ipAddress != nil {
                 map["IpAddress"] = self.ipAddress!
+            }
+            if self.nodeInfo != nil {
+                map["NodeInfo"] = self.nodeInfo?.toMap()
             }
             if self.nodepoolId != nil {
                 map["NodepoolId"] = self.nodepoolId!
@@ -24584,6 +24972,11 @@ public class DescribeClusterNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["IpAddress"] as? [String] {
                 self.ipAddress = value
+            }
+            if let value = dict["NodeInfo"] as? [String: Any?] {
+                var model = DescribeClusterNodesResponseBody.Nodes.NodeInfo()
+                model.fromMap(value)
+                self.nodeInfo = model
             }
             if let value = dict["NodepoolId"] as? String {
                 self.nodepoolId = value
@@ -24886,9 +25279,13 @@ public class DescribeClusterUserKubeconfigResponse : Tea.TeaModel {
 public class DescribeClustersV1Request : Tea.TeaModel {
     public var clusterId: String?
 
+    public var clusterType: String?
+
     public var ensRegionId: String?
 
     public var name: String?
+
+    public var profile: String?
 
     public override init() {
         super.init()
@@ -24907,11 +25304,17 @@ public class DescribeClustersV1Request : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.profile != nil {
+            map["Profile"] = self.profile!
         }
         return map
     }
@@ -24921,11 +25324,17 @@ public class DescribeClustersV1Request : Tea.TeaModel {
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
         }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["Profile"] as? String {
+            self.profile = value
         }
     }
 }
@@ -25020,7 +25429,11 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
 
         public var controlPlaneConfig: DescribeClustersV1ResponseBody.Clusters.ControlPlaneConfig?
 
+        public var created: String?
+
         public var ensRegionId: String?
+
+        public var isp: String?
 
         public var joinToken: String?
 
@@ -25072,8 +25485,14 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             if self.controlPlaneConfig != nil {
                 map["ControlPlaneConfig"] = self.controlPlaneConfig?.toMap()
             }
+            if self.created != nil {
+                map["Created"] = self.created!
+            }
             if self.ensRegionId != nil {
                 map["EnsRegionId"] = self.ensRegionId!
+            }
+            if self.isp != nil {
+                map["Isp"] = self.isp!
             }
             if self.joinToken != nil {
                 map["JoinToken"] = self.joinToken!
@@ -25127,8 +25546,14 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.controlPlaneConfig = model
             }
+            if let value = dict["Created"] as? String {
+                self.created = value
+            }
             if let value = dict["EnsRegionId"] as? String {
                 self.ensRegionId = value
+            }
+            if let value = dict["Isp"] as? String {
+                self.isp = value
             }
             if let value = dict["JoinToken"] as? String {
                 self.joinToken = value
@@ -37511,6 +37936,8 @@ public class DescribeImageInfosResponseBody : Tea.TeaModel {
 
             public var imageId: String?
 
+            public var imageOwnerAlias: String?
+
             public var imageSize: String?
 
             public var imageVersion: String?
@@ -37548,6 +37975,9 @@ public class DescribeImageInfosResponseBody : Tea.TeaModel {
                 if self.imageId != nil {
                     map["ImageId"] = self.imageId!
                 }
+                if self.imageOwnerAlias != nil {
+                    map["ImageOwnerAlias"] = self.imageOwnerAlias!
+                }
                 if self.imageSize != nil {
                     map["ImageSize"] = self.imageSize!
                 }
@@ -37581,6 +38011,9 @@ public class DescribeImageInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ImageId"] as? String {
                     self.imageId = value
+                }
+                if let value = dict["ImageOwnerAlias"] as? String {
+                    self.imageOwnerAlias = value
                 }
                 if let value = dict["ImageSize"] as? String {
                     self.imageSize = value
@@ -40036,10 +40469,47 @@ public class DescribeInstanceSpecResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInstanceTypesRequest : Tea.TeaModel {
+    public var instanceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+    }
+}
+
 public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
     public class InstanceTypes : Tea.TeaModel {
         public class InstanceType : Tea.TeaModel {
             public var cpuCoreCount: Int32?
+
+            public var instanceBandwidthRx: Int64?
+
+            public var instanceBandwidthTx: Int64?
+
+            public var instanceType: String?
 
             public var instanceTypeId: String?
 
@@ -40064,6 +40534,15 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 if self.cpuCoreCount != nil {
                     map["CpuCoreCount"] = self.cpuCoreCount!
                 }
+                if self.instanceBandwidthRx != nil {
+                    map["InstanceBandwidthRx"] = self.instanceBandwidthRx!
+                }
+                if self.instanceBandwidthTx != nil {
+                    map["InstanceBandwidthTx"] = self.instanceBandwidthTx!
+                }
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType!
+                }
                 if self.instanceTypeId != nil {
                     map["InstanceTypeId"] = self.instanceTypeId!
                 }
@@ -40080,6 +40559,15 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["CpuCoreCount"] as? Int32 {
                     self.cpuCoreCount = value
+                }
+                if let value = dict["InstanceBandwidthRx"] as? Int64 {
+                    self.instanceBandwidthRx = value
+                }
+                if let value = dict["InstanceBandwidthTx"] as? Int64 {
+                    self.instanceBandwidthTx = value
+                }
+                if let value = dict["InstanceType"] as? String {
+                    self.instanceType = value
                 }
                 if let value = dict["InstanceTypeId"] as? String {
                     self.instanceTypeId = value
@@ -48601,6 +49089,96 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Ipv6CidrBlocks : Tea.TeaModel {
+        public class Ipv6CidrBlock : Tea.TeaModel {
+            public var ipv6CidrBlock: String?
+
+            public var ipv6Isp: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ipv6CidrBlock != nil {
+                    map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+                }
+                if self.ipv6Isp != nil {
+                    map["Ipv6Isp"] = self.ipv6Isp!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Ipv6CidrBlock"] as? String {
+                    self.ipv6CidrBlock = value
+                }
+                if let value = dict["Ipv6Isp"] as? String {
+                    self.ipv6Isp = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var ipv6CidrBlock: [DescribeNetworkAttributeResponseBody.Ipv6CidrBlocks.Ipv6CidrBlock]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ipv6CidrBlock != nil {
+                var tmp : [Any] = []
+                for k in self.ipv6CidrBlock! {
+                    tmp.append(k.toMap())
+                }
+                map["Ipv6CidrBlock"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ipv6CidrBlock"] as? [Any?] {
+                var tmp : [DescribeNetworkAttributeResponseBody.Ipv6CidrBlocks.Ipv6CidrBlock] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeNetworkAttributeResponseBody.Ipv6CidrBlocks.Ipv6CidrBlock()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.ipv6CidrBlock = tmp
+            }
+        }
+    }
     public class LoadBalancerIds : Tea.TeaModel {
         public var loadBalancerId: [String]?
 
@@ -48797,6 +49375,8 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
 
     public var instanceIds: DescribeNetworkAttributeResponseBody.InstanceIds?
 
+    public var ipv6CidrBlocks: DescribeNetworkAttributeResponseBody.Ipv6CidrBlocks?
+
     public var loadBalancerIds: DescribeNetworkAttributeResponseBody.LoadBalancerIds?
 
     public var natGatewayIds: DescribeNetworkAttributeResponseBody.NatGatewayIds?
@@ -48836,6 +49416,7 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
         try self.cloudResources?.validate()
         try self.haVipIds?.validate()
         try self.instanceIds?.validate()
+        try self.ipv6CidrBlocks?.validate()
         try self.loadBalancerIds?.validate()
         try self.natGatewayIds?.validate()
         try self.networkInterfaceIds?.validate()
@@ -48869,6 +49450,9 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
         }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds?.toMap()
+        }
+        if self.ipv6CidrBlocks != nil {
+            map["Ipv6CidrBlocks"] = self.ipv6CidrBlocks?.toMap()
         }
         if self.loadBalancerIds != nil {
             map["LoadBalancerIds"] = self.loadBalancerIds?.toMap()
@@ -48943,6 +49527,11 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
             var model = DescribeNetworkAttributeResponseBody.InstanceIds()
             model.fromMap(value)
             self.instanceIds = model
+        }
+        if let value = dict["Ipv6CidrBlocks"] as? [String: Any?] {
+            var model = DescribeNetworkAttributeResponseBody.Ipv6CidrBlocks()
+            model.fromMap(value)
+            self.ipv6CidrBlocks = model
         }
         if let value = dict["LoadBalancerIds"] as? [String: Any?] {
             var model = DescribeNetworkAttributeResponseBody.LoadBalancerIds()
@@ -50176,6 +50765,96 @@ public class DescribeNetworksRequest : Tea.TeaModel {
 public class DescribeNetworksResponseBody : Tea.TeaModel {
     public class Networks : Tea.TeaModel {
         public class Network : Tea.TeaModel {
+            public class Ipv6CidrBlocks : Tea.TeaModel {
+                public class Ipv6CidrBlock : Tea.TeaModel {
+                    public var ipv6CidrBlock: String?
+
+                    public var ipv6Isp: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.ipv6CidrBlock != nil {
+                            map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+                        }
+                        if self.ipv6Isp != nil {
+                            map["Ipv6Isp"] = self.ipv6Isp!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Ipv6CidrBlock"] as? String {
+                            self.ipv6CidrBlock = value
+                        }
+                        if let value = dict["Ipv6Isp"] as? String {
+                            self.ipv6Isp = value
+                        }
+                        if let value = dict["Type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public var ipv6CidrBlock: [DescribeNetworksResponseBody.Networks.Network.Ipv6CidrBlocks.Ipv6CidrBlock]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ipv6CidrBlock != nil {
+                        var tmp : [Any] = []
+                        for k in self.ipv6CidrBlock! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Ipv6CidrBlock"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Ipv6CidrBlock"] as? [Any?] {
+                        var tmp : [DescribeNetworksResponseBody.Networks.Network.Ipv6CidrBlocks.Ipv6CidrBlock] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeNetworksResponseBody.Networks.Network.Ipv6CidrBlocks.Ipv6CidrBlock()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.ipv6CidrBlock = tmp
+                    }
+                }
+            }
             public class RouteTableIds : Tea.TeaModel {
                 public var routeTableId: [String]?
 
@@ -50374,6 +51053,8 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
 
             public var gatewayRouteTableId: String?
 
+            public var ipv6CidrBlocks: DescribeNetworksResponseBody.Networks.Network.Ipv6CidrBlocks?
+
             public var networkAclId: String?
 
             public var networkId: String?
@@ -50404,6 +51085,7 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.ipv6CidrBlocks?.validate()
                 try self.routeTableIds?.validate()
                 try self.secondaryCidrBlocks?.validate()
                 try self.tags?.validate()
@@ -50426,6 +51108,9 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
                 }
                 if self.gatewayRouteTableId != nil {
                     map["GatewayRouteTableId"] = self.gatewayRouteTableId!
+                }
+                if self.ipv6CidrBlocks != nil {
+                    map["Ipv6CidrBlocks"] = self.ipv6CidrBlocks?.toMap()
                 }
                 if self.networkAclId != nil {
                     map["NetworkAclId"] = self.networkAclId!
@@ -50476,6 +51161,11 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["GatewayRouteTableId"] as? String {
                     self.gatewayRouteTableId = value
+                }
+                if let value = dict["Ipv6CidrBlocks"] as? [String: Any?] {
+                    var model = DescribeNetworksResponseBody.Networks.Network.Ipv6CidrBlocks()
+                    model.fromMap(value)
+                    self.ipv6CidrBlocks = model
                 }
                 if let value = dict["NetworkAclId"] as? String {
                     self.networkAclId = value
@@ -58790,6 +59480,8 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
         public var snapshotName: String?
 
+        public var snapshotType: String?
+
         public var sourceDiskCategory: String?
 
         public var sourceDiskId: String?
@@ -58834,6 +59526,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             if self.snapshotName != nil {
                 map["SnapshotName"] = self.snapshotName!
             }
+            if self.snapshotType != nil {
+                map["SnapshotType"] = self.snapshotType!
+            }
             if self.sourceDiskCategory != nil {
                 map["SourceDiskCategory"] = self.sourceDiskCategory!
             }
@@ -58874,6 +59569,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SnapshotName"] as? String {
                 self.snapshotName = value
+            }
+            if let value = dict["SnapshotType"] as? String {
+                self.snapshotType = value
             }
             if let value = dict["SourceDiskCategory"] as? String {
                 self.sourceDiskCategory = value
@@ -60750,6 +61448,8 @@ public class DescribeVSwitchAttributesResponseBody : Tea.TeaModel {
 
     public var instanceIds: DescribeVSwitchAttributesResponseBody.InstanceIds?
 
+    public var ipv6CidrBlock: String?
+
     public var loadBalancerIds: DescribeVSwitchAttributesResponseBody.LoadBalancerIds?
 
     public var natGatewayIds: DescribeVSwitchAttributesResponseBody.NatGatewayIds?
@@ -60806,6 +61506,9 @@ public class DescribeVSwitchAttributesResponseBody : Tea.TeaModel {
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds?.toMap()
         }
+        if self.ipv6CidrBlock != nil {
+            map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+        }
         if self.loadBalancerIds != nil {
             map["LoadBalancerIds"] = self.loadBalancerIds?.toMap()
         }
@@ -60859,6 +61562,9 @@ public class DescribeVSwitchAttributesResponseBody : Tea.TeaModel {
             var model = DescribeVSwitchAttributesResponseBody.InstanceIds()
             model.fromMap(value)
             self.instanceIds = model
+        }
+        if let value = dict["Ipv6CidrBlock"] as? String {
+            self.ipv6CidrBlock = value
         }
         if let value = dict["LoadBalancerIds"] as? [String: Any?] {
             var model = DescribeVSwitchAttributesResponseBody.LoadBalancerIds()
@@ -60944,6 +61650,8 @@ public class DescribeVSwitchAttributesResponse : Tea.TeaModel {
 }
 
 public class DescribeVSwitchesRequest : Tea.TeaModel {
+    public var enableIpv6: Bool?
+
     public var ensRegionId: String?
 
     public var ensRegionIds: [String]?
@@ -60974,6 +61682,9 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableIpv6 != nil {
+            map["EnableIpv6"] = self.enableIpv6!
+        }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
@@ -61003,6 +61714,9 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableIpv6"] as? Bool {
+            self.enableIpv6 = value
+        }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
         }
@@ -61141,6 +61855,8 @@ public class DescribeVSwitchesResponseBody : Tea.TeaModel {
 
             public var freeIpCount: Int64?
 
+            public var ipv6CidrBlock: String?
+
             public var networkId: String?
 
             public var status: String?
@@ -61181,6 +61897,9 @@ public class DescribeVSwitchesResponseBody : Tea.TeaModel {
                 if self.freeIpCount != nil {
                     map["FreeIpCount"] = self.freeIpCount!
                 }
+                if self.ipv6CidrBlock != nil {
+                    map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+                }
                 if self.networkId != nil {
                     map["NetworkId"] = self.networkId!
                 }
@@ -61215,6 +61934,9 @@ public class DescribeVSwitchesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["FreeIpCount"] as? Int64 {
                     self.freeIpCount = value
+                }
+                if let value = dict["Ipv6CidrBlock"] as? String {
+                    self.ipv6CidrBlock = value
                 }
                 if let value = dict["NetworkId"] as? String {
                     self.networkId = value
@@ -68908,6 +69630,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         }
     }
     public class NodepoolInfo : Tea.TeaModel {
+        public var name: String?
+
         public var nodepoolId: String?
 
         public override init() {
@@ -68924,6 +69648,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
             if self.nodepoolId != nil {
                 map["NodepoolId"] = self.nodepoolId!
             }
@@ -68932,6 +69659,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
             if let value = dict["NodepoolId"] as? String {
                 self.nodepoolId = value
             }
@@ -72100,6 +72830,10 @@ public class ModifySnatEntryResponse : Tea.TeaModel {
 public class ModifyVSwitchAttributeRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var enableIPv6: Bool?
+
+    public var ipv6CidrBlock: String?
+
     public var vSwitchId: String?
 
     public var vSwitchName: String?
@@ -72121,6 +72855,12 @@ public class ModifyVSwitchAttributeRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableIPv6 != nil {
+            map["EnableIPv6"] = self.enableIPv6!
+        }
+        if self.ipv6CidrBlock != nil {
+            map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -72134,6 +72874,12 @@ public class ModifyVSwitchAttributeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableIPv6"] as? Bool {
+            self.enableIPv6 = value
+        }
+        if let value = dict["Ipv6CidrBlock"] as? String {
+            self.ipv6CidrBlock = value
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
@@ -78475,6 +79221,8 @@ public class RunInstancesRequest : Tea.TeaModel {
     }
     public var amount: Int64?
 
+    public var autoInstallCloudAssistant: Bool?
+
     public var autoReleaseTime: String?
 
     public var autoRenew: Bool?
@@ -78484,6 +79232,8 @@ public class RunInstancesRequest : Tea.TeaModel {
     public var billingCycle: String?
 
     public var carrier: String?
+
+    public var cloudAssistantRegion: String?
 
     public var dataDisk: [RunInstancesRequest.DataDisk]?
 
@@ -78581,6 +79331,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         if self.amount != nil {
             map["Amount"] = self.amount!
         }
+        if self.autoInstallCloudAssistant != nil {
+            map["AutoInstallCloudAssistant"] = self.autoInstallCloudAssistant!
+        }
         if self.autoReleaseTime != nil {
             map["AutoReleaseTime"] = self.autoReleaseTime!
         }
@@ -78595,6 +79348,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if self.carrier != nil {
             map["Carrier"] = self.carrier!
+        }
+        if self.cloudAssistantRegion != nil {
+            map["CloudAssistantRegion"] = self.cloudAssistantRegion!
         }
         if self.dataDisk != nil {
             var tmp : [Any] = []
@@ -78729,6 +79485,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         if let value = dict["Amount"] as? Int64 {
             self.amount = value
         }
+        if let value = dict["AutoInstallCloudAssistant"] as? Bool {
+            self.autoInstallCloudAssistant = value
+        }
         if let value = dict["AutoReleaseTime"] as? String {
             self.autoReleaseTime = value
         }
@@ -78743,6 +79502,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["Carrier"] as? String {
             self.carrier = value
+        }
+        if let value = dict["CloudAssistantRegion"] as? String {
+            self.cloudAssistantRegion = value
         }
         if let value = dict["DataDisk"] as? [Any?] {
             var tmp : [RunInstancesRequest.DataDisk] = []
@@ -78927,6 +79689,8 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
     }
     public var amount: Int64?
 
+    public var autoInstallCloudAssistant: Bool?
+
     public var autoReleaseTime: String?
 
     public var autoRenew: Bool?
@@ -78936,6 +79700,8 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
     public var billingCycle: String?
 
     public var carrier: String?
+
+    public var cloudAssistantRegion: String?
 
     public var dataDiskShrink: String?
 
@@ -79032,6 +79798,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         if self.amount != nil {
             map["Amount"] = self.amount!
         }
+        if self.autoInstallCloudAssistant != nil {
+            map["AutoInstallCloudAssistant"] = self.autoInstallCloudAssistant!
+        }
         if self.autoReleaseTime != nil {
             map["AutoReleaseTime"] = self.autoReleaseTime!
         }
@@ -79046,6 +79815,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.carrier != nil {
             map["Carrier"] = self.carrier!
+        }
+        if self.cloudAssistantRegion != nil {
+            map["CloudAssistantRegion"] = self.cloudAssistantRegion!
         }
         if self.dataDiskShrink != nil {
             map["DataDisk"] = self.dataDiskShrink!
@@ -79176,6 +79948,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         if let value = dict["Amount"] as? Int64 {
             self.amount = value
         }
+        if let value = dict["AutoInstallCloudAssistant"] as? Bool {
+            self.autoInstallCloudAssistant = value
+        }
         if let value = dict["AutoReleaseTime"] as? String {
             self.autoReleaseTime = value
         }
@@ -79190,6 +79965,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Carrier"] as? String {
             self.carrier = value
+        }
+        if let value = dict["CloudAssistantRegion"] as? String {
+            self.cloudAssistantRegion = value
         }
         if let value = dict["DataDisk"] as? String {
             self.dataDiskShrink = value
@@ -80065,6 +80843,8 @@ public class ScaleClusterNodePoolResponse : Tea.TeaModel {
 
 public class SetBackendServersRequest : Tea.TeaModel {
     public class BackendServers : Tea.TeaModel {
+        public var ip: String?
+
         public var serverId: String?
 
         public var type: String?
@@ -80085,6 +80865,9 @@ public class SetBackendServersRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ip != nil {
+                map["Ip"] = self.ip!
+            }
             if self.serverId != nil {
                 map["ServerId"] = self.serverId!
             }
@@ -80099,6 +80882,9 @@ public class SetBackendServersRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
+            }
             if let value = dict["ServerId"] as? String {
                 self.serverId = value
             }
