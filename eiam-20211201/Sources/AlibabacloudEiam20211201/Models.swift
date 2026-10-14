@@ -22305,7 +22305,11 @@ public class GenerateDownloadUrlForSynchronizationJobResponse : Tea.TeaModel {
 }
 
 public class GenerateFileImportTemplateRequest : Tea.TeaModel {
+    public var fieldSelectionEnabled: Bool?
+
     public var instanceId: String?
+
+    public var selectedFieldNames: [String]?
 
     public var targetType: String?
 
@@ -22323,8 +22327,14 @@ public class GenerateFileImportTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fieldSelectionEnabled != nil {
+            map["FieldSelectionEnabled"] = self.fieldSelectionEnabled!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.selectedFieldNames != nil {
+            map["SelectedFieldNames"] = self.selectedFieldNames!
         }
         if self.targetType != nil {
             map["TargetType"] = self.targetType!
@@ -22334,8 +22344,14 @@ public class GenerateFileImportTemplateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FieldSelectionEnabled"] as? Bool {
+            self.fieldSelectionEnabled = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["SelectedFieldNames"] as? [String] {
+            self.selectedFieldNames = value
         }
         if let value = dict["TargetType"] as? String {
             self.targetType = value
@@ -62641,6 +62657,60 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class Exported : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Failed"] as? Int64 {
+                            self.failed = value
+                        }
+                        if let value = dict["Skipped"] as? Int64 {
+                            self.skipped = value
+                        }
+                        if let value = dict["Success"] as? Int64 {
+                            self.success = value
+                        }
+                        if let value = dict["Total"] as? Int64 {
+                            self.total = value
+                        }
+                    }
+                }
                 public class Pushed : Tea.TeaModel {
                     public var failed: Int64?
 
@@ -62809,6 +62879,8 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
 
                 public var deleted: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Deleted?
 
+                public var exported: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Exported?
+
                 public var pushed: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Pushed?
 
                 public var same: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Same?
@@ -62828,6 +62900,7 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                     try self.binded?.validate()
                     try self.created?.validate()
                     try self.deleted?.validate()
+                    try self.exported?.validate()
                     try self.pushed?.validate()
                     try self.same?.validate()
                     try self.updated?.validate()
@@ -62843,6 +62916,9 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                     }
                     if self.deleted != nil {
                         map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.exported != nil {
+                        map["Exported"] = self.exported?.toMap()
                     }
                     if self.pushed != nil {
                         map["Pushed"] = self.pushed?.toMap()
@@ -62872,6 +62948,11 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                         var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Deleted()
                         model.fromMap(value)
                         self.deleted = model
+                    }
+                    if let value = dict["Exported"] as? [String: Any?] {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Exported()
+                        model.fromMap(value)
+                        self.exported = model
                     }
                     if let value = dict["Pushed"] as? [String: Any?] {
                         var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Pushed()
@@ -69131,9 +69212,13 @@ public class RunSynchronizationJobRequest : Tea.TeaModel {
     }
     public var description_: String?
 
+    public var fieldSelectionEnabled: Bool?
+
     public var instanceId: String?
 
     public var passwordInitialization: Bool?
+
+    public var selectedFieldNames: [String]?
 
     public var synchronizationScopeConfig: RunSynchronizationJobRequest.SynchronizationScopeConfig?
 
@@ -69161,11 +69246,17 @@ public class RunSynchronizationJobRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.fieldSelectionEnabled != nil {
+            map["FieldSelectionEnabled"] = self.fieldSelectionEnabled!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
         if self.passwordInitialization != nil {
             map["PasswordInitialization"] = self.passwordInitialization!
+        }
+        if self.selectedFieldNames != nil {
+            map["SelectedFieldNames"] = self.selectedFieldNames!
         }
         if self.synchronizationScopeConfig != nil {
             map["SynchronizationScopeConfig"] = self.synchronizationScopeConfig?.toMap()
@@ -69187,11 +69278,17 @@ public class RunSynchronizationJobRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["FieldSelectionEnabled"] as? Bool {
+            self.fieldSelectionEnabled = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
         if let value = dict["PasswordInitialization"] as? Bool {
             self.passwordInitialization = value
+        }
+        if let value = dict["SelectedFieldNames"] as? [String] {
+            self.selectedFieldNames = value
         }
         if let value = dict["SynchronizationScopeConfig"] as? [String: Any?] {
             var model = RunSynchronizationJobRequest.SynchronizationScopeConfig()

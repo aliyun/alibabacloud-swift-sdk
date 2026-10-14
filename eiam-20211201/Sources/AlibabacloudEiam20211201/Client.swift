@@ -5415,8 +5415,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func generateFileImportTemplateWithOptions(_ request: GenerateFileImportTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateFileImportTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fieldSelectionEnabled)) {
+            query["FieldSelectionEnabled"] = request.fieldSelectionEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedFieldNames)) {
+            query["SelectedFieldNames"] = request.selectedFieldNames ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.targetType)) {
             query["TargetType"] = request.targetType ?? "";
@@ -11002,11 +11008,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.fieldSelectionEnabled)) {
+            query["FieldSelectionEnabled"] = request.fieldSelectionEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.passwordInitialization)) {
             query["PasswordInitialization"] = request.passwordInitialization!;
+        }
+        if (!TeaUtils.Client.isUnset(request.selectedFieldNames)) {
+            query["SelectedFieldNames"] = request.selectedFieldNames ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.synchronizationScopeConfig)) {
             query["SynchronizationScopeConfig"] = request.synchronizationScopeConfig!;
