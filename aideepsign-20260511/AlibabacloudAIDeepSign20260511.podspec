@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudAIDeepSign20260511"
-  spec.version      = "1.0.0"
+  spec.version      = "2.0.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud AIDeepSign (20260511) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/aideepsign-20260511" 
