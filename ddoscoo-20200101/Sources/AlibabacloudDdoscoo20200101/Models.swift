@@ -16620,6 +16620,8 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
 
         public var baseBandwidth: Int32?
 
+        public var baseProtectionBandwidth: Int64?
+
         public var connLimit: Int64?
 
         public var cpsLimit: Int64?
@@ -16669,6 +16671,9 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
             }
             if self.baseBandwidth != nil {
                 map["BaseBandwidth"] = self.baseBandwidth!
+            }
+            if self.baseProtectionBandwidth != nil {
+                map["BaseProtectionBandwidth"] = self.baseProtectionBandwidth!
             }
             if self.connLimit != nil {
                 map["ConnLimit"] = self.connLimit!
@@ -16725,6 +16730,9 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
             }
             if let value = dict["BaseBandwidth"] as? Int32 {
                 self.baseBandwidth = value
+            }
+            if let value = dict["BaseProtectionBandwidth"] as? Int64 {
+                self.baseProtectionBandwidth = value
             }
             if let value = dict["ConnLimit"] as? Int64 {
                 self.connLimit = value
