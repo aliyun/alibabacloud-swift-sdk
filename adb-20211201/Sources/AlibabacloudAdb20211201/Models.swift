@@ -11769,6 +11769,8 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public var authToken: String?
+
         public var category: String?
 
         public var enableUserEni: Bool?
@@ -11801,6 +11803,9 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authToken != nil {
+                map["AuthToken"] = self.authToken!
+            }
             if self.category != nil {
                 map["Category"] = self.category!
             }
@@ -11841,6 +11846,9 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AuthToken"] as? String {
+                self.authToken = value
+            }
             if let value = dict["Category"] as? String {
                 self.category = value
             }
@@ -51971,9 +51979,13 @@ public class GetFormationCrawlerResponse : Tea.TeaModel {
 public class GetKnowledgeRecallRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var images: String?
+
     public var path: String?
 
     public var question: String?
+
+    public var semanticRules: String?
 
     public var tags: String?
 
@@ -51998,11 +52010,17 @@ public class GetKnowledgeRecallRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.images != nil {
+            map["Images"] = self.images!
+        }
         if self.path != nil {
             map["Path"] = self.path!
         }
         if self.question != nil {
             map["Question"] = self.question!
+        }
+        if self.semanticRules != nil {
+            map["SemanticRules"] = self.semanticRules!
         }
         if self.tags != nil {
             map["Tags"] = self.tags!
@@ -52021,11 +52039,17 @@ public class GetKnowledgeRecallRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["Images"] as? String {
+            self.images = value
+        }
         if let value = dict["Path"] as? String {
             self.path = value
         }
         if let value = dict["Question"] as? String {
             self.question = value
+        }
+        if let value = dict["SemanticRules"] as? String {
+            self.semanticRules = value
         }
         if let value = dict["Tags"] as? String {
             self.tags = value

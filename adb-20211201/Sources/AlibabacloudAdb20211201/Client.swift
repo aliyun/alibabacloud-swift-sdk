@@ -7919,6 +7919,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.question)) {
             query["Question"] = request.question ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.semanticRules)) {
+            query["SemanticRules"] = request.semanticRules ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             query["Tags"] = request.tags ?? "";
         }
@@ -7928,8 +7931,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.user)) {
             query["User"] = request.user ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.images)) {
+            body["Images"] = request.images ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetKnowledgeRecall",
