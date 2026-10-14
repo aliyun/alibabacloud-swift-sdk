@@ -986,6 +986,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreatePrivateAccessApplicationShrinkRequest = CreatePrivateAccessApplicationShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.healthCheckConfig)) {
+            request.healthCheckConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.healthCheckConfig, "HealthCheckConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.l7Config)) {
             request.l7ConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.l7Config, "L7Config", "json")
         }
@@ -1008,6 +1011,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthCheckConfigShrink)) {
+            body["HealthCheckConfig"] = request.healthCheckConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthCheckMode)) {
+            body["HealthCheckMode"] = request.healthCheckMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.l7ConfigShrink)) {
             body["L7Config"] = request.l7ConfigShrink ?? "";
@@ -3070,6 +3079,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteVulScanScheduledStrategy(_ request: DeleteVulScanScheduledStrategyRequest) async throws -> DeleteVulScanScheduledStrategyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteVulScanScheduledStrategyWithOptions(request as! DeleteVulScanScheduledStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeApplicationHealthCheckReportsWithOptions(_ request: DescribeApplicationHealthCheckReportsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeApplicationHealthCheckReportsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationIds)) {
+            bodyFlat["ApplicationIds"] = request.applicationIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime!;
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeApplicationHealthCheckReports",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeApplicationHealthCheckReportsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeApplicationHealthCheckReports(_ request: DescribeApplicationHealthCheckReportsRequest) async throws -> DescribeApplicationHealthCheckReportsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeApplicationHealthCheckReportsWithOptions(request as! DescribeApplicationHealthCheckReportsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5357,6 +5405,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
         }
+        if (!TeaUtils.Client.isUnset(request.healthCheckStatus)) {
+            query["HealthCheckStatus"] = request.healthCheckStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
@@ -7525,6 +7576,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdatePrivateAccessApplicationShrinkRequest = UpdatePrivateAccessApplicationShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.healthCheckConfig)) {
+            request.healthCheckConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.healthCheckConfig, "HealthCheckConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.l7Config)) {
             request.l7ConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.l7Config, "L7Config", "json")
         }
@@ -7547,6 +7601,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthCheckConfigShrink)) {
+            body["HealthCheckConfig"] = request.healthCheckConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthCheckMode)) {
+            body["HealthCheckMode"] = request.healthCheckMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.l7ConfigShrink)) {
             body["L7Config"] = request.l7ConfigShrink ?? "";

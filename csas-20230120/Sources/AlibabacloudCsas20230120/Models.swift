@@ -922,6 +922,69 @@ public class ExecutePeriod : Tea.TeaModel {
     }
 }
 
+public class HealthCheckConfig : Tea.TeaModel {
+    public var checkInterval: Int32?
+
+    public var failureCount: Int32?
+
+    public var port: Int32?
+
+    public var protocol_: String?
+
+    public var timeoutSeconds: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.checkInterval != nil {
+            map["CheckInterval"] = self.checkInterval!
+        }
+        if self.failureCount != nil {
+            map["FailureCount"] = self.failureCount!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.timeoutSeconds != nil {
+            map["TimeoutSeconds"] = self.timeoutSeconds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CheckInterval"] as? Int32 {
+            self.checkInterval = value
+        }
+        if let value = dict["FailureCount"] as? Int32 {
+            self.failureCount = value
+        }
+        if let value = dict["Port"] as? Int32 {
+            self.port = value
+        }
+        if let value = dict["Protocol"] as? String {
+            self.protocol_ = value
+        }
+        if let value = dict["TimeoutSeconds"] as? Int32 {
+            self.timeoutSeconds = value
+        }
+    }
+}
+
 public class IdpAttrMapConfig : Tea.TeaModel {
     public var mapItems: [IdpAttrMapConfigItem]?
 
@@ -9070,6 +9133,10 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var healthCheckConfig: HealthCheckConfig?
+
+    public var healthCheckMode: String?
+
     public var l7Config: PAL7Config?
 
     public var l7ProxyDomainAutomaticPrefix: String?
@@ -9098,6 +9165,7 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.healthCheckConfig?.validate()
         try self.l7Config?.validate()
         try self.unauthorizedAccessConfig?.validate()
     }
@@ -9122,6 +9190,12 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.healthCheckConfig != nil {
+            map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+        }
+        if self.healthCheckMode != nil {
+            map["HealthCheckMode"] = self.healthCheckMode!
         }
         if self.l7Config != nil {
             map["L7Config"] = self.l7Config?.toMap()
@@ -9183,6 +9257,14 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["HealthCheckConfig"] as? [String: Any?] {
+            var model = HealthCheckConfig()
+            model.fromMap(value)
+            self.healthCheckConfig = model
+        }
+        if let value = dict["HealthCheckMode"] as? String {
+            self.healthCheckMode = value
         }
         if let value = dict["L7Config"] as? [String: Any?] {
             var model = PAL7Config()
@@ -9277,6 +9359,10 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var healthCheckConfigShrink: String?
+
+    public var healthCheckMode: String?
+
     public var l7ConfigShrink: String?
 
     public var l7ProxyDomainAutomaticPrefix: String?
@@ -9327,6 +9413,12 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.healthCheckConfigShrink != nil {
+            map["HealthCheckConfig"] = self.healthCheckConfigShrink!
+        }
+        if self.healthCheckMode != nil {
+            map["HealthCheckMode"] = self.healthCheckMode!
         }
         if self.l7ConfigShrink != nil {
             map["L7Config"] = self.l7ConfigShrink!
@@ -9388,6 +9480,12 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["HealthCheckConfig"] as? String {
+            self.healthCheckConfigShrink = value
+        }
+        if let value = dict["HealthCheckMode"] as? String {
+            self.healthCheckMode = value
         }
         if let value = dict["L7Config"] as? String {
             self.l7ConfigShrink = value
@@ -20014,6 +20112,242 @@ public class DeleteVulScanScheduledStrategyResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeApplicationHealthCheckReportsRequest : Tea.TeaModel {
+    public var applicationIds: [String]?
+
+    public var endTime: Int64?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationIds != nil {
+            map["ApplicationIds"] = self.applicationIds!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationIds"] as? [String] {
+            self.applicationIds = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeApplicationHealthCheckReportsResponseBody : Tea.TeaModel {
+    public class Reports : Tea.TeaModel {
+        public var applicationId: String?
+
+        public var failedAddresses: [String]?
+
+        public var failedRegions: [String]?
+
+        public var failureCount: Int64?
+
+        public var failureReasons: [String]?
+
+        public var healthCheckStatus: String?
+
+        public var mode: String?
+
+        public var successCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationId != nil {
+                map["ApplicationId"] = self.applicationId!
+            }
+            if self.failedAddresses != nil {
+                map["FailedAddresses"] = self.failedAddresses!
+            }
+            if self.failedRegions != nil {
+                map["FailedRegions"] = self.failedRegions!
+            }
+            if self.failureCount != nil {
+                map["FailureCount"] = self.failureCount!
+            }
+            if self.failureReasons != nil {
+                map["FailureReasons"] = self.failureReasons!
+            }
+            if self.healthCheckStatus != nil {
+                map["HealthCheckStatus"] = self.healthCheckStatus!
+            }
+            if self.mode != nil {
+                map["Mode"] = self.mode!
+            }
+            if self.successCount != nil {
+                map["SuccessCount"] = self.successCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplicationId"] as? String {
+                self.applicationId = value
+            }
+            if let value = dict["FailedAddresses"] as? [String] {
+                self.failedAddresses = value
+            }
+            if let value = dict["FailedRegions"] as? [String] {
+                self.failedRegions = value
+            }
+            if let value = dict["FailureCount"] as? Int64 {
+                self.failureCount = value
+            }
+            if let value = dict["FailureReasons"] as? [String] {
+                self.failureReasons = value
+            }
+            if let value = dict["HealthCheckStatus"] as? String {
+                self.healthCheckStatus = value
+            }
+            if let value = dict["Mode"] as? String {
+                self.mode = value
+            }
+            if let value = dict["SuccessCount"] as? Int64 {
+                self.successCount = value
+            }
+        }
+    }
+    public var reports: [DescribeApplicationHealthCheckReportsResponseBody.Reports]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reports != nil {
+            var tmp : [Any] = []
+            for k in self.reports! {
+                tmp.append(k.toMap())
+            }
+            map["Reports"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Reports"] as? [Any?] {
+            var tmp : [DescribeApplicationHealthCheckReportsResponseBody.Reports] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationHealthCheckReportsResponseBody.Reports()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.reports = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeApplicationHealthCheckReportsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationHealthCheckReportsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApplicationHealthCheckReportsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DetachApplication2ConnectorRequest : Tea.TeaModel {
     public var applicationIds: [String]?
 
@@ -27267,6 +27601,10 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var healthCheckConfig: HealthCheckConfig?
+
+        public var healthCheckMode: String?
+
         public var l7Config: PAL7Config?
 
         public var l7ProxyDomainAutomatic: String?
@@ -27297,6 +27635,7 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.healthCheckConfig?.validate()
             try self.l7Config?.validate()
             try self.unauthorizedAccessConfig?.validate()
         }
@@ -27333,6 +27672,12 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.healthCheckConfig != nil {
+                map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+            }
+            if self.healthCheckMode != nil {
+                map["HealthCheckMode"] = self.healthCheckMode!
             }
             if self.l7Config != nil {
                 map["L7Config"] = self.l7Config?.toMap()
@@ -27409,6 +27754,14 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["HealthCheckConfig"] as? [String: Any?] {
+                var model = HealthCheckConfig()
+                model.fromMap(value)
+                self.healthCheckConfig = model
+            }
+            if let value = dict["HealthCheckMode"] as? String {
+                self.healthCheckMode = value
             }
             if let value = dict["L7Config"] as? [String: Any?] {
                 var model = PAL7Config()
@@ -43790,6 +44143,8 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
 
     public var currentPage: Int32?
 
+    public var healthCheckStatus: String?
+
     public var name: String?
 
     public var pageSize: Int32?
@@ -43829,6 +44184,9 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.healthCheckStatus != nil {
+            map["HealthCheckStatus"] = self.healthCheckStatus!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -43863,6 +44221,9 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["HealthCheckStatus"] as? String {
+            self.healthCheckStatus = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -43940,6 +44301,10 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var healthCheckConfig: HealthCheckConfig?
+
+        public var healthCheckMode: String?
+
         public var l7ProxyDomainAutomatic: String?
 
         public var l7ProxyDomainCustom: String?
@@ -43966,6 +44331,7 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.healthCheckConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -44000,6 +44366,12 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.healthCheckConfig != nil {
+                map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+            }
+            if self.healthCheckMode != nil {
+                map["HealthCheckMode"] = self.healthCheckMode!
             }
             if self.l7ProxyDomainAutomatic != nil {
                 map["L7ProxyDomainAutomatic"] = self.l7ProxyDomainAutomatic!
@@ -44070,6 +44442,14 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["HealthCheckConfig"] as? [String: Any?] {
+                var model = HealthCheckConfig()
+                model.fromMap(value)
+                self.healthCheckConfig = model
+            }
+            if let value = dict["HealthCheckMode"] as? String {
+                self.healthCheckMode = value
             }
             if let value = dict["L7ProxyDomainAutomatic"] as? String {
                 self.l7ProxyDomainAutomatic = value
@@ -64561,6 +64941,10 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var healthCheckConfig: HealthCheckConfig?
+
+    public var healthCheckMode: String?
+
     public var l7Config: PAL7Config?
 
     public var l7ProxyDomainAutomaticPrefix: String?
@@ -64593,6 +64977,7 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.healthCheckConfig?.validate()
         try self.l7Config?.validate()
         try self.unauthorizedAccessConfig?.validate()
     }
@@ -64617,6 +65002,12 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.healthCheckConfig != nil {
+            map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+        }
+        if self.healthCheckMode != nil {
+            map["HealthCheckMode"] = self.healthCheckMode!
         }
         if self.l7Config != nil {
             map["L7Config"] = self.l7Config?.toMap()
@@ -64684,6 +65075,14 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["HealthCheckConfig"] as? [String: Any?] {
+            var model = HealthCheckConfig()
+            model.fromMap(value)
+            self.healthCheckConfig = model
+        }
+        if let value = dict["HealthCheckMode"] as? String {
+            self.healthCheckMode = value
         }
         if let value = dict["L7Config"] as? [String: Any?] {
             var model = PAL7Config()
@@ -64784,6 +65183,10 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var healthCheckConfigShrink: String?
+
+    public var healthCheckMode: String?
+
     public var l7ConfigShrink: String?
 
     public var l7ProxyDomainAutomaticPrefix: String?
@@ -64838,6 +65241,12 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.healthCheckConfigShrink != nil {
+            map["HealthCheckConfig"] = self.healthCheckConfigShrink!
+        }
+        if self.healthCheckMode != nil {
+            map["HealthCheckMode"] = self.healthCheckMode!
         }
         if self.l7ConfigShrink != nil {
             map["L7Config"] = self.l7ConfigShrink!
@@ -64905,6 +65314,12 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["HealthCheckConfig"] as? String {
+            self.healthCheckConfigShrink = value
+        }
+        if let value = dict["HealthCheckMode"] as? String {
+            self.healthCheckMode = value
         }
         if let value = dict["L7Config"] as? String {
             self.l7ConfigShrink = value
