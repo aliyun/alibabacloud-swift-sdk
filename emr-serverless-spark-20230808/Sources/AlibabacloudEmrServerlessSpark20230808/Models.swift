@@ -9197,6 +9197,76 @@ public class GetJobRunResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TokenDetails : Tea.TeaModel {
+            public var enableThinking: String?
+
+            public var inputModality: String?
+
+            public var modelName: String?
+
+            public var tokenRange: String?
+
+            public var tokenSource: String?
+
+            public var tokenUsed: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enableThinking != nil {
+                    map["enableThinking"] = self.enableThinking!
+                }
+                if self.inputModality != nil {
+                    map["inputModality"] = self.inputModality!
+                }
+                if self.modelName != nil {
+                    map["modelName"] = self.modelName!
+                }
+                if self.tokenRange != nil {
+                    map["tokenRange"] = self.tokenRange!
+                }
+                if self.tokenSource != nil {
+                    map["tokenSource"] = self.tokenSource!
+                }
+                if self.tokenUsed != nil {
+                    map["tokenUsed"] = self.tokenUsed!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enableThinking"] as? String {
+                    self.enableThinking = value
+                }
+                if let value = dict["inputModality"] as? String {
+                    self.inputModality = value
+                }
+                if let value = dict["modelName"] as? String {
+                    self.modelName = value
+                }
+                if let value = dict["tokenRange"] as? String {
+                    self.tokenRange = value
+                }
+                if let value = dict["tokenSource"] as? String {
+                    self.tokenSource = value
+                }
+                if let value = dict["tokenUsed"] as? Int64 {
+                    self.tokenUsed = value
+                }
+            }
+        }
         public var codeType: String?
 
         public var configurationOverrides: GetJobRunResponseBody.JobRun.ConfigurationOverrides?
@@ -9236,6 +9306,8 @@ public class GetJobRunResponseBody : Tea.TeaModel {
         public var submitTime: Int64?
 
         public var tags: [Tag]?
+
+        public var tokenDetails: [GetJobRunResponseBody.JobRun.TokenDetails]?
 
         public var totalTokens: Int64?
 
@@ -9324,6 +9396,13 @@ public class GetJobRunResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["tags"] = tmp
+            }
+            if self.tokenDetails != nil {
+                var tmp : [Any] = []
+                for k in self.tokenDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["tokenDetails"] = tmp
             }
             if self.totalTokens != nil {
                 map["totalTokens"] = self.totalTokens!
@@ -9416,6 +9495,19 @@ public class GetJobRunResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["tokenDetails"] as? [Any?] {
+                var tmp : [GetJobRunResponseBody.JobRun.TokenDetails] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetJobRunResponseBody.JobRun.TokenDetails()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tokenDetails = tmp
             }
             if let value = dict["totalTokens"] as? Int64 {
                 self.totalTokens = value
@@ -18548,6 +18640,275 @@ public class ListNetworkServicesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListNetworkServicesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListQueueTopJobsRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public var topN: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.topN != nil {
+            map["topN"] = self.topN!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["topN"] as? Int32 {
+            self.topN = value
+        }
+    }
+}
+
+public class ListQueueTopJobsResponseBody : Tea.TeaModel {
+    public class QueueTopJobs : Tea.TeaModel {
+        public class Jobs : Tea.TeaModel {
+            public var cpuCores: String?
+
+            public var cu: String?
+
+            public var jobId: String?
+
+            public var jobType: String?
+
+            public var memoryGiB: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpuCores != nil {
+                    map["cpuCores"] = self.cpuCores!
+                }
+                if self.cu != nil {
+                    map["cu"] = self.cu!
+                }
+                if self.jobId != nil {
+                    map["jobId"] = self.jobId!
+                }
+                if self.jobType != nil {
+                    map["jobType"] = self.jobType!
+                }
+                if self.memoryGiB != nil {
+                    map["memoryGiB"] = self.memoryGiB!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["cpuCores"] as? String {
+                    self.cpuCores = value
+                }
+                if let value = dict["cu"] as? String {
+                    self.cu = value
+                }
+                if let value = dict["jobId"] as? String {
+                    self.jobId = value
+                }
+                if let value = dict["jobType"] as? String {
+                    self.jobType = value
+                }
+                if let value = dict["memoryGiB"] as? String {
+                    self.memoryGiB = value
+                }
+            }
+        }
+        public var jobs: [ListQueueTopJobsResponseBody.QueueTopJobs.Jobs]?
+
+        public var maxResults: String?
+
+        public var queueName: String?
+
+        public var totalCu: String?
+
+        public var totalJobCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.jobs != nil {
+                var tmp : [Any] = []
+                for k in self.jobs! {
+                    tmp.append(k.toMap())
+                }
+                map["jobs"] = tmp
+            }
+            if self.maxResults != nil {
+                map["maxResults"] = self.maxResults!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.totalCu != nil {
+                map["totalCu"] = self.totalCu!
+            }
+            if self.totalJobCount != nil {
+                map["totalJobCount"] = self.totalJobCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["jobs"] as? [Any?] {
+                var tmp : [ListQueueTopJobsResponseBody.QueueTopJobs.Jobs] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListQueueTopJobsResponseBody.QueueTopJobs.Jobs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.jobs = tmp
+            }
+            if let value = dict["maxResults"] as? String {
+                self.maxResults = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+            if let value = dict["totalCu"] as? String {
+                self.totalCu = value
+            }
+            if let value = dict["totalJobCount"] as? Int32 {
+                self.totalJobCount = value
+            }
+        }
+    }
+    public var queueTopJobs: ListQueueTopJobsResponseBody.QueueTopJobs?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.queueTopJobs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.queueTopJobs != nil {
+            map["queueTopJobs"] = self.queueTopJobs?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["queueTopJobs"] as? [String: Any?] {
+            var model = ListQueueTopJobsResponseBody.QueueTopJobs()
+            model.fromMap(value)
+            self.queueTopJobs = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListQueueTopJobsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListQueueTopJobsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListQueueTopJobsResponseBody()
             model.fromMap(value)
             self.body = model
         }
