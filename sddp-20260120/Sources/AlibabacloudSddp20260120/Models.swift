@@ -3324,6 +3324,8 @@ public class ListDataSourcesRequest : Tea.TeaModel {
 
     public var dbName: String?
 
+    public var engineType: String?
+
     public var identifyStatus: String?
 
     public var instanceId: String?
@@ -3335,6 +3337,8 @@ public class ListDataSourcesRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var pageSize: Int32?
+
+    public var port: Int32?
 
     public var productCode: String?
 
@@ -3371,6 +3375,9 @@ public class ListDataSourcesRequest : Tea.TeaModel {
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
+        if self.engineType != nil {
+            map["EngineType"] = self.engineType!
+        }
         if self.identifyStatus != nil {
             map["IdentifyStatus"] = self.identifyStatus!
         }
@@ -3388,6 +3395,9 @@ public class ListDataSourcesRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
         }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
@@ -3418,6 +3428,9 @@ public class ListDataSourcesRequest : Tea.TeaModel {
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
+        if let value = dict["EngineType"] as? String {
+            self.engineType = value
+        }
         if let value = dict["IdentifyStatus"] as? String {
             self.identifyStatus = value
         }
@@ -3435,6 +3448,9 @@ public class ListDataSourcesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["Port"] as? Int32 {
+            self.port = value
         }
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
