@@ -9,18 +9,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "ap-northeast-1": "quickbi-public.ap-northeast-1.aliyuncs.com",
-            "ap-southeast-1": "quickbi-public.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-3": "quickbi-public.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-5": "quickbi-public.ap-southeast-5.aliyuncs.com",
-            "cn-hangzhou": "quickbi-public.cn-hangzhou.aliyuncs.com",
-            "cn-hongkong": "quickbi-public.cn-hongkong.aliyuncs.com",
-            "us-east-1": "quickbi-public.us-east-1.aliyuncs.com",
-            "eu-central-1": "quickbi-public.eu-central-1.aliyuncs.com",
-            "me-central-1": "quickbi-public.me-central-1.aliyuncs.com",
-            "cn-shanghai-finance-1": "quickbi-public.cn-shanghai-finance-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("quickbi-public", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1910,6 +1898,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listApiDatasource(_ request: ListApiDatasourceRequest) async throws -> ListApiDatasourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listApiDatasourceWithOptions(request as! ListApiDatasourceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAuthConfigByResourceWithOptions(_ request: ListAuthConfigByResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAuthConfigByResourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hasAuth)) {
+            query["HasAuth"] = request.hasAuth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["Keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["ResourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shareToType)) {
+            query["ShareToType"] = request.shareToType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.worksType)) {
+            query["WorksType"] = request.worksType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAuthConfigByResource",
+            "version": "2022-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAuthConfigByResourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAuthConfigByResource(_ request: ListAuthConfigByResourceRequest) async throws -> ListAuthConfigByResourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAuthConfigByResourceWithOptions(request as! ListAuthConfigByResourceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4569,6 +4600,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func transferUsergroup(_ request: TransferUsergroupRequest) async throws -> TransferUsergroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await transferUsergroupWithOptions(request as! TransferUsergroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAuthorizationAttributesWithOptions(_ request: UpdateAuthorizationAttributesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAuthorizationAttributesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.editPermissionType)) {
+            query["EditPermissionType"] = request.editPermissionType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["ResourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePermissionType)) {
+            query["UsePermissionType"] = request.usePermissionType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAuthorizationAttributes",
+            "version": "2022-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAuthorizationAttributesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAuthorizationAttributes(_ request: UpdateAuthorizationAttributesRequest) async throws -> UpdateAuthorizationAttributesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateAuthorizationAttributesWithOptions(request as! UpdateAuthorizationAttributesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
