@@ -566,6 +566,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageMattingAsyncWithOptions(_ request: ImageMattingAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageMattingAsyncResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backGroundType)) {
+            query["BackGroundType"] = request.backGroundType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bgColor)) {
+            query["BgColor"] = request.bgColor ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetHeight)) {
+            query["TargetHeight"] = request.targetHeight!;
+        }
+        if (!TeaUtils.Client.isUnset(request.targetWidth)) {
+            query["TargetWidth"] = request.targetWidth!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageMattingAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageMattingAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageMattingAsync(_ request: ImageMattingAsyncRequest) async throws -> ImageMattingAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageMattingAsyncWithOptions(request as! ImageMattingAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func imageRecognitionWithOptions(_ tmpReq: ImageRecognitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRecognitionResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ImageRecognitionShrinkRequest = ImageRecognitionShrinkRequest([:])
@@ -626,6 +669,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRecognitionAsyncWithOptions(_ tmpReq: ImageRecognitionAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRecognitionAsyncResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ImageRecognitionAsyncShrinkRequest = ImageRecognitionAsyncShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.nonObjectDetectElements)) {
+            request.nonObjectDetectElementsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nonObjectDetectElements, "NonObjectDetectElements", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.objectDetectElements)) {
+            request.objectDetectElementsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.objectDetectElements, "ObjectDetectElements", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nonObjectDetectElementsShrink)) {
+            query["NonObjectDetectElements"] = request.nonObjectDetectElementsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectDetectElementsShrink)) {
+            query["ObjectDetectElements"] = request.objectDetectElementsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnBorderPixel)) {
+            query["ReturnBorderPixel"] = request.returnBorderPixel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnCharacter)) {
+            query["ReturnCharacter"] = request.returnCharacter!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnCharacterProp)) {
+            query["ReturnCharacterProp"] = request.returnCharacterProp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnProductNum)) {
+            query["ReturnProductNum"] = request.returnProductNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnProductProp)) {
+            query["ReturnProductProp"] = request.returnProductProp!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageRecognitionAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageRecognitionAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRecognitionAsync(_ request: ImageRecognitionAsyncRequest) async throws -> ImageRecognitionAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageRecognitionAsyncWithOptions(request as! ImageRecognitionAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func imageRemovalProWithOptions(_ request: ImageRemovalProRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRemovalProResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -657,6 +760,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageRemovalPro(_ request: ImageRemovalProRequest) async throws -> ImageRemovalProResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await imageRemovalProWithOptions(request as! ImageRemovalProRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRemovalProAsyncWithOptions(_ request: ImageRemovalProAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRemovalProAsyncResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageRemovalProAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageRemovalProAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRemovalProAsync(_ request: ImageRemovalProAsyncRequest) async throws -> ImageRemovalProAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageRemovalProAsyncWithOptions(request as! ImageRemovalProAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -723,6 +857,69 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRemoveAsyncWithOptions(_ tmpReq: ImageRemoveAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRemoveAsyncResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ImageRemoveAsyncShrinkRequest = ImageRemoveAsyncShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.nonObjectRemoveElements)) {
+            request.nonObjectRemoveElementsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nonObjectRemoveElements, "NonObjectRemoveElements", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.objectRemoveElements)) {
+            request.objectRemoveElementsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.objectRemoveElements, "ObjectRemoveElements", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.userImage)) {
+            request.userImageShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userImage, "UserImage", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.userText)) {
+            request.userTextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userText, "UserText", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mask)) {
+            query["Mask"] = request.mask ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nonObjectRemoveElementsShrink)) {
+            query["NonObjectRemoveElements"] = request.nonObjectRemoveElementsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectRemoveElementsShrink)) {
+            query["ObjectRemoveElements"] = request.objectRemoveElementsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.position)) {
+            query["Position"] = request.position ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userImageShrink)) {
+            query["UserImage"] = request.userImageShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userTextShrink)) {
+            query["UserText"] = request.userTextShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageRemoveAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageRemoveAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageRemoveAsync(_ request: ImageRemoveAsyncRequest) async throws -> ImageRemoveAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageRemoveAsyncWithOptions(request as! ImageRemoveAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func imageTranslationPlusWithOptions(_ request: ImageTranslationPlusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationPlusResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -769,6 +966,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageTranslationPlus(_ request: ImageTranslationPlusRequest) async throws -> ImageTranslationPlusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await imageTranslationPlusWithOptions(request as! ImageTranslationPlusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationPlusAsyncWithOptions(_ request: ImageTranslationPlusAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationPlusAsyncResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.glossary)) {
+            query["Glossary"] = request.glossary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includingProductArea)) {
+            query["IncludingProductArea"] = request.includingProductArea!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            query["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            query["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translatingBrandInTheProduct)) {
+            query["TranslatingBrandInTheProduct"] = request.translatingBrandInTheProduct!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
+            query["UseImageEditor"] = request.useImageEditor!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageTranslationPlusAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageTranslationPlusAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationPlusAsync(_ request: ImageTranslationPlusAsyncRequest) async throws -> ImageTranslationPlusAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageTranslationPlusAsyncWithOptions(request as! ImageTranslationPlusAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -824,6 +1070,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationProAsyncWithOptions(_ request: ImageTranslationProAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationProAsyncResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.glossary)) {
+            query["Glossary"] = request.glossary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includingProductArea)) {
+            query["IncludingProductArea"] = request.includingProductArea!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            query["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            query["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translatingBrandInTheProduct)) {
+            query["TranslatingBrandInTheProduct"] = request.translatingBrandInTheProduct!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
+            query["UseImageEditor"] = request.useImageEditor!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageTranslationProAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageTranslationProAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationProAsync(_ request: ImageTranslationProAsyncRequest) async throws -> ImageTranslationProAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageTranslationProAsyncWithOptions(request as! ImageTranslationProAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func imageTranslationStandardWithOptions(_ request: ImageTranslationStandardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationStandardResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -870,6 +1165,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageTranslationStandard(_ request: ImageTranslationStandardRequest) async throws -> ImageTranslationStandardResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await imageTranslationStandardWithOptions(request as! ImageTranslationStandardRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationStandardAsyncWithOptions(_ request: ImageTranslationStandardAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationStandardAsyncResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.glossary)) {
+            query["Glossary"] = request.glossary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includingProductArea)) {
+            query["IncludingProductArea"] = request.includingProductArea!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            query["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            query["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translatingBrandInTheProduct)) {
+            query["TranslatingBrandInTheProduct"] = request.translatingBrandInTheProduct!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useImageEditor)) {
+            query["UseImageEditor"] = request.useImageEditor!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageTranslationStandardAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageTranslationStandardAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageTranslationStandardAsync(_ request: ImageTranslationStandardAsyncRequest) async throws -> ImageTranslationStandardAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageTranslationStandardAsyncWithOptions(request as! ImageTranslationStandardAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1464,6 +1808,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sizeChartExtractAsyncWithOptions(_ tmpReq: SizeChartExtractAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SizeChartExtractAsyncResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SizeChartExtractAsyncShrinkRequest = SizeChartExtractAsyncShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.columnNameList)) {
+            request.columnNameListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.columnNameList, "ColumnNameList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.columnNameListShrink)) {
+            query["ColumnNameList"] = request.columnNameListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            query["ImageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.languageModel)) {
+            query["LanguageModel"] = request.languageModel ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SizeChartExtractAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SizeChartExtractAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sizeChartExtractAsync(_ request: SizeChartExtractAsyncRequest) async throws -> SizeChartExtractAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sizeChartExtractAsyncWithOptions(request as! SizeChartExtractAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func storefrontSceneRecognitionWithOptions(_ request: StorefrontSceneRecognitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StorefrontSceneRecognitionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1629,6 +2015,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func textTranslate(_ request: TextTranslateRequest) async throws -> TextTranslateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await textTranslateWithOptions(request as! TextTranslateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func textTranslateAsyncWithOptions(_ tmpReq: TextTranslateAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TextTranslateAsyncResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: TextTranslateAsyncShrinkRequest = TextTranslateAsyncShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.sourceTextList)) {
+            request.sourceTextListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceTextList, "SourceTextList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizName)) {
+            query["BizName"] = request.bizName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formatType)) {
+            query["FormatType"] = request.formatType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.glossary)) {
+            query["Glossary"] = request.glossary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            query["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTextListShrink)) {
+            query["SourceTextList"] = request.sourceTextListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            query["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.translateScene)) {
+            query["TranslateScene"] = request.translateScene ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TextTranslateAsync",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TextTranslateAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func textTranslateAsync(_ request: TextTranslateAsyncRequest) async throws -> TextTranslateAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await textTranslateAsyncWithOptions(request as! TextTranslateAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
