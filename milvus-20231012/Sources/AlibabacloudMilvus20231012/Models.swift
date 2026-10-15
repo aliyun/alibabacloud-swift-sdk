@@ -6264,11 +6264,101 @@ public class ListInstancesV2Response : Tea.TeaModel {
 }
 
 public class ModifyInstanceConfigRequest : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public var userConfig: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.userConfig != nil {
+                map["userConfig"] = self.userConfig!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["userConfig"] as? String {
+                self.userConfig = value
+            }
+        }
+    }
     public var instanceId: String?
 
     public var reason: String?
 
     public var userConfig: String?
+
+    public var body: ModifyInstanceConfigRequest.Body?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
+        if self.userConfig != nil {
+            map["UserConfig"] = self.userConfig!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Reason"] as? String {
+            self.reason = value
+        }
+        if let value = dict["UserConfig"] as? String {
+            self.userConfig = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyInstanceConfigRequest.Body()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyInstanceConfigShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var reason: String?
+
+    public var userConfig: String?
+
+    public var bodyShrink: String?
 
     public override init() {
         super.init()
@@ -6293,6 +6383,9 @@ public class ModifyInstanceConfigRequest : Tea.TeaModel {
         if self.userConfig != nil {
             map["UserConfig"] = self.userConfig!
         }
+        if self.bodyShrink != nil {
+            map["body"] = self.bodyShrink!
+        }
         return map
     }
 
@@ -6306,6 +6399,9 @@ public class ModifyInstanceConfigRequest : Tea.TeaModel {
         }
         if let value = dict["UserConfig"] as? String {
             self.userConfig = value
+        }
+        if let value = dict["body"] as? String {
+            self.bodyShrink = value
         }
     }
 }
