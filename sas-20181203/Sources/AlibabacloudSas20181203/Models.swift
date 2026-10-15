@@ -108182,6 +108182,12 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
 
     public var openTime: Int64?
 
+    public var postPaidFirstTrialTime: Int64?
+
+    public var postPaidLastTrialTime: Int64?
+
+    public var postPaidTrialExpiredTime: Int64?
+
     public var postPayHostVersion: Int32?
 
     public var postPayInstanceId: String?
@@ -108356,6 +108362,15 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
         }
         if self.openTime != nil {
             map["OpenTime"] = self.openTime!
+        }
+        if self.postPaidFirstTrialTime != nil {
+            map["PostPaidFirstTrialTime"] = self.postPaidFirstTrialTime!
+        }
+        if self.postPaidLastTrialTime != nil {
+            map["PostPaidLastTrialTime"] = self.postPaidLastTrialTime!
+        }
+        if self.postPaidTrialExpiredTime != nil {
+            map["PostPaidTrialExpiredTime"] = self.postPaidTrialExpiredTime!
         }
         if self.postPayHostVersion != nil {
             map["PostPayHostVersion"] = self.postPayHostVersion!
@@ -108554,6 +108569,15 @@ public class DescribeVersionConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["OpenTime"] as? Int64 {
             self.openTime = value
+        }
+        if let value = dict["PostPaidFirstTrialTime"] as? Int64 {
+            self.postPaidFirstTrialTime = value
+        }
+        if let value = dict["PostPaidLastTrialTime"] as? Int64 {
+            self.postPaidLastTrialTime = value
+        }
+        if let value = dict["PostPaidTrialExpiredTime"] as? Int64 {
+            self.postPaidTrialExpiredTime = value
         }
         if let value = dict["PostPayHostVersion"] as? Int32 {
             self.postPayHostVersion = value
@@ -128945,6 +128969,8 @@ public class GetCanTrySasResponseBody : Tea.TeaModel {
 
         public var canTryVersions: [Int32]?
 
+        public var postPaidCanTry: Bool?
+
         public var tryType: Int32?
 
         public override init() {
@@ -128967,6 +128993,9 @@ public class GetCanTrySasResponseBody : Tea.TeaModel {
             if self.canTryVersions != nil {
                 map["CanTryVersions"] = self.canTryVersions!
             }
+            if self.postPaidCanTry != nil {
+                map["PostPaidCanTry"] = self.postPaidCanTry!
+            }
             if self.tryType != nil {
                 map["TryType"] = self.tryType!
             }
@@ -128980,6 +129009,9 @@ public class GetCanTrySasResponseBody : Tea.TeaModel {
             }
             if let value = dict["CanTryVersions"] as? [Int32] {
                 self.canTryVersions = value
+            }
+            if let value = dict["PostPaidCanTry"] as? Bool {
+                self.postPaidCanTry = value
             }
             if let value = dict["TryType"] as? Int32 {
                 self.tryType = value
