@@ -3986,6 +3986,101 @@ public class AlertRuleTemplate : Tea.TeaModel {
     }
 }
 
+public class AlertRuleTemplateApplyRecord : Tea.TeaModel {
+    public var applyConfig: String?
+
+    public var gmtCreate: Int64?
+
+    public var gmtModified: Int64?
+
+    public var id: Int64?
+
+    public var regionId: String?
+
+    public var ruleId: String?
+
+    public var status: String?
+
+    public var templateUuid: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applyConfig != nil {
+            map["applyConfig"] = self.applyConfig!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.ruleId != nil {
+            map["ruleId"] = self.ruleId!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.templateUuid != nil {
+            map["templateUuid"] = self.templateUuid!
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["applyConfig"] as? String {
+            self.applyConfig = value
+        }
+        if let value = dict["gmtCreate"] as? Int64 {
+            self.gmtCreate = value
+        }
+        if let value = dict["gmtModified"] as? Int64 {
+            self.gmtModified = value
+        }
+        if let value = dict["id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ruleId"] as? String {
+            self.ruleId = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["templateUuid"] as? String {
+            self.templateUuid = value
+        }
+        if let value = dict["userId"] as? String {
+            self.userId = value
+        }
+    }
+}
+
 public class AlertRuleTimeSpan : Tea.TeaModel {
     public var dayOfWeek: [Int32]?
 
@@ -5384,6 +5479,8 @@ public class ConditionConfigUnified : Tea.TeaModel {
 
     public var noDataAppendValue: Double?
 
+    public var noDataDurationSecs: Int32?
+
     public var noDataPolicy: String?
 
     public var operator_: String?
@@ -5497,6 +5594,9 @@ public class ConditionConfigUnified : Tea.TeaModel {
         }
         if self.noDataAppendValue != nil {
             map["noDataAppendValue"] = self.noDataAppendValue!
+        }
+        if self.noDataDurationSecs != nil {
+            map["noDataDurationSecs"] = self.noDataDurationSecs!
         }
         if self.noDataPolicy != nil {
             map["noDataPolicy"] = self.noDataPolicy!
@@ -5629,6 +5729,9 @@ public class ConditionConfigUnified : Tea.TeaModel {
         }
         if let value = dict["noDataAppendValue"] as? Double {
             self.noDataAppendValue = value
+        }
+        if let value = dict["noDataDurationSecs"] as? Int32 {
+            self.noDataDurationSecs = value
         }
         if let value = dict["noDataPolicy"] as? String {
             self.noDataPolicy = value
@@ -43373,6 +43476,8 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
 
             public var clusterType: String?
 
+            public var entityUserId: String?
+
             public var vpcCidr: String?
 
             public var vpcId: String?
@@ -43397,6 +43502,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
                 if self.clusterType != nil {
                     map["clusterType"] = self.clusterType!
                 }
+                if self.entityUserId != nil {
+                    map["entityUserId"] = self.entityUserId!
+                }
                 if self.vpcCidr != nil {
                     map["vpcCidr"] = self.vpcCidr!
                 }
@@ -43413,6 +43521,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["clusterType"] as? String {
                     self.clusterType = value
+                }
+                if let value = dict["entityUserId"] as? String {
+                    self.entityUserId = value
                 }
                 if let value = dict["vpcCidr"] as? String {
                     self.vpcCidr = value
@@ -56805,6 +56916,8 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
 
             public var clusterType: String?
 
+            public var entityUserId: String?
+
             public var vpcCidr: String?
 
             public var vpcId: String?
@@ -56829,6 +56942,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
                 if self.clusterType != nil {
                     map["clusterType"] = self.clusterType!
                 }
+                if self.entityUserId != nil {
+                    map["entityUserId"] = self.entityUserId!
+                }
                 if self.vpcCidr != nil {
                     map["vpcCidr"] = self.vpcCidr!
                 }
@@ -56845,6 +56961,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["clusterType"] as? String {
                     self.clusterType = value
+                }
+                if let value = dict["entityUserId"] as? String {
+                    self.entityUserId = value
                 }
                 if let value = dict["vpcCidr"] as? String {
                     self.vpcCidr = value
