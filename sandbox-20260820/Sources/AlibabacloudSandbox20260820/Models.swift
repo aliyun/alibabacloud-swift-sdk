@@ -673,6 +673,8 @@ public class CreateTemplateBuildConfig : Tea.TeaModel {
 
     public var envdInject: CreateTemplateEnvdInjectAction?
 
+    public var installStorageClients: Bool?
+
     public override init() {
         super.init()
     }
@@ -695,6 +697,9 @@ public class CreateTemplateBuildConfig : Tea.TeaModel {
         if self.envdInject != nil {
             map["envdInject"] = self.envdInject?.toMap()
         }
+        if self.installStorageClients != nil {
+            map["installStorageClients"] = self.installStorageClients!
+        }
         return map
     }
 
@@ -709,6 +714,9 @@ public class CreateTemplateBuildConfig : Tea.TeaModel {
             var model = CreateTemplateEnvdInjectAction()
             model.fromMap(value)
             self.envdInject = model
+        }
+        if let value = dict["installStorageClients"] as? Bool {
+            self.installStorageClients = value
         }
     }
 }
@@ -4689,6 +4697,8 @@ public class PublicTemplateSandboxConfig : Tea.TeaModel {
 
     public var startCommand: String?
 
+    public var steps: [PublicTemplateStep]?
+
     public override init() {
         super.init()
     }
@@ -4725,6 +4735,13 @@ public class PublicTemplateSandboxConfig : Tea.TeaModel {
         if self.startCommand != nil {
             map["startCommand"] = self.startCommand!
         }
+        if self.steps != nil {
+            var tmp : [Any] = []
+            for k in self.steps! {
+                tmp.append(k.toMap())
+            }
+            map["steps"] = tmp
+        }
         return map
     }
 
@@ -4752,6 +4769,19 @@ public class PublicTemplateSandboxConfig : Tea.TeaModel {
         }
         if let value = dict["startCommand"] as? String {
             self.startCommand = value
+        }
+        if let value = dict["steps"] as? [Any?] {
+            var tmp : [PublicTemplateStep] = []
+            for v in value {
+                if v != nil {
+                    var model = PublicTemplateStep()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.steps = tmp
         }
     }
 }
@@ -4845,6 +4875,45 @@ public class PublicTemplateStatusReason : Tea.TeaModel {
     }
 }
 
+public class PublicTemplateStep : Tea.TeaModel {
+    public var args: [String]?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.args != nil {
+            map["args"] = self.args!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["args"] as? [String] {
+            self.args = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+    }
+}
+
 public class PublicTemplateVPCConfig : Tea.TeaModel {
     public var role: String?
 
@@ -4905,6 +4974,8 @@ public class PublicUpdateTemplateBuildConfig : Tea.TeaModel {
 
     public var envdInject: PublicUpdateTemplateEnvdInjectAction?
 
+    public var installStorageClients: Bool?
+
     public override init() {
         super.init()
     }
@@ -4927,6 +4998,9 @@ public class PublicUpdateTemplateBuildConfig : Tea.TeaModel {
         if self.envdInject != nil {
             map["envdInject"] = self.envdInject?.toMap()
         }
+        if self.installStorageClients != nil {
+            map["installStorageClients"] = self.installStorageClients!
+        }
         return map
     }
 
@@ -4941,6 +5015,9 @@ public class PublicUpdateTemplateBuildConfig : Tea.TeaModel {
             var model = PublicUpdateTemplateEnvdInjectAction()
             model.fromMap(value)
             self.envdInject = model
+        }
+        if let value = dict["installStorageClients"] as? Bool {
+            self.installStorageClients = value
         }
     }
 }
