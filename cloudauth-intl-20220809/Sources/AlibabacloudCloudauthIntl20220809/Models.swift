@@ -11831,6 +11831,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var model: String?
 
+    public var needMultiFaceCheck: String?
+
     public var ocr: String?
 
     public var ocrValueStandard: String?
@@ -11998,6 +12000,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.needMultiFaceCheck != nil {
+            map["NeedMultiFaceCheck"] = self.needMultiFaceCheck!
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
@@ -12181,6 +12186,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["Model"] as? String {
             self.model = value
         }
+        if let value = dict["NeedMultiFaceCheck"] as? String {
+            self.needMultiFaceCheck = value
+        }
         if let value = dict["Ocr"] as? String {
             self.ocr = value
         }
@@ -12325,6 +12333,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var mobile: String?
 
     public var model: String?
+
+    public var needMultiFaceCheck: String?
 
     public var ocr: String?
 
@@ -12493,6 +12503,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.needMultiFaceCheck != nil {
+            map["NeedMultiFaceCheck"] = self.needMultiFaceCheck!
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
@@ -12675,6 +12688,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Model"] as? String {
             self.model = value
+        }
+        if let value = dict["NeedMultiFaceCheck"] as? String {
+            self.needMultiFaceCheck = value
         }
         if let value = dict["Ocr"] as? String {
             self.ocr = value
@@ -12985,6 +13001,8 @@ public class InitializeV2Request : Tea.TeaModel {
 
     public var model: String?
 
+    public var needMultiFaceCheck: String?
+
     public var ocr: String?
 
     public var ocrValueStandard: String?
@@ -13157,6 +13175,9 @@ public class InitializeV2Request : Tea.TeaModel {
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.needMultiFaceCheck != nil {
+            map["NeedMultiFaceCheck"] = self.needMultiFaceCheck!
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
@@ -13346,6 +13367,9 @@ public class InitializeV2Request : Tea.TeaModel {
         if let value = dict["Model"] as? String {
             self.model = value
         }
+        if let value = dict["NeedMultiFaceCheck"] as? String {
+            self.needMultiFaceCheck = value
+        }
         if let value = dict["Ocr"] as? String {
             self.ocr = value
         }
@@ -13495,6 +13519,8 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
     public var mobile: String?
 
     public var model: String?
+
+    public var needMultiFaceCheck: String?
 
     public var ocr: String?
 
@@ -13668,6 +13694,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.needMultiFaceCheck != nil {
+            map["NeedMultiFaceCheck"] = self.needMultiFaceCheck!
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
@@ -13857,6 +13886,9 @@ public class InitializeV2AdvanceRequest : Tea.TeaModel {
         if let value = dict["Model"] as? String {
             self.model = value
         }
+        if let value = dict["NeedMultiFaceCheck"] as? String {
+            self.needMultiFaceCheck = value
+        }
         if let value = dict["Ocr"] as? String {
             self.ocr = value
         }
@@ -14006,6 +14038,8 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
     public var mobile: String?
 
     public var model: String?
+
+    public var needMultiFaceCheck: String?
 
     public var ocr: String?
 
@@ -14179,6 +14213,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.needMultiFaceCheck != nil {
+            map["NeedMultiFaceCheck"] = self.needMultiFaceCheck!
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
@@ -14367,6 +14404,9 @@ public class InitializeV2ShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Model"] as? String {
             self.model = value
+        }
+        if let value = dict["NeedMultiFaceCheck"] as? String {
+            self.needMultiFaceCheck = value
         }
         if let value = dict["Ocr"] as? String {
             self.ocr = value
