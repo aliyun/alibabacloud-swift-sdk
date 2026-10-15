@@ -13716,6 +13716,8 @@ public class GetKeywordLibRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var serviceCode: String?
+
     public var tenantCode: String?
 
     public override init() {
@@ -13738,6 +13740,9 @@ public class GetKeywordLibRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceCode != nil {
+            map["ServiceCode"] = self.serviceCode!
+        }
         if self.tenantCode != nil {
             map["TenantCode"] = self.tenantCode!
         }
@@ -13751,6 +13756,9 @@ public class GetKeywordLibRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ServiceCode"] as? String {
+            self.serviceCode = value
         }
         if let value = dict["TenantCode"] as? String {
             self.tenantCode = value
@@ -13767,6 +13775,8 @@ public class GetKeywordLibResponseBody : Tea.TeaModel {
         public var libId: String?
 
         public var libName: String?
+
+        public var preprocessList: [String]?
 
         public var uid: String?
 
@@ -13796,6 +13806,9 @@ public class GetKeywordLibResponseBody : Tea.TeaModel {
             if self.libName != nil {
                 map["LibName"] = self.libName!
             }
+            if self.preprocessList != nil {
+                map["PreprocessList"] = self.preprocessList!
+            }
             if self.uid != nil {
                 map["Uid"] = self.uid!
             }
@@ -13815,6 +13828,9 @@ public class GetKeywordLibResponseBody : Tea.TeaModel {
             }
             if let value = dict["LibName"] as? String {
                 self.libName = value
+            }
+            if let value = dict["PreprocessList"] as? [String] {
+                self.preprocessList = value
             }
             if let value = dict["Uid"] as? String {
                 self.uid = value
@@ -24193,6 +24209,8 @@ public class ListImagesFromLibResponse : Tea.TeaModel {
 public class ListKeywordLibsRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var serviceCode: String?
+
     public var tenantCode: String?
 
     public override init() {
@@ -24212,6 +24230,9 @@ public class ListKeywordLibsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceCode != nil {
+            map["ServiceCode"] = self.serviceCode!
+        }
         if self.tenantCode != nil {
             map["TenantCode"] = self.tenantCode!
         }
@@ -24222,6 +24243,9 @@ public class ListKeywordLibsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ServiceCode"] as? String {
+            self.serviceCode = value
         }
         if let value = dict["TenantCode"] as? String {
             self.tenantCode = value
@@ -24238,6 +24262,8 @@ public class ListKeywordLibsResponseBody : Tea.TeaModel {
         public var libId: String?
 
         public var libName: String?
+
+        public var preprocessList: [String]?
 
         public var serviceCodes: String?
 
@@ -24269,6 +24295,9 @@ public class ListKeywordLibsResponseBody : Tea.TeaModel {
             if self.libName != nil {
                 map["LibName"] = self.libName!
             }
+            if self.preprocessList != nil {
+                map["PreprocessList"] = self.preprocessList!
+            }
             if self.serviceCodes != nil {
                 map["ServiceCodes"] = self.serviceCodes!
             }
@@ -24291,6 +24320,9 @@ public class ListKeywordLibsResponseBody : Tea.TeaModel {
             }
             if let value = dict["LibName"] as? String {
                 self.libName = value
+            }
+            if let value = dict["PreprocessList"] as? [String] {
+                self.preprocessList = value
             }
             if let value = dict["ServiceCodes"] as? String {
                 self.serviceCodes = value
@@ -31616,6 +31648,8 @@ public class UpdateServiceConfigRequest : Tea.TeaModel {
 
     public var keywordHitLibs: String?
 
+    public var keywordLibProcessConf: String?
+
     public var manualMachineConfig: String?
 
     public var regionId: String?
@@ -31661,6 +31695,9 @@ public class UpdateServiceConfigRequest : Tea.TeaModel {
         if self.keywordHitLibs != nil {
             map["KeywordHitLibs"] = self.keywordHitLibs!
         }
+        if self.keywordLibProcessConf != nil {
+            map["KeywordLibProcessConf"] = self.keywordLibProcessConf!
+        }
         if self.manualMachineConfig != nil {
             map["ManualMachineConfig"] = self.manualMachineConfig!
         }
@@ -31704,6 +31741,9 @@ public class UpdateServiceConfigRequest : Tea.TeaModel {
         }
         if let value = dict["KeywordHitLibs"] as? String {
             self.keywordHitLibs = value
+        }
+        if let value = dict["KeywordLibProcessConf"] as? String {
+            self.keywordLibProcessConf = value
         }
         if let value = dict["ManualMachineConfig"] as? String {
             self.manualMachineConfig = value
