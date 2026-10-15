@@ -183,6 +183,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createUserInvitationCodeWithOptions(_ request: CreateUserInvitationCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUserInvitationCodeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            body["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endUserIds)) {
+            body["EndUserIds"] = request.endUserIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.terminalGroupId)) {
+            body["TerminalGroupId"] = request.terminalGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validityMinutes)) {
+            body["ValidityMinutes"] = request.validityMinutes!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateUserInvitationCode",
+            "version": "2021-04-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateUserInvitationCodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createUserInvitationCode(_ request: CreateUserInvitationCodeRequest) async throws -> CreateUserInvitationCodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createUserInvitationCodeWithOptions(request as! CreateUserInvitationCodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteClientsWithOptions(_ request: DeleteClientsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteClientsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
