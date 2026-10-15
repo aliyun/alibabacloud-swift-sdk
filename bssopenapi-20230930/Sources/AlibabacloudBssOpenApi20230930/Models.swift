@@ -15569,6 +15569,8 @@ public class ListReportDefinitionsRequest : Tea.TeaModel {
 
 public class ListReportDefinitionsResponseBody : Tea.TeaModel {
     public class ReportDefinitions : Tea.TeaModel {
+        public var autoTagFields: Bool?
+
         public var beginBillingCycle: String?
 
         public var ossBucketName: String?
@@ -15603,6 +15605,9 @@ public class ListReportDefinitionsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoTagFields != nil {
+                map["AutoTagFields"] = self.autoTagFields!
+            }
             if self.beginBillingCycle != nil {
                 map["BeginBillingCycle"] = self.beginBillingCycle!
             }
@@ -15638,6 +15643,9 @@ public class ListReportDefinitionsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AutoTagFields"] as? Bool {
+                self.autoTagFields = value
+            }
             if let value = dict["BeginBillingCycle"] as? String {
                 self.beginBillingCycle = value
             }
