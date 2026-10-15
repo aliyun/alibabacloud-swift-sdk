@@ -5,6 +5,897 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AttributeDetailDTO : Tea.TeaModel {
+    public class Values : Tea.TeaModel {
+        public var cascadingAttributeValues: [AttributeDetailDTO]?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cascadingAttributeValues != nil {
+                var tmp : [Any] = []
+                for k in self.cascadingAttributeValues! {
+                    tmp.append(k.toMap())
+                }
+                map["CascadingAttributeValues"] = tmp
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CascadingAttributeValues"] as? [Any?] {
+                var tmp : [AttributeDetailDTO] = []
+                for v in value {
+                    if v != nil {
+                        var model = AttributeDetailDTO()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.cascadingAttributeValues = tmp
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var defaultValue: String?
+
+    public var status: String?
+
+    public var values: [AttributeDetailDTO.Values]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.defaultValue != nil {
+            map["DefaultValue"] = self.defaultValue!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.values != nil {
+            var tmp : [Any] = []
+            for k in self.values! {
+                tmp.append(k.toMap())
+            }
+            map["Values"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["DefaultValue"] as? String {
+            self.defaultValue = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Values"] as? [Any?] {
+            var tmp : [AttributeDetailDTO.Values] = []
+            for v in value {
+                if v != nil {
+                    var model = AttributeDetailDTO.Values()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.values = tmp
+        }
+    }
+}
+
+public class AttributeInfoDTO : Tea.TeaModel {
+    public var attributeCategories: [String]?
+
+    public var attributeSource: String?
+
+    public var attributeType: String?
+
+    public var code: String?
+
+    public var compositeAttributes: [BaseAttributeInfoDTO]?
+
+    public var description_: String?
+
+    public var descriptionAttributes: [BaseAttributeInfoDTO]?
+
+    public var name: String?
+
+    public var operationalAttributeConfig: String?
+
+    public var operationalAttributeType: String?
+
+    public var subAttributes: [AttributeInfoDTO]?
+
+    public var unit: String?
+
+    public var valueType: String?
+
+    public var values: [AttributeValueInfoDTO]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attributeCategories != nil {
+            map["AttributeCategories"] = self.attributeCategories!
+        }
+        if self.attributeSource != nil {
+            map["AttributeSource"] = self.attributeSource!
+        }
+        if self.attributeType != nil {
+            map["AttributeType"] = self.attributeType!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.compositeAttributes != nil {
+            var tmp : [Any] = []
+            for k in self.compositeAttributes! {
+                tmp.append(k.toMap())
+            }
+            map["CompositeAttributes"] = tmp
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.descriptionAttributes != nil {
+            var tmp : [Any] = []
+            for k in self.descriptionAttributes! {
+                tmp.append(k.toMap())
+            }
+            map["DescriptionAttributes"] = tmp
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.operationalAttributeConfig != nil {
+            map["OperationalAttributeConfig"] = self.operationalAttributeConfig!
+        }
+        if self.operationalAttributeType != nil {
+            map["OperationalAttributeType"] = self.operationalAttributeType!
+        }
+        if self.subAttributes != nil {
+            var tmp : [Any] = []
+            for k in self.subAttributes! {
+                tmp.append(k.toMap())
+            }
+            map["SubAttributes"] = tmp
+        }
+        if self.unit != nil {
+            map["Unit"] = self.unit!
+        }
+        if self.valueType != nil {
+            map["ValueType"] = self.valueType!
+        }
+        if self.values != nil {
+            var tmp : [Any] = []
+            for k in self.values! {
+                tmp.append(k.toMap())
+            }
+            map["Values"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AttributeCategories"] as? [String] {
+            self.attributeCategories = value
+        }
+        if let value = dict["AttributeSource"] as? String {
+            self.attributeSource = value
+        }
+        if let value = dict["AttributeType"] as? String {
+            self.attributeType = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["CompositeAttributes"] as? [Any?] {
+            var tmp : [BaseAttributeInfoDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = BaseAttributeInfoDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.compositeAttributes = tmp
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DescriptionAttributes"] as? [Any?] {
+            var tmp : [BaseAttributeInfoDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = BaseAttributeInfoDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.descriptionAttributes = tmp
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OperationalAttributeConfig"] as? String {
+            self.operationalAttributeConfig = value
+        }
+        if let value = dict["OperationalAttributeType"] as? String {
+            self.operationalAttributeType = value
+        }
+        if let value = dict["SubAttributes"] as? [Any?] {
+            var tmp : [AttributeInfoDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = AttributeInfoDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.subAttributes = tmp
+        }
+        if let value = dict["Unit"] as? String {
+            self.unit = value
+        }
+        if let value = dict["ValueType"] as? String {
+            self.valueType = value
+        }
+        if let value = dict["Values"] as? [Any?] {
+            var tmp : [AttributeValueInfoDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = AttributeValueInfoDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.values = tmp
+        }
+    }
+}
+
+public class AttributeValueInfoDTO : Tea.TeaModel {
+    public class BoundedValue : Tea.TeaModel {
+        public var lowerBound: [AttributeValueInfoDTO]?
+
+        public var upperBound: [AttributeValueInfoDTO]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.lowerBound != nil {
+                var tmp : [Any] = []
+                for k in self.lowerBound! {
+                    tmp.append(k.toMap())
+                }
+                map["LowerBound"] = tmp
+            }
+            if self.upperBound != nil {
+                var tmp : [Any] = []
+                for k in self.upperBound! {
+                    tmp.append(k.toMap())
+                }
+                map["UpperBound"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LowerBound"] as? [Any?] {
+                var tmp : [AttributeValueInfoDTO] = []
+                for v in value {
+                    if v != nil {
+                        var model = AttributeValueInfoDTO()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.lowerBound = tmp
+            }
+            if let value = dict["UpperBound"] as? [Any?] {
+                var tmp : [AttributeValueInfoDTO] = []
+                for v in value {
+                    if v != nil {
+                        var model = AttributeValueInfoDTO()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.upperBound = tmp
+            }
+        }
+    }
+    public var boundedValue: AttributeValueInfoDTO.BoundedValue?
+
+    public var code: String?
+
+    public var defaultValue: String?
+
+    public var description_: String?
+
+    public var descriptionAttributeValues: [AttributeValueInfoDTO]?
+
+    public var identifyKey: String?
+
+    public var max: String?
+
+    public var min: String?
+
+    public var operationTags: [String]?
+
+    public var step: String?
+
+    public var subAttributeValues: [String: [AttributeValueInfoDTO]]?
+
+    public var value: String?
+
+    public var valueName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.boundedValue?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.boundedValue != nil {
+            map["BoundedValue"] = self.boundedValue?.toMap()
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.defaultValue != nil {
+            map["DefaultValue"] = self.defaultValue!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.descriptionAttributeValues != nil {
+            var tmp : [Any] = []
+            for k in self.descriptionAttributeValues! {
+                tmp.append(k.toMap())
+            }
+            map["DescriptionAttributeValues"] = tmp
+        }
+        if self.identifyKey != nil {
+            map["IdentifyKey"] = self.identifyKey!
+        }
+        if self.max != nil {
+            map["Max"] = self.max!
+        }
+        if self.min != nil {
+            map["Min"] = self.min!
+        }
+        if self.operationTags != nil {
+            map["OperationTags"] = self.operationTags!
+        }
+        if self.step != nil {
+            map["Step"] = self.step!
+        }
+        if self.subAttributeValues != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.subAttributeValues! {
+                var l1 : [Any] = []
+                for k1 in v {
+                    l1.append(k1.toMap())
+                }
+                tmp[k] = l1
+            }
+            map["SubAttributeValues"] = tmp
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        if self.valueName != nil {
+            map["ValueName"] = self.valueName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BoundedValue"] as? [String: Any?] {
+            var model = AttributeValueInfoDTO.BoundedValue()
+            model.fromMap(value)
+            self.boundedValue = model
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["DefaultValue"] as? String {
+            self.defaultValue = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DescriptionAttributeValues"] as? [Any?] {
+            var tmp : [AttributeValueInfoDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = AttributeValueInfoDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.descriptionAttributeValues = tmp
+        }
+        if let value = dict["IdentifyKey"] as? String {
+            self.identifyKey = value
+        }
+        if let value = dict["Max"] as? String {
+            self.max = value
+        }
+        if let value = dict["Min"] as? String {
+            self.min = value
+        }
+        if let value = dict["OperationTags"] as? [String] {
+            self.operationTags = value
+        }
+        if let value = dict["Step"] as? String {
+            self.step = value
+        }
+        if let value = dict["SubAttributeValues"] as? [String: Any?] {
+            var tmp : [String: [AttributeValueInfoDTO]] = [:]
+            for (k, v) in value {
+                var l1 : [AttributeValueInfoDTO] = []
+                for v1 in v as! [Any?] {
+                    if v1 != nil {
+                        var model = AttributeValueInfoDTO()
+                        if v1 != nil {
+                            model.fromMap(v1 as? [String: Any?])
+                        }
+                        l1.append(model)
+                    }
+                }
+                tmp[k] = l1
+            }
+            self.subAttributeValues = tmp
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+        if let value = dict["ValueName"] as? String {
+            self.valueName = value
+        }
+    }
+}
+
+public class BaseAttributeInfoDTO : Tea.TeaModel {
+    public var attributeCategories: [String]?
+
+    public var attributeSource: String?
+
+    public var attributeType: String?
+
+    public var code: String?
+
+    public var description_: String?
+
+    public var name: String?
+
+    public var operationalAttributeType: String?
+
+    public var unit: String?
+
+    public var valueType: String?
+
+    public var values: [AttributeValueInfoDTO]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attributeCategories != nil {
+            map["AttributeCategories"] = self.attributeCategories!
+        }
+        if self.attributeSource != nil {
+            map["AttributeSource"] = self.attributeSource!
+        }
+        if self.attributeType != nil {
+            map["AttributeType"] = self.attributeType!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.operationalAttributeType != nil {
+            map["OperationalAttributeType"] = self.operationalAttributeType!
+        }
+        if self.unit != nil {
+            map["Unit"] = self.unit!
+        }
+        if self.valueType != nil {
+            map["ValueType"] = self.valueType!
+        }
+        if self.values != nil {
+            var tmp : [Any] = []
+            for k in self.values! {
+                tmp.append(k.toMap())
+            }
+            map["Values"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AttributeCategories"] as? [String] {
+            self.attributeCategories = value
+        }
+        if let value = dict["AttributeSource"] as? String {
+            self.attributeSource = value
+        }
+        if let value = dict["AttributeType"] as? String {
+            self.attributeType = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OperationalAttributeType"] as? String {
+            self.operationalAttributeType = value
+        }
+        if let value = dict["Unit"] as? String {
+            self.unit = value
+        }
+        if let value = dict["ValueType"] as? String {
+            self.valueType = value
+        }
+        if let value = dict["Values"] as? [Any?] {
+            var tmp : [AttributeValueInfoDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = AttributeValueInfoDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.values = tmp
+        }
+    }
+}
+
+public class SelectedComponentConfigDTO : Tea.TeaModel {
+    public class AttributeConfigs : Tea.TeaModel {
+        public class BoundedValue : Tea.TeaModel {
+            public class LowerBound : Tea.TeaModel {
+                public var code: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Code"] as? String {
+                        self.code = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public class UpperBound : Tea.TeaModel {
+                public var code: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Code"] as? String {
+                        self.code = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var lowerBound: SelectedComponentConfigDTO.AttributeConfigs.BoundedValue.LowerBound?
+
+            public var upperBound: SelectedComponentConfigDTO.AttributeConfigs.BoundedValue.UpperBound?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.lowerBound?.validate()
+                try self.upperBound?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.lowerBound != nil {
+                    map["LowerBound"] = self.lowerBound?.toMap()
+                }
+                if self.upperBound != nil {
+                    map["UpperBound"] = self.upperBound?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LowerBound"] as? [String: Any?] {
+                    var model = SelectedComponentConfigDTO.AttributeConfigs.BoundedValue.LowerBound()
+                    model.fromMap(value)
+                    self.lowerBound = model
+                }
+                if let value = dict["UpperBound"] as? [String: Any?] {
+                    var model = SelectedComponentConfigDTO.AttributeConfigs.BoundedValue.UpperBound()
+                    model.fromMap(value)
+                    self.upperBound = model
+                }
+            }
+        }
+        public var boundedValue: SelectedComponentConfigDTO.AttributeConfigs.BoundedValue?
+
+        public var code: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.boundedValue?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.boundedValue != nil {
+                map["BoundedValue"] = self.boundedValue?.toMap()
+            }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BoundedValue"] as? [String: Any?] {
+                var model = SelectedComponentConfigDTO.AttributeConfigs.BoundedValue()
+                model.fromMap(value)
+                self.boundedValue = model
+            }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var attributeConfigs: [SelectedComponentConfigDTO.AttributeConfigs]?
+
+    public var code: String?
+
+    public var tag: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attributeConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.attributeConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["AttributeConfigs"] = tmp
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AttributeConfigs"] as? [Any?] {
+            var tmp : [SelectedComponentConfigDTO.AttributeConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = SelectedComponentConfigDTO.AttributeConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.attributeConfigs = tmp
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
+        }
+    }
+}
+
 public class AddAccountRelationRequest : Tea.TeaModel {
     public var childNick: String?
 
@@ -17802,6 +18693,68 @@ public class GetSubscriptionPriceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PaymentScheme : Tea.TeaModel {
+            public var orderDownPaymentFee: String?
+
+            public var orderDownPaymentSettleFee: String?
+
+            public var orderTotalFee: String?
+
+            public var orderTotalSettleFee: String?
+
+            public var paymentType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.orderDownPaymentFee != nil {
+                    map["OrderDownPaymentFee"] = self.orderDownPaymentFee!
+                }
+                if self.orderDownPaymentSettleFee != nil {
+                    map["OrderDownPaymentSettleFee"] = self.orderDownPaymentSettleFee!
+                }
+                if self.orderTotalFee != nil {
+                    map["OrderTotalFee"] = self.orderTotalFee!
+                }
+                if self.orderTotalSettleFee != nil {
+                    map["OrderTotalSettleFee"] = self.orderTotalSettleFee!
+                }
+                if self.paymentType != nil {
+                    map["PaymentType"] = self.paymentType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["OrderDownPaymentFee"] as? String {
+                    self.orderDownPaymentFee = value
+                }
+                if let value = dict["OrderDownPaymentSettleFee"] as? String {
+                    self.orderDownPaymentSettleFee = value
+                }
+                if let value = dict["OrderTotalFee"] as? String {
+                    self.orderTotalFee = value
+                }
+                if let value = dict["OrderTotalSettleFee"] as? String {
+                    self.orderTotalSettleFee = value
+                }
+                if let value = dict["PaymentType"] as? String {
+                    self.paymentType = value
+                }
+            }
+        }
         public class PromotionDetails : Tea.TeaModel {
             public class PromotionDetail : Tea.TeaModel {
                 public var promotionDesc: String?
@@ -17900,6 +18853,8 @@ public class GetSubscriptionPriceResponseBody : Tea.TeaModel {
 
         public var originalPrice: Double?
 
+        public var paymentScheme: GetSubscriptionPriceResponseBody.Data.PaymentScheme?
+
         public var promotionDetails: GetSubscriptionPriceResponseBody.Data.PromotionDetails?
 
         public var quantity: Int32?
@@ -17917,6 +18872,7 @@ public class GetSubscriptionPriceResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.moduleDetails?.validate()
+            try self.paymentScheme?.validate()
             try self.promotionDetails?.validate()
         }
 
@@ -17933,6 +18889,9 @@ public class GetSubscriptionPriceResponseBody : Tea.TeaModel {
             }
             if self.originalPrice != nil {
                 map["OriginalPrice"] = self.originalPrice!
+            }
+            if self.paymentScheme != nil {
+                map["PaymentScheme"] = self.paymentScheme?.toMap()
             }
             if self.promotionDetails != nil {
                 map["PromotionDetails"] = self.promotionDetails?.toMap()
@@ -17961,6 +18920,11 @@ public class GetSubscriptionPriceResponseBody : Tea.TeaModel {
             }
             if let value = dict["OriginalPrice"] as? Double {
                 self.originalPrice = value
+            }
+            if let value = dict["PaymentScheme"] as? [String: Any?] {
+                var model = GetSubscriptionPriceResponseBody.Data.PaymentScheme()
+                model.fromMap(value)
+                self.paymentScheme = model
             }
             if let value = dict["PromotionDetails"] as? [String: Any?] {
                 var model = GetSubscriptionPriceResponseBody.Data.PromotionDetails()
