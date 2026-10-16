@@ -3119,6 +3119,8 @@ public class DescribeScansRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var query: String?
+
     public var status: String?
 
     public var taskName: String?
@@ -3143,6 +3145,9 @@ public class DescribeScansRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.query != nil {
+            map["query"] = self.query!
+        }
         if self.status != nil {
             map["status"] = self.status!
         }
@@ -3159,6 +3164,9 @@ public class DescribeScansRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["query"] as? String {
+            self.query = value
         }
         if let value = dict["status"] as? String {
             self.status = value
