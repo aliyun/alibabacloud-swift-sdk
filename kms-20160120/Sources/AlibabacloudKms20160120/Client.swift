@@ -13,42 +13,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
         self._spi = gatewayClient
         self._endpointRule = "regional"
-        self._endpointMap = [
-            "ap-northeast-1": "kms.ap-northeast-1.aliyuncs.com",
-            "ap-northeast-2": "kms.ap-northeast-2.aliyuncs.com",
-            "ap-southeast-7": "kms.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "kms.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "kms.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "kms.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-1": "kms.ap-southeast-1.aliyuncs.com",
-            "cn-hongkong": "kms.cn-hongkong.aliyuncs.com",
-            "cn-chengdu": "kms.cn-chengdu.aliyuncs.com",
-            "cn-wulanchabu": "kms.cn-wulanchabu.aliyuncs.com",
-            "cn-huhehaote": "kms.cn-huhehaote.aliyuncs.com",
-            "cn-zhangjiakou": "kms.cn-zhangjiakou.aliyuncs.com",
-            "cn-beijing": "kms.cn-beijing.aliyuncs.com",
-            "cn-qingdao": "kms.cn-qingdao.aliyuncs.com",
-            "cn-guangzhou": "kms.cn-guangzhou.aliyuncs.com",
-            "cn-heyuan": "kms.cn-heyuan.aliyuncs.com",
-            "cn-shenzhen": "kms.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai": "kms.cn-shanghai.aliyuncs.com",
-            "cn-hangzhou": "kms.cn-hangzhou.aliyuncs.com",
-            "cn-fuzhou": "kms.cn-fuzhou.aliyuncs.com",
-            "cn-wuhan-lr": "kms.cn-wuhan-lr.aliyuncs.com",
-            "cn-zhengzhou-jva": "kms.cn-zhengzhou-jva.aliyuncs.com",
-            "na-south-1": "kms.na-south-1.aliyuncs.com",
-            "eu-central-1": "kms.eu-central-1.aliyuncs.com",
-            "eu-west-1": "kms.eu-west-1.aliyuncs.com",
-            "us-west-1": "kms.us-west-1.aliyuncs.com",
-            "us-east-1": "kms.us-east-1.aliyuncs.com",
-            "me-central-1": "kms.me-central-1.aliyuncs.com",
-            "me-east-1": "kms.me-east-1.aliyuncs.com",
-            "cn-heyuan-acdr-1": "kms.cn-heyuan-acdr-1.aliyuncs.com",
-            "cn-hangzhou-finance": "kms.cn-hangzhou-finance.aliyuncs.com",
-            "cn-shanghai-finance-1": "kms.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shenzhen-finance-1": "kms.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-beijing-finance-1": "kms.cn-beijing-finance-1.aliyuncs.com"
-        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("kms", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -675,9 +639,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.rotationInterval)) {
             query["RotationInterval"] = request.rotationInterval ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.secretData)) {
-            query["SecretData"] = request.secretData ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.secretDataType)) {
             query["SecretDataType"] = request.secretDataType ?? "";
         }
@@ -693,8 +654,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.versionId)) {
             query["VersionId"] = request.versionId ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.secretData)) {
+            body["SecretData"] = request.secretData ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateSecret",
@@ -2572,9 +2538,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putSecretValueWithOptions(_ request: PutSecretValueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutSecretValueResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.secretData)) {
-            query["SecretData"] = request.secretData ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.secretDataType)) {
             query["SecretDataType"] = request.secretDataType ?? "";
         }
@@ -2587,8 +2550,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.versionStages)) {
             query["VersionStages"] = request.versionStages ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.secretData)) {
+            body["SecretData"] = request.secretData ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "PutSecretValue",
