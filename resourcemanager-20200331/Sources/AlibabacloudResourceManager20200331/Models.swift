@@ -17446,6 +17446,8 @@ public class ListResourcesRequest : Tea.TeaModel {
             }
         }
     }
+    public var count: Bool?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -17476,6 +17478,9 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -17509,6 +17514,9 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Count"] as? Bool {
+            self.count = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
