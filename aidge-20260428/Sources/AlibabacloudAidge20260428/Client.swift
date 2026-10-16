@@ -2130,6 +2130,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.capabilities)) {
             request.capabilitiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.capabilities, "Capabilities", "json")
         }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eraseOnly)) {
+            query["EraseOnly"] = request.eraseOnly!;
+        }
+        if (!TeaUtils.Client.isUnset(request.removeLogo)) {
+            query["RemoveLogo"] = request.removeLogo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.subtitleMode)) {
+            query["SubtitleMode"] = request.subtitleMode ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.capabilitiesShrink)) {
             body["Capabilities"] = request.capabilitiesShrink ?? "";
@@ -2147,6 +2157,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["VideoUrl"] = request.videoUrl ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

@@ -15661,7 +15661,13 @@ public class VideoTranslationRequest : Tea.TeaModel {
 
     public var enableQualityCheck: Bool?
 
+    public var eraseOnly: Bool?
+
+    public var removeLogo: Bool?
+
     public var sourceLanguage: String?
+
+    public var subtitleMode: String?
 
     public var targetLanguage: String?
 
@@ -15687,8 +15693,17 @@ public class VideoTranslationRequest : Tea.TeaModel {
         if self.enableQualityCheck != nil {
             map["EnableQualityCheck"] = self.enableQualityCheck!
         }
+        if self.eraseOnly != nil {
+            map["EraseOnly"] = self.eraseOnly!
+        }
+        if self.removeLogo != nil {
+            map["RemoveLogo"] = self.removeLogo!
+        }
         if self.sourceLanguage != nil {
             map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.subtitleMode != nil {
+            map["SubtitleMode"] = self.subtitleMode!
         }
         if self.targetLanguage != nil {
             map["TargetLanguage"] = self.targetLanguage!
@@ -15707,8 +15722,17 @@ public class VideoTranslationRequest : Tea.TeaModel {
         if let value = dict["EnableQualityCheck"] as? Bool {
             self.enableQualityCheck = value
         }
+        if let value = dict["EraseOnly"] as? Bool {
+            self.eraseOnly = value
+        }
+        if let value = dict["RemoveLogo"] as? Bool {
+            self.removeLogo = value
+        }
         if let value = dict["SourceLanguage"] as? String {
             self.sourceLanguage = value
+        }
+        if let value = dict["SubtitleMode"] as? String {
+            self.subtitleMode = value
         }
         if let value = dict["TargetLanguage"] as? String {
             self.targetLanguage = value
@@ -15724,7 +15748,13 @@ public class VideoTranslationShrinkRequest : Tea.TeaModel {
 
     public var enableQualityCheck: Bool?
 
+    public var eraseOnly: Bool?
+
+    public var removeLogo: Bool?
+
     public var sourceLanguage: String?
+
+    public var subtitleMode: String?
 
     public var targetLanguage: String?
 
@@ -15750,8 +15780,17 @@ public class VideoTranslationShrinkRequest : Tea.TeaModel {
         if self.enableQualityCheck != nil {
             map["EnableQualityCheck"] = self.enableQualityCheck!
         }
+        if self.eraseOnly != nil {
+            map["EraseOnly"] = self.eraseOnly!
+        }
+        if self.removeLogo != nil {
+            map["RemoveLogo"] = self.removeLogo!
+        }
         if self.sourceLanguage != nil {
             map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.subtitleMode != nil {
+            map["SubtitleMode"] = self.subtitleMode!
         }
         if self.targetLanguage != nil {
             map["TargetLanguage"] = self.targetLanguage!
@@ -15770,8 +15809,17 @@ public class VideoTranslationShrinkRequest : Tea.TeaModel {
         if let value = dict["EnableQualityCheck"] as? Bool {
             self.enableQualityCheck = value
         }
+        if let value = dict["EraseOnly"] as? Bool {
+            self.eraseOnly = value
+        }
+        if let value = dict["RemoveLogo"] as? Bool {
+            self.removeLogo = value
+        }
         if let value = dict["SourceLanguage"] as? String {
             self.sourceLanguage = value
+        }
+        if let value = dict["SubtitleMode"] as? String {
+            self.subtitleMode = value
         }
         if let value = dict["TargetLanguage"] as? String {
             self.targetLanguage = value
