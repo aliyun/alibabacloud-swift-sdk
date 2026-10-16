@@ -328,6 +328,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.policySetName)) {
             body["PolicySetName"] = request.policySetName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourcePlatform)) {
+            body["SourcePlatform"] = request.sourcePlatform ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
@@ -562,6 +565,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.redirectURIs)) {
             request.redirectURIsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.redirectURIs, "RedirectURIs", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.scopes)) {
+            request.scopesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scopes, "Scopes", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accessTokenValidity)) {
             body["AccessTokenValidity"] = request.accessTokenValidity ?? "";
@@ -577,6 +583,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.refreshTokenValidity)) {
             body["RefreshTokenValidity"] = request.refreshTokenValidity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scopesShrink)) {
+            body["Scopes"] = request.scopesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.secretRequired)) {
             body["SecretRequired"] = request.secretRequired!;
@@ -1284,6 +1293,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIdentityProviderSyncScopeWithOptions(_ request: GetIdentityProviderSyncScopeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIdentityProviderSyncScopeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.identityProviderType)) {
+            body["IdentityProviderType"] = request.identityProviderType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userPoolName)) {
+            body["UserPoolName"] = request.userPoolName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetIdentityProviderSyncScope",
+            "version": "2025-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetIdentityProviderSyncScopeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIdentityProviderSyncScope(_ request: GetIdentityProviderSyncScopeRequest) async throws -> GetIdentityProviderSyncScopeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getIdentityProviderSyncScopeWithOptions(request as! GetIdentityProviderSyncScopeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getLoginPreferenceWithOptions(_ request: GetLoginPreferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLoginPreferenceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1813,6 +1856,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listClientSecrets(_ request: ListClientSecretsRequest) async throws -> ListClientSecretsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listClientSecretsWithOptions(request as! ListClientSecretsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIdentityProviderDepartmentsWithOptions(_ request: ListIdentityProviderDepartmentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIdentityProviderDepartmentsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.identityProviderType)) {
+            body["IdentityProviderType"] = request.identityProviderType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentDepartmentId)) {
+            body["ParentDepartmentId"] = request.parentDepartmentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userPoolName)) {
+            body["UserPoolName"] = request.userPoolName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIdentityProviderDepartments",
+            "version": "2025-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIdentityProviderDepartmentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIdentityProviderDepartments(_ request: ListIdentityProviderDepartmentsRequest) async throws -> ListIdentityProviderDepartmentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listIdentityProviderDepartmentsWithOptions(request as! ListIdentityProviderDepartmentsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2959,6 +3045,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.redirectURIs)) {
             request.redirectURIsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.redirectURIs, "RedirectURIs", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.scopes)) {
+            request.scopesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scopes, "Scopes", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accessTokenValidity)) {
             body["AccessTokenValidity"] = request.accessTokenValidity ?? "";
@@ -2974,6 +3063,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.refreshTokenValidity)) {
             body["RefreshTokenValidity"] = request.refreshTokenValidity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scopesShrink)) {
+            body["Scopes"] = request.scopesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.secretRequired)) {
             body["SecretRequired"] = request.secretRequired!;
