@@ -17136,6 +17136,10 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var publicEgressEnabled: Bool?
+
+            public var publicIngressEnabled: Bool?
+
             public var vpc: CreateWorkspaceRequest.Body.NetworkConfiguration.Vpc?
 
             public override init() {
@@ -17153,6 +17157,12 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.publicEgressEnabled != nil {
+                    map["publicEgressEnabled"] = self.publicEgressEnabled!
+                }
+                if self.publicIngressEnabled != nil {
+                    map["publicIngressEnabled"] = self.publicIngressEnabled!
+                }
                 if self.vpc != nil {
                     map["vpc"] = self.vpc?.toMap()
                 }
@@ -17161,6 +17171,12 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["publicEgressEnabled"] as? Bool {
+                    self.publicEgressEnabled = value
+                }
+                if let value = dict["publicIngressEnabled"] as? Bool {
+                    self.publicIngressEnabled = value
+                }
                 if let value = dict["vpc"] as? [String: Any?] {
                     var model = CreateWorkspaceRequest.Body.NetworkConfiguration.Vpc()
                     model.fromMap(value)
@@ -17345,6 +17361,10 @@ public class CreateWorkspaceResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var publicEgressEnabled: Bool?
+
+            public var publicIngressEnabled: Bool?
+
             public var vpc: CreateWorkspaceResponseBody.Data.NetworkConfiguration.Vpc?
 
             public override init() {
@@ -17362,6 +17382,12 @@ public class CreateWorkspaceResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.publicEgressEnabled != nil {
+                    map["publicEgressEnabled"] = self.publicEgressEnabled!
+                }
+                if self.publicIngressEnabled != nil {
+                    map["publicIngressEnabled"] = self.publicIngressEnabled!
+                }
                 if self.vpc != nil {
                     map["vpc"] = self.vpc?.toMap()
                 }
@@ -17370,6 +17396,12 @@ public class CreateWorkspaceResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["publicEgressEnabled"] as? Bool {
+                    self.publicEgressEnabled = value
+                }
+                if let value = dict["publicIngressEnabled"] as? Bool {
+                    self.publicIngressEnabled = value
+                }
                 if let value = dict["vpc"] as? [String: Any?] {
                     var model = CreateWorkspaceResponseBody.Data.NetworkConfiguration.Vpc()
                     model.fromMap(value)
@@ -34143,7 +34175,11 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var publicEgressEnabled: Bool?
+
             public var publicEgressIp: String?
+
+            public var publicIngressEnabled: Bool?
 
             public var vpc: GetWorkspaceResponseBody.Data.NetworkConfiguration.Vpc?
 
@@ -34162,8 +34198,14 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.publicEgressEnabled != nil {
+                    map["publicEgressEnabled"] = self.publicEgressEnabled!
+                }
                 if self.publicEgressIp != nil {
                     map["publicEgressIp"] = self.publicEgressIp!
+                }
+                if self.publicIngressEnabled != nil {
+                    map["publicIngressEnabled"] = self.publicIngressEnabled!
                 }
                 if self.vpc != nil {
                     map["vpc"] = self.vpc?.toMap()
@@ -34173,8 +34215,14 @@ public class GetWorkspaceResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["publicEgressEnabled"] as? Bool {
+                    self.publicEgressEnabled = value
+                }
                 if let value = dict["publicEgressIp"] as? String {
                     self.publicEgressIp = value
+                }
+                if let value = dict["publicIngressEnabled"] as? Bool {
+                    self.publicIngressEnabled = value
                 }
                 if let value = dict["vpc"] as? [String: Any?] {
                     var model = GetWorkspaceResponseBody.Data.NetworkConfiguration.Vpc()
@@ -49760,6 +49808,10 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var publicEgressEnabled: Bool?
+
+            public var publicIngressEnabled: Bool?
+
             public var vpc: ListWorkspacesResponseBody.Items.NetworkConfiguration.Vpc?
 
             public override init() {
@@ -49777,6 +49829,12 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.publicEgressEnabled != nil {
+                    map["publicEgressEnabled"] = self.publicEgressEnabled!
+                }
+                if self.publicIngressEnabled != nil {
+                    map["publicIngressEnabled"] = self.publicIngressEnabled!
+                }
                 if self.vpc != nil {
                     map["vpc"] = self.vpc?.toMap()
                 }
@@ -49785,6 +49843,12 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["publicEgressEnabled"] as? Bool {
+                    self.publicEgressEnabled = value
+                }
+                if let value = dict["publicIngressEnabled"] as? Bool {
+                    self.publicIngressEnabled = value
+                }
                 if let value = dict["vpc"] as? [String: Any?] {
                     var model = ListWorkspacesResponseBody.Items.NetworkConfiguration.Vpc()
                     model.fromMap(value)
@@ -68708,6 +68772,10 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var publicEgressEnabled: Bool?
+
+            public var publicIngressEnabled: Bool?
+
             public var vpc: UpdateWorkspaceRequest.Body.NetworkConfiguration.Vpc?
 
             public override init() {
@@ -68725,6 +68793,12 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.publicEgressEnabled != nil {
+                    map["publicEgressEnabled"] = self.publicEgressEnabled!
+                }
+                if self.publicIngressEnabled != nil {
+                    map["publicIngressEnabled"] = self.publicIngressEnabled!
+                }
                 if self.vpc != nil {
                     map["vpc"] = self.vpc?.toMap()
                 }
@@ -68733,6 +68807,12 @@ public class UpdateWorkspaceRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["publicEgressEnabled"] as? Bool {
+                    self.publicEgressEnabled = value
+                }
+                if let value = dict["publicIngressEnabled"] as? Bool {
+                    self.publicIngressEnabled = value
+                }
                 if let value = dict["vpc"] as? [String: Any?] {
                     var model = UpdateWorkspaceRequest.Body.NetworkConfiguration.Vpc()
                     model.fromMap(value)
@@ -68909,6 +68989,10 @@ public class UpdateWorkspaceResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var publicEgressEnabled: Bool?
+
+            public var publicIngressEnabled: Bool?
+
             public var vpc: UpdateWorkspaceResponseBody.Data.NetworkConfiguration.Vpc?
 
             public override init() {
@@ -68926,6 +69010,12 @@ public class UpdateWorkspaceResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.publicEgressEnabled != nil {
+                    map["publicEgressEnabled"] = self.publicEgressEnabled!
+                }
+                if self.publicIngressEnabled != nil {
+                    map["publicIngressEnabled"] = self.publicIngressEnabled!
+                }
                 if self.vpc != nil {
                     map["vpc"] = self.vpc?.toMap()
                 }
@@ -68934,6 +69024,12 @@ public class UpdateWorkspaceResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["publicEgressEnabled"] as? Bool {
+                    self.publicEgressEnabled = value
+                }
+                if let value = dict["publicIngressEnabled"] as? Bool {
+                    self.publicIngressEnabled = value
+                }
                 if let value = dict["vpc"] as? [String: Any?] {
                     var model = UpdateWorkspaceResponseBody.Data.NetworkConfiguration.Vpc()
                     model.fromMap(value)
