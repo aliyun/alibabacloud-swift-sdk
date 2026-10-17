@@ -17386,6 +17386,8 @@ public class ListConfigsRequest : Tea.TeaModel {
 
     public var labels: String?
 
+    public var options: String?
+
     public var verbose: String?
 
     public override init() {
@@ -17411,6 +17413,9 @@ public class ListConfigsRequest : Tea.TeaModel {
         if self.labels != nil {
             map["Labels"] = self.labels!
         }
+        if self.options != nil {
+            map["Options"] = self.options!
+        }
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
         }
@@ -17427,6 +17432,9 @@ public class ListConfigsRequest : Tea.TeaModel {
         }
         if let value = dict["Labels"] as? String {
             self.labels = value
+        }
+        if let value = dict["Options"] as? String {
+            self.options = value
         }
         if let value = dict["Verbose"] as? String {
             self.verbose = value
