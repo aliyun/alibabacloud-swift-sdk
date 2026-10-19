@@ -9235,6 +9235,8 @@ public class ListCasesResponseBody : Tea.TeaModel {
 
             public var talkTime: Int64?
 
+            public var talkTurns: Int32?
+
             public override init() {
                 super.init()
             }
@@ -9322,6 +9324,9 @@ public class ListCasesResponseBody : Tea.TeaModel {
                 if self.talkTime != nil {
                     map["TalkTime"] = self.talkTime!
                 }
+                if self.talkTurns != nil {
+                    map["TalkTurns"] = self.talkTurns!
+                }
                 return map
             }
 
@@ -9405,6 +9410,9 @@ public class ListCasesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TalkTime"] as? Int64 {
                     self.talkTime = value
+                }
+                if let value = dict["TalkTurns"] as? Int32 {
+                    self.talkTurns = value
                 }
             }
         }
