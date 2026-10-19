@@ -4400,6 +4400,8 @@ public class ListRegionsRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var loadAll: Bool?
+
     public override init() {
         super.init()
     }
@@ -4423,6 +4425,9 @@ public class ListRegionsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.loadAll != nil {
+            map["LoadAll"] = self.loadAll!
+        }
         return map
     }
 
@@ -4436,6 +4441,9 @@ public class ListRegionsRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["LoadAll"] as? Bool {
+            self.loadAll = value
         }
     }
 }
