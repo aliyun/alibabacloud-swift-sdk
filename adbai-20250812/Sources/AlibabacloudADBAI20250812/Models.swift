@@ -847,6 +847,8 @@ public class CreateMultiModelKnowledgeBaseRequest : Tea.TeaModel {
 
     public var dbClusterAcu: Int32?
 
+    public var description_: String?
+
     public var lakeStorageBucketName: String?
 
     public var regionId: String?
@@ -884,6 +886,9 @@ public class CreateMultiModelKnowledgeBaseRequest : Tea.TeaModel {
         if self.dbClusterAcu != nil {
             map["DbClusterAcu"] = self.dbClusterAcu!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.lakeStorageBucketName != nil {
             map["LakeStorageBucketName"] = self.lakeStorageBucketName!
         }
@@ -918,6 +923,9 @@ public class CreateMultiModelKnowledgeBaseRequest : Tea.TeaModel {
         }
         if let value = dict["DbClusterAcu"] as? Int32 {
             self.dbClusterAcu = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["LakeStorageBucketName"] as? String {
             self.lakeStorageBucketName = value

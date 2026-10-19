@@ -138,6 +138,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dbClusterAcu)) {
             query["DbClusterAcu"] = request.dbClusterAcu!;
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lakeStorageBucketName)) {
             query["LakeStorageBucketName"] = request.lakeStorageBucketName ?? "";
         }
