@@ -17667,6 +17667,8 @@ public class DescribeHistoryMonitorValuesRequest : Tea.TeaModel {
 public class DescribeHistoryMonitorValuesResponseBody : Tea.TeaModel {
     public var monitorHistory: String?
 
+    public var monitorLegend: String?
+
     public var requestId: String?
 
     public override init() {
@@ -17686,6 +17688,9 @@ public class DescribeHistoryMonitorValuesResponseBody : Tea.TeaModel {
         if self.monitorHistory != nil {
             map["MonitorHistory"] = self.monitorHistory!
         }
+        if self.monitorLegend != nil {
+            map["MonitorLegend"] = self.monitorLegend!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -17696,6 +17701,9 @@ public class DescribeHistoryMonitorValuesResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["MonitorHistory"] as? String {
             self.monitorHistory = value
+        }
+        if let value = dict["MonitorLegend"] as? String {
+            self.monitorLegend = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -33214,14 +33222,6 @@ public class DescribeTairKVCacheInferInstancesResponse : Tea.TeaModel {
 public class DescribeTairSkvDdbTableRequest : Tea.TeaModel {
     public var instanceId: String?
 
-    public var ownerAccount: String?
-
-    public var ownerId: Int64?
-
-    public var resourceOwnerAccount: String?
-
-    public var resourceOwnerId: Int64?
-
     public var securityToken: String?
 
     public override init() {
@@ -33241,18 +33241,6 @@ public class DescribeTairSkvDdbTableRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
-        if self.ownerAccount != nil {
-            map["OwnerAccount"] = self.ownerAccount!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.resourceOwnerAccount != nil {
-            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
-        }
-        if self.resourceOwnerId != nil {
-            map["ResourceOwnerId"] = self.resourceOwnerId!
-        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -33264,18 +33252,6 @@ public class DescribeTairSkvDdbTableRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
-        if let value = dict["OwnerAccount"] as? String {
-            self.ownerAccount = value
-        }
-        if let value = dict["OwnerId"] as? Int64 {
-            self.ownerId = value
-        }
-        if let value = dict["ResourceOwnerAccount"] as? String {
-            self.resourceOwnerAccount = value
-        }
-        if let value = dict["ResourceOwnerId"] as? Int64 {
-            self.resourceOwnerId = value
-        }
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
         }
@@ -33285,9 +33261,93 @@ public class DescribeTairSkvDdbTableRequest : Tea.TeaModel {
 public class DescribeTairSkvDdbTableResponseBody : Tea.TeaModel {
     public class Tables : Tea.TeaModel {
         public class Table : Tea.TeaModel {
+            public class GlobalSecondaryIndexList : Tea.TeaModel {
+                public class GlobalSecondaryIndex : Tea.TeaModel {
+                    public var gsiId: String?
+
+                    public var indexName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.gsiId != nil {
+                            map["GsiId"] = self.gsiId!
+                        }
+                        if self.indexName != nil {
+                            map["IndexName"] = self.indexName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["GsiId"] as? String {
+                            self.gsiId = value
+                        }
+                        if let value = dict["IndexName"] as? String {
+                            self.indexName = value
+                        }
+                    }
+                }
+                public var globalSecondaryIndex: [DescribeTairSkvDdbTableResponseBody.Tables.Table.GlobalSecondaryIndexList.GlobalSecondaryIndex]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.globalSecondaryIndex != nil {
+                        var tmp : [Any] = []
+                        for k in self.globalSecondaryIndex! {
+                            tmp.append(k.toMap())
+                        }
+                        map["GlobalSecondaryIndex"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["GlobalSecondaryIndex"] as? [Any?] {
+                        var tmp : [DescribeTairSkvDdbTableResponseBody.Tables.Table.GlobalSecondaryIndexList.GlobalSecondaryIndex] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeTairSkvDdbTableResponseBody.Tables.Table.GlobalSecondaryIndexList.GlobalSecondaryIndex()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.globalSecondaryIndex = tmp
+                    }
+                }
+            }
             public var bandwidth: Int64?
 
             public var connections: Int64?
+
+            public var globalSecondaryIndexList: DescribeTairSkvDdbTableResponseBody.Tables.Table.GlobalSecondaryIndexList?
 
             public var tableId: String?
 
@@ -33303,6 +33363,7 @@ public class DescribeTairSkvDdbTableResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.globalSecondaryIndexList?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -33312,6 +33373,9 @@ public class DescribeTairSkvDdbTableResponseBody : Tea.TeaModel {
                 }
                 if self.connections != nil {
                     map["Connections"] = self.connections!
+                }
+                if self.globalSecondaryIndexList != nil {
+                    map["GlobalSecondaryIndexList"] = self.globalSecondaryIndexList?.toMap()
                 }
                 if self.tableId != nil {
                     map["TableId"] = self.tableId!
@@ -33329,6 +33393,11 @@ public class DescribeTairSkvDdbTableResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Connections"] as? Int64 {
                     self.connections = value
+                }
+                if let value = dict["GlobalSecondaryIndexList"] as? [String: Any?] {
+                    var model = DescribeTairSkvDdbTableResponseBody.Tables.Table.GlobalSecondaryIndexList()
+                    model.fromMap(value)
+                    self.globalSecondaryIndexList = model
                 }
                 if let value = dict["TableId"] as? String {
                     self.tableId = value
