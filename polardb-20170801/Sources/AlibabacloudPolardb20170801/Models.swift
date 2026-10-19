@@ -74004,6 +74004,8 @@ public class DescribeKnowledgeBaseAnswerResponseBody : Tea.TeaModel {
 
         public var sourceId: Int32?
 
+        public var sourceUri: String?
+
         public override init() {
             super.init()
         }
@@ -74055,6 +74057,9 @@ public class DescribeKnowledgeBaseAnswerResponseBody : Tea.TeaModel {
             if self.sourceId != nil {
                 map["SourceId"] = self.sourceId!
             }
+            if self.sourceUri != nil {
+                map["SourceUri"] = self.sourceUri!
+            }
             return map
         }
 
@@ -74102,6 +74107,9 @@ public class DescribeKnowledgeBaseAnswerResponseBody : Tea.TeaModel {
             }
             if let value = dict["SourceId"] as? Int32 {
                 self.sourceId = value
+            }
+            if let value = dict["SourceUri"] as? String {
+                self.sourceUri = value
             }
         }
     }
@@ -74636,6 +74644,8 @@ public class DescribeKnowledgeBaseFileShardsResponseBody : Tea.TeaModel {
 
         public var shardIndex: Int32?
 
+        public var sourceUri: String?
+
         public override init() {
             super.init()
         }
@@ -74675,6 +74685,9 @@ public class DescribeKnowledgeBaseFileShardsResponseBody : Tea.TeaModel {
             if self.shardIndex != nil {
                 map["ShardIndex"] = self.shardIndex!
             }
+            if self.sourceUri != nil {
+                map["SourceUri"] = self.sourceUri!
+            }
             return map
         }
 
@@ -74710,6 +74723,9 @@ public class DescribeKnowledgeBaseFileShardsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ShardIndex"] as? Int32 {
                 self.shardIndex = value
+            }
+            if let value = dict["SourceUri"] as? String {
+                self.sourceUri = value
             }
         }
     }
@@ -120148,6 +120164,8 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
 
         public var similarityScore: Double?
 
+        public var sourceUri: String?
+
         public override init() {
             super.init()
         }
@@ -120199,6 +120217,9 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
             if self.similarityScore != nil {
                 map["SimilarityScore"] = self.similarityScore!
             }
+            if self.sourceUri != nil {
+                map["SourceUri"] = self.sourceUri!
+            }
             return map
         }
 
@@ -120246,6 +120267,9 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
             }
             if let value = dict["SimilarityScore"] as? Double {
                 self.similarityScore = value
+            }
+            if let value = dict["SourceUri"] as? String {
+                self.sourceUri = value
             }
         }
     }
