@@ -288,6 +288,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func associateNetworkCidrBlockWithOptions(_ request: AssociateNetworkCidrBlockRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssociateNetworkCidrBlockResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipVersion)) {
+            query["IpVersion"] = request.ipVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6Isp)) {
+            query["Ipv6Isp"] = request.ipv6Isp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkId)) {
+            query["NetworkId"] = request.networkId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secondaryCidrBlock)) {
+            query["SecondaryCidrBlock"] = request.secondaryCidrBlock ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AssociateNetworkCidrBlock",
+            "version": "2017-11-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AssociateNetworkCidrBlockResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func associateNetworkCidrBlock(_ request: AssociateNetworkCidrBlockRequest) async throws -> AssociateNetworkCidrBlockResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await associateNetworkCidrBlockWithOptions(request as! AssociateNetworkCidrBlockRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func attachDiskWithOptions(_ request: AttachDiskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachDiskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -13218,6 +13258,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func unassociateNetworkAcl(_ request: UnassociateNetworkAclRequest) async throws -> UnassociateNetworkAclResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await unassociateNetworkAclWithOptions(request as! UnassociateNetworkAclRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unassociateNetworkCidrBlockWithOptions(_ request: UnassociateNetworkCidrBlockRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnassociateNetworkCidrBlockResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipv6CidrBlock)) {
+            query["Ipv6CidrBlock"] = request.ipv6CidrBlock ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkId)) {
+            query["NetworkId"] = request.networkId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secondaryCidrBlock)) {
+            query["SecondaryCidrBlock"] = request.secondaryCidrBlock ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnassociateNetworkCidrBlock",
+            "version": "2017-11-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnassociateNetworkCidrBlockResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unassociateNetworkCidrBlock(_ request: UnassociateNetworkCidrBlockRequest) async throws -> UnassociateNetworkCidrBlockResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await unassociateNetworkCidrBlockWithOptions(request as! UnassociateNetworkCidrBlockRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

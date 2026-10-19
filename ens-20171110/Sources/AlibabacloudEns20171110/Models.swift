@@ -2010,6 +2010,158 @@ public class AssociateHaVipResponse : Tea.TeaModel {
     }
 }
 
+public class AssociateNetworkCidrBlockRequest : Tea.TeaModel {
+    public var ipVersion: String?
+
+    public var ipv6Isp: String?
+
+    public var networkId: String?
+
+    public var secondaryCidrBlock: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ipVersion != nil {
+            map["IpVersion"] = self.ipVersion!
+        }
+        if self.ipv6Isp != nil {
+            map["Ipv6Isp"] = self.ipv6Isp!
+        }
+        if self.networkId != nil {
+            map["NetworkId"] = self.networkId!
+        }
+        if self.secondaryCidrBlock != nil {
+            map["SecondaryCidrBlock"] = self.secondaryCidrBlock!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IpVersion"] as? String {
+            self.ipVersion = value
+        }
+        if let value = dict["Ipv6Isp"] as? String {
+            self.ipv6Isp = value
+        }
+        if let value = dict["NetworkId"] as? String {
+            self.networkId = value
+        }
+        if let value = dict["SecondaryCidrBlock"] as? String {
+            self.secondaryCidrBlock = value
+        }
+    }
+}
+
+public class AssociateNetworkCidrBlockResponseBody : Tea.TeaModel {
+    public var cidrBlock: String?
+
+    public var ipVersion: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cidrBlock != nil {
+            map["CidrBlock"] = self.cidrBlock!
+        }
+        if self.ipVersion != nil {
+            map["IpVersion"] = self.ipVersion!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CidrBlock"] as? String {
+            self.cidrBlock = value
+        }
+        if let value = dict["IpVersion"] as? String {
+            self.ipVersion = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AssociateNetworkCidrBlockResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AssociateNetworkCidrBlockResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AssociateNetworkCidrBlockResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AttachDiskRequest : Tea.TeaModel {
     public var deleteWithInstance: String?
 
@@ -84599,6 +84751,134 @@ public class UnassociateNetworkAclResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UnassociateNetworkAclResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UnassociateNetworkCidrBlockRequest : Tea.TeaModel {
+    public var ipv6CidrBlock: String?
+
+    public var networkId: String?
+
+    public var secondaryCidrBlock: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ipv6CidrBlock != nil {
+            map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+        }
+        if self.networkId != nil {
+            map["NetworkId"] = self.networkId!
+        }
+        if self.secondaryCidrBlock != nil {
+            map["SecondaryCidrBlock"] = self.secondaryCidrBlock!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Ipv6CidrBlock"] as? String {
+            self.ipv6CidrBlock = value
+        }
+        if let value = dict["NetworkId"] as? String {
+            self.networkId = value
+        }
+        if let value = dict["SecondaryCidrBlock"] as? String {
+            self.secondaryCidrBlock = value
+        }
+    }
+}
+
+public class UnassociateNetworkCidrBlockResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UnassociateNetworkCidrBlockResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnassociateNetworkCidrBlockResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UnassociateNetworkCidrBlockResponseBody()
             model.fromMap(value)
             self.body = model
         }
