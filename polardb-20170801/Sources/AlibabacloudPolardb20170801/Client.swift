@@ -1425,6 +1425,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
             query["AutoUseCoupon"] = request.autoUseCoupon!;
         }
+        if (!TeaUtils.Client.isUnset(request.capacity)) {
+            query["Capacity"] = request.capacity!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -5109,9 +5112,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAIDBClusterCustomModelWithOptions(_ request: DeleteAIDBClusterCustomModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAIDBClusterCustomModelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
-            query["DBClusterId"] = request.DBClusterId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.modelName)) {
             query["ModelName"] = request.modelName ?? "";
         }
@@ -21416,26 +21416,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func registerAIDBClusterCustomModelWithOptions(_ request: RegisterAIDBClusterCustomModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RegisterAIDBClusterCustomModelResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func registerAIDBClusterCustomModelWithOptions(_ tmpReq: RegisterAIDBClusterCustomModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RegisterAIDBClusterCustomModelResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RegisterAIDBClusterCustomModelShrinkRequest = RegisterAIDBClusterCustomModelShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.containerEnv)) {
+            request.containerEnvShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.containerEnv, "ContainerEnv", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.modelParams)) {
+            request.modelParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.modelParams, "ModelParams", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.containerEnvShrink)) {
+            query["ContainerEnv"] = request.containerEnvShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customOssBucketName)) {
             query["CustomOssBucketName"] = request.customOssBucketName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.customOssBucketPath)) {
             query["CustomOssBucketPath"] = request.customOssBucketPath ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
-            query["DBClusterId"] = request.DBClusterId ?? "";
+        if (!TeaUtils.Client.isUnset(request.DBInstanceClass)) {
+            query["DBInstanceClass"] = request.DBInstanceClass ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.directCommand)) {
+            query["DirectCommand"] = request.directCommand ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.displayModelName)) {
             query["DisplayModelName"] = request.displayModelName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.imageName)) {
+            query["ImageName"] = request.imageName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inferenceEngine)) {
+            query["InferenceEngine"] = request.inferenceEngine ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modelName)) {
             query["ModelName"] = request.modelName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelParamsShrink)) {
+            query["ModelParams"] = request.modelParamsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.registryPassword)) {
+            query["RegistryPassword"] = request.registryPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.registryUsername)) {
+            query["RegistryUsername"] = request.registryUsername ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -21974,6 +22003,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resetGlobalDatabaseNetwork(_ request: ResetGlobalDatabaseNetworkRequest) async throws -> ResetGlobalDatabaseNetworkResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await resetGlobalDatabaseNetworkWithOptions(request as! ResetGlobalDatabaseNetworkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resizeAIDBClusterModelWithOptions(_ request: ResizeAIDBClusterModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResizeAIDBClusterModelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetCapacity)) {
+            query["TargetCapacity"] = request.targetCapacity!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ResizeAIDBClusterModel",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResizeAIDBClusterModelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resizeAIDBClusterModel(_ request: ResizeAIDBClusterModelRequest) async throws -> ResizeAIDBClusterModelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await resizeAIDBClusterModelWithOptions(request as! ResizeAIDBClusterModelRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

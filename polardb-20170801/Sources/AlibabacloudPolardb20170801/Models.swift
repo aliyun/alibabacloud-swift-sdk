@@ -5339,6 +5339,8 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
 
     public var autoUseCoupon: Bool?
 
+    public var capacity: Int64?
+
     public var clientToken: String?
 
     public var createPublicEndpoint: String?
@@ -5425,6 +5427,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.capacity != nil {
+            map["Capacity"] = self.capacity!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -5539,6 +5544,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         }
         if let value = dict["AutoUseCoupon"] as? Bool {
             self.autoUseCoupon = value
+        }
+        if let value = dict["Capacity"] as? Int64 {
+            self.capacity = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -8293,11 +8301,21 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
         public var llmModel: String?
 
+        public var memoryType: String?
+
         public var projectName: String?
 
         public var rerankerModel: String?
 
         public var shard: Int32?
+
+        public var visualEmbedderModel: String?
+
+        public var visualEmbedderModelDimension: Int32?
+
+        public var visualLlmModalities: [String]?
+
+        public var visualLlmModel: String?
 
         public override init() {
             super.init()
@@ -8334,6 +8352,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
             if self.llmModel != nil {
                 map["LlmModel"] = self.llmModel!
             }
+            if self.memoryType != nil {
+                map["MemoryType"] = self.memoryType!
+            }
             if self.projectName != nil {
                 map["ProjectName"] = self.projectName!
             }
@@ -8342,6 +8363,18 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             if self.shard != nil {
                 map["Shard"] = self.shard!
+            }
+            if self.visualEmbedderModel != nil {
+                map["VisualEmbedderModel"] = self.visualEmbedderModel!
+            }
+            if self.visualEmbedderModelDimension != nil {
+                map["VisualEmbedderModelDimension"] = self.visualEmbedderModelDimension!
+            }
+            if self.visualLlmModalities != nil {
+                map["VisualLlmModalities"] = self.visualLlmModalities!
+            }
+            if self.visualLlmModel != nil {
+                map["VisualLlmModel"] = self.visualLlmModel!
             }
             return map
         }
@@ -8369,6 +8402,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
             if let value = dict["LlmModel"] as? String {
                 self.llmModel = value
             }
+            if let value = dict["MemoryType"] as? String {
+                self.memoryType = value
+            }
             if let value = dict["ProjectName"] as? String {
                 self.projectName = value
             }
@@ -8377,6 +8413,18 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             if let value = dict["Shard"] as? Int32 {
                 self.shard = value
+            }
+            if let value = dict["VisualEmbedderModel"] as? String {
+                self.visualEmbedderModel = value
+            }
+            if let value = dict["VisualEmbedderModelDimension"] as? Int32 {
+                self.visualEmbedderModelDimension = value
+            }
+            if let value = dict["VisualLlmModalities"] as? [String] {
+                self.visualLlmModalities = value
+            }
+            if let value = dict["VisualLlmModel"] as? String {
+                self.visualLlmModel = value
             }
         }
     }
@@ -21208,8 +21256,6 @@ public class DeleteAIDBClusterApiKeyResponse : Tea.TeaModel {
 }
 
 public class DeleteAIDBClusterCustomModelRequest : Tea.TeaModel {
-    public var DBClusterId: String?
-
     public var modelName: String?
 
     public var regionId: String?
@@ -21228,9 +21274,6 @@ public class DeleteAIDBClusterCustomModelRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.DBClusterId != nil {
-            map["DBClusterId"] = self.DBClusterId!
-        }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
         }
@@ -21242,9 +21285,6 @@ public class DeleteAIDBClusterCustomModelRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DBClusterId"] as? String {
-            self.DBClusterId = value
-        }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
         }
@@ -29701,6 +29741,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         public var childVolumes: [DescribeAIDBClusterAttributeResponseBody.DBNodes.ChildVolumes]?
 
+        public var command: String?
+
         public var cpuCores: String?
 
         public var creationTime: String?
@@ -29717,9 +29759,13 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var linkIP: String?
 
+        public var logIndex: String?
+
         public var memorySize: String?
 
         public var modelName: String?
+
+        public var modelSpaceName: String?
 
         public var publicIp: String?
 
@@ -29754,6 +29800,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
                 map["ChildVolumes"] = tmp
             }
+            if self.command != nil {
+                map["Command"] = self.command!
+            }
             if self.cpuCores != nil {
                 map["CpuCores"] = self.cpuCores!
             }
@@ -29778,11 +29827,17 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.linkIP != nil {
                 map["LinkIP"] = self.linkIP!
             }
+            if self.logIndex != nil {
+                map["LogIndex"] = self.logIndex!
+            }
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
             if self.modelName != nil {
                 map["ModelName"] = self.modelName!
+            }
+            if self.modelSpaceName != nil {
+                map["ModelSpaceName"] = self.modelSpaceName!
             }
             if self.publicIp != nil {
                 map["PublicIp"] = self.publicIp!
@@ -29824,6 +29879,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
                 self.childVolumes = tmp
             }
+            if let value = dict["Command"] as? String {
+                self.command = value
+            }
             if let value = dict["CpuCores"] as? String {
                 self.cpuCores = value
             }
@@ -29848,11 +29906,17 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             if let value = dict["LinkIP"] as? String {
                 self.linkIP = value
             }
+            if let value = dict["LogIndex"] as? String {
+                self.logIndex = value
+            }
             if let value = dict["MemorySize"] as? String {
                 self.memorySize = value
             }
             if let value = dict["ModelName"] as? String {
                 self.modelName = value
+            }
+            if let value = dict["ModelSpaceName"] as? String {
+                self.modelSpaceName = value
             }
             if let value = dict["PublicIp"] as? String {
                 self.publicIp = value
@@ -30272,7 +30336,11 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var apiKey: String?
 
+    public var command: String?
+
     public var creationTime: String?
+
+    public var currentCapacity: Int64?
 
     public var customOssPath: String?
 
@@ -30372,8 +30440,14 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.apiKey != nil {
             map["ApiKey"] = self.apiKey!
         }
+        if self.command != nil {
+            map["Command"] = self.command!
+        }
         if self.creationTime != nil {
             map["CreationTime"] = self.creationTime!
+        }
+        if self.currentCapacity != nil {
+            map["CurrentCapacity"] = self.currentCapacity!
         }
         if self.customOssPath != nil {
             map["CustomOssPath"] = self.customOssPath!
@@ -30512,8 +30586,14 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         if let value = dict["ApiKey"] as? String {
             self.apiKey = value
         }
+        if let value = dict["Command"] as? String {
+            self.command = value
+        }
         if let value = dict["CreationTime"] as? String {
             self.creationTime = value
+        }
+        if let value = dict["CurrentCapacity"] as? Int64 {
+            self.currentCapacity = value
         }
         if let value = dict["CustomOssPath"] as? String {
             self.customOssPath = value
@@ -39977,6 +40057,10 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
         public var llmModelName: String?
 
+        public var memoryType: String?
+
+        public var multimodalEnabled: Bool?
+
         public var projectName: String?
 
         public var rerankerModelName: String?
@@ -39984,6 +40068,14 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         public var sessionStore: DescribeApplicationAttributeResponseBody.MemApplicationAttribute.SessionStore?
 
         public var userName: String?
+
+        public var visualEmbedderDimensions: Int32?
+
+        public var visualEmbedderModelName: String?
+
+        public var visualLlmModalities: [String]?
+
+        public var visualLlmModelName: String?
 
         public override init() {
             super.init()
@@ -40012,6 +40104,12 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             if self.llmModelName != nil {
                 map["LlmModelName"] = self.llmModelName!
             }
+            if self.memoryType != nil {
+                map["MemoryType"] = self.memoryType!
+            }
+            if self.multimodalEnabled != nil {
+                map["MultimodalEnabled"] = self.multimodalEnabled!
+            }
             if self.projectName != nil {
                 map["ProjectName"] = self.projectName!
             }
@@ -40023,6 +40121,18 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
             if self.userName != nil {
                 map["UserName"] = self.userName!
+            }
+            if self.visualEmbedderDimensions != nil {
+                map["VisualEmbedderDimensions"] = self.visualEmbedderDimensions!
+            }
+            if self.visualEmbedderModelName != nil {
+                map["VisualEmbedderModelName"] = self.visualEmbedderModelName!
+            }
+            if self.visualLlmModalities != nil {
+                map["VisualLlmModalities"] = self.visualLlmModalities!
+            }
+            if self.visualLlmModelName != nil {
+                map["VisualLlmModelName"] = self.visualLlmModelName!
             }
             return map
         }
@@ -40041,6 +40151,12 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             if let value = dict["LlmModelName"] as? String {
                 self.llmModelName = value
             }
+            if let value = dict["MemoryType"] as? String {
+                self.memoryType = value
+            }
+            if let value = dict["MultimodalEnabled"] as? Bool {
+                self.multimodalEnabled = value
+            }
             if let value = dict["ProjectName"] as? String {
                 self.projectName = value
             }
@@ -40054,6 +40170,18 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["UserName"] as? String {
                 self.userName = value
+            }
+            if let value = dict["VisualEmbedderDimensions"] as? Int32 {
+                self.visualEmbedderDimensions = value
+            }
+            if let value = dict["VisualEmbedderModelName"] as? String {
+                self.visualEmbedderModelName = value
+            }
+            if let value = dict["VisualLlmModalities"] as? [String] {
+                self.visualLlmModalities = value
+            }
+            if let value = dict["VisualLlmModelName"] as? String {
+                self.visualLlmModelName = value
             }
         }
     }
@@ -45107,7 +45235,15 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var containerEnv: [String: String]?
+
+        public var customImageSource: String?
+
         public var customModelName: String?
+
+        public var DBInstanceClass: String?
+
+        public var directCommand: String?
 
         public var displayModelName: String?
 
@@ -45115,11 +45251,19 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
 
         public var gpuRequired: [DescribeAvailableModelsResponseBody.Items.GpuRequired]?
 
+        public var imageImportStatus: String?
+
+        public var imageName: String?
+
+        public var inferenceEngine: String?
+
         public var minimumCpu: Int64?
 
         public var minimumMemory: Int64?
 
         public var modelName: String?
+
+        public var modelParams: [String: String]?
 
         public var modelSeries: String?
 
@@ -45145,8 +45289,20 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.containerEnv != nil {
+                map["ContainerEnv"] = self.containerEnv!
+            }
+            if self.customImageSource != nil {
+                map["CustomImageSource"] = self.customImageSource!
+            }
             if self.customModelName != nil {
                 map["CustomModelName"] = self.customModelName!
+            }
+            if self.DBInstanceClass != nil {
+                map["DBInstanceClass"] = self.DBInstanceClass!
+            }
+            if self.directCommand != nil {
+                map["DirectCommand"] = self.directCommand!
             }
             if self.displayModelName != nil {
                 map["DisplayModelName"] = self.displayModelName!
@@ -45161,6 +45317,15 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
                 }
                 map["GpuRequired"] = tmp
             }
+            if self.imageImportStatus != nil {
+                map["ImageImportStatus"] = self.imageImportStatus!
+            }
+            if self.imageName != nil {
+                map["ImageName"] = self.imageName!
+            }
+            if self.inferenceEngine != nil {
+                map["InferenceEngine"] = self.inferenceEngine!
+            }
             if self.minimumCpu != nil {
                 map["MinimumCpu"] = self.minimumCpu!
             }
@@ -45169,6 +45334,9 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
             }
             if self.modelName != nil {
                 map["ModelName"] = self.modelName!
+            }
+            if self.modelParams != nil {
+                map["ModelParams"] = self.modelParams!
             }
             if self.modelSeries != nil {
                 map["ModelSeries"] = self.modelSeries!
@@ -45190,8 +45358,20 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ContainerEnv"] as? [String: String] {
+                self.containerEnv = value
+            }
+            if let value = dict["CustomImageSource"] as? String {
+                self.customImageSource = value
+            }
             if let value = dict["CustomModelName"] as? String {
                 self.customModelName = value
+            }
+            if let value = dict["DBInstanceClass"] as? String {
+                self.DBInstanceClass = value
+            }
+            if let value = dict["DirectCommand"] as? String {
+                self.directCommand = value
             }
             if let value = dict["DisplayModelName"] as? String {
                 self.displayModelName = value
@@ -45212,6 +45392,15 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
                 }
                 self.gpuRequired = tmp
             }
+            if let value = dict["ImageImportStatus"] as? String {
+                self.imageImportStatus = value
+            }
+            if let value = dict["ImageName"] as? String {
+                self.imageName = value
+            }
+            if let value = dict["InferenceEngine"] as? String {
+                self.inferenceEngine = value
+            }
             if let value = dict["MinimumCpu"] as? Int64 {
                 self.minimumCpu = value
             }
@@ -45220,6 +45409,9 @@ public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ModelName"] as? String {
                 self.modelName = value
+            }
+            if let value = dict["ModelParams"] as? [String: String] {
+                self.modelParams = value
             }
             if let value = dict["ModelSeries"] as? String {
                 self.modelSeries = value
@@ -116186,17 +116378,31 @@ public class RefreshDBClusterStorageUsageResponse : Tea.TeaModel {
 }
 
 public class RegisterAIDBClusterCustomModelRequest : Tea.TeaModel {
+    public var containerEnv: [String: String]?
+
     public var customOssBucketName: String?
 
     public var customOssBucketPath: String?
 
-    public var DBClusterId: String?
+    public var DBInstanceClass: String?
+
+    public var directCommand: String?
 
     public var displayModelName: String?
 
+    public var imageName: String?
+
+    public var inferenceEngine: String?
+
     public var modelName: String?
 
+    public var modelParams: [String: String]?
+
     public var regionId: String?
+
+    public var registryPassword: String?
+
+    public var registryUsername: String?
 
     public override init() {
         super.init()
@@ -116212,46 +116418,215 @@ public class RegisterAIDBClusterCustomModelRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.containerEnv != nil {
+            map["ContainerEnv"] = self.containerEnv!
+        }
         if self.customOssBucketName != nil {
             map["CustomOssBucketName"] = self.customOssBucketName!
         }
         if self.customOssBucketPath != nil {
             map["CustomOssBucketPath"] = self.customOssBucketPath!
         }
-        if self.DBClusterId != nil {
-            map["DBClusterId"] = self.DBClusterId!
+        if self.DBInstanceClass != nil {
+            map["DBInstanceClass"] = self.DBInstanceClass!
+        }
+        if self.directCommand != nil {
+            map["DirectCommand"] = self.directCommand!
         }
         if self.displayModelName != nil {
             map["DisplayModelName"] = self.displayModelName!
         }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
+        }
+        if self.inferenceEngine != nil {
+            map["InferenceEngine"] = self.inferenceEngine!
+        }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
         }
+        if self.modelParams != nil {
+            map["ModelParams"] = self.modelParams!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.registryPassword != nil {
+            map["RegistryPassword"] = self.registryPassword!
+        }
+        if self.registryUsername != nil {
+            map["RegistryUsername"] = self.registryUsername!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ContainerEnv"] as? [String: String] {
+            self.containerEnv = value
+        }
         if let value = dict["CustomOssBucketName"] as? String {
             self.customOssBucketName = value
         }
         if let value = dict["CustomOssBucketPath"] as? String {
             self.customOssBucketPath = value
         }
-        if let value = dict["DBClusterId"] as? String {
-            self.DBClusterId = value
+        if let value = dict["DBInstanceClass"] as? String {
+            self.DBInstanceClass = value
+        }
+        if let value = dict["DirectCommand"] as? String {
+            self.directCommand = value
         }
         if let value = dict["DisplayModelName"] as? String {
             self.displayModelName = value
         }
+        if let value = dict["ImageName"] as? String {
+            self.imageName = value
+        }
+        if let value = dict["InferenceEngine"] as? String {
+            self.inferenceEngine = value
+        }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
         }
+        if let value = dict["ModelParams"] as? [String: String] {
+            self.modelParams = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["RegistryPassword"] as? String {
+            self.registryPassword = value
+        }
+        if let value = dict["RegistryUsername"] as? String {
+            self.registryUsername = value
+        }
+    }
+}
+
+public class RegisterAIDBClusterCustomModelShrinkRequest : Tea.TeaModel {
+    public var containerEnvShrink: String?
+
+    public var customOssBucketName: String?
+
+    public var customOssBucketPath: String?
+
+    public var DBInstanceClass: String?
+
+    public var directCommand: String?
+
+    public var displayModelName: String?
+
+    public var imageName: String?
+
+    public var inferenceEngine: String?
+
+    public var modelName: String?
+
+    public var modelParamsShrink: String?
+
+    public var regionId: String?
+
+    public var registryPassword: String?
+
+    public var registryUsername: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.containerEnvShrink != nil {
+            map["ContainerEnv"] = self.containerEnvShrink!
+        }
+        if self.customOssBucketName != nil {
+            map["CustomOssBucketName"] = self.customOssBucketName!
+        }
+        if self.customOssBucketPath != nil {
+            map["CustomOssBucketPath"] = self.customOssBucketPath!
+        }
+        if self.DBInstanceClass != nil {
+            map["DBInstanceClass"] = self.DBInstanceClass!
+        }
+        if self.directCommand != nil {
+            map["DirectCommand"] = self.directCommand!
+        }
+        if self.displayModelName != nil {
+            map["DisplayModelName"] = self.displayModelName!
+        }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
+        }
+        if self.inferenceEngine != nil {
+            map["InferenceEngine"] = self.inferenceEngine!
+        }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
+        if self.modelParamsShrink != nil {
+            map["ModelParams"] = self.modelParamsShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.registryPassword != nil {
+            map["RegistryPassword"] = self.registryPassword!
+        }
+        if self.registryUsername != nil {
+            map["RegistryUsername"] = self.registryUsername!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ContainerEnv"] as? String {
+            self.containerEnvShrink = value
+        }
+        if let value = dict["CustomOssBucketName"] as? String {
+            self.customOssBucketName = value
+        }
+        if let value = dict["CustomOssBucketPath"] as? String {
+            self.customOssBucketPath = value
+        }
+        if let value = dict["DBInstanceClass"] as? String {
+            self.DBInstanceClass = value
+        }
+        if let value = dict["DirectCommand"] as? String {
+            self.directCommand = value
+        }
+        if let value = dict["DisplayModelName"] as? String {
+            self.displayModelName = value
+        }
+        if let value = dict["ImageName"] as? String {
+            self.imageName = value
+        }
+        if let value = dict["InferenceEngine"] as? String {
+            self.inferenceEngine = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
+        }
+        if let value = dict["ModelParams"] as? String {
+            self.modelParamsShrink = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RegistryPassword"] as? String {
+            self.registryPassword = value
+        }
+        if let value = dict["RegistryUsername"] as? String {
+            self.registryUsername = value
         }
     }
 }
@@ -116260,6 +116635,8 @@ public class RegisterAIDBClusterCustomModelResponseBody : Tea.TeaModel {
     public var created: Bool?
 
     public var displayModelName: String?
+
+    public var imageImportStatus: String?
 
     public var modelId: Int64?
 
@@ -116291,6 +116668,9 @@ public class RegisterAIDBClusterCustomModelResponseBody : Tea.TeaModel {
         if self.displayModelName != nil {
             map["DisplayModelName"] = self.displayModelName!
         }
+        if self.imageImportStatus != nil {
+            map["ImageImportStatus"] = self.imageImportStatus!
+        }
         if self.modelId != nil {
             map["ModelId"] = self.modelId!
         }
@@ -116316,6 +116696,9 @@ public class RegisterAIDBClusterCustomModelResponseBody : Tea.TeaModel {
         }
         if let value = dict["DisplayModelName"] as? String {
             self.displayModelName = value
+        }
+        if let value = dict["ImageImportStatus"] as? String {
+            self.imageImportStatus = value
         }
         if let value = dict["ModelId"] as? Int64 {
             self.modelId = value
@@ -118410,6 +118793,198 @@ public class ResetGlobalDatabaseNetworkResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ResetGlobalDatabaseNetworkResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ResizeAIDBClusterModelRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var dryRun: Bool?
+
+    public var regionId: String?
+
+    public var targetCapacity: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.targetCapacity != nil {
+            map["TargetCapacity"] = self.targetCapacity!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["TargetCapacity"] as? Int64 {
+            self.targetCapacity = value
+        }
+    }
+}
+
+public class ResizeAIDBClusterModelResponseBody : Tea.TeaModel {
+    public var currentCapacity: Int64?
+
+    public var DBClusterId: String?
+
+    public var dryRun: Bool?
+
+    public var poolHitCapacity: Int64?
+
+    public var poolHitRatio: Double?
+
+    public var requestId: String?
+
+    public var requiredDelta: Int64?
+
+    public var targetCapacity: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentCapacity != nil {
+            map["CurrentCapacity"] = self.currentCapacity!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.poolHitCapacity != nil {
+            map["PoolHitCapacity"] = self.poolHitCapacity!
+        }
+        if self.poolHitRatio != nil {
+            map["PoolHitRatio"] = self.poolHitRatio!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.requiredDelta != nil {
+            map["RequiredDelta"] = self.requiredDelta!
+        }
+        if self.targetCapacity != nil {
+            map["TargetCapacity"] = self.targetCapacity!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentCapacity"] as? Int64 {
+            self.currentCapacity = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["PoolHitCapacity"] as? Int64 {
+            self.poolHitCapacity = value
+        }
+        if let value = dict["PoolHitRatio"] as? Double {
+            self.poolHitRatio = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RequiredDelta"] as? Int64 {
+            self.requiredDelta = value
+        }
+        if let value = dict["TargetCapacity"] as? Int64 {
+            self.targetCapacity = value
+        }
+    }
+}
+
+public class ResizeAIDBClusterModelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ResizeAIDBClusterModelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ResizeAIDBClusterModelResponseBody()
             model.fromMap(value)
             self.body = model
         }
