@@ -6313,6 +6313,8 @@ public class ListModelLimitsResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var workspaceId: String?
+
         public var workspaceLimit: ListModelLimitsResponseBody.Limits.WorkspaceLimit?
 
         public override init() {
@@ -6340,6 +6342,9 @@ public class ListModelLimitsResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
             if self.workspaceLimit != nil {
                 map["workspaceLimit"] = self.workspaceLimit?.toMap()
             }
@@ -6358,6 +6363,9 @@ public class ListModelLimitsResponseBody : Tea.TeaModel {
             }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
             }
             if let value = dict["workspaceLimit"] as? [String: Any?] {
                 var model = ListModelLimitsResponseBody.Limits.WorkspaceLimit()
@@ -7198,6 +7206,8 @@ public class ListModelsResponseBody : Tea.TeaModel {
 
                 public var priceUnit: String?
 
+                public var timeBand: String?
+
                 public override init() {
                     super.init()
                 }
@@ -7221,6 +7231,9 @@ public class ListModelsResponseBody : Tea.TeaModel {
                     if self.priceUnit != nil {
                         map["priceUnit"] = self.priceUnit!
                     }
+                    if self.timeBand != nil {
+                        map["timeBand"] = self.timeBand!
+                    }
                     return map
                 }
 
@@ -7234,6 +7247,9 @@ public class ListModelsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["priceUnit"] as? String {
                         self.priceUnit = value
+                    }
+                    if let value = dict["timeBand"] as? String {
+                        self.timeBand = value
                     }
                 }
             }
