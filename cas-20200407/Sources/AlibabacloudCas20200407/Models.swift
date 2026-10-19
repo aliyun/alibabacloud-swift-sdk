@@ -11697,7 +11697,11 @@ public class ListCsrResponse : Tea.TeaModel {
 }
 
 public class ListDeploymentJobRequest : Tea.TeaModel {
+    public var certId: Int64?
+
     public var currentPage: Int32?
+
+    public var instanceId: String?
 
     public var jobType: String?
 
@@ -11719,8 +11723,14 @@ public class ListDeploymentJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.certId != nil {
+            map["CertId"] = self.certId!
+        }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
@@ -11736,8 +11746,14 @@ public class ListDeploymentJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CertId"] as? Int64 {
+            self.certId = value
+        }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
         if let value = dict["JobType"] as? String {
             self.jobType = value
@@ -11756,6 +11772,8 @@ public class ListDeploymentJobResponseBody : Tea.TeaModel {
         public var certDomain: String?
 
         public var certType: String?
+
+        public var certificates: Any?
 
         public var del: Int32?
 
@@ -11804,6 +11822,9 @@ public class ListDeploymentJobResponseBody : Tea.TeaModel {
             }
             if self.certType != nil {
                 map["CertType"] = self.certType!
+            }
+            if self.certificates != nil {
+                map["Certificates"] = self.certificates!
             }
             if self.del != nil {
                 map["Del"] = self.del!
@@ -11857,6 +11878,9 @@ public class ListDeploymentJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["CertType"] as? String {
                 self.certType = value
+            }
+            if let value = dict["Certificates"] as? Any {
+                self.certificates = value
             }
             if let value = dict["Del"] as? Int32 {
                 self.del = value

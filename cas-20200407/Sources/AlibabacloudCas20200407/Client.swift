@@ -2212,8 +2212,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDeploymentJobWithOptions(_ request: ListDeploymentJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDeploymentJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certId)) {
+            query["CertId"] = request.certId!;
+        }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.jobType)) {
             query["JobType"] = request.jobType ?? "";
