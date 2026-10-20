@@ -13544,6 +13544,721 @@ public class GetTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class GetWorkspaceRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetWorkspaceResponseBody : Tea.TeaModel {
+    public class Workspace : Tea.TeaModel {
+        public class PrePaidQuota : Tea.TeaModel {
+            public var allocatedResource: String?
+
+            public var autoRenewal: Bool?
+
+            public var createTime: Int64?
+
+            public var expireTime: Int64?
+
+            public var instanceId: String?
+
+            public var maxResource: String?
+
+            public var orderId: String?
+
+            public var paymentStatus: String?
+
+            public var usedResource: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allocatedResource != nil {
+                    map["allocatedResource"] = self.allocatedResource!
+                }
+                if self.autoRenewal != nil {
+                    map["autoRenewal"] = self.autoRenewal!
+                }
+                if self.createTime != nil {
+                    map["createTime"] = self.createTime!
+                }
+                if self.expireTime != nil {
+                    map["expireTime"] = self.expireTime!
+                }
+                if self.instanceId != nil {
+                    map["instanceId"] = self.instanceId!
+                }
+                if self.maxResource != nil {
+                    map["maxResource"] = self.maxResource!
+                }
+                if self.orderId != nil {
+                    map["orderId"] = self.orderId!
+                }
+                if self.paymentStatus != nil {
+                    map["paymentStatus"] = self.paymentStatus!
+                }
+                if self.usedResource != nil {
+                    map["usedResource"] = self.usedResource!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["allocatedResource"] as? String {
+                    self.allocatedResource = value
+                }
+                if let value = dict["autoRenewal"] as? Bool {
+                    self.autoRenewal = value
+                }
+                if let value = dict["createTime"] as? Int64 {
+                    self.createTime = value
+                }
+                if let value = dict["expireTime"] as? Int64 {
+                    self.expireTime = value
+                }
+                if let value = dict["instanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["maxResource"] as? String {
+                    self.maxResource = value
+                }
+                if let value = dict["orderId"] as? String {
+                    self.orderId = value
+                }
+                if let value = dict["paymentStatus"] as? String {
+                    self.paymentStatus = value
+                }
+                if let value = dict["usedResource"] as? String {
+                    self.usedResource = value
+                }
+            }
+        }
+        public class PrePaidQuotaGpu : Tea.TeaModel {
+            public var autoRenewal: Bool?
+
+            public var cpuCoreCount: String?
+
+            public var createTime: Int64?
+
+            public var expireTime: Int64?
+
+            public var gpuAmount: Int32?
+
+            public var gpuMachineNum: Int32?
+
+            public var gpuMemorySize: Int64?
+
+            public var gpuNum: Int32?
+
+            public var gpuSpec: String?
+
+            public var instanceId: String?
+
+            public var instanceTypeFamily: String?
+
+            public var instanceTypeId: String?
+
+            public var memorySize: String?
+
+            public var orderId: String?
+
+            public var paymentStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoRenewal != nil {
+                    map["autoRenewal"] = self.autoRenewal!
+                }
+                if self.cpuCoreCount != nil {
+                    map["cpuCoreCount"] = self.cpuCoreCount!
+                }
+                if self.createTime != nil {
+                    map["createTime"] = self.createTime!
+                }
+                if self.expireTime != nil {
+                    map["expireTime"] = self.expireTime!
+                }
+                if self.gpuAmount != nil {
+                    map["gpuAmount"] = self.gpuAmount!
+                }
+                if self.gpuMachineNum != nil {
+                    map["gpuMachineNum"] = self.gpuMachineNum!
+                }
+                if self.gpuMemorySize != nil {
+                    map["gpuMemorySize"] = self.gpuMemorySize!
+                }
+                if self.gpuNum != nil {
+                    map["gpuNum"] = self.gpuNum!
+                }
+                if self.gpuSpec != nil {
+                    map["gpuSpec"] = self.gpuSpec!
+                }
+                if self.instanceId != nil {
+                    map["instanceId"] = self.instanceId!
+                }
+                if self.instanceTypeFamily != nil {
+                    map["instanceTypeFamily"] = self.instanceTypeFamily!
+                }
+                if self.instanceTypeId != nil {
+                    map["instanceTypeId"] = self.instanceTypeId!
+                }
+                if self.memorySize != nil {
+                    map["memorySize"] = self.memorySize!
+                }
+                if self.orderId != nil {
+                    map["orderId"] = self.orderId!
+                }
+                if self.paymentStatus != nil {
+                    map["paymentStatus"] = self.paymentStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["autoRenewal"] as? Bool {
+                    self.autoRenewal = value
+                }
+                if let value = dict["cpuCoreCount"] as? String {
+                    self.cpuCoreCount = value
+                }
+                if let value = dict["createTime"] as? Int64 {
+                    self.createTime = value
+                }
+                if let value = dict["expireTime"] as? Int64 {
+                    self.expireTime = value
+                }
+                if let value = dict["gpuAmount"] as? Int32 {
+                    self.gpuAmount = value
+                }
+                if let value = dict["gpuMachineNum"] as? Int32 {
+                    self.gpuMachineNum = value
+                }
+                if let value = dict["gpuMemorySize"] as? Int64 {
+                    self.gpuMemorySize = value
+                }
+                if let value = dict["gpuNum"] as? Int32 {
+                    self.gpuNum = value
+                }
+                if let value = dict["gpuSpec"] as? String {
+                    self.gpuSpec = value
+                }
+                if let value = dict["instanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["instanceTypeFamily"] as? String {
+                    self.instanceTypeFamily = value
+                }
+                if let value = dict["instanceTypeId"] as? String {
+                    self.instanceTypeId = value
+                }
+                if let value = dict["memorySize"] as? String {
+                    self.memorySize = value
+                }
+                if let value = dict["orderId"] as? String {
+                    self.orderId = value
+                }
+                if let value = dict["paymentStatus"] as? String {
+                    self.paymentStatus = value
+                }
+            }
+        }
+        public class StateChangeReason : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["tagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["tagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["tagKey"] as? String {
+                    self.tagKey = value
+                }
+                if let value = dict["tagValue"] as? String {
+                    self.tagValue = value
+                }
+            }
+        }
+        public var autoRenew: Bool?
+
+        public var autoRenewPeriod: Int32?
+
+        public var autoRenewPeriodUnit: String?
+
+        public var createTime: Int64?
+
+        public var dlfCatalogId: String?
+
+        public var dlfType: String?
+
+        public var duration: Int32?
+
+        public var endTime: Int64?
+
+        public var failReason: String?
+
+        public var gpuSpec: [String]?
+
+        public var ipWhiteList: [String]?
+
+        public var paymentDurationUnit: String?
+
+        public var paymentStatus: String?
+
+        public var paymentType: String?
+
+        public var prePaidQuota: GetWorkspaceResponseBody.Workspace.PrePaidQuota?
+
+        public var prePaidQuotaGpu: [GetWorkspaceResponseBody.Workspace.PrePaidQuotaGpu]?
+
+        public var ramRoleName: String?
+
+        public var regionId: String?
+
+        public var releaseType: String?
+
+        public var resourceGroupId: String?
+
+        public var resourceOwnerId: String?
+
+        public var resourceSpec: String?
+
+        public var stateChangeReason: GetWorkspaceResponseBody.Workspace.StateChangeReason?
+
+        public var storage: String?
+
+        public var tags: [GetWorkspaceResponseBody.Workspace.Tags]?
+
+        public var workspaceId: String?
+
+        public var workspaceName: String?
+
+        public var workspaceStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.prePaidQuota?.validate()
+            try self.stateChangeReason?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoRenew != nil {
+                map["autoRenew"] = self.autoRenew!
+            }
+            if self.autoRenewPeriod != nil {
+                map["autoRenewPeriod"] = self.autoRenewPeriod!
+            }
+            if self.autoRenewPeriodUnit != nil {
+                map["autoRenewPeriodUnit"] = self.autoRenewPeriodUnit!
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.dlfCatalogId != nil {
+                map["dlfCatalogId"] = self.dlfCatalogId!
+            }
+            if self.dlfType != nil {
+                map["dlfType"] = self.dlfType!
+            }
+            if self.duration != nil {
+                map["duration"] = self.duration!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.failReason != nil {
+                map["failReason"] = self.failReason!
+            }
+            if self.gpuSpec != nil {
+                map["gpuSpec"] = self.gpuSpec!
+            }
+            if self.ipWhiteList != nil {
+                map["ipWhiteList"] = self.ipWhiteList!
+            }
+            if self.paymentDurationUnit != nil {
+                map["paymentDurationUnit"] = self.paymentDurationUnit!
+            }
+            if self.paymentStatus != nil {
+                map["paymentStatus"] = self.paymentStatus!
+            }
+            if self.paymentType != nil {
+                map["paymentType"] = self.paymentType!
+            }
+            if self.prePaidQuota != nil {
+                map["prePaidQuota"] = self.prePaidQuota?.toMap()
+            }
+            if self.prePaidQuotaGpu != nil {
+                var tmp : [Any] = []
+                for k in self.prePaidQuotaGpu! {
+                    tmp.append(k.toMap())
+                }
+                map["prePaidQuotaGpu"] = tmp
+            }
+            if self.ramRoleName != nil {
+                map["ramRoleName"] = self.ramRoleName!
+            }
+            if self.regionId != nil {
+                map["regionId"] = self.regionId!
+            }
+            if self.releaseType != nil {
+                map["releaseType"] = self.releaseType!
+            }
+            if self.resourceGroupId != nil {
+                map["resourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceOwnerId != nil {
+                map["resourceOwnerId"] = self.resourceOwnerId!
+            }
+            if self.resourceSpec != nil {
+                map["resourceSpec"] = self.resourceSpec!
+            }
+            if self.stateChangeReason != nil {
+                map["stateChangeReason"] = self.stateChangeReason?.toMap()
+            }
+            if self.storage != nil {
+                map["storage"] = self.storage!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["tags"] = tmp
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            if self.workspaceName != nil {
+                map["workspaceName"] = self.workspaceName!
+            }
+            if self.workspaceStatus != nil {
+                map["workspaceStatus"] = self.workspaceStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["autoRenew"] as? Bool {
+                self.autoRenew = value
+            }
+            if let value = dict["autoRenewPeriod"] as? Int32 {
+                self.autoRenewPeriod = value
+            }
+            if let value = dict["autoRenewPeriodUnit"] as? String {
+                self.autoRenewPeriodUnit = value
+            }
+            if let value = dict["createTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["dlfCatalogId"] as? String {
+                self.dlfCatalogId = value
+            }
+            if let value = dict["dlfType"] as? String {
+                self.dlfType = value
+            }
+            if let value = dict["duration"] as? Int32 {
+                self.duration = value
+            }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["failReason"] as? String {
+                self.failReason = value
+            }
+            if let value = dict["gpuSpec"] as? [String] {
+                self.gpuSpec = value
+            }
+            if let value = dict["ipWhiteList"] as? [String] {
+                self.ipWhiteList = value
+            }
+            if let value = dict["paymentDurationUnit"] as? String {
+                self.paymentDurationUnit = value
+            }
+            if let value = dict["paymentStatus"] as? String {
+                self.paymentStatus = value
+            }
+            if let value = dict["paymentType"] as? String {
+                self.paymentType = value
+            }
+            if let value = dict["prePaidQuota"] as? [String: Any?] {
+                var model = GetWorkspaceResponseBody.Workspace.PrePaidQuota()
+                model.fromMap(value)
+                self.prePaidQuota = model
+            }
+            if let value = dict["prePaidQuotaGpu"] as? [Any?] {
+                var tmp : [GetWorkspaceResponseBody.Workspace.PrePaidQuotaGpu] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetWorkspaceResponseBody.Workspace.PrePaidQuotaGpu()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.prePaidQuotaGpu = tmp
+            }
+            if let value = dict["ramRoleName"] as? String {
+                self.ramRoleName = value
+            }
+            if let value = dict["regionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["releaseType"] as? String {
+                self.releaseType = value
+            }
+            if let value = dict["resourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["resourceOwnerId"] as? String {
+                self.resourceOwnerId = value
+            }
+            if let value = dict["resourceSpec"] as? String {
+                self.resourceSpec = value
+            }
+            if let value = dict["stateChangeReason"] as? [String: Any?] {
+                var model = GetWorkspaceResponseBody.Workspace.StateChangeReason()
+                model.fromMap(value)
+                self.stateChangeReason = model
+            }
+            if let value = dict["storage"] as? String {
+                self.storage = value
+            }
+            if let value = dict["tags"] as? [Any?] {
+                var tmp : [GetWorkspaceResponseBody.Workspace.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetWorkspaceResponseBody.Workspace.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+            if let value = dict["workspaceName"] as? String {
+                self.workspaceName = value
+            }
+            if let value = dict["workspaceStatus"] as? String {
+                self.workspaceStatus = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var workspace: GetWorkspaceResponseBody.Workspace?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.workspace?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["workspace"] as? [String: Any?] {
+            var model = GetWorkspaceResponseBody.Workspace()
+            model.fromMap(value)
+            self.workspace = model
+        }
+    }
+}
+
+public class GetWorkspaceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetWorkspaceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetWorkspaceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GrantRoleToUsersRequest : Tea.TeaModel {
     public var roleArn: String?
 
