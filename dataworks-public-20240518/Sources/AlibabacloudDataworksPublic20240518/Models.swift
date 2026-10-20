@@ -9727,6 +9727,374 @@ public class CreateBusinessResponse : Tea.TeaModel {
     }
 }
 
+public class CreateCalendarRequest : Tea.TeaModel {
+    public class SchedulePolicy : Tea.TeaModel {
+        public var normalDates: [String]?
+
+        public var skipDates: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.normalDates != nil {
+                map["NormalDates"] = self.normalDates!
+            }
+            if self.skipDates != nil {
+                map["SkipDates"] = self.skipDates!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NormalDates"] as? [String] {
+                self.normalDates = value
+            }
+            if let value = dict["SkipDates"] as? [String] {
+                self.skipDates = value
+            }
+        }
+    }
+    public var allProjects: Bool?
+
+    public var description_: String?
+
+    public var endDate: String?
+
+    public var expirationReminder: String?
+
+    public var fallbackPolicy: String?
+
+    public var name: String?
+
+    public var overduePolicy: String?
+
+    public var owner: String?
+
+    public var projectIds: [Int64]?
+
+    public var schedulePolicy: CreateCalendarRequest.SchedulePolicy?
+
+    public var startDate: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.schedulePolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allProjects != nil {
+            map["AllProjects"] = self.allProjects!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.expirationReminder != nil {
+            map["ExpirationReminder"] = self.expirationReminder!
+        }
+        if self.fallbackPolicy != nil {
+            map["FallbackPolicy"] = self.fallbackPolicy!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.overduePolicy != nil {
+            map["OverduePolicy"] = self.overduePolicy!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.projectIds != nil {
+            map["ProjectIds"] = self.projectIds!
+        }
+        if self.schedulePolicy != nil {
+            map["SchedulePolicy"] = self.schedulePolicy?.toMap()
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllProjects"] as? Bool {
+            self.allProjects = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EndDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["ExpirationReminder"] as? String {
+            self.expirationReminder = value
+        }
+        if let value = dict["FallbackPolicy"] as? String {
+            self.fallbackPolicy = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OverduePolicy"] as? String {
+            self.overduePolicy = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["ProjectIds"] as? [Int64] {
+            self.projectIds = value
+        }
+        if let value = dict["SchedulePolicy"] as? [String: Any?] {
+            var model = CreateCalendarRequest.SchedulePolicy()
+            model.fromMap(value)
+            self.schedulePolicy = model
+        }
+        if let value = dict["StartDate"] as? String {
+            self.startDate = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class CreateCalendarShrinkRequest : Tea.TeaModel {
+    public var allProjects: Bool?
+
+    public var description_: String?
+
+    public var endDate: String?
+
+    public var expirationReminder: String?
+
+    public var fallbackPolicy: String?
+
+    public var name: String?
+
+    public var overduePolicy: String?
+
+    public var owner: String?
+
+    public var projectIdsShrink: String?
+
+    public var schedulePolicyShrink: String?
+
+    public var startDate: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allProjects != nil {
+            map["AllProjects"] = self.allProjects!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.expirationReminder != nil {
+            map["ExpirationReminder"] = self.expirationReminder!
+        }
+        if self.fallbackPolicy != nil {
+            map["FallbackPolicy"] = self.fallbackPolicy!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.overduePolicy != nil {
+            map["OverduePolicy"] = self.overduePolicy!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.projectIdsShrink != nil {
+            map["ProjectIds"] = self.projectIdsShrink!
+        }
+        if self.schedulePolicyShrink != nil {
+            map["SchedulePolicy"] = self.schedulePolicyShrink!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllProjects"] as? Bool {
+            self.allProjects = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EndDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["ExpirationReminder"] as? String {
+            self.expirationReminder = value
+        }
+        if let value = dict["FallbackPolicy"] as? String {
+            self.fallbackPolicy = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OverduePolicy"] as? String {
+            self.overduePolicy = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["ProjectIds"] as? String {
+            self.projectIdsShrink = value
+        }
+        if let value = dict["SchedulePolicy"] as? String {
+            self.schedulePolicyShrink = value
+        }
+        if let value = dict["StartDate"] as? String {
+            self.startDate = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class CreateCalendarResponseBody : Tea.TeaModel {
+    public var id: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateCalendarResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateCalendarResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateCalendarResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateComponentRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -25599,6 +25967,8 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
 
         public var analysis: CreateWorkflowInstancesRequest.DefaultRunProperties.Analysis?
 
+        public var dataSourceNameMappings: [String: String]?
+
         public var excludeProjectIds: [Int64]?
 
         public var excludeTaskIds: [Int64]?
@@ -25645,6 +26015,9 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
             }
             if self.analysis != nil {
                 map["Analysis"] = self.analysis?.toMap()
+            }
+            if self.dataSourceNameMappings != nil {
+                map["DataSourceNameMappings"] = self.dataSourceNameMappings!
             }
             if self.excludeProjectIds != nil {
                 map["ExcludeProjectIds"] = self.excludeProjectIds!
@@ -25696,6 +26069,9 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
                 var model = CreateWorkflowInstancesRequest.DefaultRunProperties.Analysis()
                 model.fromMap(value)
                 self.analysis = model
+            }
+            if let value = dict["DataSourceNameMappings"] as? [String: String] {
+                self.dataSourceNameMappings = value
             }
             if let value = dict["ExcludeProjectIds"] as? [Int64] {
                 self.excludeProjectIds = value
@@ -26621,6 +26997,126 @@ public class DeleteBusinessResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteBusinessResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteCalendarRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+    }
+}
+
+public class DeleteCalendarResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteCalendarResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteCalendarResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteCalendarResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -38245,6 +38741,312 @@ public class GetBusinessResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetBusinessResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetCalendarRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+    }
+}
+
+public class GetCalendarResponseBody : Tea.TeaModel {
+    public class Calendar : Tea.TeaModel {
+        public class SchedulePolicy : Tea.TeaModel {
+            public var normalDates: [String]?
+
+            public var skipDates: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.normalDates != nil {
+                    map["NormalDates"] = self.normalDates!
+                }
+                if self.skipDates != nil {
+                    map["SkipDates"] = self.skipDates!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["NormalDates"] as? [String] {
+                    self.normalDates = value
+                }
+                if let value = dict["SkipDates"] as? [String] {
+                    self.skipDates = value
+                }
+            }
+        }
+        public var allProjects: Bool?
+
+        public var description_: String?
+
+        public var endDate: String?
+
+        public var expirationReminder: String?
+
+        public var fallbackPolicy: String?
+
+        public var id: Int64?
+
+        public var modifyTime: Int64?
+
+        public var name: String?
+
+        public var overduePolicy: String?
+
+        public var owner: String?
+
+        public var projectIds: [Int64]?
+
+        public var schedulePolicy: GetCalendarResponseBody.Calendar.SchedulePolicy?
+
+        public var startDate: String?
+
+        public var type: String?
+
+        public var version: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.schedulePolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allProjects != nil {
+                map["AllProjects"] = self.allProjects!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.endDate != nil {
+                map["EndDate"] = self.endDate!
+            }
+            if self.expirationReminder != nil {
+                map["ExpirationReminder"] = self.expirationReminder!
+            }
+            if self.fallbackPolicy != nil {
+                map["FallbackPolicy"] = self.fallbackPolicy!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.overduePolicy != nil {
+                map["OverduePolicy"] = self.overduePolicy!
+            }
+            if self.owner != nil {
+                map["Owner"] = self.owner!
+            }
+            if self.projectIds != nil {
+                map["ProjectIds"] = self.projectIds!
+            }
+            if self.schedulePolicy != nil {
+                map["SchedulePolicy"] = self.schedulePolicy?.toMap()
+            }
+            if self.startDate != nil {
+                map["StartDate"] = self.startDate!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllProjects"] as? Bool {
+                self.allProjects = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["EndDate"] as? String {
+                self.endDate = value
+            }
+            if let value = dict["ExpirationReminder"] as? String {
+                self.expirationReminder = value
+            }
+            if let value = dict["FallbackPolicy"] as? String {
+                self.fallbackPolicy = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["ModifyTime"] as? Int64 {
+                self.modifyTime = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["OverduePolicy"] as? String {
+                self.overduePolicy = value
+            }
+            if let value = dict["Owner"] as? String {
+                self.owner = value
+            }
+            if let value = dict["ProjectIds"] as? [Int64] {
+                self.projectIds = value
+            }
+            if let value = dict["SchedulePolicy"] as? [String: Any?] {
+                var model = GetCalendarResponseBody.Calendar.SchedulePolicy()
+                model.fromMap(value)
+                self.schedulePolicy = model
+            }
+            if let value = dict["StartDate"] as? String {
+                self.startDate = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["Version"] as? Int32 {
+                self.version = value
+            }
+        }
+    }
+    public var calendar: GetCalendarResponseBody.Calendar?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.calendar?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.calendar != nil {
+            map["Calendar"] = self.calendar?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Calendar"] as? [String: Any?] {
+            var model = GetCalendarResponseBody.Calendar()
+            model.fromMap(value)
+            self.calendar = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetCalendarResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetCalendarResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetCalendarResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -66214,6 +67016,810 @@ public class ListBusinessResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListBusinessResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListCalendarVersionsRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListCalendarVersionsResponseBody : Tea.TeaModel {
+    public class PagingInfo : Tea.TeaModel {
+        public class CalendarVersions : Tea.TeaModel {
+            public class SchedulePolicy : Tea.TeaModel {
+                public var normalDates: [String]?
+
+                public var skipDates: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.normalDates != nil {
+                        map["NormalDates"] = self.normalDates!
+                    }
+                    if self.skipDates != nil {
+                        map["SkipDates"] = self.skipDates!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["NormalDates"] as? [String] {
+                        self.normalDates = value
+                    }
+                    if let value = dict["SkipDates"] as? [String] {
+                        self.skipDates = value
+                    }
+                }
+            }
+            public var allProjects: Bool?
+
+            public var description_: String?
+
+            public var endDate: String?
+
+            public var expirationReminder: String?
+
+            public var fallbackPolicy: String?
+
+            public var id: Int64?
+
+            public var modifyTime: Int64?
+
+            public var name: String?
+
+            public var overduePolicy: String?
+
+            public var owner: String?
+
+            public var projectIds: [Int64]?
+
+            public var schedulePolicy: ListCalendarVersionsResponseBody.PagingInfo.CalendarVersions.SchedulePolicy?
+
+            public var startDate: String?
+
+            public var type: String?
+
+            public var version: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.schedulePolicy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allProjects != nil {
+                    map["AllProjects"] = self.allProjects!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.expirationReminder != nil {
+                    map["ExpirationReminder"] = self.expirationReminder!
+                }
+                if self.fallbackPolicy != nil {
+                    map["FallbackPolicy"] = self.fallbackPolicy!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.modifyTime != nil {
+                    map["ModifyTime"] = self.modifyTime!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.overduePolicy != nil {
+                    map["OverduePolicy"] = self.overduePolicy!
+                }
+                if self.owner != nil {
+                    map["Owner"] = self.owner!
+                }
+                if self.projectIds != nil {
+                    map["ProjectIds"] = self.projectIds!
+                }
+                if self.schedulePolicy != nil {
+                    map["SchedulePolicy"] = self.schedulePolicy?.toMap()
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllProjects"] as? Bool {
+                    self.allProjects = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["EndDate"] as? String {
+                    self.endDate = value
+                }
+                if let value = dict["ExpirationReminder"] as? String {
+                    self.expirationReminder = value
+                }
+                if let value = dict["FallbackPolicy"] as? String {
+                    self.fallbackPolicy = value
+                }
+                if let value = dict["Id"] as? Int64 {
+                    self.id = value
+                }
+                if let value = dict["ModifyTime"] as? Int64 {
+                    self.modifyTime = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["OverduePolicy"] as? String {
+                    self.overduePolicy = value
+                }
+                if let value = dict["Owner"] as? String {
+                    self.owner = value
+                }
+                if let value = dict["ProjectIds"] as? [Int64] {
+                    self.projectIds = value
+                }
+                if let value = dict["SchedulePolicy"] as? [String: Any?] {
+                    var model = ListCalendarVersionsResponseBody.PagingInfo.CalendarVersions.SchedulePolicy()
+                    model.fromMap(value)
+                    self.schedulePolicy = model
+                }
+                if let value = dict["StartDate"] as? String {
+                    self.startDate = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["Version"] as? Int32 {
+                    self.version = value
+                }
+            }
+        }
+        public var calendarVersions: [ListCalendarVersionsResponseBody.PagingInfo.CalendarVersions]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.calendarVersions != nil {
+                var tmp : [Any] = []
+                for k in self.calendarVersions! {
+                    tmp.append(k.toMap())
+                }
+                map["CalendarVersions"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CalendarVersions"] as? [Any?] {
+                var tmp : [ListCalendarVersionsResponseBody.PagingInfo.CalendarVersions] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListCalendarVersionsResponseBody.PagingInfo.CalendarVersions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.calendarVersions = tmp
+            }
+            if let value = dict["PageNumber"] as? Int32 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var pagingInfo: ListCalendarVersionsResponseBody.PagingInfo?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pagingInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pagingInfo != nil {
+            map["PagingInfo"] = self.pagingInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PagingInfo"] as? [String: Any?] {
+            var model = ListCalendarVersionsResponseBody.PagingInfo()
+            model.fromMap(value)
+            self.pagingInfo = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListCalendarVersionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCalendarVersionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListCalendarVersionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListCalendarsRequest : Tea.TeaModel {
+    public var name: String?
+
+    public var owner: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var projectId: Int64?
+
+    public var sortBy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+    }
+}
+
+public class ListCalendarsResponseBody : Tea.TeaModel {
+    public class PagingInfo : Tea.TeaModel {
+        public class Calendars : Tea.TeaModel {
+            public class SchedulePolicy : Tea.TeaModel {
+                public var normalDates: [String]?
+
+                public var skipDates: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.normalDates != nil {
+                        map["NormalDates"] = self.normalDates!
+                    }
+                    if self.skipDates != nil {
+                        map["SkipDates"] = self.skipDates!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["NormalDates"] as? [String] {
+                        self.normalDates = value
+                    }
+                    if let value = dict["SkipDates"] as? [String] {
+                        self.skipDates = value
+                    }
+                }
+            }
+            public var allProjects: Bool?
+
+            public var description_: String?
+
+            public var endDate: String?
+
+            public var expirationReminder: String?
+
+            public var fallbackPolicy: String?
+
+            public var id: Int64?
+
+            public var modifyTime: Int64?
+
+            public var name: String?
+
+            public var overduePolicy: String?
+
+            public var owner: String?
+
+            public var projectIds: [Int64]?
+
+            public var schedulePolicy: ListCalendarsResponseBody.PagingInfo.Calendars.SchedulePolicy?
+
+            public var startDate: String?
+
+            public var type: String?
+
+            public var version: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.schedulePolicy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allProjects != nil {
+                    map["AllProjects"] = self.allProjects!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.expirationReminder != nil {
+                    map["ExpirationReminder"] = self.expirationReminder!
+                }
+                if self.fallbackPolicy != nil {
+                    map["FallbackPolicy"] = self.fallbackPolicy!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.modifyTime != nil {
+                    map["ModifyTime"] = self.modifyTime!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.overduePolicy != nil {
+                    map["OverduePolicy"] = self.overduePolicy!
+                }
+                if self.owner != nil {
+                    map["Owner"] = self.owner!
+                }
+                if self.projectIds != nil {
+                    map["ProjectIds"] = self.projectIds!
+                }
+                if self.schedulePolicy != nil {
+                    map["SchedulePolicy"] = self.schedulePolicy?.toMap()
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllProjects"] as? Bool {
+                    self.allProjects = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["EndDate"] as? String {
+                    self.endDate = value
+                }
+                if let value = dict["ExpirationReminder"] as? String {
+                    self.expirationReminder = value
+                }
+                if let value = dict["FallbackPolicy"] as? String {
+                    self.fallbackPolicy = value
+                }
+                if let value = dict["Id"] as? Int64 {
+                    self.id = value
+                }
+                if let value = dict["ModifyTime"] as? Int64 {
+                    self.modifyTime = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["OverduePolicy"] as? String {
+                    self.overduePolicy = value
+                }
+                if let value = dict["Owner"] as? String {
+                    self.owner = value
+                }
+                if let value = dict["ProjectIds"] as? [Int64] {
+                    self.projectIds = value
+                }
+                if let value = dict["SchedulePolicy"] as? [String: Any?] {
+                    var model = ListCalendarsResponseBody.PagingInfo.Calendars.SchedulePolicy()
+                    model.fromMap(value)
+                    self.schedulePolicy = model
+                }
+                if let value = dict["StartDate"] as? String {
+                    self.startDate = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["Version"] as? Int32 {
+                    self.version = value
+                }
+            }
+        }
+        public var calendars: [ListCalendarsResponseBody.PagingInfo.Calendars]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.calendars != nil {
+                var tmp : [Any] = []
+                for k in self.calendars! {
+                    tmp.append(k.toMap())
+                }
+                map["Calendars"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Calendars"] as? [Any?] {
+                var tmp : [ListCalendarsResponseBody.PagingInfo.Calendars] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListCalendarsResponseBody.PagingInfo.Calendars()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.calendars = tmp
+            }
+            if let value = dict["PageNumber"] as? Int32 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var pagingInfo: ListCalendarsResponseBody.PagingInfo?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pagingInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pagingInfo != nil {
+            map["PagingInfo"] = self.pagingInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PagingInfo"] as? [String: Any?] {
+            var model = ListCalendarsResponseBody.PagingInfo()
+            model.fromMap(value)
+            self.pagingInfo = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListCalendarsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCalendarsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListCalendarsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -119616,6 +121222,374 @@ public class UpdateBusinessResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateBusinessResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateCalendarRequest : Tea.TeaModel {
+    public class SchedulePolicy : Tea.TeaModel {
+        public var normalDates: [String]?
+
+        public var skipDates: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.normalDates != nil {
+                map["NormalDates"] = self.normalDates!
+            }
+            if self.skipDates != nil {
+                map["SkipDates"] = self.skipDates!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NormalDates"] as? [String] {
+                self.normalDates = value
+            }
+            if let value = dict["SkipDates"] as? [String] {
+                self.skipDates = value
+            }
+        }
+    }
+    public var allProjects: Bool?
+
+    public var description_: String?
+
+    public var endDate: String?
+
+    public var expirationReminder: String?
+
+    public var fallbackPolicy: String?
+
+    public var id: Int64?
+
+    public var overduePolicy: String?
+
+    public var owner: String?
+
+    public var projectIds: [Int64]?
+
+    public var schedulePolicy: UpdateCalendarRequest.SchedulePolicy?
+
+    public var startDate: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.schedulePolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allProjects != nil {
+            map["AllProjects"] = self.allProjects!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.expirationReminder != nil {
+            map["ExpirationReminder"] = self.expirationReminder!
+        }
+        if self.fallbackPolicy != nil {
+            map["FallbackPolicy"] = self.fallbackPolicy!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.overduePolicy != nil {
+            map["OverduePolicy"] = self.overduePolicy!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.projectIds != nil {
+            map["ProjectIds"] = self.projectIds!
+        }
+        if self.schedulePolicy != nil {
+            map["SchedulePolicy"] = self.schedulePolicy?.toMap()
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllProjects"] as? Bool {
+            self.allProjects = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EndDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["ExpirationReminder"] as? String {
+            self.expirationReminder = value
+        }
+        if let value = dict["FallbackPolicy"] as? String {
+            self.fallbackPolicy = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["OverduePolicy"] as? String {
+            self.overduePolicy = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["ProjectIds"] as? [Int64] {
+            self.projectIds = value
+        }
+        if let value = dict["SchedulePolicy"] as? [String: Any?] {
+            var model = UpdateCalendarRequest.SchedulePolicy()
+            model.fromMap(value)
+            self.schedulePolicy = model
+        }
+        if let value = dict["StartDate"] as? String {
+            self.startDate = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class UpdateCalendarShrinkRequest : Tea.TeaModel {
+    public var allProjects: Bool?
+
+    public var description_: String?
+
+    public var endDate: String?
+
+    public var expirationReminder: String?
+
+    public var fallbackPolicy: String?
+
+    public var id: Int64?
+
+    public var overduePolicy: String?
+
+    public var owner: String?
+
+    public var projectIdsShrink: String?
+
+    public var schedulePolicyShrink: String?
+
+    public var startDate: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allProjects != nil {
+            map["AllProjects"] = self.allProjects!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.expirationReminder != nil {
+            map["ExpirationReminder"] = self.expirationReminder!
+        }
+        if self.fallbackPolicy != nil {
+            map["FallbackPolicy"] = self.fallbackPolicy!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.overduePolicy != nil {
+            map["OverduePolicy"] = self.overduePolicy!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.projectIdsShrink != nil {
+            map["ProjectIds"] = self.projectIdsShrink!
+        }
+        if self.schedulePolicyShrink != nil {
+            map["SchedulePolicy"] = self.schedulePolicyShrink!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllProjects"] as? Bool {
+            self.allProjects = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EndDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["ExpirationReminder"] as? String {
+            self.expirationReminder = value
+        }
+        if let value = dict["FallbackPolicy"] as? String {
+            self.fallbackPolicy = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["OverduePolicy"] as? String {
+            self.overduePolicy = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["ProjectIds"] as? String {
+            self.projectIdsShrink = value
+        }
+        if let value = dict["SchedulePolicy"] as? String {
+            self.schedulePolicyShrink = value
+        }
+        if let value = dict["StartDate"] as? String {
+            self.startDate = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class UpdateCalendarResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var version: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Version"] as? Int32 {
+            self.version = value
+        }
+    }
+}
+
+public class UpdateCalendarResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateCalendarResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateCalendarResponseBody()
             model.fromMap(value)
             self.body = model
         }
