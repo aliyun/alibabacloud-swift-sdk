@@ -3348,6 +3348,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSliderCaptchaPageWithOptions(_ tmpReq: CreateSliderCaptchaPageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSliderCaptchaPageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateSliderCaptchaPageShrinkRequest = CreateSliderCaptchaPageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.configs)) {
+            request.configsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.configs, "Configs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.siteIds)) {
+            request.siteIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.siteIds, "SiteIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configsShrink)) {
+            body["Configs"] = request.configsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customContent)) {
+            body["CustomContent"] = request.customContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.forceLanguage)) {
+            body["ForceLanguage"] = request.forceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteIdsShrink)) {
+            body["SiteIds"] = request.siteIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSliderCaptchaPage",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSliderCaptchaPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSliderCaptchaPage(_ request: CreateSliderCaptchaPageRequest) async throws -> CreateSliderCaptchaPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSliderCaptchaPageWithOptions(request as! CreateSliderCaptchaPageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createSlrRoleForRealtimeLogWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSlrRoleForRealtimeLogResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -5556,6 +5607,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteSiteOriginClientCertificate(_ request: DeleteSiteOriginClientCertificateRequest) async throws -> DeleteSiteOriginClientCertificateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteSiteOriginClientCertificateWithOptions(request as! DeleteSiteOriginClientCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSliderCaptchaPageWithOptions(_ request: DeleteSliderCaptchaPageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSliderCaptchaPageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["Id"] = request.id!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSliderCaptchaPage",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSliderCaptchaPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSliderCaptchaPage(_ request: DeleteSliderCaptchaPageRequest) async throws -> DeleteSliderCaptchaPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteSliderCaptchaPageWithOptions(request as! DeleteSliderCaptchaPageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -10036,6 +10118,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSliderCaptchaPageWithOptions(_ request: GetSliderCaptchaPageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSliderCaptchaPageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSliderCaptchaPage",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSliderCaptchaPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSliderCaptchaPage(_ request: GetSliderCaptchaPageRequest) async throws -> GetSliderCaptchaPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getSliderCaptchaPageWithOptions(request as! GetSliderCaptchaPageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTieredCacheWithOptions(_ request: GetTieredCacheRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTieredCacheResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -12618,6 +12731,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSites(_ request: ListSitesRequest) async throws -> ListSitesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listSitesWithOptions(request as! ListSitesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSliderCaptchaPagesWithOptions(_ tmpReq: ListSliderCaptchaPagesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSliderCaptchaPagesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListSliderCaptchaPagesShrinkRequest = ListSliderCaptchaPagesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.queryArgs)) {
+            request.queryArgsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryArgs, "QueryArgs", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryArgsShrink)) {
+            query["QueryArgs"] = request.queryArgsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSliderCaptchaPages",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSliderCaptchaPagesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSliderCaptchaPages(_ request: ListSliderCaptchaPagesRequest) async throws -> ListSliderCaptchaPagesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listSliderCaptchaPagesWithOptions(request as! ListSliderCaptchaPagesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -17803,6 +17958,60 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSiteVanityNS(_ request: UpdateSiteVanityNSRequest) async throws -> UpdateSiteVanityNSResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateSiteVanityNSWithOptions(request as! UpdateSiteVanityNSRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSliderCaptchaPageWithOptions(_ tmpReq: UpdateSliderCaptchaPageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSliderCaptchaPageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateSliderCaptchaPageShrinkRequest = UpdateSliderCaptchaPageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.configs)) {
+            request.configsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.configs, "Configs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.siteIds)) {
+            request.siteIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.siteIds, "SiteIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configsShrink)) {
+            body["Configs"] = request.configsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customContent)) {
+            body["CustomContent"] = request.customContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.forceLanguage)) {
+            body["ForceLanguage"] = request.forceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["Id"] = request.id!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteIdsShrink)) {
+            body["SiteIds"] = request.siteIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateSliderCaptchaPage",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateSliderCaptchaPageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSliderCaptchaPage(_ request: UpdateSliderCaptchaPageRequest) async throws -> UpdateSliderCaptchaPageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateSliderCaptchaPageWithOptions(request as! UpdateSliderCaptchaPageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

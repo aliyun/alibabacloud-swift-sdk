@@ -18779,6 +18779,376 @@ public class CreateSiteDeliveryTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateSliderCaptchaPageRequest : Tea.TeaModel {
+    public class Configs : Tea.TeaModel {
+        public class En : Tea.TeaModel {
+            public var showFooter: Bool?
+
+            public var showRequestId: Bool?
+
+            public var sliderColor: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.showFooter != nil {
+                    map["ShowFooter"] = self.showFooter!
+                }
+                if self.showRequestId != nil {
+                    map["ShowRequestId"] = self.showRequestId!
+                }
+                if self.sliderColor != nil {
+                    map["SliderColor"] = self.sliderColor!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ShowFooter"] as? Bool {
+                    self.showFooter = value
+                }
+                if let value = dict["ShowRequestId"] as? Bool {
+                    self.showRequestId = value
+                }
+                if let value = dict["SliderColor"] as? String {
+                    self.sliderColor = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public class Zh : Tea.TeaModel {
+            public var showFooter: Bool?
+
+            public var showRequestId: Bool?
+
+            public var sliderColor: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.showFooter != nil {
+                    map["ShowFooter"] = self.showFooter!
+                }
+                if self.showRequestId != nil {
+                    map["ShowRequestId"] = self.showRequestId!
+                }
+                if self.sliderColor != nil {
+                    map["SliderColor"] = self.sliderColor!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ShowFooter"] as? Bool {
+                    self.showFooter = value
+                }
+                if let value = dict["ShowRequestId"] as? Bool {
+                    self.showRequestId = value
+                }
+                if let value = dict["SliderColor"] as? String {
+                    self.sliderColor = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public var en: CreateSliderCaptchaPageRequest.Configs.En?
+
+        public var zh: CreateSliderCaptchaPageRequest.Configs.Zh?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.en?.validate()
+            try self.zh?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.en != nil {
+                map["En"] = self.en?.toMap()
+            }
+            if self.zh != nil {
+                map["Zh"] = self.zh?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["En"] as? [String: Any?] {
+                var model = CreateSliderCaptchaPageRequest.Configs.En()
+                model.fromMap(value)
+                self.en = model
+            }
+            if let value = dict["Zh"] as? [String: Any?] {
+                var model = CreateSliderCaptchaPageRequest.Configs.Zh()
+                model.fromMap(value)
+                self.zh = model
+            }
+        }
+    }
+    public var configs: CreateSliderCaptchaPageRequest.Configs?
+
+    public var customContent: String?
+
+    public var forceLanguage: String?
+
+    public var name: String?
+
+    public var siteIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.configs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configs != nil {
+            map["Configs"] = self.configs?.toMap()
+        }
+        if self.customContent != nil {
+            map["CustomContent"] = self.customContent!
+        }
+        if self.forceLanguage != nil {
+            map["ForceLanguage"] = self.forceLanguage!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.siteIds != nil {
+            map["SiteIds"] = self.siteIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? [String: Any?] {
+            var model = CreateSliderCaptchaPageRequest.Configs()
+            model.fromMap(value)
+            self.configs = model
+        }
+        if let value = dict["CustomContent"] as? String {
+            self.customContent = value
+        }
+        if let value = dict["ForceLanguage"] as? String {
+            self.forceLanguage = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["SiteIds"] as? [Int64] {
+            self.siteIds = value
+        }
+    }
+}
+
+public class CreateSliderCaptchaPageShrinkRequest : Tea.TeaModel {
+    public var configsShrink: String?
+
+    public var customContent: String?
+
+    public var forceLanguage: String?
+
+    public var name: String?
+
+    public var siteIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configsShrink != nil {
+            map["Configs"] = self.configsShrink!
+        }
+        if self.customContent != nil {
+            map["CustomContent"] = self.customContent!
+        }
+        if self.forceLanguage != nil {
+            map["ForceLanguage"] = self.forceLanguage!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.siteIdsShrink != nil {
+            map["SiteIds"] = self.siteIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? String {
+            self.configsShrink = value
+        }
+        if let value = dict["CustomContent"] as? String {
+            self.customContent = value
+        }
+        if let value = dict["ForceLanguage"] as? String {
+            self.forceLanguage = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["SiteIds"] as? String {
+            self.siteIdsShrink = value
+        }
+    }
+}
+
+public class CreateSliderCaptchaPageResponseBody : Tea.TeaModel {
+    public var id: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateSliderCaptchaPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSliderCaptchaPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateSliderCaptchaPageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateSlrRoleForRealtimeLogResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -27986,6 +28356,118 @@ public class DeleteSiteOriginClientCertificateResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteSiteOriginClientCertificateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteSliderCaptchaPageRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+    }
+}
+
+public class DeleteSliderCaptchaPageResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteSliderCaptchaPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteSliderCaptchaPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteSliderCaptchaPageResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -59810,6 +60292,321 @@ public class GetSiteWafSettingsResponse : Tea.TeaModel {
     }
 }
 
+public class GetSliderCaptchaPageRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+    }
+}
+
+public class GetSliderCaptchaPageResponseBody : Tea.TeaModel {
+    public class Configs : Tea.TeaModel {
+        public class En : Tea.TeaModel {
+            public var showFooter: Bool?
+
+            public var showRequestId: Bool?
+
+            public var sliderColor: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.showFooter != nil {
+                    map["ShowFooter"] = self.showFooter!
+                }
+                if self.showRequestId != nil {
+                    map["ShowRequestId"] = self.showRequestId!
+                }
+                if self.sliderColor != nil {
+                    map["SliderColor"] = self.sliderColor!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ShowFooter"] as? Bool {
+                    self.showFooter = value
+                }
+                if let value = dict["ShowRequestId"] as? Bool {
+                    self.showRequestId = value
+                }
+                if let value = dict["SliderColor"] as? String {
+                    self.sliderColor = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public class Zh : Tea.TeaModel {
+            public var showFooter: Bool?
+
+            public var showRequestId: Bool?
+
+            public var sliderColor: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.showFooter != nil {
+                    map["ShowFooter"] = self.showFooter!
+                }
+                if self.showRequestId != nil {
+                    map["ShowRequestId"] = self.showRequestId!
+                }
+                if self.sliderColor != nil {
+                    map["SliderColor"] = self.sliderColor!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ShowFooter"] as? Bool {
+                    self.showFooter = value
+                }
+                if let value = dict["ShowRequestId"] as? Bool {
+                    self.showRequestId = value
+                }
+                if let value = dict["SliderColor"] as? String {
+                    self.sliderColor = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public var en: GetSliderCaptchaPageResponseBody.Configs.En?
+
+        public var zh: GetSliderCaptchaPageResponseBody.Configs.Zh?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.en?.validate()
+            try self.zh?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.en != nil {
+                map["En"] = self.en?.toMap()
+            }
+            if self.zh != nil {
+                map["Zh"] = self.zh?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["En"] as? [String: Any?] {
+                var model = GetSliderCaptchaPageResponseBody.Configs.En()
+                model.fromMap(value)
+                self.en = model
+            }
+            if let value = dict["Zh"] as? [String: Any?] {
+                var model = GetSliderCaptchaPageResponseBody.Configs.Zh()
+                model.fromMap(value)
+                self.zh = model
+            }
+        }
+    }
+    public var configs: GetSliderCaptchaPageResponseBody.Configs?
+
+    public var customContent: String?
+
+    public var forceLanguage: String?
+
+    public var id: Int64?
+
+    public var name: String?
+
+    public var requestId: String?
+
+    public var siteIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.configs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configs != nil {
+            map["Configs"] = self.configs?.toMap()
+        }
+        if self.customContent != nil {
+            map["CustomContent"] = self.customContent!
+        }
+        if self.forceLanguage != nil {
+            map["ForceLanguage"] = self.forceLanguage!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.siteIds != nil {
+            map["SiteIds"] = self.siteIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? [String: Any?] {
+            var model = GetSliderCaptchaPageResponseBody.Configs()
+            model.fromMap(value)
+            self.configs = model
+        }
+        if let value = dict["CustomContent"] as? String {
+            self.customContent = value
+        }
+        if let value = dict["ForceLanguage"] as? String {
+            self.forceLanguage = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SiteIds"] as? [Int64] {
+            self.siteIds = value
+        }
+    }
+}
+
+public class GetSliderCaptchaPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSliderCaptchaPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetSliderCaptchaPageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetTieredCacheRequest : Tea.TeaModel {
     public var siteId: Int64?
 
@@ -88414,6 +89211,290 @@ public class ListSitesResponse : Tea.TeaModel {
     }
 }
 
+public class ListSliderCaptchaPagesRequest : Tea.TeaModel {
+    public class QueryArgs : Tea.TeaModel {
+        public var nameLike: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nameLike != nil {
+                map["NameLike"] = self.nameLike!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NameLike"] as? String {
+                self.nameLike = value
+            }
+        }
+    }
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryArgs: ListSliderCaptchaPagesRequest.QueryArgs?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.queryArgs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryArgs != nil {
+            map["QueryArgs"] = self.queryArgs?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["QueryArgs"] as? [String: Any?] {
+            var model = ListSliderCaptchaPagesRequest.QueryArgs()
+            model.fromMap(value)
+            self.queryArgs = model
+        }
+    }
+}
+
+public class ListSliderCaptchaPagesShrinkRequest : Tea.TeaModel {
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryArgsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryArgsShrink != nil {
+            map["QueryArgs"] = self.queryArgsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["QueryArgs"] as? String {
+            self.queryArgsShrink = value
+        }
+    }
+}
+
+public class ListSliderCaptchaPagesResponseBody : Tea.TeaModel {
+    public class Pages : Tea.TeaModel {
+        public var id: Int64?
+
+        public var name: String?
+
+        public var siteIds: [Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.siteIds != nil {
+                map["SiteIds"] = self.siteIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["SiteIds"] as? [Int64] {
+                self.siteIds = value
+            }
+        }
+    }
+    public var pages: [ListSliderCaptchaPagesResponseBody.Pages]?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pages != nil {
+            var tmp : [Any] = []
+            for k in self.pages! {
+                tmp.append(k.toMap())
+            }
+            map["Pages"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Pages"] as? [Any?] {
+            var tmp : [ListSliderCaptchaPagesResponseBody.Pages] = []
+            for v in value {
+                if v != nil {
+                    var model = ListSliderCaptchaPagesResponseBody.Pages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.pages = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListSliderCaptchaPagesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSliderCaptchaPagesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListSliderCaptchaPagesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListTagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -113620,6 +114701,384 @@ public class UpdateSiteVanityNSResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateSiteVanityNSResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateSliderCaptchaPageRequest : Tea.TeaModel {
+    public class Configs : Tea.TeaModel {
+        public class En : Tea.TeaModel {
+            public var showFooter: Bool?
+
+            public var showRequestId: Bool?
+
+            public var sliderColor: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.showFooter != nil {
+                    map["ShowFooter"] = self.showFooter!
+                }
+                if self.showRequestId != nil {
+                    map["ShowRequestId"] = self.showRequestId!
+                }
+                if self.sliderColor != nil {
+                    map["SliderColor"] = self.sliderColor!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ShowFooter"] as? Bool {
+                    self.showFooter = value
+                }
+                if let value = dict["ShowRequestId"] as? Bool {
+                    self.showRequestId = value
+                }
+                if let value = dict["SliderColor"] as? String {
+                    self.sliderColor = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public class Zh : Tea.TeaModel {
+            public var showFooter: Bool?
+
+            public var showRequestId: Bool?
+
+            public var sliderColor: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.showFooter != nil {
+                    map["ShowFooter"] = self.showFooter!
+                }
+                if self.showRequestId != nil {
+                    map["ShowRequestId"] = self.showRequestId!
+                }
+                if self.sliderColor != nil {
+                    map["SliderColor"] = self.sliderColor!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ShowFooter"] as? Bool {
+                    self.showFooter = value
+                }
+                if let value = dict["ShowRequestId"] as? Bool {
+                    self.showRequestId = value
+                }
+                if let value = dict["SliderColor"] as? String {
+                    self.sliderColor = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public var en: UpdateSliderCaptchaPageRequest.Configs.En?
+
+        public var zh: UpdateSliderCaptchaPageRequest.Configs.Zh?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.en?.validate()
+            try self.zh?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.en != nil {
+                map["En"] = self.en?.toMap()
+            }
+            if self.zh != nil {
+                map["Zh"] = self.zh?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["En"] as? [String: Any?] {
+                var model = UpdateSliderCaptchaPageRequest.Configs.En()
+                model.fromMap(value)
+                self.en = model
+            }
+            if let value = dict["Zh"] as? [String: Any?] {
+                var model = UpdateSliderCaptchaPageRequest.Configs.Zh()
+                model.fromMap(value)
+                self.zh = model
+            }
+        }
+    }
+    public var configs: UpdateSliderCaptchaPageRequest.Configs?
+
+    public var customContent: String?
+
+    public var forceLanguage: String?
+
+    public var id: Int64?
+
+    public var name: String?
+
+    public var siteIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.configs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configs != nil {
+            map["Configs"] = self.configs?.toMap()
+        }
+        if self.customContent != nil {
+            map["CustomContent"] = self.customContent!
+        }
+        if self.forceLanguage != nil {
+            map["ForceLanguage"] = self.forceLanguage!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.siteIds != nil {
+            map["SiteIds"] = self.siteIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? [String: Any?] {
+            var model = UpdateSliderCaptchaPageRequest.Configs()
+            model.fromMap(value)
+            self.configs = model
+        }
+        if let value = dict["CustomContent"] as? String {
+            self.customContent = value
+        }
+        if let value = dict["ForceLanguage"] as? String {
+            self.forceLanguage = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["SiteIds"] as? [Int64] {
+            self.siteIds = value
+        }
+    }
+}
+
+public class UpdateSliderCaptchaPageShrinkRequest : Tea.TeaModel {
+    public var configsShrink: String?
+
+    public var customContent: String?
+
+    public var forceLanguage: String?
+
+    public var id: Int64?
+
+    public var name: String?
+
+    public var siteIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configsShrink != nil {
+            map["Configs"] = self.configsShrink!
+        }
+        if self.customContent != nil {
+            map["CustomContent"] = self.customContent!
+        }
+        if self.forceLanguage != nil {
+            map["ForceLanguage"] = self.forceLanguage!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.siteIdsShrink != nil {
+            map["SiteIds"] = self.siteIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? String {
+            self.configsShrink = value
+        }
+        if let value = dict["CustomContent"] as? String {
+            self.customContent = value
+        }
+        if let value = dict["ForceLanguage"] as? String {
+            self.forceLanguage = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["SiteIds"] as? String {
+            self.siteIdsShrink = value
+        }
+    }
+}
+
+public class UpdateSliderCaptchaPageResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateSliderCaptchaPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateSliderCaptchaPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateSliderCaptchaPageResponseBody()
             model.fromMap(value)
             self.body = model
         }
