@@ -5,6 +5,454 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AddDisplayKnowledgeRequest : Tea.TeaModel {
+    public class Records : Tea.TeaModel {
+        public var imageUrl: String?
+
+        public var skuId: String?
+
+        public var skuName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageUrl != nil {
+                map["ImageUrl"] = self.imageUrl!
+            }
+            if self.skuId != nil {
+                map["SkuId"] = self.skuId!
+            }
+            if self.skuName != nil {
+                map["SkuName"] = self.skuName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ImageUrl"] as? String {
+                self.imageUrl = value
+            }
+            if let value = dict["SkuId"] as? String {
+                self.skuId = value
+            }
+            if let value = dict["SkuName"] as? String {
+                self.skuName = value
+            }
+        }
+    }
+    public var ragId: String?
+
+    public var records: [AddDisplayKnowledgeRequest.Records]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["Records"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["Records"] as? [Any?] {
+            var tmp : [AddDisplayKnowledgeRequest.Records] = []
+            for v in value {
+                if v != nil {
+                    var model = AddDisplayKnowledgeRequest.Records()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.records = tmp
+        }
+    }
+}
+
+public class AddDisplayKnowledgeShrinkRequest : Tea.TeaModel {
+    public var ragId: String?
+
+    public var recordsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.recordsShrink != nil {
+            map["Records"] = self.recordsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["Records"] as? String {
+            self.recordsShrink = value
+        }
+    }
+}
+
+public class AddDisplayKnowledgeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Results : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var index: Int32?
+
+            public var recordId: Int64?
+
+            public var skuId: String?
+
+            public var status: String?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.index != nil {
+                    map["Index"] = self.index!
+                }
+                if self.recordId != nil {
+                    map["RecordId"] = self.recordId!
+                }
+                if self.skuId != nil {
+                    map["SkuId"] = self.skuId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["Index"] as? Int32 {
+                    self.index = value
+                }
+                if let value = dict["RecordId"] as? Int64 {
+                    self.recordId = value
+                }
+                if let value = dict["SkuId"] as? String {
+                    self.skuId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public var acceptedCount: Int32?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var failedCount: Int32?
+
+        public var knowledgeBaseStatus: String?
+
+        public var ragId: String?
+
+        public var results: [AddDisplayKnowledgeResponseBody.Data.Results]?
+
+        public var success: Bool?
+
+        public var taskId: String?
+
+        public var usageMap: [String: Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acceptedCount != nil {
+                map["AcceptedCount"] = self.acceptedCount!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.failedCount != nil {
+                map["FailedCount"] = self.failedCount!
+            }
+            if self.knowledgeBaseStatus != nil {
+                map["KnowledgeBaseStatus"] = self.knowledgeBaseStatus!
+            }
+            if self.ragId != nil {
+                map["RagId"] = self.ragId!
+            }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.usageMap != nil {
+                map["UsageMap"] = self.usageMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AcceptedCount"] as? Int32 {
+                self.acceptedCount = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["FailedCount"] as? Int32 {
+                self.failedCount = value
+            }
+            if let value = dict["KnowledgeBaseStatus"] as? String {
+                self.knowledgeBaseStatus = value
+            }
+            if let value = dict["RagId"] as? String {
+                self.ragId = value
+            }
+            if let value = dict["Results"] as? [Any?] {
+                var tmp : [AddDisplayKnowledgeResponseBody.Data.Results] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddDisplayKnowledgeResponseBody.Data.Results()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.results = tmp
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["UsageMap"] as? [String: Int64] {
+                self.usageMap = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: AddDisplayKnowledgeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = AddDisplayKnowledgeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddDisplayKnowledgeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddDisplayKnowledgeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddDisplayKnowledgeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AiTryOnRequest : Tea.TeaModel {
     public var clothImageUrl: String?
 
@@ -1680,6 +2128,402 @@ public class CategoryMatchResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CategoryMatchResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDisplayKnowledgeRequest : Tea.TeaModel {
+    public var ragId: String?
+
+    public var recordIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.recordIds != nil {
+            map["RecordIds"] = self.recordIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["RecordIds"] as? [Int64] {
+            self.recordIds = value
+        }
+    }
+}
+
+public class DeleteDisplayKnowledgeShrinkRequest : Tea.TeaModel {
+    public var ragId: String?
+
+    public var recordIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.recordIdsShrink != nil {
+            map["RecordIds"] = self.recordIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["RecordIds"] as? String {
+            self.recordIdsShrink = value
+        }
+    }
+}
+
+public class DeleteDisplayKnowledgeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Results : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var index: Int32?
+
+            public var recordId: Int64?
+
+            public var skuId: String?
+
+            public var status: String?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.index != nil {
+                    map["Index"] = self.index!
+                }
+                if self.recordId != nil {
+                    map["RecordId"] = self.recordId!
+                }
+                if self.skuId != nil {
+                    map["SkuId"] = self.skuId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["Index"] as? Int32 {
+                    self.index = value
+                }
+                if let value = dict["RecordId"] as? Int64 {
+                    self.recordId = value
+                }
+                if let value = dict["SkuId"] as? String {
+                    self.skuId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public var acceptedCount: Int32?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var failedCount: Int32?
+
+        public var knowledgeBaseStatus: String?
+
+        public var ragId: String?
+
+        public var remainingCount: Int32?
+
+        public var results: [DeleteDisplayKnowledgeResponseBody.Data.Results]?
+
+        public var success: Bool?
+
+        public var taskId: String?
+
+        public var usageMap: [String: Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acceptedCount != nil {
+                map["AcceptedCount"] = self.acceptedCount!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.failedCount != nil {
+                map["FailedCount"] = self.failedCount!
+            }
+            if self.knowledgeBaseStatus != nil {
+                map["KnowledgeBaseStatus"] = self.knowledgeBaseStatus!
+            }
+            if self.ragId != nil {
+                map["RagId"] = self.ragId!
+            }
+            if self.remainingCount != nil {
+                map["RemainingCount"] = self.remainingCount!
+            }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.usageMap != nil {
+                map["UsageMap"] = self.usageMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AcceptedCount"] as? Int32 {
+                self.acceptedCount = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["FailedCount"] as? Int32 {
+                self.failedCount = value
+            }
+            if let value = dict["KnowledgeBaseStatus"] as? String {
+                self.knowledgeBaseStatus = value
+            }
+            if let value = dict["RagId"] as? String {
+                self.ragId = value
+            }
+            if let value = dict["RemainingCount"] as? Int32 {
+                self.remainingCount = value
+            }
+            if let value = dict["Results"] as? [Any?] {
+                var tmp : [DeleteDisplayKnowledgeResponseBody.Data.Results] = []
+                for v in value {
+                    if v != nil {
+                        var model = DeleteDisplayKnowledgeResponseBody.Data.Results()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.results = tmp
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["UsageMap"] as? [String: Int64] {
+                self.usageMap = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DeleteDisplayKnowledgeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DeleteDisplayKnowledgeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteDisplayKnowledgeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDisplayKnowledgeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteDisplayKnowledgeResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -13015,6 +13859,490 @@ public class QueryAsyncTaskResultResponse : Tea.TeaModel {
     }
 }
 
+public class QueryDisplayKnowledgeRequest : Tea.TeaModel {
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var ragId: String?
+
+    public var skuId: String?
+
+    public var skuName: String?
+
+    public var statuses: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.skuId != nil {
+            map["SkuId"] = self.skuId!
+        }
+        if self.skuName != nil {
+            map["SkuName"] = self.skuName!
+        }
+        if self.statuses != nil {
+            map["Statuses"] = self.statuses!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["SkuId"] as? String {
+            self.skuId = value
+        }
+        if let value = dict["SkuName"] as? String {
+            self.skuName = value
+        }
+        if let value = dict["Statuses"] as? [String] {
+            self.statuses = value
+        }
+    }
+}
+
+public class QueryDisplayKnowledgeShrinkRequest : Tea.TeaModel {
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var ragId: String?
+
+    public var skuId: String?
+
+    public var skuName: String?
+
+    public var statusesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.skuId != nil {
+            map["SkuId"] = self.skuId!
+        }
+        if self.skuName != nil {
+            map["SkuName"] = self.skuName!
+        }
+        if self.statusesShrink != nil {
+            map["Statuses"] = self.statusesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["SkuId"] as? String {
+            self.skuId = value
+        }
+        if let value = dict["SkuName"] as? String {
+            self.skuName = value
+        }
+        if let value = dict["Statuses"] as? String {
+            self.statusesShrink = value
+        }
+    }
+}
+
+public class QueryDisplayKnowledgeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Records : Tea.TeaModel {
+            public var failureMessage: String?
+
+            public var failureReason: String?
+
+            public var gmtModified: String?
+
+            public var imageUrl: String?
+
+            public var imageUrlExpireTime: String?
+
+            public var recordId: Int64?
+
+            public var skuId: String?
+
+            public var skuName: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.failureMessage != nil {
+                    map["FailureMessage"] = self.failureMessage!
+                }
+                if self.failureReason != nil {
+                    map["FailureReason"] = self.failureReason!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.imageUrl != nil {
+                    map["ImageUrl"] = self.imageUrl!
+                }
+                if self.imageUrlExpireTime != nil {
+                    map["ImageUrlExpireTime"] = self.imageUrlExpireTime!
+                }
+                if self.recordId != nil {
+                    map["RecordId"] = self.recordId!
+                }
+                if self.skuId != nil {
+                    map["SkuId"] = self.skuId!
+                }
+                if self.skuName != nil {
+                    map["SkuName"] = self.skuName!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FailureMessage"] as? String {
+                    self.failureMessage = value
+                }
+                if let value = dict["FailureReason"] as? String {
+                    self.failureReason = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["ImageUrl"] as? String {
+                    self.imageUrl = value
+                }
+                if let value = dict["ImageUrlExpireTime"] as? String {
+                    self.imageUrlExpireTime = value
+                }
+                if let value = dict["RecordId"] as? Int64 {
+                    self.recordId = value
+                }
+                if let value = dict["SkuId"] as? String {
+                    self.skuId = value
+                }
+                if let value = dict["SkuName"] as? String {
+                    self.skuName = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var knowledgeBaseStatus: String?
+
+        public var pageNum: Int32?
+
+        public var pageSize: Int32?
+
+        public var ragId: String?
+
+        public var records: [QueryDisplayKnowledgeResponseBody.Data.Records]?
+
+        public var success: Bool?
+
+        public var taskId: String?
+
+        public var total: Int32?
+
+        public var totalPage: Int32?
+
+        public var usageMap: [String: Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.knowledgeBaseStatus != nil {
+                map["KnowledgeBaseStatus"] = self.knowledgeBaseStatus!
+            }
+            if self.pageNum != nil {
+                map["PageNum"] = self.pageNum!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.ragId != nil {
+                map["RagId"] = self.ragId!
+            }
+            if self.records != nil {
+                var tmp : [Any] = []
+                for k in self.records! {
+                    tmp.append(k.toMap())
+                }
+                map["Records"] = tmp
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            if self.totalPage != nil {
+                map["TotalPage"] = self.totalPage!
+            }
+            if self.usageMap != nil {
+                map["UsageMap"] = self.usageMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["KnowledgeBaseStatus"] as? String {
+                self.knowledgeBaseStatus = value
+            }
+            if let value = dict["PageNum"] as? Int32 {
+                self.pageNum = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["RagId"] as? String {
+                self.ragId = value
+            }
+            if let value = dict["Records"] as? [Any?] {
+                var tmp : [QueryDisplayKnowledgeResponseBody.Data.Records] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryDisplayKnowledgeResponseBody.Data.Records()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.records = tmp
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["Total"] as? Int32 {
+                self.total = value
+            }
+            if let value = dict["TotalPage"] as? Int32 {
+                self.totalPage = value
+            }
+            if let value = dict["UsageMap"] as? [String: Int64] {
+                self.usageMap = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: QueryDisplayKnowledgeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = QueryDisplayKnowledgeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryDisplayKnowledgeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryDisplayKnowledgeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryDisplayKnowledgeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SizeChartDetectRequest : Tea.TeaModel {
     public var imageUrl: String?
 
@@ -15187,6 +16515,462 @@ public class TextTranslateAsyncResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = TextTranslateAsyncResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateDisplayKnowledgeRequest : Tea.TeaModel {
+    public class Records : Tea.TeaModel {
+        public var imageUrl: String?
+
+        public var recordId: Int64?
+
+        public var skuId: String?
+
+        public var skuName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageUrl != nil {
+                map["ImageUrl"] = self.imageUrl!
+            }
+            if self.recordId != nil {
+                map["RecordId"] = self.recordId!
+            }
+            if self.skuId != nil {
+                map["SkuId"] = self.skuId!
+            }
+            if self.skuName != nil {
+                map["SkuName"] = self.skuName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ImageUrl"] as? String {
+                self.imageUrl = value
+            }
+            if let value = dict["RecordId"] as? Int64 {
+                self.recordId = value
+            }
+            if let value = dict["SkuId"] as? String {
+                self.skuId = value
+            }
+            if let value = dict["SkuName"] as? String {
+                self.skuName = value
+            }
+        }
+    }
+    public var ragId: String?
+
+    public var records: [UpdateDisplayKnowledgeRequest.Records]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["Records"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["Records"] as? [Any?] {
+            var tmp : [UpdateDisplayKnowledgeRequest.Records] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateDisplayKnowledgeRequest.Records()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.records = tmp
+        }
+    }
+}
+
+public class UpdateDisplayKnowledgeShrinkRequest : Tea.TeaModel {
+    public var ragId: String?
+
+    public var recordsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ragId != nil {
+            map["RagId"] = self.ragId!
+        }
+        if self.recordsShrink != nil {
+            map["Records"] = self.recordsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RagId"] as? String {
+            self.ragId = value
+        }
+        if let value = dict["Records"] as? String {
+            self.recordsShrink = value
+        }
+    }
+}
+
+public class UpdateDisplayKnowledgeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Results : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var index: Int32?
+
+            public var recordId: Int64?
+
+            public var skuId: String?
+
+            public var status: String?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.index != nil {
+                    map["Index"] = self.index!
+                }
+                if self.recordId != nil {
+                    map["RecordId"] = self.recordId!
+                }
+                if self.skuId != nil {
+                    map["SkuId"] = self.skuId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["Index"] as? Int32 {
+                    self.index = value
+                }
+                if let value = dict["RecordId"] as? Int64 {
+                    self.recordId = value
+                }
+                if let value = dict["SkuId"] as? String {
+                    self.skuId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public var acceptedCount: Int32?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var failedCount: Int32?
+
+        public var knowledgeBaseStatus: String?
+
+        public var ragId: String?
+
+        public var results: [UpdateDisplayKnowledgeResponseBody.Data.Results]?
+
+        public var success: Bool?
+
+        public var taskId: String?
+
+        public var usageMap: [String: Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acceptedCount != nil {
+                map["AcceptedCount"] = self.acceptedCount!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.failedCount != nil {
+                map["FailedCount"] = self.failedCount!
+            }
+            if self.knowledgeBaseStatus != nil {
+                map["KnowledgeBaseStatus"] = self.knowledgeBaseStatus!
+            }
+            if self.ragId != nil {
+                map["RagId"] = self.ragId!
+            }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.usageMap != nil {
+                map["UsageMap"] = self.usageMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AcceptedCount"] as? Int32 {
+                self.acceptedCount = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["FailedCount"] as? Int32 {
+                self.failedCount = value
+            }
+            if let value = dict["KnowledgeBaseStatus"] as? String {
+                self.knowledgeBaseStatus = value
+            }
+            if let value = dict["RagId"] as? String {
+                self.ragId = value
+            }
+            if let value = dict["Results"] as? [Any?] {
+                var tmp : [UpdateDisplayKnowledgeResponseBody.Data.Results] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateDisplayKnowledgeResponseBody.Data.Results()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.results = tmp
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["UsageMap"] as? [String: Int64] {
+                self.usageMap = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: UpdateDisplayKnowledgeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = UpdateDisplayKnowledgeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateDisplayKnowledgeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateDisplayKnowledgeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateDisplayKnowledgeResponseBody()
             model.fromMap(value)
             self.body = model
         }
