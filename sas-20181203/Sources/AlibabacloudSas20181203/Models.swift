@@ -60551,6 +60551,8 @@ public class DescribeFieldStatisticsResponseBody : Tea.TeaModel {
 
         public var offlineInstanceCount: Int32?
 
+        public var oracleInstanceCount: Int32?
+
         public var outMachineInstanceCount: Int32?
 
         public var pauseInstanceCount: Int32?
@@ -60663,6 +60665,9 @@ public class DescribeFieldStatisticsResponseBody : Tea.TeaModel {
             }
             if self.offlineInstanceCount != nil {
                 map["OfflineInstanceCount"] = self.offlineInstanceCount!
+            }
+            if self.oracleInstanceCount != nil {
+                map["OracleInstanceCount"] = self.oracleInstanceCount!
             }
             if self.outMachineInstanceCount != nil {
                 map["OutMachineInstanceCount"] = self.outMachineInstanceCount!
@@ -60782,6 +60787,9 @@ public class DescribeFieldStatisticsResponseBody : Tea.TeaModel {
             }
             if let value = dict["OfflineInstanceCount"] as? Int32 {
                 self.offlineInstanceCount = value
+            }
+            if let value = dict["OracleInstanceCount"] as? Int32 {
+                self.oracleInstanceCount = value
             }
             if let value = dict["OutMachineInstanceCount"] as? Int32 {
                 self.outMachineInstanceCount = value
