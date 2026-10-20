@@ -5,6 +5,109 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AnalysisTask : Tea.TeaModel {
+    public var completedAt: Int64?
+
+    public var createdAt: Int64?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var report: [String: Any]?
+
+    public var selectedCount: Int32?
+
+    public var status: String?
+
+    public var taskId: String?
+
+    public var taskName: String?
+
+    public var taskType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.completedAt != nil {
+            map["completedAt"] = self.completedAt!
+        }
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.report != nil {
+            map["report"] = self.report!
+        }
+        if self.selectedCount != nil {
+            map["selectedCount"] = self.selectedCount!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        if self.taskName != nil {
+            map["taskName"] = self.taskName!
+        }
+        if self.taskType != nil {
+            map["taskType"] = self.taskType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["completedAt"] as? Int64 {
+            self.completedAt = value
+        }
+        if let value = dict["createdAt"] as? Int64 {
+            self.createdAt = value
+        }
+        if let value = dict["errorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["errorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["report"] as? [String: Any] {
+            self.report = value
+        }
+        if let value = dict["selectedCount"] as? Int32 {
+            self.selectedCount = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["taskName"] as? String {
+            self.taskName = value
+        }
+        if let value = dict["taskType"] as? String {
+            self.taskType = value
+        }
+    }
+}
+
 public class AuditTaskState : Tea.TeaModel {
     public class RuntimeError : Tea.TeaModel {
         public var code: String?
@@ -2440,15 +2543,63 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class VersionPolicy : Tea.TeaModel {
+                public var mode: String?
+
+                public var startSeq: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mode != nil {
+                        map["mode"] = self.mode!
+                    }
+                    if self.startSeq != nil {
+                        map["startSeq"] = self.startSeq!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["mode"] as? String {
+                        self.mode = value
+                    }
+                    if let value = dict["startSeq"] as? String {
+                        self.startSeq = value
+                    }
+                }
+            }
             public var agentSpace: String?
 
+            public var binding: [String: Any]?
+
             public var dataset: CreateContextStoreRequest.Config.Source.Dataset?
+
+            public var datasetName: String?
+
+            public var format: String?
+
+            public var maxRecords: Int32?
 
             public var startTime: String?
 
             public var trajectory: CreateContextStoreRequest.Config.Source.Trajectory?
 
             public var type: String?
+
+            public var versionPolicy: CreateContextStoreRequest.Config.Source.VersionPolicy?
 
             public override init() {
                 super.init()
@@ -2462,6 +2613,7 @@ public class CreateContextStoreRequest : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.dataset?.validate()
                 try self.trajectory?.validate()
+                try self.versionPolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -2469,8 +2621,20 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 if self.agentSpace != nil {
                     map["agentSpace"] = self.agentSpace!
                 }
+                if self.binding != nil {
+                    map["binding"] = self.binding!
+                }
                 if self.dataset != nil {
                     map["dataset"] = self.dataset?.toMap()
+                }
+                if self.datasetName != nil {
+                    map["datasetName"] = self.datasetName!
+                }
+                if self.format != nil {
+                    map["format"] = self.format!
+                }
+                if self.maxRecords != nil {
+                    map["maxRecords"] = self.maxRecords!
                 }
                 if self.startTime != nil {
                     map["startTime"] = self.startTime!
@@ -2481,6 +2645,9 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 if self.type != nil {
                     map["type"] = self.type!
                 }
+                if self.versionPolicy != nil {
+                    map["versionPolicy"] = self.versionPolicy?.toMap()
+                }
                 return map
             }
 
@@ -2489,10 +2656,22 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 if let value = dict["agentSpace"] as? String {
                     self.agentSpace = value
                 }
+                if let value = dict["binding"] as? [String: Any] {
+                    self.binding = value
+                }
                 if let value = dict["dataset"] as? [String: Any?] {
                     var model = CreateContextStoreRequest.Config.Source.Dataset()
                     model.fromMap(value)
                     self.dataset = model
+                }
+                if let value = dict["datasetName"] as? String {
+                    self.datasetName = value
+                }
+                if let value = dict["format"] as? String {
+                    self.format = value
+                }
+                if let value = dict["maxRecords"] as? Int32 {
+                    self.maxRecords = value
                 }
                 if let value = dict["startTime"] as? String {
                     self.startTime = value
@@ -2504,6 +2683,11 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 }
                 if let value = dict["type"] as? String {
                     self.type = value
+                }
+                if let value = dict["versionPolicy"] as? [String: Any?] {
+                    var model = CreateContextStoreRequest.Config.Source.VersionPolicy()
+                    model.fromMap(value)
+                    self.versionPolicy = model
                 }
             }
         }
@@ -8535,15 +8719,63 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class VersionPolicy : Tea.TeaModel {
+                public var mode: String?
+
+                public var startSeq: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mode != nil {
+                        map["mode"] = self.mode!
+                    }
+                    if self.startSeq != nil {
+                        map["startSeq"] = self.startSeq!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["mode"] as? String {
+                        self.mode = value
+                    }
+                    if let value = dict["startSeq"] as? String {
+                        self.startSeq = value
+                    }
+                }
+            }
             public var agentSpace: String?
 
+            public var binding: [String: Any]?
+
             public var dataset: GetContextStoreResponseBody.Config.Source.Dataset?
+
+            public var datasetName: String?
+
+            public var format: String?
+
+            public var maxRecords: Int32?
 
             public var startTime: String?
 
             public var trajectory: GetContextStoreResponseBody.Config.Source.Trajectory?
 
             public var type: String?
+
+            public var versionPolicy: GetContextStoreResponseBody.Config.Source.VersionPolicy?
 
             public override init() {
                 super.init()
@@ -8557,6 +8789,7 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.dataset?.validate()
                 try self.trajectory?.validate()
+                try self.versionPolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -8564,8 +8797,20 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if self.agentSpace != nil {
                     map["agentSpace"] = self.agentSpace!
                 }
+                if self.binding != nil {
+                    map["binding"] = self.binding!
+                }
                 if self.dataset != nil {
                     map["dataset"] = self.dataset?.toMap()
+                }
+                if self.datasetName != nil {
+                    map["datasetName"] = self.datasetName!
+                }
+                if self.format != nil {
+                    map["format"] = self.format!
+                }
+                if self.maxRecords != nil {
+                    map["maxRecords"] = self.maxRecords!
                 }
                 if self.startTime != nil {
                     map["startTime"] = self.startTime!
@@ -8576,6 +8821,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if self.type != nil {
                     map["type"] = self.type!
                 }
+                if self.versionPolicy != nil {
+                    map["versionPolicy"] = self.versionPolicy?.toMap()
+                }
                 return map
             }
 
@@ -8584,10 +8832,22 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if let value = dict["agentSpace"] as? String {
                     self.agentSpace = value
                 }
+                if let value = dict["binding"] as? [String: Any] {
+                    self.binding = value
+                }
                 if let value = dict["dataset"] as? [String: Any?] {
                     var model = GetContextStoreResponseBody.Config.Source.Dataset()
                     model.fromMap(value)
                     self.dataset = model
+                }
+                if let value = dict["datasetName"] as? String {
+                    self.datasetName = value
+                }
+                if let value = dict["format"] as? String {
+                    self.format = value
+                }
+                if let value = dict["maxRecords"] as? Int32 {
+                    self.maxRecords = value
                 }
                 if let value = dict["startTime"] as? String {
                     self.startTime = value
@@ -8600,12 +8860,21 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if let value = dict["type"] as? String {
                     self.type = value
                 }
+                if let value = dict["versionPolicy"] as? [String: Any?] {
+                    var model = GetContextStoreResponseBody.Config.Source.VersionPolicy()
+                    model.fromMap(value)
+                    self.versionPolicy = model
+                }
             }
         }
         public class SourceStatus : Tea.TeaModel {
             public var checkpoint: [String: Any]?
 
+            public var currentWindow: [String: String]?
+
             public var lastError: String?
+
+            public var lastRunId: String?
 
             public var lastWindowAt: String?
 
@@ -8630,8 +8899,14 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if self.checkpoint != nil {
                     map["checkpoint"] = self.checkpoint!
                 }
+                if self.currentWindow != nil {
+                    map["currentWindow"] = self.currentWindow!
+                }
                 if self.lastError != nil {
                     map["lastError"] = self.lastError!
+                }
+                if self.lastRunId != nil {
+                    map["lastRunId"] = self.lastRunId!
                 }
                 if self.lastWindowAt != nil {
                     map["lastWindowAt"] = self.lastWindowAt!
@@ -8650,8 +8925,14 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 if let value = dict["checkpoint"] as? [String: Any] {
                     self.checkpoint = value
                 }
+                if let value = dict["currentWindow"] as? [String: String] {
+                    self.currentWindow = value
+                }
                 if let value = dict["lastError"] as? String {
                     self.lastError = value
+                }
+                if let value = dict["lastRunId"] as? String {
+                    self.lastRunId = value
                 }
                 if let value = dict["lastWindowAt"] as? String {
                     self.lastWindowAt = value
@@ -8752,6 +9033,8 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
 
         public var miningInterval: String?
 
+        public var miningTaskName: String?
+
         public var observability: GetContextStoreResponseBody.Config.Observability?
 
         public var outputDataset: GetContextStoreResponseBody.Config.OutputDataset?
@@ -8806,6 +9089,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             if self.miningInterval != nil {
                 map["miningInterval"] = self.miningInterval!
             }
+            if self.miningTaskName != nil {
+                map["miningTaskName"] = self.miningTaskName!
+            }
             if self.observability != nil {
                 map["observability"] = self.observability?.toMap()
             }
@@ -8855,6 +9141,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             }
             if let value = dict["miningInterval"] as? String {
                 self.miningInterval = value
+            }
+            if let value = dict["miningTaskName"] as? String {
+                self.miningTaskName = value
             }
             if let value = dict["observability"] as? [String: Any?] {
                 var model = GetContextStoreResponseBody.Config.Observability()
