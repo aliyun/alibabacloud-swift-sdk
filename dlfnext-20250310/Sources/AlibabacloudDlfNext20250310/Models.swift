@@ -192,6 +192,165 @@ public class CacheCluster : Tea.TeaModel {
     }
 }
 
+public class CacheLoadTaskInfo : Tea.TeaModel {
+    public var catalogId: String?
+
+    public var completedFiles: Int64?
+
+    public var database: String?
+
+    public var enumeratedFiles: Int64?
+
+    public var enumerationDone: Bool?
+
+    public var extraOptions: [String: String]?
+
+    public var failedFiles: Int64?
+
+    public var lastError: String?
+
+    public var loadedBytes: Int64?
+
+    public var path: String?
+
+    public var startedAt: Int64?
+
+    public var status: String?
+
+    public var table: String?
+
+    public var taskId: String?
+
+    public var taskUpdatedAt: Int64?
+
+    public var totalBytes: Int64?
+
+    public var totalFiles: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogId != nil {
+            map["catalogId"] = self.catalogId!
+        }
+        if self.completedFiles != nil {
+            map["completedFiles"] = self.completedFiles!
+        }
+        if self.database != nil {
+            map["database"] = self.database!
+        }
+        if self.enumeratedFiles != nil {
+            map["enumeratedFiles"] = self.enumeratedFiles!
+        }
+        if self.enumerationDone != nil {
+            map["enumerationDone"] = self.enumerationDone!
+        }
+        if self.extraOptions != nil {
+            map["extraOptions"] = self.extraOptions!
+        }
+        if self.failedFiles != nil {
+            map["failedFiles"] = self.failedFiles!
+        }
+        if self.lastError != nil {
+            map["lastError"] = self.lastError!
+        }
+        if self.loadedBytes != nil {
+            map["loadedBytes"] = self.loadedBytes!
+        }
+        if self.path != nil {
+            map["path"] = self.path!
+        }
+        if self.startedAt != nil {
+            map["startedAt"] = self.startedAt!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.table != nil {
+            map["table"] = self.table!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        if self.taskUpdatedAt != nil {
+            map["taskUpdatedAt"] = self.taskUpdatedAt!
+        }
+        if self.totalBytes != nil {
+            map["totalBytes"] = self.totalBytes!
+        }
+        if self.totalFiles != nil {
+            map["totalFiles"] = self.totalFiles!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["catalogId"] as? String {
+            self.catalogId = value
+        }
+        if let value = dict["completedFiles"] as? Int64 {
+            self.completedFiles = value
+        }
+        if let value = dict["database"] as? String {
+            self.database = value
+        }
+        if let value = dict["enumeratedFiles"] as? Int64 {
+            self.enumeratedFiles = value
+        }
+        if let value = dict["enumerationDone"] as? Bool {
+            self.enumerationDone = value
+        }
+        if let value = dict["extraOptions"] as? [String: String] {
+            self.extraOptions = value
+        }
+        if let value = dict["failedFiles"] as? Int64 {
+            self.failedFiles = value
+        }
+        if let value = dict["lastError"] as? String {
+            self.lastError = value
+        }
+        if let value = dict["loadedBytes"] as? Int64 {
+            self.loadedBytes = value
+        }
+        if let value = dict["path"] as? String {
+            self.path = value
+        }
+        if let value = dict["startedAt"] as? Int64 {
+            self.startedAt = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["table"] as? String {
+            self.table = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["taskUpdatedAt"] as? Int64 {
+            self.taskUpdatedAt = value
+        }
+        if let value = dict["totalBytes"] as? Int64 {
+            self.totalBytes = value
+        }
+        if let value = dict["totalFiles"] as? Int64 {
+            self.totalFiles = value
+        }
+    }
+}
+
 public class Catalog : Tea.TeaModel {
     public var createdAt: Int64?
 
@@ -4499,6 +4658,53 @@ public class TableCompactionHistory : Tea.TeaModel {
     }
 }
 
+public class TableConsumer : Tea.TeaModel {
+    public var consumerId: String?
+
+    public var lastModifiedTime: Int64?
+
+    public var nextSnapshot: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.consumerId != nil {
+            map["consumerId"] = self.consumerId!
+        }
+        if self.lastModifiedTime != nil {
+            map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.nextSnapshot != nil {
+            map["nextSnapshot"] = self.nextSnapshot!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["consumerId"] as? String {
+            self.consumerId = value
+        }
+        if let value = dict["lastModifiedTime"] as? Int64 {
+            self.lastModifiedTime = value
+        }
+        if let value = dict["nextSnapshot"] as? Int64 {
+            self.nextSnapshot = value
+        }
+    }
+}
+
 public class TableSnapshot : Tea.TeaModel {
     public var fileCount: Int64?
 
@@ -4592,6 +4798,8 @@ public class TableSummary : Tea.TeaModel {
 
     public var lastRequester: String?
 
+    public var latestSnapshotDataSizeInBytes: Int64?
+
     public var objTypeArchiveSize: Int64?
 
     public var objTypeColdArchiveSize: Int64?
@@ -4662,6 +4870,9 @@ public class TableSummary : Tea.TeaModel {
         }
         if self.lastRequester != nil {
             map["lastRequester"] = self.lastRequester!
+        }
+        if self.latestSnapshotDataSizeInBytes != nil {
+            map["latestSnapshotDataSizeInBytes"] = self.latestSnapshotDataSizeInBytes!
         }
         if self.objTypeArchiveSize != nil {
             map["objTypeArchiveSize"] = self.objTypeArchiveSize!
@@ -4745,6 +4956,9 @@ public class TableSummary : Tea.TeaModel {
         }
         if let value = dict["lastRequester"] as? String {
             self.lastRequester = value
+        }
+        if let value = dict["latestSnapshotDataSizeInBytes"] as? Int64 {
+            self.latestSnapshotDataSizeInBytes = value
         }
         if let value = dict["objTypeArchiveSize"] as? Int64 {
             self.objTypeArchiveSize = value
