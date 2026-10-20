@@ -160,6 +160,8 @@ public class AssumeRoleForWorkloadIdentityResponseBody : Tea.TeaModel {
 
                 public var issuer: String?
 
+                public var JTI: String?
+
                 public var subject: String?
 
                 public override init() {
@@ -182,6 +184,9 @@ public class AssumeRoleForWorkloadIdentityResponseBody : Tea.TeaModel {
                     if self.issuer != nil {
                         map["Issuer"] = self.issuer!
                     }
+                    if self.JTI != nil {
+                        map["JTI"] = self.JTI!
+                    }
                     if self.subject != nil {
                         map["Subject"] = self.subject!
                     }
@@ -195,6 +200,9 @@ public class AssumeRoleForWorkloadIdentityResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Issuer"] as? String {
                         self.issuer = value
+                    }
+                    if let value = dict["JTI"] as? String {
+                        self.JTI = value
                     }
                     if let value = dict["Subject"] as? String {
                         self.subject = value
@@ -597,6 +605,8 @@ public class CompleteResourceTokenAuthResponse : Tea.TeaModel {
 public class GetResourceAPIKeyRequest : Tea.TeaModel {
     public var resourceCredentialProviderName: String?
 
+    public var tokenVaultName: String?
+
     public var workloadAccessToken: String?
 
     public override init() {
@@ -616,6 +626,9 @@ public class GetResourceAPIKeyRequest : Tea.TeaModel {
         if self.resourceCredentialProviderName != nil {
             map["ResourceCredentialProviderName"] = self.resourceCredentialProviderName!
         }
+        if self.tokenVaultName != nil {
+            map["TokenVaultName"] = self.tokenVaultName!
+        }
         if self.workloadAccessToken != nil {
             map["WorkloadAccessToken"] = self.workloadAccessToken!
         }
@@ -626,6 +639,9 @@ public class GetResourceAPIKeyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ResourceCredentialProviderName"] as? String {
             self.resourceCredentialProviderName = value
+        }
+        if let value = dict["TokenVaultName"] as? String {
+            self.tokenVaultName = value
         }
         if let value = dict["WorkloadAccessToken"] as? String {
             self.workloadAccessToken = value
@@ -723,6 +739,8 @@ public class GetResourceAPIKeyResponse : Tea.TeaModel {
 }
 
 public class GetResourceOAuth2TokenRequest : Tea.TeaModel {
+    public var audience: String?
+
     public var customParameters: [String: Any]?
 
     public var customState: String?
@@ -738,6 +756,8 @@ public class GetResourceOAuth2TokenRequest : Tea.TeaModel {
     public var scopes: [String]?
 
     public var sessionURI: String?
+
+    public var tokenVaultName: String?
 
     public var workloadAccessToken: String?
 
@@ -755,6 +775,9 @@ public class GetResourceOAuth2TokenRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.audience != nil {
+            map["Audience"] = self.audience!
+        }
         if self.customParameters != nil {
             map["CustomParameters"] = self.customParameters!
         }
@@ -779,6 +802,9 @@ public class GetResourceOAuth2TokenRequest : Tea.TeaModel {
         if self.sessionURI != nil {
             map["SessionURI"] = self.sessionURI!
         }
+        if self.tokenVaultName != nil {
+            map["TokenVaultName"] = self.tokenVaultName!
+        }
         if self.workloadAccessToken != nil {
             map["WorkloadAccessToken"] = self.workloadAccessToken!
         }
@@ -787,6 +813,9 @@ public class GetResourceOAuth2TokenRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Audience"] as? String {
+            self.audience = value
+        }
         if let value = dict["CustomParameters"] as? [String: Any] {
             self.customParameters = value
         }
@@ -811,6 +840,9 @@ public class GetResourceOAuth2TokenRequest : Tea.TeaModel {
         if let value = dict["SessionURI"] as? String {
             self.sessionURI = value
         }
+        if let value = dict["TokenVaultName"] as? String {
+            self.tokenVaultName = value
+        }
         if let value = dict["WorkloadAccessToken"] as? String {
             self.workloadAccessToken = value
         }
@@ -818,6 +850,8 @@ public class GetResourceOAuth2TokenRequest : Tea.TeaModel {
 }
 
 public class GetResourceOAuth2TokenShrinkRequest : Tea.TeaModel {
+    public var audience: String?
+
     public var customParametersShrink: String?
 
     public var customState: String?
@@ -833,6 +867,8 @@ public class GetResourceOAuth2TokenShrinkRequest : Tea.TeaModel {
     public var scopesShrink: String?
 
     public var sessionURI: String?
+
+    public var tokenVaultName: String?
 
     public var workloadAccessToken: String?
 
@@ -850,6 +886,9 @@ public class GetResourceOAuth2TokenShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.audience != nil {
+            map["Audience"] = self.audience!
+        }
         if self.customParametersShrink != nil {
             map["CustomParameters"] = self.customParametersShrink!
         }
@@ -874,6 +913,9 @@ public class GetResourceOAuth2TokenShrinkRequest : Tea.TeaModel {
         if self.sessionURI != nil {
             map["SessionURI"] = self.sessionURI!
         }
+        if self.tokenVaultName != nil {
+            map["TokenVaultName"] = self.tokenVaultName!
+        }
         if self.workloadAccessToken != nil {
             map["WorkloadAccessToken"] = self.workloadAccessToken!
         }
@@ -882,6 +924,9 @@ public class GetResourceOAuth2TokenShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Audience"] as? String {
+            self.audience = value
+        }
         if let value = dict["CustomParameters"] as? String {
             self.customParametersShrink = value
         }
@@ -906,6 +951,9 @@ public class GetResourceOAuth2TokenShrinkRequest : Tea.TeaModel {
         if let value = dict["SessionURI"] as? String {
             self.sessionURI = value
         }
+        if let value = dict["TokenVaultName"] as? String {
+            self.tokenVaultName = value
+        }
         if let value = dict["WorkloadAccessToken"] as? String {
             self.workloadAccessToken = value
         }
@@ -916,6 +964,8 @@ public class GetResourceOAuth2TokenResponseBody : Tea.TeaModel {
     public var accessToken: String?
 
     public var authorizationURL: String?
+
+    public var expiresIn: Int64?
 
     public var requestId: String?
 
@@ -943,6 +993,9 @@ public class GetResourceOAuth2TokenResponseBody : Tea.TeaModel {
         if self.authorizationURL != nil {
             map["AuthorizationURL"] = self.authorizationURL!
         }
+        if self.expiresIn != nil {
+            map["ExpiresIn"] = self.expiresIn!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -962,6 +1015,9 @@ public class GetResourceOAuth2TokenResponseBody : Tea.TeaModel {
         }
         if let value = dict["AuthorizationURL"] as? String {
             self.authorizationURL = value
+        }
+        if let value = dict["ExpiresIn"] as? Int64 {
+            self.expiresIn = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -1061,6 +1117,8 @@ public class GetWorkloadAccessTokenResponseBody : Tea.TeaModel {
 
     public var workloadAccessToken: String?
 
+    public var workloadIdentityArn: String?
+
     public override init() {
         super.init()
     }
@@ -1081,6 +1139,9 @@ public class GetWorkloadAccessTokenResponseBody : Tea.TeaModel {
         if self.workloadAccessToken != nil {
             map["WorkloadAccessToken"] = self.workloadAccessToken!
         }
+        if self.workloadIdentityArn != nil {
+            map["WorkloadIdentityArn"] = self.workloadIdentityArn!
+        }
         return map
     }
 
@@ -1091,6 +1152,9 @@ public class GetWorkloadAccessTokenResponseBody : Tea.TeaModel {
         }
         if let value = dict["WorkloadAccessToken"] as? String {
             self.workloadAccessToken = value
+        }
+        if let value = dict["WorkloadIdentityArn"] as? String {
+            self.workloadIdentityArn = value
         }
     }
 }
@@ -1185,9 +1249,100 @@ public class GetWorkloadAccessTokenForJWTRequest : Tea.TeaModel {
 }
 
 public class GetWorkloadAccessTokenForJWTResponseBody : Tea.TeaModel {
+    public class UserContext : Tea.TeaModel {
+        public class JwtClaims : Tea.TeaModel {
+            public var audiences: String?
+
+            public var issuer: String?
+
+            public var JTI: String?
+
+            public var subject: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.audiences != nil {
+                    map["Audiences"] = self.audiences!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                if self.JTI != nil {
+                    map["JTI"] = self.JTI!
+                }
+                if self.subject != nil {
+                    map["Subject"] = self.subject!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Audiences"] as? String {
+                    self.audiences = value
+                }
+                if let value = dict["Issuer"] as? String {
+                    self.issuer = value
+                }
+                if let value = dict["JTI"] as? String {
+                    self.JTI = value
+                }
+                if let value = dict["Subject"] as? String {
+                    self.subject = value
+                }
+            }
+        }
+        public var jwtClaims: GetWorkloadAccessTokenForJWTResponseBody.UserContext.JwtClaims?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.jwtClaims?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.jwtClaims != nil {
+                map["JwtClaims"] = self.jwtClaims?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["JwtClaims"] as? [String: Any?] {
+                var model = GetWorkloadAccessTokenForJWTResponseBody.UserContext.JwtClaims()
+                model.fromMap(value)
+                self.jwtClaims = model
+            }
+        }
+    }
     public var requestId: String?
 
+    public var userContext: GetWorkloadAccessTokenForJWTResponseBody.UserContext?
+
     public var workloadAccessToken: String?
+
+    public var workloadIdentityArn: String?
 
     public override init() {
         super.init()
@@ -1199,6 +1354,7 @@ public class GetWorkloadAccessTokenForJWTResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.userContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1206,8 +1362,14 @@ public class GetWorkloadAccessTokenForJWTResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.userContext != nil {
+            map["UserContext"] = self.userContext?.toMap()
+        }
         if self.workloadAccessToken != nil {
             map["WorkloadAccessToken"] = self.workloadAccessToken!
+        }
+        if self.workloadIdentityArn != nil {
+            map["WorkloadIdentityArn"] = self.workloadIdentityArn!
         }
         return map
     }
@@ -1217,8 +1379,16 @@ public class GetWorkloadAccessTokenForJWTResponseBody : Tea.TeaModel {
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["UserContext"] as? [String: Any?] {
+            var model = GetWorkloadAccessTokenForJWTResponseBody.UserContext()
+            model.fromMap(value)
+            self.userContext = model
+        }
         if let value = dict["WorkloadAccessToken"] as? String {
             self.workloadAccessToken = value
+        }
+        if let value = dict["WorkloadIdentityArn"] as? String {
+            self.workloadIdentityArn = value
         }
     }
 }
@@ -1313,9 +1483,43 @@ public class GetWorkloadAccessTokenForUserIdRequest : Tea.TeaModel {
 }
 
 public class GetWorkloadAccessTokenForUserIdResponseBody : Tea.TeaModel {
+    public class UserContext : Tea.TeaModel {
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["UserId"] as? String {
+                self.userId = value
+            }
+        }
+    }
     public var requestId: String?
 
+    public var userContext: GetWorkloadAccessTokenForUserIdResponseBody.UserContext?
+
     public var workloadAccessToken: String?
+
+    public var workloadIdentityArn: String?
 
     public override init() {
         super.init()
@@ -1327,6 +1531,7 @@ public class GetWorkloadAccessTokenForUserIdResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.userContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1334,8 +1539,14 @@ public class GetWorkloadAccessTokenForUserIdResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.userContext != nil {
+            map["UserContext"] = self.userContext?.toMap()
+        }
         if self.workloadAccessToken != nil {
             map["WorkloadAccessToken"] = self.workloadAccessToken!
+        }
+        if self.workloadIdentityArn != nil {
+            map["WorkloadIdentityArn"] = self.workloadIdentityArn!
         }
         return map
     }
@@ -1345,8 +1556,16 @@ public class GetWorkloadAccessTokenForUserIdResponseBody : Tea.TeaModel {
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["UserContext"] as? [String: Any?] {
+            var model = GetWorkloadAccessTokenForUserIdResponseBody.UserContext()
+            model.fromMap(value)
+            self.userContext = model
+        }
         if let value = dict["WorkloadAccessToken"] as? String {
             self.workloadAccessToken = value
+        }
+        if let value = dict["WorkloadIdentityArn"] as? String {
+            self.workloadIdentityArn = value
         }
     }
 }

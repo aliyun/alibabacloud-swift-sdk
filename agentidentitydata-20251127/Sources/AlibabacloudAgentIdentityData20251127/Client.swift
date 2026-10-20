@@ -109,6 +109,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceCredentialProviderName)) {
             body["ResourceCredentialProviderName"] = request.resourceCredentialProviderName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tokenVaultName)) {
+            body["TokenVaultName"] = request.tokenVaultName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workloadAccessToken)) {
             body["WorkloadAccessToken"] = request.workloadAccessToken ?? "";
         }
@@ -148,6 +151,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.scopesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scopes, "Scopes", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.audience)) {
+            body["Audience"] = request.audience ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customParametersShrink)) {
             body["CustomParameters"] = request.customParametersShrink ?? "";
         }
@@ -171,6 +177,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sessionURI)) {
             body["SessionURI"] = request.sessionURI ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tokenVaultName)) {
+            body["TokenVaultName"] = request.tokenVaultName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workloadAccessToken)) {
             body["WorkloadAccessToken"] = request.workloadAccessToken ?? "";
