@@ -1065,6 +1065,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCveHotfixWithOptions(_ request: GetCveHotfixRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCveHotfixResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cveIds)) {
+            body["cveIds"] = request.cveIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.kernelVersions)) {
+            body["kernelVersions"] = request.kernelVersions ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCveHotfix",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/hotfixManager/hotfixes/cve",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCveHotfixResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCveHotfix(_ request: GetCveHotfixRequest) async throws -> GetCveHotfixResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getCveHotfixWithOptions(request as! GetCveHotfixRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDiagnosisResultWithOptions(_ request: GetDiagnosisResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDiagnosisResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

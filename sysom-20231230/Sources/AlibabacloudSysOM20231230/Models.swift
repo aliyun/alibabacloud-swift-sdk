@@ -5601,6 +5601,335 @@ public class GetCopilotHistoryResponse : Tea.TeaModel {
     }
 }
 
+public class GetCveHotfixRequest : Tea.TeaModel {
+    public var cveIds: [String]?
+
+    public var kernelVersions: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cveIds != nil {
+            map["cveIds"] = self.cveIds!
+        }
+        if self.kernelVersions != nil {
+            map["kernelVersions"] = self.kernelVersions!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cveIds"] as? [String] {
+            self.cveIds = value
+        }
+        if let value = dict["kernelVersions"] as? [String] {
+            self.kernelVersions = value
+        }
+    }
+}
+
+public class GetCveHotfixResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Hotfix : Tea.TeaModel {
+            public class Packages : Tea.TeaModel {
+                public var arch: String?
+
+                public var distro: String?
+
+                public var kernelVersion: String?
+
+                public var rpmNevra: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.arch != nil {
+                        map["arch"] = self.arch!
+                    }
+                    if self.distro != nil {
+                        map["distro"] = self.distro!
+                    }
+                    if self.kernelVersion != nil {
+                        map["kernelVersion"] = self.kernelVersion!
+                    }
+                    if self.rpmNevra != nil {
+                        map["rpmNevra"] = self.rpmNevra!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["arch"] as? String {
+                        self.arch = value
+                    }
+                    if let value = dict["distro"] as? String {
+                        self.distro = value
+                    }
+                    if let value = dict["kernelVersion"] as? String {
+                        self.kernelVersion = value
+                    }
+                    if let value = dict["rpmNevra"] as? String {
+                        self.rpmNevra = value
+                    }
+                }
+            }
+            public var description_: String?
+
+            public var hotfixName: String?
+
+            public var moduleName: String?
+
+            public var packages: [GetCveHotfixResponseBody.Data.Hotfix.Packages]?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["description"] = self.description_!
+                }
+                if self.hotfixName != nil {
+                    map["hotfixName"] = self.hotfixName!
+                }
+                if self.moduleName != nil {
+                    map["moduleName"] = self.moduleName!
+                }
+                if self.packages != nil {
+                    var tmp : [Any] = []
+                    for k in self.packages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["packages"] = tmp
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["hotfixName"] as? String {
+                    self.hotfixName = value
+                }
+                if let value = dict["moduleName"] as? String {
+                    self.moduleName = value
+                }
+                if let value = dict["packages"] as? [Any?] {
+                    var tmp : [GetCveHotfixResponseBody.Data.Hotfix.Packages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetCveHotfixResponseBody.Data.Hotfix.Packages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.packages = tmp
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
+                }
+            }
+        }
+        public var cveId: String?
+
+        public var hotfix: GetCveHotfixResponseBody.Data.Hotfix?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.hotfix?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cveId != nil {
+                map["cveId"] = self.cveId!
+            }
+            if self.hotfix != nil {
+                map["hotfix"] = self.hotfix?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cveId"] as? String {
+                self.cveId = value
+            }
+            if let value = dict["hotfix"] as? [String: Any?] {
+                var model = GetCveHotfixResponseBody.Data.Hotfix()
+                model.fromMap(value)
+                self.hotfix = model
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [GetCveHotfixResponseBody.Data]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [GetCveHotfixResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = GetCveHotfixResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetCveHotfixResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetCveHotfixResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetCveHotfixResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetDiagnosisResultRequest : Tea.TeaModel {
     public var taskId: String?
 
