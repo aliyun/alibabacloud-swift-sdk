@@ -987,9 +987,73 @@ public class KubeletConfig : Tea.TeaModel {
 }
 
 public class MaintenanceWindow : Tea.TeaModel {
+    public class Exclusions : Tea.TeaModel {
+        public var description_: String?
+
+        public var endTime: String?
+
+        public var name: String?
+
+        public var scope: String?
+
+        public var startTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.endTime != nil {
+                map["end_time"] = self.endTime!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.scope != nil {
+                map["scope"] = self.scope!
+            }
+            if self.startTime != nil {
+                map["start_time"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["end_time"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["scope"] as? String {
+                self.scope = value
+            }
+            if let value = dict["start_time"] as? String {
+                self.startTime = value
+            }
+        }
+    }
     public var duration: String?
 
     public var enable: Bool?
+
+    public var exclusions: [MaintenanceWindow.Exclusions]?
 
     public var maintenanceTime: String?
 
@@ -1017,6 +1081,13 @@ public class MaintenanceWindow : Tea.TeaModel {
         if self.enable != nil {
             map["enable"] = self.enable!
         }
+        if self.exclusions != nil {
+            var tmp : [Any] = []
+            for k in self.exclusions! {
+                tmp.append(k.toMap())
+            }
+            map["exclusions"] = tmp
+        }
         if self.maintenanceTime != nil {
             map["maintenance_time"] = self.maintenanceTime!
         }
@@ -1036,6 +1107,19 @@ public class MaintenanceWindow : Tea.TeaModel {
         }
         if let value = dict["enable"] as? Bool {
             self.enable = value
+        }
+        if let value = dict["exclusions"] as? [Any?] {
+            var tmp : [MaintenanceWindow.Exclusions] = []
+            for v in value {
+                if v != nil {
+                    var model = MaintenanceWindow.Exclusions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.exclusions = tmp
         }
         if let value = dict["maintenance_time"] as? String {
             self.maintenanceTime = value
@@ -5373,6 +5457,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var cisEnabled: Bool?
 
+    public var clientToken: String?
+
     public var cloudMonitorFlags: Bool?
 
     public var clusterDomain: String?
@@ -5613,6 +5699,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.cisEnabled != nil {
             map["cis_enabled"] = self.cisEnabled!
+        }
+        if self.clientToken != nil {
+            map["client_token"] = self.clientToken!
         }
         if self.cloudMonitorFlags != nil {
             map["cloud_monitor_flags"] = self.cloudMonitorFlags!
@@ -5957,6 +6046,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if let value = dict["cis_enabled"] as? Bool {
             self.cisEnabled = value
+        }
+        if let value = dict["client_token"] as? String {
+            self.clientToken = value
         }
         if let value = dict["cloud_monitor_flags"] as? Bool {
             self.cloudMonitorFlags = value
