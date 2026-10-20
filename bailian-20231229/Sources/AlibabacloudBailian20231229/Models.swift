@@ -7032,6 +7032,8 @@ public class DescribeFileResponseBody : Tea.TeaModel {
 
         public var fileType: String?
 
+        public var originFileDownloadUrl: String?
+
         public var parseErrorMessage: String?
 
         public var parseResultDownloadUrl: String?
@@ -7073,6 +7075,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             if self.fileType != nil {
                 map["FileType"] = self.fileType!
             }
+            if self.originFileDownloadUrl != nil {
+                map["OriginFileDownloadUrl"] = self.originFileDownloadUrl!
+            }
             if self.parseErrorMessage != nil {
                 map["ParseErrorMessage"] = self.parseErrorMessage!
             }
@@ -7110,6 +7115,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileType"] as? String {
                 self.fileType = value
+            }
+            if let value = dict["OriginFileDownloadUrl"] as? String {
+                self.originFileDownloadUrl = value
             }
             if let value = dict["ParseErrorMessage"] as? String {
                 self.parseErrorMessage = value
@@ -12037,6 +12045,12 @@ public class ListIndicesResponseBody : Tea.TeaModel {
 
             public var overlapSize: Int32?
 
+            public var pipelineCommercialCu: Int32?
+
+            public var pipelineCommercialType: String?
+
+            public var pipelineStorageUsage: Double?
+
             public var rerankMinScore: String?
 
             public var rerankModelName: String?
@@ -12095,6 +12109,15 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 }
                 if self.overlapSize != nil {
                     map["OverlapSize"] = self.overlapSize!
+                }
+                if self.pipelineCommercialCu != nil {
+                    map["PipelineCommercialCu"] = self.pipelineCommercialCu!
+                }
+                if self.pipelineCommercialType != nil {
+                    map["PipelineCommercialType"] = self.pipelineCommercialType!
+                }
+                if self.pipelineStorageUsage != nil {
+                    map["PipelineStorageUsage"] = self.pipelineStorageUsage!
                 }
                 if self.rerankMinScore != nil {
                     map["RerankMinScore"] = self.rerankMinScore!
@@ -12158,6 +12181,15 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["OverlapSize"] as? Int32 {
                     self.overlapSize = value
+                }
+                if let value = dict["PipelineCommercialCu"] as? Int32 {
+                    self.pipelineCommercialCu = value
+                }
+                if let value = dict["PipelineCommercialType"] as? String {
+                    self.pipelineCommercialType = value
+                }
+                if let value = dict["PipelineStorageUsage"] as? Double {
+                    self.pipelineStorageUsage = value
                 }
                 if let value = dict["RerankMinScore"] as? String {
                     self.rerankMinScore = value
