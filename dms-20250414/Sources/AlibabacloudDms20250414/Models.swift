@@ -26689,6 +26689,878 @@ public class ListAgenticDatabaseResponse : Tea.TeaModel {
     }
 }
 
+public class ListAgenticGlobalSqlExecutionHistoriesRequest : Tea.TeaModel {
+    public var actorId: String?
+
+    public var actorName: String?
+
+    public var actorType: String?
+
+    public var catalogUuid: String?
+
+    public var databaseUuid: String?
+
+    public var endTime: String?
+
+    public var page: Int32?
+
+    public var scenario: String?
+
+    public var size: Int32?
+
+    public var sqlKeyword: String?
+
+    public var sqlType: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actorId != nil {
+            map["ActorId"] = self.actorId!
+        }
+        if self.actorName != nil {
+            map["ActorName"] = self.actorName!
+        }
+        if self.actorType != nil {
+            map["ActorType"] = self.actorType!
+        }
+        if self.catalogUuid != nil {
+            map["CatalogUuid"] = self.catalogUuid!
+        }
+        if self.databaseUuid != nil {
+            map["DatabaseUuid"] = self.databaseUuid!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.scenario != nil {
+            map["Scenario"] = self.scenario!
+        }
+        if self.size != nil {
+            map["Size"] = self.size!
+        }
+        if self.sqlKeyword != nil {
+            map["SqlKeyword"] = self.sqlKeyword!
+        }
+        if self.sqlType != nil {
+            map["SqlType"] = self.sqlType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActorId"] as? String {
+            self.actorId = value
+        }
+        if let value = dict["ActorName"] as? String {
+            self.actorName = value
+        }
+        if let value = dict["ActorType"] as? String {
+            self.actorType = value
+        }
+        if let value = dict["CatalogUuid"] as? String {
+            self.catalogUuid = value
+        }
+        if let value = dict["DatabaseUuid"] as? String {
+            self.databaseUuid = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Page"] as? Int32 {
+            self.page = value
+        }
+        if let value = dict["Scenario"] as? String {
+            self.scenario = value
+        }
+        if let value = dict["Size"] as? Int32 {
+            self.size = value
+        }
+        if let value = dict["SqlKeyword"] as? String {
+            self.sqlKeyword = value
+        }
+        if let value = dict["SqlType"] as? String {
+            self.sqlType = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class ListAgenticGlobalSqlExecutionHistoriesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var actorId: String?
+
+        public var actorName: String?
+
+        public var actorType: String?
+
+        public var affectedRows: Int64?
+
+        public var agentOwnerId: String?
+
+        public var catalogUuid: String?
+
+        public var clientIp: String?
+
+        public var cost: Int64?
+
+        public var databaseSearchName: String?
+
+        public var databaseUuid: String?
+
+        public var error: String?
+
+        public var executedSql: String?
+
+        public var executionStatus: String?
+
+        public var originalSql: String?
+
+        public var queryId: String?
+
+        public var returnedRows: Int64?
+
+        public var scenario: String?
+
+        public var sqlType: String?
+
+        public var startTime: String?
+
+        public var workflowId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actorId != nil {
+                map["ActorId"] = self.actorId!
+            }
+            if self.actorName != nil {
+                map["ActorName"] = self.actorName!
+            }
+            if self.actorType != nil {
+                map["ActorType"] = self.actorType!
+            }
+            if self.affectedRows != nil {
+                map["AffectedRows"] = self.affectedRows!
+            }
+            if self.agentOwnerId != nil {
+                map["AgentOwnerId"] = self.agentOwnerId!
+            }
+            if self.catalogUuid != nil {
+                map["CatalogUuid"] = self.catalogUuid!
+            }
+            if self.clientIp != nil {
+                map["ClientIp"] = self.clientIp!
+            }
+            if self.cost != nil {
+                map["Cost"] = self.cost!
+            }
+            if self.databaseSearchName != nil {
+                map["DatabaseSearchName"] = self.databaseSearchName!
+            }
+            if self.databaseUuid != nil {
+                map["DatabaseUuid"] = self.databaseUuid!
+            }
+            if self.error != nil {
+                map["Error"] = self.error!
+            }
+            if self.executedSql != nil {
+                map["ExecutedSql"] = self.executedSql!
+            }
+            if self.executionStatus != nil {
+                map["ExecutionStatus"] = self.executionStatus!
+            }
+            if self.originalSql != nil {
+                map["OriginalSql"] = self.originalSql!
+            }
+            if self.queryId != nil {
+                map["QueryId"] = self.queryId!
+            }
+            if self.returnedRows != nil {
+                map["ReturnedRows"] = self.returnedRows!
+            }
+            if self.scenario != nil {
+                map["Scenario"] = self.scenario!
+            }
+            if self.sqlType != nil {
+                map["SqlType"] = self.sqlType!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.workflowId != nil {
+                map["WorkflowId"] = self.workflowId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActorId"] as? String {
+                self.actorId = value
+            }
+            if let value = dict["ActorName"] as? String {
+                self.actorName = value
+            }
+            if let value = dict["ActorType"] as? String {
+                self.actorType = value
+            }
+            if let value = dict["AffectedRows"] as? Int64 {
+                self.affectedRows = value
+            }
+            if let value = dict["AgentOwnerId"] as? String {
+                self.agentOwnerId = value
+            }
+            if let value = dict["CatalogUuid"] as? String {
+                self.catalogUuid = value
+            }
+            if let value = dict["ClientIp"] as? String {
+                self.clientIp = value
+            }
+            if let value = dict["Cost"] as? Int64 {
+                self.cost = value
+            }
+            if let value = dict["DatabaseSearchName"] as? String {
+                self.databaseSearchName = value
+            }
+            if let value = dict["DatabaseUuid"] as? String {
+                self.databaseUuid = value
+            }
+            if let value = dict["Error"] as? String {
+                self.error = value
+            }
+            if let value = dict["ExecutedSql"] as? String {
+                self.executedSql = value
+            }
+            if let value = dict["ExecutionStatus"] as? String {
+                self.executionStatus = value
+            }
+            if let value = dict["OriginalSql"] as? String {
+                self.originalSql = value
+            }
+            if let value = dict["QueryId"] as? String {
+                self.queryId = value
+            }
+            if let value = dict["ReturnedRows"] as? Int64 {
+                self.returnedRows = value
+            }
+            if let value = dict["Scenario"] as? String {
+                self.scenario = value
+            }
+            if let value = dict["SqlType"] as? String {
+                self.sqlType = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["WorkflowId"] as? String {
+                self.workflowId = value
+            }
+        }
+    }
+    public var data: [ListAgenticGlobalSqlExecutionHistoriesResponseBody.Data]?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [ListAgenticGlobalSqlExecutionHistoriesResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAgenticGlobalSqlExecutionHistoriesResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAgenticGlobalSqlExecutionHistoriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAgenticGlobalSqlExecutionHistoriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAgenticGlobalSqlExecutionHistoriesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListAgenticSqlExecutionHistoriesRequest : Tea.TeaModel {
+    public var actorId: String?
+
+    public var actorName: String?
+
+    public var actorType: String?
+
+    public var catalogUuid: String?
+
+    public var databaseUuid: String?
+
+    public var endTime: String?
+
+    public var page: Int32?
+
+    public var scenario: String?
+
+    public var size: Int32?
+
+    public var sqlKeyword: String?
+
+    public var sqlType: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actorId != nil {
+            map["ActorId"] = self.actorId!
+        }
+        if self.actorName != nil {
+            map["ActorName"] = self.actorName!
+        }
+        if self.actorType != nil {
+            map["ActorType"] = self.actorType!
+        }
+        if self.catalogUuid != nil {
+            map["CatalogUuid"] = self.catalogUuid!
+        }
+        if self.databaseUuid != nil {
+            map["DatabaseUuid"] = self.databaseUuid!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.scenario != nil {
+            map["Scenario"] = self.scenario!
+        }
+        if self.size != nil {
+            map["Size"] = self.size!
+        }
+        if self.sqlKeyword != nil {
+            map["SqlKeyword"] = self.sqlKeyword!
+        }
+        if self.sqlType != nil {
+            map["SqlType"] = self.sqlType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActorId"] as? String {
+            self.actorId = value
+        }
+        if let value = dict["ActorName"] as? String {
+            self.actorName = value
+        }
+        if let value = dict["ActorType"] as? String {
+            self.actorType = value
+        }
+        if let value = dict["CatalogUuid"] as? String {
+            self.catalogUuid = value
+        }
+        if let value = dict["DatabaseUuid"] as? String {
+            self.databaseUuid = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Page"] as? Int32 {
+            self.page = value
+        }
+        if let value = dict["Scenario"] as? String {
+            self.scenario = value
+        }
+        if let value = dict["Size"] as? Int32 {
+            self.size = value
+        }
+        if let value = dict["SqlKeyword"] as? String {
+            self.sqlKeyword = value
+        }
+        if let value = dict["SqlType"] as? String {
+            self.sqlType = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class ListAgenticSqlExecutionHistoriesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var actorId: String?
+
+        public var actorName: String?
+
+        public var actorType: String?
+
+        public var affectedRows: Int64?
+
+        public var agentOwnerId: String?
+
+        public var catalogUuid: String?
+
+        public var clientIp: String?
+
+        public var cost: Int64?
+
+        public var databaseSearchName: String?
+
+        public var databaseUuid: String?
+
+        public var error: String?
+
+        public var executedSql: String?
+
+        public var executionStatus: String?
+
+        public var originalSql: String?
+
+        public var queryId: String?
+
+        public var returnedRows: Int64?
+
+        public var scenario: String?
+
+        public var sqlType: String?
+
+        public var startTime: String?
+
+        public var workflowId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actorId != nil {
+                map["ActorId"] = self.actorId!
+            }
+            if self.actorName != nil {
+                map["ActorName"] = self.actorName!
+            }
+            if self.actorType != nil {
+                map["ActorType"] = self.actorType!
+            }
+            if self.affectedRows != nil {
+                map["AffectedRows"] = self.affectedRows!
+            }
+            if self.agentOwnerId != nil {
+                map["AgentOwnerId"] = self.agentOwnerId!
+            }
+            if self.catalogUuid != nil {
+                map["CatalogUuid"] = self.catalogUuid!
+            }
+            if self.clientIp != nil {
+                map["ClientIp"] = self.clientIp!
+            }
+            if self.cost != nil {
+                map["Cost"] = self.cost!
+            }
+            if self.databaseSearchName != nil {
+                map["DatabaseSearchName"] = self.databaseSearchName!
+            }
+            if self.databaseUuid != nil {
+                map["DatabaseUuid"] = self.databaseUuid!
+            }
+            if self.error != nil {
+                map["Error"] = self.error!
+            }
+            if self.executedSql != nil {
+                map["ExecutedSql"] = self.executedSql!
+            }
+            if self.executionStatus != nil {
+                map["ExecutionStatus"] = self.executionStatus!
+            }
+            if self.originalSql != nil {
+                map["OriginalSql"] = self.originalSql!
+            }
+            if self.queryId != nil {
+                map["QueryId"] = self.queryId!
+            }
+            if self.returnedRows != nil {
+                map["ReturnedRows"] = self.returnedRows!
+            }
+            if self.scenario != nil {
+                map["Scenario"] = self.scenario!
+            }
+            if self.sqlType != nil {
+                map["SqlType"] = self.sqlType!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.workflowId != nil {
+                map["WorkflowId"] = self.workflowId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActorId"] as? String {
+                self.actorId = value
+            }
+            if let value = dict["ActorName"] as? String {
+                self.actorName = value
+            }
+            if let value = dict["ActorType"] as? String {
+                self.actorType = value
+            }
+            if let value = dict["AffectedRows"] as? Int64 {
+                self.affectedRows = value
+            }
+            if let value = dict["AgentOwnerId"] as? String {
+                self.agentOwnerId = value
+            }
+            if let value = dict["CatalogUuid"] as? String {
+                self.catalogUuid = value
+            }
+            if let value = dict["ClientIp"] as? String {
+                self.clientIp = value
+            }
+            if let value = dict["Cost"] as? Int64 {
+                self.cost = value
+            }
+            if let value = dict["DatabaseSearchName"] as? String {
+                self.databaseSearchName = value
+            }
+            if let value = dict["DatabaseUuid"] as? String {
+                self.databaseUuid = value
+            }
+            if let value = dict["Error"] as? String {
+                self.error = value
+            }
+            if let value = dict["ExecutedSql"] as? String {
+                self.executedSql = value
+            }
+            if let value = dict["ExecutionStatus"] as? String {
+                self.executionStatus = value
+            }
+            if let value = dict["OriginalSql"] as? String {
+                self.originalSql = value
+            }
+            if let value = dict["QueryId"] as? String {
+                self.queryId = value
+            }
+            if let value = dict["ReturnedRows"] as? Int64 {
+                self.returnedRows = value
+            }
+            if let value = dict["Scenario"] as? String {
+                self.scenario = value
+            }
+            if let value = dict["SqlType"] as? String {
+                self.sqlType = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["WorkflowId"] as? String {
+                self.workflowId = value
+            }
+        }
+    }
+    public var data: [ListAgenticSqlExecutionHistoriesResponseBody.Data]?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [ListAgenticSqlExecutionHistoriesResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAgenticSqlExecutionHistoriesResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAgenticSqlExecutionHistoriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAgenticSqlExecutionHistoriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAgenticSqlExecutionHistoriesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListAgenticTableBaseInfoRequest : Tea.TeaModel {
     public var databaseUuid: String?
 

@@ -3080,6 +3080,134 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgenticGlobalSqlExecutionHistoriesWithOptions(_ request: ListAgenticGlobalSqlExecutionHistoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgenticGlobalSqlExecutionHistoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actorId)) {
+            query["ActorId"] = request.actorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.actorName)) {
+            query["ActorName"] = request.actorName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.actorType)) {
+            query["ActorType"] = request.actorType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["Page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            query["Scenario"] = request.scenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlKeyword)) {
+            query["SqlKeyword"] = request.sqlKeyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlType)) {
+            query["SqlType"] = request.sqlType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAgenticGlobalSqlExecutionHistories",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAgenticGlobalSqlExecutionHistoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgenticGlobalSqlExecutionHistories(_ request: ListAgenticGlobalSqlExecutionHistoriesRequest) async throws -> ListAgenticGlobalSqlExecutionHistoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAgenticGlobalSqlExecutionHistoriesWithOptions(request as! ListAgenticGlobalSqlExecutionHistoriesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgenticSqlExecutionHistoriesWithOptions(_ request: ListAgenticSqlExecutionHistoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgenticSqlExecutionHistoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actorId)) {
+            query["ActorId"] = request.actorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.actorName)) {
+            query["ActorName"] = request.actorName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.actorType)) {
+            query["ActorType"] = request.actorType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.catalogUuid)) {
+            query["CatalogUuid"] = request.catalogUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUuid)) {
+            query["DatabaseUuid"] = request.databaseUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["Page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            query["Scenario"] = request.scenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlKeyword)) {
+            query["SqlKeyword"] = request.sqlKeyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlType)) {
+            query["SqlType"] = request.sqlType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAgenticSqlExecutionHistories",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAgenticSqlExecutionHistoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgenticSqlExecutionHistories(_ request: ListAgenticSqlExecutionHistoriesRequest) async throws -> ListAgenticSqlExecutionHistoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAgenticSqlExecutionHistoriesWithOptions(request as! ListAgenticSqlExecutionHistoriesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAgenticTableBaseInfoWithOptions(_ request: ListAgenticTableBaseInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgenticTableBaseInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
