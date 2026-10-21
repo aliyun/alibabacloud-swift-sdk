@@ -4595,6 +4595,36 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Observability : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+            }
+        }
         public class OssMounts : Tea.TeaModel {
             public var bucketName: String?
 
@@ -4948,6 +4978,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
         public var network: CreateCustomAgentRequest.Body.Network?
 
+        public var observability: CreateCustomAgentRequest.Body.Observability?
+
         public var ossMounts: [CreateCustomAgentRequest.Body.OssMounts]?
 
         public var protocol_: [CreateCustomAgentRequest.Body.Protocol_]?
@@ -4955,6 +4987,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         public var roleArn: String?
 
         public var runtime: CreateCustomAgentRequest.Body.Runtime?
+
+        public var useImageCache: Bool?
 
         public override init() {
             super.init()
@@ -4971,6 +5005,7 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             try self.healthCheck?.validate()
             try self.logging?.validate()
             try self.network?.validate()
+            try self.observability?.validate()
             try self.runtime?.validate()
         }
 
@@ -5004,6 +5039,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             if self.network != nil {
                 map["network"] = self.network?.toMap()
             }
+            if self.observability != nil {
+                map["observability"] = self.observability?.toMap()
+            }
             if self.ossMounts != nil {
                 var tmp : [Any] = []
                 for k in self.ossMounts! {
@@ -5023,6 +5061,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             }
             if self.runtime != nil {
                 map["runtime"] = self.runtime?.toMap()
+            }
+            if self.useImageCache != nil {
+                map["useImageCache"] = self.useImageCache!
             }
             return map
         }
@@ -5073,6 +5114,11 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.network = model
             }
+            if let value = dict["observability"] as? [String: Any?] {
+                var model = CreateCustomAgentRequest.Body.Observability()
+                model.fromMap(value)
+                self.observability = model
+            }
             if let value = dict["ossMounts"] as? [Any?] {
                 var tmp : [CreateCustomAgentRequest.Body.OssMounts] = []
                 for v in value {
@@ -5106,6 +5152,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
                 var model = CreateCustomAgentRequest.Body.Runtime()
                 model.fromMap(value)
                 self.runtime = model
+            }
+            if let value = dict["useImageCache"] as? Bool {
+                self.useImageCache = value
             }
         }
     }
@@ -5565,6 +5614,52 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ImageCachePreparation : Tea.TeaModel {
+            public var imageId: String?
+
+            public var statusAtAcceptance: String?
+
+            public var submissionStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.imageId != nil {
+                    map["imageId"] = self.imageId!
+                }
+                if self.statusAtAcceptance != nil {
+                    map["statusAtAcceptance"] = self.statusAtAcceptance!
+                }
+                if self.submissionStatus != nil {
+                    map["submissionStatus"] = self.submissionStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["imageId"] as? String {
+                    self.imageId = value
+                }
+                if let value = dict["statusAtAcceptance"] as? String {
+                    self.statusAtAcceptance = value
+                }
+                if let value = dict["submissionStatus"] as? String {
+                    self.submissionStatus = value
+                }
+            }
+        }
         public class LatestExecutionError : Tea.TeaModel {
             public var code: String?
 
@@ -5783,6 +5878,36 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                     var model = CreateCustomAgentResponseBody.Data.Network.AccessVpc()
                     model.fromMap(value)
                     self.accessVpc = model
+                }
+            }
+        }
+        public class Observability : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
                 }
             }
         }
@@ -6137,9 +6262,15 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var effectiveSpecVersion: Int64?
+
         public var environment: CreateCustomAgentResponseBody.Data.Environment?
 
         public var healthCheck: CreateCustomAgentResponseBody.Data.HealthCheck?
+
+        public var imageCacheId: String?
+
+        public var imageCachePreparation: CreateCustomAgentResponseBody.Data.ImageCachePreparation?
 
         public var latestExecutionError: CreateCustomAgentResponseBody.Data.LatestExecutionError?
 
@@ -6152,6 +6283,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var network: CreateCustomAgentResponseBody.Data.Network?
+
+        public var observability: CreateCustomAgentResponseBody.Data.Observability?
 
         public var ossMounts: [CreateCustomAgentResponseBody.Data.OssMounts]?
 
@@ -6169,6 +6302,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
 
         public var updatedAt: String?
 
+        public var useImageCache: Bool?
+
         public var workspaceId: String?
 
         public override init() {
@@ -6184,9 +6319,11 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             try self.artifact?.validate()
             try self.environment?.validate()
             try self.healthCheck?.validate()
+            try self.imageCachePreparation?.validate()
             try self.latestExecutionError?.validate()
             try self.logging?.validate()
             try self.network?.validate()
+            try self.observability?.validate()
             try self.runtime?.validate()
         }
 
@@ -6217,11 +6354,20 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["description"] = self.description_!
             }
+            if self.effectiveSpecVersion != nil {
+                map["effectiveSpecVersion"] = self.effectiveSpecVersion!
+            }
             if self.environment != nil {
                 map["environment"] = self.environment?.toMap()
             }
             if self.healthCheck != nil {
                 map["healthCheck"] = self.healthCheck?.toMap()
+            }
+            if self.imageCacheId != nil {
+                map["imageCacheId"] = self.imageCacheId!
+            }
+            if self.imageCachePreparation != nil {
+                map["imageCachePreparation"] = self.imageCachePreparation?.toMap()
             }
             if self.latestExecutionError != nil {
                 map["latestExecutionError"] = self.latestExecutionError?.toMap()
@@ -6240,6 +6386,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.network != nil {
                 map["network"] = self.network?.toMap()
+            }
+            if self.observability != nil {
+                map["observability"] = self.observability?.toMap()
             }
             if self.ossMounts != nil {
                 var tmp : [Any] = []
@@ -6272,6 +6421,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
+            }
+            if self.useImageCache != nil {
+                map["useImageCache"] = self.useImageCache!
             }
             if self.workspaceId != nil {
                 map["workspaceId"] = self.workspaceId!
@@ -6314,6 +6466,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             if let value = dict["description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["effectiveSpecVersion"] as? Int64 {
+                self.effectiveSpecVersion = value
+            }
             if let value = dict["environment"] as? [String: Any?] {
                 var model = CreateCustomAgentResponseBody.Data.Environment()
                 model.fromMap(value)
@@ -6323,6 +6478,14 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                 var model = CreateCustomAgentResponseBody.Data.HealthCheck()
                 model.fromMap(value)
                 self.healthCheck = model
+            }
+            if let value = dict["imageCacheId"] as? String {
+                self.imageCacheId = value
+            }
+            if let value = dict["imageCachePreparation"] as? [String: Any?] {
+                var model = CreateCustomAgentResponseBody.Data.ImageCachePreparation()
+                model.fromMap(value)
+                self.imageCachePreparation = model
             }
             if let value = dict["latestExecutionError"] as? [String: Any?] {
                 var model = CreateCustomAgentResponseBody.Data.LatestExecutionError()
@@ -6347,6 +6510,11 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                 var model = CreateCustomAgentResponseBody.Data.Network()
                 model.fromMap(value)
                 self.network = model
+            }
+            if let value = dict["observability"] as? [String: Any?] {
+                var model = CreateCustomAgentResponseBody.Data.Observability()
+                model.fromMap(value)
+                self.observability = model
             }
             if let value = dict["ossMounts"] as? [Any?] {
                 var tmp : [CreateCustomAgentResponseBody.Data.OssMounts] = []
@@ -6393,6 +6561,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["updatedAt"] as? String {
                 self.updatedAt = value
+            }
+            if let value = dict["useImageCache"] as? Bool {
+                self.useImageCache = value
             }
             if let value = dict["workspaceId"] as? String {
                 self.workspaceId = value
@@ -8553,6 +8724,488 @@ public class CreateIdentityProviderResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateIdentityProviderResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateImageCacheRequest : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public var accessInternet: Bool?
+
+        public var accessVpc: Bool?
+
+        public var acrInstanceId: String?
+
+        public var namespace: String?
+
+        public var repository: String?
+
+        public var tag: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessInternet != nil {
+                map["accessInternet"] = self.accessInternet!
+            }
+            if self.accessVpc != nil {
+                map["accessVpc"] = self.accessVpc!
+            }
+            if self.acrInstanceId != nil {
+                map["acrInstanceId"] = self.acrInstanceId!
+            }
+            if self.namespace != nil {
+                map["namespace"] = self.namespace!
+            }
+            if self.repository != nil {
+                map["repository"] = self.repository!
+            }
+            if self.tag != nil {
+                map["tag"] = self.tag!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accessInternet"] as? Bool {
+                self.accessInternet = value
+            }
+            if let value = dict["accessVpc"] as? Bool {
+                self.accessVpc = value
+            }
+            if let value = dict["acrInstanceId"] as? String {
+                self.acrInstanceId = value
+            }
+            if let value = dict["namespace"] as? String {
+                self.namespace = value
+            }
+            if let value = dict["repository"] as? String {
+                self.repository = value
+            }
+            if let value = dict["tag"] as? String {
+                self.tag = value
+            }
+        }
+    }
+    public var body: CreateImageCacheRequest.Body?
+
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateImageCacheRequest.Body()
+            model.fromMap(value)
+            self.body = model
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class CreateImageCacheShrinkRequest : Tea.TeaModel {
+    public var bodyShrink: String?
+
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bodyShrink != nil {
+            map["body"] = self.bodyShrink!
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? String {
+            self.bodyShrink = value
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class CreateImageCacheResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Error : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
+        public var acrInstanceId: String?
+
+        public var agentCount: Int64?
+
+        public var cacheSizeBytes: Int64?
+
+        public var canDelete: Bool?
+
+        public var createdAt: String?
+
+        public var deleteBlockReason: String?
+
+        public var digest: String?
+
+        public var error: CreateImageCacheResponseBody.Data.Error?
+
+        public var imageId: String?
+
+        public var registry: String?
+
+        public var repository: String?
+
+        public var status: String?
+
+        public var tag: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.error?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acrInstanceId != nil {
+                map["acrInstanceId"] = self.acrInstanceId!
+            }
+            if self.agentCount != nil {
+                map["agentCount"] = self.agentCount!
+            }
+            if self.cacheSizeBytes != nil {
+                map["cacheSizeBytes"] = self.cacheSizeBytes!
+            }
+            if self.canDelete != nil {
+                map["canDelete"] = self.canDelete!
+            }
+            if self.createdAt != nil {
+                map["createdAt"] = self.createdAt!
+            }
+            if self.deleteBlockReason != nil {
+                map["deleteBlockReason"] = self.deleteBlockReason!
+            }
+            if self.digest != nil {
+                map["digest"] = self.digest!
+            }
+            if self.error != nil {
+                map["error"] = self.error?.toMap()
+            }
+            if self.imageId != nil {
+                map["imageId"] = self.imageId!
+            }
+            if self.registry != nil {
+                map["registry"] = self.registry!
+            }
+            if self.repository != nil {
+                map["repository"] = self.repository!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.tag != nil {
+                map["tag"] = self.tag!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["acrInstanceId"] as? String {
+                self.acrInstanceId = value
+            }
+            if let value = dict["agentCount"] as? Int64 {
+                self.agentCount = value
+            }
+            if let value = dict["cacheSizeBytes"] as? Int64 {
+                self.cacheSizeBytes = value
+            }
+            if let value = dict["canDelete"] as? Bool {
+                self.canDelete = value
+            }
+            if let value = dict["createdAt"] as? String {
+                self.createdAt = value
+            }
+            if let value = dict["deleteBlockReason"] as? String {
+                self.deleteBlockReason = value
+            }
+            if let value = dict["digest"] as? String {
+                self.digest = value
+            }
+            if let value = dict["error"] as? [String: Any?] {
+                var model = CreateImageCacheResponseBody.Data.Error()
+                model.fromMap(value)
+                self.error = model
+            }
+            if let value = dict["imageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["registry"] as? String {
+                self.registry = value
+            }
+            if let value = dict["repository"] as? String {
+                self.repository = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["tag"] as? String {
+                self.tag = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateImageCacheResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateImageCacheResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CreateImageCacheResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateImageCacheResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateImageCacheResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -19305,6 +19958,207 @@ public class DeleteIdentityProviderResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteImageCacheRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class DeleteImageCacheResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var deletionPending: Bool?
+
+        public var imageId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deletionPending != nil {
+                map["deletionPending"] = self.deletionPending!
+            }
+            if self.imageId != nil {
+                map["imageId"] = self.imageId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["deletionPending"] as? Bool {
+                self.deletionPending = value
+            }
+            if let value = dict["imageId"] as? String {
+                self.imageId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DeleteImageCacheResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = DeleteImageCacheResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteImageCacheResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteImageCacheResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteImageCacheResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteManagedAgentRequest : Tea.TeaModel {
 
     public override init() {
@@ -24610,6 +25464,36 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Observability : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+            }
+        }
         public class OssMounts : Tea.TeaModel {
             public var bucketName: String?
 
@@ -24961,9 +25845,13 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var effectiveSpecVersion: Int64?
+
         public var environment: GetCustomAgentResponseBody.Data.Environment?
 
         public var healthCheck: GetCustomAgentResponseBody.Data.HealthCheck?
+
+        public var imageCacheId: String?
 
         public var latestExecutionError: GetCustomAgentResponseBody.Data.LatestExecutionError?
 
@@ -24976,6 +25864,8 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var network: GetCustomAgentResponseBody.Data.Network?
+
+        public var observability: GetCustomAgentResponseBody.Data.Observability?
 
         public var ossMounts: [GetCustomAgentResponseBody.Data.OssMounts]?
 
@@ -24992,6 +25882,8 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var updatedAt: String?
+
+        public var useImageCache: Bool?
 
         public var workspaceId: String?
 
@@ -25011,6 +25903,7 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
             try self.latestExecutionError?.validate()
             try self.logging?.validate()
             try self.network?.validate()
+            try self.observability?.validate()
             try self.runtime?.validate()
         }
 
@@ -25041,11 +25934,17 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["description"] = self.description_!
             }
+            if self.effectiveSpecVersion != nil {
+                map["effectiveSpecVersion"] = self.effectiveSpecVersion!
+            }
             if self.environment != nil {
                 map["environment"] = self.environment?.toMap()
             }
             if self.healthCheck != nil {
                 map["healthCheck"] = self.healthCheck?.toMap()
+            }
+            if self.imageCacheId != nil {
+                map["imageCacheId"] = self.imageCacheId!
             }
             if self.latestExecutionError != nil {
                 map["latestExecutionError"] = self.latestExecutionError?.toMap()
@@ -25064,6 +25963,9 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.network != nil {
                 map["network"] = self.network?.toMap()
+            }
+            if self.observability != nil {
+                map["observability"] = self.observability?.toMap()
             }
             if self.ossMounts != nil {
                 var tmp : [Any] = []
@@ -25096,6 +25998,9 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
+            }
+            if self.useImageCache != nil {
+                map["useImageCache"] = self.useImageCache!
             }
             if self.workspaceId != nil {
                 map["workspaceId"] = self.workspaceId!
@@ -25138,6 +26043,9 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
             if let value = dict["description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["effectiveSpecVersion"] as? Int64 {
+                self.effectiveSpecVersion = value
+            }
             if let value = dict["environment"] as? [String: Any?] {
                 var model = GetCustomAgentResponseBody.Data.Environment()
                 model.fromMap(value)
@@ -25147,6 +26055,9 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
                 var model = GetCustomAgentResponseBody.Data.HealthCheck()
                 model.fromMap(value)
                 self.healthCheck = model
+            }
+            if let value = dict["imageCacheId"] as? String {
+                self.imageCacheId = value
             }
             if let value = dict["latestExecutionError"] as? [String: Any?] {
                 var model = GetCustomAgentResponseBody.Data.LatestExecutionError()
@@ -25171,6 +26082,11 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
                 var model = GetCustomAgentResponseBody.Data.Network()
                 model.fromMap(value)
                 self.network = model
+            }
+            if let value = dict["observability"] as? [String: Any?] {
+                var model = GetCustomAgentResponseBody.Data.Observability()
+                model.fromMap(value)
+                self.observability = model
             }
             if let value = dict["ossMounts"] as? [Any?] {
                 var tmp : [GetCustomAgentResponseBody.Data.OssMounts] = []
@@ -25217,6 +26133,9 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["updatedAt"] as? String {
                 self.updatedAt = value
+            }
+            if let value = dict["useImageCache"] as? Bool {
+                self.useImageCache = value
             }
             if let value = dict["workspaceId"] as? String {
                 self.workspaceId = value
@@ -26786,6 +27705,344 @@ public class GetIdentityProviderResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetIdentityProviderResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetImageCacheRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class GetImageCacheResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Error : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
+        public var acrInstanceId: String?
+
+        public var agentCount: Int64?
+
+        public var cacheSizeBytes: Int64?
+
+        public var canDelete: Bool?
+
+        public var createdAt: String?
+
+        public var deleteBlockReason: String?
+
+        public var digest: String?
+
+        public var error: GetImageCacheResponseBody.Data.Error?
+
+        public var imageId: String?
+
+        public var registry: String?
+
+        public var repository: String?
+
+        public var status: String?
+
+        public var tag: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.error?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acrInstanceId != nil {
+                map["acrInstanceId"] = self.acrInstanceId!
+            }
+            if self.agentCount != nil {
+                map["agentCount"] = self.agentCount!
+            }
+            if self.cacheSizeBytes != nil {
+                map["cacheSizeBytes"] = self.cacheSizeBytes!
+            }
+            if self.canDelete != nil {
+                map["canDelete"] = self.canDelete!
+            }
+            if self.createdAt != nil {
+                map["createdAt"] = self.createdAt!
+            }
+            if self.deleteBlockReason != nil {
+                map["deleteBlockReason"] = self.deleteBlockReason!
+            }
+            if self.digest != nil {
+                map["digest"] = self.digest!
+            }
+            if self.error != nil {
+                map["error"] = self.error?.toMap()
+            }
+            if self.imageId != nil {
+                map["imageId"] = self.imageId!
+            }
+            if self.registry != nil {
+                map["registry"] = self.registry!
+            }
+            if self.repository != nil {
+                map["repository"] = self.repository!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.tag != nil {
+                map["tag"] = self.tag!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["acrInstanceId"] as? String {
+                self.acrInstanceId = value
+            }
+            if let value = dict["agentCount"] as? Int64 {
+                self.agentCount = value
+            }
+            if let value = dict["cacheSizeBytes"] as? Int64 {
+                self.cacheSizeBytes = value
+            }
+            if let value = dict["canDelete"] as? Bool {
+                self.canDelete = value
+            }
+            if let value = dict["createdAt"] as? String {
+                self.createdAt = value
+            }
+            if let value = dict["deleteBlockReason"] as? String {
+                self.deleteBlockReason = value
+            }
+            if let value = dict["digest"] as? String {
+                self.digest = value
+            }
+            if let value = dict["error"] as? [String: Any?] {
+                var model = GetImageCacheResponseBody.Data.Error()
+                model.fromMap(value)
+                self.error = model
+            }
+            if let value = dict["imageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["registry"] as? String {
+                self.registry = value
+            }
+            if let value = dict["repository"] as? String {
+                self.repository = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["tag"] as? String {
+                self.tag = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetImageCacheResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetImageCacheResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetImageCacheResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetImageCacheResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetImageCacheResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -41922,6 +43179,459 @@ public class ListIdentityProvidersResponse : Tea.TeaModel {
     }
 }
 
+public class ListImageCachesRequest : Tea.TeaModel {
+    public var acrInstanceId: String?
+
+    public var digest: String?
+
+    public var imageRefContains: String?
+
+    public var maxResults: Int32?
+
+    public var namespace: String?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var registry: String?
+
+    public var repository: String?
+
+    public var status: String?
+
+    public var tag: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acrInstanceId != nil {
+            map["acrInstanceId"] = self.acrInstanceId!
+        }
+        if self.digest != nil {
+            map["digest"] = self.digest!
+        }
+        if self.imageRefContains != nil {
+            map["imageRefContains"] = self.imageRefContains!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.registry != nil {
+            map["registry"] = self.registry!
+        }
+        if self.repository != nil {
+            map["repository"] = self.repository!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.tag != nil {
+            map["tag"] = self.tag!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["acrInstanceId"] as? String {
+            self.acrInstanceId = value
+        }
+        if let value = dict["digest"] as? String {
+            self.digest = value
+        }
+        if let value = dict["imageRefContains"] as? String {
+            self.imageRefContains = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["registry"] as? String {
+            self.registry = value
+        }
+        if let value = dict["repository"] as? String {
+            self.repository = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["tag"] as? String {
+            self.tag = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class ListImageCachesResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class Error : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
+        public var acrInstanceId: String?
+
+        public var agentCount: Int64?
+
+        public var cacheSizeBytes: Int64?
+
+        public var canDelete: Bool?
+
+        public var createdAt: String?
+
+        public var deleteBlockReason: String?
+
+        public var digest: String?
+
+        public var error: ListImageCachesResponseBody.Items.Error?
+
+        public var imageId: String?
+
+        public var registry: String?
+
+        public var repository: String?
+
+        public var status: String?
+
+        public var tag: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.error?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acrInstanceId != nil {
+                map["acrInstanceId"] = self.acrInstanceId!
+            }
+            if self.agentCount != nil {
+                map["agentCount"] = self.agentCount!
+            }
+            if self.cacheSizeBytes != nil {
+                map["cacheSizeBytes"] = self.cacheSizeBytes!
+            }
+            if self.canDelete != nil {
+                map["canDelete"] = self.canDelete!
+            }
+            if self.createdAt != nil {
+                map["createdAt"] = self.createdAt!
+            }
+            if self.deleteBlockReason != nil {
+                map["deleteBlockReason"] = self.deleteBlockReason!
+            }
+            if self.digest != nil {
+                map["digest"] = self.digest!
+            }
+            if self.error != nil {
+                map["error"] = self.error?.toMap()
+            }
+            if self.imageId != nil {
+                map["imageId"] = self.imageId!
+            }
+            if self.registry != nil {
+                map["registry"] = self.registry!
+            }
+            if self.repository != nil {
+                map["repository"] = self.repository!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.tag != nil {
+                map["tag"] = self.tag!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["acrInstanceId"] as? String {
+                self.acrInstanceId = value
+            }
+            if let value = dict["agentCount"] as? Int64 {
+                self.agentCount = value
+            }
+            if let value = dict["cacheSizeBytes"] as? Int64 {
+                self.cacheSizeBytes = value
+            }
+            if let value = dict["canDelete"] as? Bool {
+                self.canDelete = value
+            }
+            if let value = dict["createdAt"] as? String {
+                self.createdAt = value
+            }
+            if let value = dict["deleteBlockReason"] as? String {
+                self.deleteBlockReason = value
+            }
+            if let value = dict["digest"] as? String {
+                self.digest = value
+            }
+            if let value = dict["error"] as? [String: Any?] {
+                var model = ListImageCachesResponseBody.Items.Error()
+                model.fromMap(value)
+                self.error = model
+            }
+            if let value = dict["imageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["registry"] as? String {
+                self.registry = value
+            }
+            if let value = dict["repository"] as? String {
+                self.repository = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["tag"] as? String {
+                self.tag = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var items: [ListImageCachesResponseBody.Items]?
+
+    public var maxResults: Int32?
+
+    public var message: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["items"] = tmp
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["items"] as? [Any?] {
+            var tmp : [ListImageCachesResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = ListImageCachesResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["totalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListImageCachesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListImageCachesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListImageCachesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListManagedAgentsRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
@@ -51436,6 +53146,441 @@ public class ResetUserPasswordResponse : Tea.TeaModel {
     }
 }
 
+public class RetryImageCacheRequest : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+        }
+    }
+    public var body: RetryImageCacheRequest.Body?
+
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RetryImageCacheRequest.Body()
+            model.fromMap(value)
+            self.body = model
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class RetryImageCacheShrinkRequest : Tea.TeaModel {
+    public var bodyShrink: String?
+
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bodyShrink != nil {
+            map["body"] = self.bodyShrink!
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? String {
+            self.bodyShrink = value
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class RetryImageCacheResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Error : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
+        public var acrInstanceId: String?
+
+        public var agentCount: Int64?
+
+        public var cacheSizeBytes: Int64?
+
+        public var canDelete: Bool?
+
+        public var createdAt: String?
+
+        public var deleteBlockReason: String?
+
+        public var digest: String?
+
+        public var error: RetryImageCacheResponseBody.Data.Error?
+
+        public var imageId: String?
+
+        public var registry: String?
+
+        public var repository: String?
+
+        public var status: String?
+
+        public var tag: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.error?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acrInstanceId != nil {
+                map["acrInstanceId"] = self.acrInstanceId!
+            }
+            if self.agentCount != nil {
+                map["agentCount"] = self.agentCount!
+            }
+            if self.cacheSizeBytes != nil {
+                map["cacheSizeBytes"] = self.cacheSizeBytes!
+            }
+            if self.canDelete != nil {
+                map["canDelete"] = self.canDelete!
+            }
+            if self.createdAt != nil {
+                map["createdAt"] = self.createdAt!
+            }
+            if self.deleteBlockReason != nil {
+                map["deleteBlockReason"] = self.deleteBlockReason!
+            }
+            if self.digest != nil {
+                map["digest"] = self.digest!
+            }
+            if self.error != nil {
+                map["error"] = self.error?.toMap()
+            }
+            if self.imageId != nil {
+                map["imageId"] = self.imageId!
+            }
+            if self.registry != nil {
+                map["registry"] = self.registry!
+            }
+            if self.repository != nil {
+                map["repository"] = self.repository!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.tag != nil {
+                map["tag"] = self.tag!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["acrInstanceId"] as? String {
+                self.acrInstanceId = value
+            }
+            if let value = dict["agentCount"] as? Int64 {
+                self.agentCount = value
+            }
+            if let value = dict["cacheSizeBytes"] as? Int64 {
+                self.cacheSizeBytes = value
+            }
+            if let value = dict["canDelete"] as? Bool {
+                self.canDelete = value
+            }
+            if let value = dict["createdAt"] as? String {
+                self.createdAt = value
+            }
+            if let value = dict["deleteBlockReason"] as? String {
+                self.deleteBlockReason = value
+            }
+            if let value = dict["digest"] as? String {
+                self.digest = value
+            }
+            if let value = dict["error"] as? [String: Any?] {
+                var model = RetryImageCacheResponseBody.Data.Error()
+                model.fromMap(value)
+                self.error = model
+            }
+            if let value = dict["imageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["registry"] as? String {
+                self.registry = value
+            }
+            if let value = dict["repository"] as? String {
+                self.repository = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["tag"] as? String {
+                self.tag = value
+            }
+            if let value = dict["workspaceId"] as? String {
+                self.workspaceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: RetryImageCacheResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = RetryImageCacheResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class RetryImageCacheResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RetryImageCacheResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RetryImageCacheResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SearchMemoriesRequest : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public class Scope : Tea.TeaModel {
@@ -54645,6 +56790,36 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Observability : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+            }
+        }
         public class OssMounts : Tea.TeaModel {
             public var bucketName: String?
 
@@ -54998,6 +57173,8 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
 
         public var network: UpdateCustomAgentRequest.Body.Network?
 
+        public var observability: UpdateCustomAgentRequest.Body.Observability?
+
         public var ossMounts: [UpdateCustomAgentRequest.Body.OssMounts]?
 
         public var protocol_: [UpdateCustomAgentRequest.Body.Protocol_]?
@@ -55005,6 +57182,8 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
         public var roleArn: String?
 
         public var runtime: UpdateCustomAgentRequest.Body.Runtime?
+
+        public var useImageCache: Bool?
 
         public override init() {
             super.init()
@@ -55021,6 +57200,7 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
             try self.healthCheck?.validate()
             try self.logging?.validate()
             try self.network?.validate()
+            try self.observability?.validate()
             try self.runtime?.validate()
         }
 
@@ -55054,6 +57234,9 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
             if self.network != nil {
                 map["network"] = self.network?.toMap()
             }
+            if self.observability != nil {
+                map["observability"] = self.observability?.toMap()
+            }
             if self.ossMounts != nil {
                 var tmp : [Any] = []
                 for k in self.ossMounts! {
@@ -55073,6 +57256,9 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
             }
             if self.runtime != nil {
                 map["runtime"] = self.runtime?.toMap()
+            }
+            if self.useImageCache != nil {
+                map["useImageCache"] = self.useImageCache!
             }
             return map
         }
@@ -55123,6 +57309,11 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.network = model
             }
+            if let value = dict["observability"] as? [String: Any?] {
+                var model = UpdateCustomAgentRequest.Body.Observability()
+                model.fromMap(value)
+                self.observability = model
+            }
             if let value = dict["ossMounts"] as? [Any?] {
                 var tmp : [UpdateCustomAgentRequest.Body.OssMounts] = []
                 for v in value {
@@ -55156,6 +57347,9 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
                 var model = UpdateCustomAgentRequest.Body.Runtime()
                 model.fromMap(value)
                 self.runtime = model
+            }
+            if let value = dict["useImageCache"] as? Bool {
+                self.useImageCache = value
             }
         }
     }
@@ -55615,6 +57809,52 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ImageCachePreparation : Tea.TeaModel {
+            public var imageId: String?
+
+            public var statusAtAcceptance: String?
+
+            public var submissionStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.imageId != nil {
+                    map["imageId"] = self.imageId!
+                }
+                if self.statusAtAcceptance != nil {
+                    map["statusAtAcceptance"] = self.statusAtAcceptance!
+                }
+                if self.submissionStatus != nil {
+                    map["submissionStatus"] = self.submissionStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["imageId"] as? String {
+                    self.imageId = value
+                }
+                if let value = dict["statusAtAcceptance"] as? String {
+                    self.statusAtAcceptance = value
+                }
+                if let value = dict["submissionStatus"] as? String {
+                    self.submissionStatus = value
+                }
+            }
+        }
         public class LatestExecutionError : Tea.TeaModel {
             public var code: String?
 
@@ -55833,6 +58073,36 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
                     var model = UpdateCustomAgentResponseBody.Data.Network.AccessVpc()
                     model.fromMap(value)
                     self.accessVpc = model
+                }
+            }
+        }
+        public class Observability : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
                 }
             }
         }
@@ -56187,9 +58457,15 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var effectiveSpecVersion: Int64?
+
         public var environment: UpdateCustomAgentResponseBody.Data.Environment?
 
         public var healthCheck: UpdateCustomAgentResponseBody.Data.HealthCheck?
+
+        public var imageCacheId: String?
+
+        public var imageCachePreparation: UpdateCustomAgentResponseBody.Data.ImageCachePreparation?
 
         public var latestExecutionError: UpdateCustomAgentResponseBody.Data.LatestExecutionError?
 
@@ -56202,6 +58478,8 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var network: UpdateCustomAgentResponseBody.Data.Network?
+
+        public var observability: UpdateCustomAgentResponseBody.Data.Observability?
 
         public var ossMounts: [UpdateCustomAgentResponseBody.Data.OssMounts]?
 
@@ -56219,6 +58497,8 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
 
         public var updatedAt: String?
 
+        public var useImageCache: Bool?
+
         public var workspaceId: String?
 
         public override init() {
@@ -56234,9 +58514,11 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
             try self.artifact?.validate()
             try self.environment?.validate()
             try self.healthCheck?.validate()
+            try self.imageCachePreparation?.validate()
             try self.latestExecutionError?.validate()
             try self.logging?.validate()
             try self.network?.validate()
+            try self.observability?.validate()
             try self.runtime?.validate()
         }
 
@@ -56267,11 +58549,20 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["description"] = self.description_!
             }
+            if self.effectiveSpecVersion != nil {
+                map["effectiveSpecVersion"] = self.effectiveSpecVersion!
+            }
             if self.environment != nil {
                 map["environment"] = self.environment?.toMap()
             }
             if self.healthCheck != nil {
                 map["healthCheck"] = self.healthCheck?.toMap()
+            }
+            if self.imageCacheId != nil {
+                map["imageCacheId"] = self.imageCacheId!
+            }
+            if self.imageCachePreparation != nil {
+                map["imageCachePreparation"] = self.imageCachePreparation?.toMap()
             }
             if self.latestExecutionError != nil {
                 map["latestExecutionError"] = self.latestExecutionError?.toMap()
@@ -56290,6 +58581,9 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.network != nil {
                 map["network"] = self.network?.toMap()
+            }
+            if self.observability != nil {
+                map["observability"] = self.observability?.toMap()
             }
             if self.ossMounts != nil {
                 var tmp : [Any] = []
@@ -56322,6 +58616,9 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
+            }
+            if self.useImageCache != nil {
+                map["useImageCache"] = self.useImageCache!
             }
             if self.workspaceId != nil {
                 map["workspaceId"] = self.workspaceId!
@@ -56364,6 +58661,9 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
             if let value = dict["description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["effectiveSpecVersion"] as? Int64 {
+                self.effectiveSpecVersion = value
+            }
             if let value = dict["environment"] as? [String: Any?] {
                 var model = UpdateCustomAgentResponseBody.Data.Environment()
                 model.fromMap(value)
@@ -56373,6 +58673,14 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
                 var model = UpdateCustomAgentResponseBody.Data.HealthCheck()
                 model.fromMap(value)
                 self.healthCheck = model
+            }
+            if let value = dict["imageCacheId"] as? String {
+                self.imageCacheId = value
+            }
+            if let value = dict["imageCachePreparation"] as? [String: Any?] {
+                var model = UpdateCustomAgentResponseBody.Data.ImageCachePreparation()
+                model.fromMap(value)
+                self.imageCachePreparation = model
             }
             if let value = dict["latestExecutionError"] as? [String: Any?] {
                 var model = UpdateCustomAgentResponseBody.Data.LatestExecutionError()
@@ -56397,6 +58705,11 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
                 var model = UpdateCustomAgentResponseBody.Data.Network()
                 model.fromMap(value)
                 self.network = model
+            }
+            if let value = dict["observability"] as? [String: Any?] {
+                var model = UpdateCustomAgentResponseBody.Data.Observability()
+                model.fromMap(value)
+                self.observability = model
             }
             if let value = dict["ossMounts"] as? [Any?] {
                 var tmp : [UpdateCustomAgentResponseBody.Data.OssMounts] = []
@@ -56443,6 +58756,9 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["updatedAt"] as? String {
                 self.updatedAt = value
+            }
+            if let value = dict["useImageCache"] as? Bool {
+                self.useImageCache = value
             }
             if let value = dict["workspaceId"] as? String {
                 self.workspaceId = value
