@@ -1267,6 +1267,31 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAccessKeyPolicyForAccountWithOptions(_ request: GetAccessKeyPolicyForAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAccessKeyPolicyForAccountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAccessKeyPolicyForAccount",
+            "version": "2019-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAccessKeyPolicyForAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAccessKeyPolicyForAccount(_ request: GetAccessKeyPolicyForAccountRequest) async throws -> GetAccessKeyPolicyForAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAccessKeyPolicyForAccountWithOptions(request as! GetAccessKeyPolicyForAccountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAccountMFAInfoWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> GetAccountMFAInfoResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -2885,6 +2910,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setAccessKeyPolicy(_ request: SetAccessKeyPolicyRequest) async throws -> SetAccessKeyPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setAccessKeyPolicyWithOptions(request as! SetAccessKeyPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAccessKeyPolicyForAccountWithOptions(_ request: SetAccessKeyPolicyForAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetAccessKeyPolicyForAccountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessKeyPolicy)) {
+            query["AccessKeyPolicy"] = request.accessKeyPolicy ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetAccessKeyPolicyForAccount",
+            "version": "2019-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetAccessKeyPolicyForAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAccessKeyPolicyForAccount(_ request: SetAccessKeyPolicyForAccountRequest) async throws -> SetAccessKeyPolicyForAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setAccessKeyPolicyForAccountWithOptions(request as! SetAccessKeyPolicyForAccountRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
