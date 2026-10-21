@@ -8303,6 +8303,14 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
         public var memoryType: String?
 
+        public var polarAIEmbedderInstanceId: String?
+
+        public var polarAIGraphLlmInstanceId: String?
+
+        public var polarAILlmInstanceId: String?
+
+        public var polarAIRerankerInstanceId: String?
+
         public var projectName: String?
 
         public var rerankerModel: String?
@@ -8355,6 +8363,18 @@ public class CreateApplicationRequest : Tea.TeaModel {
             if self.memoryType != nil {
                 map["MemoryType"] = self.memoryType!
             }
+            if self.polarAIEmbedderInstanceId != nil {
+                map["PolarAIEmbedderInstanceId"] = self.polarAIEmbedderInstanceId!
+            }
+            if self.polarAIGraphLlmInstanceId != nil {
+                map["PolarAIGraphLlmInstanceId"] = self.polarAIGraphLlmInstanceId!
+            }
+            if self.polarAILlmInstanceId != nil {
+                map["PolarAILlmInstanceId"] = self.polarAILlmInstanceId!
+            }
+            if self.polarAIRerankerInstanceId != nil {
+                map["PolarAIRerankerInstanceId"] = self.polarAIRerankerInstanceId!
+            }
             if self.projectName != nil {
                 map["ProjectName"] = self.projectName!
             }
@@ -8404,6 +8424,18 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             if let value = dict["MemoryType"] as? String {
                 self.memoryType = value
+            }
+            if let value = dict["PolarAIEmbedderInstanceId"] as? String {
+                self.polarAIEmbedderInstanceId = value
+            }
+            if let value = dict["PolarAIGraphLlmInstanceId"] as? String {
+                self.polarAIGraphLlmInstanceId = value
+            }
+            if let value = dict["PolarAILlmInstanceId"] as? String {
+                self.polarAILlmInstanceId = value
+            }
+            if let value = dict["PolarAIRerankerInstanceId"] as? String {
+                self.polarAIRerankerInstanceId = value
             }
             if let value = dict["ProjectName"] as? String {
                 self.projectName = value
