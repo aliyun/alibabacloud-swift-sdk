@@ -7,21 +7,21 @@ import AlibabacloudEndpointUtil
 
 public class PriceComponentsValue : Tea.TeaModel {
     public class Modules : Tea.TeaModel {
-        public var moduleCode: String?
+        public var billingMode: String?
 
         public var costAfterDiscount: Double?
 
+        public var invoiceDiscount: Double?
+
+        public var moduleCode: String?
+
         public var originalCost: Double?
 
-        public var invoiceDiscount: Double?
+        public var quantityUsedForQuote: Double?
 
         public var unitPrice: Double?
 
-        public var billingMode: String?
-
         public var usageUnit: String?
-
-        public var quantityUsedForQuote: Double?
 
         public override init() {
             super.init()
@@ -37,73 +37,73 @@ public class PriceComponentsValue : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.moduleCode != nil {
-                map["moduleCode"] = self.moduleCode!
+            if self.billingMode != nil {
+                map["billingMode"] = self.billingMode!
             }
             if self.costAfterDiscount != nil {
                 map["costAfterDiscount"] = self.costAfterDiscount!
             }
+            if self.invoiceDiscount != nil {
+                map["invoiceDiscount"] = self.invoiceDiscount!
+            }
+            if self.moduleCode != nil {
+                map["moduleCode"] = self.moduleCode!
+            }
             if self.originalCost != nil {
                 map["originalCost"] = self.originalCost!
             }
-            if self.invoiceDiscount != nil {
-                map["invoiceDiscount"] = self.invoiceDiscount!
+            if self.quantityUsedForQuote != nil {
+                map["quantityUsedForQuote"] = self.quantityUsedForQuote!
             }
             if self.unitPrice != nil {
                 map["unitPrice"] = self.unitPrice!
             }
-            if self.billingMode != nil {
-                map["billingMode"] = self.billingMode!
-            }
             if self.usageUnit != nil {
                 map["usageUnit"] = self.usageUnit!
-            }
-            if self.quantityUsedForQuote != nil {
-                map["quantityUsedForQuote"] = self.quantityUsedForQuote!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["moduleCode"] as? String {
-                self.moduleCode = value
+            if let value = dict["billingMode"] as? String {
+                self.billingMode = value
             }
             if let value = dict["costAfterDiscount"] as? Double {
                 self.costAfterDiscount = value
             }
-            if let value = dict["originalCost"] as? Double {
-                self.originalCost = value
-            }
             if let value = dict["invoiceDiscount"] as? Double {
                 self.invoiceDiscount = value
             }
-            if let value = dict["unitPrice"] as? Double {
-                self.unitPrice = value
+            if let value = dict["moduleCode"] as? String {
+                self.moduleCode = value
             }
-            if let value = dict["billingMode"] as? String {
-                self.billingMode = value
-            }
-            if let value = dict["usageUnit"] as? String {
-                self.usageUnit = value
+            if let value = dict["originalCost"] as? Double {
+                self.originalCost = value
             }
             if let value = dict["quantityUsedForQuote"] as? Double {
                 self.quantityUsedForQuote = value
             }
+            if let value = dict["unitPrice"] as? Double {
+                self.unitPrice = value
+            }
+            if let value = dict["usageUnit"] as? String {
+                self.usageUnit = value
+            }
         }
     }
     public class UsageCharges : Tea.TeaModel {
-        public var moduleCode: String?
-
-        public var unit: String?
-
-        public var pricePerUnit: Double?
-
-        public var originalPricePerUnit: Double?
-
         public var assumedQuantity: Double?
 
         public var assumedQuantityCost: Double?
+
+        public var moduleCode: String?
+
+        public var originalPricePerUnit: Double?
+
+        public var pricePerUnit: Double?
+
+        public var unit: String?
 
         public override init() {
             super.init()
@@ -119,68 +119,68 @@ public class PriceComponentsValue : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.moduleCode != nil {
-                map["moduleCode"] = self.moduleCode!
-            }
-            if self.unit != nil {
-                map["unit"] = self.unit!
-            }
-            if self.pricePerUnit != nil {
-                map["pricePerUnit"] = self.pricePerUnit!
-            }
-            if self.originalPricePerUnit != nil {
-                map["originalPricePerUnit"] = self.originalPricePerUnit!
-            }
             if self.assumedQuantity != nil {
                 map["assumedQuantity"] = self.assumedQuantity!
             }
             if self.assumedQuantityCost != nil {
                 map["assumedQuantityCost"] = self.assumedQuantityCost!
             }
+            if self.moduleCode != nil {
+                map["moduleCode"] = self.moduleCode!
+            }
+            if self.originalPricePerUnit != nil {
+                map["originalPricePerUnit"] = self.originalPricePerUnit!
+            }
+            if self.pricePerUnit != nil {
+                map["pricePerUnit"] = self.pricePerUnit!
+            }
+            if self.unit != nil {
+                map["unit"] = self.unit!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["moduleCode"] as? String {
-                self.moduleCode = value
-            }
-            if let value = dict["unit"] as? String {
-                self.unit = value
-            }
-            if let value = dict["pricePerUnit"] as? Double {
-                self.pricePerUnit = value
-            }
-            if let value = dict["originalPricePerUnit"] as? Double {
-                self.originalPricePerUnit = value
-            }
             if let value = dict["assumedQuantity"] as? Double {
                 self.assumedQuantity = value
             }
             if let value = dict["assumedQuantityCost"] as? Double {
                 self.assumedQuantityCost = value
             }
+            if let value = dict["moduleCode"] as? String {
+                self.moduleCode = value
+            }
+            if let value = dict["originalPricePerUnit"] as? Double {
+                self.originalPricePerUnit = value
+            }
+            if let value = dict["pricePerUnit"] as? Double {
+                self.pricePerUnit = value
+            }
+            if let value = dict["unit"] as? String {
+                self.unit = value
+            }
         }
     }
+    public var chargeComposition: String?
+
     public var currency: String?
-
-    public var tradePrice: Double?
-
-    public var originalPrice: Double?
-
-    public var moduleSum: Double?
 
     public var effectiveModuleSum: Double?
 
-    public var quantity: Double?
-
-    public var pricingUnit: String?
+    public var moduleSum: Double?
 
     public var modules: [PriceComponentsValue.Modules]?
 
-    public var usageCharges: [PriceComponentsValue.UsageCharges]?
+    public var originalPrice: Double?
 
-    public var chargeComposition: String?
+    public var pricingUnit: String?
+
+    public var quantity: Double?
+
+    public var tradePrice: Double?
+
+    public var usageCharges: [PriceComponentsValue.UsageCharges]?
 
     public override init() {
         super.init()
@@ -196,26 +196,17 @@ public class PriceComponentsValue : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chargeComposition != nil {
+            map["chargeComposition"] = self.chargeComposition!
+        }
         if self.currency != nil {
             map["currency"] = self.currency!
-        }
-        if self.tradePrice != nil {
-            map["tradePrice"] = self.tradePrice!
-        }
-        if self.originalPrice != nil {
-            map["originalPrice"] = self.originalPrice!
-        }
-        if self.moduleSum != nil {
-            map["moduleSum"] = self.moduleSum!
         }
         if self.effectiveModuleSum != nil {
             map["effectiveModuleSum"] = self.effectiveModuleSum!
         }
-        if self.quantity != nil {
-            map["quantity"] = self.quantity!
-        }
-        if self.pricingUnit != nil {
-            map["pricingUnit"] = self.pricingUnit!
+        if self.moduleSum != nil {
+            map["moduleSum"] = self.moduleSum!
         }
         if self.modules != nil {
             var tmp : [Any] = []
@@ -224,6 +215,18 @@ public class PriceComponentsValue : Tea.TeaModel {
             }
             map["modules"] = tmp
         }
+        if self.originalPrice != nil {
+            map["originalPrice"] = self.originalPrice!
+        }
+        if self.pricingUnit != nil {
+            map["pricingUnit"] = self.pricingUnit!
+        }
+        if self.quantity != nil {
+            map["quantity"] = self.quantity!
+        }
+        if self.tradePrice != nil {
+            map["tradePrice"] = self.tradePrice!
+        }
         if self.usageCharges != nil {
             var tmp : [Any] = []
             for k in self.usageCharges! {
@@ -231,34 +234,22 @@ public class PriceComponentsValue : Tea.TeaModel {
             }
             map["usageCharges"] = tmp
         }
-        if self.chargeComposition != nil {
-            map["chargeComposition"] = self.chargeComposition!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["chargeComposition"] as? String {
+            self.chargeComposition = value
+        }
         if let value = dict["currency"] as? String {
             self.currency = value
-        }
-        if let value = dict["tradePrice"] as? Double {
-            self.tradePrice = value
-        }
-        if let value = dict["originalPrice"] as? Double {
-            self.originalPrice = value
-        }
-        if let value = dict["moduleSum"] as? Double {
-            self.moduleSum = value
         }
         if let value = dict["effectiveModuleSum"] as? Double {
             self.effectiveModuleSum = value
         }
-        if let value = dict["quantity"] as? Double {
-            self.quantity = value
-        }
-        if let value = dict["pricingUnit"] as? String {
-            self.pricingUnit = value
+        if let value = dict["moduleSum"] as? Double {
+            self.moduleSum = value
         }
         if let value = dict["modules"] as? [Any?] {
             var tmp : [PriceComponentsValue.Modules] = []
@@ -273,6 +264,18 @@ public class PriceComponentsValue : Tea.TeaModel {
             }
             self.modules = tmp
         }
+        if let value = dict["originalPrice"] as? Double {
+            self.originalPrice = value
+        }
+        if let value = dict["pricingUnit"] as? String {
+            self.pricingUnit = value
+        }
+        if let value = dict["quantity"] as? Double {
+            self.quantity = value
+        }
+        if let value = dict["tradePrice"] as? Double {
+            self.tradePrice = value
+        }
         if let value = dict["usageCharges"] as? [Any?] {
             var tmp : [PriceComponentsValue.UsageCharges] = []
             for v in value {
@@ -285,9 +288,6 @@ public class PriceComponentsValue : Tea.TeaModel {
                 }
             }
             self.usageCharges = tmp
-        }
-        if let value = dict["chargeComposition"] as? String {
-            self.chargeComposition = value
         }
     }
 }
@@ -1267,9 +1267,15 @@ public class GetApiPriceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
+    public var message: String?
+
     public var price: GetApiPriceResponseBody.Price?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -1286,17 +1292,32 @@ public class GetApiPriceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
         if self.price != nil {
             map["price"] = self.price?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
         if let value = dict["price"] as? [String: Any?] {
             var model = GetApiPriceResponseBody.Price()
             model.fromMap(value)
@@ -1304,6 +1325,9 @@ public class GetApiPriceResponseBody : Tea.TeaModel {
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
         }
     }
 }
