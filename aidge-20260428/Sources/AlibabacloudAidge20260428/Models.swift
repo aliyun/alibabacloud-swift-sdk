@@ -4655,6 +4655,8 @@ public class ImageMattingAsyncRequest : Tea.TeaModel {
 
     public var bgColor: String?
 
+    public var bizId: String?
+
     public var imageUrl: String?
 
     public var targetHeight: Int32?
@@ -4681,6 +4683,9 @@ public class ImageMattingAsyncRequest : Tea.TeaModel {
         if self.bgColor != nil {
             map["BgColor"] = self.bgColor!
         }
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
@@ -4700,6 +4705,9 @@ public class ImageMattingAsyncRequest : Tea.TeaModel {
         }
         if let value = dict["BgColor"] as? String {
             self.bgColor = value
+        }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
         }
         if let value = dict["ImageUrl"] as? String {
             self.imageUrl = value
@@ -5284,6 +5292,8 @@ public class ImageRecognitionResponse : Tea.TeaModel {
 }
 
 public class ImageRecognitionAsyncRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var imageUrl: String?
 
     public var nonObjectDetectElements: [Int32]?
@@ -5314,6 +5324,9 @@ public class ImageRecognitionAsyncRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
@@ -5343,6 +5356,9 @@ public class ImageRecognitionAsyncRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["ImageUrl"] as? String {
             self.imageUrl = value
         }
@@ -5371,6 +5387,8 @@ public class ImageRecognitionAsyncRequest : Tea.TeaModel {
 }
 
 public class ImageRecognitionAsyncShrinkRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var imageUrl: String?
 
     public var nonObjectDetectElementsShrink: String?
@@ -5401,6 +5419,9 @@ public class ImageRecognitionAsyncShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
@@ -5430,6 +5451,9 @@ public class ImageRecognitionAsyncShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["ImageUrl"] as? String {
             self.imageUrl = value
         }
@@ -5805,6 +5829,8 @@ public class ImageRemovalProResponse : Tea.TeaModel {
 }
 
 public class ImageRemovalProAsyncRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var imageUrl: String?
 
     public override init() {
@@ -5821,6 +5847,9 @@ public class ImageRemovalProAsyncRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
@@ -5829,6 +5858,9 @@ public class ImageRemovalProAsyncRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["ImageUrl"] as? String {
             self.imageUrl = value
         }
@@ -6310,6 +6342,8 @@ public class ImageRemoveResponse : Tea.TeaModel {
 }
 
 public class ImageRemoveAsyncRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var imageUrl: String?
 
     public var mask: String?
@@ -6338,6 +6372,9 @@ public class ImageRemoveAsyncRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
@@ -6364,6 +6401,9 @@ public class ImageRemoveAsyncRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["ImageUrl"] as? String {
             self.imageUrl = value
         }
@@ -6389,6 +6429,8 @@ public class ImageRemoveAsyncRequest : Tea.TeaModel {
 }
 
 public class ImageRemoveAsyncShrinkRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var imageUrl: String?
 
     public var mask: String?
@@ -6417,6 +6459,9 @@ public class ImageRemoveAsyncShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
@@ -6443,6 +6488,9 @@ public class ImageRemoveAsyncShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["ImageUrl"] as? String {
             self.imageUrl = value
         }
@@ -6839,6 +6887,8 @@ public class ImageTranslationPlusResponse : Tea.TeaModel {
 }
 
 public class ImageTranslationPlusAsyncRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var glossary: String?
 
     public var imageUrl: String?
@@ -6867,6 +6917,9 @@ public class ImageTranslationPlusAsyncRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.glossary != nil {
             map["Glossary"] = self.glossary!
         }
@@ -6893,6 +6946,9 @@ public class ImageTranslationPlusAsyncRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["Glossary"] as? String {
             self.glossary = value
         }
@@ -7961,6 +8017,8 @@ public class ImageTranslationProResponse : Tea.TeaModel {
 }
 
 public class ImageTranslationProAsyncRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var glossary: String?
 
     public var imageUrl: String?
@@ -7989,6 +8047,9 @@ public class ImageTranslationProAsyncRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.glossary != nil {
             map["Glossary"] = self.glossary!
         }
@@ -8015,6 +8076,9 @@ public class ImageTranslationProAsyncRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["Glossary"] as? String {
             self.glossary = value
         }
@@ -8935,6 +8999,8 @@ public class ImageTranslationStandardResponse : Tea.TeaModel {
 }
 
 public class ImageTranslationStandardAsyncRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var glossary: String?
 
     public var imageUrl: String?
@@ -8963,6 +9029,9 @@ public class ImageTranslationStandardAsyncRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.glossary != nil {
             map["Glossary"] = self.glossary!
         }
@@ -8989,6 +9058,9 @@ public class ImageTranslationStandardAsyncRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["Glossary"] as? String {
             self.glossary = value
         }
@@ -13691,6 +13763,8 @@ public class QueryAsyncTaskResultRequest : Tea.TeaModel {
 
 public class QueryAsyncTaskResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var bizId: String?
+
         public var result: String?
 
         public var status: String?
@@ -13713,6 +13787,9 @@ public class QueryAsyncTaskResultResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bizId != nil {
+                map["BizId"] = self.bizId!
+            }
             if self.result != nil {
                 map["Result"] = self.result!
             }
@@ -13730,6 +13807,9 @@ public class QueryAsyncTaskResultResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BizId"] as? String {
+                self.bizId = value
+            }
             if let value = dict["Result"] as? String {
                 self.result = value
             }
@@ -14777,6 +14857,8 @@ public class SizeChartExtractResponse : Tea.TeaModel {
 }
 
 public class SizeChartExtractAsyncRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var columnNameList: [String]?
 
     public var imageUrl: String?
@@ -14797,6 +14879,9 @@ public class SizeChartExtractAsyncRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.columnNameList != nil {
             map["ColumnNameList"] = self.columnNameList!
         }
@@ -14811,6 +14896,9 @@ public class SizeChartExtractAsyncRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["ColumnNameList"] as? [String] {
             self.columnNameList = value
         }
@@ -14824,6 +14912,8 @@ public class SizeChartExtractAsyncRequest : Tea.TeaModel {
 }
 
 public class SizeChartExtractAsyncShrinkRequest : Tea.TeaModel {
+    public var bizId: String?
+
     public var columnNameListShrink: String?
 
     public var imageUrl: String?
@@ -14844,6 +14934,9 @@ public class SizeChartExtractAsyncShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.columnNameListShrink != nil {
             map["ColumnNameList"] = self.columnNameListShrink!
         }
@@ -14858,6 +14951,9 @@ public class SizeChartExtractAsyncShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["ColumnNameList"] as? String {
             self.columnNameListShrink = value
         }

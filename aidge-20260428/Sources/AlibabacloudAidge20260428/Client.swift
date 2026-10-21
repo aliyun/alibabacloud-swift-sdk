@@ -653,6 +653,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bgColor)) {
             query["BgColor"] = request.bgColor ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageUrl)) {
             query["ImageUrl"] = request.imageUrl ?? "";
         }
@@ -758,6 +761,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.objectDetectElementsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.objectDetectElements, "ObjectDetectElements", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageUrl)) {
             query["ImageUrl"] = request.imageUrl ?? "";
         }
@@ -844,6 +850,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageRemovalProAsyncWithOptions(_ request: ImageRemovalProAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageRemovalProAsyncResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageUrl)) {
             query["ImageUrl"] = request.imageUrl ?? "";
         }
@@ -952,6 +961,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.userTextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userText, "UserText", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageUrl)) {
             query["ImageUrl"] = request.imageUrl ?? "";
         }
@@ -1050,6 +1062,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageTranslationPlusAsyncWithOptions(_ request: ImageTranslationPlusAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationPlusAsyncResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.glossary)) {
             query["Glossary"] = request.glossary ?? "";
         }
@@ -1151,6 +1166,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageTranslationProAsyncWithOptions(_ request: ImageTranslationProAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationProAsyncResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.glossary)) {
             query["Glossary"] = request.glossary ?? "";
         }
@@ -1249,6 +1267,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageTranslationStandardAsyncWithOptions(_ request: ImageTranslationStandardAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageTranslationStandardAsyncResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.glossary)) {
             query["Glossary"] = request.glossary ?? "";
         }
@@ -1945,6 +1966,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.columnNameListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.columnNameList, "ColumnNameList", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.columnNameListShrink)) {
             query["ColumnNameList"] = request.columnNameListShrink ?? "";
         }
