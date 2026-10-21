@@ -4186,6 +4186,8 @@ public class CreateFileSystemRequest : Tea.TeaModel {
 
     public var fileSystemType: String?
 
+    public var hpnZone: String?
+
     public var kmsKeyId: String?
 
     public var protocolType: String?
@@ -4248,6 +4250,9 @@ public class CreateFileSystemRequest : Tea.TeaModel {
         }
         if self.fileSystemType != nil {
             map["FileSystemType"] = self.fileSystemType!
+        }
+        if self.hpnZone != nil {
+            map["HpnZone"] = self.hpnZone!
         }
         if self.kmsKeyId != nil {
             map["KmsKeyId"] = self.kmsKeyId!
@@ -4317,6 +4322,9 @@ public class CreateFileSystemRequest : Tea.TeaModel {
         }
         if let value = dict["FileSystemType"] as? String {
             self.fileSystemType = value
+        }
+        if let value = dict["HpnZone"] as? String {
+            self.hpnZone = value
         }
         if let value = dict["KmsKeyId"] as? String {
             self.kmsKeyId = value

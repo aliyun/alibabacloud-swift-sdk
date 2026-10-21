@@ -1165,6 +1165,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileSystemType)) {
             query["FileSystemType"] = request.fileSystemType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hpnZone)) {
+            query["HpnZone"] = request.hpnZone ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
             query["KmsKeyId"] = request.kmsKeyId ?? "";
         }
