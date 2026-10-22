@@ -1469,6 +1469,10 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var tag: [CreateDBInstanceRequest.Tag]?
 
+    public var tdeEnabled: String?
+
+    public var tdeMode: String?
+
     public var usedTime: Int32?
 
     public var vSwitchId: String?
@@ -1570,6 +1574,12 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.tdeEnabled != nil {
+            map["TdeEnabled"] = self.tdeEnabled!
+        }
+        if self.tdeMode != nil {
+            map["TdeMode"] = self.tdeMode!
         }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
@@ -1680,6 +1690,12 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             }
             self.tag = tmp
         }
+        if let value = dict["TdeEnabled"] as? String {
+            self.tdeEnabled = value
+        }
+        if let value = dict["TdeMode"] as? String {
+            self.tdeMode = value
+        }
         if let value = dict["UsedTime"] as? Int32 {
             self.usedTime = value
         }
@@ -1743,6 +1759,10 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var securityIPList: String?
 
     public var tagShrink: String?
+
+    public var tdeEnabled: String?
+
+    public var tdeMode: String?
 
     public var usedTime: Int32?
 
@@ -1838,6 +1858,12 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.tagShrink != nil {
             map["Tag"] = self.tagShrink!
         }
+        if self.tdeEnabled != nil {
+            map["TdeEnabled"] = self.tdeEnabled!
+        }
+        if self.tdeMode != nil {
+            map["TdeMode"] = self.tdeMode!
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -1926,6 +1952,12 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Tag"] as? String {
             self.tagShrink = value
+        }
+        if let value = dict["TdeEnabled"] as? String {
+            self.tdeEnabled = value
+        }
+        if let value = dict["TdeMode"] as? String {
+            self.tdeMode = value
         }
         if let value = dict["UsedTime"] as? Int32 {
             self.usedTime = value
@@ -5173,6 +5205,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var tags: [DescribeDBInstanceAttributeResponseBody.Tags]?
 
+    public var tdeAlgorithm: String?
+
+    public var tdeEnabled: Bool?
+
+    public var tdeMode: String?
+
     public var vSwitchId: String?
 
     public var virtualClusterList: [DescribeDBInstanceAttributeResponseBody.VirtualClusterList]?
@@ -5318,6 +5356,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.tdeAlgorithm != nil {
+            map["TdeAlgorithm"] = self.tdeAlgorithm!
+        }
+        if self.tdeEnabled != nil {
+            map["TdeEnabled"] = self.tdeEnabled!
+        }
+        if self.tdeMode != nil {
+            map["TdeMode"] = self.tdeMode!
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -5487,6 +5534,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["TdeAlgorithm"] as? String {
+            self.tdeAlgorithm = value
+        }
+        if let value = dict["TdeEnabled"] as? Bool {
+            self.tdeEnabled = value
+        }
+        if let value = dict["TdeMode"] as? String {
+            self.tdeMode = value
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
