@@ -8738,6 +8738,84 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RedactResult : Tea.TeaModel {
+            public var processType: String?
+
+            public var resultOssBucketName: String?
+
+            public var resultOssObjectName: String?
+
+            public var resultOssRegionId: String?
+
+            public var resultUrl: String?
+
+            public var sourceUrl: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.processType != nil {
+                    map["ProcessType"] = self.processType!
+                }
+                if self.resultOssBucketName != nil {
+                    map["ResultOssBucketName"] = self.resultOssBucketName!
+                }
+                if self.resultOssObjectName != nil {
+                    map["ResultOssObjectName"] = self.resultOssObjectName!
+                }
+                if self.resultOssRegionId != nil {
+                    map["ResultOssRegionId"] = self.resultOssRegionId!
+                }
+                if self.resultUrl != nil {
+                    map["ResultUrl"] = self.resultUrl!
+                }
+                if self.sourceUrl != nil {
+                    map["SourceUrl"] = self.sourceUrl!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ProcessType"] as? String {
+                    self.processType = value
+                }
+                if let value = dict["ResultOssBucketName"] as? String {
+                    self.resultOssBucketName = value
+                }
+                if let value = dict["ResultOssObjectName"] as? String {
+                    self.resultOssObjectName = value
+                }
+                if let value = dict["ResultOssRegionId"] as? String {
+                    self.resultOssRegionId = value
+                }
+                if let value = dict["ResultUrl"] as? String {
+                    self.resultUrl = value
+                }
+                if let value = dict["SourceUrl"] as? String {
+                    self.sourceUrl = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public var audioResult: MultiModalGuardAsyncResultResponseBody.Data.AudioResult?
 
         public var dataId: String?
@@ -8745,6 +8823,8 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
         public var frameResult: MultiModalGuardAsyncResultResponseBody.Data.FrameResult?
 
         public var liveId: String?
+
+        public var redactResult: MultiModalGuardAsyncResultResponseBody.Data.RedactResult?
 
         public var suggestion: String?
 
@@ -8762,6 +8842,7 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.audioResult?.validate()
             try self.frameResult?.validate()
+            try self.redactResult?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8777,6 +8858,9 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
             }
             if self.liveId != nil {
                 map["LiveId"] = self.liveId!
+            }
+            if self.redactResult != nil {
+                map["RedactResult"] = self.redactResult?.toMap()
             }
             if self.suggestion != nil {
                 map["Suggestion"] = self.suggestion!
@@ -8804,6 +8888,11 @@ public class MultiModalGuardAsyncResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["LiveId"] as? String {
                 self.liveId = value
+            }
+            if let value = dict["RedactResult"] as? [String: Any?] {
+                var model = MultiModalGuardAsyncResultResponseBody.Data.RedactResult()
+                model.fromMap(value)
+                self.redactResult = model
             }
             if let value = dict["Suggestion"] as? String {
                 self.suggestion = value
