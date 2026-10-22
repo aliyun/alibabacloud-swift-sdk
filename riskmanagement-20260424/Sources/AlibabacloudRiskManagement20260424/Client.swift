@@ -1228,6 +1228,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryForOperationWithOptions(_ request: QueryForOperationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryForOperationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applyTimeEnd)) {
+            query["ApplyTimeEnd"] = request.applyTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.applyTimeStart)) {
+            query["ApplyTimeStart"] = request.applyTimeStart!;
+        }
+        if (!TeaUtils.Client.isUnset(request.assetType)) {
+            query["AssetType"] = request.assetType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.auditTimeEnd)) {
+            query["AuditTimeEnd"] = request.auditTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.auditTimeStart)) {
+            query["AuditTimeStart"] = request.auditTimeStart!;
+        }
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.customerUid)) {
+            query["CustomerUid"] = request.customerUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ip)) {
+            query["Ip"] = request.ip ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryForOperation",
+            "version": "2026-04-24",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryForOperationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryForOperation(_ request: QueryForOperationRequest) async throws -> QueryForOperationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryForOperationWithOptions(request as! QueryForOperationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryGuideSubStatusWithOptions(_ request: QueryGuideSubStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryGuideSubStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
@@ -1588,6 +1646,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitApplyRecord(_ request: SubmitApplyRecordRequest) async throws -> SubmitApplyRecordResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitApplyRecordWithOptions(request as! SubmitApplyRecordRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAutoAuditUnblockWithOptions(_ request: SubmitAutoAuditUnblockRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAutoAuditUnblockResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assetList)) {
+            query["AssetList"] = request.assetList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.auditor)) {
+            query["Auditor"] = request.auditor ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerUid)) {
+            query["CustomerUid"] = request.customerUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.emailType)) {
+            query["EmailType"] = request.emailType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hasUnsubscribe)) {
+            query["HasUnsubscribe"] = request.hasUnsubscribe!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sendCount)) {
+            query["SendCount"] = request.sendCount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useDesc)) {
+            query["UseDesc"] = request.useDesc ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitAutoAuditUnblock",
+            "version": "2026-04-24",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitAutoAuditUnblockResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAutoAuditUnblock(_ request: SubmitAutoAuditUnblockRequest) async throws -> SubmitAutoAuditUnblockResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitAutoAuditUnblockWithOptions(request as! SubmitAutoAuditUnblockRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
