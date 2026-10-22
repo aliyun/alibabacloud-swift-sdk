@@ -39869,6 +39869,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var tables: [String]?
 
+        public var uri: String?
+
         public override init() {
             super.init()
         }
@@ -39920,6 +39922,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if self.tables != nil {
                 map["Tables"] = self.tables!
             }
+            if self.uri != nil {
+                map["Uri"] = self.uri!
+            }
             return map
         }
 
@@ -39962,6 +39967,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["Tables"] as? [String] {
                 self.tables = value
+            }
+            if let value = dict["Uri"] as? String {
+                self.uri = value
             }
         }
     }
@@ -40088,6 +40096,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var tables: [String]?
 
+        public var uri: String?
+
         public override init() {
             super.init()
         }
@@ -40139,6 +40149,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if self.tables != nil {
                 map["Tables"] = self.tables!
             }
+            if self.uri != nil {
+                map["Uri"] = self.uri!
+            }
             return map
         }
 
@@ -40181,6 +40194,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["Tables"] as? [String] {
                 self.tables = value
+            }
+            if let value = dict["Uri"] as? String {
+                self.uri = value
             }
         }
     }
