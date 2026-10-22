@@ -126,6 +126,36 @@ public class Column : Tea.TeaModel {
             }
         }
     }
+    public class TechnicalMetadata : Tea.TeaModel {
+        public var parameters: [String: String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.parameters != nil {
+                map["Parameters"] = self.parameters!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Parameters"] as? [String: String] {
+                self.parameters = value
+            }
+        }
+    }
     public var businessMetadata: Column.BusinessMetadata?
 
     public var comment: String?
@@ -146,6 +176,8 @@ public class Column : Tea.TeaModel {
 
     public var tableId: String?
 
+    public var technicalMetadata: Column.TechnicalMetadata?
+
     public var type: String?
 
     public override init() {
@@ -159,6 +191,7 @@ public class Column : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.businessMetadata?.validate()
+        try self.technicalMetadata?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -192,6 +225,9 @@ public class Column : Tea.TeaModel {
         }
         if self.tableId != nil {
             map["TableId"] = self.tableId!
+        }
+        if self.technicalMetadata != nil {
+            map["TechnicalMetadata"] = self.technicalMetadata?.toMap()
         }
         if self.type != nil {
             map["Type"] = self.type!
@@ -232,6 +268,11 @@ public class Column : Tea.TeaModel {
         }
         if let value = dict["TableId"] as? String {
             self.tableId = value
+        }
+        if let value = dict["TechnicalMetadata"] as? [String: Any?] {
+            var model = Column.TechnicalMetadata()
+            model.fromMap(value)
+            self.technicalMetadata = model
         }
         if let value = dict["Type"] as? String {
             self.type = value
