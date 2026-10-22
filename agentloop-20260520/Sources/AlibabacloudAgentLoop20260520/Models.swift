@@ -2005,6 +2005,125 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 }
             }
         }
+        public class ExtractionPolicies : Tea.TeaModel {
+            public class Model : Tea.TeaModel {
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var categories: [String]?
+
+            public var customInstructions: String?
+
+            public var enabled: Bool?
+
+            public var excludeRules: [String]?
+
+            public var model: CreateContextStoreRequest.Config.ExtractionPolicies.Model?
+
+            public var name: String?
+
+            public var preset: String?
+
+            public var strategyId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.model?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.categories != nil {
+                    map["categories"] = self.categories!
+                }
+                if self.customInstructions != nil {
+                    map["customInstructions"] = self.customInstructions!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                if self.excludeRules != nil {
+                    map["excludeRules"] = self.excludeRules!
+                }
+                if self.model != nil {
+                    map["model"] = self.model?.toMap()
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.preset != nil {
+                    map["preset"] = self.preset!
+                }
+                if self.strategyId != nil {
+                    map["strategyId"] = self.strategyId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["categories"] as? [String] {
+                    self.categories = value
+                }
+                if let value = dict["customInstructions"] as? String {
+                    self.customInstructions = value
+                }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["excludeRules"] as? [String] {
+                    self.excludeRules = value
+                }
+                if let value = dict["model"] as? [String: Any?] {
+                    var model = CreateContextStoreRequest.Config.ExtractionPolicies.Model()
+                    model.fromMap(value)
+                    self.model = model
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["preset"] as? String {
+                    self.preset = value
+                }
+                if let value = dict["strategyId"] as? String {
+                    self.strategyId = value
+                }
+            }
+        }
         public class ExtractionPolicy : Tea.TeaModel {
             public class Model : Tea.TeaModel {
                 public var name: String?
@@ -2771,6 +2890,8 @@ public class CreateContextStoreRequest : Tea.TeaModel {
         }
         public var audit: CreateContextStoreRequest.Config.Audit?
 
+        public var extractionPolicies: [CreateContextStoreRequest.Config.ExtractionPolicies]?
+
         public var extractionPolicy: CreateContextStoreRequest.Config.ExtractionPolicy?
 
         public var metadataField: [String: String]?
@@ -2807,6 +2928,13 @@ public class CreateContextStoreRequest : Tea.TeaModel {
             if self.audit != nil {
                 map["audit"] = self.audit?.toMap()
             }
+            if self.extractionPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.extractionPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["extractionPolicies"] = tmp
+            }
             if self.extractionPolicy != nil {
                 map["extractionPolicy"] = self.extractionPolicy?.toMap()
             }
@@ -2837,6 +2965,19 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 var model = CreateContextStoreRequest.Config.Audit()
                 model.fromMap(value)
                 self.audit = model
+            }
+            if let value = dict["extractionPolicies"] as? [Any?] {
+                var tmp : [CreateContextStoreRequest.Config.ExtractionPolicies] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateContextStoreRequest.Config.ExtractionPolicies()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.extractionPolicies = tmp
             }
             if let value = dict["extractionPolicy"] as? [String: Any?] {
                 var model = CreateContextStoreRequest.Config.ExtractionPolicy()
@@ -8043,6 +8184,125 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ExtractionPolicies : Tea.TeaModel {
+            public class Model : Tea.TeaModel {
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var categories: [String]?
+
+            public var customInstructions: String?
+
+            public var enabled: Bool?
+
+            public var excludeRules: [String]?
+
+            public var model: GetContextStoreResponseBody.Config.ExtractionPolicies.Model?
+
+            public var name: String?
+
+            public var preset: String?
+
+            public var strategyId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.model?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.categories != nil {
+                    map["categories"] = self.categories!
+                }
+                if self.customInstructions != nil {
+                    map["customInstructions"] = self.customInstructions!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                if self.excludeRules != nil {
+                    map["excludeRules"] = self.excludeRules!
+                }
+                if self.model != nil {
+                    map["model"] = self.model?.toMap()
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.preset != nil {
+                    map["preset"] = self.preset!
+                }
+                if self.strategyId != nil {
+                    map["strategyId"] = self.strategyId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["categories"] as? [String] {
+                    self.categories = value
+                }
+                if let value = dict["customInstructions"] as? String {
+                    self.customInstructions = value
+                }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["excludeRules"] as? [String] {
+                    self.excludeRules = value
+                }
+                if let value = dict["model"] as? [String: Any?] {
+                    var model = GetContextStoreResponseBody.Config.ExtractionPolicies.Model()
+                    model.fromMap(value)
+                    self.model = model
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["preset"] as? String {
+                    self.preset = value
+                }
+                if let value = dict["strategyId"] as? String {
+                    self.strategyId = value
+                }
+            }
+        }
         public class ExtractionPolicy : Tea.TeaModel {
             public class Model : Tea.TeaModel {
                 public var name: String?
@@ -9025,6 +9285,8 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
         }
         public var audit: GetContextStoreResponseBody.Config.Audit?
 
+        public var extractionPolicies: [GetContextStoreResponseBody.Config.ExtractionPolicies]?
+
         public var extractionPolicy: GetContextStoreResponseBody.Config.ExtractionPolicy?
 
         public var innerSource: GetContextStoreResponseBody.Config.InnerSource?
@@ -9077,6 +9339,13 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             if self.audit != nil {
                 map["audit"] = self.audit?.toMap()
             }
+            if self.extractionPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.extractionPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["extractionPolicies"] = tmp
+            }
             if self.extractionPolicy != nil {
                 map["extractionPolicy"] = self.extractionPolicy?.toMap()
             }
@@ -9125,6 +9394,19 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 var model = GetContextStoreResponseBody.Config.Audit()
                 model.fromMap(value)
                 self.audit = model
+            }
+            if let value = dict["extractionPolicies"] as? [Any?] {
+                var tmp : [GetContextStoreResponseBody.Config.ExtractionPolicies] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetContextStoreResponseBody.Config.ExtractionPolicies()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.extractionPolicies = tmp
             }
             if let value = dict["extractionPolicy"] as? [String: Any?] {
                 var model = GetContextStoreResponseBody.Config.ExtractionPolicy()
@@ -19621,6 +19903,8 @@ public class SearchContextRequest : Tea.TeaModel {
 
     public var scope: SearchContextRequest.Scope?
 
+    public var strategyIds: [String]?
+
     public var threshold: Double?
 
     public override init() {
@@ -19659,6 +19943,9 @@ public class SearchContextRequest : Tea.TeaModel {
         if self.scope != nil {
             map["scope"] = self.scope?.toMap()
         }
+        if self.strategyIds != nil {
+            map["strategyIds"] = self.strategyIds!
+        }
         if self.threshold != nil {
             map["threshold"] = self.threshold!
         }
@@ -19689,6 +19976,9 @@ public class SearchContextRequest : Tea.TeaModel {
             var model = SearchContextRequest.Scope()
             model.fromMap(value)
             self.scope = model
+        }
+        if let value = dict["strategyIds"] as? [String] {
+            self.strategyIds = value
         }
         if let value = dict["threshold"] as? Double {
             self.threshold = value
@@ -20126,6 +20416,125 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                 }
                 if let value = dict["retentionDays"] as? Int32 {
                     self.retentionDays = value
+                }
+            }
+        }
+        public class ExtractionPolicies : Tea.TeaModel {
+            public class Model : Tea.TeaModel {
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var categories: [String]?
+
+            public var customInstructions: String?
+
+            public var enabled: Bool?
+
+            public var excludeRules: [String]?
+
+            public var model: UpdateContextStoreRequest.Config.ExtractionPolicies.Model?
+
+            public var name: String?
+
+            public var preset: String?
+
+            public var strategyId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.model?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.categories != nil {
+                    map["categories"] = self.categories!
+                }
+                if self.customInstructions != nil {
+                    map["customInstructions"] = self.customInstructions!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                if self.excludeRules != nil {
+                    map["excludeRules"] = self.excludeRules!
+                }
+                if self.model != nil {
+                    map["model"] = self.model?.toMap()
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.preset != nil {
+                    map["preset"] = self.preset!
+                }
+                if self.strategyId != nil {
+                    map["strategyId"] = self.strategyId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["categories"] as? [String] {
+                    self.categories = value
+                }
+                if let value = dict["customInstructions"] as? String {
+                    self.customInstructions = value
+                }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["excludeRules"] as? [String] {
+                    self.excludeRules = value
+                }
+                if let value = dict["model"] as? [String: Any?] {
+                    var model = UpdateContextStoreRequest.Config.ExtractionPolicies.Model()
+                    model.fromMap(value)
+                    self.model = model
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["preset"] as? String {
+                    self.preset = value
+                }
+                if let value = dict["strategyId"] as? String {
+                    self.strategyId = value
                 }
             }
         }
@@ -20725,6 +21134,8 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
         }
         public var audit: UpdateContextStoreRequest.Config.Audit?
 
+        public var extractionPolicies: [UpdateContextStoreRequest.Config.ExtractionPolicies]?
+
         public var extractionPolicy: UpdateContextStoreRequest.Config.ExtractionPolicy?
 
         public var metadataField: [String: String]?
@@ -20757,6 +21168,13 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
             if self.audit != nil {
                 map["audit"] = self.audit?.toMap()
             }
+            if self.extractionPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.extractionPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["extractionPolicies"] = tmp
+            }
             if self.extractionPolicy != nil {
                 map["extractionPolicy"] = self.extractionPolicy?.toMap()
             }
@@ -20781,6 +21199,19 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                 var model = UpdateContextStoreRequest.Config.Audit()
                 model.fromMap(value)
                 self.audit = model
+            }
+            if let value = dict["extractionPolicies"] as? [Any?] {
+                var tmp : [UpdateContextStoreRequest.Config.ExtractionPolicies] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateContextStoreRequest.Config.ExtractionPolicies()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.extractionPolicies = tmp
             }
             if let value = dict["extractionPolicy"] as? [String: Any?] {
                 var model = UpdateContextStoreRequest.Config.ExtractionPolicy()

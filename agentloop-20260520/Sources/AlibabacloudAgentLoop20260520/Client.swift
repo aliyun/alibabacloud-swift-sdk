@@ -2426,6 +2426,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scope)) {
             body["scope"] = request.scope!;
         }
+        if (!TeaUtils.Client.isUnset(request.strategyIds)) {
+            body["strategyIds"] = request.strategyIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.threshold)) {
             body["threshold"] = request.threshold!;
         }
