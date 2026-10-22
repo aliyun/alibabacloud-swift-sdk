@@ -10268,6 +10268,12 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         }
         public var aiCreditStatus: String?
 
+        public var aiCreditsTotal: Int64?
+
+        public var aiCreditsUs: Int64?
+
+        public var aiOpsAuditStatus: String?
+
         public var aiOpsModule: String?
 
         public var appOperationModule: String?
@@ -10362,6 +10368,15 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.aiCreditStatus != nil {
                 map["AiCreditStatus"] = self.aiCreditStatus!
+            }
+            if self.aiCreditsTotal != nil {
+                map["AiCreditsTotal"] = self.aiCreditsTotal!
+            }
+            if self.aiCreditsUs != nil {
+                map["AiCreditsUs"] = self.aiCreditsUs!
+            }
+            if self.aiOpsAuditStatus != nil {
+                map["AiOpsAuditStatus"] = self.aiOpsAuditStatus!
             }
             if self.aiOpsModule != nil {
                 map["AiOpsModule"] = self.aiOpsModule!
@@ -10495,6 +10510,15 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AiCreditStatus"] as? String {
                 self.aiCreditStatus = value
+            }
+            if let value = dict["AiCreditsTotal"] as? Int64 {
+                self.aiCreditsTotal = value
+            }
+            if let value = dict["AiCreditsUs"] as? Int64 {
+                self.aiCreditsUs = value
+            }
+            if let value = dict["AiOpsAuditStatus"] as? String {
+                self.aiOpsAuditStatus = value
             }
             if let value = dict["AiOpsModule"] as? String {
                 self.aiOpsModule = value
@@ -10859,6 +10883,12 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
 public class DescribeInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
+        public var aiCreditsTotal: Int64?
+
+        public var aiCreditsUs: Int64?
+
+        public var aiOpsAuditStatus: String?
+
         public var bandWidth: Int64?
 
         public var description_: String?
@@ -10909,6 +10939,15 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiCreditsTotal != nil {
+                map["AiCreditsTotal"] = self.aiCreditsTotal!
+            }
+            if self.aiCreditsUs != nil {
+                map["AiCreditsUs"] = self.aiCreditsUs!
+            }
+            if self.aiOpsAuditStatus != nil {
+                map["AiOpsAuditStatus"] = self.aiOpsAuditStatus!
+            }
             if self.bandWidth != nil {
                 map["BandWidth"] = self.bandWidth!
             }
@@ -10968,6 +11007,15 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiCreditsTotal"] as? Int64 {
+                self.aiCreditsTotal = value
+            }
+            if let value = dict["AiCreditsUs"] as? Int64 {
+                self.aiCreditsUs = value
+            }
+            if let value = dict["AiOpsAuditStatus"] as? String {
+                self.aiOpsAuditStatus = value
+            }
             if let value = dict["BandWidth"] as? Int64 {
                 self.bandWidth = value
             }
