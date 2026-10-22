@@ -6685,6 +6685,8 @@ public class CheckUserResourceMeasureRequest : Tea.TeaModel {
 
     public var bizType: String?
 
+    public var desiredTotal: Int64?
+
     public var espBizId: String?
 
     public var orderComponentParams: String?
@@ -6716,6 +6718,9 @@ public class CheckUserResourceMeasureRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.desiredTotal != nil {
+            map["DesiredTotal"] = self.desiredTotal!
+        }
         if self.espBizId != nil {
             map["EspBizId"] = self.espBizId!
         }
@@ -6742,6 +6747,9 @@ public class CheckUserResourceMeasureRequest : Tea.TeaModel {
         if let value = dict["BizType"] as? String {
             self.bizType = value
         }
+        if let value = dict["DesiredTotal"] as? Int64 {
+            self.desiredTotal = value
+        }
         if let value = dict["EspBizId"] as? String {
             self.espBizId = value
         }
@@ -6759,13 +6767,19 @@ public class CheckUserResourceMeasureRequest : Tea.TeaModel {
 
 public class CheckUserResourceMeasureResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
+        public var desiredTotal: Int64?
+
         public var errorCode: String?
 
         public var errorMessage: String?
 
+        public var limit: Int64?
+
         public var passed: Bool?
 
         public var resourceCode: String?
+
+        public var upgradeAvailable: Bool?
 
         public override init() {
             super.init()
@@ -6781,11 +6795,17 @@ public class CheckUserResourceMeasureResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.desiredTotal != nil {
+                map["DesiredTotal"] = self.desiredTotal!
+            }
             if self.errorCode != nil {
                 map["ErrorCode"] = self.errorCode!
             }
             if self.errorMessage != nil {
                 map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.limit != nil {
+                map["Limit"] = self.limit!
             }
             if self.passed != nil {
                 map["Passed"] = self.passed!
@@ -6793,22 +6813,34 @@ public class CheckUserResourceMeasureResponseBody : Tea.TeaModel {
             if self.resourceCode != nil {
                 map["ResourceCode"] = self.resourceCode!
             }
+            if self.upgradeAvailable != nil {
+                map["UpgradeAvailable"] = self.upgradeAvailable!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["DesiredTotal"] as? Int64 {
+                self.desiredTotal = value
+            }
             if let value = dict["ErrorCode"] as? String {
                 self.errorCode = value
             }
             if let value = dict["ErrorMessage"] as? String {
                 self.errorMessage = value
             }
+            if let value = dict["Limit"] as? Int64 {
+                self.limit = value
+            }
             if let value = dict["Passed"] as? Bool {
                 self.passed = value
             }
             if let value = dict["ResourceCode"] as? String {
                 self.resourceCode = value
+            }
+            if let value = dict["UpgradeAvailable"] as? Bool {
+                self.upgradeAvailable = value
             }
         }
     }
