@@ -4904,6 +4904,8 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public var sandboxNetworkPolicy: GetDigitalEmployeeResponseBody.SandboxNetworkPolicy?
 
+    public var status: Int32?
+
     public var tags: [Tag]?
 
     public var toolPolicy: GetDigitalEmployeeResponseBody.ToolPolicy?
@@ -4969,6 +4971,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         if self.sandboxNetworkPolicy != nil {
             map["sandboxNetworkPolicy"] = self.sandboxNetworkPolicy?.toMap()
         }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
         if self.tags != nil {
             var tmp : [Any] = []
             for k in self.tags! {
@@ -5032,6 +5037,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
             var model = GetDigitalEmployeeResponseBody.SandboxNetworkPolicy()
             model.fromMap(value)
             self.sandboxNetworkPolicy = model
+        }
+        if let value = dict["status"] as? Int32 {
+            self.status = value
         }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [Tag] = []
@@ -7911,6 +7919,8 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
 
         public var roleArn: String?
 
+        public var status: Int32?
+
         public var tags: [Tag]?
 
         public var updateTime: String?
@@ -7963,6 +7973,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
             if self.roleArn != nil {
                 map["roleArn"] = self.roleArn!
             }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -8012,6 +8025,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
             }
             if let value = dict["roleArn"] as? String {
                 self.roleArn = value
+            }
+            if let value = dict["status"] as? Int32 {
+                self.status = value
             }
             if let value = dict["tags"] as? [Any?] {
                 var tmp : [Tag] = []
