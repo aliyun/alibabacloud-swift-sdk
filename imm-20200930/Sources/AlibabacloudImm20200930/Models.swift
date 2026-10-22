@@ -31835,6 +31835,8 @@ public class ListBindingsRequest : Tea.TeaModel {
 
     public var projectName: String?
 
+    public var URI: String?
+
     public override init() {
         super.init()
     }
@@ -31864,6 +31866,9 @@ public class ListBindingsRequest : Tea.TeaModel {
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
         }
+        if self.URI != nil {
+            map["URI"] = self.URI!
+        }
         return map
     }
 
@@ -31883,6 +31888,9 @@ public class ListBindingsRequest : Tea.TeaModel {
         }
         if let value = dict["ProjectName"] as? String {
             self.projectName = value
+        }
+        if let value = dict["URI"] as? String {
+            self.URI = value
         }
     }
 }
