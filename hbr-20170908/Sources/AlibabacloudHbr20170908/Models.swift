@@ -21732,6 +21732,8 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
 
                 public var commonNas: Int32?
 
+                public var cpfs: Int32?
+
                 public var csg: Int32?
 
                 public var ecsFile: Int32?
@@ -21778,6 +21780,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                     }
                     if self.commonNas != nil {
                         map["CommonNas"] = self.commonNas!
+                    }
+                    if self.cpfs != nil {
+                        map["Cpfs"] = self.cpfs!
                     }
                     if self.csg != nil {
                         map["Csg"] = self.csg!
@@ -21828,6 +21833,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["CommonNas"] as? Int32 {
                         self.commonNas = value
+                    }
+                    if let value = dict["Cpfs"] as? Int32 {
+                        self.cpfs = value
                     }
                     if let value = dict["Csg"] as? Int32 {
                         self.csg = value
