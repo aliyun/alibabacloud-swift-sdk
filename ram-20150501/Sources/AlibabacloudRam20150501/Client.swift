@@ -8,31 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = "regional"
-        self._endpointMap = [
-            "cn-beijing": "ram.aliyuncs.com",
-            "cn-qingdao": "ram.aliyuncs.com",
-            "cn-shanghai": "ram.aliyuncs.com",
-            "cn-hongkong": "ram.aliyuncs.com",
-            "cn-zhangjiakou": "ram.aliyuncs.com",
-            "cn-shenzhen": "ram.aliyuncs.com",
-            "ap-northeast-1": "ram.aliyuncs.com",
-            "cn-chengdu": "ram.aliyuncs.com",
-            "ap-southeast-1": "ram.aliyuncs.com",
-            "ap-southeast-3": "ram.aliyuncs.com",
-            "cn-huhehaote": "ram.aliyuncs.com",
-            "ap-southeast-5": "ram.aliyuncs.com",
-            "cn-hangzhou": "ram.aliyuncs.com",
-            "us-east-1": "ram.aliyuncs.com",
-            "eu-west-1": "ram.aliyuncs.com",
-            "us-west-1": "ram.aliyuncs.com",
-            "eu-central-1": "ram.aliyuncs.com",
-            "me-east-1": "ram.aliyuncs.com",
-            "cn-shenzhen-finance-1": "ram.aliyuncs.com",
-            "cn-shanghai-finance-1": "ram.aliyuncs.com",
-            "cn-beijing-finance-1": "ram.aliyuncs.com",
-            "cn-hangzhou-finance": "ram.aliyuncs.com"
-        ]
+        self._endpointRule = "central"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("ram", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -1091,6 +1067,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateServiceLastAccessedDetailsWithOptions(_ request: GenerateServiceLastAccessedDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateServiceLastAccessedDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.arn)) {
+            query["Arn"] = request.arn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["Granularity"] = request.granularity ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateServiceLastAccessedDetails",
+            "version": "2015-05-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateServiceLastAccessedDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateServiceLastAccessedDetails(_ request: GenerateServiceLastAccessedDetailsRequest) async throws -> GenerateServiceLastAccessedDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generateServiceLastAccessedDetailsWithOptions(request as! GenerateServiceLastAccessedDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAccessKeyLastUsedWithOptions(_ request: GetAccessKeyLastUsedRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAccessKeyLastUsedResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1358,6 +1368,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getSecurityPreference() async throws -> GetSecurityPreferenceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getSecurityPreferenceWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceLastAccessedDetailsWithOptions(_ request: GetServiceLastAccessedDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetServiceLastAccessedDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.marker)) {
+            query["Marker"] = request.marker ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxItems)) {
+            query["MaxItems"] = request.maxItems!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetServiceLastAccessedDetails",
+            "version": "2015-05-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetServiceLastAccessedDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceLastAccessedDetails(_ request: GetServiceLastAccessedDetailsRequest) async throws -> GetServiceLastAccessedDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getServiceLastAccessedDetailsWithOptions(request as! GetServiceLastAccessedDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

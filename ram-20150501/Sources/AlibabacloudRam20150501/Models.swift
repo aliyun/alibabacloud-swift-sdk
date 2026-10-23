@@ -4775,6 +4775,134 @@ public class DetachPolicyFromUserResponse : Tea.TeaModel {
     }
 }
 
+public class GenerateServiceLastAccessedDetailsRequest : Tea.TeaModel {
+    public var arn: String?
+
+    public var granularity: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.arn != nil {
+            map["Arn"] = self.arn!
+        }
+        if self.granularity != nil {
+            map["Granularity"] = self.granularity!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Arn"] as? String {
+            self.arn = value
+        }
+        if let value = dict["Granularity"] as? String {
+            self.granularity = value
+        }
+    }
+}
+
+public class GenerateServiceLastAccessedDetailsResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GenerateServiceLastAccessedDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateServiceLastAccessedDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GenerateServiceLastAccessedDetailsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetAccessKeyLastUsedRequest : Tea.TeaModel {
     public var userAccessKeyId: String?
 
@@ -6626,6 +6754,467 @@ public class GetSecurityPreferenceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetSecurityPreferenceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetServiceLastAccessedDetailsRequest : Tea.TeaModel {
+    public var jobId: String?
+
+    public var marker: String?
+
+    public var maxItems: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.marker != nil {
+            map["Marker"] = self.marker!
+        }
+        if self.maxItems != nil {
+            map["MaxItems"] = self.maxItems!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["Marker"] as? String {
+            self.marker = value
+        }
+        if let value = dict["MaxItems"] as? Int32 {
+            self.maxItems = value
+        }
+    }
+}
+
+public class GetServiceLastAccessedDetailsResponseBody : Tea.TeaModel {
+    public class JobError : Tea.TeaModel {
+        public var code: String?
+
+        public var message: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+        }
+    }
+    public class ServicesLastAccessed : Tea.TeaModel {
+        public class GrantPolicies : Tea.TeaModel {
+            public var attachedEntity: String?
+
+            public var attachedScope: String?
+
+            public var policyName: String?
+
+            public var policyType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attachedEntity != nil {
+                    map["AttachedEntity"] = self.attachedEntity!
+                }
+                if self.attachedScope != nil {
+                    map["AttachedScope"] = self.attachedScope!
+                }
+                if self.policyName != nil {
+                    map["PolicyName"] = self.policyName!
+                }
+                if self.policyType != nil {
+                    map["PolicyType"] = self.policyType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AttachedEntity"] as? String {
+                    self.attachedEntity = value
+                }
+                if let value = dict["AttachedScope"] as? String {
+                    self.attachedScope = value
+                }
+                if let value = dict["PolicyName"] as? String {
+                    self.policyName = value
+                }
+                if let value = dict["PolicyType"] as? String {
+                    self.policyType = value
+                }
+            }
+        }
+        public class TrackedActionsLastAccessed : Tea.TeaModel {
+            public var actionName: String?
+
+            public var lastAccessedEntity: String?
+
+            public var lastAccessedTime: String?
+
+            public var serviceCodes: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.actionName != nil {
+                    map["ActionName"] = self.actionName!
+                }
+                if self.lastAccessedEntity != nil {
+                    map["LastAccessedEntity"] = self.lastAccessedEntity!
+                }
+                if self.lastAccessedTime != nil {
+                    map["LastAccessedTime"] = self.lastAccessedTime!
+                }
+                if self.serviceCodes != nil {
+                    map["ServiceCodes"] = self.serviceCodes!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ActionName"] as? String {
+                    self.actionName = value
+                }
+                if let value = dict["LastAccessedEntity"] as? String {
+                    self.lastAccessedEntity = value
+                }
+                if let value = dict["LastAccessedTime"] as? String {
+                    self.lastAccessedTime = value
+                }
+                if let value = dict["ServiceCodes"] as? [String] {
+                    self.serviceCodes = value
+                }
+            }
+        }
+        public var grantPolicies: [GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed.GrantPolicies]?
+
+        public var lastAuthenticated: String?
+
+        public var lastAuthenticatedEntity: String?
+
+        public var RAMCode: String?
+
+        public var serviceCodes: [String]?
+
+        public var totalAuthenticatedEntities: Int32?
+
+        public var trackedActionsLastAccessed: [GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed.TrackedActionsLastAccessed]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.grantPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.grantPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["GrantPolicies"] = tmp
+            }
+            if self.lastAuthenticated != nil {
+                map["LastAuthenticated"] = self.lastAuthenticated!
+            }
+            if self.lastAuthenticatedEntity != nil {
+                map["LastAuthenticatedEntity"] = self.lastAuthenticatedEntity!
+            }
+            if self.RAMCode != nil {
+                map["RAMCode"] = self.RAMCode!
+            }
+            if self.serviceCodes != nil {
+                map["ServiceCodes"] = self.serviceCodes!
+            }
+            if self.totalAuthenticatedEntities != nil {
+                map["TotalAuthenticatedEntities"] = self.totalAuthenticatedEntities!
+            }
+            if self.trackedActionsLastAccessed != nil {
+                var tmp : [Any] = []
+                for k in self.trackedActionsLastAccessed! {
+                    tmp.append(k.toMap())
+                }
+                map["TrackedActionsLastAccessed"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GrantPolicies"] as? [Any?] {
+                var tmp : [GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed.GrantPolicies] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed.GrantPolicies()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.grantPolicies = tmp
+            }
+            if let value = dict["LastAuthenticated"] as? String {
+                self.lastAuthenticated = value
+            }
+            if let value = dict["LastAuthenticatedEntity"] as? String {
+                self.lastAuthenticatedEntity = value
+            }
+            if let value = dict["RAMCode"] as? String {
+                self.RAMCode = value
+            }
+            if let value = dict["ServiceCodes"] as? [String] {
+                self.serviceCodes = value
+            }
+            if let value = dict["TotalAuthenticatedEntities"] as? Int32 {
+                self.totalAuthenticatedEntities = value
+            }
+            if let value = dict["TrackedActionsLastAccessed"] as? [Any?] {
+                var tmp : [GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed.TrackedActionsLastAccessed] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed.TrackedActionsLastAccessed()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.trackedActionsLastAccessed = tmp
+            }
+        }
+    }
+    public var isTruncated: Bool?
+
+    public var jobCompletionTime: String?
+
+    public var jobCreationTime: String?
+
+    public var jobError: GetServiceLastAccessedDetailsResponseBody.JobError?
+
+    public var jobStatus: String?
+
+    public var jobType: String?
+
+    public var marker: String?
+
+    public var requestId: String?
+
+    public var servicesLastAccessed: [GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.jobError?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isTruncated != nil {
+            map["IsTruncated"] = self.isTruncated!
+        }
+        if self.jobCompletionTime != nil {
+            map["JobCompletionTime"] = self.jobCompletionTime!
+        }
+        if self.jobCreationTime != nil {
+            map["JobCreationTime"] = self.jobCreationTime!
+        }
+        if self.jobError != nil {
+            map["JobError"] = self.jobError?.toMap()
+        }
+        if self.jobStatus != nil {
+            map["JobStatus"] = self.jobStatus!
+        }
+        if self.jobType != nil {
+            map["JobType"] = self.jobType!
+        }
+        if self.marker != nil {
+            map["Marker"] = self.marker!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.servicesLastAccessed != nil {
+            var tmp : [Any] = []
+            for k in self.servicesLastAccessed! {
+                tmp.append(k.toMap())
+            }
+            map["ServicesLastAccessed"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IsTruncated"] as? Bool {
+            self.isTruncated = value
+        }
+        if let value = dict["JobCompletionTime"] as? String {
+            self.jobCompletionTime = value
+        }
+        if let value = dict["JobCreationTime"] as? String {
+            self.jobCreationTime = value
+        }
+        if let value = dict["JobError"] as? [String: Any?] {
+            var model = GetServiceLastAccessedDetailsResponseBody.JobError()
+            model.fromMap(value)
+            self.jobError = model
+        }
+        if let value = dict["JobStatus"] as? String {
+            self.jobStatus = value
+        }
+        if let value = dict["JobType"] as? String {
+            self.jobType = value
+        }
+        if let value = dict["Marker"] as? String {
+            self.marker = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ServicesLastAccessed"] as? [Any?] {
+            var tmp : [GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed] = []
+            for v in value {
+                if v != nil {
+                    var model = GetServiceLastAccessedDetailsResponseBody.ServicesLastAccessed()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.servicesLastAccessed = tmp
+        }
+    }
+}
+
+public class GetServiceLastAccessedDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetServiceLastAccessedDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetServiceLastAccessedDetailsResponseBody()
             model.fromMap(value)
             self.body = model
         }
