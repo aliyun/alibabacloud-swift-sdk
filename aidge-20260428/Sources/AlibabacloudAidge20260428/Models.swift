@@ -4192,6 +4192,319 @@ public class GeneralRephotographyDetectionResponse : Tea.TeaModel {
     }
 }
 
+public class GenerateProductContentRequest : Tea.TeaModel {
+    public var bulletPointCount: Int32?
+
+    public var contentType: String?
+
+    public var enableTranslation: Bool?
+
+    public var maxLength: Int32?
+
+    public var minLength: Int32?
+
+    public var operation: String?
+
+    public var platform: String?
+
+    public var productAttributes: String?
+
+    public var productCategory: String?
+
+    public var sourceLanguage: String?
+
+    public var sourceText: String?
+
+    public var targetLanguage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bulletPointCount != nil {
+            map["BulletPointCount"] = self.bulletPointCount!
+        }
+        if self.contentType != nil {
+            map["ContentType"] = self.contentType!
+        }
+        if self.enableTranslation != nil {
+            map["EnableTranslation"] = self.enableTranslation!
+        }
+        if self.maxLength != nil {
+            map["MaxLength"] = self.maxLength!
+        }
+        if self.minLength != nil {
+            map["MinLength"] = self.minLength!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.platform != nil {
+            map["Platform"] = self.platform!
+        }
+        if self.productAttributes != nil {
+            map["ProductAttributes"] = self.productAttributes!
+        }
+        if self.productCategory != nil {
+            map["ProductCategory"] = self.productCategory!
+        }
+        if self.sourceLanguage != nil {
+            map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.sourceText != nil {
+            map["SourceText"] = self.sourceText!
+        }
+        if self.targetLanguage != nil {
+            map["TargetLanguage"] = self.targetLanguage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BulletPointCount"] as? Int32 {
+            self.bulletPointCount = value
+        }
+        if let value = dict["ContentType"] as? String {
+            self.contentType = value
+        }
+        if let value = dict["EnableTranslation"] as? Bool {
+            self.enableTranslation = value
+        }
+        if let value = dict["MaxLength"] as? Int32 {
+            self.maxLength = value
+        }
+        if let value = dict["MinLength"] as? Int32 {
+            self.minLength = value
+        }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
+        if let value = dict["Platform"] as? String {
+            self.platform = value
+        }
+        if let value = dict["ProductAttributes"] as? String {
+            self.productAttributes = value
+        }
+        if let value = dict["ProductCategory"] as? String {
+            self.productCategory = value
+        }
+        if let value = dict["SourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["SourceText"] as? String {
+            self.sourceText = value
+        }
+        if let value = dict["TargetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+    }
+}
+
+public class GenerateProductContentResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var contentType: String?
+
+        public var length: Int32?
+
+        public var outputLanguage: String?
+
+        public var pointLengths: [Int32]?
+
+        public var points: [String]?
+
+        public var text: String?
+
+        public var usageMap: [String: Int32]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contentType != nil {
+                map["ContentType"] = self.contentType!
+            }
+            if self.length != nil {
+                map["Length"] = self.length!
+            }
+            if self.outputLanguage != nil {
+                map["OutputLanguage"] = self.outputLanguage!
+            }
+            if self.pointLengths != nil {
+                map["PointLengths"] = self.pointLengths!
+            }
+            if self.points != nil {
+                map["Points"] = self.points!
+            }
+            if self.text != nil {
+                map["Text"] = self.text!
+            }
+            if self.usageMap != nil {
+                map["UsageMap"] = self.usageMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContentType"] as? String {
+                self.contentType = value
+            }
+            if let value = dict["Length"] as? Int32 {
+                self.length = value
+            }
+            if let value = dict["OutputLanguage"] as? String {
+                self.outputLanguage = value
+            }
+            if let value = dict["PointLengths"] as? [Int32] {
+                self.pointLengths = value
+            }
+            if let value = dict["Points"] as? [String] {
+                self.points = value
+            }
+            if let value = dict["Text"] as? String {
+                self.text = value
+            }
+            if let value = dict["UsageMap"] as? [String: Int32] {
+                self.usageMap = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GenerateProductContentResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GenerateProductContentResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GenerateProductContentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateProductContentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GenerateProductContentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ImageCroppingRequest : Tea.TeaModel {
     public var imageUrl: String?
 

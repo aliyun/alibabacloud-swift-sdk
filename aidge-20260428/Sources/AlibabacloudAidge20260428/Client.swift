@@ -564,6 +564,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateProductContentWithOptions(_ request: GenerateProductContentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateProductContentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bulletPointCount)) {
+            query["BulletPointCount"] = request.bulletPointCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contentType)) {
+            query["ContentType"] = request.contentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableTranslation)) {
+            query["EnableTranslation"] = request.enableTranslation!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxLength)) {
+            query["MaxLength"] = request.maxLength!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minLength)) {
+            query["MinLength"] = request.minLength!;
+        }
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            query["Operation"] = request.operation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productAttributes)) {
+            query["ProductAttributes"] = request.productAttributes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCategory)) {
+            query["ProductCategory"] = request.productCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            query["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceText)) {
+            query["SourceText"] = request.sourceText ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            query["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateProductContent",
+            "version": "2026-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateProductContentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateProductContent(_ request: GenerateProductContentRequest) async throws -> GenerateProductContentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generateProductContentWithOptions(request as! GenerateProductContentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func imageCroppingWithOptions(_ request: ImageCroppingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageCroppingResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
