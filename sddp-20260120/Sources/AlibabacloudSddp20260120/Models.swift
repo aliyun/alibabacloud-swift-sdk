@@ -6553,6 +6553,8 @@ public class UpdateDataMaskingUsersRequest : Tea.TeaModel {
     public class UserList : Tea.TeaModel {
         public var accountId: String?
 
+        public var authDb: String?
+
         public var instanceId: String?
 
         public override init() {
@@ -6572,6 +6574,9 @@ public class UpdateDataMaskingUsersRequest : Tea.TeaModel {
             if self.accountId != nil {
                 map["AccountId"] = self.accountId!
             }
+            if self.authDb != nil {
+                map["AuthDb"] = self.authDb!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -6582,6 +6587,9 @@ public class UpdateDataMaskingUsersRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccountId"] as? String {
                 self.accountId = value
+            }
+            if let value = dict["AuthDb"] as? String {
+                self.authDb = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
