@@ -46979,6 +46979,8 @@ public class DescribeDisksRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var performanceLevel: String?
+
     public var portable: Bool?
 
     public var regionId: String?
@@ -47089,6 +47091,9 @@ public class DescribeDisksRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.performanceLevel != nil {
+            map["PerformanceLevel"] = self.performanceLevel!
         }
         if self.portable != nil {
             map["Portable"] = self.portable!
@@ -47210,6 +47215,9 @@ public class DescribeDisksRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["PerformanceLevel"] as? String {
+            self.performanceLevel = value
         }
         if let value = dict["Portable"] as? Bool {
             self.portable = value

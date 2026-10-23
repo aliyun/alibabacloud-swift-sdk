@@ -8929,6 +8929,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.performanceLevel)) {
+            query["PerformanceLevel"] = request.performanceLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.portable)) {
             query["Portable"] = request.portable!;
         }
