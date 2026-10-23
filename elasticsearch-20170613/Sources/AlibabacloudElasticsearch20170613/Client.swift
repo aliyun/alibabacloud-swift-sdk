@@ -6470,6 +6470,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.elasticDataNodeConfiguration)) {
             body["elasticDataNodeConfiguration"] = request.elasticDataNodeConfiguration!;
         }
+        if (!TeaUtils.Client.isUnset(request.indexNodeConfiguration)) {
+            body["indexNodeConfiguration"] = request.indexNodeConfiguration!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceCategory)) {
             body["instanceCategory"] = request.instanceCategory ?? "";
         }
@@ -6484,6 +6487,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nodeSpec)) {
             body["nodeSpec"] = request.nodeSpec!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchNodeConfiguration)) {
+            body["searchNodeConfiguration"] = request.searchNodeConfiguration!;
         }
         if (!TeaUtils.Client.isUnset(request.updateType)) {
             body["updateType"] = request.updateType ?? "";
@@ -7613,6 +7619,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.esVersion)) {
             body["esVersion"] = request.esVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.indexNodeConfiguration)) {
+            body["indexNodeConfiguration"] = request.indexNodeConfiguration!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceCategory)) {
             body["instanceCategory"] = request.instanceCategory ?? "";
         }
@@ -7639,6 +7648,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchNodeConfiguration)) {
+            body["searchNodeConfiguration"] = request.searchNodeConfiguration!;
         }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             body["tags"] = request.tags ?? [];

@@ -1087,6 +1087,69 @@ public class Elasticsearch : Tea.TeaModel {
     }
 }
 
+public class IndexNodeConfiguration : Tea.TeaModel {
+    public var amount: Int32?
+
+    public var disk: Int32?
+
+    public var diskType: String?
+
+    public var performanceLevel: String?
+
+    public var spec: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.amount != nil {
+            map["amount"] = self.amount!
+        }
+        if self.disk != nil {
+            map["disk"] = self.disk!
+        }
+        if self.diskType != nil {
+            map["diskType"] = self.diskType!
+        }
+        if self.performanceLevel != nil {
+            map["performanceLevel"] = self.performanceLevel!
+        }
+        if self.spec != nil {
+            map["spec"] = self.spec!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["amount"] as? Int32 {
+            self.amount = value
+        }
+        if let value = dict["disk"] as? Int32 {
+            self.disk = value
+        }
+        if let value = dict["diskType"] as? String {
+            self.diskType = value
+        }
+        if let value = dict["performanceLevel"] as? String {
+            self.performanceLevel = value
+        }
+        if let value = dict["spec"] as? String {
+            self.spec = value
+        }
+    }
+}
+
 public class KibanaNodeConfiguration : Tea.TeaModel {
     public var amount: Int64?
 
@@ -2256,6 +2319,69 @@ public class ReadWritePolicy : Tea.TeaModel {
         }
         if let value = dict["writePolicy"] as? String {
             self.writePolicy = value
+        }
+    }
+}
+
+public class SearchNodeConfiguration : Tea.TeaModel {
+    public var amount: Int32?
+
+    public var disk: Int32?
+
+    public var diskType: String?
+
+    public var performanceLevel: String?
+
+    public var spec: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.amount != nil {
+            map["amount"] = self.amount!
+        }
+        if self.disk != nil {
+            map["disk"] = self.disk!
+        }
+        if self.diskType != nil {
+            map["diskType"] = self.diskType!
+        }
+        if self.performanceLevel != nil {
+            map["performanceLevel"] = self.performanceLevel!
+        }
+        if self.spec != nil {
+            map["spec"] = self.spec!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["amount"] as? Int32 {
+            self.amount = value
+        }
+        if let value = dict["disk"] as? Int32 {
+            self.disk = value
+        }
+        if let value = dict["diskType"] as? String {
+            self.diskType = value
+        }
+        if let value = dict["performanceLevel"] as? String {
+            self.performanceLevel = value
+        }
+        if let value = dict["spec"] as? String {
+            self.spec = value
         }
     }
 }
@@ -10891,6 +11017,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var ikHotDicts: [DescribeInstanceResponseBody.Result.IkHotDicts]?
 
+        public var indexNodeConfiguration: IndexNodeConfiguration?
+
         public var inited: Bool?
 
         public var instanceCategory: String?
@@ -10939,6 +11067,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var searchNodeConfiguration: SearchNodeConfiguration?
+
         public var serviceVpc: Bool?
 
         public var status: String?
@@ -10972,10 +11102,12 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             try self.advancedSetting?.validate()
             try self.clientNodeConfiguration?.validate()
             try self.elasticDataNodeConfiguration?.validate()
+            try self.indexNodeConfiguration?.validate()
             try self.kibanaConfiguration?.validate()
             try self.masterConfiguration?.validate()
             try self.networkConfig?.validate()
             try self.nodeSpec?.validate()
+            try self.searchNodeConfiguration?.validate()
             try self.warmNodeConfiguration?.validate()
         }
 
@@ -11069,6 +11201,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 }
                 map["ikHotDicts"] = tmp
             }
+            if self.indexNodeConfiguration != nil {
+                map["indexNodeConfiguration"] = self.indexNodeConfiguration?.toMap()
+            }
             if self.inited != nil {
                 map["inited"] = self.inited!
             }
@@ -11140,6 +11275,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["resourceGroupId"] = self.resourceGroupId!
+            }
+            if self.searchNodeConfiguration != nil {
+                map["searchNodeConfiguration"] = self.searchNodeConfiguration?.toMap()
             }
             if self.serviceVpc != nil {
                 map["serviceVpc"] = self.serviceVpc!
@@ -11306,6 +11444,11 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 }
                 self.ikHotDicts = tmp
             }
+            if let value = dict["indexNodeConfiguration"] as? [String: Any?] {
+                var model = IndexNodeConfiguration()
+                model.fromMap(value)
+                self.indexNodeConfiguration = model
+            }
             if let value = dict["inited"] as? Bool {
                 self.inited = value
             }
@@ -11385,6 +11528,11 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["resourceGroupId"] as? String {
                 self.resourceGroupId = value
+            }
+            if let value = dict["searchNodeConfiguration"] as? [String: Any?] {
+                var model = SearchNodeConfiguration()
+                model.fromMap(value)
+                self.searchNodeConfiguration = model
             }
             if let value = dict["serviceVpc"] as? Bool {
                 self.serviceVpc = value
@@ -28257,6 +28405,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
 
         public var extendConfigs: [[String: Any]]?
 
+        public var indexNodeConfiguration: IndexNodeConfiguration?
+
         public var instanceId: String?
 
         public var isNewDeployment: String?
@@ -28289,6 +28439,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var searchNodeConfiguration: SearchNodeConfiguration?
+
         public var serviceVpc: Bool?
 
         public var status: String?
@@ -28315,10 +28467,12 @@ public class ListInstanceResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.clientNodeConfiguration?.validate()
             try self.elasticDataNodeConfiguration?.validate()
+            try self.indexNodeConfiguration?.validate()
             try self.kibanaConfiguration?.validate()
             try self.masterConfiguration?.validate()
             try self.networkConfig?.validate()
             try self.nodeSpec?.validate()
+            try self.searchNodeConfiguration?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -28355,6 +28509,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if self.extendConfigs != nil {
                 map["extendConfigs"] = self.extendConfigs!
+            }
+            if self.indexNodeConfiguration != nil {
+                map["indexNodeConfiguration"] = self.indexNodeConfiguration?.toMap()
             }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
@@ -28403,6 +28560,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["resourceGroupId"] = self.resourceGroupId!
+            }
+            if self.searchNodeConfiguration != nil {
+                map["searchNodeConfiguration"] = self.searchNodeConfiguration?.toMap()
             }
             if self.serviceVpc != nil {
                 map["serviceVpc"] = self.serviceVpc!
@@ -28475,6 +28635,11 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             if let value = dict["extendConfigs"] as? [[String: Any]] {
                 self.extendConfigs = value
             }
+            if let value = dict["indexNodeConfiguration"] as? [String: Any?] {
+                var model = IndexNodeConfiguration()
+                model.fromMap(value)
+                self.indexNodeConfiguration = model
+            }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
             }
@@ -28530,6 +28695,11 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["resourceGroupId"] as? String {
                 self.resourceGroupId = value
+            }
+            if let value = dict["searchNodeConfiguration"] as? [String: Any?] {
+                var model = SearchNodeConfiguration()
+                model.fromMap(value)
+                self.searchNodeConfiguration = model
             }
             if let value = dict["serviceVpc"] as? Bool {
                 self.serviceVpc = value
@@ -43828,6 +43998,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var elasticDataNodeConfiguration: ElasticDataNodeConfiguration?
 
+    public var indexNodeConfiguration: IndexNodeConfiguration?
+
     public var instanceCategory: String?
 
     public var kibanaConfiguration: KibanaNodeConfiguration?
@@ -43837,6 +44009,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var nodeAmount: Int32?
 
     public var nodeSpec: NodeSpec?
+
+    public var searchNodeConfiguration: SearchNodeConfiguration?
 
     public var updateType: String?
 
@@ -43860,9 +44034,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.clientNodeConfiguration?.validate()
         try self.elasticDataNodeConfiguration?.validate()
+        try self.indexNodeConfiguration?.validate()
         try self.kibanaConfiguration?.validate()
         try self.masterConfiguration?.validate()
         try self.nodeSpec?.validate()
+        try self.searchNodeConfiguration?.validate()
         try self.warmNodeConfiguration?.validate()
     }
 
@@ -43873,6 +44049,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.elasticDataNodeConfiguration != nil {
             map["elasticDataNodeConfiguration"] = self.elasticDataNodeConfiguration?.toMap()
+        }
+        if self.indexNodeConfiguration != nil {
+            map["indexNodeConfiguration"] = self.indexNodeConfiguration?.toMap()
         }
         if self.instanceCategory != nil {
             map["instanceCategory"] = self.instanceCategory!
@@ -43888,6 +44067,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.nodeSpec != nil {
             map["nodeSpec"] = self.nodeSpec?.toMap()
+        }
+        if self.searchNodeConfiguration != nil {
+            map["searchNodeConfiguration"] = self.searchNodeConfiguration?.toMap()
         }
         if self.updateType != nil {
             map["updateType"] = self.updateType!
@@ -43919,6 +44101,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             model.fromMap(value)
             self.elasticDataNodeConfiguration = model
         }
+        if let value = dict["indexNodeConfiguration"] as? [String: Any?] {
+            var model = IndexNodeConfiguration()
+            model.fromMap(value)
+            self.indexNodeConfiguration = model
+        }
         if let value = dict["instanceCategory"] as? String {
             self.instanceCategory = value
         }
@@ -43939,6 +44126,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             var model = NodeSpec()
             model.fromMap(value)
             self.nodeSpec = model
+        }
+        if let value = dict["searchNodeConfiguration"] as? [String: Any?] {
+            var model = SearchNodeConfiguration()
+            model.fromMap(value)
+            self.searchNodeConfiguration = model
         }
         if let value = dict["updateType"] as? String {
             self.updateType = value
@@ -43962,6 +44154,68 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
 public class UpdateInstanceResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public class IndexNodeConfiguration : Tea.TeaModel {
+            public var amount: Int32?
+
+            public var disk: Int32?
+
+            public var diskType: String?
+
+            public var performanceLevel: String?
+
+            public var spec: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amount != nil {
+                    map["amount"] = self.amount!
+                }
+                if self.disk != nil {
+                    map["disk"] = self.disk!
+                }
+                if self.diskType != nil {
+                    map["diskType"] = self.diskType!
+                }
+                if self.performanceLevel != nil {
+                    map["performanceLevel"] = self.performanceLevel!
+                }
+                if self.spec != nil {
+                    map["spec"] = self.spec!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["amount"] as? Int32 {
+                    self.amount = value
+                }
+                if let value = dict["disk"] as? Int32 {
+                    self.disk = value
+                }
+                if let value = dict["diskType"] as? String {
+                    self.diskType = value
+                }
+                if let value = dict["performanceLevel"] as? String {
+                    self.performanceLevel = value
+                }
+                if let value = dict["spec"] as? String {
+                    self.spec = value
+                }
+            }
+        }
         public class KibanaConfiguration : Tea.TeaModel {
             public var amount: Int32?
 
@@ -44116,6 +44370,68 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SearchNodeConfiguration : Tea.TeaModel {
+            public var amount: Int32?
+
+            public var disk: Int32?
+
+            public var diskType: String?
+
+            public var performanceLevel: String?
+
+            public var spec: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amount != nil {
+                    map["amount"] = self.amount!
+                }
+                if self.disk != nil {
+                    map["disk"] = self.disk!
+                }
+                if self.diskType != nil {
+                    map["diskType"] = self.diskType!
+                }
+                if self.performanceLevel != nil {
+                    map["performanceLevel"] = self.performanceLevel!
+                }
+                if self.spec != nil {
+                    map["spec"] = self.spec!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["amount"] as? Int32 {
+                    self.amount = value
+                }
+                if let value = dict["disk"] as? Int32 {
+                    self.disk = value
+                }
+                if let value = dict["diskType"] as? String {
+                    self.diskType = value
+                }
+                if let value = dict["performanceLevel"] as? String {
+                    self.performanceLevel = value
+                }
+                if let value = dict["spec"] as? String {
+                    self.spec = value
+                }
+            }
+        }
         public var createdAt: String?
 
         public var description_: String?
@@ -44123,6 +44439,8 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
         public var domain: String?
 
         public var esVersion: String?
+
+        public var indexNodeConfiguration: UpdateInstanceResponseBody.Result.IndexNodeConfiguration?
 
         public var instanceId: String?
 
@@ -44136,6 +44454,8 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
 
         public var paymentType: String?
 
+        public var searchNodeConfiguration: UpdateInstanceResponseBody.Result.SearchNodeConfiguration?
+
         public var status: String?
 
         public override init() {
@@ -44148,9 +44468,11 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.indexNodeConfiguration?.validate()
             try self.kibanaConfiguration?.validate()
             try self.masterConfiguration?.validate()
             try self.nodeSpec?.validate()
+            try self.searchNodeConfiguration?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -44166,6 +44488,9 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
             }
             if self.esVersion != nil {
                 map["esVersion"] = self.esVersion!
+            }
+            if self.indexNodeConfiguration != nil {
+                map["indexNodeConfiguration"] = self.indexNodeConfiguration?.toMap()
             }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
@@ -44184,6 +44509,9 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
             }
             if self.paymentType != nil {
                 map["paymentType"] = self.paymentType!
+            }
+            if self.searchNodeConfiguration != nil {
+                map["searchNodeConfiguration"] = self.searchNodeConfiguration?.toMap()
             }
             if self.status != nil {
                 map["status"] = self.status!
@@ -44204,6 +44532,11 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["esVersion"] as? String {
                 self.esVersion = value
+            }
+            if let value = dict["indexNodeConfiguration"] as? [String: Any?] {
+                var model = UpdateInstanceResponseBody.Result.IndexNodeConfiguration()
+                model.fromMap(value)
+                self.indexNodeConfiguration = model
             }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
@@ -44228,6 +44561,11 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["paymentType"] as? String {
                 self.paymentType = value
+            }
+            if let value = dict["searchNodeConfiguration"] as? [String: Any?] {
+                var model = UpdateInstanceResponseBody.Result.SearchNodeConfiguration()
+                model.fromMap(value)
+                self.searchNodeConfiguration = model
             }
             if let value = dict["status"] as? String {
                 self.status = value
@@ -49310,6 +49648,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var esVersion: String?
 
+    public var indexNodeConfiguration: IndexNodeConfiguration?
+
     public var instanceCategory: String?
 
     public var kibanaConfiguration: KibanaNodeConfiguration?
@@ -49327,6 +49667,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var paymentType: String?
 
     public var resourceGroupId: String?
+
+    public var searchNodeConfiguration: SearchNodeConfiguration?
 
     public var tags: [CreateInstanceRequest.Tags]?
 
@@ -49348,11 +49690,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.clientNodeConfiguration?.validate()
         try self.elasticDataNodeConfiguration?.validate()
+        try self.indexNodeConfiguration?.validate()
         try self.kibanaConfiguration?.validate()
         try self.masterConfiguration?.validate()
         try self.networkConfig?.validate()
         try self.nodeSpec?.validate()
         try self.paymentInfo?.validate()
+        try self.searchNodeConfiguration?.validate()
         try self.warmNodeConfiguration?.validate()
     }
 
@@ -49372,6 +49716,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.esVersion != nil {
             map["esVersion"] = self.esVersion!
+        }
+        if self.indexNodeConfiguration != nil {
+            map["indexNodeConfiguration"] = self.indexNodeConfiguration?.toMap()
         }
         if self.instanceCategory != nil {
             map["instanceCategory"] = self.instanceCategory!
@@ -49399,6 +49746,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.searchNodeConfiguration != nil {
+            map["searchNodeConfiguration"] = self.searchNodeConfiguration?.toMap()
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -49440,6 +49790,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if let value = dict["esVersion"] as? String {
             self.esVersion = value
         }
+        if let value = dict["indexNodeConfiguration"] as? [String: Any?] {
+            var model = IndexNodeConfiguration()
+            model.fromMap(value)
+            self.indexNodeConfiguration = model
+        }
         if let value = dict["instanceCategory"] as? String {
             self.instanceCategory = value
         }
@@ -49476,6 +49831,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["searchNodeConfiguration"] as? [String: Any?] {
+            var model = SearchNodeConfiguration()
+            model.fromMap(value)
+            self.searchNodeConfiguration = model
         }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [CreateInstanceRequest.Tags] = []
