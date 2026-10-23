@@ -4516,6 +4516,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeTransitRouterCapacityReservationsWithOptions(_ request: DescribeTransitRouterCapacityReservationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTransitRouterCapacityReservationsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.transitRouterId)) {
+            query["TransitRouterId"] = request.transitRouterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeTransitRouterCapacityReservations",
+            "version": "2017-09-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeTransitRouterCapacityReservationsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeTransitRouterCapacityReservations(_ request: DescribeTransitRouterCapacityReservationsRequest) async throws -> DescribeTransitRouterCapacityReservationsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeTransitRouterCapacityReservationsWithOptions(request as! DescribeTransitRouterCapacityReservationsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func detachCenChildInstanceWithOptions(_ request: DetachCenChildInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachCenChildInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -7081,6 +7115,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyTransitRouteTableAggregation(_ request: ModifyTransitRouteTableAggregationRequest) async throws -> ModifyTransitRouteTableAggregationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyTransitRouteTableAggregationWithOptions(request as! ModifyTransitRouteTableAggregationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyTransitRouterCapacityReservationsWithOptions(_ tmpReq: ModifyTransitRouterCapacityReservationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyTransitRouterCapacityReservationsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyTransitRouterCapacityReservationsShrinkRequest = ModifyTransitRouterCapacityReservationsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.deploymentSets)) {
+            request.deploymentSetsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.deploymentSets, "DeploymentSets", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.minimumTransitRouterCapacities)) {
+            request.minimumTransitRouterCapacitiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.minimumTransitRouterCapacities, "MinimumTransitRouterCapacities", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.resetCapacityReservations)) {
+            request.resetCapacityReservationsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resetCapacityReservations, "ResetCapacityReservations", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deploymentSetsShrink)) {
+            query["DeploymentSets"] = request.deploymentSetsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minimumTransitRouterCapacitiesShrink)) {
+            query["MinimumTransitRouterCapacities"] = request.minimumTransitRouterCapacitiesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resetCapacityReservationsShrink)) {
+            query["ResetCapacityReservations"] = request.resetCapacityReservationsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transitRouterId)) {
+            query["TransitRouterId"] = request.transitRouterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyTransitRouterCapacityReservations",
+            "version": "2017-09-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyTransitRouterCapacityReservationsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyTransitRouterCapacityReservations(_ request: ModifyTransitRouterCapacityReservationsRequest) async throws -> ModifyTransitRouterCapacityReservationsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyTransitRouterCapacityReservationsWithOptions(request as! ModifyTransitRouterCapacityReservationsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
