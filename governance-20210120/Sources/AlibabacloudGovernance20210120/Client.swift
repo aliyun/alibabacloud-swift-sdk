@@ -348,6 +348,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGovernanceServiceStatusWithOptions(_ request: GetGovernanceServiceStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGovernanceServiceStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGovernanceServiceStatus",
+            "version": "2021-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGovernanceServiceStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGovernanceServiceStatus(_ request: GetGovernanceServiceStatusRequest) async throws -> GetGovernanceServiceStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getGovernanceServiceStatusWithOptions(request as! GetGovernanceServiceStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAccountFactoryBaselineItemsWithOptions(_ request: ListAccountFactoryBaselineItemsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAccountFactoryBaselineItemsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
