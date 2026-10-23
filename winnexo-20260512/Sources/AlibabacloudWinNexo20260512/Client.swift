@@ -3167,6 +3167,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["tenantId"] = request.tenantId ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.action)) {
+            body["action"] = request.action ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.collaborationGroupId)) {
             body["collaborationGroupId"] = request.collaborationGroupId ?? "";
         }
@@ -3198,6 +3201,50 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createWorkflowTemplateWithOptions(request as! CreateWorkflowTemplateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWorkflowTemplateDraftVersionWithOptions(_ request: CreateWorkflowTemplateDraftVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWorkflowTemplateDraftVersionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.collaborationGroupId)) {
+            body["collaborationGroupId"] = request.collaborationGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            body["templateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWorkflowTemplateDraftVersion",
+            "version": "2026-05-12",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/createWorkflowTemplateDraftVersion",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWorkflowTemplateDraftVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWorkflowTemplateDraftVersion(_ request: CreateWorkflowTemplateDraftVersionRequest) async throws -> CreateWorkflowTemplateDraftVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createWorkflowTemplateDraftVersionWithOptions(request as! CreateWorkflowTemplateDraftVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3444,6 +3491,50 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWorkflowTemplateVersionWithOptions(_ request: DeleteWorkflowTemplateVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWorkflowTemplateVersionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.collaborationGroupId)) {
+            body["collaborationGroupId"] = request.collaborationGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            body["templateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWorkflowTemplateVersion",
+            "version": "2026-05-12",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/deleteWorkflowTemplateVersion",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWorkflowTemplateVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWorkflowTemplateVersion(_ request: DeleteWorkflowTemplateVersionRequest) async throws -> DeleteWorkflowTemplateVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteWorkflowTemplateVersionWithOptions(request as! DeleteWorkflowTemplateVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func disableTokenWithOptions(_ request: DisableTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3532,6 +3623,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             body["templateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -4925,6 +5019,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             body["templateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -6907,6 +7004,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listWorkflowInstancesWithOptions(request as! ListWorkflowInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWorkflowTemplateVersionsWithOptions(_ request: ListWorkflowTemplateVersionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWorkflowTemplateVersionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.collaborationGroupId)) {
+            body["collaborationGroupId"] = request.collaborationGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            body["templateId"] = request.templateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListWorkflowTemplateVersions",
+            "version": "2026-05-12",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/listWorkflowTemplateVersions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListWorkflowTemplateVersionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWorkflowTemplateVersions(_ request: ListWorkflowTemplateVersionsRequest) async throws -> ListWorkflowTemplateVersionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listWorkflowTemplateVersionsWithOptions(request as! ListWorkflowTemplateVersionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -9185,6 +9323,50 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setWorkflowTemplateEffectiveVersionWithOptions(_ request: SetWorkflowTemplateEffectiveVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SetWorkflowTemplateEffectiveVersionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.collaborationGroupId)) {
+            body["collaborationGroupId"] = request.collaborationGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            body["templateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetWorkflowTemplateEffectiveVersion",
+            "version": "2026-05-12",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/setWorkflowTemplateEffectiveVersion",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetWorkflowTemplateEffectiveVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setWorkflowTemplateEffectiveVersion(_ request: SetWorkflowTemplateEffectiveVersionRequest) async throws -> SetWorkflowTemplateEffectiveVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await setWorkflowTemplateEffectiveVersionWithOptions(request as! SetWorkflowTemplateEffectiveVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopChatMessageWithOptions(_ request: StopChatMessageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopChatMessageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -10526,14 +10708,26 @@ open class Client : AlibabacloudOpenApi.Client {
             query["tenantId"] = request.tenantId ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.action)) {
+            body["action"] = request.action ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.collaborationGroupId)) {
             body["collaborationGroupId"] = request.collaborationGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.definitionShrink)) {
             body["definition"] = request.definitionShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceVersion)) {
+            body["sourceVersion"] = request.sourceVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             body["templateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionDescription)) {
+            body["versionDescription"] = request.versionDescription ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
