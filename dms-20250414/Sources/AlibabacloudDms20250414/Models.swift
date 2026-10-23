@@ -12221,6 +12221,8 @@ public class CreateDataAgentSessionResponse : Tea.TeaModel {
 public class CreateDataAgentSkillMetaRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var skillId: String?
+
     public var skillName: String?
 
     public var uploadLocation: String?
@@ -12244,6 +12246,9 @@ public class CreateDataAgentSkillMetaRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.skillId != nil {
+            map["SkillId"] = self.skillId!
+        }
         if self.skillName != nil {
             map["SkillName"] = self.skillName!
         }
@@ -12260,6 +12265,9 @@ public class CreateDataAgentSkillMetaRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["SkillId"] as? String {
+            self.skillId = value
         }
         if let value = dict["SkillName"] as? String {
             self.skillName = value
