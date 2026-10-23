@@ -526,6 +526,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyLakebaseMountParameterGroupWithOptions(_ request: ApplyLakebaseMountParameterGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyLakebaseMountParameterGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.parameterGroupId)) {
+            query["ParameterGroupId"] = request.parameterGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.polarFsInstanceId)) {
+            query["PolarFsInstanceId"] = request.polarFsInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ApplyLakebaseMountParameterGroup",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ApplyLakebaseMountParameterGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyLakebaseMountParameterGroup(_ request: ApplyLakebaseMountParameterGroupRequest) async throws -> ApplyLakebaseMountParameterGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await applyLakebaseMountParameterGroupWithOptions(request as! ApplyLakebaseMountParameterGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func approvePolarClawDevicePairWithOptions(_ request: ApprovePolarClawDevicePairRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApprovePolarClawDevicePairResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -9372,6 +9409,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAvailableModels(_ request: DescribeAvailableModelsRequest) async throws -> DescribeAvailableModelsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeAvailableModelsWithOptions(request as! DescribeAvailableModelsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeBackupLogDownloadLinksWithOptions(_ request: DescribeBackupLogDownloadLinksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeBackupLogDownloadLinksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backupLogIds)) {
+            query["BackupLogIds"] = request.backupLogIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireHours)) {
+            query["ExpireHours"] = request.expireHours!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeBackupLogDownloadLinks",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeBackupLogDownloadLinksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeBackupLogDownloadLinks(_ request: DescribeBackupLogDownloadLinksRequest) async throws -> DescribeBackupLogDownloadLinksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeBackupLogDownloadLinksWithOptions(request as! DescribeBackupLogDownloadLinksRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
