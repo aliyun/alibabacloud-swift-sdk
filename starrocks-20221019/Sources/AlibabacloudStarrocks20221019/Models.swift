@@ -2058,6 +2058,8 @@ public class CreateInstanceV1Response : Tea.TeaModel {
 }
 
 public class CreateScalingRuleRequest : Tea.TeaModel {
+    public var instanceId: String?
+
     public var nodeGroupId: String?
 
     public var rule: String?
@@ -2078,6 +2080,9 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.nodeGroupId != nil {
             map["NodeGroupId"] = self.nodeGroupId!
         }
@@ -2092,6 +2097,9 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["NodeGroupId"] as? String {
             self.nodeGroupId = value
         }
@@ -3019,6 +3027,8 @@ public class DeleteInnerIpWhitelistGroupResponse : Tea.TeaModel {
 }
 
 public class DeleteScalingRuleRequest : Tea.TeaModel {
+    public var instanceId: String?
+
     public var nodeGroupId: String?
 
     public var scalingRuleId: String?
@@ -3039,6 +3049,9 @@ public class DeleteScalingRuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.nodeGroupId != nil {
             map["NodeGroupId"] = self.nodeGroupId!
         }
@@ -3053,6 +3066,9 @@ public class DeleteScalingRuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["NodeGroupId"] as? String {
             self.nodeGroupId = value
         }
@@ -10462,6 +10478,8 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
 
         public var supportCompactionServiceWhiteList: Bool?
 
+        public var supportLoadBasedAutoScaling: Bool?
+
         public override init() {
             super.init()
         }
@@ -10539,6 +10557,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             if self.supportCompactionServiceWhiteList != nil {
                 map["supportCompactionServiceWhiteList"] = self.supportCompactionServiceWhiteList!
             }
+            if self.supportLoadBasedAutoScaling != nil {
+                map["supportLoadBasedAutoScaling"] = self.supportLoadBasedAutoScaling!
+            }
             return map
         }
 
@@ -10606,6 +10627,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             }
             if let value = dict["supportCompactionServiceWhiteList"] as? Bool {
                 self.supportCompactionServiceWhiteList = value
+            }
+            if let value = dict["supportLoadBasedAutoScaling"] as? Bool {
+                self.supportLoadBasedAutoScaling = value
             }
         }
     }
@@ -14997,6 +15021,8 @@ public class ModifyNodeNumberPreCheckResponse : Tea.TeaModel {
 }
 
 public class ModifyScalingRuleRequest : Tea.TeaModel {
+    public var instanceId: String?
+
     public var newTriggerType: String?
 
     public var nodeGroupId: String?
@@ -15021,6 +15047,9 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.newTriggerType != nil {
             map["NewTriggerType"] = self.newTriggerType!
         }
@@ -15041,6 +15070,9 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["NewTriggerType"] as? String {
             self.newTriggerType = value
         }

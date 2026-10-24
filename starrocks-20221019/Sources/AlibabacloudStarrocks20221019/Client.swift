@@ -378,6 +378,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createScalingRuleWithOptions(_ request: CreateScalingRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateScalingRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nodeGroupId)) {
             query["NodeGroupId"] = request.nodeGroupId ?? "";
         }
@@ -591,6 +594,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteScalingRuleWithOptions(_ request: DeleteScalingRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteScalingRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nodeGroupId)) {
             query["NodeGroupId"] = request.nodeGroupId ?? "";
         }
@@ -2269,6 +2275,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyScalingRuleWithOptions(_ request: ModifyScalingRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyScalingRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.newTriggerType)) {
             query["NewTriggerType"] = request.newTriggerType ?? "";
         }
