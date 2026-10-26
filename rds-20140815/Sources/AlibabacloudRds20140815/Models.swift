@@ -6581,6 +6581,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var autoRenew: String?
 
+    public var autoUpgradeMinorVersion: String?
+
     public var autoUseCoupon: Bool?
 
     public var babelfishConfig: String?
@@ -6723,6 +6725,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
+        }
+        if self.autoUpgradeMinorVersion != nil {
+            map["AutoUpgradeMinorVersion"] = self.autoUpgradeMinorVersion!
         }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
@@ -6918,6 +6923,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["AutoRenew"] as? String {
             self.autoRenew = value
+        }
+        if let value = dict["AutoUpgradeMinorVersion"] as? String {
+            self.autoUpgradeMinorVersion = value
         }
         if let value = dict["AutoUseCoupon"] as? Bool {
             self.autoUseCoupon = value
@@ -7155,6 +7163,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var autoRenew: String?
 
+    public var autoUpgradeMinorVersion: String?
+
     public var autoUseCoupon: Bool?
 
     public var babelfishConfig: String?
@@ -7296,6 +7306,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
+        }
+        if self.autoUpgradeMinorVersion != nil {
+            map["AutoUpgradeMinorVersion"] = self.autoUpgradeMinorVersion!
         }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
@@ -7491,6 +7504,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AutoRenew"] as? String {
             self.autoRenew = value
+        }
+        if let value = dict["AutoUpgradeMinorVersion"] as? String {
+            self.autoUpgradeMinorVersion = value
         }
         if let value = dict["AutoUseCoupon"] as? Bool {
             self.autoUseCoupon = value

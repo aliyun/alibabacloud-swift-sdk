@@ -1676,6 +1676,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.autoUpgradeMinorVersion)) {
+            query["AutoUpgradeMinorVersion"] = request.autoUpgradeMinorVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
             query["AutoUseCoupon"] = request.autoUseCoupon!;
         }
