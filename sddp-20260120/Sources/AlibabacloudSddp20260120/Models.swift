@@ -207,6 +207,8 @@ public class CreateDataMaskingRuleRequest : Tea.TeaModel {
     public class UserList : Tea.TeaModel {
         public var accountId: String?
 
+        public var authDb: String?
+
         public override init() {
             super.init()
         }
@@ -224,6 +226,9 @@ public class CreateDataMaskingRuleRequest : Tea.TeaModel {
             if self.accountId != nil {
                 map["AccountId"] = self.accountId!
             }
+            if self.authDb != nil {
+                map["AuthDb"] = self.authDb!
+            }
             return map
         }
 
@@ -231,6 +236,9 @@ public class CreateDataMaskingRuleRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccountId"] as? String {
                 self.accountId = value
+            }
+            if let value = dict["AuthDb"] as? String {
+                self.authDb = value
             }
         }
     }
@@ -1896,6 +1904,8 @@ public class ListColumnsResponse : Tea.TeaModel {
 public class ListDataAssetAccountsRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var authDb: String?
+
     public var authRole: String?
 
     public var bizType: String?
@@ -1929,6 +1939,9 @@ public class ListDataAssetAccountsRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.authDb != nil {
+            map["AuthDb"] = self.authDb!
+        }
         if self.authRole != nil {
             map["AuthRole"] = self.authRole!
         }
@@ -1960,6 +1973,9 @@ public class ListDataAssetAccountsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountName"] as? String {
             self.accountName = value
+        }
+        if let value = dict["AuthDb"] as? String {
+            self.authDb = value
         }
         if let value = dict["AuthRole"] as? String {
             self.authRole = value
@@ -1993,6 +2009,8 @@ public class ListDataAssetAccountsResponseBody : Tea.TeaModel {
         public var accountName: String?
 
         public var aliUid: Int64?
+
+        public var authDb: String?
 
         public var authRole: String?
 
@@ -2034,6 +2052,9 @@ public class ListDataAssetAccountsResponseBody : Tea.TeaModel {
             if self.aliUid != nil {
                 map["AliUid"] = self.aliUid!
             }
+            if self.authDb != nil {
+                map["AuthDb"] = self.authDb!
+            }
             if self.authRole != nil {
                 map["AuthRole"] = self.authRole!
             }
@@ -2074,6 +2095,9 @@ public class ListDataAssetAccountsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AliUid"] as? Int64 {
                 self.aliUid = value
+            }
+            if let value = dict["AuthDb"] as? String {
+                self.authDb = value
             }
             if let value = dict["AuthRole"] as? String {
                 self.authRole = value
