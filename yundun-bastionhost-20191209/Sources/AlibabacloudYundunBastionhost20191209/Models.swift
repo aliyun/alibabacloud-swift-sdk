@@ -24512,6 +24512,8 @@ public class ListHostAccountsForUserResponseBody : Tea.TeaModel {
 
         public var hostAccountName: String?
 
+        public var hostAccountType: String?
+
         public var hostId: String?
 
         public var isAuthorized: Bool?
@@ -24538,6 +24540,9 @@ public class ListHostAccountsForUserResponseBody : Tea.TeaModel {
             if self.hostAccountName != nil {
                 map["HostAccountName"] = self.hostAccountName!
             }
+            if self.hostAccountType != nil {
+                map["HostAccountType"] = self.hostAccountType!
+            }
             if self.hostId != nil {
                 map["HostId"] = self.hostId!
             }
@@ -24557,6 +24562,9 @@ public class ListHostAccountsForUserResponseBody : Tea.TeaModel {
             }
             if let value = dict["HostAccountName"] as? String {
                 self.hostAccountName = value
+            }
+            if let value = dict["HostAccountType"] as? String {
+                self.hostAccountType = value
             }
             if let value = dict["HostId"] as? String {
                 self.hostId = value
@@ -24772,6 +24780,8 @@ public class ListHostAccountsForUserGroupResponseBody : Tea.TeaModel {
 
         public var hostAccountName: String?
 
+        public var hostAccountType: String?
+
         public var hostId: String?
 
         public var isAuthorized: Bool?
@@ -24798,6 +24808,9 @@ public class ListHostAccountsForUserGroupResponseBody : Tea.TeaModel {
             if self.hostAccountName != nil {
                 map["HostAccountName"] = self.hostAccountName!
             }
+            if self.hostAccountType != nil {
+                map["HostAccountType"] = self.hostAccountType!
+            }
             if self.hostId != nil {
                 map["HostId"] = self.hostId!
             }
@@ -24817,6 +24830,9 @@ public class ListHostAccountsForUserGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["HostAccountName"] as? String {
                 self.hostAccountName = value
+            }
+            if let value = dict["HostAccountType"] as? String {
+                self.hostAccountType = value
             }
             if let value = dict["HostId"] as? String {
                 self.hostId = value
@@ -26328,6 +26344,8 @@ public class ListHostsResponseBody : Tea.TeaModel {
 
         public var comment: String?
 
+        public var domainAccountCount: String?
+
         public var hostAccountCount: Int32?
 
         public var hostId: String?
@@ -26366,6 +26384,9 @@ public class ListHostsResponseBody : Tea.TeaModel {
             if self.comment != nil {
                 map["Comment"] = self.comment!
             }
+            if self.domainAccountCount != nil {
+                map["DomainAccountCount"] = self.domainAccountCount!
+            }
             if self.hostAccountCount != nil {
                 map["HostAccountCount"] = self.hostAccountCount!
             }
@@ -26403,6 +26424,9 @@ public class ListHostsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Comment"] as? String {
                 self.comment = value
+            }
+            if let value = dict["DomainAccountCount"] as? String {
+                self.domainAccountCount = value
             }
             if let value = dict["HostAccountCount"] as? Int32 {
                 self.hostAccountCount = value
@@ -30563,6 +30587,8 @@ public class ListProjectsResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var domainServerCount: Int64?
+
         public var hostCount: Int64?
 
         public var isDefault: Bool?
@@ -30596,6 +30622,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.domainServerCount != nil {
+                map["DomainServerCount"] = self.domainServerCount!
+            }
             if self.hostCount != nil {
                 map["HostCount"] = self.hostCount!
             }
@@ -30624,6 +30653,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["DomainServerCount"] as? Int64 {
+                self.domainServerCount = value
             }
             if let value = dict["HostCount"] as? Int64 {
                 self.hostCount = value
