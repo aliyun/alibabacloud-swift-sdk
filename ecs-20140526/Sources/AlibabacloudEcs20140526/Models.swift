@@ -14954,6 +14954,36 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             }
         }
     }
+    public class ImageSecurityOptions : Tea.TeaModel {
+        public var securityScanMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.securityScanMode != nil {
+                map["SecurityScanMode"] = self.securityScanMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SecurityScanMode"] as? String {
+                self.securityScanMode = value
+            }
+        }
+    }
     public class ImportImageOptions : Tea.TeaModel {
         public class DiskDeviceMappings : Tea.TeaModel {
             public var diskImageSize: Int32?
@@ -15301,6 +15331,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
     public var imageOptions: CreateImagePipelineRequest.ImageOptions?
 
+    public var imageSecurityOptions: CreateImagePipelineRequest.ImageSecurityOptions?
+
     public var importImageOptions: CreateImagePipelineRequest.ImportImageOptions?
 
     public var instanceType: String?
@@ -15349,6 +15381,7 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.advancedOptions?.validate()
         try self.imageOptions?.validate()
+        try self.imageSecurityOptions?.validate()
         try self.importImageOptions?.validate()
     }
 
@@ -15386,6 +15419,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if self.imageOptions != nil {
             map["ImageOptions"] = self.imageOptions?.toMap()
+        }
+        if self.imageSecurityOptions != nil {
+            map["ImageSecurityOptions"] = self.imageSecurityOptions?.toMap()
         }
         if self.importImageOptions != nil {
             map["ImportImageOptions"] = self.importImageOptions?.toMap()
@@ -15486,6 +15522,11 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             var model = CreateImagePipelineRequest.ImageOptions()
             model.fromMap(value)
             self.imageOptions = model
+        }
+        if let value = dict["ImageSecurityOptions"] as? [String: Any?] {
+            var model = CreateImagePipelineRequest.ImageSecurityOptions()
+            model.fromMap(value)
+            self.imageSecurityOptions = model
         }
         if let value = dict["ImportImageOptions"] as? [String: Any?] {
             var model = CreateImagePipelineRequest.ImportImageOptions()
@@ -55042,6 +55083,36 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class ImageSecurityOptions : Tea.TeaModel {
+                public var securityScanMode: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.securityScanMode != nil {
+                        map["SecurityScanMode"] = self.securityScanMode!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecurityScanMode"] as? String {
+                        self.securityScanMode = value
+                    }
+                }
+            }
             public class ImportImageOptions : Tea.TeaModel {
                 public class DiskDeviceMappings : Tea.TeaModel {
                     public class DiskDeviceMapping : Tea.TeaModel {
@@ -55561,6 +55632,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
             public var imagePipelineId: String?
 
+            public var imageSecurityOptions: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageSecurityOptions?
+
             public var importImageOptions: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions?
 
             public var instanceType: String?
@@ -55600,6 +55673,7 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 try self.addAccounts?.validate()
                 try self.advancedOptions?.validate()
                 try self.imageOptions?.validate()
+                try self.imageSecurityOptions?.validate()
                 try self.importImageOptions?.validate()
                 try self.repairItems?.validate()
                 try self.tags?.validate()
@@ -55643,6 +55717,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if self.imagePipelineId != nil {
                     map["ImagePipelineId"] = self.imagePipelineId!
+                }
+                if self.imageSecurityOptions != nil {
+                    map["ImageSecurityOptions"] = self.imageSecurityOptions?.toMap()
                 }
                 if self.importImageOptions != nil {
                     map["ImportImageOptions"] = self.importImageOptions?.toMap()
@@ -55729,6 +55806,11 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ImagePipelineId"] as? String {
                     self.imagePipelineId = value
+                }
+                if let value = dict["ImageSecurityOptions"] as? [String: Any?] {
+                    var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageSecurityOptions()
+                    model.fromMap(value)
+                    self.imageSecurityOptions = model
                 }
                 if let value = dict["ImportImageOptions"] as? [String: Any?] {
                     var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions()

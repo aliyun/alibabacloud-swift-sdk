@@ -3099,6 +3099,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.imageOptions)) {
             query["ImageOptions"] = request.imageOptions!;
         }
+        if (!TeaUtils.Client.isUnset(request.imageSecurityOptions)) {
+            query["ImageSecurityOptions"] = request.imageSecurityOptions!;
+        }
         if (!TeaUtils.Client.isUnset(request.importImageOptions)) {
             query["ImportImageOptions"] = request.importImageOptions!;
         }
