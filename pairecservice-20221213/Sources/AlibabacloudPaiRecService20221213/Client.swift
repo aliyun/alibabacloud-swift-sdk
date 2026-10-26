@@ -5988,6 +5988,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.skipThresholdCheck)) {
             body["SkipThresholdCheck"] = request.skipThresholdCheck!;
         }
+        if (!TeaUtils.Client.isUnset(request.startTimestampMs)) {
+            body["StartTimestampMs"] = request.startTimestampMs!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)

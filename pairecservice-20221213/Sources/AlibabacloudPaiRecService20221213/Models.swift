@@ -33434,6 +33434,8 @@ public class PublishRecallManagementTableRequest : Tea.TeaModel {
 
     public var skipThresholdCheck: Bool?
 
+    public var startTimestampMs: Int64?
+
     public override init() {
         super.init()
     }
@@ -33463,6 +33465,9 @@ public class PublishRecallManagementTableRequest : Tea.TeaModel {
         if self.skipThresholdCheck != nil {
             map["SkipThresholdCheck"] = self.skipThresholdCheck!
         }
+        if self.startTimestampMs != nil {
+            map["StartTimestampMs"] = self.startTimestampMs!
+        }
         return map
     }
 
@@ -33482,6 +33487,9 @@ public class PublishRecallManagementTableRequest : Tea.TeaModel {
         }
         if let value = dict["SkipThresholdCheck"] as? Bool {
             self.skipThresholdCheck = value
+        }
+        if let value = dict["StartTimestampMs"] as? Int64 {
+            self.startTimestampMs = value
         }
     }
 }
