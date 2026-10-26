@@ -6456,6 +6456,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var encrypted: Bool?
 
+        public var eosDate: String?
+
         public var expireTime: Int64?
 
         public var instanceId: String?
@@ -6497,6 +6499,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         public var vSwitches: [DescribeInstancesResponseBody.Data.VSwitches]?
 
         public var version: String?
+
+        public var versionLifecycleStatus: String?
 
         public var vpcId: String?
 
@@ -6549,6 +6553,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.encrypted != nil {
                 map["Encrypted"] = self.encrypted!
+            }
+            if self.eosDate != nil {
+                map["EosDate"] = self.eosDate!
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
@@ -6621,6 +6628,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             if self.version != nil {
                 map["Version"] = self.version!
             }
+            if self.versionLifecycleStatus != nil {
+                map["VersionLifecycleStatus"] = self.versionLifecycleStatus!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -6664,6 +6674,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Encrypted"] as? Bool {
                 self.encrypted = value
+            }
+            if let value = dict["EosDate"] as? String {
+                self.eosDate = value
             }
             if let value = dict["ExpireTime"] as? Int64 {
                 self.expireTime = value
@@ -6747,6 +6760,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Version"] as? String {
                 self.version = value
+            }
+            if let value = dict["VersionLifecycleStatus"] as? String {
+                self.versionLifecycleStatus = value
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value
