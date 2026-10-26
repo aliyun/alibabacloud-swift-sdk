@@ -295,6 +295,36 @@ public class AppInstance : Tea.TeaModel {
 }
 
 public class AppInstanceAggregate : Tea.TeaModel {
+    public class ConversationInfo : Tea.TeaModel {
+        public var chatNum: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chatNum != nil {
+                map["ChatNum"] = self.chatNum!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChatNum"] as? Int64 {
+                self.chatNum = value
+            }
+        }
+    }
     public class PartnerDetail : Tea.TeaModel {
         public class BindData : Tea.TeaModel {
             public var bizId: String?
@@ -482,6 +512,8 @@ public class AppInstanceAggregate : Tea.TeaModel {
 
     public var buildType: String?
 
+    public var conversationInfo: AppInstanceAggregate.ConversationInfo?
+
     public var createTime: String?
 
     public var deleted: Int32?
@@ -547,6 +579,7 @@ public class AppInstanceAggregate : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.appOperationAddress?.validate()
+        try self.conversationInfo?.validate()
         try self.partnerDetail?.validate()
         try self.profile?.validate()
         try self.templateRecord?.validate()
@@ -582,6 +615,9 @@ public class AppInstanceAggregate : Tea.TeaModel {
         }
         if self.buildType != nil {
             map["BuildType"] = self.buildType!
+        }
+        if self.conversationInfo != nil {
+            map["ConversationInfo"] = self.conversationInfo?.toMap()
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
@@ -715,6 +751,11 @@ public class AppInstanceAggregate : Tea.TeaModel {
         }
         if let value = dict["BuildType"] as? String {
             self.buildType = value
+        }
+        if let value = dict["ConversationInfo"] as? [String: Any?] {
+            var model = AppInstanceAggregate.ConversationInfo()
+            model.fromMap(value)
+            self.conversationInfo = model
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
@@ -953,6 +994,8 @@ public class AppInstanceProfile : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var upgradeStatus: String?
+
     public override init() {
         super.init()
     }
@@ -1043,6 +1086,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.upgradeStatus != nil {
+            map["UpgradeStatus"] = self.upgradeStatus!
+        }
         return map
     }
 
@@ -1124,6 +1170,9 @@ public class AppInstanceProfile : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
+        }
+        if let value = dict["UpgradeStatus"] as? String {
+            self.upgradeStatus = value
         }
     }
 }
