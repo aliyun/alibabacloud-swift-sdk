@@ -8583,6 +8583,14 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
         public var llmModel: String?
 
+        public var polarAIEmbedderInstanceId: String?
+
+        public var polarAILlmInstanceId: String?
+
+        public var polarAIRerankerInstanceId: String?
+
+        public var polarAIVlInstanceId: String?
+
         public override init() {
             super.init()
         }
@@ -8606,6 +8614,18 @@ public class CreateApplicationRequest : Tea.TeaModel {
             if self.llmModel != nil {
                 map["LlmModel"] = self.llmModel!
             }
+            if self.polarAIEmbedderInstanceId != nil {
+                map["PolarAIEmbedderInstanceId"] = self.polarAIEmbedderInstanceId!
+            }
+            if self.polarAILlmInstanceId != nil {
+                map["PolarAILlmInstanceId"] = self.polarAILlmInstanceId!
+            }
+            if self.polarAIRerankerInstanceId != nil {
+                map["PolarAIRerankerInstanceId"] = self.polarAIRerankerInstanceId!
+            }
+            if self.polarAIVlInstanceId != nil {
+                map["PolarAIVlInstanceId"] = self.polarAIVlInstanceId!
+            }
             return map
         }
 
@@ -8619,6 +8639,18 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             if let value = dict["LlmModel"] as? String {
                 self.llmModel = value
+            }
+            if let value = dict["PolarAIEmbedderInstanceId"] as? String {
+                self.polarAIEmbedderInstanceId = value
+            }
+            if let value = dict["PolarAILlmInstanceId"] as? String {
+                self.polarAILlmInstanceId = value
+            }
+            if let value = dict["PolarAIRerankerInstanceId"] as? String {
+                self.polarAIRerankerInstanceId = value
+            }
+            if let value = dict["PolarAIVlInstanceId"] as? String {
+                self.polarAIVlInstanceId = value
             }
         }
     }
