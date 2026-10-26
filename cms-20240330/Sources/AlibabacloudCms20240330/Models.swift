@@ -11480,6 +11480,8 @@ public class ManageAlertRulesResult : Tea.TeaModel {
 
     public var deletedUuidList: [String]?
 
+    public var drillUuid: String?
+
     public var updatedCount: Int32?
 
     public var updatedUuidList: [String]?
@@ -11508,6 +11510,9 @@ public class ManageAlertRulesResult : Tea.TeaModel {
         if self.deletedUuidList != nil {
             map["deletedUuidList"] = self.deletedUuidList!
         }
+        if self.drillUuid != nil {
+            map["drillUuid"] = self.drillUuid!
+        }
         if self.updatedCount != nil {
             map["updatedCount"] = self.updatedCount!
         }
@@ -11530,6 +11535,9 @@ public class ManageAlertRulesResult : Tea.TeaModel {
         if let value = dict["deletedUuidList"] as? [String] {
             self.deletedUuidList = value
         }
+        if let value = dict["drillUuid"] as? String {
+            self.drillUuid = value
+        }
         if let value = dict["updatedCount"] as? Int32 {
             self.updatedCount = value
         }
@@ -11540,6 +11548,44 @@ public class ManageAlertRulesResult : Tea.TeaModel {
 }
 
 public class ManageAlertRulesUnifiedActionInput : Tea.TeaModel {
+    public class DrillTimeRange : Tea.TeaModel {
+        public var endTime: Int64?
+
+        public var startTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["startTime"] as? Int64 {
+                self.startTime = value
+            }
+        }
+    }
     public var action: String?
 
     public var actionIntegrationConfig: ActionIntegrationConfig?
@@ -11557,6 +11603,12 @@ public class ManageAlertRulesUnifiedActionInput : Tea.TeaModel {
     public var datasourceConfig: DatasourceConfigUnified?
 
     public var displayName: String?
+
+    public var drillEvalTime: Int64?
+
+    public var drillMode: String?
+
+    public var drillTimeRange: ManageAlertRulesUnifiedActionInput.DrillTimeRange?
 
     public var enabled: Bool?
 
@@ -11598,6 +11650,7 @@ public class ManageAlertRulesUnifiedActionInput : Tea.TeaModel {
         try self.armsIntegrationConfig?.validate()
         try self.conditionConfig?.validate()
         try self.datasourceConfig?.validate()
+        try self.drillTimeRange?.validate()
         try self.notifyConfig?.validate()
         try self.observeResourceConfig?.validate()
         try self.queryConfig?.validate()
@@ -11633,6 +11686,15 @@ public class ManageAlertRulesUnifiedActionInput : Tea.TeaModel {
         }
         if self.displayName != nil {
             map["displayName"] = self.displayName!
+        }
+        if self.drillEvalTime != nil {
+            map["drillEvalTime"] = self.drillEvalTime!
+        }
+        if self.drillMode != nil {
+            map["drillMode"] = self.drillMode!
+        }
+        if self.drillTimeRange != nil {
+            map["drillTimeRange"] = self.drillTimeRange?.toMap()
         }
         if self.enabled != nil {
             map["enabled"] = self.enabled!
@@ -11712,6 +11774,17 @@ public class ManageAlertRulesUnifiedActionInput : Tea.TeaModel {
         }
         if let value = dict["displayName"] as? String {
             self.displayName = value
+        }
+        if let value = dict["drillEvalTime"] as? Int64 {
+            self.drillEvalTime = value
+        }
+        if let value = dict["drillMode"] as? String {
+            self.drillMode = value
+        }
+        if let value = dict["drillTimeRange"] as? [String: Any?] {
+            var model = ManageAlertRulesUnifiedActionInput.DrillTimeRange()
+            model.fromMap(value)
+            self.drillTimeRange = model
         }
         if let value = dict["enabled"] as? Bool {
             self.enabled = value
@@ -23512,6 +23585,8 @@ public class CreateAddonReleaseRequest : Tea.TeaModel {
 
     public var aliyunLang: String?
 
+    public var apiVersion: String?
+
     public var dryRun: Bool?
 
     public var entityRules: EntityDiscoverRule?
@@ -23549,6 +23624,9 @@ public class CreateAddonReleaseRequest : Tea.TeaModel {
         if self.aliyunLang != nil {
             map["aliyunLang"] = self.aliyunLang!
         }
+        if self.apiVersion != nil {
+            map["apiVersion"] = self.apiVersion!
+        }
         if self.dryRun != nil {
             map["dryRun"] = self.dryRun!
         }
@@ -23583,6 +23661,9 @@ public class CreateAddonReleaseRequest : Tea.TeaModel {
         }
         if let value = dict["aliyunLang"] as? String {
             self.aliyunLang = value
+        }
+        if let value = dict["apiVersion"] as? String {
+            self.apiVersion = value
         }
         if let value = dict["dryRun"] as? Bool {
             self.dryRun = value
@@ -29491,6 +29572,8 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public var apiVersion: String?
+
     public var entityGroup: CreateIntegrationPolicyRequest.EntityGroup?
 
     public var policyName: String?
@@ -29518,6 +29601,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiVersion != nil {
+            map["apiVersion"] = self.apiVersion!
+        }
         if self.entityGroup != nil {
             map["entityGroup"] = self.entityGroup?.toMap()
         }
@@ -29545,6 +29631,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiVersion"] as? String {
+            self.apiVersion = value
+        }
         if let value = dict["entityGroup"] as? [String: Any?] {
             var model = CreateIntegrationPolicyRequest.EntityGroup()
             model.fromMap(value)
@@ -38639,6 +38728,8 @@ public class GetAddonReleaseResponse : Tea.TeaModel {
 public class GetAddonSchemaRequest : Tea.TeaModel {
     public var aliyunLang: String?
 
+    public var apiVersion: String?
+
     public var environmentType: String?
 
     public var version: String?
@@ -38660,6 +38751,9 @@ public class GetAddonSchemaRequest : Tea.TeaModel {
         if self.aliyunLang != nil {
             map["aliyunLang"] = self.aliyunLang!
         }
+        if self.apiVersion != nil {
+            map["apiVersion"] = self.apiVersion!
+        }
         if self.environmentType != nil {
             map["environmentType"] = self.environmentType!
         }
@@ -38673,6 +38767,9 @@ public class GetAddonSchemaRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["aliyunLang"] as? String {
             self.aliyunLang = value
+        }
+        if let value = dict["apiVersion"] as? String {
+            self.apiVersion = value
         }
         if let value = dict["environmentType"] as? String {
             self.environmentType = value
@@ -44075,6 +44172,8 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
         }
         public var addonNames: [String]?
 
+        public var apiVersion: String?
+
         public var bindResource: GetIntegrationPolicyResponseBody.Policy.BindResource?
 
         public var csUmodelStatus: Bool?
@@ -44118,6 +44217,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.addonNames != nil {
                 map["addonNames"] = self.addonNames!
+            }
+            if self.apiVersion != nil {
+                map["apiVersion"] = self.apiVersion!
             }
             if self.bindResource != nil {
                 map["bindResource"] = self.bindResource?.toMap()
@@ -44166,6 +44268,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["addonNames"] as? [String] {
                 self.addonNames = value
+            }
+            if let value = dict["apiVersion"] as? String {
+                self.apiVersion = value
             }
             if let value = dict["bindResource"] as? [String: Any?] {
                 var model = GetIntegrationPolicyResponseBody.Policy.BindResource()
@@ -49754,6 +49859,8 @@ public class ListAddonReleasesResponse : Tea.TeaModel {
 public class ListAddonsRequest : Tea.TeaModel {
     public var aliyunLang: String?
 
+    public var apiVersion: String?
+
     public var category: String?
 
     public var regexp: Bool?
@@ -49777,6 +49884,9 @@ public class ListAddonsRequest : Tea.TeaModel {
         if self.aliyunLang != nil {
             map["aliyunLang"] = self.aliyunLang!
         }
+        if self.apiVersion != nil {
+            map["apiVersion"] = self.apiVersion!
+        }
         if self.category != nil {
             map["category"] = self.category!
         }
@@ -49793,6 +49903,9 @@ public class ListAddonsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["aliyunLang"] as? String {
             self.aliyunLang = value
+        }
+        if let value = dict["apiVersion"] as? String {
+            self.apiVersion = value
         }
         if let value = dict["category"] as? String {
             self.category = value
@@ -57523,6 +57636,8 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
         }
         public var addonNames: [String]?
 
+        public var apiVersion: String?
+
         public var bindResource: ListIntegrationPoliciesResponseBody.Policies.BindResource?
 
         public var csUmodelStatus: Bool?
@@ -57570,6 +57685,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
             if self.addonNames != nil {
                 map["addonNames"] = self.addonNames!
             }
+            if self.apiVersion != nil {
+                map["apiVersion"] = self.apiVersion!
+            }
             if self.bindResource != nil {
                 map["bindResource"] = self.bindResource?.toMap()
             }
@@ -57616,6 +57734,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["addonNames"] as? [String] {
                 self.addonNames = value
+            }
+            if let value = dict["apiVersion"] as? String {
+                self.apiVersion = value
             }
             if let value = dict["bindResource"] as? [String: Any?] {
                 var model = ListIntegrationPoliciesResponseBody.Policies.BindResource()

@@ -215,6 +215,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
             body["aliyunLang"] = request.aliyunLang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.apiVersion)) {
+            body["apiVersion"] = request.apiVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             body["dryRun"] = request.dryRun!;
         }
@@ -785,6 +788,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createIntegrationPolicyWithOptions(_ request: CreateIntegrationPolicyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIntegrationPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiVersion)) {
+            body["apiVersion"] = request.apiVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.entityGroup)) {
             body["entityGroup"] = request.entityGroup!;
         }
@@ -2730,6 +2736,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
             query["aliyunLang"] = request.aliyunLang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.apiVersion)) {
+            query["apiVersion"] = request.apiVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.environmentType)) {
             query["environmentType"] = request.environmentType ?? "";
         }
@@ -3832,6 +3841,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
             query["aliyunLang"] = request.aliyunLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.apiVersion)) {
+            query["apiVersion"] = request.apiVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.category)) {
             query["category"] = request.category ?? "";
