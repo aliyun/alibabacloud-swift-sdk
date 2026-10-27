@@ -529,6 +529,448 @@ public class AigcChatCompletionStreamResponse : Tea.TeaModel {
     }
 }
 
+public class CuaChatCompletionStreamHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xQIAgentApiKey: String?
+
+    public var xQIInstanceId: String?
+
+    public var xQISessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xQIAgentApiKey != nil {
+            map["X-QI-Agent-Api-Key"] = self.xQIAgentApiKey!
+        }
+        if self.xQIInstanceId != nil {
+            map["X-QI-Instance-Id"] = self.xQIInstanceId!
+        }
+        if self.xQISessionId != nil {
+            map["X-QI-Session-Id"] = self.xQISessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["X-QI-Agent-Api-Key"] as? String {
+            self.xQIAgentApiKey = value
+        }
+        if let value = dict["X-QI-Instance-Id"] as? String {
+            self.xQIInstanceId = value
+        }
+        if let value = dict["X-QI-Session-Id"] as? String {
+            self.xQISessionId = value
+        }
+    }
+}
+
+public class CuaChatCompletionStreamRequest : Tea.TeaModel {
+    public class Messages : Tea.TeaModel {
+        public class Content : Tea.TeaModel {
+            public class ImageUrl : Tea.TeaModel {
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.url != nil {
+                        map["url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["url"] as? String {
+                        self.url = value
+                    }
+                }
+            }
+            public var imageData: String?
+
+            public var imageUrl: CuaChatCompletionStreamRequest.Messages.Content.ImageUrl?
+
+            public var text: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.imageUrl?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.imageData != nil {
+                    map["imageData"] = self.imageData!
+                }
+                if self.imageUrl != nil {
+                    map["imageUrl"] = self.imageUrl?.toMap()
+                }
+                if self.text != nil {
+                    map["text"] = self.text!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["imageData"] as? String {
+                    self.imageData = value
+                }
+                if let value = dict["imageUrl"] as? [String: Any?] {
+                    var model = CuaChatCompletionStreamRequest.Messages.Content.ImageUrl()
+                    model.fromMap(value)
+                    self.imageUrl = model
+                }
+                if let value = dict["text"] as? String {
+                    self.text = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var content: [CuaChatCompletionStreamRequest.Messages.Content]?
+
+        public var role: String?
+
+        public var toolCallId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                var tmp : [Any] = []
+                for k in self.content! {
+                    tmp.append(k.toMap())
+                }
+                map["content"] = tmp
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            if self.toolCallId != nil {
+                map["toolCallId"] = self.toolCallId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["content"] as? [Any?] {
+                var tmp : [CuaChatCompletionStreamRequest.Messages.Content] = []
+                for v in value {
+                    if v != nil {
+                        var model = CuaChatCompletionStreamRequest.Messages.Content()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.content = tmp
+            }
+            if let value = dict["role"] as? String {
+                self.role = value
+            }
+            if let value = dict["toolCallId"] as? String {
+                self.toolCallId = value
+            }
+        }
+    }
+    public class Metadata : Tea.TeaModel {
+        public var screenHeight: Int?
+
+        public var screenWidth: Int?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.screenHeight != nil {
+                map["screenHeight"] = self.screenHeight!
+            }
+            if self.screenWidth != nil {
+                map["screenWidth"] = self.screenWidth!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["screenHeight"] as? Int {
+                self.screenHeight = value
+            }
+            if let value = dict["screenWidth"] as? Int {
+                self.screenWidth = value
+            }
+        }
+    }
+    public class StreamOptions : Tea.TeaModel {
+        public var includeUsage: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.includeUsage != nil {
+                map["includeUsage"] = self.includeUsage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["includeUsage"] as? Bool {
+                self.includeUsage = value
+            }
+        }
+    }
+    public var messages: [CuaChatCompletionStreamRequest.Messages]?
+
+    public var metadata: CuaChatCompletionStreamRequest.Metadata?
+
+    public var model: String?
+
+    public var stream: Bool?
+
+    public var streamOptions: CuaChatCompletionStreamRequest.StreamOptions?
+
+    public var tools: [[String: Any]]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.metadata?.validate()
+        try self.streamOptions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.messages != nil {
+            var tmp : [Any] = []
+            for k in self.messages! {
+                tmp.append(k.toMap())
+            }
+            map["messages"] = tmp
+        }
+        if self.metadata != nil {
+            map["metadata"] = self.metadata?.toMap()
+        }
+        if self.model != nil {
+            map["model"] = self.model!
+        }
+        if self.stream != nil {
+            map["stream"] = self.stream!
+        }
+        if self.streamOptions != nil {
+            map["streamOptions"] = self.streamOptions?.toMap()
+        }
+        if self.tools != nil {
+            map["tools"] = self.tools!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["messages"] as? [Any?] {
+            var tmp : [CuaChatCompletionStreamRequest.Messages] = []
+            for v in value {
+                if v != nil {
+                    var model = CuaChatCompletionStreamRequest.Messages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.messages = tmp
+        }
+        if let value = dict["metadata"] as? [String: Any?] {
+            var model = CuaChatCompletionStreamRequest.Metadata()
+            model.fromMap(value)
+            self.metadata = model
+        }
+        if let value = dict["model"] as? String {
+            self.model = value
+        }
+        if let value = dict["stream"] as? Bool {
+            self.stream = value
+        }
+        if let value = dict["streamOptions"] as? [String: Any?] {
+            var model = CuaChatCompletionStreamRequest.StreamOptions()
+            model.fromMap(value)
+            self.streamOptions = model
+        }
+        if let value = dict["tools"] as? [[String: Any]] {
+            self.tools = value
+        }
+    }
+}
+
+public class CuaChatCompletionStreamResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CuaChatCompletionStreamResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CuaChatCompletionStreamResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CuaChatCompletionStreamResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GuiChatCompletionStreamHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 

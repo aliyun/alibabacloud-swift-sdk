@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("maasqiservice", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -79,6 +79,67 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: AigcChatCompletionStreamHeaders = AigcChatCompletionStreamHeaders([:])
         return try await aigcChatCompletionStreamWithOptions(request as! AigcChatCompletionStreamRequest, headers as! AigcChatCompletionStreamHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cuaChatCompletionStreamWithOptions(_ request: CuaChatCompletionStreamRequest, _ headers: CuaChatCompletionStreamHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CuaChatCompletionStreamResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.messages)) {
+            body["messages"] = request.messages ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["metadata"] = request.metadata!;
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            body["model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["stream"] = request.stream!;
+        }
+        if (!TeaUtils.Client.isUnset(request.streamOptions)) {
+            body["streamOptions"] = request.streamOptions!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tools)) {
+            body["tools"] = request.tools ?? [];
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIAgentApiKey)) {
+            realHeaders["X-QI-Agent-Api-Key"] = TeaUtils.Client.toJSONString(headers.xQIAgentApiKey);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQIInstanceId)) {
+            realHeaders["X-QI-Instance-Id"] = TeaUtils.Client.toJSONString(headers.xQIInstanceId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xQISessionId)) {
+            realHeaders["X-QI-Session-Id"] = TeaUtils.Client.toJSONString(headers.xQISessionId);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CuaChatCompletionStream",
+            "version": "2026-08-31",
+            "protocol": "HTTPS",
+            "pathname": "/cua/v1/chat/completions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CuaChatCompletionStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cuaChatCompletionStream(_ request: CuaChatCompletionStreamRequest) async throws -> CuaChatCompletionStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CuaChatCompletionStreamHeaders = CuaChatCompletionStreamHeaders([:])
+        return try await cuaChatCompletionStreamWithOptions(request as! CuaChatCompletionStreamRequest, headers as! CuaChatCompletionStreamHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
