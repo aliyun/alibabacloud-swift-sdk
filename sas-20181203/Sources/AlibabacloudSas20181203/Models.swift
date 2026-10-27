@@ -160930,6 +160930,8 @@ public class ListAgentlessRiskUuidRequest : Tea.TeaModel {
 
     public var intranetIp: String?
 
+    public var lang: String?
+
     public var machineName: String?
 
     public var pageSize: Int32?
@@ -160969,6 +160971,9 @@ public class ListAgentlessRiskUuidRequest : Tea.TeaModel {
         if self.intranetIp != nil {
             map["IntranetIp"] = self.intranetIp!
         }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
         if self.machineName != nil {
             map["MachineName"] = self.machineName!
         }
@@ -161003,6 +161008,9 @@ public class ListAgentlessRiskUuidRequest : Tea.TeaModel {
         }
         if let value = dict["IntranetIp"] as? String {
             self.intranetIp = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
         }
         if let value = dict["MachineName"] as? String {
             self.machineName = value

@@ -25456,6 +25456,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.intranetIp)) {
             query["IntranetIp"] = request.intranetIp ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.machineName)) {
             query["MachineName"] = request.machineName ?? "";
         }
