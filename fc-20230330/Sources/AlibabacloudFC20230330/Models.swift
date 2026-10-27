@@ -1436,6 +1436,8 @@ public class CreateLayerVersionInput : Tea.TeaModel {
 public class CreateSessionInput : Tea.TeaModel {
     public var allowInternetAccess: Bool?
 
+    public var autoPauseFileSystemOnly: Bool?
+
     public var disableSessionIdReuse: Bool?
 
     public var enableAutoPause: Bool?
@@ -1482,6 +1484,9 @@ public class CreateSessionInput : Tea.TeaModel {
         if self.allowInternetAccess != nil {
             map["allowInternetAccess"] = self.allowInternetAccess!
         }
+        if self.autoPauseFileSystemOnly != nil {
+            map["autoPauseFileSystemOnly"] = self.autoPauseFileSystemOnly!
+        }
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
         }
@@ -1525,6 +1530,9 @@ public class CreateSessionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["allowInternetAccess"] as? Bool {
             self.allowInternetAccess = value
+        }
+        if let value = dict["autoPauseFileSystemOnly"] as? Bool {
+            self.autoPauseFileSystemOnly = value
         }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
@@ -6148,6 +6156,8 @@ public class MicroSandboxConfig : Tea.TeaModel {
 
     public var startCommand: String?
 
+    public var steps: [Step]?
+
     public override init() {
         super.init()
     }
@@ -6181,6 +6191,13 @@ public class MicroSandboxConfig : Tea.TeaModel {
         if self.startCommand != nil {
             map["startCommand"] = self.startCommand!
         }
+        if self.steps != nil {
+            var tmp : [Any] = []
+            for k in self.steps! {
+                tmp.append(k.toMap())
+            }
+            map["steps"] = tmp
+        }
         return map
     }
 
@@ -6205,6 +6222,19 @@ public class MicroSandboxConfig : Tea.TeaModel {
         }
         if let value = dict["startCommand"] as? String {
             self.startCommand = value
+        }
+        if let value = dict["steps"] as? [Any?] {
+            var tmp : [Step] = []
+            for v in value {
+                if v != nil {
+                    var model = Step()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.steps = tmp
         }
     }
 }
@@ -8689,6 +8719,8 @@ public class ScheduledPolicy : Tea.TeaModel {
 public class Session : Tea.TeaModel {
     public var allowInternetAccess: Bool?
 
+    public var autoPauseFileSystemOnly: Bool?
+
     public var containerId: String?
 
     public var createdTime: String?
@@ -8748,6 +8780,9 @@ public class Session : Tea.TeaModel {
         var map = super.toMap()
         if self.allowInternetAccess != nil {
             map["allowInternetAccess"] = self.allowInternetAccess!
+        }
+        if self.autoPauseFileSystemOnly != nil {
+            map["autoPauseFileSystemOnly"] = self.autoPauseFileSystemOnly!
         }
         if self.containerId != nil {
             map["containerId"] = self.containerId!
@@ -8813,6 +8848,9 @@ public class Session : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["allowInternetAccess"] as? Bool {
             self.allowInternetAccess = value
+        }
+        if let value = dict["autoPauseFileSystemOnly"] as? Bool {
+            self.autoPauseFileSystemOnly = value
         }
         if let value = dict["containerId"] as? String {
             self.containerId = value
@@ -9718,6 +9756,45 @@ public class SourceRocketMQParameters : Tea.TeaModel {
         }
         if let value = dict["Topic"] as? String {
             self.topic = value
+        }
+    }
+}
+
+public class Step : Tea.TeaModel {
+    public var args: [String]?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.args != nil {
+            map["args"] = self.args!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["args"] as? [String] {
+            self.args = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
@@ -10929,6 +11006,8 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
 public class UpdateSessionInput : Tea.TeaModel {
     public var allowInternetAccess: Bool?
 
+    public var autoPauseFileSystemOnly: Bool?
+
     public var disableSessionIdReuse: Bool?
 
     public var enableAutoPause: Bool?
@@ -10971,6 +11050,9 @@ public class UpdateSessionInput : Tea.TeaModel {
         if self.allowInternetAccess != nil {
             map["allowInternetAccess"] = self.allowInternetAccess!
         }
+        if self.autoPauseFileSystemOnly != nil {
+            map["autoPauseFileSystemOnly"] = self.autoPauseFileSystemOnly!
+        }
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
         }
@@ -11008,6 +11090,9 @@ public class UpdateSessionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["allowInternetAccess"] as? Bool {
             self.allowInternetAccess = value
+        }
+        if let value = dict["autoPauseFileSystemOnly"] as? Bool {
+            self.autoPauseFileSystemOnly = value
         }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
