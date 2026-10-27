@@ -614,6 +614,8 @@ public class ChatResponseBody : Tea.TeaModel {
 
     public var agentId: String?
 
+    public var code: String?
+
     public var content: String?
 
     public var delta: String?
@@ -621,6 +623,8 @@ public class ChatResponseBody : Tea.TeaModel {
     public var kind: String?
 
     public var label: String?
+
+    public var message: String?
 
     public var messageId: String?
 
@@ -676,6 +680,9 @@ public class ChatResponseBody : Tea.TeaModel {
         if self.agentId != nil {
             map["AgentId"] = self.agentId!
         }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
@@ -687,6 +694,9 @@ public class ChatResponseBody : Tea.TeaModel {
         }
         if self.label != nil {
             map["Label"] = self.label!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
         }
         if self.messageId != nil {
             map["MessageId"] = self.messageId!
@@ -750,6 +760,9 @@ public class ChatResponseBody : Tea.TeaModel {
         if let value = dict["AgentId"] as? String {
             self.agentId = value
         }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
         if let value = dict["Content"] as? String {
             self.content = value
         }
@@ -761,6 +774,9 @@ public class ChatResponseBody : Tea.TeaModel {
         }
         if let value = dict["Label"] as? String {
             self.label = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
         }
         if let value = dict["MessageId"] as? String {
             self.messageId = value
