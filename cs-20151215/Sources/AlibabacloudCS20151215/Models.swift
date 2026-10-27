@@ -7557,7 +7557,50 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
     }
     public class NodeConfig : Tea.TeaModel {
+        public class NodeOsConfig : Tea.TeaModel {
+            public var hugepage: Hugepage?
+
+            public var sysctl: [String: Any]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.hugepage?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hugepage != nil {
+                    map["hugepage"] = self.hugepage?.toMap()
+                }
+                if self.sysctl != nil {
+                    map["sysctl"] = self.sysctl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["hugepage"] as? [String: Any?] {
+                    var model = Hugepage()
+                    model.fromMap(value)
+                    self.hugepage = model
+                }
+                if let value = dict["sysctl"] as? [String: Any] {
+                    self.sysctl = value
+                }
+            }
+        }
         public var kubeletConfiguration: KubeletConfig?
+
+        public var nodeOsConfig: CreateClusterNodePoolRequest.NodeConfig.NodeOsConfig?
 
         public override init() {
             super.init()
@@ -7570,12 +7613,16 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.kubeletConfiguration?.validate()
+            try self.nodeOsConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.kubeletConfiguration != nil {
                 map["kubelet_configuration"] = self.kubeletConfiguration?.toMap()
+            }
+            if self.nodeOsConfig != nil {
+                map["node_os_config"] = self.nodeOsConfig?.toMap()
             }
             return map
         }
@@ -7586,6 +7633,11 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 var model = KubeletConfig()
                 model.fromMap(value)
                 self.kubeletConfiguration = model
+            }
+            if let value = dict["node_os_config"] as? [String: Any?] {
+                var model = CreateClusterNodePoolRequest.NodeConfig.NodeOsConfig()
+                model.fromMap(value)
+                self.nodeOsConfig = model
             }
         }
     }
@@ -14951,6 +15003,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         public class NodeOsConfig : Tea.TeaModel {
             public var hugepage: Hugepage?
 
+            public var sysctl: [String: Any]?
+
             public override init() {
                 super.init()
             }
@@ -14969,6 +15023,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 if self.hugepage != nil {
                     map["hugepage"] = self.hugepage?.toMap()
                 }
+                if self.sysctl != nil {
+                    map["sysctl"] = self.sysctl!
+                }
                 return map
             }
 
@@ -14978,6 +15035,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                     var model = Hugepage()
                     model.fromMap(value)
                     self.hugepage = model
+                }
+                if let value = dict["sysctl"] as? [String: Any] {
+                    self.sysctl = value
                 }
             }
         }
@@ -17081,6 +17141,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             public class NodeOsConfig : Tea.TeaModel {
                 public var hugepage: Hugepage?
 
+                public var sysctl: [String: Any]?
+
                 public override init() {
                     super.init()
                 }
@@ -17099,6 +17161,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     if self.hugepage != nil {
                         map["hugepage"] = self.hugepage?.toMap()
                     }
+                    if self.sysctl != nil {
+                        map["sysctl"] = self.sysctl!
+                    }
                     return map
                 }
 
@@ -17108,6 +17173,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                         var model = Hugepage()
                         model.fromMap(value)
                         self.hugepage = model
+                    }
+                    if let value = dict["sysctl"] as? [String: Any] {
+                        self.sysctl = value
                     }
                 }
             }
