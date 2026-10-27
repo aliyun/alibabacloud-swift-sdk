@@ -1887,6 +1887,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileTransferSpeedLocation)) {
             query["FileTransferSpeedLocation"] = request.fileTransferSpeedLocation ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.folderSync)) {
+            query["FolderSync"] = request.folderSync ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gpuAcceleration)) {
             query["GpuAcceleration"] = request.gpuAcceleration ?? "";
         }
@@ -2756,6 +2759,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hostGpuDriverVersion)) {
+            query["HostGpuDriverVersion"] = request.hostGpuDriverVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.hostname)) {
             query["Hostname"] = request.hostname ?? "";
@@ -11486,6 +11492,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.fileTransferSpeedLocation)) {
             query["FileTransferSpeedLocation"] = request.fileTransferSpeedLocation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.folderSync)) {
+            query["FolderSync"] = request.folderSync ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.gpuAcceleration)) {
             query["GpuAcceleration"] = request.gpuAcceleration ?? "";

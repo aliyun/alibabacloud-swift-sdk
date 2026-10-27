@@ -7725,6 +7725,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var fileTransferSpeedLocation: String?
 
+    public var folderSync: String?
+
     public var gpuAcceleration: String?
 
     public var hoverConfigMsg: String?
@@ -8099,6 +8101,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.fileTransferSpeedLocation != nil {
             map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
+        }
+        if self.folderSync != nil {
+            map["FolderSync"] = self.folderSync!
         }
         if self.gpuAcceleration != nil {
             map["GpuAcceleration"] = self.gpuAcceleration!
@@ -8612,6 +8617,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["FileTransferSpeedLocation"] as? String {
             self.fileTransferSpeedLocation = value
+        }
+        if let value = dict["FolderSync"] as? String {
+            self.folderSync = value
         }
         if let value = dict["GpuAcceleration"] as? String {
             self.gpuAcceleration = value
@@ -11729,6 +11737,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var hostGpuDriverVersion: String?
+
     public var hostname: String?
 
     public var monthDesktopSetting: CreateDesktopsRequest.MonthDesktopSetting?
@@ -11860,6 +11870,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
+        }
+        if self.hostGpuDriverVersion != nil {
+            map["HostGpuDriverVersion"] = self.hostGpuDriverVersion!
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
@@ -12029,6 +12042,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
+        }
+        if let value = dict["HostGpuDriverVersion"] as? String {
+            self.hostGpuDriverVersion = value
         }
         if let value = dict["Hostname"] as? String {
             self.hostname = value
@@ -12458,6 +12474,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var hostGpuDriverVersion: String?
+
     public var hostname: String?
 
     public var monthDesktopSetting: CreateDesktopsShrinkRequest.MonthDesktopSetting?
@@ -12586,6 +12604,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
+        }
+        if self.hostGpuDriverVersion != nil {
+            map["HostGpuDriverVersion"] = self.hostGpuDriverVersion!
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
@@ -12751,6 +12772,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
+        }
+        if let value = dict["HostGpuDriverVersion"] as? String {
+            self.hostGpuDriverVersion = value
         }
         if let value = dict["Hostname"] as? String {
             self.hostname = value
@@ -24355,6 +24379,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var fileTransferSpeedLocation: String?
 
+        public var folderSync: String?
+
         public var gpuAcceleration: String?
 
         public var hoverConfigMsg: String?
@@ -24745,6 +24771,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.fileTransferSpeedLocation != nil {
                 map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
+            }
+            if self.folderSync != nil {
+                map["FolderSync"] = self.folderSync!
             }
             if self.gpuAcceleration != nil {
                 map["GpuAcceleration"] = self.gpuAcceleration!
@@ -25271,6 +25300,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileTransferSpeedLocation"] as? String {
                 self.fileTransferSpeedLocation = value
+            }
+            if let value = dict["FolderSync"] as? String {
+                self.folderSync = value
             }
             if let value = dict["GpuAcceleration"] as? String {
                 self.gpuAcceleration = value
@@ -29842,6 +29874,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var resetType: Int64?
 
+        public var sessionType: Int32?
+
         public var simpleUserGroupId: String?
 
         public var status: Int32?
@@ -30030,6 +30064,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.resetType != nil {
                 map["ResetType"] = self.resetType!
+            }
+            if self.sessionType != nil {
+                map["SessionType"] = self.sessionType!
             }
             if self.simpleUserGroupId != nil {
                 map["SimpleUserGroupId"] = self.simpleUserGroupId!
@@ -30232,6 +30269,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResetType"] as? Int64 {
                 self.resetType = value
+            }
+            if let value = dict["SessionType"] as? Int32 {
+                self.sessionType = value
             }
             if let value = dict["SimpleUserGroupId"] as? String {
                 self.simpleUserGroupId = value
@@ -32178,6 +32218,8 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
 
         public var endUserId: String?
 
+        public var lastClientIp: String?
+
         public var latestConnectionTime: Int64?
 
         public var officeSiteId: String?
@@ -32247,6 +32289,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if self.endUserId != nil {
                 map["EndUserId"] = self.endUserId!
+            }
+            if self.lastClientIp != nil {
+                map["LastClientIp"] = self.lastClientIp!
             }
             if self.latestConnectionTime != nil {
                 map["LatestConnectionTime"] = self.latestConnectionTime!
@@ -32325,6 +32370,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndUserId"] as? String {
                 self.endUserId = value
+            }
+            if let value = dict["LastClientIp"] as? String {
+                self.lastClientIp = value
             }
             if let value = dict["LatestConnectionTime"] as? Int64 {
                 self.latestConnectionTime = value
@@ -45842,6 +45890,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var fileTransferSpeedLocation: String?
 
+        public var folderSync: String?
+
         public var gpuAcceleration: String?
 
         public var hoverConfigMsg: String?
@@ -46234,6 +46284,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.fileTransferSpeedLocation != nil {
                 map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
+            }
+            if self.folderSync != nil {
+                map["FolderSync"] = self.folderSync!
             }
             if self.gpuAcceleration != nil {
                 map["GpuAcceleration"] = self.gpuAcceleration!
@@ -46767,6 +46820,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileTransferSpeedLocation"] as? String {
                 self.fileTransferSpeedLocation = value
+            }
+            if let value = dict["FolderSync"] as? String {
+                self.folderSync = value
             }
             if let value = dict["GpuAcceleration"] as? String {
                 self.gpuAcceleration = value
@@ -60435,6 +60491,8 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
 
         public var scaleTimerInfos: [GetDesktopGroupDetailResponseBody.Desktops.ScaleTimerInfos]?
 
+        public var sessionType: Int32?
+
         public var status: Int32?
 
         public var stopDuration: Int64?
@@ -60610,6 +60668,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ScaleTimerInfos"] = tmp
+            }
+            if self.sessionType != nil {
+                map["SessionType"] = self.sessionType!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -60794,6 +60855,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
                     }
                 }
                 self.scaleTimerInfos = tmp
+            }
+            if let value = dict["SessionType"] as? Int32 {
+                self.sessionType = value
             }
             if let value = dict["Status"] as? Int32 {
                 self.status = value
@@ -66806,6 +66870,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var fileTransferSpeedLocation: String?
 
+    public var folderSync: String?
+
     public var gpuAcceleration: String?
 
     public var hoverConfigMsg: String?
@@ -67184,6 +67250,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.fileTransferSpeedLocation != nil {
             map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
+        }
+        if self.folderSync != nil {
+            map["FolderSync"] = self.folderSync!
         }
         if self.gpuAcceleration != nil {
             map["GpuAcceleration"] = self.gpuAcceleration!
@@ -67711,6 +67780,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["FileTransferSpeedLocation"] as? String {
             self.fileTransferSpeedLocation = value
+        }
+        if let value = dict["FolderSync"] as? String {
+            self.folderSync = value
         }
         if let value = dict["GpuAcceleration"] as? String {
             self.gpuAcceleration = value
