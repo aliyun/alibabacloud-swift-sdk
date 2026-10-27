@@ -6444,6 +6444,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var beginTime: Int64?
 
+        public var computeFree: Bool?
+
         public var enableAiFunction: Bool?
 
         public var enableAutoMinorVersionUpgrade: Bool?
@@ -6535,6 +6537,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.beginTime != nil {
                 map["BeginTime"] = self.beginTime!
+            }
+            if self.computeFree != nil {
+                map["ComputeFree"] = self.computeFree!
             }
             if self.enableAiFunction != nil {
                 map["EnableAiFunction"] = self.enableAiFunction!
@@ -6656,6 +6661,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["BeginTime"] as? Int64 {
                 self.beginTime = value
+            }
+            if let value = dict["ComputeFree"] as? Bool {
+                self.computeFree = value
             }
             if let value = dict["EnableAiFunction"] as? Bool {
                 self.enableAiFunction = value
@@ -10464,6 +10472,8 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
 
         public var supportBackup: Bool?
 
+        public var supportConvertComputeFreeToPostPaid: Bool?
+
         public var supportCreateAgent: Bool?
 
         public var supportCreateNonStandardNodeGroup: Bool?
@@ -10527,6 +10537,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             }
             if self.supportBackup != nil {
                 map["SupportBackup"] = self.supportBackup!
+            }
+            if self.supportConvertComputeFreeToPostPaid != nil {
+                map["SupportConvertComputeFreeToPostPaid"] = self.supportConvertComputeFreeToPostPaid!
             }
             if self.supportCreateAgent != nil {
                 map["SupportCreateAgent"] = self.supportCreateAgent!
@@ -10598,6 +10611,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             }
             if let value = dict["SupportBackup"] as? Bool {
                 self.supportBackup = value
+            }
+            if let value = dict["SupportConvertComputeFreeToPostPaid"] as? Bool {
+                self.supportConvertComputeFreeToPostPaid = value
             }
             if let value = dict["SupportCreateAgent"] as? Bool {
                 self.supportCreateAgent = value
