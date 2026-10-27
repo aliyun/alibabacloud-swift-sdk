@@ -2036,6 +2036,84 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class StoragePolicy : Tea.TeaModel {
+                public var allowedActions: [String]?
+
+                public var dedupe: Bool?
+
+                public var humanEditProtection: Bool?
+
+                public var mergeKey: String?
+
+                public var mode: String?
+
+                public var similarityThreshold: Double?
+
+                public var ttlDays: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowedActions != nil {
+                        map["allowedActions"] = self.allowedActions!
+                    }
+                    if self.dedupe != nil {
+                        map["dedupe"] = self.dedupe!
+                    }
+                    if self.humanEditProtection != nil {
+                        map["humanEditProtection"] = self.humanEditProtection!
+                    }
+                    if self.mergeKey != nil {
+                        map["mergeKey"] = self.mergeKey!
+                    }
+                    if self.mode != nil {
+                        map["mode"] = self.mode!
+                    }
+                    if self.similarityThreshold != nil {
+                        map["similarityThreshold"] = self.similarityThreshold!
+                    }
+                    if self.ttlDays != nil {
+                        map["ttlDays"] = self.ttlDays!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["allowedActions"] as? [String] {
+                        self.allowedActions = value
+                    }
+                    if let value = dict["dedupe"] as? Bool {
+                        self.dedupe = value
+                    }
+                    if let value = dict["humanEditProtection"] as? Bool {
+                        self.humanEditProtection = value
+                    }
+                    if let value = dict["mergeKey"] as? String {
+                        self.mergeKey = value
+                    }
+                    if let value = dict["mode"] as? String {
+                        self.mode = value
+                    }
+                    if let value = dict["similarityThreshold"] as? Double {
+                        self.similarityThreshold = value
+                    }
+                    if let value = dict["ttlDays"] as? Int32 {
+                        self.ttlDays = value
+                    }
+                }
+            }
             public var categories: [String]?
 
             public var customInstructions: String?
@@ -2050,6 +2128,8 @@ public class CreateContextStoreRequest : Tea.TeaModel {
 
             public var preset: String?
 
+            public var storagePolicy: CreateContextStoreRequest.Config.ExtractionPolicies.StoragePolicy?
+
             public var strategyId: String?
 
             public override init() {
@@ -2063,6 +2143,7 @@ public class CreateContextStoreRequest : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.model?.validate()
+                try self.storagePolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -2087,6 +2168,9 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 }
                 if self.preset != nil {
                     map["preset"] = self.preset!
+                }
+                if self.storagePolicy != nil {
+                    map["storagePolicy"] = self.storagePolicy?.toMap()
                 }
                 if self.strategyId != nil {
                     map["strategyId"] = self.strategyId!
@@ -2118,6 +2202,11 @@ public class CreateContextStoreRequest : Tea.TeaModel {
                 }
                 if let value = dict["preset"] as? String {
                     self.preset = value
+                }
+                if let value = dict["storagePolicy"] as? [String: Any?] {
+                    var model = CreateContextStoreRequest.Config.ExtractionPolicies.StoragePolicy()
+                    model.fromMap(value)
+                    self.storagePolicy = model
                 }
                 if let value = dict["strategyId"] as? String {
                     self.strategyId = value
@@ -8215,6 +8304,84 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class StoragePolicy : Tea.TeaModel {
+                public var allowedActions: [String]?
+
+                public var dedupe: Bool?
+
+                public var humanEditProtection: Bool?
+
+                public var mergeKey: String?
+
+                public var mode: String?
+
+                public var similarityThreshold: Double?
+
+                public var ttlDays: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowedActions != nil {
+                        map["allowedActions"] = self.allowedActions!
+                    }
+                    if self.dedupe != nil {
+                        map["dedupe"] = self.dedupe!
+                    }
+                    if self.humanEditProtection != nil {
+                        map["humanEditProtection"] = self.humanEditProtection!
+                    }
+                    if self.mergeKey != nil {
+                        map["mergeKey"] = self.mergeKey!
+                    }
+                    if self.mode != nil {
+                        map["mode"] = self.mode!
+                    }
+                    if self.similarityThreshold != nil {
+                        map["similarityThreshold"] = self.similarityThreshold!
+                    }
+                    if self.ttlDays != nil {
+                        map["ttlDays"] = self.ttlDays!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["allowedActions"] as? [String] {
+                        self.allowedActions = value
+                    }
+                    if let value = dict["dedupe"] as? Bool {
+                        self.dedupe = value
+                    }
+                    if let value = dict["humanEditProtection"] as? Bool {
+                        self.humanEditProtection = value
+                    }
+                    if let value = dict["mergeKey"] as? String {
+                        self.mergeKey = value
+                    }
+                    if let value = dict["mode"] as? String {
+                        self.mode = value
+                    }
+                    if let value = dict["similarityThreshold"] as? Double {
+                        self.similarityThreshold = value
+                    }
+                    if let value = dict["ttlDays"] as? Int32 {
+                        self.ttlDays = value
+                    }
+                }
+            }
             public var categories: [String]?
 
             public var customInstructions: String?
@@ -8229,6 +8396,8 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
 
             public var preset: String?
 
+            public var storagePolicy: GetContextStoreResponseBody.Config.ExtractionPolicies.StoragePolicy?
+
             public var strategyId: String?
 
             public override init() {
@@ -8242,6 +8411,7 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.model?.validate()
+                try self.storagePolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -8266,6 +8436,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 }
                 if self.preset != nil {
                     map["preset"] = self.preset!
+                }
+                if self.storagePolicy != nil {
+                    map["storagePolicy"] = self.storagePolicy?.toMap()
                 }
                 if self.strategyId != nil {
                     map["strategyId"] = self.strategyId!
@@ -8297,6 +8470,11 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["preset"] as? String {
                     self.preset = value
+                }
+                if let value = dict["storagePolicy"] as? [String: Any?] {
+                    var model = GetContextStoreResponseBody.Config.ExtractionPolicies.StoragePolicy()
+                    model.fromMap(value)
+                    self.storagePolicy = model
                 }
                 if let value = dict["strategyId"] as? String {
                     self.strategyId = value
@@ -9309,6 +9487,8 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
 
         public var sourceStatus: GetContextStoreResponseBody.Config.SourceStatus?
 
+        public var storageModes: [String]?
+
         public var storagePolicy: GetContextStoreResponseBody.Config.StoragePolicy?
 
         public var strategyVersion: Int32?
@@ -9378,6 +9558,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             }
             if self.sourceStatus != nil {
                 map["sourceStatus"] = self.sourceStatus?.toMap()
+            }
+            if self.storageModes != nil {
+                map["storageModes"] = self.storageModes!
             }
             if self.storagePolicy != nil {
                 map["storagePolicy"] = self.storagePolicy?.toMap()
@@ -9454,6 +9637,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 var model = GetContextStoreResponseBody.Config.SourceStatus()
                 model.fromMap(value)
                 self.sourceStatus = model
+            }
+            if let value = dict["storageModes"] as? [String] {
+                self.storageModes = value
             }
             if let value = dict["storagePolicy"] as? [String: Any?] {
                 var model = GetContextStoreResponseBody.Config.StoragePolicy()
@@ -14356,6 +14542,8 @@ public class ListContextStoresResponseBody : Tea.TeaModel {
 
         public var storageMode: String?
 
+        public var storageModes: [String]?
+
         public var updateTime: String?
 
         public override init() {
@@ -14402,6 +14590,9 @@ public class ListContextStoresResponseBody : Tea.TeaModel {
             if self.storageMode != nil {
                 map["storageMode"] = self.storageMode!
             }
+            if self.storageModes != nil {
+                map["storageModes"] = self.storageModes!
+            }
             if self.updateTime != nil {
                 map["updateTime"] = self.updateTime!
             }
@@ -14439,6 +14630,9 @@ public class ListContextStoresResponseBody : Tea.TeaModel {
             }
             if let value = dict["storageMode"] as? String {
                 self.storageMode = value
+            }
+            if let value = dict["storageModes"] as? [String] {
+                self.storageModes = value
             }
             if let value = dict["updateTime"] as? String {
                 self.updateTime = value
@@ -20450,6 +20644,84 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class StoragePolicy : Tea.TeaModel {
+                public var allowedActions: [String]?
+
+                public var dedupe: Bool?
+
+                public var humanEditProtection: Bool?
+
+                public var mergeKey: String?
+
+                public var mode: String?
+
+                public var similarityThreshold: Double?
+
+                public var ttlDays: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowedActions != nil {
+                        map["allowedActions"] = self.allowedActions!
+                    }
+                    if self.dedupe != nil {
+                        map["dedupe"] = self.dedupe!
+                    }
+                    if self.humanEditProtection != nil {
+                        map["humanEditProtection"] = self.humanEditProtection!
+                    }
+                    if self.mergeKey != nil {
+                        map["mergeKey"] = self.mergeKey!
+                    }
+                    if self.mode != nil {
+                        map["mode"] = self.mode!
+                    }
+                    if self.similarityThreshold != nil {
+                        map["similarityThreshold"] = self.similarityThreshold!
+                    }
+                    if self.ttlDays != nil {
+                        map["ttlDays"] = self.ttlDays!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["allowedActions"] as? [String] {
+                        self.allowedActions = value
+                    }
+                    if let value = dict["dedupe"] as? Bool {
+                        self.dedupe = value
+                    }
+                    if let value = dict["humanEditProtection"] as? Bool {
+                        self.humanEditProtection = value
+                    }
+                    if let value = dict["mergeKey"] as? String {
+                        self.mergeKey = value
+                    }
+                    if let value = dict["mode"] as? String {
+                        self.mode = value
+                    }
+                    if let value = dict["similarityThreshold"] as? Double {
+                        self.similarityThreshold = value
+                    }
+                    if let value = dict["ttlDays"] as? Int32 {
+                        self.ttlDays = value
+                    }
+                }
+            }
             public var categories: [String]?
 
             public var customInstructions: String?
@@ -20464,6 +20736,8 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
             public var preset: String?
 
+            public var storagePolicy: UpdateContextStoreRequest.Config.ExtractionPolicies.StoragePolicy?
+
             public var strategyId: String?
 
             public override init() {
@@ -20477,6 +20751,7 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.model?.validate()
+                try self.storagePolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -20501,6 +20776,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                 }
                 if self.preset != nil {
                     map["preset"] = self.preset!
+                }
+                if self.storagePolicy != nil {
+                    map["storagePolicy"] = self.storagePolicy?.toMap()
                 }
                 if self.strategyId != nil {
                     map["strategyId"] = self.strategyId!
@@ -20532,6 +20810,11 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
                 }
                 if let value = dict["preset"] as? String {
                     self.preset = value
+                }
+                if let value = dict["storagePolicy"] as? [String: Any?] {
+                    var model = UpdateContextStoreRequest.Config.ExtractionPolicies.StoragePolicy()
+                    model.fromMap(value)
+                    self.storagePolicy = model
                 }
                 if let value = dict["strategyId"] as? String {
                     self.strategyId = value
