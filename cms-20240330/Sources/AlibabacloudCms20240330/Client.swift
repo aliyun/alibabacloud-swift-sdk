@@ -29,8 +29,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shanghai": "metrics.cn-shanghai.aliyuncs.com",
             "cn-hongkong": "metrics.cn-hongkong.aliyuncs.com",
             "cn-shenzhen": "metrics.cn-shenzhen.aliyuncs.com",
-            "cn-nanjing": "metrics.cn-nanjing.aliyuncs.com",
-            "cn-fuzhou": "metrics.cn-fuzhou.aliyuncs.com",
             "cn-chengdu": "metrics.cn-chengdu.aliyuncs.com",
             "cn-guangzhou": "metrics.cn-guangzhou.aliyuncs.com",
             "cn-huhehaote": "metrics.cn-huhehaote.aliyuncs.com",
@@ -65,6 +63,42 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activeContactChannelWithOptions(_ request: ActiveContactChannelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ActiveContactChannelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.code)) {
+            query["code"] = request.code ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.site)) {
+            query["site"] = request.site ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ActiveContactChannel",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contacts/action/activate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ActiveContactChannelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activeContactChannel(_ request: ActiveContactChannelRequest) async throws -> ActiveContactChannelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await activeContactChannelWithOptions(request as! ActiveContactChannelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -352,6 +386,114 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAlertActionWithOptions(_ request: CreateAlertActionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAlertActionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertActionId)) {
+            body["alertActionId"] = request.alertActionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertActionName)) {
+            body["alertActionName"] = request.alertActionName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ebParam)) {
+            body["ebParam"] = request.ebParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.essParam)) {
+            body["essParam"] = request.essParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fc3Param)) {
+            body["fc3Param"] = request.fc3Param!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fcParam)) {
+            body["fcParam"] = request.fcParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mnsParam)) {
+            body["mnsParam"] = request.mnsParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pagerDutyParam)) {
+            body["pagerDutyParam"] = request.pagerDutyParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.slsParam)) {
+            body["slsParam"] = request.slsParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.webhookParam)) {
+            body["webhookParam"] = request.webhookParam!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAlertAction",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertAction",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAlertActionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAlertAction(_ request: CreateAlertActionRequest) async throws -> CreateAlertActionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createAlertActionWithOptions(request as! CreateAlertActionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAlertNotifyTemplateWithOptions(_ request: CreateAlertNotifyTemplateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAlertNotifyTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertNotifyTemplateId)) {
+            body["alertNotifyTemplateId"] = request.alertNotifyTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertNotifyTemplateName)) {
+            body["alertNotifyTemplateName"] = request.alertNotifyTemplateName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.programLang)) {
+            body["programLang"] = request.programLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templates)) {
+            body["templates"] = request.templates ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAlertNotifyTemplate",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertNotifyTemplate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAlertNotifyTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAlertNotifyTemplate(_ request: CreateAlertNotifyTemplateRequest) async throws -> CreateAlertNotifyTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createAlertNotifyTemplateWithOptions(request as! CreateAlertNotifyTemplateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAlertRobotWithOptions(_ request: CreateAlertRobotRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAlertRobotResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -529,6 +671,99 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createCloudResourceWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContactWithOptions(_ request: CreateContactRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateContactResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            body["contactId"] = request.contactId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            body["email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imUserIds)) {
+            body["imUserIds"] = request.imUserIds ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            body["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateContact",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contact",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateContactResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContact(_ request: CreateContactRequest) async throws -> CreateContactResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createContactWithOptions(request as! CreateContactRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContactGroupWithOptions(_ request: CreateContactGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateContactGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactGroupId)) {
+            body["contactGroupId"] = request.contactGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contacts)) {
+            body["contacts"] = request.contacts ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            body["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateContactGroup",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contactGroup",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateContactGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContactGroup(_ request: CreateContactGroupRequest) async throws -> CreateContactGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createContactGroupWithOptions(request as! CreateContactGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -952,6 +1187,56 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createNotifyPolicyWithOptions(request as! CreateNotifyPolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOncallScheduleWithOptions(_ request: CreateOncallScheduleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOncallScheduleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            query["workspace"] = request.workspace ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.oncallScheduleId)) {
+            body["oncallScheduleId"] = request.oncallScheduleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.oncallScheduleName)) {
+            body["oncallScheduleName"] = request.oncallScheduleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rotations)) {
+            body["rotations"] = request.rotations ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.shiftRobotId)) {
+            body["shiftRobotId"] = request.shiftRobotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.substitudes)) {
+            body["substitudes"] = request.substitudes ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateOncallSchedule",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/oncallschedule",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateOncallScheduleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOncallSchedule(_ request: CreateOncallScheduleRequest) async throws -> CreateOncallScheduleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createOncallScheduleWithOptions(request as! CreateOncallScheduleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1498,6 +1783,82 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAlertActionsWithOptions(_ tmpReq: DeleteAlertActionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAlertActionsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteAlertActionsShrinkRequest = DeleteAlertActionsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.alertActionIds)) {
+            request.alertActionIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alertActionIds, "alertActionIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertActionIdsShrink)) {
+            query["alertActionIds"] = request.alertActionIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAlertActions",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertActions",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAlertActionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAlertActions(_ request: DeleteAlertActionsRequest) async throws -> DeleteAlertActionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteAlertActionsWithOptions(request as! DeleteAlertActionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAlertNotifyTemplatesWithOptions(_ tmpReq: DeleteAlertNotifyTemplatesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAlertNotifyTemplatesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteAlertNotifyTemplatesShrinkRequest = DeleteAlertNotifyTemplatesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.alertNotifyTemplateIds)) {
+            request.alertNotifyTemplateIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alertNotifyTemplateIds, "alertNotifyTemplateIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertNotifyTemplateIdsShrink)) {
+            query["alertNotifyTemplateIds"] = request.alertNotifyTemplateIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAlertNotifyTemplates",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertNotifyTemplates",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAlertNotifyTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAlertNotifyTemplates(_ request: DeleteAlertNotifyTemplatesRequest) async throws -> DeleteAlertNotifyTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteAlertNotifyTemplatesWithOptions(request as! DeleteAlertNotifyTemplatesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAlertRobotsWithOptions(_ tmpReq: DeleteAlertRobotsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAlertRobotsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DeleteAlertRobotsShrinkRequest = DeleteAlertRobotsShrinkRequest([:])
@@ -1629,6 +1990,82 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteCloudResourceWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContactGroupsWithOptions(_ tmpReq: DeleteContactGroupsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteContactGroupsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteContactGroupsShrinkRequest = DeleteContactGroupsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contactGroupIds)) {
+            request.contactGroupIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contactGroupIds, "contactGroupIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactGroupIdsShrink)) {
+            query["contactGroupIds"] = request.contactGroupIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteContactGroups",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contactGroups",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteContactGroupsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContactGroups(_ request: DeleteContactGroupsRequest) async throws -> DeleteContactGroupsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteContactGroupsWithOptions(request as! DeleteContactGroupsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContactsWithOptions(_ tmpReq: DeleteContactsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteContactsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteContactsShrinkRequest = DeleteContactsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contactIds)) {
+            request.contactIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contactIds, "contactIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactIdsShrink)) {
+            query["contactIds"] = request.contactIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteContacts",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contacts",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteContactsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContacts(_ request: DeleteContactsRequest) async throws -> DeleteContactsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteContactsWithOptions(request as! DeleteContactsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2061,6 +2498,44 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteNotifyPolicyWithOptions(request as! DeleteNotifyPolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOncallSchedulesWithOptions(_ tmpReq: DeleteOncallSchedulesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteOncallSchedulesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteOncallSchedulesShrinkRequest = DeleteOncallSchedulesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.oncallScheduleIds)) {
+            request.oncallScheduleIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.oncallScheduleIds, "oncallScheduleIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.oncallScheduleIdsShrink)) {
+            query["oncallScheduleIds"] = request.oncallScheduleIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteOncallSchedules",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/oncallSchedule",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteOncallSchedulesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOncallSchedules(_ request: DeleteOncallSchedulesRequest) async throws -> DeleteOncallSchedulesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteOncallSchedulesWithOptions(request as! DeleteOncallSchedulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2933,6 +3408,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAlertActionWithOptions(_ alertActionId: String, _ request: GetAlertActionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAlertActionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAlertAction",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertAction/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(alertActionId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAlertActionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAlertAction(_ alertActionId: String, _ request: GetAlertActionRequest) async throws -> GetAlertActionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getAlertActionWithOptions(alertActionId as! String, request as! GetAlertActionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getBizTraceWithOptions(_ bizTraceId: String, _ request: GetBizTraceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBizTraceResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -3550,6 +4053,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getOncallScheduleWithOptions(_ oncallScheduleId: String, _ request: GetOncallScheduleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOncallScheduleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetOncallSchedule",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/oncallSchedule/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(oncallScheduleId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetOncallScheduleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getOncallSchedule(_ oncallScheduleId: String, _ request: GetOncallScheduleRequest) async throws -> GetOncallScheduleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getOncallScheduleWithOptions(oncallScheduleId as! String, request as! GetOncallScheduleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPipelineWithOptions(_ workspace: String, _ pipelineName: String, _ request: GetPipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPipelineResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -4153,6 +4684,59 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listAlertActionsWithOptions(request as! ListAlertActionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAlertNotifyTemplatesWithOptions(_ tmpReq: ListAlertNotifyTemplatesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAlertNotifyTemplatesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListAlertNotifyTemplatesShrinkRequest = ListAlertNotifyTemplatesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.alertNotifyTemplateIds)) {
+            request.alertNotifyTemplateIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alertNotifyTemplateIds, "alertNotifyTemplateIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertNotifyTemplateIdsShrink)) {
+            query["alertNotifyTemplateIds"] = request.alertNotifyTemplateIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertNotifyTemplateName)) {
+            query["alertNotifyTemplateName"] = request.alertNotifyTemplateName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.programLang)) {
+            query["programLang"] = request.programLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAlertNotifyTemplates",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertNotifyTemplate",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAlertNotifyTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAlertNotifyTemplates(_ request: ListAlertNotifyTemplatesRequest) async throws -> ListAlertNotifyTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listAlertNotifyTemplatesWithOptions(request as! ListAlertNotifyTemplatesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5105,6 +5689,89 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOncallContactsWithOptions(_ oncallScheduleId: String, _ request: ListOncallContactsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOncallContactsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.timestamp)) {
+            query["timestamp"] = request.timestamp ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListOncallContacts",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/oncallSchedule/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(oncallScheduleId)) + "/contacts",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListOncallContactsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOncallContacts(_ oncallScheduleId: String, _ request: ListOncallContactsRequest) async throws -> ListOncallContactsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listOncallContactsWithOptions(oncallScheduleId as! String, request as! ListOncallContactsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOncallSchedulesWithOptions(_ tmpReq: ListOncallSchedulesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOncallSchedulesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListOncallSchedulesShrinkRequest = ListOncallSchedulesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.oncallScheduleIds)) {
+            request.oncallScheduleIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.oncallScheduleIds, "oncallScheduleIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.oncallScheduleIdsShrink)) {
+            query["oncallScheduleIds"] = request.oncallScheduleIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.oncallScheduleName)) {
+            query["oncallScheduleName"] = request.oncallScheduleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            query["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListOncallSchedules",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/oncallSchedules",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListOncallSchedulesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOncallSchedules(_ request: ListOncallSchedulesRequest) async throws -> ListOncallSchedulesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listOncallSchedulesWithOptions(request as! ListOncallSchedulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPipelinesWithOptions(_ workspace: String, _ request: ListPipelinesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPipelinesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5897,6 +6564,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func previewNotifyTemplateWithOptions(_ request: PreviewNotifyTemplateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PreviewNotifyTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.data)) {
+            body["data"] = request.data!;
+        }
+        if (!TeaUtils.Client.isUnset(request.templates)) {
+            body["templates"] = request.templates ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PreviewNotifyTemplate",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/v1/template/batchRender",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PreviewNotifyTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func previewNotifyTemplate(_ request: PreviewNotifyTemplateRequest) async throws -> PreviewNotifyTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await previewNotifyTemplateWithOptions(request as! PreviewNotifyTemplateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func putWorkspaceWithOptions(_ workspaceName: String, _ request: PutWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PutWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -5991,6 +6694,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await queryAlertRulesWithOptions(request as! QueryAlertRulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resendVerifyActivateWithOptions(_ contactId: String, _ request: ResendVerifyActivateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ResendVerifyActivateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelType)) {
+            body["channelType"] = request.channelType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ResendVerifyActivate",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contact/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contactId)) + "/action/reSendVerifyActivate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResendVerifyActivateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resendVerifyActivate(_ contactId: String, _ request: ResendVerifyActivateRequest) async throws -> ResendVerifyActivateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await resendVerifyActivateWithOptions(contactId as! String, request as! ResendVerifyActivateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6347,6 +7083,102 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAlertActionWithOptions(_ alertActionId: String, _ request: UpdateAlertActionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAlertActionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertActionName)) {
+            body["alertActionName"] = request.alertActionName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ebParam)) {
+            body["ebParam"] = request.ebParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.essParam)) {
+            body["essParam"] = request.essParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fc3Param)) {
+            body["fc3Param"] = request.fc3Param!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fcParam)) {
+            body["fcParam"] = request.fcParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mnsParam)) {
+            body["mnsParam"] = request.mnsParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pagerDutyParam)) {
+            body["pagerDutyParam"] = request.pagerDutyParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.slsParam)) {
+            body["slsParam"] = request.slsParam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.webhookParam)) {
+            body["webhookParam"] = request.webhookParam!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAlertAction",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertAction/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(alertActionId)),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAlertActionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAlertAction(_ alertActionId: String, _ request: UpdateAlertActionRequest) async throws -> UpdateAlertActionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateAlertActionWithOptions(alertActionId as! String, request as! UpdateAlertActionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAlertNotifyTemplateWithOptions(_ alertNotifyTemplateId: String, _ request: UpdateAlertNotifyTemplateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAlertNotifyTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertNotifyTemplateName)) {
+            body["alertNotifyTemplateName"] = request.alertNotifyTemplateName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templates)) {
+            body["templates"] = request.templates ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAlertNotifyTemplate",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertNotifyTemplate/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(alertNotifyTemplateId)),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAlertNotifyTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAlertNotifyTemplate(_ alertNotifyTemplateId: String, _ request: UpdateAlertNotifyTemplateRequest) async throws -> UpdateAlertNotifyTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateAlertNotifyTemplateWithOptions(alertNotifyTemplateId as! String, request as! UpdateAlertNotifyTemplateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAlertRobotWithOptions(_ robotId: String, _ request: UpdateAlertRobotRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAlertRobotResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -6482,6 +7314,87 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateBizTraceWithOptions(bizTraceId as! String, request as! UpdateBizTraceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContactWithOptions(_ contactId: String, _ request: UpdateContactRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateContactResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            body["email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imUserIds)) {
+            body["imUserIds"] = request.imUserIds ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateContact",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contact/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contactId)),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateContactResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContact(_ contactId: String, _ request: UpdateContactRequest) async throws -> UpdateContactResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateContactWithOptions(contactId as! String, request as! UpdateContactRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContactGroupWithOptions(_ contactGroupId: String, _ request: UpdateContactGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateContactGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contacts)) {
+            body["contacts"] = request.contacts ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateContactGroup",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/contactGroup/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contactGroupId)),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateContactGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContactGroup(_ contactGroupId: String, _ request: UpdateContactGroupRequest) async throws -> UpdateContactGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateContactGroupWithOptions(contactGroupId as! String, request as! UpdateContactGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6935,6 +7848,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateOncallScheduleWithOptions(_ oncallScheduleId: String, _ request: UpdateOncallScheduleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateOncallScheduleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.oncallScheduleName)) {
+            body["oncallScheduleName"] = request.oncallScheduleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rotations)) {
+            body["rotations"] = request.rotations ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.shiftRobotId)) {
+            body["shiftRobotId"] = request.shiftRobotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.substitudes)) {
+            body["substitudes"] = request.substitudes ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateOncallSchedule",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/oncallSchedule/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(oncallScheduleId)),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateOncallScheduleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateOncallSchedule(_ oncallScheduleId: String, _ request: UpdateOncallScheduleRequest) async throws -> UpdateOncallScheduleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateOncallScheduleWithOptions(oncallScheduleId as! String, request as! UpdateOncallScheduleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updatePipelineWithOptions(_ workspace: String, _ pipelineName: String, _ request: UpdatePipelineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePipelineResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -7346,5 +8301,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await upsertUmodelDataWithOptions(workspace as! String, request as! UpsertUmodelDataRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func viewOncallScheduleWithOptions(_ oncallScheduleId: String, _ request: ViewOncallScheduleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ViewOncallScheduleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            query["endDate"] = request.endDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            query["startDate"] = request.startDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ViewOncallSchedule",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/oncallSchedule/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(oncallScheduleId)) + "/calendar",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ViewOncallScheduleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func viewOncallSchedule(_ oncallScheduleId: String, _ request: ViewOncallScheduleRequest) async throws -> ViewOncallScheduleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await viewOncallScheduleWithOptions(oncallScheduleId as! String, request as! ViewOncallScheduleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
