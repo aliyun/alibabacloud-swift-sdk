@@ -1613,6 +1613,8 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public var resourceClassification: String?
 
+    public var resourceGroupDescription: String?
+
     public var resourceGroupName: String?
 
     public override init() {
@@ -1647,6 +1649,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
         if self.resourceClassification != nil {
             map["ResourceClassification"] = self.resourceClassification!
         }
+        if self.resourceGroupDescription != nil {
+            map["ResourceGroupDescription"] = self.resourceGroupDescription!
+        }
         if self.resourceGroupName != nil {
             map["ResourceGroupName"] = self.resourceGroupName!
         }
@@ -1672,6 +1677,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceClassification"] as? String {
             self.resourceClassification = value
+        }
+        if let value = dict["ResourceGroupDescription"] as? String {
+            self.resourceGroupDescription = value
         }
         if let value = dict["ResourceGroupName"] as? String {
             self.resourceGroupName = value
@@ -4451,6 +4459,8 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
 
         public var resourceCount: String?
 
+        public var resourceGroupDescription: String?
+
         public var resourceGroupId: String?
 
         public var resourceGroupName: String?
@@ -4499,6 +4509,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
             }
             if self.resourceCount != nil {
                 map["ResourceCount"] = self.resourceCount!
+            }
+            if self.resourceGroupDescription != nil {
+                map["ResourceGroupDescription"] = self.resourceGroupDescription!
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
@@ -4558,6 +4571,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceCount"] as? String {
                 self.resourceCount = value
+            }
+            if let value = dict["ResourceGroupDescription"] as? String {
+                self.resourceGroupDescription = value
             }
             if let value = dict["ResourceGroupId"] as? String {
                 self.resourceGroupId = value
@@ -10079,6 +10095,8 @@ public class RemovePropertyResponse : Tea.TeaModel {
 public class RemoveUsersRequest : Tea.TeaModel {
     public var businessChannel: String?
 
+    public var unbindDesktops: Bool?
+
     public var users: [String]?
 
     public override init() {
@@ -10098,6 +10116,9 @@ public class RemoveUsersRequest : Tea.TeaModel {
         if self.businessChannel != nil {
             map["BusinessChannel"] = self.businessChannel!
         }
+        if self.unbindDesktops != nil {
+            map["UnbindDesktops"] = self.unbindDesktops!
+        }
         if self.users != nil {
             map["Users"] = self.users!
         }
@@ -10108,6 +10129,9 @@ public class RemoveUsersRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BusinessChannel"] as? String {
             self.businessChannel = value
+        }
+        if let value = dict["UnbindDesktops"] as? Bool {
+            self.unbindDesktops = value
         }
         if let value = dict["Users"] as? [String] {
             self.users = value
@@ -10165,7 +10189,11 @@ public class RemoveUsersResponseBody : Tea.TeaModel {
         }
         public var failedUsers: [RemoveUsersResponseBody.RemoveUsersResult.FailedUsers]?
 
+        public var processingUsers: [String]?
+
         public var removedUsers: [String]?
+
+        public var submittedUsers: [String]?
 
         public override init() {
             super.init()
@@ -10188,8 +10216,14 @@ public class RemoveUsersResponseBody : Tea.TeaModel {
                 }
                 map["FailedUsers"] = tmp
             }
+            if self.processingUsers != nil {
+                map["ProcessingUsers"] = self.processingUsers!
+            }
             if self.removedUsers != nil {
                 map["RemovedUsers"] = self.removedUsers!
+            }
+            if self.submittedUsers != nil {
+                map["SubmittedUsers"] = self.submittedUsers!
             }
             return map
         }
@@ -10209,8 +10243,14 @@ public class RemoveUsersResponseBody : Tea.TeaModel {
                 }
                 self.failedUsers = tmp
             }
+            if let value = dict["ProcessingUsers"] as? [String] {
+                self.processingUsers = value
+            }
             if let value = dict["RemovedUsers"] as? [String] {
                 self.removedUsers = value
+            }
+            if let value = dict["SubmittedUsers"] as? [String] {
+                self.submittedUsers = value
             }
         }
     }
@@ -11042,15 +11082,21 @@ public class TransferResourcesOutofGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public var appRuleId: String?
+
     public var businessChannel: String?
 
     public var platform: String?
+
+    public var policyId: String?
 
     public var resourceGroupId: String?
 
     public var resources: [TransferResourcesOutofGroupRequest.Resources]?
 
     public var targetResourceGroupId: String?
+
+    public var timerId: String?
 
     public override init() {
         super.init()
@@ -11066,11 +11112,17 @@ public class TransferResourcesOutofGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appRuleId != nil {
+            map["AppRuleId"] = self.appRuleId!
+        }
         if self.businessChannel != nil {
             map["BusinessChannel"] = self.businessChannel!
         }
         if self.platform != nil {
             map["Platform"] = self.platform!
+        }
+        if self.policyId != nil {
+            map["PolicyId"] = self.policyId!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -11085,16 +11137,25 @@ public class TransferResourcesOutofGroupRequest : Tea.TeaModel {
         if self.targetResourceGroupId != nil {
             map["TargetResourceGroupId"] = self.targetResourceGroupId!
         }
+        if self.timerId != nil {
+            map["TimerId"] = self.timerId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppRuleId"] as? String {
+            self.appRuleId = value
+        }
         if let value = dict["BusinessChannel"] as? String {
             self.businessChannel = value
         }
         if let value = dict["Platform"] as? String {
             self.platform = value
+        }
+        if let value = dict["PolicyId"] as? String {
+            self.policyId = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -11114,6 +11175,9 @@ public class TransferResourcesOutofGroupRequest : Tea.TeaModel {
         }
         if let value = dict["TargetResourceGroupId"] as? String {
             self.targetResourceGroupId = value
+        }
+        if let value = dict["TimerId"] as? String {
+            self.timerId = value
         }
     }
 }
