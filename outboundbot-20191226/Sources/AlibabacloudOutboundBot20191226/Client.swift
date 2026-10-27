@@ -2541,6 +2541,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pitchRate)) {
             query["PitchRate"] = request.pitchRate!;
         }
+        if (!TeaUtils.Client.isUnset(request.sampleRate)) {
+            query["SampleRate"] = request.sampleRate!;
+        }
         if (!TeaUtils.Client.isUnset(request.scriptId)) {
             query["ScriptId"] = request.scriptId ?? "";
         }

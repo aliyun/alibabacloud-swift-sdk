@@ -16390,6 +16390,8 @@ public class DescribeTTSDemoRequest : Tea.TeaModel {
 
     public var pitchRate: Int32?
 
+    public var sampleRate: Int32?
+
     public var scriptId: String?
 
     public var secretKey: String?
@@ -16440,6 +16442,9 @@ public class DescribeTTSDemoRequest : Tea.TeaModel {
         if self.pitchRate != nil {
             map["PitchRate"] = self.pitchRate!
         }
+        if self.sampleRate != nil {
+            map["SampleRate"] = self.sampleRate!
+        }
         if self.scriptId != nil {
             map["ScriptId"] = self.scriptId!
         }
@@ -16486,6 +16491,9 @@ public class DescribeTTSDemoRequest : Tea.TeaModel {
         }
         if let value = dict["PitchRate"] as? Int32 {
             self.pitchRate = value
+        }
+        if let value = dict["SampleRate"] as? Int32 {
+            self.sampleRate = value
         }
         if let value = dict["ScriptId"] as? String {
             self.scriptId = value
