@@ -6094,6 +6094,10 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
 
             public var legacy: Bool?
 
+            public var playbackStatus: String?
+
+            public var playedAnswer: String?
+
             public var playedWords: Int32?
 
             public var role: String?
@@ -6147,6 +6151,12 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
                 if self.legacy != nil {
                     map["Legacy"] = self.legacy!
                 }
+                if self.playbackStatus != nil {
+                    map["PlaybackStatus"] = self.playbackStatus!
+                }
+                if self.playedAnswer != nil {
+                    map["PlayedAnswer"] = self.playedAnswer!
+                }
                 if self.playedWords != nil {
                     map["PlayedWords"] = self.playedWords!
                 }
@@ -6196,6 +6206,12 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Legacy"] as? Bool {
                     self.legacy = value
+                }
+                if let value = dict["PlaybackStatus"] as? String {
+                    self.playbackStatus = value
+                }
+                if let value = dict["PlayedAnswer"] as? String {
+                    self.playedAnswer = value
                 }
                 if let value = dict["PlayedWords"] as? Int32 {
                     self.playedWords = value
