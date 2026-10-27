@@ -29937,6 +29937,8 @@ public class GetIdentityProviderSCIMResponseBody : Tea.TeaModel {
 
         public var operationStatus: String?
 
+        public var status: String?
+
         public var syncEnabled: Bool?
 
         public override init() {
@@ -29960,6 +29962,9 @@ public class GetIdentityProviderSCIMResponseBody : Tea.TeaModel {
             if self.operationStatus != nil {
                 map["operationStatus"] = self.operationStatus!
             }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
             if self.syncEnabled != nil {
                 map["syncEnabled"] = self.syncEnabled!
             }
@@ -29975,6 +29980,9 @@ public class GetIdentityProviderSCIMResponseBody : Tea.TeaModel {
             }
             if let value = dict["operationStatus"] as? String {
                 self.operationStatus = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
             }
             if let value = dict["syncEnabled"] as? Bool {
                 self.syncEnabled = value
@@ -65925,9 +65933,13 @@ public class UpdateIdentityProviderSCIMResponseBody : Tea.TeaModel {
 
         public var metadata: UpdateIdentityProviderSCIMResponseBody.Data.Metadata?
 
+        public var operationStatus: String?
+
         public var protocol_: String?
 
         public var saml: UpdateIdentityProviderSCIMResponseBody.Data.Saml?
+
+        public var scimStatus: String?
 
         public var status: String?
 
@@ -65975,11 +65987,17 @@ public class UpdateIdentityProviderSCIMResponseBody : Tea.TeaModel {
             if self.metadata != nil {
                 map["metadata"] = self.metadata?.toMap()
             }
+            if self.operationStatus != nil {
+                map["operationStatus"] = self.operationStatus!
+            }
             if self.protocol_ != nil {
                 map["protocol"] = self.protocol_!
             }
             if self.saml != nil {
                 map["saml"] = self.saml?.toMap()
+            }
+            if self.scimStatus != nil {
+                map["scimStatus"] = self.scimStatus!
             }
             if self.status != nil {
                 map["status"] = self.status!
@@ -66023,6 +66041,9 @@ public class UpdateIdentityProviderSCIMResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.metadata = model
             }
+            if let value = dict["operationStatus"] as? String {
+                self.operationStatus = value
+            }
             if let value = dict["protocol"] as? String {
                 self.protocol_ = value
             }
@@ -66030,6 +66051,9 @@ public class UpdateIdentityProviderSCIMResponseBody : Tea.TeaModel {
                 var model = UpdateIdentityProviderSCIMResponseBody.Data.Saml()
                 model.fromMap(value)
                 self.saml = model
+            }
+            if let value = dict["scimStatus"] as? String {
+                self.scimStatus = value
             }
             if let value = dict["status"] as? String {
                 self.status = value
