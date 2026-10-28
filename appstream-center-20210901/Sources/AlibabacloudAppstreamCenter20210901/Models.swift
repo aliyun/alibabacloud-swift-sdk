@@ -3717,6 +3717,8 @@ public class CreateBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public var html5FileTransfer: String?
 
+        public var multiScreen: String?
+
         public var noOperationDisconnect: String?
 
         public var noOperationDisconnectTime: Int32?
@@ -3775,6 +3777,9 @@ public class CreateBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if self.html5FileTransfer != nil {
                 map["Html5FileTransfer"] = self.html5FileTransfer!
+            }
+            if self.multiScreen != nil {
+                map["MultiScreen"] = self.multiScreen!
             }
             if self.noOperationDisconnect != nil {
                 map["NoOperationDisconnect"] = self.noOperationDisconnect!
@@ -3841,6 +3846,9 @@ public class CreateBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["Html5FileTransfer"] as? String {
                 self.html5FileTransfer = value
+            }
+            if let value = dict["MultiScreen"] as? String {
+                self.multiScreen = value
             }
             if let value = dict["NoOperationDisconnect"] as? String {
                 self.noOperationDisconnect = value
@@ -9470,6 +9478,8 @@ public class GetBrowserInstanceGroupResponseBody : Tea.TeaModel {
 
             public var html5FileTransfer: String?
 
+            public var multiScreen: String?
+
             public var noOperationDisconnect: String?
 
             public var noOperationDisconnectTime: Int32?
@@ -9530,6 +9540,9 @@ public class GetBrowserInstanceGroupResponseBody : Tea.TeaModel {
                 }
                 if self.html5FileTransfer != nil {
                     map["Html5FileTransfer"] = self.html5FileTransfer!
+                }
+                if self.multiScreen != nil {
+                    map["MultiScreen"] = self.multiScreen!
                 }
                 if self.noOperationDisconnect != nil {
                     map["NoOperationDisconnect"] = self.noOperationDisconnect!
@@ -9599,6 +9612,9 @@ public class GetBrowserInstanceGroupResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Html5FileTransfer"] as? String {
                     self.html5FileTransfer = value
+                }
+                if let value = dict["MultiScreen"] as? String {
+                    self.multiScreen = value
                 }
                 if let value = dict["NoOperationDisconnect"] as? String {
                     self.noOperationDisconnect = value
@@ -12455,6 +12471,8 @@ public class GetRuntimeModelConfigRequest : Tea.TeaModel {
 
     public var runtimeType: String?
 
+    public var smartModel: Bool?
+
     public override init() {
         super.init()
     }
@@ -12484,6 +12502,9 @@ public class GetRuntimeModelConfigRequest : Tea.TeaModel {
         if self.runtimeType != nil {
             map["RuntimeType"] = self.runtimeType!
         }
+        if self.smartModel != nil {
+            map["SmartModel"] = self.smartModel!
+        }
         return map
     }
 
@@ -12503,6 +12524,9 @@ public class GetRuntimeModelConfigRequest : Tea.TeaModel {
         }
         if let value = dict["RuntimeType"] as? String {
             self.runtimeType = value
+        }
+        if let value = dict["SmartModel"] as? Bool {
+            self.smartModel = value
         }
     }
 }
@@ -16877,6 +16901,8 @@ public class ListBrowserInstanceGroupResponseBody : Tea.TeaModel {
 
             public var clipboardPolicy: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.ClipboardPolicy?
 
+            public var multiScreen: String?
+
             public var videoPolicy: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.VideoPolicy?
 
             public var watermarkPolicy: ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.WatermarkPolicy?
@@ -16917,6 +16943,9 @@ public class ListBrowserInstanceGroupResponseBody : Tea.TeaModel {
                 }
                 if self.clipboardPolicy != nil {
                     map["ClipboardPolicy"] = self.clipboardPolicy?.toMap()
+                }
+                if self.multiScreen != nil {
+                    map["MultiScreen"] = self.multiScreen!
                 }
                 if self.videoPolicy != nil {
                     map["VideoPolicy"] = self.videoPolicy?.toMap()
@@ -16962,6 +16991,9 @@ public class ListBrowserInstanceGroupResponseBody : Tea.TeaModel {
                     var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.ClipboardPolicy()
                     model.fromMap(value)
                     self.clipboardPolicy = model
+                }
+                if let value = dict["MultiScreen"] as? String {
+                    self.multiScreen = value
                 }
                 if let value = dict["VideoPolicy"] as? [String: Any?] {
                     var model = ListBrowserInstanceGroupResponseBody.BrowserInstanceGroupModels.Policy.VideoPolicy()
@@ -19360,6 +19392,8 @@ public class ListImageResponse : Tea.TeaModel {
 public class ListLlmTemplatesRequest : Tea.TeaModel {
     public var bizType: Int32?
 
+    public var language: String?
+
     public var llmCode: String?
 
     public var llmTemplateIds: [String]?
@@ -19391,6 +19425,9 @@ public class ListLlmTemplatesRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
         if self.llmCode != nil {
             map["LlmCode"] = self.llmCode!
         }
@@ -19420,6 +19457,9 @@ public class ListLlmTemplatesRequest : Tea.TeaModel {
         if let value = dict["BizType"] as? Int32 {
             self.bizType = value
         }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
         if let value = dict["LlmCode"] as? String {
             self.llmCode = value
         }
@@ -19446,6 +19486,8 @@ public class ListLlmTemplatesRequest : Tea.TeaModel {
 
 public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
     public var bizType: Int32?
+
+    public var language: String?
 
     public var llmCode: String?
 
@@ -19478,6 +19520,9 @@ public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
         if self.llmCode != nil {
             map["LlmCode"] = self.llmCode!
         }
@@ -19506,6 +19551,9 @@ public class ListLlmTemplatesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizType"] as? Int32 {
             self.bizType = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
         }
         if let value = dict["LlmCode"] as? String {
             self.llmCode = value
@@ -26807,6 +26855,8 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public var html5FileTransfer: String?
 
+        public var multiScreen: String?
+
         public var noOperationDisconnect: String?
 
         public var noOperationDisconnectTime: Int32?
@@ -26869,6 +26919,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if self.html5FileTransfer != nil {
                 map["Html5FileTransfer"] = self.html5FileTransfer!
+            }
+            if self.multiScreen != nil {
+                map["MultiScreen"] = self.multiScreen!
             }
             if self.noOperationDisconnect != nil {
                 map["NoOperationDisconnect"] = self.noOperationDisconnect!
@@ -26945,6 +26998,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["Html5FileTransfer"] as? String {
                 self.html5FileTransfer = value
+            }
+            if let value = dict["MultiScreen"] as? String {
+                self.multiScreen = value
             }
             if let value = dict["NoOperationDisconnect"] as? String {
                 self.noOperationDisconnect = value
@@ -28095,6 +28151,182 @@ public class ModifyNodePoolAttributeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyNodePoolAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyShareImageRequest : Tea.TeaModel {
+    public var addAccount: [Int64]?
+
+    public var bizType: Int32?
+
+    public var imageId: String?
+
+    public var productType: String?
+
+    public var removeAccount: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addAccount != nil {
+            map["AddAccount"] = self.addAccount!
+        }
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.removeAccount != nil {
+            map["RemoveAccount"] = self.removeAccount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AddAccount"] as? [Int64] {
+            self.addAccount = value
+        }
+        if let value = dict["BizType"] as? Int32 {
+            self.bizType = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+        if let value = dict["RemoveAccount"] as? [Int64] {
+            self.removeAccount = value
+        }
+    }
+}
+
+public class ModifyShareImageResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ModifyShareImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyShareImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyShareImageResponseBody()
             model.fromMap(value)
             self.body = model
         }
