@@ -1553,6 +1553,337 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGadInstanceWithOptions(_ request: CreateGadInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGadInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterDbEngineType)) {
+            query["MasterDbEngineType"] = request.masterDbEngineType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterDbInstanceId)) {
+            query["MasterDbInstanceId"] = request.masterDbInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterDbInstanceRegion)) {
+            query["MasterDbInstanceRegion"] = request.masterDbInstanceRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterDbZoneId)) {
+            query["MasterDbZoneId"] = request.masterDbZoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGadInstance",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGadInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGadInstance(_ request: CreateGadInstanceRequest) async throws -> CreateGadInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGadInstanceWithOptions(request as! CreateGadInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGadOrderWithOptions(_ tmpReq: CreateGadOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGadOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateGadOrderShrinkRequest = CreateGadOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serverlessConfig)) {
+            request.serverlessConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfig, "ServerlessConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.amount)) {
+            query["Amount"] = request.amount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoCreateProxy)) {
+            query["AutoCreateProxy"] = request.autoCreateProxy!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            query["AutoRenew"] = request.autoRenew ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.babelfishConfig)) {
+            query["BabelfishConfig"] = request.babelfishConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bpeEnabled)) {
+            query["BpeEnabled"] = request.bpeEnabled ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.burstingEnabled)) {
+            query["BurstingEnabled"] = request.burstingEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.businessInfo)) {
+            query["BusinessInfo"] = request.businessInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["Category"] = request.category ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.coldDataEnabled)) {
+            query["ColdDataEnabled"] = request.coldDataEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.connectionMode)) {
+            query["ConnectionMode"] = request.connectionMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectionString)) {
+            query["ConnectionString"] = request.connectionString ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createStrategy)) {
+            query["CreateStrategy"] = request.createStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceClass)) {
+            query["DBInstanceClass"] = request.DBInstanceClass ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceDescription)) {
+            query["DBInstanceDescription"] = request.DBInstanceDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceNetType)) {
+            query["DBInstanceNetType"] = request.DBInstanceNetType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceStorage)) {
+            query["DBInstanceStorage"] = request.DBInstanceStorage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceStorageType)) {
+            query["DBInstanceStorageType"] = request.DBInstanceStorageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBIsIgnoreCase)) {
+            query["DBIsIgnoreCase"] = request.DBIsIgnoreCase ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBParamGroupId)) {
+            query["DBParamGroupId"] = request.DBParamGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBTimeZone)) {
+            query["DBTimeZone"] = request.DBTimeZone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dbList)) {
+            query["DbList"] = request.dbList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dbListMode)) {
+            query["DbListMode"] = request.dbListMode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dedicatedHostGroupId)) {
+            query["DedicatedHostGroupId"] = request.dedicatedHostGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            query["DeletionProtection"] = request.deletionProtection!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.encryptionKey)) {
+            query["EncryptionKey"] = request.encryptionKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engineVersion)) {
+            query["EngineVersion"] = request.engineVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceNetworkType)) {
+            query["InstanceNetworkType"] = request.instanceNetworkType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ioAccelerationEnabled)) {
+            query["IoAccelerationEnabled"] = request.ioAccelerationEnabled ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterAccountExist)) {
+            query["MasterAccountExist"] = request.masterAccountExist!;
+        }
+        if (!TeaUtils.Client.isUnset(request.masterAccountName)) {
+            query["MasterAccountName"] = request.masterAccountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterAccountPassword)) {
+            query["MasterAccountPassword"] = request.masterAccountPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterDatabaseName)) {
+            query["MasterDatabaseName"] = request.masterDatabaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterEngineArchType)) {
+            query["MasterEngineArchType"] = request.masterEngineArchType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterInstanceId)) {
+            query["MasterInstanceId"] = request.masterInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterRegion)) {
+            query["MasterRegion"] = request.masterRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterShardAccountName)) {
+            query["MasterShardAccountName"] = request.masterShardAccountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.masterShardAccountPassword)) {
+            query["MasterShardAccountPassword"] = request.masterShardAccountPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needCreateSlave)) {
+            query["NeedCreateSlave"] = request.needCreateSlave!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.payType)) {
+            query["PayType"] = request.payType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.period)) {
+            query["Period"] = request.period ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.port)) {
+            query["Port"] = request.port ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privateIpAddress)) {
+            query["PrivateIpAddress"] = request.privateIpAddress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleARN)) {
+            query["RoleARN"] = request.roleARN ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityIPList)) {
+            query["SecurityIPList"] = request.securityIPList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessConfigShrink)) {
+            query["ServerlessConfig"] = request.serverlessConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveAccountExist)) {
+            query["SlaveAccountExist"] = request.slaveAccountExist!;
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveAccountName)) {
+            query["SlaveAccountName"] = request.slaveAccountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveAccountPassword)) {
+            query["SlaveAccountPassword"] = request.slaveAccountPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveDatabaseName)) {
+            query["SlaveDatabaseName"] = request.slaveDatabaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveEngineArchType)) {
+            query["SlaveEngineArchType"] = request.slaveEngineArchType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveInstanceId)) {
+            query["SlaveInstanceId"] = request.slaveInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveReadOnly)) {
+            query["SlaveReadOnly"] = request.slaveReadOnly!;
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveRegion)) {
+            query["SlaveRegion"] = request.slaveRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageAutoScale)) {
+            query["StorageAutoScale"] = request.storageAutoScale ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageThreshold)) {
+            query["StorageThreshold"] = request.storageThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.storageUpperBound)) {
+            query["StorageUpperBound"] = request.storageUpperBound!;
+        }
+        if (!TeaUtils.Client.isUnset(request.syncAccountType)) {
+            query["SyncAccountType"] = request.syncAccountType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.syncArchitecture)) {
+            query["SyncArchitecture"] = request.syncArchitecture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.syncConflict)) {
+            query["SyncConflict"] = request.syncConflict ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemDBCharset)) {
+            query["SystemDBCharset"] = request.systemDBCharset ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.targetDedicatedHostIdForLog)) {
+            query["TargetDedicatedHostIdForLog"] = request.targetDedicatedHostIdForLog ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetDedicatedHostIdForMaster)) {
+            query["TargetDedicatedHostIdForMaster"] = request.targetDedicatedHostIdForMaster ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetDedicatedHostIdForSlave)) {
+            query["TargetDedicatedHostIdForSlave"] = request.targetDedicatedHostIdForSlave ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetMinorVersion)) {
+            query["TargetMinorVersion"] = request.targetMinorVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usedTime)) {
+            query["UsedTime"] = request.usedTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userBackupId)) {
+            query["UserBackupId"] = request.userBackupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
+            query["VSwitchId"] = request.vSwitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.whitelistTemplateList)) {
+            query["WhitelistTemplateList"] = request.whitelistTemplateList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            query["ZoneId"] = request.zoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneIdSlave1)) {
+            query["ZoneIdSlave1"] = request.zoneIdSlave1 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneIdSlave2)) {
+            query["ZoneIdSlave2"] = request.zoneIdSlave2 ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGadOrder",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGadOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGadOrder(_ request: CreateGadOrderRequest) async throws -> CreateGadOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGadOrderWithOptions(request as! CreateGadOrderRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createJobMonitorRuleWithOptions(_ request: CreateJobMonitorRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateJobMonitorRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2009,6 +2340,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteDtsJobs(_ request: DeleteDtsJobsRequest) async throws -> DeleteDtsJobsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteDtsJobsWithOptions(request as! DeleteDtsJobsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGadInstanceWithOptions(_ request: DeleteGadInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGadInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGadInstance",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGadInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGadInstance(_ request: DeleteGadInstanceRequest) async throws -> DeleteGadInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGadInstanceWithOptions(request as! DeleteGadInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3326,6 +3697,126 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeFullProcessList(_ request: DescribeFullProcessListRequest) async throws -> DescribeFullProcessListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeFullProcessListWithOptions(request as! DescribeFullProcessListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGadInstanceDbMembersWithOptions(_ request: DescribeGadInstanceDbMembersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeGadInstanceDbMembersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeGadInstanceDbMembers",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeGadInstanceDbMembersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGadInstanceDbMembers(_ request: DescribeGadInstanceDbMembersRequest) async throws -> DescribeGadInstanceDbMembersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeGadInstanceDbMembersWithOptions(request as! DescribeGadInstanceDbMembersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGadInstanceDetailWithOptions(_ request: DescribeGadInstanceDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeGadInstanceDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeGadInstanceDetail",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeGadInstanceDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGadInstanceDetail(_ request: DescribeGadInstanceDetailRequest) async throws -> DescribeGadInstanceDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeGadInstanceDetailWithOptions(request as! DescribeGadInstanceDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGadInstanceDtsMembersWithOptions(_ request: DescribeGadInstanceDtsMembersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeGadInstanceDtsMembersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeGadInstanceDtsMembers",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeGadInstanceDtsMembersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGadInstanceDtsMembers(_ request: DescribeGadInstanceDtsMembersRequest) async throws -> DescribeGadInstanceDtsMembersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeGadInstanceDtsMembersWithOptions(request as! DescribeGadInstanceDtsMembersRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
