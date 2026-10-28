@@ -4687,6 +4687,122 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAlertHistoriesWithOptions(_ tmpReq: ListAlertHistoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAlertHistoriesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListAlertHistoriesShrinkRequest = ListAlertHistoriesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.labelFilter)) {
+            request.labelFilterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelFilter, "labelFilter", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.notificationFilter)) {
+            request.notificationFilterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.notificationFilter, "notificationFilter", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertHistoryId)) {
+            query["alertHistoryId"] = request.alertHistoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertRuleId)) {
+            query["alertRuleId"] = request.alertRuleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizSource)) {
+            query["bizSource"] = request.bizSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cmsNamespace)) {
+            query["cmsNamespace"] = request.cmsNamespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cmsProductCategory)) {
+            query["cmsProductCategory"] = request.cmsProductCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayNameKeyWord)) {
+            query["displayNameKeyWord"] = request.displayNameKeyWord ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceKey)) {
+            query["instanceKey"] = request.instanceKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelFilterShrink)) {
+            query["labelFilter"] = request.labelFilterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.latestLevel)) {
+            query["latestLevel"] = request.latestLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxLevel)) {
+            query["maxLevel"] = request.maxLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.migrationStatus)) {
+            query["migrationStatus"] = request.migrationStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.notificationFilterShrink)) {
+            query["notificationFilter"] = request.notificationFilterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.observeRelationType)) {
+            query["observeRelationType"] = request.observeRelationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.observeResourceDomain)) {
+            query["observeResourceDomain"] = request.observeResourceDomain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.observeResourceGlobalScope)) {
+            query["observeResourceGlobalScope"] = request.observeResourceGlobalScope!;
+        }
+        if (!TeaUtils.Client.isUnset(request.observeResourceInstanceId)) {
+            query["observeResourceInstanceId"] = request.observeResourceInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.observeResourceType)) {
+            query["observeResourceType"] = request.observeResourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.partitionKey)) {
+            query["partitionKey"] = request.partitionKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimeFrom)) {
+            query["startTimeFrom"] = request.startTimeFrom!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimeTo)) {
+            query["startTimeTo"] = request.startTimeTo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            query["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAlertHistories",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/alertHistories",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAlertHistoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAlertHistories(_ request: ListAlertHistoriesRequest) async throws -> ListAlertHistoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listAlertHistoriesWithOptions(request as! ListAlertHistoriesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAlertNotifyTemplatesWithOptions(_ tmpReq: ListAlertNotifyTemplatesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAlertNotifyTemplatesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListAlertNotifyTemplatesShrinkRequest = ListAlertNotifyTemplatesShrinkRequest([:])

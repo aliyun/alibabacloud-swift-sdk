@@ -55756,6 +55756,826 @@ public class ListAlertActionsResponse : Tea.TeaModel {
     }
 }
 
+public class ListAlertHistoriesRequest : Tea.TeaModel {
+    public var alertHistoryId: String?
+
+    public var alertRuleId: String?
+
+    public var bizSource: String?
+
+    public var cmsNamespace: String?
+
+    public var cmsProductCategory: String?
+
+    public var displayNameKeyWord: String?
+
+    public var instanceKey: String?
+
+    public var labelFilter: AlertRuleLabelFilter?
+
+    public var latestLevel: String?
+
+    public var maxLevel: String?
+
+    public var maxResults: Int32?
+
+    public var migrationStatus: Int32?
+
+    public var nextToken: String?
+
+    public var notificationFilter: AlertRuleNotificationFilter?
+
+    public var observeRelationType: String?
+
+    public var observeResourceDomain: String?
+
+    public var observeResourceGlobalScope: Bool?
+
+    public var observeResourceInstanceId: String?
+
+    public var observeResourceType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var partitionKey: String?
+
+    public var startTimeFrom: Int64?
+
+    public var startTimeTo: Int64?
+
+    public var status: String?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.labelFilter?.validate()
+        try self.notificationFilter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertHistoryId != nil {
+            map["alertHistoryId"] = self.alertHistoryId!
+        }
+        if self.alertRuleId != nil {
+            map["alertRuleId"] = self.alertRuleId!
+        }
+        if self.bizSource != nil {
+            map["bizSource"] = self.bizSource!
+        }
+        if self.cmsNamespace != nil {
+            map["cmsNamespace"] = self.cmsNamespace!
+        }
+        if self.cmsProductCategory != nil {
+            map["cmsProductCategory"] = self.cmsProductCategory!
+        }
+        if self.displayNameKeyWord != nil {
+            map["displayNameKeyWord"] = self.displayNameKeyWord!
+        }
+        if self.instanceKey != nil {
+            map["instanceKey"] = self.instanceKey!
+        }
+        if self.labelFilter != nil {
+            map["labelFilter"] = self.labelFilter?.toMap()
+        }
+        if self.latestLevel != nil {
+            map["latestLevel"] = self.latestLevel!
+        }
+        if self.maxLevel != nil {
+            map["maxLevel"] = self.maxLevel!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.migrationStatus != nil {
+            map["migrationStatus"] = self.migrationStatus!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.notificationFilter != nil {
+            map["notificationFilter"] = self.notificationFilter?.toMap()
+        }
+        if self.observeRelationType != nil {
+            map["observeRelationType"] = self.observeRelationType!
+        }
+        if self.observeResourceDomain != nil {
+            map["observeResourceDomain"] = self.observeResourceDomain!
+        }
+        if self.observeResourceGlobalScope != nil {
+            map["observeResourceGlobalScope"] = self.observeResourceGlobalScope!
+        }
+        if self.observeResourceInstanceId != nil {
+            map["observeResourceInstanceId"] = self.observeResourceInstanceId!
+        }
+        if self.observeResourceType != nil {
+            map["observeResourceType"] = self.observeResourceType!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.partitionKey != nil {
+            map["partitionKey"] = self.partitionKey!
+        }
+        if self.startTimeFrom != nil {
+            map["startTimeFrom"] = self.startTimeFrom!
+        }
+        if self.startTimeTo != nil {
+            map["startTimeTo"] = self.startTimeTo!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["alertHistoryId"] as? String {
+            self.alertHistoryId = value
+        }
+        if let value = dict["alertRuleId"] as? String {
+            self.alertRuleId = value
+        }
+        if let value = dict["bizSource"] as? String {
+            self.bizSource = value
+        }
+        if let value = dict["cmsNamespace"] as? String {
+            self.cmsNamespace = value
+        }
+        if let value = dict["cmsProductCategory"] as? String {
+            self.cmsProductCategory = value
+        }
+        if let value = dict["displayNameKeyWord"] as? String {
+            self.displayNameKeyWord = value
+        }
+        if let value = dict["instanceKey"] as? String {
+            self.instanceKey = value
+        }
+        if let value = dict["labelFilter"] as? [String: Any?] {
+            var model = AlertRuleLabelFilter()
+            model.fromMap(value)
+            self.labelFilter = model
+        }
+        if let value = dict["latestLevel"] as? String {
+            self.latestLevel = value
+        }
+        if let value = dict["maxLevel"] as? String {
+            self.maxLevel = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["migrationStatus"] as? Int32 {
+            self.migrationStatus = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["notificationFilter"] as? [String: Any?] {
+            var model = AlertRuleNotificationFilter()
+            model.fromMap(value)
+            self.notificationFilter = model
+        }
+        if let value = dict["observeRelationType"] as? String {
+            self.observeRelationType = value
+        }
+        if let value = dict["observeResourceDomain"] as? String {
+            self.observeResourceDomain = value
+        }
+        if let value = dict["observeResourceGlobalScope"] as? Bool {
+            self.observeResourceGlobalScope = value
+        }
+        if let value = dict["observeResourceInstanceId"] as? String {
+            self.observeResourceInstanceId = value
+        }
+        if let value = dict["observeResourceType"] as? String {
+            self.observeResourceType = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["partitionKey"] as? String {
+            self.partitionKey = value
+        }
+        if let value = dict["startTimeFrom"] as? Int64 {
+            self.startTimeFrom = value
+        }
+        if let value = dict["startTimeTo"] as? Int64 {
+            self.startTimeTo = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class ListAlertHistoriesShrinkRequest : Tea.TeaModel {
+    public var alertHistoryId: String?
+
+    public var alertRuleId: String?
+
+    public var bizSource: String?
+
+    public var cmsNamespace: String?
+
+    public var cmsProductCategory: String?
+
+    public var displayNameKeyWord: String?
+
+    public var instanceKey: String?
+
+    public var labelFilterShrink: String?
+
+    public var latestLevel: String?
+
+    public var maxLevel: String?
+
+    public var maxResults: Int32?
+
+    public var migrationStatus: Int32?
+
+    public var nextToken: String?
+
+    public var notificationFilterShrink: String?
+
+    public var observeRelationType: String?
+
+    public var observeResourceDomain: String?
+
+    public var observeResourceGlobalScope: Bool?
+
+    public var observeResourceInstanceId: String?
+
+    public var observeResourceType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var partitionKey: String?
+
+    public var startTimeFrom: Int64?
+
+    public var startTimeTo: Int64?
+
+    public var status: String?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertHistoryId != nil {
+            map["alertHistoryId"] = self.alertHistoryId!
+        }
+        if self.alertRuleId != nil {
+            map["alertRuleId"] = self.alertRuleId!
+        }
+        if self.bizSource != nil {
+            map["bizSource"] = self.bizSource!
+        }
+        if self.cmsNamespace != nil {
+            map["cmsNamespace"] = self.cmsNamespace!
+        }
+        if self.cmsProductCategory != nil {
+            map["cmsProductCategory"] = self.cmsProductCategory!
+        }
+        if self.displayNameKeyWord != nil {
+            map["displayNameKeyWord"] = self.displayNameKeyWord!
+        }
+        if self.instanceKey != nil {
+            map["instanceKey"] = self.instanceKey!
+        }
+        if self.labelFilterShrink != nil {
+            map["labelFilter"] = self.labelFilterShrink!
+        }
+        if self.latestLevel != nil {
+            map["latestLevel"] = self.latestLevel!
+        }
+        if self.maxLevel != nil {
+            map["maxLevel"] = self.maxLevel!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.migrationStatus != nil {
+            map["migrationStatus"] = self.migrationStatus!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.notificationFilterShrink != nil {
+            map["notificationFilter"] = self.notificationFilterShrink!
+        }
+        if self.observeRelationType != nil {
+            map["observeRelationType"] = self.observeRelationType!
+        }
+        if self.observeResourceDomain != nil {
+            map["observeResourceDomain"] = self.observeResourceDomain!
+        }
+        if self.observeResourceGlobalScope != nil {
+            map["observeResourceGlobalScope"] = self.observeResourceGlobalScope!
+        }
+        if self.observeResourceInstanceId != nil {
+            map["observeResourceInstanceId"] = self.observeResourceInstanceId!
+        }
+        if self.observeResourceType != nil {
+            map["observeResourceType"] = self.observeResourceType!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.partitionKey != nil {
+            map["partitionKey"] = self.partitionKey!
+        }
+        if self.startTimeFrom != nil {
+            map["startTimeFrom"] = self.startTimeFrom!
+        }
+        if self.startTimeTo != nil {
+            map["startTimeTo"] = self.startTimeTo!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["alertHistoryId"] as? String {
+            self.alertHistoryId = value
+        }
+        if let value = dict["alertRuleId"] as? String {
+            self.alertRuleId = value
+        }
+        if let value = dict["bizSource"] as? String {
+            self.bizSource = value
+        }
+        if let value = dict["cmsNamespace"] as? String {
+            self.cmsNamespace = value
+        }
+        if let value = dict["cmsProductCategory"] as? String {
+            self.cmsProductCategory = value
+        }
+        if let value = dict["displayNameKeyWord"] as? String {
+            self.displayNameKeyWord = value
+        }
+        if let value = dict["instanceKey"] as? String {
+            self.instanceKey = value
+        }
+        if let value = dict["labelFilter"] as? String {
+            self.labelFilterShrink = value
+        }
+        if let value = dict["latestLevel"] as? String {
+            self.latestLevel = value
+        }
+        if let value = dict["maxLevel"] as? String {
+            self.maxLevel = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["migrationStatus"] as? Int32 {
+            self.migrationStatus = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["notificationFilter"] as? String {
+            self.notificationFilterShrink = value
+        }
+        if let value = dict["observeRelationType"] as? String {
+            self.observeRelationType = value
+        }
+        if let value = dict["observeResourceDomain"] as? String {
+            self.observeResourceDomain = value
+        }
+        if let value = dict["observeResourceGlobalScope"] as? Bool {
+            self.observeResourceGlobalScope = value
+        }
+        if let value = dict["observeResourceInstanceId"] as? String {
+            self.observeResourceInstanceId = value
+        }
+        if let value = dict["observeResourceType"] as? String {
+            self.observeResourceType = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["partitionKey"] as? String {
+            self.partitionKey = value
+        }
+        if let value = dict["startTimeFrom"] as? Int64 {
+            self.startTimeFrom = value
+        }
+        if let value = dict["startTimeTo"] as? Int64 {
+            self.startTimeTo = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class ListAlertHistoriesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var alertHistoryId: String?
+
+        public var alertRuleId: String?
+
+        public var annotations: [String: String]?
+
+        public var bizSource: String?
+
+        public var count: Int64?
+
+        public var endTime: Int64?
+
+        public var gmtCreate: Int64?
+
+        public var gmtModified: Int64?
+
+        public var instanceDetail: [String: String]?
+
+        public var instanceKey: String?
+
+        public var labels: [String: String]?
+
+        public var latestLevel: String?
+
+        public var maxLevel: String?
+
+        public var message: String?
+
+        public var observeResourceGlobalScope: Bool?
+
+        public var observeResourceList: String?
+
+        public var observeResourceType: String?
+
+        public var regionId: String?
+
+        public var ruleDisplayName: String?
+
+        public var send: AlertRuleSend?
+
+        public var startTime: Int64?
+
+        public var status: String?
+
+        public var workspace: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.send?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alertHistoryId != nil {
+                map["alertHistoryId"] = self.alertHistoryId!
+            }
+            if self.alertRuleId != nil {
+                map["alertRuleId"] = self.alertRuleId!
+            }
+            if self.annotations != nil {
+                map["annotations"] = self.annotations!
+            }
+            if self.bizSource != nil {
+                map["bizSource"] = self.bizSource!
+            }
+            if self.count != nil {
+                map["count"] = self.count!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["gmtModified"] = self.gmtModified!
+            }
+            if self.instanceDetail != nil {
+                map["instanceDetail"] = self.instanceDetail!
+            }
+            if self.instanceKey != nil {
+                map["instanceKey"] = self.instanceKey!
+            }
+            if self.labels != nil {
+                map["labels"] = self.labels!
+            }
+            if self.latestLevel != nil {
+                map["latestLevel"] = self.latestLevel!
+            }
+            if self.maxLevel != nil {
+                map["maxLevel"] = self.maxLevel!
+            }
+            if self.message != nil {
+                map["message"] = self.message!
+            }
+            if self.observeResourceGlobalScope != nil {
+                map["observeResourceGlobalScope"] = self.observeResourceGlobalScope!
+            }
+            if self.observeResourceList != nil {
+                map["observeResourceList"] = self.observeResourceList!
+            }
+            if self.observeResourceType != nil {
+                map["observeResourceType"] = self.observeResourceType!
+            }
+            if self.regionId != nil {
+                map["regionId"] = self.regionId!
+            }
+            if self.ruleDisplayName != nil {
+                map["ruleDisplayName"] = self.ruleDisplayName!
+            }
+            if self.send != nil {
+                map["send"] = self.send?.toMap()
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.workspace != nil {
+                map["workspace"] = self.workspace!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["alertHistoryId"] as? String {
+                self.alertHistoryId = value
+            }
+            if let value = dict["alertRuleId"] as? String {
+                self.alertRuleId = value
+            }
+            if let value = dict["annotations"] as? [String: String] {
+                self.annotations = value
+            }
+            if let value = dict["bizSource"] as? String {
+                self.bizSource = value
+            }
+            if let value = dict["count"] as? Int64 {
+                self.count = value
+            }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["gmtCreate"] as? Int64 {
+                self.gmtCreate = value
+            }
+            if let value = dict["gmtModified"] as? Int64 {
+                self.gmtModified = value
+            }
+            if let value = dict["instanceDetail"] as? [String: String] {
+                self.instanceDetail = value
+            }
+            if let value = dict["instanceKey"] as? String {
+                self.instanceKey = value
+            }
+            if let value = dict["labels"] as? [String: String] {
+                self.labels = value
+            }
+            if let value = dict["latestLevel"] as? String {
+                self.latestLevel = value
+            }
+            if let value = dict["maxLevel"] as? String {
+                self.maxLevel = value
+            }
+            if let value = dict["message"] as? String {
+                self.message = value
+            }
+            if let value = dict["observeResourceGlobalScope"] as? Bool {
+                self.observeResourceGlobalScope = value
+            }
+            if let value = dict["observeResourceList"] as? String {
+                self.observeResourceList = value
+            }
+            if let value = dict["observeResourceType"] as? String {
+                self.observeResourceType = value
+            }
+            if let value = dict["regionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ruleDisplayName"] as? String {
+                self.ruleDisplayName = value
+            }
+            if let value = dict["send"] as? [String: Any?] {
+                var model = AlertRuleSend()
+                model.fromMap(value)
+                self.send = model
+            }
+            if let value = dict["startTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["workspace"] as? String {
+                self.workspace = value
+            }
+        }
+    }
+    public var data: [ListAlertHistoriesResponseBody.Data]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [ListAlertHistoriesResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAlertHistoriesResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAlertHistoriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAlertHistoriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAlertHistoriesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListAlertNotifyTemplatesRequest : Tea.TeaModel {
     public var alertNotifyTemplateIds: [String]?
 
