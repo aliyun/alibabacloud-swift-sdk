@@ -516,6 +516,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getQuotaUtilizationOverviewWithOptions(_ request: GetQuotaUtilizationOverviewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQuotaUtilizationOverviewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            body["QuotaCategory"] = request.quotaCategory ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetQuotaUtilizationOverview",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetQuotaUtilizationOverviewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getQuotaUtilizationOverview(_ request: GetQuotaUtilizationOverviewRequest) async throws -> GetQuotaUtilizationOverviewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getQuotaUtilizationOverviewWithOptions(request as! GetQuotaUtilizationOverviewRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAlarmHistoriesWithOptions(_ request: ListAlarmHistoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAlarmHistoriesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1021,6 +1052,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaUtilizationReportWithOptions(_ request: ListQuotaUtilizationReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotaUtilizationReportResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adjustable)) {
+            body["Adjustable"] = request.adjustable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.keyWords)) {
+            body["KeyWords"] = request.keyWords ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            body["QuotaCategory"] = request.quotaCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaRegionId)) {
+            body["QuotaRegionId"] = request.quotaRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.utilizationStatuses)) {
+            body["UtilizationStatuses"] = request.utilizationStatuses ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListQuotaUtilizationReport",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListQuotaUtilizationReportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaUtilizationReport(_ request: ListQuotaUtilizationReportRequest) async throws -> ListQuotaUtilizationReportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listQuotaUtilizationReportWithOptions(request as! ListQuotaUtilizationReportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyQuotaTemplateServiceStatusWithOptions(_ request: ModifyQuotaTemplateServiceStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyQuotaTemplateServiceStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1140,6 +1223,31 @@ open class Client : AlibabacloudOpenApi.Client {
     public func remindQuotaApplicationApproval(_ request: RemindQuotaApplicationApprovalRequest) async throws -> RemindQuotaApplicationApprovalResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await remindQuotaApplicationApprovalWithOptions(request as! RemindQuotaApplicationApprovalRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startQuotaUtilizationReportWithOptions(_ request: StartQuotaUtilizationReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartQuotaUtilizationReportResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartQuotaUtilizationReport",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartQuotaUtilizationReportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startQuotaUtilizationReport(_ request: StartQuotaUtilizationReportRequest) async throws -> StartQuotaUtilizationReportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await startQuotaUtilizationReportWithOptions(request as! StartQuotaUtilizationReportRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
