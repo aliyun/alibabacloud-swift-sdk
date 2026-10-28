@@ -4298,6 +4298,8 @@ public class AddKnowledgeFileResponse : Tea.TeaModel {
 public class AddKnowledgeTagsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fileId: String?
+
     public var fileLocation: String?
 
     public var tags: String?
@@ -4319,6 +4321,9 @@ public class AddKnowledgeTagsRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.fileLocation != nil {
             map["FileLocation"] = self.fileLocation!
         }
@@ -4332,6 +4337,9 @@ public class AddKnowledgeTagsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileLocation"] as? String {
             self.fileLocation = value
@@ -4567,6 +4575,8 @@ public class AddKnowledgeTagsResponse : Tea.TeaModel {
 public class AddKnowledgeUploadUserRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fileId: String?
+
     public var fileLocation: String?
 
     public var users: String?
@@ -4588,6 +4598,9 @@ public class AddKnowledgeUploadUserRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.fileLocation != nil {
             map["FileLocation"] = self.fileLocation!
         }
@@ -4601,6 +4614,9 @@ public class AddKnowledgeUploadUserRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileLocation"] as? String {
             self.fileLocation = value
@@ -15885,6 +15901,8 @@ public class DeleteFormationCrawlerResponse : Tea.TeaModel {
 public class DeleteKnowledgeFileRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fileId: String?
+
     public var fileLocation: String?
 
     public override init() {
@@ -15904,6 +15922,9 @@ public class DeleteKnowledgeFileRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.fileLocation != nil {
             map["FileLocation"] = self.fileLocation!
         }
@@ -15914,6 +15935,9 @@ public class DeleteKnowledgeFileRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileLocation"] as? String {
             self.fileLocation = value
@@ -27781,6 +27805,8 @@ public class DescribeColumnsResponse : Tea.TeaModel {
 public class DescribeCompactionServiceSwitchRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var regionId: String?
+
     public override init() {
         super.init()
     }
@@ -27798,6 +27824,9 @@ public class DescribeCompactionServiceSwitchRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         return map
     }
 
@@ -27805,6 +27834,9 @@ public class DescribeCompactionServiceSwitchRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
     }
 }
@@ -35156,6 +35188,8 @@ public class DescribeEnabledPrivilegesResponse : Tea.TeaModel {
 public class DescribeEssdCacheConfigRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var regionId: String?
+
     public override init() {
         super.init()
     }
@@ -35173,6 +35207,9 @@ public class DescribeEssdCacheConfigRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         return map
     }
 
@@ -35180,6 +35217,9 @@ public class DescribeEssdCacheConfigRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
     }
 }
@@ -38531,6 +38571,8 @@ public class DescribeKernelVersionResponse : Tea.TeaModel {
 public class DescribeLakeCacheSizeRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var regionId: String?
+
     public override init() {
         super.init()
     }
@@ -38548,6 +38590,9 @@ public class DescribeLakeCacheSizeRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         return map
     }
 
@@ -38555,6 +38600,9 @@ public class DescribeLakeCacheSizeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
     }
 }
@@ -58251,6 +58299,8 @@ public class ListKnowledgeFilesResponse : Tea.TeaModel {
 public class ListKnowledgeTagsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fileId: String?
+
     public var fileLocation: String?
 
     public override init() {
@@ -58270,6 +58320,9 @@ public class ListKnowledgeTagsRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.fileLocation != nil {
             map["FileLocation"] = self.fileLocation!
         }
@@ -58280,6 +58333,9 @@ public class ListKnowledgeTagsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileLocation"] as? String {
             self.fileLocation = value
@@ -58488,6 +58544,8 @@ public class ListKnowledgeTagsResponse : Tea.TeaModel {
 public class ListKnowledgeUploadUserRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fileId: String?
+
     public var fileLocation: String?
 
     public override init() {
@@ -58507,6 +58565,9 @@ public class ListKnowledgeUploadUserRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.fileLocation != nil {
             map["FileLocation"] = self.fileLocation!
         }
@@ -58517,6 +58578,9 @@ public class ListKnowledgeUploadUserRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileLocation"] as? String {
             self.fileLocation = value
@@ -64211,6 +64275,8 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
 
     public var productForm: String?
 
+    public var productVersion: String?
+
     public var regionId: String?
 
     public var reservedNodeCount: Int32?
@@ -64251,6 +64317,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         if self.productForm != nil {
             map["ProductForm"] = self.productForm!
         }
+        if self.productVersion != nil {
+            map["ProductVersion"] = self.productVersion!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -64285,6 +64354,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         }
         if let value = dict["ProductForm"] as? String {
             self.productForm = value
+        }
+        if let value = dict["ProductVersion"] as? String {
+            self.productVersion = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -64799,6 +64871,8 @@ public class ModifyDBClusterSSLRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var SSLEnabled: String?
+
     public override init() {
         super.init()
     }
@@ -64825,6 +64899,9 @@ public class ModifyDBClusterSSLRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.SSLEnabled != nil {
+            map["SSLEnabled"] = self.SSLEnabled!
+        }
         return map
     }
 
@@ -64841,6 +64918,9 @@ public class ModifyDBClusterSSLRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SSLEnabled"] as? String {
+            self.SSLEnabled = value
         }
     }
 }
@@ -69152,6 +69232,8 @@ public class ReleaseClusterPublicConnectionResponse : Tea.TeaModel {
 public class RemoveKnowledgeTagsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fileId: String?
+
     public var fileLocation: String?
 
     public var tags: String?
@@ -69173,6 +69255,9 @@ public class RemoveKnowledgeTagsRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.fileLocation != nil {
             map["FileLocation"] = self.fileLocation!
         }
@@ -69186,6 +69271,9 @@ public class RemoveKnowledgeTagsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileLocation"] as? String {
             self.fileLocation = value
@@ -69345,6 +69433,8 @@ public class RemoveKnowledgeTagsResponse : Tea.TeaModel {
 public class RemoveKnowledgeUploadUserRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var fileId: String?
+
     public var fileLocation: String?
 
     public var users: String?
@@ -69366,6 +69456,9 @@ public class RemoveKnowledgeUploadUserRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.fileLocation != nil {
             map["FileLocation"] = self.fileLocation!
         }
@@ -69379,6 +69472,9 @@ public class RemoveKnowledgeUploadUserRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileLocation"] as? String {
             self.fileLocation = value
