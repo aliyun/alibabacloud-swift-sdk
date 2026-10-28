@@ -3487,6 +3487,8 @@ public class GetCommissionableProductsResponseBody : Tea.TeaModel {
 
         public var eligibleForDiscount: String?
 
+        public var eligibleForPerformance: String?
+
         public var endMonth: String?
 
         public var productCampaign: String?
@@ -3528,6 +3530,9 @@ public class GetCommissionableProductsResponseBody : Tea.TeaModel {
             if self.eligibleForDiscount != nil {
                 map["EligibleForDiscount"] = self.eligibleForDiscount!
             }
+            if self.eligibleForPerformance != nil {
+                map["EligibleForPerformance"] = self.eligibleForPerformance!
+            }
             if self.endMonth != nil {
                 map["EndMonth"] = self.endMonth!
             }
@@ -3565,6 +3570,9 @@ public class GetCommissionableProductsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EligibleForDiscount"] as? String {
                 self.eligibleForDiscount = value
+            }
+            if let value = dict["EligibleForPerformance"] as? String {
+                self.eligibleForPerformance = value
             }
             if let value = dict["EndMonth"] as? String {
                 self.endMonth = value
