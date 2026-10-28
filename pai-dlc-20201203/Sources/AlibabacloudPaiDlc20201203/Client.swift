@@ -96,6 +96,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             body["DisplayName"] = request.displayName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.elasticSpec)) {
             body["ElasticSpec"] = request.elasticSpec!;
         }

@@ -9041,6 +9041,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var displayName: String?
 
+    public var dryRun: Bool?
+
     public var elasticSpec: JobElasticSpec?
 
     public var envs: [String: String]?
@@ -9127,6 +9129,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.elasticSpec != nil {
             map["ElasticSpec"] = self.elasticSpec?.toMap()
@@ -9238,6 +9243,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["ElasticSpec"] as? [String: Any?] {
             var model = JobElasticSpec()
