@@ -94,6 +94,8 @@ public class AttachKVCacheStoreRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var instanceType: String?
+
     public var regionId: String?
 
     public var resourceIds: [AttachKVCacheStoreRequest.ResourceIds]?
@@ -121,6 +123,9 @@ public class AttachKVCacheStoreRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -152,6 +157,9 @@ public class AttachKVCacheStoreRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -1671,6 +1679,8 @@ public class ListKVCacheStoreAttachInfoRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var vscId: String?
+
     public override init() {
         super.init()
     }
@@ -1703,6 +1713,9 @@ public class ListKVCacheStoreAttachInfoRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.vscId != nil {
+            map["VscId"] = self.vscId!
+        }
         return map
     }
 
@@ -1726,6 +1739,9 @@ public class ListKVCacheStoreAttachInfoRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["VscId"] as? String {
+            self.vscId = value
+        }
     }
 }
 
@@ -1734,6 +1750,8 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
         public var attachedAt: String?
 
         public var capacity: Int64?
+
+        public var instanceId: String?
 
         public var kvcsId: String?
 
@@ -1769,6 +1787,9 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
             if self.capacity != nil {
                 map["Capacity"] = self.capacity!
             }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
             if self.kvcsId != nil {
                 map["KvcsId"] = self.kvcsId!
             }
@@ -1800,6 +1821,9 @@ public class ListKVCacheStoreAttachInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Capacity"] as? Int64 {
                 self.capacity = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
             if let value = dict["KvcsId"] as? String {
                 self.kvcsId = value
