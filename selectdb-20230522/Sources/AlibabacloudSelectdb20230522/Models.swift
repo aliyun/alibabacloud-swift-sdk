@@ -6537,6 +6537,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
         public var tags: [DescribeDBInstancesResponseBody.Items.Tags]?
 
+        public var tdeEnabled: Bool?
+
         public var tenantClusterId: String?
 
         public var tenantToken: String?
@@ -6684,6 +6686,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.tdeEnabled != nil {
+                map["TdeEnabled"] = self.tdeEnabled!
             }
             if self.tenantClusterId != nil {
                 map["TenantClusterId"] = self.tenantClusterId!
@@ -6848,6 +6853,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["TdeEnabled"] as? Bool {
+                self.tdeEnabled = value
             }
             if let value = dict["TenantClusterId"] as? String {
                 self.tenantClusterId = value
