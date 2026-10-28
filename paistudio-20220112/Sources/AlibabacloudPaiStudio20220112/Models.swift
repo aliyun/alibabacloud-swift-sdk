@@ -23174,7 +23174,105 @@ public class UpdateAlgorithmVersionResponse : Tea.TeaModel {
 }
 
 public class UpdateQuotaRequest : Tea.TeaModel {
+    public class ClusterSpec : Tea.TeaModel {
+        public var clusterType: String?
+
+        public var dataSources: [String]?
+
+        public var image: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterType != nil {
+                map["ClusterType"] = self.clusterType!
+            }
+            if self.dataSources != nil {
+                map["DataSources"] = self.dataSources!
+            }
+            if self.image != nil {
+                map["Image"] = self.image!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClusterType"] as? String {
+                self.clusterType = value
+            }
+            if let value = dict["DataSources"] as? [String] {
+                self.dataSources = value
+            }
+            if let value = dict["Image"] as? String {
+                self.image = value
+            }
+        }
+    }
+    public class GracefulUpgradeConfig : Tea.TeaModel {
+        public var drainTimeoutSeconds: Int64?
+
+        public var maxUnavailable: String?
+
+        public var taskDrainReserveWorkers: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.drainTimeoutSeconds != nil {
+                map["DrainTimeoutSeconds"] = self.drainTimeoutSeconds!
+            }
+            if self.maxUnavailable != nil {
+                map["MaxUnavailable"] = self.maxUnavailable!
+            }
+            if self.taskDrainReserveWorkers != nil {
+                map["TaskDrainReserveWorkers"] = self.taskDrainReserveWorkers!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DrainTimeoutSeconds"] as? Int64 {
+                self.drainTimeoutSeconds = value
+            }
+            if let value = dict["MaxUnavailable"] as? String {
+                self.maxUnavailable = value
+            }
+            if let value = dict["TaskDrainReserveWorkers"] as? Int64 {
+                self.taskDrainReserveWorkers = value
+            }
+        }
+    }
+    public var clusterSpec: UpdateQuotaRequest.ClusterSpec?
+
     public var description_: String?
+
+    public var enableGracefulUpgrade: Bool?
+
+    public var gracefulUpgradeConfig: UpdateQuotaRequest.GracefulUpgradeConfig?
 
     public var labels: [Label]?
 
@@ -23196,13 +23294,24 @@ public class UpdateQuotaRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.clusterSpec?.validate()
+        try self.gracefulUpgradeConfig?.validate()
         try self.quotaConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterSpec != nil {
+            map["ClusterSpec"] = self.clusterSpec?.toMap()
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enableGracefulUpgrade != nil {
+            map["EnableGracefulUpgrade"] = self.enableGracefulUpgrade!
+        }
+        if self.gracefulUpgradeConfig != nil {
+            map["GracefulUpgradeConfig"] = self.gracefulUpgradeConfig?.toMap()
         }
         if self.labels != nil {
             var tmp : [Any] = []
@@ -23228,8 +23337,21 @@ public class UpdateQuotaRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClusterSpec"] as? [String: Any?] {
+            var model = UpdateQuotaRequest.ClusterSpec()
+            model.fromMap(value)
+            self.clusterSpec = model
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableGracefulUpgrade"] as? Bool {
+            self.enableGracefulUpgrade = value
+        }
+        if let value = dict["GracefulUpgradeConfig"] as? [String: Any?] {
+            var model = UpdateQuotaRequest.GracefulUpgradeConfig()
+            model.fromMap(value)
+            self.gracefulUpgradeConfig = model
         }
         if let value = dict["Labels"] as? [Any?] {
             var tmp : [Label] = []

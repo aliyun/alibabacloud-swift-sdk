@@ -2496,8 +2496,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateQuotaWithOptions(_ QuotaId: String, _ request: UpdateQuotaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateQuotaResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterSpec)) {
+            body["ClusterSpec"] = request.clusterSpec!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableGracefulUpgrade)) {
+            body["EnableGracefulUpgrade"] = request.enableGracefulUpgrade!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gracefulUpgradeConfig)) {
+            body["GracefulUpgradeConfig"] = request.gracefulUpgradeConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.labels)) {
             body["Labels"] = request.labels ?? [];
