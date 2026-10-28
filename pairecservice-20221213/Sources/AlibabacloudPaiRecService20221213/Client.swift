@@ -237,6 +237,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkRecallManagementServiceWithOptions(_ RecallManagementServiceId: String, _ request: CheckRecallManagementServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckRecallManagementServiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contextParams)) {
+            body["ContextParams"] = request.contextParams ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.exposureList)) {
+            body["ExposureList"] = request.exposureList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recallManagementServiceVersionId)) {
+            body["RecallManagementServiceVersionId"] = request.recallManagementServiceVersionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recalls)) {
+            body["Recalls"] = request.recalls ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.retainFields)) {
+            body["RetainFields"] = request.retainFields ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.uid)) {
+            body["Uid"] = request.uid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckRecallManagementService",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/recallmanagementservices/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(RecallManagementServiceId)) + "/action/check",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckRecallManagementServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkRecallManagementService(_ RecallManagementServiceId: String, _ request: CheckRecallManagementServiceRequest) async throws -> CheckRecallManagementServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await checkRecallManagementServiceWithOptions(RecallManagementServiceId as! String, request as! CheckRecallManagementServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkTrafficControlTaskExpressionWithOptions(_ request: CheckTrafficControlTaskExpressionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckTrafficControlTaskExpressionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
