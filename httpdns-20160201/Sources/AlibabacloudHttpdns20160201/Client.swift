@@ -8,7 +8,10 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
+        self._endpointMap = [
+            "cn-hangzhou": "httpdns-api.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("httpdns", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -55,6 +58,66 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addDomain(_ request: AddDomainRequest) async throws -> AddDomainResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await addDomainWithOptions(request as! AddDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSdnsRuleCategoryWithOptions(_ tmpReq: CreateSdnsRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSdnsRuleCategoryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateSdnsRuleCategoryShrinkRequest = CreateSdnsRuleCategoryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.clientIpRanges)) {
+            request.clientIpRangesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clientIpRanges, "ClientIpRanges", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.paths)) {
+            request.pathsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.paths, "Paths", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.rules)) {
+            request.rulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rules, "Rules", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientIpRangesShrink)) {
+            body["ClientIpRanges"] = request.clientIpRangesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            body["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            body["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lineId)) {
+            body["LineId"] = request.lineId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchType)) {
+            body["MatchType"] = request.matchType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pathsShrink)) {
+            body["Paths"] = request.pathsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rulesShrink)) {
+            body["Rules"] = request.rulesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSdnsRuleCategory",
+            "version": "2016-02-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSdnsRuleCategoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSdnsRuleCategory(_ request: CreateSdnsRuleCategoryRequest) async throws -> CreateSdnsRuleCategoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSdnsRuleCategoryWithOptions(request as! CreateSdnsRuleCategoryRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -300,5 +363,228 @@ open class Client : AlibabacloudOpenApi.Client {
     public func refreshResolveCache(_ request: RefreshResolveCacheRequest) async throws -> RefreshResolveCacheResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await refreshResolveCacheWithOptions(request as! RefreshResolveCacheRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsDeleteRuleCategoryWithOptions(_ request: SdnsDeleteRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SdnsDeleteRuleCategoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SdnsDeleteRuleCategory",
+            "version": "2016-02-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SdnsDeleteRuleCategoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsDeleteRuleCategory(_ request: SdnsDeleteRuleCategoryRequest) async throws -> SdnsDeleteRuleCategoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sdnsDeleteRuleCategoryWithOptions(request as! SdnsDeleteRuleCategoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsGetRuleCategoryWithOptions(_ request: SdnsGetRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SdnsGetRuleCategoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SdnsGetRuleCategory",
+            "version": "2016-02-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SdnsGetRuleCategoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsGetRuleCategory(_ request: SdnsGetRuleCategoryRequest) async throws -> SdnsGetRuleCategoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sdnsGetRuleCategoryWithOptions(request as! SdnsGetRuleCategoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsListRuleCategoriesWithOptions(_ request: SdnsListRuleCategoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SdnsListRuleCategoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SdnsListRuleCategories",
+            "version": "2016-02-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SdnsListRuleCategoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsListRuleCategories(_ request: SdnsListRuleCategoriesRequest) async throws -> SdnsListRuleCategoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sdnsListRuleCategoriesWithOptions(request as! SdnsListRuleCategoriesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsSwitchRuleCategoryWithOptions(_ request: SdnsSwitchRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SdnsSwitchRuleCategoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SdnsSwitchRuleCategory",
+            "version": "2016-02-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SdnsSwitchRuleCategoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsSwitchRuleCategory(_ request: SdnsSwitchRuleCategoryRequest) async throws -> SdnsSwitchRuleCategoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sdnsSwitchRuleCategoryWithOptions(request as! SdnsSwitchRuleCategoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsVerifyRuleCategoryWithOptions(_ tmpReq: SdnsVerifyRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SdnsVerifyRuleCategoryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SdnsVerifyRuleCategoryShrinkRequest = SdnsVerifyRuleCategoryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.args)) {
+            request.argsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.args, "Args", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.clientIpRanges)) {
+            request.clientIpRangesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clientIpRanges, "ClientIpRanges", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.rules)) {
+            request.rulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rules, "Rules", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.argsShrink)) {
+            body["Args"] = request.argsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cip)) {
+            body["Cip"] = request.cip ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientIpRangesShrink)) {
+            body["ClientIpRanges"] = request.clientIpRangesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchType)) {
+            body["MatchType"] = request.matchType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rulesShrink)) {
+            body["Rules"] = request.rulesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SdnsVerifyRuleCategory",
+            "version": "2016-02-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SdnsVerifyRuleCategoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sdnsVerifyRuleCategory(_ request: SdnsVerifyRuleCategoryRequest) async throws -> SdnsVerifyRuleCategoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sdnsVerifyRuleCategoryWithOptions(request as! SdnsVerifyRuleCategoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSdnsRuleCategoryWithOptions(_ tmpReq: UpdateSdnsRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSdnsRuleCategoryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateSdnsRuleCategoryShrinkRequest = UpdateSdnsRuleCategoryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.rules)) {
+            request.rulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rules, "Rules", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientIpRanges)) {
+            body["ClientIpRanges"] = request.clientIpRanges ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rulesShrink)) {
+            body["Rules"] = request.rulesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateSdnsRuleCategory",
+            "version": "2016-02-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateSdnsRuleCategoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSdnsRuleCategory(_ request: UpdateSdnsRuleCategoryRequest) async throws -> UpdateSdnsRuleCategoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateSdnsRuleCategoryWithOptions(request as! UpdateSdnsRuleCategoryRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
