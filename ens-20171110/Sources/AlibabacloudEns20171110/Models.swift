@@ -12497,6 +12497,8 @@ public class CreateSDGRequest : Tea.TeaModel {
 
     public var performanceLevel: Int64?
 
+    public var resetOptimize: Bool?
+
     public var size: String?
 
     public override init() {
@@ -12531,6 +12533,9 @@ public class CreateSDGRequest : Tea.TeaModel {
         if self.performanceLevel != nil {
             map["PerformanceLevel"] = self.performanceLevel!
         }
+        if self.resetOptimize != nil {
+            map["ResetOptimize"] = self.resetOptimize!
+        }
         if self.size != nil {
             map["Size"] = self.size!
         }
@@ -12556,6 +12561,9 @@ public class CreateSDGRequest : Tea.TeaModel {
         }
         if let value = dict["PerformanceLevel"] as? Int64 {
             self.performanceLevel = value
+        }
+        if let value = dict["ResetOptimize"] as? Bool {
+            self.resetOptimize = value
         }
         if let value = dict["Size"] as? String {
             self.size = value
