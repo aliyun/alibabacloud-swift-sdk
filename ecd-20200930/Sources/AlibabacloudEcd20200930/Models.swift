@@ -7079,6 +7079,44 @@ public class CreateCdsFileShareLinkResponse : Tea.TeaModel {
 }
 
 public class CreateCenterPolicyRequest : Tea.TeaModel {
+    public class AppScreenshotBuckets : Tea.TeaModel {
+        public var bucketName: String?
+
+        public var bucketRegionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bucketName != nil {
+                map["BucketName"] = self.bucketName!
+            }
+            if self.bucketRegionId != nil {
+                map["BucketRegionId"] = self.bucketRegionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BucketName"] as? String {
+                self.bucketName = value
+            }
+            if let value = dict["BucketRegionId"] as? String {
+                self.bucketRegionId = value
+            }
+        }
+    }
     public class AuthorizeAccessPolicyRule : Tea.TeaModel {
         public var cidrIp: String?
 
@@ -7637,11 +7675,15 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var appContentProtection: String?
 
+    public var appScreenshotBuckets: [CreateCenterPolicyRequest.AppScreenshotBuckets]?
+
     public var authorizeAccessPolicyRule: [CreateCenterPolicyRequest.AuthorizeAccessPolicyRule]?
 
     public var authorizeSecurityPolicyRule: [CreateCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
 
     public var autoReconnect: String?
+
+    public var autoSaveAppScreenshot: String?
 
     public var businessChannel: String?
 
@@ -7742,6 +7784,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var localDrive: String?
 
     public var maxReconnectTime: Int32?
+
+    public var mcpService: String?
 
     public var memoryDownGradeDuration: Int32?
 
@@ -7942,6 +7986,13 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.appContentProtection != nil {
             map["AppContentProtection"] = self.appContentProtection!
         }
+        if self.appScreenshotBuckets != nil {
+            var tmp : [Any] = []
+            for k in self.appScreenshotBuckets! {
+                tmp.append(k.toMap())
+            }
+            map["AppScreenshotBuckets"] = tmp
+        }
         if self.authorizeAccessPolicyRule != nil {
             var tmp : [Any] = []
             for k in self.authorizeAccessPolicyRule! {
@@ -7958,6 +8009,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.autoReconnect != nil {
             map["AutoReconnect"] = self.autoReconnect!
+        }
+        if self.autoSaveAppScreenshot != nil {
+            map["AutoSaveAppScreenshot"] = self.autoSaveAppScreenshot!
         }
         if self.businessChannel != nil {
             map["BusinessChannel"] = self.businessChannel!
@@ -8128,6 +8182,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.maxReconnectTime != nil {
             map["MaxReconnectTime"] = self.maxReconnectTime!
+        }
+        if self.mcpService != nil {
+            map["McpService"] = self.mcpService!
         }
         if self.memoryDownGradeDuration != nil {
             map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
@@ -8416,6 +8473,19 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["AppContentProtection"] as? String {
             self.appContentProtection = value
         }
+        if let value = dict["AppScreenshotBuckets"] as? [Any?] {
+            var tmp : [CreateCenterPolicyRequest.AppScreenshotBuckets] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCenterPolicyRequest.AppScreenshotBuckets()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.appScreenshotBuckets = tmp
+        }
         if let value = dict["AuthorizeAccessPolicyRule"] as? [Any?] {
             var tmp : [CreateCenterPolicyRequest.AuthorizeAccessPolicyRule] = []
             for v in value {
@@ -8444,6 +8514,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["AutoReconnect"] as? String {
             self.autoReconnect = value
+        }
+        if let value = dict["AutoSaveAppScreenshot"] as? String {
+            self.autoSaveAppScreenshot = value
         }
         if let value = dict["BusinessChannel"] as? String {
             self.businessChannel = value
@@ -8644,6 +8717,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["MaxReconnectTime"] as? Int32 {
             self.maxReconnectTime = value
+        }
+        if let value = dict["McpService"] as? String {
+            self.mcpService = value
         }
         if let value = dict["MemoryDownGradeDuration"] as? Int32 {
             self.memoryDownGradeDuration = value
@@ -23853,6 +23929,44 @@ public class DescribeCenterPolicyListRequest : Tea.TeaModel {
 
 public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
     public class DescribePolicyGroups : Tea.TeaModel {
+        public class AppScreenshotBuckets : Tea.TeaModel {
+            public var bucketName: String?
+
+            public var bucketRegionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bucketName != nil {
+                    map["BucketName"] = self.bucketName!
+                }
+                if self.bucketRegionId != nil {
+                    map["BucketRegionId"] = self.bucketRegionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BucketName"] as? String {
+                    self.bucketName = value
+                }
+                if let value = dict["BucketRegionId"] as? String {
+                    self.bucketRegionId = value
+                }
+            }
+        }
         public class AuthorizeAccessPolicyRules : Tea.TeaModel {
             public var cidrIp: String?
 
@@ -24289,11 +24403,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var appContentProtection: String?
 
+        public var appScreenshotBuckets: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AppScreenshotBuckets]?
+
         public var authorizeAccessPolicyRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules]?
 
         public var authorizeSecurityPolicyRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeSecurityPolicyRules]?
 
         public var autoReconnect: String?
+
+        public var autoSaveAppScreenshot: String?
 
         public var cameraRedirect: String?
 
@@ -24408,6 +24526,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var localDrive: String?
 
         public var maxReconnectTime: Int32?
+
+        public var mcpService: String?
 
         public var memoryDownGradeDuration: Int32?
 
@@ -24613,6 +24733,13 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.appContentProtection != nil {
                 map["AppContentProtection"] = self.appContentProtection!
             }
+            if self.appScreenshotBuckets != nil {
+                var tmp : [Any] = []
+                for k in self.appScreenshotBuckets! {
+                    tmp.append(k.toMap())
+                }
+                map["AppScreenshotBuckets"] = tmp
+            }
             if self.authorizeAccessPolicyRules != nil {
                 var tmp : [Any] = []
                 for k in self.authorizeAccessPolicyRules! {
@@ -24629,6 +24756,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.autoReconnect != nil {
                 map["AutoReconnect"] = self.autoReconnect!
+            }
+            if self.autoSaveAppScreenshot != nil {
+                map["AutoSaveAppScreenshot"] = self.autoSaveAppScreenshot!
             }
             if self.cameraRedirect != nil {
                 map["CameraRedirect"] = self.cameraRedirect!
@@ -24816,6 +24946,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.maxReconnectTime != nil {
                 map["MaxReconnectTime"] = self.maxReconnectTime!
+            }
+            if self.mcpService != nil {
+                map["McpService"] = self.mcpService!
             }
             if self.memoryDownGradeDuration != nil {
                 map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
@@ -25106,6 +25239,19 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["AppContentProtection"] as? String {
                 self.appContentProtection = value
             }
+            if let value = dict["AppScreenshotBuckets"] as? [Any?] {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AppScreenshotBuckets] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AppScreenshotBuckets()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.appScreenshotBuckets = tmp
+            }
             if let value = dict["AuthorizeAccessPolicyRules"] as? [Any?] {
                 var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules] = []
                 for v in value {
@@ -25134,6 +25280,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["AutoReconnect"] as? String {
                 self.autoReconnect = value
+            }
+            if let value = dict["AutoSaveAppScreenshot"] as? String {
+                self.autoSaveAppScreenshot = value
             }
             if let value = dict["CameraRedirect"] as? String {
                 self.cameraRedirect = value
@@ -25345,6 +25494,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["MaxReconnectTime"] as? Int32 {
                 self.maxReconnectTime = value
+            }
+            if let value = dict["McpService"] as? String {
+                self.mcpService = value
             }
             if let value = dict["MemoryDownGradeDuration"] as? Int32 {
                 self.memoryDownGradeDuration = value
@@ -45310,6 +45462,44 @@ public class DescribePolicyGroupsRequest : Tea.TeaModel {
 
 public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
     public class DescribePolicyGroups : Tea.TeaModel {
+        public class AppScreenshotBuckets : Tea.TeaModel {
+            public var bucketName: String?
+
+            public var bucketRegionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bucketName != nil {
+                    map["BucketName"] = self.bucketName!
+                }
+                if self.bucketRegionId != nil {
+                    map["BucketRegionId"] = self.bucketRegionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BucketName"] as? String {
+                    self.bucketName = value
+                }
+                if let value = dict["BucketRegionId"] as? String {
+                    self.bucketRegionId = value
+                }
+            }
+        }
         public class AuthorizeAccessPolicyRules : Tea.TeaModel {
             public var cidrIp: String?
 
@@ -45798,11 +45988,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var appContentProtection: String?
 
+        public var appScreenshotBuckets: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AppScreenshotBuckets]?
+
         public var authorizeAccessPolicyRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules]?
 
         public var authorizeSecurityPolicyRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AuthorizeSecurityPolicyRules]?
 
         public var autoReconnect: String?
+
+        public var autoSaveAppScreenshot: String?
 
         public var cameraRedirect: String?
 
@@ -45915,6 +46109,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var localDrive: String?
 
         public var maxReconnectTime: Int32?
+
+        public var mcpService: String?
 
         public var memoryDownGradeDuration: Int32?
 
@@ -46123,6 +46319,13 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.appContentProtection != nil {
                 map["AppContentProtection"] = self.appContentProtection!
             }
+            if self.appScreenshotBuckets != nil {
+                var tmp : [Any] = []
+                for k in self.appScreenshotBuckets! {
+                    tmp.append(k.toMap())
+                }
+                map["AppScreenshotBuckets"] = tmp
+            }
             if self.authorizeAccessPolicyRules != nil {
                 var tmp : [Any] = []
                 for k in self.authorizeAccessPolicyRules! {
@@ -46139,6 +46342,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.autoReconnect != nil {
                 map["AutoReconnect"] = self.autoReconnect!
+            }
+            if self.autoSaveAppScreenshot != nil {
+                map["AutoSaveAppScreenshot"] = self.autoSaveAppScreenshot!
             }
             if self.cameraRedirect != nil {
                 map["CameraRedirect"] = self.cameraRedirect!
@@ -46323,6 +46529,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.maxReconnectTime != nil {
                 map["MaxReconnectTime"] = self.maxReconnectTime!
+            }
+            if self.mcpService != nil {
+                map["McpService"] = self.mcpService!
             }
             if self.memoryDownGradeDuration != nil {
                 map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
@@ -46623,6 +46832,19 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["AppContentProtection"] as? String {
                 self.appContentProtection = value
             }
+            if let value = dict["AppScreenshotBuckets"] as? [Any?] {
+                var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AppScreenshotBuckets] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribePolicyGroupsResponseBody.DescribePolicyGroups.AppScreenshotBuckets()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.appScreenshotBuckets = tmp
+            }
             if let value = dict["AuthorizeAccessPolicyRules"] as? [Any?] {
                 var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules] = []
                 for v in value {
@@ -46651,6 +46873,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AutoReconnect"] as? String {
                 self.autoReconnect = value
+            }
+            if let value = dict["AutoSaveAppScreenshot"] as? String {
+                self.autoSaveAppScreenshot = value
             }
             if let value = dict["CameraRedirect"] as? String {
                 self.cameraRedirect = value
@@ -46859,6 +47084,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["MaxReconnectTime"] as? Int32 {
                 self.maxReconnectTime = value
+            }
+            if let value = dict["McpService"] as? String {
+                self.mcpService = value
             }
             if let value = dict["MemoryDownGradeDuration"] as? Int32 {
                 self.memoryDownGradeDuration = value
@@ -50528,6 +50756,8 @@ public class DescribeResourceByCenterPolicyIdRequest : Tea.TeaModel {
 
     public var resourceId: String?
 
+    public var resourceName: String?
+
     public override init() {
         super.init()
     }
@@ -50557,6 +50787,9 @@ public class DescribeResourceByCenterPolicyIdRequest : Tea.TeaModel {
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
+        if self.resourceName != nil {
+            map["ResourceName"] = self.resourceName!
+        }
         return map
     }
 
@@ -50576,6 +50809,9 @@ public class DescribeResourceByCenterPolicyIdRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
+        }
+        if let value = dict["ResourceName"] as? String {
+            self.resourceName = value
         }
     }
 }
@@ -66108,6 +66344,44 @@ public class ModifyCdsFileShareLinkResponse : Tea.TeaModel {
 }
 
 public class ModifyCenterPolicyRequest : Tea.TeaModel {
+    public class AppScreenshotBuckets : Tea.TeaModel {
+        public var bucketName: String?
+
+        public var bucketRegionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bucketName != nil {
+                map["BucketName"] = self.bucketName!
+            }
+            if self.bucketRegionId != nil {
+                map["BucketRegionId"] = self.bucketRegionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BucketName"] as? String {
+                self.bucketName = value
+            }
+            if let value = dict["BucketRegionId"] as? String {
+                self.bucketRegionId = value
+            }
+        }
+    }
     public class AuthorizeAccessPolicyRule : Tea.TeaModel {
         public var cidrIp: String?
 
@@ -66782,11 +67056,15 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var appContentProtection: String?
 
+    public var appScreenshotBuckets: [ModifyCenterPolicyRequest.AppScreenshotBuckets]?
+
     public var authorizeAccessPolicyRule: [ModifyCenterPolicyRequest.AuthorizeAccessPolicyRule]?
 
     public var authorizeSecurityPolicyRule: [ModifyCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
 
     public var autoReconnect: String?
+
+    public var autoSaveAppScreenshot: String?
 
     public var businessChannel: String?
 
@@ -66885,6 +67163,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var localDrive: String?
 
     public var maxReconnectTime: Int32?
+
+    public var mcpService: String?
 
     public var memoryDownGradeDuration: Int32?
 
@@ -67091,6 +67371,13 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.appContentProtection != nil {
             map["AppContentProtection"] = self.appContentProtection!
         }
+        if self.appScreenshotBuckets != nil {
+            var tmp : [Any] = []
+            for k in self.appScreenshotBuckets! {
+                tmp.append(k.toMap())
+            }
+            map["AppScreenshotBuckets"] = tmp
+        }
         if self.authorizeAccessPolicyRule != nil {
             var tmp : [Any] = []
             for k in self.authorizeAccessPolicyRule! {
@@ -67107,6 +67394,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.autoReconnect != nil {
             map["AutoReconnect"] = self.autoReconnect!
+        }
+        if self.autoSaveAppScreenshot != nil {
+            map["AutoSaveAppScreenshot"] = self.autoSaveAppScreenshot!
         }
         if self.businessChannel != nil {
             map["BusinessChannel"] = self.businessChannel!
@@ -67274,6 +67564,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.maxReconnectTime != nil {
             map["MaxReconnectTime"] = self.maxReconnectTime!
+        }
+        if self.mcpService != nil {
+            map["McpService"] = self.mcpService!
         }
         if self.memoryDownGradeDuration != nil {
             map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
@@ -67579,6 +67872,19 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["AppContentProtection"] as? String {
             self.appContentProtection = value
         }
+        if let value = dict["AppScreenshotBuckets"] as? [Any?] {
+            var tmp : [ModifyCenterPolicyRequest.AppScreenshotBuckets] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyCenterPolicyRequest.AppScreenshotBuckets()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.appScreenshotBuckets = tmp
+        }
         if let value = dict["AuthorizeAccessPolicyRule"] as? [Any?] {
             var tmp : [ModifyCenterPolicyRequest.AuthorizeAccessPolicyRule] = []
             for v in value {
@@ -67607,6 +67913,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["AutoReconnect"] as? String {
             self.autoReconnect = value
+        }
+        if let value = dict["AutoSaveAppScreenshot"] as? String {
+            self.autoSaveAppScreenshot = value
         }
         if let value = dict["BusinessChannel"] as? String {
             self.businessChannel = value
@@ -67804,6 +68113,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["MaxReconnectTime"] as? Int32 {
             self.maxReconnectTime = value
+        }
+        if let value = dict["McpService"] as? String {
+            self.mcpService = value
         }
         if let value = dict["MemoryDownGradeDuration"] as? Int32 {
             self.memoryDownGradeDuration = value
