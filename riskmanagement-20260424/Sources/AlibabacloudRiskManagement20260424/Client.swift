@@ -1154,6 +1154,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.actionCodes)) {
             request.actionCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.actionCodes, "ActionCodes", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.businessCodes)) {
+            request.businessCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.businessCodes, "BusinessCodes", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.caseCodes)) {
             request.caseCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.caseCodes, "CaseCodes", "json")
         }
@@ -1169,6 +1172,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
             query["AliyunLang"] = request.aliyunLang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessCodesShrink)) {
+            query["BusinessCodes"] = request.businessCodesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.caseCode)) {
             query["CaseCode"] = request.caseCode ?? "";

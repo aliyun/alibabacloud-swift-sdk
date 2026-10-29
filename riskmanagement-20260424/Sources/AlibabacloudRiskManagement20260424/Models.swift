@@ -11574,6 +11574,8 @@ public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
 
     public var aliyunLang: String?
 
+    public var businessCodes: [String]?
+
     public var caseCode: String?
 
     public var caseCodes: [String]?
@@ -11615,6 +11617,9 @@ public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
         }
         if self.aliyunLang != nil {
             map["AliyunLang"] = self.aliyunLang!
+        }
+        if self.businessCodes != nil {
+            map["BusinessCodes"] = self.businessCodes!
         }
         if self.caseCode != nil {
             map["CaseCode"] = self.caseCode!
@@ -11660,6 +11665,9 @@ public class QueryAccountSafetyIncidentRequest : Tea.TeaModel {
         if let value = dict["AliyunLang"] as? String {
             self.aliyunLang = value
         }
+        if let value = dict["BusinessCodes"] as? [String] {
+            self.businessCodes = value
+        }
         if let value = dict["CaseCode"] as? String {
             self.caseCode = value
         }
@@ -11700,6 +11708,8 @@ public class QueryAccountSafetyIncidentShrinkRequest : Tea.TeaModel {
     public var actionCodesShrink: String?
 
     public var aliyunLang: String?
+
+    public var businessCodesShrink: String?
 
     public var caseCode: String?
 
@@ -11742,6 +11752,9 @@ public class QueryAccountSafetyIncidentShrinkRequest : Tea.TeaModel {
         }
         if self.aliyunLang != nil {
             map["AliyunLang"] = self.aliyunLang!
+        }
+        if self.businessCodesShrink != nil {
+            map["BusinessCodes"] = self.businessCodesShrink!
         }
         if self.caseCode != nil {
             map["CaseCode"] = self.caseCode!
@@ -11786,6 +11799,9 @@ public class QueryAccountSafetyIncidentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AliyunLang"] as? String {
             self.aliyunLang = value
+        }
+        if let value = dict["BusinessCodes"] as? String {
+            self.businessCodesShrink = value
         }
         if let value = dict["CaseCode"] as? String {
             self.caseCode = value
@@ -11878,6 +11894,8 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
 
             public var antiPunishTime: String?
 
+            public var businessCode: String?
+
             public var callApi: String?
 
             public var dateExtras: QueryAccountSafetyIncidentResponseBody.Data.List.DateExtras?
@@ -11935,6 +11953,9 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
                 }
                 if self.antiPunishTime != nil {
                     map["AntiPunishTime"] = self.antiPunishTime!
+                }
+                if self.businessCode != nil {
+                    map["BusinessCode"] = self.businessCode!
                 }
                 if self.callApi != nil {
                     map["CallApi"] = self.callApi!
@@ -12000,6 +12021,9 @@ public class QueryAccountSafetyIncidentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AntiPunishTime"] as? String {
                     self.antiPunishTime = value
+                }
+                if let value = dict["BusinessCode"] as? String {
+                    self.businessCode = value
                 }
                 if let value = dict["CallApi"] as? String {
                     self.callApi = value
