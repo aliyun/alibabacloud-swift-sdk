@@ -669,6 +669,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createYaoChiAgentConfirmWithOptions(_ request: CreateYaoChiAgentConfirmRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateYaoChiAgentConfirmResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.approved)) {
+            query["Approved"] = request.approved!;
+        }
+        if (!TeaUtils.Client.isUnset(request.confirmationId)) {
+            query["ConfirmationId"] = request.confirmationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toolArgs)) {
+            query["ToolArgs"] = request.toolArgs ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateYaoChiAgentConfirm",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateYaoChiAgentConfirmResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createYaoChiAgentConfirm(_ request: CreateYaoChiAgentConfirmRequest) async throws -> CreateYaoChiAgentConfirmResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createYaoChiAgentConfirmWithOptions(request as! CreateYaoChiAgentConfirmRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteCloudBenchTaskWithOptions(_ request: DeleteCloudBenchTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudBenchTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
