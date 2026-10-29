@@ -7107,6 +7107,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
             public var approvalRequired: Bool?
 
+            public var autoRepairPolicyId: String?
+
             public var maxParallelRepairingNodes: String?
 
             public var maxUnhealthyNodesThreshold: String?
@@ -7130,6 +7132,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 if self.approvalRequired != nil {
                     map["approval_required"] = self.approvalRequired!
                 }
+                if self.autoRepairPolicyId != nil {
+                    map["auto_repair_policy_id"] = self.autoRepairPolicyId!
+                }
                 if self.maxParallelRepairingNodes != nil {
                     map["max_parallel_repairing_nodes"] = self.maxParallelRepairingNodes!
                 }
@@ -7146,6 +7151,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["approval_required"] as? Bool {
                     self.approvalRequired = value
+                }
+                if let value = dict["auto_repair_policy_id"] as? String {
+                    self.autoRepairPolicyId = value
                 }
                 if let value = dict["max_parallel_repairing_nodes"] as? String {
                     self.maxParallelRepairingNodes = value
@@ -12026,6 +12034,8 @@ public class DescribeAutoRepairPolicyResponseBody : Tea.TeaModel {
 
     public var rules: [DescribeAutoRepairPolicyResponseBody.Rules]?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -12062,6 +12072,9 @@ public class DescribeAutoRepairPolicyResponseBody : Tea.TeaModel {
             }
             map["rules"] = tmp
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         return map
     }
 
@@ -12094,6 +12107,9 @@ public class DescribeAutoRepairPolicyResponseBody : Tea.TeaModel {
                 }
             }
             self.rules = tmp
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
@@ -29324,6 +29340,8 @@ public class ListAutoRepairPoliciesResponseBody : Tea.TeaModel {
 
         public var rules: [ListAutoRepairPoliciesResponseBody.Items.Rules]?
 
+        public var type: String?
+
         public override init() {
             super.init()
         }
@@ -29360,6 +29378,9 @@ public class ListAutoRepairPoliciesResponseBody : Tea.TeaModel {
                 }
                 map["rules"] = tmp
             }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
             return map
         }
 
@@ -29392,6 +29413,9 @@ public class ListAutoRepairPoliciesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.rules = tmp
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
             }
         }
     }
