@@ -19552,9 +19552,13 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
 
     public var egressIp: String?
 
+    public var expiredTime: String?
+
     public var hostname: String?
 
     public var instanceChargeType: String?
+
+    public var instanceName: String?
 
     public var internalIp: String?
 
@@ -19613,11 +19617,17 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         if self.egressIp != nil {
             map["EgressIp"] = self.egressIp!
         }
+        if self.expiredTime != nil {
+            map["ExpiredTime"] = self.expiredTime!
+        }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
         }
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
         }
         if self.internalIp != nil {
             map["InternalIp"] = self.internalIp!
@@ -19685,11 +19695,17 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         if let value = dict["EgressIp"] as? String {
             self.egressIp = value
         }
+        if let value = dict["ExpiredTime"] as? String {
+            self.expiredTime = value
+        }
         if let value = dict["Hostname"] as? String {
             self.hostname = value
         }
         if let value = dict["InstanceChargeType"] as? String {
             self.instanceChargeType = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
         }
         if let value = dict["InternalIp"] as? String {
             self.internalIp = value
@@ -33906,11 +33922,25 @@ public class ListRenderingInstancesRequest : Tea.TeaModel {
 
 public class ListRenderingInstancesResponseBody : Tea.TeaModel {
     public class RenderingInstances : Tea.TeaModel {
+        public var chargeType: String?
+
         public var creationTime: String?
+
+        public var expireTime: String?
+
+        public var instanceName: String?
+
+        public var maxEgressBandwidth: String?
+
+        public var maxIngressBandwidth: String?
 
         public var renderingInstanceId: String?
 
         public var renderingSpec: String?
+
+        public var serverStatus: String?
+
+        public var status: String?
 
         public var storageSize: Int32?
 
@@ -33928,14 +33958,35 @@ public class ListRenderingInstancesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.maxEgressBandwidth != nil {
+                map["MaxEgressBandwidth"] = self.maxEgressBandwidth!
+            }
+            if self.maxIngressBandwidth != nil {
+                map["MaxIngressBandwidth"] = self.maxIngressBandwidth!
             }
             if self.renderingInstanceId != nil {
                 map["RenderingInstanceId"] = self.renderingInstanceId!
             }
             if self.renderingSpec != nil {
                 map["RenderingSpec"] = self.renderingSpec!
+            }
+            if self.serverStatus != nil {
+                map["ServerStatus"] = self.serverStatus!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
             }
             if self.storageSize != nil {
                 map["StorageSize"] = self.storageSize!
@@ -33945,14 +33996,35 @@ public class ListRenderingInstancesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ChargeType"] as? String {
+                self.chargeType = value
+            }
             if let value = dict["CreationTime"] as? String {
                 self.creationTime = value
+            }
+            if let value = dict["ExpireTime"] as? String {
+                self.expireTime = value
+            }
+            if let value = dict["InstanceName"] as? String {
+                self.instanceName = value
+            }
+            if let value = dict["MaxEgressBandwidth"] as? String {
+                self.maxEgressBandwidth = value
+            }
+            if let value = dict["MaxIngressBandwidth"] as? String {
+                self.maxIngressBandwidth = value
             }
             if let value = dict["RenderingInstanceId"] as? String {
                 self.renderingInstanceId = value
             }
             if let value = dict["RenderingSpec"] as? String {
                 self.renderingSpec = value
+            }
+            if let value = dict["ServerStatus"] as? String {
+                self.serverStatus = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
             if let value = dict["StorageSize"] as? Int32 {
                 self.storageSize = value
@@ -37233,6 +37305,8 @@ public class ModifyRenderingInstanceResponse : Tea.TeaModel {
 }
 
 public class ModifyRenderingInstanceAttributeRequest : Tea.TeaModel {
+    public var instanceName: String?
+
     public var password: String?
 
     public var renderingInstanceId: String?
@@ -37251,6 +37325,9 @@ public class ModifyRenderingInstanceAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
         if self.password != nil {
             map["Password"] = self.password!
         }
@@ -37262,6 +37339,9 @@ public class ModifyRenderingInstanceAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
         if let value = dict["Password"] as? String {
             self.password = value
         }

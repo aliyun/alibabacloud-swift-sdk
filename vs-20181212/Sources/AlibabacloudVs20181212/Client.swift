@@ -6741,6 +6741,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyRenderingInstanceAttributeWithOptions(_ request: ModifyRenderingInstanceAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyRenderingInstanceAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.password)) {
             query["Password"] = request.password ?? "";
         }
