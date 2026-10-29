@@ -262,6 +262,8 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var enableJumboFrame: Bool?
+
     public var linkType: String?
 
     public var name: String?
@@ -308,6 +310,9 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.enableJumboFrame != nil {
+            map["EnableJumboFrame"] = self.enableJumboFrame!
         }
         if self.linkType != nil {
             map["LinkType"] = self.linkType!
@@ -356,6 +361,9 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["EnableJumboFrame"] as? Bool {
+            self.enableJumboFrame = value
         }
         if let value = dict["LinkType"] as? String {
             self.linkType = value
@@ -795,6 +803,8 @@ public class GetVpcPeerConnectionAttributeResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableJumboFrame: Bool?
+
     public var gmtCreate: String?
 
     public var gmtExpired: String?
@@ -856,6 +866,9 @@ public class GetVpcPeerConnectionAttributeResponseBody : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enableJumboFrame != nil {
+            map["EnableJumboFrame"] = self.enableJumboFrame!
         }
         if self.gmtCreate != nil {
             map["GmtCreate"] = self.gmtCreate!
@@ -927,6 +940,9 @@ public class GetVpcPeerConnectionAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableJumboFrame"] as? Bool {
+            self.enableJumboFrame = value
         }
         if let value = dict["GmtCreate"] as? String {
             self.gmtCreate = value
@@ -1769,6 +1785,8 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var enableJumboFrame: Bool?
+
         public var gmtCreate: String?
 
         public var gmtExpired: String?
@@ -1828,6 +1846,9 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.enableJumboFrame != nil {
+                map["EnableJumboFrame"] = self.enableJumboFrame!
             }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
@@ -1896,6 +1917,9 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["EnableJumboFrame"] as? Bool {
+                self.enableJumboFrame = value
             }
             if let value = dict["GmtCreate"] as? String {
                 self.gmtCreate = value
@@ -2085,6 +2109,8 @@ public class ModifyVpcPeerConnectionRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var enableJumboFrame: Bool?
+
     public var instanceId: String?
 
     public var linkType: String?
@@ -2117,6 +2143,9 @@ public class ModifyVpcPeerConnectionRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.enableJumboFrame != nil {
+            map["EnableJumboFrame"] = self.enableJumboFrame!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2142,6 +2171,9 @@ public class ModifyVpcPeerConnectionRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["EnableJumboFrame"] as? Bool {
+            self.enableJumboFrame = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
