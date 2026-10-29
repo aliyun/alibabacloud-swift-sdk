@@ -3147,6 +3147,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgenticSecurityPoliciesWithOptions(_ request: ListAgenticSecurityPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgenticSecurityPoliciesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.includeArchived)) {
+            query["IncludeArchived"] = request.includeArchived!;
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["Page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.policyStatus)) {
+            query["PolicyStatus"] = request.policyStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAgenticSecurityPolicies",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAgenticSecurityPoliciesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAgenticSecurityPolicies(_ request: ListAgenticSecurityPoliciesRequest) async throws -> ListAgenticSecurityPoliciesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAgenticSecurityPoliciesWithOptions(request as! ListAgenticSecurityPoliciesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAgenticSqlExecutionHistoriesWithOptions(_ request: ListAgenticSqlExecutionHistoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgenticSqlExecutionHistoriesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
