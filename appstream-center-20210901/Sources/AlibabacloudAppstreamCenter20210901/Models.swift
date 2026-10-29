@@ -14772,6 +14772,8 @@ public class ListAuthorizedAppInstanceGroupByUserRequest : Tea.TeaModel {
 
     public var endUserId: String?
 
+    public var officeSiteId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -14807,6 +14809,9 @@ public class ListAuthorizedAppInstanceGroupByUserRequest : Tea.TeaModel {
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -14835,6 +14840,9 @@ public class ListAuthorizedAppInstanceGroupByUserRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserId"] as? String {
             self.endUserId = value
+        }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -14930,6 +14938,10 @@ public class ListAuthorizedAppInstanceGroupByUserResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var supportUserGroupMixedAuth: Bool?
+
+        public var userGroupAuthMode: String?
+
         public override init() {
             super.init()
         }
@@ -14975,6 +14987,12 @@ public class ListAuthorizedAppInstanceGroupByUserResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.supportUserGroupMixedAuth != nil {
+                map["SupportUserGroupMixedAuth"] = self.supportUserGroupMixedAuth!
+            }
+            if self.userGroupAuthMode != nil {
+                map["UserGroupAuthMode"] = self.userGroupAuthMode!
+            }
             return map
         }
 
@@ -15016,6 +15034,12 @@ public class ListAuthorizedAppInstanceGroupByUserResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SupportUserGroupMixedAuth"] as? Bool {
+                self.supportUserGroupMixedAuth = value
+            }
+            if let value = dict["UserGroupAuthMode"] as? String {
+                self.userGroupAuthMode = value
             }
         }
     }
@@ -22527,6 +22551,8 @@ public class ListPublishedAppInstanceGroupRequest : Tea.TeaModel {
 
     public var excludeUserId: String?
 
+    public var officeSiteId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -22562,6 +22588,9 @@ public class ListPublishedAppInstanceGroupRequest : Tea.TeaModel {
         if self.excludeUserId != nil {
             map["ExcludeUserId"] = self.excludeUserId!
         }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -22590,6 +22619,9 @@ public class ListPublishedAppInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["ExcludeUserId"] as? String {
             self.excludeUserId = value
+        }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -22685,6 +22717,10 @@ public class ListPublishedAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var supportUserGroupMixedAuth: Bool?
+
+        public var userGroupAuthMode: String?
+
         public override init() {
             super.init()
         }
@@ -22730,6 +22766,12 @@ public class ListPublishedAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.supportUserGroupMixedAuth != nil {
+                map["SupportUserGroupMixedAuth"] = self.supportUserGroupMixedAuth!
+            }
+            if self.userGroupAuthMode != nil {
+                map["UserGroupAuthMode"] = self.userGroupAuthMode!
+            }
             return map
         }
 
@@ -22771,6 +22813,12 @@ public class ListPublishedAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SupportUserGroupMixedAuth"] as? Bool {
+                self.supportUserGroupMixedAuth = value
+            }
+            if let value = dict["UserGroupAuthMode"] as? String {
+                self.userGroupAuthMode = value
             }
         }
     }
