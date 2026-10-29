@@ -2556,15 +2556,57 @@ public class GetBillingOverviewRequest : Tea.TeaModel {
             }
         }
     }
+    public class TimePeriod : Tea.TeaModel {
+        public var end: String?
+
+        public var start: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.end != nil {
+                map["end"] = self.end!
+            }
+            if self.start != nil {
+                map["start"] = self.start!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["end"] as? String {
+                self.end = value
+            }
+            if let value = dict["start"] as? String {
+                self.start = value
+            }
+        }
+    }
     public var billMonth: String?
 
     public var filter: GetBillingOverviewRequest.Filter?
+
+    public var granularity: String?
 
     public var groupBy: [GetBillingOverviewRequest.GroupBy]?
 
     public var locale: String?
 
     public var regionId: String?
+
+    public var timePeriod: GetBillingOverviewRequest.TimePeriod?
 
     public var topNum: Int32?
 
@@ -2581,6 +2623,7 @@ public class GetBillingOverviewRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.filter?.validate()
+        try self.timePeriod?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2590,6 +2633,9 @@ public class GetBillingOverviewRequest : Tea.TeaModel {
         }
         if self.filter != nil {
             map["filter"] = self.filter?.toMap()
+        }
+        if self.granularity != nil {
+            map["granularity"] = self.granularity!
         }
         if self.groupBy != nil {
             var tmp : [Any] = []
@@ -2603,6 +2649,9 @@ public class GetBillingOverviewRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
+        }
+        if self.timePeriod != nil {
+            map["timePeriod"] = self.timePeriod?.toMap()
         }
         if self.topNum != nil {
             map["topNum"] = self.topNum!
@@ -2623,6 +2672,9 @@ public class GetBillingOverviewRequest : Tea.TeaModel {
             model.fromMap(value)
             self.filter = model
         }
+        if let value = dict["granularity"] as? String {
+            self.granularity = value
+        }
         if let value = dict["groupBy"] as? [Any?] {
             var tmp : [GetBillingOverviewRequest.GroupBy] = []
             for v in value {
@@ -2642,6 +2694,11 @@ public class GetBillingOverviewRequest : Tea.TeaModel {
         if let value = dict["regionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["timePeriod"] as? [String: Any?] {
+            var model = GetBillingOverviewRequest.TimePeriod()
+            model.fromMap(value)
+            self.timePeriod = model
+        }
         if let value = dict["topNum"] as? Int32 {
             self.topNum = value
         }
@@ -2656,11 +2713,15 @@ public class GetBillingOverviewShrinkRequest : Tea.TeaModel {
 
     public var filterShrink: String?
 
+    public var granularity: String?
+
     public var groupByShrink: String?
 
     public var locale: String?
 
     public var regionId: String?
+
+    public var timePeriodShrink: String?
 
     public var topNum: Int32?
 
@@ -2686,6 +2747,9 @@ public class GetBillingOverviewShrinkRequest : Tea.TeaModel {
         if self.filterShrink != nil {
             map["filter"] = self.filterShrink!
         }
+        if self.granularity != nil {
+            map["granularity"] = self.granularity!
+        }
         if self.groupByShrink != nil {
             map["groupBy"] = self.groupByShrink!
         }
@@ -2694,6 +2758,9 @@ public class GetBillingOverviewShrinkRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
+        }
+        if self.timePeriodShrink != nil {
+            map["timePeriod"] = self.timePeriodShrink!
         }
         if self.topNum != nil {
             map["topNum"] = self.topNum!
@@ -2712,6 +2779,9 @@ public class GetBillingOverviewShrinkRequest : Tea.TeaModel {
         if let value = dict["filter"] as? String {
             self.filterShrink = value
         }
+        if let value = dict["granularity"] as? String {
+            self.granularity = value
+        }
         if let value = dict["groupBy"] as? String {
             self.groupByShrink = value
         }
@@ -2720,6 +2790,9 @@ public class GetBillingOverviewShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["timePeriod"] as? String {
+            self.timePeriodShrink = value
         }
         if let value = dict["topNum"] as? Int32 {
             self.topNum = value
@@ -3149,6 +3222,8 @@ public class GetBillingTrendRequest : Tea.TeaModel {
 
     public var groupBy: [GetBillingTrendRequest.GroupBy]?
 
+    public var includeHistoryPeriod: Bool?
+
     public var locale: String?
 
     public var regionId: String?
@@ -3187,6 +3262,9 @@ public class GetBillingTrendRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["groupBy"] = tmp
+        }
+        if self.includeHistoryPeriod != nil {
+            map["includeHistoryPeriod"] = self.includeHistoryPeriod!
         }
         if self.locale != nil {
             map["locale"] = self.locale!
@@ -3229,6 +3307,9 @@ public class GetBillingTrendRequest : Tea.TeaModel {
             }
             self.groupBy = tmp
         }
+        if let value = dict["includeHistoryPeriod"] as? Bool {
+            self.includeHistoryPeriod = value
+        }
         if let value = dict["locale"] as? String {
             self.locale = value
         }
@@ -3255,6 +3336,8 @@ public class GetBillingTrendShrinkRequest : Tea.TeaModel {
     public var granularity: String?
 
     public var groupByShrink: String?
+
+    public var includeHistoryPeriod: Bool?
 
     public var locale: String?
 
@@ -3289,6 +3372,9 @@ public class GetBillingTrendShrinkRequest : Tea.TeaModel {
         if self.groupByShrink != nil {
             map["groupBy"] = self.groupByShrink!
         }
+        if self.includeHistoryPeriod != nil {
+            map["includeHistoryPeriod"] = self.includeHistoryPeriod!
+        }
         if self.locale != nil {
             map["locale"] = self.locale!
         }
@@ -3317,6 +3403,9 @@ public class GetBillingTrendShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["groupBy"] as? String {
             self.groupByShrink = value
+        }
+        if let value = dict["includeHistoryPeriod"] as? Bool {
+            self.includeHistoryPeriod = value
         }
         if let value = dict["locale"] as? String {
             self.locale = value
@@ -3451,6 +3540,386 @@ public class GetBillingTrendResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["taxAmount"] as? String {
                     self.taxAmount = value
+                }
+            }
+        }
+        public class HistoryPeriod : Tea.TeaModel {
+            public class CostTotals : Tea.TeaModel {
+                public var amount: String?
+
+                public var currency: String?
+
+                public var pretaxAmount: String?
+
+                public var taxAmount: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.amount != nil {
+                        map["amount"] = self.amount!
+                    }
+                    if self.currency != nil {
+                        map["currency"] = self.currency!
+                    }
+                    if self.pretaxAmount != nil {
+                        map["pretaxAmount"] = self.pretaxAmount!
+                    }
+                    if self.taxAmount != nil {
+                        map["taxAmount"] = self.taxAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["amount"] as? String {
+                        self.amount = value
+                    }
+                    if let value = dict["currency"] as? String {
+                        self.currency = value
+                    }
+                    if let value = dict["pretaxAmount"] as? String {
+                        self.pretaxAmount = value
+                    }
+                    if let value = dict["taxAmount"] as? String {
+                        self.taxAmount = value
+                    }
+                }
+            }
+            public class GroupByTotal : Tea.TeaModel {
+                public var amount: String?
+
+                public var key: String?
+
+                public var name: String?
+
+                public var pretaxAmount: String?
+
+                public var taxAmount: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.amount != nil {
+                        map["amount"] = self.amount!
+                    }
+                    if self.key != nil {
+                        map["key"] = self.key!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.pretaxAmount != nil {
+                        map["pretaxAmount"] = self.pretaxAmount!
+                    }
+                    if self.taxAmount != nil {
+                        map["taxAmount"] = self.taxAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["amount"] as? String {
+                        self.amount = value
+                    }
+                    if let value = dict["key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["pretaxAmount"] as? String {
+                        self.pretaxAmount = value
+                    }
+                    if let value = dict["taxAmount"] as? String {
+                        self.taxAmount = value
+                    }
+                }
+            }
+            public class ResultByTime : Tea.TeaModel {
+                public class PeriodDetails : Tea.TeaModel {
+                    public var amount: String?
+
+                    public var key: String?
+
+                    public var name: String?
+
+                    public var percentage: String?
+
+                    public var pretaxAmount: String?
+
+                    public var taxAmount: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.amount != nil {
+                            map["amount"] = self.amount!
+                        }
+                        if self.key != nil {
+                            map["key"] = self.key!
+                        }
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        if self.percentage != nil {
+                            map["percentage"] = self.percentage!
+                        }
+                        if self.pretaxAmount != nil {
+                            map["pretaxAmount"] = self.pretaxAmount!
+                        }
+                        if self.taxAmount != nil {
+                            map["taxAmount"] = self.taxAmount!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["amount"] as? String {
+                            self.amount = value
+                        }
+                        if let value = dict["key"] as? String {
+                            self.key = value
+                        }
+                        if let value = dict["name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["percentage"] as? String {
+                            self.percentage = value
+                        }
+                        if let value = dict["pretaxAmount"] as? String {
+                            self.pretaxAmount = value
+                        }
+                        if let value = dict["taxAmount"] as? String {
+                            self.taxAmount = value
+                        }
+                    }
+                }
+                public class Total : Tea.TeaModel {
+                    public var amount: String?
+
+                    public var currency: String?
+
+                    public var pretaxAmount: String?
+
+                    public var taxAmount: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.amount != nil {
+                            map["amount"] = self.amount!
+                        }
+                        if self.currency != nil {
+                            map["currency"] = self.currency!
+                        }
+                        if self.pretaxAmount != nil {
+                            map["pretaxAmount"] = self.pretaxAmount!
+                        }
+                        if self.taxAmount != nil {
+                            map["taxAmount"] = self.taxAmount!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["amount"] as? String {
+                            self.amount = value
+                        }
+                        if let value = dict["currency"] as? String {
+                            self.currency = value
+                        }
+                        if let value = dict["pretaxAmount"] as? String {
+                            self.pretaxAmount = value
+                        }
+                        if let value = dict["taxAmount"] as? String {
+                            self.taxAmount = value
+                        }
+                    }
+                }
+                public var period: String?
+
+                public var periodDetails: [GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime.PeriodDetails]?
+
+                public var total: GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime.Total?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.total?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.period != nil {
+                        map["period"] = self.period!
+                    }
+                    if self.periodDetails != nil {
+                        var tmp : [Any] = []
+                        for k in self.periodDetails! {
+                            tmp.append(k.toMap())
+                        }
+                        map["periodDetails"] = tmp
+                    }
+                    if self.total != nil {
+                        map["total"] = self.total?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["period"] as? String {
+                        self.period = value
+                    }
+                    if let value = dict["periodDetails"] as? [Any?] {
+                        var tmp : [GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime.PeriodDetails] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime.PeriodDetails()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.periodDetails = tmp
+                    }
+                    if let value = dict["total"] as? [String: Any?] {
+                        var model = GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime.Total()
+                        model.fromMap(value)
+                        self.total = model
+                    }
+                }
+            }
+            public var costTotals: GetBillingTrendResponseBody.Data.HistoryPeriod.CostTotals?
+
+            public var groupByTotal: [GetBillingTrendResponseBody.Data.HistoryPeriod.GroupByTotal]?
+
+            public var resultByTime: [GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.costTotals?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.costTotals != nil {
+                    map["costTotals"] = self.costTotals?.toMap()
+                }
+                if self.groupByTotal != nil {
+                    var tmp : [Any] = []
+                    for k in self.groupByTotal! {
+                        tmp.append(k.toMap())
+                    }
+                    map["groupByTotal"] = tmp
+                }
+                if self.resultByTime != nil {
+                    var tmp : [Any] = []
+                    for k in self.resultByTime! {
+                        tmp.append(k.toMap())
+                    }
+                    map["resultByTime"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["costTotals"] as? [String: Any?] {
+                    var model = GetBillingTrendResponseBody.Data.HistoryPeriod.CostTotals()
+                    model.fromMap(value)
+                    self.costTotals = model
+                }
+                if let value = dict["groupByTotal"] as? [Any?] {
+                    var tmp : [GetBillingTrendResponseBody.Data.HistoryPeriod.GroupByTotal] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetBillingTrendResponseBody.Data.HistoryPeriod.GroupByTotal()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.groupByTotal = tmp
+                }
+                if let value = dict["resultByTime"] as? [Any?] {
+                    var tmp : [GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetBillingTrendResponseBody.Data.HistoryPeriod.ResultByTime()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.resultByTime = tmp
                 }
             }
         }
@@ -3645,6 +4114,8 @@ public class GetBillingTrendResponseBody : Tea.TeaModel {
 
         public var groupByTotal: [GetBillingTrendResponseBody.Data.GroupByTotal]?
 
+        public var historyPeriod: GetBillingTrendResponseBody.Data.HistoryPeriod?
+
         public var resultByTime: [GetBillingTrendResponseBody.Data.ResultByTime]?
 
         public override init() {
@@ -3658,6 +4129,7 @@ public class GetBillingTrendResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.costTotals?.validate()
+            try self.historyPeriod?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3671,6 +4143,9 @@ public class GetBillingTrendResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["groupByTotal"] = tmp
+            }
+            if self.historyPeriod != nil {
+                map["historyPeriod"] = self.historyPeriod?.toMap()
             }
             if self.resultByTime != nil {
                 var tmp : [Any] = []
@@ -3701,6 +4176,11 @@ public class GetBillingTrendResponseBody : Tea.TeaModel {
                     }
                 }
                 self.groupByTotal = tmp
+            }
+            if let value = dict["historyPeriod"] as? [String: Any?] {
+                var model = GetBillingTrendResponseBody.Data.HistoryPeriod()
+                model.fromMap(value)
+                self.historyPeriod = model
             }
             if let value = dict["resultByTime"] as? [Any?] {
                 var tmp : [GetBillingTrendResponseBody.Data.ResultByTime] = []

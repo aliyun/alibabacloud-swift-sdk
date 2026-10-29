@@ -440,12 +440,18 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.groupBy)) {
             request.groupByShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.groupBy, "groupBy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.timePeriod)) {
+            request.timePeriodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.timePeriod, "timePeriod", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.billMonth)) {
             query["billMonth"] = request.billMonth ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.filterShrink)) {
             query["filter"] = request.filterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["granularity"] = request.granularity ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.groupByShrink)) {
             query["groupBy"] = request.groupByShrink ?? "";
@@ -455,6 +461,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timePeriodShrink)) {
+            query["timePeriod"] = request.timePeriodShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.topNum)) {
             query["topNum"] = request.topNum!;
@@ -511,6 +520,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.groupByShrink)) {
             query["groupBy"] = request.groupByShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeHistoryPeriod)) {
+            query["includeHistoryPeriod"] = request.includeHistoryPeriod!;
         }
         if (!TeaUtils.Client.isUnset(request.locale)) {
             query["locale"] = request.locale ?? "";
