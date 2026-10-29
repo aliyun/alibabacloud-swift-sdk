@@ -567,6 +567,8 @@ public class BackupAndroidInstanceRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var excludeAppList: [String]?
+
     public var uploadEndpoint: String?
 
     public override init() {
@@ -595,6 +597,9 @@ public class BackupAndroidInstanceRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.excludeAppList != nil {
+            map["ExcludeAppList"] = self.excludeAppList!
+        }
         if self.uploadEndpoint != nil {
             map["UploadEndpoint"] = self.uploadEndpoint!
         }
@@ -614,6 +619,9 @@ public class BackupAndroidInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["ExcludeAppList"] as? [String] {
+            self.excludeAppList = value
         }
         if let value = dict["UploadEndpoint"] as? String {
             self.uploadEndpoint = value
@@ -1049,6 +1057,8 @@ public class BackupFileRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var excludeAppList: [String]?
+
     public var excludeSourceFilePathList: [String]?
 
     public var sourceAppList: [String]?
@@ -1088,6 +1098,9 @@ public class BackupFileRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.excludeAppList != nil {
+            map["ExcludeAppList"] = self.excludeAppList!
+        }
         if self.excludeSourceFilePathList != nil {
             map["ExcludeSourceFilePathList"] = self.excludeSourceFilePathList!
         }
@@ -1122,6 +1135,9 @@ public class BackupFileRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["ExcludeAppList"] as? [String] {
+            self.excludeAppList = value
         }
         if let value = dict["ExcludeSourceFilePathList"] as? [String] {
             self.excludeSourceFilePathList = value
@@ -32052,6 +32068,8 @@ public class RecoverAndroidInstanceRequest : Tea.TeaModel {
 
     public var backupFilePath: String?
 
+    public var excludeAppList: [String]?
+
     public var uploadEndpoint: String?
 
     public var uploadType: String?
@@ -32079,6 +32097,9 @@ public class RecoverAndroidInstanceRequest : Tea.TeaModel {
         if self.backupFilePath != nil {
             map["BackupFilePath"] = self.backupFilePath!
         }
+        if self.excludeAppList != nil {
+            map["ExcludeAppList"] = self.excludeAppList!
+        }
         if self.uploadEndpoint != nil {
             map["UploadEndpoint"] = self.uploadEndpoint!
         }
@@ -32098,6 +32119,9 @@ public class RecoverAndroidInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["BackupFilePath"] as? String {
             self.backupFilePath = value
+        }
+        if let value = dict["ExcludeAppList"] as? [String] {
+            self.excludeAppList = value
         }
         if let value = dict["UploadEndpoint"] as? String {
             self.uploadEndpoint = value
@@ -32494,6 +32518,8 @@ public class RecoveryFileRequest : Tea.TeaModel {
 
     public var backupFilePath: String?
 
+    public var excludeAppList: [String]?
+
     public var uploadEndpoint: String?
 
     public var uploadType: String?
@@ -32524,6 +32550,9 @@ public class RecoveryFileRequest : Tea.TeaModel {
         if self.backupFilePath != nil {
             map["BackupFilePath"] = self.backupFilePath!
         }
+        if self.excludeAppList != nil {
+            map["ExcludeAppList"] = self.excludeAppList!
+        }
         if self.uploadEndpoint != nil {
             map["UploadEndpoint"] = self.uploadEndpoint!
         }
@@ -32546,6 +32575,9 @@ public class RecoveryFileRequest : Tea.TeaModel {
         }
         if let value = dict["BackupFilePath"] as? String {
             self.backupFilePath = value
+        }
+        if let value = dict["ExcludeAppList"] as? [String] {
+            self.excludeAppList = value
         }
         if let value = dict["UploadEndpoint"] as? String {
             self.uploadEndpoint = value
