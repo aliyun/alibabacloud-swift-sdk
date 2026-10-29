@@ -68192,6 +68192,52 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class NetworkType : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class Properties : Tea.TeaModel {
                 public var form: String?
 
@@ -68330,7 +68376,99 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class SecurityGroupId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class TargetType : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public class VSwitchIds : Tea.TeaModel {
                 public var form: String?
 
                 public var template: String?
@@ -68422,6 +68560,52 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class VpcId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var body: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.Body?
 
             public var exchange: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.Exchange?
@@ -68430,15 +68614,23 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var messageId: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.MessageId?
 
+            public var networkType: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.NetworkType?
+
             public var properties: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.Properties?
 
             public var queueName: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.QueueName?
 
             public var routingKey: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.RoutingKey?
 
+            public var securityGroupId: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.SecurityGroupId?
+
             public var targetType: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.TargetType?
 
+            public var vSwitchIds: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.VSwitchIds?
+
             public var virtualHostName: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.VirtualHostName?
+
+            public var vpcId: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.VpcId?
 
             public override init() {
                 super.init()
@@ -68454,11 +68646,15 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 try self.exchange?.validate()
                 try self.instanceId?.validate()
                 try self.messageId?.validate()
+                try self.networkType?.validate()
                 try self.properties?.validate()
                 try self.queueName?.validate()
                 try self.routingKey?.validate()
+                try self.securityGroupId?.validate()
                 try self.targetType?.validate()
+                try self.vSwitchIds?.validate()
                 try self.virtualHostName?.validate()
+                try self.vpcId?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -68475,6 +68671,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.messageId != nil {
                     map["MessageId"] = self.messageId?.toMap()
                 }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType?.toMap()
+                }
                 if self.properties != nil {
                     map["Properties"] = self.properties?.toMap()
                 }
@@ -68484,11 +68683,20 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.routingKey != nil {
                     map["RoutingKey"] = self.routingKey?.toMap()
                 }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId?.toMap()
+                }
                 if self.targetType != nil {
                     map["TargetType"] = self.targetType?.toMap()
                 }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds?.toMap()
+                }
                 if self.virtualHostName != nil {
                     map["VirtualHostName"] = self.virtualHostName?.toMap()
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId?.toMap()
                 }
                 return map
             }
@@ -68515,6 +68723,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     model.fromMap(value)
                     self.messageId = model
                 }
+                if let value = dict["NetworkType"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.NetworkType()
+                    model.fromMap(value)
+                    self.networkType = model
+                }
                 if let value = dict["Properties"] as? [String: Any?] {
                     var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.Properties()
                     model.fromMap(value)
@@ -68530,15 +68743,30 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     model.fromMap(value)
                     self.routingKey = model
                 }
+                if let value = dict["SecurityGroupId"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.SecurityGroupId()
+                    model.fromMap(value)
+                    self.securityGroupId = model
+                }
                 if let value = dict["TargetType"] as? [String: Any?] {
                     var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.TargetType()
                     model.fromMap(value)
                     self.targetType = model
                 }
+                if let value = dict["VSwitchIds"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.VSwitchIds()
+                    model.fromMap(value)
+                    self.vSwitchIds = model
+                }
                 if let value = dict["VirtualHostName"] as? [String: Any?] {
                     var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.VirtualHostName()
                     model.fromMap(value)
                     self.virtualHostName = model
+                }
+                if let value = dict["VpcId"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters.VpcId()
+                    model.fromMap(value)
+                    self.vpcId = model
                 }
             }
         }
@@ -71457,11 +71685,19 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
         public class SourceRabbitMQParameters : Tea.TeaModel {
             public var instanceId: String?
 
+            public var networkType: String?
+
             public var queueName: String?
 
             public var regionId: String?
 
+            public var securityGroupId: String?
+
+            public var vSwitchIds: String?
+
             public var virtualHostName: String?
+
+            public var vpcId: String?
 
             public override init() {
                 super.init()
@@ -71480,14 +71716,26 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType!
+                }
                 if self.queueName != nil {
                     map["QueueName"] = self.queueName!
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
                 if self.virtualHostName != nil {
                     map["VirtualHostName"] = self.virtualHostName!
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
                 }
                 return map
             }
@@ -71497,14 +71745,26 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
                 }
+                if let value = dict["NetworkType"] as? String {
+                    self.networkType = value
+                }
                 if let value = dict["QueueName"] as? String {
                     self.queueName = value
                 }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
                 }
+                if let value = dict["SecurityGroupId"] as? String {
+                    self.securityGroupId = value
+                }
+                if let value = dict["VSwitchIds"] as? String {
+                    self.vSwitchIds = value
+                }
                 if let value = dict["VirtualHostName"] as? String {
                     self.virtualHostName = value
+                }
+                if let value = dict["VpcId"] as? String {
+                    self.vpcId = value
                 }
             }
         }
