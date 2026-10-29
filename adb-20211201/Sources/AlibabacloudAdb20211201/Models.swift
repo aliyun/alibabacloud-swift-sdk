@@ -50982,6 +50982,239 @@ public class ExistRunningSQLEngineResponse : Tea.TeaModel {
     }
 }
 
+public class ForkKnowledgeFileRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var fileId: String?
+
+    public var fileLocation: String?
+
+    public var tags: String?
+
+    public var uploadUser: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        if self.fileLocation != nil {
+            map["FileLocation"] = self.fileLocation!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
+        if self.uploadUser != nil {
+            map["UploadUser"] = self.uploadUser!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
+        }
+        if let value = dict["FileLocation"] as? String {
+            self.fileLocation = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tags = value
+        }
+        if let value = dict["UploadUser"] as? String {
+            self.uploadUser = value
+        }
+    }
+}
+
+public class ForkKnowledgeFileResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var fileId: String?
+
+        public var fileLocation: String?
+
+        public var message: String?
+
+        public var ownerFileId: String?
+
+        public var processStatus: String?
+
+        public var sourceFileId: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.fileLocation != nil {
+                map["FileLocation"] = self.fileLocation!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.ownerFileId != nil {
+                map["OwnerFileId"] = self.ownerFileId!
+            }
+            if self.processStatus != nil {
+                map["ProcessStatus"] = self.processStatus!
+            }
+            if self.sourceFileId != nil {
+                map["SourceFileId"] = self.sourceFileId!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["FileLocation"] as? String {
+                self.fileLocation = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["OwnerFileId"] as? String {
+                self.ownerFileId = value
+            }
+            if let value = dict["ProcessStatus"] as? String {
+                self.processStatus = value
+            }
+            if let value = dict["SourceFileId"] as? String {
+                self.sourceFileId = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var data: ForkKnowledgeFileResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ForkKnowledgeFileResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ForkKnowledgeFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ForkKnowledgeFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ForkKnowledgeFileResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GenerateSqlBySemanticSqlRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -57944,6 +58177,8 @@ public class ListKnowledgeFilesRequest : Tea.TeaModel {
 
     public var fileIds: String?
 
+    public var fileLocation: String?
+
     public var page: String?
 
     public var pageSize: String?
@@ -57972,6 +58207,9 @@ public class ListKnowledgeFilesRequest : Tea.TeaModel {
         if self.fileIds != nil {
             map["FileIds"] = self.fileIds!
         }
+        if self.fileLocation != nil {
+            map["FileLocation"] = self.fileLocation!
+        }
         if self.page != nil {
             map["Page"] = self.page!
         }
@@ -57994,6 +58232,9 @@ public class ListKnowledgeFilesRequest : Tea.TeaModel {
         }
         if let value = dict["FileIds"] as? String {
             self.fileIds = value
+        }
+        if let value = dict["FileLocation"] as? String {
+            self.fileLocation = value
         }
         if let value = dict["Page"] as? String {
             self.page = value
@@ -72366,6 +72607,207 @@ public class SuspendApsJobResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SuspendApsJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class TriggerKnowledgeFileParseRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var fileId: String?
+
+    public var fileLocation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        if self.fileLocation != nil {
+            map["FileLocation"] = self.fileLocation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
+        }
+        if let value = dict["FileLocation"] as? String {
+            self.fileLocation = value
+        }
+    }
+}
+
+public class TriggerKnowledgeFileParseResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var fileId: String?
+
+        public var message: String?
+
+        public var previousStatus: String?
+
+        public var processStatus: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.previousStatus != nil {
+                map["PreviousStatus"] = self.previousStatus!
+            }
+            if self.processStatus != nil {
+                map["ProcessStatus"] = self.processStatus!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["PreviousStatus"] as? String {
+                self.previousStatus = value
+            }
+            if let value = dict["ProcessStatus"] as? String {
+                self.processStatus = value
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var data: TriggerKnowledgeFileParseResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = TriggerKnowledgeFileParseResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class TriggerKnowledgeFileParseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TriggerKnowledgeFileParseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = TriggerKnowledgeFileParseResponseBody()
             model.fromMap(value)
             self.body = model
         }
