@@ -8,10 +8,10 @@ Alibaba Cloud SDK for Swift 是阿里云 OpenAPI V2.0 的 Swift SDK。本仓库�
 
 | 平台 | Swift 工具链 | 系统要求 |
 | --- | --- | --- |
-| macOS | 5.7 或更高 | macOS 10.15 或更高 |
+| macOS | 5.6 或更高 | macOS 10.15 或更高 |
 | Linux | 5.9 或更高 | 使用支持该 Swift 工具链的 Linux 发行版 |
 
-使用 `swift --version` 检查工具链。以下示例基于 Swift 5.7 的包清单；在 Linux 上运行时使用 Swift 5.9 或更高版本。
+使用 `swift --version` 检查工具链。以下示例基于 Swift 5.9 的包清单。
 
 ## 创建项目
 
@@ -25,7 +25,7 @@ cd ecs-example
 创建 `Package.swift`：
 
 ```swift
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 import PackageDescription
 
 let package = Package(
@@ -93,7 +93,7 @@ enum Client {
         let request = AlibabacloudEcs20140526.DescribeRegionsRequest([:])
         let runtime = TeaUtils.RuntimeOptions([:])
         let response = try await client.describeRegionsWithOptions(request, runtime)
-        print("Request ID: \(response.body?.requestId ?? "")")
+        print(response.toMap())
     }
 }
 
@@ -136,7 +136,7 @@ enum Client {
         let request = AlibabacloudEcs20140526.DescribeRegionsRequest([:])
         let runtime = TeaUtils.RuntimeOptions([:])
         let response = try await client.describeRegionsWithOptions(request, runtime)
-        print("Request ID: \(response.body?.requestId ?? "")")
+        print(response.toMap())
     }
 }
 

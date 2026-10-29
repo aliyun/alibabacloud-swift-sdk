@@ -8,10 +8,10 @@ The Alibaba Cloud SDK for Swift provides access to Alibaba Cloud OpenAPI V2.0. E
 
 | Platform | Swift | Operating system |
 | --- | --- | --- |
-| macOS | 5.7 or later | macOS 10.15 or later |
+| macOS | 5.6 or later | macOS 10.15 or later |
 | Linux | 5.9 or later | A Linux distribution supported by the Swift toolchain |
 
-Check your toolchain with `swift --version`. The example package below uses Swift tools version 5.7; use Swift 5.9 or later on Linux. Linux requires Tea, OpenAPI, and TeaUtils 1.1.0 or later. If your project locks older versions, update the dependencies and check `Package.resolved`.
+Check your toolchain with `swift --version`. The example package below uses Swift tools version 5.9. Linux requires Tea, OpenAPI, and TeaUtils 1.1.0 or later. If your project locks older versions, update the dependencies and check `Package.resolved`.
 
 ## Create a project
 
@@ -25,7 +25,7 @@ cd ecs-example
 Create `Package.swift`:
 
 ```swift
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 import PackageDescription
 
 let package = Package(
@@ -91,7 +91,7 @@ enum Client {
         let request = AlibabacloudEcs20140526.DescribeRegionsRequest([:])
         let runtime = TeaUtils.RuntimeOptions([:])
         let response = try await client.describeRegionsWithOptions(request, runtime)
-        print("Request ID: \(response.body?.requestId ?? "")")
+        print(response.toMap())
     }
 }
 
@@ -132,7 +132,7 @@ enum Client {
         let request = AlibabacloudEcs20140526.DescribeRegionsRequest([:])
         let runtime = TeaUtils.RuntimeOptions([:])
         let response = try await client.describeRegionsWithOptions(request, runtime)
-        print("Request ID: \(response.body?.requestId ?? "")")
+        print(response.toMap())
     }
 }
 
