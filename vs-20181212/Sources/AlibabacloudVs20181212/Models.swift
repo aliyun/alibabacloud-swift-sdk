@@ -8231,6 +8231,8 @@ public class CreateRenderingInstanceShrinkRequest : Tea.TeaModel {
 public class CreateRenderingInstanceResponseBody : Tea.TeaModel {
     public var renderingInstanceId: String?
 
+    public var renderingInstanceIds: [String]?
+
     public var requestId: String?
 
     public override init() {
@@ -8250,6 +8252,9 @@ public class CreateRenderingInstanceResponseBody : Tea.TeaModel {
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
         }
+        if self.renderingInstanceIds != nil {
+            map["RenderingInstanceIds"] = self.renderingInstanceIds!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -8260,6 +8265,9 @@ public class CreateRenderingInstanceResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["RenderingInstanceIds"] as? [String] {
+            self.renderingInstanceIds = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
