@@ -1750,6 +1750,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func findCustomAgentImagePreparationWithOptions(_ workspaceId: String, _ request: FindCustomAgentImagePreparationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> FindCustomAgentImagePreparationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "FindCustomAgentImagePreparation",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/custom-image-preparations",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(FindCustomAgentImagePreparationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func findCustomAgentImagePreparation(_ workspaceId: String, _ request: FindCustomAgentImagePreparationRequest) async throws -> FindCustomAgentImagePreparationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await findCustomAgentImagePreparationWithOptions(workspaceId as! String, request as! FindCustomAgentImagePreparationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func forcePublishSkillVersionWithOptions(_ workspaceId: String, _ skillName: String, _ skillVersion: String, _ tmpReq: ForcePublishSkillVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ForcePublishSkillVersionResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ForcePublishSkillVersionShrinkRequest = ForcePublishSkillVersionShrinkRequest([:])
@@ -2085,6 +2118,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getCustomAgentWithOptions(workspaceId as! String, agentId as! String, request as! GetCustomAgentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomAgentImagePreparationWithOptions(_ workspaceId: String, _ preparationId: String, _ request: GetCustomAgentImagePreparationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCustomAgentImagePreparationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCustomAgentImagePreparation",
+            "version": "2026-08-04",
+            "protocol": "HTTPS",
+            "pathname": "/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/custom-image-preparations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(preparationId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCustomAgentImagePreparationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomAgentImagePreparation(_ workspaceId: String, _ preparationId: String, _ request: GetCustomAgentImagePreparationRequest) async throws -> GetCustomAgentImagePreparationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getCustomAgentImagePreparationWithOptions(workspaceId as! String, preparationId as! String, request as! GetCustomAgentImagePreparationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
