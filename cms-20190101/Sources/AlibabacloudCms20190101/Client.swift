@@ -10,49 +10,46 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "us-west-1": "metrics.us-west-1.aliyuncs.com",
+            "cn-beijing": "metrics.cn-beijing.aliyuncs.com",
+            "cn-zhengzhou-jva": "metrics.cn-zhengzhou-jva.aliyuncs.com",
+            "cn-heyuan": "metrics.cn-heyuan.aliyuncs.com",
+            "cn-zhangjiakou": "metrics.cn-zhangjiakou.aliyuncs.com",
+            "ap-northeast-2": "metrics.ap-northeast-2.aliyuncs.com",
+            "ap-northeast-1": "metrics.ap-northeast-1.aliyuncs.com",
+            "ap-southeast-1": "metrics.ap-southeast-1.aliyuncs.com",
+            "ap-southeast-3": "metrics.ap-southeast-3.aliyuncs.com",
+            "ap-southeast-5": "metrics.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-6": "metrics.ap-southeast-6.aliyuncs.com",
+            "ap-southeast-7": "metrics.ap-southeast-7.aliyuncs.com",
+            "ap-southeast-8": "metrics.ap-southeast-8.aliyuncs.com",
+            "cn-zhongwei": "metrics.cn-zhongwei.aliyuncs.com",
+            "cn-wulanchabu": "metrics.cn-wulanchabu.aliyuncs.com",
+            "cn-qingdao": "metrics.cn-qingdao.aliyuncs.com",
+            "cn-wuhan-lr": "metrics.cn-wuhan-lr.aliyuncs.com",
+            "cn-shanghai": "metrics.cn-shanghai.aliyuncs.com",
+            "cn-hongkong": "metrics.cn-hongkong.aliyuncs.com",
+            "cn-shenzhen": "metrics.cn-shenzhen.aliyuncs.com",
+            "cn-chengdu": "metrics.cn-chengdu.aliyuncs.com",
+            "cn-guangzhou": "metrics.cn-guangzhou.aliyuncs.com",
+            "cn-huhehaote": "metrics.cn-huhehaote.aliyuncs.com",
+            "cn-hangzhou": "metrics.cn-hangzhou.aliyuncs.com",
             "us-southeast-1": "metrics.us-southeast-1.aliyuncs.com",
+            "eu-west-1": "metrics.eu-west-1.aliyuncs.com",
+            "eu-west-2": "metrics.eu-west-2.aliyuncs.com",
+            "eu-central-1": "metrics.eu-central-1.aliyuncs.com",
             "us-east-1": "metrics.us-east-1.aliyuncs.com",
+            "us-west-1": "metrics.us-west-1.aliyuncs.com",
             "na-south-1": "metrics.na-south-1.aliyuncs.com",
             "me-east-1": "metrics.me-east-1.aliyuncs.com",
-            "me-central-1": "metrics.me-central-1.aliyuncs.com",
-            "eu-west-2": "metrics.eu-west-2.aliyuncs.com",
-            "eu-west-1": "metrics.eu-west-1.aliyuncs.com",
-            "eu-central-1": "metrics.eu-central-1.aliyuncs.com",
-            "cn-zhongwei": "metrics.cn-zhongwei.aliyuncs.com",
-            "cn-zhengzhou-jva": "metrics.cn-zhengzhou-jva.aliyuncs.com",
-            "cn-zhangjiakou": "metrics.cn-zhangjiakou.aliyuncs.com",
-            "cn-wulanchabu-gic-1": "metrics.cn-wulanchabu-gic-1.aliyuncs.com",
-            "cn-wulanchabu": "metrics.cn-wulanchabu.aliyuncs.com",
-            "cn-wuhan-lr": "metrics.cn-wuhan-lr.aliyuncs.com",
-            "cn-shenzhen-finance-1": "metrics.cn-shenzhen-finance-1.aliyuncs.com",
-            "cn-shenzhen": "metrics.cn-shenzhen.aliyuncs.com",
-            "cn-shanghai-finance-1": "metrics.cn-shanghai-finance-1.aliyuncs.com",
-            "cn-shanghai": "metrics.cn-shanghai.aliyuncs.com",
-            "cn-qingdao": "metrics.cn-qingdao.aliyuncs.com",
-            "cn-north-2-gov-1": "metrics.cn-north-2-gov-1.aliyuncs.com",
-            "cn-nanjing": "metrics.cn-nanjing.aliyuncs.com",
-            "cn-huhehaote": "metrics.cn-huhehaote.aliyuncs.com",
-            "cn-hongkong": "metrics.cn-hongkong.aliyuncs.com",
-            "cn-heyuan-acdr-1": "metrics.cn-heyuan-acdr-1.aliyuncs.com",
-            "cn-heyuan": "metrics.cn-heyuan.aliyuncs.com",
-            "cn-hangzhou-finance": "metrics.cn-hangzhou-finance.aliyuncs.com",
-            "cn-hangzhou": "metrics.cn-hangzhou.aliyuncs.com",
-            "cn-guangzhou": "metrics.cn-guangzhou.aliyuncs.com",
-            "cn-fuzhou": "metrics.cn-fuzhou.aliyuncs.com",
-            "cn-chengdu": "metrics.cn-chengdu.aliyuncs.com",
-            "cn-beijing-finance-1": "metrics.cn-beijing-finance-1.aliyuncs.com",
-            "cn-beijing": "metrics.cn-beijing.aliyuncs.com",
-            "ap-southeast-8": "metrics.ap-southeast-8.aliyuncs.com",
-            "ap-southeast-7": "metrics.ap-southeast-7.aliyuncs.com",
-            "ap-southeast-6": "metrics.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-5": "metrics.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-3": "metrics.ap-southeast-3.aliyuncs.com",
-            "ap-southeast-2": "metrics.ap-southeast-2.aliyuncs.com",
-            "ap-southeast-1": "metrics.ap-southeast-1.aliyuncs.com",
             "ap-south-1": "metrics.ap-south-1.aliyuncs.com",
-            "ap-northeast-2": "metrics.ap-northeast-2.aliyuncs.com",
-            "ap-northeast-1": "metrics.ap-northeast-1.aliyuncs.com"
+            "me-central-1": "metrics.me-central-1.aliyuncs.com",
+            "cn-hangzhou-finance": "metrics.cn-hangzhou-finance.aliyuncs.com",
+            "cn-shenzhen-finance-1": "metrics.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-beijing-finance-1": "metrics.cn-beijing-finance-1.aliyuncs.com",
+            "cn-shanghai-finance-1": "metrics.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-wulanchabu-gic-1": "metrics.cn-wulanchabu-gic-1.aliyuncs.com",
+            "cn-heyuan-acdr-1": "metrics.cn-heyuan-acdr-1.aliyuncs.com",
+            "cn-north-2-gov-1": "metrics.cn-north-2-gov-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("cms", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -111,6 +108,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.applyMode)) {
             query["ApplyMode"] = request.applyMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.enableEndTime)) {
             query["EnableEndTime"] = request.enableEndTime!;
@@ -242,6 +242,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.contactGroupList)) {
             query["ContactGroupList"] = request.contactGroupList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.enableInstallAgent)) {
             query["EnableInstallAgent"] = request.enableInstallAgent!;
@@ -792,6 +795,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.contactGroups)) {
             query["ContactGroups"] = request.contactGroups ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
         }
@@ -869,6 +875,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createMonitorGroupInstancesWithOptions(_ request: CreateMonitorGroupInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMonitorGroupInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId ?? "";
         }
@@ -1674,6 +1683,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMetricRulesWithOptions(_ request: DeleteMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id ?? [];
         }
@@ -1705,6 +1717,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMonitorGroupWithOptions(_ request: DeleteMonitorGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMonitorGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId!;
         }
@@ -1772,6 +1787,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.category)) {
             query["Category"] = request.category ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId!;
@@ -5002,6 +5020,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disableMetricRulesWithOptions(_ request: DisableMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             query["RuleId"] = request.ruleId ?? [];
         }
@@ -5064,6 +5085,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enableActiveMetricRuleWithOptions(_ request: EnableActiveMetricRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableActiveMetricRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.product)) {
             query["Product"] = request.product ?? "";
         }
@@ -5191,6 +5218,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enableMetricRulesWithOptions(_ request: EnableMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             query["RuleId"] = request.ruleId ?? [];
         }
@@ -5253,6 +5283,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func installMonitoringAgentWithOptions(_ request: InstallMonitoringAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InstallMonitoringAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.force)) {
             query["Force"] = request.force!;
         }
@@ -6241,6 +6274,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dimensions)) {
             query["Dimensions"] = request.dimensions ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.effectiveInterval)) {
             query["EffectiveInterval"] = request.effectiveInterval ?? "";
         }
@@ -6455,6 +6491,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putMonitorGroupDynamicRuleWithOptions(_ request: PutMonitorGroupDynamicRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutMonitorGroupDynamicRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId!;
         }
@@ -6494,6 +6533,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoInstall)) {
             query["AutoInstall"] = request.autoInstall!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.enableInstallAgentNewECS)) {
             query["EnableInstallAgentNewECS"] = request.enableInstallAgentNewECS!;
@@ -6539,6 +6581,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.contactGroups)) {
             query["ContactGroups"] = request.contactGroups ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.effectiveInterval)) {
             query["EffectiveInterval"] = request.effectiveInterval ?? "";
@@ -6619,6 +6664,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putResourceMetricRulesWithOptions(_ request: PutResourceMetricRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutResourceMetricRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.rules)) {
             query["Rules"] = request.rules ?? [];
         }
