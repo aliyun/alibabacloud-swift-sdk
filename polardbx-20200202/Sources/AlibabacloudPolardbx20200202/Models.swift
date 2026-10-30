@@ -23298,6 +23298,44 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SearchInstance : Tea.TeaModel {
+            public var instanceId: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public class TagSet : Tea.TeaModel {
             public var key: String?
 
@@ -23430,6 +23468,10 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var rightsSeparationStatus: String?
 
+        public var searchEnabled: Bool?
+
+        public var searchInstance: DescribeDBInstanceAttributeResponseBody.DBInstance.SearchInstance?
+
         public var secondaryZone: String?
 
         public var series: String?
@@ -23466,6 +23508,7 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.searchInstance?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -23622,6 +23665,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.rightsSeparationStatus != nil {
                 map["RightsSeparationStatus"] = self.rightsSeparationStatus!
+            }
+            if self.searchEnabled != nil {
+                map["SearchEnabled"] = self.searchEnabled!
+            }
+            if self.searchInstance != nil {
+                map["SearchInstance"] = self.searchInstance?.toMap()
             }
             if self.secondaryZone != nil {
                 map["SecondaryZone"] = self.secondaryZone!
@@ -23841,6 +23890,14 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["RightsSeparationStatus"] as? String {
                 self.rightsSeparationStatus = value
+            }
+            if let value = dict["SearchEnabled"] as? Bool {
+                self.searchEnabled = value
+            }
+            if let value = dict["SearchInstance"] as? [String: Any?] {
+                var model = DescribeDBInstanceAttributeResponseBody.DBInstance.SearchInstance()
+                model.fromMap(value)
+                self.searchInstance = model
             }
             if let value = dict["SecondaryZone"] as? String {
                 self.secondaryZone = value
