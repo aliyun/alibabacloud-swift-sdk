@@ -59539,6 +59539,409 @@ public class DescribeServerLoadBalancerMonitorResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSharedDiskRecordsRequest : Tea.TeaModel {
+    public var diskIds: [String]?
+
+    public var endTime: String?
+
+    public var namespaces: [String]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionIds: [String]?
+
+    public var sdgIds: [String]?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskIds != nil {
+            map["DiskIds"] = self.diskIds!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.namespaces != nil {
+            map["Namespaces"] = self.namespaces!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionIds != nil {
+            map["RegionIds"] = self.regionIds!
+        }
+        if self.sdgIds != nil {
+            map["SdgIds"] = self.sdgIds!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiskIds"] as? [String] {
+            self.diskIds = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Namespaces"] as? [String] {
+            self.namespaces = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionIds"] as? [String] {
+            self.regionIds = value
+        }
+        if let value = dict["SdgIds"] as? [String] {
+            self.sdgIds = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeSharedDiskRecordsShrinkRequest : Tea.TeaModel {
+    public var diskIdsShrink: String?
+
+    public var endTime: String?
+
+    public var namespacesShrink: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionIdsShrink: String?
+
+    public var sdgIdsShrink: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskIdsShrink != nil {
+            map["DiskIds"] = self.diskIdsShrink!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.namespacesShrink != nil {
+            map["Namespaces"] = self.namespacesShrink!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionIdsShrink != nil {
+            map["RegionIds"] = self.regionIdsShrink!
+        }
+        if self.sdgIdsShrink != nil {
+            map["SdgIds"] = self.sdgIdsShrink!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiskIds"] as? String {
+            self.diskIdsShrink = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Namespaces"] as? String {
+            self.namespacesShrink = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionIds"] as? String {
+            self.regionIdsShrink = value
+        }
+        if let value = dict["SdgIds"] as? String {
+            self.sdgIdsShrink = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeSharedDiskRecordsResponseBody : Tea.TeaModel {
+    public class SharedDisks : Tea.TeaModel {
+        public var creationTime: String?
+
+        public var diskId: String?
+
+        public var diskSize: Int64?
+
+        public var lastDetachInstanceId: String?
+
+        public var lastDetachTime: String?
+
+        public var namespace: String?
+
+        public var performanceLevel: Int64?
+
+        public var recycleTime: String?
+
+        public var regionId: String?
+
+        public var sdgId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.diskId != nil {
+                map["DiskId"] = self.diskId!
+            }
+            if self.diskSize != nil {
+                map["DiskSize"] = self.diskSize!
+            }
+            if self.lastDetachInstanceId != nil {
+                map["LastDetachInstanceId"] = self.lastDetachInstanceId!
+            }
+            if self.lastDetachTime != nil {
+                map["LastDetachTime"] = self.lastDetachTime!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            if self.recycleTime != nil {
+                map["RecycleTime"] = self.recycleTime!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.sdgId != nil {
+                map["SdgId"] = self.sdgId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreationTime"] as? String {
+                self.creationTime = value
+            }
+            if let value = dict["DiskId"] as? String {
+                self.diskId = value
+            }
+            if let value = dict["DiskSize"] as? Int64 {
+                self.diskSize = value
+            }
+            if let value = dict["LastDetachInstanceId"] as? String {
+                self.lastDetachInstanceId = value
+            }
+            if let value = dict["LastDetachTime"] as? String {
+                self.lastDetachTime = value
+            }
+            if let value = dict["Namespace"] as? String {
+                self.namespace = value
+            }
+            if let value = dict["PerformanceLevel"] as? Int64 {
+                self.performanceLevel = value
+            }
+            if let value = dict["RecycleTime"] as? String {
+                self.recycleTime = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["SdgId"] as? String {
+                self.sdgId = value
+            }
+        }
+    }
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var sharedDisks: [DescribeSharedDiskRecordsResponseBody.SharedDisks]?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sharedDisks != nil {
+            var tmp : [Any] = []
+            for k in self.sharedDisks! {
+                tmp.append(k.toMap())
+            }
+            map["SharedDisks"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SharedDisks"] as? [Any?] {
+            var tmp : [DescribeSharedDiskRecordsResponseBody.SharedDisks] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeSharedDiskRecordsResponseBody.SharedDisks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.sharedDisks = tmp
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeSharedDiskRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSharedDiskRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeSharedDiskRecordsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeSnapshotsRequest : Tea.TeaModel {
     public var diskId: String?
 
