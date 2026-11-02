@@ -5873,6 +5873,425 @@ public class AttachVbrToVpconnResponse : Tea.TeaModel {
     }
 }
 
+public class CalculateNatGatewayCapacityUnitsRequest : Tea.TeaModel {
+    public class NatGatewayCapacity : Tea.TeaModel {
+        public var capacityUnits: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUnits != nil {
+                map["CapacityUnits"] = self.capacityUnits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CapacityUnits"] as? Int32 {
+                self.capacityUnits = value
+            }
+        }
+    }
+    public class NatGatewayPerformanceValues : Tea.TeaModel {
+        public var bandwidth: Int32?
+
+        public var cps: Int32?
+
+        public var pps: Int32?
+
+        public var sessionCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
+            if self.cps != nil {
+                map["Cps"] = self.cps!
+            }
+            if self.pps != nil {
+                map["Pps"] = self.pps!
+            }
+            if self.sessionCount != nil {
+                map["SessionCount"] = self.sessionCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bandwidth"] as? Int32 {
+                self.bandwidth = value
+            }
+            if let value = dict["Cps"] as? Int32 {
+                self.cps = value
+            }
+            if let value = dict["Pps"] as? Int32 {
+                self.pps = value
+            }
+            if let value = dict["SessionCount"] as? Int32 {
+                self.sessionCount = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var dryRun: String?
+
+    public var natGatewayCapacity: CalculateNatGatewayCapacityUnitsRequest.NatGatewayCapacity?
+
+    public var natGatewayId: String?
+
+    public var natGatewayPerformanceValues: CalculateNatGatewayCapacityUnitsRequest.NatGatewayPerformanceValues?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.natGatewayCapacity?.validate()
+        try self.natGatewayPerformanceValues?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.natGatewayCapacity != nil {
+            map["NatGatewayCapacity"] = self.natGatewayCapacity?.toMap()
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.natGatewayPerformanceValues != nil {
+            map["NatGatewayPerformanceValues"] = self.natGatewayPerformanceValues?.toMap()
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? String {
+            self.dryRun = value
+        }
+        if let value = dict["NatGatewayCapacity"] as? [String: Any?] {
+            var model = CalculateNatGatewayCapacityUnitsRequest.NatGatewayCapacity()
+            model.fromMap(value)
+            self.natGatewayCapacity = model
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["NatGatewayPerformanceValues"] as? [String: Any?] {
+            var model = CalculateNatGatewayCapacityUnitsRequest.NatGatewayPerformanceValues()
+            model.fromMap(value)
+            self.natGatewayPerformanceValues = model
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CalculateNatGatewayCapacityUnitsShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: String?
+
+    public var natGatewayCapacityShrink: String?
+
+    public var natGatewayId: String?
+
+    public var natGatewayPerformanceValuesShrink: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.natGatewayCapacityShrink != nil {
+            map["NatGatewayCapacity"] = self.natGatewayCapacityShrink!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.natGatewayPerformanceValuesShrink != nil {
+            map["NatGatewayPerformanceValues"] = self.natGatewayPerformanceValuesShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? String {
+            self.dryRun = value
+        }
+        if let value = dict["NatGatewayCapacity"] as? String {
+            self.natGatewayCapacityShrink = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["NatGatewayPerformanceValues"] as? String {
+            self.natGatewayPerformanceValuesShrink = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CalculateNatGatewayCapacityUnitsResponseBody : Tea.TeaModel {
+    public class NatGatewayCapacity : Tea.TeaModel {
+        public var capacityUnits: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUnits != nil {
+                map["CapacityUnits"] = self.capacityUnits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CapacityUnits"] as? Double {
+                self.capacityUnits = value
+            }
+        }
+    }
+    public class NatGatewayPerformanceValues : Tea.TeaModel {
+        public var bandwidth: Int32?
+
+        public var cps: Int32?
+
+        public var pps: Int32?
+
+        public var sessionCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
+            if self.cps != nil {
+                map["Cps"] = self.cps!
+            }
+            if self.pps != nil {
+                map["Pps"] = self.pps!
+            }
+            if self.sessionCount != nil {
+                map["SessionCount"] = self.sessionCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bandwidth"] as? Int32 {
+                self.bandwidth = value
+            }
+            if let value = dict["Cps"] as? Int32 {
+                self.cps = value
+            }
+            if let value = dict["Pps"] as? Int32 {
+                self.pps = value
+            }
+            if let value = dict["SessionCount"] as? Int32 {
+                self.sessionCount = value
+            }
+        }
+    }
+    public var natGatewayCapacity: CalculateNatGatewayCapacityUnitsResponseBody.NatGatewayCapacity?
+
+    public var natGatewayPerformanceValues: CalculateNatGatewayCapacityUnitsResponseBody.NatGatewayPerformanceValues?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.natGatewayCapacity?.validate()
+        try self.natGatewayPerformanceValues?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.natGatewayCapacity != nil {
+            map["NatGatewayCapacity"] = self.natGatewayCapacity?.toMap()
+        }
+        if self.natGatewayPerformanceValues != nil {
+            map["NatGatewayPerformanceValues"] = self.natGatewayPerformanceValues?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NatGatewayCapacity"] as? [String: Any?] {
+            var model = CalculateNatGatewayCapacityUnitsResponseBody.NatGatewayCapacity()
+            model.fromMap(value)
+            self.natGatewayCapacity = model
+        }
+        if let value = dict["NatGatewayPerformanceValues"] as? [String: Any?] {
+            var model = CalculateNatGatewayCapacityUnitsResponseBody.NatGatewayPerformanceValues()
+            model.fromMap(value)
+            self.natGatewayPerformanceValues = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CalculateNatGatewayCapacityUnitsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CalculateNatGatewayCapacityUnitsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CalculateNatGatewayCapacityUnitsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CancelCommonBandwidthPackageIpBandwidthRequest : Tea.TeaModel {
     public var bandwidthPackageId: String?
 
@@ -30569,6 +30988,142 @@ public class DeleteNatIpCidrResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteNatRateLimitRuleRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var natGatewayId: String?
+
+    public var regionId: String?
+
+    public var ruleIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.ruleIds != nil {
+            map["RuleIds"] = self.ruleIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RuleIds"] as? [String] {
+            self.ruleIds = value
+        }
+    }
+}
+
+public class DeleteNatRateLimitRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteNatRateLimitRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteNatRateLimitRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteNatRateLimitRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteNetworkAclRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -50925,6 +51480,321 @@ public class DescribeNatGatewayAssociateNetworkInterfacesResponse : Tea.TeaModel
     }
 }
 
+public class DescribeNatGatewayCapacityReservationRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: String?
+
+    public var natGatewayId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? String {
+            self.dryRun = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribeNatGatewayCapacityReservationResponseBody : Tea.TeaModel {
+    public class CapacityReservationStatus : Tea.TeaModel {
+        public var reason: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Reason"] as? String {
+                self.reason = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public class NatGatewayCapacity : Tea.TeaModel {
+        public var capacityUnits: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUnits != nil {
+                map["CapacityUnits"] = self.capacityUnits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CapacityUnits"] as? Double {
+                self.capacityUnits = value
+            }
+        }
+    }
+    public class NatGatewayPerformanceValues : Tea.TeaModel {
+        public var bandwidth: Int32?
+
+        public var cps: Int32?
+
+        public var pps: Int32?
+
+        public var sessionCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
+            if self.cps != nil {
+                map["Cps"] = self.cps!
+            }
+            if self.pps != nil {
+                map["Pps"] = self.pps!
+            }
+            if self.sessionCount != nil {
+                map["SessionCount"] = self.sessionCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bandwidth"] as? Int32 {
+                self.bandwidth = value
+            }
+            if let value = dict["Cps"] as? Int32 {
+                self.cps = value
+            }
+            if let value = dict["Pps"] as? Int32 {
+                self.pps = value
+            }
+            if let value = dict["SessionCount"] as? Int32 {
+                self.sessionCount = value
+            }
+        }
+    }
+    public var capacityReservationStatus: DescribeNatGatewayCapacityReservationResponseBody.CapacityReservationStatus?
+
+    public var decreaseRequestsRemaining: String?
+
+    public var lastModifiedTime: Int64?
+
+    public var natGatewayCapacity: DescribeNatGatewayCapacityReservationResponseBody.NatGatewayCapacity?
+
+    public var natGatewayId: String?
+
+    public var natGatewayPerformanceValues: DescribeNatGatewayCapacityReservationResponseBody.NatGatewayPerformanceValues?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.capacityReservationStatus?.validate()
+        try self.natGatewayCapacity?.validate()
+        try self.natGatewayPerformanceValues?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.capacityReservationStatus != nil {
+            map["CapacityReservationStatus"] = self.capacityReservationStatus?.toMap()
+        }
+        if self.decreaseRequestsRemaining != nil {
+            map["DecreaseRequestsRemaining"] = self.decreaseRequestsRemaining!
+        }
+        if self.lastModifiedTime != nil {
+            map["LastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.natGatewayCapacity != nil {
+            map["NatGatewayCapacity"] = self.natGatewayCapacity?.toMap()
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.natGatewayPerformanceValues != nil {
+            map["NatGatewayPerformanceValues"] = self.natGatewayPerformanceValues?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CapacityReservationStatus"] as? [String: Any?] {
+            var model = DescribeNatGatewayCapacityReservationResponseBody.CapacityReservationStatus()
+            model.fromMap(value)
+            self.capacityReservationStatus = model
+        }
+        if let value = dict["DecreaseRequestsRemaining"] as? String {
+            self.decreaseRequestsRemaining = value
+        }
+        if let value = dict["LastModifiedTime"] as? Int64 {
+            self.lastModifiedTime = value
+        }
+        if let value = dict["NatGatewayCapacity"] as? [String: Any?] {
+            var model = DescribeNatGatewayCapacityReservationResponseBody.NatGatewayCapacity()
+            model.fromMap(value)
+            self.natGatewayCapacity = model
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["NatGatewayPerformanceValues"] as? [String: Any?] {
+            var model = DescribeNatGatewayCapacityReservationResponseBody.NatGatewayPerformanceValues()
+            model.fromMap(value)
+            self.natGatewayPerformanceValues = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeNatGatewayCapacityReservationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNatGatewayCapacityReservationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeNatGatewayCapacityReservationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeNatGatewaysRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -63689,6 +64559,8 @@ public class DescribeVcoRouteEntriesResponseBody : Tea.TeaModel {
 
         public var nextHopTunnelIdList: [String]?
 
+        public var prefixListId: String?
+
         public var routeDest: String?
 
         public var routeEntryType: String?
@@ -63730,6 +64602,9 @@ public class DescribeVcoRouteEntriesResponseBody : Tea.TeaModel {
             if self.nextHopTunnelIdList != nil {
                 map["NextHopTunnelIdList"] = self.nextHopTunnelIdList!
             }
+            if self.prefixListId != nil {
+                map["PrefixListId"] = self.prefixListId!
+            }
             if self.routeDest != nil {
                 map["RouteDest"] = self.routeDest!
             }
@@ -63767,6 +64642,9 @@ public class DescribeVcoRouteEntriesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NextHopTunnelIdList"] as? [String] {
                 self.nextHopTunnelIdList = value
+            }
+            if let value = dict["PrefixListId"] as? String {
+                self.prefixListId = value
             }
             if let value = dict["RouteDest"] as? String {
                 self.routeDest = value
@@ -73525,6 +74403,8 @@ public class DescribeVpnRouteEntriesResponseBody : Tea.TeaModel {
 
             public var nextHopTunnelId: String?
 
+            public var prefixListId: String?
+
             public var routeDest: String?
 
             public var routeEntryType: String?
@@ -73566,6 +74446,9 @@ public class DescribeVpnRouteEntriesResponseBody : Tea.TeaModel {
                 if self.nextHopTunnelId != nil {
                     map["NextHopTunnelId"] = self.nextHopTunnelId!
                 }
+                if self.prefixListId != nil {
+                    map["PrefixListId"] = self.prefixListId!
+                }
                 if self.routeDest != nil {
                     map["RouteDest"] = self.routeDest!
                 }
@@ -73603,6 +74486,9 @@ public class DescribeVpnRouteEntriesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NextHopTunnelId"] as? String {
                     self.nextHopTunnelId = value
+                }
+                if let value = dict["PrefixListId"] as? String {
+                    self.prefixListId = value
                 }
                 if let value = dict["RouteDest"] as? String {
                     self.routeDest = value
@@ -97680,6 +98566,433 @@ public class ModifyNatGatewayAttributeResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyNatGatewayCapacityReservationRequest : Tea.TeaModel {
+    public class NatGatewayCapacity : Tea.TeaModel {
+        public var capacityUnits: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUnits != nil {
+                map["CapacityUnits"] = self.capacityUnits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CapacityUnits"] as? Double {
+                self.capacityUnits = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var dryRun: String?
+
+    public var natGatewayCapacity: ModifyNatGatewayCapacityReservationRequest.NatGatewayCapacity?
+
+    public var natGatewayId: String?
+
+    public var regionId: String?
+
+    public var resetCapacityReservation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.natGatewayCapacity?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.natGatewayCapacity != nil {
+            map["NatGatewayCapacity"] = self.natGatewayCapacity?.toMap()
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resetCapacityReservation != nil {
+            map["ResetCapacityReservation"] = self.resetCapacityReservation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? String {
+            self.dryRun = value
+        }
+        if let value = dict["NatGatewayCapacity"] as? [String: Any?] {
+            var model = ModifyNatGatewayCapacityReservationRequest.NatGatewayCapacity()
+            model.fromMap(value)
+            self.natGatewayCapacity = model
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResetCapacityReservation"] as? String {
+            self.resetCapacityReservation = value
+        }
+    }
+}
+
+public class ModifyNatGatewayCapacityReservationShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: String?
+
+    public var natGatewayCapacityShrink: String?
+
+    public var natGatewayId: String?
+
+    public var regionId: String?
+
+    public var resetCapacityReservation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.natGatewayCapacityShrink != nil {
+            map["NatGatewayCapacity"] = self.natGatewayCapacityShrink!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resetCapacityReservation != nil {
+            map["ResetCapacityReservation"] = self.resetCapacityReservation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? String {
+            self.dryRun = value
+        }
+        if let value = dict["NatGatewayCapacity"] as? String {
+            self.natGatewayCapacityShrink = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResetCapacityReservation"] as? String {
+            self.resetCapacityReservation = value
+        }
+    }
+}
+
+public class ModifyNatGatewayCapacityReservationResponseBody : Tea.TeaModel {
+    public class CapacityReservationStatus : Tea.TeaModel {
+        public var reason: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Reason"] as? String {
+                self.reason = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public class NatGatewayCapacity : Tea.TeaModel {
+        public var capacityUnits: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUnits != nil {
+                map["CapacityUnits"] = self.capacityUnits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CapacityUnits"] as? Double {
+                self.capacityUnits = value
+            }
+        }
+    }
+    public class NatGatewayPerformanceValues : Tea.TeaModel {
+        public var bandwidth: Int32?
+
+        public var cps: Int32?
+
+        public var pps: Int32?
+
+        public var sessionCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
+            if self.cps != nil {
+                map["Cps"] = self.cps!
+            }
+            if self.pps != nil {
+                map["Pps"] = self.pps!
+            }
+            if self.sessionCount != nil {
+                map["SessionCount"] = self.sessionCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bandwidth"] as? Int32 {
+                self.bandwidth = value
+            }
+            if let value = dict["Cps"] as? Int32 {
+                self.cps = value
+            }
+            if let value = dict["Pps"] as? Int32 {
+                self.pps = value
+            }
+            if let value = dict["SessionCount"] as? Int32 {
+                self.sessionCount = value
+            }
+        }
+    }
+    public var capacityReservationStatus: ModifyNatGatewayCapacityReservationResponseBody.CapacityReservationStatus?
+
+    public var decreaseRequestsRemaining: Int32?
+
+    public var natGatewayCapacity: ModifyNatGatewayCapacityReservationResponseBody.NatGatewayCapacity?
+
+    public var natGatewayId: String?
+
+    public var natGatewayPerformanceValues: ModifyNatGatewayCapacityReservationResponseBody.NatGatewayPerformanceValues?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.capacityReservationStatus?.validate()
+        try self.natGatewayCapacity?.validate()
+        try self.natGatewayPerformanceValues?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.capacityReservationStatus != nil {
+            map["CapacityReservationStatus"] = self.capacityReservationStatus?.toMap()
+        }
+        if self.decreaseRequestsRemaining != nil {
+            map["DecreaseRequestsRemaining"] = self.decreaseRequestsRemaining!
+        }
+        if self.natGatewayCapacity != nil {
+            map["NatGatewayCapacity"] = self.natGatewayCapacity?.toMap()
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.natGatewayPerformanceValues != nil {
+            map["NatGatewayPerformanceValues"] = self.natGatewayPerformanceValues?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CapacityReservationStatus"] as? [String: Any?] {
+            var model = ModifyNatGatewayCapacityReservationResponseBody.CapacityReservationStatus()
+            model.fromMap(value)
+            self.capacityReservationStatus = model
+        }
+        if let value = dict["DecreaseRequestsRemaining"] as? Int32 {
+            self.decreaseRequestsRemaining = value
+        }
+        if let value = dict["NatGatewayCapacity"] as? [String: Any?] {
+            var model = ModifyNatGatewayCapacityReservationResponseBody.NatGatewayCapacity()
+            model.fromMap(value)
+            self.natGatewayCapacity = model
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["NatGatewayPerformanceValues"] as? [String: Any?] {
+            var model = ModifyNatGatewayCapacityReservationResponseBody.NatGatewayPerformanceValues()
+            model.fromMap(value)
+            self.natGatewayPerformanceValues = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyNatGatewayCapacityReservationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyNatGatewayCapacityReservationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyNatGatewayCapacityReservationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyNatGatewaySpecRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
@@ -98226,6 +99539,182 @@ public class ModifyNatIpCidrAttributeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyNatIpCidrAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyNatRateLimitRuleRequest : Tea.TeaModel {
+    public var bandwidthLimit: String?
+
+    public var clientToken: String?
+
+    public var dryRun: String?
+
+    public var natGatewayId: String?
+
+    public var regionId: String?
+
+    public var ruleDescription: String?
+
+    public var ruleId: String?
+
+    public var ruleName: String?
+
+    public var sourceCIDRs: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bandwidthLimit != nil {
+            map["BandwidthLimit"] = self.bandwidthLimit!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.ruleDescription != nil {
+            map["RuleDescription"] = self.ruleDescription!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.sourceCIDRs != nil {
+            map["SourceCIDRs"] = self.sourceCIDRs!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BandwidthLimit"] as? String {
+            self.bandwidthLimit = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? String {
+            self.dryRun = value
+        }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RuleDescription"] as? String {
+            self.ruleDescription = value
+        }
+        if let value = dict["RuleId"] as? String {
+            self.ruleId = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["SourceCIDRs"] as? [String] {
+            self.sourceCIDRs = value
+        }
+    }
+}
+
+public class ModifyNatRateLimitRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyNatRateLimitRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyNatRateLimitRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyNatRateLimitRuleResponseBody()
             model.fromMap(value)
             self.body = model
         }

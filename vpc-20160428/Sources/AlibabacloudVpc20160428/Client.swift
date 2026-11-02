@@ -1804,6 +1804,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func calculateNatGatewayCapacityUnitsWithOptions(_ tmpReq: CalculateNatGatewayCapacityUnitsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CalculateNatGatewayCapacityUnitsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CalculateNatGatewayCapacityUnitsShrinkRequest = CalculateNatGatewayCapacityUnitsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.natGatewayCapacity)) {
+            request.natGatewayCapacityShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.natGatewayCapacity, "NatGatewayCapacity", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.natGatewayPerformanceValues)) {
+            request.natGatewayPerformanceValuesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.natGatewayPerformanceValues, "NatGatewayPerformanceValues", "json")
+        }
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CalculateNatGatewayCapacityUnits",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CalculateNatGatewayCapacityUnitsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func calculateNatGatewayCapacityUnits(_ request: CalculateNatGatewayCapacityUnitsRequest) async throws -> CalculateNatGatewayCapacityUnitsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await calculateNatGatewayCapacityUnitsWithOptions(request as! CalculateNatGatewayCapacityUnitsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelCommonBandwidthPackageIpBandwidthWithOptions(_ request: CancelCommonBandwidthPackageIpBandwidthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelCommonBandwidthPackageIpBandwidthResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8087,6 +8123,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteNatRateLimitRuleWithOptions(_ request: DeleteNatRateLimitRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteNatRateLimitRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
+            query["NatGatewayId"] = request.natGatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleIds)) {
+            query["RuleIds"] = request.ruleIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteNatRateLimitRule",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteNatRateLimitRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteNatRateLimitRule(_ request: DeleteNatRateLimitRuleRequest) async throws -> DeleteNatRateLimitRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteNatRateLimitRuleWithOptions(request as! DeleteNatRateLimitRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteNetworkAclWithOptions(_ request: DeleteNetworkAclRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteNetworkAclResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -11690,6 +11766,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeNatGatewayAssociateNetworkInterfaces(_ request: DescribeNatGatewayAssociateNetworkInterfacesRequest) async throws -> DescribeNatGatewayAssociateNetworkInterfacesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeNatGatewayAssociateNetworkInterfacesWithOptions(request as! DescribeNatGatewayAssociateNetworkInterfacesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNatGatewayCapacityReservationWithOptions(_ request: DescribeNatGatewayCapacityReservationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNatGatewayCapacityReservationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeNatGatewayCapacityReservation",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeNatGatewayCapacityReservationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNatGatewayCapacityReservation(_ request: DescribeNatGatewayCapacityReservationRequest) async throws -> DescribeNatGatewayCapacityReservationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeNatGatewayCapacityReservationWithOptions(request as! DescribeNatGatewayCapacityReservationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -18851,6 +18955,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyNatGatewayCapacityReservationWithOptions(_ tmpReq: ModifyNatGatewayCapacityReservationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNatGatewayCapacityReservationResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyNatGatewayCapacityReservationShrinkRequest = ModifyNatGatewayCapacityReservationShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.natGatewayCapacity)) {
+            request.natGatewayCapacityShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.natGatewayCapacity, "NatGatewayCapacity", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natGatewayCapacityShrink)) {
+            query["NatGatewayCapacity"] = request.natGatewayCapacityShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
+            query["NatGatewayId"] = request.natGatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resetCapacityReservation)) {
+            query["ResetCapacityReservation"] = request.resetCapacityReservation ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyNatGatewayCapacityReservation",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyNatGatewayCapacityReservationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyNatGatewayCapacityReservation(_ request: ModifyNatGatewayCapacityReservationRequest) async throws -> ModifyNatGatewayCapacityReservationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyNatGatewayCapacityReservationWithOptions(request as! ModifyNatGatewayCapacityReservationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyNatGatewaySpecWithOptions(_ request: ModifyNatGatewaySpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNatGatewaySpecResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -19028,6 +19183,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyNatIpCidrAttribute(_ request: ModifyNatIpCidrAttributeRequest) async throws -> ModifyNatIpCidrAttributeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyNatIpCidrAttributeWithOptions(request as! ModifyNatIpCidrAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyNatRateLimitRuleWithOptions(_ request: ModifyNatRateLimitRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNatRateLimitRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bandwidthLimit)) {
+            query["BandwidthLimit"] = request.bandwidthLimit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
+            query["NatGatewayId"] = request.natGatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleDescription)) {
+            query["RuleDescription"] = request.ruleDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            query["RuleId"] = request.ruleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCIDRs)) {
+            query["SourceCIDRs"] = request.sourceCIDRs ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyNatRateLimitRule",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyNatRateLimitRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyNatRateLimitRule(_ request: ModifyNatRateLimitRuleRequest) async throws -> ModifyNatRateLimitRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyNatRateLimitRuleWithOptions(request as! ModifyNatRateLimitRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
