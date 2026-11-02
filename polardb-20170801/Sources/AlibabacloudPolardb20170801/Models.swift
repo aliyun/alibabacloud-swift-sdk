@@ -20294,6 +20294,8 @@ public class CreatePolarFsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var storageSpace: Int64?
 
     public var storageType: String?
@@ -20377,6 +20379,9 @@ public class CreatePolarFsRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.storageSpace != nil {
             map["StorageSpace"] = self.storageSpace!
@@ -20464,6 +20469,9 @@ public class CreatePolarFsRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["StorageSpace"] as? Int64 {
             self.storageSpace = value
@@ -86365,6 +86373,8 @@ public class DescribePolarFsRequest : Tea.TeaModel {
 
     public var relativeDbClusterId: String?
 
+    public var resourceGroupId: String?
+
     public var tag: [DescribePolarFsRequest.Tag]?
 
     public override init() {
@@ -86405,6 +86415,9 @@ public class DescribePolarFsRequest : Tea.TeaModel {
         if self.relativeDbClusterId != nil {
             map["RelativeDbClusterId"] = self.relativeDbClusterId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -86440,6 +86453,9 @@ public class DescribePolarFsRequest : Tea.TeaModel {
         }
         if let value = dict["RelativeDbClusterId"] as? String {
             self.relativeDbClusterId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [DescribePolarFsRequest.Tag] = []
@@ -86722,6 +86738,8 @@ public class DescribePolarFsResponseBody : Tea.TeaModel {
 
             public var relativeDbClusterId: String?
 
+            public var resourceGroupId: String?
+
             public var securityGroupId: String?
 
             public var storageSpace: Int64?
@@ -86807,6 +86825,9 @@ public class DescribePolarFsResponseBody : Tea.TeaModel {
                 if self.relativeDbClusterId != nil {
                     map["RelativeDbClusterId"] = self.relativeDbClusterId!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
                 }
@@ -86890,6 +86911,9 @@ public class DescribePolarFsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RelativeDbClusterId"] as? String {
                     self.relativeDbClusterId = value
+                }
+                if let value = dict["ResourceGroupId"] as? String {
+                    self.resourceGroupId = value
                 }
                 if let value = dict["SecurityGroupId"] as? String {
                     self.securityGroupId = value
@@ -87410,6 +87434,8 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var securityGroupId: String?
 
     public var storageSpace: Double?
@@ -87561,6 +87587,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
@@ -87726,6 +87755,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
@@ -121478,6 +121510,8 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
 
         public var imageResources: [RetrievalKnowledgeBaseResponseBody.Results.ImageResources]?
 
+        public var knowledgeBaseId: String?
+
         public var metadata: String?
 
         public var pageNumbers: [Int32]?
@@ -121525,6 +121559,9 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ImageResources"] = tmp
+            }
+            if self.knowledgeBaseId != nil {
+                map["KnowledgeBaseId"] = self.knowledgeBaseId!
             }
             if self.metadata != nil {
                 map["Metadata"] = self.metadata!
@@ -121576,6 +121613,9 @@ public class RetrievalKnowledgeBaseResponseBody : Tea.TeaModel {
                     }
                 }
                 self.imageResources = tmp
+            }
+            if let value = dict["KnowledgeBaseId"] as? String {
+                self.knowledgeBaseId = value
             }
             if let value = dict["Metadata"] as? String {
                 self.metadata = value
