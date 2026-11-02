@@ -46293,6 +46293,380 @@ public class ExecuteMetaQueryResponse : Tea.TeaModel {
     }
 }
 
+public class ListPxfsTenantsRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ListPxfsTenantsResponseBody : Tea.TeaModel {
+    public class AccessDeniedDetail : Tea.TeaModel {
+        public var authAction: String?
+
+        public var authPrincipalDisplayName: String?
+
+        public var authPrincipalOwnerId: String?
+
+        public var authPrincipalType: String?
+
+        public var encodedDiagnosticMessage: String?
+
+        public var noPermissionType: String?
+
+        public var policyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authAction != nil {
+                map["AuthAction"] = self.authAction!
+            }
+            if self.authPrincipalDisplayName != nil {
+                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
+            }
+            if self.authPrincipalOwnerId != nil {
+                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
+            }
+            if self.authPrincipalType != nil {
+                map["AuthPrincipalType"] = self.authPrincipalType!
+            }
+            if self.encodedDiagnosticMessage != nil {
+                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
+            }
+            if self.noPermissionType != nil {
+                map["NoPermissionType"] = self.noPermissionType!
+            }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthAction"] as? String {
+                self.authAction = value
+            }
+            if let value = dict["AuthPrincipalDisplayName"] as? String {
+                self.authPrincipalDisplayName = value
+            }
+            if let value = dict["AuthPrincipalOwnerId"] as? String {
+                self.authPrincipalOwnerId = value
+            }
+            if let value = dict["AuthPrincipalType"] as? String {
+                self.authPrincipalType = value
+            }
+            if let value = dict["EncodedDiagnosticMessage"] as? String {
+                self.encodedDiagnosticMessage = value
+            }
+            if let value = dict["NoPermissionType"] as? String {
+                self.noPermissionType = value
+            }
+            if let value = dict["PolicyType"] as? String {
+                self.policyType = value
+            }
+        }
+    }
+    public class Data : Tea.TeaModel {
+        public class Tenants : Tea.TeaModel {
+            public var dedupBytes: Int64?
+
+            public var logicalBytes: Int64?
+
+            public var logicalFiles: Int64?
+
+            public var physicalBytes: Int64?
+
+            public var quotaBytes: Int64?
+
+            public var quotaFiles: Int64?
+
+            public var rateLimitRps: Int64?
+
+            public var rateLimitWbps: Int64?
+
+            public var status: String?
+
+            public var tenantId: String?
+
+            public var tenantName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dedupBytes != nil {
+                    map["DedupBytes"] = self.dedupBytes!
+                }
+                if self.logicalBytes != nil {
+                    map["LogicalBytes"] = self.logicalBytes!
+                }
+                if self.logicalFiles != nil {
+                    map["LogicalFiles"] = self.logicalFiles!
+                }
+                if self.physicalBytes != nil {
+                    map["PhysicalBytes"] = self.physicalBytes!
+                }
+                if self.quotaBytes != nil {
+                    map["QuotaBytes"] = self.quotaBytes!
+                }
+                if self.quotaFiles != nil {
+                    map["QuotaFiles"] = self.quotaFiles!
+                }
+                if self.rateLimitRps != nil {
+                    map["RateLimitRps"] = self.rateLimitRps!
+                }
+                if self.rateLimitWbps != nil {
+                    map["RateLimitWbps"] = self.rateLimitWbps!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.tenantId != nil {
+                    map["TenantId"] = self.tenantId!
+                }
+                if self.tenantName != nil {
+                    map["TenantName"] = self.tenantName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DedupBytes"] as? Int64 {
+                    self.dedupBytes = value
+                }
+                if let value = dict["LogicalBytes"] as? Int64 {
+                    self.logicalBytes = value
+                }
+                if let value = dict["LogicalFiles"] as? Int64 {
+                    self.logicalFiles = value
+                }
+                if let value = dict["PhysicalBytes"] as? Int64 {
+                    self.physicalBytes = value
+                }
+                if let value = dict["QuotaBytes"] as? Int64 {
+                    self.quotaBytes = value
+                }
+                if let value = dict["QuotaFiles"] as? Int64 {
+                    self.quotaFiles = value
+                }
+                if let value = dict["RateLimitRps"] as? Int64 {
+                    self.rateLimitRps = value
+                }
+                if let value = dict["RateLimitWbps"] as? Int64 {
+                    self.rateLimitWbps = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["TenantId"] as? String {
+                    self.tenantId = value
+                }
+                if let value = dict["TenantName"] as? String {
+                    self.tenantName = value
+                }
+            }
+        }
+        public var tenants: [ListPxfsTenantsResponseBody.Data.Tenants]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenants != nil {
+                var tmp : [Any] = []
+                for k in self.tenants! {
+                    tmp.append(k.toMap())
+                }
+                map["Tenants"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Tenants"] as? [Any?] {
+                var tmp : [ListPxfsTenantsResponseBody.Data.Tenants] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListPxfsTenantsResponseBody.Data.Tenants()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tenants = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: ListPxfsTenantsResponseBody.AccessDeniedDetail?
+
+    public var data: ListPxfsTenantsResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accessDeniedDetail?.validate()
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? [String: Any?] {
+            var model = ListPxfsTenantsResponseBody.AccessDeniedDetail()
+            model.fromMap(value)
+            self.accessDeniedDetail = model
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListPxfsTenantsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListPxfsTenantsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListPxfsTenantsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListPxfsTenantsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListTagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -51593,6 +51967,376 @@ public class ModifyPxfsSecurityIpsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyPxfsSecurityIpsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyPxfsTenantQuotaRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var quotaBytes: Int64?
+
+    public var quotaFiles: Int64?
+
+    public var rateLimitRps: Int64?
+
+    public var rateLimitWbps: Int64?
+
+    public var regionId: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.quotaBytes != nil {
+            map["QuotaBytes"] = self.quotaBytes!
+        }
+        if self.quotaFiles != nil {
+            map["QuotaFiles"] = self.quotaFiles!
+        }
+        if self.rateLimitRps != nil {
+            map["RateLimitRps"] = self.rateLimitRps!
+        }
+        if self.rateLimitWbps != nil {
+            map["RateLimitWbps"] = self.rateLimitWbps!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["QuotaBytes"] as? Int64 {
+            self.quotaBytes = value
+        }
+        if let value = dict["QuotaFiles"] as? Int64 {
+            self.quotaFiles = value
+        }
+        if let value = dict["RateLimitRps"] as? Int64 {
+            self.rateLimitRps = value
+        }
+        if let value = dict["RateLimitWbps"] as? Int64 {
+            self.rateLimitWbps = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class ModifyPxfsTenantQuotaResponseBody : Tea.TeaModel {
+    public class AccessDeniedDetail : Tea.TeaModel {
+        public var authAction: String?
+
+        public var authPrincipalDisplayName: String?
+
+        public var authPrincipalOwnerId: String?
+
+        public var authPrincipalType: String?
+
+        public var encodedDiagnosticMessage: String?
+
+        public var noPermissionType: String?
+
+        public var policyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authAction != nil {
+                map["AuthAction"] = self.authAction!
+            }
+            if self.authPrincipalDisplayName != nil {
+                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
+            }
+            if self.authPrincipalOwnerId != nil {
+                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
+            }
+            if self.authPrincipalType != nil {
+                map["AuthPrincipalType"] = self.authPrincipalType!
+            }
+            if self.encodedDiagnosticMessage != nil {
+                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
+            }
+            if self.noPermissionType != nil {
+                map["NoPermissionType"] = self.noPermissionType!
+            }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthAction"] as? String {
+                self.authAction = value
+            }
+            if let value = dict["AuthPrincipalDisplayName"] as? String {
+                self.authPrincipalDisplayName = value
+            }
+            if let value = dict["AuthPrincipalOwnerId"] as? String {
+                self.authPrincipalOwnerId = value
+            }
+            if let value = dict["AuthPrincipalType"] as? String {
+                self.authPrincipalType = value
+            }
+            if let value = dict["EncodedDiagnosticMessage"] as? String {
+                self.encodedDiagnosticMessage = value
+            }
+            if let value = dict["NoPermissionType"] as? String {
+                self.noPermissionType = value
+            }
+            if let value = dict["PolicyType"] as? String {
+                self.policyType = value
+            }
+        }
+    }
+    public class Data : Tea.TeaModel {
+        public var dedupBytes: Int64?
+
+        public var logicalBytes: Int64?
+
+        public var logicalFiles: Int64?
+
+        public var physicalBytes: Int64?
+
+        public var quotaBytes: Int64?
+
+        public var quotaFiles: Int64?
+
+        public var rateLimitRps: Int64?
+
+        public var rateLimitWbps: Int64?
+
+        public var status: String?
+
+        public var tenantId: String?
+
+        public var tenantName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dedupBytes != nil {
+                map["DedupBytes"] = self.dedupBytes!
+            }
+            if self.logicalBytes != nil {
+                map["LogicalBytes"] = self.logicalBytes!
+            }
+            if self.logicalFiles != nil {
+                map["LogicalFiles"] = self.logicalFiles!
+            }
+            if self.physicalBytes != nil {
+                map["PhysicalBytes"] = self.physicalBytes!
+            }
+            if self.quotaBytes != nil {
+                map["QuotaBytes"] = self.quotaBytes!
+            }
+            if self.quotaFiles != nil {
+                map["QuotaFiles"] = self.quotaFiles!
+            }
+            if self.rateLimitRps != nil {
+                map["RateLimitRps"] = self.rateLimitRps!
+            }
+            if self.rateLimitWbps != nil {
+                map["RateLimitWbps"] = self.rateLimitWbps!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tenantId != nil {
+                map["TenantId"] = self.tenantId!
+            }
+            if self.tenantName != nil {
+                map["TenantName"] = self.tenantName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DedupBytes"] as? Int64 {
+                self.dedupBytes = value
+            }
+            if let value = dict["LogicalBytes"] as? Int64 {
+                self.logicalBytes = value
+            }
+            if let value = dict["LogicalFiles"] as? Int64 {
+                self.logicalFiles = value
+            }
+            if let value = dict["PhysicalBytes"] as? Int64 {
+                self.physicalBytes = value
+            }
+            if let value = dict["QuotaBytes"] as? Int64 {
+                self.quotaBytes = value
+            }
+            if let value = dict["QuotaFiles"] as? Int64 {
+                self.quotaFiles = value
+            }
+            if let value = dict["RateLimitRps"] as? Int64 {
+                self.rateLimitRps = value
+            }
+            if let value = dict["RateLimitWbps"] as? Int64 {
+                self.rateLimitWbps = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TenantId"] as? String {
+                self.tenantId = value
+            }
+            if let value = dict["TenantName"] as? String {
+                self.tenantName = value
+            }
+        }
+    }
+    public var accessDeniedDetail: ModifyPxfsTenantQuotaResponseBody.AccessDeniedDetail?
+
+    public var data: ModifyPxfsTenantQuotaResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accessDeniedDetail?.validate()
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? [String: Any?] {
+            var model = ModifyPxfsTenantQuotaResponseBody.AccessDeniedDetail()
+            model.fromMap(value)
+            self.accessDeniedDetail = model
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ModifyPxfsTenantQuotaResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyPxfsTenantQuotaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyPxfsTenantQuotaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyPxfsTenantQuotaResponseBody()
             model.fromMap(value)
             self.body = model
         }
