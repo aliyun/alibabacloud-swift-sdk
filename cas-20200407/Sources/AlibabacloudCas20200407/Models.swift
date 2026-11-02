@@ -7174,6 +7174,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
     public var autoReissueFlag: Int32?
 
+    public var autoRenewalStatus: String?
+
     public var averageWaitingTime: String?
 
     public var brand: String?
@@ -7283,6 +7285,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         }
         if self.autoReissueFlag != nil {
             map["AutoReissueFlag"] = self.autoReissueFlag!
+        }
+        if self.autoRenewalStatus != nil {
+            map["AutoRenewalStatus"] = self.autoRenewalStatus!
         }
         if self.averageWaitingTime != nil {
             map["AverageWaitingTime"] = self.averageWaitingTime!
@@ -7441,6 +7446,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["AutoReissueFlag"] as? Int32 {
             self.autoReissueFlag = value
+        }
+        if let value = dict["AutoRenewalStatus"] as? String {
+            self.autoRenewalStatus = value
         }
         if let value = dict["AverageWaitingTime"] as? String {
             self.averageWaitingTime = value
@@ -12775,6 +12783,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
     public class InstanceList : Tea.TeaModel {
         public var autoReissue: String?
 
+        public var autoRenewalStatus: String?
+
         public var brand: String?
 
         public var certIdentifier: String?
@@ -12843,6 +12853,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.autoReissue != nil {
                 map["AutoReissue"] = self.autoReissue!
+            }
+            if self.autoRenewalStatus != nil {
+                map["AutoRenewalStatus"] = self.autoRenewalStatus!
             }
             if self.brand != nil {
                 map["Brand"] = self.brand!
@@ -12929,6 +12942,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AutoReissue"] as? String {
                 self.autoReissue = value
+            }
+            if let value = dict["AutoRenewalStatus"] as? String {
+                self.autoRenewalStatus = value
             }
             if let value = dict["Brand"] as? String {
                 self.brand = value
@@ -17193,6 +17209,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
     public var autoReissue: String?
 
+    public var autoRenewalStatus: String?
+
     public var certificateName: String?
 
     public var city: String?
@@ -17237,6 +17255,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoReissue != nil {
             map["AutoReissue"] = self.autoReissue!
+        }
+        if self.autoRenewalStatus != nil {
+            map["AutoRenewalStatus"] = self.autoRenewalStatus!
         }
         if self.certificateName != nil {
             map["CertificateName"] = self.certificateName!
@@ -17291,6 +17312,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoReissue"] as? String {
             self.autoReissue = value
+        }
+        if let value = dict["AutoRenewalStatus"] as? String {
+            self.autoRenewalStatus = value
         }
         if let value = dict["CertificateName"] as? String {
             self.certificateName = value

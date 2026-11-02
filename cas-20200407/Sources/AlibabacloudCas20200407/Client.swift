@@ -3222,6 +3222,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoReissue)) {
             query["AutoReissue"] = request.autoReissue ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.autoRenewalStatus)) {
+            query["AutoRenewalStatus"] = request.autoRenewalStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.certificateName)) {
             query["CertificateName"] = request.certificateName ?? "";
         }
