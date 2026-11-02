@@ -1064,7 +1064,11 @@ public class SearchKnowledgeBaseRequest : Tea.TeaModel {
 
     public var enableKnowledgeGraph: Bool?
 
+    public var evidencePageToken: String?
+
     public var image: SearchKnowledgeBaseRequest.Image?
+
+    public var includeWiki: Bool?
 
     public var pageNumber: Int32?
 
@@ -1105,8 +1109,14 @@ public class SearchKnowledgeBaseRequest : Tea.TeaModel {
         if self.enableKnowledgeGraph != nil {
             map["enableKnowledgeGraph"] = self.enableKnowledgeGraph!
         }
+        if self.evidencePageToken != nil {
+            map["evidencePageToken"] = self.evidencePageToken!
+        }
         if self.image != nil {
             map["image"] = self.image?.toMap()
+        }
+        if self.includeWiki != nil {
+            map["includeWiki"] = self.includeWiki!
         }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
@@ -1143,10 +1153,16 @@ public class SearchKnowledgeBaseRequest : Tea.TeaModel {
         if let value = dict["enableKnowledgeGraph"] as? Bool {
             self.enableKnowledgeGraph = value
         }
+        if let value = dict["evidencePageToken"] as? String {
+            self.evidencePageToken = value
+        }
         if let value = dict["image"] as? [String: Any?] {
             var model = SearchKnowledgeBaseRequest.Image()
             model.fromMap(value)
             self.image = model
+        }
+        if let value = dict["includeWiki"] as? Bool {
+            self.includeWiki = value
         }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
@@ -1180,6 +1196,272 @@ public class SearchKnowledgeBaseRequest : Tea.TeaModel {
 }
 
 public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
+    public class EvidenceResults : Tea.TeaModel {
+        public class SourceRefs : Tea.TeaModel {
+            public var chunkId: String?
+
+            public var documentId: String?
+
+            public var documentName: String?
+
+            public var mediaEndMs: Int64?
+
+            public var mediaStartMs: Int64?
+
+            public var pageNumber: Int64?
+
+            public var sourceRevisionId: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.chunkId != nil {
+                    map["chunkId"] = self.chunkId!
+                }
+                if self.documentId != nil {
+                    map["documentId"] = self.documentId!
+                }
+                if self.documentName != nil {
+                    map["documentName"] = self.documentName!
+                }
+                if self.mediaEndMs != nil {
+                    map["mediaEndMs"] = self.mediaEndMs!
+                }
+                if self.mediaStartMs != nil {
+                    map["mediaStartMs"] = self.mediaStartMs!
+                }
+                if self.pageNumber != nil {
+                    map["pageNumber"] = self.pageNumber!
+                }
+                if self.sourceRevisionId != nil {
+                    map["sourceRevisionId"] = self.sourceRevisionId!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["chunkId"] as? String {
+                    self.chunkId = value
+                }
+                if let value = dict["documentId"] as? String {
+                    self.documentId = value
+                }
+                if let value = dict["documentName"] as? String {
+                    self.documentName = value
+                }
+                if let value = dict["mediaEndMs"] as? Int64 {
+                    self.mediaEndMs = value
+                }
+                if let value = dict["mediaStartMs"] as? Int64 {
+                    self.mediaStartMs = value
+                }
+                if let value = dict["pageNumber"] as? Int64 {
+                    self.pageNumber = value
+                }
+                if let value = dict["sourceRevisionId"] as? String {
+                    self.sourceRevisionId = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
+                }
+            }
+        }
+        public var batchId: String?
+
+        public var chunkId: String?
+
+        public var content: String?
+
+        public var documentId: String?
+
+        public var entityId: String?
+
+        public var evidenceId: String?
+
+        public var kind: String?
+
+        public var knowledgeBaseId: String?
+
+        public var pageId: String?
+
+        public var relationId: String?
+
+        public var revisionId: String?
+
+        public var score: Double?
+
+        public var sectionId: String?
+
+        public var sourceRefCount: Int64?
+
+        public var sourceRefs: [SearchKnowledgeBaseResponseBody.EvidenceResults.SourceRefs]?
+
+        public var sourceRefsTruncated: Bool?
+
+        public var sourceTaskId: String?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.batchId != nil {
+                map["batchId"] = self.batchId!
+            }
+            if self.chunkId != nil {
+                map["chunkId"] = self.chunkId!
+            }
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.documentId != nil {
+                map["documentId"] = self.documentId!
+            }
+            if self.entityId != nil {
+                map["entityId"] = self.entityId!
+            }
+            if self.evidenceId != nil {
+                map["evidenceId"] = self.evidenceId!
+            }
+            if self.kind != nil {
+                map["kind"] = self.kind!
+            }
+            if self.knowledgeBaseId != nil {
+                map["knowledgeBaseId"] = self.knowledgeBaseId!
+            }
+            if self.pageId != nil {
+                map["pageId"] = self.pageId!
+            }
+            if self.relationId != nil {
+                map["relationId"] = self.relationId!
+            }
+            if self.revisionId != nil {
+                map["revisionId"] = self.revisionId!
+            }
+            if self.score != nil {
+                map["score"] = self.score!
+            }
+            if self.sectionId != nil {
+                map["sectionId"] = self.sectionId!
+            }
+            if self.sourceRefCount != nil {
+                map["sourceRefCount"] = self.sourceRefCount!
+            }
+            if self.sourceRefs != nil {
+                var tmp : [Any] = []
+                for k in self.sourceRefs! {
+                    tmp.append(k.toMap())
+                }
+                map["sourceRefs"] = tmp
+            }
+            if self.sourceRefsTruncated != nil {
+                map["sourceRefsTruncated"] = self.sourceRefsTruncated!
+            }
+            if self.sourceTaskId != nil {
+                map["sourceTaskId"] = self.sourceTaskId!
+            }
+            if self.title != nil {
+                map["title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["batchId"] as? String {
+                self.batchId = value
+            }
+            if let value = dict["chunkId"] as? String {
+                self.chunkId = value
+            }
+            if let value = dict["content"] as? String {
+                self.content = value
+            }
+            if let value = dict["documentId"] as? String {
+                self.documentId = value
+            }
+            if let value = dict["entityId"] as? String {
+                self.entityId = value
+            }
+            if let value = dict["evidenceId"] as? String {
+                self.evidenceId = value
+            }
+            if let value = dict["kind"] as? String {
+                self.kind = value
+            }
+            if let value = dict["knowledgeBaseId"] as? String {
+                self.knowledgeBaseId = value
+            }
+            if let value = dict["pageId"] as? String {
+                self.pageId = value
+            }
+            if let value = dict["relationId"] as? String {
+                self.relationId = value
+            }
+            if let value = dict["revisionId"] as? String {
+                self.revisionId = value
+            }
+            if let value = dict["score"] as? Double {
+                self.score = value
+            }
+            if let value = dict["sectionId"] as? String {
+                self.sectionId = value
+            }
+            if let value = dict["sourceRefCount"] as? Int64 {
+                self.sourceRefCount = value
+            }
+            if let value = dict["sourceRefs"] as? [Any?] {
+                var tmp : [SearchKnowledgeBaseResponseBody.EvidenceResults.SourceRefs] = []
+                for v in value {
+                    if v != nil {
+                        var model = SearchKnowledgeBaseResponseBody.EvidenceResults.SourceRefs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sourceRefs = tmp
+            }
+            if let value = dict["sourceRefsTruncated"] as? Bool {
+                self.sourceRefsTruncated = value
+            }
+            if let value = dict["sourceTaskId"] as? String {
+                self.sourceTaskId = value
+            }
+            if let value = dict["title"] as? String {
+                self.title = value
+            }
+        }
+    }
     public class Results : Tea.TeaModel {
         public class Images : Tea.TeaModel {
             public var imageId: String?
@@ -1563,6 +1845,10 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
 
     public var code: Int32?
 
+    public var evidenceNextToken: String?
+
+    public var evidenceResults: [SearchKnowledgeBaseResponseBody.EvidenceResults]?
+
     public var httpStatusCode: Int32?
 
     public var message: String?
@@ -1600,6 +1886,16 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
         }
         if self.code != nil {
             map["code"] = self.code!
+        }
+        if self.evidenceNextToken != nil {
+            map["evidenceNextToken"] = self.evidenceNextToken!
+        }
+        if self.evidenceResults != nil {
+            var tmp : [Any] = []
+            for k in self.evidenceResults! {
+                tmp.append(k.toMap())
+            }
+            map["evidenceResults"] = tmp
         }
         if self.httpStatusCode != nil {
             map["httpStatusCode"] = self.httpStatusCode!
@@ -1642,6 +1938,22 @@ public class SearchKnowledgeBaseResponseBody : Tea.TeaModel {
         }
         if let value = dict["code"] as? Int32 {
             self.code = value
+        }
+        if let value = dict["evidenceNextToken"] as? String {
+            self.evidenceNextToken = value
+        }
+        if let value = dict["evidenceResults"] as? [Any?] {
+            var tmp : [SearchKnowledgeBaseResponseBody.EvidenceResults] = []
+            for v in value {
+                if v != nil {
+                    var model = SearchKnowledgeBaseResponseBody.EvidenceResults()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.evidenceResults = tmp
         }
         if let value = dict["httpStatusCode"] as? Int32 {
             self.httpStatusCode = value

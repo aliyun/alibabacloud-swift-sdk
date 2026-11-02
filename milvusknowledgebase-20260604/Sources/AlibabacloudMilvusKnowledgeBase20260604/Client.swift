@@ -126,8 +126,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableKnowledgeGraph)) {
             body["enableKnowledgeGraph"] = request.enableKnowledgeGraph!;
         }
+        if (!TeaUtils.Client.isUnset(request.evidencePageToken)) {
+            body["evidencePageToken"] = request.evidencePageToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.image)) {
             body["image"] = request.image!;
+        }
+        if (!TeaUtils.Client.isUnset(request.includeWiki)) {
+            body["includeWiki"] = request.includeWiki!;
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             body["pageNumber"] = request.pageNumber!;
