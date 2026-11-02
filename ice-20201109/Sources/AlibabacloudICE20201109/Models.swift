@@ -124,11 +124,15 @@ public class AIAgentConfig : Tea.TeaModel {
         }
     }
     public class AsrConfig : Tea.TeaModel {
+        public var asrContext: String?
+
         public var asrHotWords: [String]?
 
         public var asrLanguageId: String?
 
         public var asrMaxSilence: Int32?
+
+        public var asrVocabulary: String?
 
         public var customParams: String?
 
@@ -150,6 +154,9 @@ public class AIAgentConfig : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.asrContext != nil {
+                map["AsrContext"] = self.asrContext!
+            }
             if self.asrHotWords != nil {
                 map["AsrHotWords"] = self.asrHotWords!
             }
@@ -158,6 +165,9 @@ public class AIAgentConfig : Tea.TeaModel {
             }
             if self.asrMaxSilence != nil {
                 map["AsrMaxSilence"] = self.asrMaxSilence!
+            }
+            if self.asrVocabulary != nil {
+                map["AsrVocabulary"] = self.asrVocabulary!
             }
             if self.customParams != nil {
                 map["CustomParams"] = self.customParams!
@@ -173,6 +183,9 @@ public class AIAgentConfig : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AsrContext"] as? String {
+                self.asrContext = value
+            }
             if let value = dict["AsrHotWords"] as? [String] {
                 self.asrHotWords = value
             }
@@ -181,6 +194,9 @@ public class AIAgentConfig : Tea.TeaModel {
             }
             if let value = dict["AsrMaxSilence"] as? Int32 {
                 self.asrMaxSilence = value
+            }
+            if let value = dict["AsrVocabulary"] as? String {
+                self.asrVocabulary = value
             }
             if let value = dict["CustomParams"] as? String {
                 self.customParams = value
@@ -444,6 +460,10 @@ public class AIAgentConfig : Tea.TeaModel {
     public class AvatarConfig : Tea.TeaModel {
         public var avatarId: String?
 
+        public var resolution: String?
+
+        public var templateId: String?
+
         public override init() {
             super.init()
         }
@@ -461,6 +481,12 @@ public class AIAgentConfig : Tea.TeaModel {
             if self.avatarId != nil {
                 map["AvatarId"] = self.avatarId!
             }
+            if self.resolution != nil {
+                map["Resolution"] = self.resolution!
+            }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
             return map
         }
 
@@ -468,6 +494,12 @@ public class AIAgentConfig : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AvatarId"] as? String {
                 self.avatarId = value
+            }
+            if let value = dict["Resolution"] as? String {
+                self.resolution = value
+            }
+            if let value = dict["TemplateId"] as? String {
+                self.templateId = value
             }
         }
     }
@@ -943,6 +975,68 @@ public class AIAgentConfig : Tea.TeaModel {
             }
         }
     }
+    public class TransferCallConfig : Tea.TeaModel {
+        public var calledNumber: String?
+
+        public var callerNumber: String?
+
+        public var forwardTranscriptionEnabled: Bool?
+
+        public var sipDomain: String?
+
+        public var type: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.calledNumber != nil {
+                map["CalledNumber"] = self.calledNumber!
+            }
+            if self.callerNumber != nil {
+                map["CallerNumber"] = self.callerNumber!
+            }
+            if self.forwardTranscriptionEnabled != nil {
+                map["ForwardTranscriptionEnabled"] = self.forwardTranscriptionEnabled!
+            }
+            if self.sipDomain != nil {
+                map["SipDomain"] = self.sipDomain!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CalledNumber"] as? String {
+                self.calledNumber = value
+            }
+            if let value = dict["CallerNumber"] as? String {
+                self.callerNumber = value
+            }
+            if let value = dict["ForwardTranscriptionEnabled"] as? Bool {
+                self.forwardTranscriptionEnabled = value
+            }
+            if let value = dict["SipDomain"] as? String {
+                self.sipDomain = value
+            }
+            if let value = dict["Type"] as? Int32 {
+                self.type = value
+            }
+        }
+    }
     public class TtsConfig : Tea.TeaModel {
         public class PronunciationRules : Tea.TeaModel {
             public var pronunciation: String?
@@ -992,6 +1086,10 @@ public class AIAgentConfig : Tea.TeaModel {
         }
         public var emotion: String?
 
+        public var hotFix: String?
+
+        public var instruction: String?
+
         public var languageId: String?
 
         public var modelId: String?
@@ -1020,6 +1118,12 @@ public class AIAgentConfig : Tea.TeaModel {
             var map = super.toMap()
             if self.emotion != nil {
                 map["Emotion"] = self.emotion!
+            }
+            if self.hotFix != nil {
+                map["HotFix"] = self.hotFix!
+            }
+            if self.instruction != nil {
+                map["Instruction"] = self.instruction!
             }
             if self.languageId != nil {
                 map["LanguageId"] = self.languageId!
@@ -1050,6 +1154,12 @@ public class AIAgentConfig : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Emotion"] as? String {
                 self.emotion = value
+            }
+            if let value = dict["HotFix"] as? String {
+                self.hotFix = value
+            }
+            if let value = dict["Instruction"] as? String {
+                self.instruction = value
             }
             if let value = dict["LanguageId"] as? String {
                 self.languageId = value
@@ -1497,6 +1607,8 @@ public class AIAgentConfig : Tea.TeaModel {
 
     public var maxIdleTime: Int32?
 
+    public var transferCallConfig: AIAgentConfig.TransferCallConfig?
+
     public var ttsConfig: AIAgentConfig.TtsConfig?
 
     public var turnDetectionConfig: AIAgentConfig.TurnDetectionConfig?
@@ -1531,6 +1643,7 @@ public class AIAgentConfig : Tea.TeaModel {
         try self.avatarConfig?.validate()
         try self.interruptConfig?.validate()
         try self.llmConfig?.validate()
+        try self.transferCallConfig?.validate()
         try self.ttsConfig?.validate()
         try self.turnDetectionConfig?.validate()
         try self.vcrConfig?.validate()
@@ -1594,6 +1707,9 @@ public class AIAgentConfig : Tea.TeaModel {
         }
         if self.maxIdleTime != nil {
             map["MaxIdleTime"] = self.maxIdleTime!
+        }
+        if self.transferCallConfig != nil {
+            map["TransferCallConfig"] = self.transferCallConfig?.toMap()
         }
         if self.ttsConfig != nil {
             map["TtsConfig"] = self.ttsConfig?.toMap()
@@ -1706,6 +1822,11 @@ public class AIAgentConfig : Tea.TeaModel {
         }
         if let value = dict["MaxIdleTime"] as? Int32 {
             self.maxIdleTime = value
+        }
+        if let value = dict["TransferCallConfig"] as? [String: Any?] {
+            var model = AIAgentConfig.TransferCallConfig()
+            model.fromMap(value)
+            self.transferCallConfig = model
         }
         if let value = dict["TtsConfig"] as? [String: Any?] {
             var model = AIAgentConfig.TtsConfig()
