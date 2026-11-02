@@ -40569,6 +40569,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var userSpecifiedSkillList: [String]?
 
+        public var webReportTheme: String?
+
         public override init() {
             super.init()
         }
@@ -40629,6 +40631,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if self.userSpecifiedSkillList != nil {
                 map["UserSpecifiedSkillList"] = self.userSpecifiedSkillList!
             }
+            if self.webReportTheme != nil {
+                map["WebReportTheme"] = self.webReportTheme!
+            }
             return map
         }
 
@@ -40680,6 +40685,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["UserSpecifiedSkillList"] as? [String] {
                 self.userSpecifiedSkillList = value
+            }
+            if let value = dict["WebReportTheme"] as? String {
+                self.webReportTheme = value
             }
         }
     }
