@@ -10662,6 +10662,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
             public class UpgradeServiceDetailInfo : Tea.TeaModel {
                 public var current2OpenSourceVersion: String?
 
+                public var minorVersion: String?
+
                 public override init() {
                     super.init()
                 }
@@ -10679,6 +10681,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                     if self.current2OpenSourceVersion != nil {
                         map["Current2OpenSourceVersion"] = self.current2OpenSourceVersion!
                     }
+                    if self.minorVersion != nil {
+                        map["MinorVersion"] = self.minorVersion!
+                    }
                     return map
                 }
 
@@ -10686,6 +10691,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["Current2OpenSourceVersion"] as? String {
                         self.current2OpenSourceVersion = value
+                    }
+                    if let value = dict["MinorVersion"] as? String {
+                        self.minorVersion = value
                     }
                 }
             }
