@@ -4849,6 +4849,10 @@ public class CloudMonitoringCompositeEscalation : Tea.TeaModel {
 }
 
 public class CloudMonitoringCompositeEscalationEntry : Tea.TeaModel {
+    public var absDeviation: Double?
+
+    public var baselinePeriod: String?
+
     public var comparisonOperator: String?
 
     public var metricName: String?
@@ -4856,6 +4860,8 @@ public class CloudMonitoringCompositeEscalationEntry : Tea.TeaModel {
     public var period: Int32?
 
     public var preCondition: String?
+
+    public var sensitivity: String?
 
     public var statistics: String?
 
@@ -4875,6 +4881,12 @@ public class CloudMonitoringCompositeEscalationEntry : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.absDeviation != nil {
+            map["absDeviation"] = self.absDeviation!
+        }
+        if self.baselinePeriod != nil {
+            map["baselinePeriod"] = self.baselinePeriod!
+        }
         if self.comparisonOperator != nil {
             map["comparisonOperator"] = self.comparisonOperator!
         }
@@ -4887,6 +4899,9 @@ public class CloudMonitoringCompositeEscalationEntry : Tea.TeaModel {
         if self.preCondition != nil {
             map["preCondition"] = self.preCondition!
         }
+        if self.sensitivity != nil {
+            map["sensitivity"] = self.sensitivity!
+        }
         if self.statistics != nil {
             map["statistics"] = self.statistics!
         }
@@ -4898,6 +4913,12 @@ public class CloudMonitoringCompositeEscalationEntry : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["absDeviation"] as? Double {
+            self.absDeviation = value
+        }
+        if let value = dict["baselinePeriod"] as? String {
+            self.baselinePeriod = value
+        }
         if let value = dict["comparisonOperator"] as? String {
             self.comparisonOperator = value
         }
@@ -4909,6 +4930,9 @@ public class CloudMonitoringCompositeEscalationEntry : Tea.TeaModel {
         }
         if let value = dict["preCondition"] as? String {
             self.preCondition = value
+        }
+        if let value = dict["sensitivity"] as? String {
+            self.sensitivity = value
         }
         if let value = dict["statistics"] as? String {
             self.statistics = value
@@ -5075,9 +5099,15 @@ public class CloudMonitoringSimpleEscalation : Tea.TeaModel {
 }
 
 public class CloudMonitoringSimpleEscalationEntry : Tea.TeaModel {
+    public var absDeviation: Double?
+
+    public var baselinePeriod: String?
+
     public var comparisonOperator: String?
 
     public var preCondition: String?
+
+    public var sensitivity: String?
 
     public var severity: String?
 
@@ -5101,11 +5131,20 @@ public class CloudMonitoringSimpleEscalationEntry : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.absDeviation != nil {
+            map["absDeviation"] = self.absDeviation!
+        }
+        if self.baselinePeriod != nil {
+            map["baselinePeriod"] = self.baselinePeriod!
+        }
         if self.comparisonOperator != nil {
             map["comparisonOperator"] = self.comparisonOperator!
         }
         if self.preCondition != nil {
             map["preCondition"] = self.preCondition!
+        }
+        if self.sensitivity != nil {
+            map["sensitivity"] = self.sensitivity!
         }
         if self.severity != nil {
             map["severity"] = self.severity!
@@ -5124,11 +5163,20 @@ public class CloudMonitoringSimpleEscalationEntry : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["absDeviation"] as? Double {
+            self.absDeviation = value
+        }
+        if let value = dict["baselinePeriod"] as? String {
+            self.baselinePeriod = value
+        }
         if let value = dict["comparisonOperator"] as? String {
             self.comparisonOperator = value
         }
         if let value = dict["preCondition"] as? String {
             self.preCondition = value
+        }
+        if let value = dict["sensitivity"] as? String {
+            self.sensitivity = value
         }
         if let value = dict["severity"] as? String {
             self.severity = value
@@ -22307,6 +22355,10 @@ public class TransformerForView : Tea.TeaModel {
 }
 
 public class TriggerConditions : Tea.TeaModel {
+    public var absDeviation: Double?
+
+    public var baselinePeriod: String?
+
     public var expressionType: String?
 
     public var max: Double?
@@ -22316,6 +22368,8 @@ public class TriggerConditions : Tea.TeaModel {
     public var operator_: String?
 
     public var queryName: String?
+
+    public var sensitivity: String?
 
     public var threshold: Double?
 
@@ -22333,6 +22387,12 @@ public class TriggerConditions : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.absDeviation != nil {
+            map["absDeviation"] = self.absDeviation!
+        }
+        if self.baselinePeriod != nil {
+            map["baselinePeriod"] = self.baselinePeriod!
+        }
         if self.expressionType != nil {
             map["expressionType"] = self.expressionType!
         }
@@ -22348,6 +22408,9 @@ public class TriggerConditions : Tea.TeaModel {
         if self.queryName != nil {
             map["queryName"] = self.queryName!
         }
+        if self.sensitivity != nil {
+            map["sensitivity"] = self.sensitivity!
+        }
         if self.threshold != nil {
             map["threshold"] = self.threshold!
         }
@@ -22356,6 +22419,12 @@ public class TriggerConditions : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["absDeviation"] as? Double {
+            self.absDeviation = value
+        }
+        if let value = dict["baselinePeriod"] as? String {
+            self.baselinePeriod = value
+        }
         if let value = dict["expressionType"] as? String {
             self.expressionType = value
         }
@@ -22370,6 +22439,9 @@ public class TriggerConditions : Tea.TeaModel {
         }
         if let value = dict["queryName"] as? String {
             self.queryName = value
+        }
+        if let value = dict["sensitivity"] as? String {
+            self.sensitivity = value
         }
         if let value = dict["threshold"] as? Double {
             self.threshold = value
@@ -25960,6 +26032,8 @@ public class CreateContactRequest : Tea.TeaModel {
 
     public var phone: String?
 
+    public var phoneCode: String?
+
     public var workspace: String?
 
     public override init() {
@@ -25994,6 +26068,9 @@ public class CreateContactRequest : Tea.TeaModel {
         if self.phone != nil {
             map["phone"] = self.phone!
         }
+        if self.phoneCode != nil {
+            map["phoneCode"] = self.phoneCode!
+        }
         if self.workspace != nil {
             map["workspace"] = self.workspace!
         }
@@ -26019,6 +26096,9 @@ public class CreateContactRequest : Tea.TeaModel {
         }
         if let value = dict["phone"] as? String {
             self.phone = value
+        }
+        if let value = dict["phoneCode"] as? String {
+            self.phoneCode = value
         }
         if let value = dict["workspace"] as? String {
             self.workspace = value
@@ -34517,6 +34597,8 @@ public class DeleteAlertActionsShrinkRequest : Tea.TeaModel {
 }
 
 public class DeleteAlertActionsResponseBody : Tea.TeaModel {
+    public var deletedCount: Int32?
+
     public var requestId: String?
 
     public override init() {
@@ -34533,6 +34615,9 @@ public class DeleteAlertActionsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deletedCount != nil {
+            map["deletedCount"] = self.deletedCount!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -34541,6 +34626,9 @@ public class DeleteAlertActionsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["deletedCount"] as? Int32 {
+            self.deletedCount = value
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
@@ -34660,6 +34748,8 @@ public class DeleteAlertNotifyTemplatesShrinkRequest : Tea.TeaModel {
 }
 
 public class DeleteAlertNotifyTemplatesResponseBody : Tea.TeaModel {
+    public var deletedCount: Int32?
+
     public var requestId: String?
 
     public override init() {
@@ -34676,6 +34766,9 @@ public class DeleteAlertNotifyTemplatesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deletedCount != nil {
+            map["deletedCount"] = self.deletedCount!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -34684,6 +34777,9 @@ public class DeleteAlertNotifyTemplatesResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["deletedCount"] as? Int32 {
+            self.deletedCount = value
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
@@ -35291,6 +35387,8 @@ public class DeleteContactGroupsShrinkRequest : Tea.TeaModel {
 }
 
 public class DeleteContactGroupsResponseBody : Tea.TeaModel {
+    public var deletedCount: Int32?
+
     public var requestId: String?
 
     public override init() {
@@ -35307,6 +35405,9 @@ public class DeleteContactGroupsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deletedCount != nil {
+            map["deletedCount"] = self.deletedCount!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -35315,6 +35416,9 @@ public class DeleteContactGroupsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["deletedCount"] as? Int32 {
+            self.deletedCount = value
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
@@ -35434,6 +35538,8 @@ public class DeleteContactsShrinkRequest : Tea.TeaModel {
 }
 
 public class DeleteContactsResponseBody : Tea.TeaModel {
+    public var deletedCount: Int32?
+
     public var requestId: String?
 
     public override init() {
@@ -35450,6 +35556,9 @@ public class DeleteContactsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deletedCount != nil {
+            map["deletedCount"] = self.deletedCount!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -35458,6 +35567,9 @@ public class DeleteContactsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["deletedCount"] as? Int32 {
+            self.deletedCount = value
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
@@ -37178,6 +37290,8 @@ public class DeleteOncallSchedulesShrinkRequest : Tea.TeaModel {
 }
 
 public class DeleteOncallSchedulesResponseBody : Tea.TeaModel {
+    public var deletedCount: Int32?
+
     public var requestId: String?
 
     public override init() {
@@ -37194,6 +37308,9 @@ public class DeleteOncallSchedulesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deletedCount != nil {
+            map["deletedCount"] = self.deletedCount!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -37202,6 +37319,9 @@ public class DeleteOncallSchedulesResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["deletedCount"] as? Int32 {
+            self.deletedCount = value
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
@@ -76888,6 +77008,8 @@ public class UpdateContactRequest : Tea.TeaModel {
 
     public var phone: String?
 
+    public var phoneCode: String?
+
     public override init() {
         super.init()
     }
@@ -76917,6 +77039,9 @@ public class UpdateContactRequest : Tea.TeaModel {
         if self.phone != nil {
             map["phone"] = self.phone!
         }
+        if self.phoneCode != nil {
+            map["phoneCode"] = self.phoneCode!
+        }
         return map
     }
 
@@ -76936,6 +77061,9 @@ public class UpdateContactRequest : Tea.TeaModel {
         }
         if let value = dict["phone"] as? String {
             self.phone = value
+        }
+        if let value = dict["phoneCode"] as? String {
+            self.phoneCode = value
         }
     }
 }
