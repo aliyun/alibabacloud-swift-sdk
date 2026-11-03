@@ -8144,6 +8144,8 @@ public class CreateAgenticDBTenantApiKeyRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantId: String?
+
     public var tenantName: String?
 
     public override init() {
@@ -8172,6 +8174,9 @@ public class CreateAgenticDBTenantApiKeyRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
         if self.tenantName != nil {
             map["TenantName"] = self.tenantName!
         }
@@ -8191,6 +8196,9 @@ public class CreateAgenticDBTenantApiKeyRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
         }
         if let value = dict["TenantName"] as? String {
             self.tenantName = value
@@ -11066,6 +11074,8 @@ public class CreateBatchTaskRequest : Tea.TeaModel {
 
     public var instanceIds: [String]?
 
+    public var instanceParams: String?
+
     public var param: String?
 
     public var regionId: String?
@@ -11094,6 +11104,9 @@ public class CreateBatchTaskRequest : Tea.TeaModel {
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
+        if self.instanceParams != nil {
+            map["InstanceParams"] = self.instanceParams!
+        }
         if self.param != nil {
             map["Param"] = self.param!
         }
@@ -11117,6 +11130,9 @@ public class CreateBatchTaskRequest : Tea.TeaModel {
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
         }
+        if let value = dict["InstanceParams"] as? String {
+            self.instanceParams = value
+        }
         if let value = dict["Param"] as? String {
             self.param = value
         }
@@ -11136,6 +11152,8 @@ public class CreateBatchTaskShrinkRequest : Tea.TeaModel {
     public var applicationType: String?
 
     public var instanceIdsShrink: String?
+
+    public var instanceParams: String?
 
     public var param: String?
 
@@ -11165,6 +11183,9 @@ public class CreateBatchTaskShrinkRequest : Tea.TeaModel {
         if self.instanceIdsShrink != nil {
             map["InstanceIds"] = self.instanceIdsShrink!
         }
+        if self.instanceParams != nil {
+            map["InstanceParams"] = self.instanceParams!
+        }
         if self.param != nil {
             map["Param"] = self.param!
         }
@@ -11187,6 +11208,9 @@ public class CreateBatchTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceIds"] as? String {
             self.instanceIdsShrink = value
+        }
+        if let value = dict["InstanceParams"] as? String {
+            self.instanceParams = value
         }
         if let value = dict["Param"] as? String {
             self.param = value
@@ -39511,6 +39535,8 @@ public class DescribeAgenticDBProjectsRequest : Tea.TeaModel {
 
 public class DescribeAgenticDBProjectsResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public var branchCount: Int64?
+
         public var createTime: String?
 
         public var DBClusterId: String?
@@ -39545,6 +39571,9 @@ public class DescribeAgenticDBProjectsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.branchCount != nil {
+                map["BranchCount"] = self.branchCount!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -39580,6 +39609,9 @@ public class DescribeAgenticDBProjectsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BranchCount"] as? Int64 {
+                self.branchCount = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -99818,9 +99850,13 @@ public class InstallPolarClawPluginResponse : Tea.TeaModel {
 }
 
 public class InstallPolarClawSkillRequest : Tea.TeaModel {
+    public var agentId: String?
+
     public var applicationId: String?
 
     public var force: Bool?
+
+    public var scope: String?
 
     public var skillVersion: String?
 
@@ -99844,11 +99880,17 @@ public class InstallPolarClawSkillRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
         if self.force != nil {
             map["Force"] = self.force!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
         }
         if self.skillVersion != nil {
             map["SkillVersion"] = self.skillVersion!
@@ -99867,11 +99909,17 @@ public class InstallPolarClawSkillRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
         }
         if let value = dict["Force"] as? Bool {
             self.force = value
+        }
+        if let value = dict["Scope"] as? String {
+            self.scope = value
         }
         if let value = dict["SkillVersion"] as? String {
             self.skillVersion = value
@@ -99897,11 +99945,17 @@ public class InstallPolarClawSkillResponseBody : Tea.TeaModel {
 
     public var ok: Bool?
 
+    public var operation: String?
+
     public var requestId: String?
 
     public var slug: String?
 
+    public var state: String?
+
     public var targetDir: String?
+
+    public var taskId: String?
 
     public var version: String?
 
@@ -99931,14 +99985,23 @@ public class InstallPolarClawSkillResponseBody : Tea.TeaModel {
         if self.ok != nil {
             map["Ok"] = self.ok!
         }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
         if self.slug != nil {
             map["Slug"] = self.slug!
         }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
         if self.targetDir != nil {
             map["TargetDir"] = self.targetDir!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
         }
         if self.version != nil {
             map["Version"] = self.version!
@@ -99960,14 +100023,23 @@ public class InstallPolarClawSkillResponseBody : Tea.TeaModel {
         if let value = dict["Ok"] as? Bool {
             self.ok = value
         }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
         if let value = dict["Slug"] as? String {
             self.slug = value
         }
+        if let value = dict["State"] as? String {
+            self.state = value
+        }
         if let value = dict["TargetDir"] as? String {
             self.targetDir = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
         }
         if let value = dict["Version"] as? String {
             self.version = value
@@ -122814,9 +122886,13 @@ public class SearchMemoriesResponse : Tea.TeaModel {
 public class SearchPolarClawSkillsRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var exact: Bool?
+
     public var limit: Int32?
 
     public var query: String?
+
+    public var source: String?
 
     public override init() {
         super.init()
@@ -122835,11 +122911,17 @@ public class SearchPolarClawSkillsRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.exact != nil {
+            map["Exact"] = self.exact!
+        }
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
         if self.query != nil {
             map["Query"] = self.query!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         return map
     }
@@ -122849,11 +122931,17 @@ public class SearchPolarClawSkillsRequest : Tea.TeaModel {
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
         }
+        if let value = dict["Exact"] as? Bool {
+            self.exact = value
+        }
         if let value = dict["Limit"] as? Int32 {
             self.limit = value
         }
         if let value = dict["Query"] as? String {
             self.query = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
         }
     }
 }
