@@ -40817,6 +40817,8 @@ public class UpdateAdvancedSettingRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var updateStrategy: String?
+
     public override init() {
         super.init()
     }
@@ -40837,6 +40839,9 @@ public class UpdateAdvancedSettingRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
+        if self.updateStrategy != nil {
+            map["updateStrategy"] = self.updateStrategy!
+        }
         return map
     }
 
@@ -40847,6 +40852,9 @@ public class UpdateAdvancedSettingRequest : Tea.TeaModel {
         }
         if let value = dict["clientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["updateStrategy"] as? String {
+            self.updateStrategy = value
         }
     }
 }
