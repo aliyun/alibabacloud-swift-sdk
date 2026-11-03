@@ -7725,6 +7725,8 @@ public class CreateAgentRequest : Tea.TeaModel {
 
         public var version: Int32?
 
+        public var versionSelector: String?
+
         public override init() {
             super.init()
         }
@@ -7748,6 +7750,9 @@ public class CreateAgentRequest : Tea.TeaModel {
             if self.version != nil {
                 map["Version"] = self.version!
             }
+            if self.versionSelector != nil {
+                map["VersionSelector"] = self.versionSelector!
+            }
             return map
         }
 
@@ -7762,6 +7767,9 @@ public class CreateAgentRequest : Tea.TeaModel {
             if let value = dict["Version"] as? Int32 {
                 self.version = value
             }
+            if let value = dict["VersionSelector"] as? String {
+                self.versionSelector = value
+            }
         }
     }
     public class Skills : Tea.TeaModel {
@@ -7772,6 +7780,8 @@ public class CreateAgentRequest : Tea.TeaModel {
         public var source: String?
 
         public var version: Int32?
+
+        public var versionSelector: String?
 
         public override init() {
             super.init()
@@ -7799,6 +7809,9 @@ public class CreateAgentRequest : Tea.TeaModel {
             if self.version != nil {
                 map["Version"] = self.version!
             }
+            if self.versionSelector != nil {
+                map["VersionSelector"] = self.versionSelector!
+            }
             return map
         }
 
@@ -7815,6 +7828,9 @@ public class CreateAgentRequest : Tea.TeaModel {
             }
             if let value = dict["Version"] as? Int32 {
                 self.version = value
+            }
+            if let value = dict["VersionSelector"] as? String {
+                self.versionSelector = value
             }
         }
     }
@@ -8209,6 +8225,8 @@ public class CreateAgentResponseBody : Tea.TeaModel {
 
             public var version: Int32?
 
+            public var versionSelector: String?
+
             public override init() {
                 super.init()
             }
@@ -8235,6 +8253,9 @@ public class CreateAgentResponseBody : Tea.TeaModel {
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
+                if self.versionSelector != nil {
+                    map["VersionSelector"] = self.versionSelector!
+                }
                 return map
             }
 
@@ -8252,6 +8273,9 @@ public class CreateAgentResponseBody : Tea.TeaModel {
                 if let value = dict["Version"] as? Int32 {
                     self.version = value
                 }
+                if let value = dict["VersionSelector"] as? String {
+                    self.versionSelector = value
+                }
             }
         }
         public class Skills : Tea.TeaModel {
@@ -8264,6 +8288,8 @@ public class CreateAgentResponseBody : Tea.TeaModel {
             public var source: String?
 
             public var version: Int32?
+
+            public var versionSelector: String?
 
             public override init() {
                 super.init()
@@ -8294,6 +8320,9 @@ public class CreateAgentResponseBody : Tea.TeaModel {
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
+                if self.versionSelector != nil {
+                    map["VersionSelector"] = self.versionSelector!
+                }
                 return map
             }
 
@@ -8313,6 +8342,9 @@ public class CreateAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Version"] as? Int32 {
                     self.version = value
+                }
+                if let value = dict["VersionSelector"] as? String {
+                    self.versionSelector = value
                 }
             }
         }
@@ -36293,6 +36325,8 @@ public class GetAgentResponseBody : Tea.TeaModel {
 
             public var version: Int32?
 
+            public var versionSelector: String?
+
             public override init() {
                 super.init()
             }
@@ -36331,6 +36365,9 @@ public class GetAgentResponseBody : Tea.TeaModel {
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
+                if self.versionSelector != nil {
+                    map["VersionSelector"] = self.versionSelector!
+                }
                 return map
             }
 
@@ -36359,6 +36396,9 @@ public class GetAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Version"] as? Int32 {
                     self.version = value
+                }
+                if let value = dict["VersionSelector"] as? String {
+                    self.versionSelector = value
                 }
             }
         }
@@ -36443,6 +36483,8 @@ public class GetAgentResponseBody : Tea.TeaModel {
 
             public var version: Int32?
 
+            public var versionSelector: String?
+
             public override init() {
                 super.init()
             }
@@ -36472,6 +36514,9 @@ public class GetAgentResponseBody : Tea.TeaModel {
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
+                if self.versionSelector != nil {
+                    map["VersionSelector"] = self.versionSelector!
+                }
                 return map
             }
 
@@ -36491,6 +36536,9 @@ public class GetAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Version"] as? Int32 {
                     self.version = value
+                }
+                if let value = dict["VersionSelector"] as? String {
+                    self.versionSelector = value
                 }
             }
         }
@@ -114335,11 +114383,108 @@ public class PromptAgentSessionShrinkRequest : Tea.TeaModel {
 }
 
 public class PromptAgentSessionResponseBody : Tea.TeaModel {
+    public class Meta : Tea.TeaModel {
+        public class EventCursor : Tea.TeaModel {
+            public var eventEpoch: String?
+
+            public var eventId: String?
+
+            public var eventType: String?
+
+            public var promptId: String?
+
+            public var sessionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.eventEpoch != nil {
+                    map["EventEpoch"] = self.eventEpoch!
+                }
+                if self.eventId != nil {
+                    map["EventId"] = self.eventId!
+                }
+                if self.eventType != nil {
+                    map["EventType"] = self.eventType!
+                }
+                if self.promptId != nil {
+                    map["PromptId"] = self.promptId!
+                }
+                if self.sessionId != nil {
+                    map["SessionId"] = self.sessionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EventEpoch"] as? String {
+                    self.eventEpoch = value
+                }
+                if let value = dict["EventId"] as? String {
+                    self.eventId = value
+                }
+                if let value = dict["EventType"] as? String {
+                    self.eventType = value
+                }
+                if let value = dict["PromptId"] as? String {
+                    self.promptId = value
+                }
+                if let value = dict["SessionId"] as? String {
+                    self.sessionId = value
+                }
+            }
+        }
+        public var eventCursor: PromptAgentSessionResponseBody.Meta.EventCursor?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.eventCursor?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eventCursor != nil {
+                map["EventCursor"] = self.eventCursor?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EventCursor"] as? [String: Any?] {
+                var model = PromptAgentSessionResponseBody.Meta.EventCursor()
+                model.fromMap(value)
+                self.eventCursor = model
+            }
+        }
+    }
     public var error: Any?
 
     public var id: String?
 
     public var jsonrpc: String?
+
+    public var meta: PromptAgentSessionResponseBody.Meta?
 
     public var method: String?
 
@@ -114361,6 +114506,7 @@ public class PromptAgentSessionResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.meta?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -114373,6 +114519,9 @@ public class PromptAgentSessionResponseBody : Tea.TeaModel {
         }
         if self.jsonrpc != nil {
             map["Jsonrpc"] = self.jsonrpc!
+        }
+        if self.meta != nil {
+            map["Meta"] = self.meta?.toMap()
         }
         if self.method != nil {
             map["Method"] = self.method!
@@ -114402,6 +114551,11 @@ public class PromptAgentSessionResponseBody : Tea.TeaModel {
         }
         if let value = dict["Jsonrpc"] as? String {
             self.jsonrpc = value
+        }
+        if let value = dict["Meta"] as? [String: Any?] {
+            var model = PromptAgentSessionResponseBody.Meta()
+            model.fromMap(value)
+            self.meta = model
         }
         if let value = dict["Method"] as? String {
             self.method = value
