@@ -2552,6 +2552,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.expectedRuntimeRecallRevision)) {
+            body["expectedRuntimeRecallRevision"] = request.expectedRuntimeRecallRevision!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            body["reason"] = request.reason ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["status"] = request.status ?? "";
         }

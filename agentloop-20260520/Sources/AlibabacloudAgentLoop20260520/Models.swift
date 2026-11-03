@@ -8273,6 +8273,44 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class AuditLogStore : Tea.TeaModel {
+            public var logstore: String?
+
+            public var project: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logstore != nil {
+                    map["logstore"] = self.logstore!
+                }
+                if self.project != nil {
+                    map["project"] = self.project!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["logstore"] as? String {
+                    self.logstore = value
+                }
+                if let value = dict["project"] as? String {
+                    self.project = value
+                }
+            }
+        }
         public class ExtractionPolicies : Tea.TeaModel {
             public class Model : Tea.TeaModel {
                 public var name: String?
@@ -9463,6 +9501,8 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
         }
         public var audit: GetContextStoreResponseBody.Config.Audit?
 
+        public var auditLogStore: GetContextStoreResponseBody.Config.AuditLogStore?
+
         public var extractionPolicies: [GetContextStoreResponseBody.Config.ExtractionPolicies]?
 
         public var extractionPolicy: GetContextStoreResponseBody.Config.ExtractionPolicy?
@@ -9478,6 +9518,10 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
         public var observability: GetContextStoreResponseBody.Config.Observability?
 
         public var outputDataset: GetContextStoreResponseBody.Config.OutputDataset?
+
+        public var runtimeRecallEnabled: Bool?
+
+        public var runtimeRecallRevision: Int64?
 
         public var scopePolicy: GetContextStoreResponseBody.Config.ScopePolicy?
 
@@ -9504,6 +9548,7 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.audit?.validate()
+            try self.auditLogStore?.validate()
             try self.extractionPolicy?.validate()
             try self.innerSource?.validate()
             try self.observability?.validate()
@@ -9518,6 +9563,9 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.audit != nil {
                 map["audit"] = self.audit?.toMap()
+            }
+            if self.auditLogStore != nil {
+                map["auditLogStore"] = self.auditLogStore?.toMap()
             }
             if self.extractionPolicies != nil {
                 var tmp : [Any] = []
@@ -9546,6 +9594,12 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
             }
             if self.outputDataset != nil {
                 map["outputDataset"] = self.outputDataset?.toMap()
+            }
+            if self.runtimeRecallEnabled != nil {
+                map["runtimeRecallEnabled"] = self.runtimeRecallEnabled!
+            }
+            if self.runtimeRecallRevision != nil {
+                map["runtimeRecallRevision"] = self.runtimeRecallRevision!
             }
             if self.scopePolicy != nil {
                 map["scopePolicy"] = self.scopePolicy?.toMap()
@@ -9577,6 +9631,11 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 var model = GetContextStoreResponseBody.Config.Audit()
                 model.fromMap(value)
                 self.audit = model
+            }
+            if let value = dict["auditLogStore"] as? [String: Any?] {
+                var model = GetContextStoreResponseBody.Config.AuditLogStore()
+                model.fromMap(value)
+                self.auditLogStore = model
             }
             if let value = dict["extractionPolicies"] as? [Any?] {
                 var tmp : [GetContextStoreResponseBody.Config.ExtractionPolicies] = []
@@ -9619,6 +9678,12 @@ public class GetContextStoreResponseBody : Tea.TeaModel {
                 var model = GetContextStoreResponseBody.Config.OutputDataset()
                 model.fromMap(value)
                 self.outputDataset = model
+            }
+            if let value = dict["runtimeRecallEnabled"] as? Bool {
+                self.runtimeRecallEnabled = value
+            }
+            if let value = dict["runtimeRecallRevision"] as? Int64 {
+                self.runtimeRecallRevision = value
             }
             if let value = dict["scopePolicy"] as? [String: Any?] {
                 var model = GetContextStoreResponseBody.Config.ScopePolicy()
@@ -20183,11 +20248,25 @@ public class SearchContextRequest : Tea.TeaModel {
 public class SearchContextResponseBody : Tea.TeaModel {
     public var auditStatus: String?
 
+    public var callId: String?
+
+    public var diagnostics: [String: Any]?
+
+    public var mode: String?
+
     public var recallEventId: String?
+
+    public var relevance: [[String: Any]]?
 
     public var requestId: String?
 
     public var results: [[String: Any]]?
+
+    public var rewrittenQueries: [String]?
+
+    public var status: String?
+
+    public var strategyVersion: String?
 
     public override init() {
         super.init()
@@ -20206,14 +20285,35 @@ public class SearchContextResponseBody : Tea.TeaModel {
         if self.auditStatus != nil {
             map["auditStatus"] = self.auditStatus!
         }
+        if self.callId != nil {
+            map["callId"] = self.callId!
+        }
+        if self.diagnostics != nil {
+            map["diagnostics"] = self.diagnostics!
+        }
+        if self.mode != nil {
+            map["mode"] = self.mode!
+        }
         if self.recallEventId != nil {
             map["recallEventId"] = self.recallEventId!
+        }
+        if self.relevance != nil {
+            map["relevance"] = self.relevance!
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
         if self.results != nil {
             map["results"] = self.results!
+        }
+        if self.rewrittenQueries != nil {
+            map["rewrittenQueries"] = self.rewrittenQueries!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.strategyVersion != nil {
+            map["strategyVersion"] = self.strategyVersion!
         }
         return map
     }
@@ -20223,14 +20323,35 @@ public class SearchContextResponseBody : Tea.TeaModel {
         if let value = dict["auditStatus"] as? String {
             self.auditStatus = value
         }
+        if let value = dict["callId"] as? String {
+            self.callId = value
+        }
+        if let value = dict["diagnostics"] as? [String: Any] {
+            self.diagnostics = value
+        }
+        if let value = dict["mode"] as? String {
+            self.mode = value
+        }
         if let value = dict["recallEventId"] as? String {
             self.recallEventId = value
+        }
+        if let value = dict["relevance"] as? [[String: Any]] {
+            self.relevance = value
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
         if let value = dict["results"] as? [[String: Any]] {
             self.results = value
+        }
+        if let value = dict["rewrittenQueries"] as? [String] {
+            self.rewrittenQueries = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["strategyVersion"] as? String {
+            self.strategyVersion = value
         }
     }
 }
@@ -21423,6 +21544,8 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 
         public var metadataField: [String: String]?
 
+        public var runtimeRecallEnabled: Bool?
+
         public var scopePolicy: UpdateContextStoreRequest.Config.ScopePolicy?
 
         public var source: UpdateContextStoreRequest.Config.Source?
@@ -21464,6 +21587,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
             if self.metadataField != nil {
                 map["metadataField"] = self.metadataField!
             }
+            if self.runtimeRecallEnabled != nil {
+                map["runtimeRecallEnabled"] = self.runtimeRecallEnabled!
+            }
             if self.scopePolicy != nil {
                 map["scopePolicy"] = self.scopePolicy?.toMap()
             }
@@ -21504,6 +21630,9 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
             if let value = dict["metadataField"] as? [String: String] {
                 self.metadataField = value
             }
+            if let value = dict["runtimeRecallEnabled"] as? Bool {
+                self.runtimeRecallEnabled = value
+            }
             if let value = dict["scopePolicy"] as? [String: Any?] {
                 var model = UpdateContextStoreRequest.Config.ScopePolicy()
                 model.fromMap(value)
@@ -21528,6 +21657,10 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
     public var contextType: String?
 
     public var description_: String?
+
+    public var expectedRuntimeRecallRevision: Int64?
+
+    public var reason: String?
 
     public var status: String?
 
@@ -21560,6 +21693,12 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.expectedRuntimeRecallRevision != nil {
+            map["expectedRuntimeRecallRevision"] = self.expectedRuntimeRecallRevision!
+        }
+        if self.reason != nil {
+            map["reason"] = self.reason!
+        }
         if self.status != nil {
             map["status"] = self.status!
         }
@@ -21585,6 +21724,12 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["expectedRuntimeRecallRevision"] as? Int64 {
+            self.expectedRuntimeRecallRevision = value
+        }
+        if let value = dict["reason"] as? String {
+            self.reason = value
+        }
         if let value = dict["status"] as? String {
             self.status = value
         }
@@ -21595,6 +21740,46 @@ public class UpdateContextStoreRequest : Tea.TeaModel {
 }
 
 public class UpdateContextStoreResponseBody : Tea.TeaModel {
+    public class Config : Tea.TeaModel {
+        public var runtimeRecallEnabled: Bool?
+
+        public var runtimeRecallRevision: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.runtimeRecallEnabled != nil {
+                map["runtimeRecallEnabled"] = self.runtimeRecallEnabled!
+            }
+            if self.runtimeRecallRevision != nil {
+                map["runtimeRecallRevision"] = self.runtimeRecallRevision!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["runtimeRecallEnabled"] as? Bool {
+                self.runtimeRecallEnabled = value
+            }
+            if let value = dict["runtimeRecallRevision"] as? Int64 {
+                self.runtimeRecallRevision = value
+            }
+        }
+    }
+    public var config: UpdateContextStoreResponseBody.Config?
+
     public var requestId: String?
 
     public var strategyVersion: Int32?
@@ -21609,10 +21794,14 @@ public class UpdateContextStoreResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.config?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.config != nil {
+            map["config"] = self.config?.toMap()
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -21624,6 +21813,11 @@ public class UpdateContextStoreResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["config"] as? [String: Any?] {
+            var model = UpdateContextStoreResponseBody.Config()
+            model.fromMap(value)
+            self.config = model
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
