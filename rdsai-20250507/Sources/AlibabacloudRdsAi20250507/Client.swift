@@ -11,10 +11,8 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-wulanchabu": "rdsai.aliyuncs.com",
-            "cn-shenzhen": "rdsai.aliyuncs.com",
             "cn-beijing": "rdsai.aliyuncs.com",
             "cn-shanghai": "rdsai.aliyuncs.com",
-            "cn-guangzhou": "rdsai.aliyuncs.com",
             "cn-hangzhou": "rdsai.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)

@@ -7833,6 +7833,8 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var minorVersionDetail: String?
 
+    public var minorVersionReleaseNotes: String?
+
     public var natCreatedBy: String?
 
     public var natGatewayId: String?
@@ -7920,6 +7922,9 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.minorVersionDetail != nil {
             map["MinorVersionDetail"] = self.minorVersionDetail!
+        }
+        if self.minorVersionReleaseNotes != nil {
+            map["MinorVersionReleaseNotes"] = self.minorVersionReleaseNotes!
         }
         if self.natCreatedBy != nil {
             map["NatCreatedBy"] = self.natCreatedBy!
@@ -8023,6 +8028,9 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["MinorVersionDetail"] as? String {
             self.minorVersionDetail = value
+        }
+        if let value = dict["MinorVersionReleaseNotes"] as? String {
+            self.minorVersionReleaseNotes = value
         }
         if let value = dict["NatCreatedBy"] as? String {
             self.natCreatedBy = value
