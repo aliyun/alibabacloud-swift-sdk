@@ -9002,6 +9002,8 @@ public class GetSkillResponseBody : Tea.TeaModel {
 
     public var securityScanStatus: String?
 
+    public var securityScanSuggestions: String?
+
     public var skillDescription: String?
 
     public var skillDisplayName: String?
@@ -9048,6 +9050,9 @@ public class GetSkillResponseBody : Tea.TeaModel {
         }
         if self.securityScanStatus != nil {
             map["SecurityScanStatus"] = self.securityScanStatus!
+        }
+        if self.securityScanSuggestions != nil {
+            map["SecurityScanSuggestions"] = self.securityScanSuggestions!
         }
         if self.skillDescription != nil {
             map["SkillDescription"] = self.skillDescription!
@@ -9099,6 +9104,9 @@ public class GetSkillResponseBody : Tea.TeaModel {
         }
         if let value = dict["SecurityScanStatus"] as? String {
             self.securityScanStatus = value
+        }
+        if let value = dict["SecurityScanSuggestions"] as? String {
+            self.securityScanSuggestions = value
         }
         if let value = dict["SkillDescription"] as? String {
             self.skillDescription = value
@@ -17623,6 +17631,8 @@ public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
     public class Commodity : Tea.TeaModel {
         public var autoPay: Bool?
 
+        public var couponId: String?
+
         public override init() {
             super.init()
         }
@@ -17640,6 +17650,9 @@ public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
             if self.autoPay != nil {
                 map["AutoPay"] = self.autoPay!
             }
+            if self.couponId != nil {
+                map["CouponId"] = self.couponId!
+            }
             return map
         }
 
@@ -17647,6 +17660,9 @@ public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AutoPay"] as? Bool {
                 self.autoPay = value
+            }
+            if let value = dict["CouponId"] as? String {
+                self.couponId = value
             }
         }
     }
@@ -17743,6 +17759,8 @@ public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
     public class Commodity : Tea.TeaModel {
         public var autoPay: Bool?
 
+        public var couponId: String?
+
         public override init() {
             super.init()
         }
@@ -17760,6 +17778,9 @@ public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
             if self.autoPay != nil {
                 map["AutoPay"] = self.autoPay!
             }
+            if self.couponId != nil {
+                map["CouponId"] = self.couponId!
+            }
             return map
         }
 
@@ -17767,6 +17788,9 @@ public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AutoPay"] as? Bool {
                 self.autoPay = value
+            }
+            if let value = dict["CouponId"] as? String {
+                self.couponId = value
             }
         }
     }
