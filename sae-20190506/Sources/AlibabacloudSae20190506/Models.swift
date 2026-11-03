@@ -25975,6 +25975,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
             public var secretMountDesc: [DescribeApplicationConfigResponseBody.Data.SidecarContainersConfig.SecretMountDesc]?
 
+            public var slsConfigs: String?
+
             public override init() {
                 super.init()
             }
@@ -26045,6 +26047,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["SecretMountDesc"] = tmp
+                }
+                if self.slsConfigs != nil {
+                    map["SlsConfigs"] = self.slsConfigs!
                 }
                 return map
             }
@@ -26125,6 +26130,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                         }
                     }
                     self.secretMountDesc = tmp
+                }
+                if let value = dict["SlsConfigs"] as? String {
+                    self.slsConfigs = value
                 }
             }
         }
