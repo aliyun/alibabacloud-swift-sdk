@@ -19404,6 +19404,466 @@ public class DescribeDownloadTaskTypeResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeEventLogRequest : Tea.TeaModel {
+    public var attackType: Int64?
+
+    public var currentPage: String?
+
+    public var dstIP: String?
+
+    public var endTime: String?
+
+    public var firewallType: String?
+
+    public var lang: String?
+
+    public var logType: String?
+
+    public var pageSize: String?
+
+    public var ruleResult: String?
+
+    public var sourceCode: String?
+
+    public var sourceIp: String?
+
+    public var srcIP: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attackType != nil {
+            map["AttackType"] = self.attackType!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.dstIP != nil {
+            map["DstIP"] = self.dstIP!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.firewallType != nil {
+            map["FirewallType"] = self.firewallType!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.logType != nil {
+            map["LogType"] = self.logType!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.ruleResult != nil {
+            map["RuleResult"] = self.ruleResult!
+        }
+        if self.sourceCode != nil {
+            map["SourceCode"] = self.sourceCode!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        if self.srcIP != nil {
+            map["SrcIP"] = self.srcIP!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AttackType"] as? Int64 {
+            self.attackType = value
+        }
+        if let value = dict["CurrentPage"] as? String {
+            self.currentPage = value
+        }
+        if let value = dict["DstIP"] as? String {
+            self.dstIP = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["FirewallType"] as? String {
+            self.firewallType = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["LogType"] as? String {
+            self.logType = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["RuleResult"] as? String {
+            self.ruleResult = value
+        }
+        if let value = dict["SourceCode"] as? String {
+            self.sourceCode = value
+        }
+        if let value = dict["SourceIp"] as? String {
+            self.sourceIp = value
+        }
+        if let value = dict["SrcIP"] as? String {
+            self.srcIP = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeEventLogResponseBody : Tea.TeaModel {
+    public class DataList : Tea.TeaModel {
+        public var applicationName: String?
+
+        public var attackApp: String?
+
+        public var attackType: Int64?
+
+        public var direction: String?
+
+        public var dstIP: String?
+
+        public var dstPort: Int32?
+
+        public var hitContent: String?
+
+        public var hitType: String?
+
+        public var ipProtocol: String?
+
+        public var memberUid: Int64?
+
+        public var ruleId: String?
+
+        public var ruleName: String?
+
+        public var ruleResult: Int32?
+
+        public var ruleSource: Int64?
+
+        public var sni: String?
+
+        public var srcIP: String?
+
+        public var srcPort: Int32?
+
+        public var sslCipher: String?
+
+        public var sslErrorIndex: String?
+
+        public var sslErrorMsg: String?
+
+        public var sslHandshakeRes: String?
+
+        public var sslProtocol: String?
+
+        public var startTime: Int64?
+
+        public var url: String?
+
+        public var vulLevel: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationName != nil {
+                map["ApplicationName"] = self.applicationName!
+            }
+            if self.attackApp != nil {
+                map["AttackApp"] = self.attackApp!
+            }
+            if self.attackType != nil {
+                map["AttackType"] = self.attackType!
+            }
+            if self.direction != nil {
+                map["Direction"] = self.direction!
+            }
+            if self.dstIP != nil {
+                map["DstIP"] = self.dstIP!
+            }
+            if self.dstPort != nil {
+                map["DstPort"] = self.dstPort!
+            }
+            if self.hitContent != nil {
+                map["HitContent"] = self.hitContent!
+            }
+            if self.hitType != nil {
+                map["HitType"] = self.hitType!
+            }
+            if self.ipProtocol != nil {
+                map["IpProtocol"] = self.ipProtocol!
+            }
+            if self.memberUid != nil {
+                map["MemberUid"] = self.memberUid!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            if self.ruleResult != nil {
+                map["RuleResult"] = self.ruleResult!
+            }
+            if self.ruleSource != nil {
+                map["RuleSource"] = self.ruleSource!
+            }
+            if self.sni != nil {
+                map["Sni"] = self.sni!
+            }
+            if self.srcIP != nil {
+                map["SrcIP"] = self.srcIP!
+            }
+            if self.srcPort != nil {
+                map["SrcPort"] = self.srcPort!
+            }
+            if self.sslCipher != nil {
+                map["SslCipher"] = self.sslCipher!
+            }
+            if self.sslErrorIndex != nil {
+                map["SslErrorIndex"] = self.sslErrorIndex!
+            }
+            if self.sslErrorMsg != nil {
+                map["SslErrorMsg"] = self.sslErrorMsg!
+            }
+            if self.sslHandshakeRes != nil {
+                map["SslHandshakeRes"] = self.sslHandshakeRes!
+            }
+            if self.sslProtocol != nil {
+                map["SslProtocol"] = self.sslProtocol!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            if self.vulLevel != nil {
+                map["VulLevel"] = self.vulLevel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplicationName"] as? String {
+                self.applicationName = value
+            }
+            if let value = dict["AttackApp"] as? String {
+                self.attackApp = value
+            }
+            if let value = dict["AttackType"] as? Int64 {
+                self.attackType = value
+            }
+            if let value = dict["Direction"] as? String {
+                self.direction = value
+            }
+            if let value = dict["DstIP"] as? String {
+                self.dstIP = value
+            }
+            if let value = dict["DstPort"] as? Int32 {
+                self.dstPort = value
+            }
+            if let value = dict["HitContent"] as? String {
+                self.hitContent = value
+            }
+            if let value = dict["HitType"] as? String {
+                self.hitType = value
+            }
+            if let value = dict["IpProtocol"] as? String {
+                self.ipProtocol = value
+            }
+            if let value = dict["MemberUid"] as? Int64 {
+                self.memberUid = value
+            }
+            if let value = dict["RuleId"] as? String {
+                self.ruleId = value
+            }
+            if let value = dict["RuleName"] as? String {
+                self.ruleName = value
+            }
+            if let value = dict["RuleResult"] as? Int32 {
+                self.ruleResult = value
+            }
+            if let value = dict["RuleSource"] as? Int64 {
+                self.ruleSource = value
+            }
+            if let value = dict["Sni"] as? String {
+                self.sni = value
+            }
+            if let value = dict["SrcIP"] as? String {
+                self.srcIP = value
+            }
+            if let value = dict["SrcPort"] as? Int32 {
+                self.srcPort = value
+            }
+            if let value = dict["SslCipher"] as? String {
+                self.sslCipher = value
+            }
+            if let value = dict["SslErrorIndex"] as? String {
+                self.sslErrorIndex = value
+            }
+            if let value = dict["SslErrorMsg"] as? String {
+                self.sslErrorMsg = value
+            }
+            if let value = dict["SslHandshakeRes"] as? String {
+                self.sslHandshakeRes = value
+            }
+            if let value = dict["SslProtocol"] as? String {
+                self.sslProtocol = value
+            }
+            if let value = dict["StartTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["Url"] as? String {
+                self.url = value
+            }
+            if let value = dict["VulLevel"] as? Int64 {
+                self.vulLevel = value
+            }
+        }
+    }
+    public var dataList: [DescribeEventLogResponseBody.DataList]?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataList != nil {
+            var tmp : [Any] = []
+            for k in self.dataList! {
+                tmp.append(k.toMap())
+            }
+            map["DataList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataList"] as? [Any?] {
+            var tmp : [DescribeEventLogResponseBody.DataList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeEventLogResponseBody.DataList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeEventLogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeEventLogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeEventLogResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeFirewallDropStatisticsResponseBody : Tea.TeaModel {
     public var aclDropCnt: Int64?
 
