@@ -4122,6 +4122,8 @@ public class CredentialVerifyV2Response : Tea.TeaModel {
 }
 
 public class DeepfakeDetectRequest : Tea.TeaModel {
+    public var faceAttributeCheck: String?
+
     public var faceBase64: String?
 
     public var faceInputType: String?
@@ -4144,6 +4146,9 @@ public class DeepfakeDetectRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.faceAttributeCheck != nil {
+            map["FaceAttributeCheck"] = self.faceAttributeCheck!
+        }
         if self.faceBase64 != nil {
             map["FaceBase64"] = self.faceBase64!
         }
@@ -4161,6 +4166,9 @@ public class DeepfakeDetectRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FaceAttributeCheck"] as? String {
+            self.faceAttributeCheck = value
+        }
         if let value = dict["FaceBase64"] as? String {
             self.faceBase64 = value
         }
@@ -4178,6 +4186,8 @@ public class DeepfakeDetectRequest : Tea.TeaModel {
 
 public class DeepfakeDetectResponseBody : Tea.TeaModel {
     public class ResultObject : Tea.TeaModel {
+        public var faceAttributeInfo: String?
+
         public var result: String?
 
         public var riskScore: [String: String]?
@@ -4198,6 +4208,9 @@ public class DeepfakeDetectResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.faceAttributeInfo != nil {
+                map["FaceAttributeInfo"] = self.faceAttributeInfo!
+            }
             if self.result != nil {
                 map["Result"] = self.result!
             }
@@ -4212,6 +4225,9 @@ public class DeepfakeDetectResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["FaceAttributeInfo"] as? String {
+                self.faceAttributeInfo = value
+            }
             if let value = dict["Result"] as? String {
                 self.result = value
             }
@@ -17966,7 +17982,11 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
 
     public var crop: String?
 
+    public var enableAlbumUpload: String?
+
     public var enableBeauty: String?
+
+    public var enableTts: String?
 
     public var encryptType: String?
 
@@ -18073,8 +18093,14 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         if self.crop != nil {
             map["Crop"] = self.crop!
         }
+        if self.enableAlbumUpload != nil {
+            map["EnableAlbumUpload"] = self.enableAlbumUpload!
+        }
         if self.enableBeauty != nil {
             map["EnableBeauty"] = self.enableBeauty!
+        }
+        if self.enableTts != nil {
+            map["EnableTts"] = self.enableTts!
         }
         if self.encryptType != nil {
             map["EncryptType"] = self.encryptType!
@@ -18198,8 +18224,14 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         if let value = dict["Crop"] as? String {
             self.crop = value
         }
+        if let value = dict["EnableAlbumUpload"] as? String {
+            self.enableAlbumUpload = value
+        }
         if let value = dict["EnableBeauty"] as? String {
             self.enableBeauty = value
+        }
+        if let value = dict["EnableTts"] as? String {
+            self.enableTts = value
         }
         if let value = dict["EncryptType"] as? String {
             self.encryptType = value

@@ -1161,6 +1161,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deepfakeDetectWithOptions(_ request: DeepfakeDetectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeepfakeDetectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceAttributeCheck)) {
+            query["FaceAttributeCheck"] = request.faceAttributeCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.faceInputType)) {
             query["FaceInputType"] = request.faceInputType ?? "";
         }
@@ -3805,8 +3808,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.certifyUrlType)) {
             query["CertifyUrlType"] = request.certifyUrlType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableAlbumUpload)) {
+            query["EnableAlbumUpload"] = request.enableAlbumUpload ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enableBeauty)) {
             query["EnableBeauty"] = request.enableBeauty ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableTts)) {
+            query["EnableTts"] = request.enableTts ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.encryptType)) {
             query["EncryptType"] = request.encryptType ?? "";
