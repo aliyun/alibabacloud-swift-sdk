@@ -7131,6 +7131,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.orderBy)) {
             query["OrderBy"] = request.orderBy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.orgIdList)) {
+            query["OrgIdList"] = request.orgIdList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }

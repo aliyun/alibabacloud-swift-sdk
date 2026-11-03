@@ -33558,6 +33558,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 public class DescribeDesktopsResponseBody : Tea.TeaModel {
     public class Desktops : Tea.TeaModel {
         public class DesktopDurationList : Tea.TeaModel {
+            public var disableRemainingNotify: Bool?
+
             public var orderInstanceId: String?
 
             public var packageCreationTime: String?
@@ -33596,6 +33598,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.disableRemainingNotify != nil {
+                    map["DisableRemainingNotify"] = self.disableRemainingNotify!
+                }
                 if self.orderInstanceId != nil {
                     map["OrderInstanceId"] = self.orderInstanceId!
                 }
@@ -33637,6 +33642,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["DisableRemainingNotify"] as? Bool {
+                    self.disableRemainingNotify = value
+                }
                 if let value = dict["OrderInstanceId"] as? String {
                     self.orderInstanceId = value
                 }
@@ -34171,6 +34179,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var subnetId: String?
 
+        public var subnetName: String?
+
         public var supportHibernation: Bool?
 
         public var systemDiskCategory: String?
@@ -34422,6 +34432,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.subnetId != nil {
                 map["SubnetId"] = self.subnetId!
+            }
+            if self.subnetName != nil {
+                map["SubnetName"] = self.subnetName!
             }
             if self.supportHibernation != nil {
                 map["SupportHibernation"] = self.supportHibernation!
@@ -34703,6 +34716,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubnetId"] as? String {
                 self.subnetId = value
+            }
+            if let value = dict["SubnetName"] as? String {
+                self.subnetName = value
             }
             if let value = dict["SupportHibernation"] as? Bool {
                 self.supportHibernation = value
@@ -38343,6 +38359,8 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
 
     public var orderBy: String?
 
+    public var orgIdList: [String]?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -38405,6 +38423,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         if self.orderBy != nil {
             map["OrderBy"] = self.orderBy!
         }
+        if self.orgIdList != nil {
+            map["OrgIdList"] = self.orgIdList!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -38466,6 +38487,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["OrderBy"] as? String {
             self.orderBy = value
+        }
+        if let value = dict["OrgIdList"] as? [String] {
+            self.orgIdList = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -38601,6 +38625,8 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
 
         public var latestSessionEndTime: String?
 
+        public var managementFlags: [String]?
+
         public var memory: Int64?
 
         public var officeSiteId: String?
@@ -38683,6 +38709,9 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
             }
             if self.latestSessionEndTime != nil {
                 map["LatestSessionEndTime"] = self.latestSessionEndTime!
+            }
+            if self.managementFlags != nil {
+                map["ManagementFlags"] = self.managementFlags!
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
@@ -38780,6 +38809,9 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["LatestSessionEndTime"] as? String {
                 self.latestSessionEndTime = value
+            }
+            if let value = dict["ManagementFlags"] as? [String] {
+                self.managementFlags = value
             }
             if let value = dict["Memory"] as? Int64 {
                 self.memory = value
