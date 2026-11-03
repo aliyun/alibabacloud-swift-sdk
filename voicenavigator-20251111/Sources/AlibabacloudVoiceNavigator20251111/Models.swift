@@ -17169,9 +17169,13 @@ public class ListVoiceEnginesResponse : Tea.TeaModel {
 public class ListVoicesRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var model: String?
+
     public var nlsAccessType: String?
 
     public var nlsEngine: String?
+
+    public var omniModel: Bool?
 
     public var pageNumber: Int32?
 
@@ -17194,11 +17198,17 @@ public class ListVoicesRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
         if self.nlsAccessType != nil {
             map["NlsAccessType"] = self.nlsAccessType!
         }
         if self.nlsEngine != nil {
             map["NlsEngine"] = self.nlsEngine!
+        }
+        if self.omniModel != nil {
+            map["OmniModel"] = self.omniModel!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -17214,11 +17224,17 @@ public class ListVoicesRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
         if let value = dict["NlsAccessType"] as? String {
             self.nlsAccessType = value
         }
         if let value = dict["NlsEngine"] as? String {
             self.nlsEngine = value
+        }
+        if let value = dict["OmniModel"] as? Bool {
+            self.omniModel = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value

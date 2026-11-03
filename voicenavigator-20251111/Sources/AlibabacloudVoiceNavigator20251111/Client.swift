@@ -2147,11 +2147,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            body["Model"] = request.model ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nlsAccessType)) {
             body["NlsAccessType"] = request.nlsAccessType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nlsEngine)) {
             body["NlsEngine"] = request.nlsEngine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.omniModel)) {
+            body["OmniModel"] = request.omniModel!;
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             body["PageNumber"] = request.pageNumber!;
