@@ -2799,6 +2799,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWorkspaceWithOptions(_ WorkspaceId: String, _ request: GetWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.extraVerboseFields)) {
+            query["ExtraVerboseFields"] = request.extraVerboseFields ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.verbose)) {
             query["Verbose"] = request.verbose!;
         }

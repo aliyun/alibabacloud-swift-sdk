@@ -16592,6 +16592,8 @@ public class GetRunResponse : Tea.TeaModel {
 }
 
 public class GetWorkspaceRequest : Tea.TeaModel {
+    public var extraVerboseFields: String?
+
     public var verbose: Bool?
 
     public override init() {
@@ -16608,6 +16610,9 @@ public class GetWorkspaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.extraVerboseFields != nil {
+            map["ExtraVerboseFields"] = self.extraVerboseFields!
+        }
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
         }
@@ -16616,6 +16621,9 @@ public class GetWorkspaceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExtraVerboseFields"] as? String {
+            self.extraVerboseFields = value
+        }
         if let value = dict["Verbose"] as? Bool {
             self.verbose = value
         }
